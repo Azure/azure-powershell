@@ -20,6 +20,9 @@
 ## Upcoming Release
 * General availability for module Az.Fabric
 
+## Version 1.0.0
+* General availability for module Az.Fabric
+
 ## Version 0.1.2
 * Fixed module name in module metadata
 

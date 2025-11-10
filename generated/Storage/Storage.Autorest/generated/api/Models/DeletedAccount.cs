@@ -37,31 +37,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IDeletedAccountPropertiesInternal)Property).Location; }
 
         /// <summary>Internal Acessors for CreationTime</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IDeletedAccountInternal.CreationTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IDeletedAccountPropertiesInternal)Property).CreationTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IDeletedAccountPropertiesInternal)Property).CreationTime = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IDeletedAccountInternal.CreationTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IDeletedAccountPropertiesInternal)Property).CreationTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IDeletedAccountPropertiesInternal)Property).CreationTime = value ?? null; }
 
         /// <summary>Internal Acessors for DeletionTime</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IDeletedAccountInternal.DeletionTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IDeletedAccountPropertiesInternal)Property).DeletionTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IDeletedAccountPropertiesInternal)Property).DeletionTime = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IDeletedAccountInternal.DeletionTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IDeletedAccountPropertiesInternal)Property).DeletionTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IDeletedAccountPropertiesInternal)Property).DeletionTime = value ?? null; }
 
         /// <summary>Internal Acessors for Location</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IDeletedAccountInternal.Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IDeletedAccountPropertiesInternal)Property).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IDeletedAccountPropertiesInternal)Property).Location = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IDeletedAccountInternal.Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IDeletedAccountPropertiesInternal)Property).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IDeletedAccountPropertiesInternal)Property).Location = value ?? null; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IDeletedAccountProperties Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IDeletedAccountInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.DeletedAccountProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for RestoreReference</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IDeletedAccountInternal.RestoreReference { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IDeletedAccountPropertiesInternal)Property).RestoreReference; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IDeletedAccountPropertiesInternal)Property).RestoreReference = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IDeletedAccountInternal.RestoreReference { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IDeletedAccountPropertiesInternal)Property).RestoreReference; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IDeletedAccountPropertiesInternal)Property).RestoreReference = value ?? null; }
 
         /// <summary>Internal Acessors for StorageAccountResourceId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IDeletedAccountInternal.StorageAccountResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IDeletedAccountPropertiesInternal)Property).StorageAccountResourceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IDeletedAccountPropertiesInternal)Property).StorageAccountResourceId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IDeletedAccountInternal.StorageAccountResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IDeletedAccountPropertiesInternal)Property).StorageAccountResourceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IDeletedAccountPropertiesInternal)Property).StorageAccountResourceId = value ?? null; }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).Type = value ?? null; }
 
         /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inherited)]

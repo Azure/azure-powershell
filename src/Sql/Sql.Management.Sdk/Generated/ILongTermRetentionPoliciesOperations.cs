@@ -41,76 +41,43 @@ namespace Microsoft.Azure.Management.Sql
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<LongTermRetentionPolicy>> GetWithHttpMessagesAsync(string resourceGroupName, string serverName, string databaseName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Sets a database&#39;s long term retention policy.
-        /// </summary>
-        /// <remarks>
-        /// Sets a database&#39;s long term retention policy.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='serverName'>
-        /// The name of the server.
-        /// </param>
-        /// <param name='databaseName'>
-        /// The name of the database.
-        /// </param>
-        /// <param name='parameters'>
-        /// The long term retention policy info.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<LongTermRetentionPolicy>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string serverName, string databaseName, LongTermRetentionPolicy parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Gets a database&#39;s long term retention policy.
-        /// </summary>
-        /// <remarks>
-        /// Gets a database&#39;s long term retention policy.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='serverName'>
-        /// The name of the server.
-        /// </param>
-        /// <param name='databaseName'>
-        /// The name of the database.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<LongTermRetentionPolicy>>> ListByDatabaseWithHttpMessagesAsync(string resourceGroupName, string serverName, string databaseName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Sets a database&#39;s long term retention policy.
+        /// Gets a database&#39;s long term retention policy.
         /// </summary>
         /// <remarks>
-        /// Sets a database&#39;s long term retention policy.
+        /// Gets a database&#39;s long term retention policy.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the database.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<LongTermRetentionPolicy>> GetWithHttpMessagesAsync(string resourceGroupName, string serverName, string databaseName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Set or update a database&#39;s long term retention policy.
+        /// </summary>
+        /// <remarks>
+        /// Set or update a database&#39;s long term retention policy.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the resource. You can obtain
@@ -137,7 +104,40 @@ namespace Microsoft.Azure.Management.Sql
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<LongTermRetentionPolicy>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string serverName, string databaseName, LongTermRetentionPolicy parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<LongTermRetentionPolicy,LongTermRetentionPoliciesCreateOrUpdateHeaders>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string serverName, string databaseName, LongTermRetentionPolicy parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Set or update a database&#39;s long term retention policy.
+        /// </summary>
+        /// <remarks>
+        /// Set or update a database&#39;s long term retention policy.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the database.
+        /// </param>
+        /// <param name='parameters'>
+        /// The long term retention policy info.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<LongTermRetentionPolicy,LongTermRetentionPoliciesCreateOrUpdateHeaders>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string serverName, string databaseName, LongTermRetentionPolicy parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Gets a database&#39;s long term retention policy.

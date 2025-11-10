@@ -1,6 +1,6 @@
 {
   "ModuleName": "Az.ManagedServices",
-  "ModuleVersion": "3.1.1",
+  "ModuleVersion": "3.1.2",
   "Cmdlets": [
     {
       "VerbName": "Get",
@@ -16,7 +16,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IRegistrationAssignment",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IRegistrationAssignment, Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IRegistrationAssignment, Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Authorization": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IAuthorization[]",
               "EligibleAuthorization": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IEligibleAuthorization[]",
@@ -73,7 +73,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.IManagedServicesIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.IManagedServicesIdentity, Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.IManagedServicesIdentity, Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "MarketplaceIdentifier": "System.String",
@@ -120,7 +120,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -130,7 +130,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -267,7 +267,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -283,7 +283,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -431,7 +431,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -447,7 +447,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -531,7 +531,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.IManagedServicesIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.IManagedServicesIdentity, Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.IManagedServicesIdentity, Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Id": "System.String",
                     "MarketplaceIdentifier": "System.String",
@@ -602,7 +602,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -618,7 +618,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -751,7 +751,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -767,7 +767,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -858,7 +858,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IRegistrationDefinition",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IRegistrationDefinition, Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IRegistrationDefinition, Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Authorization": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IAuthorization[]",
               "EligibleAuthorization": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IEligibleAuthorization[]",
@@ -908,7 +908,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.IManagedServicesIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.IManagedServicesIdentity, Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.IManagedServicesIdentity, Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "MarketplaceIdentifier": "System.String",
@@ -946,7 +946,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -956,7 +956,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -1078,7 +1078,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1094,7 +1094,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1227,7 +1227,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1243,7 +1243,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1327,7 +1327,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.IManagedServicesIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.IManagedServicesIdentity, Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.IManagedServicesIdentity, Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Id": "System.String",
                     "MarketplaceIdentifier": "System.String",
@@ -1383,7 +1383,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1399,7 +1399,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1517,7 +1517,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1533,7 +1533,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1624,7 +1624,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IMarketplaceRegistrationDefinition",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IMarketplaceRegistrationDefinition, Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IMarketplaceRegistrationDefinition, Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Authorization": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IAuthorization[]",
               "EligibleAuthorization": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IEligibleAuthorization[]",
@@ -1670,7 +1670,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.IManagedServicesIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.IManagedServicesIdentity, Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.IManagedServicesIdentity, Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "MarketplaceIdentifier": "System.String",
@@ -1726,7 +1726,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -1736,7 +1736,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -1855,7 +1855,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1871,7 +1871,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2019,7 +2019,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2035,7 +2035,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2183,7 +2183,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2199,7 +2199,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2283,7 +2283,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.IManagedServicesIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.IManagedServicesIdentity, Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.IManagedServicesIdentity, Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Id": "System.String",
                     "MarketplaceIdentifier": "System.String",
@@ -2339,7 +2339,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2355,7 +2355,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2503,7 +2503,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2519,7 +2519,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2637,7 +2637,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2653,7 +2653,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2744,7 +2744,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IRegistrationAssignment",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IRegistrationAssignment, Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IRegistrationAssignment, Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Authorization": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IAuthorization[]",
               "EligibleAuthorization": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IEligibleAuthorization[]",
@@ -2841,7 +2841,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -2851,7 +2851,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -3012,7 +3012,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3028,7 +3028,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3134,7 +3134,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.Authorization",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.Authorization, Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.Authorization, Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "PrincipalId": "System.String",
               "PrincipalIdDisplayName": "System.String",
@@ -3386,7 +3386,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IRegistrationDefinition",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IRegistrationDefinition, Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IRegistrationDefinition, Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Authorization": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IAuthorization[]",
               "EligibleAuthorization": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IEligibleAuthorization[]",
@@ -3436,7 +3436,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IAuthorization[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IAuthorization[], Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IAuthorization[], Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IAuthorization"
           },
           "ValidateNotNullOrEmpty": false
@@ -3455,7 +3455,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IEligibleAuthorization[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IEligibleAuthorization[], Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IEligibleAuthorization[], Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IEligibleAuthorization"
           },
           "ValidateNotNullOrEmpty": false
@@ -3550,7 +3550,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -3560,7 +3560,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -3657,7 +3657,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IAuthorization[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IAuthorization[], Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IAuthorization[], Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IAuthorization"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3688,7 +3688,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IEligibleAuthorization[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IEligibleAuthorization[], Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IEligibleAuthorization[], Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IEligibleAuthorization"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3843,7 +3843,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3859,7 +3859,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3965,7 +3965,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.EligibleApprover",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.EligibleApprover, Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.EligibleApprover, Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "PrincipalId": "System.String",
               "PrincipalIdDisplayName": "System.String"
@@ -4165,7 +4165,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.EligibleAuthorization",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.EligibleAuthorization, Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.EligibleAuthorization, Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "JustInTimeAccessPolicyManagedByTenantApprover": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IEligibleApprover[]",
               "JustInTimeAccessPolicyMultiFactorAuthProvider": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Support.MultiFactorAuthProvider]",
@@ -4291,7 +4291,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IEligibleApprover[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IEligibleApprover[], Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IEligibleApprover[], Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IEligibleApprover"
           },
           "ValidateNotNullOrEmpty": false
@@ -4310,7 +4310,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Support.MultiFactorAuthProvider",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Support.MultiFactorAuthProvider, Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Support.MultiFactorAuthProvider, Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -4376,7 +4376,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IEligibleApprover[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IEligibleApprover[], Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IEligibleApprover[], Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IEligibleApprover"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -4407,7 +4407,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Support.MultiFactorAuthProvider",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Support.MultiFactorAuthProvider, Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Support.MultiFactorAuthProvider, Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -4501,7 +4501,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.IManagedServicesIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.IManagedServicesIdentity, Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.IManagedServicesIdentity, Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "MarketplaceIdentifier": "System.String",
@@ -4548,7 +4548,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -4558,7 +4558,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -4713,7 +4713,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -4729,7 +4729,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -4843,7 +4843,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.IManagedServicesIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.IManagedServicesIdentity, Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.IManagedServicesIdentity, Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Id": "System.String",
                     "MarketplaceIdentifier": "System.String",
@@ -4914,7 +4914,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -4930,7 +4930,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -5093,7 +5093,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -5109,7 +5109,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -5264,7 +5264,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.IManagedServicesIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.IManagedServicesIdentity, Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.IManagedServicesIdentity, Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "MarketplaceIdentifier": "System.String",
@@ -5302,7 +5302,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -5312,7 +5312,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -5443,7 +5443,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -5459,7 +5459,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -5558,7 +5558,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.IManagedServicesIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.IManagedServicesIdentity, Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.IManagedServicesIdentity, Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Id": "System.String",
                     "MarketplaceIdentifier": "System.String",
@@ -5614,7 +5614,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -5630,7 +5630,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -5763,7 +5763,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -5779,7 +5779,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep[], Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -5918,13 +5918,13 @@
     "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IAuthorization[]": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IAuthorization[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IAuthorization[], Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IAuthorization[], Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IAuthorization"
     },
     "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IAuthorization": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IAuthorization",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IAuthorization, Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IAuthorization, Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "PrincipalId": "System.String",
         "PrincipalIdDisplayName": "System.String",
@@ -5941,13 +5941,13 @@
     "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IEligibleAuthorization[]": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IEligibleAuthorization[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IEligibleAuthorization[], Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IEligibleAuthorization[], Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IEligibleAuthorization"
     },
     "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IEligibleAuthorization": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IEligibleAuthorization",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IEligibleAuthorization, Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IEligibleAuthorization, Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "JustInTimeAccessPolicyManagedByTenantApprover": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IEligibleApprover[]",
         "JustInTimeAccessPolicyMultiFactorAuthProvider": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Support.MultiFactorAuthProvider]",
@@ -5960,13 +5960,13 @@
     "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IEligibleApprover[]": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IEligibleApprover[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IEligibleApprover[], Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IEligibleApprover[], Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IEligibleApprover"
     },
     "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IEligibleApprover": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IEligibleApprover",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IEligibleApprover, Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IEligibleApprover, Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "PrincipalId": "System.String",
         "PrincipalIdDisplayName": "System.String"
@@ -5975,7 +5975,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Support.MultiFactorAuthProvider]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Support.MultiFactorAuthProvider]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Support.MultiFactorAuthProvider, Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Support.MultiFactorAuthProvider, Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Support.MultiFactorAuthProvider"
       ]
@@ -5983,7 +5983,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Support.MultiFactorAuthProvider": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Support.MultiFactorAuthProvider",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Support.MultiFactorAuthProvider, Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Support.MultiFactorAuthProvider, Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "CompleteArgument",
@@ -6079,7 +6079,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Support.ProvisioningState]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Support.ProvisioningState]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Support.ProvisioningState, Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Support.ProvisioningState, Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Support.ProvisioningState"
       ]
@@ -6087,7 +6087,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Support.ProvisioningState": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Support.ProvisioningState",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Support.ProvisioningState, Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Support.ProvisioningState, Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "CompleteArgument",
@@ -6152,7 +6152,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep, Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.SendAsyncStep, Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Target": "System.Object",
         "Method": "System.Reflection.MethodInfo"
@@ -6330,7 +6330,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.Json.JsonNode": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.Json",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.Json.JsonNode",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.Json.JsonNode, Az.ManagedServices.private, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.Json.JsonNode, Az.ManagedServices.private, Version=3.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Item": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.Json.JsonNode"
       },

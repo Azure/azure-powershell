@@ -1,8 +1,8 @@
 {
     "Entries":  [
                     {
-                        "RequestUri":  "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults?api-version=2024-04-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL0FycGl0YS1haXIvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cz9hcGktdmVyc2lvbj0yMDI0LTA0LTAx",
+                        "RequestUri":  "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults?api-version=2025-08-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL0FycGl0YS1haXIvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cz9hcGktdmVyc2lvbj0yMDI1LTA4LTAx",
                         "RequestMethod":  "GET",
                         "RequestHeaders":  {
                                                "x-ms-client-request-id":  [
@@ -60,7 +60,7 @@
                                                                      "Ref A: C78CC9FBFEEB4D8780A0CF664F9556D5 Ref B: MAA201060515011 Ref C: 2024-10-29T14:18:13Z"
                                                                  ],
                                                 "Date":  [
-                                                             "Sun, 09 Mar 2025 15:27:01 GMT"
+                                                             "Tue, 28 Oct 2025 03:16:57 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "7568"
@@ -135,7 +135,7 @@
                                                                      "Ref A: A521121BF8F0494EB83DBF7333F8C011 Ref B: MAA201060516039 Ref C: 2024-10-29T14:18:35Z"
                                                                  ],
                                                 "Date":  [
-                                                             "Sun, 09 Mar 2025 15:27:01 GMT"
+                                                             "Tue, 28 Oct 2025 03:16:57 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "13567"
@@ -210,7 +210,7 @@
                                                                      "Ref A: 792CB02B4467468A910BA27605476046 Ref B: MAA201060513051 Ref C: 2024-10-29T14:18:36Z"
                                                                  ],
                                                 "Date":  [
-                                                             "Sun, 09 Mar 2025 15:27:01 GMT"
+                                                             "Tue, 28 Oct 2025 03:16:57 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "1722"
@@ -285,7 +285,7 @@
                                                                      "Ref A: 171A7A799E9E452796E6A90BC4ACAF90 Ref B: MAA201060513027 Ref C: 2024-10-29T14:18:37Z"
                                                                  ],
                                                 "Date":  [
-                                                             "Sun, 09 Mar 2025 15:27:01 GMT"
+                                                             "Tue, 28 Oct 2025 03:16:57 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "626"
@@ -360,7 +360,7 @@
                                                                      "Ref A: D6AA80C094E24F6A995E246E6D6A47A4 Ref B: MAA201060514021 Ref C: 2024-10-29T14:18:38Z"
                                                                  ],
                                                 "Date":  [
-                                                             "Sun, 09 Mar 2025 15:27:01 GMT"
+                                                             "Tue, 28 Oct 2025 03:16:57 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "1103"
@@ -435,7 +435,7 @@
                                                                      "Ref A: 26BA3C633C1741E58208606ADF1133DA Ref B: MAA201060515009 Ref C: 2024-10-29T14:18:40Z"
                                                                  ],
                                                 "Date":  [
-                                                             "Sun, 09 Mar 2025 15:27:01 GMT"
+                                                             "Tue, 28 Oct 2025 03:16:57 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "1103"
@@ -510,7 +510,7 @@
                                                                      "Ref A: 1C2E4CE1458A4A84A6B5320395F4661B Ref B: MAA201060514035 Ref C: 2024-10-29T14:18:39Z"
                                                                  ],
                                                 "Date":  [
-                                                             "Sun, 09 Mar 2025 15:27:01 GMT"
+                                                             "Tue, 28 Oct 2025 03:16:57 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "4671"
@@ -585,7 +585,7 @@
                                                                      "Ref A: 9D62E26881714A85AB192DD1DF7008F5 Ref B: MAA201060513039 Ref C: 2024-10-29T14:18:41Z"
                                                                  ],
                                                 "Date":  [
-                                                             "Sun, 09 Mar 2025 15:27:01 GMT"
+                                                             "Tue, 28 Oct 2025 03:16:57 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "669"
@@ -660,7 +660,7 @@
                                                                      "Ref A: 3F814278A5464A8CB56A9684D9F0903A Ref B: MAA201060516047 Ref C: 2024-10-29T14:18:43Z"
                                                                  ],
                                                 "Date":  [
-                                                             "Sun, 09 Mar 2025 15:27:01 GMT"
+                                                             "Tue, 28 Oct 2025 03:16:57 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "6787"
@@ -735,7 +735,7 @@
                                                                      "Ref A: 00E383EC211E45B3B521205F8C2DC23D Ref B: MAA201060514025 Ref C: 2024-10-29T14:18:43Z"
                                                                  ],
                                                 "Date":  [
-                                                             "Sun, 09 Mar 2025 15:27:01 GMT"
+                                                             "Tue, 28 Oct 2025 03:16:57 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "7068"
@@ -810,7 +810,7 @@
                                                                      "Ref A: 479C24F80B5143F68B749EA2126BC975 Ref B: MAA201060516011 Ref C: 2024-10-29T14:18:44Z"
                                                                  ],
                                                 "Date":  [
-                                                             "Sun, 09 Mar 2025 15:27:01 GMT"
+                                                             "Tue, 28 Oct 2025 03:16:57 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "7068"
@@ -901,7 +901,7 @@
                                                                      "Ref A: C7A1E9883BB246E4A4FB732686C15380 Ref B: MAA201060514037 Ref C: 2024-10-29T14:18:46Z"
                                                                  ],
                                                 "Date":  [
-                                                             "Sun, 09 Mar 2025 15:27:01 GMT"
+                                                             "Tue, 28 Oct 2025 03:16:57 GMT"
                                                          ],
                                                 "Expires":  [
                                                                 "-1"
@@ -973,7 +973,7 @@
                                                                      "Ref A: A1AD10A5BD294688A465A4F148E6D68E Ref B: MAA201060513033 Ref C: 2024-10-29T14:18:48Z"
                                                                  ],
                                                 "Date":  [
-                                                             "Sun, 09 Mar 2025 15:27:01 GMT"
+                                                             "Tue, 28 Oct 2025 03:16:57 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "1869"
@@ -1048,7 +1048,7 @@
                                                                      "Ref A: 2A28740B192341A880F9AADD2C0746D9 Ref B: MAA201060514031 Ref C: 2024-10-29T14:18:50Z"
                                                                  ],
                                                 "Date":  [
-                                                             "Sun, 09 Mar 2025 15:27:01 GMT"
+                                                             "Tue, 28 Oct 2025 03:16:57 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "1869"
@@ -1123,7 +1123,7 @@
                                                                      "Ref A: CE4A9AFCDF994B948A3A7078ABEAA8B6 Ref B: MAA201060514039 Ref C: 2024-10-29T14:18:50Z"
                                                                  ],
                                                 "Date":  [
-                                                             "Sun, 09 Mar 2025 15:27:01 GMT"
+                                                             "Tue, 28 Oct 2025 03:16:57 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "1869"
@@ -1198,7 +1198,7 @@
                                                                      "Ref A: 95E612389ACD46EDA55EA6996020ACF4 Ref B: MAA201060516047 Ref C: 2024-10-29T14:18:52Z"
                                                                  ],
                                                 "Date":  [
-                                                             "Sun, 09 Mar 2025 15:27:01 GMT"
+                                                             "Tue, 28 Oct 2025 03:16:57 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "1916"
@@ -1273,7 +1273,7 @@
                                                                      "Ref A: 1D18E31BE396449DA144A3D4A51D3375 Ref B: MAA201060515039 Ref C: 2024-10-29T14:18:52Z"
                                                                  ],
                                                 "Date":  [
-                                                             "Sun, 09 Mar 2025 15:27:01 GMT"
+                                                             "Tue, 28 Oct 2025 03:16:57 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "1916"

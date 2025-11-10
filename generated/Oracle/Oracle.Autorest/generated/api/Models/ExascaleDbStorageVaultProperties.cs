@@ -22,6 +22,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Owned)]
         public int? AdditionalFlashCacheInPercent { get => this._additionalFlashCacheInPercent; set => this._additionalFlashCacheInPercent = value; }
 
+        /// <summary>Backing field for <see cref="AttachedShapeAttribute" /> property.</summary>
+        private System.Collections.Generic.List<string> _attachedShapeAttribute;
+
+        /// <summary>
+        /// The shapeAttribute of the Exadata VM cluster(s) associated with the Exadata Database Storage Vault.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Owned)]
+        public System.Collections.Generic.List<string> AttachedShapeAttribute { get => this._attachedShapeAttribute; }
+
         /// <summary>Backing field for <see cref="Description" /> property.</summary>
         private string _description;
 
@@ -37,6 +46,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Owned)]
         public string DisplayName { get => this._displayName; set => this._displayName = value; }
+
+        /// <summary>Backing field for <see cref="ExadataInfrastructureId" /> property.</summary>
+        private string _exadataInfrastructureId;
+
+        /// <summary>Cloud Exadata infrastructure ID</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Owned)]
+        public string ExadataInfrastructureId { get => this._exadataInfrastructureId; set => this._exadataInfrastructureId = value; }
 
         /// <summary>Backing field for <see cref="HighCapacityDatabaseStorage" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExascaleDbStorageDetails _highCapacityDatabaseStorage;
@@ -77,6 +93,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         /// <summary>Exadata Database Storage Vault lifecycle state</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Owned)]
         public string LifecycleState { get => this._lifecycleState; }
+
+        /// <summary>Internal Acessors for AttachedShapeAttribute</summary>
+        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExascaleDbStorageVaultPropertiesInternal.AttachedShapeAttribute { get => this._attachedShapeAttribute; set { {_attachedShapeAttribute = value;} } }
 
         /// <summary>Internal Acessors for HighCapacityDatabaseStorage</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExascaleDbStorageDetails Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExascaleDbStorageVaultPropertiesInternal.HighCapacityDatabaseStorage { get => (this._highCapacityDatabaseStorage = this._highCapacityDatabaseStorage ?? new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ExascaleDbStorageDetails()); set { {_highCapacityDatabaseStorage = value;} } }
@@ -166,6 +185,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         SerializedName = @"additionalFlashCacheInPercent",
         PossibleTypes = new [] { typeof(int) })]
         int? AdditionalFlashCacheInPercent { get; set; }
+        /// <summary>
+        /// The shapeAttribute of the Exadata VM cluster(s) associated with the Exadata Database Storage Vault.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The shapeAttribute of the Exadata VM cluster(s) associated with the Exadata Database Storage Vault.",
+        SerializedName = @"attachedShapeAttributes",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.PSArgumentCompleterAttribute("SMART_STORAGE", "BLOCK_STORAGE")]
+        System.Collections.Generic.List<string> AttachedShapeAttribute { get;  }
         /// <summary>Exadata Database Storage Vault description.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
@@ -190,6 +223,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         SerializedName = @"displayName",
         PossibleTypes = new [] { typeof(string) })]
         string DisplayName { get; set; }
+        /// <summary>Cloud Exadata infrastructure ID</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = false,
+        Description = @"Cloud Exadata infrastructure ID",
+        SerializedName = @"exadataInfrastructureId",
+        PossibleTypes = new [] { typeof(string) })]
+        string ExadataInfrastructureId { get; set; }
         /// <summary>Available Capacity</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
@@ -312,12 +356,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         /// The size of additional Flash Cache in percentage of High Capacity database storage.
         /// </summary>
         int? AdditionalFlashCacheInPercent { get; set; }
+        /// <summary>
+        /// The shapeAttribute of the Exadata VM cluster(s) associated with the Exadata Database Storage Vault.
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.PSArgumentCompleterAttribute("SMART_STORAGE", "BLOCK_STORAGE")]
+        System.Collections.Generic.List<string> AttachedShapeAttribute { get; set; }
         /// <summary>Exadata Database Storage Vault description.</summary>
         string Description { get; set; }
         /// <summary>
         /// The user-friendly name for the Exadata Database Storage Vault. The name does not need to be unique.
         /// </summary>
         string DisplayName { get; set; }
+        /// <summary>Cloud Exadata infrastructure ID</summary>
+        string ExadataInfrastructureId { get; set; }
         /// <summary>Response exadata Database Storage Details</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExascaleDbStorageDetails HighCapacityDatabaseStorage { get; set; }
         /// <summary>Available Capacity</summary>

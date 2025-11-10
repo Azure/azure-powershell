@@ -5773,3 +5773,464 @@ function Test-ApplicationGatewayHeaderValueMatcher
 		Clean-ResourceGroup $rgname
 	}
 }
+
+<#
+.SYNOPSIS
+Tests WAF Policy ComputedDisabledRules functionality (presence and content) with comprehensive validation
+#>
+function Test-ApplicationGatewayFirewallPolicyComputedDisabledRules
+{
+    # Setup
+    $location = Get-ProviderLocation "Microsoft.Network/applicationGateways" "West US"
+    $rgname = Get-ResourceGroupName
+    $wafPolicyName = Get-ResourceName
+	$ruleSetType = "Microsoft_DefaultRuleSet"
+    $ruleSetVersion = "2.1"
+    $testRuleGroupName1 = "PROTOCOL-ENFORCEMENT"
+	$testRuleGroupName2 = "METHOD-ENFORCEMENT"
+    $testRuleId1 = "920420"
+    $testRuleId2 = "920430"
+	$testRuleId3 = "911100"
+
+    try
+    {
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "APPGw tag"}
+
+        # Create a basic WAF policy for testing
+        $policySettings = New-AzApplicationGatewayFirewallPolicySetting -Mode Prevention -State Enabled -MaxFileUploadInMb 70 -MaxRequestBodySizeInKb 70
+        $managedRuleSet = New-AzApplicationGatewayFirewallPolicyManagedRuleSet -RuleSetType $ruleSetType -RuleSetVersion $ruleSetVersion
+        $managedRule = New-AzApplicationGatewayFirewallPolicyManagedRule -ManagedRuleSet $managedRuleSet
+        New-AzApplicationGatewayFirewallPolicy -Name $wafPolicyName -ResourceGroupName $rgname -Location $location -ManagedRule $managedRule -PolicySetting $policySettings
+
+        # Get the initial policy
+        $policy = Get-AzApplicationGatewayFirewallPolicy -Name $wafPolicyName -ResourceGroupName $rgname
+
+        # Validate initial state
+        Assert-NotNull $policy.ManagedRules "ManagedRules should not be null"
+        Assert-NotNull $policy.ManagedRules.ManagedRuleSets "ManagedRuleSets should not be null"
+        Assert-AreEqual $policy.ManagedRules.ManagedRuleSets.Count 1 "Should have exactly one managed rule set"
+
+        # Helper function to count total disabled rules in ComputedDisabledRules
+        function Get-ComputedDisabledRuleCount($ruleSet) {
+            $totalCount = 0
+            if ($ruleSet.ComputedDisabledRules) {
+                foreach ($ruleGroup in $ruleSet.ComputedDisabledRules) {
+                    if ($ruleGroup.Rules) {
+                        $totalCount += $ruleGroup.Rules.Count
+                    }
+                }
+            }
+            return $totalCount
+        }
+
+		# Test Scenario 1: Create a WAF policy with default $ruleSetType $ruleSetVersion rules and validate ComputedDisabledRules are correctly populated from Manifest
+		# Get the dynamic manifest to understand default disabled rules
+		$manifest = Get-AzApplicationGatewayWafDynamicManifest -Location $location
+		Assert-NotNull $manifest "Dynamic manifest should not be null"
+		Assert-NotNull $manifest.AvailableRuleSets "Available rule sets should not be null"
+
+		# Find the $ruleSetType $ruleSetVersion rule set in the manifest
+		$testRuleSet = $manifest.AvailableRuleSets | Where-Object { $_.RuleSetType -eq $ruleSetType -and $_.RuleSetVersion -eq $ruleSetVersion }
+		Assert-NotNull $testRuleSet "$ruleSetType $ruleSetVersion rule set should be available in manifest"
+
+		# Get default disabled rules from manifest
+		$expectedDefaultDisabledRules = @()
+		foreach ($ruleGroup in $testRuleSet.RuleGroups) {
+			foreach ($rule in $ruleGroup.Rules) {
+				if ($rule.State -eq "Disabled") {
+					$expectedDefaultDisabledRules += @{
+						RuleGroupName = $ruleGroup.RuleGroupName
+						RuleId = $rule.RuleId
+					}
+				}
+			}
+		}
+
+		# Validate that ComputedDisabledRules initially contains exactly the default disabled rules from manifest
+		$ruleSet = $policy.ManagedRules.ManagedRuleSets[0]
+		$actualDisabledRuleCount = Get-ComputedDisabledRuleCount $ruleSet
+
+		Assert-AreEqual $expectedDefaultDisabledRules.Count $actualDisabledRuleCount "ComputedDisabledRules should initially contain exactly the default disabled rules from manifest"
+
+		# Verify each expected default disabled rule is present in ComputedDisabledRules
+		foreach ($expectedRule in $expectedDefaultDisabledRules) {
+			$computedGroup = $ruleSet.ComputedDisabledRules | Where-Object { $_.RuleGroupName -eq $expectedRule.RuleGroupName }
+			Assert-NotNull $computedGroup "Rule group $($expectedRule.RuleGroupName) should exist in ComputedDisabledRules"
+			
+			$computedRule = $computedGroup.Rules | Where-Object { $_ -eq $expectedRule.RuleId }
+			Assert-NotNull $computedRule "Default disabled rule $($expectedRule.RuleId) should exist in ComputedDisabledRules"
+		}
+        
+        # Store baseline count for subsequent comparisons
+        $baselineDisabledCount = Get-ComputedDisabledRuleCount $ruleSet
+        
+        # Test Scenario 2: Add a rule override with disabled state and verify it appears in ComputedDisabledRules
+        # Find the $testRuleGroupName1 rule group
+        $testRuleGroup1 = $testRuleSet.RuleGroups | Where-Object { $_.RuleGroupName -eq $testRuleGroupName1 }
+        Assert-NotNull $testRuleGroup1 "$testRuleGroupName1 rule group should exist in manifest"
+        
+        # Find rule $testRuleId1 in the manifest
+        $rule1 = $testRuleGroup1.Rules | Where-Object { $_.RuleId -eq $testRuleId1 }
+        Assert-NotNull $rule1 "Rule $testRuleId1 should exist in $testRuleGroupName1 group"
+
+        $ruleOverride = New-AzApplicationGatewayFirewallPolicyManagedRuleOverride -RuleId $testRuleId1 -State Disabled
+        $ruleGroupOverride = New-AzApplicationGatewayFirewallPolicyManagedRuleGroupOverride -RuleGroupName $testRuleGroupName1 -Rule $ruleOverride
+        $updatedManagedRuleSet = New-AzApplicationGatewayFirewallPolicyManagedRuleSet -RuleSetType $ruleSetType -RuleSetVersion $ruleSetVersion -RuleGroupOverride $ruleGroupOverride
+        $updatedManagedRule = New-AzApplicationGatewayFirewallPolicyManagedRule -ManagedRuleSet $updatedManagedRuleSet
+        
+        $policy.ManagedRules = $updatedManagedRule
+        Set-AzApplicationGatewayFirewallPolicy -InputObject $policy
+        
+        # Get the updated policy and verify ComputedDisabledRules
+        $updatedPolicy = Get-AzApplicationGatewayFirewallPolicy -Name $wafPolicyName -ResourceGroupName $rgname
+        $updatedRuleSet = $updatedPolicy.ManagedRules.ManagedRuleSets[0]
+        
+        Assert-NotNull $updatedRuleSet.ComputedDisabledRules "ComputedDisabledRules should not be null after override"
+        
+        # Find the disabled rule in ComputedDisabledRules
+        $disabledGroup = $updatedRuleSet.ComputedDisabledRules | Where-Object { $_.RuleGroupName -eq $testRuleGroupName1 }
+        Assert-NotNull $disabledGroup "$testRuleGroupName1 group should appear in ComputedDisabledRules"
+        
+		$disabledRule = $disabledGroup.Rules | Where-Object { $_ -eq $testRuleId1 }
+		Assert-NotNull $disabledRule "Rule $testRuleId1 should appear in ComputedDisabledRules when overridden as disabled"
+        
+        # Check if count increased (only if rule wasn't already disabled by default)
+        $updatedDisabledCount = Get-ComputedDisabledRuleCount $updatedRuleSet
+        $isRule1DefaultDisabled = $rule1.State -eq "Disabled"
+        if (-not $isRule1DefaultDisabled) {
+            Assert-AreEqual ($baselineDisabledCount + 1) $updatedDisabledCount "ComputedDisabledRules count should increase by 1 when adding a disabled override for an enabled rule"
+        } else {
+            Assert-AreEqual $baselineDisabledCount $updatedDisabledCount "ComputedDisabledRules count should remain same when overriding an already disabled rule"
+        }
+                
+        # Test Scenario 3: Remove all overrides and verify the rule is removed from ComputedDisabledRules        
+        # Create a policy with no overrides (clean managed rule set)
+        $cleanManagedRuleSet = New-AzApplicationGatewayFirewallPolicyManagedRuleSet -RuleSetType $ruleSetType -RuleSetVersion $ruleSetVersion
+        $cleanManagedRule = New-AzApplicationGatewayFirewallPolicyManagedRule -ManagedRuleSet $cleanManagedRuleSet
+        
+        $policy.ManagedRules = $cleanManagedRule
+        Set-AzApplicationGatewayFirewallPolicy -InputObject $policy
+        
+        # Get the policy after removing overrides
+        $cleanPolicy = Get-AzApplicationGatewayFirewallPolicy -Name $wafPolicyName -ResourceGroupName $rgname
+        $cleanRuleSet = $cleanPolicy.ManagedRules.ManagedRuleSets[0]
+        
+        Assert-NotNull $cleanRuleSet.ComputedDisabledRules "ComputedDisabledRules should not be null after removing overrides"
+        
+        # Verify count returns to baseline
+        $cleanDisabledCount = Get-ComputedDisabledRuleCount $cleanRuleSet
+        Assert-AreEqual $baselineDisabledCount $cleanDisabledCount "ComputedDisabledRules count should return to baseline after removing overrides"
+        
+        # Verify that rule $testRuleId1 is no longer in ComputedDisabledRules (if it's not disabled by default in manifest)
+        $cleanGroup = $cleanRuleSet.ComputedDisabledRules | Where-Object { $_.RuleGroupName -eq $testRuleGroupName1 }
+        if ($cleanGroup) {
+            $removedRule = $cleanGroup.Rules | Where-Object { $_ -eq $testRuleId1 }
+            
+            if ($isRule1DefaultDisabled) {
+                Assert-NotNull $removedRule "Rule $testRuleId1 should still appear in ComputedDisabledRules because it's disabled by default in manifest"
+            } else {
+                Assert-Null $removedRule "Rule $testRuleId1 should NOT appear in ComputedDisabledRules after removing disabled override (not disabled by default)"
+            }
+        } # If no $testRuleGroupName1 group exists in ComputedDisabledRules, the rule is definitely not there
+        
+        # Test Scenario 4: Test the computed logic (Disabled Overrides ∪ (Default Disabled - Enabled Overrides)). 
+		# The intereseting case is where Default Disabled Rules exist in Manifest but there's an Enabled Override.     
+        # Add an enabled override for rule $testRuleId1
+        $enabledRuleOverride = New-AzApplicationGatewayFirewallPolicyManagedRuleOverride -RuleId $testRuleId1 -State Enabled
+        $enabledRuleGroupOverride = New-AzApplicationGatewayFirewallPolicyManagedRuleGroupOverride -RuleGroupName $testRuleGroupName1 -Rule $enabledRuleOverride
+        $enabledManagedRuleSet = New-AzApplicationGatewayFirewallPolicyManagedRuleSet -RuleSetType $ruleSetType -RuleSetVersion $ruleSetVersion -RuleGroupOverride $enabledRuleGroupOverride
+        $enabledManagedRule = New-AzApplicationGatewayFirewallPolicyManagedRule -ManagedRuleSet $enabledManagedRuleSet
+        
+        $policy.ManagedRules = $enabledManagedRule
+        Set-AzApplicationGatewayFirewallPolicy -InputObject $policy
+        
+        # Get the policy with enabled override
+        $enabledPolicy = Get-AzApplicationGatewayFirewallPolicy -Name $wafPolicyName -ResourceGroupName $rgname
+        $enabledRuleSet = $enabledPolicy.ManagedRules.ManagedRuleSets[0]
+        
+        Assert-NotNull $enabledRuleSet.ComputedDisabledRules "ComputedDisabledRules should not be null"
+        
+        # Verify count (should decrease by 1 if rule was disabled by default)
+        $enabledDisabledCount = Get-ComputedDisabledRuleCount $enabledRuleSet
+        if ($isRule1DefaultDisabled) {
+            Assert-AreEqual ($baselineDisabledCount - 1) $enabledDisabledCount "ComputedDisabledRules count should decrease by 1 when enabling a default disabled rule"
+        } else {
+            Assert-AreEqual $baselineDisabledCount $enabledDisabledCount "ComputedDisabledRules count should remain same when enabling an already enabled rule"
+        }
+        
+        # Verify that the explicitly enabled rule does NOT appear in ComputedDisabledRules
+        $enabledGroup = $enabledRuleSet.ComputedDisabledRules | Where-Object { $_.RuleGroupName -eq $testRuleGroupName1 }
+        if ($enabledGroup) {
+            $enabledRule = $enabledGroup.Rules | Where-Object { $_ -eq $testRuleId1 }
+            Assert-Null $enabledRule "Rule $testRuleId1 should NOT appear in ComputedDisabledRules when explicitly enabled"
+        }
+
+		# Test Scenario 5: Validate multiple rule overrides across multiple rule groups and their impact on ComputedDisabledRules
+		# Add multiple overrides across different rule groups - some disabled, some enabled
+        $rule1Override = New-AzApplicationGatewayFirewallPolicyManagedRuleOverride -RuleId $testRuleId1 -State Enabled
+        $rule2Override = New-AzApplicationGatewayFirewallPolicyManagedRuleOverride -RuleId $testRuleId2 -State Disabled
+        $multiRuleGroupOverride1 = New-AzApplicationGatewayFirewallPolicyManagedRuleGroupOverride -RuleGroupName $testRuleGroupName1 -Rule $rule1Override,$rule2Override
+
+		# Add override for second rule group
+		$rule3Override = New-AzApplicationGatewayFirewallPolicyManagedRuleOverride -RuleId $testRuleId3 -State Disabled
+		$multiRuleGroupOverride2 = New-AzApplicationGatewayFirewallPolicyManagedRuleGroupOverride -RuleGroupName $testRuleGroupName2 -Rule $rule3Override
+
+        $multiManagedRuleSet = New-AzApplicationGatewayFirewallPolicyManagedRuleSet -RuleSetType $ruleSetType -RuleSetVersion $ruleSetVersion -RuleGroupOverride $multiRuleGroupOverride1,$multiRuleGroupOverride2
+        $multiManagedRule = New-AzApplicationGatewayFirewallPolicyManagedRule -ManagedRuleSet $multiManagedRuleSet
+        
+        $policy.ManagedRules = $multiManagedRule
+        Set-AzApplicationGatewayFirewallPolicy -InputObject $policy
+        
+        # Verify the final state
+        $multiPolicy = Get-AzApplicationGatewayFirewallPolicy -Name $wafPolicyName -ResourceGroupName $rgname
+        $multiRuleSet = $multiPolicy.ManagedRules.ManagedRuleSets[0]
+        
+        Assert-NotNull $multiRuleSet.ComputedDisabledRules "ComputedDisabledRules should not be null in final state"
+        
+        # Calculate expected count change for both rule groups
+		$testRuleGroup2 = $testRuleSet.RuleGroups | Where-Object { $_.RuleGroupName -eq $testRuleGroupName2 }
+		Assert-NotNull $testRuleGroup2 "$testRuleGroupName2 rule group should exist in manifest"
+
+        $rule2 = $testRuleGroup1.Rules | Where-Object { $_.RuleId -eq $testRuleId2 }
+		$rule3 = $testRuleGroup2.Rules | Where-Object { $_.RuleId -eq $testRuleId3 }
+		Assert-NotNull $rule3 "Rule $testRuleId3 should exist in $testRuleGroupName2 group"
+
+        $isRule2DefaultDisabled = $rule2.State -eq "Disabled"
+		$isRule3DefaultDisabled = $rule3.State -eq "Disabled"
+
+        $expectedCountChange = 0
+        if ($isRule1DefaultDisabled) { $expectedCountChange -= 1 }  # $testRuleId1 enabled (was disabled by default)
+        if (-not $isRule2DefaultDisabled) { $expectedCountChange += 1 }  # $testRuleId2 disabled (was enabled by default)
+		if (-not $isRule3DefaultDisabled) { $expectedCountChange += 1 } # $testRuleId3 disabled (was enabled by default)
+        
+        $multiDisabledCount = Get-ComputedDisabledRuleCount $multiRuleSet
+        Assert-AreEqual ($baselineDisabledCount + $expectedCountChange) $multiDisabledCount "ComputedDisabledRules count should reflect multiple overrides across multiple rule groups correctly"
+        
+        # Verify rule $testRuleId2 (disabled) appears in ComputedDisabledRules
+        $multiGroup1 = $multiRuleSet.ComputedDisabledRules | Where-Object { $_.RuleGroupName -eq $testRuleGroupName1 }
+        if ($multiGroup1) {
+            $disabledRule2 = $multiGroup1.Rules | Where-Object { $_ -eq $testRuleId2 }
+            Assert-NotNull $disabledRule2 "Disabled rule $testRuleId2 should appear in ComputedDisabledRules"
+            
+            # Verify rule $testRuleId1 (enabled) does NOT appear in ComputedDisabledRules
+            $enabledRule1 = $multiGroup1.Rules | Where-Object { $_ -eq $testRuleId1 }
+            Assert-Null $enabledRule1 "Enabled rule $testRuleId1 should NOT appear in ComputedDisabledRules"
+        }
+
+		# Verify rule $testRuleId3 (disabled) appears in ComputedDisabledRules in second rule group
+		$multiGroup2 = $multiRuleSet.ComputedDisabledRules | Where-Object { $_.RuleGroupName -eq $testRuleGroupName2 }
+		Assert-NotNull $multiGroup2 "$testRuleGroupName2 group should appear in ComputedDisabledRules"
+
+		$disabledRule3 = $multiGroup2.Rules | Where-Object { $_ -eq $testRuleId3 }
+		Assert-NotNull $disabledRule3 "Disabled rule $testRuleId3 should appear in ComputedDisabledRules in $testRuleGroupName2 group"
+        
+        # Test Scenario 6: Rule group override without specific rules (disables entire group)
+        # Find a rule group with multiple rules for this test
+        $targetRuleGroup = $testRuleSet.RuleGroups | Where-Object { $_.Rules.Count -gt 1 } | Select-Object -First 1
+        Assert-NotNull $targetRuleGroup "Should find a rule group with multiple rules for testing"
+        
+        # Count how many rules in this group are enabled by default
+        $enabledRulesInGroup = @($targetRuleGroup.Rules | Where-Object { $_.State -ne "Disabled" })
+        
+        # Create a rule group override without specific rules (this should disable the entire group)
+        $emptyRuleGroupOverride = New-AzApplicationGatewayFirewallPolicyManagedRuleGroupOverride -RuleGroupName $targetRuleGroup.RuleGroupName
+        $emptyGroupManagedRuleSet = New-AzApplicationGatewayFirewallPolicyManagedRuleSet -RuleSetType $ruleSetType -RuleSetVersion $ruleSetVersion -RuleGroupOverride $emptyRuleGroupOverride
+        $emptyGroupManagedRule = New-AzApplicationGatewayFirewallPolicyManagedRule -ManagedRuleSet $emptyGroupManagedRuleSet
+        
+        $policy.ManagedRules = $emptyGroupManagedRule
+        Set-AzApplicationGatewayFirewallPolicy -InputObject $policy
+        
+        # Get the policy with empty rule group override
+        $emptyGroupPolicy = Get-AzApplicationGatewayFirewallPolicy -Name $wafPolicyName -ResourceGroupName $rgname
+        $emptyGroupRuleSet = $emptyGroupPolicy.ManagedRules.ManagedRuleSets[0]
+        
+        Assert-NotNull $emptyGroupRuleSet.ComputedDisabledRules "ComputedDisabledRules should not be null"
+        
+        # Find the target rule group in ComputedDisabledRules
+        $computedTargetGroup = $emptyGroupRuleSet.ComputedDisabledRules | Where-Object { $_.RuleGroupName -eq $targetRuleGroup.RuleGroupName }
+        Assert-NotNull $computedTargetGroup "Target rule group should appear in ComputedDisabledRules when overridden without specific rules"
+        
+        # Verify ALL rules from the group appear in ComputedDisabledRules
+        Assert-AreEqual $targetRuleGroup.Rules.Count $computedTargetGroup.Rules.Count "All rules in the group should appear in ComputedDisabledRules when group is overridden without specific rules"
+        
+        # Verify each rule from the original group appears in ComputedDisabledRules
+        foreach ($originalRule in $targetRuleGroup.Rules) {
+            $computedRule = $computedTargetGroup.Rules | Where-Object { $_ -eq $originalRule.RuleId }
+            Assert-NotNull $computedRule "Rule $($originalRule.RuleId) should appear in ComputedDisabledRules when entire group is disabled"
+        }
+        
+        # Verify total count increased by the number of previously enabled rules in the group
+        $emptyGroupDisabledCount = Get-ComputedDisabledRuleCount $emptyGroupRuleSet
+        $expectedCountIncrease = $enabledRulesInGroup.Count  # Only previously enabled rules add to the count
+        Assert-AreEqual ($baselineDisabledCount + $expectedCountIncrease) $emptyGroupDisabledCount "ComputedDisabledRules count should increase by the number of previously enabled rules in the disabled group"
+        
+        # Validate ComputedDisabledRules structure
+        foreach ($computedGroup in $emptyGroupRuleSet.ComputedDisabledRules) {
+            Assert-NotNull $computedGroup.RuleGroupName "Rule group name should not be null in ComputedDisabledRules"
+            Assert-True { $computedGroup.RuleGroupName.Length -gt 0 } "Rule group name should not be empty"
+            
+            if ($computedGroup.Rules) {
+                foreach ($computedRule in $computedGroup.Rules) {
+                    Assert-NotNull $computedRule "Rule ID should not be null in ComputedDisabledRules"
+                    Assert-True { $computedRule -match '^\d+$' } "Rule ID should be numeric"
+                }
+            }
+        }
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Helper function for testing WAF policy with rate limiting rules and XFF header group-by variables.
+This helper reduces code duplication across multiple test scenarios.
+#>
+function Test-ApplicationGatewayFirewallPolicyWithRateLimitRuleXFFHeaderInternal {
+	param(
+		[Parameter(Mandatory = $true)]
+		[ValidateSet("ClientAddrXFFHeader", "GeoLocationXFFHeader")]
+		[string]$GroupByVariableName
+	)
+
+	# Setup
+	$location = Get-ProviderLocation "Microsoft.Network/applicationGateways" "West US 2"
+	$rgname = Get-ResourceGroupName
+	$wafPolicyName = "wafPolicy1"
+
+	try {
+
+		$resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "APPGw tag" }
+
+		# WAF Policy with rate limiting rule custom Rule
+		$variable = New-AzApplicationGatewayFirewallMatchVariable -VariableName RequestHeaders -Selector Malicious-Header
+		$condition = New-AzApplicationGatewayFirewallCondition -MatchVariable $variable -Operator Any -NegationCondition $False
+		$groupbyVar = New-AzApplicationGatewayFirewallCustomRuleGroupByVariable -VariableName $GroupByVariableName 
+		$groupbyUserSes = New-AzApplicationGatewayFirewallCustomRuleGroupByUserSession -GroupByVariable $groupbyVar
+		$customRule = New-AzApplicationGatewayFirewallCustomRule -Name example -Priority 2 -RateLimitDuration OneMin -RateLimitThreshold 10 -RuleType RateLimitRule -MatchCondition $condition -GroupByUserSession $groupbyUserSes -Action Block
+
+		$policySettings = New-AzApplicationGatewayFirewallPolicySetting -Mode Prevention -State Enabled -MaxFileUploadInMb 70 -MaxRequestBodySizeInKb 70
+		$managedRuleSet = New-AzApplicationGatewayFirewallPolicyManagedRuleSet -RuleSetType "OWASP" -RuleSetVersion "3.2"
+		$managedRule = New-AzApplicationGatewayFirewallPolicyManagedRule -ManagedRuleSet $managedRuleSet 
+		New-AzApplicationGatewayFirewallPolicy -Name $wafPolicyName -ResourceGroupName $rgname -Location $location -ManagedRule $managedRule -PolicySetting $policySettings -CustomRule $customRule
+
+		$policy = Get-AzApplicationGatewayFirewallPolicy -Name $wafPolicyName -ResourceGroupName $rgname
+
+		# Check WAF policy
+		Assert-AreEqual $policy.CustomRules[0].Name $customRule.Name
+		Assert-AreEqual $policy.CustomRules[0].RuleType $customRule.RuleType
+		Assert-AreEqual $policy.CustomRules[0].Action $customRule.Action
+		Assert-AreEqual $policy.CustomRules[0].Priority $customRule.Priority
+		Assert-AreEqual $policy.CustomRules[0].RateLimitDuration $customRule.RateLimitDuration
+		Assert-AreEqual $policy.CustomRules[0].RateLimitThreshold $customRule.RateLimitThreshold
+		Assert-AreEqual $policy.CustomRules[0].State "Enabled"
+		Assert-AreEqual $policy.CustomRules[0].MatchConditions[0].OperatorProperty $customRule.MatchConditions[0].OperatorProperty
+		Assert-AreEqual $policy.CustomRules[0].MatchConditions[0].NegationConditon $customRule.MatchConditions[0].NegationConditon
+		Assert-AreEqual $policy.CustomRules[0].MatchConditions[0].MatchVariables[0].VariableName $customRule.MatchConditions[0].MatchVariables[0].VariableName
+		Assert-AreEqual $policy.CustomRules[0].MatchConditions[0].MatchVariables[0].Selector $customRule.MatchConditions[0].MatchVariables[0].Selector
+		Assert-AreEqual $policy.CustomRules[0].GroupByUserSession[0].GroupByVariables[0].VariableName $customRule.GroupByUserSession[0].GroupByVariables[0].VariableName
+		Assert-AreEqual $policy.PolicySettings.FileUploadLimitInMb $policySettings.FileUploadLimitInMb
+		Assert-AreEqual $policy.PolicySettings.MaxRequestBodySizeInKb $policySettings.MaxRequestBodySizeInKb
+		Assert-AreEqual $policy.PolicySettings.RequestBodyCheck $policySettings.RequestBodyCheck
+		Assert-AreEqual $policy.PolicySettings.Mode $policySettings.Mode
+		Assert-AreEqual $policy.PolicySettings.State $policySettings.State
+
+		$policy.CustomRules[0].State = "Disabled"
+		Set-AzApplicationGatewayFirewallPolicy -InputObject $policy
+		$policy1 = Get-AzApplicationGatewayFirewallPolicy -Name $wafPolicyName -ResourceGroupName $rgname
+		Assert-AreEqual $policy1.CustomRules[0].State "Disabled"
+	}
+	finally {
+		# Cleanup
+		Clean-ResourceGroup $rgname
+	}
+}
+
+function Test-ApplicationGatewayFirewallPolicyWithRateLimitRuleClientAddrXFFHeader {
+	Test-ApplicationGatewayFirewallPolicyWithRateLimitRuleXFFHeaderInternal -GroupByVariableName "ClientAddrXFFHeader"
+}
+
+function Test-ApplicationGatewayFirewallPolicyWithRateLimitRuleGeoLocationXFFHeader {
+	Test-ApplicationGatewayFirewallPolicyWithRateLimitRuleXFFHeaderInternal -GroupByVariableName "GeoLocationXFFHeader"
+}
+
+<#
+.SYNOPSIS
+Helper function for testing WAF policy custom rule removal with XFF header group-by variables.
+This helper reduces code duplication across multiple test scenarios.
+#>
+function Test-ApplicationGatewayFirewallPolicyCustomRuleXFFHeaderRemovalInternal {
+	param(
+		[Parameter(Mandatory = $true)]
+		[ValidateSet("ClientAddrXFFHeader", "GeoLocationXFFHeader")]
+		[string]$GroupByVariableName
+	)
+
+	# Setup
+	$location = Get-ProviderLocation "Microsoft.Network/applicationGateways" "West US 2"
+	$rgname = Get-ResourceGroupName
+	$wafPolicyName = "wafPolicy1"
+
+	try {
+
+		$resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "APPGw tag" }
+
+		# WAF Policy with rate limiting rule custom Rule
+		$variable = New-AzApplicationGatewayFirewallMatchVariable -VariableName RequestHeaders -Selector Malicious-Header
+		$condition = New-AzApplicationGatewayFirewallCondition -MatchVariable $variable -Operator Any -NegationCondition $False
+		$groupbyVar = New-AzApplicationGatewayFirewallCustomRuleGroupByVariable -VariableName $GroupByVariableName 
+		$groupbyUserSes = New-AzApplicationGatewayFirewallCustomRuleGroupByUserSession -GroupByVariable $groupbyVar
+		$customRule = New-AzApplicationGatewayFirewallCustomRule -Name example -Priority 2 -RateLimitDuration OneMin -RateLimitThreshold 10 -RuleType RateLimitRule -MatchCondition $condition -GroupByUserSession $groupbyUserSes -Action Block
+
+		$policySettings = New-AzApplicationGatewayFirewallPolicySetting -Mode Prevention -State Enabled -MaxFileUploadInMb 70 -MaxRequestBodySizeInKb 70
+		$managedRuleSet = New-AzApplicationGatewayFirewallPolicyManagedRuleSet -RuleSetType "OWASP" -RuleSetVersion "3.2"
+		$managedRule = New-AzApplicationGatewayFirewallPolicyManagedRule -ManagedRuleSet $managedRuleSet 
+		New-AzApplicationGatewayFirewallPolicy -Name $wafPolicyName -ResourceGroupName $rgname -Location $location -ManagedRule $managedRule -PolicySetting $policySettings -CustomRule $customRule
+
+		$policy = Get-AzApplicationGatewayFirewallPolicy -Name $wafPolicyName -ResourceGroupName $rgname
+
+		# Check WAF policy
+		Assert-AreEqual $policy.CustomRules[0].Name $customRule.Name
+		Assert-AreEqual $policy.CustomRules[0].RuleType $customRule.RuleType
+		Assert-AreEqual $policy.CustomRules[0].Action $customRule.Action
+		Assert-AreEqual $policy.CustomRules[0].Priority $customRule.Priority
+		Assert-AreEqual $policy.CustomRules[0].RateLimitDuration $customRule.RateLimitDuration
+		Assert-AreEqual $policy.CustomRules[0].RateLimitThreshold $customRule.RateLimitThreshold
+		Assert-AreEqual $policy.CustomRules[0].State "Enabled"
+		Assert-AreEqual $policy.CustomRules[0].MatchConditions[0].OperatorProperty $customRule.MatchConditions[0].OperatorProperty
+		Assert-AreEqual $policy.CustomRules[0].MatchConditions[0].NegationConditon $customRule.MatchConditions[0].NegationConditon
+		Assert-AreEqual $policy.CustomRules[0].MatchConditions[0].MatchVariables[0].VariableName $customRule.MatchConditions[0].MatchVariables[0].VariableName
+		Assert-AreEqual $policy.CustomRules[0].MatchConditions[0].MatchVariables[0].Selector $customRule.MatchConditions[0].MatchVariables[0].Selector
+		Assert-AreEqual $policy.CustomRules[0].GroupByUserSession[0].GroupByVariables[0].VariableName $customRule.GroupByUserSession[0].GroupByVariables[0].VariableName
+		Assert-AreEqual $policy.PolicySettings.FileUploadLimitInMb $policySettings.FileUploadLimitInMb
+		Assert-AreEqual $policy.PolicySettings.MaxRequestBodySizeInKb $policySettings.MaxRequestBodySizeInKb
+		Assert-AreEqual $policy.PolicySettings.RequestBodyCheck $policySettings.RequestBodyCheck
+		Assert-AreEqual $policy.PolicySettings.Mode $policySettings.Mode
+		Assert-AreEqual $policy.PolicySettings.State $policySettings.State
+
+		$policy.CustomRules[0].State = "Disabled"
+		Set-AzApplicationGatewayFirewallPolicy -InputObject $policy
+		$policy1 = Get-AzApplicationGatewayFirewallPolicy -Name $wafPolicyName -ResourceGroupName $rgname
+		Assert-AreEqual $policy1.CustomRules[0].State "Disabled"
+
+		#Remove Custom Rule
+		Remove-AzApplicationGatewayFirewallCustomRule -Name $customRule.Name -ResourceGroupName $rgname -PolicyName $wafPolicyName
+		$policynew = Get-AzApplicationGatewayFirewallPolicy -Name $wafPolicyName -ResourceGroupName $rgname
+		Assert-Null $policynew.CustomRules[0]
+	}
+	finally {
+		# Cleanup
+		Clean-ResourceGroup $rgname
+	}
+}
+
+function Test-ApplicationGatewayFirewallPolicyCustomRuleClientAddrXFFHeaderRemoval {
+	Test-ApplicationGatewayFirewallPolicyCustomRuleXFFHeaderRemovalInternal -GroupByVariableName "ClientAddrXFFHeader"
+}
+
+function Test-ApplicationGatewayFirewallPolicyCustomRuleGeoLocationXFFHeaderRemoval {
+	Test-ApplicationGatewayFirewallPolicyCustomRuleXFFHeaderRemovalInternal -GroupByVariableName "GeoLocationXFFHeader"
+}

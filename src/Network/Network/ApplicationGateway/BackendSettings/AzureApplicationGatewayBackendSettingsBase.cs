@@ -74,6 +74,11 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Sets host header to be sent to the backend servers.")]
         public string HostName { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Whether to send Proxy Protocol header to backend servers over TCP or TLS protocols. Default value is false.")]
+        public bool? EnableL4ClientIpPreservation { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -121,6 +126,16 @@ namespace Microsoft.Azure.Commands.Network
             if(this.PickHostNameFromBackendAddress.IsPresent)
             {
                 backendSettings.PickHostNameFromBackendAddress = true;
+            }
+
+            if (this.EnableL4ClientIpPreservation.HasValue)
+            {
+                backendSettings.EnableL4ClientIpPreservation = this.EnableL4ClientIpPreservation.Value;
+            }
+            else
+            {
+                // Default value is false according to the API specification
+                backendSettings.EnableL4ClientIpPreservation = false;
             }
 
             if(this.HostName != null)

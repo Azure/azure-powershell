@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzStorageMover
 
 ## SYNOPSIS
-Creates or updates a top-level Storage Mover resource.
+Create a top-level Storage Mover resource.
 
 ## SYNTAX
 
@@ -19,14 +19,20 @@ New-AzStorageMover -Name <String> -ResourceGroupName <String> -Location <String>
  [<CommonParameters>]
 ```
 
-### Create
+### CreateViaJsonFilePath
 ```
-New-AzStorageMover -Name <String> -ResourceGroupName <String> -StorageMover <IStorageMover>
+New-AzStorageMover -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### CreateViaJsonString
+```
+New-AzStorageMover -Name <String> -ResourceGroupName <String> -JsonString <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Creates or updates a top-level Storage Mover resource.
+Create a top-level Storage Mover resource.
 
 ## EXAMPLES
 
@@ -88,6 +94,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Location
 The geo-location where the resource lives
 
@@ -131,22 +167,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -StorageMover
-The Storage Mover resource, which is a container for a group of Agents, Projects, and Endpoints.
-To construct, see NOTES section for STORAGEMOVER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IStorageMover
-Parameter Sets: Create
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -216,11 +236,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IStorageMover
-
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IStorageMover
+### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMover
 
 ## NOTES
 

@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.2.1
+* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
+
+## Version 1.2.0
 * Upgraded API version to 2025-02-01
 
 ## Version 1.1.0

@@ -26,7 +26,7 @@ use-extension:
 
 ###
 ``` yaml
-commit: 37d29762e68000fc58e03dcefada999f3876f0af
+commit: 51eb4a8df996ebb94c835bf93e08a7001e5d5459
 input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/stable/2014-04-01/metrics.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/stable/2014-04-01-legacy/sql.core_legacy.json
@@ -51,7 +51,7 @@ input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/preview/2023-05-01-preview/JobVersions.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/preview/2023-05-01-preview/JobPrivateEndpoints.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/preview/2023-05-01-preview/LocationCapabilities.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/LongTermRetentionPolicies.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/preview/2024-11-01-preview/LongTermRetentionPolicies.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedBackupShortTermRetentionPolicies.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedDatabaseVulnerabilityAssessmentRuleBaselines.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedDatabaseVulnerabilityAssessments.json
@@ -84,7 +84,7 @@ input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/LedgerDigestUploads.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/OutboundFirewallRules.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/Usages.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/LongTermRetentionBackups.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/preview/2024-11-01-preview/LongTermRetentionBackups.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/LongTermRetentionManagedInstanceBackups.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/RestorableDroppedManagedDatabases.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/preview/2023-08-01-preview/DistributedAvailabilityGroups.json
@@ -93,7 +93,6 @@ input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedDatabaseSensitivityLabels.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/SensitivityLabels.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/IPv6FirewallRules.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/preview/2023-02-01-preview/Databases.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/preview/2023-05-01-preview/ReplicationLinks.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/VirtualClusters.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/preview/2022-02-01-preview/ManagedDatabaseAdvancedThreatProtectionSettings.json
@@ -108,15 +107,18 @@ input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/preview/2022-08-01-preview/RecoverableDatabases.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/preview/2022-08-01-preview/RestorableDroppedDatabases.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/preview/2022-05-01-preview/InstanceFailoverGroups.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/preview/2023-02-01-preview/Servers.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/preview/2024-11-01-preview/Servers.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/preview/2024-11-01-preview/DeletedServers.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/preview/2022-08-01-preview/ServerConfigurationOptions.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/preview/2022-08-01-preview/ManagedLedgerDigestUploads.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/preview/2022-08-01-preview/ManagedDatabases.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/preview/2022-08-01-preview/ElasticPools.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/preview/2023-05-01-preview/FailoverGroups.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/preview/2022-08-01-preview/ManagedDatabaseMoveOperations.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/preview/2023-05-01-preview/ManagedInstances.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/preview/2024-11-01-preview/ManagedInstances.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/preview/2022-08-01-preview/StartStopManagedInstanceSchedules.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/preview/2024-05-01-preview/DatabaseSchemas.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/preview/2024-05-01-preview/Databases.json
 
 output-folder: Generated
 

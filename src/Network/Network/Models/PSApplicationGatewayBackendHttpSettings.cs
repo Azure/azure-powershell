@@ -45,6 +45,14 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
         public string Type { get; set; }
+        [Ps1Xml(Target = ViewControl.Table)]
+        public bool? DedicatedBackendConnection { get; set; }
+        [Ps1Xml(Target = ViewControl.Table)]
+        public bool? ValidateCertChainAndExpiry { get; set; }
+        [Ps1Xml(Target = ViewControl.Table)]
+        public bool? ValidateSNI { get; set; }
+        [Ps1Xml(Target = ViewControl.Table)]
+        public string SniName { get; set; }
 
         [JsonIgnore]
         public string ConnectionDrainingText
