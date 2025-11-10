@@ -507,7 +507,6 @@ Example:
             $functionAppDef.Location = $Location
         }
 
-        # TODO: Need to move this to the top before any logic for an SKU specific settings are added.
         if ($OSIsLinux)
         {
             # These are the scenarios we currently support when creating a Docker container:
@@ -720,7 +719,7 @@ Example:
                 $planName = New-PlanName -ResourceGroupName $ResourceGroupName
                 if ($WhatIfPreference.IsPresent)
                 {
-                    Write-Verbose "WhatIf: Creating Flex Consumption App Service Plan '$planName' in resource group '$ResourceGroupName' at location '$FlexConsumptionLocation'..." -Verbose
+                    Write-Verbose "WhatIf: Creating Flex Consumption App Service Plan '$planName' in resource group '$ResourceGroupName' at location '$FlexConsumptionLocation'..."
                     $planInfo = New-Object PSObject -Property @{
                         Id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/$ResourceGroupName/providers/Microsoft.Web/serverfarms/$planName"
                     }
@@ -774,7 +773,7 @@ Example:
                 {
                     if ($WhatIfPreference.IsPresent)
                     {
-                        Write-Verbose "WhatIf: Creating container '$DeploymentStorageContainerName' in storage account '$DeploymentStorageName'..." -Verbose
+                        Write-Verbose "WhatIf: Creating container '$DeploymentStorageContainerName' in storage account '$DeploymentStorageName'..."
                         $container = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.BlobContainer
                     }
                     else
@@ -952,7 +951,7 @@ Example:
                 {
                     if ($WhatIfPreference.IsPresent)
                     {
-                        Write-Verbose "WhatIf: Creating Application Insights '$Name' in resource group '$ResourceGroupName' at location '$($functionAppDef.Location)'..." -Verbose
+                        Write-Verbose "WhatIf: Creating Application Insights '$Name' in resource group '$ResourceGroupName' at location '$($functionAppDef.Location)'..."
                         # Create a mock object for WhatIf to avoid null reference issues
                         $newAppInsightsProject = New-Object PSObject -Property @{
                             ConnectionString = "InstrumentationKey=00000000-0000-0000-0000-000000000000;IngestionEndpoint=https://placeholder.applicationinsights.azure.com/"
@@ -1075,7 +1074,7 @@ Example:
         finally
         {
             # Cleanup created resources in case of failure
-            if (-not $functionAppCreatedSuccessfully -and (-not $WhatIfPreference.IsPresent))
+            if (-not $functionAppCreatedSuccessfully)
             {
                 if ($flexConsumptionPlanCreated)
                 {
