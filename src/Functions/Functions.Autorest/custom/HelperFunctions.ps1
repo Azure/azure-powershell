@@ -3201,28 +3201,10 @@ function Test-FlexConsumptionLocation
         [Parameter(Mandatory = $false)]
         [System.Management.Automation.SwitchParameter]
         $ZoneRedundant
-        # ,
-
-        # $SubscriptionId,
-        # $HttpPipelineAppend,
-        # $HttpPipelinePrepend
     )
-
-    # $paramsToRemove = @(
-    #     "Location"
-    #     "ZoneRedundant"
-    # )
-    # foreach ($paramName in $paramsToRemove)
-    # {
-    #     if ($PSBoundParameters.ContainsKey($paramName))
-    #     {
-    #         $PSBoundParameters.Remove($paramName)  | Out-Null
-    #     }
-    # }
 
     # Validate Flex Consumption location
     $formattedLocation = Format-FlexConsumptionLocation -Location $Location
-    #$flexConsumptionRegions = Get-AzFunctionAppAvailableLocation -PlanType FlexConsumption -ZoneRedundant:$ZoneRedundant @PSBoundParameters
     $flexConsumptionRegions = Get-AzFunctionAppAvailableLocation -PlanType FlexConsumption -ZoneRedundant:$ZoneRedundant
 
     $found = $false
@@ -3258,26 +3240,8 @@ function Validate-FlexConsumptionLocation
         [Parameter(Mandatory = $false)]
         [System.Management.Automation.SwitchParameter]
         $ZoneRedundant
-        # ,
-
-        # $SubscriptionId,
-        # $HttpPipelineAppend,
-        # $HttpPipelinePrepend
     )
 
-    # $paramsToRemove = @(
-    #     "Location"
-    #     "ZoneRedundant"
-    # )
-    # foreach ($paramName in $paramsToRemove)
-    # {
-    #     if ($PSBoundParameters.ContainsKey($paramName))
-    #     {
-    #         $PSBoundParameters.Remove($paramName)  | Out-Null
-    #     }
-    # }
-
-    #$isRegionSupported = Test-FlexConsumptionLocation -Location $Location -ZoneRedundant:$ZoneRedundant @PSBoundParameters
     $isRegionSupported = Test-FlexConsumptionLocation -Location $Location -ZoneRedundant:$ZoneRedundant
 
     if (-not $isRegionSupported)
