@@ -23,12 +23,12 @@ Create an in-memory object for ScaleRuleMetricDimension.
 New-AzAutoscaleScaleRuleMetricDimensionObject -DimensionName VMName -Operator 'Equals' -Value test-vm
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.ScaleRuleMetricDimension
+Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.ScaleRuleMetricDimension
 .Link
-https://learn.microsoft.com/powershell/module/Az.Monitor/new-AzAutoscaleScaleRuleMetricDimensionObject
+https://learn.microsoft.com/powershell/module/Az.Monitor/new-azautoscalescalerulemetricdimensionobject
 #>
 function New-AzAutoscaleScaleRuleMetricDimensionObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.ScaleRuleMetricDimension])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.ScaleRuleMetricDimension])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -38,9 +38,9 @@ param(
     ${DimensionName},
 
     [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Support.ScaleRuleMetricDimensionOperationType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.PSArgumentCompleterAttribute("Equals", "NotEquals")]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Support.ScaleRuleMetricDimensionOperationType]
+    [System.String]
     # the dimension operator.
     # Only 'Equals' and 'NotEquals' are supported.
     # 'Equals' being equal to any of the values.
@@ -62,6 +62,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -90,6 +93,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

@@ -24,7 +24,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DiagnosticSettingsCategoryGet(string resourceUri, string name, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.IDiagnosticSettingsCategoryResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20150401.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DiagnosticSettingsCategoryGet(string resourceUri, string name, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IDiagnosticSettingsCategoryResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-05-01-preview";
             // Constant Parameters
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.DiagnosticSettingsCategoryGet_Call(request,onOk,onDefault,eventListener,sender);
+                await this.DiagnosticSettingsCategoryGet_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DiagnosticSettingsCategoryGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.IDiagnosticSettingsCategoryResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20150401.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DiagnosticSettingsCategoryGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IDiagnosticSettingsCategoryResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-05-01-preview";
             // Constant Parameters
@@ -99,11 +99,159 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.DiagnosticSettingsCategoryGet_Call(request,onOk,onDefault,eventListener,sender);
+                await this.DiagnosticSettingsCategoryGet_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="DiagnosticSettingsCategoryGet" /> method.</summary>
+        /// <summary>Gets the diagnostic settings category for the specified resource.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IDiagnosticSettingsCategoryResource>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IDiagnosticSettingsCategoryResource> DiagnosticSettingsCategoryGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-05-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/(?<resourceUri>[^/]+)/providers/Microsoft.Insights/diagnosticSettingsCategories/(?<name>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/{resourceUri}/providers/Microsoft.Insights/diagnosticSettingsCategories/{name}'");
+                }
+
+                // replace URI parameters with values from identity
+                var resourceUri = _match.Groups["resourceUri"].Value;
+                var name = _match.Groups["name"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/"
+                        + resourceUri
+                        + "/providers/Microsoft.Insights/diagnosticSettingsCategories/"
+                        + name
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.DiagnosticSettingsCategoryGetWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Gets the diagnostic settings category for the specified resource.</summary>
+        /// <param name="resourceUri">The identifier of the resource.</param>
+        /// <param name="name">The name of the diagnostic setting.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IDiagnosticSettingsCategoryResource>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IDiagnosticSettingsCategoryResource> DiagnosticSettingsCategoryGetWithResult(string resourceUri, string name, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-05-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/"
+                        + (resourceUri)
+                        + "/providers/Microsoft.Insights/diagnosticSettingsCategories/"
+                        + global::System.Uri.EscapeDataString(name)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.DiagnosticSettingsCategoryGetWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "DiagnosticSettingsCategoryGetWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IDiagnosticSettingsCategoryResource>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IDiagnosticSettingsCategoryResource> DiagnosticSettingsCategoryGetWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.DiagnosticSettingsCategoryResource.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "DiagnosticSettingsCategoryGet" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -113,7 +261,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DiagnosticSettingsCategoryGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.IDiagnosticSettingsCategoryResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20150401.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DiagnosticSettingsCategoryGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IDiagnosticSettingsCategoryResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -124,6 +272,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -131,13 +280,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.DiagnosticSettingsCategoryResource.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.DiagnosticSettingsCategoryResource.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20150401.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -181,7 +330,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DiagnosticSettingsCategoryList(string resourceUri, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.IDiagnosticSettingsCategoryResourceCollection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20150401.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DiagnosticSettingsCategoryList(string resourceUri, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IDiagnosticSettingsCategoryResourceCollection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-05-01-preview";
             // Constant Parameters
@@ -205,7 +354,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.DiagnosticSettingsCategoryList_Call(request,onOk,onDefault,eventListener,sender);
+                await this.DiagnosticSettingsCategoryList_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -219,7 +368,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DiagnosticSettingsCategoryListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.IDiagnosticSettingsCategoryResourceCollection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20150401.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DiagnosticSettingsCategoryListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IDiagnosticSettingsCategoryResourceCollection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-05-01-preview";
             // Constant Parameters
@@ -253,11 +402,155 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.DiagnosticSettingsCategoryList_Call(request,onOk,onDefault,eventListener,sender);
+                await this.DiagnosticSettingsCategoryList_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="DiagnosticSettingsCategoryList" /> method.</summary>
+        /// <summary>Lists the diagnostic settings categories for the specified resource.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IDiagnosticSettingsCategoryResourceCollection>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IDiagnosticSettingsCategoryResourceCollection> DiagnosticSettingsCategoryListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-05-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/(?<resourceUri>[^/]+)/providers/Microsoft.Insights/diagnosticSettingsCategories$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/{resourceUri}/providers/Microsoft.Insights/diagnosticSettingsCategories'");
+                }
+
+                // replace URI parameters with values from identity
+                var resourceUri = _match.Groups["resourceUri"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/"
+                        + resourceUri
+                        + "/providers/Microsoft.Insights/diagnosticSettingsCategories"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.DiagnosticSettingsCategoryListWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Lists the diagnostic settings categories for the specified resource.</summary>
+        /// <param name="resourceUri">The identifier of the resource.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IDiagnosticSettingsCategoryResourceCollection>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IDiagnosticSettingsCategoryResourceCollection> DiagnosticSettingsCategoryListWithResult(string resourceUri, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-05-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/"
+                        + (resourceUri)
+                        + "/providers/Microsoft.Insights/diagnosticSettingsCategories"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.DiagnosticSettingsCategoryListWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "DiagnosticSettingsCategoryListWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IDiagnosticSettingsCategoryResourceCollection>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IDiagnosticSettingsCategoryResourceCollection> DiagnosticSettingsCategoryListWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.DiagnosticSettingsCategoryResourceCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "DiagnosticSettingsCategoryList" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -267,7 +560,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DiagnosticSettingsCategoryList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.IDiagnosticSettingsCategoryResourceCollection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20150401.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DiagnosticSettingsCategoryList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IDiagnosticSettingsCategoryResourceCollection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -278,6 +571,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -285,13 +579,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.DiagnosticSettingsCategoryResourceCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.DiagnosticSettingsCategoryResourceCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20150401.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -323,7 +617,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
             }
         }
 
-        /// <summary>Creates or updates diagnostic settings for the specified resource.</summary>
+        /// <summary>update diagnostic settings for the specified resource.</summary>
         /// <param name="resourceUri">The identifier of the resource.</param>
         /// <param name="name">The name of the diagnostic setting.</param>
         /// <param name="body">Parameters supplied to the operation.</param>
@@ -332,10 +626,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.SerializationMode"/>.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DiagnosticSettingsCreateOrUpdate(string resourceUri, string name, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.IDiagnosticSettingsResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.IDiagnosticSettingsResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20150401.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DiagnosticSettingsCreateOrUpdate(string resourceUri, string name, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IDiagnosticSettingsResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IDiagnosticSettingsResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.SerializationMode.IncludeUpdate)
         {
             var apiVersion = @"2021-05-01-preview";
             // Constant Parameters
@@ -360,15 +655,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
-                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.DiagnosticSettingsCreateOrUpdate_Call(request,onOk,onDefault,eventListener,sender);
+                await this.DiagnosticSettingsCreateOrUpdate_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Creates or updates diagnostic settings for the specified resource.</summary>
+        /// <summary>update diagnostic settings for the specified resource.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters supplied to the operation.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -376,10 +671,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.SerializationMode"/>.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DiagnosticSettingsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.IDiagnosticSettingsResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.IDiagnosticSettingsResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20150401.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DiagnosticSettingsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IDiagnosticSettingsResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IDiagnosticSettingsResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.SerializationMode.IncludeUpdate)
         {
             var apiVersion = @"2021-05-01-preview";
             // Constant Parameters
@@ -415,15 +711,263 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
-                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.DiagnosticSettingsCreateOrUpdate_Call(request,onOk,onDefault,eventListener,sender);
+                await this.DiagnosticSettingsCreateOrUpdate_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="DiagnosticSettingsCreateOrUpdate" /> method.</summary>
+        /// <summary>update diagnostic settings for the specified resource.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">Parameters supplied to the operation.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IDiagnosticSettingsResource>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IDiagnosticSettingsResource> DiagnosticSettingsCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IDiagnosticSettingsResource body, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2021-05-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/(?<resourceUri>[^/]+)/providers/Microsoft.Insights/diagnosticSettings/(?<name>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/{resourceUri}/providers/Microsoft.Insights/diagnosticSettings/{name}'");
+                }
+
+                // replace URI parameters with values from identity
+                var resourceUri = _match.Groups["resourceUri"].Value;
+                var name = _match.Groups["name"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/"
+                        + resourceUri
+                        + "/providers/Microsoft.Insights/diagnosticSettings/"
+                        + name
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.DiagnosticSettingsCreateOrUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>update diagnostic settings for the specified resource.</summary>
+        /// <param name="resourceUri">The identifier of the resource.</param>
+        /// <param name="name">The name of the diagnostic setting.</param>
+        /// <param name="jsonString">Json string supplied to the DiagnosticSettingsCreateOrUpdate operation</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task DiagnosticSettingsCreateOrUpdateViaJsonString(string resourceUri, string name, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IDiagnosticSettingsResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-05-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/"
+                        + (resourceUri)
+                        + "/providers/Microsoft.Insights/diagnosticSettings/"
+                        + global::System.Uri.EscapeDataString(name)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.DiagnosticSettingsCreateOrUpdate_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>update diagnostic settings for the specified resource.</summary>
+        /// <param name="resourceUri">The identifier of the resource.</param>
+        /// <param name="name">The name of the diagnostic setting.</param>
+        /// <param name="jsonString">Json string supplied to the DiagnosticSettingsCreateOrUpdate operation</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IDiagnosticSettingsResource>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IDiagnosticSettingsResource> DiagnosticSettingsCreateOrUpdateViaJsonStringWithResult(string resourceUri, string name, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-05-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/"
+                        + (resourceUri)
+                        + "/providers/Microsoft.Insights/diagnosticSettings/"
+                        + global::System.Uri.EscapeDataString(name)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.DiagnosticSettingsCreateOrUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>update diagnostic settings for the specified resource.</summary>
+        /// <param name="resourceUri">The identifier of the resource.</param>
+        /// <param name="name">The name of the diagnostic setting.</param>
+        /// <param name="body">Parameters supplied to the operation.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IDiagnosticSettingsResource>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IDiagnosticSettingsResource> DiagnosticSettingsCreateOrUpdateWithResult(string resourceUri, string name, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IDiagnosticSettingsResource body, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2021-05-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/"
+                        + (resourceUri)
+                        + "/providers/Microsoft.Insights/diagnosticSettings/"
+                        + global::System.Uri.EscapeDataString(name)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.DiagnosticSettingsCreateOrUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "DiagnosticSettingsCreateOrUpdateWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IDiagnosticSettingsResource>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IDiagnosticSettingsResource> DiagnosticSettingsCreateOrUpdateWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.DiagnosticSettingsResource.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "DiagnosticSettingsCreateOrUpdate" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -433,7 +977,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DiagnosticSettingsCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.IDiagnosticSettingsResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20150401.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DiagnosticSettingsCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IDiagnosticSettingsResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -444,6 +988,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -451,13 +996,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.DiagnosticSettingsResource.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.DiagnosticSettingsResource.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20150401.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -483,7 +1028,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DiagnosticSettingsCreateOrUpdate_Validate(string resourceUri, string name, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.IDiagnosticSettingsResource body, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task DiagnosticSettingsCreateOrUpdate_Validate(string resourceUri, string name, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IDiagnosticSettingsResource body, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -506,7 +1051,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DiagnosticSettingsDelete(string resourceUri, string name, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20150401.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DiagnosticSettingsDelete(string resourceUri, string name, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-05-01-preview";
             // Constant Parameters
@@ -531,7 +1076,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.DiagnosticSettingsDelete_Call(request,onOk,onNoContent,onDefault,eventListener,sender);
+                await this.DiagnosticSettingsDelete_Call (request, onOk,onNoContent,onDefault,eventListener,sender);
             }
         }
 
@@ -546,7 +1091,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DiagnosticSettingsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20150401.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DiagnosticSettingsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-05-01-preview";
             // Constant Parameters
@@ -582,11 +1127,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.DiagnosticSettingsDelete_Call(request,onOk,onNoContent,onDefault,eventListener,sender);
+                await this.DiagnosticSettingsDelete_Call (request, onOk,onNoContent,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="DiagnosticSettingsDelete" /> method.</summary>
+        /// <summary>Actual wire call for <see cref= "DiagnosticSettingsDelete" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
@@ -597,7 +1142,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DiagnosticSettingsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20150401.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DiagnosticSettingsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -608,6 +1153,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -627,7 +1173,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20150401.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -672,7 +1218,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DiagnosticSettingsGet(string resourceUri, string name, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.IDiagnosticSettingsResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20150401.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DiagnosticSettingsGet(string resourceUri, string name, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IDiagnosticSettingsResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-05-01-preview";
             // Constant Parameters
@@ -697,7 +1243,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.DiagnosticSettingsGet_Call(request,onOk,onDefault,eventListener,sender);
+                await this.DiagnosticSettingsGet_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -711,7 +1257,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DiagnosticSettingsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.IDiagnosticSettingsResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20150401.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DiagnosticSettingsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IDiagnosticSettingsResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-05-01-preview";
             // Constant Parameters
@@ -747,11 +1293,157 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.DiagnosticSettingsGet_Call(request,onOk,onDefault,eventListener,sender);
+                await this.DiagnosticSettingsGet_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="DiagnosticSettingsGet" /> method.</summary>
+        /// <summary>Gets the active diagnostic settings for the specified resource.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IDiagnosticSettingsResource>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IDiagnosticSettingsResource> DiagnosticSettingsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-05-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/(?<resourceUri>[^/]+)/providers/Microsoft.Insights/diagnosticSettings/(?<name>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/{resourceUri}/providers/Microsoft.Insights/diagnosticSettings/{name}'");
+                }
+
+                // replace URI parameters with values from identity
+                var resourceUri = _match.Groups["resourceUri"].Value;
+                var name = _match.Groups["name"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/"
+                        + resourceUri
+                        + "/providers/Microsoft.Insights/diagnosticSettings/"
+                        + name
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.DiagnosticSettingsGetWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Gets the active diagnostic settings for the specified resource.</summary>
+        /// <param name="resourceUri">The identifier of the resource.</param>
+        /// <param name="name">The name of the diagnostic setting.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IDiagnosticSettingsResource>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IDiagnosticSettingsResource> DiagnosticSettingsGetWithResult(string resourceUri, string name, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-05-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/"
+                        + (resourceUri)
+                        + "/providers/Microsoft.Insights/diagnosticSettings/"
+                        + global::System.Uri.EscapeDataString(name)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.DiagnosticSettingsGetWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "DiagnosticSettingsGetWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IDiagnosticSettingsResource>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IDiagnosticSettingsResource> DiagnosticSettingsGetWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.DiagnosticSettingsResource.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "DiagnosticSettingsGet" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -761,7 +1453,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DiagnosticSettingsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.IDiagnosticSettingsResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20150401.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DiagnosticSettingsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IDiagnosticSettingsResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -772,6 +1464,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -779,13 +1472,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.DiagnosticSettingsResource.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.DiagnosticSettingsResource.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20150401.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -829,7 +1522,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DiagnosticSettingsList(string resourceUri, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.IDiagnosticSettingsResourceCollection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20150401.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DiagnosticSettingsList(string resourceUri, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IDiagnosticSettingsResourceCollection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-05-01-preview";
             // Constant Parameters
@@ -853,7 +1546,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.DiagnosticSettingsList_Call(request,onOk,onDefault,eventListener,sender);
+                await this.DiagnosticSettingsList_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -867,7 +1560,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DiagnosticSettingsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.IDiagnosticSettingsResourceCollection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20150401.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DiagnosticSettingsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IDiagnosticSettingsResourceCollection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-05-01-preview";
             // Constant Parameters
@@ -901,11 +1594,153 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.DiagnosticSettingsList_Call(request,onOk,onDefault,eventListener,sender);
+                await this.DiagnosticSettingsList_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="DiagnosticSettingsList" /> method.</summary>
+        /// <summary>Gets the active diagnostic settings list for the specified resource.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IDiagnosticSettingsResourceCollection>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IDiagnosticSettingsResourceCollection> DiagnosticSettingsListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-05-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/(?<resourceUri>[^/]+)/providers/Microsoft.Insights/diagnosticSettings$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/{resourceUri}/providers/Microsoft.Insights/diagnosticSettings'");
+                }
+
+                // replace URI parameters with values from identity
+                var resourceUri = _match.Groups["resourceUri"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/"
+                        + resourceUri
+                        + "/providers/Microsoft.Insights/diagnosticSettings"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.DiagnosticSettingsListWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Gets the active diagnostic settings list for the specified resource.</summary>
+        /// <param name="resourceUri">The identifier of the resource.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IDiagnosticSettingsResourceCollection>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IDiagnosticSettingsResourceCollection> DiagnosticSettingsListWithResult(string resourceUri, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-05-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/"
+                        + (resourceUri)
+                        + "/providers/Microsoft.Insights/diagnosticSettings"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.DiagnosticSettingsListWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "DiagnosticSettingsListWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IDiagnosticSettingsResourceCollection>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IDiagnosticSettingsResourceCollection> DiagnosticSettingsListWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.DiagnosticSettingsResourceCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "DiagnosticSettingsList" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -915,7 +1750,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DiagnosticSettingsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.IDiagnosticSettingsResourceCollection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20150401.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DiagnosticSettingsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IDiagnosticSettingsResourceCollection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -926,6 +1761,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -933,13 +1769,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.DiagnosticSettingsResourceCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.DiagnosticSettingsResourceCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20150401.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -983,7 +1819,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task EventCategoriesList(global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20150401.IEventCategoryCollection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20150401.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task EventCategoriesList(global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IEventCategoryCollection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2015-04-01";
             // Constant Parameters
@@ -1005,7 +1841,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.EventCategoriesList_Call(request,onOk,onDefault,eventListener,sender);
+                await this.EventCategoriesList_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -1022,7 +1858,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task EventCategoriesListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20150401.IEventCategoryCollection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20150401.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task EventCategoriesListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IEventCategoryCollection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2015-04-01";
             // Constant Parameters
@@ -1053,11 +1889,153 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.EventCategoriesList_Call(request,onOk,onDefault,eventListener,sender);
+                await this.EventCategoriesList_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="EventCategoriesList" /> method.</summary>
+        /// <summary>
+        /// Get the list of available event categories supported in the Activity Logs Service.<br>The current list includes the following:
+        /// Administrative, Security, ServiceHealth, Alert, Recommendation, Policy.
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IEventCategoryCollection>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IEventCategoryCollection> EventCategoriesListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2015-04-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/providers/Microsoft.Insights/eventcategories$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/providers/Microsoft.Insights/eventcategories'");
+                }
+
+                // replace URI parameters with values from identity
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/providers/Microsoft.Insights/eventcategories"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.EventCategoriesListWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Get the list of available event categories supported in the Activity Logs Service.<br>The current list includes the following:
+        /// Administrative, Security, ServiceHealth, Alert, Recommendation, Policy.
+        /// </summary>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IEventCategoryCollection>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IEventCategoryCollection> EventCategoriesListWithResult(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2015-04-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/providers/Microsoft.Insights/eventcategories"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.EventCategoriesListWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "EventCategoriesListWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IEventCategoryCollection>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IEventCategoryCollection> EventCategoriesListWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.EventCategoryCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "EventCategoriesList" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -1067,7 +2045,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task EventCategoriesList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20150401.IEventCategoryCollection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20150401.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task EventCategoriesList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IEventCategoryCollection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1078,6 +2056,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -1085,13 +2064,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20150401.EventCategoryCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.EventCategoryCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20150401.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -1122,7 +2101,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
             }
         }
 
-        /// <summary>Creates or updates subscription diagnostic settings for the specified resource.</summary>
+        /// <summary>update subscription diagnostic settings for the specified resource.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="name">The name of the diagnostic setting.</param>
         /// <param name="body">Parameters supplied to the operation.</param>
@@ -1131,10 +2110,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.SerializationMode"/>.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SubscriptionDiagnosticSettingsCreateOrUpdate(string subscriptionId, string name, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.ISubscriptionDiagnosticSettingsResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.ISubscriptionDiagnosticSettingsResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20150401.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SubscriptionDiagnosticSettingsCreateOrUpdate(string subscriptionId, string name, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.ISubscriptionDiagnosticSettingsResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.ISubscriptionDiagnosticSettingsResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.SerializationMode.IncludeUpdate)
         {
             var apiVersion = @"2021-05-01-preview";
             // Constant Parameters
@@ -1159,15 +2139,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
-                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.SubscriptionDiagnosticSettingsCreateOrUpdate_Call(request,onOk,onDefault,eventListener,sender);
+                await this.SubscriptionDiagnosticSettingsCreateOrUpdate_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Creates or updates subscription diagnostic settings for the specified resource.</summary>
+        /// <summary>update subscription diagnostic settings for the specified resource.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters supplied to the operation.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -1175,10 +2155,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.SerializationMode"/>.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SubscriptionDiagnosticSettingsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.ISubscriptionDiagnosticSettingsResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.ISubscriptionDiagnosticSettingsResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20150401.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SubscriptionDiagnosticSettingsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.ISubscriptionDiagnosticSettingsResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.ISubscriptionDiagnosticSettingsResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.SerializationMode.IncludeUpdate)
         {
             var apiVersion = @"2021-05-01-preview";
             // Constant Parameters
@@ -1214,16 +2195,264 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
-                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.SubscriptionDiagnosticSettingsCreateOrUpdate_Call(request,onOk,onDefault,eventListener,sender);
+                await this.SubscriptionDiagnosticSettingsCreateOrUpdate_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>update subscription diagnostic settings for the specified resource.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">Parameters supplied to the operation.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.ISubscriptionDiagnosticSettingsResource>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.ISubscriptionDiagnosticSettingsResource> SubscriptionDiagnosticSettingsCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.ISubscriptionDiagnosticSettingsResource body, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2021-05-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.Insights/diagnosticSettings/(?<name>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.Insights/diagnosticSettings/{name}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var name = _match.Groups["name"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/providers/Microsoft.Insights/diagnosticSettings/"
+                        + name
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.SubscriptionDiagnosticSettingsCreateOrUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>update subscription diagnostic settings for the specified resource.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="name">The name of the diagnostic setting.</param>
+        /// <param name="jsonString">Json string supplied to the SubscriptionDiagnosticSettingsCreateOrUpdate operation</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task SubscriptionDiagnosticSettingsCreateOrUpdateViaJsonString(string subscriptionId, string name, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.ISubscriptionDiagnosticSettingsResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-05-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/providers/Microsoft.Insights/diagnosticSettings/"
+                        + global::System.Uri.EscapeDataString(name)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.SubscriptionDiagnosticSettingsCreateOrUpdate_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>update subscription diagnostic settings for the specified resource.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="name">The name of the diagnostic setting.</param>
+        /// <param name="jsonString">Json string supplied to the SubscriptionDiagnosticSettingsCreateOrUpdate operation</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.ISubscriptionDiagnosticSettingsResource>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.ISubscriptionDiagnosticSettingsResource> SubscriptionDiagnosticSettingsCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string name, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-05-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/providers/Microsoft.Insights/diagnosticSettings/"
+                        + global::System.Uri.EscapeDataString(name)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.SubscriptionDiagnosticSettingsCreateOrUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>update subscription diagnostic settings for the specified resource.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="name">The name of the diagnostic setting.</param>
+        /// <param name="body">Parameters supplied to the operation.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.ISubscriptionDiagnosticSettingsResource>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.ISubscriptionDiagnosticSettingsResource> SubscriptionDiagnosticSettingsCreateOrUpdateWithResult(string subscriptionId, string name, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.ISubscriptionDiagnosticSettingsResource body, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2021-05-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/providers/Microsoft.Insights/diagnosticSettings/"
+                        + global::System.Uri.EscapeDataString(name)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.SubscriptionDiagnosticSettingsCreateOrUpdateWithResult_Call (request, eventListener,sender);
             }
         }
 
         /// <summary>
-        /// Actual wire call for <see cref="SubscriptionDiagnosticSettingsCreateOrUpdate" /> method.
+        /// Actual wire call for <see cref= "SubscriptionDiagnosticSettingsCreateOrUpdateWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.ISubscriptionDiagnosticSettingsResource>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.ISubscriptionDiagnosticSettingsResource> SubscriptionDiagnosticSettingsCreateOrUpdateWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.SubscriptionDiagnosticSettingsResource.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "SubscriptionDiagnosticSettingsCreateOrUpdate" /> method.
         /// </summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -1234,7 +2463,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task SubscriptionDiagnosticSettingsCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.ISubscriptionDiagnosticSettingsResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20150401.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task SubscriptionDiagnosticSettingsCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.ISubscriptionDiagnosticSettingsResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1245,6 +2474,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -1252,13 +2482,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.SubscriptionDiagnosticSettingsResource.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.SubscriptionDiagnosticSettingsResource.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20150401.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -1284,7 +2514,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task SubscriptionDiagnosticSettingsCreateOrUpdate_Validate(string subscriptionId, string name, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.ISubscriptionDiagnosticSettingsResource body, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task SubscriptionDiagnosticSettingsCreateOrUpdate_Validate(string subscriptionId, string name, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.ISubscriptionDiagnosticSettingsResource body, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -1308,7 +2538,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SubscriptionDiagnosticSettingsDelete(string subscriptionId, string name, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20150401.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SubscriptionDiagnosticSettingsDelete(string subscriptionId, string name, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-05-01-preview";
             // Constant Parameters
@@ -1333,7 +2563,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.SubscriptionDiagnosticSettingsDelete_Call(request,onOk,onNoContent,onDefault,eventListener,sender);
+                await this.SubscriptionDiagnosticSettingsDelete_Call (request, onOk,onNoContent,onDefault,eventListener,sender);
             }
         }
 
@@ -1348,7 +2578,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SubscriptionDiagnosticSettingsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20150401.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SubscriptionDiagnosticSettingsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-05-01-preview";
             // Constant Parameters
@@ -1384,12 +2614,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.SubscriptionDiagnosticSettingsDelete_Call(request,onOk,onNoContent,onDefault,eventListener,sender);
+                await this.SubscriptionDiagnosticSettingsDelete_Call (request, onOk,onNoContent,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>
-        /// Actual wire call for <see cref="SubscriptionDiagnosticSettingsDelete" /> method.
+        /// Actual wire call for <see cref= "SubscriptionDiagnosticSettingsDelete" /> method.
         /// </summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -1401,7 +2631,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task SubscriptionDiagnosticSettingsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20150401.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task SubscriptionDiagnosticSettingsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1412,6 +2642,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -1431,7 +2662,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20150401.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -1477,7 +2708,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SubscriptionDiagnosticSettingsGet(string subscriptionId, string name, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.ISubscriptionDiagnosticSettingsResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20150401.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SubscriptionDiagnosticSettingsGet(string subscriptionId, string name, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.ISubscriptionDiagnosticSettingsResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-05-01-preview";
             // Constant Parameters
@@ -1502,7 +2733,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.SubscriptionDiagnosticSettingsGet_Call(request,onOk,onDefault,eventListener,sender);
+                await this.SubscriptionDiagnosticSettingsGet_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -1516,7 +2747,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SubscriptionDiagnosticSettingsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.ISubscriptionDiagnosticSettingsResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20150401.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SubscriptionDiagnosticSettingsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.ISubscriptionDiagnosticSettingsResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-05-01-preview";
             // Constant Parameters
@@ -1552,11 +2783,159 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.SubscriptionDiagnosticSettingsGet_Call(request,onOk,onDefault,eventListener,sender);
+                await this.SubscriptionDiagnosticSettingsGet_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="SubscriptionDiagnosticSettingsGet" /> method.</summary>
+        /// <summary>Gets the active subscription diagnostic settings for the specified resource.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.ISubscriptionDiagnosticSettingsResource>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.ISubscriptionDiagnosticSettingsResource> SubscriptionDiagnosticSettingsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-05-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.Insights/diagnosticSettings/(?<name>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.Insights/diagnosticSettings/{name}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var name = _match.Groups["name"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/providers/Microsoft.Insights/diagnosticSettings/"
+                        + name
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.SubscriptionDiagnosticSettingsGetWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Gets the active subscription diagnostic settings for the specified resource.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="name">The name of the diagnostic setting.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.ISubscriptionDiagnosticSettingsResource>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.ISubscriptionDiagnosticSettingsResource> SubscriptionDiagnosticSettingsGetWithResult(string subscriptionId, string name, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-05-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/providers/Microsoft.Insights/diagnosticSettings/"
+                        + global::System.Uri.EscapeDataString(name)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.SubscriptionDiagnosticSettingsGetWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "SubscriptionDiagnosticSettingsGetWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.ISubscriptionDiagnosticSettingsResource>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.ISubscriptionDiagnosticSettingsResource> SubscriptionDiagnosticSettingsGetWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.SubscriptionDiagnosticSettingsResource.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "SubscriptionDiagnosticSettingsGet" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -1566,7 +2945,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task SubscriptionDiagnosticSettingsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.ISubscriptionDiagnosticSettingsResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20150401.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task SubscriptionDiagnosticSettingsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.ISubscriptionDiagnosticSettingsResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1577,6 +2956,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -1584,13 +2964,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.SubscriptionDiagnosticSettingsResource.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.SubscriptionDiagnosticSettingsResource.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20150401.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -1637,7 +3017,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SubscriptionDiagnosticSettingsList(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.ISubscriptionDiagnosticSettingsResourceCollection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20150401.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SubscriptionDiagnosticSettingsList(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.ISubscriptionDiagnosticSettingsResourceCollection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-05-01-preview";
             // Constant Parameters
@@ -1661,7 +3041,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.SubscriptionDiagnosticSettingsList_Call(request,onOk,onDefault,eventListener,sender);
+                await this.SubscriptionDiagnosticSettingsList_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -1677,7 +3057,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SubscriptionDiagnosticSettingsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.ISubscriptionDiagnosticSettingsResourceCollection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20150401.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SubscriptionDiagnosticSettingsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.ISubscriptionDiagnosticSettingsResourceCollection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-05-01-preview";
             // Constant Parameters
@@ -1711,11 +3091,159 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.SubscriptionDiagnosticSettingsList_Call(request,onOk,onDefault,eventListener,sender);
+                await this.SubscriptionDiagnosticSettingsList_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="SubscriptionDiagnosticSettingsList" /> method.</summary>
+        /// <summary>
+        /// Gets the active subscription diagnostic settings list for the specified subscriptionId.
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.ISubscriptionDiagnosticSettingsResourceCollection>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.ISubscriptionDiagnosticSettingsResourceCollection> SubscriptionDiagnosticSettingsListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-05-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.Insights/diagnosticSettings$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.Insights/diagnosticSettings'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/providers/Microsoft.Insights/diagnosticSettings"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.SubscriptionDiagnosticSettingsListWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Gets the active subscription diagnostic settings list for the specified subscriptionId.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.ISubscriptionDiagnosticSettingsResourceCollection>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.ISubscriptionDiagnosticSettingsResourceCollection> SubscriptionDiagnosticSettingsListWithResult(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-05-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/providers/Microsoft.Insights/diagnosticSettings"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.SubscriptionDiagnosticSettingsListWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "SubscriptionDiagnosticSettingsListWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.ISubscriptionDiagnosticSettingsResourceCollection>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.ISubscriptionDiagnosticSettingsResourceCollection> SubscriptionDiagnosticSettingsListWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.SubscriptionDiagnosticSettingsResourceCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "SubscriptionDiagnosticSettingsList" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -1725,7 +3253,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task SubscriptionDiagnosticSettingsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.ISubscriptionDiagnosticSettingsResourceCollection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20150401.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task SubscriptionDiagnosticSettingsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.ISubscriptionDiagnosticSettingsResourceCollection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1736,6 +3264,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -1743,13 +3272,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.SubscriptionDiagnosticSettingsResourceCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.SubscriptionDiagnosticSettingsResourceCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20150401.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
