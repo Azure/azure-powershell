@@ -25,12 +25,12 @@ Get-AzAdvisorConfiguration
 Get-AzAdvisorConfiguration -ResourceGroupName lnxtest
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IConfigData
+Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IConfigData
 .Link
 https://learn.microsoft.com/powershell/module/az.advisor/get-azadvisorconfiguration
 #>
 function Get-AzAdvisorConfiguration {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IConfigData])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IConfigData])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -102,6 +102,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -124,9 +133,7 @@ begin {
             List = 'Az.Advisor.private\Get-AzAdvisorConfiguration_List';
             List1 = 'Az.Advisor.private\Get-AzAdvisorConfiguration_List1';
         }
-        if (('List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -140,6 +147,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -196,14 +206,14 @@ Disable-AzAdvisorRecommendation -ResourceId /subscriptions/9e223dbe-3399-4e19-88
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IAdvisorIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IResourceRecommendationBase
+Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IResourceRecommendationBase
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IAdvisorIdentity>: The powershell object type PsAzureAdvisorResourceRecommendationBase returned by Get-AzAdvisorRecommendation call.
-  [ConfigurationName <ConfigurationName?>]: Advisor configuration name. Value must be 'default'
+  [ConfigurationName <String>]: Advisor configuration name. Value must be 'default'
   [Id <String>]: Resource identity path
   [Name <String>]: Name of metadata entity.
   [OperationId <String>]: The operation ID, which can be found from the Location field in the generate recommendation response header.
@@ -215,7 +225,7 @@ INPUTOBJECT <IAdvisorIdentity>: The powershell object type PsAzureAdvisorResourc
 https://learn.microsoft.com/powershell/module/az.advisor/Disable-AzAdvisorRecommendation
 #>
 function Disable-AzAdvisorRecommendation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IResourceRecommendationBase])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IResourceRecommendationBase])]
 [CmdletBinding(DefaultParameterSetName='IdParameterSet', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='IdParameterSet', Mandatory)]
@@ -241,7 +251,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IAdvisorIdentity]
     # The powershell object type PsAzureAdvisorResourceRecommendationBase returned by Get-AzAdvisorRecommendation call.
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -305,6 +314,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -328,9 +346,7 @@ begin {
             NameParameterSet = 'Az.Advisor.custom\Disable-AzAdvisorRecommendation';
             InputObjectParameterSet = 'Az.Advisor.custom\Disable-AzAdvisorRecommendation';
         }
-        if (('IdParameterSet', 'NameParameterSet', 'InputObjectParameterSet') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('IdParameterSet', 'NameParameterSet', 'InputObjectParameterSet') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -344,6 +360,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -400,14 +419,14 @@ Enable-AzAdvisorRecommendation -RecommendationName 42963553-61de-5334-2d2e-47f3a
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IAdvisorIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IResourceRecommendationBase
+Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IResourceRecommendationBase
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IAdvisorIdentity>: The powershell object type PsAzureAdvisorResourceRecommendationBase returned by Get-AzAdvisorRecommendation call.
-  [ConfigurationName <ConfigurationName?>]: Advisor configuration name. Value must be 'default'
+  [ConfigurationName <String>]: Advisor configuration name. Value must be 'default'
   [Id <String>]: Resource identity path
   [Name <String>]: Name of metadata entity.
   [OperationId <String>]: The operation ID, which can be found from the Location field in the generate recommendation response header.
@@ -419,7 +438,7 @@ INPUTOBJECT <IAdvisorIdentity>: The powershell object type PsAzureAdvisorResourc
 https://learn.microsoft.com/powershell/module/az.advisor/Enable-AzAdvisorRecommendation
 #>
 function Enable-AzAdvisorRecommendation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IResourceRecommendationBase])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IResourceRecommendationBase])]
 [CmdletBinding(DefaultParameterSetName='IdParameterSet', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='IdParameterSet', Mandatory)]
@@ -445,7 +464,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IAdvisorIdentity]
     # The powershell object type PsAzureAdvisorResourceRecommendationBase returned by Get-AzAdvisorRecommendation call.
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -503,6 +521,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -526,9 +553,7 @@ begin {
             NameParameterSet = 'Az.Advisor.custom\Enable-AzAdvisorRecommendation';
             InputObjectParameterSet = 'Az.Advisor.custom\Enable-AzAdvisorRecommendation';
         }
-        if (('IdParameterSet', 'NameParameterSet', 'InputObjectParameterSet') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('IdParameterSet', 'NameParameterSet', 'InputObjectParameterSet') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -542,6 +567,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -591,7 +619,7 @@ Obtains details of a cached recommendation.
 .Description
 Obtains details of a cached recommendation.
 .Example
- Get-AzAdvisorRecommendation -ResourceGroupName lnxtest -Category HighAvailability
+Get-AzAdvisorRecommendation -ResourceGroupName lnxtest -Category HighAvailability
 .Example
 Get-AzAdvisorRecommendation -filter "Category eq 'HighAvailability' and ResourceGroup eq 'lnxtest'"
 .Example
@@ -600,14 +628,14 @@ Get-AzAdvisorRecommendation -Id 42963553-61de-5334-2d2e-47f3a0099d41 -ResourceUr
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IAdvisorIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IResourceRecommendationBase
+Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IResourceRecommendationBase
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-INPUTOBJECT <IAdvisorIdentity>: Identity Parameter
-  [ConfigurationName <ConfigurationName?>]: Advisor configuration name. Value must be 'default'
+INPUTOBJECT <IAdvisorIdentity>: Identity Parameter To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+  [ConfigurationName <String>]: Advisor configuration name. Value must be 'default'
   [Id <String>]: Resource identity path
   [Name <String>]: Name of metadata entity.
   [OperationId <String>]: The operation ID, which can be found from the Location field in the generate recommendation response header.
@@ -619,7 +647,7 @@ INPUTOBJECT <IAdvisorIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.advisor/Get-AzAdvisorRecommendation
 #>
 function Get-AzAdvisorRecommendation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IResourceRecommendationBase])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IResourceRecommendationBase])]
 [CmdletBinding(DefaultParameterSetName='ListByFilter', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='ListByFilter')]
@@ -733,6 +761,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -758,9 +795,7 @@ begin {
             GetById = 'Az.Advisor.custom\Get-AzAdvisorRecommendation';
             GetViaIdentity1 = 'Az.Advisor.custom\Get-AzAdvisorRecommendation';
         }
-        if (('ListByFilter', 'ListByName', 'ListById') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('ListByFilter', 'ListByName', 'ListById') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -774,6 +809,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -830,14 +868,14 @@ Set-AzAdvisorConfiguration -Exclude
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IAdvisorIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IConfigData
+Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IConfigData
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-INPUTOBJECT <IAdvisorIdentity>: Identity Parameter
-  [ConfigurationName <ConfigurationName?>]: Advisor configuration name. Value must be 'default'
+INPUTOBJECT <IAdvisorIdentity>: Identity Parameter To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+  [ConfigurationName <String>]: Advisor configuration name. Value must be 'default'
   [Id <String>]: Resource identity path
   [Name <String>]: Name of metadata entity.
   [OperationId <String>]: The operation ID, which can be found from the Location field in the generate recommendation response header.
@@ -849,7 +887,7 @@ INPUTOBJECT <IAdvisorIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.advisor/Set-AzAdvisorConfiguration
 #>
 function Set-AzAdvisorConfiguration {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IConfigData])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IConfigData])]
 [CmdletBinding(DefaultParameterSetName='CreateByLCT', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='CreateByLCT')]
@@ -882,9 +920,9 @@ param(
 
     [Parameter(ParameterSetName='CreateByLCT')]
     [Parameter(ParameterSetName='CreateByInputObject')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.CpuThreshold])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Advisor.PSArgumentCompleterAttribute("5", "10", "15", "20")]
     [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.CpuThreshold]
+    [System.String]
     # Minimum percentage threshold for Advisor low CPU utilization evaluation.
     # Valid only for subscriptions.
     # Valid values: 5 (default), 10, 15 or 20.
@@ -945,6 +983,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -968,9 +1015,7 @@ begin {
             CreateByRG = 'Az.Advisor.custom\Set-AzAdvisorConfiguration';
             CreateByInputObject = 'Az.Advisor.custom\Set-AzAdvisorConfiguration';
         }
-        if (('CreateByLCT', 'CreateByRG') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateByLCT', 'CreateByRG') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -984,6 +1029,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
