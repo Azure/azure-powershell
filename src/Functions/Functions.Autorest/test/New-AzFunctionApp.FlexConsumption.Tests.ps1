@@ -5,7 +5,7 @@ if (-Not (Test-Path -Path $loadEnvPath)) {
     $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
 }
 . ($loadEnvPath)
-$TestRecordingFile = Join-Path $PSScriptRoot 'New-AzFunctionApp-FlexConsumption.Recording.json'
+$TestRecordingFile = Join-Path $PSScriptRoot 'New-AzFunctionApp.FlexConsumption.Recording.json'
 $currentPath = $PSScriptRoot
 while(-not $mockingPath) {
     $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -27,7 +27,7 @@ Describe 'New-AzFunctionApp - Flex Consumption' {
         $env:FunctionsUseFlexStackTestData = $true
 
         # Set Flex Consumption test variables
-        $flexTestRunId = 110125
+        $flexTestRunId = 112525
         $flexLocation = 'East Asia'
         $flexResourceGroupName = "Functions-Flex-RG-" + $flexTestRunId        
 
@@ -44,11 +44,11 @@ Describe 'New-AzFunctionApp - Flex Consumption' {
             $storageAccountName = $storageAccountName.Substring(0, [Math]::Min($storageAccountName.Length, 24))
             Write-Verbose "Creating storage account: $storageAccountName in resource group: $flexResourceGroupName" -Verbose
             New-AzStorageAccount -ResourceGroupName $flexResourceGroupName `
-                                 -Name $storageAccountName `
-                                 -Location $flexLocation `
-                                 -SkuName Standard_GRS `
-                                 -Kind StorageV2 `
-                                 -AllowBlobPublicAccess $false | Out-Null
+                                -Name $storageAccountName `
+                                -Location $flexLocation `
+                                -SkuName Standard_GRS `
+                                -Kind StorageV2 `
+                                -AllowBlobPublicAccess $false | Out-Null
 
             $StorageAccountInfo[$runtimeName] = $storageAccountName
         }
@@ -160,7 +160,10 @@ Describe 'New-AzFunctionApp - Flex Consumption' {
 
         # Clean up resource group and storage accounts used for Flex Consumption tests
         Write-Verbose "Removing resource group: $flexResourceGroupName" -Verbose
-        Remove-AzResourceGroup -Name $flexResourceGroupName -Force
+
+        # After recording the tests, use -Force to avoid prompt during cleanup
+        #Remove-AzResourceGroup -Name $flexResourceGroupName -Force
+        Remove-AzResourceGroup -Name $flexResourceGroupName -Force -ErrorAction SilentlyContinue
 
         Write-Verbose "Done." -Verbose
     }
@@ -217,7 +220,7 @@ Describe 'New-AzFunctionApp - Flex Consumption' {
             "ExpectedSku" = "FC1"
             "ExpectedAppSettings" = $expectedAppSettings
             "ExpectedProperties" = @{
-                "RuntimeVersion" = "3.11"
+                "RuntimeVersion" = "3.12"
                 "RuntimeName" = "python"
                 "ScaleAndConcurrencyInstanceMemoryMb" = 2048
                 "ScaleAndConcurrencyMaximumInstanceCount" = 100
@@ -369,8 +372,8 @@ Describe 'New-AzFunctionApp - Flex Consumption' {
         )
 
         Write-Verbose "Creating Flex Consumption app with custom scaling settings" -Verbose
-        Write-Verbose "Function app name: $appName" -Verbose        
-        Write-Verbose "Runtime: $runtime $runtimeVersion" -Verbose
+        Write-Verbose "Function app name: $appName" -Verbose
+        Write-Verbose "Runtime: $runtime" -Verbose
 
         try {
             New-AzFunctionApp -Name $appName `
@@ -416,7 +419,7 @@ Describe 'New-AzFunctionApp - Flex Consumption' {
         }
     }
 
-    It "Create Node Flex Consumption app with SystemAssigned managed identity for deployment storage" {
+    It "Create Node ZoneRedundant Flex Consumption app with SystemAssigned managed identity for deployment storage" {
         
         # Use the Node test case as base
         $baseTestCase = $flexConsumptionTestCases | Where-Object { $_.Runtime -eq "Node" }
@@ -424,17 +427,26 @@ Describe 'New-AzFunctionApp - Flex Consumption' {
         $appName = "Functions-Node-SystemIdentity-" + $flexTestRunId
         $storageAccountName = $baseTestCase.StorageAccountName
         $runtime = $baseTestCase.Runtime
+        $expectedSku = "FC1"  # ZoneRedundant SKU
 
-        Write-Verbose "Creating Flex Consumption app with SystemAssigned identity for deployment storage" -Verbose
+        Write-Verbose "Creating ZoneRedundant Flex Consumption app with SystemAssigned identity for deployment storage" -Verbose
 
         try {
+
+            Write-Verbose "Creating Flex Consumption app with UserAssigned identity for deployment storage" -Verbose
+            Write-Verbose "Function app name: $appName" -Verbose
+            Write-Verbose "Resource group name: $flexResourceGroupName" -Verbose
+            Write-Verbose "Storage account name: $storageAccountName" -Verbose
+            Write-Verbose "Runtime: $runtime" -Verbose
+
             New-AzFunctionApp -Name $appName `
                               -ResourceGroupName $flexResourceGroupName `
                               -StorageAccountName $storageAccountName `
                               -Runtime $runtime `
                               -FlexConsumptionLocation $flexLocation `
                               -DeploymentStorageAuthType "SystemAssignedIdentity" `
-                              -IdentityType "SystemAssigned"
+                              -IdentityType "SystemAssigned" `
+                              -EnableZoneRedundancy
 
             Write-Verbose "Validating SystemAssigned identity configuration..." -Verbose
             $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $flexResourceGroupName
@@ -459,9 +471,87 @@ Describe 'New-AzFunctionApp - Flex Consumption' {
             $functionApp.IdentityPrincipalId | Should -Not -BeNullOrEmpty
 
             # Validate app service plan
+            Write-Verbose "Validating app service plan SKU and zone redundancy..." -Verbose
+            $plan = Get-AzFunctionAppPlan -Name $functionApp.AppServicePlan -ResourceGroupName $flexResourceGroupName
+            $plan.SkuName | Should -Be $ExpectedSku
+            $plan.ZoneRedundant | Should -Be $true
+            # This is the default value when the Flex Consumption plan is created
+            $plan.MaximumElasticWorkerCount | Should -Be 3
+
+            # Validate app settings (should NOT have DEPLOYMENT_STORAGE_CONNECTION_STRING for SystemAssigned)
+            Write-Verbose "Validating app settings..." -Verbose
+            $applicationSettings = Get-AzFunctionAppSetting -Name $appName -ResourceGroupName $flexResourceGroupName
+            $applicationSettings['AzureWebJobsStorage'] | Should -Not -BeNullOrEmpty
+            $applicationSettings['APPLICATIONINSIGHTS_CONNECTION_STRING'] | Should -Not -BeNullOrEmpty
+            $applicationSettings.ContainsKey('DEPLOYMENT_STORAGE_CONNECTION_STRING') | Should -Be $false
+        }
+        finally {
+            Remove-TestFunctionApp -AppName $appName -ResourceGroupName $flexResourceGroupName
+        }
+    }
+
+    It "Create PowerShell Flex Consumption app with UserAssigned managed identity for deployment storage" {
+
+        # Use the PowerShell test case as base
+        $baseTestCase = $flexConsumptionTestCases | Where-Object { $_.Runtime -eq "PowerShell" }
+
+        $appName = "Functions-Pwsh-UserAssignedIdentity-" + $flexTestRunId
+        $storageAccountName = $baseTestCase.StorageAccountName
+        $runtime = $baseTestCase.Runtime
+        $expectedSku = "FC1"
+
+        try {
+
+            Write-Host "Create user assigned managed identity" -ForegroundColor Yellow
+            $identityName = "my-app-identity-" + $flexTestRunId
+            $identityInfo = New-AzUserAssignedIdentity -ResourceGroupName $flexResourceGroupName -Name $identityName -Location $flexLocation
+
+            Write-Verbose "Creating Flex Consumption app with UserAssigned identity for deployment storage" -Verbose
+            Write-Verbose "Function app name: $appName" -Verbose
+            Write-Verbose "Resource group name: $flexResourceGroupName" -Verbose
+            Write-Verbose "Identity resource ID: $($identityInfo.Id)" -Verbose
+            Write-Verbose "Storage account name: $storageAccountName" -Verbose
+            Write-Verbose "Runtime: $runtime" -Verbose
+
+            New-AzFunctionApp -Name $appName `
+                              -ResourceGroupName $flexResourceGroupName `
+                              -StorageAccountName $storageAccountName `
+                              -Runtime $runtime `
+                              -FlexConsumptionLocation $flexLocation `
+                              -DeploymentStorageAuthType "UserAssignedIdentity" `
+                              -DeploymentStorageAuthValue $identityInfo.Id `
+                              -IdentityType "UserAssigned" `
+                              -IdentityID $identityInfo.Id
+
+            # Validate basic properties using base test case expectations
+            Write-Verbose "Validating Flex function app basic properties..." -Verbose
+            $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $flexResourceGroupName
+
+            $functionApp.Runtime | Should -Be $runtime
+            $functionApp.RuntimeVersion | Should -Be $baseTestCase.ExpectedProperties.RuntimeVersion
+            $functionApp.RuntimeName | Should -Be $baseTestCase.ExpectedProperties.RuntimeName
+            $functionApp.ScaleAndConcurrencyInstanceMemoryMb | Should -Be $baseTestCase.ExpectedProperties.ScaleAndConcurrencyInstanceMemoryMb
+            $functionApp.ScaleAndConcurrencyMaximumInstanceCount | Should -Be $baseTestCase.ExpectedProperties.ScaleAndConcurrencyMaximumInstanceCount
+            $functionApp.ScaleAndConcurrencyHttpPerInstanceConcurrency | Should -Be $null
+            $functionApp.ScaleAndConcurrencyAlwaysReady | Should -Be $null
+            $functionApp.StorageType | Should -Be "blobcontainer"
+            $functionApp.Location | Should -Be $flexLocation
+            $functionApp.State | Should -Be "Running"
+            
+            # Validate deployment storage and authentication type
+            Write-Verbose "Validating deployment storage authentication for user assigned identity..." -Verbose
+            $functionApp.AuthenticationType | Should -Be "userassignedidentity"
+            $functionApp.AuthenticationUserAssignedIdentityResourceId | Should -Match $identityInfo.Id
+
+            # Validate app user assigned identity
+            $functionApp.IdentityType | Should -Be "UserAssigned"
+            $userAssignedIdentity = $functionApp.IdentityUserAssignedIdentity.AdditionalProperties
+            $userAssignedIdentity.ContainsKey($identityInfo.Id) | Should -Be $true
+
+            # Validate app service plan
             Test-FlexConsumptionPlanSku -PlanName $functionApp.AppServicePlan `
                                         -ResourceGroupName $flexResourceGroupName `
-                                        -ExpectedSku "FC1"
+                                        -ExpectedSku $expectedSku
 
             # Validate app settings (should NOT have DEPLOYMENT_STORAGE_CONNECTION_STRING for SystemAssigned)
             $applicationSettings = Get-AzFunctionAppSetting -Name $appName -ResourceGroupName $flexResourceGroupName
@@ -597,7 +687,7 @@ Describe 'New-AzFunctionApp - Flex Consumption' {
         Write-Verbose "Testing WhatIf for Flex Consumption" -Verbose
         
         # This should not throw and should not create actual resources
-        { 
+        {
             New-AzFunctionApp -Name $appName `
                               -ResourceGroupName $flexResourceGroupName `
                               -StorageAccountName $storageAccountName `
