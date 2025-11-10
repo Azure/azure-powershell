@@ -776,7 +776,7 @@
     <value>SoftDeleteRetentionDays can only be set to 0 when EnableSoftDelete is false.</value>
   </data>
   <data name="InvalidSoftDeleteRetentionDaysRange" xml:space="preserve">
-    <value>SoftDeleteRetentionDays must be between 1 and 35 when EnableSoftDelete is true.</value>
+    <value>SoftDeleteRetentionDays must be between 1 and 7 when EnableSoftDelete is true.</value>
   </data>
   <data name="LockAzureSqlDatabaseLongTermRetentionBackupDescription" xml:space="preserve">
     <value>Locking the time-based immutability for the Long Term Retention backup '{0}' on database '{1}' on server '{2}' in location '{3}'.</value>
@@ -804,5 +804,8 @@
   </data>
   <data name="LockAzureSqlDatabaseLongTermRetentionBackupWarning" xml:space="preserve">
     <value>Are you sure you want to lock the time-based immutability for the Long Term Retention backup '{0}' on database '{1}' on server '{2}' in location '{3}'? Once locked, the backup cannot be dropped until expiration. </value>
+  </data>
+  <data name="ResourceGroupNotFoundForRestore" xml:space="preserve">
+    <value>Cannot restore server '{0}'. The resource group '{1}' does not exist. Please create the resource group first using 'New-AzResourceGroup' and retry the operation.</value>
   </data>
 </root>

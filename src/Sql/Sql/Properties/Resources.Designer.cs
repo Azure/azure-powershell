@@ -457,6 +457,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cannot restore server &apos;{0}&apos;. The resource group &apos;{1}&apos; does not exist. Please create the resource group and retry the operation.
+        /// </summary>
+        internal static string ResourceGroupNotFoundForRestore {
+            get {
+                return ResourceManager.GetString("ResourceGroupNotFoundForRestore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The {0} cmdlet is deprecated and will be removed in a future release..
         /// </summary>
         internal static string DeprecatedCmdletUsageWarning {
@@ -747,7 +756,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SoftDeleteRetentionDays must be between 1 and 35 when EnableSoftDelete is true..
+        ///   Looks up a localized string similar to SoftDeleteRetentionDays must be between 1 and 7 when EnableSoftDelete is true..
         /// </summary>
         internal static string InvalidSoftDeleteRetentionDaysRange {
             get {

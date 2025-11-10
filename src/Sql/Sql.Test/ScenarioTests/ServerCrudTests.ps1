@@ -667,7 +667,7 @@ function Test-OutboundFirewallRulesCRUD
 function Test-CreateServerWithDefaultSoftDeleteRetentionEnabled
 {
 	# Setup
-	$rg = Create-ResourceGroupForTest "eastasia"
+	$rg = Create-ResourceGroupForTest "centralus"
 
 	$serverName = Get-ServerName
 	$version = "12.0"
@@ -705,7 +705,7 @@ function Test-CreateServerWithDefaultSoftDeleteRetentionEnabled
 function Test-CreateServerWithCustomSoftDeleteRetentionEnabled
 {
 	# Setup
-	$rg = Create-ResourceGroupForTest "eastasia"
+	$rg = Create-ResourceGroupForTest "centralus"
 
 	$serverName = Get-ServerName
 	$version = "12.0"
@@ -713,7 +713,7 @@ function Test-CreateServerWithCustomSoftDeleteRetentionEnabled
 	$serverPassword = "t357ingP@s5w0rd!"
 	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force))
 	$enableSoftDeleteRetention = $true
-	$customRetentionDays = 30
+	$customRetentionDays = 5
 
 	try
 	{
@@ -743,11 +743,11 @@ function Test-CreateServerWithCustomSoftDeleteRetentionEnabled
 function Test-UpdateServerWithSoftDeleteRetentionEnabled
 {
 	# Setup
-	$rg = Create-ResourceGroupForTest "eastasia"
+	$rg = Create-ResourceGroupForTest "centralus"
 	$server = Create-ServerForTest $rg $rg.Location
 	$enableSoftDeleteRetention = $true
 	$defaultRetentionDays = 7
-	$customRetentionDays = 35
+	$customRetentionDays = 7
 
 	try
 	{
@@ -780,7 +780,7 @@ function Test-UpdateServerWithSoftDeleteRetentionEnabled
 function Test-RestoreDeletedServer
 {
 	# Setup
-	$rg = Create-ResourceGroupForTest "eastasia"
+	$rg = Create-ResourceGroupForTest "centralus"
 	$server = Create-ServerForTest $rg $rg.Location
 
 	try
