@@ -12,6 +12,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support
     {
         public static Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.CatalogItemType EnvironmentDefinition = @"EnvironmentDefinition";
 
+        public static Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.CatalogItemType ImageDefinition = @"ImageDefinition";
+
         /// <summary>the value for an instance of the <see cref="CatalogItemType" /> Enum.</summary>
         private string _value { get; set; }
 

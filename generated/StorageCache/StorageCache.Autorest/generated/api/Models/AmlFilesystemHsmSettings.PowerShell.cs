@@ -88,6 +88,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemHsmSettingsInternal)this).ImportPrefix = (string) content.GetValueForProperty("ImportPrefix",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemHsmSettingsInternal)this).ImportPrefix, global::System.Convert.ToString);
             }
+            if (content.Contains("ImportPrefixesInitial"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemHsmSettingsInternal)this).ImportPrefixesInitial = (System.Collections.Generic.List<string>) content.GetValueForProperty("ImportPrefixesInitial",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemHsmSettingsInternal)this).ImportPrefixesInitial, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -116,6 +120,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models
             if (content.Contains("ImportPrefix"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemHsmSettingsInternal)this).ImportPrefix = (string) content.GetValueForProperty("ImportPrefix",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemHsmSettingsInternal)this).ImportPrefix, global::System.Convert.ToString);
+            }
+            if (content.Contains("ImportPrefixesInitial"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemHsmSettingsInternal)this).ImportPrefixesInitial = (System.Collections.Generic.List<string>) content.GetValueForProperty("ImportPrefixesInitial",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemHsmSettingsInternal)this).ImportPrefixesInitial, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
             AfterDeserializePSObject(content);
         }

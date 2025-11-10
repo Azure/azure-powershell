@@ -8,20 +8,22 @@ schema: 2.0.0
 # Get-AzSearchSharedPrivateLinkResource
 
 ## SYNOPSIS
-Gets shared private link resources(s) of the Azure Cognitive Search service.
+Gets shared private link resources(s) of the Azure AI Search service.
 
 ## SYNTAX
 
 ### ResourceNameParameterSet (Default)
 ```
 Get-AzSearchSharedPrivateLinkResource [-ResourceGroupName] <String> [-ServiceName] <String> [[-Name] <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ParentObjectParameterSet
 ```
 Get-AzSearchSharedPrivateLinkResource [-ParentObject] <PSSearchService> [[-Name] <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
@@ -31,7 +33,7 @@ Get-AzSearchSharedPrivateLinkResource [-ResourceId] <String> [-DefaultProfile <I
 ```
 
 ## DESCRIPTION
-The **Get-AzSearchSharedPrivateLinkResource** cmdlet gets shared private link resources(s) of the Azure Cognitive Search service.
+The **Get-AzSearchSharedPrivateLinkResource** cmdlet gets shared private link resources(s) of the Azure AI Search service.
 
 ## EXAMPLES
 
@@ -72,7 +74,7 @@ RequestMessage        : please approve
 ResourceRegion        :
 ```
 
-This example lists all the shared private link resources of the Azure Cognitive Search service.
+This example lists all the shared private link resources of the Azure AI Search service.
 
 ### Example 2
 ```powershell
@@ -91,7 +93,7 @@ RequestMessage        : please approve
 ResourceRegion        :
 ```
 
-This example lists a specific shared private link resource by name of the Azure Cognitive Search service.
+This example lists a specific shared private link resource by name of the Azure AI Search service.
 
 ## PARAMETERS
 
@@ -111,7 +113,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Azure Cognitive Search Shared private link resource
+Azure AI Search Shared private link resource
 
 ```yaml
 Type: System.String
@@ -126,7 +128,7 @@ Accept wildcard characters: False
 ```
 
 ### -ParentObject
-Azure Cognitive Search Service Input Object.
+Azure AI Search Service Input Object.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Management.Search.Models.PSSearchService
@@ -171,7 +173,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServiceName
-Azure Cognitive Search Service name.
+Azure AI Search Service name.
 
 ```yaml
 Type: System.String

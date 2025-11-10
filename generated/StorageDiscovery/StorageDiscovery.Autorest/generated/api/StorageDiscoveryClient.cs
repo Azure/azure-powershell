@@ -23,7 +23,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery
         /// </returns>
         public async global::System.Threading.Tasks.Task OperationsList(global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-06-01-preview";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery
         /// </returns>
         public async global::System.Threading.Tasks.Task OperationsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-06-01-preview";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IOperationListResult> OperationsListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-06-01-preview";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -144,7 +144,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IOperationListResult> OperationsListWithResult(Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-06-01-preview";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -311,7 +311,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery
         /// </returns>
         public async global::System.Threading.Tasks.Task ReportGenerateReport(string subscriptionId, string resourceGroupName, string storageDiscoveryWorkspaceName, string discoveryResourceName, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IGetReportContent body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IGetReportResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-06-01-preview";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -361,7 +361,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery
         /// </returns>
         public async global::System.Threading.Tasks.Task ReportGenerateReportViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IGetReportContent body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IGetReportResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-06-01-preview";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -422,7 +422,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IGetReportResult> ReportGenerateReportViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IGetReportContent body, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-06-01-preview";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -487,7 +487,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery
         /// </returns>
         public async global::System.Threading.Tasks.Task ReportGenerateReportViaJsonString(string subscriptionId, string resourceGroupName, string storageDiscoveryWorkspaceName, string discoveryResourceName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IGetReportResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-06-01-preview";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -537,7 +537,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IGetReportResult> ReportGenerateReportViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string storageDiscoveryWorkspaceName, string discoveryResourceName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-06-01-preview";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -588,7 +588,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IGetReportResult> ReportGenerateReportWithResult(string subscriptionId, string resourceGroupName, string storageDiscoveryWorkspaceName, string discoveryResourceName, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IGetReportContent body, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-06-01-preview";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -969,7 +969,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery
         /// </returns>
         public async global::System.Threading.Tasks.Task ReportGet(string subscriptionId, string resourceGroupName, string storageDiscoveryWorkspaceName, string discoveryResourceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IReportResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-06-01-preview";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1012,7 +1012,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery
         /// </returns>
         public async global::System.Threading.Tasks.Task ReportGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IReportResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-06-01-preview";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1066,7 +1066,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IReportResource> ReportGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-06-01-preview";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1123,7 +1123,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IReportResource> ReportGetWithResult(string subscriptionId, string resourceGroupName, string storageDiscoveryWorkspaceName, string discoveryResourceName, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-06-01-preview";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1309,7 +1309,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery
         /// </returns>
         public async global::System.Threading.Tasks.Task ReportListByResourceGroup(string subscriptionId, string resourceGroupName, string storageDiscoveryWorkspaceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IReportResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-06-01-preview";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1351,7 +1351,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery
         /// </returns>
         public async global::System.Threading.Tasks.Task ReportListByResourceGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IReportResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-06-01-preview";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1403,7 +1403,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IReportResourceListResult> ReportListByResourceGroupViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-06-01-preview";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1457,7 +1457,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IReportResourceListResult> ReportListByResourceGroupWithResult(string subscriptionId, string resourceGroupName, string storageDiscoveryWorkspaceName, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-06-01-preview";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1640,7 +1640,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery
         /// </returns>
         public async global::System.Threading.Tasks.Task ReportListBySubscription(string subscriptionId, string storageDiscoveryWorkspaceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IReportResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-06-01-preview";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1680,7 +1680,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery
         /// </returns>
         public async global::System.Threading.Tasks.Task ReportListBySubscriptionViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IReportResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-06-01-preview";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1729,7 +1729,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IReportResourceListResult> ReportListBySubscriptionViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-06-01-preview";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1779,7 +1779,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IReportResourceListResult> ReportListBySubscriptionWithResult(string subscriptionId, string storageDiscoveryWorkspaceName, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-06-01-preview";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1957,7 +1957,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageDiscoveryWorkspacesCreateOrUpdate(string subscriptionId, string resourceGroupName, string storageDiscoveryWorkspaceName, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspace body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspace>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspace>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-06-01-preview";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2005,7 +2005,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageDiscoveryWorkspacesCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspace body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspace>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspace>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-06-01-preview";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2062,7 +2062,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspace> StorageDiscoveryWorkspacesCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspace body, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-06-01-preview";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2123,7 +2123,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageDiscoveryWorkspacesCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string storageDiscoveryWorkspaceName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspace>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspace>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-06-01-preview";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2169,7 +2169,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspace> StorageDiscoveryWorkspacesCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string storageDiscoveryWorkspaceName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-06-01-preview";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2216,7 +2216,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspace> StorageDiscoveryWorkspacesCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string storageDiscoveryWorkspaceName, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspace body, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-06-01-preview";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2422,7 +2422,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageDiscoveryWorkspacesDelete(string subscriptionId, string resourceGroupName, string storageDiscoveryWorkspaceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-06-01-preview";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2464,7 +2464,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageDiscoveryWorkspacesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-06-01-preview";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2604,7 +2604,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageDiscoveryWorkspacesGet(string subscriptionId, string resourceGroupName, string storageDiscoveryWorkspaceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspace>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-06-01-preview";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2645,7 +2645,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageDiscoveryWorkspacesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspace>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-06-01-preview";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2696,7 +2696,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspace> StorageDiscoveryWorkspacesGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-06-01-preview";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2749,7 +2749,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspace> StorageDiscoveryWorkspacesGetWithResult(string subscriptionId, string resourceGroupName, string storageDiscoveryWorkspaceName, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-06-01-preview";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2931,7 +2931,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageDiscoveryWorkspacesListByResourceGroup(string subscriptionId, string resourceGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspaceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-06-01-preview";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2971,7 +2971,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageDiscoveryWorkspacesListByResourceGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspaceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-06-01-preview";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3020,7 +3020,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspaceListResult> StorageDiscoveryWorkspacesListByResourceGroupViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-06-01-preview";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3070,7 +3070,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspaceListResult> StorageDiscoveryWorkspacesListByResourceGroupWithResult(string subscriptionId, string resourceGroupName, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-06-01-preview";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3247,7 +3247,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageDiscoveryWorkspacesListBySubscription(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspaceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-06-01-preview";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3285,7 +3285,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageDiscoveryWorkspacesListBySubscriptionViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspaceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-06-01-preview";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3331,7 +3331,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspaceListResult> StorageDiscoveryWorkspacesListBySubscriptionViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-06-01-preview";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3377,7 +3377,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspaceListResult> StorageDiscoveryWorkspacesListBySubscriptionWithResult(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-06-01-preview";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3551,7 +3551,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageDiscoveryWorkspacesReport(string subscriptionId, string resourceGroupName, string storageDiscoveryWorkspaceName, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IGetReportContent body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IGetReportResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-06-01-preview";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3599,7 +3599,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageDiscoveryWorkspacesReportViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IGetReportContent body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IGetReportResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-06-01-preview";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3657,7 +3657,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IGetReportResult> StorageDiscoveryWorkspacesReportViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IGetReportContent body, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-06-01-preview";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3718,7 +3718,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageDiscoveryWorkspacesReportViaJsonString(string subscriptionId, string resourceGroupName, string storageDiscoveryWorkspaceName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IGetReportResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-06-01-preview";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3765,7 +3765,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IGetReportResult> StorageDiscoveryWorkspacesReportViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string storageDiscoveryWorkspaceName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-06-01-preview";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3813,7 +3813,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IGetReportResult> StorageDiscoveryWorkspacesReportWithResult(string subscriptionId, string resourceGroupName, string storageDiscoveryWorkspaceName, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IGetReportContent body, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-06-01-preview";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4192,7 +4192,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageDiscoveryWorkspacesUpdate(string subscriptionId, string resourceGroupName, string storageDiscoveryWorkspaceName, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspaceUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspace>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-06-01-preview";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4239,7 +4239,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageDiscoveryWorkspacesUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspaceUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspace>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-06-01-preview";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4296,7 +4296,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspace> StorageDiscoveryWorkspacesUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspaceUpdate body, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-06-01-preview";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4356,7 +4356,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageDiscoveryWorkspacesUpdateViaJsonString(string subscriptionId, string resourceGroupName, string storageDiscoveryWorkspaceName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspace>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-06-01-preview";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4402,7 +4402,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspace> StorageDiscoveryWorkspacesUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string storageDiscoveryWorkspaceName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-06-01-preview";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4449,7 +4449,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspace> StorageDiscoveryWorkspacesUpdateWithResult(string subscriptionId, string resourceGroupName, string storageDiscoveryWorkspaceName, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspaceUpdate body, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-06-01-preview";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {

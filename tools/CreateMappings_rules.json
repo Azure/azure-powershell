@@ -841,10 +841,6 @@
     "module": "NetworkCloud"
   },
   {
-    "alias": "HdInsightOnAks",
-    "module": "HdInsightOnAks"
-  },
-  {
     "module": "NetworkAnalytics",
     "alias": "NetworkAnalytics"
   },
@@ -991,5 +987,17 @@
   {
     "alias": "StorageDiscovery",
     "module": "StorageDiscovery"
+  },
+  {
+    "alias": "Sftp",
+    "module": "Sftp"
+  },
+  {
+    "module": "Site",
+    "alias": "Site"
+  },
+  {
+    "alias": "DnsResolver",
+    "module": "DnsResolver"
   }
 ]

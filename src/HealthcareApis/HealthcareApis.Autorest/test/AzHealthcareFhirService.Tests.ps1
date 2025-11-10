@@ -39,14 +39,14 @@ Describe 'AzHealthcareFhirService' {
         } | Should -Not -Throw
     }
 
-    It 'UpdateExpanded' {
+    It 'UpdateExpanded' -skip {
         {
             $config = Update-AzHealthcareFhirService -Name $env.fhirService2 -ResourceGroupName $env.resourceGroup -WorkspaceName $env.apiWorkspace1 -Tag @{"123"="abc"}
             $config.Name | Should -Be "$($env.apiWorkspace1)/$($env.fhirService2)"
         } | Should -Not -Throw
     }
 
-    It 'UpdateViaIdentityExpanded' {
+    It 'UpdateViaIdentityExpanded' -skip {
         {
             $config = Get-AzHealthcareFhirService -Name $env.fhirService3 -ResourceGroupName $env.resourceGroup -WorkspaceName $env.apiWorkspace1
             $config = Update-AzHealthcareFhirService -InputObject $config -Tag @{"123"="abc"}

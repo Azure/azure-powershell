@@ -14,19 +14,23 @@ namespace Microsoft.Azure.Management.Search
     public partial interface IPrivateLinkResourcesOperations
     {
         /// <summary>
-        /// Gets a list of all supported private link resource types for the given service.
+        /// Gets a list of all supported private link resource types for the given
+        /// service.
         /// </summary>
         /// <remarks>
-        /// Gets a list of all supported private link resource types for the given service.
+        /// Gets a list of all supported private link resource types for the given
+        /// service.
         /// </remarks>
         /// <param name='searchManagementRequestOptions'>
         /// 
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group within the current subscription. You can
+        /// obtain this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='searchServiceName'>
-        /// The name of the Azure Cognitive Search service associated with the specified resource group.
+        /// The name of the Azure AI Search service associated with the specified
+        /// resource group.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.

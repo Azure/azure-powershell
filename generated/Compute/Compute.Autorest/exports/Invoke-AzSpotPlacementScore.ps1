@@ -61,11 +61,11 @@ $response = Invoke-AzSpotPlacementScore -Location eastus -SpotPlacementScoresInp
 $response.PlacementScore
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20250605.ISpotPlacementScoresInput
-.Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.ISpotPlacementScoresInput
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20250605.ISpotPlacementScoresResponse
+Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.ISpotPlacementScoresResponse
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -93,19 +93,21 @@ INPUTOBJECT <IComputeIdentity>: Identity Parameter
 SPOTPLACEMENTSCORESINPUT <ISpotPlacementScoresInput>: SpotPlacementScores API Input.
   [AvailabilityZone <Boolean?>]: Defines if the scope is zonal or regional.
   [DesiredCount <Int32?>]: Desired instance count per region/zone based on the scope.
-  [DesiredLocation <String[]>]: The desired regions
-  [DesiredSize <IResourceSize[]>]: The desired resource SKUs.
+  [DesiredLocation <List<String>>]: The desired regions
+  [DesiredSize <List<IResourceSize>>]: The desired resource SKUs.
     [Sku <String>]: The resource's CRP virtual machine SKU size.
 .Link
 https://learn.microsoft.com/powershell/module/az.compute/invoke-azspotplacementscore
 #>
 function Invoke-AzSpotPlacementScore {
 [Alias('Invoke-AzSpotPlacementRecommender')]
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20250605.ISpotPlacementScoresResponse])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.ISpotPlacementScoresResponse])]
 [CmdletBinding(DefaultParameterSetName='PostExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Post', Mandatory)]
     [Parameter(ParameterSetName='PostExpanded', Mandatory)]
+    [Parameter(ParameterSetName='PostViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='PostViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
     [System.String]
     # The name of the Azure region.
@@ -113,6 +115,8 @@ param(
 
     [Parameter(ParameterSetName='Post')]
     [Parameter(ParameterSetName='PostExpanded')]
+    [Parameter(ParameterSetName='PostViaJsonFilePath')]
+    [Parameter(ParameterSetName='PostViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -125,16 +129,14 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='Post', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='PostViaIdentity', Mandatory, ValueFromPipeline)]
     [Alias('SpotPlacementRecommenderInput')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20250605.ISpotPlacementScoresInput]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.ISpotPlacementScoresInput]
     # SpotPlacementScores API Input.
-    # To construct, see NOTES section for SPOTPLACEMENTSCORESINPUT properties and create a hash table.
     ${SpotPlacementScoresInput},
 
     [Parameter(ParameterSetName='PostExpanded')]
@@ -163,10 +165,21 @@ param(
     [Parameter(ParameterSetName='PostViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20250605.IResourceSize[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IResourceSize[]]
     # The desired resource SKUs.
-    # To construct, see NOTES section for DESIREDSIZE properties and create a hash table.
     ${DesiredSize},
+
+    [Parameter(ParameterSetName='PostViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Post operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='PostViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
+    [System.String]
+    # Json string supplied to the Post operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -224,6 +237,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -247,10 +269,10 @@ begin {
             PostExpanded = 'Az.Compute.private\Invoke-AzSpotPlacementScore_PostExpanded';
             PostViaIdentity = 'Az.Compute.private\Invoke-AzSpotPlacementScore_PostViaIdentity';
             PostViaIdentityExpanded = 'Az.Compute.private\Invoke-AzSpotPlacementScore_PostViaIdentityExpanded';
+            PostViaJsonFilePath = 'Az.Compute.private\Invoke-AzSpotPlacementScore_PostViaJsonFilePath';
+            PostViaJsonString = 'Az.Compute.private\Invoke-AzSpotPlacementScore_PostViaJsonString';
         }
-        if (('Post', 'PostExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Post', 'PostExpanded', 'PostViaJsonFilePath', 'PostViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -264,6 +286,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

@@ -5,7 +5,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzStorageDiscoveryScopeOb
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'New-AzStorageDiscoveryScopeObject.Recording.json'
+  # Note: New-AzStorageDiscoveryScopeObject is a local object creation cmdlet and doesn't require recording
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -15,7 +15,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzStorageDiscoveryScopeOb
 }
 
 Describe 'New-AzStorageDiscoveryScopeObject' {
-    It '__AllParameterSets' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It '__AllParameterSets' {
+        {
+            New-AzStorageDiscoveryScopeObject -DisplayName "testScope" -ResourceType "Microsoft.Storage/storageAccounts" -TagKeysOnly "key1" -Tag @{"tag1" = "value1"; "tag2" = "value2"}
+        } | Should -Not -Throw
     }
 }

@@ -48,7 +48,7 @@ Gets classic alert rules.
 Gets the Autoscale history.
 
 ### [Get-AzAutoscalePredictiveMetric](Get-AzAutoscalePredictiveMetric.md)
-get predictive autoscale metric future data
+Get predictive autoscale metric future data
 
 ### [Get-AzAutoscaleSetting](Get-AzAutoscaleSetting.md)
 Gets an autoscale setting
@@ -172,7 +172,7 @@ Create an in-memory object for ScaleRuleMetricDimension.
 Create an in-memory object for ScaleRule.
 
 ### [New-AzAutoscaleSetting](New-AzAutoscaleSetting.md)
-Creates or updates an autoscale setting.
+Create an autoscale setting.
 
 ### [New-AzAutoscaleWebhookNotificationObject](New-AzAutoscaleWebhookNotificationObject.md)
 Create an in-memory object for WebhookNotification.
@@ -190,7 +190,7 @@ create an association.
 Create an in-memory object for DataFlow.
 
 ### [New-AzDiagnosticSetting](New-AzDiagnosticSetting.md)
-Creates or updates diagnostic settings for the specified resource.
+Create diagnostic settings for the specified resource.
 
 ### [New-AzDiagnosticSettingLogSettingsObject](New-AzDiagnosticSettingLogSettingsObject.md)
 Create an in-memory object for LogSettings.
@@ -238,7 +238,7 @@ Creates a metric dimension filter that can be used to query metrics.
 Create an in-memory object for MonitoringAccountDestination.
 
 ### [New-AzMonitorWorkspace](New-AzMonitorWorkspace.md)
-Create or update a workspace
+Create a workspace
 
 ### [New-AzPerfCounterDataSourceObject](New-AzPerfCounterDataSourceObject.md)
 Create an in-memory object for PerfCounterDataSource.
@@ -268,7 +268,7 @@ Create an in-memory object for StorageBlobDestination.
 Create an in-memory object for StorageTableDestination.
 
 ### [New-AzSubscriptionDiagnosticSetting](New-AzSubscriptionDiagnosticSetting.md)
-Creates or updates subscription diagnostic settings for the specified resource.
+Create subscription diagnostic settings for the specified resource.
 
 ### [New-AzSyslogDataSourceObject](New-AzSyslogDataSourceObject.md)
 Create an in-memory object for SyslogDataSource.
@@ -351,15 +351,21 @@ Update a data collection rule.
 ### [Update-AzDataCollectionRuleAssociation](Update-AzDataCollectionRuleAssociation.md)
 update an association.
 
+### [Update-AzDiagnosticSetting](Update-AzDiagnosticSetting.md)
+Update diagnostic settings for the specified resource.
+
 ### [Update-AzInsightsPrivateLinkScope](Update-AzInsightsPrivateLinkScope.md)
 Update for private link scope
 
 ### [Update-AzMonitorWorkspace](Update-AzMonitorWorkspace.md)
-Updates part of a workspace
+Update part of a workspace
 
 ### [Update-AzPipelineGroup](Update-AzPipelineGroup.md)
 update a pipeline group instance
 
 ### [Update-AzScheduledQueryRule](Update-AzScheduledQueryRule.md)
 Update a scheduled query rule.
+
+### [Update-AzSubscriptionDiagnosticSetting](Update-AzSubscriptionDiagnosticSetting.md)
+Update subscription diagnostic settings for the specified resource.
 

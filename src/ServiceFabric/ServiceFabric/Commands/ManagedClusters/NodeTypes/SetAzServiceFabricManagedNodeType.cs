@@ -11,24 +11,23 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections;
-using System.Linq;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ServiceFabric.Common;
 using Microsoft.Azure.Commands.ServiceFabric.Models;
 using Microsoft.Azure.Management.ServiceFabricManagedClusters;
 using Microsoft.Azure.Management.ServiceFabricManagedClusters.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
     [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzurePrefix + Constants.ServiceFabricPrefix + "ManagedNodeType", DefaultParameterSetName = ByObj, SupportsShouldProcess = true), OutputType(new Type[] { typeof(bool), typeof(PSManagedNodeType) })]
     public class SetAzServiceFabricManagedNodeType : ServiceFabricManagedCmdletBase
     {
-        protected const string ReimageByName = "ReimageByName";
-        protected const string ReimageById = "ReimageById";
-        protected const string ReimageByObj = "ReimageByObj";
         protected const string WithParamsByName = "WithParamsByName";
         protected const string WithParamsById = "WithParamsById";
         protected const string ByObj = "ByObj";
@@ -39,15 +38,11 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         [Parameter(Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true, ParameterSetName = WithParamsByName,
             HelpMessage = "Specify the name of the resource group.")]
-        [Parameter(Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true, ParameterSetName = ReimageByName,
-            HelpMessage = "Specify the name of the resource group.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty()]
         public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true, ParameterSetName = WithParamsByName,
-            HelpMessage = "Specify the name of the cluster.")]
-        [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true, ParameterSetName = ReimageByName,
             HelpMessage = "Specify the name of the cluster.")]
         [ResourceNameCompleter(Constants.ManagedClustersFullType, nameof(ResourceGroupName))]
         [ValidateNotNullOrEmpty()]
@@ -55,56 +50,19 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         [Parameter(Mandatory = true, Position = 2, ValueFromPipelineByPropertyName = true, ParameterSetName = WithParamsByName,
             HelpMessage = "Specify the name of the node type.")]
-        [Parameter(Mandatory = true, Position = 2, ValueFromPipelineByPropertyName = true, ParameterSetName = ReimageByName,
-            HelpMessage = "Specify the name of the node type.")]
         [ValidateNotNullOrEmpty()]
         [Alias("NodeTypeName")]
         public string Name { get; set; }
 
         [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true, ParameterSetName = WithParamsById,
             HelpMessage = "Node type resource id")]
-        [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true, ParameterSetName = ReimageById,
-            HelpMessage = "Node type resource id")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
         [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true, ParameterSetName = ByObj,
             HelpMessage = "Node type resource")]
-        [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true, ParameterSetName = ReimageByObj,
-            HelpMessage = "Node type resource")]
         [ValidateNotNull]
         public PSManagedNodeType InputObject { get; set; }
-
-        #endregion
-
-        #region reimage params
-
-        [Parameter(Mandatory = true, ParameterSetName = ReimageByName, HelpMessage = "List of node names for the operation.")]
-        [Parameter(Mandatory = true, ParameterSetName = ReimageById, HelpMessage = "List of node names for the operation.")]
-        [Parameter(Mandatory = true, ParameterSetName = ReimageByObj, HelpMessage = "List of node names for the operation.")]
-        [ValidateNotNullOrEmpty()]
-        public string[] NodeName { get; set; }
-
-        [Parameter(Mandatory = true, ParameterSetName = ReimageByName, HelpMessage = "List of node names for the operation.")]
-        [Parameter(Mandatory = true, ParameterSetName = ReimageById, HelpMessage = "List of node names for the operation.")]
-        [Parameter(Mandatory = true, ParameterSetName = ReimageByObj, HelpMessage = "List of node names for the operation.")]
-        public SwitchParameter Reimage { get; set; }
-
-        [Parameter(Mandatory = false, ParameterSetName = ReimageByName,
-            HelpMessage = "Using this flag will force the reimage even if service fabric is unable to disable the nodes. Use with caution as this might cause data loss if stateful workloads are running on the node.")]
-        [Parameter(Mandatory = false, ParameterSetName = ReimageById,
-            HelpMessage = "Using this flag will force the reimage even if service fabric is unable to disable the nodes. Use with caution as this might cause data loss if stateful workloads are running on the node.")]
-        [Parameter(Mandatory = false, ParameterSetName = ReimageByObj,
-            HelpMessage = "Using this flag will force the reimage even if service fabric is unable to disable the nodes. Use with caution as this might cause data loss if stateful workloads are running on the node.")]
-        public SwitchParameter ForceReimage { get; set; }
-
-        [Parameter(Mandatory = false, ParameterSetName = ReimageByName)]
-        [Parameter(Mandatory = false, ParameterSetName = ReimageById)]
-        [Parameter(Mandatory = false, ParameterSetName = ReimageByObj)]
-        public SwitchParameter PassThru { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background and return a Job to track progress.")]
-        public SwitchParameter AsJob { get; set; }
 
         #endregion
 
@@ -134,8 +92,19 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [Parameter(Mandatory = false, ParameterSetName = WithParamsByName, HelpMessage = "The size of virtual machines in the pool. Updating this will override the current value and initiate an in-place sku change.")]
         public string VmSize { get; set; }
 
-        #endregion
+        [Parameter(Mandatory = false, ParameterSetName = WithParamsByName, HelpMessage = "Setting this to true allows stateless node types to scale out without equal distribution across zones.")]
+        public bool? ZoneBalance { get; set; }
 
+        [Parameter(Mandatory = false, ParameterSetName = WithParamsByName, HelpMessage = "Specifies whether the node type should be overprovisioned. It is only allowed for stateless node types.")]
+        public bool? EnableOverProvisioning { get; set; }
+
+        [Parameter(Mandatory = false, ParameterSetName = WithParamsByName, HelpMessage = "Specifies the availability zones where the node type would span across. If the cluster is not spanning across availability zones, initiates az migration for the cluster.")]
+        public List<string> Zone { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background and return a Job to track progress.")]
+        public SwitchParameter AsJob { get; set; }
+
+        #endregion
 
         #endregion
 
@@ -147,28 +116,6 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 NodeType updatedNodeTypeParams = null;
                 switch (ParameterSetName)
                 {
-                    case ReimageByName:
-                    case ReimageById:
-                    case ReimageByObj:
-                        if (ShouldProcess(target: this.Name, action: string.Format("Reimage node(s) {0}, from node type {1} on cluster {2}", string.Join(", ", this.NodeName), this.Name, this.ClusterName)))
-                        {
-
-                            var actionParams = new NodeTypeActionParameters(nodes: this.NodeName, force: this.ForceReimage.IsPresent);
-                            var beginRequestResponse = this.SfrpMcClient.NodeTypes.BeginReimageWithHttpMessagesAsync(
-                                    this.ResourceGroupName,
-                                    this.ClusterName,
-                                    this.Name,
-                                    actionParams).GetAwaiter().GetResult();
-
-                            this.PollLongRunningOperation(beginRequestResponse);
-                        }
-
-                        if (this.PassThru)
-                        {
-                            WriteObject(true);
-                        }
-
-                        return;
                     case WithParamsByName:
                     case WithParamsById:
                         updatedNodeTypeParams = this.GetUpdatedNodeTypeParams();
@@ -238,6 +185,21 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 currentNodeType.VMSize = this.VmSize;
             }
 
+            if (this.ZoneBalance.HasValue)
+            {
+                currentNodeType.ZoneBalance = this.ZoneBalance.Value;
+            }
+
+            if (this.EnableOverProvisioning.HasValue)
+            {
+                currentNodeType.EnableOverProvisioning = this.EnableOverProvisioning.Value;
+            }
+
+            if (this.Zone != null && this.Zone.Count > 0)
+            {
+                currentNodeType.Zones = this.Zone;
+            }
+
             return currentNodeType;
         }
 
@@ -246,7 +208,6 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             switch (ParameterSetName)
             {
                 case ByObj:
-                case ReimageByObj:
                     if (string.IsNullOrEmpty(this.InputObject?.Id))
                     {
                         throw new ArgumentException("ResourceId is null.");
@@ -255,7 +216,6 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     SetParametersByResourceId(this.InputObject.Id);
                     break;
                 case WithParamsById:
-                case ReimageById:
                     SetParametersByResourceId(this.ResourceId);
                     break;
             }

@@ -41,7 +41,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IExecutionTrigger Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskAssignmentExecutionContextInternal.Trigger { get => (this._trigger = this._trigger ?? new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ExecutionTrigger()); set { {_trigger = value;} } }
 
         /// <summary>Internal Acessors for TriggerParameter</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ITriggerParameters Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskAssignmentExecutionContextInternal.TriggerParameter { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IExecutionTriggerInternal)Trigger).Parameter; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IExecutionTriggerInternal)Trigger).Parameter = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ITriggerParameters Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskAssignmentExecutionContextInternal.TriggerParameter { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IExecutionTriggerInternal)Trigger).Parameter; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IExecutionTriggerInternal)Trigger).Parameter = value ?? null /* model class */; }
 
         /// <summary>
         /// When to start task execution. This is a required field when ExecutionTrigger.properties.type is 'OnSchedule'; this property

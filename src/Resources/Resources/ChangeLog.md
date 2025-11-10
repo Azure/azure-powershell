@@ -19,6 +19,11 @@
 -->
 
 ## Upcoming Release
+* Aligned dependency versions with other modules
+
+## Version 8.1.1
+* Fixed issue where RoleAssignment cmdlets did not properly handle insufficient MSGraph permissions [#28583]
+* Fixed bug for objectID filtering in `Get-AzRoleAssignment`. [#28640]
 
 ## Version 8.1.0
 * Added functionality for cmdlet `GetAzureResourceGroup`[#27865]
@@ -52,7 +57,7 @@
 
 ## Version 7.9.0
 * Added `-ApplicationId` as an alias of `-ServicePrincipalName`.
-* Supported getting role assignments at the exact scope via `-AtScope` for `Get-AzRoleAssignment`. 
+* Supported getting role assignments at the exact scope via `-AtScope` for `Get-AzRoleAssignment`.
 
 ## Version 7.8.1
 * Updated to use bicep parameter --documentation-uri instead of the deprecated --documentationUri
