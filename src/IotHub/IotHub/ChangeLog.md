@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Removed unused libraries
+* Aligned dependency versions with other modules
 
 ## Version 2.8.0
 * Upgraded nuget package to signed package.
