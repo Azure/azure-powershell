@@ -40,7 +40,7 @@ python 3.10    True      10/30/2026    @{skuCode=FC1; instanceMemoryMB=System.Ob
 
 This command retrieves all supported Python versions for Flex Consumption function apps in the East Asia region.
 
-### Example 3: Get the default or latest runtime version.
+### Example 3: Get the default or latest runtime version for PowerShell.
 ```powershell
 Get-AzFunctionAppFlexConsumptionRuntime -Location 'east asia' -Runtime PowerShell -DefaultOrLatest
 ```
@@ -53,19 +53,6 @@ python 3.12    True      10/30/2028    @{skuCode=FC1; instanceMemoryMB=System.Ob
 
 This command retrieves the default PowerShell version for Flex Consumption function apps in the East Asia region. Use this parameter when you need to determine the default runtime version that will be used if no specific version is provided during function app creation.
 
-### Example 4: Get the default or latest runtime version.
-```powershell
-Get-AzFunctionAppFlexConsumptionRuntime -Location 'East Asia' -Runtime Python -DefaultOrLatest
-```
-
-```output
-Name       Version IsDefault EndOfLifeDate Sku
-----       ------- --------- ------------- ---
-powershell 7.4     True      11/9/2026     @{skuCode=FC1; instanceMemoryMB=System.Object[]; maximumInstanceCount=; functionAppConfigProperties=}
-```
-
-This command validates that PowerShell 7.4 is supported for Flex Consumption function apps in the East Asia region and retrieves its details.
-
 ### Example 4: Get a specific runtime version.
 ```powershell
 Get-AzFunctionAppFlexConsumptionRuntime -Location 'East Asia' -Runtime Python -Version 3.12
@@ -77,5 +64,5 @@ Name   Version IsDefault EndOfLifeDate Sku
 python 3.12    True      10/30/2028    @{skuCode=FC1; instanceMemoryMB=System.Object[]; maximumInstanceCount=; functionAppConfigProperties=}
 ```
 
-This command retrieves the default Python version for Flex Consumption function apps in the East Asia region. Use this parameter when you need to determine the default runtime version that will be used if no specific version is provided during function app creation.
+This command validates that Python 3.12 is supported for Flex Consumption function apps in the East Asia region and retrieves its details.
 
