@@ -104,6 +104,7 @@ function New-AzMLWorkspacePipelineJobObject {
 
     process {
         $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.PipelineJob]::New()
+        $Service = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.JobBaseServices]::New()
 
         if ($PSBoundParameters.ContainsKey('JobInput')) {
             $Object.Input = $JobInput
@@ -162,6 +163,7 @@ function New-AzMLWorkspacePipelineJobObject {
         if ($PSBoundParameters.ContainsKey('ServiceType')) {
             $Service.Type = $ServiceType
         }
+        $Object.Service = $Service
         if ($PSBoundParameters.ContainsKey('Description')) {
             $Object.Description = $Description
         }

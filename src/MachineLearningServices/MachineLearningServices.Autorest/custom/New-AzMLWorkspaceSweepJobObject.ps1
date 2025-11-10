@@ -170,6 +170,7 @@ function New-AzMLWorkspaceSweepJobObject {
 
     process {
         $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.SweepJob]::New()
+        $Service = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.JobBaseServices]::New()
 
         if ($PSBoundParameters.ContainsKey('DistributionType')) {
             $Object.DistributionType = $DistributionType
@@ -288,6 +289,7 @@ function New-AzMLWorkspaceSweepJobObject {
         if ($PSBoundParameters.ContainsKey('ServiceType')) {
             $Service.Type = $ServiceType
         }
+        $Object.Service = $Service
         if ($PSBoundParameters.ContainsKey('Description')) {
             $Object.Description = $Description
         }
