@@ -16,25 +16,21 @@
 
 <#
 .Synopsis
-Create an in-memory object for AlertRuleAnyOfOrLeafCondition.
+Create an in-memory object for AlertRuleLeafCondition.
 .Description
-Create an in-memory object for AlertRuleAnyOfOrLeafCondition.
+Create an in-memory object for AlertRuleLeafCondition.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.AlertRuleAnyOfOrLeafCondition
+Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.AlertRuleLeafCondition
 .Link
-https://learn.microsoft.com/powershell/module/Az.Monitor/new-AzActivityLogAlertAlertRuleAnyOfOrLeafConditionObject
+https://learn.microsoft.com/powershell/module/Az.Monitor/new-azactivitylogalertalertruleleafconditionobject
 #>
-function New-AzActivityLogAlertAlertRuleAnyOfOrLeafConditionObject {
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.AlertRuleAnyOfOrLeafCondition","15.0.0", "7.0.0", "2025/11/03", DeprecatedOutputProperties='"ContainsAny","AnyOf[]"', NewOutputProperties='"List[ContainsAny]","List[AnyOf]"')]
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.AlertRuleAnyOfOrLeafCondition')]
+function New-AzActivityLogAlertAlertRuleLeafConditionObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.AlertRuleLeafCondition')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Runtime.ParameterBreakingChange("AnyOf", "15.0.0", "7.0.0", "2025/11/03", OldParamaterType="Array", NewParameterType="List")]
-        [Parameter(HelpMessage="An Activity Log Alert rule condition that is met when at least one of its member leaf conditions are met.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.IAlertRuleLeafCondition[]]
-        $AnyOf,
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Runtime.ParameterBreakingChange("ContainsAny", "15.0.0", "7.0.0", "2025/11/03", OldParamaterType="Array", NewParameterType="List")]
+
         [Parameter(HelpMessage="The value of the event's field will be compared to the values in this array (case-insensitive) to determine if the condition is met.")]
         [string[]]
         $ContainsAny,
@@ -48,11 +44,8 @@ function New-AzActivityLogAlertAlertRuleAnyOfOrLeafConditionObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.AlertRuleAnyOfOrLeafCondition]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.AlertRuleLeafCondition]::New()
 
-        if ($PSBoundParameters.ContainsKey('AnyOf')) {
-            $Object.AnyOf = $AnyOf
-        }
         if ($PSBoundParameters.ContainsKey('ContainsAny')) {
             $Object.ContainsAny = $ContainsAny
         }
