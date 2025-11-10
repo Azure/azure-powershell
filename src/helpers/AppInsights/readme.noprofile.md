@@ -73,7 +73,7 @@ This block is updated by an automatic script. Edits may be lost!
 ``` yaml
 directive:
   - where:
-      verb: Clear|Remove|Set
+      verb: Clear|Set
       subject: ^Component$
     remove: true
   - where:
@@ -97,7 +97,7 @@ directive:
     set:
       subject: AppInsightsApiKey
   - where:
-      verb: Get|New
+      verb: Get|New|Remove
       subject: ^AppInsights$
     hide: true
   - where:
