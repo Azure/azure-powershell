@@ -48,7 +48,7 @@ Name                                 Category Resource Group   Impact ImpactedFi
 
 Enable recommendation by resource Id
 
-### Example 2: Enable recommendation byrecommendation name
+### Example 2: Enable recommendation by recommendation name
 ```powershell
 Enable-AzAdvisorRecommendation -RecommendationName 42963553-61de-5334-2d2e-47f3a0099d41
 ```
@@ -59,7 +59,7 @@ Name                                 Category Resource Group   Impact ImpactedFi
 42963553-61de-5334-2d2e-47f3a0099d41 Security automanagehcrprg High   Microsoft.Compute/virtualMachines
 ```
 
-Enable recommendation byrecommendation name
+Enable recommendation by recommendation name
 
 ## PARAMETERS
 
@@ -80,7 +80,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 The powershell object type PsAzureAdvisorResourceRecommendationBase returned by Get-AzAdvisorRecommendation call.
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IAdvisorIdentity
@@ -179,7 +178,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IResourceRecommendationBase
+### Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IResourceRecommendationBase
 
 ## NOTES
 

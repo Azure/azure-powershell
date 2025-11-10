@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzServiceFabricManagedNodeType
 
 ## SYNOPSIS
-Sets node type resource properties or run reimage actions on specific nodes of the node type with -Reimage parameter.
+Sets node type resource properties.
 
 ## SYNTAX
 
@@ -22,16 +22,10 @@ Set-AzServiceFabricManagedNodeType [-InputObject] <PSManagedNodeType> [-AsJob]
 ### WithParamsByName
 ```
 Set-AzServiceFabricManagedNodeType [-ResourceGroupName] <String> [-ClusterName] <String> [-Name] <String>
- [-AsJob] [-InstanceCount <Int32>] [-ApplicationStartPort <Int32>] [-ApplicationEndPort <Int32>]
+ [-InstanceCount <Int32>] [-ApplicationStartPort <Int32>] [-ApplicationEndPort <Int32>]
  [-EphemeralStartPort <Int32>] [-EphemeralEndPort <Int32>] [-Capacity <Hashtable>]
- [-PlacementProperty <Hashtable>] [-VmSize <String>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ReimageByName
-```
-Set-AzServiceFabricManagedNodeType [-ResourceGroupName] <String> [-ClusterName] <String> [-Name] <String>
- -NodeName <String[]> [-Reimage] [-ForceReimage] [-PassThru] [-AsJob]
+ [-PlacementProperty <Hashtable>] [-VmSize <String>] [-ZoneBalance <Boolean>]
+ [-EnableOverProvisioning <Boolean>] [-Zone <System.Collections.Generic.List`1[System.String]>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -42,22 +36,8 @@ Set-AzServiceFabricManagedNodeType [-ResourceId] <String> [-AsJob] [-DefaultProf
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ReimageById
-```
-Set-AzServiceFabricManagedNodeType [-ResourceId] <String> -NodeName <String[]> [-Reimage] [-ForceReimage]
- [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
-```
-
-### ReimageByObj
-```
-Set-AzServiceFabricManagedNodeType [-InputObject] <PSManagedNodeType> -NodeName <String[]> [-Reimage]
- [-ForceReimage] [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ## DESCRIPTION
-Sets node type resource properties or run reimage actions on specific nodes of the node type with -Reimage parameter. On reimage operation the service fabric nodes will be disabled before reimaging the vms and enabled them back again once they come back. If this is done on primary node types it might take a while as it might not reimage all the nodes at the same time. Use -ForceReimage to force the operation even if service fabric is unable to disable the nodes but use with caution as this might cause data loss if stateful workloads are running on the node.
+Sets node type resource properties.
 
 ## EXAMPLES
 
@@ -86,16 +66,6 @@ Update placement properties of the node type. This will overwrite older placemen
 $rgName = "testRG"
 $clusterName = "testCluster"
 $NodeTypeName = "nt1"
-Set-AzServiceFabricManagedNodeType -ResourceGroupName $rgName -ClusterName $clusterName  -Name $NodeTypeName -Reimage -NodeName nt1_0, nt1_3
-```
-
-Reimage node 0 and 3 on the node type.
-
-### Example 4
-```powershell
-$rgName = "testRG"
-$clusterName = "testCluster"
-$NodeTypeName = "nt1"
 $nodeType = Get-AzServiceFabricManagedNodeType -ResourceGroupName $rgName -ClusterName $clusterName -Name $NodeTypeName
 
 $nodeType.VmInstanceCount = 6
@@ -104,7 +74,7 @@ $nodeType | Set-AzServiceFabricManagedNodeType
 
 Update the instance count of the node type, with piping.
 
-### Example 5
+### Example 4
 ```powershell
 $rgName = "testRG"
 $clusterName = "testCluster"
@@ -181,7 +151,7 @@ Specify the name of the cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: WithParamsByName, ReimageByName
+Parameter Sets: WithParamsByName
 Aliases:
 
 Required: True
@@ -198,6 +168,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableOverProvisioning
+Specifies whether the node type should be overprovisioned. It is only allowed for stateless node types.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: WithParamsByName
+Aliases:
 
 Required: False
 Position: Named
@@ -236,28 +221,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ForceReimage
-Using this flag will force the removal even if service fabric is unable to disable the nodes.
-Use with caution as this might cause data loss if stateful workloads are running on the node.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ReimageByName, ReimageById, ReimageByObj
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Node type resource
 
 ```yaml
 Type: Microsoft.Azure.Commands.ServiceFabric.Models.PSManagedNodeType
-Parameter Sets: ByObj, ReimageByObj
+Parameter Sets: ByObj
 Aliases:
 
 Required: True
@@ -287,43 +256,13 @@ Specify the name of the node type.
 
 ```yaml
 Type: System.String
-Parameter Sets: WithParamsByName, ReimageByName
+Parameter Sets: WithParamsByName
 Aliases: NodeTypeName
 
 Required: True
 Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -NodeName
-List of node names for the operation.
-
-```yaml
-Type: System.String[]
-Parameter Sets: ReimageByName, ReimageById, ReimageByObj
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PassThru
-{{ Fill PassThru Description }}
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ReimageByName, ReimageById, ReimageByObj
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -342,27 +281,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Reimage
-Specify to reimage nodes on the node type.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ReimageByName, ReimageById, ReimageByObj
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 Specify the name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: WithParamsByName, ReimageByName
+Parameter Sets: WithParamsByName
 Aliases:
 
 Required: True
@@ -377,7 +301,7 @@ Node type resource id
 
 ```yaml
 Type: System.String
-Parameter Sets: WithParamsById, ReimageById
+Parameter Sets: WithParamsById
 Aliases:
 
 Required: True
@@ -390,9 +314,38 @@ Accept wildcard characters: False
 ### -VmSize
 The size of virtual machines in the pool. Updating this will override the current value and initiate an in-place sku change.
 
-
 ```yaml
 Type: System.String
+Parameter Sets: WithParamsByName
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Zone
+Specifies the availability zones where the node type would span across. If the cluster is not spanning across availability zones, initiates az migration for the cluster.
+
+```yaml
+Type: System.Collections.Generic.List`1[System.String]
+Parameter Sets: WithParamsByName
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ZoneBalance
+Setting this to true allows stateless node types to scale out without equal distribution across zones.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: WithParamsByName
 Aliases:
 

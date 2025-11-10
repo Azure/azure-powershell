@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-List of upgradable versions for a given monitor resource.
+List all upgradable versions for your Elastic monitor resource, helping you plan and execute upgrades.
 .Description
-List of upgradable versions for a given monitor resource.
+List all upgradable versions for your Elastic monitor resource, helping you plan and execute upgrades.
 .Example
 Get-AzElasticDetailUpgradableVersion -ResourceGroupName elastic-rg-3eytki -MonitorName elastic-rhqz1v
 
@@ -32,6 +32,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IElasticIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The configuration name. Only 'default' value is supported.
   [Id <String>]: Resource identity path
   [IntegrationName <String>]: OpenAI Integration name
   [MonitorName <String>]: Monitor resource name

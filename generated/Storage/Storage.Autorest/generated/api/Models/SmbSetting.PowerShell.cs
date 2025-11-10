@@ -113,6 +113,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISmbSettingInternal)this).Multichannel = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IMultichannel) content.GetValueForProperty("Multichannel",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISmbSettingInternal)this).Multichannel, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.MultichannelTypeConverter.ConvertFrom);
             }
+            if (content.Contains("EncryptionInTransit"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISmbSettingInternal)this).EncryptionInTransit = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionInTransit) content.GetValueForProperty("EncryptionInTransit",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISmbSettingInternal)this).EncryptionInTransit, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.EncryptionInTransitTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Version"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISmbSettingInternal)this).Version = (string) content.GetValueForProperty("Version",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISmbSettingInternal)this).Version, global::System.Convert.ToString);
@@ -132,6 +136,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             if (content.Contains("MultichannelEnabled"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISmbSettingInternal)this).MultichannelEnabled = (bool?) content.GetValueForProperty("MultichannelEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISmbSettingInternal)this).MultichannelEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("EncryptionInTransitRequired"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISmbSettingInternal)this).EncryptionInTransitRequired = (bool?) content.GetValueForProperty("EncryptionInTransitRequired",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISmbSettingInternal)this).EncryptionInTransitRequired, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             AfterDeserializeDictionary(content);
         }
@@ -154,6 +162,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISmbSettingInternal)this).Multichannel = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IMultichannel) content.GetValueForProperty("Multichannel",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISmbSettingInternal)this).Multichannel, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.MultichannelTypeConverter.ConvertFrom);
             }
+            if (content.Contains("EncryptionInTransit"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISmbSettingInternal)this).EncryptionInTransit = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionInTransit) content.GetValueForProperty("EncryptionInTransit",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISmbSettingInternal)this).EncryptionInTransit, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.EncryptionInTransitTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Version"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISmbSettingInternal)this).Version = (string) content.GetValueForProperty("Version",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISmbSettingInternal)this).Version, global::System.Convert.ToString);
@@ -173,6 +185,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             if (content.Contains("MultichannelEnabled"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISmbSettingInternal)this).MultichannelEnabled = (bool?) content.GetValueForProperty("MultichannelEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISmbSettingInternal)this).MultichannelEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("EncryptionInTransitRequired"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISmbSettingInternal)this).EncryptionInTransitRequired = (bool?) content.GetValueForProperty("EncryptionInTransitRequired",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISmbSettingInternal)this).EncryptionInTransitRequired, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             AfterDeserializePSObject(content);
         }

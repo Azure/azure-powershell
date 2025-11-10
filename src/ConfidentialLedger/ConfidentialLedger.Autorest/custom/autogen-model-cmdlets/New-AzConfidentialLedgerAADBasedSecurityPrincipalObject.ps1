@@ -21,18 +21,19 @@ Create an in-memory object for AADBasedSecurityPrincipal.
 Create an in-memory object for AADBasedSecurityPrincipal.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.AADBasedSecurityPrincipal
+Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.AADBasedSecurityPrincipal
 .Link
-https://learn.microsoft.com/powershell/module/Az.ConfidentialLedger/new-AzConfidentialLedgerAADBasedSecurityPrincipalObject
+https://learn.microsoft.com/powershell/module/Az.ConfidentialLedger/new-azconfidentialledgeraadbasedsecurityprincipalobject
 #>
 function New-AzConfidentialLedgerAADBasedSecurityPrincipalObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.AADBasedSecurityPrincipal')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.AADBasedSecurityPrincipal')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
         [Parameter(HelpMessage="LedgerRole associated with the Security Principal of Ledger.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Support.LedgerRoleName])]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Support.LedgerRoleName]
+        [Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.PSArgumentCompleterAttribute("Reader", "Contributor", "Administrator")]
+        [string]
         $LedgerRoleName,
         [Parameter(HelpMessage="UUID/GUID based Principal Id of the Security Principal.")]
         [string]
@@ -43,7 +44,7 @@ function New-AzConfidentialLedgerAADBasedSecurityPrincipalObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.AADBasedSecurityPrincipal]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.AADBasedSecurityPrincipal]::New()
 
         if ($PSBoundParameters.ContainsKey('LedgerRoleName')) {
             $Object.LedgerRoleName = $LedgerRoleName

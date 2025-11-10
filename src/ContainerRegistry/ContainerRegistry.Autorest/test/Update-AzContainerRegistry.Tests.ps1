@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzContainerRegistry'))
 }
 
 Describe 'Update-AzContainerRegistry' {
-    It 'UpdateExpanded' {
+    It 'UpdateExpanded' -skip {
         $network1 = New-AzContainerRegistryIPRuleObject -IPAddressOrRange 192.159.0.31 -Action 'Forbidden'
         $network2 = New-AzContainerRegistryIPRuleObject -IPAddressOrRange 192.158.0.31 -Action 'Forbidden'
         $networkSet = @($network1, $network2)

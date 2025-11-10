@@ -76,29 +76,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
                 return;
             }
             // actually deserialize
-            if (content.Contains("Critical"))
+            if (content.Contains("CriticalCveCount"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveSummaryInternal)this).Critical = (long?) content.GetValueForProperty("Critical",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveSummaryInternal)this).Critical, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveSummaryInternal)this).CriticalCveCount = (long?) content.GetValueForProperty("CriticalCveCount",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveSummaryInternal)this).CriticalCveCount, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             }
-            if (content.Contains("High"))
+            if (content.Contains("HighCveCount"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveSummaryInternal)this).High = (long?) content.GetValueForProperty("High",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveSummaryInternal)this).High, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveSummaryInternal)this).HighCveCount = (long?) content.GetValueForProperty("HighCveCount",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveSummaryInternal)this).HighCveCount, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             }
-            if (content.Contains("Medium"))
+            if (content.Contains("MediumCveCount"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveSummaryInternal)this).Medium = (long?) content.GetValueForProperty("Medium",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveSummaryInternal)this).Medium, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveSummaryInternal)this).MediumCveCount = (long?) content.GetValueForProperty("MediumCveCount",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveSummaryInternal)this).MediumCveCount, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             }
-            if (content.Contains("Low"))
+            if (content.Contains("LowCveCount"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveSummaryInternal)this).Low = (long?) content.GetValueForProperty("Low",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveSummaryInternal)this).Low, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveSummaryInternal)this).LowCveCount = (long?) content.GetValueForProperty("LowCveCount",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveSummaryInternal)this).LowCveCount, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             }
-            if (content.Contains("Unknown"))
+            if (content.Contains("UnknownCveCount"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveSummaryInternal)this).Unknown = (long?) content.GetValueForProperty("Unknown",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveSummaryInternal)this).Unknown, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveSummaryInternal)this).UnknownCveCount = (long?) content.GetValueForProperty("UnknownCveCount",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveSummaryInternal)this).UnknownCveCount, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             }
             if (content.Contains("SummaryType"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryResourcePropertiesInternal)this).SummaryType = (string) content.GetValueForProperty("SummaryType",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryResourcePropertiesInternal)this).SummaryType, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProvisioningState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryResourcePropertiesInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryResourcePropertiesInternal)this).ProvisioningState, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
@@ -117,29 +121,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
                 return;
             }
             // actually deserialize
-            if (content.Contains("Critical"))
+            if (content.Contains("CriticalCveCount"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveSummaryInternal)this).Critical = (long?) content.GetValueForProperty("Critical",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveSummaryInternal)this).Critical, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveSummaryInternal)this).CriticalCveCount = (long?) content.GetValueForProperty("CriticalCveCount",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveSummaryInternal)this).CriticalCveCount, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             }
-            if (content.Contains("High"))
+            if (content.Contains("HighCveCount"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveSummaryInternal)this).High = (long?) content.GetValueForProperty("High",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveSummaryInternal)this).High, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveSummaryInternal)this).HighCveCount = (long?) content.GetValueForProperty("HighCveCount",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveSummaryInternal)this).HighCveCount, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             }
-            if (content.Contains("Medium"))
+            if (content.Contains("MediumCveCount"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveSummaryInternal)this).Medium = (long?) content.GetValueForProperty("Medium",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveSummaryInternal)this).Medium, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveSummaryInternal)this).MediumCveCount = (long?) content.GetValueForProperty("MediumCveCount",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveSummaryInternal)this).MediumCveCount, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             }
-            if (content.Contains("Low"))
+            if (content.Contains("LowCveCount"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveSummaryInternal)this).Low = (long?) content.GetValueForProperty("Low",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveSummaryInternal)this).Low, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveSummaryInternal)this).LowCveCount = (long?) content.GetValueForProperty("LowCveCount",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveSummaryInternal)this).LowCveCount, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             }
-            if (content.Contains("Unknown"))
+            if (content.Contains("UnknownCveCount"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveSummaryInternal)this).Unknown = (long?) content.GetValueForProperty("Unknown",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveSummaryInternal)this).Unknown, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveSummaryInternal)this).UnknownCveCount = (long?) content.GetValueForProperty("UnknownCveCount",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveSummaryInternal)this).UnknownCveCount, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             }
             if (content.Contains("SummaryType"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryResourcePropertiesInternal)this).SummaryType = (string) content.GetValueForProperty("SummaryType",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryResourcePropertiesInternal)this).SummaryType, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProvisioningState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryResourcePropertiesInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryResourcePropertiesInternal)this).ProvisioningState, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

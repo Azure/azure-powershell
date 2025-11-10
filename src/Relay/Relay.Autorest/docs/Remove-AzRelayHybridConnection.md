@@ -24,6 +24,12 @@ Remove-AzRelayHybridConnection -InputObject <IRelayIdentity> [-DefaultProfile <P
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### DeleteViaIdentityNamespace
+```
+Remove-AzRelayHybridConnection -Name <String> -NamespaceInputObject <IRelayIdentity>
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Deletes a hybrid connection.
 
@@ -63,7 +69,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayIdentity
@@ -82,7 +87,7 @@ The hybrid connection name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, DeleteViaIdentityNamespace
 Aliases: HybridConnectionName
 
 Required: True
@@ -104,6 +109,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NamespaceInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayIdentity
+Parameter Sets: DeleteViaIdentityNamespace
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

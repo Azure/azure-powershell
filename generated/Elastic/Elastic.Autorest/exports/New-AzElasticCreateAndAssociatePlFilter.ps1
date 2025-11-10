@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create and Associate private link traffic filter for the given deployment.
+Create and associate a PL filter with your Elastic monitor resource to control and manage network traffic.
 .Description
-create and Associate private link traffic filter for the given deployment.
+Create and associate a PL filter with your Elastic monitor resource to control and manage network traffic.
 .Example
 New-AzElasticCreateAndAssociatePlFilter -ResourceGroupName elastic-rg-3eytki -MonitorName elastic-rhqz1v
 
@@ -32,6 +32,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IElasticIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The configuration name. Only 'default' value is supported.
   [Id <String>]: Resource identity path
   [IntegrationName <String>]: OpenAI Integration name
   [MonitorName <String>]: Monitor resource name

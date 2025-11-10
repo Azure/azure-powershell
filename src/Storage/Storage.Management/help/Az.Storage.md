@@ -155,11 +155,17 @@ Gets service properties for Azure Storage File services.
 ### [Get-AzStorageFileServiceUsage](Get-AzStorageFileServiceUsage.md)
 Gets the usage of file service in storage account including account limits, file share limits and constants used in recommendations and bursting formula.
 
+### [Get-AzStorageFileSymbolicLink](Get-AzStorageFileSymbolicLink.md)
+Gets the properties of a symbolic link. Only works in NFS file share.
+
 ### [Get-AzStorageLocalUser](Get-AzStorageLocalUser.md)
 Gets a specified local user or lists all local users in a storage account.
 
 ### [Get-AzStorageLocalUserKey](Get-AzStorageLocalUserKey.md)
 Lists SSH authorized keys and shared key of a specified local user.
+
+### [Get-AzStorageNetworkSecurityPerimeterConfiguration](Get-AzStorageNetworkSecurityPerimeterConfiguration.md)
+Gets effective NetworkSecurityPerimeterConfiguration for association
 
 ### [Get-AzStorageObjectReplicationPolicy](Get-AzStorageObjectReplicationPolicy.md)
 Gets or lists object replication policy of a Storage account.
@@ -185,6 +191,9 @@ Gets a list of file shares.
 ### [Get-AzStorageShareStoredAccessPolicy](Get-AzStorageShareStoredAccessPolicy.md)
 Gets stored access policies for a Storage share.
 
+### [Get-AzStorageSku](Get-AzStorageSku.md)
+Lists the available SKUs supported by Microsoft.Storage for given subscription.
+
 ### [Get-AzStorageTable](Get-AzStorageTable.md)
 Lists the storage tables.
 
@@ -208,6 +217,9 @@ Invokes failover of a Storage account.
 
 ### [Invoke-AzStorageAccountHierarchicalNamespaceUpgrade](Invoke-AzStorageAccountHierarchicalNamespaceUpgrade.md)
 Validates if a storage account can be upgraded to enable HierarchicalNamespace, or upgrades a Storage account to enabled HierarchicalNamespace.
+
+### [Invoke-AzStorageReconcileNetworkSecurityPerimeterConfiguration](Invoke-AzStorageReconcileNetworkSecurityPerimeterConfiguration.md)
+Refreshes any information about the association.
 
 ### [Lock-AzRmStorageContainerImmutabilityPolicy](Lock-AzRmStorageContainerImmutabilityPolicy.md)
 Locks ImmutabilityPolicy of a Storage blob containers
@@ -280,6 +292,9 @@ Creates a hard link to a file in same share. Only works in NFS file share.
 
 ### [New-AzStorageFileSASToken](New-AzStorageFileSASToken.md)
 Generates a shared access signature token for a Storage file.
+
+### [New-AzStorageFileSymbolicLink](New-AzStorageFileSymbolicLink.md)
+Creates a symbolic link to a specified file. Only works in NFS file share.
 
 ### [New-AzStorageLocalUserPermissionScope](New-AzStorageLocalUserPermissionScope.md)
 Creates a permission scope object, which can be used in Set-AzStorageLocalUser.
@@ -544,5 +559,5 @@ Modifies the service properties for the Azure Storage File service.
 Modifies the properties for the Azure Storage service.
 
 ### [Update-AzStorageTaskAssignment](Update-AzStorageTaskAssignment.md)
-update storage task assignment properties
+Update storage task assignment properties
 

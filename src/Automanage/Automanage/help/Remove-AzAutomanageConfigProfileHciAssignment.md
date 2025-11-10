@@ -25,6 +25,13 @@ Remove-AzAutomanageConfigProfileHciAssignment -InputObject <IAutomanageIdentity>
  [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### DeleteViaIdentityCluster
+```
+Remove-AzAutomanageConfigProfileHciAssignment -ClusterInputObject <IAutomanageIdentity>
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Delete a configuration profile assignment
 
@@ -45,6 +52,21 @@ Get-AzAutomanageConfigProfileHciAssignment -ResourceGroupName automangerg -Clust
 This command deletes a configuration profile assignment by pipeline.
 
 ## PARAMETERS
+
+### -ClusterInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity
+Parameter Sets: DeleteViaIdentityCluster
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
 
 ### -ClusterName
 The name of the Arc machine.
@@ -79,7 +101,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity

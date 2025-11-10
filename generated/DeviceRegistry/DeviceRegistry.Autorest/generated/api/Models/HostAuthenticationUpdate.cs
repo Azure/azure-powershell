@@ -24,7 +24,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IUsernamePasswordCredentialsUpdate Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IHostAuthenticationUpdateInternal.UsernamePasswordCredentials { get => (this._usernamePasswordCredentials = this._usernamePasswordCredentials ?? new Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.UsernamePasswordCredentialsUpdate()); set { {_usernamePasswordCredentials = value;} } }
 
         /// <summary>Internal Acessors for X509Credentials</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IX509CredentialsUpdate Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IHostAuthenticationUpdateInternal.X509Credentials { get => (this._x509Credentials = this._x509Credentials ?? new Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.X509CredentialsUpdate()); set { {_x509Credentials = value;} } }
+        Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IX509CertificateCredentialsUpdate Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IHostAuthenticationUpdateInternal.X509Credentials { get => (this._x509Credentials = this._x509Credentials ?? new Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.X509CertificateCredentialsUpdate()); set { {_x509Credentials = value;} } }
 
         /// <summary>Backing field for <see cref="UsernamePasswordCredentials" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IUsernamePasswordCredentialsUpdate _usernamePasswordCredentials;
@@ -44,19 +44,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         public string UsernamePasswordCredentialsUsernameSecretName { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IUsernamePasswordCredentialsUpdateInternal)UsernamePasswordCredentials).UsernameSecretName; set => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IUsernamePasswordCredentialsUpdateInternal)UsernamePasswordCredentials).UsernameSecretName = value ?? null; }
 
         /// <summary>Backing field for <see cref="X509Credentials" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IX509CredentialsUpdate _x509Credentials;
+        private Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IX509CertificateCredentialsUpdate _x509Credentials;
 
         /// <summary>
         /// Defines the certificate reference when Certificate user authentication mode is selected.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Origin(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.PropertyOrigin.Owned)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IX509CredentialsUpdate X509Credentials { get => (this._x509Credentials = this._x509Credentials ?? new Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.X509CredentialsUpdate()); set => this._x509Credentials = value; }
+        internal Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IX509CertificateCredentialsUpdate X509Credentials { get => (this._x509Credentials = this._x509Credentials ?? new Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.X509CertificateCredentialsUpdate()); set => this._x509Credentials = value; }
 
         /// <summary>
         /// The name of the secret containing the certificate and private key (e.g. stored as .der/.pem or .der/.pfx).
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Origin(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.PropertyOrigin.Inlined)]
-        public string X509CredentialsCertificateSecretName { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IX509CredentialsUpdateInternal)X509Credentials).CertificateSecretName; set => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IX509CredentialsUpdateInternal)X509Credentials).CertificateSecretName = value ?? null; }
+        public string X509CredentialsCertificateSecretName { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IX509CertificateCredentialsUpdateInternal)X509Credentials).CertificateSecretName; set => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IX509CertificateCredentialsUpdateInternal)X509Credentials).CertificateSecretName = value ?? null; }
+
+        /// <summary>
+        /// The name of the secret containing the combined intermediate certificates in PEM format.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Origin(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.PropertyOrigin.Inlined)]
+        public string X509CredentialsIntermediateCertificatesSecretName { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IX509CertificateCredentialsUpdateInternal)X509Credentials).IntermediateCertificatesSecretName; set => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IX509CertificateCredentialsUpdateInternal)X509Credentials).IntermediateCertificatesSecretName = value ?? null; }
+
+        /// <summary>
+        /// The name of the secret containing the certificate private key in PEM or DER format.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Origin(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.PropertyOrigin.Inlined)]
+        public string X509CredentialsKeySecretName { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IX509CertificateCredentialsUpdateInternal)X509Credentials).KeySecretName; set => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IX509CertificateCredentialsUpdateInternal)X509Credentials).KeySecretName = value ?? null; }
 
         /// <summary>Creates an new <see cref="HostAuthenticationUpdate" /> instance.</summary>
         public HostAuthenticationUpdate()
@@ -115,6 +127,32 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         SerializedName = @"certificateSecretName",
         PossibleTypes = new [] { typeof(string) })]
         string X509CredentialsCertificateSecretName { get; set; }
+        /// <summary>
+        /// The name of the secret containing the combined intermediate certificates in PEM format.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The name of the secret containing the combined intermediate certificates in PEM format.",
+        SerializedName = @"intermediateCertificatesSecretName",
+        PossibleTypes = new [] { typeof(string) })]
+        string X509CredentialsIntermediateCertificatesSecretName { get; set; }
+        /// <summary>
+        /// The name of the secret containing the certificate private key in PEM or DER format.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The name of the secret containing the certificate private key in PEM or DER format.",
+        SerializedName = @"keySecretName",
+        PossibleTypes = new [] { typeof(string) })]
+        string X509CredentialsKeySecretName { get; set; }
 
     }
     /// Definition of the client authentication mechanism to the host.
@@ -135,11 +173,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         /// <summary>
         /// Defines the certificate reference when Certificate user authentication mode is selected.
         /// </summary>
-        Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IX509CredentialsUpdate X509Credentials { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IX509CertificateCredentialsUpdate X509Credentials { get; set; }
         /// <summary>
         /// The name of the secret containing the certificate and private key (e.g. stored as .der/.pem or .der/.pfx).
         /// </summary>
         string X509CredentialsCertificateSecretName { get; set; }
+        /// <summary>
+        /// The name of the secret containing the combined intermediate certificates in PEM format.
+        /// </summary>
+        string X509CredentialsIntermediateCertificatesSecretName { get; set; }
+        /// <summary>
+        /// The name of the secret containing the certificate private key in PEM or DER format.
+        /// </summary>
+        string X509CredentialsKeySecretName { get; set; }
 
     }
 }
