@@ -18,7 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Updated `DatabaseOperations` Api to version `2024-11-01-preview` for .Net Sdk
 
 ## Version 6.3.0
 * Updated with support for Immutable Long-Term Retention Backups

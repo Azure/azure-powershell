@@ -11,32 +11,31 @@
 namespace Microsoft.Azure.Management.Compute.Models
 {
     using Newtonsoft.Json;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// Instance view statuses.
+    /// The input properties for ScaleOut
     /// </summary>
-    public partial class InstanceViewStatusesSummary
+    public partial class VMScaleSetScaleOutInputProperties
     {
         /// <summary>
-        /// Initializes a new instance of the InstanceViewStatusesSummary
+        /// Initializes a new instance of the VMScaleSetScaleOutInputProperties
         /// class.
         /// </summary>
-        public InstanceViewStatusesSummary()
+        public VMScaleSetScaleOutInputProperties()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the InstanceViewStatusesSummary
+        /// Initializes a new instance of the VMScaleSetScaleOutInputProperties
         /// class.
         /// </summary>
-        /// <param name="statusesSummary">The summary.</param>
-        public InstanceViewStatusesSummary(IList<StatusCodeCount> statusesSummary = default(IList<StatusCodeCount>))
+        /// <param name="zone">The zone in which the scale out is requested for
+        /// the virtual machine scale set.</param>
+        public VMScaleSetScaleOutInputProperties(string zone = default(string))
         {
-            StatusesSummary = statusesSummary;
+            Zone = zone;
             CustomInit();
         }
 
@@ -46,10 +45,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the summary.
+        /// Gets or sets the zone in which the scale out is requested for the
+        /// virtual machine scale set.
         /// </summary>
-        [JsonProperty(PropertyName = "statusesSummary")]
-        public IList<StatusCodeCount> StatusesSummary { get; private set; }
+        [JsonProperty(PropertyName = "zone")]
+        public string Zone { get; set; }
 
     }
 }

@@ -5,7 +5,7 @@
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models
 {
-    using Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PowerShell;
+    using Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PowerShell;
 
     /// <summary>
     /// A PowerShell PSTypeConverter to support converting to an instance of <see cref="GalleryApplicationList" />
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models
             try
             {
                 string text = sourceValue.ToString()?.Trim();
-                return true == text?.StartsWith("{") && true == text?.EndsWith("}") && Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode.Parse(text).Type == Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonType.Object;
+                return true == text?.StartsWith("{") && true == text?.EndsWith("}") && Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(text).Type == Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonType.Object;
             }
             catch
             {

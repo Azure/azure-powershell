@@ -86,10 +86,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.SerializationMode.IncludeRead))
             {
-                AddIf( null != this._systemData ? (Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode) this._systemData.ToJson(null,serializationMode) : null, "systemData" ,container.Add );
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.SerializationMode.IncludeReadOnly))
-            {
                 AddIf( null != (((object)this._id)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonString(this._id.ToString()) : null, "id" ,container.Add );
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.SerializationMode.IncludeRead))

@@ -5,7 +5,7 @@
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models
 {
-    using Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PowerShell;
+    using Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PowerShell;
 
     /// <summary>Resource tags</summary>
     [System.ComponentModel.TypeConverter(typeof(UpdateResourceDefinitionTagsTypeConverter))]

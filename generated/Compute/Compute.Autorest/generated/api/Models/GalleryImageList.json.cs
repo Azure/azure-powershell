@@ -5,7 +5,7 @@
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models
 {
-    using static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Extensions;
+    using static Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Extensions;
 
     /// <summary>The List Gallery Images operation response.</summary>
     public partial class GalleryImageList
@@ -17,15 +17,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models
         /// </summary>
         /// <param name="json">The JsonNode that should be deserialized into this object.</param>
 
-        partial void AfterFromJson(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonObject json);
+        partial void AfterFromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonObject json);
 
         /// <summary>
-        /// <c>AfterToJson</c> will be called after the json serialization has finished, allowing customization of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonObject"
+        /// <c>AfterToJson</c> will be called after the json serialization has finished, allowing customization of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonObject"
         /// /> before it is returned. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="container">The JSON container that the serialization result will be placed in.</param>
 
-        partial void AfterToJson(ref Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonObject container);
+        partial void AfterToJson(ref Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonObject container);
 
         /// <summary>
         /// <c>BeforeFromJson</c> will be called before the json deserialization has commenced, allowing complete customization of
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models
         /// <param name="returnNow">Determines if the rest of the deserialization should be processed, or if the method should return
         /// instantly.</param>
 
-        partial void BeforeFromJson(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonObject json, ref bool returnNow);
+        partial void BeforeFromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonObject json, ref bool returnNow);
 
         /// <summary>
         /// <c>BeforeToJson</c> will be called before the json serialization has commenced, allowing complete customization of the
@@ -51,12 +51,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models
         /// <param name="returnNow">Determines if the rest of the serialization should be processed, or if the method should return
         /// instantly.</param>
 
-        partial void BeforeToJson(ref Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonObject container, ref bool returnNow);
+        partial void BeforeToJson(ref Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonObject container, ref bool returnNow);
 
         /// <summary>
         /// Deserializes a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode"/> into an instance of Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IGalleryImageList.
         /// </summary>
-        /// <param name="node">a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode" /> to deserialize from.</param>
+        /// <param name="node">a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode" /> to deserialize from.</param>
         /// <returns>
         /// an instance of Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IGalleryImageList.
         /// </returns>
@@ -85,15 +85,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models
         /// <summary>
         /// Serializes this instance of <see cref="GalleryImageList" /> into a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode" />.
         /// </summary>
-        /// <param name="container">The <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonObject"/> container to serialize this object into. If the caller
+        /// <param name="container">The <see cref="Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonObject"/> container to serialize this object into. If the caller
         /// passes in <c>null</c>, a new instance will be created and returned to the caller.</param>
-        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.SerializationMode"/>.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.SerializationMode"/>.</param>
         /// <returns>
         /// a serialized instance of <see cref="GalleryImageList" /> as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode" />.
         /// </returns>
-        public Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode ToJson(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonObject container, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.SerializationMode serializationMode)
+        public Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode ToJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonObject container, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.SerializationMode serializationMode)
         {
-            container = container ?? new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonObject();
+            container = container ?? new Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonObject();
 
             bool returnNow = false;
             BeforeToJson(ref container, ref returnNow);

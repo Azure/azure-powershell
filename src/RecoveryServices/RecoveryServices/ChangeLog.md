@@ -19,7 +19,6 @@
 -->
 
 ## Upcoming Release
-* Added new optional parameter CVMOsDiskEncryptionSetId in Restore-AzRecoveryServicesBackupItem.
 
 ## Version 7.10.0
 * Added Cross region restore support for new region - northeastus5.

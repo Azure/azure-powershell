@@ -5,7 +5,7 @@
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models
 {
-    using Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PowerShell;
+    using Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PowerShell;
 
     /// <summary>The List Galleries operation response.</summary>
     [System.ComponentModel.TypeConverter(typeof(GalleryListTypeConverter))]
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models
                 return;
             }
             // actually deserialize
-            if (content.Contains("MdmProviderGuid"))
+            if (content.Contains("Value"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IGalleryListInternal)this).Value = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IGallery>) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IGalleryListInternal)this).Value, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IGallery>(__y, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.GalleryTypeConverter.ConvertFrom));
             }
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models
                 return;
             }
             // actually deserialize
-            if (content.Contains("MdmProviderGuid"))
+            if (content.Contains("Value"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IGalleryListInternal)this).Value = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IGallery>) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IGalleryListInternal)this).Value, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IGallery>(__y, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.GalleryTypeConverter.ConvertFrom));
             }

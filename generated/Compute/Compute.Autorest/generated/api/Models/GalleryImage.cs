@@ -81,15 +81,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Origin(Microsoft.Azure.PowerShell.Cmdlets.Compute.PropertyOrigin.Inlined)]
         public int? MemoryMin { get => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IGalleryImagePropertiesInternal)Property).MemoryMin; set => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IGalleryImagePropertiesInternal)Property).MemoryMin = value ?? default(int); }
 
-        /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.IResourceInternal)__resource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.IResourceInternal)__resource).Id = value; }
-
-        /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.IResourceInternal)__resource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.IResourceInternal)__resource).Name = value; }
-
-        /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.IResourceInternal)__resource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.IResourceInternal)__resource).Type = value; }
-
         /// <summary>Internal Acessors for Disallowed</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IDisallowed Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IGalleryImageInternal.Disallowed { get => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IGalleryImagePropertiesInternal)Property).Disallowed; set => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IGalleryImagePropertiesInternal)Property).Disallowed = value ?? null /* model class */; }
 
