@@ -27,14 +27,14 @@ For information on how to develop for `Az.PaloAltoNetworks`, see [how-to.md](how
 > see https://aka.ms/autorest
 
 ``` yaml
-commit: 1e00aa55113c2a47b26cf588b732758071d6f05f
+commit: 08a510e768ebd24b415dd642416cf955b70c4069
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/paloaltonetworks/resource-manager/PaloAltoNetworks.Cloudngfw/stable/2023-09-01/PaloAltoNetworks.Cloudngfw.json
+  - $(repo)/specification/paloaltonetworks/resource-manager/PaloAltoNetworks.Cloudngfw/stable/2025-10-08/PaloAltoNetworks.Cloudngfw.json
 
 title: PaloAltoNetworks
-module-version: 0.2.0
+module-version: 0.3.0
 subject-prefix: $(service-name)
 
 directive:
@@ -51,7 +51,7 @@ directive:
         "default": {
           "description": "Common error response for all Azure Resource Manager APIs to return error details for failed operations.",
           "schema": {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/1e00aa55113c2a47b26cf588b732758071d6f05f/specification/common-types/resource-management/v3/types.json#/definitions/ErrorResponse"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/08a510e768ebd24b415dd642416cf955b70c4069/specification/common-types/resource-management/v3/types.json#/definitions/ErrorResponse"
           }
         }
       }
@@ -69,13 +69,15 @@ directive:
         "default": {
           "description": "Common error response for all Azure Resource Manager APIs to return error details for failed operations.",
           "schema": {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/1e00aa55113c2a47b26cf588b732758071d6f05f/specification/common-types/resource-management/v3/types.json#/definitions/ErrorResponse"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/08a510e768ebd24b415dd642416cf955b70c4069/specification/common-types/resource-management/v3/types.json#/definitions/ErrorResponse"
           }
         }
       }
 
+  # Remove non-Expanded Create/Update/Save variants EXCEPT ProductSerialNumber
   - where:
       variant: ^(Create|Update|Save)(?!.*?Expanded)
+      subject: ^(?!.*ProductSerialNumber).*$
     remove: true
   - where:
       variant: ^CreateViaIdentity.*$
