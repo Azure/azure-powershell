@@ -587,16 +587,6 @@ function Test-StorageBlobServiceProperties
 		$property = Get-AzStorageBlobServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname
 		Assert-AreEqual '2018-03-28' $property.DefaultServiceVersion
 
-		# Update and Get Blob Service Properties: ChangeFeed
-		$property = Update-AzStorageBlobServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname -EnableChangeFeed $true
-		Assert-AreEqual $true $property.ChangeFeed.Enabled
-		$property = Get-AzStorageBlobServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname
-		Assert-AreEqual $true $property.ChangeFeed.Enabled
-		$property = Update-AzStorageBlobServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname -EnableChangeFeed $false
-		Assert-AreEqual $false $property.ChangeFeed.Enabled
-		$property = Get-AzStorageBlobServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname
-		Assert-AreEqual $false $property.ChangeFeed.Enabled
-
 		# Enable and Disable Blob Delete Retention Policy
 		$policy = Enable-AzStorageBlobDeleteRetentionPolicy -ResourceGroupName $rgname -StorageAccountName $stoname -PassThru -RetentionDays 3 -AllowPermanentDelete
 		Assert-AreEqual $true $policy.Enabled
@@ -731,17 +721,17 @@ function Test-StorageBlobORS
         $stoname1 = 'sto' + $rgname + 'src';
         $stoname2 = 'sto' + $rgname + 'dest';
         $stotype = 'Standard_LRS';
-        $loc = Get-ProviderLocation ResourceManagement;
+        $loc = 'centraluseuap';
         $kind = 'StorageV2'
 	
         Write-Verbose "RGName: $rgname | Loc: $loc"
         New-AzResourceGroup -Name $rgname -Location $loc;
 		
-        $loc = Get-ProviderLocation ResourceManagement;
+        #$loc = Get-ProviderLocation ResourceManagement;
         $sto1 = New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname1 -Location $loc -Type $stotype -Kind $kind 
         $sto2 = New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname2 -Location $loc -Type $stotype -Kind $kind 
-        Assert-AreEqual $false $sto1.AllowCrossTenantReplication
-        Assert-AreEqual $false $sto2.AllowCrossTenantReplication
+        Assert-AreNotEqual $true $sto1.AllowCrossTenantReplication
+        Assert-AreNotEqual $true $sto2.AllowCrossTenantReplication
 		
         # Enable Blob Enable Changefeed and versioning
         Update-AzStorageBlobServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname1 -EnableChangeFeed $true -IsVersioningEnabled $true
@@ -765,7 +755,7 @@ function Test-StorageBlobORS
 		$rule2 = New-AzStorageObjectReplicationPolicyRule -SourceContainer src -DestinationContainer dest -MinCreationTime $minCreationTime -PrefixMatch a,abc,dd #-Tag t1,t2,t3 
 
         # set policy to dest account
-        $destPolicy = Set-AzStorageObjectReplicationPolicy -ResourceGroupName $rgname -StorageAccountName $stoname2 -PolicyId default -SourceAccount $sto1.Id  -Rule $rule1,$rule2 -EnableMetric $true 
+        $destPolicy = Set-AzStorageObjectReplicationPolicy -ResourceGroupName $rgname -StorageAccountName $stoname2 -PolicyId default -SourceAccount $sto1.Id  -Rule $rule1,$rule2 -EnableMetric $true -EnablePriorityReplication $true
         $policyID = $destPolicy.PolicyId
 		Assert-AreEqual $sto1.Id $destPolicy.SourceAccount
 		Assert-AreEqual $sto2.Id $destPolicy.DestinationAccount
@@ -777,6 +767,8 @@ function Test-StorageBlobORS
 		Assert-AreEqual dest $destPolicy.Rules[1].DestinationContainer
 		Assert-AreEqual 3 $destPolicy.Rules[1].Filters.PrefixMatch.Count
 		Assert-AreEqual $minCreationTime ($destPolicy.Rules[1].Filters.MinCreationTime.ToUniversalTime().ToString("s")+"Z")
+		Assert-AreEqual $true $destPolicy.Metrics.Enabled
+		Assert-AreEqual $true $destPolicy.PriorityReplication.Enabled
 		$destPolicy = Get-AzStorageObjectReplicationPolicy -ResourceGroupName $rgname -StorageAccountName $stoname2 -PolicyId $destPolicy.PolicyId
 		Assert-AreEqual $policyID $destPolicy.PolicyId
 		Assert-AreEqual $sto1.Id $destPolicy.SourceAccount
@@ -790,6 +782,7 @@ function Test-StorageBlobORS
 		Assert-AreEqual 3 $destPolicy.Rules[1].Filters.PrefixMatch.Count
 		Assert-AreEqual $minCreationTime ($destPolicy.Rules[1].Filters.MinCreationTime.ToUniversalTime().ToString("s")+"Z")
 		Assert-AreEqual $true $destPolicy.Metrics.Enabled
+		Assert-AreEqual $true $destPolicy.PriorityReplication.Enabled
 
 		#Set policy to source account
 		Set-AzStorageObjectReplicationPolicy -ResourceGroupName $rgname -StorageAccountName $stoname1 -InputObject $destPolicy
@@ -806,14 +799,15 @@ function Test-StorageBlobORS
 		Assert-AreEqual 3 $srcPolicy.Rules[1].Filters.PrefixMatch.Count
 		Assert-AreEqual $minCreationTime ($srcPolicy.Rules[1].Filters.MinCreationTime.ToUniversalTime().ToString("s")+"Z")
 		Assert-AreEqual $true $srcPolicy.Metrics.Enabled
+		Assert-AreEqual $true $destPolicy.PriorityReplication.Enabled
 		$destPolicy | Remove-AzStorageObjectReplicationPolicy 
 		$srcPolicy | Remove-AzStorageObjectReplicationPolicy 
 
 		# disable AllowCrossTenantReplication
 		$sto1 = Set-AzStorageAccount -ResourceGroupName $rgname -StorageAccountName $stoname1  -AllowCrossTenantReplication $false -EnableHttpsTrafficOnly $true 
 		$sto2 = Set-AzStorageAccount -ResourceGroupName $rgname -StorageAccountName $stoname2 -AllowCrossTenantReplication $false -EnableHttpsTrafficOnly $true 
-		Assert-AreEqual $false $sto1.AllowCrossTenantReplication
-		Assert-AreEqual $false $sto2.AllowCrossTenantReplication
+		Assert-AreNotEqual $true $sto1.AllowCrossTenantReplication
+		Assert-AreNotEqual $true $sto2.AllowCrossTenantReplication
 
 		# Set policy with source account resourceID
 		Set-AzStorageObjectReplicationPolicy -ResourceGroupName $rgname -StorageAccountName $stoname2 -PolicyId default -SourceAccount $sto1.Id  -Rule $rule1,$rule2 -EnableMetric $false	

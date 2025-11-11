@@ -45,6 +45,6 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public bool? CanFailover { get; set; }
         public bool? CanPlannedFailover { get; set; }
         public string PostFailoverRedundancy { get; set; }
-        public string PostPlannedFailoverRedundancy { get;set; }
+        public string PostPlannedFailoverRedundancy { get; set; }
     }
 }

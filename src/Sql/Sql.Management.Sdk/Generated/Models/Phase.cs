@@ -13,7 +13,9 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class Phase
     {
+        public const string LogTransitionInProgress = "LogTransitionInProgress";
         public const string Copying = "Copying";
+        public const string BuildingHyperscaleComponents = "BuildingHyperscaleComponents";
         public const string Catchup = "Catchup";
         public const string WaitingForCutover = "WaitingForCutover";
         public const string CutoverInProgress = "CutoverInProgress";

@@ -26,11 +26,6 @@ function InitializeRequiredPackages {
     [CmdletBinding()]
     param ()
 
-    if (-not (Get-PackageProvider -Name NuGet -ErrorAction SilentlyContinue)) {
-        Install-PackageProvider -Name NuGet -Force
-    }
-
-    Install-Package -Name YamlDotNet -RequiredVersion ${env:YamlDotNetVersion} -ProviderName NuGet -Force
     $pkgYaml = Get-Package -Name YamlDotNet | Select-Object -ExpandProperty Source | Split-Path
     $dllYaml = Join-Path -Path $pkgYaml -ChildPath "lib" | Join-Path -ChildPath "netstandard2.0" | Join-Path -ChildPath "YamlDotNet.dll"
     Add-Type -LiteralPath $dllYaml

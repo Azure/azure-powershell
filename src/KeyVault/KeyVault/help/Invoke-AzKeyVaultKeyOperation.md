@@ -15,22 +15,22 @@ Performs operation like "Encrypt", "Decrypt", "Wrap" or "Unwrap" using a specifi
 ### ByVaultName (Default)
 ```
 Invoke-AzKeyVaultKeyOperation [-Version <String>] -Operation <String> -Algorithm <String>
- [-ByteArrayValue <Byte[]>] [-Name] <String> [-VaultName] <String> [-DefaultProfile <IAzureContextContainer>]
+ -ByteArrayValue <Byte[]> [-Name] <String> [-VaultName] <String> [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByHsmName
 ```
 Invoke-AzKeyVaultKeyOperation [-Version <String>] -Operation <String> -Algorithm <String>
- [-ByteArrayValue <Byte[]>] [-HsmName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
+ -ByteArrayValue <Byte[]> [-HsmName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByKeyInputObject
 ```
 Invoke-AzKeyVaultKeyOperation [-Version <String>] -Operation <String> -Algorithm <String>
- [-ByteArrayValue <Byte[]>] [-InputObject] <PSKeyVaultKeyIdentityItem>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -ByteArrayValue <Byte[]> [-InputObject] <PSKeyVaultKeyIdentityItem> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -59,6 +59,7 @@ Encrypts `$byteArray` using test-key stored in test-kv.
 
 ### Example 2: Decrypts byte array using an encryption key
 ```powershell
+$encryptedData = [pscustomobject]@{ RawResult = [byte[]]@(58,219) }
 $decryptedData = Invoke-AzKeyVaultKeyOperation -Operation Decrypt -Algorithm RSA1_5 -VaultName test-kv -Name test-key -ByteArrayValue $encryptedData.RawResult
 $decryptedData
 ```
@@ -118,6 +119,7 @@ Wraps a symmetric key using key named test-key stored in test-kv. The `RawResult
 
 ### Example 6: Unwraps a symmetric key using a specified key
 ```powershell
+$wrappedResult = [pscustomobject]@{ RawResult = [byte[]]@(58,219) }
 $unwrappedResult = Invoke-AzKeyVaultKeyOperation -Operation Unwrap -Algorithm RSA1_5 -VaultName test-kv -Name test-key -ByteArrayValue $wrappedResult.RawResult
 $key = [system.Text.Encoding]::UTF8.GetString($unwrappedResult.RawResult)
 $key
@@ -154,7 +156,7 @@ Type: System.Byte[]
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

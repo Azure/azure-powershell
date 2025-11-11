@@ -1,6 +1,6 @@
 ﻿function Update-AzDataProtectionBackupVault
 {
-	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IBackupVaultResource')]
+	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IBackupVaultResource')]
     [CmdletBinding(DefaultParameterSetName="UpdateExpanded", PositionalBinding=$false, SupportsShouldProcess)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Updates a BackupVault resource belonging to a resource group. For example updating tags for a resource.')]
 
@@ -184,9 +184,9 @@
 
         if ($vault.EncryptionSetting -ne $null) { $encryptionSettings = $vault.EncryptionSetting }
         else { 
-            $encryptionSettings = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.EncryptionSettings]::new()
-            $encryptionSettings.CmkIdentity = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.CmkKekIdentity]::new()
-            $encryptionSettings.CmkKeyVaultProperty = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.CmkKeyVaultProperties]::new()
+            $encryptionSettings = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.EncryptionSettings]::new()
+            $encryptionSettings.CmkIdentity = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.CmkKekIdentity]::new()
+            $encryptionSettings.CmkKeyVaultProperty = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.CmkKeyVaultProperties]::new()
         }
 
         if ($hasCmkEncryptionState) { $encryptionSettings.State = $CmkEncryptionState }

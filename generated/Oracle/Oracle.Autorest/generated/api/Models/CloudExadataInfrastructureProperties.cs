@@ -143,6 +143,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
         public int? EstimatedPatchingTimeTotalEstimatedPatchingTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IEstimatedPatchingTimeInternal)EstimatedPatchingTime).TotalEstimatedPatchingTime; }
 
+        /// <summary>Backing field for <see cref="ExascaleConfig" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExascaleConfigDetails _exascaleConfig;
+
+        /// <summary>The exascale config details for the cloud Exadata infrastructure</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExascaleConfigDetails ExascaleConfig { get => (this._exascaleConfig = this._exascaleConfig ?? new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ExascaleConfigDetails()); }
+
+        /// <summary>Available storage size for Exascale in GBs.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
+        public int? ExascaleConfigAvailableStorageInGb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExascaleConfigDetailsInternal)ExascaleConfig).AvailableStorageInGb; }
+
+        /// <summary>Storage size needed for Exascale in GBs.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
+        public int? ExascaleConfigTotalStorageInGb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExascaleConfigDetailsInternal)ExascaleConfig).TotalStorageInGb; }
+
         /// <summary>Backing field for <see cref="LastMaintenanceRunId" /> property.</summary>
         private string _lastMaintenanceRunId;
 
@@ -307,6 +322,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
 
         /// <summary>Internal Acessors for EstimatedPatchingTimeTotalEstimatedPatchingTime</summary>
         int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal.EstimatedPatchingTimeTotalEstimatedPatchingTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IEstimatedPatchingTimeInternal)EstimatedPatchingTime).TotalEstimatedPatchingTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IEstimatedPatchingTimeInternal)EstimatedPatchingTime).TotalEstimatedPatchingTime = value ?? default(int); }
+
+        /// <summary>Internal Acessors for ExascaleConfig</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExascaleConfigDetails Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal.ExascaleConfig { get => (this._exascaleConfig = this._exascaleConfig ?? new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ExascaleConfigDetails()); set { {_exascaleConfig = value;} } }
+
+        /// <summary>Internal Acessors for ExascaleConfigAvailableStorageInGb</summary>
+        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal.ExascaleConfigAvailableStorageInGb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExascaleConfigDetailsInternal)ExascaleConfig).AvailableStorageInGb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExascaleConfigDetailsInternal)ExascaleConfig).AvailableStorageInGb = value ?? default(int); }
+
+        /// <summary>Internal Acessors for ExascaleConfigTotalStorageInGb</summary>
+        int? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal.ExascaleConfigTotalStorageInGb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExascaleConfigDetailsInternal)ExascaleConfig).TotalStorageInGb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExascaleConfigDetailsInternal)ExascaleConfig).TotalStorageInGb = value ?? default(int); }
 
         /// <summary>Internal Acessors for LastMaintenanceRunId</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructurePropertiesInternal.LastMaintenanceRunId { get => this._lastMaintenanceRunId; set { {_lastMaintenanceRunId = value;} } }
@@ -661,6 +685,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         SerializedName = @"totalEstimatedPatchingTime",
         PossibleTypes = new [] { typeof(int) })]
         int? EstimatedPatchingTimeTotalEstimatedPatchingTime { get;  }
+        /// <summary>Available storage size for Exascale in GBs.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Available storage size for Exascale in GBs.",
+        SerializedName = @"availableStorageInGbs",
+        PossibleTypes = new [] { typeof(int) })]
+        int? ExascaleConfigAvailableStorageInGb { get;  }
+        /// <summary>Storage size needed for Exascale in GBs.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Storage size needed for Exascale in GBs.",
+        SerializedName = @"totalStorageInGbs",
+        PossibleTypes = new [] { typeof(int) })]
+        int? ExascaleConfigTotalStorageInGb { get;  }
         /// <summary>The OCID of the last maintenance run.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
@@ -1078,6 +1124,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         int? EstimatedPatchingTimeEstimatedStorageServerPatchingTime { get; set; }
         /// <summary>The estimated total time required in minutes for all patching operations.</summary>
         int? EstimatedPatchingTimeTotalEstimatedPatchingTime { get; set; }
+        /// <summary>The exascale config details for the cloud Exadata infrastructure</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExascaleConfigDetails ExascaleConfig { get; set; }
+        /// <summary>Available storage size for Exascale in GBs.</summary>
+        int? ExascaleConfigAvailableStorageInGb { get; set; }
+        /// <summary>Storage size needed for Exascale in GBs.</summary>
+        int? ExascaleConfigTotalStorageInGb { get; set; }
         /// <summary>The OCID of the last maintenance run.</summary>
         string LastMaintenanceRunId { get; set; }
         /// <summary>Additional information about the current lifecycle state.</summary>

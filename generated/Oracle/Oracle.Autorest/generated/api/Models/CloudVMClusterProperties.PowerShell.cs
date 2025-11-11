@@ -276,6 +276,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)this).ComputeModel = (string) content.GetValueForProperty("ComputeModel",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)this).ComputeModel, global::System.Convert.ToString);
             }
+            if (content.Contains("ExascaleDbStorageVaultId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)this).ExascaleDbStorageVaultId = (string) content.GetValueForProperty("ExascaleDbStorageVaultId",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)this).ExascaleDbStorageVaultId, global::System.Convert.ToString);
+            }
+            if (content.Contains("StorageManagementType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)this).StorageManagementType = (string) content.GetValueForProperty("StorageManagementType",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)this).StorageManagementType, global::System.Convert.ToString);
+            }
             if (content.Contains("IormConfigCacheObjective"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)this).IormConfigCacheObjective = (string) content.GetValueForProperty("IormConfigCacheObjective",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)this).IormConfigCacheObjective, global::System.Convert.ToString);
@@ -520,6 +528,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             if (content.Contains("ComputeModel"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)this).ComputeModel = (string) content.GetValueForProperty("ComputeModel",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)this).ComputeModel, global::System.Convert.ToString);
+            }
+            if (content.Contains("ExascaleDbStorageVaultId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)this).ExascaleDbStorageVaultId = (string) content.GetValueForProperty("ExascaleDbStorageVaultId",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)this).ExascaleDbStorageVaultId, global::System.Convert.ToString);
+            }
+            if (content.Contains("StorageManagementType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)this).StorageManagementType = (string) content.GetValueForProperty("StorageManagementType",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal)this).StorageManagementType, global::System.Convert.ToString);
             }
             if (content.Contains("IormConfigCacheObjective"))
             {

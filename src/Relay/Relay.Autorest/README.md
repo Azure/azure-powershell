@@ -34,22 +34,16 @@ require:
 
 title: Relay
 
-identity-correction-for-post: true
-resourcegroup-append: true
-nested-object-to-string: true
-inlining-threshold: 50
-
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
-
 directive:
   - where:
       verb: Get
       subject: NameSpace
     set:
       breaking-change:
-        change-description: "The type of property 'PrivateEndpointConnection' will be changed to 'List'."
+        deprecated-output-properties:
+          - PrivateEndpointConnection
+        new-output-properties:
+          - List[PrivateEndpointConnection]
         deprecated-by-version: 9.0.0
         deprecated-by-azversion: 15.0.0
         change-effective-date: 2025/11/03
@@ -58,7 +52,10 @@ directive:
       subject: NamespaceNetworkRuleSet
     set:
       breaking-change:
-        change-description: "The type of property 'IPRule' will be changed to 'List'."
+        deprecated-output-properties:
+          - IPRule
+        new-output-properties:
+          - List[IPRule]
         deprecated-by-version: 9.0.0
         deprecated-by-azversion: 15.0.0
         change-effective-date: 2025/11/03
@@ -160,12 +157,6 @@ directive:
     remove: true
 
   - where:
-      verb: New
-      subject: ^NamespaceNetworkRuleSet$
-      variant: ^CreateViaIdentity$
-    hide: true
-
-  - where:
       verb: Set
       subject: ^NamespaceNetworkRuleSet$
     remove: true
@@ -178,13 +169,13 @@ directive:
 
 # Custom Set-AzRelayAuthorizationRule
   - where:
-      verb: Set
+      verb: Set|Update
       subject: ^AuthorizationRule$
     hide: true
 
 # Custom Set-AzRelayHybridConnection
   - where:
-      verb: Set
+      verb: Set|Update
       subject: ^HybridConnection$
     hide: true
 
@@ -205,37 +196,30 @@ directive:
       subject: Relay
 
   - where:
-      verb: New
       subject: ^Namespace$
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$
-    remove: true
-
-  - where:
-      verb: Update
-      subject: ^Namespace$
-      variant: ^Update$|^UpdateViaIdentity$
+      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
     
   - where:
       verb: New
       subject: ^HybridConnection$|^Relay$
-      variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$
+      variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$|^CreateViaIdentityNamespace$
     remove: true
     
   - where:
       subject: ^Key$
-      variant: ^Regenerate$|^RegenerateViaIdentityExpanded$|^RegenerateViaIdentity$|^Regenerate1$|^RegenerateViaIdentityExpanded1$|^RegenerateViaIdentity1$|^Regenerate2$|^RegenerateViaIdentityExpanded2$|^RegenerateViaIdentity2$
+      variant: (^Regenerate.*ViaIdentity.*$)|(^Regenerate(?!.*(Expanded|JsonFilePath|JsonString)).*$)
     remove: true
 
   - where:
       subject: ^AuthorizationRule$
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Create1$|^^CreateViaIdentity1$|^CreateViaIdentityExpanded1$|^Create2$|^^CreateViaIdentity2$|^CreateViaIdentityExpanded2$
+      variant: (^Create.*ViaIdentity.*$)|(^Create(?!.*(Expanded|JsonFilePath|JsonString)).*$)
     remove: true
 
   - where:
       verb: Test
       subject: ^Name$
-      variant: ^Check$|^CheckViaIdentity$|^CheckViaIdentityExpanded$
+      variant: ^(Check)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
 
   - where:
@@ -378,8 +362,9 @@ directive:
       parameter-name: SkuTier
     hide: true
 
-  # - model-cmdlet:
-  #   - NwRuleSetIPRules
+  - model-cmdlet:
+    - model-name: NwRuleSetIPRules
+      cmdlet-name: New-AzRelayNetworkRuleSetIPRuleObject
     
   - where:
       model-name: RelayNamespace

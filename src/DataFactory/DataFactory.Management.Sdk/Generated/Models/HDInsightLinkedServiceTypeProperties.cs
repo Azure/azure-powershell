@@ -27,6 +27,10 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <param name="clusterUri">HDInsight cluster URI. Type: string (or Expression with resultType string).
         /// </param>
 
+        /// <param name="clusterAuthType">HDInsight cluster authentication type.
+        /// Possible values include: &#39;BasicAuth&#39;, &#39;SystemAssignedManagedIdentity&#39;,
+        /// &#39;UserAssignedManagedIdentity&#39;</param>
+
         /// <param name="userName">HDInsight cluster user name. Type: string (or Expression with resultType
         /// string).
         /// </param>
@@ -52,10 +56,15 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <param name="fileSystem">Specify the FileSystem if the main storage for the HDInsight is ADLS Gen2.
         /// Type: string (or Expression with resultType string).
         /// </param>
-        public HDInsightLinkedServiceTypeProperties(object clusterUri, object userName = default(object), SecretBase password = default(SecretBase), LinkedServiceReference linkedServiceName = default(LinkedServiceReference), LinkedServiceReference hcatalogLinkedServiceName = default(LinkedServiceReference), string encryptedCredential = default(string), object isEspEnabled = default(object), object fileSystem = default(object))
+
+        /// <param name="credential">The credential reference containing MI authentication information for the
+        /// HDInsight cluster.
+        /// </param>
+        public HDInsightLinkedServiceTypeProperties(object clusterUri, string clusterAuthType = default(string), object userName = default(object), SecretBase password = default(SecretBase), LinkedServiceReference linkedServiceName = default(LinkedServiceReference), LinkedServiceReference hcatalogLinkedServiceName = default(LinkedServiceReference), string encryptedCredential = default(string), object isEspEnabled = default(object), object fileSystem = default(object), CredentialReference credential = default(CredentialReference))
 
         {
             this.ClusterUri = clusterUri;
+            this.ClusterAuthType = clusterAuthType;
             this.UserName = userName;
             this.Password = password;
             this.LinkedServiceName = linkedServiceName;
@@ -63,6 +72,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
             this.EncryptedCredential = encryptedCredential;
             this.IsEspEnabled = isEspEnabled;
             this.FileSystem = fileSystem;
+            this.Credential = credential;
             CustomInit();
         }
 
@@ -78,6 +88,12 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "clusterUri")]
         public object ClusterUri {get; set; }
+
+        /// <summary>
+        /// Gets or sets hDInsight cluster authentication type. Possible values include: &#39;BasicAuth&#39;, &#39;SystemAssignedManagedIdentity&#39;, &#39;UserAssignedManagedIdentity&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "clusterAuthType")]
+        public string ClusterAuthType {get; set; }
 
         /// <summary>
         /// Gets or sets hDInsight cluster user name. Type: string (or Expression with
@@ -126,6 +142,13 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "fileSystem")]
         public object FileSystem {get; set; }
+
+        /// <summary>
+        /// Gets or sets the credential reference containing MI authentication
+        /// information for the HDInsight cluster.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "credential")]
+        public CredentialReference Credential {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -141,6 +164,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
 
 
 
+
             if (this.LinkedServiceName != null)
             {
                 this.LinkedServiceName.Validate();
@@ -152,6 +176,10 @@ namespace Microsoft.Azure.Management.DataFactory.Models
 
 
 
+            if (this.Credential != null)
+            {
+                this.Credential.Validate();
+            }
         }
     }
 }

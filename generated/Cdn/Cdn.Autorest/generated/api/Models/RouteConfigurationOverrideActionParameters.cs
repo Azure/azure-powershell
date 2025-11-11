@@ -64,7 +64,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginGroupOverride Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteConfigurationOverrideActionParametersInternal.OriginGroupOverride { get => (this._originGroupOverride = this._originGroupOverride ?? new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.OriginGroupOverride()); set { {_originGroupOverride = value;} } }
 
         /// <summary>Internal Acessors for OriginGroupOverrideOriginGroup</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteConfigurationOverrideActionParametersInternal.OriginGroupOverrideOriginGroup { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginGroupOverrideInternal)OriginGroupOverride).OriginGroup; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginGroupOverrideInternal)OriginGroupOverride).OriginGroup = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteConfigurationOverrideActionParametersInternal.OriginGroupOverrideOriginGroup { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginGroupOverrideInternal)OriginGroupOverride).OriginGroup; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginGroupOverrideInternal)OriginGroupOverride).OriginGroup = value ?? null /* model class */; }
 
         /// <summary>Resource ID.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inlined)]

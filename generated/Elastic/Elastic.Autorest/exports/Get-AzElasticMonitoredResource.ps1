@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-List the resources currently being monitored by the Elastic monitor resource.
+List all resources currently being monitored by the Elastic monitor resource, helping you manage observability.
 .Description
-List the resources currently being monitored by the Elastic monitor resource.
+List all resources currently being monitored by the Elastic monitor resource, helping you manage observability.
 .Example
 Get-AzElasticMonitoredResource -ResourceGroupName azure-elastic-test -Name elastic-pwsh02
 

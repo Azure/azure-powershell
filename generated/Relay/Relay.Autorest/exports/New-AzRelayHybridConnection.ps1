@@ -16,10 +16,10 @@
 
 <#
 .Synopsis
-Creates or updates a service hybrid connection.
+Create a service hybrid connection.
 This operation is idempotent.
 .Description
-Creates or updates a service hybrid connection.
+Create a service hybrid connection.
 This operation is idempotent.
 .Example
 New-AzRelayHybridConnection -ResourceGroupName lucas-relay-rg -Namespace namespace-pwsh01 -Name connection-01 -UserMetadata "test 01" | Format-List
@@ -33,9 +33,11 @@ $connection.UserMetadata = "TestHybridConnection2"
 New-AzRelayHybridConnection -ResourceGroupName lucas-relay-rg -Namespace namespace-pwsh01 -Name connection-02 -InputObject $connection | Format-List
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IHybridConnection
+Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IHybridConnection
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IHybridConnection
+Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IHybridConnection
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -43,18 +45,23 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IHybridConnection>: Description of hybrid connection resource.
   [RequiresClientAuthorization <Boolean?>]: Returns true if client authorization is needed for this hybrid connection; otherwise, false.
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
   [UserMetadata <String>]: The usermetadata is a placeholder to store user-defined string data for the hybrid connection endpoint. For example, it can be used to store descriptive data, such as a list of teams and their contact information. Also, user-defined configuration settings can be stored.
+
+NAMESPACEINPUTOBJECT <IRelayIdentity>: Identity Parameter
+  [AuthorizationRuleName <String>]: The authorization rule name.
+  [HybridConnectionName <String>]: The hybrid connection name.
+  [Id <String>]: Resource identity path
+  [NamespaceName <String>]: The namespace name
+  [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
+  [PrivateLinkResourceName <String>]: The PrivateLinkResource name
+  [RelayName <String>]: The relay name.
+  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [SubscriptionId <String>]: Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
 https://learn.microsoft.com/powershell/module/az.relay/new-azrelayhybridconnection
 #>
 function New-AzRelayHybridConnection {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IHybridConnection])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IHybridConnection])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -64,19 +71,28 @@ param(
     # The hybrid connection name.
     ${Name},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='Create', Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
     [System.String]
     # The namespace name
     ${Namespace},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='Create', Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
     [System.String]
     # Name of the Resource group within the Azure subscription.
     ${ResourceGroupName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='Create')]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -84,26 +100,45 @@ param(
     # The subscription ID forms part of the URI for every service call.
     ${SubscriptionId},
 
+    [Parameter(ParameterSetName='CreateViaIdentityNamespaceExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayIdentity]
+    # Identity Parameter
+    ${NamespaceInputObject},
+
     [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IHybridConnection]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IHybridConnection]
     # Description of hybrid connection resource.
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityNamespaceExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Returns true if client authorization is needed for this hybrid connection; otherwise, false.
     ${RequiresClientAuthorization},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityNamespaceExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Body')]
     [System.String]
     # The usermetadata is a placeholder to store user-defined string data for the hybrid connection endpoint.
     # For example, it can be used to store descriptive data, such as a list of teams and their contact information.
     # Also, user-defined configuration settings can be stored.
     ${UserMetadata},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -161,6 +196,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -182,10 +226,11 @@ begin {
         $mapping = @{
             Create = 'Az.Relay.private\New-AzRelayHybridConnection_Create';
             CreateExpanded = 'Az.Relay.private\New-AzRelayHybridConnection_CreateExpanded';
+            CreateViaIdentityNamespaceExpanded = 'Az.Relay.private\New-AzRelayHybridConnection_CreateViaIdentityNamespaceExpanded';
+            CreateViaJsonFilePath = 'Az.Relay.private\New-AzRelayHybridConnection_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.Relay.private\New-AzRelayHybridConnection_CreateViaJsonString';
         }
-        if (('Create', 'CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Create', 'CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -199,6 +244,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

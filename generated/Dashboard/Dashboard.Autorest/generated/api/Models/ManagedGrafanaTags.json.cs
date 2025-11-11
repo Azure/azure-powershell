@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Extensions;
 
-    /// <summary>The tags for grafana resource.</summary>
+    /// <summary>Resource tags.</summary>
     public partial class ManagedGrafanaTags
     {
 

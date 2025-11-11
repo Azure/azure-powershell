@@ -11,16 +11,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Cmdlets
     using System;
 
     /// <summary>
-    /// Get Elastic Organization To Azure Subscription Mapping details for the logged-in user.
+    /// Retrieve mapping details between the Elastic Organization and Azure Subscription for the logged-in user.
     /// </summary>
     /// <remarks>
     /// [OpenAPI] GetElasticToAzureSubscriptionMapping=>POST:"/subscriptions/{subscriptionId}/providers/Microsoft.Elastic/getElasticOrganizationToAzureSubscriptionMapping"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzElasticOrganizationElasticToAzureSubscriptionMapping_Get", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticOrganizationToAzureSubscriptionMappingResponse))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.Description(@"Get Elastic Organization To Azure Subscription Mapping details for the logged-in user.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.Description(@"Retrieve mapping details between the Elastic Organization and Azure Subscription for the logged-in user.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.Elastic/getElasticOrganizationToAzureSubscriptionMapping", ApiVersion = "2024-03-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.Elastic/getElasticOrganizationToAzureSubscriptionMapping", ApiVersion = "2025-06-01")]
     public partial class GetAzElasticOrganizationElasticToAzureSubscriptionMapping_Get : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IContext

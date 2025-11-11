@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzFirmwareAnalysisFirm
 Describe 'Update-AzFirmwareAnalysisFirmware' {
     It 'UpdateExpanded' {
         { 
-            $config = Update-AzFirmwareAnalysisFirmware -FirmwareId 'e0a16256-d186-4d4f-87fc-24bd0dab91cf' -ResourceGroupName 'FirmwareAnalysisRG' -WorkspaceName 'default' -FileName 'newFile' -Vendor 'newVendor'
+            $config = Update-AzFirmwareAnalysisFirmware -FirmwareId $env.FirmwareId -ResourceGroupName $env.ResourceGroup -WorkspaceName $env.WorkspaceName -FileName 'newFile' -Vendor 'newVendor'
             $config.Count | Should -BeGreaterThan 0
         } | Should -Not -Throw
     }

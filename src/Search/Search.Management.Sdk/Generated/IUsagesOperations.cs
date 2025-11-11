@@ -14,10 +14,10 @@ namespace Microsoft.Azure.Management.Search
     public partial interface IUsagesOperations
     {
         /// <summary>
-        /// Gets a list of all Search quota usages in the given subscription.
+        /// Get a list of all Azure AI Search quota usages across the subscription.
         /// </summary>
         /// <remarks>
-        /// Gets a list of all Search quota usages in the given subscription.
+        /// Get a list of all Azure AI Search quota usages across the subscription.
         /// </remarks>
         /// <param name='searchManagementRequestOptions'>
         /// 
@@ -40,10 +40,10 @@ namespace Microsoft.Azure.Management.Search
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<QuotaUsageResult>>> ListBySubscriptionWithHttpMessagesAsync(string location, SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets a list of all Search quota usages in the given subscription.
+        /// Get a list of all Azure AI Search quota usages across the subscription.
         /// </summary>
         /// <remarks>
-        /// Gets a list of all Search quota usages in the given subscription.
+        /// Get a list of all Azure AI Search quota usages across the subscription.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

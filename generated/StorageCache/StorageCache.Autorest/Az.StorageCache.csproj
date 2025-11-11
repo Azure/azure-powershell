@@ -3,6 +3,7 @@
     <PsModuleName>StorageCache</PsModuleName>
     <PsRootModuleName>StorageCache</PsRootModuleName>
     <PsModuleFolder>StorageCache.Autorest</PsModuleFolder>
+    <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.StorageCache</RootNamespace>
   </PropertyGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.autorest.props" />

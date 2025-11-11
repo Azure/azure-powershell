@@ -30,4 +30,8 @@ Describe 'Get-AzMigrateServerMigrationStatus' {
     It 'GetHealthByMachineName' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
+
+    It 'GetByPrioritiseServer' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
 }

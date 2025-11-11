@@ -76,6 +76,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             {_ruleName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString>("ruleName"), out var __jsonRuleName) ? (string)__jsonRuleName : (string)_ruleName;}
             {_securityPolicyName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString>("securityPolicyName"), out var __jsonSecurityPolicyName) ? (string)__jsonSecurityPolicyName : (string)_securityPolicyName;}
             {_secretName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString>("secretName"), out var __jsonSecretName) ? (string)__jsonSecretName : (string)_secretName;}
+            {_edgeActionName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString>("edgeActionName"), out var __jsonEdgeActionName) ? (string)__jsonEdgeActionName : (string)_edgeActionName;}
+            {_executionFilter = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString>("executionFilter"), out var __jsonExecutionFilter) ? (string)__jsonExecutionFilter : (string)_executionFilter;}
+            {_version = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString>("version"), out var __jsonVersion) ? (string)__jsonVersion : (string)_version;}
             {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
             AfterFromJson(json);
         }
@@ -121,6 +124,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             AddIf( null != (((object)this._ruleName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString(this._ruleName.ToString()) : null, "ruleName" ,container.Add );
             AddIf( null != (((object)this._securityPolicyName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString(this._securityPolicyName.ToString()) : null, "securityPolicyName" ,container.Add );
             AddIf( null != (((object)this._secretName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString(this._secretName.ToString()) : null, "secretName" ,container.Add );
+            AddIf( null != (((object)this._edgeActionName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString(this._edgeActionName.ToString()) : null, "edgeActionName" ,container.Add );
+            AddIf( null != (((object)this._executionFilter)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString(this._executionFilter.ToString()) : null, "executionFilter" ,container.Add );
+            AddIf( null != (((object)this._version)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString(this._version.ToString()) : null, "version" ,container.Add );
             AddIf( null != (((object)this._id)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString(this._id.ToString()) : null, "id" ,container.Add );
             AfterToJson(ref container);
             return container;

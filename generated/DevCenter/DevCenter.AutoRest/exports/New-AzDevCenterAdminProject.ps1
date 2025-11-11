@@ -28,14 +28,19 @@ New-AzDevCenterAdminProject -InputObject $project -Location eastus -DevCenterId 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IProject
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.IProject
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+CUSTOMIZATIONSETTINGIDENTITY <IProjectCustomizationManagedIdentity[]>: The identities that can to be used in customization scenarios; e.g., to clone a repository.
+  [IdentityResourceId <String>]: Ex: /subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId. Mutually exclusive with identityType systemAssignedIdentity.
+  [IdentityType <ProjectCustomizationIdentityType?>]: Values can be systemAssignedIdentity or userAssignedIdentity
+
 INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [AttachedNetworkConnectionName <String>]: The name of the attached NetworkConnection.
+  [BuildName <String>]: The ID of the Image Definition Build.
   [CatalogName <String>]: The name of the Catalog.
   [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
   [DevCenterName <String>]: The name of the devcenter.
@@ -44,14 +49,14 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [EnvironmentTypeName <String>]: The name of the environment type.
   [GalleryName <String>]: The name of the gallery.
   [Id <String>]: Resource identity path
+  [ImageDefinitionName <String>]: The name of the Image Definition.
   [ImageName <String>]: The name of the image.
   [Location <String>]: The Azure region
-  [MemberName <String>]: The name of a devcenter plan member.
   [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
   [OperationId <String>]: The ID of an ongoing async operation
-  [PlanName <String>]: The name of the devcenter plan.
   [PoolName <String>]: Name of the pool.
   [ProjectName <String>]: The name of the project.
+  [ProjectPolicyName <String>]: The name of the project policy.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScheduleName <String>]: The name of the schedule that uniquely identifies it.
   [SubscriptionId <String>]: The ID of the target subscription.
@@ -61,7 +66,7 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.devcenter/new-azdevcenteradminproject
 #>
 function New-AzDevCenterAdminProject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IProject])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.IProject])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
@@ -105,6 +110,13 @@ param(
     ${DevCenterId},
 
     [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.AzureAiServicesMode])]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.AzureAiServicesMode]
+    # The property indicates whether Azure AI services is enabled.
+    ${AzureAiServiceSettingAzureAiServicesMode},
+
+    [Parameter()]
     [AllowEmptyCollection()]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.CatalogItemType])]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
@@ -113,10 +125,46 @@ param(
     ${CatalogSettingCatalogItemSyncType},
 
     [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.IProjectCustomizationManagedIdentity[]]
+    # The identities that can to be used in customization scenarios; e.g., to clone a repository.
+    # To construct, see NOTES section for CUSTOMIZATIONSETTINGIDENTITY properties and create a hash table.
+    ${CustomizationSettingIdentity},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.UserCustomizationsEnableStatus])]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.UserCustomizationsEnableStatus]
+    # Indicates whether user customizations are enabled.
+    ${CustomizationSettingUserCustomizationsEnableStatus},
+
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
     [System.String]
     # Description of the project.
     ${Description},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.DevBoxDeleteMode])]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.DevBoxDeleteMode]
+    # Indicates the delete mode for Dev Boxes within this project.
+    ${DevBoxAutoDeleteSettingDeleteMode},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [System.String]
+    # ISO8601 duration required for the dev box to be marked for deletion prior to it being deleted.
+    # ISO8601 format PT[n]H[n]M[n]S.
+    ${DevBoxAutoDeleteSettingGracePeriod},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [System.String]
+    # ISO8601 duration required for the dev box to not be inactive prior to it being scheduled for deletion.
+    # ISO8601 format PT[n]H[n]M[n]S.
+    ${DevBoxAutoDeleteSettingInactiveThreshold},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
@@ -149,10 +197,30 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api40.ITrackedResourceTags]))]
+    [System.Int32]
+    # When specified, limits the maximum number of concurrent sessions across all pools in the project.
+    ${ServerlessGpuSessionSettingMaxConcurrentSessionsPerProject},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.ServerlessGpuSessionsMode])]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.ServerlessGpuSessionsMode]
+    # The property indicates whether serverless GPU access is enabled on the project.
+    ${ServerlessGpuSessionSettingServerlessGpuSessionsMode},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api50.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.WorkspaceStorageMode])]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.WorkspaceStorageMode]
+    # Indicates whether workspace storage is enabled.
+    ${WorkspaceStorageSettingWorkspaceStorageMode},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]

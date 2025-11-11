@@ -15,13 +15,14 @@ Gets resource groups.
 
 ### GetByResourceGroupName (Default)
 ```
-Get-AzResourceGroup [[-Name] <String>] [[-Location] <String>] [-Tag <Hashtable>] [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzResourceGroup [[-Name] <String>] [[-Location] <String>] [-Tag <Hashtable>] [-ExpandProperties]
+ [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### GetByResourceGroupId
 ```
-Get-AzResourceGroup [[-Location] <String>] [-Id <String>] [-ApiVersion <String>] [-Pre]
+Get-AzResourceGroup [[-Location] <String>] [-Id <String>] [-ExpandProperties] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -71,6 +72,11 @@ Get-AzResourceGroup -Location westus2 |
 Get-AzResourceGroup -Name WebServer*
 ```
 
+### Example 7: Get a resource group with expanded properties
+```powershell
+Get-AzResourceGroup -Name "ContosoRG" -ExpandProperties
+```
+
 ## PARAMETERS
 
 ### -ApiVersion
@@ -96,6 +102,21 @@ The credentials, account, tenant, and subscription used for communication with a
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExpandProperties
+When specified, output includes CreatedTime and ChangedTime of a resource.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named

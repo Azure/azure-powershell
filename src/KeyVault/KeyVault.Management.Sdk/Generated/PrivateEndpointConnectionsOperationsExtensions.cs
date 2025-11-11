@@ -13,7 +13,8 @@ namespace Microsoft.Azure.Management.KeyVault
     public static partial class PrivateEndpointConnectionsOperationsExtensions
     {
         /// <summary>
-        /// Gets the specified private endpoint connection associated with the key vault.
+        /// Gets the specified private endpoint connection associated with the key
+        /// vault.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -33,7 +34,8 @@ namespace Microsoft.Azure.Management.KeyVault
         }
 
         /// <summary>
-        /// Gets the specified private endpoint connection associated with the key vault.
+        /// Gets the specified private endpoint connection associated with the key
+        /// vault.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -58,7 +60,8 @@ namespace Microsoft.Azure.Management.KeyVault
             }
         }
         /// <summary>
-        /// Updates the specified private endpoint connection associated with the key vault.
+        /// Updates the specified private endpoint connection associated with the key
+        /// vault.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -78,7 +81,8 @@ namespace Microsoft.Azure.Management.KeyVault
         }
 
         /// <summary>
-        /// Updates the specified private endpoint connection associated with the key vault.
+        /// Updates the specified private endpoint connection associated with the key
+        /// vault.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -103,7 +107,8 @@ namespace Microsoft.Azure.Management.KeyVault
             }
         }
         /// <summary>
-        /// Deletes the specified private endpoint connection associated with the key vault.
+        /// Deletes the specified private endpoint connection associated with the key
+        /// vault.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -123,7 +128,8 @@ namespace Microsoft.Azure.Management.KeyVault
         }
 
         /// <summary>
-        /// Deletes the specified private endpoint connection associated with the key vault.
+        /// Deletes the specified private endpoint connection associated with the key
+        /// vault.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -148,7 +154,8 @@ namespace Microsoft.Azure.Management.KeyVault
             }
         }
         /// <summary>
-        /// The List operation gets information about the private endpoint connections associated with the vault.
+        /// The List operation gets information about the private endpoint connections
+        /// associated with the vault.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -165,7 +172,8 @@ namespace Microsoft.Azure.Management.KeyVault
         }
 
         /// <summary>
-        /// The List operation gets information about the private endpoint connections associated with the vault.
+        /// The List operation gets information about the private endpoint connections
+        /// associated with the vault.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -187,7 +195,8 @@ namespace Microsoft.Azure.Management.KeyVault
             }
         }
         /// <summary>
-        /// Deletes the specified private endpoint connection associated with the key vault.
+        /// Deletes the specified private endpoint connection associated with the key
+        /// vault.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -207,7 +216,8 @@ namespace Microsoft.Azure.Management.KeyVault
         }
 
         /// <summary>
-        /// Deletes the specified private endpoint connection associated with the key vault.
+        /// Deletes the specified private endpoint connection associated with the key
+        /// vault.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -232,7 +242,8 @@ namespace Microsoft.Azure.Management.KeyVault
             }
         }
         /// <summary>
-        /// The List operation gets information about the private endpoint connections associated with the vault.
+        /// The List operation gets information about the private endpoint connections
+        /// associated with the vault.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -246,7 +257,8 @@ namespace Microsoft.Azure.Management.KeyVault
         }
 
         /// <summary>
-        /// The List operation gets information about the private endpoint connections associated with the vault.
+        /// The List operation gets information about the private endpoint connections
+        /// associated with the vault.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

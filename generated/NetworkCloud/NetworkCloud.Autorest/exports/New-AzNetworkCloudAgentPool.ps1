@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Create a new Kubernetes cluster agent pool or update the properties of the existing one.
+Create a new Kubernetes cluster agent pool or create the properties of the existing one.
 .Description
-Create a new Kubernetes cluster agent pool or update the properties of the existing one.
+Create a new Kubernetes cluster agent pool or create the properties of the existing one.
 .Example
     $networkAttachment = @{
         AttachedNetworkId = "l3NetworkId"
@@ -37,8 +37,10 @@ Create a new Kubernetes cluster agent pool or update the properties of the exist
 
     New-AzNetworkCloudAgentPool -KubernetesClusterName clusterName -Name agentPoolName -ResourceGroupName resourceGroup -Count count -Location location -Mode agentPoolMode -VMSkuName vmSkuName -SubscriptionId subscriptionId -AdministratorConfigurationAdminUsername adminUsername -AdministratorConfigurationSshPublicKey $sshPublicKey -AgentOptionHugepagesCount hugepagesCount -AgentOptionHugepagesSize hugepagesSize -AttachedNetworkConfigurationL3Network $networkAttachment -AvailabilityZone availabilityZones -ExtendedLocationName clusterExtendedLocation -ExtendedLocationType "CustomLocation " -Tag @{tags = "tag"} -Label $labels -Taint $taints -UpgradeSettingMaxSurge maxSurge
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IAgentPool
+Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IAgentPool
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -48,38 +50,56 @@ ADMINISTRATORCONFIGURATIONSSHPUBLICKEY <ISshPublicKey[]>: The SSH configuration 
   KeyData <String>: The SSH public key data.
 
 ATTACHEDNETWORKCONFIGURATIONL2NETWORK <IL2NetworkAttachmentConfiguration[]>: The list of Layer 2 Networks and related configuration for attachment.
-  NetworkId <String>: The resource ID of the network that is being configured for attachment.
-  [PluginType <KubernetesPluginType?>]: The indicator of how this network will be utilized by the Kubernetes cluster.
+  [NetworkId <String>]: The resource ID of the network that is being configured for attachment.
+  [PluginType <String>]: The indicator of how this network will be utilized by the Kubernetes cluster.
 
 ATTACHEDNETWORKCONFIGURATIONL3NETWORK <IL3NetworkAttachmentConfiguration[]>: The list of Layer 3 Networks and related configuration for attachment.
   NetworkId <String>: The resource ID of the network that is being configured for attachment.
-  [IpamEnabled <L3NetworkConfigurationIpamEnabled?>]: The indication of whether this network will or will not perform IP address management and allocate IP addresses when attached.
-  [PluginType <KubernetesPluginType?>]: The indicator of how this network will be utilized by the Kubernetes cluster.
+  [IpamEnabled <String>]: The indication of whether this network will or will not perform IP address management and allocate IP addresses when attached.
+  [PluginType <String>]: The indicator of how this network will be utilized by the Kubernetes cluster.
 
 ATTACHEDNETWORKCONFIGURATIONTRUNKEDNETWORK <ITrunkedNetworkAttachmentConfiguration[]>: The list of Trunked Networks and related configuration for attachment.
-  NetworkId <String>: The resource ID of the network that is being configured for attachment.
-  [PluginType <KubernetesPluginType?>]: The indicator of how this network will be utilized by the Kubernetes cluster.
+  [NetworkId <String>]: The resource ID of the network that is being configured for attachment.
+  [PluginType <String>]: The indicator of how this network will be utilized by the Kubernetes cluster.
+
+KUBERNETESCLUSTERINPUTOBJECT <INetworkCloudIdentity>: Identity Parameter
+  [AgentPoolName <String>]: The name of the Kubernetes cluster agent pool.
+  [BareMetalMachineKeySetName <String>]: The name of the bare metal machine key set.
+  [BareMetalMachineName <String>]: The name of the bare metal machine.
+  [BmcKeySetName <String>]: The name of the baseboard management controller key set.
+  [CloudServicesNetworkName <String>]: The name of the cloud services network.
+  [ClusterManagerName <String>]: The name of the cluster manager.
+  [ClusterName <String>]: The name of the cluster.
+  [ConsoleName <String>]: The name of the virtual machine console.
+  [FeatureName <String>]: The name of the feature.
+  [Id <String>]: Resource identity path
+  [KubernetesClusterName <String>]: The name of the Kubernetes cluster.
+  [L2NetworkName <String>]: The name of the L2 network.
+  [L3NetworkName <String>]: The name of the L3 network.
+  [MetricsConfigurationName <String>]: The name of the metrics configuration for the cluster.
+  [RackName <String>]: The name of the rack.
+  [RackSkuName <String>]: The name of the rack SKU.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [StorageApplianceName <String>]: The name of the storage appliance.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TrunkedNetworkName <String>]: The name of the trunked network.
+  [VirtualMachineName <String>]: The name of the virtual machine.
+  [VolumeName <String>]: The name of the volume.
 
 LABEL <IKubernetesLabel[]>: The labels applied to the nodes in this agent pool.
-  Key <String>: The name of the label or taint.
-  Value <String>: The value of the label or taint.
+  [Key <String>]: The name of the label or taint.
+  [Value <String>]: The value of the label or taint.
 
 TAINT <IKubernetesLabel[]>: The taints applied to the nodes in this agent pool.
-  Key <String>: The name of the label or taint.
-  Value <String>: The value of the label or taint.
+  [Key <String>]: The name of the label or taint.
+  [Value <String>]: The value of the label or taint.
 .Link
 https://learn.microsoft.com/powershell/module/az.networkcloud/new-aznetworkcloudagentpool
 #>
 function New-AzNetworkCloudAgentPool {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IAgentPool])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IAgentPool])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Path')]
-    [System.String]
-    # The name of the Kubernetes cluster.
-    ${KubernetesClusterName},
-
     [Parameter(Mandatory)]
     [Alias('AgentPoolName')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Path')]
@@ -87,20 +107,38 @@ param(
     # The name of the Kubernetes cluster agent pool.
     ${Name},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Path')]
+    [System.String]
+    # The name of the Kubernetes cluster.
+    ${KubernetesClusterName},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     # The value must be an UUID.
     ${SubscriptionId},
+
+    [Parameter(ParameterSetName='CreateViaIdentityKubernetesClusterExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity]
+    # Identity Parameter
+    ${KubernetesClusterInputObject},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Header')]
@@ -117,87 +155,95 @@ param(
     # Other values will result in error from server as they are not supported.
     ${IfNoneMatch},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityKubernetesClusterExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.Int64]
     # The number of virtual machines that use this configuration.
     ${Count},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityKubernetesClusterExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.String]
     # The geo-location where the resource lives
     ${Location},
 
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.AgentPoolMode])]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityKubernetesClusterExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("System", "User", "NotApplicable")]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.AgentPoolMode]
+    [System.String]
     # The selection of how this agent pool is utilized, either as a system pool or a user pool.
     # System pools run the features and critical services for the Kubernetes Cluster, while user pools are dedicated to user workloads.
     # Every Kubernetes cluster must contain at least one system node pool with at least one node.
     ${Mode},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityKubernetesClusterExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.String]
     # The name of the VM SKU that determines the size of resources allocated for node VMs.
     ${VMSkuName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityKubernetesClusterExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.String]
     # The user name for the administrator that will be applied to the operating systems that run Kubernetes nodes.
     # If not supplied, a user name will be chosen by the service.
     ${AdministratorConfigurationAdminUsername},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityKubernetesClusterExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.ISshPublicKey[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ISshPublicKey[]]
     # The SSH configuration for the operating systems that run the nodes in the Kubernetes cluster.
     # In some cases, specification of public keys may be required to produce a working environment.
-    # To construct, see NOTES section for ADMINISTRATORCONFIGURATIONSSHPUBLICKEY properties and create a hash table.
     ${AdministratorConfigurationSshPublicKey},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityKubernetesClusterExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.Int64]
     # The number of hugepages to allocate.
     ${AgentOptionHugepagesCount},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.HugepagesSize])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityKubernetesClusterExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("2M", "1G")]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.HugepagesSize]
+    [System.String]
     # The size of the hugepages to allocate.
     ${AgentOptionHugepagesSize},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityKubernetesClusterExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IL2NetworkAttachmentConfiguration[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IL2NetworkAttachmentConfiguration[]]
     # The list of Layer 2 Networks and related configuration for attachment.
-    # To construct, see NOTES section for ATTACHEDNETWORKCONFIGURATIONL2NETWORK properties and create a hash table.
     ${AttachedNetworkConfigurationL2Network},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityKubernetesClusterExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IL3NetworkAttachmentConfiguration[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IL3NetworkAttachmentConfiguration[]]
     # The list of Layer 3 Networks and related configuration for attachment.
-    # To construct, see NOTES section for ATTACHEDNETWORKCONFIGURATIONL3NETWORK properties and create a hash table.
     ${AttachedNetworkConfigurationL3Network},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityKubernetesClusterExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.ITrunkedNetworkAttachmentConfiguration[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ITrunkedNetworkAttachmentConfiguration[]]
     # The list of Trunked Networks and related configuration for attachment.
-    # To construct, see NOTES section for ATTACHEDNETWORKCONFIGURATIONTRUNKEDNETWORK properties and create a hash table.
     ${AttachedNetworkConfigurationTrunkedNetwork},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityKubernetesClusterExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.String[]]
@@ -205,49 +251,54 @@ param(
     # If not specified, all availability zones will be used.
     ${AvailabilityZone},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityKubernetesClusterExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.String]
     # The resource ID of the extended location on which the resource will be created.
     ${ExtendedLocationName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityKubernetesClusterExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.String]
     # The extended location type, for example, CustomLocation.
     ${ExtendedLocationType},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityKubernetesClusterExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IKubernetesLabel[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IKubernetesLabel[]]
     # The labels applied to the nodes in this agent pool.
-    # To construct, see NOTES section for LABEL properties and create a hash table.
     ${Label},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityKubernetesClusterExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityKubernetesClusterExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IKubernetesLabel[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IKubernetesLabel[]]
     # The taints applied to the nodes in this agent pool.
-    # To construct, see NOTES section for TAINT properties and create a hash table.
     ${Taint},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityKubernetesClusterExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.Int64]
     # The maximum time in seconds that is allowed for a node drain to complete before proceeding with the upgrade of the agent pool.
     # If not specified during creation, a value of 1800 seconds is used.
     ${UpgradeSettingDrainTimeout},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityKubernetesClusterExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.String]
     # The maximum number or percentage of nodes that are surged during upgrade.
@@ -260,7 +311,8 @@ param(
     # One of MaxSurge and MaxUnavailable must be greater than 0.
     ${UpgradeSettingMaxSurge},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityKubernetesClusterExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.String]
     # The maximum number or percentage of nodes that can be unavailable during upgrade.
@@ -272,6 +324,18 @@ param(
     # If not specified during creation, a value of 0 is used.
     # One of MaxSurge and MaxUnavailable must be greater than 0.
     ${UpgradeSettingMaxUnavailable},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -341,6 +405,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -361,10 +434,11 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.NetworkCloud.private\New-AzNetworkCloudAgentPool_CreateExpanded';
+            CreateViaIdentityKubernetesClusterExpanded = 'Az.NetworkCloud.private\New-AzNetworkCloudAgentPool_CreateViaIdentityKubernetesClusterExpanded';
+            CreateViaJsonFilePath = 'Az.NetworkCloud.private\New-AzNetworkCloudAgentPool_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.NetworkCloud.private\New-AzNetworkCloudAgentPool_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -378,6 +452,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

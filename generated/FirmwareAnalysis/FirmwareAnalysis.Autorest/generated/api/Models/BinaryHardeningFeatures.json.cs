@@ -65,9 +65,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
             {
                 return;
             }
-            {_nx = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonBoolean>("nx"), out var __jsonNx) ? (bool?)__jsonNx : _nx;}
-            {_pie = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonBoolean>("pie"), out var __jsonPie) ? (bool?)__jsonPie : _pie;}
-            {_relro = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonBoolean>("relro"), out var __jsonRelro) ? (bool?)__jsonRelro : _relro;}
+            {_noExecute = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonBoolean>("noExecute"), out var __jsonNoExecute) ? (bool?)__jsonNoExecute : _noExecute;}
+            {_positionIndependentExecutable = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonBoolean>("positionIndependentExecutable"), out var __jsonPositionIndependentExecutable) ? (bool?)__jsonPositionIndependentExecutable : _positionIndependentExecutable;}
+            {_relocationReadOnly = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonBoolean>("relocationReadOnly"), out var __jsonRelocationReadOnly) ? (bool?)__jsonRelocationReadOnly : _relocationReadOnly;}
             {_canary = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonBoolean>("canary"), out var __jsonCanary) ? (bool?)__jsonCanary : _canary;}
             {_stripped = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonBoolean>("stripped"), out var __jsonStripped) ? (bool?)__jsonStripped : _stripped;}
             AfterFromJson(json);
@@ -104,9 +104,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
             {
                 return container;
             }
-            AddIf( null != this._nx ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonBoolean((bool)this._nx) : null, "nx" ,container.Add );
-            AddIf( null != this._pie ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonBoolean((bool)this._pie) : null, "pie" ,container.Add );
-            AddIf( null != this._relro ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonBoolean((bool)this._relro) : null, "relro" ,container.Add );
+            AddIf( null != this._noExecute ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonBoolean((bool)this._noExecute) : null, "noExecute" ,container.Add );
+            AddIf( null != this._positionIndependentExecutable ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonBoolean((bool)this._positionIndependentExecutable) : null, "positionIndependentExecutable" ,container.Add );
+            AddIf( null != this._relocationReadOnly ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonBoolean((bool)this._relocationReadOnly) : null, "relocationReadOnly" ,container.Add );
             AddIf( null != this._canary ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonBoolean((bool)this._canary) : null, "canary" ,container.Add );
             AddIf( null != this._stripped ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonBoolean((bool)this._stripped) : null, "stripped" ,container.Add );
             AfterToJson(ref container);

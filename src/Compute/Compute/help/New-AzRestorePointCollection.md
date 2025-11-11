@@ -23,7 +23,7 @@ New-AzRestorePointCollection [-ResourceGroupName] <String> [-Name] <String> [-So
 ```
 New-AzRestorePointCollection [-ResourceGroupName] <String> [-Name] <String> [[-SourceId] <String>]
  [-RestorePointCollectionId] <String> -Location <String> [-DefaultProfile <IAzureContextContainer>]
-  [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

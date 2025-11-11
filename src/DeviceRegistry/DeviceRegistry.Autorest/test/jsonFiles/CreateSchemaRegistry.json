@@ -1,0 +1,12 @@
+{
+    "location": "eastus2",
+    "properties": {
+        "namespace": "sr-namespace-002",
+        "displayName": "Schema Registry namespace 001",
+        "description": "This is a sample Schema Registry",
+        "storageAccountContainerUrl": "https://mystorageacc.blob.core.windows.net/mycontainer"
+    },
+    "identity": {
+        "type": "None"
+    }
+}

@@ -16,21 +16,42 @@
 
 <#
 .Synopsis
-Update the state of the specified private endpoint connection associated with the workspace.
+Create the state of the specified private endpoint connection associated with the workspace.
 .Description
-Update the state of the specified private endpoint connection associated with the workspace.
+Create the state of the specified private endpoint connection associated with the workspace.
 .Example
 {{ Add code here }}
 .Example
 {{ Add code here }}
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IHealthcareApisIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IPrivateEndpointConnectionDescription
+Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IPrivateEndpointConnectionDescription
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+WORKSPACEINPUTOBJECT <IHealthcareApisIdentity>: Identity Parameter
+  [DicomServiceName <String>]: The name of DICOM Service resource.
+  [FhirDestinationName <String>]: The name of IoT Connector FHIR destination resource.
+  [FhirServiceName <String>]: The name of FHIR Service resource.
+  [GroupName <String>]: The name of the private link resource group.
+  [Id <String>]: Resource identity path
+  [IotConnectorName <String>]: The name of IoT Connector resource.
+  [LocationName <String>]: The location of the operation.
+  [OperationResultId <String>]: The ID of the operation result to get.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
+  [ResourceGroupName <String>]: The name of the resource group that contains the service instance.
+  [ResourceName <String>]: The name of the service instance.
+  [SubscriptionId <String>]: The subscription identifier.
+  [WorkspaceName <String>]: The name of workspace resource.
 .Link
 https://learn.microsoft.com/powershell/module/az.healthcareapis/new-azhealthcareworkspaceprivateendpointconnection
 #>
 function New-AzHealthcareWorkspacePrivateEndpointConnection {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IPrivateEndpointConnectionDescription])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IPrivateEndpointConnectionDescription])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -39,43 +60,70 @@ param(
     # The name of the private endpoint connection associated with the Azure resource
     ${PrivateEndpointConnectionName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Path')]
     [System.String]
     # The name of the resource group that contains the service instance.
     ${ResourceGroupName},
 
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Path')]
-    [System.String]
-    # The name of workspace resource.
-    ${WorkspaceName},
-
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The subscription identifier.
     ${SubscriptionId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Path')]
+    [System.String]
+    # The name of workspace resource.
+    ${WorkspaceName},
+
+    [Parameter(ParameterSetName='CreateViaIdentityWorkspaceExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IHealthcareApisIdentity]
+    # Identity Parameter
+    ${WorkspaceInputObject},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityWorkspaceExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
     [System.String]
     # A message indicating if changes on the service provider require any updates on the consumer.
     ${PrivateLinkServiceConnectionStateActionsRequired},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityWorkspaceExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
     [System.String]
     # The reason for approval/rejection of the connection.
     ${PrivateLinkServiceConnectionStateDescription},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.PrivateEndpointServiceConnectionStatus])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityWorkspaceExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.PSArgumentCompleterAttribute("Pending", "Approved", "Rejected")]
     [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.PrivateEndpointServiceConnectionStatus]
+    [System.String]
     # Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
     ${PrivateLinkServiceConnectionStateStatus},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -145,13 +193,17 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             CreateExpanded = 'Az.HealthcareApis.private\New-AzHealthcareWorkspacePrivateEndpointConnection_CreateExpanded';
+            CreateViaIdentityWorkspaceExpanded = 'Az.HealthcareApis.private\New-AzHealthcareWorkspacePrivateEndpointConnection_CreateViaIdentityWorkspaceExpanded';
+            CreateViaJsonFilePath = 'Az.HealthcareApis.private\New-AzHealthcareWorkspacePrivateEndpointConnection_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.HealthcareApis.private\New-AzHealthcareWorkspacePrivateEndpointConnection_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -160,6 +212,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

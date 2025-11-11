@@ -153,6 +153,13 @@ param(
     ${ClusterArmId},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.PSArgumentCompleterAttribute("Disabled", "Enabled")]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+    [System.String]
+    # Setting to Enable or Disable Confidential Compute
+    ${ConfidentialComputeMode},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # This property disables SAS authentication for the Event Hubs namespace.
@@ -233,7 +240,7 @@ param(
     ${MaximumThroughputUnit},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.PSArgumentCompleterAttribute("1.0", "1.1", "1.2")]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.PSArgumentCompleterAttribute("1.0", "1.1", "1.2", "1.3")]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
     [System.String]
     # The minimum TLS version for the cluster to support, e.g.

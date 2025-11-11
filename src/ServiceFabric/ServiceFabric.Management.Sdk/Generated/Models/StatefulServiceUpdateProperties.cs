@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.ServiceFabric.Models
         /// </param>
 
         /// <param name="defaultMoveCost">Specifies the move cost for the service.
-        /// Possible values include: 'Zero', 'Low', 'Medium', 'High'</param>
+        /// Possible values include: &#39;Zero&#39;, &#39;Low&#39;, &#39;Medium&#39;, &#39;High&#39;</param>
 
         /// <param name="targetReplicaSetSize">The target replica set size as a number.
         /// </param>

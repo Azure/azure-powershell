@@ -17,7 +17,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IPrivateEndpoint Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IPrivateEndpointConnectionPropertiesInternal.PrivateEndpoint { get => (this._privateEndpoint = this._privateEndpoint ?? new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.PrivateEndpoint()); set { {_privateEndpoint = value;} } }
 
         /// <summary>Internal Acessors for PrivateEndpointId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IPrivateEndpointConnectionPropertiesInternal.PrivateEndpointId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IPrivateEndpointInternal)PrivateEndpoint).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IPrivateEndpointInternal)PrivateEndpoint).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IPrivateEndpointConnectionPropertiesInternal.PrivateEndpointId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IPrivateEndpointInternal)PrivateEndpoint).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IPrivateEndpointInternal)PrivateEndpoint).Id = value ?? null; }
 
         /// <summary>Internal Acessors for PrivateLinkServiceConnectionState</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IPrivateLinkServiceConnectionState Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IPrivateEndpointConnectionPropertiesInternal.PrivateLinkServiceConnectionState { get => (this._privateLinkServiceConnectionState = this._privateLinkServiceConnectionState ?? new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.PrivateLinkServiceConnectionState()); set { {_privateLinkServiceConnectionState = value;} } }

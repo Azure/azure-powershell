@@ -116,6 +116,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of DICOM Service resource.",
         SerializedName = @"dicomServiceName",
         PossibleTypes = new [] { typeof(string) })]
@@ -124,6 +127,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of IoT Connector FHIR destination resource.",
         SerializedName = @"fhirDestinationName",
         PossibleTypes = new [] { typeof(string) })]
@@ -132,6 +138,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of FHIR Service resource.",
         SerializedName = @"fhirServiceName",
         PossibleTypes = new [] { typeof(string) })]
@@ -140,6 +149,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the private link resource group.",
         SerializedName = @"groupName",
         PossibleTypes = new [] { typeof(string) })]
@@ -148,6 +160,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource identity path",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -156,6 +171,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of IoT Connector resource.",
         SerializedName = @"iotConnectorName",
         PossibleTypes = new [] { typeof(string) })]
@@ -164,6 +182,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The location of the operation.",
         SerializedName = @"locationName",
         PossibleTypes = new [] { typeof(string) })]
@@ -172,6 +193,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The ID of the operation result to get.",
         SerializedName = @"operationResultId",
         PossibleTypes = new [] { typeof(string) })]
@@ -180,6 +204,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the private endpoint connection associated with the Azure resource",
         SerializedName = @"privateEndpointConnectionName",
         PossibleTypes = new [] { typeof(string) })]
@@ -188,6 +215,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the resource group that contains the service instance.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
@@ -196,6 +226,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the service instance.",
         SerializedName = @"resourceName",
         PossibleTypes = new [] { typeof(string) })]
@@ -204,6 +237,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The subscription identifier.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
@@ -212,6 +248,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of workspace resource.",
         SerializedName = @"workspaceName",
         PossibleTypes = new [] { typeof(string) })]

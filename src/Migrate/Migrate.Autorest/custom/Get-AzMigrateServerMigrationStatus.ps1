@@ -29,7 +29,7 @@ function Get-AzMigrateServerMigrationStatus {
         [Parameter(ParameterSetName = 'GetByMachineName', Mandatory)]
         [Parameter(ParameterSetName = 'GetHealthByMachineName', Mandatory)]
         [Parameter(ParameterSetName = 'GetByApplianceName', Mandatory)]
-        #[Parameter(ParameterSetName = 'GetByPrioritiseServer', Mandatory)]
+        [Parameter(ParameterSetName = 'GetByPrioritiseServer', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
         # Specifies the Resource Group of the Azure Migrate Project in the current subscription.
@@ -39,7 +39,7 @@ function Get-AzMigrateServerMigrationStatus {
         [Parameter(ParameterSetName = 'GetByMachineName', Mandatory)]
         [Parameter(ParameterSetName = 'GetHealthByMachineName', Mandatory)]
         [Parameter(ParameterSetName = 'GetByApplianceName', Mandatory)]
-        #[Parameter(ParameterSetName = 'GetByPrioritiseServer', Mandatory)]
+        [Parameter(ParameterSetName = 'GetByPrioritiseServer', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
         # Specifies the Azure Migrate project  in the current subscription.
@@ -47,7 +47,7 @@ function Get-AzMigrateServerMigrationStatus {
 
         [Parameter(ParameterSetName = 'GetByMachineName', Mandatory)]
         [Parameter(ParameterSetName = 'GetHealthByMachineName', Mandatory)]
-        #[Parameter(ParameterSetName = 'GetByPrioritiseServer', Mandatory)]
+        [Parameter(ParameterSetName = 'GetByPrioritiseServer', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
         # Specifies the display name of the replicating machine.
@@ -64,6 +64,12 @@ function Get-AzMigrateServerMigrationStatus {
         [System.Management.Automation.SwitchParameter]
         # Specifies whether the health issues to show for replicating server.
         ${Health},
+
+        [Parameter(ParameterSetName = 'GetByPrioritiseServer', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.Management.Automation.SwitchParameter]
+        # Specifies whether to expedite the operation of a replicating server.
+        ${Expedite},
 
         [Parameter(ParameterSetName = 'ListByName')]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Query')]
@@ -184,23 +190,15 @@ function Get-AzMigrateServerMigrationStatus {
                 [string]$State,
                 [object]$ReplicationMigrationItem
             )
+            if ($ReplicationMigrationItem.MigrationState -eq "MigrationFailed") {
+                return "Migration Failed"
+            }
+            elseif ($ReplicationMigrationItem.MigrationState -match "InitialSeedingFailed") {
+                return "InitialReplication Failed"
+            }
 
             if ([string]::IsNullOrEmpty($State)) {
-                if ($ReplicationMigrationItem.MigrationState -match "InitialSeedingInProgress" -or $ReplicationMigrationItem.MigrationState -match "EnableMigrationInProgress" -or $ReplicationMigrationItem.MigrationState -match "Replicating") {
-                    return "InitialReplication Queued"
-                }
-                elseif ($ReplicationMigrationItem.MigrationState -match "InitialSeedingFailed") {
-                    return "InitialReplication Failed"
-                }
                 return $ReplicationMigrationItem.MigrationState
-            }
-
-            if ($ReplicationMigrationItem.MigrationState -match "MigrationInProgress" -and $ReplicationMigrationItem.migrationProgressPercentage -eq $null) {
-                return "FinalDeltaReplication Queued"
-            }
-
-            if ($ReplicationMigrationItem.MigrationState -eq "MigrationSucceeded") {
-                return "Migration Completed"
             }
 
             $State = $State -replace "PlannedFailoverOverDeltaReplication", "FinalDeltaReplication"
@@ -254,8 +252,30 @@ function Get-AzMigrateServerMigrationStatus {
                 [double]$Value
             )
 
-            if ($Value -ne $null -and $Value -ne 0) {
-                return "$Value%"
+            if ($null -ne $Value) {
+                return "$Value %"
+            } else {
+                return "-"
+            }
+        }
+
+        function Add-MBps {
+            param (
+                [double]$Value
+            )
+            if ($null -ne $Value) {
+                return "$Value MBps"
+            } else {
+                return "-"
+            }
+        }
+
+        function Add-MB {
+            param (
+                [double]$Value
+            )
+            if ($null -ne $Value) {
+                return "$Value MB"
             } else {
                 return "-"
             }
@@ -279,6 +299,58 @@ function Get-AzMigrateServerMigrationStatus {
             return $formattedTime
         }
 
+        # Helper function to determine status
+        function Get-ResourceStatus {
+            param (
+                [double]$Capacity,
+                [double]$Utilization,
+                [string]$ResourceType
+            )
+            if ($Capacity -eq 0 -or $null -eq $Capacity) {
+                return "-"
+            }
+            if ($null -eq $Utilization) {
+                return "-"
+            }
+            if ($ResourceType -match "CPU Sum" -and $Utilization -eq 0) {
+                return "-"
+            }
+
+            $thresholds = @{
+                "ApplianceRam"      = @{ AtCapacity = 95; Throttled = 85; Underutilized = 60 }
+                "ApplianceCpu"      = @{ AtCapacity = 99; Throttled = 95; Underutilized = 60 }
+                "NetworkBandwidth"  = @{ AtCapacity = 95; Throttled = 90; Underutilized = 50 }
+                "EsxiNfcBuffer"     = @{ AtCapacity = 100; Throttled = 90; Underutilized = 70 }
+                "ParallelDisks"     = @{ AtCapacity = 100; Throttled = 95; Underutilized = 70 }
+                "Datastore"         = @{ AtCapacity = 100; Throttled = 95; Underutilized = 70 }
+                "Default"           = @{ AtCapacity = 100; Throttled = 90; Underutilized = 70 }
+            }
+
+            # Map resource type to threshold set
+            $typeKey = switch -Regex ($ResourceType) {
+                "RAM"         { "ApplianceRam" }
+                "CPU"         { "ApplianceCpu" }
+                "Network"     { "NetworkBandwidth" }
+                "NFC"         { "EsxiNfcBuffer" }
+                "Disk"        { "ParallelDisks" }
+                "Datastore"   { "Datastore" }
+                default       { "Default" }
+            }
+
+            $t = $thresholds[$typeKey]
+            $percent = ($Utilization / $Capacity) * 100
+
+            if ($percent -ge $t.AtCapacity) {
+                return "At capacity"
+            } elseif ($percent -ge $t.Throttled) {
+                return "Throttled"
+            } elseif ($percent -le $t.Underutilized) {
+                return "Underutilized"
+            } else {
+                return "Normal"
+            }
+        }
+
         $parameterSet = $PSCmdlet.ParameterSetName
         $null = $PSBoundParameters.Remove('ResourceGroupName')
         $null = $PSBoundParameters.Remove('ProjectName')
@@ -289,7 +361,7 @@ function Get-AzMigrateServerMigrationStatus {
         $null = $PSBoundParameters.Remove('MachineName')
         $null = $PSBoundParameters.Remove('ApplianceName')
         $null = $PSBoundParameters.Remove('Health')
-        #$null = $PSBoundParameters.Remove('Expedite')
+        $null = $PSBoundParameters.Remove('Expedite')
 
         $output = New-Object System.Collections.ArrayList  # Create a hashtable to store the output.
 
@@ -344,13 +416,13 @@ function Get-AzMigrateServerMigrationStatus {
         $vmMigrationStatusTable = New-Object System.Data.DataTable("")
 
         if ($parameterSet -eq "GetByApplianceName") {
-            $column = @("Server", "State", "Progress", "TimeElapsed", "TimeRemaining", "UploadSpeed", "Health", "LastSync", "Datastore")
+            $column = @("Server", "State", "Progress", "TimeElapsed", "TimeRemaining", "UploadSpeed", "Health", "LastSync",  "ESXiHost", "Datastore")
         }
         elseif ($parameterSet -eq "ListByName") {
-            $column = @("Appliance", "Server", "State", "Progress", "TimeElapsed", "TimeRemaining", "UploadSpeed", "Health", "LastSync", "Datastore")
+            $column = @("Appliance", "Server", "State", "Progress", "TimeElapsed", "TimeRemaining", "UploadSpeed", "Health", "LastSync", "ESXiHost", "Datastore")
         }
         else {
-            $column = @("Appliance", "Server", "State", "Progress", "TimeElapsed", "TimeRemaining", "UploadSpeed", "LastSync", "Datastore")
+            $column = @("Appliance", "Server", "State", "Progress", "TimeElapsed", "TimeRemaining", "UploadSpeed", "LastSync", "ESXiHost", "Datastore")
         }
 
         MakeTable $vmMigrationStatusTable $column
@@ -421,7 +493,7 @@ function Get-AzMigrateServerMigrationStatus {
             }
             $row1["LastSync"] = ConvertToCustomTimeFormat -LocalTimeString $ReplicationMigrationItem.ProviderSpecificDetail.lastRecoveryPointReceived
 
-            #$row1["ESXiHost"] = $ReplicationMigrationItem.ProviderSpecificDetail.GatewayOperationDetailHostName
+            $row1["ESXiHost"] = $ReplicationMigrationItem.ProviderSpecificDetail.GatewayOperationDetailHostName
             if (-not [string]::IsNullOrEmpty($ReplicationMigrationItem.ProviderSpecificDetail.GatewayOperationDetailDataStore)) {
                 $row1["Datastore"] = $ReplicationMigrationItem.ProviderSpecificDetail.GatewayOperationDetailDataStore -join ', '
             }
@@ -509,110 +581,298 @@ function Get-AzMigrateServerMigrationStatus {
                     }
                 }
             }
+        }
 
-            <#if( $parameterSet -eq "GetByPrioritiseServer") {
-                $vmMigrationTable = New-Object System.Data.DataTable("")
-                $column = @("Appliance", "Server", "State", "TimeRemaining", "ESXiHost", "Datastore")
-                MakeTable $vmMigrationTable $column
+        if( $parameterSet -eq "GetByPrioritiseServer") {
 
-                foreach($MigrationItem in $ReplicationMigrationItems) {
-                    $site = $MigrationItem.ProviderSpecificDetail.vmwareMachineId.Split('/')[-3]
-                    $appName1 = GetApplianceName $site
-                    if ($MigrationItem.MachineName -eq $ReplicationMigrationItem.MachineName -and $appName1 -eq $appName) {
-                        continue;
-                    }
+            $replicationState = GetState -State $ReplicationMigrationItem.ProviderSpecificDetail.GatewayOperationDetailState -ReplicationMigrationItem $ReplicationMigrationItem
+            if ($replicationState -match "Failed" -or $replicationState -match "Completed" -or ($replicationState -notmatch "InProgress" -and $replicationState -notmatch "Queued")) {
+                $op = $output.Add("Replication for server '$($ReplicationMigrationItem.MachineName)' is in state '$replicationState'. Expedite recommendations are only applicable for servers in 'Queued' or 'InProgress' state.`n")
+                return $output;
+            }
 
-                    if ($appName1 -ne $appName) {
-                        continue;
-                    }
+            # Build a table of VMs sharing resources (appliance, datastore, ESXi host) with the reference VM.
+            $vmMigrationTable = New-Object System.Data.DataTable("")
+            $column = @("Appliance", "Server", "SharedResourceType", "State", "TimeRemaining", "ESXiHost", "Datastore")
+            MakeTable $vmMigrationTable $column
 
+            # Get reference VM's ESXi host and datastores
+            $refESXiHost = $ReplicationMigrationItem.ProviderSpecificDetail.GatewayOperationDetailHostName
+            $refDatastores = @()
+            if ($ReplicationMigrationItem.ProviderSpecificDetail.GatewayOperationDetailDataStore) {
+                $refDatastores = @($ReplicationMigrationItem.ProviderSpecificDetail.GatewayOperationDetailDataStore)
+            }
+
+            $MigrationItems = Get-AzMigrateServerReplication -ProjectName $ProjectName -ResourceGroupName $ResourceGroupName
+            $addedMachines = @{}  # Hashtable to track added machines
+            foreach($MigrationItem in $MigrationItems) {
+                # Skip the reference VM itself
+                if ($MigrationItem.MachineName -eq $ReplicationMigrationItem.MachineName) {
+                    continue
+                }
+
+                # Skip if this machine has already been added
+                if ($addedMachines.ContainsKey($MigrationItem.MachineName)) {
+                    continue
+                }
+
+                $site = $MigrationItem.ProviderSpecificDetail.vmwareMachineId.Split('/')[-3]
+                $appName1 = GetApplianceName $site
+
+                # Check for shared resources
+                $sharedTypes = @()
+
+                if ($appName1 -eq $appName) {
+                    $sharedTypes += "Appliance"
+                }
+
+                $esxiHost = $MigrationItem.ProviderSpecificDetail.GatewayOperationDetailHostName
+                if ($refESXiHost -and $esxiHost -and ($esxiHost -eq $refESXiHost)) {
+                    $sharedTypes += "ESXiHost"
+                }
+
+                $datastores = @()
+                if ($MigrationItem.ProviderSpecificDetail.GatewayOperationDetailDataStore) {
+                    $datastores = @($MigrationItem.ProviderSpecificDetail.GatewayOperationDetailDataStore)
+                }
+                $commonDatastores = $refDatastores | Where-Object { $datastores -contains $_ }
+                foreach ($ds in $commonDatastores) {
+                    $sharedTypes += "Datastore"
+                }
+
+                if ($sharedTypes.Count -gt 0) {
                     $row1 = $vmMigrationTable.NewRow()
                     $row1["Appliance"] = $appName1
                     $row1["Server"] = $MigrationItem.MachineName
+                    $row1["SharedResourceType"] = $sharedTypes -join ', '
+                    $row1["TimeRemaining"] = Convert-MillisecondsToTime -Milliseconds $MigrationItem.ProviderSpecificDetail.GatewayOperationDetailTimeRemaining
                     $row1["State"] = $MigrationItem.ProviderSpecificDetail.GatewayOperationDetailState
-                    $row1["TimeRemaining"] = $MigrationItem.ProviderSpecificDetail.GatewayOperationDetailTimeRemaining
                     $row1["ESXiHost"] = $MigrationItem.ProviderSpecificDetail.GatewayOperationDetailHostName
-                    $row1["Datastore"] = $MigrationItem.ProviderSpecificDetail.GatewayOperationDetailDataStore
+                    if ($datastores -and $datastores.Count -gt 0) {
+                        $row1["Datastore"] = $datastores -join ', '
+                    } else {
+                        $row1["Datastore"] = "-"
+                    }
                     $vmMigrationTable.Rows.Add($row1)
+                    # Mark this machine as added to avoid duplicates
+                    $addedMachines[$MigrationItem.MachineName] = $true
                 }
-                $op = $output.Add("Resource Sharing: `n`nVM $($ReplicationMigrationItem.MachineName) shares at least one resource with the following VM. These include ESXi host, Datastore or primary appliance.")
+            }
+
+            if ($vmMigrationTable.Rows.Count -gt 0) {
+                $op = $output.Add("Resource Sharing:`n`nThe following VMs share at least one resource (Appliance, ESXi Host, or Datastore) with VM " + `
+                    "'$($ReplicationMigrationItem.MachineName)'. The 'SharedResourceType' and 'SharedResourceName' columns indicate which resource is shared.")
+                
                 $vmMigrationTable = $vmMigrationTable | Format-Table -AutoSize | Out-String
                 $op = $output.Add($vmMigrationTable)
+            } 
+            else {
+                $op = $output.Add("No other VMs found sharing Appliance, ESXi Host, or Datastore with VM '$($ReplicationMigrationItem.MachineName)'.")
+            }
+            $resourceUtilizationTable = New-Object System.Data.DataTable("")
+            $column = @("Resource", "Capacity", "Utilization for server migrations", "Total utilization", "Status")
+            MakeTable $resourceUtilizationTable $column
+            
+            # RAM
+            $row1 = $resourceUtilizationTable.NewRow()
+            $ramCapacity = $ReplicationMigrationItem.ProviderSpecificDetail.ApplianceMonitoringDetail.RamDetailCapacity
+            $ramTotalUtil = $ReplicationMigrationItem.ProviderSpecificDetail.ApplianceMonitoringDetail.RamDetailTotalUtilization
+            $row1["Resource"] = "Appliance RAM Sum : Primary and scale out appliances"
+            $row1["Capacity"] = Add-MB -Value $ramCapacity
+            $row1["Utilization for server migrations"] = Add-MB -Value ($ReplicationMigrationItem.ProviderSpecificDetail.ApplianceMonitoringDetail.RamDetailProcessUtilization)
+            $row1["Total utilization"] = Add-MB -Value $ramTotalUtil
+            $row1["Status"] = Get-ResourceStatus -Capacity $ramCapacity -Utilization $ramTotalUtil -ResourceType $row1["Resource"]
+            $resourceUtilizationTable.Rows.Add($row1)
 
-                $resourceUtilizationTable = New-Object System.Data.DataTable("")
-                $column = @("Resource", "Capacity", "Utilization for server migrations", "Total utilization", "Status")
-                MakeTable $resourceUtilizationTable $column
-                $row1 = $resourceUtilizationTable.NewRow()
-                $row1["Resource"] = "Appliance RAM Sum : Primary and scale out appliances"
-                $row1["Capacity"] = $ReplicationMigrationItem.ProviderSpecificDetail.ApplianceMonitoringDetail.RamDetailCapacity
-                $row1["Utilization for server migrations"] = $ReplicationMigrationItem.ProviderSpecificDetail.ApplianceMonitoringDetail.RamDetailProcessUtilization
-                $row1["Total utilization"] = $ReplicationMigrationItem.ProviderSpecificDetail.ApplianceMonitoringDetail.RamDetailTotalUtilization
-                $row1["Status"] = $ReplicationMigrationItem.ProviderSpecificDetail.ApplianceMonitoringDetail.RamDetailStatus
-                $resourceUtilizationTable.Rows.Add($row1)
+            # CPU
+            $row2 = $resourceUtilizationTable.NewRow()
+            $cpuCapacity = $ReplicationMigrationItem.ProviderSpecificDetail.ApplianceMonitoringDetail.CpuDetailCapacity
+            $cpuProcessUtil = $ReplicationMigrationItem.ProviderSpecificDetail.ApplianceMonitoringDetail.CpuDetailProcessUtilization
+            $cpuTotalUtil = $ReplicationMigrationItem.ProviderSpecificDetail.ApplianceMonitoringDetail.CpuDetailTotalUtilization
+            $row2["Resource"] = "Appliance CPU Sum : Primary and scale out appliances"
+            if ($null -ne $cpuCapacity -and $cpuCapacity -ne 0) {
+                $row2["Capacity"] = "$($cpuCapacity) Cores"
+            } else {
+                $row2["Capacity"] = "-"
+            }
+            $row2["Utilization for server migrations"] = Add-Percent -Value $cpuProcessUtil
+            $row2["Total utilization"] = Add-Percent -Value $cpuTotalUtil
+            $row2["Status"] = Get-ResourceStatus -Capacity 100 -Utilization $cpuTotalUtil -ResourceType $row2["Resource"]
+            $resourceUtilizationTable.Rows.Add($row2)
 
-                $row2 = $resourceUtilizationTable.NewRow()
-                $row2["Resource"] = "Appliance CPU Sum : Primary and scale out appliances"
-                $row2["Capacity"] = $ReplicationMigrationItem.ProviderSpecificDetail.ApplianceMonitoringDetail.CpuDetailCapacity
-                $row2["Utilization for server migrations"] = $ReplicationMigrationItem.ProviderSpecificDetail.ApplianceMonitoringDetail.CpuDetailProcessUtilization
-                $row2["Total utilization"] = $ReplicationMigrationItem.ProviderSpecificDetail.ApplianceMonitoringDetail.CpuDetailTotalUtilization
-                $row2["Status"] = $ReplicationMigrationItem.ProviderSpecificDetail.ApplianceMonitoringDetail.CpuDetailStatus
-                $resourceUtilizationTable.Rows.Add($row2)
+            # Network Bandwidth
+            $row3 = $resourceUtilizationTable.NewRow()
+            $netCapacity = $ReplicationMigrationItem.ProviderSpecificDetail.ApplianceMonitoringDetail.NetworkBandwidthCapacity
+            $netTotalUtil = $ReplicationMigrationItem.ProviderSpecificDetail.ApplianceMonitoringDetail.NetworkBandwidthTotalUtilization
+            $row3["Resource"] = "Network bandwidth Sum : Primary and scale out appliances"
+            $row3["Capacity"] = Add-MBps -Value $netCapacity
+            $row3["Utilization for server migrations"] = Add-MBps -Value $ReplicationMigrationItem.ProviderSpecificDetail.ApplianceMonitoringDetail.NetworkBandwidthProcessUtilization
+            $row3["Total utilization"] = Add-MBps -Value $netTotalUtil
+            $row3["Status"] = Get-ResourceStatus -Capacity $netCapacity -Utilization $netTotalUtil -ResourceType $row3["Resource"]
+            $resourceUtilizationTable.Rows.Add($row3)
 
-                $row3 = $resourceUtilizationTable.NewRow()
-                $row3["Resource"] = "Network bandwidth Sum : Primary and scale out appliances"
-                $row3["Capacity"] = $ReplicationMigrationItem.ProviderSpecificDetail.ApplianceMonitoringDetail.NetworkBandwidthCapacity
-                $row3["Utilization for server migrations"] = $ReplicationMigrationItem.ProviderSpecificDetail.ApplianceMonitoringDetail.NetworkBandwidthProcessUtilization
-                $row3["Total utilization"] = $ReplicationMigrationItem.ProviderSpecificDetail.ApplianceMonitoringDetail.NetworkBandwidthTotalUtilization
-                $row3["Status"] = $ReplicationMigrationItem.ProviderSpecificDetail.ApplianceMonitoringDetail.NetworkBandwidthStatus
-                $resourceUtilizationTable.Rows.Add($row3)
+            # ESXi NFC Buffer
+            $row4 = $resourceUtilizationTable.NewRow()
+            $nfcCapacity = $ReplicationMigrationItem.ProviderSpecificDetail.ApplianceMonitoringDetail.EsxiNfcBufferCapacity
+            $nfcProcessUtil = $ReplicationMigrationItem.ProviderSpecificDetail.ApplianceMonitoringDetail.EsxiNfcBufferProcessUtilization
+            $row4["Resource"] = "ESXi host NFC buffer"
+            $row4["Capacity"] = Add-MB -Value $nfcCapacity
+            $row4["Utilization for server migrations"] = Add-MB -Value $nfcProcessUtil
+            $row4["Total utilization"] = "-"
+            $row4["Status"] = Get-ResourceStatus -Capacity $nfcCapacity -Utilization $nfcProcessUtil -ResourceType $row4["Resource"]
+            $resourceUtilizationTable.Rows.Add($row4)
 
-                $row4 = $resourceUtilizationTable.NewRow()
-                $row4["Resource"] = "ESXi host NFC buffer"
-                $row4["Capacity"] = $ReplicationMigrationItem.ProviderSpecificDetail.ApplianceMonitoringDetail.EsxiNfcBufferCapacity
-                $row4["Utilization for server migrations"] = $ReplicationMigrationItem.ProviderSpecificDetail.ApplianceMonitoringDetail.EsxiNfcBufferProcessUtilization
-                $row4["Total utilization"] = $ReplicationMigrationItem.ProviderSpecificDetail.ApplianceMonitoringDetail.EsxiNfcBufferTotalUtilization
-                $row4["Status"] = $ReplicationMigrationItem.ProviderSpecificDetail.ApplianceMonitoringDetail.EsxiNfcBufferStatus
-                $resourceUtilizationTable.Rows.Add($row4)
+            # Parallel Disks Replicated
+            $row5 = $resourceUtilizationTable.NewRow()
+            $diskCapacity = $ReplicationMigrationItem.ProviderSpecificDetail.ApplianceMonitoringDetail.DiskReplicationDetailCapacity
+            $diskProcessUtil = $ReplicationMigrationItem.ProviderSpecificDetail.ApplianceMonitoringDetail.DiskReplicationDetailProcessUtilization
+            $row5["Resource"] = "Parallel Disks Replicated Sum : Primary and scale out appliances"
+            if ($null -ne $diskCapacity) {
+                $row5["Capacity"] = $diskCapacity
+            }
+            else {
+                $row5["Capacity"] = "-"
+            }
+            if ($null -ne $diskProcessUtil) {
+                $row5["Utilization for server migrations"] = $diskProcessUtil
+            }
+            else {
+                $row5["Utilization for server migrations"] = "-"
+            }
+            $row5["Total utilization"] = "-"
+            $row5["Status"] = Get-ResourceStatus -Capacity $diskCapacity -Utilization $diskProcessUtil -ResourceType $row5["Resource"]
+            $resourceUtilizationTable.Rows.Add($row5)
 
-                $row5 = $resourceUtilizationTable.NewRow()
-                $row5["Resource"] = "Parallel Disks Replicated Sum : Primary and scale out appliances"
-                $row5["Capacity"] = $ReplicationMigrationItem.ProviderSpecificDetail.ApplianceMonitoringDetail.DiskReplicationDetailCapacity
-                $row5["Utilization for server migrations"] = $ReplicationMigrationItem.ProviderSpecificDetail.ApplianceMonitoringDetail.DiskReplicationDetailProcessUtilization
-                $row5["Total utilization"] = $ReplicationMigrationItem.ProviderSpecificDetail.ApplianceMonitoringDetail.DiskReplicationDetailTotalUtilization
-                $row5["Status"] = $ReplicationMigrationItem.ProviderSpecificDetail.ApplianceMonitoringDetail.DiskReplicationDetailStatus
-                $resourceUtilizationTable.Rows.Add($row5)
+            # Datastore Snapshots (list)
+            $datastoreList = $ReplicationMigrationItem.ProviderSpecificDetail.ApplianceMonitoringDetail.datastoreSnapshot
+            if ($datastoreList) {
+                foreach ($ds in $datastoreList) {
+                    $row = $resourceUtilizationTable.NewRow()
+                    if ($null -ne $ds.datastoreName) {
+                        $datastoreName = $ds.datastoreName
+                    }
+                    else {
+                        $datastoreName = "-"
+                    }
+                    $row["Resource"] = "Datastore '$datastoreName' Snapshot Count"
+                    if ($null -ne $ds.totalSnapshotsSupported) {
+                        $row["Capacity"] = $ds.totalSnapshotsSupported
+                    }
+                    else {
+                        $row["Capacity"] = "-"
+                    }
+                    if ($null -ne $ds.totalSnapshotsCreated) {
+                        $row["Utilization for server migrations"] = $ds.totalSnapshotsCreated
+                    }
+                    else {
+                        $row["Utilization for server migrations"] = "-"
+                    }
+                    $row["Total utilization"] = "-"
+                    $row["Status"] = Get-ResourceStatus -Capacity $ds.totalSnapshotsSupported -Utilization  $ds.totalSnapshotsCreated -ResourceType $row["Resource"]
+                    $resourceUtilizationTable.Rows.Add($row)
+                }
+            }
 
-                $row6 = $resourceUtilizationTable.NewRow()
-                $row6["Resource"] = "Datastore Snapshot Count (for each datastore corresponding to the server s disks)"
-                $row6["Capacity"] = $ReplicationMigrationItem.ProviderSpecificDetail.ApplianceMonitoringDetail.DatastoreSnapshotCapacity
-                $row6["Utilization for server migrations"] = $ReplicationMigrationItem.ProviderSpecificDetail.ApplianceMonitoringDetail.DatastoreSnapshotProcessUtilization
-                $row6["Total utilization"] = $ReplicationMigrationItem.ProviderSpecificDetail.ApplianceMonitoringDetail.DatastoreSnapshotTotalUtilization
-                $row6["Status"] = $ReplicationMigrationItem.ProviderSpecificDetail.ApplianceMonitoringDetail.DatastoreSnapshotStatus
-                $resourceUtilizationTable.Rows.Add($row6)
+            $op = $output.Add("Resource utilization information for migration operations:")
+            $resourceUtilizationTableString = $resourceUtilizationTable | Format-Table -AutoSize | Out-String
+            $op = $output.Add($resourceUtilizationTableString)
 
-                $op = $output.Add("Resource utilization information for migration operations:")
-                $resourceUtilizationTable = $resourceUtilizationTable | Format-Table -AutoSize | Out-String
-                $op = $output.Add($resourceUtilizationTable)
-                
-                # <To-do> Add Recommendation actions logic for expedite.
+            # Recommendations
+            $recommendations = @()
+            foreach ($row in $resourceUtilizationTable.Rows) {
+                $resource = $row["Resource"]
 
-                Write-Host "Based on the resource utilization seen above following are suggestion you can take to expedite server $($ReplicationMigrationItem.MachineName) migration :" -ForegroundColor White
-                Write-Host "1. Pause replication for servers S2, S3, in delta sync who are migrating under appliance A1."
-                Write-Host "2. Stop replication for servers S4 in Initial replication migrating under appliance A1."
-                Write-Host "3. Increase the Network bandwidth available for appliances so that upload speeds can increase."
-                Write-Host "4. Increase the NFC buffer size to increase the upload speed."
-                Write-Host "5. Perform storage Vmotion on server $($ReplicationMigrationItem.MachineName)."
-            }#>
+                # Normalize resource string for matching
+                $resourceNorm = $resource.ToLower()
+                $status = $row["Status"].ToLower()
+                $isQueued = $replicationState -match "Queued"
+
+                if ($status -eq "Throttled" -or $status -eq "At capacity") {
+                    if ($resourceNorm -like "*ram*") {
+                            $recommendations += "`nResource `"$resource`" is $status. Recommendations:"
+                            $recommendations += "Stop other processes running on the appliance that are consuming RAM."
+                            $recommendations += "Stop initial replication (IR) or pause delta replication (DR) for other low-priority VMs migrating under this appliance to free up RAM."
+                            $recommendations += "Decrease the number of workers (parallel disk replications)."
+                            $ramCapacityVal = 0
+                            if ($row["Capacity"] -match "(\d+(\.\d+)?)") { $ramCapacityVal = [double]$matches[1] }
+                            if ($ramCapacityVal -lt 32768 -and $ramCapacityVal -gt 0) {
+                                $recommendations += "Consider increasing the appliance RAM to improve migration performance and support higher workloads."
+                            }
+                            $recommendations += "If only the primary appliance is present, consider adding or increasing the number of scale-out appliances.`n"
+                    }
+                    elseif ($resourceNorm -like "*cpu*") {
+                            $recommendations += "`nResource `"$resource`" is $status. Recommendations:"
+                            $recommendations += "Stop other processes running on the appliance that are consuming CPU."
+                            $recommendations += "Stop initial replication (IR) or pause delta replication (DR) for other low-priority VMs migrating under this appliance to free up CPU."
+                            $recommendations += "Decrease the number of workers (parallel disk replications)."
+                            $recommendations += "If only the primary appliance is present, consider adding or increasing the number of scale-out appliances.`n"
+                    }
+                    elseif ($resourceNorm -like "*network bandwidth*") {
+                            $recommendations += "`nResource `"$resource`" is $status. Recommendations:"
+                            $recommendations += "Pause or stop other processes utilizing the network."
+                            $recommendations += "Stop initial replication (IR) or pause delta replication (DR) for other low-priority VMs migrating under this appliance to free up network bandwidth."
+                            $recommendations += "Decrease the number of workers (parallel disk replications)."
+                            $recommendations += "Review and adjust Quality of Service (QoS) limits per process if applicable."
+                            $recommendations += "Increase the network bandwidth available to the appliance.`n"
+                    }
+                    elseif ($resourceNorm -like "*nfc buffer*") {
+                        if ($isQueued) {
+                            $recommendations += "`nResource `"$resource`" is $status. Recommendations:"
+                            $recommendations += "Stop initial replication (IR) or pause delta replication (DR) for other low-priority VMs migrating under this appliance to free up NFC buffer on the ESXi host."
+                            $recommendations += "Perform vMotion for other low-priority virtual machines."
+                            $recommendations += "Increase the size of the NFC buffer on the ESXi host."
+                            $recommendations += "Stop or schedule blackout windows for other backup providers running on the ESXi host.`n"
+                        }
+                    }
+                    elseif ($resourceNorm -like "*parallel disk replicated*") {
+                            if ($isQueued) {
+                                $recommendations += "`nResource `"$resource`" is $status. Recommendations:"
+                                $recommendations += "Add a scale-out appliance to distribute the migration workload more effectively."
+                                $recommendations += "Stop initial replication (IR) or pause delta replication (DR) for other low-priority VMs migrating under this appliance to free up parallel disk replication capacity."
+                                $recommendations += "If this is the only bottleneck and all other resources are available, increase the number of workers (parallel disk replications)."
+                            }
+                    }
+                    elseif ($resourceNorm -like "*datastore*" -and $resourceNorm -like "*snapshot*") {
+                            if ($isQueued) {
+                                $recommendations += "`nResource `"$resource`" is $status. Recommendations:"
+                                $recommendations += "Pause or stop replications for other VMs migrating under this appliance to free up snapshot capacity."
+                                $recommendations += "Increase the snapshot count supported by the datastore."
+                                $recommendations += "Perform storage vMotion for other low-priority replicating VMs.`n"
+                            }
+                    }
+                }
+            }
+
+            if ($recommendations.Count -gt 0) {
+                $op = $output.Add("Based on the resource utilization seen above, here are suggestions to expedite server $($ReplicationMigrationItem.MachineName) migration:")
+                foreach ($rec in $recommendations) {
+                    $op = $output.Add("$rec")
+                }
+            }
         }
 
         if ($parameterSet -eq "GetByApplianceName" -or $parameterSet -eq "ListByName") {
-            $vmMigrationStatusTable = $vmMigrationStatusTable | Format-Table -AutoSize | Out-String
+            if ($parameterSet -eq "ListByName") {
+                $desiredCols = @("Appliance","Server","State","Progress","TimeElapsed","TimeRemaining","UploadSpeed","Health","LastSync", "ESXiHost", "Datastore")
+            }
+            elseif ($parameterSet -eq "GetByApplianceName") {
+                $desiredCols = @("Server","State","Progress","TimeElapsed","TimeRemaining","UploadSpeed","Health","LastSync","ESXiHost","Datastore")
+            }
+            else {
+                $desiredCols = $vmMigrationStatusTable.Columns | ForEach-Object { $_.ColumnName }
+            }
+
+            $existingCols = $vmMigrationStatusTable.Columns | ForEach-Object { $_.ColumnName }
+            $cols = $desiredCols | Where-Object { $existingCols -contains $_ }
+
+            if (-not $cols -or $cols.Count -eq 0) { $cols = $existingCols }
+
+            # Select columns explicitly and force Format-Table to render all of them (no truncation)
+            $vmMigrationStatusTable = $vmMigrationStatusTable | Select-Object -Property $cols | Format-Table -Property $cols -AutoSize -Wrap -Force | Out-String -Width 4096
             $op = $output.Add($vmMigrationStatusTable)
 
-            $diskStatusTable = $diskStatusTable | Format-Table -AutoSize | Out-String
-            $op = $output.Add($diskStatusTable)
-#            $op = $output.Add("To check expedite the operation of a server use the command")
-#            $op = $output.Add("Get-AzMigrateServerMigrationStatus  -ProjectName <String> -ResourceGroupName <String> -MachineName <String> -Expedite`n")
+            $op = $output.Add("To check expedite the operation of a server use the command")
+            $op = $output.Add("Get-AzMigrateServerMigrationStatus  -ProjectName <String> -ResourceGroupName <String> -MachineName <String> -Expedite`n")
             $op = $output.Add("To resolve the health issue use the command")
             $op = $output.Add("Get-AzMigrateServerMigrationStatus -ProjectName <String> -ResourceGroupName <String> -MachineName <String> -Health`n")
         }

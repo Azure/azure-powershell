@@ -36,7 +36,17 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IAdvisorIdentity>: Identity Parameter
-  [ConfigurationName <ConfigurationName?>]: Advisor configuration name. Value must be 'default'
+  [ConfigurationName <String>]: Advisor configuration name. Value must be 'default'
+  [Id <String>]: Resource identity path
+  [Name <String>]: Name of metadata entity.
+  [OperationId <String>]: The operation ID, which can be found from the Location field in the generate recommendation response header.
+  [RecommendationId <String>]: The recommendation ID.
+  [ResourceGroup <String>]: The name of the Azure resource group.
+  [ResourceUri <String>]: The fully qualified Azure Resource Manager identifier of the resource to which the recommendation applies.
+  [SubscriptionId <String>]: The Azure subscription ID.
+
+RECOMMENDATIONINPUTOBJECT <IAdvisorIdentity>: Identity Parameter
+  [ConfigurationName <String>]: Advisor configuration name. Value must be 'default'
   [Id <String>]: Resource identity path
   [Name <String>]: Name of metadata entity.
   [OperationId <String>]: The operation ID, which can be found from the Location field in the generate recommendation response header.
@@ -52,6 +62,7 @@ function Remove-AzAdvisorSuppression {
 [CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityRecommendation', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Category('Path')]
     [System.String]
     # The name of the suppression.
@@ -73,8 +84,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IAdvisorIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityRecommendation', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IAdvisorIdentity]
+    # Identity Parameter
+    ${RecommendationInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -138,13 +154,20 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Delete = 'Az.Advisor.private\Remove-AzAdvisorSuppression_Delete';
             DeleteViaIdentity = 'Az.Advisor.private\Remove-AzAdvisorSuppression_DeleteViaIdentity';
+            DeleteViaIdentityRecommendation = 'Az.Advisor.private\Remove-AzAdvisorSuppression_DeleteViaIdentityRecommendation';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

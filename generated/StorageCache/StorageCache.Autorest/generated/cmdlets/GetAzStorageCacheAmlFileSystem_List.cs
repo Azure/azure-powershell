@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystem))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Description(@"Returns all AML file systems the user has access to under a subscription.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.StorageCache.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.StorageCache/amlFilesystems", ApiVersion = "2023-05-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.StorageCache.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.StorageCache/amlFilesystems", ApiVersion = "2025-07-01")]
     public partial class GetAzStorageCacheAmlFileSystem_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IContext

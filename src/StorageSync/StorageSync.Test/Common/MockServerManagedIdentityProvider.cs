@@ -24,9 +24,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.Common
 
         public bool EnableMIChecking { get; set; }
 
-        public Guid GetServerApplicationId(LocalServerType serverType, bool throwIfNotFound = true, bool validateSystemAssignedManagedIdentity = true)
+        public Task<ServerApplicationIdentity> GetServerApplicationIdentityAsync(LocalServerType serverType, bool throwIfNotFound = true, bool validateSystemAssignedManagedIdentity = true)
         {
-            return Guid.Empty;
+            return Task.FromResult(new ServerApplicationIdentity(Guid.Empty, Guid.Empty));
         }
 
         public LocalServerType GetServerType(IEcsManagement ecsManagement)

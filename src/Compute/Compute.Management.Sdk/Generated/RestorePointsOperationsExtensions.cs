@@ -22,110 +22,13 @@ namespace Microsoft.Azure.Management.Compute
     public static partial class RestorePointsOperationsExtensions
     {
             /// <summary>
-            /// The operation to create the restore point. Updating properties of an
-            /// existing restore point is not allowed
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='restorePointCollectionName'>
-            /// The name of the restore point collection.
-            /// </param>
-            /// <param name='restorePointName'>
-            /// The name of the restore point.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters supplied to the Create restore point operation.
-            /// </param>
-            public static RestorePoint Create(this IRestorePointsOperations operations, string resourceGroupName, string restorePointCollectionName, string restorePointName, RestorePoint parameters)
-            {
-                return operations.CreateAsync(resourceGroupName, restorePointCollectionName, restorePointName, parameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// The operation to create the restore point. Updating properties of an
-            /// existing restore point is not allowed
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='restorePointCollectionName'>
-            /// The name of the restore point collection.
-            /// </param>
-            /// <param name='restorePointName'>
-            /// The name of the restore point.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters supplied to the Create restore point operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<RestorePoint> CreateAsync(this IRestorePointsOperations operations, string resourceGroupName, string restorePointCollectionName, string restorePointName, RestorePoint parameters, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.CreateWithHttpMessagesAsync(resourceGroupName, restorePointCollectionName, restorePointName, parameters, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// The operation to delete the restore point.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='restorePointCollectionName'>
-            /// The name of the Restore Point Collection.
-            /// </param>
-            /// <param name='restorePointName'>
-            /// The name of the restore point.
-            /// </param>
-            public static void Delete(this IRestorePointsOperations operations, string resourceGroupName, string restorePointCollectionName, string restorePointName)
-            {
-                operations.DeleteAsync(resourceGroupName, restorePointCollectionName, restorePointName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// The operation to delete the restore point.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='restorePointCollectionName'>
-            /// The name of the Restore Point Collection.
-            /// </param>
-            /// <param name='restorePointName'>
-            /// The name of the restore point.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task DeleteAsync(this IRestorePointsOperations operations, string resourceGroupName, string restorePointCollectionName, string restorePointName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, restorePointCollectionName, restorePointName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
             /// The operation to get the restore point.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='restorePointCollectionName'>
             /// The name of the restore point collection.
@@ -150,7 +53,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='restorePointCollectionName'>
             /// The name of the restore point collection.
@@ -182,7 +85,104 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='restorePointCollectionName'>
+            /// The name of the restore point collection.
+            /// </param>
+            /// <param name='restorePointName'>
+            /// The name of the restore point.
+            /// </param>
+            /// <param name='parameters'>
+            /// Parameters supplied to the Create restore point operation.
+            /// </param>
+            public static RestorePoint Create(this IRestorePointsOperations operations, string resourceGroupName, string restorePointCollectionName, string restorePointName, RestorePoint parameters)
+            {
+                return operations.CreateAsync(resourceGroupName, restorePointCollectionName, restorePointName, parameters).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// The operation to create the restore point. Updating properties of an
+            /// existing restore point is not allowed
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='restorePointCollectionName'>
+            /// The name of the restore point collection.
+            /// </param>
+            /// <param name='restorePointName'>
+            /// The name of the restore point.
+            /// </param>
+            /// <param name='parameters'>
+            /// Parameters supplied to the Create restore point operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<RestorePoint> CreateAsync(this IRestorePointsOperations operations, string resourceGroupName, string restorePointCollectionName, string restorePointName, RestorePoint parameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.CreateWithHttpMessagesAsync(resourceGroupName, restorePointCollectionName, restorePointName, parameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// The operation to delete the restore point.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='restorePointCollectionName'>
+            /// The name of the restore point collection.
+            /// </param>
+            /// <param name='restorePointName'>
+            /// The name of the restore point.
+            /// </param>
+            public static void Delete(this IRestorePointsOperations operations, string resourceGroupName, string restorePointCollectionName, string restorePointName)
+            {
+                operations.DeleteAsync(resourceGroupName, restorePointCollectionName, restorePointName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// The operation to delete the restore point.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='restorePointCollectionName'>
+            /// The name of the restore point collection.
+            /// </param>
+            /// <param name='restorePointName'>
+            /// The name of the restore point.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task DeleteAsync(this IRestorePointsOperations operations, string resourceGroupName, string restorePointCollectionName, string restorePointName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, restorePointCollectionName, restorePointName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// The operation to create the restore point. Updating properties of an
+            /// existing restore point is not allowed
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='restorePointCollectionName'>
             /// The name of the restore point collection.
@@ -206,7 +206,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='restorePointCollectionName'>
             /// The name of the restore point collection.
@@ -235,10 +235,10 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='restorePointCollectionName'>
-            /// The name of the Restore Point Collection.
+            /// The name of the restore point collection.
             /// </param>
             /// <param name='restorePointName'>
             /// The name of the restore point.
@@ -255,10 +255,10 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='restorePointCollectionName'>
-            /// The name of the Restore Point Collection.
+            /// The name of the restore point collection.
             /// </param>
             /// <param name='restorePointName'>
             /// The name of the restore point.

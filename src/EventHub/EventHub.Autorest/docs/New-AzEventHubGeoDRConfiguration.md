@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzEventHubGeoDRConfiguration
 
 ## SYNOPSIS
-create a new Alias(Disaster Recovery configuration)
+Create a new Alias(Disaster Recovery configuration)
 
 ## SYNTAX
 
@@ -33,7 +33,7 @@ New-AzEventHubGeoDRConfiguration -Name <String> -NamespaceInputObject <IEventHub
 ```
 
 ## DESCRIPTION
-create a new Alias(Disaster Recovery configuration)
+Create a new Alias(Disaster Recovery configuration)
 
 ## EXAMPLES
 

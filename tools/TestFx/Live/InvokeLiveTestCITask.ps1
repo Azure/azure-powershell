@@ -13,20 +13,24 @@ param (
 )
 
 if ($UseWindowsPowerShell) {
-    $process = "powershell"
     Write-Host "##[section]Using Windows PowerShell"
+    $executable = "powershell"
+    $baseArguments = @("-NoLogo", "-NoProfile", "-NonInteractive")
 }
 else {
-    $process = "dotnet tool run pwsh"
     Write-Host "##[section]Using PowerShell"
     dotnet tool run pwsh -NoLogo -NoProfile -NonInteractive -Version
+    $executable = "dotnet"
+    $baseArguments = @("tool", "run", "pwsh", "-NoLogo", "-NoProfile", "-NonInteractive")
 }
 
 switch ($PSCmdlet.ParameterSetName) {
     "ByScriptFile" {
-        Invoke-Expression "$process -NoLogo -NoProfile -NonInteractive -File $ScriptFile"
+        $arguments = $baseArguments + @("-Command", "& $ScriptFile")
+        & $executable @arguments
     }
     "ByScriptBlock" {
-        Invoke-Expression "$process -NoLogo -NoProfile -NonInteractive -Command $ScriptBlock"
+        $arguments = $baseArguments + @("-Command", $ScriptBlock)
+        & $executable @arguments
     }
 }

@@ -1,15 +1,15 @@
 {
-  "Autoscale+[NoContext]+CRUD+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/autoscale-groupmkwzn5/providers/Microsoft.Insights/autoscalesettings/test-autoscalesettingeijgb5?api-version=2022-10-01+1": {
+  "Autoscale+[NoContext]+CRUD+$PUT+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourcegroups/autoscale-groupn5j8xc/providers/Microsoft.Insights/autoscalesettings/test-autoscalesettingtpxwua?api-version=2022-10-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/autoscale-groupmkwzn5/providers/Microsoft.Insights/autoscalesettings/test-autoscalesettingeijgb5?api-version=2022-10-01",
-      "Content": "{\r\n  \"location\": \"westeurope\",\r\n  \"properties\": {\r\n    \"predictiveAutoscalePolicy\": {\r\n      \"scaleMode\": \"Enabled\",\r\n      \"scaleLookAheadTime\": \"PT5M\"\r\n    },\r\n    \"profiles\": [\r\n      {\r\n        \"capacity\": {\r\n          \"minimum\": \"1\",\r\n          \"maximum\": \"10\",\r\n          \"default\": \"1\"\r\n        },\r\n        \"fixedDate\": {\r\n          \"timeZone\": \"UTC\",\r\n          \"start\": \"2022-12-31T21:00:00.0000000+08:00\",\r\n          \"end\": \"2022-12-31T22:00:00.0000000+08:00\"\r\n        },\r\n        \"name\": \"adios\",\r\n        \"rules\": [\r\n          {\r\n            \"metricTrigger\": {\r\n              \"metricName\": \"Percentage CPU\",\r\n              \"metricResourceUri\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/autoscale-groupmkwzn5/providers/Microsoft.Compute/virtualMachineScaleSets/test-vmsstuc9nx\",\r\n              \"timeGrain\": \"PT1M\",\r\n              \"statistic\": \"Average\",\r\n              \"timeWindow\": \"PT5M\",\r\n              \"timeAggregation\": \"Average\",\r\n              \"operator\": \"GreaterThan\",\r\n              \"threshold\": 10,\r\n              \"dividePerInstance\": false\r\n            },\r\n            \"scaleAction\": {\r\n              \"direction\": \"Increase\",\r\n              \"type\": \"ChangeCount\",\r\n              \"value\": \"1\",\r\n              \"cooldown\": \"PT5M\"\r\n            }\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"notifications\": [\r\n      {\r\n        \"email\": {\r\n          \"sendToSubscriptionAdministrator\": true,\r\n          \"sendToSubscriptionCoAdministrators\": true,\r\n          \"customEmails\": [ \"gu@ms.com\" ]\r\n        },\r\n        \"operation\": \"Scale\",\r\n        \"webhooks\": [\r\n          {\r\n            \"serviceUri\": \"http://myservice.com\"\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"enabled\": true,\r\n    \"targetResourceUri\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/autoscale-groupmkwzn5/providers/Microsoft.Compute/virtualMachineScaleSets/test-vmsstuc9nx\"\r\n  }\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourcegroups/autoscale-groupn5j8xc/providers/Microsoft.Insights/autoscalesettings/test-autoscalesettingtpxwua?api-version=2022-10-01",
+      "Content": "{\r\n  \"location\": \"westeurope\",\r\n  \"properties\": {\r\n    \"predictiveAutoscalePolicy\": {\r\n      \"scaleMode\": \"Enabled\",\r\n      \"scaleLookAheadTime\": \"PT5M\"\r\n    },\r\n    \"profiles\": [\r\n      {\r\n        \"capacity\": {\r\n          \"minimum\": \"1\",\r\n          \"maximum\": \"10\",\r\n          \"default\": \"1\"\r\n        },\r\n        \"fixedDate\": {\r\n          \"timeZone\": \"UTC\",\r\n          \"start\": \"2022-12-31T21:00:00.0000000+08:00\",\r\n          \"end\": \"2022-12-31T22:00:00.0000000+08:00\"\r\n        },\r\n        \"name\": \"adios\",\r\n        \"rules\": [\r\n          {\r\n            \"metricTrigger\": {\r\n              \"metricName\": \"Percentage CPU\",\r\n              \"metricResourceUri\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/autoscale-groupn5j8xc/providers/Microsoft.Compute/virtualMachineScaleSets/test-vmss9g01m2\",\r\n              \"timeGrain\": \"PT1M\",\r\n              \"statistic\": \"Average\",\r\n              \"timeWindow\": \"PT5M\",\r\n              \"timeAggregation\": \"Average\",\r\n              \"operator\": \"GreaterThan\",\r\n              \"threshold\": 10,\r\n              \"dividePerInstance\": false\r\n            },\r\n            \"scaleAction\": {\r\n              \"direction\": \"Increase\",\r\n              \"type\": \"ChangeCount\",\r\n              \"value\": \"1\",\r\n              \"cooldown\": \"PT5M\"\r\n            }\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"notifications\": [\r\n      {\r\n        \"email\": {\r\n          \"customEmails\": [ \"gu@ms.com\" ]\r\n        },\r\n        \"operation\": \"Scale\",\r\n        \"webhooks\": [\r\n          {\r\n            \"serviceUri\": \"http://myservice.com\"\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"enabled\": true,\r\n    \"targetResourceUri\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/autoscale-groupn5j8xc/providers/Microsoft.Compute/virtualMachineScaleSets/test-vmss9g01m2\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "1919" ]
+        "Content-Length": [ "1812" ]
       }
     },
     "Response": {
@@ -18,36 +18,39 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "cb135886-fd05-4413-9601-15b324619b51" ],
-        "Server": [ "Microsoft-IIS/10.0" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
-        "x-ms-correlation-request-id": [ "8623f5f5-e3e8-4437-8454-c8e5153d3a57" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220921T033831Z:8623f5f5-e3e8-4437-8454-c8e5153d3a57" ],
+        "x-ms-request-id": [ "d9b5c41f-6ee3-440d-8c5f-77a1d278588b" ],
+        "x-ms-operation-identifier": [ "tenantId=54826b22-38d6-4fb2-bad9-b7b93a3e9c5a,objectId=0f876fc3-c749-4607-ad50-c13ef1569cea/southeastasia/af570d67-288c-4bac-9096-28497c70a599" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-correlation-request-id": [ "38a8a2f8-8085-4925-be7d-aea9731b743e" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20250701T071830Z:38a8a2f8-8085-4925-be7d-aea9731b743e" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 21 Sep 2022 03:38:30 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 30DE9381726E41CEB7A41EE7B3EB964A Ref B: MAA201060513039 Ref C: 2025-07-01T07:18:23Z" ],
+        "Date": [ "Tue, 01 Jul 2025 07:18:30 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1546" ],
+        "Content-Length": [ "1548" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/autoscale-groupmkwzn5/providers/microsoft.insights/autoscalesettings/test-autoscalesettingeijgb5\",\"name\":\"test-autoscalesettingeijgb5\",\"type\":\"Microsoft.Insights/autoscaleSettings\",\"location\":\"westeurope\",\"tags\":{},\"properties\":{\"profiles\":[{\"name\":\"adios\",\"capacity\":{\"minimum\":\"1\",\"maximum\":\"10\",\"default\":\"1\"},\"rules\":[{\"metricTrigger\":{\"metricName\":\"Percentage CPU\",\"metricNamespace\":\"\",\"metricResourceUri\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/autoscale-groupmkwzn5/providers/Microsoft.Compute/virtualMachineScaleSets/test-vmsstuc9nx\",\"timeGrain\":\"PT1M\",\"statistic\":\"Average\",\"timeWindow\":\"PT5M\",\"timeAggregation\":\"Average\",\"operator\":\"GreaterThan\",\"threshold\":10.0,\"dimensions\":null,\"dividePerInstance\":false},\"scaleAction\":{\"direction\":\"Increase\",\"type\":\"ChangeCount\",\"value\":\"1\",\"cooldown\":\"PT5M\"}}],\"fixedDate\":{\"timeZone\":\"UTC\",\"start\":\"2022-12-31T13:00:00Z\",\"end\":\"2022-12-31T14:00:00Z\"}}],\"enabled\":true,\"name\":\"test-autoscalesettingeijgb5\",\"targetResourceUri\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/autoscale-groupmkwzn5/providers/Microsoft.Compute/virtualMachineScaleSets/test-vmsstuc9nx\",\"notifications\":[{\"operation\":\"Scale\",\"email\":{\"sendToSubscriptionAdministrator\":true,\"sendToSubscriptionCoAdministrators\":true,\"customEmails\":[\"gu@ms.com\"]},\"webhooks\":[{\"serviceUri\":\"http://myservice.com\",\"properties\":null}]}],\"predictiveAutoscalePolicy\":{\"scaleMode\":\"Enabled\",\"scaleLookAheadTime\":\"PT5M\"}}}",
+      "Content": "{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/autoscale-groupn5j8xc/providers/microsoft.insights/autoscalesettings/test-autoscalesettingtpxwua\",\"name\":\"test-autoscalesettingtpxwua\",\"type\":\"Microsoft.Insights/autoscaleSettings\",\"location\":\"westeurope\",\"tags\":{},\"properties\":{\"profiles\":[{\"name\":\"adios\",\"capacity\":{\"minimum\":\"1\",\"maximum\":\"10\",\"default\":\"1\"},\"rules\":[{\"metricTrigger\":{\"metricName\":\"Percentage CPU\",\"metricNamespace\":\"\",\"metricResourceUri\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/autoscale-groupn5j8xc/providers/Microsoft.Compute/virtualMachineScaleSets/test-vmss9g01m2\",\"timeGrain\":\"PT1M\",\"statistic\":\"Average\",\"timeWindow\":\"PT5M\",\"timeAggregation\":\"Average\",\"operator\":\"GreaterThan\",\"threshold\":10.0,\"dimensions\":null,\"dividePerInstance\":false},\"scaleAction\":{\"direction\":\"Increase\",\"type\":\"ChangeCount\",\"value\":\"1\",\"cooldown\":\"PT5M\"}}],\"fixedDate\":{\"timeZone\":\"UTC\",\"start\":\"2022-12-31T13:00:00Z\",\"end\":\"2022-12-31T14:00:00Z\"}}],\"enabled\":true,\"name\":\"test-autoscalesettingtpxwua\",\"targetResourceUri\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/autoscale-groupn5j8xc/providers/Microsoft.Compute/virtualMachineScaleSets/test-vmss9g01m2\",\"notifications\":[{\"operation\":\"Scale\",\"email\":{\"sendToSubscriptionAdministrator\":false,\"sendToSubscriptionCoAdministrators\":false,\"customEmails\":[\"gu@ms.com\"]},\"webhooks\":[{\"serviceUri\":\"http://myservice.com\",\"properties\":null}]}],\"predictiveAutoscalePolicy\":{\"scaleMode\":\"Enabled\",\"scaleLookAheadTime\":\"PT5M\"}}}",
       "isContentBase64": false
     }
   },
-  "Autoscale+[NoContext]+CRUD+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/autoscale-groupmkwzn5/providers/Microsoft.Insights/autoscalesettings/test-autoscalesettingeijgb5?api-version=2022-10-01+2": {
+  "Autoscale+[NoContext]+CRUD+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourcegroups/autoscale-groupn5j8xc/providers/Microsoft.Insights/autoscalesettings/test-autoscalesettingtpxwua?api-version=2022-10-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/autoscale-groupmkwzn5/providers/Microsoft.Insights/autoscalesettings/test-autoscalesettingeijgb5?api-version=2022-10-01",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourcegroups/autoscale-groupn5j8xc/providers/Microsoft.Insights/autoscalesettings/test-autoscalesettingtpxwua?api-version=2022-10-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "3" ],
-        "x-ms-client-request-id": [ "be7d3eab-c234-412c-adbd-5f31b9e6cb8e" ],
+        "x-ms-client-request-id": [ "3a719029-2dad-4266-af97-fd8a631a6882" ],
         "CommandName": [ "Get-AzAutoscaleSetting" ],
         "FullCommandName": [ "Get-AzAutoscaleSetting_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.6", "Az.Autoscale/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.1", "Az.Autoscale/6.0.2" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -59,36 +62,38 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "8f563c6e-1a50-4ddf-97a0-aac19716d64b" ],
-        "Server": [ "Microsoft-IIS/10.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
-        "x-ms-correlation-request-id": [ "008d7380-3104-4925-858c-6c932ad7f2b6" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220921T033831Z:008d7380-3104-4925-858c-6c932ad7f2b6" ],
+        "x-ms-request-id": [ "7912ec4d-a50a-48fb-9e24-ad824669bd88" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-correlation-request-id": [ "f32dee8f-9c3f-4ee8-a95c-f11677f42cf1" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20250701T071832Z:f32dee8f-9c3f-4ee8-a95c-f11677f42cf1" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 21 Sep 2022 03:38:30 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 8ADB3D23B4694D5CBCB9ADD155343C48 Ref B: MAA201060513039 Ref C: 2025-07-01T07:18:31Z" ],
+        "Date": [ "Tue, 01 Jul 2025 07:18:32 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1546" ],
+        "Content-Length": [ "1548" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/autoscale-groupmkwzn5/providers/microsoft.insights/autoscalesettings/test-autoscalesettingeijgb5\",\"name\":\"test-autoscalesettingeijgb5\",\"type\":\"Microsoft.Insights/autoscaleSettings\",\"location\":\"westeurope\",\"tags\":{},\"properties\":{\"profiles\":[{\"name\":\"adios\",\"capacity\":{\"minimum\":\"1\",\"maximum\":\"10\",\"default\":\"1\"},\"rules\":[{\"metricTrigger\":{\"metricName\":\"Percentage CPU\",\"metricNamespace\":\"\",\"metricResourceUri\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/autoscale-groupmkwzn5/providers/Microsoft.Compute/virtualMachineScaleSets/test-vmsstuc9nx\",\"timeGrain\":\"PT1M\",\"statistic\":\"Average\",\"timeWindow\":\"PT5M\",\"timeAggregation\":\"Average\",\"operator\":\"GreaterThan\",\"threshold\":10.0,\"dimensions\":null,\"dividePerInstance\":false},\"scaleAction\":{\"direction\":\"Increase\",\"type\":\"ChangeCount\",\"value\":\"1\",\"cooldown\":\"PT5M\"}}],\"fixedDate\":{\"timeZone\":\"UTC\",\"start\":\"2022-12-31T13:00:00Z\",\"end\":\"2022-12-31T14:00:00Z\"}}],\"enabled\":true,\"name\":\"test-autoscalesettingeijgb5\",\"targetResourceUri\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/autoscale-groupmkwzn5/providers/Microsoft.Compute/virtualMachineScaleSets/test-vmsstuc9nx\",\"notifications\":[{\"operation\":\"Scale\",\"email\":{\"sendToSubscriptionAdministrator\":true,\"sendToSubscriptionCoAdministrators\":true,\"customEmails\":[\"gu@ms.com\"]},\"webhooks\":[{\"serviceUri\":\"http://myservice.com\",\"properties\":null}]}],\"predictiveAutoscalePolicy\":{\"scaleMode\":\"Enabled\",\"scaleLookAheadTime\":\"PT5M\"}}}",
+      "Content": "{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/autoscale-groupn5j8xc/providers/microsoft.insights/autoscalesettings/test-autoscalesettingtpxwua\",\"name\":\"test-autoscalesettingtpxwua\",\"type\":\"Microsoft.Insights/autoscaleSettings\",\"location\":\"westeurope\",\"tags\":{},\"properties\":{\"profiles\":[{\"name\":\"adios\",\"capacity\":{\"minimum\":\"1\",\"maximum\":\"10\",\"default\":\"1\"},\"rules\":[{\"metricTrigger\":{\"metricName\":\"Percentage CPU\",\"metricNamespace\":\"\",\"metricResourceUri\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/autoscale-groupn5j8xc/providers/Microsoft.Compute/virtualMachineScaleSets/test-vmss9g01m2\",\"timeGrain\":\"PT1M\",\"statistic\":\"Average\",\"timeWindow\":\"PT5M\",\"timeAggregation\":\"Average\",\"operator\":\"GreaterThan\",\"threshold\":10.0,\"dimensions\":null,\"dividePerInstance\":false},\"scaleAction\":{\"direction\":\"Increase\",\"type\":\"ChangeCount\",\"value\":\"1\",\"cooldown\":\"PT5M\"}}],\"fixedDate\":{\"timeZone\":\"UTC\",\"start\":\"2022-12-31T13:00:00Z\",\"end\":\"2022-12-31T14:00:00Z\"}}],\"enabled\":true,\"name\":\"test-autoscalesettingtpxwua\",\"targetResourceUri\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/autoscale-groupn5j8xc/providers/Microsoft.Compute/virtualMachineScaleSets/test-vmss9g01m2\",\"notifications\":[{\"operation\":\"Scale\",\"email\":{\"sendToSubscriptionAdministrator\":false,\"sendToSubscriptionCoAdministrators\":false,\"customEmails\":[\"gu@ms.com\"]},\"webhooks\":[{\"serviceUri\":\"http://myservice.com\",\"properties\":null}]}],\"predictiveAutoscalePolicy\":{\"scaleMode\":\"Enabled\",\"scaleLookAheadTime\":\"PT5M\"}}}",
       "isContentBase64": false
     }
   },
-  "Autoscale+[NoContext]+CRUD+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/autoscale-groupmkwzn5/providers/Microsoft.Insights/autoscalesettings/test-autoscalesettingeijgb5?api-version=2022-10-01+3": {
+  "Autoscale+[NoContext]+CRUD+$DELETE+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourcegroups/autoscale-groupn5j8xc/providers/Microsoft.Insights/autoscalesettings/test-autoscalesettingtpxwua?api-version=2022-10-01+3": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/autoscale-groupmkwzn5/providers/Microsoft.Insights/autoscalesettings/test-autoscalesettingeijgb5?api-version=2022-10-01",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourcegroups/autoscale-groupn5j8xc/providers/Microsoft.Insights/autoscalesettings/test-autoscalesettingtpxwua?api-version=2022-10-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "4" ],
-        "x-ms-client-request-id": [ "231d40e5-f4b2-4302-9816-bb19c65d1ecc" ],
+        "x-ms-client-request-id": [ "40feb826-9244-4433-a041-15ec9ad59354" ],
         "CommandName": [ "Remove-AzAutoscaleSetting" ],
         "FullCommandName": [ "Remove-AzAutoscaleSetting_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.6", "Az.Autoscale/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.1", "Az.Autoscale/6.0.2" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -100,13 +105,16 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "704c137d-c7a4-4c05-8908-bcb6f8a92b37" ],
-        "Server": [ "Microsoft-IIS/10.0" ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
-        "x-ms-correlation-request-id": [ "e9b6ac14-f4ff-4ee4-bf68-fe138ec903be" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220921T033834Z:e9b6ac14-f4ff-4ee4-bf68-fe138ec903be" ],
+        "x-ms-request-id": [ "d5700a41-fd03-4bfd-b78f-87a5404e4254" ],
+        "x-ms-operation-identifier": [ "tenantId=54826b22-38d6-4fb2-bad9-b7b93a3e9c5a,objectId=0f876fc3-c749-4607-ad50-c13ef1569cea/southeastasia/7047977b-feda-4a61-a255-d03e89ebcdb6" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "2999" ],
+        "x-ms-correlation-request-id": [ "38e99621-999a-4586-81d8-bf67031a6ea1" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20250701T071838Z:38e99621-999a-4586-81d8-bf67031a6ea1" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 21 Sep 2022 03:38:33 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 66AE964ABD794C279E697A48CE0CED18 Ref B: MAA201060513039 Ref C: 2025-07-01T07:18:33Z" ],
+        "Date": [ "Tue, 01 Jul 2025 07:18:38 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],

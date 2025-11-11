@@ -3,6 +3,7 @@
     <PsModuleName>Monitors</PsModuleName>
     <PsRootModuleName>Workloads</PsRootModuleName>
     <PsModuleFolder>Monitors.Autorest</PsModuleFolder>
+    <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors</RootNamespace>
   </PropertyGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.autorest.props" />

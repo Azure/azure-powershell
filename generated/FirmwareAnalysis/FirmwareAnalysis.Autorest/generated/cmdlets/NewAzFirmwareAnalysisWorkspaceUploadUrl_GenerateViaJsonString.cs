@@ -10,15 +10,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Cmdlets;
     using System;
 
-    /// <summary>The operation to get a url for file upload.</summary>
+    /// <summary>Generate a URL for uploading a firmware image.</summary>
     /// <remarks>
     /// [OpenAPI] GenerateUploadUrl=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/generateUploadUrl"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzFirmwareAnalysisWorkspaceUploadUrl_GenerateViaJsonString", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IUrlToken))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Description(@"The operation to get a url for file upload.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Description(@"Generate a URL for uploading a firmware image.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/generateUploadUrl", ApiVersion = "2024-01-10")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/generateUploadUrl", ApiVersion = "2025-08-02")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.NotSuggestDefaultParameterSet]
     public partial class NewAzFirmwareAnalysisWorkspaceUploadUrl_GenerateViaJsonString : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener,

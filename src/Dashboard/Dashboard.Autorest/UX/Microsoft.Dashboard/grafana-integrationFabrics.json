@@ -1,0 +1,95 @@
+{
+  "resourceType": "grafana/integrationFabrics",
+  "apiVersion": "2025-08-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.dashboard"
+  },
+  "commands": [
+    {
+      "name": "Get-AzGrafanaIntegrationFabric",
+      "description": "Get a IntegrationFabric",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}/integrationFabrics/{integrationFabricName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.dashboard/get-azgrafanaintegrationfabric"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]",
+              "-WorkspaceName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a IntegrationFabric",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.integrationFabricName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            },
+            {
+              "name": "-WorkspaceName",
+              "value": "[Path.workspaceName]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzGrafanaIntegrationFabric",
+      "description": "Delete a IntegrationFabric",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}/integrationFabrics/{integrationFabricName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.dashboard/remove-azgrafanaintegrationfabric"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]",
+              "-WorkspaceName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a IntegrationFabric",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.integrationFabricName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            },
+            {
+              "name": "-WorkspaceName",
+              "value": "[Path.workspaceName]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

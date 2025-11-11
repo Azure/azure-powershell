@@ -143,7 +143,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         Description = @"Provisioning state of the resource.",
         SerializedName = @"provisioningState",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PSArgumentCompleterAttribute("Accepted", "Succeeded", "Canceled", "Failed")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Pending", "Extracting", "Analyzing")]
         string ProvisioningState { get;  }
         /// <summary>The status of firmware scan.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
@@ -205,7 +205,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         /// <summary>Firmware model.</summary>
         string Model { get; set; }
         /// <summary>Provisioning state of the resource.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PSArgumentCompleterAttribute("Accepted", "Succeeded", "Canceled", "Failed")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Pending", "Extracting", "Analyzing")]
         string ProvisioningState { get; set; }
         /// <summary>The status of firmware scan.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PSArgumentCompleterAttribute("Pending", "Extracting", "Analyzing", "Ready", "Error")]

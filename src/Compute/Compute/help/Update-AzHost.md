@@ -15,7 +15,7 @@ Updates the Dedicated Host.
 ### DefaultParameter (Default)
 ```
 Update-AzHost [-ResourceGroupName] <String> [-HostGroupName] <String> [-Name] <String> [-Sku <String>]
- [-AutoReplaceOnFailure <Boolean>] [-LicenseType <DedicatedHostLicenseTypes>]
+ [-AutoReplaceOnFailure <Boolean>] [-LicenseType <DedicatedHostLicenseTypes>] [-Redeploy]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -23,7 +23,7 @@ Update-AzHost [-ResourceGroupName] <String> [-HostGroupName] <String> [-Name] <S
 ### ResourceIdParameter
 ```
 Update-AzHost [-Sku <String>] [-AutoReplaceOnFailure <Boolean>] [-LicenseType <DedicatedHostLicenseTypes>]
- [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
+ [-Redeploy] [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -129,6 +129,21 @@ Required: True
 Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Redeploy
+Redeploy the dedicated host. The operation will complete successfully once the dedicated host has migrated to a new node and is running. To determine the health of VMs deployed on the dedicated host after the redeploy check the Resource Health Center in the Azure Portal. Please refer to https://docs.microsoft.com/azure/service-health/resource-health-overview for more details.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

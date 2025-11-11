@@ -13,7 +13,8 @@ namespace Microsoft.Azure.Management.KeyVault
     public static partial class MhsmPrivateEndpointConnectionsOperationsExtensions
     {
         /// <summary>
-        /// The List operation gets information about the private endpoint connections associated with the managed HSM Pool.
+        /// The List operation gets information about the private endpoint connections
+        /// associated with the managed HSM Pool.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -30,7 +31,8 @@ namespace Microsoft.Azure.Management.KeyVault
         }
 
         /// <summary>
-        /// The List operation gets information about the private endpoint connections associated with the managed HSM Pool.
+        /// The List operation gets information about the private endpoint connections
+        /// associated with the managed HSM Pool.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -52,7 +54,8 @@ namespace Microsoft.Azure.Management.KeyVault
             }
         }
         /// <summary>
-        /// Gets the specified private endpoint connection associated with the managed HSM Pool.
+        /// Gets the specified private endpoint connection associated with the managed
+        /// HSM Pool.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -64,7 +67,8 @@ namespace Microsoft.Azure.Management.KeyVault
         /// Name of the managed HSM Pool
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// Name of the private endpoint connection associated with the managed hsm pool.
+        /// Name of the private endpoint connection associated with the managed hsm
+        /// pool.
         /// </param>
         public static MhsmPrivateEndpointConnection Get(this IMhsmPrivateEndpointConnectionsOperations operations, string resourceGroupName, string name, string privateEndpointConnectionName)
         {
@@ -72,7 +76,8 @@ namespace Microsoft.Azure.Management.KeyVault
         }
 
         /// <summary>
-        /// Gets the specified private endpoint connection associated with the managed HSM Pool.
+        /// Gets the specified private endpoint connection associated with the managed
+        /// HSM Pool.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -84,7 +89,8 @@ namespace Microsoft.Azure.Management.KeyVault
         /// Name of the managed HSM Pool
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// Name of the private endpoint connection associated with the managed hsm pool.
+        /// Name of the private endpoint connection associated with the managed hsm
+        /// pool.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -97,7 +103,8 @@ namespace Microsoft.Azure.Management.KeyVault
             }
         }
         /// <summary>
-        /// Updates the specified private endpoint connection associated with the managed hsm pool.
+        /// Updates the specified private endpoint connection associated with the
+        /// managed hsm pool.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -109,7 +116,8 @@ namespace Microsoft.Azure.Management.KeyVault
         /// Name of the managed HSM Pool
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// Name of the private endpoint connection associated with the managed hsm pool.
+        /// Name of the private endpoint connection associated with the managed hsm
+        /// pool.
         /// </param>
         public static MhsmPrivateEndpointConnection Put(this IMhsmPrivateEndpointConnectionsOperations operations, string resourceGroupName, string name, string privateEndpointConnectionName, MhsmPrivateEndpointConnection properties)
         {
@@ -117,7 +125,8 @@ namespace Microsoft.Azure.Management.KeyVault
         }
 
         /// <summary>
-        /// Updates the specified private endpoint connection associated with the managed hsm pool.
+        /// Updates the specified private endpoint connection associated with the
+        /// managed hsm pool.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -129,7 +138,8 @@ namespace Microsoft.Azure.Management.KeyVault
         /// Name of the managed HSM Pool
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// Name of the private endpoint connection associated with the managed hsm pool.
+        /// Name of the private endpoint connection associated with the managed hsm
+        /// pool.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -142,7 +152,8 @@ namespace Microsoft.Azure.Management.KeyVault
             }
         }
         /// <summary>
-        /// Deletes the specified private endpoint connection associated with the managed hsm pool.
+        /// Deletes the specified private endpoint connection associated with the
+        /// managed hsm pool.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -154,7 +165,8 @@ namespace Microsoft.Azure.Management.KeyVault
         /// Name of the managed HSM Pool
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// Name of the private endpoint connection associated with the managed hsm pool.
+        /// Name of the private endpoint connection associated with the managed hsm
+        /// pool.
         /// </param>
         public static MhsmPrivateEndpointConnection Delete(this IMhsmPrivateEndpointConnectionsOperations operations, string resourceGroupName, string name, string privateEndpointConnectionName)
         {
@@ -162,7 +174,8 @@ namespace Microsoft.Azure.Management.KeyVault
         }
 
         /// <summary>
-        /// Deletes the specified private endpoint connection associated with the managed hsm pool.
+        /// Deletes the specified private endpoint connection associated with the
+        /// managed hsm pool.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -174,7 +187,8 @@ namespace Microsoft.Azure.Management.KeyVault
         /// Name of the managed HSM Pool
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// Name of the private endpoint connection associated with the managed hsm pool.
+        /// Name of the private endpoint connection associated with the managed hsm
+        /// pool.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -187,7 +201,8 @@ namespace Microsoft.Azure.Management.KeyVault
             }
         }
         /// <summary>
-        /// Deletes the specified private endpoint connection associated with the managed hsm pool.
+        /// Deletes the specified private endpoint connection associated with the
+        /// managed hsm pool.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -199,7 +214,8 @@ namespace Microsoft.Azure.Management.KeyVault
         /// Name of the managed HSM Pool
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// Name of the private endpoint connection associated with the managed hsm pool.
+        /// Name of the private endpoint connection associated with the managed hsm
+        /// pool.
         /// </param>
         public static MhsmPrivateEndpointConnection BeginDelete(this IMhsmPrivateEndpointConnectionsOperations operations, string resourceGroupName, string name, string privateEndpointConnectionName)
         {
@@ -207,7 +223,8 @@ namespace Microsoft.Azure.Management.KeyVault
         }
 
         /// <summary>
-        /// Deletes the specified private endpoint connection associated with the managed hsm pool.
+        /// Deletes the specified private endpoint connection associated with the
+        /// managed hsm pool.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -219,7 +236,8 @@ namespace Microsoft.Azure.Management.KeyVault
         /// Name of the managed HSM Pool
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// Name of the private endpoint connection associated with the managed hsm pool.
+        /// Name of the private endpoint connection associated with the managed hsm
+        /// pool.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -232,7 +250,8 @@ namespace Microsoft.Azure.Management.KeyVault
             }
         }
         /// <summary>
-        /// The List operation gets information about the private endpoint connections associated with the managed HSM Pool.
+        /// The List operation gets information about the private endpoint connections
+        /// associated with the managed HSM Pool.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -246,7 +265,8 @@ namespace Microsoft.Azure.Management.KeyVault
         }
 
         /// <summary>
-        /// The List operation gets information about the private endpoint connections associated with the managed HSM Pool.
+        /// The List operation gets information about the private endpoint connections
+        /// associated with the managed HSM Pool.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

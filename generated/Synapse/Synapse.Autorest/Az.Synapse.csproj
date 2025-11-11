@@ -3,6 +3,7 @@
     <PsModuleName>Synapse</PsModuleName>
     <PsRootModuleName>Synapse</PsRootModuleName>
     <PsModuleFolder>Synapse.Autorest</PsModuleFolder>
+    <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.Synapse</RootNamespace>
   </PropertyGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.autorest.props" />

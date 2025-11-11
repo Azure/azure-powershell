@@ -21,12 +21,39 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models
         [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.PropertyOrigin.Owned)]
         public string AmlFilesystemName { get => this._amlFilesystemName; set => this._amlFilesystemName = value; }
 
+        /// <summary>Backing field for <see cref="AutoExportJobName" /> property.</summary>
+        private string _autoExportJobName;
+
+        /// <summary>
+        /// Name for the auto export job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.PropertyOrigin.Owned)]
+        public string AutoExportJobName { get => this._autoExportJobName; set => this._autoExportJobName = value; }
+
+        /// <summary>Backing field for <see cref="AutoImportJobName" /> property.</summary>
+        private string _autoImportJobName;
+
+        /// <summary>
+        /// Name for the auto import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.PropertyOrigin.Owned)]
+        public string AutoImportJobName { get => this._autoImportJobName; set => this._autoImportJobName = value; }
+
         /// <summary>Backing field for <see cref="Id" /> property.</summary>
         private string _id;
 
         /// <summary>Resource identity path</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.PropertyOrigin.Owned)]
         public string Id { get => this._id; set => this._id = value; }
+
+        /// <summary>Backing field for <see cref="ImportJobName" /> property.</summary>
+        private string _importJobName;
+
+        /// <summary>
+        /// Name for the import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.PropertyOrigin.Owned)]
+        public string ImportJobName { get => this._importJobName; set => this._importJobName = value; }
 
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
@@ -64,6 +91,32 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models
         SerializedName = @"amlFilesystemName",
         PossibleTypes = new [] { typeof(string) })]
         string AmlFilesystemName { get; set; }
+        /// <summary>
+        /// Name for the auto export job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Name for the auto export job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.",
+        SerializedName = @"autoExportJobName",
+        PossibleTypes = new [] { typeof(string) })]
+        string AutoExportJobName { get; set; }
+        /// <summary>
+        /// Name for the auto import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Name for the auto import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.",
+        SerializedName = @"autoImportJobName",
+        PossibleTypes = new [] { typeof(string) })]
+        string AutoImportJobName { get; set; }
         /// <summary>Resource identity path</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Info(
         Required = false,
@@ -75,6 +128,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
         string Id { get; set; }
+        /// <summary>
+        /// Name for the import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Name for the import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.",
+        SerializedName = @"importJobName",
+        PossibleTypes = new [] { typeof(string) })]
+        string ImportJobName { get; set; }
         /// <summary>The name of the resource group. The name is case insensitive.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Info(
         Required = false,
@@ -106,8 +172,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models
         /// Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
         /// </summary>
         string AmlFilesystemName { get; set; }
+        /// <summary>
+        /// Name for the auto export job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+        /// </summary>
+        string AutoExportJobName { get; set; }
+        /// <summary>
+        /// Name for the auto import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+        /// </summary>
+        string AutoImportJobName { get; set; }
         /// <summary>Resource identity path</summary>
         string Id { get; set; }
+        /// <summary>
+        /// Name for the import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+        /// </summary>
+        string ImportJobName { get; set; }
         /// <summary>The name of the resource group. The name is case insensitive.</summary>
         string ResourceGroupName { get; set; }
         /// <summary>The ID of the target subscription.</summary>

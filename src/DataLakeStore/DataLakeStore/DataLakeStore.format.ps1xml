@@ -100,5 +100,67 @@
         </TableRowEntries>
       </TableControl>
     </View>
+    <!-- Add this after your existing views, before </ViewDefinitions> -->
+    <View>
+      <Name>DeletedItemWithTokenTable</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.DataLakeStore.Models.DeletedItemWithToken</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>TrashDirPath</Label>
+            <Width>36</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>OriginalPath</Label>
+            <Width>50</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Type</Label>
+            <Width>9</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CreationTime</Label>
+            <Width>20</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ContinuationToken</Label>
+            <Width>36</Width>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <ScriptBlock>
+                  if ($_.DeletedItem) { $_.DeletedItem.TrashDirPath } else { "" }
+                </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>
+                  if ($_.DeletedItem) { $_.DeletedItem.OriginalPath } else { "" }
+                </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>
+                  if ($_.DeletedItem) { $_.DeletedItem.Type } else { "" }
+                </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>
+                  if ($_.DeletedItem) { $_.DeletedItem.CreationTime } else { "" }
+                </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>
+                  if ($_.ContinuationToken) { $_.ContinuationToken } else { "" }
+                </ScriptBlock>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
   </ViewDefinitions>
 </Configuration>

@@ -417,6 +417,57 @@ namespace Microsoft.Azure.Management.NetApp
             }
         }
         /// <summary>
+        /// Split operation to convert clone volume to an independent volume.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the NetApp account
+        /// </param>
+        /// <param name='poolName'>
+        /// The name of the capacity pool
+        /// </param>
+        /// <param name='volumeName'>
+        /// The name of the volume
+        /// </param>
+        public static Volume SplitCloneFromParent(this IVolumesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName)
+        {
+                return ((IVolumesOperations)operations).SplitCloneFromParentAsync(resourceGroupName, accountName, poolName, volumeName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Split operation to convert clone volume to an independent volume.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the NetApp account
+        /// </param>
+        /// <param name='poolName'>
+        /// The name of the capacity pool
+        /// </param>
+        /// <param name='volumeName'>
+        /// The name of the volume
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Volume> SplitCloneFromParentAsync(this IVolumesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.SplitCloneFromParentWithHttpMessagesAsync(resourceGroupName, accountName, poolName, volumeName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Break all the file locks on a volume
         /// </summary>
         /// <param name='operations'>
@@ -1626,6 +1677,57 @@ namespace Microsoft.Azure.Management.NetApp
             using (var _result = await operations.BeginResetCifsPasswordWithHttpMessagesAsync(resourceGroupName, accountName, poolName, volumeName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// Split operation to convert clone volume to an independent volume.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the NetApp account
+        /// </param>
+        /// <param name='poolName'>
+        /// The name of the capacity pool
+        /// </param>
+        /// <param name='volumeName'>
+        /// The name of the volume
+        /// </param>
+        public static Volume BeginSplitCloneFromParent(this IVolumesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName)
+        {
+                return ((IVolumesOperations)operations).BeginSplitCloneFromParentAsync(resourceGroupName, accountName, poolName, volumeName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Split operation to convert clone volume to an independent volume.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the NetApp account
+        /// </param>
+        /// <param name='poolName'>
+        /// The name of the capacity pool
+        /// </param>
+        /// <param name='volumeName'>
+        /// The name of the volume
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Volume> BeginSplitCloneFromParentAsync(this IVolumesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginSplitCloneFromParentWithHttpMessagesAsync(resourceGroupName, accountName, poolName, volumeName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
             }
         }
         /// <summary>

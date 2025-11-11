@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzWorkloadsProviderPromet
 
 Describe 'New-AzWorkloadsProviderPrometheusHaClusterInstanceObject' {
     It '__AllParameterSets' {
-        $providerSetting = New-AzWorkloadsProviderPrometheusHaClusterInstanceObject -ClusterName hacluster -Hostname h20dbvm0 -PrometheusUrl "http://10.0.92.5:964/metrics" -Sid X00 -SslPreference Disabled
+        $providerSetting = New-AzWorkloadsProviderPrometheusHaClusterInstanceObject -ClusterName cha_ascs_cluster -Hostname chascs02l0c2 -PrometheusUrl "http://10.8.1.39:9664/metrics" -Sid CHA -SslPreference Disabled
         $providerSetting.ProviderType | Should -Be "PrometheusHaCluster"
     }
 }

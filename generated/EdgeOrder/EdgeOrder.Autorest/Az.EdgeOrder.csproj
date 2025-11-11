@@ -3,6 +3,7 @@
     <PsModuleName>EdgeOrder</PsModuleName>
     <PsRootModuleName>EdgeOrder</PsRootModuleName>
     <PsModuleFolder>EdgeOrder.Autorest</PsModuleFolder>
+    <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder</RootNamespace>
   </PropertyGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.autorest.props" />

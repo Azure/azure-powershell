@@ -114,6 +114,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IBillingInfoResponseInternal)this).MarketplaceSaaInfoBilledAzureSubscriptionId = (string) content.GetValueForProperty("MarketplaceSaaInfoBilledAzureSubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IBillingInfoResponseInternal)this).MarketplaceSaaInfoBilledAzureSubscriptionId, global::System.Convert.ToString);
             }
+            if (content.Contains("MarketplaceSaaInfoPublisherId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IBillingInfoResponseInternal)this).MarketplaceSaaInfoPublisherId = (string) content.GetValueForProperty("MarketplaceSaaInfoPublisherId",((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IBillingInfoResponseInternal)this).MarketplaceSaaInfoPublisherId, global::System.Convert.ToString);
+            }
+            if (content.Contains("MarketplaceSaaInfoOfferId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IBillingInfoResponseInternal)this).MarketplaceSaaInfoOfferId = (string) content.GetValueForProperty("MarketplaceSaaInfoOfferId",((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IBillingInfoResponseInternal)this).MarketplaceSaaInfoOfferId, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -166,6 +174,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models
             if (content.Contains("MarketplaceSaaInfoBilledAzureSubscriptionId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IBillingInfoResponseInternal)this).MarketplaceSaaInfoBilledAzureSubscriptionId = (string) content.GetValueForProperty("MarketplaceSaaInfoBilledAzureSubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IBillingInfoResponseInternal)this).MarketplaceSaaInfoBilledAzureSubscriptionId, global::System.Convert.ToString);
+            }
+            if (content.Contains("MarketplaceSaaInfoPublisherId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IBillingInfoResponseInternal)this).MarketplaceSaaInfoPublisherId = (string) content.GetValueForProperty("MarketplaceSaaInfoPublisherId",((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IBillingInfoResponseInternal)this).MarketplaceSaaInfoPublisherId, global::System.Convert.ToString);
+            }
+            if (content.Contains("MarketplaceSaaInfoOfferId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IBillingInfoResponseInternal)this).MarketplaceSaaInfoOfferId = (string) content.GetValueForProperty("MarketplaceSaaInfoOfferId",((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IBillingInfoResponseInternal)this).MarketplaceSaaInfoOfferId, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

@@ -30,6 +30,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
         /// <summary>Internal Acessors for LastRefreshAt</summary>
         global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IOpenAiIntegrationPropertiesInternal.LastRefreshAt { get => this._lastRefreshAt; set { {_lastRefreshAt = value;} } }
 
+        /// <summary>Backing field for <see cref="OpenAiConnectorId" /> property.</summary>
+        private string _openAiConnectorId;
+
+        /// <summary>The connector id of Open AI resource</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Origin(Microsoft.Azure.PowerShell.Cmdlets.Elastic.PropertyOrigin.Owned)]
+        public string OpenAiConnectorId { get => this._openAiConnectorId; set => this._openAiConnectorId = value; }
+
         /// <summary>Backing field for <see cref="OpenAiResourceEndpoint" /> property.</summary>
         private string _openAiResourceEndpoint;
 
@@ -76,6 +83,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
         SerializedName = @"lastRefreshAt",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
         global::System.DateTime? LastRefreshAt { get;  }
+        /// <summary>The connector id of Open AI resource</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The connector id of Open AI resource",
+        SerializedName = @"openAIConnectorId",
+        PossibleTypes = new [] { typeof(string) })]
+        string OpenAiConnectorId { get; set; }
         /// <summary>The API endpoint for Open AI resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Info(
         Required = false,
@@ -108,6 +126,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
         string Key { get; set; }
         /// <summary>Last Update Timestamp for key updation</summary>
         global::System.DateTime? LastRefreshAt { get; set; }
+        /// <summary>The connector id of Open AI resource</summary>
+        string OpenAiConnectorId { get; set; }
         /// <summary>The API endpoint for Open AI resource</summary>
         string OpenAiResourceEndpoint { get; set; }
         /// <summary>The resource name of Open AI resource</summary>

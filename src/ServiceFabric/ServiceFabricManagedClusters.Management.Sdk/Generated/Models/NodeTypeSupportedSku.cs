@@ -27,8 +27,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
         /// <param name="name">The sku name.
         /// </param>
 
-        /// <param name="tier">Specifies the tier of the node type. &lt;br /&gt;&lt;br /&gt; Possible Values:&lt;br /&gt;
-        /// **Standard**
+        /// <param name="tier">Specifies the tier of the node type. Possible Values: **Standard**
         /// </param>
         public NodeTypeSupportedSku(string name = default(string), string tier = default(string))
 
@@ -51,8 +50,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
         public string Name {get; private set; }
 
         /// <summary>
-        /// Gets specifies the tier of the node type. &lt;br /&gt;&lt;br /&gt; Possible Values:&lt;br
-        /// /&gt; **Standard**
+        /// Gets specifies the tier of the node type. Possible Values: **Standard**
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "tier")]
         public string Tier {get; private set; }

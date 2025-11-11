@@ -33,6 +33,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
         public string ChannelEncryption { get => this._channelEncryption; set => this._channelEncryption = value; }
 
+        /// <summary>Backing field for <see cref="EncryptionInTransit" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionInTransit _encryptionInTransit;
+
+        /// <summary>Encryption in transit setting.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionInTransit EncryptionInTransit { get => (this._encryptionInTransit = this._encryptionInTransit ?? new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.EncryptionInTransit()); set => this._encryptionInTransit = value; }
+
+        /// <summary>Indicates whether encryption in transit is required</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
+        public bool? EncryptionInTransitRequired { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionInTransitInternal)EncryptionInTransit).Required; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionInTransitInternal)EncryptionInTransit).Required = value ?? default(bool); }
+
         /// <summary>Backing field for <see cref="KerberosTicketEncryption" /> property.</summary>
         private string _kerberosTicketEncryption;
 
@@ -42,6 +53,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
         public string KerberosTicketEncryption { get => this._kerberosTicketEncryption; set => this._kerberosTicketEncryption = value; }
+
+        /// <summary>Internal Acessors for EncryptionInTransit</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionInTransit Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISmbSettingInternal.EncryptionInTransit { get => (this._encryptionInTransit = this._encryptionInTransit ?? new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.EncryptionInTransit()); set { {_encryptionInTransit = value;} } }
 
         /// <summary>Internal Acessors for Multichannel</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IMultichannel Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISmbSettingInternal.Multichannel { get => (this._multichannel = this._multichannel ?? new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Multichannel()); set { {_multichannel = value;} } }
@@ -105,6 +119,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         SerializedName = @"channelEncryption",
         PossibleTypes = new [] { typeof(string) })]
         string ChannelEncryption { get; set; }
+        /// <summary>Indicates whether encryption in transit is required</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Indicates whether encryption in transit is required",
+        SerializedName = @"required",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? EncryptionInTransitRequired { get; set; }
         /// <summary>
         /// Kerberos ticket encryption supported by server. Valid values are RC4-HMAC, AES-256. Should be passed as a string with
         /// delimiter ';'
@@ -160,6 +185,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// a string with delimiter ';'.
         /// </summary>
         string ChannelEncryption { get; set; }
+        /// <summary>Encryption in transit setting.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionInTransit EncryptionInTransit { get; set; }
+        /// <summary>Indicates whether encryption in transit is required</summary>
+        bool? EncryptionInTransitRequired { get; set; }
         /// <summary>
         /// Kerberos ticket encryption supported by server. Valid values are RC4-HMAC, AES-256. Should be passed as a string with
         /// delimiter ';'

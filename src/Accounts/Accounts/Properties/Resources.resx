@@ -637,4 +637,7 @@
   <data name="RopcDeprecationSovereignClouds" xml:space="preserve">
     <value>Using authentication with username and password in the command line is strongly discouraged. Consider using one of the recommended authentication methods. For more details, see https://go.microsoft.com/fwlink/?linkid=2276971</value>
   </data>
+  <data name="InvalidClaimsChallenge" xml:space="preserve">
+    <value>Invalid claims challenge format. It should be a valid base64 encoded string.</value>
+  </data>
 </root>

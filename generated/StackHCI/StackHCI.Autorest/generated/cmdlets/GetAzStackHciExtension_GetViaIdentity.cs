@@ -13,6 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Cmdlets
     /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/arcSettings/{arcSettingName}/extensions/{extensionName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzStackHciExtension_GetViaIdentity")]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IExtension", "15.0.0", "3.0.0", "2025/11", DeprecatedOutputProperties=new string[] {"PerNodeExtensionDetail"}, NewOutputProperties=new string[] {"PerNodeExtensionDetail"}, ChangeDescription="The type of the property PerNodeExtensionDetail will be changed from single object or fixed array to 'List'.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IExtension))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Description(@"Get particular Arc Extension of HCI Cluster.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Generated]

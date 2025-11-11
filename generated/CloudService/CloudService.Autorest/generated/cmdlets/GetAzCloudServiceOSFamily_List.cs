@@ -17,6 +17,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Cmdlets
     /// [OpenAPI] ListOSFamilies=>GET:"/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/cloudServiceOsFamilies"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzCloudServiceOSFamily_List")]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.IOSFamily", "15.0.0", "9.0.0", "2025/11/03", DeprecatedOutputProperties=new string[] {"Version"}, NewOutputProperties=new string[] {"Version"}, ChangeDescription="The types of the properties 'Version' will be changed from object to 'List'.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.IOSFamily))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.CloudService.Description(@"Gets a list of all guest operating system families available to be specified in the XML service configuration (.cscfg) for a cloud service. Use nextLink property in the response to get the next page of OS Families. Do this till nextLink is null to fetch all the OS Families.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.CloudService.Generated]

@@ -3,6 +3,7 @@
     <PsModuleName>ScheduledQueryRule</PsModuleName>
     <PsRootModuleName>Monitor</PsRootModuleName>
     <PsModuleFolder>ScheduledQueryRule.Autorest</PsModuleFolder>
+    <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule</RootNamespace>
   </PropertyGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.autorest.props" />

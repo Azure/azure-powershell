@@ -11,8 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.Attestation.private.dll'
   FormatsToProcess = './Az.Attestation.format.ps1xml'
-  FunctionsToExport = 'Get-AzAttestationDefaultProvider', 'Get-AzAttestationProvider', 'New-AzAttestationProvider', 'Remove-AzAttestationProvider', 'Update-AzAttestationProvider', '*'
-  AliasesToExport = '*'
+  FunctionsToExport = 'Get-AzAttestationDefaultProvider', 'Get-AzAttestationProvider', 'New-AzAttestationProvider', 'Remove-AzAttestationProvider', 'Update-AzAttestationProvider'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'Attestation'

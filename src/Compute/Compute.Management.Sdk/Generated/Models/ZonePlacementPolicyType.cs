@@ -17,5 +17,9 @@ namespace Microsoft.Azure.Management.Compute.Models
     public static class ZonePlacementPolicyType
     {
         public const string Any = "Any";
+        /// <summary>
+        /// Automatic zone placement in a Virtual Machine Scale Set.
+        /// </summary>
+        public const string Auto = "Auto";
     }
 }

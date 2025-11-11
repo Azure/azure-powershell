@@ -55,8 +55,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="outputBlobUri">Specifies the Azure storage blob where
         /// script output stream will be uploaded. Use a SAS URI with read,
         /// append, create, write access OR use managed identity to provide the
-        /// VM access to the blob. Refer outputBlobManagedIdentity parameter.
-        /// </param>
+        /// VM access to the blob. Refer outputBlobManagedIdentity
+        /// parameter.</param>
         /// <param name="errorBlobUri">Specifies the Azure storage blob where
         /// script error stream will be uploaded. Use a SAS URI with read,
         /// append, create, write access OR use managed identity to provide the
@@ -69,8 +69,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Blob Data Contributor' role assignment. In case of user-assigned
         /// identity, make sure you add it under VM's identity. For more info
         /// on managed identity and Run Command, refer
-        /// https://aka.ms/ManagedIdentity and https://aka.ms/RunCommandManaged
-        /// </param>
+        /// https://aka.ms/ManagedIdentity and
+        /// https://aka.ms/RunCommandManaged</param>
         /// <param name="errorBlobManagedIdentity">User-assigned managed
         /// identity that has access to errorBlobUri storage blob. Use an empty
         /// object in case of system-assigned identity. Make sure managed
@@ -78,8 +78,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Blob Data Contributor' role assignment. In case of user-assigned
         /// identity, make sure you add it under VM's identity. For more info
         /// on managed identity and Run Command, refer
-        /// https://aka.ms/ManagedIdentity and https://aka.ms/RunCommandManaged
-        /// </param>
+        /// https://aka.ms/ManagedIdentity and
+        /// https://aka.ms/RunCommandManaged</param>
         /// <param name="provisioningState">The provisioning state, which only
         /// appears in the response. If treatFailureAsDeploymentFailure set to
         /// true, any failure in the script will fail the deployment and
@@ -89,8 +89,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// extensions platform, it would not indicate whether script failed in
         /// case of script failures. See instance view of run command in case
         /// of script failures to see executionMessage, output, error:
-        /// https://aka.ms/runcommandmanaged#get-execution-status-and-results
-        /// </param>
+        /// https://aka.ms/runcommandmanaged#get-execution-status-and-results</param>
         /// <param name="instanceView">The virtual machine run command instance
         /// view.</param>
         /// <param name="treatFailureAsDeploymentFailure">Optional. If set to
@@ -101,8 +100,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// whether script failed in case of script failures. See instance view
         /// of run command in case of script failures to see executionMessage,
         /// output, error:
-        /// https://aka.ms/runcommandmanaged#get-execution-status-and-results
-        /// </param>
+        /// https://aka.ms/runcommandmanaged#get-execution-status-and-results</param>
         public VirtualMachineRunCommand(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), VirtualMachineRunCommandScriptSource source = default(VirtualMachineRunCommandScriptSource), IList<RunCommandInputParameter> parameters = default(IList<RunCommandInputParameter>), IList<RunCommandInputParameter> protectedParameters = default(IList<RunCommandInputParameter>), bool? asyncExecution = default(bool?), string runAsUser = default(string), string runAsPassword = default(string), int? timeoutInSeconds = default(int?), string outputBlobUri = default(string), string errorBlobUri = default(string), RunCommandManagedIdentity outputBlobManagedIdentity = default(RunCommandManagedIdentity), RunCommandManagedIdentity errorBlobManagedIdentity = default(RunCommandManagedIdentity), string provisioningState = default(string), VirtualMachineRunCommandInstanceView instanceView = default(VirtualMachineRunCommandInstanceView), bool? treatFailureAsDeploymentFailure = default(bool?))
             : base(location, id, name, type, tags)
         {

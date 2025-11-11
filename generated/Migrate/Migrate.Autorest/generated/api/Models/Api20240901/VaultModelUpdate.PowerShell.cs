@@ -106,10 +106,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901
                 return;
             }
             // actually deserialize
-            if (content.Contains("Property"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IVaultModelUpdateInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IVaultModelProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IVaultModelUpdateInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.VaultModelPropertiesTypeConverter.ConvertFrom);
-            }
             if (content.Contains("Identity"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IVaultModelUpdateInternal)this).Identity = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IVaultIdentityModel) content.GetValueForProperty("Identity",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IVaultModelUpdateInternal)this).Identity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.VaultIdentityModelTypeConverter.ConvertFrom);
@@ -121,6 +117,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901
             if (content.Contains("Tag"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IVaultModelUpdateInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IVaultModelUpdateTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IVaultModelUpdateInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.VaultModelUpdateTagsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Property"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IVaultModelUpdateInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IVaultModelProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IVaultModelUpdateInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.VaultModelPropertiesTypeConverter.ConvertFrom);
             }
             if (content.Contains("Id"))
             {
@@ -134,10 +134,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IVaultModelUpdateInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IVaultModelUpdateInternal)this).Type, global::System.Convert.ToString);
             }
-            if (content.Contains("ProvisioningState"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IVaultModelUpdateInternal)this).ProvisioningState = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProvisioningState?) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IVaultModelUpdateInternal)this).ProvisioningState, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProvisioningState.CreateFrom);
-            }
             if (content.Contains("SystemDataCreatedBy"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IVaultModelUpdateInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IVaultModelUpdateInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
@@ -145,14 +141,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901
             if (content.Contains("SystemDataCreatedAt"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IVaultModelUpdateInternal)this).SystemDataCreatedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataCreatedAt",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IVaultModelUpdateInternal)this).SystemDataCreatedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            }
-            if (content.Contains("ServiceResourceId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IVaultModelUpdateInternal)this).ServiceResourceId = (string) content.GetValueForProperty("ServiceResourceId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IVaultModelUpdateInternal)this).ServiceResourceId, global::System.Convert.ToString);
-            }
-            if (content.Contains("VaultType"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IVaultModelUpdateInternal)this).VaultType = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ReplicationVaultType?) content.GetValueForProperty("VaultType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IVaultModelUpdateInternal)this).VaultType, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ReplicationVaultType.CreateFrom);
             }
             if (content.Contains("IdentityType"))
             {
@@ -199,10 +187,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901
                 return;
             }
             // actually deserialize
-            if (content.Contains("Property"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IVaultModelUpdateInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IVaultModelProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IVaultModelUpdateInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.VaultModelPropertiesTypeConverter.ConvertFrom);
-            }
             if (content.Contains("Identity"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IVaultModelUpdateInternal)this).Identity = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IVaultIdentityModel) content.GetValueForProperty("Identity",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IVaultModelUpdateInternal)this).Identity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.VaultIdentityModelTypeConverter.ConvertFrom);
@@ -214,6 +198,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901
             if (content.Contains("Tag"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IVaultModelUpdateInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IVaultModelUpdateTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IVaultModelUpdateInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.VaultModelUpdateTagsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Property"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IVaultModelUpdateInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IVaultModelProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IVaultModelUpdateInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.VaultModelPropertiesTypeConverter.ConvertFrom);
             }
             if (content.Contains("Id"))
             {
@@ -227,10 +215,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IVaultModelUpdateInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IVaultModelUpdateInternal)this).Type, global::System.Convert.ToString);
             }
-            if (content.Contains("ProvisioningState"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IVaultModelUpdateInternal)this).ProvisioningState = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProvisioningState?) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IVaultModelUpdateInternal)this).ProvisioningState, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProvisioningState.CreateFrom);
-            }
             if (content.Contains("SystemDataCreatedBy"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IVaultModelUpdateInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IVaultModelUpdateInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
@@ -238,14 +222,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901
             if (content.Contains("SystemDataCreatedAt"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IVaultModelUpdateInternal)this).SystemDataCreatedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataCreatedAt",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IVaultModelUpdateInternal)this).SystemDataCreatedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            }
-            if (content.Contains("ServiceResourceId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IVaultModelUpdateInternal)this).ServiceResourceId = (string) content.GetValueForProperty("ServiceResourceId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IVaultModelUpdateInternal)this).ServiceResourceId, global::System.Convert.ToString);
-            }
-            if (content.Contains("VaultType"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IVaultModelUpdateInternal)this).VaultType = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ReplicationVaultType?) content.GetValueForProperty("VaultType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IVaultModelUpdateInternal)this).VaultType, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ReplicationVaultType.CreateFrom);
             }
             if (content.Contains("IdentityType"))
             {

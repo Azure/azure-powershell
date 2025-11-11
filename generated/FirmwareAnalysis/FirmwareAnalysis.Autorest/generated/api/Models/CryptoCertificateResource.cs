@@ -7,16 +7,37 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Extensions;
 
-    /// <summary>Crypto certificate resource</summary>
+    /// <summary>The object representing a firmware analysis crypto certificate resource</summary>
     public partial class CryptoCertificateResource :
         Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResource,
         Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal,
         Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IValidates
     {
         /// <summary>
-        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResource" />
+        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IProxyResource"
+        /// />
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResource __resource = new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.Resource();
+        private Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IProxyResource __proxyResource = new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ProxyResource();
+
+        /// <summary>Key algorithm used in the certificate.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inlined)]
+        public string CertificateKeyAlgorithm { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateInternal)Property).CertificateKeyAlgorithm; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateInternal)Property).CertificateKeyAlgorithm = value ?? null; }
+
+        /// <summary>Size of the certificate's key in bits</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inlined)]
+        public long? CertificateKeySize { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateInternal)Property).CertificateKeySize; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateInternal)Property).CertificateKeySize = value ?? default(long); }
+
+        /// <summary>Name of the certificate.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inlined)]
+        public string CertificateName { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateInternal)Property).CertificateName; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateInternal)Property).CertificateName = value ?? null; }
+
+        /// <summary>Role of the certificate (Root CA, etc)</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inlined)]
+        public string CertificateRole { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateInternal)Property).CertificateRole; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateInternal)Property).CertificateRole = value ?? null; }
+
+        /// <summary>List of functions the certificate can fulfill.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<string> CertificateUsage { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateInternal)Property).CertificateUsage; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateInternal)Property).CertificateUsage = value ?? null /* arrayOf */; }
 
         /// <summary>ID for the certificate result.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inlined)]
@@ -42,7 +63,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inherited)]
-        public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__resource).Id; }
+        public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).Id; }
 
         /// <summary>Indicates if the certificate is expired.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inlined)]
@@ -53,12 +74,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         public bool? IsSelfSigned { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateInternal)Property).IsSelfSigned; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateInternal)Property).IsSelfSigned = value ?? default(bool); }
 
         /// <summary>
-        /// Indicates the certificate's key size is considered too small to be secure for the key algorithm.
+        /// Indicates the certificate's key size is considered too small to be secure for the key algorithm according to NIST guidance.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inlined)]
         public bool? IsShortKeySize { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateInternal)Property).IsShortKeySize; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateInternal)Property).IsShortKeySize = value ?? default(bool); }
 
-        /// <summary>Indicates the signature algorithm used is insecure.</summary>
+        /// <summary>Indicates the signature algorithm used is insecure according to NIST guidance.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inlined)]
         public bool? IsWeakSignature { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateInternal)Property).IsWeakSignature; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateInternal)Property).IsWeakSignature = value ?? default(bool); }
 
@@ -86,44 +107,57 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inlined)]
         public string IssuerState { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateInternal)Property).IssuerState; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateInternal)Property).IssuerState = value ?? null; }
 
-        /// <summary>Key algorithm used in the certificate.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inlined)]
-        public string KeyAlgorithm { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateInternal)Property).KeyAlgorithm; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateInternal)Property).KeyAlgorithm = value ?? null; }
-
-        /// <summary>Size of the certificate's key in bits</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inlined)]
-        public long? KeySize { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateInternal)Property).KeySize; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateInternal)Property).KeySize = value ?? default(long); }
-
         /// <summary>Internal Acessors for FilePath</summary>
-        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal.FilePath { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateInternal)Property).FilePath; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateInternal)Property).FilePath = value; }
+        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal.FilePath { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateInternal)Property).FilePath; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateInternal)Property).FilePath = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for Issuer</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateEntity Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal.Issuer { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateInternal)Property).Issuer; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateInternal)Property).Issuer = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateEntity Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal.Issuer { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateInternal)Property).Issuer; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateInternal)Property).Issuer = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for PairedKey</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IPairedKey Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal.PairedKey { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateInternal)Property).PairedKey; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateInternal)Property).PairedKey = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IPairedKey Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal.PairedKey { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateInternal)Property).PairedKey; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateInternal)Property).PairedKey = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificate Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.CryptoCertificate()); set { {_property = value;} } }
 
+        /// <summary>Internal Acessors for ProvisioningState</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateInternal)Property).ProvisioningState = value ?? null; }
+
         /// <summary>Internal Acessors for Subject</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateEntity Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal.Subject { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateInternal)Property).Subject; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateInternal)Property).Subject = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateEntity Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal.Subject { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateInternal)Property).Subject; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateInternal)Property).Subject = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__resource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__resource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__resource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__resource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for SystemData</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__resource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__resource).SystemData = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).SystemData = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__resource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__resource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).Type = value ?? null; }
 
         /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inherited)]
-        public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__resource).Name; }
+        public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).Name; }
 
         /// <summary>ID of the paired key or certificate.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inlined)]
@@ -133,20 +167,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inlined)]
         public string PairedKeyType { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateInternal)Property).PairedKeyType; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateInternal)Property).PairedKeyType = value ?? null; }
 
-        /// <summary>Name of the certificate.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inlined)]
-        public string PropertiesName { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateInternal)Property).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateInternal)Property).Name = value ?? null; }
-
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificate _property;
 
-        /// <summary>The properties of a crypto certificate found within a firmware image</summary>
+        /// <summary>The resource-specific properties for this resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificate Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.CryptoCertificate()); set => this._property = value; }
 
-        /// <summary>Role of the certificate (Root CA, etc)</summary>
+        /// <summary>The status of the last operation.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inlined)]
-        public string Role { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateInternal)Property).Role; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateInternal)Property).Role = value ?? null; }
+        public string ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateInternal)Property).ProvisioningState; }
 
         /// <summary>Serial number of the certificate.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inlined)]
@@ -180,41 +210,37 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inherited)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__resource).SystemData; }
+        internal Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).SystemData = value ?? null /* model class */; }
 
         /// <summary>The timestamp of resource creation (UTC).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inherited)]
-        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__resource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__resource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt; }
 
         /// <summary>The identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inherited)]
-        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__resource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__resource).SystemDataCreatedBy = value ?? null; }
+        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy; }
 
         /// <summary>The type of identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inherited)]
-        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__resource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__resource).SystemDataCreatedByType = value ?? null; }
+        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType; }
 
         /// <summary>The timestamp of resource last modification (UTC)</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inherited)]
-        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__resource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__resource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt; }
 
         /// <summary>The identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inherited)]
-        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__resource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__resource).SystemDataLastModifiedBy = value ?? null; }
+        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy; }
 
         /// <summary>The type of identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inherited)]
-        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__resource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__resource).SystemDataLastModifiedByType = value ?? null; }
+        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType; }
 
         /// <summary>
         /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inherited)]
-        public string Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__resource).Type; }
-
-        /// <summary>List of functions the certificate can fulfill.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<string> Usage { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateInternal)Property).Usage; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateInternal)Property).Usage = value ?? null /* arrayOf */; }
+        public string Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).Type; }
 
         /// <summary>Creates an new <see cref="CryptoCertificateResource" /> instance.</summary>
         public CryptoCertificateResource()
@@ -230,15 +256,71 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         /// </returns>
         public async global::System.Threading.Tasks.Task Validate(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener)
         {
-            await eventListener.AssertNotNull(nameof(__resource), __resource);
-            await eventListener.AssertObjectIsValid(nameof(__resource), __resource);
+            await eventListener.AssertNotNull(nameof(__proxyResource), __proxyResource);
+            await eventListener.AssertObjectIsValid(nameof(__proxyResource), __proxyResource);
         }
     }
-    /// Crypto certificate resource
+    /// The object representing a firmware analysis crypto certificate resource
     public partial interface ICryptoCertificateResource :
         Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IJsonSerializable,
-        Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResource
+        Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IProxyResource
     {
+        /// <summary>Key algorithm used in the certificate.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Key algorithm used in the certificate.",
+        SerializedName = @"certificateKeyAlgorithm",
+        PossibleTypes = new [] { typeof(string) })]
+        string CertificateKeyAlgorithm { get; set; }
+        /// <summary>Size of the certificate's key in bits</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Size of the certificate's key in bits",
+        SerializedName = @"certificateKeySize",
+        PossibleTypes = new [] { typeof(long) })]
+        long? CertificateKeySize { get; set; }
+        /// <summary>Name of the certificate.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Name of the certificate.",
+        SerializedName = @"certificateName",
+        PossibleTypes = new [] { typeof(string) })]
+        string CertificateName { get; set; }
+        /// <summary>Role of the certificate (Root CA, etc)</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Role of the certificate (Root CA, etc)",
+        SerializedName = @"certificateRole",
+        PossibleTypes = new [] { typeof(string) })]
+        string CertificateRole { get; set; }
+        /// <summary>List of functions the certificate can fulfill.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"List of functions the certificate can fulfill.",
+        SerializedName = @"certificateUsage",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PSArgumentCompleterAttribute("digitalSignature", "nonRepudiation", "contentCommitment", "keyEncipherment", "dataEncipherment", "keyAgreement", "keyCertSign", "crlSign", "encipherOnly", "decipherOnly", "serverAuth", "clientAuth", "codeSigning", "emailProtection", "timeStamping", "ocspSigning")]
+        System.Collections.Generic.List<string> CertificateUsage { get; set; }
         /// <summary>ID for the certificate result.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
         Required = false,
@@ -317,7 +399,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         PossibleTypes = new [] { typeof(bool) })]
         bool? IsSelfSigned { get; set; }
         /// <summary>
-        /// Indicates the certificate's key size is considered too small to be secure for the key algorithm.
+        /// Indicates the certificate's key size is considered too small to be secure for the key algorithm according to NIST guidance.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
         Required = false,
@@ -325,18 +407,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Indicates the certificate's key size is considered too small to be secure for the key algorithm.",
+        Description = @"Indicates the certificate's key size is considered too small to be secure for the key algorithm according to NIST guidance.",
         SerializedName = @"isShortKeySize",
         PossibleTypes = new [] { typeof(bool) })]
         bool? IsShortKeySize { get; set; }
-        /// <summary>Indicates the signature algorithm used is insecure.</summary>
+        /// <summary>Indicates the signature algorithm used is insecure according to NIST guidance.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Indicates the signature algorithm used is insecure.",
+        Description = @"Indicates the signature algorithm used is insecure according to NIST guidance.",
         SerializedName = @"isWeakSignature",
         PossibleTypes = new [] { typeof(bool) })]
         bool? IsWeakSignature { get; set; }
@@ -406,28 +488,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         SerializedName = @"state",
         PossibleTypes = new [] { typeof(string) })]
         string IssuerState { get; set; }
-        /// <summary>Key algorithm used in the certificate.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Key algorithm used in the certificate.",
-        SerializedName = @"keyAlgorithm",
-        PossibleTypes = new [] { typeof(string) })]
-        string KeyAlgorithm { get; set; }
-        /// <summary>Size of the certificate's key in bits</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Size of the certificate's key in bits",
-        SerializedName = @"keySize",
-        PossibleTypes = new [] { typeof(long) })]
-        long? KeySize { get; set; }
         /// <summary>ID of the paired key or certificate.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
         Required = false,
@@ -436,7 +496,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         Create = true,
         Update = true,
         Description = @"ID of the paired key or certificate.",
-        SerializedName = @"id",
+        SerializedName = @"pairedKeyId",
         PossibleTypes = new [] { typeof(string) })]
         string PairedKeyId { get; set; }
         /// <summary>The type indicating whether the paired object is a key or certificate.</summary>
@@ -450,28 +510,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         SerializedName = @"type",
         PossibleTypes = new [] { typeof(string) })]
         string PairedKeyType { get; set; }
-        /// <summary>Name of the certificate.</summary>
+        /// <summary>The status of the last operation.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
         Required = false,
-        ReadOnly = false,
+        ReadOnly = true,
         Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Name of the certificate.",
-        SerializedName = @"name",
+        Create = false,
+        Update = false,
+        Description = @"The status of the last operation.",
+        SerializedName = @"provisioningState",
         PossibleTypes = new [] { typeof(string) })]
-        string PropertiesName { get; set; }
-        /// <summary>Role of the certificate (Root CA, etc)</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Role of the certificate (Root CA, etc)",
-        SerializedName = @"role",
-        PossibleTypes = new [] { typeof(string) })]
-        string Role { get; set; }
+        [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Pending", "Extracting", "Analyzing")]
+        string ProvisioningState { get;  }
         /// <summary>Serial number of the certificate.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
         Required = false,
@@ -549,23 +599,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         SerializedName = @"state",
         PossibleTypes = new [] { typeof(string) })]
         string SubjectState { get; set; }
-        /// <summary>List of functions the certificate can fulfill.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"List of functions the certificate can fulfill.",
-        SerializedName = @"usage",
-        PossibleTypes = new [] { typeof(string) })]
-        System.Collections.Generic.List<string> Usage { get; set; }
 
     }
-    /// Crypto certificate resource
+    /// The object representing a firmware analysis crypto certificate resource
     internal partial interface ICryptoCertificateResourceInternal :
-        Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal
+        Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IProxyResourceInternal
     {
+        /// <summary>Key algorithm used in the certificate.</summary>
+        string CertificateKeyAlgorithm { get; set; }
+        /// <summary>Size of the certificate's key in bits</summary>
+        long? CertificateKeySize { get; set; }
+        /// <summary>Name of the certificate.</summary>
+        string CertificateName { get; set; }
+        /// <summary>Role of the certificate (Root CA, etc)</summary>
+        string CertificateRole { get; set; }
+        /// <summary>List of functions the certificate can fulfill.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PSArgumentCompleterAttribute("digitalSignature", "nonRepudiation", "contentCommitment", "keyEncipherment", "dataEncipherment", "keyAgreement", "keyCertSign", "crlSign", "encipherOnly", "decipherOnly", "serverAuth", "clientAuth", "codeSigning", "emailProtection", "timeStamping", "ocspSigning")]
+        System.Collections.Generic.List<string> CertificateUsage { get; set; }
         /// <summary>ID for the certificate result.</summary>
         string CryptoCertId { get; set; }
         /// <summary>Encoding used for the certificate.</summary>
@@ -581,10 +631,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         /// <summary>Indicates if the certificate is self-signed.</summary>
         bool? IsSelfSigned { get; set; }
         /// <summary>
-        /// Indicates the certificate's key size is considered too small to be secure for the key algorithm.
+        /// Indicates the certificate's key size is considered too small to be secure for the key algorithm according to NIST guidance.
         /// </summary>
         bool? IsShortKeySize { get; set; }
-        /// <summary>Indicates the signature algorithm used is insecure.</summary>
+        /// <summary>Indicates the signature algorithm used is insecure according to NIST guidance.</summary>
         bool? IsWeakSignature { get; set; }
         /// <summary>Issue date for the certificate.</summary>
         global::System.DateTime? IssuedDate { get; set; }
@@ -600,22 +650,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         string IssuerOrganizationalUnit { get; set; }
         /// <summary>Geographical state or province of the certificate entity.</summary>
         string IssuerState { get; set; }
-        /// <summary>Key algorithm used in the certificate.</summary>
-        string KeyAlgorithm { get; set; }
-        /// <summary>Size of the certificate's key in bits</summary>
-        long? KeySize { get; set; }
         /// <summary>A matching paired private key.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IPairedKey PairedKey { get; set; }
         /// <summary>ID of the paired key or certificate.</summary>
         string PairedKeyId { get; set; }
         /// <summary>The type indicating whether the paired object is a key or certificate.</summary>
         string PairedKeyType { get; set; }
-        /// <summary>Name of the certificate.</summary>
-        string PropertiesName { get; set; }
-        /// <summary>The properties of a crypto certificate found within a firmware image</summary>
+        /// <summary>The resource-specific properties for this resource.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificate Property { get; set; }
-        /// <summary>Role of the certificate (Root CA, etc)</summary>
-        string Role { get; set; }
+        /// <summary>The status of the last operation.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Pending", "Extracting", "Analyzing")]
+        string ProvisioningState { get; set; }
         /// <summary>Serial number of the certificate.</summary>
         string SerialNumber { get; set; }
         /// <summary>The signature algorithm used in the certificate.</summary>
@@ -632,8 +677,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         string SubjectOrganizationalUnit { get; set; }
         /// <summary>Geographical state or province of the certificate entity.</summary>
         string SubjectState { get; set; }
-        /// <summary>List of functions the certificate can fulfill.</summary>
-        System.Collections.Generic.List<string> Usage { get; set; }
 
     }
 }

@@ -2,6 +2,52 @@
 <Configuration>
   <ViewDefinitions>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.AzureResourceManagerCommonTypesSkuUpdate</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.AzureResourceManagerCommonTypesSkuUpdate#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Capacity</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Family</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Size</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Tier</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Capacity</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Family</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Size</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Tier</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.BinaryHardeningFeatures</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.BinaryHardeningFeatures#Multiple</TypeName>
@@ -12,13 +58,13 @@
             <Label>Canary</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>Nx</Label>
+            <Label>NoExecute</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>Pie</Label>
+            <Label>PositionIndependentExecutable</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>Relro</Label>
+            <Label>RelocationReadOnly</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Stripped</Label>
@@ -31,38 +77,16 @@
                 <PropertyName>Canary</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>Nx</PropertyName>
+                <PropertyName>NoExecute</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>Pie</PropertyName>
+                <PropertyName>PositionIndependentExecutable</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>Relro</PropertyName>
+                <PropertyName>RelocationReadOnly</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Stripped</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.BinaryHardeningListResult</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.BinaryHardeningListResult#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>NextLink</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>NextLink</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -128,6 +152,28 @@
       </TableControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.BinaryHardeningResourceListResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.BinaryHardeningResourceListResult#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.BinaryHardeningResult</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.BinaryHardeningResult#Multiple</TypeName>
@@ -135,16 +181,19 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>Architecture</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
             <Label>BinaryHardeningId</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>Class</Label>
+            <Label>ExecutableArchitecture</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ExecutableClass</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>FilePath</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Rpath</Label>
@@ -157,16 +206,19 @@
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>Architecture</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
                 <PropertyName>BinaryHardeningId</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>Class</PropertyName>
+                <PropertyName>ExecutableArchitecture</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ExecutableClass</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>FilePath</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Rpath</PropertyName>
@@ -187,22 +239,25 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>SummaryType</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>Canary</Label>
+            <Label>NotExecutableStackCount</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>Nx</Label>
+            <Label>PositionIndependentExecutableCount</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>Pie</Label>
+            <Label>RelocationReadOnlyCount</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>Relro</Label>
+            <Label>StackCanaryCount</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>Stripped</Label>
+            <Label>StrippedBinaryCount</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>TotalFile</Label>
@@ -212,22 +267,25 @@
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>SummaryType</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>Canary</PropertyName>
+                <PropertyName>NotExecutableStackCount</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>Nx</PropertyName>
+                <PropertyName>PositionIndependentExecutableCount</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>Pie</PropertyName>
+                <PropertyName>RelocationReadOnlyCount</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>Relro</PropertyName>
+                <PropertyName>StackCanaryCount</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>Stripped</PropertyName>
+                <PropertyName>StrippedBinaryCount</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>TotalFile</PropertyName>
@@ -244,6 +302,18 @@
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
+          <TableColumnHeader>
+            <Label>CertificateKeyAlgorithm</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CertificateKeySize</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CertificateName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CertificateRole</Label>
+          </TableColumnHeader>
           <TableColumnHeader>
             <Label>CryptoCertId</Label>
           </TableColumnHeader>
@@ -272,16 +342,7 @@
             <Label>IssuedDate</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>KeyAlgorithm</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>KeySize</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Role</Label>
+            <Label>ProvisioningState</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>SerialNumber</Label>
@@ -293,6 +354,18 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>CertificateKeyAlgorithm</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CertificateKeySize</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CertificateName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CertificateRole</PropertyName>
+              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>CryptoCertId</PropertyName>
               </TableColumnItem>
@@ -321,16 +394,7 @@
                 <PropertyName>IssuedDate</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>KeyAlgorithm</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>KeySize</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Role</PropertyName>
+                <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>SerialNumber</PropertyName>
@@ -383,28 +447,6 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>State</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.CryptoCertificateListResult</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.CryptoCertificateListResult#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>NextLink</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>NextLink</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -470,6 +512,28 @@
       </TableControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.CryptoCertificateResourceListResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.CryptoCertificateResourceListResult#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.CryptoCertificateSummaryResource</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.CryptoCertificateSummaryResource#Multiple</TypeName>
@@ -477,56 +541,62 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>SummaryType</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>Expired</Label>
+            <Label>ExpiredCertificateCount</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>ExpiringSoon</Label>
+            <Label>ExpiringSoonCertificateCount</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>PairedKey</Label>
+            <Label>PairedKeyCount</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>SelfSigned</Label>
+            <Label>SelfSignedCertificateCount</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>ShortKeySize</Label>
+            <Label>ShortKeySizeCount</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>TotalCertificate</Label>
+            <Label>TotalCertificateCount</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>WeakSignature</Label>
+            <Label>WeakSignatureCount</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>SummaryType</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>Expired</PropertyName>
+                <PropertyName>ExpiredCertificateCount</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>ExpiringSoon</PropertyName>
+                <PropertyName>ExpiringSoonCertificateCount</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>PairedKey</PropertyName>
+                <PropertyName>PairedKeyCount</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>SelfSigned</PropertyName>
+                <PropertyName>SelfSignedCertificateCount</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>ShortKeySize</PropertyName>
+                <PropertyName>ShortKeySizeCount</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>TotalCertificate</PropertyName>
+                <PropertyName>TotalCertificateCount</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>WeakSignature</PropertyName>
+                <PropertyName>WeakSignatureCount</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -547,10 +617,13 @@
             <Label>KeyAlgorithm</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>KeySize</Label>
+            <Label>KeyType</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>KeyType</Label>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Size</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -563,32 +636,13 @@
                 <PropertyName>KeyAlgorithm</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>KeySize</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
                 <PropertyName>KeyType</PropertyName>
               </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.CryptoKeyListResult</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.CryptoKeyListResult#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>NextLink</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>NextLink</PropertyName>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Size</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -654,6 +708,28 @@
       </TableControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.CryptoKeyResourceListResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.CryptoKeyResourceListResult#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.CryptoKeySummaryResource</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.CryptoKeySummaryResource#Multiple</TypeName>
@@ -661,44 +737,50 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>SummaryType</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>PairedKey</Label>
+            <Label>PairedKeyCount</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>PrivateKey</Label>
+            <Label>PrivateKeyCount</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>PublicKey</Label>
+            <Label>PublicKeyCount</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>ShortKeySize</Label>
+            <Label>ShortKeySizeCount</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>TotalKey</Label>
+            <Label>TotalKeyCount</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>SummaryType</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>PairedKey</PropertyName>
+                <PropertyName>PairedKeyCount</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>PrivateKey</PropertyName>
+                <PropertyName>PrivateKeyCount</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>PublicKey</PropertyName>
+                <PropertyName>PublicKeyCount</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>ShortKeySize</PropertyName>
+                <PropertyName>ShortKeySizeCount</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>TotalKey</PropertyName>
+                <PropertyName>TotalKeyCount</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -768,28 +850,6 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.CveListResult</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.CveListResult#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>NextLink</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>NextLink</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.CveResource</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.CveResource#Multiple</TypeName>
@@ -848,6 +908,28 @@
       </TableControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.CveResourceListResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.CveResourceListResult#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.CveResult</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.CveResult#Multiple</TypeName>
@@ -855,7 +937,19 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
+            <Label>ComponentId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ComponentName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ComponentVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>CveId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CveName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>CvssScore</Label>
@@ -873,7 +967,13 @@
             <Label>Description</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>Name</Label>
+            <Label>EffectiveCvssScore</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>EffectiveCvssVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Severity</Label>
@@ -883,7 +983,19 @@
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
+                <PropertyName>ComponentId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ComponentName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ComponentVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>CveId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CveName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>CvssScore</PropertyName>
@@ -901,7 +1013,13 @@
                 <PropertyName>Description</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>Name</PropertyName>
+                <PropertyName>EffectiveCvssScore</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>EffectiveCvssVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Severity</PropertyName>
@@ -919,44 +1037,78 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>SummaryType</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>Critical</Label>
+            <Label>CriticalCveCount</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>High</Label>
+            <Label>HighCveCount</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>Low</Label>
+            <Label>LowCveCount</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>Medium</Label>
+            <Label>MediumCveCount</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>Unknown</Label>
+            <Label>UnknownCveCount</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>SummaryType</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>Critical</PropertyName>
+                <PropertyName>CriticalCveCount</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>High</PropertyName>
+                <PropertyName>HighCveCount</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>Low</PropertyName>
+                <PropertyName>LowCveCount</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>Medium</PropertyName>
+                <PropertyName>MediumCveCount</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>Unknown</PropertyName>
+                <PropertyName>UnknownCveCount</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.CvssScore</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.CvssScore#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Score</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Version</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Score</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Version</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -1072,13 +1224,16 @@
             <Label>FirmwareId</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>ResourceGroupName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>SubscriptionId</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>SummaryName</Label>
+            <Label>SummaryType</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>WorkspaceName</Label>
@@ -1091,13 +1246,16 @@
                 <PropertyName>FirmwareId</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>ResourceGroupName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>SubscriptionId</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>SummaryName</PropertyName>
+                <PropertyName>SummaryType</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>WorkspaceName</PropertyName>
@@ -1108,9 +1266,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.FirmwareList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.FirmwareListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.FirmwareList#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.FirmwareListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1201,6 +1359,9 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>SummaryType</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -1228,6 +1389,9 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>SummaryType</PropertyName>
               </TableColumnItem>
@@ -1401,6 +1565,9 @@
             <Label>Hash</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>Salt</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -1423,6 +1590,9 @@
                 <PropertyName>Hash</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>Salt</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -1434,9 +1604,67 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.PasswordHashListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.PasswordHashResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.PasswordHashListResult#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.PasswordHashResource#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.PasswordHashResourceListResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.PasswordHashResourceListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1456,9 +1684,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.PasswordHashResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ProxyResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.PasswordHashResource#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ProxyResource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1552,6 +1780,9 @@
             <Label>License</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>Version</Label>
           </TableColumnHeader>
         </TableHeaders>
@@ -1568,29 +1799,10 @@
                 <PropertyName>License</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>Version</PropertyName>
+                <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.SbomComponentListResult</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.SbomComponentListResult#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>NextLink</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>NextLink</PropertyName>
+                <PropertyName>Version</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -1656,6 +1868,74 @@
       </TableControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.SbomComponentResourceListResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.SbomComponentResourceListResult#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.Sku</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.Sku#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Capacity</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Family</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Size</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Tier</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Capacity</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Family</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Size</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Tier</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.StatusMessage</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.StatusMessage#Multiple</TypeName>
@@ -1677,28 +1957,6 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Message</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.SummaryListResult</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.SummaryListResult#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>NextLink</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>NextLink</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -1770,6 +2028,28 @@
       </TableControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.SummaryResourceListResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.SummaryResourceListResult#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.SummaryResourceProperties</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.SummaryResourceProperties#Multiple</TypeName>
@@ -1777,12 +2057,18 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>SummaryType</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>SummaryType</PropertyName>
               </TableColumnItem>
@@ -1952,6 +2238,126 @@
       </TableControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.UsageMetric</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.UsageMetric#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.UsageMetricListResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.UsageMetricListResult#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.UsageMetricProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.UsageMetricProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>MonthlyFirmwareUploadCount</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TotalFirmwareCount</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>MonthlyFirmwareUploadCount</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TotalFirmwareCount</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.Workspace</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.Workspace#Multiple</TypeName>
@@ -2022,9 +2428,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.WorkspaceList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.WorkspaceListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.WorkspaceList#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.WorkspaceListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2059,6 +2465,28 @@
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.WorkspaceUpdateTags</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.WorkspaceUpdateTags#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Item</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Item</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

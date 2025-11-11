@@ -19,6 +19,20 @@ Remove-AzGalleryApplicationVersion -GalleryApplicationName <String> -GalleryName
  [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### DeleteViaIdentityGallery
+```
+Remove-AzGalleryApplicationVersion -GalleryApplicationName <String> -Name <String>
+ -GalleryInputObject <IComputeIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### DeleteViaIdentityApplication
+```
+Remove-AzGalleryApplicationVersion -Name <String> -ApplicationInputObject <IComputeIdentity>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
 ### DeleteViaIdentity
 ```
 Remove-AzGalleryApplicationVersion -InputObject <IComputeIdentity> [-DefaultProfile <PSObject>] [-AsJob]
@@ -32,12 +46,27 @@ Delete a gallery Application Version.
 
 ### Example 1: Remove a Gallery Application Version
 ```powershell
-Remove-AzGalleryApplicationVersion -ResourceGroupName $rgName -GalleryName $galleryName -GalleryApplicationName $galleryApplicationName -Name $name
+Remove-AzGalleryApplicationVersion -ResourceGroupName $rgNmae -GalleryName $galleryName -GalleryApplicationName $galleryApplicationName -Name $name
 ```
 
 Delete a gallery application version.
 
 ## PARAMETERS
+
+### -ApplicationInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
+Parameter Sets: DeleteViaIdentityApplication
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
 
 ### -AsJob
 Run the command as a job
@@ -75,13 +104,28 @@ The name of the gallery Application Definition in which the Application Version 
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, DeleteViaIdentityGallery
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -GalleryInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
+Parameter Sets: DeleteViaIdentityGallery
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -102,7 +146,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
@@ -121,7 +164,7 @@ The name of the gallery Application Version to be deleted.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, DeleteViaIdentityGallery, DeleteViaIdentityApplication
 Aliases: GalleryApplicationVersionName
 
 Required: True

@@ -24,58 +24,168 @@ namespace Microsoft.Azure.Management.Compute
     public static partial class VirtualMachineImagesOperationsExtensions
     {
             /// <summary>
-            /// Gets a virtual machine image.
+            /// Gets a list of all virtual machine image versions for the specified edge
+            /// zone
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='location'>
-            /// The name of a supported Azure region.
+            /// The name of Azure region.
             /// </param>
-            /// <param name='publisherName'>
-            /// A valid image publisher.
+            /// <param name='edgeZone'>
+            /// The name of the edge zone.
             /// </param>
-            /// <param name='offer'>
-            /// A valid image publisher offer.
-            /// </param>
-            /// <param name='skus'>
-            /// A valid image SKU.
-            /// </param>
-            /// <param name='version'>
-            /// A valid image SKU version.
-            /// </param>
-            public static VirtualMachineImage Get(this IVirtualMachineImagesOperations operations, string location, string publisherName, string offer, string skus, string version)
+            public static VmImagesInEdgeZoneListResult ListByEdgeZone(this IVirtualMachineImagesOperations operations, string location, string edgeZone)
             {
-                return operations.GetAsync(location, publisherName, offer, skus, version).GetAwaiter().GetResult();
+                return operations.ListByEdgeZoneAsync(location, edgeZone).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Gets a virtual machine image.
+            /// Gets a list of all virtual machine image versions for the specified edge
+            /// zone
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='location'>
-            /// The name of a supported Azure region.
+            /// The name of Azure region.
             /// </param>
-            /// <param name='publisherName'>
-            /// A valid image publisher.
-            /// </param>
-            /// <param name='offer'>
-            /// A valid image publisher offer.
-            /// </param>
-            /// <param name='skus'>
-            /// A valid image SKU.
-            /// </param>
-            /// <param name='version'>
-            /// A valid image SKU version.
+            /// <param name='edgeZone'>
+            /// The name of the edge zone.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<VirtualMachineImage> GetAsync(this IVirtualMachineImagesOperations operations, string location, string publisherName, string offer, string skus, string version, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<VmImagesInEdgeZoneListResult> ListByEdgeZoneAsync(this IVirtualMachineImagesOperations operations, string location, string edgeZone, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetWithHttpMessagesAsync(location, publisherName, offer, skus, version, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListByEdgeZoneWithHttpMessagesAsync(location, edgeZone, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Gets a list of virtual machine image publishers for the specified Azure
+            /// location.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='location'>
+            /// The name of Azure region.
+            /// </param>
+            public static IList<VirtualMachineImageResource> ListPublishers(this IVirtualMachineImagesOperations operations, string location)
+            {
+                return operations.ListPublishersAsync(location).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Gets a list of virtual machine image publishers for the specified Azure
+            /// location.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='location'>
+            /// The name of Azure region.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IList<VirtualMachineImageResource>> ListPublishersAsync(this IVirtualMachineImagesOperations operations, string location, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListPublishersWithHttpMessagesAsync(location, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Gets a list of virtual machine image offers for the specified location and
+            /// publisher.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='location'>
+            /// The name of Azure region.
+            /// </param>
+            /// <param name='publisherName'>
+            /// A valid image publisher.
+            /// </param>
+            public static IList<VirtualMachineImageResource> ListOffers(this IVirtualMachineImagesOperations operations, string location, string publisherName)
+            {
+                return operations.ListOffersAsync(location, publisherName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Gets a list of virtual machine image offers for the specified location and
+            /// publisher.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='location'>
+            /// The name of Azure region.
+            /// </param>
+            /// <param name='publisherName'>
+            /// A valid image publisher.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IList<VirtualMachineImageResource>> ListOffersAsync(this IVirtualMachineImagesOperations operations, string location, string publisherName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListOffersWithHttpMessagesAsync(location, publisherName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Gets a list of virtual machine image SKUs for the specified location,
+            /// publisher, and offer.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='location'>
+            /// The name of Azure region.
+            /// </param>
+            /// <param name='publisherName'>
+            /// A valid image publisher.
+            /// </param>
+            /// <param name='offer'>
+            /// A valid image publisher offer.
+            /// </param>
+            public static IList<VirtualMachineImageResource> ListSkus(this IVirtualMachineImagesOperations operations, string location, string publisherName, string offer)
+            {
+                return operations.ListSkusAsync(location, publisherName, offer).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Gets a list of virtual machine image SKUs for the specified location,
+            /// publisher, and offer.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='location'>
+            /// The name of Azure region.
+            /// </param>
+            /// <param name='publisherName'>
+            /// A valid image publisher.
+            /// </param>
+            /// <param name='offer'>
+            /// A valid image publisher offer.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IList<VirtualMachineImageResource>> ListSkusAsync(this IVirtualMachineImagesOperations operations, string location, string publisherName, string offer, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListSkusWithHttpMessagesAsync(location, publisherName, offer, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -89,7 +199,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='location'>
-            /// The name of a supported Azure region.
+            /// The name of Azure region.
             /// </param>
             /// <param name='publisherName'>
             /// A valid image publisher.
@@ -120,7 +230,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='location'>
-            /// The name of a supported Azure region.
+            /// The name of Azure region.
             /// </param>
             /// <param name='publisherName'>
             /// A valid image publisher.
@@ -150,92 +260,13 @@ namespace Microsoft.Azure.Management.Compute
             }
 
             /// <summary>
-            /// Gets a list of virtual machine image offers for the specified location and
-            /// publisher.
+            /// Gets a virtual machine image.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='location'>
-            /// The name of a supported Azure region.
-            /// </param>
-            /// <param name='publisherName'>
-            /// A valid image publisher.
-            /// </param>
-            public static IList<VirtualMachineImageResource> ListOffers(this IVirtualMachineImagesOperations operations, string location, string publisherName)
-            {
-                return operations.ListOffersAsync(location, publisherName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Gets a list of virtual machine image offers for the specified location and
-            /// publisher.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='location'>
-            /// The name of a supported Azure region.
-            /// </param>
-            /// <param name='publisherName'>
-            /// A valid image publisher.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IList<VirtualMachineImageResource>> ListOffersAsync(this IVirtualMachineImagesOperations operations, string location, string publisherName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListOffersWithHttpMessagesAsync(location, publisherName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Gets a list of virtual machine image publishers for the specified Azure
-            /// location.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='location'>
-            /// The name of a supported Azure region.
-            /// </param>
-            public static IList<VirtualMachineImageResource> ListPublishers(this IVirtualMachineImagesOperations operations, string location)
-            {
-                return operations.ListPublishersAsync(location).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Gets a list of virtual machine image publishers for the specified Azure
-            /// location.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='location'>
-            /// The name of a supported Azure region.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IList<VirtualMachineImageResource>> ListPublishersAsync(this IVirtualMachineImagesOperations operations, string location, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListPublishersWithHttpMessagesAsync(location, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Gets a list of virtual machine image SKUs for the specified location,
-            /// publisher, and offer.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='location'>
-            /// The name of a supported Azure region.
+            /// The name of Azure region.
             /// </param>
             /// <param name='publisherName'>
             /// A valid image publisher.
@@ -243,20 +274,25 @@ namespace Microsoft.Azure.Management.Compute
             /// <param name='offer'>
             /// A valid image publisher offer.
             /// </param>
-            public static IList<VirtualMachineImageResource> ListSkus(this IVirtualMachineImagesOperations operations, string location, string publisherName, string offer)
+            /// <param name='skus'>
+            /// A valid image SKU.
+            /// </param>
+            /// <param name='version'>
+            /// A valid image SKU version.
+            /// </param>
+            public static VirtualMachineImage Get(this IVirtualMachineImagesOperations operations, string location, string publisherName, string offer, string skus, string version)
             {
-                return operations.ListSkusAsync(location, publisherName, offer).GetAwaiter().GetResult();
+                return operations.GetAsync(location, publisherName, offer, skus, version).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Gets a list of virtual machine image SKUs for the specified location,
-            /// publisher, and offer.
+            /// Gets a virtual machine image.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='location'>
-            /// The name of a supported Azure region.
+            /// The name of Azure region.
             /// </param>
             /// <param name='publisherName'>
             /// A valid image publisher.
@@ -264,54 +300,18 @@ namespace Microsoft.Azure.Management.Compute
             /// <param name='offer'>
             /// A valid image publisher offer.
             /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
+            /// <param name='skus'>
+            /// A valid image SKU.
             /// </param>
-            public static async Task<IList<VirtualMachineImageResource>> ListSkusAsync(this IVirtualMachineImagesOperations operations, string location, string publisherName, string offer, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListSkusWithHttpMessagesAsync(location, publisherName, offer, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Gets a list of all virtual machine image versions for the specified edge
-            /// zone
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='location'>
-            /// The name of a supported Azure region.
-            /// </param>
-            /// <param name='edgeZone'>
-            /// The name of the edge zone.
-            /// </param>
-            public static VmImagesInEdgeZoneListResult ListByEdgeZone(this IVirtualMachineImagesOperations operations, string location, string edgeZone)
-            {
-                return operations.ListByEdgeZoneAsync(location, edgeZone).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Gets a list of all virtual machine image versions for the specified edge
-            /// zone
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='location'>
-            /// The name of a supported Azure region.
-            /// </param>
-            /// <param name='edgeZone'>
-            /// The name of the edge zone.
+            /// <param name='version'>
+            /// A valid image SKU version.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<VmImagesInEdgeZoneListResult> ListByEdgeZoneAsync(this IVirtualMachineImagesOperations operations, string location, string edgeZone, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<VirtualMachineImage> GetAsync(this IVirtualMachineImagesOperations operations, string location, string publisherName, string offer, string skus, string version, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListByEdgeZoneWithHttpMessagesAsync(location, edgeZone, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetWithHttpMessagesAsync(location, publisherName, offer, skus, version, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -321,7 +321,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='location'>
-            /// The name of a supported Azure region.
+            /// The name of Azure region.
             /// </param>
             /// <param name='publisherName'>
             /// A valid image publisher.
@@ -348,7 +348,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='location'>
-            /// The name of a supported Azure region.
+            /// The name of Azure region.
             /// </param>
             /// <param name='publisherName'>
             /// A valid image publisher.
@@ -372,34 +372,6 @@ namespace Microsoft.Azure.Management.Compute
             public static async Task<IList<VirtualMachineImage>> ListWithPropertiesAsync(this IVirtualMachineImagesOperations operations, string location, string publisherName, string offer, string skus, string expand, int? top = default(int?), string orderby = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListWithPropertiesWithHttpMessagesAsync(location, publisherName, offer, skus, expand, top, orderby, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            public static IList<VirtualMachineImage> ListWithPropertiesNext(this IVirtualMachineImagesOperations operations, string nextPageLink)
-            {
-                return operations.ListWithPropertiesNextAsync(nextPageLink).GetAwaiter().GetResult();
-            }
-
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IList<VirtualMachineImage>> ListWithPropertiesNextAsync(this IVirtualMachineImagesOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListWithPropertiesNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

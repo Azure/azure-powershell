@@ -171,7 +171,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
         /// Compact or DeleteOrCompact.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Inlined)]
-        public long? MinCompactionLagInMin { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhubPropertiesInternal)Property).RetentionDescriptionMinCompactionLagInMin; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhubPropertiesInternal)Property).RetentionDescriptionMinCompactionLagInMin = value ?? default(long); }
+        public long? MinCompactionLagInMin { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhubPropertiesInternal)Property).RetentionDescriptionMinCompactionLagTimeInMinute; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhubPropertiesInternal)Property).RetentionDescriptionMinCompactionLagTimeInMinute = value ?? default(long); }
 
         /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Inherited)]
@@ -501,7 +501,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
         Create = true,
         Update = true,
         Description = @"The minimum time a message will remain ineligible for compaction in the log. This value is used when cleanupPolicy is Compact or DeleteOrCompact.",
-        SerializedName = @"minCompactionLagInMins",
+        SerializedName = @"minCompactionLagTimeInMinutes",
         PossibleTypes = new [] { typeof(long) })]
         long? MinCompactionLagInMin { get; set; }
         /// <summary>

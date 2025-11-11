@@ -8,8 +8,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
     using static Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Extensions;
 
     /// <summary>
-    /// Error response indicates Azure Front Door Standard or Azure Front Door Premium or CDN service is not able to process the
-    /// incoming request. The reason is provided in the error message.
+    /// Common error response for all Azure Resource Manager APIs to return error details for failed operations. (This also follows
+    /// the OData error response format.).
     /// </summary>
     public partial class ErrorResponse :
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse,
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         /// <summary>Backing field for <see cref="Error" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorDetail _error;
 
-        /// <summary>The error detail.</summary>
+        /// <summary>The error object.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorDetail Error { get => (this._error = this._error ?? new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ErrorDetail()); set => this._error = value; }
 
@@ -40,22 +40,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         public string Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorDetailInternal)Error).Message; }
 
         /// <summary>Internal Acessors for AdditionalInfo</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorAdditionalInfo> Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponseInternal.AdditionalInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorDetailInternal)Error).AdditionalInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorDetailInternal)Error).AdditionalInfo = value; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorAdditionalInfo> Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponseInternal.AdditionalInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorDetailInternal)Error).AdditionalInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorDetailInternal)Error).AdditionalInfo = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for Code</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponseInternal.Code { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorDetailInternal)Error).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorDetailInternal)Error).Code = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponseInternal.Code { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorDetailInternal)Error).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorDetailInternal)Error).Code = value ?? null; }
 
         /// <summary>Internal Acessors for Detail</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorDetail> Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponseInternal.Detail { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorDetailInternal)Error).Detail; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorDetailInternal)Error).Detail = value; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorDetail> Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponseInternal.Detail { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorDetailInternal)Error).Detail; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorDetailInternal)Error).Detail = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for Error</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorDetail Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponseInternal.Error { get => (this._error = this._error ?? new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ErrorDetail()); set { {_error = value;} } }
 
         /// <summary>Internal Acessors for Message</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponseInternal.Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorDetailInternal)Error).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorDetailInternal)Error).Message = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponseInternal.Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorDetailInternal)Error).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorDetailInternal)Error).Message = value ?? null; }
 
         /// <summary>Internal Acessors for Target</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponseInternal.Target { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorDetailInternal)Error).Target; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorDetailInternal)Error).Target = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponseInternal.Target { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorDetailInternal)Error).Target; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorDetailInternal)Error).Target = value ?? null; }
 
         /// <summary>The error target.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inlined)]
@@ -67,8 +67,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
 
         }
     }
-    /// Error response indicates Azure Front Door Standard or Azure Front Door Premium or CDN service is not able to process the
-    /// incoming request. The reason is provided in the error message.
+    /// Common error response for all Azure Resource Manager APIs to return error details for failed operations. (This also follows
+    /// the OData error response format.).
     public partial interface IErrorResponse :
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IJsonSerializable
     {
@@ -129,8 +129,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         string Target { get;  }
 
     }
-    /// Error response indicates Azure Front Door Standard or Azure Front Door Premium or CDN service is not able to process the
-    /// incoming request. The reason is provided in the error message.
+    /// Common error response for all Azure Resource Manager APIs to return error details for failed operations. (This also follows
+    /// the OData error response format.).
     internal partial interface IErrorResponseInternal
 
     {
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         string Code { get; set; }
         /// <summary>The error details.</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorDetail> Detail { get; set; }
-        /// <summary>The error detail.</summary>
+        /// <summary>The error object.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorDetail Error { get; set; }
         /// <summary>The error message.</summary>
         string Message { get; set; }

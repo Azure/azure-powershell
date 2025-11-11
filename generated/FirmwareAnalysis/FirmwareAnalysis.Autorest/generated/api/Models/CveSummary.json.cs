@@ -66,11 +66,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
                 return;
             }
             __summaryResourceProperties = new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.SummaryResourceProperties(json);
-            {_critical = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber>("critical"), out var __jsonCritical) ? (long?)__jsonCritical : _critical;}
-            {_high = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber>("high"), out var __jsonHigh) ? (long?)__jsonHigh : _high;}
-            {_medium = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber>("medium"), out var __jsonMedium) ? (long?)__jsonMedium : _medium;}
-            {_low = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber>("low"), out var __jsonLow) ? (long?)__jsonLow : _low;}
-            {_unknown = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber>("unknown"), out var __jsonUnknown) ? (long?)__jsonUnknown : _unknown;}
+            {_criticalCveCount = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber>("criticalCveCount"), out var __jsonCriticalCveCount) ? (long?)__jsonCriticalCveCount : _criticalCveCount;}
+            {_highCveCount = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber>("highCveCount"), out var __jsonHighCveCount) ? (long?)__jsonHighCveCount : _highCveCount;}
+            {_mediumCveCount = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber>("mediumCveCount"), out var __jsonMediumCveCount) ? (long?)__jsonMediumCveCount : _mediumCveCount;}
+            {_lowCveCount = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber>("lowCveCount"), out var __jsonLowCveCount) ? (long?)__jsonLowCveCount : _lowCveCount;}
+            {_unknownCveCount = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber>("unknownCveCount"), out var __jsonUnknownCveCount) ? (long?)__jsonUnknownCveCount : _unknownCveCount;}
             AfterFromJson(json);
         }
 
@@ -106,11 +106,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
                 return container;
             }
             __summaryResourceProperties?.ToJson(container, serializationMode);
-            AddIf( null != this._critical ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber((long)this._critical) : null, "critical" ,container.Add );
-            AddIf( null != this._high ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber((long)this._high) : null, "high" ,container.Add );
-            AddIf( null != this._medium ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber((long)this._medium) : null, "medium" ,container.Add );
-            AddIf( null != this._low ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber((long)this._low) : null, "low" ,container.Add );
-            AddIf( null != this._unknown ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber((long)this._unknown) : null, "unknown" ,container.Add );
+            AddIf( null != this._criticalCveCount ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber((long)this._criticalCveCount) : null, "criticalCveCount" ,container.Add );
+            AddIf( null != this._highCveCount ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber((long)this._highCveCount) : null, "highCveCount" ,container.Add );
+            AddIf( null != this._mediumCveCount ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber((long)this._mediumCveCount) : null, "mediumCveCount" ,container.Add );
+            AddIf( null != this._lowCveCount ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber((long)this._lowCveCount) : null, "lowCveCount" ,container.Add );
+            AddIf( null != this._unknownCveCount ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber((long)this._unknownCveCount) : null, "unknownCveCount" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

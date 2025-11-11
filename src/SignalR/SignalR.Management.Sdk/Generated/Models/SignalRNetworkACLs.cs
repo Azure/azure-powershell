@@ -24,20 +24,24 @@ namespace Microsoft.Azure.Management.SignalR.Models
         /// Initializes a new instance of the SignalRNetworkACLs class.
         /// </summary>
 
-        /// <param name="defaultAction">Default action when no other rule matches
+        /// <param name="defaultAction">Azure Networking ACL Action.
         /// Possible values include: &#39;Allow&#39;, &#39;Deny&#39;</param>
 
-        /// <param name="publicNetwork">ACL for requests from public network
+        /// <param name="publicNetwork">Network ACL
         /// </param>
 
         /// <param name="privateEndpoints">ACLs for requests from private endpoints
         /// </param>
-        public SignalRNetworkACLs(string defaultAction = default(string), NetworkACL publicNetwork = default(NetworkACL), System.Collections.Generic.IList<PrivateEndpointACL> privateEndpoints = default(System.Collections.Generic.IList<PrivateEndpointACL>))
+
+        /// <param name="ipRules">IP rules for filtering public traffic
+        /// </param>
+        public SignalRNetworkACLs(string defaultAction = default(string), NetworkACL publicNetwork = default(NetworkACL), System.Collections.Generic.IList<PrivateEndpointACL> privateEndpoints = default(System.Collections.Generic.IList<PrivateEndpointACL>), System.Collections.Generic.IList<IPRule> ipRules = default(System.Collections.Generic.IList<IPRule>))
 
         {
             this.DefaultAction = defaultAction;
             this.PublicNetwork = publicNetwork;
             this.PrivateEndpoints = privateEndpoints;
+            this.IPRules = ipRules;
             CustomInit();
         }
 
@@ -48,13 +52,13 @@ namespace Microsoft.Azure.Management.SignalR.Models
 
 
         /// <summary>
-        /// Gets or sets default action when no other rule matches Possible values include: &#39;Allow&#39;, &#39;Deny&#39;
+        /// Gets or sets azure Networking ACL Action. Possible values include: &#39;Allow&#39;, &#39;Deny&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "defaultAction")]
         public string DefaultAction {get; set; }
 
         /// <summary>
-        /// Gets or sets aCL for requests from public network
+        /// Gets or sets network ACL
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "publicNetwork")]
         public NetworkACL PublicNetwork {get; set; }
@@ -64,5 +68,39 @@ namespace Microsoft.Azure.Management.SignalR.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "privateEndpoints")]
         public System.Collections.Generic.IList<PrivateEndpointACL> PrivateEndpoints {get; set; }
+
+        /// <summary>
+        /// Gets or sets iP rules for filtering public traffic
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "ipRules")]
+        public System.Collections.Generic.IList<IPRule> IPRules {get; set; }
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+
+
+            if (this.PrivateEndpoints != null)
+            {
+                foreach (var element in this.PrivateEndpoints)
+                {
+                    if (element != null)
+                    {
+                        element.Validate();
+                    }
+                }
+            }
+            if (this.IPRules != null)
+            {
+                if (this.IPRules.Count > 30)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxItems, "IPRules", 30);
+                }
+            }
+        }
     }
 }

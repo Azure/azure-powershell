@@ -66,13 +66,19 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <param name="firstRowOnly">Whether to return first row or all rows. Default value is true. Type:
         /// boolean (or Expression with resultType boolean).
         /// </param>
-        public LookupActivity(string name, CopySource source, DatasetReference dataset, System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), string description = default(string), string state = default(string), string onInactiveMarkAs = default(string), System.Collections.Generic.IList<ActivityDependency> dependsOn = default(System.Collections.Generic.IList<ActivityDependency>), System.Collections.Generic.IList<UserProperty> userProperties = default(System.Collections.Generic.IList<UserProperty>), LinkedServiceReference linkedServiceName = default(LinkedServiceReference), ActivityPolicy policy = default(ActivityPolicy), object firstRowOnly = default(object))
+
+        /// <param name="treatDecimalAsString">Indicates whether to treat decimal values as strings to avoid value
+        /// overflow issue. This option is enabled for SnowflakeV2 connector only.
+        /// Type: boolean (or Expression with resultType boolean).
+        /// </param>
+        public LookupActivity(string name, CopySource source, DatasetReference dataset, System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), string description = default(string), string state = default(string), string onInactiveMarkAs = default(string), System.Collections.Generic.IList<ActivityDependency> dependsOn = default(System.Collections.Generic.IList<ActivityDependency>), System.Collections.Generic.IList<UserProperty> userProperties = default(System.Collections.Generic.IList<UserProperty>), LinkedServiceReference linkedServiceName = default(LinkedServiceReference), ActivityPolicy policy = default(ActivityPolicy), object firstRowOnly = default(object), object treatDecimalAsString = default(object))
 
         : base(name, additionalProperties, description, state, onInactiveMarkAs, dependsOn, userProperties, linkedServiceName, policy)
         {
             this.Source = source;
             this.Dataset = dataset;
             this.FirstRowOnly = firstRowOnly;
+            this.TreatDecimalAsString = treatDecimalAsString;
             CustomInit();
         }
 
@@ -101,6 +107,14 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.firstRowOnly")]
         public object FirstRowOnly {get; set; }
+
+        /// <summary>
+        /// Gets or sets indicates whether to treat decimal values as strings to avoid
+        /// value overflow issue. This option is enabled for SnowflakeV2 connector
+        /// only. Type: boolean (or Expression with resultType boolean).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.treatDecimalAsString")]
+        public object TreatDecimalAsString {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -123,6 +137,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
             {
                 this.Dataset.Validate();
             }
+
 
         }
     }

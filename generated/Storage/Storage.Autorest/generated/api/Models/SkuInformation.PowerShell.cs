@@ -129,6 +129,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISkuInformationInternal)this).Location = (System.Collections.Generic.List<string>) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISkuInformationInternal)this).Location, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
+            if (content.Contains("LocationInfo"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISkuInformationInternal)this).LocationInfo = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISkuInformationLocationInfoItem>) content.GetValueForProperty("LocationInfo",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISkuInformationInternal)this).LocationInfo, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISkuInformationLocationInfoItem>(__y, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.SkuInformationLocationInfoItemTypeConverter.ConvertFrom));
+            }
             if (content.Contains("Capability"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISkuInformationInternal)this).Capability = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISkuCapability>) content.GetValueForProperty("Capability",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISkuInformationInternal)this).Capability, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISkuCapability>(__y, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.SkuCapabilityTypeConverter.ConvertFrom));
@@ -173,6 +177,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             if (content.Contains("Location"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISkuInformationInternal)this).Location = (System.Collections.Generic.List<string>) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISkuInformationInternal)this).Location, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("LocationInfo"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISkuInformationInternal)this).LocationInfo = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISkuInformationLocationInfoItem>) content.GetValueForProperty("LocationInfo",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISkuInformationInternal)this).LocationInfo, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISkuInformationLocationInfoItem>(__y, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.SkuInformationLocationInfoItemTypeConverter.ConvertFrom));
             }
             if (content.Contains("Capability"))
             {

@@ -32,7 +32,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         public async global::System.Threading.Tasks.Task BlobInventoryPoliciesCreateOrUpdate(string subscriptionId, string resourceGroupName, string accountName, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobInventoryPolicy body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobInventoryPolicy>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeUpdate)
         {
             var blobInventoryPolicyName = @"default";
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task BlobInventoryPoliciesCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobInventoryPolicy body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobInventoryPolicy>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobInventoryPolicy> BlobInventoryPoliciesCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobInventoryPolicy body, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -206,7 +206,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         public async global::System.Threading.Tasks.Task BlobInventoryPoliciesCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string accountName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobInventoryPolicy>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
             var blobInventoryPolicyName = @"default";
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -256,7 +256,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobInventoryPolicy> BlobInventoryPoliciesCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string accountName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
             var blobInventoryPolicyName = @"default";
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -307,7 +307,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobInventoryPolicy> BlobInventoryPoliciesCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string accountName, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobInventoryPolicy body, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeUpdate)
         {
             var blobInventoryPolicyName = @"default";
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -507,7 +507,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         public async global::System.Threading.Tasks.Task BlobInventoryPoliciesDelete(string subscriptionId, string resourceGroupName, string accountName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
             var blobInventoryPolicyName = @"default";
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -553,7 +553,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task BlobInventoryPoliciesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -699,7 +699,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         public async global::System.Threading.Tasks.Task BlobInventoryPoliciesGet(string subscriptionId, string resourceGroupName, string accountName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobInventoryPolicy>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
             var blobInventoryPolicyName = @"default";
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -742,7 +742,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task BlobInventoryPoliciesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobInventoryPolicy>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -796,7 +796,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobInventoryPolicy> BlobInventoryPoliciesGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -854,7 +854,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobInventoryPolicy> BlobInventoryPoliciesGetWithResult(string subscriptionId, string resourceGroupName, string accountName, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
             var blobInventoryPolicyName = @"default";
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1039,7 +1039,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task BlobInventoryPoliciesList(string subscriptionId, string resourceGroupName, string accountName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IListBlobInventoryPolicy>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1081,7 +1081,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task BlobInventoryPoliciesListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IListBlobInventoryPolicy>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1133,7 +1133,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IListBlobInventoryPolicy> BlobInventoryPoliciesListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1188,7 +1188,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IListBlobInventoryPolicy> BlobInventoryPoliciesListWithResult(string subscriptionId, string resourceGroupName, string accountName, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1373,7 +1373,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task DeletedAccountsGet(string subscriptionId, string deletedAccountName, string location, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IDeletedAccount>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1414,7 +1414,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task DeletedAccountsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IDeletedAccount>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1465,7 +1465,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IDeletedAccount> DeletedAccountsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1518,7 +1518,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IDeletedAccount> DeletedAccountsGetWithResult(string subscriptionId, string deletedAccountName, string location, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1693,7 +1693,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task DeletedAccountsList(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IDeletedAccountListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1731,7 +1731,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task DeletedAccountsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IDeletedAccountListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1777,7 +1777,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IDeletedAccountListResult> DeletedAccountsListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1823,7 +1823,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IDeletedAccountListResult> DeletedAccountsListWithResult(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1995,7 +1995,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task EncryptionScopesGet(string subscriptionId, string resourceGroupName, string accountName, string encryptionScopeName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionScope>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2038,7 +2038,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task EncryptionScopesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionScope>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2092,7 +2092,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionScope> EncryptionScopesGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2152,7 +2152,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionScope> EncryptionScopesGetWithResult(string subscriptionId, string resourceGroupName, string accountName, string encryptionScopeName, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2345,7 +2345,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task EncryptionScopesList(string subscriptionId, string resourceGroupName, string accountName, int? Maxpagesize, string Filter, string Include, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionScopeListResult>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2395,7 +2395,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task EncryptionScopesListViaIdentity(global::System.String viaIdentity, int? Maxpagesize, string Filter, string Include, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionScopeListResult>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2457,7 +2457,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionScopeListResult> EncryptionScopesListViaIdentityWithResult(global::System.String viaIdentity, int? Maxpagesize, string Filter, string Include, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2522,7 +2522,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionScopeListResult> EncryptionScopesListWithResult(string subscriptionId, string resourceGroupName, string accountName, int? Maxpagesize, string Filter, string Include, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2710,7 +2710,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task EncryptionScopesPatch(string subscriptionId, string resourceGroupName, string accountName, string encryptionScopeName, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionScope body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionScope>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2762,7 +2762,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task EncryptionScopesPatchViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionScope body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionScope>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2825,7 +2825,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionScope> EncryptionScopesPatchViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionScope body, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2895,7 +2895,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task EncryptionScopesPatchViaJsonString(string subscriptionId, string resourceGroupName, string accountName, string encryptionScopeName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionScope>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2950,7 +2950,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionScope> EncryptionScopesPatchViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string accountName, string encryptionScopeName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3006,7 +3006,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionScope> EncryptionScopesPatchWithResult(string subscriptionId, string resourceGroupName, string accountName, string encryptionScopeName, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionScope body, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3214,7 +3214,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task EncryptionScopesPut(string subscriptionId, string resourceGroupName, string accountName, string encryptionScopeName, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionScope body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionScope>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionScope>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3268,7 +3268,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task EncryptionScopesPutViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionScope body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionScope>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionScope>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3332,7 +3332,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionScope> EncryptionScopesPutViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionScope body, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3404,7 +3404,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task EncryptionScopesPutViaJsonString(string subscriptionId, string resourceGroupName, string accountName, string encryptionScopeName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionScope>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionScope>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3460,7 +3460,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionScope> EncryptionScopesPutViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string accountName, string encryptionScopeName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3517,7 +3517,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionScope> EncryptionScopesPutWithResult(string subscriptionId, string resourceGroupName, string accountName, string encryptionScopeName, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionScope body, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3731,7 +3731,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         public async global::System.Threading.Tasks.Task FileServicesGetServiceProperties(string subscriptionId, string resourceGroupName, string accountName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceProperties>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
             var fileServicesName = @"default";
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3776,7 +3776,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task FileServicesGetServicePropertiesViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceProperties>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3832,7 +3832,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceProperties> FileServicesGetServicePropertiesViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3892,7 +3892,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceProperties> FileServicesGetServicePropertiesWithResult(string subscriptionId, string resourceGroupName, string accountName, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
             var fileServicesName = @"default";
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4084,7 +4084,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         {
             var fileServicesName = @"default";
             var fileServiceUsagesName = @"default";
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4132,7 +4132,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task FileServicesGetServiceUsageViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsage>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4192,7 +4192,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsage> FileServicesGetServiceUsageViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4257,7 +4257,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         {
             var fileServicesName = @"default";
             var fileServiceUsagesName = @"default";
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4446,7 +4446,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task FileServicesList(string subscriptionId, string resourceGroupName, string accountName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceItems>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4493,7 +4493,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         public async global::System.Threading.Tasks.Task FileServicesListServiceUsages(string subscriptionId, string resourceGroupName, string accountName, int? Maxpagesize, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsages>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
             var fileServicesName = @"default";
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4540,7 +4540,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task FileServicesListServiceUsagesViaIdentity(global::System.String viaIdentity, int? Maxpagesize, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsages>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4598,7 +4598,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsages> FileServicesListServiceUsagesViaIdentityWithResult(global::System.String viaIdentity, int? Maxpagesize, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4660,7 +4660,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsages> FileServicesListServiceUsagesWithResult(string subscriptionId, string resourceGroupName, string accountName, int? Maxpagesize, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
             var fileServicesName = @"default";
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4848,7 +4848,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task FileServicesListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceItems>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4900,7 +4900,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceItems> FileServicesListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4955,7 +4955,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceItems> FileServicesListWithResult(string subscriptionId, string resourceGroupName, string accountName, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5145,7 +5145,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         public async global::System.Threading.Tasks.Task FileServicesSetServiceProperties(string subscriptionId, string resourceGroupName, string accountName, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceProperties body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceProperties>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeUpdate)
         {
             var fileServicesName = @"default";
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5197,7 +5197,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task FileServicesSetServicePropertiesViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceProperties body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceProperties>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5260,7 +5260,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceProperties> FileServicesSetServicePropertiesViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceProperties body, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5327,7 +5327,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         public async global::System.Threading.Tasks.Task FileServicesSetServicePropertiesViaJsonString(string subscriptionId, string resourceGroupName, string accountName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceProperties>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
             var fileServicesName = @"default";
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5379,7 +5379,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceProperties> FileServicesSetServicePropertiesViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string accountName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
             var fileServicesName = @"default";
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5433,7 +5433,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceProperties> FileServicesSetServicePropertiesWithResult(string subscriptionId, string resourceGroupName, string accountName, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceProperties body, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeUpdate)
         {
             var fileServicesName = @"default";
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5639,7 +5639,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task FileSharesCreate(string subscriptionId, string resourceGroupName, string accountName, string shareName, string Expand, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShare body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShare>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShare>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5696,7 +5696,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task FileSharesCreateViaIdentity(global::System.String viaIdentity, string Expand, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShare body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShare>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShare>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5763,7 +5763,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShare> FileSharesCreateViaIdentityWithResult(global::System.String viaIdentity, string Expand, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShare body, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5838,7 +5838,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task FileSharesCreateViaJsonString(string subscriptionId, string resourceGroupName, string accountName, string shareName, string Expand, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShare>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShare>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5897,7 +5897,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShare> FileSharesCreateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string accountName, string shareName, string Expand, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5957,7 +5957,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShare> FileSharesCreateWithResult(string subscriptionId, string resourceGroupName, string accountName, string shareName, string Expand, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShare body, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6183,7 +6183,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task FileSharesDelete(string subscriptionId, string resourceGroupName, string accountName, string shareName, string xMSSnapshot, string Include, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6241,7 +6241,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task FileSharesDeleteViaIdentity(global::System.String viaIdentity, string xMSSnapshot, string Include, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6414,7 +6414,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task FileSharesGet(string subscriptionId, string resourceGroupName, string accountName, string shareName, string xMSSnapshot, string Expand, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShare>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6468,7 +6468,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task FileSharesGetViaIdentity(global::System.String viaIdentity, string xMSSnapshot, string Expand, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShare>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6533,7 +6533,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShare> FileSharesGetViaIdentityWithResult(global::System.String viaIdentity, string xMSSnapshot, string Expand, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6604,7 +6604,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShare> FileSharesGetWithResult(string subscriptionId, string resourceGroupName, string accountName, string shareName, string xMSSnapshot, string Expand, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6812,7 +6812,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task FileSharesList(string subscriptionId, string resourceGroupName, string accountName, string Maxpagesize, string Filter, string Expand, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareItems>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6864,7 +6864,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task FileSharesListViaIdentity(global::System.String viaIdentity, string Maxpagesize, string Filter, string Expand, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareItems>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6926,7 +6926,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareItems> FileSharesListViaIdentityWithResult(global::System.String viaIdentity, string Maxpagesize, string Filter, string Expand, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6991,7 +6991,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareItems> FileSharesListWithResult(string subscriptionId, string resourceGroupName, string accountName, string Maxpagesize, string Filter, string Expand, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7195,7 +7195,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task FileSharesRestore(string subscriptionId, string resourceGroupName, string accountName, string shareName, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IDeletedShare body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7247,7 +7247,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task FileSharesRestoreViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IDeletedShare body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7317,7 +7317,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task FileSharesRestoreViaJsonString(string subscriptionId, string resourceGroupName, string accountName, string shareName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7464,7 +7464,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task FileSharesUpdate(string subscriptionId, string resourceGroupName, string accountName, string shareName, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShare body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShare>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7516,7 +7516,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task FileSharesUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShare body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShare>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7579,7 +7579,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShare> FileSharesUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShare body, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7649,7 +7649,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task FileSharesUpdateViaJsonString(string subscriptionId, string resourceGroupName, string accountName, string shareName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShare>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7704,7 +7704,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShare> FileSharesUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string accountName, string shareName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7760,7 +7760,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShare> FileSharesUpdateWithResult(string subscriptionId, string resourceGroupName, string accountName, string shareName, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShare body, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7965,7 +7965,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task LocalUsersCreateOrUpdate(string subscriptionId, string resourceGroupName, string accountName, string username, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUser body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUser>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8017,7 +8017,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task LocalUsersCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUser body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUser>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8080,7 +8080,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUser> LocalUsersCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUser body, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8149,7 +8149,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task LocalUsersCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string accountName, string username, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUser>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8203,7 +8203,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUser> LocalUsersCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string accountName, string username, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8258,7 +8258,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUser> LocalUsersCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string accountName, string username, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUser body, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8458,7 +8458,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task LocalUsersDelete(string subscriptionId, string resourceGroupName, string accountName, string username, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8502,7 +8502,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task LocalUsersDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8654,7 +8654,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task LocalUsersGet(string subscriptionId, string resourceGroupName, string accountName, string username, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUser>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8697,7 +8697,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task LocalUsersGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUser>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8751,7 +8751,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUser> LocalUsersGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8810,7 +8810,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUser> LocalUsersGetWithResult(string subscriptionId, string resourceGroupName, string accountName, string username, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9004,7 +9004,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task LocalUsersList(string subscriptionId, string resourceGroupName, string accountName, int? Maxpagesize, string Filter, string Include, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUsers>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9057,7 +9057,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task LocalUsersListKeys(string subscriptionId, string resourceGroupName, string accountName, string username, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUserKeys>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9101,7 +9101,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task LocalUsersListKeysViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUserKeys>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9156,7 +9156,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUserKeys> LocalUsersListKeysViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9216,7 +9216,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUserKeys> LocalUsersListKeysWithResult(string subscriptionId, string resourceGroupName, string accountName, string username, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9408,7 +9408,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task LocalUsersListViaIdentity(global::System.String viaIdentity, int? Maxpagesize, string Filter, string Include, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUsers>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9470,7 +9470,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUsers> LocalUsersListViaIdentityWithResult(global::System.String viaIdentity, int? Maxpagesize, string Filter, string Include, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9535,7 +9535,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUsers> LocalUsersListWithResult(string subscriptionId, string resourceGroupName, string accountName, int? Maxpagesize, string Filter, string Include, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9735,7 +9735,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task LocalUsersRegeneratePassword(string subscriptionId, string resourceGroupName, string accountName, string username, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUserRegeneratePasswordResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9779,7 +9779,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task LocalUsersRegeneratePasswordViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUserRegeneratePasswordResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9834,7 +9834,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUserRegeneratePasswordResult> LocalUsersRegeneratePasswordViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9894,7 +9894,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUserRegeneratePasswordResult> LocalUsersRegeneratePasswordWithResult(string subscriptionId, string resourceGroupName, string accountName, string username, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10088,7 +10088,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         public async global::System.Threading.Tasks.Task ManagementPoliciesCreateOrUpdate(string subscriptionId, string resourceGroupName, string accountName, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicy body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicy>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeUpdate)
         {
             var managementPolicyName = @"default";
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10135,7 +10135,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task ManagementPoliciesCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicy body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicy>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10195,7 +10195,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicy> ManagementPoliciesCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicy body, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10258,7 +10258,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         public async global::System.Threading.Tasks.Task ManagementPoliciesCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string accountName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicy>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
             var managementPolicyName = @"default";
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10308,7 +10308,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicy> ManagementPoliciesCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string accountName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
             var managementPolicyName = @"default";
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10359,7 +10359,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicy> ManagementPoliciesCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string accountName, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicy body, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeUpdate)
         {
             var managementPolicyName = @"default";
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10535,7 +10535,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         public async global::System.Threading.Tasks.Task ManagementPoliciesDelete(string subscriptionId, string resourceGroupName, string accountName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
             var managementPolicyName = @"default";
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10577,7 +10577,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task ManagementPoliciesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10717,7 +10717,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         public async global::System.Threading.Tasks.Task ManagementPoliciesGet(string subscriptionId, string resourceGroupName, string accountName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicy>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
             var managementPolicyName = @"default";
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10758,7 +10758,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task ManagementPoliciesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicy>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10812,7 +10812,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicy> ManagementPoliciesGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10870,7 +10870,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicy> ManagementPoliciesGetWithResult(string subscriptionId, string resourceGroupName, string accountName, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
             var managementPolicyName = @"default";
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11022,6 +11022,981 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
             }
         }
 
+        /// <summary>Gets effective NetworkSecurityPerimeterConfiguration for association</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group within the user's subscription. The name is case insensitive.</param>
+        /// <param name="accountName">The name of the storage account within the specified resource group. Storage account names must
+        /// be between 3 and 24 characters in length and use numbers and lower-case letters only.</param>
+        /// <param name="networkSecurityPerimeterConfigurationName">The name for Network Security Perimeter configuration</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task NetworkSecurityPerimeterConfigurationsGet(string subscriptionId, string resourceGroupName, string accountName, string networkSecurityPerimeterConfigurationName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.INetworkSecurityPerimeterConfiguration>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponseAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-01-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Storage/storageAccounts/"
+                        + global::System.Uri.EscapeDataString(accountName)
+                        + "/networkSecurityPerimeterConfigurations/"
+                        + global::System.Uri.EscapeDataString(networkSecurityPerimeterConfigurationName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.NetworkSecurityPerimeterConfigurationsGet_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Gets effective NetworkSecurityPerimeterConfiguration for association</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task NetworkSecurityPerimeterConfigurationsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.INetworkSecurityPerimeterConfiguration>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponseAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-01-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Storage/storageAccounts/(?<accountName>[^/]+)/networkSecurityPerimeterConfigurations/(?<networkSecurityPerimeterConfigurationName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/networkSecurityPerimeterConfigurations/{networkSecurityPerimeterConfigurationName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var accountName = _match.Groups["accountName"].Value;
+                var networkSecurityPerimeterConfigurationName = _match.Groups["networkSecurityPerimeterConfigurationName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Storage/storageAccounts/"
+                        + accountName
+                        + "/networkSecurityPerimeterConfigurations/"
+                        + networkSecurityPerimeterConfigurationName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.NetworkSecurityPerimeterConfigurationsGet_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Gets effective NetworkSecurityPerimeterConfiguration for association</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.INetworkSecurityPerimeterConfiguration>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.INetworkSecurityPerimeterConfiguration> NetworkSecurityPerimeterConfigurationsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-01-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Storage/storageAccounts/(?<accountName>[^/]+)/networkSecurityPerimeterConfigurations/(?<networkSecurityPerimeterConfigurationName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/networkSecurityPerimeterConfigurations/{networkSecurityPerimeterConfigurationName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var accountName = _match.Groups["accountName"].Value;
+                var networkSecurityPerimeterConfigurationName = _match.Groups["networkSecurityPerimeterConfigurationName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Storage/storageAccounts/"
+                        + accountName
+                        + "/networkSecurityPerimeterConfigurations/"
+                        + networkSecurityPerimeterConfigurationName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.NetworkSecurityPerimeterConfigurationsGetWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Gets effective NetworkSecurityPerimeterConfiguration for association</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group within the user's subscription. The name is case insensitive.</param>
+        /// <param name="accountName">The name of the storage account within the specified resource group. Storage account names must
+        /// be between 3 and 24 characters in length and use numbers and lower-case letters only.</param>
+        /// <param name="networkSecurityPerimeterConfigurationName">The name for Network Security Perimeter configuration</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.INetworkSecurityPerimeterConfiguration>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.INetworkSecurityPerimeterConfiguration> NetworkSecurityPerimeterConfigurationsGetWithResult(string subscriptionId, string resourceGroupName, string accountName, string networkSecurityPerimeterConfigurationName, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-01-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Storage/storageAccounts/"
+                        + global::System.Uri.EscapeDataString(accountName)
+                        + "/networkSecurityPerimeterConfigurations/"
+                        + global::System.Uri.EscapeDataString(networkSecurityPerimeterConfigurationName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.NetworkSecurityPerimeterConfigurationsGetWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "NetworkSecurityPerimeterConfigurationsGetWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.INetworkSecurityPerimeterConfiguration>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.INetworkSecurityPerimeterConfiguration> NetworkSecurityPerimeterConfigurationsGetWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.NetworkSecurityPerimeterConfiguration.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ErrorResponseAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponseAutoGenerated>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "NetworkSecurityPerimeterConfigurationsGet" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task NetworkSecurityPerimeterConfigurationsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.INetworkSecurityPerimeterConfiguration>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponseAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.NetworkSecurityPerimeterConfiguration.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ErrorResponseAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="NetworkSecurityPerimeterConfigurationsGet" /> method. Call this like the actual call,
+        /// but you will get validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group within the user's subscription. The name is case insensitive.</param>
+        /// <param name="accountName">The name of the storage account within the specified resource group. Storage account names must
+        /// be between 3 and 24 characters in length and use numbers and lower-case letters only.</param>
+        /// <param name="networkSecurityPerimeterConfigurationName">The name for Network Security Perimeter configuration</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task NetworkSecurityPerimeterConfigurationsGet_Validate(string subscriptionId, string resourceGroupName, string accountName, string networkSecurityPerimeterConfigurationName, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertRegEx(nameof(resourceGroupName), resourceGroupName, @"^[-\w\._\(\)]+$");
+                await eventListener.AssertNotNull(nameof(accountName),accountName);
+                await eventListener.AssertMinimumLength(nameof(accountName),accountName,3);
+                await eventListener.AssertMaximumLength(nameof(accountName),accountName,24);
+                await eventListener.AssertRegEx(nameof(accountName), accountName, @"^[a-z0-9]+$");
+                await eventListener.AssertNotNull(nameof(networkSecurityPerimeterConfigurationName),networkSecurityPerimeterConfigurationName);
+                await eventListener.AssertRegEx(nameof(networkSecurityPerimeterConfigurationName), networkSecurityPerimeterConfigurationName, @"^.*$");
+            }
+        }
+
+        /// <summary>
+        /// Gets list of effective NetworkSecurityPerimeterConfiguration for storage account
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group within the user's subscription. The name is case insensitive.</param>
+        /// <param name="accountName">The name of the storage account within the specified resource group. Storage account names must
+        /// be between 3 and 24 characters in length and use numbers and lower-case letters only.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task NetworkSecurityPerimeterConfigurationsList(string subscriptionId, string resourceGroupName, string accountName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.INetworkSecurityPerimeterConfigurationList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponseAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-01-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Storage/storageAccounts/"
+                        + global::System.Uri.EscapeDataString(accountName)
+                        + "/networkSecurityPerimeterConfigurations"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.NetworkSecurityPerimeterConfigurationsList_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Gets list of effective NetworkSecurityPerimeterConfiguration for storage account
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task NetworkSecurityPerimeterConfigurationsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.INetworkSecurityPerimeterConfigurationList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponseAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-01-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Storage/storageAccounts/(?<accountName>[^/]+)/networkSecurityPerimeterConfigurations$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/networkSecurityPerimeterConfigurations'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var accountName = _match.Groups["accountName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Storage/storageAccounts/"
+                        + accountName
+                        + "/networkSecurityPerimeterConfigurations"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.NetworkSecurityPerimeterConfigurationsList_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Gets list of effective NetworkSecurityPerimeterConfiguration for storage account
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.INetworkSecurityPerimeterConfigurationList>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.INetworkSecurityPerimeterConfigurationList> NetworkSecurityPerimeterConfigurationsListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-01-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Storage/storageAccounts/(?<accountName>[^/]+)/networkSecurityPerimeterConfigurations$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/networkSecurityPerimeterConfigurations'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var accountName = _match.Groups["accountName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Storage/storageAccounts/"
+                        + accountName
+                        + "/networkSecurityPerimeterConfigurations"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.NetworkSecurityPerimeterConfigurationsListWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Gets list of effective NetworkSecurityPerimeterConfiguration for storage account
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group within the user's subscription. The name is case insensitive.</param>
+        /// <param name="accountName">The name of the storage account within the specified resource group. Storage account names must
+        /// be between 3 and 24 characters in length and use numbers and lower-case letters only.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.INetworkSecurityPerimeterConfigurationList>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.INetworkSecurityPerimeterConfigurationList> NetworkSecurityPerimeterConfigurationsListWithResult(string subscriptionId, string resourceGroupName, string accountName, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-01-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Storage/storageAccounts/"
+                        + global::System.Uri.EscapeDataString(accountName)
+                        + "/networkSecurityPerimeterConfigurations"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.NetworkSecurityPerimeterConfigurationsListWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "NetworkSecurityPerimeterConfigurationsListWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.INetworkSecurityPerimeterConfigurationList>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.INetworkSecurityPerimeterConfigurationList> NetworkSecurityPerimeterConfigurationsListWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.NetworkSecurityPerimeterConfigurationList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ErrorResponseAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponseAutoGenerated>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "NetworkSecurityPerimeterConfigurationsList" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task NetworkSecurityPerimeterConfigurationsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.INetworkSecurityPerimeterConfigurationList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponseAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.NetworkSecurityPerimeterConfigurationList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ErrorResponseAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="NetworkSecurityPerimeterConfigurationsList" /> method. Call this like the actual call,
+        /// but you will get validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group within the user's subscription. The name is case insensitive.</param>
+        /// <param name="accountName">The name of the storage account within the specified resource group. Storage account names must
+        /// be between 3 and 24 characters in length and use numbers and lower-case letters only.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task NetworkSecurityPerimeterConfigurationsList_Validate(string subscriptionId, string resourceGroupName, string accountName, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertRegEx(nameof(resourceGroupName), resourceGroupName, @"^[-\w\._\(\)]+$");
+                await eventListener.AssertNotNull(nameof(accountName),accountName);
+                await eventListener.AssertMinimumLength(nameof(accountName),accountName,3);
+                await eventListener.AssertMaximumLength(nameof(accountName),accountName,24);
+                await eventListener.AssertRegEx(nameof(accountName), accountName, @"^[a-z0-9]+$");
+            }
+        }
+
+        /// <summary>Refreshes any information about the association.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group within the user's subscription. The name is case insensitive.</param>
+        /// <param name="accountName">The name of the storage account within the specified resource group. Storage account names must
+        /// be between 3 and 24 characters in length and use numbers and lower-case letters only.</param>
+        /// <param name="networkSecurityPerimeterConfigurationName">The name for Network Security Perimeter configuration</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task NetworkSecurityPerimeterConfigurationsReconcile(string subscriptionId, string resourceGroupName, string accountName, string networkSecurityPerimeterConfigurationName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponseAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-01-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Storage/storageAccounts/"
+                        + global::System.Uri.EscapeDataString(accountName)
+                        + "/networkSecurityPerimeterConfigurations/"
+                        + global::System.Uri.EscapeDataString(networkSecurityPerimeterConfigurationName)
+                        + "/reconcile"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.NetworkSecurityPerimeterConfigurationsReconcile_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Refreshes any information about the association.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task NetworkSecurityPerimeterConfigurationsReconcileViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponseAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-01-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Storage/storageAccounts/(?<accountName>[^/]+)/networkSecurityPerimeterConfigurations/(?<networkSecurityPerimeterConfigurationName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/networkSecurityPerimeterConfigurations/{networkSecurityPerimeterConfigurationName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var accountName = _match.Groups["accountName"].Value;
+                var networkSecurityPerimeterConfigurationName = _match.Groups["networkSecurityPerimeterConfigurationName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Storage/storageAccounts/"
+                        + accountName
+                        + "/networkSecurityPerimeterConfigurations/"
+                        + networkSecurityPerimeterConfigurationName
+                        + "/reconcile"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.NetworkSecurityPerimeterConfigurationsReconcile_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "NetworkSecurityPerimeterConfigurationsReconcile" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task NetworkSecurityPerimeterConfigurationsReconcile_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponseAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    // declared final-state-via: location
+                    var _finalUri = _response.GetFirstHeader(@"Location");
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+                        // delay before making the next polling request
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
+                                          break;
+                                      }
+
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        // create a new request with the final uri
+                        request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Method.Get);
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the final call
+                        _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                        break;
+                    }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response);
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ErrorResponseAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="NetworkSecurityPerimeterConfigurationsReconcile" /> method. Call this like the actual
+        /// call, but you will get validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group within the user's subscription. The name is case insensitive.</param>
+        /// <param name="accountName">The name of the storage account within the specified resource group. Storage account names must
+        /// be between 3 and 24 characters in length and use numbers and lower-case letters only.</param>
+        /// <param name="networkSecurityPerimeterConfigurationName">The name for Network Security Perimeter configuration</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task NetworkSecurityPerimeterConfigurationsReconcile_Validate(string subscriptionId, string resourceGroupName, string accountName, string networkSecurityPerimeterConfigurationName, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertRegEx(nameof(resourceGroupName), resourceGroupName, @"^[-\w\._\(\)]+$");
+                await eventListener.AssertNotNull(nameof(accountName),accountName);
+                await eventListener.AssertMinimumLength(nameof(accountName),accountName,3);
+                await eventListener.AssertMaximumLength(nameof(accountName),accountName,24);
+                await eventListener.AssertRegEx(nameof(accountName), accountName, @"^[a-z0-9]+$");
+                await eventListener.AssertNotNull(nameof(networkSecurityPerimeterConfigurationName),networkSecurityPerimeterConfigurationName);
+                await eventListener.AssertRegEx(nameof(networkSecurityPerimeterConfigurationName), networkSecurityPerimeterConfigurationName, @"^.*$");
+            }
+        }
+
         /// <summary>update the object replication policy of the storage account.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group within the user's subscription. The name is case insensitive.</param>
@@ -11042,7 +12017,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task ObjectReplicationPoliciesCreateOrUpdate(string subscriptionId, string resourceGroupName, string accountName, string objectReplicationPolicyId, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicy body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicy>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11091,7 +12066,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task ObjectReplicationPoliciesCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicy body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicy>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11151,7 +12126,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicy> ObjectReplicationPoliciesCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicy body, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11218,7 +12193,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task ObjectReplicationPoliciesCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string accountName, string objectReplicationPolicyId, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicy>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11270,7 +12245,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicy> ObjectReplicationPoliciesCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string accountName, string objectReplicationPolicyId, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11323,7 +12298,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicy> ObjectReplicationPoliciesCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string accountName, string objectReplicationPolicyId, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicy body, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11530,7 +12505,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task ObjectReplicationPoliciesDelete(string subscriptionId, string resourceGroupName, string accountName, string objectReplicationPolicyId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11576,7 +12551,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task ObjectReplicationPoliciesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11729,7 +12704,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task ObjectReplicationPoliciesGet(string subscriptionId, string resourceGroupName, string accountName, string objectReplicationPolicyId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicy>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11772,7 +12747,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task ObjectReplicationPoliciesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicy>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11826,7 +12801,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicy> ObjectReplicationPoliciesGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11886,7 +12861,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicy> ObjectReplicationPoliciesGetWithResult(string subscriptionId, string resourceGroupName, string accountName, string objectReplicationPolicyId, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12078,7 +13053,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task ObjectReplicationPoliciesList(string subscriptionId, string resourceGroupName, string accountName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicies>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12120,7 +13095,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task ObjectReplicationPoliciesListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicies>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12172,7 +13147,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicies> ObjectReplicationPoliciesListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12227,7 +13202,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicies> ObjectReplicationPoliciesListWithResult(string subscriptionId, string resourceGroupName, string accountName, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12407,7 +13382,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task OperationsList(global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12441,7 +13416,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task OperationsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12484,7 +13459,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IOperationListResult> OperationsListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12526,7 +13501,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IOperationListResult> OperationsListWithResult(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12677,7 +13652,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsDelete(string subscriptionId, string resourceGroupName, string accountName, string privateEndpointConnectionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12723,7 +13698,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12873,7 +13848,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsGet(string subscriptionId, string resourceGroupName, string accountName, string privateEndpointConnectionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12918,7 +13893,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12974,7 +13949,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IPrivateEndpointConnection> PrivateEndpointConnectionsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13034,7 +14009,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IPrivateEndpointConnection> PrivateEndpointConnectionsGetWithResult(string subscriptionId, string resourceGroupName, string accountName, string privateEndpointConnectionName, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13221,7 +14196,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsList(string subscriptionId, string resourceGroupName, string accountName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IPrivateEndpointConnectionListResult>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13261,7 +14236,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IPrivateEndpointConnectionListResult>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13313,7 +14288,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IPrivateEndpointConnectionListResult> PrivateEndpointConnectionsListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13368,7 +14343,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IPrivateEndpointConnectionListResult> PrivateEndpointConnectionsListWithResult(string subscriptionId, string resourceGroupName, string accountName, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13541,7 +14516,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsPut(string subscriptionId, string resourceGroupName, string accountName, string privateEndpointConnectionName, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IPrivateEndpointConnection body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13592,7 +14567,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsPutViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IPrivateEndpointConnection body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13654,7 +14629,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IPrivateEndpointConnection> PrivateEndpointConnectionsPutViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IPrivateEndpointConnection body, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13721,7 +14696,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsPutViaJsonString(string subscriptionId, string resourceGroupName, string accountName, string privateEndpointConnectionName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13773,7 +14748,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IPrivateEndpointConnection> PrivateEndpointConnectionsPutViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string accountName, string privateEndpointConnectionName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13826,7 +14801,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IPrivateEndpointConnection> PrivateEndpointConnectionsPutWithResult(string subscriptionId, string resourceGroupName, string accountName, string privateEndpointConnectionName, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IPrivateEndpointConnection body, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14020,7 +14995,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateLinkResourcesListByStorageAccount(string subscriptionId, string resourceGroupName, string accountName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IPrivateLinkResourceListResult>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14060,7 +15035,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateLinkResourcesListByStorageAccountViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IPrivateLinkResourceListResult>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14112,7 +15087,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IPrivateLinkResourceListResult> PrivateLinkResourcesListByStorageAccountViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14167,7 +15142,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IPrivateLinkResourceListResult> PrivateLinkResourcesListByStorageAccountWithResult(string subscriptionId, string resourceGroupName, string accountName, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14332,7 +15307,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task SkusList(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageSkuListResult>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14368,7 +15343,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task SkusListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageSkuListResult>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14414,7 +15389,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageSkuListResult> SkusListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14460,7 +15435,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageSkuListResult> SkusListWithResult(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14618,7 +15593,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task StartAccountMigration(string subscriptionId, string resourceGroupName, string accountName, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMigration body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponseAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14671,7 +15646,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task StartAccountMigrationViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMigration body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponseAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14738,7 +15713,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task StartAccountMigrationViaJsonString(string subscriptionId, string resourceGroupName, string accountName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponseAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14962,7 +15937,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageAccountsAbortHierarchicalNamespaceMigration(string subscriptionId, string resourceGroupName, string accountName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15004,7 +15979,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageAccountsAbortHierarchicalNamespaceMigrationViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15233,7 +16208,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageAccountsCheckNameAvailability(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountCheckNameAvailabilityParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ICheckNameAvailabilityResult>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15276,7 +16251,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageAccountsCheckNameAvailabilityViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountCheckNameAvailabilityParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ICheckNameAvailabilityResult>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15329,7 +16304,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ICheckNameAvailabilityResult> StorageAccountsCheckNameAvailabilityViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountCheckNameAvailabilityParameters body, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15380,7 +16355,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageAccountsCheckNameAvailabilityViaJsonString(string subscriptionId, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ICheckNameAvailabilityResult>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15421,7 +16396,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ICheckNameAvailabilityResult> StorageAccountsCheckNameAvailabilityViaJsonStringWithResult(string subscriptionId, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15464,7 +16439,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ICheckNameAvailabilityResult> StorageAccountsCheckNameAvailabilityWithResult(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountCheckNameAvailabilityParameters body, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15631,7 +16606,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageAccountsCreate(string subscriptionId, string resourceGroupName, string accountName, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountCreateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccount>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15680,7 +16655,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageAccountsCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountCreateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccount>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15741,7 +16716,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccount> StorageAccountsCreateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountCreateParameters body, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15804,7 +16779,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageAccountsCreateViaJsonString(string subscriptionId, string resourceGroupName, string accountName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccount>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15855,7 +16830,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccount> StorageAccountsCreateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string accountName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15907,7 +16882,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccount> StorageAccountsCreateWithResult(string subscriptionId, string resourceGroupName, string accountName, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountCreateParameters body, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16268,7 +17243,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageAccountsDelete(string subscriptionId, string resourceGroupName, string accountName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16308,7 +17283,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageAccountsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16453,7 +17428,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageAccountsFailover(string subscriptionId, string resourceGroupName, string accountName, string failoverType, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16504,7 +17479,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageAccountsFailoverViaIdentity(global::System.String viaIdentity, string failoverType, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16734,7 +17709,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         public async global::System.Threading.Tasks.Task StorageAccountsGetCustomerInitiatedMigration(string subscriptionId, string resourceGroupName, string accountName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMigration>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponseAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
             var migrationName = @"default";
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16777,7 +17752,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageAccountsGetCustomerInitiatedMigrationViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMigration>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponseAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16831,7 +17806,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMigration> StorageAccountsGetCustomerInitiatedMigrationViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16889,7 +17864,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMigration> StorageAccountsGetCustomerInitiatedMigrationWithResult(string subscriptionId, string resourceGroupName, string accountName, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
             var migrationName = @"default";
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17081,7 +18056,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageAccountsGetProperties(string subscriptionId, string resourceGroupName, string accountName, string Expand, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccount>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17127,7 +18102,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageAccountsGetPropertiesViaIdentity(global::System.String viaIdentity, string Expand, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccount>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17185,7 +18160,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccount> StorageAccountsGetPropertiesViaIdentityWithResult(global::System.String viaIdentity, string Expand, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17246,7 +18221,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccount> StorageAccountsGetPropertiesWithResult(string subscriptionId, string resourceGroupName, string accountName, string Expand, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17421,7 +18396,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageAccountsHierarchicalNamespaceMigration(string subscriptionId, string resourceGroupName, string accountName, string requestType, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17468,7 +18443,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageAccountsHierarchicalNamespaceMigrationViaIdentity(global::System.String viaIdentity, string requestType, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17703,7 +18678,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageAccountsList(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountListResult>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17744,7 +18719,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageAccountsListAccountSas(string subscriptionId, string resourceGroupName, string accountName, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountSasParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IListAccountSasResponse>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17790,7 +18765,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageAccountsListAccountSasViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountSasParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IListAccountSasResponse>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17848,7 +18823,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IListAccountSasResponse> StorageAccountsListAccountSasViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountSasParameters body, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17908,7 +18883,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageAccountsListAccountSasViaJsonString(string subscriptionId, string resourceGroupName, string accountName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IListAccountSasResponse>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17956,7 +18931,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IListAccountSasResponse> StorageAccountsListAccountSasViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string accountName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18005,7 +18980,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IListAccountSasResponse> StorageAccountsListAccountSasWithResult(string subscriptionId, string resourceGroupName, string accountName, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountSasParameters body, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18179,7 +19154,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageAccountsListByResourceGroup(string subscriptionId, string resourceGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountListResult>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18220,7 +19195,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageAccountsListByResourceGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountListResult>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18272,7 +19247,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountListResult> StorageAccountsListByResourceGroupViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18325,7 +19300,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountListResult> StorageAccountsListByResourceGroupWithResult(string subscriptionId, string resourceGroupName, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18486,7 +19461,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageAccountsListKeys(string subscriptionId, string resourceGroupName, string accountName, string Expand, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountListKeysResult>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18531,7 +19506,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageAccountsListKeysViaIdentity(global::System.String viaIdentity, string Expand, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountListKeysResult>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18588,7 +19563,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountListKeysResult> StorageAccountsListKeysViaIdentityWithResult(global::System.String viaIdentity, string Expand, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18648,7 +19623,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountListKeysResult> StorageAccountsListKeysWithResult(string subscriptionId, string resourceGroupName, string accountName, string Expand, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18818,7 +19793,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageAccountsListServiceSas(string subscriptionId, string resourceGroupName, string accountName, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IServiceSasParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IListServiceSasResponse>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18864,7 +19839,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageAccountsListServiceSasViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IServiceSasParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IListServiceSasResponse>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18922,7 +19897,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IListServiceSasResponse> StorageAccountsListServiceSasViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IServiceSasParameters body, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18982,7 +19957,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageAccountsListServiceSasViaJsonString(string subscriptionId, string resourceGroupName, string accountName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IListServiceSasResponse>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19030,7 +20005,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IListServiceSasResponse> StorageAccountsListServiceSasViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string accountName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19079,7 +20054,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IListServiceSasResponse> StorageAccountsListServiceSasWithResult(string subscriptionId, string resourceGroupName, string accountName, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IServiceSasParameters body, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19252,7 +20227,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageAccountsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountListResult>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19301,7 +20276,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountListResult> StorageAccountsListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19350,7 +20325,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountListResult> StorageAccountsListWithResult(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19503,7 +20478,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageAccountsRegenerateKey(string subscriptionId, string resourceGroupName, string accountName, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountRegenerateKeyParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountListKeysResult>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19551,7 +20526,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageAccountsRegenerateKeyViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountRegenerateKeyParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountListKeysResult>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19611,7 +20586,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountListKeysResult> StorageAccountsRegenerateKeyViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountRegenerateKeyParameters body, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19673,7 +20648,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageAccountsRegenerateKeyViaJsonString(string subscriptionId, string resourceGroupName, string accountName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountListKeysResult>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19723,7 +20698,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountListKeysResult> StorageAccountsRegenerateKeyViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string accountName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19774,7 +20749,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountListKeysResult> StorageAccountsRegenerateKeyWithResult(string subscriptionId, string resourceGroupName, string accountName, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountRegenerateKeyParameters body, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19949,7 +20924,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageAccountsRestoreBlobRanges(string subscriptionId, string resourceGroupName, string accountName, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobRestoreParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobRestoreStatus>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19995,7 +20970,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageAccountsRestoreBlobRangesViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobRestoreParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobRestoreStatus>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20053,7 +21028,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobRestoreStatus> StorageAccountsRestoreBlobRangesViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobRestoreParameters body, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20113,7 +21088,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageAccountsRestoreBlobRangesViaJsonString(string subscriptionId, string resourceGroupName, string accountName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobRestoreStatus>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20161,7 +21136,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobRestoreStatus> StorageAccountsRestoreBlobRangesViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string accountName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20210,7 +21185,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobRestoreStatus> StorageAccountsRestoreBlobRangesWithResult(string subscriptionId, string resourceGroupName, string accountName, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobRestoreParameters body, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20569,7 +21544,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageAccountsRevokeUserDelegationKeys(string subscriptionId, string resourceGroupName, string accountName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20609,7 +21584,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageAccountsRevokeUserDelegationKeysViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20749,7 +21724,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageTaskAssignmentInstancesReportGet(string subscriptionId, string resourceGroupName, string accountName, string storageTaskAssignmentName, int? Maxpagesize, string Filter, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportSummary>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponseAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20802,7 +21777,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageTaskAssignmentInstancesReportGetViaIdentity(global::System.String viaIdentity, int? Maxpagesize, string Filter, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportSummary>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponseAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20866,7 +21841,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportSummary> StorageTaskAssignmentInstancesReportGetViaIdentityWithResult(global::System.String viaIdentity, int? Maxpagesize, string Filter, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20935,7 +21910,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportSummary> StorageTaskAssignmentInstancesReportGetWithResult(string subscriptionId, string resourceGroupName, string accountName, string storageTaskAssignmentName, int? Maxpagesize, string Filter, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21120,7 +22095,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
                 await eventListener.AssertNotNull(nameof(storageTaskAssignmentName),storageTaskAssignmentName);
                 await eventListener.AssertMinimumLength(nameof(storageTaskAssignmentName),storageTaskAssignmentName,3);
                 await eventListener.AssertMaximumLength(nameof(storageTaskAssignmentName),storageTaskAssignmentName,24);
-                await eventListener.AssertRegEx(nameof(storageTaskAssignmentName), storageTaskAssignmentName, @"^[a-z0-9]{3,24}$");
+                await eventListener.AssertRegEx(nameof(storageTaskAssignmentName), storageTaskAssignmentName, @"^[a-z][a-z0-9]{2,23}$");
                 await eventListener.AssertNotNull(nameof(Filter),Filter);
             }
         }
@@ -21147,7 +22122,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageTaskAssignmentInstancesReportList(string subscriptionId, string resourceGroupName, string accountName, int? Maxpagesize, string Filter, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportSummary>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponseAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21200,7 +22175,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageTaskAssignmentInstancesReportListViaIdentity(global::System.String viaIdentity, int? Maxpagesize, string Filter, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportSummary>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponseAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21263,7 +22238,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportSummary> StorageTaskAssignmentInstancesReportListViaIdentityWithResult(global::System.String viaIdentity, int? Maxpagesize, string Filter, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21329,7 +22304,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportSummary> StorageTaskAssignmentInstancesReportListWithResult(string subscriptionId, string resourceGroupName, string accountName, int? Maxpagesize, string Filter, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21535,7 +22510,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageTaskAssignmentsCreate(string subscriptionId, string resourceGroupName, string accountName, string storageTaskAssignmentName, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskAssignment body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponseAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21589,7 +22564,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageTaskAssignmentsCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskAssignment body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponseAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21654,7 +22629,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskAssignment> StorageTaskAssignmentsCreateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskAssignment body, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21725,7 +22700,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageTaskAssignmentsCreateViaJsonString(string subscriptionId, string resourceGroupName, string accountName, string storageTaskAssignmentName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponseAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21781,7 +22756,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskAssignment> StorageTaskAssignmentsCreateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string accountName, string storageTaskAssignmentName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21838,7 +22813,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskAssignment> StorageTaskAssignmentsCreateWithResult(string subscriptionId, string resourceGroupName, string accountName, string storageTaskAssignmentName, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskAssignment body, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22200,7 +23175,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
                 await eventListener.AssertNotNull(nameof(storageTaskAssignmentName),storageTaskAssignmentName);
                 await eventListener.AssertMinimumLength(nameof(storageTaskAssignmentName),storageTaskAssignmentName,3);
                 await eventListener.AssertMaximumLength(nameof(storageTaskAssignmentName),storageTaskAssignmentName,24);
-                await eventListener.AssertRegEx(nameof(storageTaskAssignmentName), storageTaskAssignmentName, @"^[a-z0-9]{3,24}$");
+                await eventListener.AssertRegEx(nameof(storageTaskAssignmentName), storageTaskAssignmentName, @"^[a-z][a-z0-9]{2,23}$");
                 await eventListener.AssertNotNull(nameof(body), body);
                 await eventListener.AssertObjectIsValid(nameof(body), body);
             }
@@ -22224,7 +23199,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageTaskAssignmentsDelete(string subscriptionId, string resourceGroupName, string accountName, string storageTaskAssignmentName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponseAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22268,7 +23243,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageTaskAssignmentsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponseAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22492,7 +23467,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
                 await eventListener.AssertNotNull(nameof(storageTaskAssignmentName),storageTaskAssignmentName);
                 await eventListener.AssertMinimumLength(nameof(storageTaskAssignmentName),storageTaskAssignmentName,3);
                 await eventListener.AssertMaximumLength(nameof(storageTaskAssignmentName),storageTaskAssignmentName,24);
-                await eventListener.AssertRegEx(nameof(storageTaskAssignmentName), storageTaskAssignmentName, @"^[a-z0-9]{3,24}$");
+                await eventListener.AssertRegEx(nameof(storageTaskAssignmentName), storageTaskAssignmentName, @"^[a-z][a-z0-9]{2,23}$");
             }
         }
 
@@ -22513,7 +23488,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageTaskAssignmentsGet(string subscriptionId, string resourceGroupName, string accountName, string storageTaskAssignmentName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponseAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22556,7 +23531,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageTaskAssignmentsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponseAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22610,7 +23585,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskAssignment> StorageTaskAssignmentsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22669,7 +23644,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskAssignment> StorageTaskAssignmentsGetWithResult(string subscriptionId, string resourceGroupName, string accountName, string storageTaskAssignmentName, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22842,7 +23817,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
                 await eventListener.AssertNotNull(nameof(storageTaskAssignmentName),storageTaskAssignmentName);
                 await eventListener.AssertMinimumLength(nameof(storageTaskAssignmentName),storageTaskAssignmentName,3);
                 await eventListener.AssertMaximumLength(nameof(storageTaskAssignmentName),storageTaskAssignmentName,24);
-                await eventListener.AssertRegEx(nameof(storageTaskAssignmentName), storageTaskAssignmentName, @"^[a-z0-9]{3,24}$");
+                await eventListener.AssertRegEx(nameof(storageTaskAssignmentName), storageTaskAssignmentName, @"^[a-z][a-z0-9]{2,23}$");
             }
         }
 
@@ -22851,8 +23826,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="accountName">The name of the storage account within the specified resource group. Storage account names must
         /// be between 3 and 24 characters in length and use numbers and lower-case letters only.</param>
-        /// <param name="Maxpagesize">Optional, specifies the maximum number of storage task assignment Ids to be included in the
-        /// list response.</param>
+        /// <param name="Top">Optional, specifies the maximum number of storage task assignment Ids to be included in the list response.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -22861,9 +23835,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task StorageTaskAssignmentsList(string subscriptionId, string resourceGroupName, string accountName, int? Maxpagesize, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskAssignmentsList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponseAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task StorageTaskAssignmentsList(string subscriptionId, string resourceGroupName, string accountName, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskAssignmentsList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponseAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22877,7 +23851,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
                         + global::System.Uri.EscapeDataString(accountName)
                         + "/storageTaskAssignments"
                         + "?"
-                        + (null == Maxpagesize ? global::System.String.Empty : "$maxpagesize=" + global::System.Uri.EscapeDataString(Maxpagesize.ToString()))
+                        + (null == Top ? global::System.String.Empty : "$top=" + global::System.Uri.EscapeDataString(Top.ToString()))
                         + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
@@ -22897,8 +23871,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
 
         /// <summary>List all the storage task assignments in an account</summary>
         /// <param name="viaIdentity"></param>
-        /// <param name="Maxpagesize">Optional, specifies the maximum number of storage task assignment Ids to be included in the
-        /// list response.</param>
+        /// <param name="Top">Optional, specifies the maximum number of storage task assignment Ids to be included in the list response.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -22907,9 +23880,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task StorageTaskAssignmentsListViaIdentity(global::System.String viaIdentity, int? Maxpagesize, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskAssignmentsList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponseAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task StorageTaskAssignmentsListViaIdentity(global::System.String viaIdentity, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskAssignmentsList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponseAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22935,7 +23908,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
                         + accountName
                         + "/storageTaskAssignments"
                         + "?"
-                        + (null == Maxpagesize ? global::System.String.Empty : "$maxpagesize=" + global::System.Uri.EscapeDataString(Maxpagesize.ToString()))
+                        + (null == Top ? global::System.String.Empty : "$top=" + global::System.Uri.EscapeDataString(Top.ToString()))
                         + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
@@ -22955,17 +23928,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
 
         /// <summary>List all the storage task assignments in an account</summary>
         /// <param name="viaIdentity"></param>
-        /// <param name="Maxpagesize">Optional, specifies the maximum number of storage task assignment Ids to be included in the
-        /// list response.</param>
+        /// <param name="Top">Optional, specifies the maximum number of storage task assignment Ids to be included in the list response.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskAssignmentsList>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskAssignmentsList> StorageTaskAssignmentsListViaIdentityWithResult(global::System.String viaIdentity, int? Maxpagesize, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskAssignmentsList> StorageTaskAssignmentsListViaIdentityWithResult(global::System.String viaIdentity, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22991,7 +23963,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
                         + accountName
                         + "/storageTaskAssignments"
                         + "?"
-                        + (null == Maxpagesize ? global::System.String.Empty : "$maxpagesize=" + global::System.Uri.EscapeDataString(Maxpagesize.ToString()))
+                        + (null == Top ? global::System.String.Empty : "$top=" + global::System.Uri.EscapeDataString(Top.ToString()))
                         + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
@@ -23014,17 +23986,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="accountName">The name of the storage account within the specified resource group. Storage account names must
         /// be between 3 and 24 characters in length and use numbers and lower-case letters only.</param>
-        /// <param name="Maxpagesize">Optional, specifies the maximum number of storage task assignment Ids to be included in the
-        /// list response.</param>
+        /// <param name="Top">Optional, specifies the maximum number of storage task assignment Ids to be included in the list response.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskAssignmentsList>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskAssignmentsList> StorageTaskAssignmentsListWithResult(string subscriptionId, string resourceGroupName, string accountName, int? Maxpagesize, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskAssignmentsList> StorageTaskAssignmentsListWithResult(string subscriptionId, string resourceGroupName, string accountName, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -23038,7 +24009,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
                         + global::System.Uri.EscapeDataString(accountName)
                         + "/storageTaskAssignments"
                         + "?"
-                        + (null == Maxpagesize ? global::System.String.Empty : "$maxpagesize=" + global::System.Uri.EscapeDataString(Maxpagesize.ToString()))
+                        + (null == Top ? global::System.String.Empty : "$top=" + global::System.Uri.EscapeDataString(Top.ToString()))
                         + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
@@ -23176,13 +24147,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="accountName">The name of the storage account within the specified resource group. Storage account names must
         /// be between 3 and 24 characters in length and use numbers and lower-case letters only.</param>
-        /// <param name="Maxpagesize">Optional, specifies the maximum number of storage task assignment Ids to be included in the
-        /// list response.</param>
+        /// <param name="Top">Optional, specifies the maximum number of storage task assignment Ids to be included in the list response.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task StorageTaskAssignmentsList_Validate(string subscriptionId, string resourceGroupName, string accountName, int? Maxpagesize, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task StorageTaskAssignmentsList_Validate(string subscriptionId, string resourceGroupName, string accountName, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -23217,7 +24187,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageTaskAssignmentsUpdate(string subscriptionId, string resourceGroupName, string accountName, string storageTaskAssignmentName, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskAssignmentUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponseAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -23266,7 +24236,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageTaskAssignmentsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskAssignmentUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponseAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -23326,7 +24296,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskAssignment> StorageTaskAssignmentsUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskAssignmentUpdateParameters body, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -23392,7 +24362,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageTaskAssignmentsUpdateViaJsonString(string subscriptionId, string resourceGroupName, string accountName, string storageTaskAssignmentName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponseAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -23443,7 +24413,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskAssignment> StorageTaskAssignmentsUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string accountName, string storageTaskAssignmentName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -23495,7 +24465,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskAssignment> StorageTaskAssignmentsUpdateWithResult(string subscriptionId, string resourceGroupName, string accountName, string storageTaskAssignmentName, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskAssignmentUpdateParameters body, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -23857,7 +24827,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
                 await eventListener.AssertNotNull(nameof(storageTaskAssignmentName),storageTaskAssignmentName);
                 await eventListener.AssertMinimumLength(nameof(storageTaskAssignmentName),storageTaskAssignmentName,3);
                 await eventListener.AssertMaximumLength(nameof(storageTaskAssignmentName),storageTaskAssignmentName,24);
-                await eventListener.AssertRegEx(nameof(storageTaskAssignmentName), storageTaskAssignmentName, @"^[a-z0-9]{3,24}$");
+                await eventListener.AssertRegEx(nameof(storageTaskAssignmentName), storageTaskAssignmentName, @"^[a-z][a-z0-9]{2,23}$");
                 await eventListener.AssertNotNull(nameof(body), body);
                 await eventListener.AssertObjectIsValid(nameof(body), body);
             }
@@ -23876,7 +24846,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task UsagesListByLocation(string subscriptionId, string location, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IUsageListResult>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -23916,7 +24886,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task UsagesListByLocationViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IUsageListResult>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -23967,7 +24937,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IUsageListResult> UsagesListByLocationViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -24019,7 +24989,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IUsageListResult> UsagesListByLocationWithResult(string subscriptionId, string location, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {

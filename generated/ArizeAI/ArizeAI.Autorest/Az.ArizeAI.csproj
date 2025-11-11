@@ -3,6 +3,7 @@
     <PsModuleName>ArizeAI</PsModuleName>
     <PsRootModuleName>ArizeAI</PsRootModuleName>
     <PsModuleFolder>ArizeAI.Autorest</PsModuleFolder>
+    <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.ArizeAI</RootNamespace>
   </PropertyGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.autorest.props" />

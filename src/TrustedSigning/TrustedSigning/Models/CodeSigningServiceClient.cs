@@ -43,17 +43,13 @@ namespace Microsoft.Azure.Commands.TrustedSigning.Models
             if (context == null)
                 throw new ArgumentNullException(nameof(context));
             if (context.Environment == null)
-                //throw new ArgumentException(KeyVaultProperties.Resources.InvalidAzureEnvironment);
+            {
                 throw new ArgumentException("Invalid Environment");
+            }
 
             Initialize(authFactory, context);
         }
 
-        private Exception GetInnerException(Exception exception)
-        {
-            while (exception.InnerException != null) exception = exception.InnerException;
-            return exception;
-        }
 
         private void Initialize(IAuthenticationFactory authFactory, IAzureContext context)
         {

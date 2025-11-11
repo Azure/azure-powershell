@@ -21,14 +21,15 @@ Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-S
  [-KeyVaultUserAssignedIdentityId <String>] [-KeyVaultFederatedClientId <String>] [-IdentityType <String>]
  [-NetworkRuleSet <PSNetworkRuleSet>] [-UpgradeToStorageV2]
  [-EnableAzureActiveDirectoryDomainServicesForFile <Boolean>] [-EnableLargeFileShare]
- [-PublishMicrosoftEndpoint <Boolean>] [-PublishInternetEndpoint <Boolean>] [-AllowBlobPublicAccess <Boolean>]
- [-MinimumTlsVersion <String>] [-AllowSharedKeyAccess <Boolean>] [-SasExpirationPeriod <TimeSpan>]
- [-SasExpirationAction <String>] [-KeyExpirationPeriodInDay <Int32>] [-AllowCrossTenantReplication <Boolean>]
- [-DefaultSharePermission <String>] [-PublicNetworkAccess <String>] [-ImmutabilityPeriod <Int32>]
- [-AllowProtectedAppendWrite <Boolean>] [-ImmutabilityPolicyState <String>] [-EnableSftp <Boolean>]
- [-EnableLocalUser <Boolean>] [-EnableExtendedGroup <Boolean>] [-AllowedCopyScope <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PublishMicrosoftEndpoint <Boolean>] [-PublishInternetEndpoint <Boolean>] [-EnableSmbOAuth <Boolean>]
+ [-AllowBlobPublicAccess <Boolean>] [-MinimumTlsVersion <String>] [-AllowSharedKeyAccess <Boolean>]
+ [-SasExpirationPeriod <TimeSpan>] [-SasExpirationAction <String>] [-KeyExpirationPeriodInDay <Int32>]
+ [-AllowCrossTenantReplication <Boolean>] [-DefaultSharePermission <String>] [-PublicNetworkAccess <String>]
+ [-ImmutabilityPeriod <Int32>] [-AllowProtectedAppendWrite <Boolean>] [-ImmutabilityPolicyState <String>]
+ [-EnableSftp <Boolean>] [-EnableLocalUser <Boolean>] [-EnableExtendedGroup <Boolean>]
+ [-AllowedCopyScope <String>] [-Zone <String[]>] [-ZonePlacementPolicy <String>]
+ [-EnableBlobGeoPriorityReplication <Boolean>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-RoutingChoice <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### KeyvaultEncryption
@@ -40,14 +41,15 @@ Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-S
  [-KeyVaultUserAssignedIdentityId <String>] [-KeyVaultFederatedClientId <String>] [-IdentityType <String>]
  [-NetworkRuleSet <PSNetworkRuleSet>] [-UpgradeToStorageV2]
  [-EnableAzureActiveDirectoryDomainServicesForFile <Boolean>] [-EnableLargeFileShare]
- [-PublishMicrosoftEndpoint <Boolean>] [-PublishInternetEndpoint <Boolean>] [-AllowBlobPublicAccess <Boolean>]
- [-MinimumTlsVersion <String>] [-AllowSharedKeyAccess <Boolean>] [-SasExpirationPeriod <TimeSpan>]
- [-SasExpirationAction <String>] [-KeyExpirationPeriodInDay <Int32>] [-AllowCrossTenantReplication <Boolean>]
- [-DefaultSharePermission <String>] [-PublicNetworkAccess <String>] [-ImmutabilityPeriod <Int32>]
- [-AllowProtectedAppendWrite <Boolean>] [-ImmutabilityPolicyState <String>] [-EnableSftp <Boolean>]
- [-EnableLocalUser <Boolean>] [-EnableExtendedGroup <Boolean>] [-AllowedCopyScope <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PublishMicrosoftEndpoint <Boolean>] [-PublishInternetEndpoint <Boolean>] [-EnableSmbOAuth <Boolean>]
+ [-AllowBlobPublicAccess <Boolean>] [-MinimumTlsVersion <String>] [-AllowSharedKeyAccess <Boolean>]
+ [-SasExpirationPeriod <TimeSpan>] [-SasExpirationAction <String>] [-KeyExpirationPeriodInDay <Int32>]
+ [-AllowCrossTenantReplication <Boolean>] [-DefaultSharePermission <String>] [-PublicNetworkAccess <String>]
+ [-ImmutabilityPeriod <Int32>] [-AllowProtectedAppendWrite <Boolean>] [-ImmutabilityPolicyState <String>]
+ [-EnableSftp <Boolean>] [-EnableLocalUser <Boolean>] [-EnableExtendedGroup <Boolean>]
+ [-AllowedCopyScope <String>] [-Zone <String[]>] [-ZonePlacementPolicy <String>]
+ [-EnableBlobGeoPriorityReplication <Boolean>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-RoutingChoice <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AzureActiveDirectoryKerberosForFile
@@ -59,12 +61,13 @@ Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-S
  [-NetworkRuleSet <PSNetworkRuleSet>] [-UpgradeToStorageV2] [-EnableLargeFileShare]
  [-PublishMicrosoftEndpoint <Boolean>] [-PublishInternetEndpoint <Boolean>]
  [-EnableAzureActiveDirectoryKerberosForFile <Boolean>] [-ActiveDirectoryDomainName <String>]
- [-ActiveDirectoryDomainGuid <String>] [-AllowBlobPublicAccess <Boolean>] [-MinimumTlsVersion <String>]
- [-AllowSharedKeyAccess <Boolean>] [-SasExpirationPeriod <TimeSpan>] [-SasExpirationAction <String>]
- [-KeyExpirationPeriodInDay <Int32>] [-AllowCrossTenantReplication <Boolean>]
+ [-ActiveDirectoryDomainGuid <String>] [-EnableSmbOAuth <Boolean>] [-AllowBlobPublicAccess <Boolean>]
+ [-MinimumTlsVersion <String>] [-AllowSharedKeyAccess <Boolean>] [-SasExpirationPeriod <TimeSpan>]
+ [-SasExpirationAction <String>] [-KeyExpirationPeriodInDay <Int32>] [-AllowCrossTenantReplication <Boolean>]
  [-DefaultSharePermission <String>] [-PublicNetworkAccess <String>] [-ImmutabilityPeriod <Int32>]
  [-AllowProtectedAppendWrite <Boolean>] [-ImmutabilityPolicyState <String>] [-EnableSftp <Boolean>]
- [-EnableLocalUser <Boolean>] [-EnableExtendedGroup <Boolean>] [-AllowedCopyScope <String>] [-AsJob]
+ [-EnableLocalUser <Boolean>] [-EnableExtendedGroup <Boolean>] [-AllowedCopyScope <String>] [-Zone <String[]>]
+ [-ZonePlacementPolicy <String>] [-EnableBlobGeoPriorityReplication <Boolean>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -81,12 +84,13 @@ Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-S
  [-ActiveDirectoryNetBiosDomainName <String>] [-ActiveDirectoryForestName <String>]
  [-ActiveDirectoryDomainGuid <String>] [-ActiveDirectoryDomainSid <String>]
  [-ActiveDirectoryAzureStorageSid <String>] [-ActiveDirectorySamAccountName <String>]
- [-ActiveDirectoryAccountType <String>] [-AllowBlobPublicAccess <Boolean>] [-MinimumTlsVersion <String>]
- [-AllowSharedKeyAccess <Boolean>] [-SasExpirationPeriod <TimeSpan>] [-SasExpirationAction <String>]
- [-KeyExpirationPeriodInDay <Int32>] [-AllowCrossTenantReplication <Boolean>]
+ [-ActiveDirectoryAccountType <String>] [-EnableSmbOAuth <Boolean>] [-AllowBlobPublicAccess <Boolean>]
+ [-MinimumTlsVersion <String>] [-AllowSharedKeyAccess <Boolean>] [-SasExpirationPeriod <TimeSpan>]
+ [-SasExpirationAction <String>] [-KeyExpirationPeriodInDay <Int32>] [-AllowCrossTenantReplication <Boolean>]
  [-DefaultSharePermission <String>] [-PublicNetworkAccess <String>] [-ImmutabilityPeriod <Int32>]
  [-AllowProtectedAppendWrite <Boolean>] [-ImmutabilityPolicyState <String>] [-EnableSftp <Boolean>]
- [-EnableLocalUser <Boolean>] [-EnableExtendedGroup <Boolean>] [-AllowedCopyScope <String>] [-AsJob]
+ [-EnableLocalUser <Boolean>] [-EnableExtendedGroup <Boolean>] [-AllowedCopyScope <String>] [-Zone <String[]>]
+ [-ZonePlacementPolicy <String>] [-EnableBlobGeoPriorityReplication <Boolean>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -467,6 +471,39 @@ LastKeyRotationTimestamp      : 3/3/2022 2:07:34 AM
 
 This command updates a storage account with Keyvault from another tenant (access Keyvault with FederatedClientId).
 
+### Example 22: Update a Storage account by enabling SMB Oauth
+```powershell
+$account = Set-AzStorageAccount -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -EnableSmbOAuth $true
+
+$account.AzureFilesIdentityBasedAuth.SmbOAuthSettings.IsSmbOAuthEnabled
+```
+
+```output
+True
+```
+
+This command updates a Storage account by setting EnableSmbOAuth to true, then shows the updated account related properties.
+
+### Example 23: Update a Storage account with zone placement policy
+```powershell
+$account = Set-AzStorageAccount -ResourceGroupName "myresourcegroup" -Name "myaccount" -Zone 1 -ZonePlacementPolicy "Any"
+```
+
+This command updates a Storage account by setting Zone to 1 and ZonePlacementPolicy to Any, then shows the updated account related properties.
+
+### Example 24: Enable Blob Geo Priority Replication on a Storage account
+```powershell
+$account = Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -EnableBlobGeoPriorityReplication $true
+
+$account.GeoPriorityReplicationStatus.IsBlobEnabled
+```
+
+```output
+True
+```
+
+This command enables Blob Geo Priority Replication on a Storage account. 
+
 ## PARAMETERS
 
 ### -AccessTier
@@ -778,7 +815,7 @@ Accept wildcard characters: False
 ```
 
 ### -EnableAzureActiveDirectoryDomainServicesForFile
-Enable Azure Files Active Directory Domain Service Authentication for the storage account.
+Enable Azure Files Azure Active Directory Domain Service Authentication for the storage account.
 
 ```yaml
 Type: System.Boolean
@@ -798,6 +835,23 @@ Enable Azure Files Active Directory Domain Service Kerberos Authentication for t
 ```yaml
 Type: System.Boolean
 Parameter Sets: AzureActiveDirectoryKerberosForFile
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableBlobGeoPriorityReplication
+Indicates whether Blob Geo Priority Replication is enabled for the storage account. 
+This feature provides enhanced geo-replication with service level agreement for priority replication to improve recovery time objectives (RTO). 
+Only available for geo-redundant storage account types (GRS, GZRS, RAGRS, RAGZRS).
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -872,6 +926,21 @@ Accept wildcard characters: False
 
 ### -EnableSftp
 Enable Secure File Transfer Protocol for the Storage account.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableSmbOAuth
+Specifies if managed identities can access SMB shares using OAuth.
 
 ```yaml
 Type: System.Boolean
@@ -1308,6 +1377,36 @@ Indicates whether to enable indirect CName validation.
 
 ```yaml
 Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Zone
+Describes the available zones for the product where storage account resource can be created
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ZonePlacementPolicy
+The availability zone pinning policy for the storage account.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

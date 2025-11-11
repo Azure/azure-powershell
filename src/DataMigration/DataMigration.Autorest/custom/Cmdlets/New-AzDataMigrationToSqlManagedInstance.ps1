@@ -18,7 +18,7 @@
 #>
 function New-AzDataMigrationToSqlManagedInstance 
 {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.IDatabaseMigrationSqlMi')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.IDatabaseMigrationSqlMi')]
     [CmdletBinding(PositionalBinding = $false, SupportsShouldProcess = $true)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Description('Create a new database migration to a given SQL Managed Instance.')]
 

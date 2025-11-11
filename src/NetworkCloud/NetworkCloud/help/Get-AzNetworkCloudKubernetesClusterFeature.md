@@ -19,6 +19,13 @@ Get-AzNetworkCloudKubernetesClusterFeature -KubernetesClusterName <String> -Reso
  [<CommonParameters>]
 ```
 
+### GetViaIdentityKubernetesCluster
+```
+Get-AzNetworkCloudKubernetesClusterFeature -FeatureName <String>
+ -KubernetesClusterInputObject <INetworkCloudIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
 ### Get
 ```
 Get-AzNetworkCloudKubernetesClusterFeature -FeatureName <String> -KubernetesClusterName <String>
@@ -97,7 +104,7 @@ The name of the feature.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: GetViaIdentityKubernetesCluster, Get
 Aliases:
 
 Required: True
@@ -109,11 +116,25 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
 Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -KubernetesClusterInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
+Parameter Sets: GetViaIdentityKubernetesCluster
 Aliases:
 
 Required: True
@@ -179,7 +200,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IKubernetesClusterFeature
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IKubernetesClusterFeature
 
 ## NOTES
 

@@ -30,7 +30,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         /// <summary>Backing field for <see cref="IsShortKeySize" /> property.</summary>
         private bool? _isShortKeySize;
 
-        /// <summary>Indicates the key size is considered too small to be secure for the algorithm.</summary>
+        /// <summary>
+        /// Indicates the key size is considered too small to be secure for the algorithm according to NIST guidance.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Owned)]
         public bool? IsShortKeySize { get => this._isShortKeySize; set => this._isShortKeySize = value; }
 
@@ -40,13 +42,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         /// <summary>Key algorithm name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Owned)]
         public string KeyAlgorithm { get => this._keyAlgorithm; set => this._keyAlgorithm = value; }
-
-        /// <summary>Backing field for <see cref="KeySize" /> property.</summary>
-        private long? _keySize;
-
-        /// <summary>Size of the key in bits.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Owned)]
-        public long? KeySize { get => this._keySize; set => this._keySize = value; }
 
         /// <summary>Backing field for <see cref="KeyType" /> property.</summary>
         private string _keyType;
@@ -60,6 +55,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
 
         /// <summary>Internal Acessors for PairedKey</summary>
         Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IPairedKey Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoKeyInternal.PairedKey { get => (this._pairedKey = this._pairedKey ?? new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.PairedKey()); set { {_pairedKey = value;} } }
+
+        /// <summary>Internal Acessors for ProvisioningState</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoKeyInternal.ProvisioningState { get => this._provisioningState; set { {_provisioningState = value;} } }
 
         /// <summary>Backing field for <see cref="PairedKey" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IPairedKey _pairedKey;
@@ -75,6 +73,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         /// <summary>The type indicating whether the paired object is a key or certificate.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inlined)]
         public string PairedKeyType { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IPairedKeyInternal)PairedKey).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IPairedKeyInternal)PairedKey).Type = value ?? null; }
+
+        /// <summary>Backing field for <see cref="ProvisioningState" /> property.</summary>
+        private string _provisioningState;
+
+        /// <summary>The status of the last operation.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Owned)]
+        public string ProvisioningState { get => this._provisioningState; }
+
+        /// <summary>Backing field for <see cref="Size" /> property.</summary>
+        private long? _size;
+
+        /// <summary>Size of the key in bits.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Owned)]
+        public long? Size { get => this._size; set => this._size = value; }
 
         /// <summary>Backing field for <see cref="Usage" /> property.</summary>
         private System.Collections.Generic.List<string> _usage;
@@ -115,14 +127,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         SerializedName = @"cryptoKeyId",
         PossibleTypes = new [] { typeof(string) })]
         string Id { get; set; }
-        /// <summary>Indicates the key size is considered too small to be secure for the algorithm.</summary>
+        /// <summary>
+        /// Indicates the key size is considered too small to be secure for the algorithm according to NIST guidance.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Indicates the key size is considered too small to be secure for the algorithm.",
+        Description = @"Indicates the key size is considered too small to be secure for the algorithm according to NIST guidance.",
         SerializedName = @"isShortKeySize",
         PossibleTypes = new [] { typeof(bool) })]
         bool? IsShortKeySize { get; set; }
@@ -137,17 +151,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         SerializedName = @"keyAlgorithm",
         PossibleTypes = new [] { typeof(string) })]
         string KeyAlgorithm { get; set; }
-        /// <summary>Size of the key in bits.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Size of the key in bits.",
-        SerializedName = @"keySize",
-        PossibleTypes = new [] { typeof(long) })]
-        long? KeySize { get; set; }
         /// <summary>Type of the key (public or private).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
         Required = false,
@@ -158,6 +161,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         Description = @"Type of the key (public or private).",
         SerializedName = @"keyType",
         PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PSArgumentCompleterAttribute("Public", "Private")]
         string KeyType { get; set; }
         /// <summary>ID of the paired key or certificate.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
@@ -167,7 +171,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         Create = true,
         Update = true,
         Description = @"ID of the paired key or certificate.",
-        SerializedName = @"id",
+        SerializedName = @"pairedKeyId",
         PossibleTypes = new [] { typeof(string) })]
         string PairedKeyId { get; set; }
         /// <summary>The type indicating whether the paired object is a key or certificate.</summary>
@@ -181,6 +185,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         SerializedName = @"type",
         PossibleTypes = new [] { typeof(string) })]
         string PairedKeyType { get; set; }
+        /// <summary>The status of the last operation.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The status of the last operation.",
+        SerializedName = @"provisioningState",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Pending", "Extracting", "Analyzing")]
+        string ProvisioningState { get;  }
+        /// <summary>Size of the key in bits.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Size of the key in bits.",
+        SerializedName = @"cryptoKeySize",
+        PossibleTypes = new [] { typeof(long) })]
+        long? Size { get; set; }
         /// <summary>Functions the key can fulfill.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
         Required = false,
@@ -202,13 +229,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         System.Collections.Generic.List<string> FilePath { get; set; }
         /// <summary>ID for the key result.</summary>
         string Id { get; set; }
-        /// <summary>Indicates the key size is considered too small to be secure for the algorithm.</summary>
+        /// <summary>
+        /// Indicates the key size is considered too small to be secure for the algorithm according to NIST guidance.
+        /// </summary>
         bool? IsShortKeySize { get; set; }
         /// <summary>Key algorithm name.</summary>
         string KeyAlgorithm { get; set; }
-        /// <summary>Size of the key in bits.</summary>
-        long? KeySize { get; set; }
         /// <summary>Type of the key (public or private).</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PSArgumentCompleterAttribute("Public", "Private")]
         string KeyType { get; set; }
         /// <summary>A matching paired key or certificate.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IPairedKey PairedKey { get; set; }
@@ -216,6 +244,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         string PairedKeyId { get; set; }
         /// <summary>The type indicating whether the paired object is a key or certificate.</summary>
         string PairedKeyType { get; set; }
+        /// <summary>The status of the last operation.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Pending", "Extracting", "Analyzing")]
+        string ProvisioningState { get; set; }
+        /// <summary>Size of the key in bits.</summary>
+        long? Size { get; set; }
         /// <summary>Functions the key can fulfill.</summary>
         System.Collections.Generic.List<string> Usage { get; set; }
 

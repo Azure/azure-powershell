@@ -8,19 +8,42 @@ schema: 2.0.0
 # New-AzContainerRegistryAgentPool
 
 ## SYNOPSIS
-Creates an agent pool for a container registry with the specified parameters.
+Create an agent pool for a container registry with the specified parameters.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzContainerRegistryAgentPool -Name <String> -RegistryName <String> -ResourceGroupName <String>
- -Location <String> [-SubscriptionId <String>] [-Count <Int32>] [-OS <OS>] [-Tag <Hashtable>] [-Tier <String>]
+ -Location <String> [-SubscriptionId <String>] [-Count <Int32>] [-OS <String>] [-Tag <Hashtable>]
+ [-Tier <String>] [-VirtualNetworkSubnetResourceId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentityRegistryExpanded
+```
+New-AzContainerRegistryAgentPool -Name <String> -RegistryInputObject <IContainerRegistryIdentity>
+ -Location <String> [-Count <Int32>] [-OS <String>] [-Tag <Hashtable>] [-Tier <String>]
  [-VirtualNetworkSubnetResourceId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
+### CreateViaJsonFilePath
+```
+New-AzContainerRegistryAgentPool -Name <String> -RegistryName <String> -ResourceGroupName <String>
+ -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzContainerRegistryAgentPool -Name <String> -RegistryName <String> -ResourceGroupName <String>
+ -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Creates an agent pool for a container registry with the specified parameters.
+Create an agent pool for a container registry with the specified parameters.
 
 ## EXAMPLES
 
@@ -61,7 +84,7 @@ The count of agent machine
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityRegistryExpanded
 Aliases:
 
 Required: False
@@ -87,13 +110,43 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Location
 The location of the resource.
 This cannot be changed after the resource is created.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityRegistryExpanded
 Aliases:
 
 Required: True
@@ -137,8 +190,8 @@ Accept wildcard characters: False
 The OS of agent machine
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.OS
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityRegistryExpanded
 Aliases:
 
 Required: False
@@ -148,12 +201,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -RegistryInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
+Parameter Sets: CreateViaIdentityRegistryExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -RegistryName
 The name of the container registry.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -168,7 +236,7 @@ The name of the resource group to which the container registry belongs.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -184,7 +252,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: False
@@ -199,7 +267,7 @@ The tags of the resource.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityRegistryExpanded
 Aliases: Tags
 
 Required: False
@@ -214,7 +282,7 @@ The Tier of agent machine
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityRegistryExpanded
 Aliases:
 
 Required: False
@@ -229,7 +297,7 @@ The Virtual Network Subnet Resource Id of the agent machine
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityRegistryExpanded
 Aliases:
 
 Required: False
@@ -275,9 +343,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.IAgentPool
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IAgentPool
 
 ## NOTES
 

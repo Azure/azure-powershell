@@ -14,8 +14,8 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Linq;
 
     /// <summary>
-    /// Describes the script sources for run command. Use only one of script,
-    /// scriptUri, commandId.
+    /// Describes the script sources for run command. Use only one of these
+    /// script sources: script, scriptUri, commandId, galleryScriptReferenceId.
     /// </summary>
     public partial class VirtualMachineRunCommandScriptSource
     {
@@ -38,7 +38,10 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// can be either SAS URI of an Azure storage blob with read access or
         /// public URI.</param>
         /// <param name="commandId">Specifies a commandId of predefined
-        /// built-in script.</param>
+        /// built-in script. Command IDs available for Linux are listed at
+        /// https://aka.ms/RunCommandManagedLinux#available-commands, Windows
+        /// at
+        /// https://aka.ms/RunCommandManagedWindows#available-commands.</param>
         /// <param name="scriptUriManagedIdentity">User-assigned managed
         /// identity that has access to scriptUri in case of Azure storage
         /// blob. Use an empty object in case of system-assigned identity. Make
@@ -48,12 +51,23 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// add it under VM's identity. For more info on managed identity and
         /// Run Command, refer https://aka.ms/ManagedIdentity and
         /// https://aka.ms/RunCommandManaged.</param>
-        public VirtualMachineRunCommandScriptSource(string script = default(string), string scriptUri = default(string), string commandId = default(string), RunCommandManagedIdentity scriptUriManagedIdentity = default(RunCommandManagedIdentity))
+        /// <param name="scriptShell">Optional. Specify which shell to use for
+        /// running the script. These values must match those expected by the
+        /// extension. Currently supported only for Windows VMs, script uses
+        /// Powershell 7 when specified. Powershell 7 must be already installed
+        /// on the machine to use Powershell7 parameter value. Possible values
+        /// include: 'Default', 'Powershell7'</param>
+        /// <param name="galleryScriptReferenceId">The resource ID of a Gallery
+        /// Script version that needs to be executed. Example ID looks like
+        /// /subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.Compute/galleries/{galleryName}/scripts/{scriptName}/versions/{version}.</param>
+        public VirtualMachineRunCommandScriptSource(string script = default(string), string scriptUri = default(string), string commandId = default(string), RunCommandManagedIdentity scriptUriManagedIdentity = default(RunCommandManagedIdentity), string scriptShell = default(string), string galleryScriptReferenceId = default(string))
         {
             Script = script;
             ScriptUri = scriptUri;
             CommandId = commandId;
             ScriptUriManagedIdentity = scriptUriManagedIdentity;
+            ScriptShell = scriptShell;
+            GalleryScriptReferenceId = galleryScriptReferenceId;
             CustomInit();
         }
 
@@ -78,6 +92,9 @@ namespace Microsoft.Azure.Management.Compute.Models
 
         /// <summary>
         /// Gets or sets specifies a commandId of predefined built-in script.
+        /// Command IDs available for Linux are listed at
+        /// https://aka.ms/RunCommandManagedLinux#available-commands, Windows
+        /// at https://aka.ms/RunCommandManagedWindows#available-commands.
         /// </summary>
         [JsonProperty(PropertyName = "commandId")]
         public string CommandId { get; set; }
@@ -95,6 +112,25 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [JsonProperty(PropertyName = "scriptUriManagedIdentity")]
         public RunCommandManagedIdentity ScriptUriManagedIdentity { get; set; }
+
+        /// <summary>
+        /// Gets or sets optional. Specify which shell to use for running the
+        /// script. These values must match those expected by the extension.
+        /// Currently supported only for Windows VMs, script uses Powershell 7
+        /// when specified. Powershell 7 must be already installed on the
+        /// machine to use Powershell7 parameter value. Possible values
+        /// include: 'Default', 'Powershell7'
+        /// </summary>
+        [JsonProperty(PropertyName = "scriptShell")]
+        public string ScriptShell { get; set; }
+
+        /// <summary>
+        /// Gets or sets the resource ID of a Gallery Script version that needs
+        /// to be executed. Example ID looks like
+        /// /subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.Compute/galleries/{galleryName}/scripts/{scriptName}/versions/{version}.
+        /// </summary>
+        [JsonProperty(PropertyName = "galleryScriptReferenceId")]
+        public string GalleryScriptReferenceId { get; set; }
 
     }
 }

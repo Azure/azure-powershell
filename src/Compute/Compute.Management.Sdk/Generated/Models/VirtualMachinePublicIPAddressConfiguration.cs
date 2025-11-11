@@ -57,7 +57,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="publicIPAllocationMethod">Specify the public IP
         /// allocation type. Possible values include: 'Dynamic',
         /// 'Static'</param>
-        public VirtualMachinePublicIPAddressConfiguration(string name, int? idleTimeoutInMinutes = default(int?), string deleteOption = default(string), VirtualMachinePublicIPAddressDnsSettingsConfiguration dnsSettings = default(VirtualMachinePublicIPAddressDnsSettingsConfiguration), IList<VirtualMachineIpTag> ipTags = default(IList<VirtualMachineIpTag>), SubResource publicIPPrefix = default(SubResource), string publicIPAddressVersion = default(string), string publicIPAllocationMethod = default(string), PublicIPAddressSku sku = default(PublicIPAddressSku))
+        /// <param name="sku">Describes the public IP Sku. It can only be set
+        /// with OrchestrationMode as Flexible.</param>
+        /// <param name="tags">Resource tags applied to the publicIP address
+        /// created by this PublicIPAddressConfiguration</param>
+        public VirtualMachinePublicIPAddressConfiguration(string name, int? idleTimeoutInMinutes = default(int?), string deleteOption = default(string), VirtualMachinePublicIPAddressDnsSettingsConfiguration dnsSettings = default(VirtualMachinePublicIPAddressDnsSettingsConfiguration), IList<VirtualMachineIpTag> ipTags = default(IList<VirtualMachineIpTag>), SubResource publicIPPrefix = default(SubResource), string publicIPAddressVersion = default(string), string publicIPAllocationMethod = default(string), PublicIPAddressSku sku = default(PublicIPAddressSku), IDictionary<string, string> tags = default(IDictionary<string, string>))
         {
             Name = name;
             IdleTimeoutInMinutes = idleTimeoutInMinutes;
@@ -68,6 +72,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             PublicIPAddressVersion = publicIPAddressVersion;
             PublicIPAllocationMethod = publicIPAllocationMethod;
             Sku = sku;
+            Tags = tags;
             CustomInit();
         }
 
@@ -133,9 +138,18 @@ namespace Microsoft.Azure.Management.Compute.Models
         public string PublicIPAllocationMethod { get; set; }
 
         /// <summary>
+        /// Gets or sets describes the public IP Sku. It can only be set with
+        /// OrchestrationMode as Flexible.
         /// </summary>
         [JsonProperty(PropertyName = "sku")]
         public PublicIPAddressSku Sku { get; set; }
+
+        /// <summary>
+        /// Gets or sets resource tags applied to the publicIP address created
+        /// by this PublicIPAddressConfiguration
+        /// </summary>
+        [JsonProperty(PropertyName = "tags")]
+        public IDictionary<string, string> Tags { get; set; }
 
         /// <summary>
         /// Validate the object.

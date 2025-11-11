@@ -1,0 +1,656 @@
+{
+  "Remove-AzDeviceRegistryNamespaceDiscoveredAsset+[NoContext]+Delete+$PUT+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredAssets/test-ns-dasset-delete?api-version=2025-10-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredAssets/test-ns-dasset-delete?api-version=2025-10-01",
+      "Content": "ew0KICAibG9jYXRpb24iOiAiZWFzdHVzMiIsDQogICJleHRlbmRlZExvY2F0aW9uIjogew0KICAgICJ0eXBlIjogIkN1c3RvbUxvY2F0aW9uIiwNCiAgICAibmFtZSI6ICIvc3Vic2NyaXB0aW9ucy9lZmIxNTA4Ni0zMzIyLTQwNWQtYTlkMC1jMzU3MTVhOWI3MjIvcmVzb3VyY2VHcm91cHMvYWRyLXB3c2gtdGVzdC1yZy9wcm92aWRlcnMvTWljcm9zb2Z0LkV4dGVuZGVkTG9jYXRpb24vY3VzdG9tTG9jYXRpb25zL2xvY2F0aW9uLTJwbmg0Ig0KICB9LA0KICAidGFncyI6IHsNCiAgICAic2Vuc29yIjogInRlbXBlcmF0dXJlLGh1bWlkaXR5LHByZXNzdXJlIg0KICB9LA0KICAicHJvcGVydGllcyI6IHsNCiAgICAiZGV2aWNlUmVmIjogew0KICAgICAgImRldmljZU5hbWUiOiAibXlEZXZpY2VOYW1lIiwNCiAgICAgICJlbmRwb2ludE5hbWUiOiAibXlFbmRwb2ludE5hbWUiDQogICAgfSwNCiAgICAiZGlzY292ZXJ5SWQiOiAibXlEaXNjb3ZlcnlJZCIsDQogICAgInZlcnNpb24iOiAxLA0KICAgICJtYW51ZmFjdHVyZXIiOiAiQ29udG9zbzEyMyIsDQogICAgIm1hbnVmYWN0dXJlclVyaSI6ICJodHRwczovL3d3dy5jb250b3NvLmNvbS9tYW51ZmFjdHVyZXJVcmkiLA0KICAgICJtb2RlbCI6ICJDb250b3NvTW9kZWwiLA0KICAgICJwcm9kdWN0Q29kZSI6ICJTQTM0VkRHIiwNCiAgICAic29mdHdhcmVSZXZpc2lvbiI6ICIyLjAiLA0KICAgICJkb2N1bWVudGF0aW9uVXJpIjogImh0dHBzOi8vd3d3LmV4YW1wbGUuY29tL21hbnVhbC8iLA0KICAgICJzZXJpYWxOdW1iZXIiOiAiNjQtMTAzODE2LTUxOTkxOC04IiwNCiAgICAiZGVmYXVsdERhdGFzZXRzQ29uZmlndXJhdGlvbiI6ICJ7XCJkZWZhdWx0UHVibGlzaGluZ0ludGVydmFsXCI6IDIwMCwgXCJkZWZhdWx0U2FtcGxpbmdJbnRlcnZhbFwiOiA1MDAsIFwiZGVmYXVsdFF1ZXVlU2l6ZVwiOiAxMH0iLA0KICAgICJkZWZhdWx0RXZlbnRzQ29uZmlndXJhdGlvbiI6ICJ7XCJkZWZhdWx0UHVibGlzaGluZ0ludGVydmFsXCI6IDIwMCwgXCJkZWZhdWx0U2FtcGxpbmdJbnRlcnZhbFwiOiA1MDAsIFwiZGVmYXVsdFF1ZXVlU2l6ZVwiOiAxMH0iLA0KICAgICJkZWZhdWx0U3RyZWFtc0NvbmZpZ3VyYXRpb24iOiAie1wiZGVmYXVsdFB1Ymxpc2hpbmdJbnRlcnZhbFwiOiAyMDAsIFwiZGVmYXVsdFNhbXBsaW5nSW50ZXJ2YWxcIjogNTAwLCBcImRlZmF1bHRRdWV1ZVNpemVcIjogMTB9IiwNCiAgICAiZGVmYXVsdE1hbmFnZW1lbnRHcm91cHNDb25maWd1cmF0aW9uIjogIntcInJldHJ5Q291bnRcIjoxMCxcInJldHJ5QmFja29mZkludGVydmFsXCI6MTV9IiwNCiAgICAiZGVmYXVsdERhdGFzZXRzRGVzdGluYXRpb25zIjogWw0KICAgICAgew0KICAgICAgICAidGFyZ2V0IjogIkJyb2tlclN0YXRlU3RvcmUiLA0KICAgICAgICAiY29uZmlndXJhdGlvbiI6IHsNCiAgICAgICAgICAia2V5IjogImRlZmF1bHRWYWx1ZSINCiAgICAgICAgfQ0KICAgICAgfQ0KICAgIF0sDQogICAgImRlZmF1bHRFdmVudHNEZXN0aW5hdGlvbnMiOiBbDQogICAgICB7DQogICAgICAgICJ0YXJnZXQiOiAiU3RvcmFnZSIsDQogICAgICAgICJjb25maWd1cmF0aW9uIjogew0KICAgICAgICAgICJwYXRoIjogIi90bXAiDQogICAgICAgIH0NCiAgICAgIH0NCiAgICBdLA0KICAgICJkZWZhdWx0U3RyZWFtc0Rlc3RpbmF0aW9ucyI6IFsNCiAgICAgIHsNCiAgICAgICAgInRhcmdldCI6ICJNcXR0IiwNCiAgICAgICAgImNvbmZpZ3VyYXRpb24iOiB7DQogICAgICAgICAgInRvcGljIjogIi9jb250b3NvL3Rlc3QiLA0KICAgICAgICAgICJyZXRhaW4iOiAiTmV2ZXIiLA0KICAgICAgICAgICJxb3MiOiAiUW9zMCIsDQogICAgICAgICAgInR0bCI6IDM2MDANCiAgICAgICAgfQ0KICAgICAgfQ0KICAgIF0sDQogICAgImRhdGFzZXRzIjogWw0KICAgICAgew0KICAgICAgICAibmFtZSI6ICJkYXRhc2V0MSIsDQogICAgICAgICJkYXRhU291cmNlIjogIm5zdT1odHRwOi8vbWljcm9zb2Z0LmNvbS9PcGMvT3BjUGxjIg0KICAgICAgfSwNCiAgICAgIHsNCiAgICAgICAgIm5hbWUiOiAiZGF0YVNldDIiLA0KICAgICAgICAiZGF0YVNvdXJjZSI6ICJuc3U9aHR0cDovL21pY3Jvc29mdC5jb20vT3BjL09wY1BsYy9PdmVuO2k9NSIsDQogICAgICAgICJ0eXBlUmVmIjogImRhdGFzZXQxVHlwZVJlZiIsDQogICAgICAgICJkYXRhc2V0Q29uZmlndXJhdGlvbiI6ICJ7XCJwdWJsaXNoaW5nSW50ZXJ2YWxcIjoxMCxcInNhbXBsaW5nSW50ZXJ2YWxcIjoxNSxcInF1ZXVlU2l6ZVwiOjIwfSIsDQogICAgICAgICJkZXN0aW5hdGlvbnMiOiBbDQogICAgICAgICAgew0KICAgICAgICAgICAgInRhcmdldCI6ICJNcXR0IiwNCiAgICAgICAgICAgICJjb25maWd1cmF0aW9uIjogew0KICAgICAgICAgICAgICAidG9waWMiOiAiL2NvbnRvc28vdGVzdDIiLA0KICAgICAgICAgICAgICAicmV0YWluIjogIktlZXAiLA0KICAgICAgICAgICAgICAicW9zIjogIlFvczEiLA0KICAgICAgICAgICAgICAidHRsIjogMzYwMA0KICAgICAgICAgICAgfQ0KICAgICAgICAgIH0NCiAgICAgICAgXSwNCiAgICAgICAgImRhdGFQb2ludHMiOiBbDQogICAgICAgICAgew0KICAgICAgICAgICAgIm5hbWUiOiAiZGF0YXNldDFEYXRhUG9pbnQxIiwNCiAgICAgICAgICAgICJkYXRhU291cmNlIjogIm5zdT1odHRwOi8vbWljcm9zb2Z0LmNvbS9PcGMvT3BjUGxjLztzPUZhc3RVSW50MyIsDQogICAgICAgICAgICAiZGF0YVBvaW50Q29uZmlndXJhdGlvbiI6ICJ7XCJwdWJsaXNoaW5nSW50ZXJ2YWxcIjo4LFwic2FtcGxpbmdJbnRlcnZhbFwiOjgsXCJxdWV1ZVNpemVcIjo0fSIsDQogICAgICAgICAgICAidHlwZVJlZiI6ICJkYXRhc2V0MURhdGFQb2ludDFUeXBlUmVmIg0KICAgICAgICAgIH0sDQogICAgICAgICAgew0KICAgICAgICAgICAgIm5hbWUiOiAiZGF0YXNldDFEYXRhUG9pbnQyIiwNCiAgICAgICAgICAgICJkYXRhU291cmNlIjogIm5zdT1odHRwOi8vbWljcm9zb2Z0LmNvbS9PcGMvT3BjUGxjLztzPUZhc3RVSW50NCIsDQogICAgICAgICAgICAiZGF0YVBvaW50Q29uZmlndXJhdGlvbiI6ICJ7XCJwdWJsaXNoaW5nSW50ZXJ2YWxcIjo4LFwic2FtcGxpbmdJbnRlcnZhbFwiOjgsXCJxdWV1ZVNpemVcIjo0fSIsDQogICAgICAgICAgICAidHlwZVJlZiI6ICJkYXRhc2V0MURhdGFQb2ludDJUeXBlUmVmIg0KICAgICAgICAgIH0NCiAgICAgICAgXQ0KICAgICAgfQ0KICAgIF0sDQogICAgImV2ZW50cyI6IFsNCiAgICAgIHsNCiAgICAgICAgIm5hbWUiOiAiZXZlbnQxIiwNCiAgICAgICAgImV2ZW50Tm90aWZpZXIiOiAibnN1PWh0dHA6Ly9taWNyb3NvZnQuY29tL09wYy9PcGNQbGMvO3M9RmFzdFVJbnQ1IiwNCiAgICAgICAgImV2ZW50Q29uZmlndXJhdGlvbiI6ICJ7XCJwdWJsaXNoaW5nSW50ZXJ2YWxcIjo3LFwic2FtcGxpbmdJbnRlcnZhbFwiOjEsXCJxdWV1ZVNpemVcIjo4fSIsDQogICAgICAgICJkZXN0aW5hdGlvbnMiOiBbDQogICAgICAgICAgew0KICAgICAgICAgICAgInRhcmdldCI6ICJNcXR0IiwNCiAgICAgICAgICAgICJjb25maWd1cmF0aW9uIjogew0KICAgICAgICAgICAgICAidG9waWMiOiAiL2NvbnRvc28vdGVzdEV2ZW50MSIsDQogICAgICAgICAgICAgICJyZXRhaW4iOiAiS2VlcCIsDQogICAgICAgICAgICAgICJxb3MiOiAiUW9zMCIsDQogICAgICAgICAgICAgICJ0dGwiOiA3MjAwDQogICAgICAgICAgICB9DQogICAgICAgICAgfQ0KICAgICAgICBdLA0KICAgICAgICAidHlwZVJlZiI6ICJldmVudDFSZWYiLA0KICAgICAgICAiZGF0YVBvaW50cyI6IFsNCiAgICAgICAgICB7DQogICAgICAgICAgICAibmFtZSI6ICJldmVudDFEYXRhUG9pbnQxIiwNCiAgICAgICAgICAgICJkYXRhU291cmNlIjogIm5zdT1odHRwOi8vbWljcm9zb2Z0LmNvbS9PcGMvT3BjUGxjLztzPUZhc3RVSW50NiIsDQogICAgICAgICAgICAiZGF0YVBvaW50Q29uZmlndXJhdGlvbiI6ICJ7XCJwdWJsaXNoaW5nSW50ZXJ2YWxcIjo4LFwic2FtcGxpbmdJbnRlcnZhbFwiOjgsXCJxdWV1ZVNpemVcIjo0fSINCiAgICAgICAgICB9LA0KICAgICAgICAgIHsNCiAgICAgICAgICAgICJuYW1lIjogImV2ZW50MURhdGFQb2ludDIiLA0KICAgICAgICAgICAgImRhdGFTb3VyY2UiOiAibnN1PWh0dHA6Ly9taWNyb3NvZnQuY29tL09wYy9PcGNQbGMvO3M9RmFzdFVJbnQ3IiwNCiAgICAgICAgICAgICJkYXRhUG9pbnRDb25maWd1cmF0aW9uIjogIntcInB1Ymxpc2hpbmdJbnRlcnZhbFwiOjgsXCJzYW1wbGluZ0ludGVydmFsXCI6OCxcInF1ZXVlU2l6ZVwiOjR9Ig0KICAgICAgICAgIH0NCiAgICAgICAgXQ0KICAgICAgfSwNCiAgICAgIHsNCiAgICAgICAgIm5hbWUiOiAiZXZlbnQyIiwNCiAgICAgICAgImV2ZW50Tm90aWZpZXIiOiAibnN1PWh0dHA6Ly9taWNyb3NvZnQuY29tL09wYy9PcGNQbGMvO3M9RmFzdFVJbnQ4IiwNCiAgICAgICAgImV2ZW50Q29uZmlndXJhdGlvbiI6ICJ7XCJwdWJsaXNoaW5nSW50ZXJ2YWxcIjo3LFwic2FtcGxpbmdJbnRlcnZhbFwiOjEsXCJxdWV1ZVNpemVcIjo4fSIsDQogICAgICAgICJkZXN0aW5hdGlvbnMiOiBbDQogICAgICAgICAgew0KICAgICAgICAgICAgInRhcmdldCI6ICJTdG9yYWdlIiwNCiAgICAgICAgICAgICJjb25maWd1cmF0aW9uIjogew0KICAgICAgICAgICAgICAicGF0aCI6ICIvdG1wL2V2ZW50MiINCiAgICAgICAgICAgIH0NCiAgICAgICAgICB9DQogICAgICAgIF0sDQogICAgICAgICJ0eXBlUmVmIjogImV2ZW50MlJlZiIsDQogICAgICAgICJkYXRhUG9pbnRzIjogWw0KICAgICAgICAgIHsNCiAgICAgICAgICAgICJuYW1lIjogImV2ZW50MkRhdGFQb2ludDEiLA0KICAgICAgICAgICAgImRhdGFTb3VyY2UiOiAibnN1PWh0dHA6Ly9taWNyb3NvZnQuY29tL09wYy9PcGNQbGMvO3M9RmFzdFVJbnQ5IiwNCiAgICAgICAgICAgICJkYXRhUG9pbnRDb25maWd1cmF0aW9uIjogIntcInB1Ymxpc2hpbmdJbnRlcnZhbFwiOjgsXCJzYW1wbGluZ0ludGVydmFsXCI6OCxcInF1ZXVlU2l6ZVwiOjR9Ig0KICAgICAgICAgIH0sDQogICAgICAgICAgew0KICAgICAgICAgICAgIm5hbWUiOiAiZXZlbnQyRGF0YVBvaW50MiIsDQogICAgICAgICAgICAiZGF0YVNvdXJjZSI6ICJuc3U9aHR0cDovL21pY3Jvc29mdC5jb20vT3BjL09wY1BsYy87cz1GYXN0VUludDEwIiwNCiAgICAgICAgICAgICJkYXRhUG9pbnRDb25maWd1cmF0aW9uIjogIntcInB1Ymxpc2hpbmdJbnRlcnZhbFwiOjgsXCJzYW1wbGluZ0ludGVydmFsXCI6OCxcInF1ZXVlU2l6ZVwiOjR9Ig0KICAgICAgICAgIH0NCiAgICAgICAgXQ0KICAgICAgfQ0KICAgIF0sDQogICAgInN0cmVhbXMiOiBbDQogICAgICB7DQogICAgICAgICJuYW1lIjogInN0cmVhbTEiLA0KICAgICAgICAic3RyZWFtQ29uZmlndXJhdGlvbiI6ICJ7XCJwdWJsaXNoaW5nSW50ZXJ2YWxcIjo4LFwic2FtcGxpbmdJbnRlcnZhbFwiOjgsXCJxdWV1ZVNpemVcIjo0fSIsDQogICAgICAgICJ0eXBlUmVmIjogInN0cmVhbTFUeXBlUmVmIiwNCiAgICAgICAgImRlc3RpbmF0aW9ucyI6IFsNCiAgICAgICAgICB7DQogICAgICAgICAgICAidGFyZ2V0IjogIlN0b3JhZ2UiLA0KICAgICAgICAgICAgImNvbmZpZ3VyYXRpb24iOiB7DQogICAgICAgICAgICAgICJwYXRoIjogIi90bXAvc3RyZWFtMSINCiAgICAgICAgICAgIH0NCiAgICAgICAgICB9DQogICAgICAgIF0NCiAgICAgIH0sDQogICAgICB7DQogICAgICAgICJuYW1lIjogInN0cmVhbTIiLA0KICAgICAgICAic3RyZWFtQ29uZmlndXJhdGlvbiI6ICJ7XCJwdWJsaXNoaW5nSW50ZXJ2YWxcIjo4LFwic2FtcGxpbmdJbnRlcnZhbFwiOjgsXCJxdWV1ZVNpemVcIjo0fSIsDQogICAgICAgICJ0eXBlUmVmIjogInN0cmVhbTJUeXBlUmVmIiwNCiAgICAgICAgImRlc3RpbmF0aW9ucyI6IFsNCiAgICAgICAgICB7DQogICAgICAgICAgICAidGFyZ2V0IjogIk1xdHQiLA0KICAgICAgICAgICAgImNvbmZpZ3VyYXRpb24iOiB7DQogICAgICAgICAgICAgICJ0b3BpYyI6ICIvY29udG9zby90ZXN0U3RyZWFtMiIsDQogICAgICAgICAgICAgICJyZXRhaW4iOiAiTmV2ZXIiLA0KICAgICAgICAgICAgICAicW9zIjogIlFvczAiLA0KICAgICAgICAgICAgICAidHRsIjogNzIwMA0KICAgICAgICAgICAgfQ0KICAgICAgICAgIH0NCiAgICAgICAgXQ0KICAgICAgfQ0KICAgIF0sDQogICAgIm1hbmFnZW1lbnRHcm91cHMiOiBbDQogICAgICB7DQogICAgICAgICJuYW1lIjogIm1hbmFnZW1lbnRHcm91cDEiLA0KICAgICAgICAibWFuYWdlbWVudEdyb3VwQ29uZmlndXJhdGlvbiI6ICJ7XCJyZXRyeUNvdW50XCI6MTAsXCJyZXRyeUJhY2tvZmZJbnRlcnZhbFwiOjE1fSIsDQogICAgICAgICJ0eXBlUmVmIjogIm1hbmFnZW1lbnRHcm91cDFUeXBlUmVmIiwNCiAgICAgICAgImRlZmF1bHRUb3BpYyI6ICIvY29udG9zby9tYW5hZ2VtZW50R3JvdXAxIiwNCiAgICAgICAgImRlZmF1bHRUaW1lb3V0SW5TZWNvbmRzIjogMTAwLA0KICAgICAgICAiYWN0aW9ucyI6IFsNCiAgICAgICAgICB7DQogICAgICAgICAgICAibmFtZSI6ICJhY3Rpb24xIiwNCiAgICAgICAgICAgICJhY3Rpb25Db25maWd1cmF0aW9uIjogIntcInJldHJ5Q291bnRcIjo1LFwicmV0cnlCYWNrb2ZmSW50ZXJ2YWxcIjo1fSIsDQogICAgICAgICAgICAidGFyZ2V0VXJpIjogIi9vbnZpZi9kZXZpY2Vfc2VydmljZT9PTlZJRlByb2ZpbGU9UHJvZmlsZTEiLA0KICAgICAgICAgICAgInRvcGljIjogIi9jb250b3NvL21hbmFnZW1lbnRHcm91cDEvYWN0aW9uMSIsDQogICAgICAgICAgICAidHlwZVJlZiI6ICJhY3Rpb24xVHlwZVJlZiIsDQogICAgICAgICAgICAiYWN0aW9uVHlwZSI6ICJDYWxsIiwNCiAgICAgICAgICAgICJ0aW1lb3V0SW5TZWNvbmRzIjogNjANCiAgICAgICAgICB9LA0KICAgICAgICAgIHsNCiAgICAgICAgICAgICJuYW1lIjogImFjdGlvbjIiLA0KICAgICAgICAgICAgImFjdGlvbkNvbmZpZ3VyYXRpb24iOiAie1wicmV0cnlDb3VudFwiOjUsXCJyZXRyeUJhY2tvZmZJbnRlcnZhbFwiOjV9IiwNCiAgICAgICAgICAgICJ0YXJnZXRVcmkiOiAiL29udmlmL2RldmljZV9zZXJ2aWNlP09OVklGUHJvZmlsZT1Qcm9maWxlMiIsDQogICAgICAgICAgICAidG9waWMiOiAiL2NvbnRvc28vbWFuYWdlbWVudEdyb3VwMS9hY3Rpb24yIiwNCiAgICAgICAgICAgICJ0eXBlUmVmIjogImFjdGlvbjJUeXBlUmVmIiwNCiAgICAgICAgICAgICJhY3Rpb25UeXBlIjogIkNhbGwiLA0KICAgICAgICAgICAgInRpbWVvdXRJblNlY29uZHMiOiA2MA0KICAgICAgICAgIH0NCiAgICAgICAgXQ0KICAgICAgfQ0KICAgIF0NCiAgfQ0KfQ0K",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "7299" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Accept-Ranges": [ "bytes" ],
+        "ETag": [ "\"db003e88-0000-0200-0000-6887dfcc0000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=e3029257-ff30-403c-a905-c87ef1aa933a/eastus2/f4db93d6-bbf2-4cb5-ad66-eda845626b6a" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "6c7b4808-b3b2-47a8-b1ee-b3b764ff0783" ],
+        "x-envoy-upstream-service-time": [ "3" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-azure-ref": [ "20250728T203836Z-175b7fb5765g9gnfhC1BN1c8d000000000v000000000frrz" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "x-ms-request-id": [ "e93953ba-7e49-4e9a-93a5-b5ff3349f9b2" ],
+        "x-ms-correlation-request-id": [ "d7190914-d4a7-4ef3-a9e0-774b3985f3bc" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "199" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20250728T203836Z:d7190914-d4a7-4ef3-a9e0-774b3985f3bc" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-MSEdge-Ref": [ "Ref A: F0CDBC30501A4B86BB85CE041F36D41A Ref B: MWH011020809025 Ref C: 2025-07-28T20:38:36Z" ],
+        "Date": [ "Mon, 28 Jul 2025 20:38:36 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "5494" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredAssets/test-ns-dasset-delete\",\"name\":\"test-ns-dasset-delete\",\"type\":\"microsoft.deviceregistry/namespaces/discoveredassets\",\"location\":\"eastus2\",\"extendedLocation\":{\"name\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.ExtendedLocation/customLocations/location-mkzkq\",\"type\":\"CustomLocation\"},\"tags\":{\"sensor\":\"temperature,humidity,pressure\"},\"systemData\":{\"createdBy\":\"rylo@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-07-28T20:38:36.6179939Z\",\"lastModifiedBy\":\"rylo@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-07-28T20:38:36.6179939Z\"},\"properties\":{\"deviceRef\":{\"deviceName\":\"myDeviceName\",\"endpointName\":\"myEndpointName\"},\"discoveryId\":\"myDiscoveryId\",\"version\":1,\"manufacturer\":\"Contoso123\",\"manufacturerUri\":\"https://www.contoso.com/manufacturerUri\",\"model\":\"ContosoModel\",\"productCode\":\"SA34VDG\",\"softwareRevision\":\"2.0\",\"documentationUri\":\"https://www.example.com/manual/\",\"serialNumber\":\"64-103816-519918-8\",\"defaultDatasetsConfiguration\":\"{\\\"defaultPublishingInterval\\\": 200, \\\"defaultSamplingInterval\\\": 500, \\\"defaultQueueSize\\\": 10}\",\"defaultEventsConfiguration\":\"{\\\"defaultPublishingInterval\\\": 200, \\\"defaultSamplingInterval\\\": 500, \\\"defaultQueueSize\\\": 10}\",\"defaultStreamsConfiguration\":\"{\\\"defaultPublishingInterval\\\": 200, \\\"defaultSamplingInterval\\\": 500, \\\"defaultQueueSize\\\": 10}\",\"defaultManagementGroupsConfiguration\":\"{\\\"retryCount\\\":10,\\\"retryBackoffInterval\\\":15}\",\"defaultDatasetsDestinations\":[{\"target\":\"BrokerStateStore\",\"configuration\":{\"key\":\"defaultValue\"}}],\"defaultEventsDestinations\":[{\"target\":\"Storage\",\"configuration\":{\"path\":\"/tmp\"}}],\"defaultStreamsDestinations\":[{\"target\":\"Mqtt\",\"configuration\":{\"topic\":\"/contoso/test\",\"retain\":\"Never\",\"qos\":\"Qos0\",\"ttl\":3600}}],\"datasets\":[{\"name\":\"dataset1\",\"dataSource\":\"nsu=http://microsoft.com/Opc/OpcPlc\"},{\"name\":\"dataSet2\",\"dataSource\":\"nsu=http://microsoft.com/Opc/OpcPlc/Oven;i=5\",\"typeRef\":\"dataset1TypeRef\",\"destinations\":[{\"target\":\"Mqtt\",\"configuration\":{\"topic\":\"/contoso/test2\",\"retain\":\"Keep\",\"qos\":\"Qos1\",\"ttl\":3600}}],\"datasetConfiguration\":\"{\\\"publishingInterval\\\":10,\\\"samplingInterval\\\":15,\\\"queueSize\\\":20}\",\"dataPoints\":[{\"name\":\"dataset1DataPoint1\",\"dataSource\":\"nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt3\",\"dataPointConfiguration\":\"{\\\"publishingInterval\\\":8,\\\"samplingInterval\\\":8,\\\"queueSize\\\":4}\",\"typeRef\":\"dataset1DataPoint1TypeRef\"},{\"name\":\"dataset1DataPoint2\",\"dataSource\":\"nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt4\",\"dataPointConfiguration\":\"{\\\"publishingInterval\\\":8,\\\"samplingInterval\\\":8,\\\"queueSize\\\":4}\",\"typeRef\":\"dataset1DataPoint2TypeRef\"}]}],\"events\":[{\"name\":\"event1\",\"eventNotifier\":\"nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt5\",\"eventConfiguration\":\"{\\\"publishingInterval\\\":7,\\\"samplingInterval\\\":1,\\\"queueSize\\\":8}\",\"typeRef\":\"event1Ref\",\"destinations\":[{\"target\":\"Mqtt\",\"configuration\":{\"topic\":\"/contoso/testEvent1\",\"retain\":\"Keep\",\"qos\":\"Qos0\",\"ttl\":7200}}],\"dataPoints\":[{\"name\":\"event1DataPoint1\",\"dataSource\":\"nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt6\",\"dataPointConfiguration\":\"{\\\"publishingInterval\\\":8,\\\"samplingInterval\\\":8,\\\"queueSize\\\":4}\"},{\"name\":\"event1DataPoint2\",\"dataSource\":\"nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt7\",\"dataPointConfiguration\":\"{\\\"publishingInterval\\\":8,\\\"samplingInterval\\\":8,\\\"queueSize\\\":4}\"}]},{\"name\":\"event2\",\"eventNotifier\":\"nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt8\",\"eventConfiguration\":\"{\\\"publishingInterval\\\":7,\\\"samplingInterval\\\":1,\\\"queueSize\\\":8}\",\"typeRef\":\"event2Ref\",\"destinations\":[{\"target\":\"Storage\",\"configuration\":{\"path\":\"/tmp/event2\"}}],\"dataPoints\":[{\"name\":\"event2DataPoint1\",\"dataSource\":\"nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt9\",\"dataPointConfiguration\":\"{\\\"publishingInterval\\\":8,\\\"samplingInterval\\\":8,\\\"queueSize\\\":4}\"},{\"name\":\"event2DataPoint2\",\"dataSource\":\"nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt10\",\"dataPointConfiguration\":\"{\\\"publishingInterval\\\":8,\\\"samplingInterval\\\":8,\\\"queueSize\\\":4}\"}]}],\"streams\":[{\"name\":\"stream1\",\"streamConfiguration\":\"{\\\"publishingInterval\\\":8,\\\"samplingInterval\\\":8,\\\"queueSize\\\":4}\",\"typeRef\":\"stream1TypeRef\",\"destinations\":[{\"target\":\"Storage\",\"configuration\":{\"path\":\"/tmp/stream1\"}}]},{\"name\":\"stream2\",\"streamConfiguration\":\"{\\\"publishingInterval\\\":8,\\\"samplingInterval\\\":8,\\\"queueSize\\\":4}\",\"typeRef\":\"stream2TypeRef\",\"destinations\":[{\"target\":\"Mqtt\",\"configuration\":{\"topic\":\"/contoso/testStream2\",\"retain\":\"Never\",\"qos\":\"Qos0\",\"ttl\":7200}}]}],\"managementGroups\":[{\"name\":\"managementGroup1\",\"managementGroupConfiguration\":\"{\\\"retryCount\\\":10,\\\"retryBackoffInterval\\\":15}\",\"typeRef\":\"managementGroup1TypeRef\",\"defaultTopic\":\"/contoso/managementGroup1\",\"defaultTimeoutInSeconds\":100,\"actions\":[{\"name\":\"action1\",\"actionConfiguration\":\"{\\\"retryCount\\\":5,\\\"retryBackoffInterval\\\":5}\",\"targetUri\":\"/onvif/device_service?ONVIFProfile=Profile1\",\"typeRef\":\"action1TypeRef\",\"topic\":\"/contoso/managementGroup1/action1\",\"actionType\":\"Call\",\"timeoutInSeconds\":60},{\"name\":\"action2\",\"actionConfiguration\":\"{\\\"retryCount\\\":5,\\\"retryBackoffInterval\\\":5}\",\"targetUri\":\"/onvif/device_service?ONVIFProfile=Profile2\",\"typeRef\":\"action2TypeRef\",\"topic\":\"/contoso/managementGroup1/action2\",\"actionType\":\"Call\",\"timeoutInSeconds\":60}]}],\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzDeviceRegistryNamespaceDiscoveredAsset+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredAssets/test-ns-dasset-delete?api-version=2025-10-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredAssets/test-ns-dasset-delete?api-version=2025-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "61" ],
+        "x-ms-client-request-id": [ "da5a248f-dfe5-45c3-a6e4-0508512e6187" ],
+        "CommandName": [ "New-AzDeviceRegistryNamespaceDiscoveredAsset" ],
+        "FullCommandName": [ "New-AzDeviceRegistryNamespaceDiscoveredAsset_CreateViaJsonFilePath" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.24", "Az.DeviceRegistry/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"db003e88-0000-0200-0000-6887dfcc0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "249" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "0e653f95-92d7-4c5e-b19c-4aa46926adea" ],
+        "x-ms-correlation-request-id": [ "0ce7a6d7-f808-421b-89cf-b73f1bd2c62e" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20250728T203907Z:0ce7a6d7-f808-421b-89cf-b73f1bd2c62e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: B8D720BF50DE40D39E921C5439F5C98B Ref B: MWH011020809025 Ref C: 2025-07-28T20:39:06Z" ],
+        "Date": [ "Mon, 28 Jul 2025 20:39:06 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "5494" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredAssets/test-ns-dasset-delete\",\"name\":\"test-ns-dasset-delete\",\"type\":\"microsoft.deviceregistry/namespaces/discoveredassets\",\"location\":\"eastus2\",\"extendedLocation\":{\"name\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.ExtendedLocation/customLocations/location-mkzkq\",\"type\":\"CustomLocation\"},\"tags\":{\"sensor\":\"temperature,humidity,pressure\"},\"systemData\":{\"createdBy\":\"rylo@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-07-28T20:38:36.6179939Z\",\"lastModifiedBy\":\"rylo@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-07-28T20:38:36.6179939Z\"},\"properties\":{\"deviceRef\":{\"deviceName\":\"myDeviceName\",\"endpointName\":\"myEndpointName\"},\"discoveryId\":\"myDiscoveryId\",\"version\":1,\"manufacturer\":\"Contoso123\",\"manufacturerUri\":\"https://www.contoso.com/manufacturerUri\",\"model\":\"ContosoModel\",\"productCode\":\"SA34VDG\",\"softwareRevision\":\"2.0\",\"documentationUri\":\"https://www.example.com/manual/\",\"serialNumber\":\"64-103816-519918-8\",\"defaultDatasetsConfiguration\":\"{\\\"defaultPublishingInterval\\\": 200, \\\"defaultSamplingInterval\\\": 500, \\\"defaultQueueSize\\\": 10}\",\"defaultEventsConfiguration\":\"{\\\"defaultPublishingInterval\\\": 200, \\\"defaultSamplingInterval\\\": 500, \\\"defaultQueueSize\\\": 10}\",\"defaultStreamsConfiguration\":\"{\\\"defaultPublishingInterval\\\": 200, \\\"defaultSamplingInterval\\\": 500, \\\"defaultQueueSize\\\": 10}\",\"defaultManagementGroupsConfiguration\":\"{\\\"retryCount\\\":10,\\\"retryBackoffInterval\\\":15}\",\"defaultDatasetsDestinations\":[{\"target\":\"BrokerStateStore\",\"configuration\":{\"key\":\"defaultValue\"}}],\"defaultEventsDestinations\":[{\"target\":\"Storage\",\"configuration\":{\"path\":\"/tmp\"}}],\"defaultStreamsDestinations\":[{\"target\":\"Mqtt\",\"configuration\":{\"topic\":\"/contoso/test\",\"retain\":\"Never\",\"qos\":\"Qos0\",\"ttl\":3600}}],\"datasets\":[{\"name\":\"dataset1\",\"dataSource\":\"nsu=http://microsoft.com/Opc/OpcPlc\"},{\"name\":\"dataSet2\",\"dataSource\":\"nsu=http://microsoft.com/Opc/OpcPlc/Oven;i=5\",\"typeRef\":\"dataset1TypeRef\",\"destinations\":[{\"target\":\"Mqtt\",\"configuration\":{\"topic\":\"/contoso/test2\",\"retain\":\"Keep\",\"qos\":\"Qos1\",\"ttl\":3600}}],\"datasetConfiguration\":\"{\\\"publishingInterval\\\":10,\\\"samplingInterval\\\":15,\\\"queueSize\\\":20}\",\"dataPoints\":[{\"name\":\"dataset1DataPoint1\",\"dataSource\":\"nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt3\",\"dataPointConfiguration\":\"{\\\"publishingInterval\\\":8,\\\"samplingInterval\\\":8,\\\"queueSize\\\":4}\",\"typeRef\":\"dataset1DataPoint1TypeRef\"},{\"name\":\"dataset1DataPoint2\",\"dataSource\":\"nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt4\",\"dataPointConfiguration\":\"{\\\"publishingInterval\\\":8,\\\"samplingInterval\\\":8,\\\"queueSize\\\":4}\",\"typeRef\":\"dataset1DataPoint2TypeRef\"}]}],\"events\":[{\"name\":\"event1\",\"eventNotifier\":\"nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt5\",\"eventConfiguration\":\"{\\\"publishingInterval\\\":7,\\\"samplingInterval\\\":1,\\\"queueSize\\\":8}\",\"typeRef\":\"event1Ref\",\"destinations\":[{\"target\":\"Mqtt\",\"configuration\":{\"topic\":\"/contoso/testEvent1\",\"retain\":\"Keep\",\"qos\":\"Qos0\",\"ttl\":7200}}],\"dataPoints\":[{\"name\":\"event1DataPoint1\",\"dataSource\":\"nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt6\",\"dataPointConfiguration\":\"{\\\"publishingInterval\\\":8,\\\"samplingInterval\\\":8,\\\"queueSize\\\":4}\"},{\"name\":\"event1DataPoint2\",\"dataSource\":\"nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt7\",\"dataPointConfiguration\":\"{\\\"publishingInterval\\\":8,\\\"samplingInterval\\\":8,\\\"queueSize\\\":4}\"}]},{\"name\":\"event2\",\"eventNotifier\":\"nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt8\",\"eventConfiguration\":\"{\\\"publishingInterval\\\":7,\\\"samplingInterval\\\":1,\\\"queueSize\\\":8}\",\"typeRef\":\"event2Ref\",\"destinations\":[{\"target\":\"Storage\",\"configuration\":{\"path\":\"/tmp/event2\"}}],\"dataPoints\":[{\"name\":\"event2DataPoint1\",\"dataSource\":\"nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt9\",\"dataPointConfiguration\":\"{\\\"publishingInterval\\\":8,\\\"samplingInterval\\\":8,\\\"queueSize\\\":4}\"},{\"name\":\"event2DataPoint2\",\"dataSource\":\"nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt10\",\"dataPointConfiguration\":\"{\\\"publishingInterval\\\":8,\\\"samplingInterval\\\":8,\\\"queueSize\\\":4}\"}]}],\"streams\":[{\"name\":\"stream1\",\"streamConfiguration\":\"{\\\"publishingInterval\\\":8,\\\"samplingInterval\\\":8,\\\"queueSize\\\":4}\",\"typeRef\":\"stream1TypeRef\",\"destinations\":[{\"target\":\"Storage\",\"configuration\":{\"path\":\"/tmp/stream1\"}}]},{\"name\":\"stream2\",\"streamConfiguration\":\"{\\\"publishingInterval\\\":8,\\\"samplingInterval\\\":8,\\\"queueSize\\\":4}\",\"typeRef\":\"stream2TypeRef\",\"destinations\":[{\"target\":\"Mqtt\",\"configuration\":{\"topic\":\"/contoso/testStream2\",\"retain\":\"Never\",\"qos\":\"Qos0\",\"ttl\":7200}}]}],\"managementGroups\":[{\"name\":\"managementGroup1\",\"managementGroupConfiguration\":\"{\\\"retryCount\\\":10,\\\"retryBackoffInterval\\\":15}\",\"typeRef\":\"managementGroup1TypeRef\",\"defaultTopic\":\"/contoso/managementGroup1\",\"defaultTimeoutInSeconds\":100,\"actions\":[{\"name\":\"action1\",\"actionConfiguration\":\"{\\\"retryCount\\\":5,\\\"retryBackoffInterval\\\":5}\",\"targetUri\":\"/onvif/device_service?ONVIFProfile=Profile1\",\"typeRef\":\"action1TypeRef\",\"topic\":\"/contoso/managementGroup1/action1\",\"actionType\":\"Call\",\"timeoutInSeconds\":60},{\"name\":\"action2\",\"actionConfiguration\":\"{\\\"retryCount\\\":5,\\\"retryBackoffInterval\\\":5}\",\"targetUri\":\"/onvif/device_service?ONVIFProfile=Profile2\",\"typeRef\":\"action2TypeRef\",\"topic\":\"/contoso/managementGroup1/action2\",\"actionType\":\"Call\",\"timeoutInSeconds\":60}]}],\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzDeviceRegistryNamespaceDiscoveredAsset+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredAssets/test-ns-dasset-delete?api-version=2025-10-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredAssets/test-ns-dasset-delete?api-version=2025-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "62" ],
+        "x-ms-client-request-id": [ "da5a248f-dfe5-45c3-a6e4-0508512e6187" ],
+        "CommandName": [ "New-AzDeviceRegistryNamespaceDiscoveredAsset" ],
+        "FullCommandName": [ "New-AzDeviceRegistryNamespaceDiscoveredAsset_CreateViaJsonFilePath" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.24", "Az.DeviceRegistry/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"db003e88-0000-0200-0000-6887dfcc0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "249" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "4c3e27f3-07fd-4846-8fba-56f46f22356f" ],
+        "x-ms-correlation-request-id": [ "1b020a52-1399-40e5-a2be-be310eed5b13" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20250728T203907Z:1b020a52-1399-40e5-a2be-be310eed5b13" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: D71E8D3CEB7F43DF8BDF2A39C71B5398 Ref B: MWH011020809025 Ref C: 2025-07-28T20:39:07Z" ],
+        "Date": [ "Mon, 28 Jul 2025 20:39:06 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "5494" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredAssets/test-ns-dasset-delete\",\"name\":\"test-ns-dasset-delete\",\"type\":\"microsoft.deviceregistry/namespaces/discoveredassets\",\"location\":\"eastus2\",\"extendedLocation\":{\"name\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.ExtendedLocation/customLocations/location-mkzkq\",\"type\":\"CustomLocation\"},\"tags\":{\"sensor\":\"temperature,humidity,pressure\"},\"systemData\":{\"createdBy\":\"rylo@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-07-28T20:38:36.6179939Z\",\"lastModifiedBy\":\"rylo@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-07-28T20:38:36.6179939Z\"},\"properties\":{\"deviceRef\":{\"deviceName\":\"myDeviceName\",\"endpointName\":\"myEndpointName\"},\"discoveryId\":\"myDiscoveryId\",\"version\":1,\"manufacturer\":\"Contoso123\",\"manufacturerUri\":\"https://www.contoso.com/manufacturerUri\",\"model\":\"ContosoModel\",\"productCode\":\"SA34VDG\",\"softwareRevision\":\"2.0\",\"documentationUri\":\"https://www.example.com/manual/\",\"serialNumber\":\"64-103816-519918-8\",\"defaultDatasetsConfiguration\":\"{\\\"defaultPublishingInterval\\\": 200, \\\"defaultSamplingInterval\\\": 500, \\\"defaultQueueSize\\\": 10}\",\"defaultEventsConfiguration\":\"{\\\"defaultPublishingInterval\\\": 200, \\\"defaultSamplingInterval\\\": 500, \\\"defaultQueueSize\\\": 10}\",\"defaultStreamsConfiguration\":\"{\\\"defaultPublishingInterval\\\": 200, \\\"defaultSamplingInterval\\\": 500, \\\"defaultQueueSize\\\": 10}\",\"defaultManagementGroupsConfiguration\":\"{\\\"retryCount\\\":10,\\\"retryBackoffInterval\\\":15}\",\"defaultDatasetsDestinations\":[{\"target\":\"BrokerStateStore\",\"configuration\":{\"key\":\"defaultValue\"}}],\"defaultEventsDestinations\":[{\"target\":\"Storage\",\"configuration\":{\"path\":\"/tmp\"}}],\"defaultStreamsDestinations\":[{\"target\":\"Mqtt\",\"configuration\":{\"topic\":\"/contoso/test\",\"retain\":\"Never\",\"qos\":\"Qos0\",\"ttl\":3600}}],\"datasets\":[{\"name\":\"dataset1\",\"dataSource\":\"nsu=http://microsoft.com/Opc/OpcPlc\"},{\"name\":\"dataSet2\",\"dataSource\":\"nsu=http://microsoft.com/Opc/OpcPlc/Oven;i=5\",\"typeRef\":\"dataset1TypeRef\",\"destinations\":[{\"target\":\"Mqtt\",\"configuration\":{\"topic\":\"/contoso/test2\",\"retain\":\"Keep\",\"qos\":\"Qos1\",\"ttl\":3600}}],\"datasetConfiguration\":\"{\\\"publishingInterval\\\":10,\\\"samplingInterval\\\":15,\\\"queueSize\\\":20}\",\"dataPoints\":[{\"name\":\"dataset1DataPoint1\",\"dataSource\":\"nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt3\",\"dataPointConfiguration\":\"{\\\"publishingInterval\\\":8,\\\"samplingInterval\\\":8,\\\"queueSize\\\":4}\",\"typeRef\":\"dataset1DataPoint1TypeRef\"},{\"name\":\"dataset1DataPoint2\",\"dataSource\":\"nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt4\",\"dataPointConfiguration\":\"{\\\"publishingInterval\\\":8,\\\"samplingInterval\\\":8,\\\"queueSize\\\":4}\",\"typeRef\":\"dataset1DataPoint2TypeRef\"}]}],\"events\":[{\"name\":\"event1\",\"eventNotifier\":\"nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt5\",\"eventConfiguration\":\"{\\\"publishingInterval\\\":7,\\\"samplingInterval\\\":1,\\\"queueSize\\\":8}\",\"typeRef\":\"event1Ref\",\"destinations\":[{\"target\":\"Mqtt\",\"configuration\":{\"topic\":\"/contoso/testEvent1\",\"retain\":\"Keep\",\"qos\":\"Qos0\",\"ttl\":7200}}],\"dataPoints\":[{\"name\":\"event1DataPoint1\",\"dataSource\":\"nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt6\",\"dataPointConfiguration\":\"{\\\"publishingInterval\\\":8,\\\"samplingInterval\\\":8,\\\"queueSize\\\":4}\"},{\"name\":\"event1DataPoint2\",\"dataSource\":\"nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt7\",\"dataPointConfiguration\":\"{\\\"publishingInterval\\\":8,\\\"samplingInterval\\\":8,\\\"queueSize\\\":4}\"}]},{\"name\":\"event2\",\"eventNotifier\":\"nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt8\",\"eventConfiguration\":\"{\\\"publishingInterval\\\":7,\\\"samplingInterval\\\":1,\\\"queueSize\\\":8}\",\"typeRef\":\"event2Ref\",\"destinations\":[{\"target\":\"Storage\",\"configuration\":{\"path\":\"/tmp/event2\"}}],\"dataPoints\":[{\"name\":\"event2DataPoint1\",\"dataSource\":\"nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt9\",\"dataPointConfiguration\":\"{\\\"publishingInterval\\\":8,\\\"samplingInterval\\\":8,\\\"queueSize\\\":4}\"},{\"name\":\"event2DataPoint2\",\"dataSource\":\"nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt10\",\"dataPointConfiguration\":\"{\\\"publishingInterval\\\":8,\\\"samplingInterval\\\":8,\\\"queueSize\\\":4}\"}]}],\"streams\":[{\"name\":\"stream1\",\"streamConfiguration\":\"{\\\"publishingInterval\\\":8,\\\"samplingInterval\\\":8,\\\"queueSize\\\":4}\",\"typeRef\":\"stream1TypeRef\",\"destinations\":[{\"target\":\"Storage\",\"configuration\":{\"path\":\"/tmp/stream1\"}}]},{\"name\":\"stream2\",\"streamConfiguration\":\"{\\\"publishingInterval\\\":8,\\\"samplingInterval\\\":8,\\\"queueSize\\\":4}\",\"typeRef\":\"stream2TypeRef\",\"destinations\":[{\"target\":\"Mqtt\",\"configuration\":{\"topic\":\"/contoso/testStream2\",\"retain\":\"Never\",\"qos\":\"Qos0\",\"ttl\":7200}}]}],\"managementGroups\":[{\"name\":\"managementGroup1\",\"managementGroupConfiguration\":\"{\\\"retryCount\\\":10,\\\"retryBackoffInterval\\\":15}\",\"typeRef\":\"managementGroup1TypeRef\",\"defaultTopic\":\"/contoso/managementGroup1\",\"defaultTimeoutInSeconds\":100,\"actions\":[{\"name\":\"action1\",\"actionConfiguration\":\"{\\\"retryCount\\\":5,\\\"retryBackoffInterval\\\":5}\",\"targetUri\":\"/onvif/device_service?ONVIFProfile=Profile1\",\"typeRef\":\"action1TypeRef\",\"topic\":\"/contoso/managementGroup1/action1\",\"actionType\":\"Call\",\"timeoutInSeconds\":60},{\"name\":\"action2\",\"actionConfiguration\":\"{\\\"retryCount\\\":5,\\\"retryBackoffInterval\\\":5}\",\"targetUri\":\"/onvif/device_service?ONVIFProfile=Profile2\",\"typeRef\":\"action2TypeRef\",\"topic\":\"/contoso/managementGroup1/action2\",\"actionType\":\"Call\",\"timeoutInSeconds\":60}]}],\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzDeviceRegistryNamespaceDiscoveredAsset+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredAssets/test-ns-dasset-delete?api-version=2025-10-01+4": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredAssets/test-ns-dasset-delete?api-version=2025-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "63" ],
+        "x-ms-client-request-id": [ "fb52aae9-311b-4b3f-940b-738bbd579968" ],
+        "CommandName": [ "Remove-AzDeviceRegistryNamespaceDiscoveredAsset" ],
+        "FullCommandName": [ "Remove-AzDeviceRegistryNamespaceDiscoveredAsset_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.24", "Az.DeviceRegistry/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "751ba029-90e0-4818-8339-6a8e4fe33ced" ],
+        "x-ms-request-id": [ "00000000-0000-0000-0000-000000000000" ],
+        "x-azure-ref": [ "20250728T203907Z-175b7fb5765v5zcxhC1BN19440000000015g000000006f27" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=e3029257-ff30-403c-a905-c87ef1aa933a/eastus2/d1422cc3-508b-4aa8-9298-c2b43d27475c" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "199" ],
+        "x-ms-correlation-request-id": [ "4efd3f03-1005-4354-abae-1c9e2bba36a4" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20250728T203907Z:4efd3f03-1005-4354-abae-1c9e2bba36a4" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-MSEdge-Ref": [ "Ref A: 7E34EFBB025F4ECF99CFEE10A0C23F9B Ref B: MWH011020809025 Ref C: 2025-07-28T20:39:07Z" ],
+        "Date": [ "Mon, 28 Jul 2025 20:39:07 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzDeviceRegistryNamespaceDiscoveredAsset+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredAssets/test-ns-dasset-delete?api-version=2025-10-01+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredAssets/test-ns-dasset-delete?api-version=2025-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "64" ],
+        "x-ms-client-request-id": [ "84255076-1449-40c6-bacd-35354a8e37f9" ],
+        "CommandName": [ "Get-AzDeviceRegistryNamespaceDiscoveredAsset" ],
+        "FullCommandName": [ "Get-AzDeviceRegistryNamespaceDiscoveredAsset_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.24", "Az.DeviceRegistry/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 404,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-failure-cause": [ "gateway" ],
+        "x-ms-request-id": [ "f627822d-5640-4bb3-9a05-99145717c83c" ],
+        "x-ms-correlation-request-id": [ "f627822d-5640-4bb3-9a05-99145717c83c" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20250728T203907Z:f627822d-5640-4bb3-9a05-99145717c83c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 271FB02A9F284BF08A1C735DAE7C7875 Ref B: MWH011020809025 Ref C: 2025-07-28T20:39:07Z" ],
+        "Date": [ "Mon, 28 Jul 2025 20:39:07 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "276" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource \u0027Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredAssets/test-ns-dasset-delete\u0027 under resource group \u0027adr-pwsh-test-rg\u0027 was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzDeviceRegistryNamespaceDiscoveredAsset+[NoContext]+DeleteViaIdentityNamespace+$PUT+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredAssets/test-ns-dasset-delete-via-identity-ns?api-version=2025-10-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredAssets/test-ns-dasset-delete-via-identity-ns?api-version=2025-10-01",
+      "Content": "ew0KICAibG9jYXRpb24iOiAiZWFzdHVzMiIsDQogICJleHRlbmRlZExvY2F0aW9uIjogew0KICAgICJ0eXBlIjogIkN1c3RvbUxvY2F0aW9uIiwNCiAgICAibmFtZSI6ICIvc3Vic2NyaXB0aW9ucy9lZmIxNTA4Ni0zMzIyLTQwNWQtYTlkMC1jMzU3MTVhOWI3MjIvcmVzb3VyY2VHcm91cHMvYWRyLXB3c2gtdGVzdC1yZy9wcm92aWRlcnMvTWljcm9zb2Z0LkV4dGVuZGVkTG9jYXRpb24vY3VzdG9tTG9jYXRpb25zL2xvY2F0aW9uLTJwbmg0Ig0KICB9LA0KICAidGFncyI6IHsNCiAgICAic2Vuc29yIjogInRlbXBlcmF0dXJlLGh1bWlkaXR5LHByZXNzdXJlIg0KICB9LA0KICAicHJvcGVydGllcyI6IHsNCiAgICAiZGV2aWNlUmVmIjogew0KICAgICAgImRldmljZU5hbWUiOiAibXlEZXZpY2VOYW1lIiwNCiAgICAgICJlbmRwb2ludE5hbWUiOiAibXlFbmRwb2ludE5hbWUiDQogICAgfSwNCiAgICAiZGlzY292ZXJ5SWQiOiAibXlEaXNjb3ZlcnlJZCIsDQogICAgInZlcnNpb24iOiAxLA0KICAgICJtYW51ZmFjdHVyZXIiOiAiQ29udG9zbzEyMyIsDQogICAgIm1hbnVmYWN0dXJlclVyaSI6ICJodHRwczovL3d3dy5jb250b3NvLmNvbS9tYW51ZmFjdHVyZXJVcmkiLA0KICAgICJtb2RlbCI6ICJDb250b3NvTW9kZWwiLA0KICAgICJwcm9kdWN0Q29kZSI6ICJTQTM0VkRHIiwNCiAgICAic29mdHdhcmVSZXZpc2lvbiI6ICIyLjAiLA0KICAgICJkb2N1bWVudGF0aW9uVXJpIjogImh0dHBzOi8vd3d3LmV4YW1wbGUuY29tL21hbnVhbC8iLA0KICAgICJzZXJpYWxOdW1iZXIiOiAiNjQtMTAzODE2LTUxOTkxOC04IiwNCiAgICAiZGVmYXVsdERhdGFzZXRzQ29uZmlndXJhdGlvbiI6ICJ7XCJkZWZhdWx0UHVibGlzaGluZ0ludGVydmFsXCI6IDIwMCwgXCJkZWZhdWx0U2FtcGxpbmdJbnRlcnZhbFwiOiA1MDAsIFwiZGVmYXVsdFF1ZXVlU2l6ZVwiOiAxMH0iLA0KICAgICJkZWZhdWx0RXZlbnRzQ29uZmlndXJhdGlvbiI6ICJ7XCJkZWZhdWx0UHVibGlzaGluZ0ludGVydmFsXCI6IDIwMCwgXCJkZWZhdWx0U2FtcGxpbmdJbnRlcnZhbFwiOiA1MDAsIFwiZGVmYXVsdFF1ZXVlU2l6ZVwiOiAxMH0iLA0KICAgICJkZWZhdWx0U3RyZWFtc0NvbmZpZ3VyYXRpb24iOiAie1wiZGVmYXVsdFB1Ymxpc2hpbmdJbnRlcnZhbFwiOiAyMDAsIFwiZGVmYXVsdFNhbXBsaW5nSW50ZXJ2YWxcIjogNTAwLCBcImRlZmF1bHRRdWV1ZVNpemVcIjogMTB9IiwNCiAgICAiZGVmYXVsdE1hbmFnZW1lbnRHcm91cHNDb25maWd1cmF0aW9uIjogIntcInJldHJ5Q291bnRcIjoxMCxcInJldHJ5QmFja29mZkludGVydmFsXCI6MTV9IiwNCiAgICAiZGVmYXVsdERhdGFzZXRzRGVzdGluYXRpb25zIjogWw0KICAgICAgew0KICAgICAgICAidGFyZ2V0IjogIkJyb2tlclN0YXRlU3RvcmUiLA0KICAgICAgICAiY29uZmlndXJhdGlvbiI6IHsNCiAgICAgICAgICAia2V5IjogImRlZmF1bHRWYWx1ZSINCiAgICAgICAgfQ0KICAgICAgfQ0KICAgIF0sDQogICAgImRlZmF1bHRFdmVudHNEZXN0aW5hdGlvbnMiOiBbDQogICAgICB7DQogICAgICAgICJ0YXJnZXQiOiAiU3RvcmFnZSIsDQogICAgICAgICJjb25maWd1cmF0aW9uIjogew0KICAgICAgICAgICJwYXRoIjogIi90bXAiDQogICAgICAgIH0NCiAgICAgIH0NCiAgICBdLA0KICAgICJkZWZhdWx0U3RyZWFtc0Rlc3RpbmF0aW9ucyI6IFsNCiAgICAgIHsNCiAgICAgICAgInRhcmdldCI6ICJNcXR0IiwNCiAgICAgICAgImNvbmZpZ3VyYXRpb24iOiB7DQogICAgICAgICAgInRvcGljIjogIi9jb250b3NvL3Rlc3QiLA0KICAgICAgICAgICJyZXRhaW4iOiAiTmV2ZXIiLA0KICAgICAgICAgICJxb3MiOiAiUW9zMCIsDQogICAgICAgICAgInR0bCI6IDM2MDANCiAgICAgICAgfQ0KICAgICAgfQ0KICAgIF0sDQogICAgImRhdGFzZXRzIjogWw0KICAgICAgew0KICAgICAgICAibmFtZSI6ICJkYXRhc2V0MSIsDQogICAgICAgICJkYXRhU291cmNlIjogIm5zdT1odHRwOi8vbWljcm9zb2Z0LmNvbS9PcGMvT3BjUGxjIg0KICAgICAgfSwNCiAgICAgIHsNCiAgICAgICAgIm5hbWUiOiAiZGF0YVNldDIiLA0KICAgICAgICAiZGF0YVNvdXJjZSI6ICJuc3U9aHR0cDovL21pY3Jvc29mdC5jb20vT3BjL09wY1BsYy9PdmVuO2k9NSIsDQogICAgICAgICJ0eXBlUmVmIjogImRhdGFzZXQxVHlwZVJlZiIsDQogICAgICAgICJkYXRhc2V0Q29uZmlndXJhdGlvbiI6ICJ7XCJwdWJsaXNoaW5nSW50ZXJ2YWxcIjoxMCxcInNhbXBsaW5nSW50ZXJ2YWxcIjoxNSxcInF1ZXVlU2l6ZVwiOjIwfSIsDQogICAgICAgICJkZXN0aW5hdGlvbnMiOiBbDQogICAgICAgICAgew0KICAgICAgICAgICAgInRhcmdldCI6ICJNcXR0IiwNCiAgICAgICAgICAgICJjb25maWd1cmF0aW9uIjogew0KICAgICAgICAgICAgICAidG9waWMiOiAiL2NvbnRvc28vdGVzdDIiLA0KICAgICAgICAgICAgICAicmV0YWluIjogIktlZXAiLA0KICAgICAgICAgICAgICAicW9zIjogIlFvczEiLA0KICAgICAgICAgICAgICAidHRsIjogMzYwMA0KICAgICAgICAgICAgfQ0KICAgICAgICAgIH0NCiAgICAgICAgXSwNCiAgICAgICAgImRhdGFQb2ludHMiOiBbDQogICAgICAgICAgew0KICAgICAgICAgICAgIm5hbWUiOiAiZGF0YXNldDFEYXRhUG9pbnQxIiwNCiAgICAgICAgICAgICJkYXRhU291cmNlIjogIm5zdT1odHRwOi8vbWljcm9zb2Z0LmNvbS9PcGMvT3BjUGxjLztzPUZhc3RVSW50MyIsDQogICAgICAgICAgICAiZGF0YVBvaW50Q29uZmlndXJhdGlvbiI6ICJ7XCJwdWJsaXNoaW5nSW50ZXJ2YWxcIjo4LFwic2FtcGxpbmdJbnRlcnZhbFwiOjgsXCJxdWV1ZVNpemVcIjo0fSIsDQogICAgICAgICAgICAidHlwZVJlZiI6ICJkYXRhc2V0MURhdGFQb2ludDFUeXBlUmVmIg0KICAgICAgICAgIH0sDQogICAgICAgICAgew0KICAgICAgICAgICAgIm5hbWUiOiAiZGF0YXNldDFEYXRhUG9pbnQyIiwNCiAgICAgICAgICAgICJkYXRhU291cmNlIjogIm5zdT1odHRwOi8vbWljcm9zb2Z0LmNvbS9PcGMvT3BjUGxjLztzPUZhc3RVSW50NCIsDQogICAgICAgICAgICAiZGF0YVBvaW50Q29uZmlndXJhdGlvbiI6ICJ7XCJwdWJsaXNoaW5nSW50ZXJ2YWxcIjo4LFwic2FtcGxpbmdJbnRlcnZhbFwiOjgsXCJxdWV1ZVNpemVcIjo0fSIsDQogICAgICAgICAgICAidHlwZVJlZiI6ICJkYXRhc2V0MURhdGFQb2ludDJUeXBlUmVmIg0KICAgICAgICAgIH0NCiAgICAgICAgXQ0KICAgICAgfQ0KICAgIF0sDQogICAgImV2ZW50cyI6IFsNCiAgICAgIHsNCiAgICAgICAgIm5hbWUiOiAiZXZlbnQxIiwNCiAgICAgICAgImV2ZW50Tm90aWZpZXIiOiAibnN1PWh0dHA6Ly9taWNyb3NvZnQuY29tL09wYy9PcGNQbGMvO3M9RmFzdFVJbnQ1IiwNCiAgICAgICAgImV2ZW50Q29uZmlndXJhdGlvbiI6ICJ7XCJwdWJsaXNoaW5nSW50ZXJ2YWxcIjo3LFwic2FtcGxpbmdJbnRlcnZhbFwiOjEsXCJxdWV1ZVNpemVcIjo4fSIsDQogICAgICAgICJkZXN0aW5hdGlvbnMiOiBbDQogICAgICAgICAgew0KICAgICAgICAgICAgInRhcmdldCI6ICJNcXR0IiwNCiAgICAgICAgICAgICJjb25maWd1cmF0aW9uIjogew0KICAgICAgICAgICAgICAidG9waWMiOiAiL2NvbnRvc28vdGVzdEV2ZW50MSIsDQogICAgICAgICAgICAgICJyZXRhaW4iOiAiS2VlcCIsDQogICAgICAgICAgICAgICJxb3MiOiAiUW9zMCIsDQogICAgICAgICAgICAgICJ0dGwiOiA3MjAwDQogICAgICAgICAgICB9DQogICAgICAgICAgfQ0KICAgICAgICBdLA0KICAgICAgICAidHlwZVJlZiI6ICJldmVudDFSZWYiLA0KICAgICAgICAiZGF0YVBvaW50cyI6IFsNCiAgICAgICAgICB7DQogICAgICAgICAgICAibmFtZSI6ICJldmVudDFEYXRhUG9pbnQxIiwNCiAgICAgICAgICAgICJkYXRhU291cmNlIjogIm5zdT1odHRwOi8vbWljcm9zb2Z0LmNvbS9PcGMvT3BjUGxjLztzPUZhc3RVSW50NiIsDQogICAgICAgICAgICAiZGF0YVBvaW50Q29uZmlndXJhdGlvbiI6ICJ7XCJwdWJsaXNoaW5nSW50ZXJ2YWxcIjo4LFwic2FtcGxpbmdJbnRlcnZhbFwiOjgsXCJxdWV1ZVNpemVcIjo0fSINCiAgICAgICAgICB9LA0KICAgICAgICAgIHsNCiAgICAgICAgICAgICJuYW1lIjogImV2ZW50MURhdGFQb2ludDIiLA0KICAgICAgICAgICAgImRhdGFTb3VyY2UiOiAibnN1PWh0dHA6Ly9taWNyb3NvZnQuY29tL09wYy9PcGNQbGMvO3M9RmFzdFVJbnQ3IiwNCiAgICAgICAgICAgICJkYXRhUG9pbnRDb25maWd1cmF0aW9uIjogIntcInB1Ymxpc2hpbmdJbnRlcnZhbFwiOjgsXCJzYW1wbGluZ0ludGVydmFsXCI6OCxcInF1ZXVlU2l6ZVwiOjR9Ig0KICAgICAgICAgIH0NCiAgICAgICAgXQ0KICAgICAgfSwNCiAgICAgIHsNCiAgICAgICAgIm5hbWUiOiAiZXZlbnQyIiwNCiAgICAgICAgImV2ZW50Tm90aWZpZXIiOiAibnN1PWh0dHA6Ly9taWNyb3NvZnQuY29tL09wYy9PcGNQbGMvO3M9RmFzdFVJbnQ4IiwNCiAgICAgICAgImV2ZW50Q29uZmlndXJhdGlvbiI6ICJ7XCJwdWJsaXNoaW5nSW50ZXJ2YWxcIjo3LFwic2FtcGxpbmdJbnRlcnZhbFwiOjEsXCJxdWV1ZVNpemVcIjo4fSIsDQogICAgICAgICJkZXN0aW5hdGlvbnMiOiBbDQogICAgICAgICAgew0KICAgICAgICAgICAgInRhcmdldCI6ICJTdG9yYWdlIiwNCiAgICAgICAgICAgICJjb25maWd1cmF0aW9uIjogew0KICAgICAgICAgICAgICAicGF0aCI6ICIvdG1wL2V2ZW50MiINCiAgICAgICAgICAgIH0NCiAgICAgICAgICB9DQogICAgICAgIF0sDQogICAgICAgICJ0eXBlUmVmIjogImV2ZW50MlJlZiIsDQogICAgICAgICJkYXRhUG9pbnRzIjogWw0KICAgICAgICAgIHsNCiAgICAgICAgICAgICJuYW1lIjogImV2ZW50MkRhdGFQb2ludDEiLA0KICAgICAgICAgICAgImRhdGFTb3VyY2UiOiAibnN1PWh0dHA6Ly9taWNyb3NvZnQuY29tL09wYy9PcGNQbGMvO3M9RmFzdFVJbnQ5IiwNCiAgICAgICAgICAgICJkYXRhUG9pbnRDb25maWd1cmF0aW9uIjogIntcInB1Ymxpc2hpbmdJbnRlcnZhbFwiOjgsXCJzYW1wbGluZ0ludGVydmFsXCI6OCxcInF1ZXVlU2l6ZVwiOjR9Ig0KICAgICAgICAgIH0sDQogICAgICAgICAgew0KICAgICAgICAgICAgIm5hbWUiOiAiZXZlbnQyRGF0YVBvaW50MiIsDQogICAgICAgICAgICAiZGF0YVNvdXJjZSI6ICJuc3U9aHR0cDovL21pY3Jvc29mdC5jb20vT3BjL09wY1BsYy87cz1GYXN0VUludDEwIiwNCiAgICAgICAgICAgICJkYXRhUG9pbnRDb25maWd1cmF0aW9uIjogIntcInB1Ymxpc2hpbmdJbnRlcnZhbFwiOjgsXCJzYW1wbGluZ0ludGVydmFsXCI6OCxcInF1ZXVlU2l6ZVwiOjR9Ig0KICAgICAgICAgIH0NCiAgICAgICAgXQ0KICAgICAgfQ0KICAgIF0sDQogICAgInN0cmVhbXMiOiBbDQogICAgICB7DQogICAgICAgICJuYW1lIjogInN0cmVhbTEiLA0KICAgICAgICAic3RyZWFtQ29uZmlndXJhdGlvbiI6ICJ7XCJwdWJsaXNoaW5nSW50ZXJ2YWxcIjo4LFwic2FtcGxpbmdJbnRlcnZhbFwiOjgsXCJxdWV1ZVNpemVcIjo0fSIsDQogICAgICAgICJ0eXBlUmVmIjogInN0cmVhbTFUeXBlUmVmIiwNCiAgICAgICAgImRlc3RpbmF0aW9ucyI6IFsNCiAgICAgICAgICB7DQogICAgICAgICAgICAidGFyZ2V0IjogIlN0b3JhZ2UiLA0KICAgICAgICAgICAgImNvbmZpZ3VyYXRpb24iOiB7DQogICAgICAgICAgICAgICJwYXRoIjogIi90bXAvc3RyZWFtMSINCiAgICAgICAgICAgIH0NCiAgICAgICAgICB9DQogICAgICAgIF0NCiAgICAgIH0sDQogICAgICB7DQogICAgICAgICJuYW1lIjogInN0cmVhbTIiLA0KICAgICAgICAic3RyZWFtQ29uZmlndXJhdGlvbiI6ICJ7XCJwdWJsaXNoaW5nSW50ZXJ2YWxcIjo4LFwic2FtcGxpbmdJbnRlcnZhbFwiOjgsXCJxdWV1ZVNpemVcIjo0fSIsDQogICAgICAgICJ0eXBlUmVmIjogInN0cmVhbTJUeXBlUmVmIiwNCiAgICAgICAgImRlc3RpbmF0aW9ucyI6IFsNCiAgICAgICAgICB7DQogICAgICAgICAgICAidGFyZ2V0IjogIk1xdHQiLA0KICAgICAgICAgICAgImNvbmZpZ3VyYXRpb24iOiB7DQogICAgICAgICAgICAgICJ0b3BpYyI6ICIvY29udG9zby90ZXN0U3RyZWFtMiIsDQogICAgICAgICAgICAgICJyZXRhaW4iOiAiTmV2ZXIiLA0KICAgICAgICAgICAgICAicW9zIjogIlFvczAiLA0KICAgICAgICAgICAgICAidHRsIjogNzIwMA0KICAgICAgICAgICAgfQ0KICAgICAgICAgIH0NCiAgICAgICAgXQ0KICAgICAgfQ0KICAgIF0sDQogICAgIm1hbmFnZW1lbnRHcm91cHMiOiBbDQogICAgICB7DQogICAgICAgICJuYW1lIjogIm1hbmFnZW1lbnRHcm91cDEiLA0KICAgICAgICAibWFuYWdlbWVudEdyb3VwQ29uZmlndXJhdGlvbiI6ICJ7XCJyZXRyeUNvdW50XCI6MTAsXCJyZXRyeUJhY2tvZmZJbnRlcnZhbFwiOjE1fSIsDQogICAgICAgICJ0eXBlUmVmIjogIm1hbmFnZW1lbnRHcm91cDFUeXBlUmVmIiwNCiAgICAgICAgImRlZmF1bHRUb3BpYyI6ICIvY29udG9zby9tYW5hZ2VtZW50R3JvdXAxIiwNCiAgICAgICAgImRlZmF1bHRUaW1lb3V0SW5TZWNvbmRzIjogMTAwLA0KICAgICAgICAiYWN0aW9ucyI6IFsNCiAgICAgICAgICB7DQogICAgICAgICAgICAibmFtZSI6ICJhY3Rpb24xIiwNCiAgICAgICAgICAgICJhY3Rpb25Db25maWd1cmF0aW9uIjogIntcInJldHJ5Q291bnRcIjo1LFwicmV0cnlCYWNrb2ZmSW50ZXJ2YWxcIjo1fSIsDQogICAgICAgICAgICAidGFyZ2V0VXJpIjogIi9vbnZpZi9kZXZpY2Vfc2VydmljZT9PTlZJRlByb2ZpbGU9UHJvZmlsZTEiLA0KICAgICAgICAgICAgInRvcGljIjogIi9jb250b3NvL21hbmFnZW1lbnRHcm91cDEvYWN0aW9uMSIsDQogICAgICAgICAgICAidHlwZVJlZiI6ICJhY3Rpb24xVHlwZVJlZiIsDQogICAgICAgICAgICAiYWN0aW9uVHlwZSI6ICJDYWxsIiwNCiAgICAgICAgICAgICJ0aW1lb3V0SW5TZWNvbmRzIjogNjANCiAgICAgICAgICB9LA0KICAgICAgICAgIHsNCiAgICAgICAgICAgICJuYW1lIjogImFjdGlvbjIiLA0KICAgICAgICAgICAgImFjdGlvbkNvbmZpZ3VyYXRpb24iOiAie1wicmV0cnlDb3VudFwiOjUsXCJyZXRyeUJhY2tvZmZJbnRlcnZhbFwiOjV9IiwNCiAgICAgICAgICAgICJ0YXJnZXRVcmkiOiAiL29udmlmL2RldmljZV9zZXJ2aWNlP09OVklGUHJvZmlsZT1Qcm9maWxlMiIsDQogICAgICAgICAgICAidG9waWMiOiAiL2NvbnRvc28vbWFuYWdlbWVudEdyb3VwMS9hY3Rpb24yIiwNCiAgICAgICAgICAgICJ0eXBlUmVmIjogImFjdGlvbjJUeXBlUmVmIiwNCiAgICAgICAgICAgICJhY3Rpb25UeXBlIjogIkNhbGwiLA0KICAgICAgICAgICAgInRpbWVvdXRJblNlY29uZHMiOiA2MA0KICAgICAgICAgIH0NCiAgICAgICAgXQ0KICAgICAgfQ0KICAgIF0NCiAgfQ0KfQ0K",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "7299" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Accept-Ranges": [ "bytes" ],
+        "ETag": [ "\"db00ba89-0000-0200-0000-6887dfec0000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=e3029257-ff30-403c-a905-c87ef1aa933a/eastus2/a2c4b642-f122-4b6f-88ab-a5f241032a64" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "dab0db1b-9c7e-46ff-83a8-09d0adbc5bbe" ],
+        "x-envoy-upstream-service-time": [ "3" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-azure-ref": [ "20250728T203908Z-175b7fb5765g9gnfhC1BN1c8d000000000v000000000fvqp" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "x-ms-request-id": [ "94b284c3-1087-4f55-9db8-92cec8d633a1" ],
+        "x-ms-correlation-request-id": [ "62e65315-2808-4284-9a80-bc602851b190" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "199" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20250728T203908Z:62e65315-2808-4284-9a80-bc602851b190" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-MSEdge-Ref": [ "Ref A: AF122EFDCD5841A9A05DC4500EFE508F Ref B: MWH011020809025 Ref C: 2025-07-28T20:39:08Z" ],
+        "Date": [ "Mon, 28 Jul 2025 20:39:08 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "5526" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredAssets/test-ns-dasset-delete-via-identity-ns\",\"name\":\"test-ns-dasset-delete-via-identity-ns\",\"type\":\"microsoft.deviceregistry/namespaces/discoveredassets\",\"location\":\"eastus2\",\"extendedLocation\":{\"name\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.ExtendedLocation/customLocations/location-mkzkq\",\"type\":\"CustomLocation\"},\"tags\":{\"sensor\":\"temperature,humidity,pressure\"},\"systemData\":{\"createdBy\":\"rylo@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-07-28T20:39:08.3994068Z\",\"lastModifiedBy\":\"rylo@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-07-28T20:39:08.3994068Z\"},\"properties\":{\"deviceRef\":{\"deviceName\":\"myDeviceName\",\"endpointName\":\"myEndpointName\"},\"discoveryId\":\"myDiscoveryId\",\"version\":1,\"manufacturer\":\"Contoso123\",\"manufacturerUri\":\"https://www.contoso.com/manufacturerUri\",\"model\":\"ContosoModel\",\"productCode\":\"SA34VDG\",\"softwareRevision\":\"2.0\",\"documentationUri\":\"https://www.example.com/manual/\",\"serialNumber\":\"64-103816-519918-8\",\"defaultDatasetsConfiguration\":\"{\\\"defaultPublishingInterval\\\": 200, \\\"defaultSamplingInterval\\\": 500, \\\"defaultQueueSize\\\": 10}\",\"defaultEventsConfiguration\":\"{\\\"defaultPublishingInterval\\\": 200, \\\"defaultSamplingInterval\\\": 500, \\\"defaultQueueSize\\\": 10}\",\"defaultStreamsConfiguration\":\"{\\\"defaultPublishingInterval\\\": 200, \\\"defaultSamplingInterval\\\": 500, \\\"defaultQueueSize\\\": 10}\",\"defaultManagementGroupsConfiguration\":\"{\\\"retryCount\\\":10,\\\"retryBackoffInterval\\\":15}\",\"defaultDatasetsDestinations\":[{\"target\":\"BrokerStateStore\",\"configuration\":{\"key\":\"defaultValue\"}}],\"defaultEventsDestinations\":[{\"target\":\"Storage\",\"configuration\":{\"path\":\"/tmp\"}}],\"defaultStreamsDestinations\":[{\"target\":\"Mqtt\",\"configuration\":{\"topic\":\"/contoso/test\",\"retain\":\"Never\",\"qos\":\"Qos0\",\"ttl\":3600}}],\"datasets\":[{\"name\":\"dataset1\",\"dataSource\":\"nsu=http://microsoft.com/Opc/OpcPlc\"},{\"name\":\"dataSet2\",\"dataSource\":\"nsu=http://microsoft.com/Opc/OpcPlc/Oven;i=5\",\"typeRef\":\"dataset1TypeRef\",\"destinations\":[{\"target\":\"Mqtt\",\"configuration\":{\"topic\":\"/contoso/test2\",\"retain\":\"Keep\",\"qos\":\"Qos1\",\"ttl\":3600}}],\"datasetConfiguration\":\"{\\\"publishingInterval\\\":10,\\\"samplingInterval\\\":15,\\\"queueSize\\\":20}\",\"dataPoints\":[{\"name\":\"dataset1DataPoint1\",\"dataSource\":\"nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt3\",\"dataPointConfiguration\":\"{\\\"publishingInterval\\\":8,\\\"samplingInterval\\\":8,\\\"queueSize\\\":4}\",\"typeRef\":\"dataset1DataPoint1TypeRef\"},{\"name\":\"dataset1DataPoint2\",\"dataSource\":\"nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt4\",\"dataPointConfiguration\":\"{\\\"publishingInterval\\\":8,\\\"samplingInterval\\\":8,\\\"queueSize\\\":4}\",\"typeRef\":\"dataset1DataPoint2TypeRef\"}]}],\"events\":[{\"name\":\"event1\",\"eventNotifier\":\"nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt5\",\"eventConfiguration\":\"{\\\"publishingInterval\\\":7,\\\"samplingInterval\\\":1,\\\"queueSize\\\":8}\",\"typeRef\":\"event1Ref\",\"destinations\":[{\"target\":\"Mqtt\",\"configuration\":{\"topic\":\"/contoso/testEvent1\",\"retain\":\"Keep\",\"qos\":\"Qos0\",\"ttl\":7200}}],\"dataPoints\":[{\"name\":\"event1DataPoint1\",\"dataSource\":\"nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt6\",\"dataPointConfiguration\":\"{\\\"publishingInterval\\\":8,\\\"samplingInterval\\\":8,\\\"queueSize\\\":4}\"},{\"name\":\"event1DataPoint2\",\"dataSource\":\"nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt7\",\"dataPointConfiguration\":\"{\\\"publishingInterval\\\":8,\\\"samplingInterval\\\":8,\\\"queueSize\\\":4}\"}]},{\"name\":\"event2\",\"eventNotifier\":\"nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt8\",\"eventConfiguration\":\"{\\\"publishingInterval\\\":7,\\\"samplingInterval\\\":1,\\\"queueSize\\\":8}\",\"typeRef\":\"event2Ref\",\"destinations\":[{\"target\":\"Storage\",\"configuration\":{\"path\":\"/tmp/event2\"}}],\"dataPoints\":[{\"name\":\"event2DataPoint1\",\"dataSource\":\"nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt9\",\"dataPointConfiguration\":\"{\\\"publishingInterval\\\":8,\\\"samplingInterval\\\":8,\\\"queueSize\\\":4}\"},{\"name\":\"event2DataPoint2\",\"dataSource\":\"nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt10\",\"dataPointConfiguration\":\"{\\\"publishingInterval\\\":8,\\\"samplingInterval\\\":8,\\\"queueSize\\\":4}\"}]}],\"streams\":[{\"name\":\"stream1\",\"streamConfiguration\":\"{\\\"publishingInterval\\\":8,\\\"samplingInterval\\\":8,\\\"queueSize\\\":4}\",\"typeRef\":\"stream1TypeRef\",\"destinations\":[{\"target\":\"Storage\",\"configuration\":{\"path\":\"/tmp/stream1\"}}]},{\"name\":\"stream2\",\"streamConfiguration\":\"{\\\"publishingInterval\\\":8,\\\"samplingInterval\\\":8,\\\"queueSize\\\":4}\",\"typeRef\":\"stream2TypeRef\",\"destinations\":[{\"target\":\"Mqtt\",\"configuration\":{\"topic\":\"/contoso/testStream2\",\"retain\":\"Never\",\"qos\":\"Qos0\",\"ttl\":7200}}]}],\"managementGroups\":[{\"name\":\"managementGroup1\",\"managementGroupConfiguration\":\"{\\\"retryCount\\\":10,\\\"retryBackoffInterval\\\":15}\",\"typeRef\":\"managementGroup1TypeRef\",\"defaultTopic\":\"/contoso/managementGroup1\",\"defaultTimeoutInSeconds\":100,\"actions\":[{\"name\":\"action1\",\"actionConfiguration\":\"{\\\"retryCount\\\":5,\\\"retryBackoffInterval\\\":5}\",\"targetUri\":\"/onvif/device_service?ONVIFProfile=Profile1\",\"typeRef\":\"action1TypeRef\",\"topic\":\"/contoso/managementGroup1/action1\",\"actionType\":\"Call\",\"timeoutInSeconds\":60},{\"name\":\"action2\",\"actionConfiguration\":\"{\\\"retryCount\\\":5,\\\"retryBackoffInterval\\\":5}\",\"targetUri\":\"/onvif/device_service?ONVIFProfile=Profile2\",\"typeRef\":\"action2TypeRef\",\"topic\":\"/contoso/managementGroup1/action2\",\"actionType\":\"Call\",\"timeoutInSeconds\":60}]}],\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzDeviceRegistryNamespaceDiscoveredAsset+[NoContext]+DeleteViaIdentityNamespace+$GET+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredAssets/test-ns-dasset-delete-via-identity-ns?api-version=2025-10-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredAssets/test-ns-dasset-delete-via-identity-ns?api-version=2025-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "66" ],
+        "x-ms-client-request-id": [ "7e5604c2-6785-46f0-88d0-bf86c2050f5e" ],
+        "CommandName": [ "New-AzDeviceRegistryNamespaceDiscoveredAsset" ],
+        "FullCommandName": [ "New-AzDeviceRegistryNamespaceDiscoveredAsset_CreateViaJsonFilePath" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.24", "Az.DeviceRegistry/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"db00ba89-0000-0200-0000-6887dfec0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "249" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "15e22865-b182-4eb1-98f2-fce21cd21832" ],
+        "x-ms-correlation-request-id": [ "564bab44-9ae4-4709-9065-afef839a56fa" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20250728T203938Z:564bab44-9ae4-4709-9065-afef839a56fa" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: EB81F74BF0504935862597B539E4D959 Ref B: MWH011020809025 Ref C: 2025-07-28T20:39:38Z" ],
+        "Date": [ "Mon, 28 Jul 2025 20:39:38 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "5526" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredAssets/test-ns-dasset-delete-via-identity-ns\",\"name\":\"test-ns-dasset-delete-via-identity-ns\",\"type\":\"microsoft.deviceregistry/namespaces/discoveredassets\",\"location\":\"eastus2\",\"extendedLocation\":{\"name\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.ExtendedLocation/customLocations/location-mkzkq\",\"type\":\"CustomLocation\"},\"tags\":{\"sensor\":\"temperature,humidity,pressure\"},\"systemData\":{\"createdBy\":\"rylo@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-07-28T20:39:08.3994068Z\",\"lastModifiedBy\":\"rylo@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-07-28T20:39:08.3994068Z\"},\"properties\":{\"deviceRef\":{\"deviceName\":\"myDeviceName\",\"endpointName\":\"myEndpointName\"},\"discoveryId\":\"myDiscoveryId\",\"version\":1,\"manufacturer\":\"Contoso123\",\"manufacturerUri\":\"https://www.contoso.com/manufacturerUri\",\"model\":\"ContosoModel\",\"productCode\":\"SA34VDG\",\"softwareRevision\":\"2.0\",\"documentationUri\":\"https://www.example.com/manual/\",\"serialNumber\":\"64-103816-519918-8\",\"defaultDatasetsConfiguration\":\"{\\\"defaultPublishingInterval\\\": 200, \\\"defaultSamplingInterval\\\": 500, \\\"defaultQueueSize\\\": 10}\",\"defaultEventsConfiguration\":\"{\\\"defaultPublishingInterval\\\": 200, \\\"defaultSamplingInterval\\\": 500, \\\"defaultQueueSize\\\": 10}\",\"defaultStreamsConfiguration\":\"{\\\"defaultPublishingInterval\\\": 200, \\\"defaultSamplingInterval\\\": 500, \\\"defaultQueueSize\\\": 10}\",\"defaultManagementGroupsConfiguration\":\"{\\\"retryCount\\\":10,\\\"retryBackoffInterval\\\":15}\",\"defaultDatasetsDestinations\":[{\"target\":\"BrokerStateStore\",\"configuration\":{\"key\":\"defaultValue\"}}],\"defaultEventsDestinations\":[{\"target\":\"Storage\",\"configuration\":{\"path\":\"/tmp\"}}],\"defaultStreamsDestinations\":[{\"target\":\"Mqtt\",\"configuration\":{\"topic\":\"/contoso/test\",\"retain\":\"Never\",\"qos\":\"Qos0\",\"ttl\":3600}}],\"datasets\":[{\"name\":\"dataset1\",\"dataSource\":\"nsu=http://microsoft.com/Opc/OpcPlc\"},{\"name\":\"dataSet2\",\"dataSource\":\"nsu=http://microsoft.com/Opc/OpcPlc/Oven;i=5\",\"typeRef\":\"dataset1TypeRef\",\"destinations\":[{\"target\":\"Mqtt\",\"configuration\":{\"topic\":\"/contoso/test2\",\"retain\":\"Keep\",\"qos\":\"Qos1\",\"ttl\":3600}}],\"datasetConfiguration\":\"{\\\"publishingInterval\\\":10,\\\"samplingInterval\\\":15,\\\"queueSize\\\":20}\",\"dataPoints\":[{\"name\":\"dataset1DataPoint1\",\"dataSource\":\"nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt3\",\"dataPointConfiguration\":\"{\\\"publishingInterval\\\":8,\\\"samplingInterval\\\":8,\\\"queueSize\\\":4}\",\"typeRef\":\"dataset1DataPoint1TypeRef\"},{\"name\":\"dataset1DataPoint2\",\"dataSource\":\"nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt4\",\"dataPointConfiguration\":\"{\\\"publishingInterval\\\":8,\\\"samplingInterval\\\":8,\\\"queueSize\\\":4}\",\"typeRef\":\"dataset1DataPoint2TypeRef\"}]}],\"events\":[{\"name\":\"event1\",\"eventNotifier\":\"nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt5\",\"eventConfiguration\":\"{\\\"publishingInterval\\\":7,\\\"samplingInterval\\\":1,\\\"queueSize\\\":8}\",\"typeRef\":\"event1Ref\",\"destinations\":[{\"target\":\"Mqtt\",\"configuration\":{\"topic\":\"/contoso/testEvent1\",\"retain\":\"Keep\",\"qos\":\"Qos0\",\"ttl\":7200}}],\"dataPoints\":[{\"name\":\"event1DataPoint1\",\"dataSource\":\"nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt6\",\"dataPointConfiguration\":\"{\\\"publishingInterval\\\":8,\\\"samplingInterval\\\":8,\\\"queueSize\\\":4}\"},{\"name\":\"event1DataPoint2\",\"dataSource\":\"nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt7\",\"dataPointConfiguration\":\"{\\\"publishingInterval\\\":8,\\\"samplingInterval\\\":8,\\\"queueSize\\\":4}\"}]},{\"name\":\"event2\",\"eventNotifier\":\"nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt8\",\"eventConfiguration\":\"{\\\"publishingInterval\\\":7,\\\"samplingInterval\\\":1,\\\"queueSize\\\":8}\",\"typeRef\":\"event2Ref\",\"destinations\":[{\"target\":\"Storage\",\"configuration\":{\"path\":\"/tmp/event2\"}}],\"dataPoints\":[{\"name\":\"event2DataPoint1\",\"dataSource\":\"nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt9\",\"dataPointConfiguration\":\"{\\\"publishingInterval\\\":8,\\\"samplingInterval\\\":8,\\\"queueSize\\\":4}\"},{\"name\":\"event2DataPoint2\",\"dataSource\":\"nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt10\",\"dataPointConfiguration\":\"{\\\"publishingInterval\\\":8,\\\"samplingInterval\\\":8,\\\"queueSize\\\":4}\"}]}],\"streams\":[{\"name\":\"stream1\",\"streamConfiguration\":\"{\\\"publishingInterval\\\":8,\\\"samplingInterval\\\":8,\\\"queueSize\\\":4}\",\"typeRef\":\"stream1TypeRef\",\"destinations\":[{\"target\":\"Storage\",\"configuration\":{\"path\":\"/tmp/stream1\"}}]},{\"name\":\"stream2\",\"streamConfiguration\":\"{\\\"publishingInterval\\\":8,\\\"samplingInterval\\\":8,\\\"queueSize\\\":4}\",\"typeRef\":\"stream2TypeRef\",\"destinations\":[{\"target\":\"Mqtt\",\"configuration\":{\"topic\":\"/contoso/testStream2\",\"retain\":\"Never\",\"qos\":\"Qos0\",\"ttl\":7200}}]}],\"managementGroups\":[{\"name\":\"managementGroup1\",\"managementGroupConfiguration\":\"{\\\"retryCount\\\":10,\\\"retryBackoffInterval\\\":15}\",\"typeRef\":\"managementGroup1TypeRef\",\"defaultTopic\":\"/contoso/managementGroup1\",\"defaultTimeoutInSeconds\":100,\"actions\":[{\"name\":\"action1\",\"actionConfiguration\":\"{\\\"retryCount\\\":5,\\\"retryBackoffInterval\\\":5}\",\"targetUri\":\"/onvif/device_service?ONVIFProfile=Profile1\",\"typeRef\":\"action1TypeRef\",\"topic\":\"/contoso/managementGroup1/action1\",\"actionType\":\"Call\",\"timeoutInSeconds\":60},{\"name\":\"action2\",\"actionConfiguration\":\"{\\\"retryCount\\\":5,\\\"retryBackoffInterval\\\":5}\",\"targetUri\":\"/onvif/device_service?ONVIFProfile=Profile2\",\"typeRef\":\"action2TypeRef\",\"topic\":\"/contoso/managementGroup1/action2\",\"actionType\":\"Call\",\"timeoutInSeconds\":60}]}],\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzDeviceRegistryNamespaceDiscoveredAsset+[NoContext]+DeleteViaIdentityNamespace+$GET+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredAssets/test-ns-dasset-delete-via-identity-ns?api-version=2025-10-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredAssets/test-ns-dasset-delete-via-identity-ns?api-version=2025-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "67" ],
+        "x-ms-client-request-id": [ "7e5604c2-6785-46f0-88d0-bf86c2050f5e" ],
+        "CommandName": [ "New-AzDeviceRegistryNamespaceDiscoveredAsset" ],
+        "FullCommandName": [ "New-AzDeviceRegistryNamespaceDiscoveredAsset_CreateViaJsonFilePath" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.24", "Az.DeviceRegistry/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"db00ba89-0000-0200-0000-6887dfec0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "249" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "c294ed16-fda3-40b3-a9b7-59f65c17a08b" ],
+        "x-ms-correlation-request-id": [ "346df790-dd59-4674-99ca-1f7ad58f1a7c" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20250728T203938Z:346df790-dd59-4674-99ca-1f7ad58f1a7c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 6B3B35C839824AB7AE58EF2C870DE168 Ref B: MWH011020809025 Ref C: 2025-07-28T20:39:38Z" ],
+        "Date": [ "Mon, 28 Jul 2025 20:39:38 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "5526" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredAssets/test-ns-dasset-delete-via-identity-ns\",\"name\":\"test-ns-dasset-delete-via-identity-ns\",\"type\":\"microsoft.deviceregistry/namespaces/discoveredassets\",\"location\":\"eastus2\",\"extendedLocation\":{\"name\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.ExtendedLocation/customLocations/location-mkzkq\",\"type\":\"CustomLocation\"},\"tags\":{\"sensor\":\"temperature,humidity,pressure\"},\"systemData\":{\"createdBy\":\"rylo@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-07-28T20:39:08.3994068Z\",\"lastModifiedBy\":\"rylo@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-07-28T20:39:08.3994068Z\"},\"properties\":{\"deviceRef\":{\"deviceName\":\"myDeviceName\",\"endpointName\":\"myEndpointName\"},\"discoveryId\":\"myDiscoveryId\",\"version\":1,\"manufacturer\":\"Contoso123\",\"manufacturerUri\":\"https://www.contoso.com/manufacturerUri\",\"model\":\"ContosoModel\",\"productCode\":\"SA34VDG\",\"softwareRevision\":\"2.0\",\"documentationUri\":\"https://www.example.com/manual/\",\"serialNumber\":\"64-103816-519918-8\",\"defaultDatasetsConfiguration\":\"{\\\"defaultPublishingInterval\\\": 200, \\\"defaultSamplingInterval\\\": 500, \\\"defaultQueueSize\\\": 10}\",\"defaultEventsConfiguration\":\"{\\\"defaultPublishingInterval\\\": 200, \\\"defaultSamplingInterval\\\": 500, \\\"defaultQueueSize\\\": 10}\",\"defaultStreamsConfiguration\":\"{\\\"defaultPublishingInterval\\\": 200, \\\"defaultSamplingInterval\\\": 500, \\\"defaultQueueSize\\\": 10}\",\"defaultManagementGroupsConfiguration\":\"{\\\"retryCount\\\":10,\\\"retryBackoffInterval\\\":15}\",\"defaultDatasetsDestinations\":[{\"target\":\"BrokerStateStore\",\"configuration\":{\"key\":\"defaultValue\"}}],\"defaultEventsDestinations\":[{\"target\":\"Storage\",\"configuration\":{\"path\":\"/tmp\"}}],\"defaultStreamsDestinations\":[{\"target\":\"Mqtt\",\"configuration\":{\"topic\":\"/contoso/test\",\"retain\":\"Never\",\"qos\":\"Qos0\",\"ttl\":3600}}],\"datasets\":[{\"name\":\"dataset1\",\"dataSource\":\"nsu=http://microsoft.com/Opc/OpcPlc\"},{\"name\":\"dataSet2\",\"dataSource\":\"nsu=http://microsoft.com/Opc/OpcPlc/Oven;i=5\",\"typeRef\":\"dataset1TypeRef\",\"destinations\":[{\"target\":\"Mqtt\",\"configuration\":{\"topic\":\"/contoso/test2\",\"retain\":\"Keep\",\"qos\":\"Qos1\",\"ttl\":3600}}],\"datasetConfiguration\":\"{\\\"publishingInterval\\\":10,\\\"samplingInterval\\\":15,\\\"queueSize\\\":20}\",\"dataPoints\":[{\"name\":\"dataset1DataPoint1\",\"dataSource\":\"nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt3\",\"dataPointConfiguration\":\"{\\\"publishingInterval\\\":8,\\\"samplingInterval\\\":8,\\\"queueSize\\\":4}\",\"typeRef\":\"dataset1DataPoint1TypeRef\"},{\"name\":\"dataset1DataPoint2\",\"dataSource\":\"nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt4\",\"dataPointConfiguration\":\"{\\\"publishingInterval\\\":8,\\\"samplingInterval\\\":8,\\\"queueSize\\\":4}\",\"typeRef\":\"dataset1DataPoint2TypeRef\"}]}],\"events\":[{\"name\":\"event1\",\"eventNotifier\":\"nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt5\",\"eventConfiguration\":\"{\\\"publishingInterval\\\":7,\\\"samplingInterval\\\":1,\\\"queueSize\\\":8}\",\"typeRef\":\"event1Ref\",\"destinations\":[{\"target\":\"Mqtt\",\"configuration\":{\"topic\":\"/contoso/testEvent1\",\"retain\":\"Keep\",\"qos\":\"Qos0\",\"ttl\":7200}}],\"dataPoints\":[{\"name\":\"event1DataPoint1\",\"dataSource\":\"nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt6\",\"dataPointConfiguration\":\"{\\\"publishingInterval\\\":8,\\\"samplingInterval\\\":8,\\\"queueSize\\\":4}\"},{\"name\":\"event1DataPoint2\",\"dataSource\":\"nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt7\",\"dataPointConfiguration\":\"{\\\"publishingInterval\\\":8,\\\"samplingInterval\\\":8,\\\"queueSize\\\":4}\"}]},{\"name\":\"event2\",\"eventNotifier\":\"nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt8\",\"eventConfiguration\":\"{\\\"publishingInterval\\\":7,\\\"samplingInterval\\\":1,\\\"queueSize\\\":8}\",\"typeRef\":\"event2Ref\",\"destinations\":[{\"target\":\"Storage\",\"configuration\":{\"path\":\"/tmp/event2\"}}],\"dataPoints\":[{\"name\":\"event2DataPoint1\",\"dataSource\":\"nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt9\",\"dataPointConfiguration\":\"{\\\"publishingInterval\\\":8,\\\"samplingInterval\\\":8,\\\"queueSize\\\":4}\"},{\"name\":\"event2DataPoint2\",\"dataSource\":\"nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt10\",\"dataPointConfiguration\":\"{\\\"publishingInterval\\\":8,\\\"samplingInterval\\\":8,\\\"queueSize\\\":4}\"}]}],\"streams\":[{\"name\":\"stream1\",\"streamConfiguration\":\"{\\\"publishingInterval\\\":8,\\\"samplingInterval\\\":8,\\\"queueSize\\\":4}\",\"typeRef\":\"stream1TypeRef\",\"destinations\":[{\"target\":\"Storage\",\"configuration\":{\"path\":\"/tmp/stream1\"}}]},{\"name\":\"stream2\",\"streamConfiguration\":\"{\\\"publishingInterval\\\":8,\\\"samplingInterval\\\":8,\\\"queueSize\\\":4}\",\"typeRef\":\"stream2TypeRef\",\"destinations\":[{\"target\":\"Mqtt\",\"configuration\":{\"topic\":\"/contoso/testStream2\",\"retain\":\"Never\",\"qos\":\"Qos0\",\"ttl\":7200}}]}],\"managementGroups\":[{\"name\":\"managementGroup1\",\"managementGroupConfiguration\":\"{\\\"retryCount\\\":10,\\\"retryBackoffInterval\\\":15}\",\"typeRef\":\"managementGroup1TypeRef\",\"defaultTopic\":\"/contoso/managementGroup1\",\"defaultTimeoutInSeconds\":100,\"actions\":[{\"name\":\"action1\",\"actionConfiguration\":\"{\\\"retryCount\\\":5,\\\"retryBackoffInterval\\\":5}\",\"targetUri\":\"/onvif/device_service?ONVIFProfile=Profile1\",\"typeRef\":\"action1TypeRef\",\"topic\":\"/contoso/managementGroup1/action1\",\"actionType\":\"Call\",\"timeoutInSeconds\":60},{\"name\":\"action2\",\"actionConfiguration\":\"{\\\"retryCount\\\":5,\\\"retryBackoffInterval\\\":5}\",\"targetUri\":\"/onvif/device_service?ONVIFProfile=Profile2\",\"typeRef\":\"action2TypeRef\",\"topic\":\"/contoso/managementGroup1/action2\",\"actionType\":\"Call\",\"timeoutInSeconds\":60}]}],\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzDeviceRegistryNamespaceDiscoveredAsset+[NoContext]+DeleteViaIdentityNamespace+$DELETE+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredAssets/test-ns-dasset-delete-via-identity-ns?api-version=2025-10-01+4": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredAssets/test-ns-dasset-delete-via-identity-ns?api-version=2025-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "68" ],
+        "x-ms-client-request-id": [ "44361929-3b08-4641-8298-37968d3f0f33" ],
+        "CommandName": [ "Remove-AzDeviceRegistryNamespaceDiscoveredAsset" ],
+        "FullCommandName": [ "Remove-AzDeviceRegistryNamespaceDiscoveredAsset_DeleteViaIdentityNamespace" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.24", "Az.DeviceRegistry/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "0fd921cc-e418-49d5-93f7-729656fc4ee1" ],
+        "x-ms-request-id": [ "00000000-0000-0000-0000-000000000000" ],
+        "x-azure-ref": [ "20250728T203939Z-175b7fb5765rdfj6hC1BN1u1s800000000x000000000898y" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=e3029257-ff30-403c-a905-c87ef1aa933a/eastus2/e28ce9e2-1588-42f4-a52c-1c543a118ec5" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "199" ],
+        "x-ms-correlation-request-id": [ "45c3945b-b187-4c42-8f65-538cd6bfc201" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20250728T203939Z:45c3945b-b187-4c42-8f65-538cd6bfc201" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-MSEdge-Ref": [ "Ref A: 0877DA949DE54932B70607BF0E8ACDA7 Ref B: MWH011020809025 Ref C: 2025-07-28T20:39:39Z" ],
+        "Date": [ "Mon, 28 Jul 2025 20:39:39 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzDeviceRegistryNamespaceDiscoveredAsset+[NoContext]+DeleteViaIdentityNamespace+$GET+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredAssets/test-ns-dasset-delete-via-identity-ns?api-version=2025-10-01+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredAssets/test-ns-dasset-delete-via-identity-ns?api-version=2025-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "69" ],
+        "x-ms-client-request-id": [ "76a8898a-0ddb-48c2-bd07-b878bbe7dc38" ],
+        "CommandName": [ "Get-AzDeviceRegistryNamespaceDiscoveredAsset" ],
+        "FullCommandName": [ "Get-AzDeviceRegistryNamespaceDiscoveredAsset_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.24", "Az.DeviceRegistry/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 404,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-failure-cause": [ "gateway" ],
+        "x-ms-request-id": [ "a4ef25eb-dba5-445e-bef7-77a35b2acca5" ],
+        "x-ms-correlation-request-id": [ "a4ef25eb-dba5-445e-bef7-77a35b2acca5" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20250728T203939Z:a4ef25eb-dba5-445e-bef7-77a35b2acca5" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 807FE605261E420FBED68B4683E2B5F4 Ref B: MWH011020809025 Ref C: 2025-07-28T20:39:39Z" ],
+        "Date": [ "Mon, 28 Jul 2025 20:39:39 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "292" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource \u0027Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredAssets/test-ns-dasset-delete-via-identity-ns\u0027 under resource group \u0027adr-pwsh-test-rg\u0027 was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzDeviceRegistryNamespaceDiscoveredAsset+[NoContext]+DeleteViaIdentity+$PUT+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredAssets/test-ns-dasset-delete-via-identity?api-version=2025-10-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredAssets/test-ns-dasset-delete-via-identity?api-version=2025-10-01",
+      "Content": "ew0KICAibG9jYXRpb24iOiAiZWFzdHVzMiIsDQogICJleHRlbmRlZExvY2F0aW9uIjogew0KICAgICJ0eXBlIjogIkN1c3RvbUxvY2F0aW9uIiwNCiAgICAibmFtZSI6ICIvc3Vic2NyaXB0aW9ucy9lZmIxNTA4Ni0zMzIyLTQwNWQtYTlkMC1jMzU3MTVhOWI3MjIvcmVzb3VyY2VHcm91cHMvYWRyLXB3c2gtdGVzdC1yZy9wcm92aWRlcnMvTWljcm9zb2Z0LkV4dGVuZGVkTG9jYXRpb24vY3VzdG9tTG9jYXRpb25zL2xvY2F0aW9uLTJwbmg0Ig0KICB9LA0KICAidGFncyI6IHsNCiAgICAic2Vuc29yIjogInRlbXBlcmF0dXJlLGh1bWlkaXR5LHByZXNzdXJlIg0KICB9LA0KICAicHJvcGVydGllcyI6IHsNCiAgICAiZGV2aWNlUmVmIjogew0KICAgICAgImRldmljZU5hbWUiOiAibXlEZXZpY2VOYW1lIiwNCiAgICAgICJlbmRwb2ludE5hbWUiOiAibXlFbmRwb2ludE5hbWUiDQogICAgfSwNCiAgICAiZGlzY292ZXJ5SWQiOiAibXlEaXNjb3ZlcnlJZCIsDQogICAgInZlcnNpb24iOiAxLA0KICAgICJtYW51ZmFjdHVyZXIiOiAiQ29udG9zbzEyMyIsDQogICAgIm1hbnVmYWN0dXJlclVyaSI6ICJodHRwczovL3d3dy5jb250b3NvLmNvbS9tYW51ZmFjdHVyZXJVcmkiLA0KICAgICJtb2RlbCI6ICJDb250b3NvTW9kZWwiLA0KICAgICJwcm9kdWN0Q29kZSI6ICJTQTM0VkRHIiwNCiAgICAic29mdHdhcmVSZXZpc2lvbiI6ICIyLjAiLA0KICAgICJkb2N1bWVudGF0aW9uVXJpIjogImh0dHBzOi8vd3d3LmV4YW1wbGUuY29tL21hbnVhbC8iLA0KICAgICJzZXJpYWxOdW1iZXIiOiAiNjQtMTAzODE2LTUxOTkxOC04IiwNCiAgICAiZGVmYXVsdERhdGFzZXRzQ29uZmlndXJhdGlvbiI6ICJ7XCJkZWZhdWx0UHVibGlzaGluZ0ludGVydmFsXCI6IDIwMCwgXCJkZWZhdWx0U2FtcGxpbmdJbnRlcnZhbFwiOiA1MDAsIFwiZGVmYXVsdFF1ZXVlU2l6ZVwiOiAxMH0iLA0KICAgICJkZWZhdWx0RXZlbnRzQ29uZmlndXJhdGlvbiI6ICJ7XCJkZWZhdWx0UHVibGlzaGluZ0ludGVydmFsXCI6IDIwMCwgXCJkZWZhdWx0U2FtcGxpbmdJbnRlcnZhbFwiOiA1MDAsIFwiZGVmYXVsdFF1ZXVlU2l6ZVwiOiAxMH0iLA0KICAgICJkZWZhdWx0U3RyZWFtc0NvbmZpZ3VyYXRpb24iOiAie1wiZGVmYXVsdFB1Ymxpc2hpbmdJbnRlcnZhbFwiOiAyMDAsIFwiZGVmYXVsdFNhbXBsaW5nSW50ZXJ2YWxcIjogNTAwLCBcImRlZmF1bHRRdWV1ZVNpemVcIjogMTB9IiwNCiAgICAiZGVmYXVsdE1hbmFnZW1lbnRHcm91cHNDb25maWd1cmF0aW9uIjogIntcInJldHJ5Q291bnRcIjoxMCxcInJldHJ5QmFja29mZkludGVydmFsXCI6MTV9IiwNCiAgICAiZGVmYXVsdERhdGFzZXRzRGVzdGluYXRpb25zIjogWw0KICAgICAgew0KICAgICAgICAidGFyZ2V0IjogIkJyb2tlclN0YXRlU3RvcmUiLA0KICAgICAgICAiY29uZmlndXJhdGlvbiI6IHsNCiAgICAgICAgICAia2V5IjogImRlZmF1bHRWYWx1ZSINCiAgICAgICAgfQ0KICAgICAgfQ0KICAgIF0sDQogICAgImRlZmF1bHRFdmVudHNEZXN0aW5hdGlvbnMiOiBbDQogICAgICB7DQogICAgICAgICJ0YXJnZXQiOiAiU3RvcmFnZSIsDQogICAgICAgICJjb25maWd1cmF0aW9uIjogew0KICAgICAgICAgICJwYXRoIjogIi90bXAiDQogICAgICAgIH0NCiAgICAgIH0NCiAgICBdLA0KICAgICJkZWZhdWx0U3RyZWFtc0Rlc3RpbmF0aW9ucyI6IFsNCiAgICAgIHsNCiAgICAgICAgInRhcmdldCI6ICJNcXR0IiwNCiAgICAgICAgImNvbmZpZ3VyYXRpb24iOiB7DQogICAgICAgICAgInRvcGljIjogIi9jb250b3NvL3Rlc3QiLA0KICAgICAgICAgICJyZXRhaW4iOiAiTmV2ZXIiLA0KICAgICAgICAgICJxb3MiOiAiUW9zMCIsDQogICAgICAgICAgInR0bCI6IDM2MDANCiAgICAgICAgfQ0KICAgICAgfQ0KICAgIF0sDQogICAgImRhdGFzZXRzIjogWw0KICAgICAgew0KICAgICAgICAibmFtZSI6ICJkYXRhc2V0MSIsDQogICAgICAgICJkYXRhU291cmNlIjogIm5zdT1odHRwOi8vbWljcm9zb2Z0LmNvbS9PcGMvT3BjUGxjIg0KICAgICAgfSwNCiAgICAgIHsNCiAgICAgICAgIm5hbWUiOiAiZGF0YVNldDIiLA0KICAgICAgICAiZGF0YVNvdXJjZSI6ICJuc3U9aHR0cDovL21pY3Jvc29mdC5jb20vT3BjL09wY1BsYy9PdmVuO2k9NSIsDQogICAgICAgICJ0eXBlUmVmIjogImRhdGFzZXQxVHlwZVJlZiIsDQogICAgICAgICJkYXRhc2V0Q29uZmlndXJhdGlvbiI6ICJ7XCJwdWJsaXNoaW5nSW50ZXJ2YWxcIjoxMCxcInNhbXBsaW5nSW50ZXJ2YWxcIjoxNSxcInF1ZXVlU2l6ZVwiOjIwfSIsDQogICAgICAgICJkZXN0aW5hdGlvbnMiOiBbDQogICAgICAgICAgew0KICAgICAgICAgICAgInRhcmdldCI6ICJNcXR0IiwNCiAgICAgICAgICAgICJjb25maWd1cmF0aW9uIjogew0KICAgICAgICAgICAgICAidG9waWMiOiAiL2NvbnRvc28vdGVzdDIiLA0KICAgICAgICAgICAgICAicmV0YWluIjogIktlZXAiLA0KICAgICAgICAgICAgICAicW9zIjogIlFvczEiLA0KICAgICAgICAgICAgICAidHRsIjogMzYwMA0KICAgICAgICAgICAgfQ0KICAgICAgICAgIH0NCiAgICAgICAgXSwNCiAgICAgICAgImRhdGFQb2ludHMiOiBbDQogICAgICAgICAgew0KICAgICAgICAgICAgIm5hbWUiOiAiZGF0YXNldDFEYXRhUG9pbnQxIiwNCiAgICAgICAgICAgICJkYXRhU291cmNlIjogIm5zdT1odHRwOi8vbWljcm9zb2Z0LmNvbS9PcGMvT3BjUGxjLztzPUZhc3RVSW50MyIsDQogICAgICAgICAgICAiZGF0YVBvaW50Q29uZmlndXJhdGlvbiI6ICJ7XCJwdWJsaXNoaW5nSW50ZXJ2YWxcIjo4LFwic2FtcGxpbmdJbnRlcnZhbFwiOjgsXCJxdWV1ZVNpemVcIjo0fSIsDQogICAgICAgICAgICAidHlwZVJlZiI6ICJkYXRhc2V0MURhdGFQb2ludDFUeXBlUmVmIg0KICAgICAgICAgIH0sDQogICAgICAgICAgew0KICAgICAgICAgICAgIm5hbWUiOiAiZGF0YXNldDFEYXRhUG9pbnQyIiwNCiAgICAgICAgICAgICJkYXRhU291cmNlIjogIm5zdT1odHRwOi8vbWljcm9zb2Z0LmNvbS9PcGMvT3BjUGxjLztzPUZhc3RVSW50NCIsDQogICAgICAgICAgICAiZGF0YVBvaW50Q29uZmlndXJhdGlvbiI6ICJ7XCJwdWJsaXNoaW5nSW50ZXJ2YWxcIjo4LFwic2FtcGxpbmdJbnRlcnZhbFwiOjgsXCJxdWV1ZVNpemVcIjo0fSIsDQogICAgICAgICAgICAidHlwZVJlZiI6ICJkYXRhc2V0MURhdGFQb2ludDJUeXBlUmVmIg0KICAgICAgICAgIH0NCiAgICAgICAgXQ0KICAgICAgfQ0KICAgIF0sDQogICAgImV2ZW50cyI6IFsNCiAgICAgIHsNCiAgICAgICAgIm5hbWUiOiAiZXZlbnQxIiwNCiAgICAgICAgImV2ZW50Tm90aWZpZXIiOiAibnN1PWh0dHA6Ly9taWNyb3NvZnQuY29tL09wYy9PcGNQbGMvO3M9RmFzdFVJbnQ1IiwNCiAgICAgICAgImV2ZW50Q29uZmlndXJhdGlvbiI6ICJ7XCJwdWJsaXNoaW5nSW50ZXJ2YWxcIjo3LFwic2FtcGxpbmdJbnRlcnZhbFwiOjEsXCJxdWV1ZVNpemVcIjo4fSIsDQogICAgICAgICJkZXN0aW5hdGlvbnMiOiBbDQogICAgICAgICAgew0KICAgICAgICAgICAgInRhcmdldCI6ICJNcXR0IiwNCiAgICAgICAgICAgICJjb25maWd1cmF0aW9uIjogew0KICAgICAgICAgICAgICAidG9waWMiOiAiL2NvbnRvc28vdGVzdEV2ZW50MSIsDQogICAgICAgICAgICAgICJyZXRhaW4iOiAiS2VlcCIsDQogICAgICAgICAgICAgICJxb3MiOiAiUW9zMCIsDQogICAgICAgICAgICAgICJ0dGwiOiA3MjAwDQogICAgICAgICAgICB9DQogICAgICAgICAgfQ0KICAgICAgICBdLA0KICAgICAgICAidHlwZVJlZiI6ICJldmVudDFSZWYiLA0KICAgICAgICAiZGF0YVBvaW50cyI6IFsNCiAgICAgICAgICB7DQogICAgICAgICAgICAibmFtZSI6ICJldmVudDFEYXRhUG9pbnQxIiwNCiAgICAgICAgICAgICJkYXRhU291cmNlIjogIm5zdT1odHRwOi8vbWljcm9zb2Z0LmNvbS9PcGMvT3BjUGxjLztzPUZhc3RVSW50NiIsDQogICAgICAgICAgICAiZGF0YVBvaW50Q29uZmlndXJhdGlvbiI6ICJ7XCJwdWJsaXNoaW5nSW50ZXJ2YWxcIjo4LFwic2FtcGxpbmdJbnRlcnZhbFwiOjgsXCJxdWV1ZVNpemVcIjo0fSINCiAgICAgICAgICB9LA0KICAgICAgICAgIHsNCiAgICAgICAgICAgICJuYW1lIjogImV2ZW50MURhdGFQb2ludDIiLA0KICAgICAgICAgICAgImRhdGFTb3VyY2UiOiAibnN1PWh0dHA6Ly9taWNyb3NvZnQuY29tL09wYy9PcGNQbGMvO3M9RmFzdFVJbnQ3IiwNCiAgICAgICAgICAgICJkYXRhUG9pbnRDb25maWd1cmF0aW9uIjogIntcInB1Ymxpc2hpbmdJbnRlcnZhbFwiOjgsXCJzYW1wbGluZ0ludGVydmFsXCI6OCxcInF1ZXVlU2l6ZVwiOjR9Ig0KICAgICAgICAgIH0NCiAgICAgICAgXQ0KICAgICAgfSwNCiAgICAgIHsNCiAgICAgICAgIm5hbWUiOiAiZXZlbnQyIiwNCiAgICAgICAgImV2ZW50Tm90aWZpZXIiOiAibnN1PWh0dHA6Ly9taWNyb3NvZnQuY29tL09wYy9PcGNQbGMvO3M9RmFzdFVJbnQ4IiwNCiAgICAgICAgImV2ZW50Q29uZmlndXJhdGlvbiI6ICJ7XCJwdWJsaXNoaW5nSW50ZXJ2YWxcIjo3LFwic2FtcGxpbmdJbnRlcnZhbFwiOjEsXCJxdWV1ZVNpemVcIjo4fSIsDQogICAgICAgICJkZXN0aW5hdGlvbnMiOiBbDQogICAgICAgICAgew0KICAgICAgICAgICAgInRhcmdldCI6ICJTdG9yYWdlIiwNCiAgICAgICAgICAgICJjb25maWd1cmF0aW9uIjogew0KICAgICAgICAgICAgICAicGF0aCI6ICIvdG1wL2V2ZW50MiINCiAgICAgICAgICAgIH0NCiAgICAgICAgICB9DQogICAgICAgIF0sDQogICAgICAgICJ0eXBlUmVmIjogImV2ZW50MlJlZiIsDQogICAgICAgICJkYXRhUG9pbnRzIjogWw0KICAgICAgICAgIHsNCiAgICAgICAgICAgICJuYW1lIjogImV2ZW50MkRhdGFQb2ludDEiLA0KICAgICAgICAgICAgImRhdGFTb3VyY2UiOiAibnN1PWh0dHA6Ly9taWNyb3NvZnQuY29tL09wYy9PcGNQbGMvO3M9RmFzdFVJbnQ5IiwNCiAgICAgICAgICAgICJkYXRhUG9pbnRDb25maWd1cmF0aW9uIjogIntcInB1Ymxpc2hpbmdJbnRlcnZhbFwiOjgsXCJzYW1wbGluZ0ludGVydmFsXCI6OCxcInF1ZXVlU2l6ZVwiOjR9Ig0KICAgICAgICAgIH0sDQogICAgICAgICAgew0KICAgICAgICAgICAgIm5hbWUiOiAiZXZlbnQyRGF0YVBvaW50MiIsDQogICAgICAgICAgICAiZGF0YVNvdXJjZSI6ICJuc3U9aHR0cDovL21pY3Jvc29mdC5jb20vT3BjL09wY1BsYy87cz1GYXN0VUludDEwIiwNCiAgICAgICAgICAgICJkYXRhUG9pbnRDb25maWd1cmF0aW9uIjogIntcInB1Ymxpc2hpbmdJbnRlcnZhbFwiOjgsXCJzYW1wbGluZ0ludGVydmFsXCI6OCxcInF1ZXVlU2l6ZVwiOjR9Ig0KICAgICAgICAgIH0NCiAgICAgICAgXQ0KICAgICAgfQ0KICAgIF0sDQogICAgInN0cmVhbXMiOiBbDQogICAgICB7DQogICAgICAgICJuYW1lIjogInN0cmVhbTEiLA0KICAgICAgICAic3RyZWFtQ29uZmlndXJhdGlvbiI6ICJ7XCJwdWJsaXNoaW5nSW50ZXJ2YWxcIjo4LFwic2FtcGxpbmdJbnRlcnZhbFwiOjgsXCJxdWV1ZVNpemVcIjo0fSIsDQogICAgICAgICJ0eXBlUmVmIjogInN0cmVhbTFUeXBlUmVmIiwNCiAgICAgICAgImRlc3RpbmF0aW9ucyI6IFsNCiAgICAgICAgICB7DQogICAgICAgICAgICAidGFyZ2V0IjogIlN0b3JhZ2UiLA0KICAgICAgICAgICAgImNvbmZpZ3VyYXRpb24iOiB7DQogICAgICAgICAgICAgICJwYXRoIjogIi90bXAvc3RyZWFtMSINCiAgICAgICAgICAgIH0NCiAgICAgICAgICB9DQogICAgICAgIF0NCiAgICAgIH0sDQogICAgICB7DQogICAgICAgICJuYW1lIjogInN0cmVhbTIiLA0KICAgICAgICAic3RyZWFtQ29uZmlndXJhdGlvbiI6ICJ7XCJwdWJsaXNoaW5nSW50ZXJ2YWxcIjo4LFwic2FtcGxpbmdJbnRlcnZhbFwiOjgsXCJxdWV1ZVNpemVcIjo0fSIsDQogICAgICAgICJ0eXBlUmVmIjogInN0cmVhbTJUeXBlUmVmIiwNCiAgICAgICAgImRlc3RpbmF0aW9ucyI6IFsNCiAgICAgICAgICB7DQogICAgICAgICAgICAidGFyZ2V0IjogIk1xdHQiLA0KICAgICAgICAgICAgImNvbmZpZ3VyYXRpb24iOiB7DQogICAgICAgICAgICAgICJ0b3BpYyI6ICIvY29udG9zby90ZXN0U3RyZWFtMiIsDQogICAgICAgICAgICAgICJyZXRhaW4iOiAiTmV2ZXIiLA0KICAgICAgICAgICAgICAicW9zIjogIlFvczAiLA0KICAgICAgICAgICAgICAidHRsIjogNzIwMA0KICAgICAgICAgICAgfQ0KICAgICAgICAgIH0NCiAgICAgICAgXQ0KICAgICAgfQ0KICAgIF0sDQogICAgIm1hbmFnZW1lbnRHcm91cHMiOiBbDQogICAgICB7DQogICAgICAgICJuYW1lIjogIm1hbmFnZW1lbnRHcm91cDEiLA0KICAgICAgICAibWFuYWdlbWVudEdyb3VwQ29uZmlndXJhdGlvbiI6ICJ7XCJyZXRyeUNvdW50XCI6MTAsXCJyZXRyeUJhY2tvZmZJbnRlcnZhbFwiOjE1fSIsDQogICAgICAgICJ0eXBlUmVmIjogIm1hbmFnZW1lbnRHcm91cDFUeXBlUmVmIiwNCiAgICAgICAgImRlZmF1bHRUb3BpYyI6ICIvY29udG9zby9tYW5hZ2VtZW50R3JvdXAxIiwNCiAgICAgICAgImRlZmF1bHRUaW1lb3V0SW5TZWNvbmRzIjogMTAwLA0KICAgICAgICAiYWN0aW9ucyI6IFsNCiAgICAgICAgICB7DQogICAgICAgICAgICAibmFtZSI6ICJhY3Rpb24xIiwNCiAgICAgICAgICAgICJhY3Rpb25Db25maWd1cmF0aW9uIjogIntcInJldHJ5Q291bnRcIjo1LFwicmV0cnlCYWNrb2ZmSW50ZXJ2YWxcIjo1fSIsDQogICAgICAgICAgICAidGFyZ2V0VXJpIjogIi9vbnZpZi9kZXZpY2Vfc2VydmljZT9PTlZJRlByb2ZpbGU9UHJvZmlsZTEiLA0KICAgICAgICAgICAgInRvcGljIjogIi9jb250b3NvL21hbmFnZW1lbnRHcm91cDEvYWN0aW9uMSIsDQogICAgICAgICAgICAidHlwZVJlZiI6ICJhY3Rpb24xVHlwZVJlZiIsDQogICAgICAgICAgICAiYWN0aW9uVHlwZSI6ICJDYWxsIiwNCiAgICAgICAgICAgICJ0aW1lb3V0SW5TZWNvbmRzIjogNjANCiAgICAgICAgICB9LA0KICAgICAgICAgIHsNCiAgICAgICAgICAgICJuYW1lIjogImFjdGlvbjIiLA0KICAgICAgICAgICAgImFjdGlvbkNvbmZpZ3VyYXRpb24iOiAie1wicmV0cnlDb3VudFwiOjUsXCJyZXRyeUJhY2tvZmZJbnRlcnZhbFwiOjV9IiwNCiAgICAgICAgICAgICJ0YXJnZXRVcmkiOiAiL29udmlmL2RldmljZV9zZXJ2aWNlP09OVklGUHJvZmlsZT1Qcm9maWxlMiIsDQogICAgICAgICAgICAidG9waWMiOiAiL2NvbnRvc28vbWFuYWdlbWVudEdyb3VwMS9hY3Rpb24yIiwNCiAgICAgICAgICAgICJ0eXBlUmVmIjogImFjdGlvbjJUeXBlUmVmIiwNCiAgICAgICAgICAgICJhY3Rpb25UeXBlIjogIkNhbGwiLA0KICAgICAgICAgICAgInRpbWVvdXRJblNlY29uZHMiOiA2MA0KICAgICAgICAgIH0NCiAgICAgICAgXQ0KICAgICAgfQ0KICAgIF0NCiAgfQ0KfQ0K",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "7299" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Accept-Ranges": [ "bytes" ],
+        "ETag": [ "\"db00758b-0000-0200-0000-6887e00c0000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=e3029257-ff30-403c-a905-c87ef1aa933a/eastus2/8a4a068d-d9fd-4c42-ade6-b61bce5bfae1" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "de3da29b-f147-46e0-a775-3c8c8b093c41" ],
+        "x-envoy-upstream-service-time": [ "9" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-azure-ref": [ "20250728T203940Z-175b7fb5765lw97jhC1BN1k27400000001ag00000000dunp" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "x-ms-request-id": [ "a05f3268-123f-4893-91ee-c0bdb6143b59" ],
+        "x-ms-correlation-request-id": [ "381943df-8afd-4171-a161-a8873c49a834" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "199" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20250728T203940Z:381943df-8afd-4171-a161-a8873c49a834" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-MSEdge-Ref": [ "Ref A: 97AC03737F344ADEB34D1961F96F56A1 Ref B: MWH011020809025 Ref C: 2025-07-28T20:39:39Z" ],
+        "Date": [ "Mon, 28 Jul 2025 20:39:40 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "5520" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredAssets/test-ns-dasset-delete-via-identity\",\"name\":\"test-ns-dasset-delete-via-identity\",\"type\":\"microsoft.deviceregistry/namespaces/discoveredassets\",\"location\":\"eastus2\",\"extendedLocation\":{\"name\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.ExtendedLocation/customLocations/location-mkzkq\",\"type\":\"CustomLocation\"},\"tags\":{\"sensor\":\"temperature,humidity,pressure\"},\"systemData\":{\"createdBy\":\"rylo@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-07-28T20:39:40.2446984Z\",\"lastModifiedBy\":\"rylo@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-07-28T20:39:40.2446984Z\"},\"properties\":{\"deviceRef\":{\"deviceName\":\"myDeviceName\",\"endpointName\":\"myEndpointName\"},\"discoveryId\":\"myDiscoveryId\",\"version\":1,\"manufacturer\":\"Contoso123\",\"manufacturerUri\":\"https://www.contoso.com/manufacturerUri\",\"model\":\"ContosoModel\",\"productCode\":\"SA34VDG\",\"softwareRevision\":\"2.0\",\"documentationUri\":\"https://www.example.com/manual/\",\"serialNumber\":\"64-103816-519918-8\",\"defaultDatasetsConfiguration\":\"{\\\"defaultPublishingInterval\\\": 200, \\\"defaultSamplingInterval\\\": 500, \\\"defaultQueueSize\\\": 10}\",\"defaultEventsConfiguration\":\"{\\\"defaultPublishingInterval\\\": 200, \\\"defaultSamplingInterval\\\": 500, \\\"defaultQueueSize\\\": 10}\",\"defaultStreamsConfiguration\":\"{\\\"defaultPublishingInterval\\\": 200, \\\"defaultSamplingInterval\\\": 500, \\\"defaultQueueSize\\\": 10}\",\"defaultManagementGroupsConfiguration\":\"{\\\"retryCount\\\":10,\\\"retryBackoffInterval\\\":15}\",\"defaultDatasetsDestinations\":[{\"target\":\"BrokerStateStore\",\"configuration\":{\"key\":\"defaultValue\"}}],\"defaultEventsDestinations\":[{\"target\":\"Storage\",\"configuration\":{\"path\":\"/tmp\"}}],\"defaultStreamsDestinations\":[{\"target\":\"Mqtt\",\"configuration\":{\"topic\":\"/contoso/test\",\"retain\":\"Never\",\"qos\":\"Qos0\",\"ttl\":3600}}],\"datasets\":[{\"name\":\"dataset1\",\"dataSource\":\"nsu=http://microsoft.com/Opc/OpcPlc\"},{\"name\":\"dataSet2\",\"dataSource\":\"nsu=http://microsoft.com/Opc/OpcPlc/Oven;i=5\",\"typeRef\":\"dataset1TypeRef\",\"destinations\":[{\"target\":\"Mqtt\",\"configuration\":{\"topic\":\"/contoso/test2\",\"retain\":\"Keep\",\"qos\":\"Qos1\",\"ttl\":3600}}],\"datasetConfiguration\":\"{\\\"publishingInterval\\\":10,\\\"samplingInterval\\\":15,\\\"queueSize\\\":20}\",\"dataPoints\":[{\"name\":\"dataset1DataPoint1\",\"dataSource\":\"nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt3\",\"dataPointConfiguration\":\"{\\\"publishingInterval\\\":8,\\\"samplingInterval\\\":8,\\\"queueSize\\\":4}\",\"typeRef\":\"dataset1DataPoint1TypeRef\"},{\"name\":\"dataset1DataPoint2\",\"dataSource\":\"nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt4\",\"dataPointConfiguration\":\"{\\\"publishingInterval\\\":8,\\\"samplingInterval\\\":8,\\\"queueSize\\\":4}\",\"typeRef\":\"dataset1DataPoint2TypeRef\"}]}],\"events\":[{\"name\":\"event1\",\"eventNotifier\":\"nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt5\",\"eventConfiguration\":\"{\\\"publishingInterval\\\":7,\\\"samplingInterval\\\":1,\\\"queueSize\\\":8}\",\"typeRef\":\"event1Ref\",\"destinations\":[{\"target\":\"Mqtt\",\"configuration\":{\"topic\":\"/contoso/testEvent1\",\"retain\":\"Keep\",\"qos\":\"Qos0\",\"ttl\":7200}}],\"dataPoints\":[{\"name\":\"event1DataPoint1\",\"dataSource\":\"nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt6\",\"dataPointConfiguration\":\"{\\\"publishingInterval\\\":8,\\\"samplingInterval\\\":8,\\\"queueSize\\\":4}\"},{\"name\":\"event1DataPoint2\",\"dataSource\":\"nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt7\",\"dataPointConfiguration\":\"{\\\"publishingInterval\\\":8,\\\"samplingInterval\\\":8,\\\"queueSize\\\":4}\"}]},{\"name\":\"event2\",\"eventNotifier\":\"nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt8\",\"eventConfiguration\":\"{\\\"publishingInterval\\\":7,\\\"samplingInterval\\\":1,\\\"queueSize\\\":8}\",\"typeRef\":\"event2Ref\",\"destinations\":[{\"target\":\"Storage\",\"configuration\":{\"path\":\"/tmp/event2\"}}],\"dataPoints\":[{\"name\":\"event2DataPoint1\",\"dataSource\":\"nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt9\",\"dataPointConfiguration\":\"{\\\"publishingInterval\\\":8,\\\"samplingInterval\\\":8,\\\"queueSize\\\":4}\"},{\"name\":\"event2DataPoint2\",\"dataSource\":\"nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt10\",\"dataPointConfiguration\":\"{\\\"publishingInterval\\\":8,\\\"samplingInterval\\\":8,\\\"queueSize\\\":4}\"}]}],\"streams\":[{\"name\":\"stream1\",\"streamConfiguration\":\"{\\\"publishingInterval\\\":8,\\\"samplingInterval\\\":8,\\\"queueSize\\\":4}\",\"typeRef\":\"stream1TypeRef\",\"destinations\":[{\"target\":\"Storage\",\"configuration\":{\"path\":\"/tmp/stream1\"}}]},{\"name\":\"stream2\",\"streamConfiguration\":\"{\\\"publishingInterval\\\":8,\\\"samplingInterval\\\":8,\\\"queueSize\\\":4}\",\"typeRef\":\"stream2TypeRef\",\"destinations\":[{\"target\":\"Mqtt\",\"configuration\":{\"topic\":\"/contoso/testStream2\",\"retain\":\"Never\",\"qos\":\"Qos0\",\"ttl\":7200}}]}],\"managementGroups\":[{\"name\":\"managementGroup1\",\"managementGroupConfiguration\":\"{\\\"retryCount\\\":10,\\\"retryBackoffInterval\\\":15}\",\"typeRef\":\"managementGroup1TypeRef\",\"defaultTopic\":\"/contoso/managementGroup1\",\"defaultTimeoutInSeconds\":100,\"actions\":[{\"name\":\"action1\",\"actionConfiguration\":\"{\\\"retryCount\\\":5,\\\"retryBackoffInterval\\\":5}\",\"targetUri\":\"/onvif/device_service?ONVIFProfile=Profile1\",\"typeRef\":\"action1TypeRef\",\"topic\":\"/contoso/managementGroup1/action1\",\"actionType\":\"Call\",\"timeoutInSeconds\":60},{\"name\":\"action2\",\"actionConfiguration\":\"{\\\"retryCount\\\":5,\\\"retryBackoffInterval\\\":5}\",\"targetUri\":\"/onvif/device_service?ONVIFProfile=Profile2\",\"typeRef\":\"action2TypeRef\",\"topic\":\"/contoso/managementGroup1/action2\",\"actionType\":\"Call\",\"timeoutInSeconds\":60}]}],\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzDeviceRegistryNamespaceDiscoveredAsset+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredAssets/test-ns-dasset-delete-via-identity?api-version=2025-10-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredAssets/test-ns-dasset-delete-via-identity?api-version=2025-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "71" ],
+        "x-ms-client-request-id": [ "ec7e4882-f69a-48c1-ae53-38b8f48fadd7" ],
+        "CommandName": [ "New-AzDeviceRegistryNamespaceDiscoveredAsset" ],
+        "FullCommandName": [ "New-AzDeviceRegistryNamespaceDiscoveredAsset_CreateViaJsonFilePath" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.24", "Az.DeviceRegistry/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"db00758b-0000-0200-0000-6887e00c0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "249" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "4ec04b8c-911e-4c5d-84f6-0a9495248732" ],
+        "x-ms-correlation-request-id": [ "7766e1c8-8ed1-4d8b-8c5f-65e315adf4b3" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20250728T204010Z:7766e1c8-8ed1-4d8b-8c5f-65e315adf4b3" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 6CBEC0E535134EB58891E94E220E4A6A Ref B: MWH011020809025 Ref C: 2025-07-28T20:40:10Z" ],
+        "Date": [ "Mon, 28 Jul 2025 20:40:10 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "5520" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredAssets/test-ns-dasset-delete-via-identity\",\"name\":\"test-ns-dasset-delete-via-identity\",\"type\":\"microsoft.deviceregistry/namespaces/discoveredassets\",\"location\":\"eastus2\",\"extendedLocation\":{\"name\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.ExtendedLocation/customLocations/location-mkzkq\",\"type\":\"CustomLocation\"},\"tags\":{\"sensor\":\"temperature,humidity,pressure\"},\"systemData\":{\"createdBy\":\"rylo@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-07-28T20:39:40.2446984Z\",\"lastModifiedBy\":\"rylo@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-07-28T20:39:40.2446984Z\"},\"properties\":{\"deviceRef\":{\"deviceName\":\"myDeviceName\",\"endpointName\":\"myEndpointName\"},\"discoveryId\":\"myDiscoveryId\",\"version\":1,\"manufacturer\":\"Contoso123\",\"manufacturerUri\":\"https://www.contoso.com/manufacturerUri\",\"model\":\"ContosoModel\",\"productCode\":\"SA34VDG\",\"softwareRevision\":\"2.0\",\"documentationUri\":\"https://www.example.com/manual/\",\"serialNumber\":\"64-103816-519918-8\",\"defaultDatasetsConfiguration\":\"{\\\"defaultPublishingInterval\\\": 200, \\\"defaultSamplingInterval\\\": 500, \\\"defaultQueueSize\\\": 10}\",\"defaultEventsConfiguration\":\"{\\\"defaultPublishingInterval\\\": 200, \\\"defaultSamplingInterval\\\": 500, \\\"defaultQueueSize\\\": 10}\",\"defaultStreamsConfiguration\":\"{\\\"defaultPublishingInterval\\\": 200, \\\"defaultSamplingInterval\\\": 500, \\\"defaultQueueSize\\\": 10}\",\"defaultManagementGroupsConfiguration\":\"{\\\"retryCount\\\":10,\\\"retryBackoffInterval\\\":15}\",\"defaultDatasetsDestinations\":[{\"target\":\"BrokerStateStore\",\"configuration\":{\"key\":\"defaultValue\"}}],\"defaultEventsDestinations\":[{\"target\":\"Storage\",\"configuration\":{\"path\":\"/tmp\"}}],\"defaultStreamsDestinations\":[{\"target\":\"Mqtt\",\"configuration\":{\"topic\":\"/contoso/test\",\"retain\":\"Never\",\"qos\":\"Qos0\",\"ttl\":3600}}],\"datasets\":[{\"name\":\"dataset1\",\"dataSource\":\"nsu=http://microsoft.com/Opc/OpcPlc\"},{\"name\":\"dataSet2\",\"dataSource\":\"nsu=http://microsoft.com/Opc/OpcPlc/Oven;i=5\",\"typeRef\":\"dataset1TypeRef\",\"destinations\":[{\"target\":\"Mqtt\",\"configuration\":{\"topic\":\"/contoso/test2\",\"retain\":\"Keep\",\"qos\":\"Qos1\",\"ttl\":3600}}],\"datasetConfiguration\":\"{\\\"publishingInterval\\\":10,\\\"samplingInterval\\\":15,\\\"queueSize\\\":20}\",\"dataPoints\":[{\"name\":\"dataset1DataPoint1\",\"dataSource\":\"nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt3\",\"dataPointConfiguration\":\"{\\\"publishingInterval\\\":8,\\\"samplingInterval\\\":8,\\\"queueSize\\\":4}\",\"typeRef\":\"dataset1DataPoint1TypeRef\"},{\"name\":\"dataset1DataPoint2\",\"dataSource\":\"nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt4\",\"dataPointConfiguration\":\"{\\\"publishingInterval\\\":8,\\\"samplingInterval\\\":8,\\\"queueSize\\\":4}\",\"typeRef\":\"dataset1DataPoint2TypeRef\"}]}],\"events\":[{\"name\":\"event1\",\"eventNotifier\":\"nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt5\",\"eventConfiguration\":\"{\\\"publishingInterval\\\":7,\\\"samplingInterval\\\":1,\\\"queueSize\\\":8}\",\"typeRef\":\"event1Ref\",\"destinations\":[{\"target\":\"Mqtt\",\"configuration\":{\"topic\":\"/contoso/testEvent1\",\"retain\":\"Keep\",\"qos\":\"Qos0\",\"ttl\":7200}}],\"dataPoints\":[{\"name\":\"event1DataPoint1\",\"dataSource\":\"nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt6\",\"dataPointConfiguration\":\"{\\\"publishingInterval\\\":8,\\\"samplingInterval\\\":8,\\\"queueSize\\\":4}\"},{\"name\":\"event1DataPoint2\",\"dataSource\":\"nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt7\",\"dataPointConfiguration\":\"{\\\"publishingInterval\\\":8,\\\"samplingInterval\\\":8,\\\"queueSize\\\":4}\"}]},{\"name\":\"event2\",\"eventNotifier\":\"nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt8\",\"eventConfiguration\":\"{\\\"publishingInterval\\\":7,\\\"samplingInterval\\\":1,\\\"queueSize\\\":8}\",\"typeRef\":\"event2Ref\",\"destinations\":[{\"target\":\"Storage\",\"configuration\":{\"path\":\"/tmp/event2\"}}],\"dataPoints\":[{\"name\":\"event2DataPoint1\",\"dataSource\":\"nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt9\",\"dataPointConfiguration\":\"{\\\"publishingInterval\\\":8,\\\"samplingInterval\\\":8,\\\"queueSize\\\":4}\"},{\"name\":\"event2DataPoint2\",\"dataSource\":\"nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt10\",\"dataPointConfiguration\":\"{\\\"publishingInterval\\\":8,\\\"samplingInterval\\\":8,\\\"queueSize\\\":4}\"}]}],\"streams\":[{\"name\":\"stream1\",\"streamConfiguration\":\"{\\\"publishingInterval\\\":8,\\\"samplingInterval\\\":8,\\\"queueSize\\\":4}\",\"typeRef\":\"stream1TypeRef\",\"destinations\":[{\"target\":\"Storage\",\"configuration\":{\"path\":\"/tmp/stream1\"}}]},{\"name\":\"stream2\",\"streamConfiguration\":\"{\\\"publishingInterval\\\":8,\\\"samplingInterval\\\":8,\\\"queueSize\\\":4}\",\"typeRef\":\"stream2TypeRef\",\"destinations\":[{\"target\":\"Mqtt\",\"configuration\":{\"topic\":\"/contoso/testStream2\",\"retain\":\"Never\",\"qos\":\"Qos0\",\"ttl\":7200}}]}],\"managementGroups\":[{\"name\":\"managementGroup1\",\"managementGroupConfiguration\":\"{\\\"retryCount\\\":10,\\\"retryBackoffInterval\\\":15}\",\"typeRef\":\"managementGroup1TypeRef\",\"defaultTopic\":\"/contoso/managementGroup1\",\"defaultTimeoutInSeconds\":100,\"actions\":[{\"name\":\"action1\",\"actionConfiguration\":\"{\\\"retryCount\\\":5,\\\"retryBackoffInterval\\\":5}\",\"targetUri\":\"/onvif/device_service?ONVIFProfile=Profile1\",\"typeRef\":\"action1TypeRef\",\"topic\":\"/contoso/managementGroup1/action1\",\"actionType\":\"Call\",\"timeoutInSeconds\":60},{\"name\":\"action2\",\"actionConfiguration\":\"{\\\"retryCount\\\":5,\\\"retryBackoffInterval\\\":5}\",\"targetUri\":\"/onvif/device_service?ONVIFProfile=Profile2\",\"typeRef\":\"action2TypeRef\",\"topic\":\"/contoso/managementGroup1/action2\",\"actionType\":\"Call\",\"timeoutInSeconds\":60}]}],\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzDeviceRegistryNamespaceDiscoveredAsset+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredAssets/test-ns-dasset-delete-via-identity?api-version=2025-10-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredAssets/test-ns-dasset-delete-via-identity?api-version=2025-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "72" ],
+        "x-ms-client-request-id": [ "ec7e4882-f69a-48c1-ae53-38b8f48fadd7" ],
+        "CommandName": [ "New-AzDeviceRegistryNamespaceDiscoveredAsset" ],
+        "FullCommandName": [ "New-AzDeviceRegistryNamespaceDiscoveredAsset_CreateViaJsonFilePath" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.24", "Az.DeviceRegistry/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"db00758b-0000-0200-0000-6887e00c0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "249" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "bf97dc6b-f3fc-4911-bfea-105e4806ec3d" ],
+        "x-ms-correlation-request-id": [ "3df52bf4-28f1-40c6-afd2-efa5c7de55fe" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20250728T204011Z:3df52bf4-28f1-40c6-afd2-efa5c7de55fe" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: F5179F0EA80D4C6DA174DC4B23B53C38 Ref B: MWH011020809025 Ref C: 2025-07-28T20:40:10Z" ],
+        "Date": [ "Mon, 28 Jul 2025 20:40:10 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "5520" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredAssets/test-ns-dasset-delete-via-identity\",\"name\":\"test-ns-dasset-delete-via-identity\",\"type\":\"microsoft.deviceregistry/namespaces/discoveredassets\",\"location\":\"eastus2\",\"extendedLocation\":{\"name\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.ExtendedLocation/customLocations/location-mkzkq\",\"type\":\"CustomLocation\"},\"tags\":{\"sensor\":\"temperature,humidity,pressure\"},\"systemData\":{\"createdBy\":\"rylo@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-07-28T20:39:40.2446984Z\",\"lastModifiedBy\":\"rylo@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-07-28T20:39:40.2446984Z\"},\"properties\":{\"deviceRef\":{\"deviceName\":\"myDeviceName\",\"endpointName\":\"myEndpointName\"},\"discoveryId\":\"myDiscoveryId\",\"version\":1,\"manufacturer\":\"Contoso123\",\"manufacturerUri\":\"https://www.contoso.com/manufacturerUri\",\"model\":\"ContosoModel\",\"productCode\":\"SA34VDG\",\"softwareRevision\":\"2.0\",\"documentationUri\":\"https://www.example.com/manual/\",\"serialNumber\":\"64-103816-519918-8\",\"defaultDatasetsConfiguration\":\"{\\\"defaultPublishingInterval\\\": 200, \\\"defaultSamplingInterval\\\": 500, \\\"defaultQueueSize\\\": 10}\",\"defaultEventsConfiguration\":\"{\\\"defaultPublishingInterval\\\": 200, \\\"defaultSamplingInterval\\\": 500, \\\"defaultQueueSize\\\": 10}\",\"defaultStreamsConfiguration\":\"{\\\"defaultPublishingInterval\\\": 200, \\\"defaultSamplingInterval\\\": 500, \\\"defaultQueueSize\\\": 10}\",\"defaultManagementGroupsConfiguration\":\"{\\\"retryCount\\\":10,\\\"retryBackoffInterval\\\":15}\",\"defaultDatasetsDestinations\":[{\"target\":\"BrokerStateStore\",\"configuration\":{\"key\":\"defaultValue\"}}],\"defaultEventsDestinations\":[{\"target\":\"Storage\",\"configuration\":{\"path\":\"/tmp\"}}],\"defaultStreamsDestinations\":[{\"target\":\"Mqtt\",\"configuration\":{\"topic\":\"/contoso/test\",\"retain\":\"Never\",\"qos\":\"Qos0\",\"ttl\":3600}}],\"datasets\":[{\"name\":\"dataset1\",\"dataSource\":\"nsu=http://microsoft.com/Opc/OpcPlc\"},{\"name\":\"dataSet2\",\"dataSource\":\"nsu=http://microsoft.com/Opc/OpcPlc/Oven;i=5\",\"typeRef\":\"dataset1TypeRef\",\"destinations\":[{\"target\":\"Mqtt\",\"configuration\":{\"topic\":\"/contoso/test2\",\"retain\":\"Keep\",\"qos\":\"Qos1\",\"ttl\":3600}}],\"datasetConfiguration\":\"{\\\"publishingInterval\\\":10,\\\"samplingInterval\\\":15,\\\"queueSize\\\":20}\",\"dataPoints\":[{\"name\":\"dataset1DataPoint1\",\"dataSource\":\"nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt3\",\"dataPointConfiguration\":\"{\\\"publishingInterval\\\":8,\\\"samplingInterval\\\":8,\\\"queueSize\\\":4}\",\"typeRef\":\"dataset1DataPoint1TypeRef\"},{\"name\":\"dataset1DataPoint2\",\"dataSource\":\"nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt4\",\"dataPointConfiguration\":\"{\\\"publishingInterval\\\":8,\\\"samplingInterval\\\":8,\\\"queueSize\\\":4}\",\"typeRef\":\"dataset1DataPoint2TypeRef\"}]}],\"events\":[{\"name\":\"event1\",\"eventNotifier\":\"nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt5\",\"eventConfiguration\":\"{\\\"publishingInterval\\\":7,\\\"samplingInterval\\\":1,\\\"queueSize\\\":8}\",\"typeRef\":\"event1Ref\",\"destinations\":[{\"target\":\"Mqtt\",\"configuration\":{\"topic\":\"/contoso/testEvent1\",\"retain\":\"Keep\",\"qos\":\"Qos0\",\"ttl\":7200}}],\"dataPoints\":[{\"name\":\"event1DataPoint1\",\"dataSource\":\"nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt6\",\"dataPointConfiguration\":\"{\\\"publishingInterval\\\":8,\\\"samplingInterval\\\":8,\\\"queueSize\\\":4}\"},{\"name\":\"event1DataPoint2\",\"dataSource\":\"nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt7\",\"dataPointConfiguration\":\"{\\\"publishingInterval\\\":8,\\\"samplingInterval\\\":8,\\\"queueSize\\\":4}\"}]},{\"name\":\"event2\",\"eventNotifier\":\"nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt8\",\"eventConfiguration\":\"{\\\"publishingInterval\\\":7,\\\"samplingInterval\\\":1,\\\"queueSize\\\":8}\",\"typeRef\":\"event2Ref\",\"destinations\":[{\"target\":\"Storage\",\"configuration\":{\"path\":\"/tmp/event2\"}}],\"dataPoints\":[{\"name\":\"event2DataPoint1\",\"dataSource\":\"nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt9\",\"dataPointConfiguration\":\"{\\\"publishingInterval\\\":8,\\\"samplingInterval\\\":8,\\\"queueSize\\\":4}\"},{\"name\":\"event2DataPoint2\",\"dataSource\":\"nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt10\",\"dataPointConfiguration\":\"{\\\"publishingInterval\\\":8,\\\"samplingInterval\\\":8,\\\"queueSize\\\":4}\"}]}],\"streams\":[{\"name\":\"stream1\",\"streamConfiguration\":\"{\\\"publishingInterval\\\":8,\\\"samplingInterval\\\":8,\\\"queueSize\\\":4}\",\"typeRef\":\"stream1TypeRef\",\"destinations\":[{\"target\":\"Storage\",\"configuration\":{\"path\":\"/tmp/stream1\"}}]},{\"name\":\"stream2\",\"streamConfiguration\":\"{\\\"publishingInterval\\\":8,\\\"samplingInterval\\\":8,\\\"queueSize\\\":4}\",\"typeRef\":\"stream2TypeRef\",\"destinations\":[{\"target\":\"Mqtt\",\"configuration\":{\"topic\":\"/contoso/testStream2\",\"retain\":\"Never\",\"qos\":\"Qos0\",\"ttl\":7200}}]}],\"managementGroups\":[{\"name\":\"managementGroup1\",\"managementGroupConfiguration\":\"{\\\"retryCount\\\":10,\\\"retryBackoffInterval\\\":15}\",\"typeRef\":\"managementGroup1TypeRef\",\"defaultTopic\":\"/contoso/managementGroup1\",\"defaultTimeoutInSeconds\":100,\"actions\":[{\"name\":\"action1\",\"actionConfiguration\":\"{\\\"retryCount\\\":5,\\\"retryBackoffInterval\\\":5}\",\"targetUri\":\"/onvif/device_service?ONVIFProfile=Profile1\",\"typeRef\":\"action1TypeRef\",\"topic\":\"/contoso/managementGroup1/action1\",\"actionType\":\"Call\",\"timeoutInSeconds\":60},{\"name\":\"action2\",\"actionConfiguration\":\"{\\\"retryCount\\\":5,\\\"retryBackoffInterval\\\":5}\",\"targetUri\":\"/onvif/device_service?ONVIFProfile=Profile2\",\"typeRef\":\"action2TypeRef\",\"topic\":\"/contoso/managementGroup1/action2\",\"actionType\":\"Call\",\"timeoutInSeconds\":60}]}],\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzDeviceRegistryNamespaceDiscoveredAsset+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredAssets/test-ns-dasset-delete-via-identity?api-version=2025-10-01+4": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredAssets/test-ns-dasset-delete-via-identity?api-version=2025-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "73" ],
+        "x-ms-client-request-id": [ "b60d4051-2184-4b1b-885e-6e985567d70e" ],
+        "CommandName": [ "Remove-AzDeviceRegistryNamespaceDiscoveredAsset" ],
+        "FullCommandName": [ "Remove-AzDeviceRegistryNamespaceDiscoveredAsset_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.24", "Az.DeviceRegistry/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "3434cc30-e0fc-4610-b6ce-bfa59aaf3c3b" ],
+        "x-ms-request-id": [ "00000000-0000-0000-0000-000000000000" ],
+        "x-azure-ref": [ "20250728T204011Z-175b7fb5765vwtfqhC1BN1xkk800000001800000000025fa" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=e3029257-ff30-403c-a905-c87ef1aa933a/eastus2/8816fd66-1e62-4e61-9b5f-04cbe2e279ca" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "199" ],
+        "x-ms-correlation-request-id": [ "aa0e42af-e11d-4c32-86d8-ec42fcf85f58" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20250728T204011Z:aa0e42af-e11d-4c32-86d8-ec42fcf85f58" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-MSEdge-Ref": [ "Ref A: BF4C230DA904419EAD7AA17D9BBF285D Ref B: MWH011020809025 Ref C: 2025-07-28T20:40:11Z" ],
+        "Date": [ "Mon, 28 Jul 2025 20:40:11 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzDeviceRegistryNamespaceDiscoveredAsset+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredAssets/test-ns-dasset-delete-via-identity?api-version=2025-10-01+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredAssets/test-ns-dasset-delete-via-identity?api-version=2025-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "74" ],
+        "x-ms-client-request-id": [ "16bede1f-08ef-43b2-a093-a69ab146be92" ],
+        "CommandName": [ "Get-AzDeviceRegistryNamespaceDiscoveredAsset" ],
+        "FullCommandName": [ "Get-AzDeviceRegistryNamespaceDiscoveredAsset_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.24", "Az.DeviceRegistry/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 404,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-failure-cause": [ "gateway" ],
+        "x-ms-request-id": [ "1418ca3c-9f07-415b-a930-ad33f63cd447" ],
+        "x-ms-correlation-request-id": [ "1418ca3c-9f07-415b-a930-ad33f63cd447" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20250728T204011Z:1418ca3c-9f07-415b-a930-ad33f63cd447" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 8918A58BDBF64DAEA890630B7048C66C Ref B: MWH011020809025 Ref C: 2025-07-28T20:40:11Z" ],
+        "Date": [ "Mon, 28 Jul 2025 20:40:11 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "289" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource \u0027Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredAssets/test-ns-dasset-delete-via-identity\u0027 under resource group \u0027adr-pwsh-test-rg\u0027 was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"}}",
+      "isContentBase64": false
+    }
+  }
+}

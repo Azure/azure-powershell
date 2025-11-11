@@ -3,6 +3,7 @@
     <PsModuleName>PostgreSql</PsModuleName>
     <PsRootModuleName>PostgreSql</PsRootModuleName>
     <PsModuleFolder>PostgreSql.Autorest</PsModuleFolder>
+    <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql</RootNamespace>
   </PropertyGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.autorest.props" />

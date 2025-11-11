@@ -16,8 +16,7 @@
 .SYNOPSIS
 Tests verify scenarios for RoleDefinitions creation.
 #>
-function Test-RDWithAbacConditionsGet
-{
+function Test-RDWithAbacConditionsGet {
     # Setup
     $subscription = $(Get-AzContext).Subscription
 
@@ -61,12 +60,11 @@ function Test-RDWithAbacConditionsGet
 .SYNOPSIS
 Tests verify scenarios for RoleDefinitions creation.
 #>
-function Test-RoleDefinitionCreateTests
-{
+function Test-RoleDefinitionCreateTests {
     # Setup
     # Basic positive case - read from file
     $rdName = 'CustomRole Tests Role'
-	$inputFilePath = Join-Path -Path $TestOutputRoot -ChildPath Resources\NewRoleDefinition.json
+    $inputFilePath = Join-Path -Path $TestOutputRoot -ChildPath Resources\NewRoleDefinition.json
     New-AzRoleDefinitionWithId -InputFile $inputFilePath -RoleDefinitionId ee78fa8a-3cdd-418e-a4d8-949b57a33dcd
 
     $rd = Get-AzRoleDefinition -Name $rdName
@@ -103,8 +101,7 @@ function Test-RoleDefinitionCreateTests
 .SYNOPSIS
 Tests verify negative scenarios for RoleDefinitions
 #>
-function Test-RdNegativeScenarios
-{
+function Test-RdNegativeScenarios {
     # Setup
     # Does not throw when getting a non-existing role assignment
     $rdName = 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa'
@@ -117,7 +114,7 @@ function Test-RdNegativeScenarios
 
     # Throws on trying to update the a role that does not exist
     $inputFilePath = Join-Path -Path $TestOutputRoot -ChildPath Resources\RoleDefinition.json
-	Assert-Throws { Set-AzRoleDefinition -InputFile $inputFilePath } $badIdException
+    Assert-Throws { Set-AzRoleDefinition -InputFile $inputFilePath } $badIdException
 
     # Role Defintion not provided.
     $roleDefNotProvided = "Parameter set cannot be resolved using the specified named parameters."
@@ -138,19 +135,18 @@ function Test-RdNegativeScenarios
     $removeRoleException = "The specified role definition with ID '" + $rdId + "' does not exist."
     # Throws on trying to delete a role that does not exist
     $missingSubscription = "MissingSubscription: The request did not have a provided subscription. All requests must have an associated subscription Id."
-    Assert-Throws { Remove-AzRoleDefinition -Id $rdId -Force} $removeRoleException
+    Assert-Throws { Remove-AzRoleDefinition -Id $rdId -Force } $removeRoleException
 }
 
 <#
 .SYNOPSIS
 Tests verify positive scenarios for RoleDefinitions.
 #>
-function Test-RDPositiveScenarios
-{
+function Test-RDPositiveScenarios {
     # Setup
     # Create a role definition with Name rdNamme.
     $rdName = 'Another tests role'
-	$inputFilePath = Join-Path -Path $TestOutputRoot -ChildPath Resources\RoleDefinition.json
+    $inputFilePath = Join-Path -Path $TestOutputRoot -ChildPath Resources\RoleDefinition.json
     $rd = New-AzRoleDefinitionWithId -InputFile $inputFilePath -RoleDefinitionId 0a0e83bc-50b9-4c4d-b2c2-3f41e1a8baf2
     $rd = Get-AzRoleDefinition -Name $rdName
 
@@ -172,12 +168,11 @@ function Test-RDPositiveScenarios
 .SYNOPSIS
 Tests verify roledefinition update with interchanged assignablescopes.
 #>
-function Test-RDUpdate
-{
+function Test-RDUpdate {
 
     # Create a role definition with Name rdNamme.
     $rdName = 'Another tests role'
-	$inputFilePath = Join-Path -Path $TestOutputRoot -ChildPath Resources\RoleDefinition.json
+    $inputFilePath = Join-Path -Path $TestOutputRoot -ChildPath Resources\RoleDefinition.json
     $rd = New-AzRoleDefinitionWithId -InputFile $inputFilePath -RoleDefinitionId 3d95b97a-5745-4c39-950c-0b608dea635f
     $rd = Get-AzRoleDefinition -Name $rdName
 
@@ -185,7 +180,7 @@ function Test-RDUpdate
     $scopes = $rd.AssignableScopes | foreach { $_ }
     $rd.AssignableScopes.Clear()
     $rd.AssignableScopes.Add('/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourcegroups/rbactest')
-    for($i = $scopes.Count - 1 ; $i -ge 0; $i--){
+    for ($i = $scopes.Count - 1 ; $i -ge 0; $i--) {
         $rd.AssignableScopes.Add($scopes[$i])
     }
     $updatedRd = Set-AzRoleDefinition -Role $rd
@@ -200,29 +195,25 @@ function Test-RDUpdate
 .SYNOPSIS
 Tests verify roledefinition create with invalid scope.
 #>
-function Test-RDCreateFromFile
-{
+function Test-RDCreateFromFile {
     # Setup
     # Create a role definition with invalid assignable scopes.
     $badScopeException = "Exception calling `"ExecuteCmdlet`" with `"0`" argument(s): `"Scope '/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/ResourceGroups' should have even number of parts.`""
-	try
-	{
-	$inputFilePath = Join-Path -Path $TestOutputRoot -ChildPath Resources\InvalidRoleDefinition.json
-	    $rd = New-AzRoleDefinitionWithId -InputFile $inputFilePath -RoleDefinitionId 4482e4d1-8757-4d67-b3c1-5c8ccee3fdcc
-		Assert-AreEqual "This assertion shouldn't be hit'" "New-AzRoleDefinition should've thrown an exception"
-	}
-	catch
-	{
-	    Assert-AreEqual $badScopeException $_
-	}
+    try {
+        $inputFilePath = Join-Path -Path $TestOutputRoot -ChildPath Resources\InvalidRoleDefinition.json
+        $rd = New-AzRoleDefinitionWithId -InputFile $inputFilePath -RoleDefinitionId 4482e4d1-8757-4d67-b3c1-5c8ccee3fdcc
+        Assert-AreEqual "This assertion shouldn't be hit'" "New-AzRoleDefinition should've thrown an exception"
+    }
+    catch {
+        Assert-AreEqual $badScopeException $_
+    }
 }
 
 <#
 .SYNOPSIS
 Verify positive and negative scenarios for RoleDefinition remove.
 #>
-function Test-RDRemove
-{
+function Test-RDRemove {
     # Setup
     # Create a role definition at RG Scope.
 
@@ -243,11 +234,11 @@ function Test-RDRemove
 
     # try to delete the role definition with subscription scope - should fail
     $badIdException = "RoleDefinitionDoesNotExist: The specified role definition with ID '" + $Rd.Id + "' does not exist."
-    Assert-Throws { Remove-AzRoleDefinition -Id $Rd.Id -Scope $scope -Force -PassThru} $badIdException
+    Assert-Throws { Remove-AzRoleDefinition -Id $Rd.Id -Scope $scope -Force -PassThru } $badIdException
 
     # try to delete the role definition without specifying scope (default to subscription scope) - should fail
     $badIdException = "RoleDefinitionDoesNotExist: The specified role definition with ID '" + $Rd.Id + "' does not exist."
-    Assert-Throws { Remove-AzRoleDefinition -Id $Rd.Id -Scope $scope -Force -PassThru} $badIdException
+    Assert-Throws { Remove-AzRoleDefinition -Id $Rd.Id -Scope $scope -Force -PassThru } $badIdException
 
     # try to delete the role definition with RG scope - should succeed
     $deletedRd = Remove-AzRoleDefinition -Id $Rd.Id -Scope $rgScope -Force -PassThru
@@ -258,8 +249,7 @@ function Test-RDRemove
 .SYNOPSIS
 Verify positive and negative scenarios for RoleDefinition Get.
 #>
-function Test-RDGet
-{
+function Test-RDGet {
     # Setup
     $subscription = $(Get-AzContext).Subscription
 
@@ -325,12 +315,11 @@ function Test-RDGet
 .SYNOPSIS
 Tests verify scenarios for RoleDefinitions creation.
 #>
-function Test-RoleDefinitionDataActionsCreateTests
-{
+function Test-RoleDefinitionDataActionsCreateTests {
     # Setup
     # Basic positive case - read from file
     $rdName = 'CustomRole Tests Role New'
-	$inputFilePath = Join-Path -Path $TestOutputRoot -ChildPath Resources\DataActionsRoleDefinition.json
+    $inputFilePath = Join-Path -Path $TestOutputRoot -ChildPath Resources\DataActionsRoleDefinition.json
     New-AzRoleDefinitionWithId -InputFile $inputFilePath -RoleDefinitionId e3efe8c9-d9ae-4f0e-838d-57ce43068a13
 
     $rd = Get-AzRoleDefinition -Name $rdName
@@ -368,18 +357,17 @@ function Test-RoleDefinitionDataActionsCreateTests
 .SYNOPSIS
 Tests verify scenarios for RoleDefinitions creation.
 #>
-function Test-RDGetCustomRoles
-{
+function Test-RDGetCustomRoles {
     # Setup
     # Basic positive case - read from file
     $rdName = 'Another tests role'
-	$inputFilePath = Join-Path -Path $TestOutputRoot -ChildPath Resources\RoleDefinition.json
+    $inputFilePath = Join-Path -Path $TestOutputRoot -ChildPath Resources\RoleDefinition.json
     $rd = New-AzRoleDefinitionWithId -InputFile $inputFilePath -RoleDefinitionId 3d95b97a-5745-4c39-950c-0b608dea635f
     $rd = Get-AzRoleDefinition -Name $rdName
 
     $roles = Get-AzRoleDefinition -Custom
     Assert-NotNull $roles
-    foreach($roleDefinition in $roles){
+    foreach ($roleDefinition in $roles) {
         Assert-AreEqual $roleDefinition.IsCustom $true
     }
 
@@ -391,8 +379,7 @@ function Test-RDGetCustomRoles
 .SYNOPSIS
 Tests validate input parameters
 #>
-function Test-RdValidateInputParameters ($cmdName)
-{
+function Test-RdValidateInputParameters ($cmdName) {
     # Setup
     # Note: All below scenarios are invalid, we'll expect an exception during scope validation so the ID parameter doesn't need to be a valid one.
 
@@ -400,23 +387,23 @@ function Test-RdValidateInputParameters ($cmdName)
     # Check if Scope is valid.
     $scope = "/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/Should be 'ResourceGroups'/any group name"
     $invalidScope = "Scope '/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/Should be 'ResourceGroups'/any group name' should begin with '/subscriptions/<subid>/resourceGroups'."
-    Assert-Throws { invoke-expression ($cmdName + " -Scope `"" + $scope  + "`" -Id D46245F8-7E18-4499-8E1F-784A6DA5BE25") } $invalidScope
+    Assert-Throws { &$cmdName -Scope $scope -Id D46245F8-7E18-4499-8E1F-784A6DA5BE25 } $invalidScope
 
     $scope = "/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups"
     $invalidScope = "Scope '/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups' should have even number of parts."
-    Assert-Throws { &$cmdName -Scope $scope -Id D46245F8-7E18-4499-8E1F-784A6DA5BE25} $invalidScope
+    Assert-Throws { &$cmdName -Scope $scope -Id D46245F8-7E18-4499-8E1F-784A6DA5BE25 } $invalidScope
 
     $scope = "/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups/"
     $invalidScope = "Scope '/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups' should have even number of parts."
-    Assert-Throws { &$cmdName -Scope $scope -Id D46245F8-7E18-4499-8E1F-784A6DA5BE25} $invalidScope
+    Assert-Throws { &$cmdName -Scope $scope -Id D46245F8-7E18-4499-8E1F-784A6DA5BE25 } $invalidScope
 
     $scope = "/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups/groupname/Should be 'Providers'/any provider name"
     $invalidScope = "Scope '/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups/groupname/Should be 'Providers'/any provider name' should begin with '/subscriptions/<subid>/resourceGroups/<groupname>/providers'."
-    Assert-Throws { &$cmdName -Scope $scope -Id D46245F8-7E18-4499-8E1F-784A6DA5BE25} $invalidScope
+    Assert-Throws { &$cmdName -Scope $scope -Id D46245F8-7E18-4499-8E1F-784A6DA5BE25 } $invalidScope
 
     $scope = "/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups/groupname/Providers/providername"
     $invalidScope = "Scope '/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups/groupname/Providers/providername' should have at least one pair of resource type and resource name. e.g. '/subscriptions/<subid>/resourceGroups/<groupname>/providers/<providername>/<resourcetype>/<resourcename>'."
-    Assert-Throws { &$cmdName -Scope $scope -Id D46245F8-7E18-4499-8E1F-784A6DA5BE25} $invalidScope
+    Assert-Throws { &$cmdName -Scope $scope -Id D46245F8-7E18-4499-8E1F-784A6DA5BE25 } $invalidScope
 }
 
 
@@ -424,8 +411,7 @@ function Test-RdValidateInputParameters ($cmdName)
 .SYNOPSIS
 Tests validate input parameters
 #>
-function Test-RdValidateInputParameters2 ($cmdName)
-{
+function Test-RdValidateInputParameters2 ($cmdName) {
     # Setup
     # Note: All below scenarios are invalid, we'll expect an exception during scope validation so the ID parameter doesn't need to be a valid one.
 
@@ -437,27 +423,27 @@ function Test-RdValidateInputParameters2 ($cmdName)
     # Check if Scope is valid.
     $scope = "/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/Should be 'ResourceGroups'/any group name"
     $invalidScope = "Scope '/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/Should be 'ResourceGroups'/any group name' should begin with '/subscriptions/<subid>/resourceGroups'."
-    $roleDef.AssignableScopes[0] = $scope;
+    $roleDef.AssignableScopes[0] = $scope
     Assert-Throws { &$cmdName -Role $roleDef } $invalidScope
 
     $scope = "/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups"
     $invalidScope = "Scope '/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups' should have even number of parts."
-    $roleDef.AssignableScopes[0] = $scope;
+    $roleDef.AssignableScopes[0] = $scope
     Assert-Throws { &$cmdName -Role $roleDef } $invalidScope
 
     $scope = "/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups/"
     $invalidScope = "Scope '/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups' should have even number of parts."
-    $roleDef.AssignableScopes[0] = $scope;
+    $roleDef.AssignableScopes[0] = $scope
     Assert-Throws { &$cmdName -Role $roleDef } $invalidScope
 
     $scope = "/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups/groupname/Should be 'Providers'/any provider name"
     $invalidScope = "Scope '/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups/groupname/Should be 'Providers'/any provider name' should begin with '/subscriptions/<subid>/resourceGroups/<groupname>/providers'."
-    $roleDef.AssignableScopes[0] = $scope;
+    $roleDef.AssignableScopes[0] = $scope
     Assert-Throws { &$cmdName -Role $roleDef } $invalidScope
 
     $scope = "/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups/groupname/Providers/providername"
     $invalidScope = "Scope '/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups/groupname/Providers/providername' should have at least one pair of resource type and resource name. e.g. '/subscriptions/<subid>/resourceGroups/<groupname>/providers/<providername>/<resourcetype>/<resourcename>'."
-    $roleDef.AssignableScopes[0] = $scope;
+    $roleDef.AssignableScopes[0] = $scope
     Assert-Throws { &$cmdName -Role $roleDef } $invalidScope
 }
 
@@ -465,8 +451,7 @@ function Test-RdValidateInputParameters2 ($cmdName)
 .SYNOPSIS
 Verify positive and negative scenarios for RoleDefinition Get with filters.
 #>
-function Test-RDFilter
-{
+function Test-RDFilter {
     # Setup
     $readerRole = Get-AzRoleDefinition -Name "Reader"
     Assert-NotNull $readerRole
@@ -474,7 +459,7 @@ function Test-RDFilter
 
     $customRoles = Get-AzRoleDefinition -Custom
     Assert-NotNull $customRoles
-    foreach($role in $customRoles){
+    foreach ($role in $customRoles) {
         Assert-NotNull $role
         Assert-AreEqual $role.IsCustom $true
     }
@@ -484,12 +469,11 @@ function Test-RDFilter
 .SYNOPSIS
 Tests verify scenarios for RoleDefinitions creation.
 #>
-function Test-RDDataActionsNegativeTestCases
-{
+function Test-RDDataActionsNegativeTestCases {
     # Setup
     # Basic positive case - read from file
     $rdName = 'Another tests role'
-	$inputFilePath = Join-Path -Path $TestOutputRoot -ChildPath Resources\RoleDefinition.json
+    $inputFilePath = Join-Path -Path $TestOutputRoot -ChildPath Resources\RoleDefinition.json
     $rd = New-AzRoleDefinitionWithId -InputFile $inputFilePath -RoleDefinitionId 3d95b97a-5745-4c39-950c-0b608dea635f
     $rd = Get-AzRoleDefinition -Name $rdName
 

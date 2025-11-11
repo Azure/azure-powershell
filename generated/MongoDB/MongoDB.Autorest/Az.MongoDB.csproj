@@ -3,6 +3,7 @@
     <PsModuleName>MongoDB</PsModuleName>
     <PsRootModuleName>MongoDB</PsRootModuleName>
     <PsModuleFolder>MongoDB.Autorest</PsModuleFolder>
+    <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.MongoDB</RootNamespace>
   </PropertyGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.autorest.props" />

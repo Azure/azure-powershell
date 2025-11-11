@@ -3,6 +3,7 @@
     <PsModuleName>Confluent</PsModuleName>
     <PsRootModuleName>Confluent</PsRootModuleName>
     <PsModuleFolder>Confluent.Autorest</PsModuleFolder>
+    <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.Confluent</RootNamespace>
   </PropertyGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.autorest.props" />

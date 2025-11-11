@@ -15,7 +15,7 @@ Adds a Rules Role Assignment to a PSGalleryInVmAccessControlProfileVersion objec
 ```
 Add-AzGalleryInVMAccessControlProfileVersionRulesRoleAssignment
  -GalleryInVmAccessControlProfileVersion <PSGalleryInVMAccessControlProfileVersion> -Role <String>
- -Identity <String[]> [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ -Identity <String[]> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -29,7 +29,7 @@ The **Add-AzGalleryInVMAccessControlProfileVersionRulesRoleAssignment** cmdlet a
 $inVMAccessControlProfileVersion  = New-AzGalleryInVMAccessControlProfileVersionConfig -Name "myProfileVersion" -Location "West US 2" -Mode "Audit" -DefaultAccess "Deny" -TargetLocation @("West US 2")
 
 Add-AzGalleryInVMAccessControlProfileVersionRulesRoleAssignment -GalleryInVmAccessControlProfileVersion $inVMAccessControlProfileVersion -Role "Provisioning" -Identity @("WinPA") 
-Add-AzGalleryInVMAccessControlProfileVersionRulesRoleAssignment -GalleryInVmAccessControlProfileVersion $inVMAccessControlProfileVersion -Role "Provisioning2" -Identity @("WinPA") 
+Add-AzGalleryInVMAccessControlProfileVersionRulesRoleAssignment -GalleryInVmAccessControlProfileVersion $inVMAccessControlProfileVersion -Role "Provisioning2" -Identity @("WinPA")
 ```
 
 Creates a local PSGalleryInVMAccessControlProfileVersion object, then add two rule role assignments.
@@ -40,7 +40,7 @@ Creates a local PSGalleryInVMAccessControlProfileVersion object, then add two ru
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -55,7 +55,7 @@ Accept wildcard characters: False
 PSGalleryInVmAccessControlProfileVersion object created from New-AzGalleryInVMAccessControlProfileVersionConfig.
 
 ```yaml
-Type: PSGalleryInVMAccessControlProfileVersion
+Type: Microsoft.Azure.Commands.Compute.Automation.Models.PSGalleryInVMAccessControlProfileVersion
 Parameter Sets: (All)
 Aliases:
 
@@ -70,7 +70,7 @@ Accept wildcard characters: False
 A list of identities that can access the privileges defined by the role.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -81,26 +81,11 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Role
 The name of the role.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

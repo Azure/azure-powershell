@@ -80,6 +80,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAzureFilesIdentityBasedAuthenticationInternal)this).ActiveDirectoryProperty = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IActiveDirectoryProperties) content.GetValueForProperty("ActiveDirectoryProperty",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAzureFilesIdentityBasedAuthenticationInternal)this).ActiveDirectoryProperty, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ActiveDirectoryPropertiesTypeConverter.ConvertFrom);
             }
+            if (content.Contains("SmbOAuthSetting"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAzureFilesIdentityBasedAuthenticationInternal)this).SmbOAuthSetting = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISmbOAuthSettings) content.GetValueForProperty("SmbOAuthSetting",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAzureFilesIdentityBasedAuthenticationInternal)this).SmbOAuthSetting, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.SmbOAuthSettingsTypeConverter.ConvertFrom);
+            }
             if (content.Contains("DirectoryServiceOption"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAzureFilesIdentityBasedAuthenticationInternal)this).DirectoryServiceOption = (string) content.GetValueForProperty("DirectoryServiceOption",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAzureFilesIdentityBasedAuthenticationInternal)this).DirectoryServiceOption, global::System.Convert.ToString);
@@ -119,6 +123,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             if (content.Contains("ActiveDirectoryPropertySamAccountName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAzureFilesIdentityBasedAuthenticationInternal)this).ActiveDirectoryPropertySamAccountName = (string) content.GetValueForProperty("ActiveDirectoryPropertySamAccountName",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAzureFilesIdentityBasedAuthenticationInternal)this).ActiveDirectoryPropertySamAccountName, global::System.Convert.ToString);
+            }
+            if (content.Contains("SmbOAuthSettingIsSmbOauthEnabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAzureFilesIdentityBasedAuthenticationInternal)this).SmbOAuthSettingIsSmbOauthEnabled = (bool?) content.GetValueForProperty("SmbOAuthSettingIsSmbOauthEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAzureFilesIdentityBasedAuthenticationInternal)this).SmbOAuthSettingIsSmbOauthEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             AfterDeserializeDictionary(content);
         }
@@ -141,6 +149,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAzureFilesIdentityBasedAuthenticationInternal)this).ActiveDirectoryProperty = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IActiveDirectoryProperties) content.GetValueForProperty("ActiveDirectoryProperty",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAzureFilesIdentityBasedAuthenticationInternal)this).ActiveDirectoryProperty, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ActiveDirectoryPropertiesTypeConverter.ConvertFrom);
             }
+            if (content.Contains("SmbOAuthSetting"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAzureFilesIdentityBasedAuthenticationInternal)this).SmbOAuthSetting = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISmbOAuthSettings) content.GetValueForProperty("SmbOAuthSetting",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAzureFilesIdentityBasedAuthenticationInternal)this).SmbOAuthSetting, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.SmbOAuthSettingsTypeConverter.ConvertFrom);
+            }
             if (content.Contains("DirectoryServiceOption"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAzureFilesIdentityBasedAuthenticationInternal)this).DirectoryServiceOption = (string) content.GetValueForProperty("DirectoryServiceOption",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAzureFilesIdentityBasedAuthenticationInternal)this).DirectoryServiceOption, global::System.Convert.ToString);
@@ -180,6 +192,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             if (content.Contains("ActiveDirectoryPropertySamAccountName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAzureFilesIdentityBasedAuthenticationInternal)this).ActiveDirectoryPropertySamAccountName = (string) content.GetValueForProperty("ActiveDirectoryPropertySamAccountName",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAzureFilesIdentityBasedAuthenticationInternal)this).ActiveDirectoryPropertySamAccountName, global::System.Convert.ToString);
+            }
+            if (content.Contains("SmbOAuthSettingIsSmbOauthEnabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAzureFilesIdentityBasedAuthenticationInternal)this).SmbOAuthSettingIsSmbOauthEnabled = (bool?) content.GetValueForProperty("SmbOAuthSettingIsSmbOauthEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAzureFilesIdentityBasedAuthenticationInternal)this).SmbOAuthSettingIsSmbOauthEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             AfterDeserializePSObject(content);
         }

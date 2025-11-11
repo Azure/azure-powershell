@@ -72,14 +72,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
 
             switch ( json.StringProperty("summaryType") )
             {
-                case "Firmware":
-                {
-                    return new FirmwareSummary(json);
-                }
-                case "CVE":
-                {
-                    return new CveSummary(json);
-                }
                 case "BinaryHardening":
                 {
                     return new BinaryHardeningSummaryResource(json);
@@ -91,6 +83,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
                 case "CryptoKey":
                 {
                     return new CryptoKeySummaryResource(json);
+                }
+                case "CommonVulnerabilitiesAndExposures":
+                {
+                    return new CveSummary(json);
+                }
+                case "Firmware":
+                {
+                    return new FirmwareSummary(json);
                 }
             }
             return new SummaryResourceProperties(json);
@@ -109,6 +109,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
                 return;
             }
             {_summaryType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonString>("summaryType"), out var __jsonSummaryType) ? (string)__jsonSummaryType : (string)_summaryType;}
+            {_provisioningState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonString>("provisioningState"), out var __jsonProvisioningState) ? (string)__jsonProvisioningState : (string)_provisioningState;}
             AfterFromJson(json);
         }
 
@@ -132,6 +133,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
                 return container;
             }
             AddIf( null != (((object)this._summaryType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonString(this._summaryType.ToString()) : null, "summaryType" ,container.Add );
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode.IncludeRead))
+            {
+                AddIf( null != (((object)this._provisioningState)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonString(this._provisioningState.ToString()) : null, "provisioningState" ,container.Add );
+            }
             AfterToJson(ref container);
             return container;
         }

@@ -33,7 +33,7 @@ Disabling Remote Support.
 Remote Support successfully Disabled.
 ```
 
-Disabling Remote Support
+Disabling Remote support
 
 ## PARAMETERS
 

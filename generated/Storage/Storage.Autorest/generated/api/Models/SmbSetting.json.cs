@@ -76,6 +76,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
                 return;
             }
             {_multichannel = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("multichannel"), out var __jsonMultichannel) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Multichannel.FromJson(__jsonMultichannel) : _multichannel;}
+            {_encryptionInTransit = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("encryptionInTransit"), out var __jsonEncryptionInTransit) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.EncryptionInTransit.FromJson(__jsonEncryptionInTransit) : _encryptionInTransit;}
             {_version = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("versions"), out var __jsonVersions) ? (string)__jsonVersions : (string)_version;}
             {_authenticationMethod = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("authenticationMethods"), out var __jsonAuthenticationMethods) ? (string)__jsonAuthenticationMethods : (string)_authenticationMethod;}
             {_kerberosTicketEncryption = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("kerberosTicketEncryption"), out var __jsonKerberosTicketEncryption) ? (string)__jsonKerberosTicketEncryption : (string)_kerberosTicketEncryption;}
@@ -103,6 +104,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
                 return container;
             }
             AddIf( null != this._multichannel ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) this._multichannel.ToJson(null,serializationMode) : null, "multichannel" ,container.Add );
+            AddIf( null != this._encryptionInTransit ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) this._encryptionInTransit.ToJson(null,serializationMode) : null, "encryptionInTransit" ,container.Add );
             AddIf( null != (((object)this._version)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString(this._version.ToString()) : null, "versions" ,container.Add );
             AddIf( null != (((object)this._authenticationMethod)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString(this._authenticationMethod.ToString()) : null, "authenticationMethods" ,container.Add );
             AddIf( null != (((object)this._kerberosTicketEncryption)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString(this._kerberosTicketEncryption.ToString()) : null, "kerberosTicketEncryption" ,container.Add );

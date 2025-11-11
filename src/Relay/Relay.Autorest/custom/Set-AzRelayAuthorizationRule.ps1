@@ -39,9 +39,9 @@ $authRule.Rights += 'Send'
 Set-AzRelayAuthorizationRule -ResourceGroupName lucas-relay-rg -Namespace namespace-pwsh01 -WcfRelay wcf-01 -Name authRule-01 -InputObject $authRule | fl
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IAuthorizationRule
+Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRule
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IAuthorizationRule
+Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRule
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -59,7 +59,7 @@ INPUTOBJECT <IAuthorizationRule>: Single item in a List or Get AuthorizationRule
 https://learn.microsoft.com/powershell/module/az.relay/set-azrelayauthorizationrule
 #>
 function Set-AzRelayAuthorizationRule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IAuthorizationRule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRule])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -107,7 +107,7 @@ param(
     [Parameter(ParameterSetName='Update1', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='Update2', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IAuthorizationRule]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRule]
     # Single item in a List or Get AuthorizationRule operation
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
@@ -116,9 +116,9 @@ param(
     [Parameter(ParameterSetName='UpdateExpanded1')]
     [Parameter(ParameterSetName='UpdateExpanded2')]
     [AllowEmptyCollection()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Relay.Support.AccessRights])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.PSArgumentCompleterAttribute("Manage", "Send", "Listen")]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Support.AccessRights[]]
+    [System.String[]]
     # The rights associated with the rule.
     ${Rights},
 

@@ -33,7 +33,7 @@ Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IIotFhirDes
 https://learn.microsoft.com/powershell/module/az.healthcareapis/new-azhealthcareiotconnectorfhirdestination
 #>
 function New-AzHealthcareIotConnectorFhirDestination {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IIotFhirDestination])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IIotFhirDestination])]
     [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]
@@ -42,69 +42,113 @@ function New-AzHealthcareIotConnectorFhirDestination {
         # The name of IoT Connector FHIR destination resource.
         ${FhirDestinationName},
 
-        [Parameter(Mandatory)]
+        [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+        [Parameter(ParameterSetName='CreateViaIdentityWorkspaceExpanded', Mandatory)]
+        [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+        [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Path')]
         [System.String]
         # The name of IoT Connector resource.
         ${IotConnectorName},
 
-        [Parameter(Mandatory)]
+        [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+        [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+        [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Path')]
         [System.String]
         # The name of the resource group that contains the service instance.
         ${ResourceGroupName},
 
-        [Parameter(Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Path')]
-        [System.String]
-        # The name of workspace resource.
-        ${WorkspaceName},
-
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
+        [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+        [Parameter(ParameterSetName='CreateViaJsonString')]
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String]
         # The subscription identifier.
         ${SubscriptionId},
 
-        [Parameter(Mandatory)]
+        [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+        [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+        [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Path')]
+        [System.String]
+        # The name of workspace resource.
+        ${WorkspaceName},
+
+        [Parameter(ParameterSetName='CreateViaIdentityIotconnectorExpanded', Mandatory, ValueFromPipeline)]
+        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IHealthcareApisIdentity]
+        # Identity Parameter
+        ${IotconnectorInputObject},
+
+        [Parameter(ParameterSetName='CreateViaIdentityWorkspaceExpanded', Mandatory, ValueFromPipeline)]
+        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IHealthcareApisIdentity]
+        # Identity Parameter
+        ${WorkspaceInputObject},
+
+        [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+        [Parameter(ParameterSetName='CreateViaIdentityIotconnectorExpanded', Mandatory)]
+        [Parameter(ParameterSetName='CreateViaIdentityWorkspaceExpanded', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
         [System.String]
         # Fully qualified resource id of the FHIR service to connect to.
         ${FhirServiceResourceId},
 
-        [Parameter(Mandatory)]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.IotIdentityResolutionType])]
+        [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+        [Parameter(ParameterSetName='CreateViaIdentityIotconnectorExpanded', Mandatory)]
+        [Parameter(ParameterSetName='CreateViaIdentityWorkspaceExpanded', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.PSArgumentCompleterAttribute("Create", "Lookup")]
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.IotIdentityResolutionType]
+        [System.String]
         # Determines how resource identity is resolved on the destination.
         ${ResourceIdentityResolutionType},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
+        [Parameter(ParameterSetName='CreateViaIdentityIotconnectorExpanded')]
+        [Parameter(ParameterSetName='CreateViaIdentityWorkspaceExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
         [System.String]
         # An etag associated with the resource, used for optimistic concurrency when editing it.
         ${Etag},
 
-        [Parameter(Mandatory)]
+        [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+        [Parameter(ParameterSetName='CreateViaIdentityIotconnectorExpanded', Mandatory)]
+        [Parameter(ParameterSetName='CreateViaIdentityWorkspaceExpanded', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IIotMappingPropertiesContent]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IIotMappingPropertiesContent]))]
         [System.Collections.Hashtable]
         # The mapping.
         ${FhirMappingContent},
 
-        [Parameter(Mandatory)]
+        [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+        [Parameter(ParameterSetName='CreateViaIdentityIotconnectorExpanded', Mandatory)]
+        [Parameter(ParameterSetName='CreateViaIdentityWorkspaceExpanded', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
         [System.String]
         # The resource location.
         ${Location},
+
+        [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
+        [System.String]
+        # Path of Json file supplied to the Create operation
+        ${JsonFilePath},
+
+        [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
+        [System.String]
+        # Json string supplied to the Create operation
+        ${JsonString},
 
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Azure')]
         [System.Management.Automation.PSObject]
-        # The credentials, account, tenant, and subscription used for communication with Azure.
+        # The DefaultProfile parameter is not functional.
+        # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
         ${DefaultProfile},
 
         [Parameter()]

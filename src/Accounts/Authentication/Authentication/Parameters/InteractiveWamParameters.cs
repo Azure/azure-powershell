@@ -29,7 +29,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             string resourceId,
             string userId,
             string homeAccountId,
-            Action<string> promptAction) : base(tokenCacheProvider, environment, tokenCache, tenantId, resourceId, userId, homeAccountId)
+            Action<string> promptAction,
+            string claimsChallenge) : base(tokenCacheProvider, environment, tokenCache, tenantId, resourceId, userId, homeAccountId, claimsChallenge)
         {
             PromptAction = promptAction;
         }

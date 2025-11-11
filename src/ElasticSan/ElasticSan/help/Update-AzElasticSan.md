@@ -8,62 +8,73 @@ schema: 2.0.0
 # Update-AzElasticSan
 
 ## SYNOPSIS
-update a Elastic San.
+Update a Elastic San.
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
 Update-AzElasticSan -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-BaseSizeTiB <Int64>] [-ExtendedCapacitySizeTiB <Int64>] [-PublicNetworkAccess <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-AutoScalePolicyEnforcement <String>] [-BaseSizeTiB <Int64>] [-CapacityUnitScaleUpLimitTiB <Int64>]
+ [-ExtendedCapacitySizeTiB <Int64>] [-IncreaseCapacityUnitByTiB <Int64>] [-PublicNetworkAccess <String>]
+ [-Tag <Hashtable>] [-UnusedSizeTiB <Int64>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzElasticSan -InputObject <IElasticSanIdentity> [-BaseSizeTiB <Int64>]
- [-ExtendedCapacitySizeTiB <Int64>] [-PublicNetworkAccess <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Update-AzElasticSan -InputObject <IElasticSanIdentity> [-AutoScalePolicyEnforcement <String>]
+ [-BaseSizeTiB <Int64>] [-CapacityUnitScaleUpLimitTiB <Int64>] [-ExtendedCapacitySizeTiB <Int64>]
+ [-IncreaseCapacityUnitByTiB <Int64>] [-PublicNetworkAccess <String>] [-Tag <Hashtable>]
+ [-UnusedSizeTiB <Int64>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-update a Elastic San.
+Update a Elastic San.
 
 ## EXAMPLES
 
 ### Example 1: Update an Elastic SAN
 ```powershell
-$elasticSan = Update-AzElasticSan -ResourceGroupName myresourcegroup -Name myelasticsan -BaseSizeTib 64 -ExtendedCapacitySizeTib 128 -Tag @{"tag3" = "value3"}
+$elasticSan = Update-AzElasticSan -ResourceGroupName myresourcegroup -Name myelasticsan -BaseSizeTib 5 -ExtendedCapacitySizeTib 20 -Tag @{"tag3" = "value3"} -CapacityUnitScaleUpLimitTiB 20 -IncreaseCapacityUnitByTiB 2 -UnusedSizeTiB 5 -AutoScalePolicyEnforcement Disabled
 ```
 
 ```output
-AvailabilityZone             : 
-BaseSizeTiB                  : 64
-ExtendedCapacitySizeTiB      : 128
-Id                           : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.ElasticSan/elasticSans/myelasticsan
-Location                     : eastus
+AutoScalePolicyEnforcement   : Disabled
+AvailabilityZone             : 1 
+BaseSizeTiB                  : 5
+CapacityUnitScaleUpLimitTiB  : 20
+ExtendedCapacitySizeTiB      : 20
+Id                           : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.ElasticSan/elasticSans/myelasticsan
+IncreaseCapacityUnitByTiB    : 2
+Location                     : eastus2
 Name                         : myelasticsan
+PrivateEndpointConnection    :
 ProvisioningState            : Succeeded
+PublicNetworkAccess          :
+ResourceGroupName            : myresourcegroup
 SkuName                      : Premium_LRS
-SkuTier                      : 
-SystemDataCreatedAt          : 8/16/2022 4:59:54 AM
-SystemDataCreatedBy          : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
-SystemDataCreatedByType      : Application
-SystemDataLastModifiedAt     : 8/16/2022 4:59:54 AM
-SystemDataLastModifiedBy     : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
-SystemDataLastModifiedByType : Application
-Tag                          : Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.ResourceTags
-TotalIops                    : 320000
-TotalMBps                    : 5120
-TotalSizeTiB                 : 192
+SkuTier                      :
+SystemDataCreatedAt          : 9/30/2024 3:41:50 AM
+SystemDataCreatedBy          : example@microsoft.com
+SystemDataCreatedByType      : User
+SystemDataLastModifiedAt     : 9/30/2024 3:55:11 AM
+SystemDataLastModifiedBy     : example@microsoft.com
+SystemDataLastModifiedByType : User
+Tag                          : {
+                                 "tag3": "value3"
+                               }
+TotalIops                    : 25000
+TotalMBps                    : 1000
+TotalSizeTiB                 : 25
 TotalVolumeSizeGiB           : 0
 Type                         : Microsoft.ElasticSan/ElasticSans
+UnusedSizeTiB                : 5
 VolumeGroupCount             : 0
 ```
 
-This command updates the BaseSizeTib, ExtendedCapacitySizeTib, and Tag properties of an Elastic SAN.
+This command updates properties of an Elastic SAN.
 
 ## PARAMETERS
 
@@ -82,8 +93,38 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -AutoScalePolicyEnforcement
+Enable or Disable scale up setting on Elastic San Appliance.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -BaseSizeTiB
 Base size of the Elastic San appliance in TiB.
+
+```yaml
+Type: System.Int64
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CapacityUnitScaleUpLimitTiB
+Maximum scale up size on Elastic San appliance in TiB.
 
 ```yaml
 Type: System.Int64
@@ -115,6 +156,21 @@ Accept wildcard characters: False
 
 ### -ExtendedCapacitySizeTiB
 Extended size of the Elastic San appliance in TiB.
+
+```yaml
+Type: System.Int64
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IncreaseCapacityUnitByTiB
+Unit to increase Capacity Unit on Elastic San appliance in TiB.
 
 ```yaml
 Type: System.Int64
@@ -225,6 +281,21 @@ Update tags
 
 ```yaml
 Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UnusedSizeTiB
+Unused size on Elastic San appliance in TiB.
+
+```yaml
+Type: System.Int64
 Parameter Sets: (All)
 Aliases:
 

@@ -1,6 +1,6 @@
 ---
 Module Name: Az.ApplicationInsights
-Module Guid: 031a685e-5904-433f-b2f8-4fcef3cd15d8
+Module Guid: e799a213-e579-4162-a560-86aca0efe1ad
 Download Help Link: https://learn.microsoft.com/powershell/module/az.applicationinsights
 Help Version: 1.0.0.0
 Locale: en-US
@@ -61,7 +61,7 @@ Creates or updates an Application Insights web test definition.
 Create an in-memory object for WebTestGeolocation.
 
 ### [New-AzApplicationInsightsWebTestHeaderFieldObject](New-AzApplicationInsightsWebTestHeaderFieldObject.md)
-Create a in-memory object for HeaderField
+Create an in-memory object for HeaderField.
 
 ### [New-AzApplicationInsightsWorkbook](New-AzApplicationInsightsWorkbook.md)
 Create a new workbook.
@@ -113,14 +113,14 @@ Note: You cannot specify a different value for InstrumentationKey nor AppId in t
 Update linked storage accounts for an Application Insights component.
 
 ### [Update-AzApplicationInsightsMyWorkbook](Update-AzApplicationInsightsMyWorkbook.md)
-Updates a private workbook that has already been added.
+Update a new private workbook.
 
 ### [Update-AzApplicationInsightsWebTestTag](Update-AzApplicationInsightsWebTestTag.md)
-Updates the tags associated with an Application Insights web test.
+Update the tags associated with an Application Insights web test.
 
 ### [Update-AzApplicationInsightsWorkbook](Update-AzApplicationInsightsWorkbook.md)
-Updates a workbook that has already been added.
+Update a workbook that has already been added.
 
 ### [Update-AzApplicationInsightsWorkbookTemplate](Update-AzApplicationInsightsWorkbookTemplate.md)
-Updates a workbook template that has already been added.
+Update a workbook template that has already been added.
 

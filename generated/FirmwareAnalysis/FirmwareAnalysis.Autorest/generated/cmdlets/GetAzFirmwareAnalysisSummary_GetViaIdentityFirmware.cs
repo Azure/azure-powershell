@@ -12,13 +12,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Cmdlets
 
     /// <summary>Get an analysis result summary of a firmware by name.</summary>
     /// <remarks>
-    /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/firmwares/{firmwareId}/summaries/{summaryName}"
+    /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/firmwares/{firmwareId}/summaries/{summaryType}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzFirmwareAnalysisSummary_GetViaIdentityFirmware")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryResource))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Description(@"Get an analysis result summary of a firmware by name.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/firmwares/{firmwareId}/summaries/{summaryName}", ApiVersion = "2024-01-10")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/firmwares/{firmwareId}/summaries/{summaryType}", ApiVersion = "2025-08-02")]
     public partial class GetAzFirmwareAnalysisSummary_GetViaIdentityFirmware : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IContext
@@ -104,22 +104,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Cmdlets
         /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
 
-        /// <summary>Backing field for <see cref="Name" /> property.</summary>
-        private string _name;
-
-        /// <summary>The Firmware analysis summary name describing the type of summary.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The Firmware analysis summary name describing the type of summary.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
-        Required = true,
-        ReadOnly = false,
-        Description = @"The Firmware analysis summary name describing the type of summary.",
-        SerializedName = @"summaryName",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::System.Management.Automation.Alias("SummaryName")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Category(global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.ParameterCategory.Path)]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PSArgumentCompleterAttribute("Firmware", "CVE", "BinaryHardening", "CryptoCertificate", "CryptoKey")]
-        public string Name { get => this._name; set => this._name = value; }
-
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
@@ -140,6 +124,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Cmdlets
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Use the default credentials for the proxy")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Category(global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter ProxyUseDefaultCredentials { get; set; }
+
+        /// <summary>Backing field for <see cref="Type" /> property.</summary>
+        private string _type;
+
+        /// <summary>The Firmware analysis summary name describing the type of summary.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The Firmware analysis summary name describing the type of summary.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
+        Required = true,
+        ReadOnly = false,
+        Description = @"The Firmware analysis summary name describing the type of summary.",
+        SerializedName = @"summaryType",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::System.Management.Automation.Alias("SummaryType")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Category(global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.ParameterCategory.Path)]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PSArgumentCompleterAttribute("Firmware", "CommonVulnerabilitiesAndExposures", "BinaryHardening", "CryptoCertificate", "CryptoKey")]
+        public string Type { get => this._type; set => this._type = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
@@ -357,7 +357,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Cmdlets
                     await ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     if (FirmwareInputObject?.Id != null)
                     {
-                        this.FirmwareInputObject.Id += $"/summaries/{(global::System.Uri.EscapeDataString(this.Name.ToString()))}";
+                        this.FirmwareInputObject.Id += $"/summaries/{(global::System.Uri.EscapeDataString(this.Type.ToString()))}";
                         await this.Client.SummariesGetViaIdentity(FirmwareInputObject.Id, onOk, onDefault, this, Pipeline);
                     }
                     else
@@ -379,13 +379,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Cmdlets
                         {
                             ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("FirmwareInputObject has null value for FirmwareInputObject.FirmwareId"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, FirmwareInputObject) );
                         }
-                        await this.Client.SummariesGet(FirmwareInputObject.SubscriptionId ?? null, FirmwareInputObject.ResourceGroupName ?? null, FirmwareInputObject.WorkspaceName ?? null, FirmwareInputObject.FirmwareId ?? null, Name, onOk, onDefault, this, Pipeline);
+                        await this.Client.SummariesGet(FirmwareInputObject.SubscriptionId ?? null, FirmwareInputObject.ResourceGroupName ?? null, FirmwareInputObject.WorkspaceName ?? null, FirmwareInputObject.FirmwareId ?? null, Type, onOk, onDefault, this, Pipeline);
                     }
                     await ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { Name=Name})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { Type=Type})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });

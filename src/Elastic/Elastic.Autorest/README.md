@@ -28,8 +28,8 @@ For information on how to develop for `Az.Elastic`, see [how-to.md](how-to.md).
 
 ``` yaml
 # lock the commit
-commit: d38a2c3ce2e2dfc38053af2f6b5fc10cb6221961
-tag: package-2024-03-01
+commit: 3c1ce8207350922f820d20e04547cc4785c758d3
+tag: package-2025-06-01
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
   - $(repo)/specification/elastic/resource-manager/readme.md
@@ -61,6 +61,14 @@ directive:
           "readOnly": true,
           "$ref": "#/definitions/ProvisioningState"
         }
+  # This is necessary because the Get-AzElasticResubscribeOrganization cmdlet has both:
+  # 1. A path parameter "SubscriptionId" (from the Azure subscription context)
+  # 2. A body parameter "subscriptionId" (the target subscription for resubscription)
+  # PowerShell cannot have the same parameter name with different types [String[], String]
+  # Renaming the body parameter to "TargetSubscriptionId" resolves this conflict while maintaining clarity
+  - from: swagger-document
+    where: $.definitions.ResubscribeProperties.properties.subscriptionId
+    transform: $["x-ms-client-name"] = "TargetSubscriptionId"
 
   - where:
       verb: Set

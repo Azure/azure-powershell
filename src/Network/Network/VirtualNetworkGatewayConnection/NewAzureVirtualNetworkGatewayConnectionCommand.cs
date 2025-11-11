@@ -194,6 +194,22 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public PSGatewayCustomBgpIpConfiguration[] GatewayCustomBgpIpAddress { get; set; }
 
+        [Parameter(
+         Mandatory = false,
+         ValueFromPipelineByPropertyName = true,
+         HelpMessage = "Gateway connection authentication type.")]
+        [ValidateSet(
+            MNM.ConnectionAuthenticationType.PSK,
+            MNM.ConnectionAuthenticationType.Certificate,
+            IgnoreCase = true)]
+        public string AuthenticationType { get; set; }
+        
+        [Parameter(
+         Mandatory = false,
+         ValueFromPipelineByPropertyName = true,
+         HelpMessage = "Certificate Authentication information for certificate based authentication connection.")]
+        public PSCertificateAuthentication CertificateAuthentication { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -274,6 +290,16 @@ namespace Microsoft.Azure.Commands.Network
             if (!string.IsNullOrEmpty(this.AuthorizationKey))
             {
                 vnetGatewayConnection.AuthorizationKey = this.AuthorizationKey;
+            }
+
+            if (!string.IsNullOrWhiteSpace(this.AuthenticationType))
+            {
+                vnetGatewayConnection.AuthenticationType = this.AuthenticationType;
+            }
+            
+            if (this.CertificateAuthentication != null)
+            {
+                vnetGatewayConnection.CertificateAuthentication = this.CertificateAuthentication;
             }
             
             if (string.Equals(ParameterSetName, Microsoft.Azure.Commands.Network.Properties.Resources.SetByResource))

@@ -52,6 +52,12 @@ function setupEnv() {
     $grafanaName2 = "az" + (RandomString -allChars $false -len 4)
     $env.Add("grafanaName2", $grafanaName2)
 
+    $dashboardName1 = "dashboard1"
+    $env.Add("dashboardName1", $dashboardName1)
+
+    $dashboardName2 = "dashboard2"
+    $env.Add("dashboardName2", $dashboardName2)
+
     $env.Add("location", "eastus")
 
     write-host "start to create test group"

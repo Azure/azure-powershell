@@ -3,6 +3,7 @@
     <PsModuleName>TrustedSigning</PsModuleName>
     <PsRootModuleName>TrustedSigning</PsRootModuleName>
     <PsModuleFolder>TrustedSigning.Autorest</PsModuleFolder>
+    <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning</RootNamespace>
   </PropertyGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.autorest.props" />

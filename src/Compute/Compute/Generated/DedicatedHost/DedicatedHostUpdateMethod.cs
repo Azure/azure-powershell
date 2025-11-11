@@ -78,11 +78,19 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         parameters.Sku = new Sku(this.Sku, null, null);
                     }
 
+                    if (this.Redeploy.IsPresent)
+                    {
+                        var redeployResult = DedicatedHostsClient.Redeploy(resourceGroupName, hostGroupName, Name);
+                        WriteObject(redeployResult);
+                    }
+                    else
+                    {
+                        var result = DedicatedHostsClient.Update(resourceGroupName, hostGroupName, Name, parameters);
 
-                    var result = DedicatedHostsClient.Update(resourceGroupName, hostGroupName, Name, parameters);
-                    var psObject = new PSHost();
-                    ComputeAutomationAutoMapperProfile.Mapper.Map<DedicatedHost, PSHost>(result, psObject);
-                    WriteObject(psObject);
+                        var psObject = new PSHost();
+                        ComputeAutomationAutoMapperProfile.Mapper.Map<DedicatedHost, PSHost>(result, psObject);
+                        WriteObject(psObject);
+                    }
                 }
             });
         }
@@ -122,6 +130,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false)]
         public DedicatedHostLicenseTypes LicenseType { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Redeploy the dedicated host. The operation will complete successfully once the dedicated host has migrated to a new node and is running. To determine the health of VMs deployed on the dedicated host after the redeploy check the Resource Health Center in the Azure Portal. Please refer to https://docs.microsoft.com/azure/service-health/resource-health-overview for more details.")]
+        public SwitchParameter Redeploy { get; set; }
 
         [Parameter(
             ParameterSetName = "ResourceIdParameter",

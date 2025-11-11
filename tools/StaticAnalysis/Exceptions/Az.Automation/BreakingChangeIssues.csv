@@ -1,0 +1,3 @@
+"Module","ClassName","Target","Severity","ProblemId","Description","Remediation"
+"Az.Automation","Microsoft.Azure.Commands.Automation.Cmdlet.ImportAzureAutomationRunbook","Import-AzAutomationRunbook","0","2040","The validation set for parameter 'Type' for cmdlet 'Import-AzAutomationRunbook' no longer contains the value 'Powershell72'.","Add 'Powershell72' back to the validation set for 'Type'."
+"Az.Automation","Microsoft.Azure.Commands.Automation.Cmdlet.NewAzureAutomationRunbook","New-AzAutomationRunbook","0","2040","The validation set for parameter 'Type' for cmdlet 'New-AzAutomationRunbook' no longer contains the value 'Powershell72'.","Add 'Powershell72' back to the validation set for 'Type'."

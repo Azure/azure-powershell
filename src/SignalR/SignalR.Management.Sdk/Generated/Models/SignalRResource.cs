@@ -25,39 +25,42 @@ namespace Microsoft.Azure.Management.SignalR.Models
         /// Initializes a new instance of the SignalRResource class.
         /// </summary>
 
-        /// <param name="id">Fully qualified resource Id for the resource.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">The name of the resource.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">The type of the resource - e.g. &#34;Microsoft.SignalRService/SignalR&#34;
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
         /// </param>
 
-        /// <param name="location">The GEO location of the resource. e.g. West US | East US | North Central US
-        /// | South Central US.
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
-        /// <param name="tags">Tags of the service which is a list of key value pairs that describe the
-        /// resource.
+        /// <param name="tags">Resource tags.
         /// </param>
 
-        /// <param name="sku">The billing information of the resource.(e.g. Free, Standard)
+        /// <param name="location">The geo-location where the resource lives
         /// </param>
 
-        /// <param name="kind">The kind of the service - e.g. &#34;SignalR&#34; for
-        /// &#34;Microsoft.SignalRService/SignalR&#34;
+        /// <param name="sku">The billing information of the resource.
+        /// </param>
+
+        /// <param name="kind">The kind of the service
         /// Possible values include: &#39;SignalR&#39;, &#39;RawWebSockets&#39;</param>
 
-        /// <param name="identity">The managed identity response
-        /// </param>
-
-        /// <param name="systemData">Metadata pertaining to creation and last modification of the resource.
+        /// <param name="identity">A class represent managed identities used for request and response
         /// </param>
 
         /// <param name="provisioningState">Provisioning state of the resource.
         /// Possible values include: &#39;Unknown&#39;, &#39;Succeeded&#39;, &#39;Failed&#39;, &#39;Canceled&#39;,
         /// &#39;Running&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Moving&#39;</param>
+
+        /// <param name="routeSettings">Route settings for the resource
+        /// </param>
 
         /// <param name="externalIP">The publicly accessible IP of the resource.
         /// </param>
@@ -83,7 +86,10 @@ namespace Microsoft.Azure.Management.SignalR.Models
         /// <param name="sharedPrivateLinkResources">The list of shared private link resources.
         /// </param>
 
-        /// <param name="tls">TLS settings.
+        /// <param name="tls">TLS settings for the resource
+        /// </param>
+
+        /// <param name="hostNamePrefix">Deprecated.
         /// </param>
 
         /// <param name="features">List of the featureFlags.
@@ -96,23 +102,63 @@ namespace Microsoft.Azure.Management.SignalR.Models
         /// terms of different FeatureFlags.
         /// </param>
 
+        /// <param name="liveTraceConfiguration">Live trace configuration of a Microsoft.SignalRService resource.
+        /// </param>
+
+        /// <param name="resourceLogConfiguration">Resource log configuration of a Microsoft.SignalRService resource.
+        /// </param>
+
         /// <param name="cors">Cross-Origin Resource Sharing (CORS) settings.
         /// </param>
 
-        /// <param name="upstream">Upstream settings when the service is in server-less mode.
+        /// <param name="serverless">Serverless settings.
         /// </param>
 
-        /// <param name="networkAcLs">Network ACLs
+        /// <param name="upstream">The settings for the Upstream when the service is in server-less mode.
         /// </param>
-        public SignalRResource(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ResourceSku sku = default(ResourceSku), string kind = default(string), ManagedIdentity identity = default(ManagedIdentity), SystemData systemData = default(SystemData), string provisioningState = default(string), string externalIP = default(string), string hostName = default(string), int? publicPort = default(int?), int? serverPort = default(int?), string version = default(string), System.Collections.Generic.IList<PrivateEndpointConnection> privateEndpointConnections = default(System.Collections.Generic.IList<PrivateEndpointConnection>), System.Collections.Generic.IList<SharedPrivateLinkResource> sharedPrivateLinkResources = default(System.Collections.Generic.IList<SharedPrivateLinkResource>), SignalRTlsSettings tls = default(SignalRTlsSettings), System.Collections.Generic.IList<SignalRFeature> features = default(System.Collections.Generic.IList<SignalRFeature>), SignalRCorsSettings cors = default(SignalRCorsSettings), ServerlessUpstreamSettings upstream = default(ServerlessUpstreamSettings), SignalRNetworkACLs networkAcLs = default(SignalRNetworkACLs))
 
-        : base(id, name, type, location, tags)
+        /// <param name="networkAcLs">Network ACLs for the resource
+        /// </param>
+
+        /// <param name="applicationFirewall">Application firewall settings for the resource
+        /// </param>
+
+        /// <param name="publicNetworkAccess">Enable or disable public network access. Default to &#34;Enabled&#34;.
+        /// When it&#39;s Enabled, network ACLs still apply.
+        /// When it&#39;s Disabled, public network access is always disabled no matter what
+        /// you set in network ACLs.
+        /// </param>
+
+        /// <param name="disableLocalAuth">DisableLocalAuth
+        /// Enable or disable local auth with AccessKey
+        /// When set as true, connection with AccessKey=xxx won&#39;t work.
+        /// </param>
+
+        /// <param name="disableAadAuth">DisableLocalAuth
+        /// Enable or disable aad auth
+        /// When set as true, connection with AuthType=aad won&#39;t work.
+        /// </param>
+
+        /// <param name="regionEndpointEnabled">Enable or disable the regional endpoint. Default to &#34;Enabled&#34;.
+        /// When it&#39;s Disabled, new connections will not be routed to this endpoint,
+        /// however existing connections will not be affected.
+        /// This property is replica specific. Disable the regional endpoint without
+        /// replica is not allowed.
+        /// </param>
+
+        /// <param name="resourceStopped">Stop or start the resource.  Default to &#34;False&#34;.
+        /// When it&#39;s true, the data plane of the resource is shutdown.
+        /// When it&#39;s false, the data plane of the resource is started.
+        /// </param>
+        public SignalRResource(string location, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ResourceSku sku = default(ResourceSku), string kind = default(string), ManagedIdentity identity = default(ManagedIdentity), string provisioningState = default(string), RouteSettings routeSettings = default(RouteSettings), string externalIP = default(string), string hostName = default(string), int? publicPort = default(int?), int? serverPort = default(int?), string version = default(string), System.Collections.Generic.IList<PrivateEndpointConnection> privateEndpointConnections = default(System.Collections.Generic.IList<PrivateEndpointConnection>), System.Collections.Generic.IList<SharedPrivateLinkResource> sharedPrivateLinkResources = default(System.Collections.Generic.IList<SharedPrivateLinkResource>), SignalRTlsSettings tls = default(SignalRTlsSettings), string hostNamePrefix = default(string), System.Collections.Generic.IList<SignalRFeature> features = default(System.Collections.Generic.IList<SignalRFeature>), LiveTraceConfiguration liveTraceConfiguration = default(LiveTraceConfiguration), ResourceLogConfiguration resourceLogConfiguration = default(ResourceLogConfiguration), SignalRCorsSettings cors = default(SignalRCorsSettings), ServerlessSettings serverless = default(ServerlessSettings), ServerlessUpstreamSettings upstream = default(ServerlessUpstreamSettings), SignalRNetworkACLs networkAcLs = default(SignalRNetworkACLs), ApplicationFirewallSettings applicationFirewall = default(ApplicationFirewallSettings), string publicNetworkAccess = default(string), bool? disableLocalAuth = default(bool?), bool? disableAadAuth = default(bool?), string regionEndpointEnabled = default(string), string resourceStopped = default(string))
+
+        : base(location, id, name, type, systemData, tags)
         {
             this.Sku = sku;
             this.Kind = kind;
             this.Identity = identity;
-            this.SystemData = systemData;
             this.ProvisioningState = provisioningState;
+            this.RouteSettings = routeSettings;
             this.ExternalIP = externalIP;
             this.HostName = hostName;
             this.PublicPort = publicPort;
@@ -121,10 +167,20 @@ namespace Microsoft.Azure.Management.SignalR.Models
             this.PrivateEndpointConnections = privateEndpointConnections;
             this.SharedPrivateLinkResources = sharedPrivateLinkResources;
             this.Tls = tls;
+            this.HostNamePrefix = hostNamePrefix;
             this.Features = features;
+            this.LiveTraceConfiguration = liveTraceConfiguration;
+            this.ResourceLogConfiguration = resourceLogConfiguration;
             this.Cors = cors;
+            this.Serverless = serverless;
             this.Upstream = upstream;
             this.NetworkAcLs = networkAcLs;
+            this.ApplicationFirewall = applicationFirewall;
+            this.PublicNetworkAccess = publicNetworkAccess;
+            this.DisableLocalAuth = disableLocalAuth;
+            this.DisableAadAuth = disableAadAuth;
+            this.RegionEndpointEnabled = regionEndpointEnabled;
+            this.ResourceStopped = resourceStopped;
             CustomInit();
         }
 
@@ -135,35 +191,35 @@ namespace Microsoft.Azure.Management.SignalR.Models
 
 
         /// <summary>
-        /// Gets or sets the billing information of the resource.(e.g. Free, Standard)
+        /// Gets or sets the billing information of the resource.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "sku")]
         public ResourceSku Sku {get; set; }
 
         /// <summary>
-        /// Gets or sets the kind of the service - e.g. &#34;SignalR&#34; for
-        /// &#34;Microsoft.SignalRService/SignalR&#34; Possible values include: &#39;SignalR&#39;, &#39;RawWebSockets&#39;
+        /// Gets or sets the kind of the service Possible values include: &#39;SignalR&#39;, &#39;RawWebSockets&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "kind")]
         public string Kind {get; set; }
 
         /// <summary>
-        /// Gets or sets the managed identity response
+        /// Gets or sets a class represent managed identities used for request and
+        /// response
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "identity")]
         public ManagedIdentity Identity {get; set; }
-
-        /// <summary>
-        /// Gets metadata pertaining to creation and last modification of the resource.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "systemData")]
-        public SystemData SystemData {get; private set; }
 
         /// <summary>
         /// Gets provisioning state of the resource. Possible values include: &#39;Unknown&#39;, &#39;Succeeded&#39;, &#39;Failed&#39;, &#39;Canceled&#39;, &#39;Running&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Moving&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState {get; private set; }
+
+        /// <summary>
+        /// Gets or sets route settings for the resource
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.routeSettings")]
+        public RouteSettings RouteSettings {get; set; }
 
         /// <summary>
         /// Gets the publicly accessible IP of the resource.
@@ -211,10 +267,16 @@ namespace Microsoft.Azure.Management.SignalR.Models
         public System.Collections.Generic.IList<SharedPrivateLinkResource> SharedPrivateLinkResources {get; private set; }
 
         /// <summary>
-        /// Gets or sets tLS settings.
+        /// Gets or sets tLS settings for the resource
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.tls")]
         public SignalRTlsSettings Tls {get; set; }
+
+        /// <summary>
+        /// Gets deprecated.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.hostNamePrefix")]
+        public string HostNamePrefix {get; private set; }
 
         /// <summary>
         /// Gets or sets list of the featureFlags.
@@ -230,30 +292,101 @@ namespace Microsoft.Azure.Management.SignalR.Models
         public System.Collections.Generic.IList<SignalRFeature> Features {get; set; }
 
         /// <summary>
+        /// Gets or sets live trace configuration of a Microsoft.SignalRService
+        /// resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.liveTraceConfiguration")]
+        public LiveTraceConfiguration LiveTraceConfiguration {get; set; }
+
+        /// <summary>
+        /// Gets or sets resource log configuration of a Microsoft.SignalRService
+        /// resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.resourceLogConfiguration")]
+        public ResourceLogConfiguration ResourceLogConfiguration {get; set; }
+
+        /// <summary>
         /// Gets or sets cross-Origin Resource Sharing (CORS) settings.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.cors")]
         public SignalRCorsSettings Cors {get; set; }
 
         /// <summary>
-        /// Gets or sets upstream settings when the service is in server-less mode.
+        /// Gets or sets serverless settings.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.serverless")]
+        public ServerlessSettings Serverless {get; set; }
+
+        /// <summary>
+        /// Gets or sets the settings for the Upstream when the service is in
+        /// server-less mode.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.upstream")]
         public ServerlessUpstreamSettings Upstream {get; set; }
 
         /// <summary>
-        /// Gets or sets network ACLs
+        /// Gets or sets network ACLs for the resource
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.networkACLs")]
         public SignalRNetworkACLs NetworkAcLs {get; set; }
+
+        /// <summary>
+        /// Gets or sets application firewall settings for the resource
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.applicationFirewall")]
+        public ApplicationFirewallSettings ApplicationFirewall {get; set; }
+
+        /// <summary>
+        /// Gets or sets enable or disable public network access. Default to &#34;Enabled&#34;.
+        /// When it&#39;s Enabled, network ACLs still apply.
+        /// When it&#39;s Disabled, public network access is always disabled no matter what
+        /// you set in network ACLs.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.publicNetworkAccess")]
+        public string PublicNetworkAccess {get; set; }
+
+        /// <summary>
+        /// Gets or sets disableLocalAuth
+        /// Enable or disable local auth with AccessKey
+        /// When set as true, connection with AccessKey=xxx won&#39;t work.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.disableLocalAuth")]
+        public bool? DisableLocalAuth {get; set; }
+
+        /// <summary>
+        /// Gets or sets disableLocalAuth
+        /// Enable or disable aad auth
+        /// When set as true, connection with AuthType=aad won&#39;t work.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.disableAadAuth")]
+        public bool? DisableAadAuth {get; set; }
+
+        /// <summary>
+        /// Gets or sets enable or disable the regional endpoint. Default to &#34;Enabled&#34;.
+        /// When it&#39;s Disabled, new connections will not be routed to this endpoint,
+        /// however existing connections will not be affected.
+        /// This property is replica specific. Disable the regional endpoint without
+        /// replica is not allowed.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.regionEndpointEnabled")]
+        public string RegionEndpointEnabled {get; set; }
+
+        /// <summary>
+        /// Gets or sets stop or start the resource.  Default to &#34;False&#34;.
+        /// When it&#39;s true, the data plane of the resource is shutdown.
+        /// When it&#39;s false, the data plane of the resource is started.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.resourceStopped")]
+        public string ResourceStopped {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public virtual void Validate()
+        public override void Validate()
         {
+            base.Validate();
             if (this.Sku != null)
             {
                 this.Sku.Validate();
@@ -261,6 +394,10 @@ namespace Microsoft.Azure.Management.SignalR.Models
 
 
 
+            if (this.RouteSettings != null)
+            {
+                this.RouteSettings.Validate();
+            }
 
 
 
@@ -277,6 +414,22 @@ namespace Microsoft.Azure.Management.SignalR.Models
                         element.Validate();
                     }
                 }
+            }
+
+
+
+            if (this.Serverless != null)
+            {
+                this.Serverless.Validate();
+            }
+
+            if (this.NetworkAcLs != null)
+            {
+                this.NetworkAcLs.Validate();
+            }
+            if (this.ApplicationFirewall != null)
+            {
+                this.ApplicationFirewall.Validate();
             }
 
 

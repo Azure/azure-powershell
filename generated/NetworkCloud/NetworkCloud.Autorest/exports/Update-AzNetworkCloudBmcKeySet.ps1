@@ -17,10 +17,10 @@
 <#
 .Synopsis
 Patch properties of baseboard management controller key set for the provided cluster, or update the tags associated with it.
-Properties and tag updates can be done independently.
+Properties and tag update can be done independently.
 .Description
 Patch properties of baseboard management controller key set for the provided cluster, or update the tags associated with it.
-Properties and tag updates can be done independently.
+Properties and tag update can be done independently.
 .Example
 $tagHash = @{
     tag = "tagUpdate"
@@ -42,11 +42,35 @@ Update-AzNetworkCloudBmcKeySet -ResourceGroupName resourceGroupName -Name basebo
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IBmcKeySet
+Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBmcKeySet
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+CLUSTERINPUTOBJECT <INetworkCloudIdentity>: Identity Parameter
+  [AgentPoolName <String>]: The name of the Kubernetes cluster agent pool.
+  [BareMetalMachineKeySetName <String>]: The name of the bare metal machine key set.
+  [BareMetalMachineName <String>]: The name of the bare metal machine.
+  [BmcKeySetName <String>]: The name of the baseboard management controller key set.
+  [CloudServicesNetworkName <String>]: The name of the cloud services network.
+  [ClusterManagerName <String>]: The name of the cluster manager.
+  [ClusterName <String>]: The name of the cluster.
+  [ConsoleName <String>]: The name of the virtual machine console.
+  [FeatureName <String>]: The name of the feature.
+  [Id <String>]: Resource identity path
+  [KubernetesClusterName <String>]: The name of the Kubernetes cluster.
+  [L2NetworkName <String>]: The name of the L2 network.
+  [L3NetworkName <String>]: The name of the L3 network.
+  [MetricsConfigurationName <String>]: The name of the metrics configuration for the cluster.
+  [RackName <String>]: The name of the rack.
+  [RackSkuName <String>]: The name of the rack SKU.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [StorageApplianceName <String>]: The name of the storage appliance.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TrunkedNetworkName <String>]: The name of the trunked network.
+  [VirtualMachineName <String>]: The name of the virtual machine.
+  [VolumeName <String>]: The name of the volume.
 
 INPUTOBJECT <INetworkCloudIdentity>: Identity Parameter
   [AgentPoolName <String>]: The name of the Kubernetes cluster agent pool.
@@ -81,16 +105,21 @@ USERLIST <IKeySetUser[]>: The unique list of permitted users.
 https://learn.microsoft.com/powershell/module/az.networkcloud/update-aznetworkcloudbmckeyset
 #>
 function Update-AzNetworkCloudBmcKeySet {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IBmcKeySet])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBmcKeySet])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Path')]
     [System.String]
     # The name of the cluster.
     ${ClusterName},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityClusterExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Alias('BmcKeySetName')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Path')]
     [System.String]
@@ -98,6 +127,8 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -105,6 +136,8 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -112,11 +145,16 @@ param(
     # The value must be an UUID.
     ${SubscriptionId},
 
+    [Parameter(ParameterSetName='UpdateViaIdentityClusterExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity]
+    # Identity Parameter
+    ${ClusterInputObject},
+
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -134,26 +172,43 @@ param(
     # Other values will result in error from server as they are not supported.
     ${IfNoneMatch},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityClusterExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.DateTime]
     # The date and time after which the users in this key set will be removed from the baseboard management controllers.
     ${Expiration},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityClusterExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IBmcKeySetPatchParametersTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBmcKeySetPatchParametersTags]))]
     [System.Collections.Hashtable]
     # The Azure resource tags that will replace the existing ones.
     ${Tag},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityClusterExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IKeySetUser[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IKeySetUser[]]
     # The unique list of permitted users.
-    # To construct, see NOTES section for USERLIST properties and create a hash table.
     ${UserList},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -223,6 +278,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -243,11 +307,12 @@ begin {
 
         $mapping = @{
             UpdateExpanded = 'Az.NetworkCloud.private\Update-AzNetworkCloudBmcKeySet_UpdateExpanded';
+            UpdateViaIdentityClusterExpanded = 'Az.NetworkCloud.private\Update-AzNetworkCloudBmcKeySet_UpdateViaIdentityClusterExpanded';
             UpdateViaIdentityExpanded = 'Az.NetworkCloud.private\Update-AzNetworkCloudBmcKeySet_UpdateViaIdentityExpanded';
+            UpdateViaJsonFilePath = 'Az.NetworkCloud.private\Update-AzNetworkCloudBmcKeySet_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.NetworkCloud.private\Update-AzNetworkCloudBmcKeySet_UpdateViaJsonString';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -261,6 +326,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

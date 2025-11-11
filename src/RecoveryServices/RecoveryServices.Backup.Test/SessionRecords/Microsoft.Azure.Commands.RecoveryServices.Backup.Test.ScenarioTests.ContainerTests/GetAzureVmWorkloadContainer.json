@@ -1,21 +1,21 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/sqlcontainer-pstest-rg/providers/Microsoft.RecoveryServices/vaults/sqlcontainer-pstest-vault?api-version=2024-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL3NxbGNvbnRhaW5lci1wc3Rlc3QtcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9zcWxjb250YWluZXItcHN0ZXN0LXZhdWx0P2FwaS12ZXJzaW9uPTIwMjQtMDQtMDE=",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/sqlcontainer-pstest-rg/providers/Microsoft.RecoveryServices/vaults/sqlcontainer-pstest-vault?api-version=2025-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL3NxbGNvbnRhaW5lci1wc3Rlc3QtcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9zcWxjb250YWluZXItcHN0ZXN0LXZhdWx0P2FwaS12ZXJzaW9uPTIwMjUtMDgtMDE=",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Accept-Language": [
           "en-US"
         ],
         "x-ms-client-request-id": [
-          "9b88d541-1871-4a70-922d-58cd4359deda"
+          "aed8eb63-e8ba-4696-bec6-b72fb88d839f"
         ],
         "User-Agent": [
-          "FxVersion/8.0.1525.16413",
+          "FxVersion/8.0.2125.47513",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26100",
-          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/7.7.0"
+          "OSVersion/Microsoft.Windows.10.0.26200",
+          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/7.8.0"
         ]
       },
       "RequestBody": "",
@@ -25,27 +25,27 @@
         ],
         "Pragma": [
           "no-cache"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "88ff6a67-e80e-4d0b-a46b-2c646452b68b"
+        ],
+        "x-ms-client-request-id": [
+          "aed8eb63-e8ba-4696-bec6-b72fb88d839f"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "1099"
         ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "x-ms-request-id": [
-          "50d19713-41f8-406f-ac46-d7fa6d19af85"
-        ],
-        "x-ms-client-request-id": [
-          "9b88d541-1871-4a70-922d-58cd4359deda"
-        ],
-        "x-ms-ratelimit-remaining-subscription-global-reads": [
-          "16499"
-        ],
         "x-ms-correlation-request-id": [
-          "50d19713-41f8-406f-ac46-d7fa6d19af85"
+          "88ff6a67-e80e-4d0b-a46b-2c646452b68b"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20250506T185502Z:50d19713-41f8-406f-ac46-d7fa6d19af85"
+          "CENTRALUSEUAP:20251025T184807Z:88ff6a67-e80e-4d0b-a46b-2c646452b68b"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -54,13 +54,13 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 325EA3BE46DF4DB0B24023221A38F089 Ref B: MAA201060514037 Ref C: 2025-05-06T18:55:01Z"
+          "Ref A: B800F02661B246E991EA0863733B4799 Ref B: JKT201051406054 Ref C: 2025-10-25T18:48:07Z"
         ],
         "Date": [
-          "Tue, 06 May 2025 18:55:01 GMT"
+          "Sat, 25 Oct 2025 18:48:07 GMT"
         ],
         "Content-Length": [
-          "1059"
+          "1106"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -69,7 +69,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"location\": \"centraluseuap\",\r\n  \"name\": \"sqlcontainer-pstest-vault\",\r\n  \"etag\": \"W/\\\"datetime'2025-05-06T15%3A07%3A31.0989329Z'\\\"\",\r\n  \"tags\": {\r\n    \"MABUsed\": \"Yes\",\r\n    \"Purpose\": \"Testing\",\r\n    \"DeleteBy\": \"01-2029\",\r\n    \"Owner\": \"hiaga\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\",\r\n    \"backupStorageVersion\": \"V1\",\r\n    \"securitySettings\": {\r\n      \"softDeleteSettings\": {\r\n        \"softDeleteRetentionPeriodInDays\": 14,\r\n        \"softDeleteState\": \"Enabled\",\r\n        \"enhancedSecurityState\": \"Disabled\"\r\n      },\r\n      \"multiUserAuthorization\": \"Disabled\"\r\n    },\r\n    \"redundancySettings\": {\r\n      \"standardTierStorageRedundancy\": \"GeoRedundant\",\r\n      \"crossRegionRestore\": \"Disabled\"\r\n    },\r\n    \"secureScore\": \"None\",\r\n    \"bcdrSecurityLevel\": \"Poor\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"restoreSettings\": {\r\n      \"crossSubscriptionRestoreSettings\": {\r\n        \"crossSubscriptionRestoreState\": \"Enabled\"\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/sqlcontainer-pstest-rg/providers/Microsoft.RecoveryServices/vaults/sqlcontainer-pstest-vault\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"location\": \"centraluseuap\",\r\n  \"name\": \"sqlcontainer-pstest-vault\",\r\n  \"etag\": \"W/\\\"datetime'2025-08-14T16%3A33%3A35.3128462Z'\\\"\",\r\n  \"tags\": {\r\n    \"MABUsed\": \"Yes\",\r\n    \"Purpose\": \"Testing\",\r\n    \"DeleteBy\": \"01-2029\",\r\n    \"Owner\": \"hiaga\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\",\r\n    \"backupStorageVersion\": \"V1\",\r\n    \"securitySettings\": {\r\n      \"softDeleteSettings\": {\r\n        \"softDeleteRetentionPeriodInDays\": 14,\r\n        \"softDeleteState\": \"Enabled\",\r\n        \"enhancedSecurityState\": \"Disabled\"\r\n      },\r\n      \"multiUserAuthorization\": \"Disabled\",\r\n      \"sourceScanConfiguration\": {\r\n        \"state\": \"Disabled\"\r\n      }\r\n    },\r\n    \"redundancySettings\": {\r\n      \"standardTierStorageRedundancy\": \"GeoRedundant\",\r\n      \"crossRegionRestore\": \"Disabled\"\r\n    },\r\n    \"secureScore\": \"None\",\r\n    \"bcdrSecurityLevel\": \"Poor\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"restoreSettings\": {\r\n      \"crossSubscriptionRestoreSettings\": {\r\n        \"crossSubscriptionRestoreState\": \"Enabled\"\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/sqlcontainer-pstest-rg/providers/Microsoft.RecoveryServices/vaults/sqlcontainer-pstest-vault\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -81,13 +81,13 @@
           "en-US"
         ],
         "x-ms-client-request-id": [
-          "7f79aec7-c32e-409f-9f59-dd8634c5af6e"
+          "01187fb3-95a9-426a-bd2b-bc464f01f0d0"
         ],
         "User-Agent": [
-          "FxVersion/8.0.1525.16413",
+          "FxVersion/8.0.2125.47513",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26100",
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.7.0"
+          "OSVersion/Microsoft.Windows.10.0.26200",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.8.0"
         ]
       },
       "RequestBody": "",
@@ -102,22 +102,22 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "c2820bb6-2753-4efb-b971-6fc1ff80a8df"
+          "187130bc-0164-4c51-b69b-2730d2a58ea7"
         ],
         "x-ms-client-request-id": [
-          "7f79aec7-c32e-409f-9f59-dd8634c5af6e"
+          "01187fb3-95a9-426a-bd2b-bc464f01f0d0"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=72102622-0586-43fb-93d9-ab5dd29cabcc/southindia/86142a8d-a917-4f85-bb75-083ba437086a"
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=8bf5ba20-c970-4c38-b2a6-95f5726c959a/eastasia/9e4ad540-08a0-4616-8de1-fd50473e2078"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "299"
+          "1099"
         ],
         "x-ms-correlation-request-id": [
-          "c2820bb6-2753-4efb-b971-6fc1ff80a8df"
+          "187130bc-0164-4c51-b69b-2730d2a58ea7"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20250506T185504Z:c2820bb6-2753-4efb-b971-6fc1ff80a8df"
+          "EASTASIA:20251025T184810Z:187130bc-0164-4c51-b69b-2730d2a58ea7"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -126,13 +126,13 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 886398DE423B4CE6A6EFBB294B5F2121 Ref B: MAA201060514021 Ref C: 2025-05-06T18:55:03Z"
+          "Ref A: BCBD14FCA5CC45A3A9BD409D500C26E8 Ref B: JKT201051406062 Ref C: 2025-10-25T18:48:09Z"
         ],
         "Date": [
-          "Tue, 06 May 2025 18:55:04 GMT"
+          "Sat, 25 Oct 2025 18:48:09 GMT"
         ],
         "Content-Length": [
-          "2685"
+          "4090"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -141,7 +141,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/sqlcontainer-pstest-rg/providers/Microsoft.RecoveryServices/vaults/sqlcontainer-pstest-vault/backupFabrics/Azure/protectionContainers/VMAppContainer;Compute;gvjreddy_test_rg;gvjreddy-test-ccy-vm\",\r\n      \"name\": \"VMAppContainer;Compute;gvjreddy_test_rg;gvjreddy-test-ccy-vm\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers\",\r\n      \"properties\": {\r\n        \"sourceResourceId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/gvjreddy_test_rg/providers/Microsoft.Compute/virtualMachines/gvjreddy-test-ccy-vm\",\r\n        \"lastUpdatedTime\": \"2025-04-04T02:46:25.6188195Z\",\r\n        \"extendedInfo\": {\r\n          \"inquiryInfo\": {\r\n            \"status\": \"Failed\",\r\n            \"errorDetail\": {\r\n              \"code\": \"UserErrorNoSQlInstancesOnMachine\",\r\n              \"message\": \"No SQL instances found on this machine.\",\r\n              \"recommendations\": [\r\n                \"Please install a supported version of SQL and try again later.\"\r\n              ]\r\n            },\r\n            \"inquiryDetails\": [\r\n              {\r\n                \"type\": \"SQL\",\r\n                \"itemCount\": 0,\r\n                \"inquiryValidation\": {\r\n                  \"status\": \"Failed\",\r\n                  \"errorDetail\": {\r\n                    \"code\": \"UserErrorNoSQlInstancesOnMachine\",\r\n                    \"message\": \"No SQL instances found on this machine.\",\r\n                    \"recommendations\": [\r\n                      \"Please install a supported version of SQL and try again later.\"\r\n                    ]\r\n                  },\r\n                  \"additionalDetail\": \"UserErrorNoSQlInstancesOnMachine\"\r\n                }\r\n              }\r\n            ]\r\n          }\r\n        },\r\n        \"friendlyName\": \"gvjreddy-test-ccy-vm\",\r\n        \"backupManagementType\": \"AzureWorkload\",\r\n        \"registrationStatus\": \"Registered\",\r\n        \"healthStatus\": \"Healthy\",\r\n        \"containerType\": \"VMAppContainer\",\r\n        \"protectableObjectType\": \"VMAppContainer\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/sqlcontainer-pstest-rg/providers/Microsoft.RecoveryServices/vaults/sqlcontainer-pstest-vault/backupFabrics/Azure/protectionContainers/VMAppContainer;Compute;sqlcontainer-pstest-rg;sql-pstest-vm\",\r\n      \"name\": \"VMAppContainer;Compute;sqlcontainer-pstest-rg;sql-pstest-vm\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers\",\r\n      \"properties\": {\r\n        \"sourceResourceId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/sqlcontainer-pstest-rg/providers/Microsoft.Compute/virtualMachines/sql-pstest-vm\",\r\n        \"lastUpdatedTime\": \"2023-01-31T08:49:01.3514404Z\",\r\n        \"extendedInfo\": {\r\n          \"hostServerName\": \"sql-pstest-vm\",\r\n          \"inquiryInfo\": {\r\n            \"status\": \"Success\",\r\n            \"errorDetail\": {\r\n              \"code\": \"Success\",\r\n              \"message\": \"\",\r\n              \"recommendations\": [\r\n                \"\"\r\n              ]\r\n            },\r\n            \"inquiryDetails\": [\r\n              {\r\n                \"type\": \"SQL\",\r\n                \"itemCount\": 4,\r\n                \"inquiryValidation\": {\r\n                  \"status\": \"Success\",\r\n                  \"errorDetail\": {\r\n                    \"code\": \"Success\",\r\n                    \"message\": \"\",\r\n                    \"recommendations\": [\r\n                      \"\"\r\n                    ]\r\n                  },\r\n                  \"additionalDetail\": \"\",\r\n                  \"protectableItemCount\": {\r\n                    \"SQLDataBase\": 1\r\n                  }\r\n                }\r\n              }\r\n            ]\r\n          }\r\n        },\r\n        \"friendlyName\": \"sql-pstest-vm\",\r\n        \"backupManagementType\": \"AzureWorkload\",\r\n        \"registrationStatus\": \"Registered\",\r\n        \"healthStatus\": \"Healthy\",\r\n        \"containerType\": \"VMAppContainer\",\r\n        \"protectableObjectType\": \"VMAppContainer\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/sqlcontainer-pstest-rg/providers/Microsoft.RecoveryServices/vaults/sqlcontainer-pstest-vault/backupFabrics/Azure/protectionContainers/VMAppContainer;Compute;gvjreddy_test_rg;gvjreddy-test-ccy-vm\",\r\n      \"name\": \"VMAppContainer;Compute;gvjreddy_test_rg;gvjreddy-test-ccy-vm\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers\",\r\n      \"properties\": {\r\n        \"sourceResourceId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/gvjreddy_test_rg/providers/Microsoft.Compute/virtualMachines/gvjreddy-test-ccy-vm\",\r\n        \"lastUpdatedTime\": \"2025-04-04T02:46:25.6188195Z\",\r\n        \"extendedInfo\": {\r\n          \"inquiryInfo\": {\r\n            \"status\": \"Failed\",\r\n            \"errorDetail\": {\r\n              \"code\": \"UserErrorNoSQlInstancesOnMachine\",\r\n              \"message\": \"No SQL instances found on this machine.\",\r\n              \"recommendations\": [\r\n                \"Please install a supported version of SQL and try again later.\"\r\n              ]\r\n            },\r\n            \"inquiryDetails\": [\r\n              {\r\n                \"type\": \"SQL\",\r\n                \"itemCount\": 0,\r\n                \"inquiryValidation\": {\r\n                  \"status\": \"Failed\",\r\n                  \"errorDetail\": {\r\n                    \"code\": \"UserErrorNoSQlInstancesOnMachine\",\r\n                    \"message\": \"No SQL instances found on this machine.\",\r\n                    \"recommendations\": [\r\n                      \"Please install a supported version of SQL and try again later.\"\r\n                    ]\r\n                  },\r\n                  \"additionalDetail\": \"UserErrorNoSQlInstancesOnMachine\"\r\n                }\r\n              }\r\n            ]\r\n          }\r\n        },\r\n        \"friendlyName\": \"gvjreddy-test-ccy-vm\",\r\n        \"backupManagementType\": \"AzureWorkload\",\r\n        \"registrationStatus\": \"Registered\",\r\n        \"healthStatus\": \"Healthy\",\r\n        \"containerType\": \"VMAppContainer\",\r\n        \"protectableObjectType\": \"VMAppContainer\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/sqlcontainer-pstest-rg/providers/Microsoft.RecoveryServices/vaults/sqlcontainer-pstest-vault/backupFabrics/Azure/protectionContainers/VMAppContainer;Compute;iaasvmpolicymigration;TestVM\",\r\n      \"name\": \"VMAppContainer;Compute;iaasvmpolicymigration;TestVM\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers\",\r\n      \"properties\": {\r\n        \"sourceResourceId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/iaasvmpolicymigration/providers/Microsoft.Compute/virtualMachines/TestVM\",\r\n        \"lastUpdatedTime\": \"2025-05-15T07:10:45.5802757Z\",\r\n        \"extendedInfo\": {\r\n          \"inquiryInfo\": {\r\n            \"status\": \"Failed\",\r\n            \"errorDetail\": {\r\n              \"code\": \"UserErrorNoSQlInstancesOnMachine\",\r\n              \"message\": \"No SQL instances found on this machine.\",\r\n              \"recommendations\": [\r\n                \"Please install a supported version of SQL and try again later.\"\r\n              ]\r\n            },\r\n            \"inquiryDetails\": [\r\n              {\r\n                \"type\": \"SQL\",\r\n                \"itemCount\": 0,\r\n                \"inquiryValidation\": {\r\n                  \"status\": \"Failed\",\r\n                  \"errorDetail\": {\r\n                    \"code\": \"UserErrorNoSQlInstancesOnMachine\",\r\n                    \"message\": \"No SQL instances found on this machine.\",\r\n                    \"recommendations\": [\r\n                      \"Please install a supported version of SQL and try again later.\"\r\n                    ]\r\n                  },\r\n                  \"additionalDetail\": \"UserErrorNoSQlInstancesOnMachine\"\r\n                }\r\n              }\r\n            ]\r\n          }\r\n        },\r\n        \"friendlyName\": \"TestVM\",\r\n        \"backupManagementType\": \"AzureWorkload\",\r\n        \"registrationStatus\": \"Registered\",\r\n        \"healthStatus\": \"Deleted\",\r\n        \"containerType\": \"VMAppContainer\",\r\n        \"protectableObjectType\": \"VMAppContainer\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/sqlcontainer-pstest-rg/providers/Microsoft.RecoveryServices/vaults/sqlcontainer-pstest-vault/backupFabrics/Azure/protectionContainers/VMAppContainer;Compute;sqlcontainer-pstest-rg;sql-pstest-vm\",\r\n      \"name\": \"VMAppContainer;Compute;sqlcontainer-pstest-rg;sql-pstest-vm\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers\",\r\n      \"properties\": {\r\n        \"sourceResourceId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/sqlcontainer-pstest-rg/providers/Microsoft.Compute/virtualMachines/sql-pstest-vm\",\r\n        \"lastUpdatedTime\": \"2023-01-31T08:49:01.3514404Z\",\r\n        \"extendedInfo\": {\r\n          \"hostServerName\": \"sql-pstest-vm\",\r\n          \"inquiryInfo\": {\r\n            \"status\": \"Success\",\r\n            \"errorDetail\": {\r\n              \"code\": \"Success\",\r\n              \"message\": \"\",\r\n              \"recommendations\": [\r\n                \"\"\r\n              ]\r\n            },\r\n            \"inquiryDetails\": [\r\n              {\r\n                \"type\": \"SQL\",\r\n                \"itemCount\": 4,\r\n                \"inquiryValidation\": {\r\n                  \"status\": \"Success\",\r\n                  \"errorDetail\": {\r\n                    \"code\": \"Success\",\r\n                    \"message\": \"\",\r\n                    \"recommendations\": [\r\n                      \"\"\r\n                    ]\r\n                  },\r\n                  \"additionalDetail\": \"\",\r\n                  \"protectableItemCount\": {\r\n                    \"SQLDataBase\": 1\r\n                  }\r\n                }\r\n              }\r\n            ]\r\n          }\r\n        },\r\n        \"friendlyName\": \"sql-pstest-vm\",\r\n        \"backupManagementType\": \"AzureWorkload\",\r\n        \"registrationStatus\": \"Registered\",\r\n        \"healthStatus\": \"Healthy\",\r\n        \"containerType\": \"VMAppContainer\",\r\n        \"protectableObjectType\": \"VMAppContainer\"\r\n      }\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -153,13 +153,13 @@
           "en-US"
         ],
         "x-ms-client-request-id": [
-          "c33954ef-8c85-4c03-88e8-6a257f2d39ef"
+          "53628213-e3b8-4332-9268-5e2fd6c99994"
         ],
         "User-Agent": [
-          "FxVersion/8.0.1525.16413",
+          "FxVersion/8.0.2125.47513",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26100",
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.7.0"
+          "OSVersion/Microsoft.Windows.10.0.26200",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.8.0"
         ]
       },
       "RequestBody": "",
@@ -174,22 +174,25 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "bf376dac-0b44-46a0-ac06-00e9e68d487b"
+          "4dce2cd5-6297-4283-bbf9-07ef7443a7ba"
         ],
         "x-ms-client-request-id": [
-          "c33954ef-8c85-4c03-88e8-6a257f2d39ef"
+          "53628213-e3b8-4332-9268-5e2fd6c99994"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=72102622-0586-43fb-93d9-ab5dd29cabcc/southindia/0079f5ab-26ba-481e-be28-08b4f6f9baf6"
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=8bf5ba20-c970-4c38-b2a6-95f5726c959a/centraluseuap/7c391d58-8749-471d-88a8-59e4b4140c36"
+        ],
+        "x-ms-throttling-version": [
+          "v1"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "299"
+          "1099"
         ],
         "x-ms-correlation-request-id": [
-          "bf376dac-0b44-46a0-ac06-00e9e68d487b"
+          "4dce2cd5-6297-4283-bbf9-07ef7443a7ba"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20250506T185506Z:bf376dac-0b44-46a0-ac06-00e9e68d487b"
+          "CENTRALUSEUAP:20251025T184812Z:4dce2cd5-6297-4283-bbf9-07ef7443a7ba"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -198,13 +201,13 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 4C7FEF37E3404A9A839B62371E752B89 Ref B: MAA201060514021 Ref C: 2025-05-06T18:55:05Z"
+          "Ref A: 85A413DF5E1948BB9FA1507E9AA4BE3F Ref B: JKT201051407029 Ref C: 2025-10-25T18:48:12Z"
         ],
         "Date": [
-          "Tue, 06 May 2025 18:55:06 GMT"
+          "Sat, 25 Oct 2025 18:48:12 GMT"
         ],
         "Content-Length": [
-          "2685"
+          "4090"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -213,7 +216,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/sqlcontainer-pstest-rg/providers/Microsoft.RecoveryServices/vaults/sqlcontainer-pstest-vault/backupFabrics/Azure/protectionContainers/VMAppContainer;Compute;gvjreddy_test_rg;gvjreddy-test-ccy-vm\",\r\n      \"name\": \"VMAppContainer;Compute;gvjreddy_test_rg;gvjreddy-test-ccy-vm\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers\",\r\n      \"properties\": {\r\n        \"sourceResourceId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/gvjreddy_test_rg/providers/Microsoft.Compute/virtualMachines/gvjreddy-test-ccy-vm\",\r\n        \"lastUpdatedTime\": \"2025-04-04T02:46:25.6188195Z\",\r\n        \"extendedInfo\": {\r\n          \"inquiryInfo\": {\r\n            \"status\": \"Failed\",\r\n            \"errorDetail\": {\r\n              \"code\": \"UserErrorNoSQlInstancesOnMachine\",\r\n              \"message\": \"No SQL instances found on this machine.\",\r\n              \"recommendations\": [\r\n                \"Please install a supported version of SQL and try again later.\"\r\n              ]\r\n            },\r\n            \"inquiryDetails\": [\r\n              {\r\n                \"type\": \"SQL\",\r\n                \"itemCount\": 0,\r\n                \"inquiryValidation\": {\r\n                  \"status\": \"Failed\",\r\n                  \"errorDetail\": {\r\n                    \"code\": \"UserErrorNoSQlInstancesOnMachine\",\r\n                    \"message\": \"No SQL instances found on this machine.\",\r\n                    \"recommendations\": [\r\n                      \"Please install a supported version of SQL and try again later.\"\r\n                    ]\r\n                  },\r\n                  \"additionalDetail\": \"UserErrorNoSQlInstancesOnMachine\"\r\n                }\r\n              }\r\n            ]\r\n          }\r\n        },\r\n        \"friendlyName\": \"gvjreddy-test-ccy-vm\",\r\n        \"backupManagementType\": \"AzureWorkload\",\r\n        \"registrationStatus\": \"Registered\",\r\n        \"healthStatus\": \"Healthy\",\r\n        \"containerType\": \"VMAppContainer\",\r\n        \"protectableObjectType\": \"VMAppContainer\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/sqlcontainer-pstest-rg/providers/Microsoft.RecoveryServices/vaults/sqlcontainer-pstest-vault/backupFabrics/Azure/protectionContainers/VMAppContainer;Compute;sqlcontainer-pstest-rg;sql-pstest-vm\",\r\n      \"name\": \"VMAppContainer;Compute;sqlcontainer-pstest-rg;sql-pstest-vm\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers\",\r\n      \"properties\": {\r\n        \"sourceResourceId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/sqlcontainer-pstest-rg/providers/Microsoft.Compute/virtualMachines/sql-pstest-vm\",\r\n        \"lastUpdatedTime\": \"2023-01-31T08:49:01.3514404Z\",\r\n        \"extendedInfo\": {\r\n          \"hostServerName\": \"sql-pstest-vm\",\r\n          \"inquiryInfo\": {\r\n            \"status\": \"Success\",\r\n            \"errorDetail\": {\r\n              \"code\": \"Success\",\r\n              \"message\": \"\",\r\n              \"recommendations\": [\r\n                \"\"\r\n              ]\r\n            },\r\n            \"inquiryDetails\": [\r\n              {\r\n                \"type\": \"SQL\",\r\n                \"itemCount\": 4,\r\n                \"inquiryValidation\": {\r\n                  \"status\": \"Success\",\r\n                  \"errorDetail\": {\r\n                    \"code\": \"Success\",\r\n                    \"message\": \"\",\r\n                    \"recommendations\": [\r\n                      \"\"\r\n                    ]\r\n                  },\r\n                  \"additionalDetail\": \"\",\r\n                  \"protectableItemCount\": {\r\n                    \"SQLDataBase\": 1\r\n                  }\r\n                }\r\n              }\r\n            ]\r\n          }\r\n        },\r\n        \"friendlyName\": \"sql-pstest-vm\",\r\n        \"backupManagementType\": \"AzureWorkload\",\r\n        \"registrationStatus\": \"Registered\",\r\n        \"healthStatus\": \"Healthy\",\r\n        \"containerType\": \"VMAppContainer\",\r\n        \"protectableObjectType\": \"VMAppContainer\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/sqlcontainer-pstest-rg/providers/Microsoft.RecoveryServices/vaults/sqlcontainer-pstest-vault/backupFabrics/Azure/protectionContainers/VMAppContainer;Compute;gvjreddy_test_rg;gvjreddy-test-ccy-vm\",\r\n      \"name\": \"VMAppContainer;Compute;gvjreddy_test_rg;gvjreddy-test-ccy-vm\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers\",\r\n      \"properties\": {\r\n        \"sourceResourceId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/gvjreddy_test_rg/providers/Microsoft.Compute/virtualMachines/gvjreddy-test-ccy-vm\",\r\n        \"lastUpdatedTime\": \"2025-04-04T02:46:25.6188195Z\",\r\n        \"extendedInfo\": {\r\n          \"inquiryInfo\": {\r\n            \"status\": \"Failed\",\r\n            \"errorDetail\": {\r\n              \"code\": \"UserErrorNoSQlInstancesOnMachine\",\r\n              \"message\": \"No SQL instances found on this machine.\",\r\n              \"recommendations\": [\r\n                \"Please install a supported version of SQL and try again later.\"\r\n              ]\r\n            },\r\n            \"inquiryDetails\": [\r\n              {\r\n                \"type\": \"SQL\",\r\n                \"itemCount\": 0,\r\n                \"inquiryValidation\": {\r\n                  \"status\": \"Failed\",\r\n                  \"errorDetail\": {\r\n                    \"code\": \"UserErrorNoSQlInstancesOnMachine\",\r\n                    \"message\": \"No SQL instances found on this machine.\",\r\n                    \"recommendations\": [\r\n                      \"Please install a supported version of SQL and try again later.\"\r\n                    ]\r\n                  },\r\n                  \"additionalDetail\": \"UserErrorNoSQlInstancesOnMachine\"\r\n                }\r\n              }\r\n            ]\r\n          }\r\n        },\r\n        \"friendlyName\": \"gvjreddy-test-ccy-vm\",\r\n        \"backupManagementType\": \"AzureWorkload\",\r\n        \"registrationStatus\": \"Registered\",\r\n        \"healthStatus\": \"Healthy\",\r\n        \"containerType\": \"VMAppContainer\",\r\n        \"protectableObjectType\": \"VMAppContainer\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/sqlcontainer-pstest-rg/providers/Microsoft.RecoveryServices/vaults/sqlcontainer-pstest-vault/backupFabrics/Azure/protectionContainers/VMAppContainer;Compute;iaasvmpolicymigration;TestVM\",\r\n      \"name\": \"VMAppContainer;Compute;iaasvmpolicymigration;TestVM\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers\",\r\n      \"properties\": {\r\n        \"sourceResourceId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/iaasvmpolicymigration/providers/Microsoft.Compute/virtualMachines/TestVM\",\r\n        \"lastUpdatedTime\": \"2025-05-15T07:10:45.5802757Z\",\r\n        \"extendedInfo\": {\r\n          \"inquiryInfo\": {\r\n            \"status\": \"Failed\",\r\n            \"errorDetail\": {\r\n              \"code\": \"UserErrorNoSQlInstancesOnMachine\",\r\n              \"message\": \"No SQL instances found on this machine.\",\r\n              \"recommendations\": [\r\n                \"Please install a supported version of SQL and try again later.\"\r\n              ]\r\n            },\r\n            \"inquiryDetails\": [\r\n              {\r\n                \"type\": \"SQL\",\r\n                \"itemCount\": 0,\r\n                \"inquiryValidation\": {\r\n                  \"status\": \"Failed\",\r\n                  \"errorDetail\": {\r\n                    \"code\": \"UserErrorNoSQlInstancesOnMachine\",\r\n                    \"message\": \"No SQL instances found on this machine.\",\r\n                    \"recommendations\": [\r\n                      \"Please install a supported version of SQL and try again later.\"\r\n                    ]\r\n                  },\r\n                  \"additionalDetail\": \"UserErrorNoSQlInstancesOnMachine\"\r\n                }\r\n              }\r\n            ]\r\n          }\r\n        },\r\n        \"friendlyName\": \"TestVM\",\r\n        \"backupManagementType\": \"AzureWorkload\",\r\n        \"registrationStatus\": \"Registered\",\r\n        \"healthStatus\": \"Deleted\",\r\n        \"containerType\": \"VMAppContainer\",\r\n        \"protectableObjectType\": \"VMAppContainer\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/sqlcontainer-pstest-rg/providers/Microsoft.RecoveryServices/vaults/sqlcontainer-pstest-vault/backupFabrics/Azure/protectionContainers/VMAppContainer;Compute;sqlcontainer-pstest-rg;sql-pstest-vm\",\r\n      \"name\": \"VMAppContainer;Compute;sqlcontainer-pstest-rg;sql-pstest-vm\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers\",\r\n      \"properties\": {\r\n        \"sourceResourceId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/sqlcontainer-pstest-rg/providers/Microsoft.Compute/virtualMachines/sql-pstest-vm\",\r\n        \"lastUpdatedTime\": \"2023-01-31T08:49:01.3514404Z\",\r\n        \"extendedInfo\": {\r\n          \"hostServerName\": \"sql-pstest-vm\",\r\n          \"inquiryInfo\": {\r\n            \"status\": \"Success\",\r\n            \"errorDetail\": {\r\n              \"code\": \"Success\",\r\n              \"message\": \"\",\r\n              \"recommendations\": [\r\n                \"\"\r\n              ]\r\n            },\r\n            \"inquiryDetails\": [\r\n              {\r\n                \"type\": \"SQL\",\r\n                \"itemCount\": 4,\r\n                \"inquiryValidation\": {\r\n                  \"status\": \"Success\",\r\n                  \"errorDetail\": {\r\n                    \"code\": \"Success\",\r\n                    \"message\": \"\",\r\n                    \"recommendations\": [\r\n                      \"\"\r\n                    ]\r\n                  },\r\n                  \"additionalDetail\": \"\",\r\n                  \"protectableItemCount\": {\r\n                    \"SQLDataBase\": 1\r\n                  }\r\n                }\r\n              }\r\n            ]\r\n          }\r\n        },\r\n        \"friendlyName\": \"sql-pstest-vm\",\r\n        \"backupManagementType\": \"AzureWorkload\",\r\n        \"registrationStatus\": \"Registered\",\r\n        \"healthStatus\": \"Healthy\",\r\n        \"containerType\": \"VMAppContainer\",\r\n        \"protectableObjectType\": \"VMAppContainer\"\r\n      }\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -225,13 +228,13 @@
           "en-US"
         ],
         "x-ms-client-request-id": [
-          "fbb7e4be-8ac7-4e2b-8f36-22d37ea89e6a"
+          "b3531720-b002-464f-8171-7af00a445007"
         ],
         "User-Agent": [
-          "FxVersion/8.0.1525.16413",
+          "FxVersion/8.0.2125.47513",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26100",
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.7.0"
+          "OSVersion/Microsoft.Windows.10.0.26200",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.8.0"
         ]
       },
       "RequestBody": "",
@@ -246,22 +249,25 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "f8117450-5331-4ce4-8bd9-432afa81b190"
+          "2a22092c-62d9-4395-a4cb-c5618ff22c3a"
         ],
         "x-ms-client-request-id": [
-          "fbb7e4be-8ac7-4e2b-8f36-22d37ea89e6a"
+          "b3531720-b002-464f-8171-7af00a445007"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=72102622-0586-43fb-93d9-ab5dd29cabcc/southindia/c7dc2edd-bfb4-4969-8f77-3586503b09e9"
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=8bf5ba20-c970-4c38-b2a6-95f5726c959a/centraluseuap/b6abfb72-4fe8-4125-826c-ca4dab6c478d"
+        ],
+        "x-ms-throttling-version": [
+          "v1"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "299"
+          "1099"
         ],
         "x-ms-correlation-request-id": [
-          "f8117450-5331-4ce4-8bd9-432afa81b190"
+          "2a22092c-62d9-4395-a4cb-c5618ff22c3a"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20250506T185505Z:f8117450-5331-4ce4-8bd9-432afa81b190"
+          "CENTRALUSEUAP:20251025T184811Z:2a22092c-62d9-4395-a4cb-c5618ff22c3a"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -270,10 +276,10 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: E4B6A24D22E84B1E8ABA43CFF5A6F262 Ref B: MAA201060514045 Ref C: 2025-05-06T18:55:04Z"
+          "Ref A: CBE2AD9614184DED9378000DF3AE6A70 Ref B: JKT201051406034 Ref C: 2025-10-25T18:48:10Z"
         ],
         "Date": [
-          "Tue, 06 May 2025 18:55:05 GMT"
+          "Sat, 25 Oct 2025 18:48:10 GMT"
         ],
         "Content-Length": [
           "1239"
@@ -297,13 +303,13 @@
           "en-US"
         ],
         "x-ms-client-request-id": [
-          "c613bc2f-6998-44e7-8c58-17ac806d7949"
+          "9b33dae8-8d8f-4c06-ba09-f87fd174563a"
         ],
         "User-Agent": [
-          "FxVersion/8.0.1525.16413",
+          "FxVersion/8.0.2125.47513",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26100",
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.7.0"
+          "OSVersion/Microsoft.Windows.10.0.26200",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.8.0"
         ]
       },
       "RequestBody": "",
@@ -318,22 +324,22 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "4d6c2b39-4803-4c2e-a0e8-460bad43837a"
+          "92656509-b9f4-49e8-8166-ffb8054c3ec9"
         ],
         "x-ms-client-request-id": [
-          "c613bc2f-6998-44e7-8c58-17ac806d7949"
+          "9b33dae8-8d8f-4c06-ba09-f87fd174563a"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=72102622-0586-43fb-93d9-ab5dd29cabcc/southindia/b396284b-bbc8-41ea-8542-a16a37f3815d"
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=8bf5ba20-c970-4c38-b2a6-95f5726c959a/eastasia/48c74037-248b-4f4f-8775-86e44dde8b18"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "299"
+          "1099"
         ],
         "x-ms-correlation-request-id": [
-          "4d6c2b39-4803-4c2e-a0e8-460bad43837a"
+          "92656509-b9f4-49e8-8166-ffb8054c3ec9"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20250506T185507Z:4d6c2b39-4803-4c2e-a0e8-460bad43837a"
+          "EASTASIA:20251025T184814Z:92656509-b9f4-49e8-8166-ffb8054c3ec9"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -342,10 +348,10 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 596127E6357847A9AEB3B7197A90E73B Ref B: MAA201060513009 Ref C: 2025-05-06T18:55:06Z"
+          "Ref A: 461F02305CFB46B2A804E2A58A1D1C2B Ref B: JKT201051407042 Ref C: 2025-10-25T18:48:13Z"
         ],
         "Date": [
-          "Tue, 06 May 2025 18:55:07 GMT"
+          "Sat, 25 Oct 2025 18:48:13 GMT"
         ],
         "Content-Length": [
           "1239"

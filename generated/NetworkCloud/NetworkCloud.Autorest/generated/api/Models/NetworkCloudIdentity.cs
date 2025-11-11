@@ -179,6 +179,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the Kubernetes cluster agent pool.",
         SerializedName = @"agentPoolName",
         PossibleTypes = new [] { typeof(string) })]
@@ -187,6 +190,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the bare metal machine key set.",
         SerializedName = @"bareMetalMachineKeySetName",
         PossibleTypes = new [] { typeof(string) })]
@@ -195,6 +201,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the bare metal machine.",
         SerializedName = @"bareMetalMachineName",
         PossibleTypes = new [] { typeof(string) })]
@@ -203,6 +212,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the baseboard management controller key set.",
         SerializedName = @"bmcKeySetName",
         PossibleTypes = new [] { typeof(string) })]
@@ -211,6 +223,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the cloud services network.",
         SerializedName = @"cloudServicesNetworkName",
         PossibleTypes = new [] { typeof(string) })]
@@ -219,6 +234,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the cluster manager.",
         SerializedName = @"clusterManagerName",
         PossibleTypes = new [] { typeof(string) })]
@@ -227,6 +245,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the cluster.",
         SerializedName = @"clusterName",
         PossibleTypes = new [] { typeof(string) })]
@@ -235,6 +256,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the virtual machine console.",
         SerializedName = @"consoleName",
         PossibleTypes = new [] { typeof(string) })]
@@ -243,6 +267,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the feature.",
         SerializedName = @"featureName",
         PossibleTypes = new [] { typeof(string) })]
@@ -251,6 +278,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource identity path",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -259,6 +289,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the Kubernetes cluster.",
         SerializedName = @"kubernetesClusterName",
         PossibleTypes = new [] { typeof(string) })]
@@ -267,6 +300,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the L2 network.",
         SerializedName = @"l2NetworkName",
         PossibleTypes = new [] { typeof(string) })]
@@ -275,6 +311,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the L3 network.",
         SerializedName = @"l3NetworkName",
         PossibleTypes = new [] { typeof(string) })]
@@ -283,6 +322,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the metrics configuration for the cluster.",
         SerializedName = @"metricsConfigurationName",
         PossibleTypes = new [] { typeof(string) })]
@@ -291,6 +333,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the rack.",
         SerializedName = @"rackName",
         PossibleTypes = new [] { typeof(string) })]
@@ -299,6 +344,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the rack SKU.",
         SerializedName = @"rackSkuName",
         PossibleTypes = new [] { typeof(string) })]
@@ -307,6 +355,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the resource group. The name is case insensitive.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
@@ -315,6 +366,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the storage appliance.",
         SerializedName = @"storageApplianceName",
         PossibleTypes = new [] { typeof(string) })]
@@ -323,6 +377,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The ID of the target subscription. The value must be an UUID.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
@@ -331,6 +388,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the trunked network.",
         SerializedName = @"trunkedNetworkName",
         PossibleTypes = new [] { typeof(string) })]
@@ -339,6 +399,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the virtual machine.",
         SerializedName = @"virtualMachineName",
         PossibleTypes = new [] { typeof(string) })]
@@ -347,6 +410,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the volume.",
         SerializedName = @"volumeName",
         PossibleTypes = new [] { typeof(string) })]

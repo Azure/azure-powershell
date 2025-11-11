@@ -26,24 +26,13 @@ $confFile = New-AzNginxConfigurationFileObject -VirtualPath "nginx.conf" -Conten
 $confAnalysis = Invoke-AzNginxAnalysisConfiguration -ConfigurationName default -DeploymentName xxxx -ResourceGroupName xxxx -ConfigFile $confFile -ConfigRootFile "nginx.conf"
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IAnalysisCreate
-.Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IAnalysisResult
+Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.IAnalysisResult
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-BODY <IAnalysisCreate>: The request body for creating an analysis for an NGINX configuration.
-  [ConfigFile <INginxConfigurationFile[]>]: 
-    [Content <String>]: 
-    [VirtualPath <String>]: 
-  [ConfigProtectedFile <INginxConfigurationFile[]>]: 
-  [ConfigRootFile <String>]: The root file of the NGINX config file(s). It must match one of the files' filepath.
-  [PackageData <String>]: 
-  [PackageProtectedFile <String[]>]: 
 
 CONFIGFILE <INginxConfigurationFile[]>: .
   [Content <String>]: 
@@ -60,79 +49,89 @@ INPUTOBJECT <INginxIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
+
+NGINXDEPLOYMENTINPUTOBJECT <INginxIdentity>: Identity Parameter
+  [CertificateName <String>]: The name of certificate
+  [ConfigurationName <String>]: The name of configuration, only 'default' is supported value due to the singleton of NGINX conf
+  [DeploymentName <String>]: The name of targeted NGINX deployment
+  [Id <String>]: Resource identity path
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
 .Link
 https://learn.microsoft.com/powershell/module/az.nginx/invoke-aznginxanalysisconfiguration
 #>
 function Invoke-AzNginxAnalysisConfiguration {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IAnalysisResult])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.IAnalysisResult])]
 [CmdletBinding(DefaultParameterSetName='AnalysisExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='Analysis', Mandatory)]
     [Parameter(ParameterSetName='AnalysisExpanded', Mandatory)]
+    [Parameter(ParameterSetName='AnalysisViaIdentityNginxDeploymentExpanded', Mandatory)]
+    [Parameter(ParameterSetName='AnalysisViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='AnalysisViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Path')]
     [System.String]
     # The name of configuration, only 'default' is supported value due to the singleton of NGINX conf
     ${ConfigurationName},
 
-    [Parameter(ParameterSetName='Analysis', Mandatory)]
     [Parameter(ParameterSetName='AnalysisExpanded', Mandatory)]
+    [Parameter(ParameterSetName='AnalysisViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='AnalysisViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Path')]
     [System.String]
     # The name of targeted NGINX deployment
     ${DeploymentName},
 
-    [Parameter(ParameterSetName='Analysis', Mandatory)]
     [Parameter(ParameterSetName='AnalysisExpanded', Mandatory)]
+    [Parameter(ParameterSetName='AnalysisViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='AnalysisViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter(ParameterSetName='Analysis')]
     [Parameter(ParameterSetName='AnalysisExpanded')]
+    [Parameter(ParameterSetName='AnalysisViaJsonFilePath')]
+    [Parameter(ParameterSetName='AnalysisViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='AnalysisViaIdentity', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='AnalysisViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter(ParameterSetName='Analysis', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='AnalysisViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IAnalysisCreate]
-    # The request body for creating an analysis for an NGINX configuration.
-    # To construct, see NOTES section for BODY properties and create a hash table.
-    ${Body},
+    [Parameter(ParameterSetName='AnalysisViaIdentityNginxDeploymentExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity]
+    # Identity Parameter
+    ${NginxDeploymentInputObject},
 
     [Parameter(ParameterSetName='AnalysisExpanded')]
     [Parameter(ParameterSetName='AnalysisViaIdentityExpanded')]
+    [Parameter(ParameterSetName='AnalysisViaIdentityNginxDeploymentExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfigurationFile[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxConfigurationFile[]]
     # .
-    # To construct, see NOTES section for CONFIGFILE properties and create a hash table.
     ${ConfigFile},
 
     [Parameter(ParameterSetName='AnalysisExpanded')]
     [Parameter(ParameterSetName='AnalysisViaIdentityExpanded')]
+    [Parameter(ParameterSetName='AnalysisViaIdentityNginxDeploymentExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfigurationFile[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxConfigurationFile[]]
     # .
-    # To construct, see NOTES section for CONFIGPROTECTEDFILE properties and create a hash table.
     ${ConfigProtectedFile},
 
     [Parameter(ParameterSetName='AnalysisExpanded')]
     [Parameter(ParameterSetName='AnalysisViaIdentityExpanded')]
+    [Parameter(ParameterSetName='AnalysisViaIdentityNginxDeploymentExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Body')]
     [System.String]
     # The root file of the NGINX config file(s).
@@ -141,6 +140,7 @@ param(
 
     [Parameter(ParameterSetName='AnalysisExpanded')]
     [Parameter(ParameterSetName='AnalysisViaIdentityExpanded')]
+    [Parameter(ParameterSetName='AnalysisViaIdentityNginxDeploymentExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Body')]
     [System.String]
     # .
@@ -148,11 +148,24 @@ param(
 
     [Parameter(ParameterSetName='AnalysisExpanded')]
     [Parameter(ParameterSetName='AnalysisViaIdentityExpanded')]
+    [Parameter(ParameterSetName='AnalysisViaIdentityNginxDeploymentExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Body')]
     [System.String[]]
     # .
     ${PackageProtectedFile},
+
+    [Parameter(ParameterSetName='AnalysisViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Analysis operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='AnalysisViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Body')]
+    [System.String]
+    # Json string supplied to the Analysis operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -210,6 +223,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -229,14 +251,13 @@ begin {
         }
 
         $mapping = @{
-            Analysis = 'Az.Nginx.private\Invoke-AzNginxAnalysisConfiguration_Analysis';
             AnalysisExpanded = 'Az.Nginx.private\Invoke-AzNginxAnalysisConfiguration_AnalysisExpanded';
-            AnalysisViaIdentity = 'Az.Nginx.private\Invoke-AzNginxAnalysisConfiguration_AnalysisViaIdentity';
             AnalysisViaIdentityExpanded = 'Az.Nginx.private\Invoke-AzNginxAnalysisConfiguration_AnalysisViaIdentityExpanded';
+            AnalysisViaIdentityNginxDeploymentExpanded = 'Az.Nginx.private\Invoke-AzNginxAnalysisConfiguration_AnalysisViaIdentityNginxDeploymentExpanded';
+            AnalysisViaJsonFilePath = 'Az.Nginx.private\Invoke-AzNginxAnalysisConfiguration_AnalysisViaJsonFilePath';
+            AnalysisViaJsonString = 'Az.Nginx.private\Invoke-AzNginxAnalysisConfiguration_AnalysisViaJsonString';
         }
-        if (('Analysis', 'AnalysisExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('AnalysisExpanded', 'AnalysisViaJsonFilePath', 'AnalysisViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -250,6 +271,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

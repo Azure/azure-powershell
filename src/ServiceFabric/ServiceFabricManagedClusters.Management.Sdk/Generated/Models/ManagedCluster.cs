@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
     /// The managed cluster resource
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class ManagedCluster : Resource
+    public partial class ManagedCluster : TrackedResource
     {
         /// <summary>
         /// Initializes a new instance of the ManagedCluster class.
@@ -25,33 +25,40 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
         /// Initializes a new instance of the ManagedCluster class.
         /// </summary>
 
-        /// <param name="id">Azure resource identifier.
+        /// <param name="id">Fully qualified resource ID for the resource. Ex -
+        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
         /// </param>
 
-        /// <param name="name">Azure resource name.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">Azure resource type.
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
         /// </param>
 
-        /// <param name="location">Azure resource location.
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
-        /// <param name="tags">Azure resource tags.
+        /// <param name="tags">Resource tags.
         /// </param>
 
-        /// <param name="etag">Azure resource etag.
+        /// <param name="location">The geo-location where the resource lives
         /// </param>
 
-        /// <param name="systemData">Metadata pertaining to creation and last modification of the resource.
+        /// <param name="etag">If eTag is provided in the response body, it may also be provided as a
+        /// header per the normal etag convention.  Entity tags are used for comparing
+        /// two or more entities from the same requested resource. HTTP/1.1 uses entity
+        /// tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match
+        /// (section 14.26), and If-Range (section 14.27) header fields.&#34;,
         /// </param>
 
         /// <param name="sku">The sku of the managed cluster
         /// </param>
 
         /// <param name="clusterState">The current state of the cluster.
-        /// Possible values include: 'WaitingForNodes', 'Deploying', 'BaselineUpgrade',
-        /// 'Upgrading', 'UpgradeFailed', 'Ready'</param>
+        /// Possible values include: &#39;WaitingForNodes&#39;, &#39;Deploying&#39;, &#39;BaselineUpgrade&#39;,
+        /// &#39;Upgrading&#39;, &#39;UpgradeFailed&#39;, &#39;Ready&#39;</param>
 
         /// <param name="dnsName">The cluster dns name.
         /// </param>
@@ -104,8 +111,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
         /// </param>
 
         /// <param name="provisioningState">The provisioning state of the managed cluster resource.
-        /// Possible values include: 'None', 'Creating', 'Created', 'Updating',
-        /// 'Succeeded', 'Failed', 'Canceled', 'Deleting', 'Deleted', 'Other'</param>
+        /// Possible values include: &#39;None&#39;, &#39;Creating&#39;, &#39;Created&#39;, &#39;Updating&#39;,
+        /// &#39;Succeeded&#39;, &#39;Failed&#39;, &#39;Canceled&#39;, &#39;Deleting&#39;, &#39;Deleted&#39;, &#39;Other&#39;</param>
 
         /// <param name="clusterCodeVersion">The Service Fabric runtime version of the cluster. This property is
         /// required when **clusterUpgradeMode** is set to &#39;Manual&#39;. To get list of
@@ -116,19 +123,18 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
 
         /// <param name="clusterUpgradeMode">The upgrade mode of the cluster when new Service Fabric runtime version is
         /// available.
-        /// Possible values include: 'Automatic', 'Manual'</param>
+        /// Possible values include: &#39;Automatic&#39;, &#39;Manual&#39;</param>
 
         /// <param name="clusterUpgradeCadence">Indicates when new cluster runtime version upgrades will be applied after
         /// they are released. By default is Wave0. Only applies when
         /// **clusterUpgradeMode** is set to &#39;Automatic&#39;.
-        /// Possible values include: 'Wave0', 'Wave1', 'Wave2'</param>
+        /// Possible values include: &#39;Wave0&#39;, &#39;Wave1&#39;, &#39;Wave2&#39;</param>
 
         /// <param name="addonFeatures">List of add-on features to enable on the cluster.
         /// </param>
 
-        /// <param name="enableAutoOSUpgrade">Setting this to true enables automatic OS upgrade for the node types that
-        /// are created using any platform OS image with version &#39;latest&#39;. The default
-        /// value for this setting is false.
+        /// <param name="enableAutoOSUpgrade">Enables automatic OS upgrade for node types created using OS images with
+        /// version &#39;latest&#39;. The default value for this setting is false.
         /// </param>
 
         /// <param name="zonalResiliency">Indicates if the cluster has zone resiliency.
@@ -167,20 +173,60 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
         /// </param>
 
         /// <param name="zonalUpdateMode">Indicates the update mode for Cross Az clusters.
-        /// Possible values include: 'Standard', 'Fast'</param>
+        /// Possible values include: &#39;Standard&#39;, &#39;Fast&#39;</param>
 
         /// <param name="useCustomVnet">For new clusters, this parameter indicates that it uses Bring your own
         /// VNet, but the subnet is specified at node type level; and for such
         /// clusters, the subnetId property is required for node types.
         /// </param>
 
-        /// <param name="publicIPPrefixId">Specify the resource id of a public IP prefix that the load balancer will
-        /// allocate a public IP address from. Only supports IPv4.
+        /// <param name="publicIPPrefixId">Specify the resource id of a public IPv4 prefix that the load balancer will
+        /// allocate a public IPv4 address from. This setting cannot be changed once
+        /// the cluster is created.
         /// </param>
-        public ManagedCluster(string location, Sku sku, string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), SystemData systemData = default(SystemData), string clusterState = default(string), string dnsName = default(string), string fqdn = default(string), string ipv4Address = default(string), string clusterId = default(string), System.Collections.Generic.IList<string> clusterCertificateThumbprints = default(System.Collections.Generic.IList<string>), int? clientConnectionPort = default(int?), int? httpGatewayConnectionPort = default(int?), string adminUserName = default(string), string adminPassword = default(string), System.Collections.Generic.IList<LoadBalancingRule> loadBalancingRules = default(System.Collections.Generic.IList<LoadBalancingRule>), bool? allowRdpAccess = default(bool?), System.Collections.Generic.IList<NetworkSecurityRule> networkSecurityRules = default(System.Collections.Generic.IList<NetworkSecurityRule>), System.Collections.Generic.IList<ClientCertificate> clients = default(System.Collections.Generic.IList<ClientCertificate>), AzureActiveDirectory azureActiveDirectory = default(AzureActiveDirectory), System.Collections.Generic.IList<SettingsSectionDescription> fabricSettings = default(System.Collections.Generic.IList<SettingsSectionDescription>), string provisioningState = default(string), string clusterCodeVersion = default(string), string clusterUpgradeMode = default(string), string clusterUpgradeCadence = default(string), System.Collections.Generic.IList<string> addonFeatures = default(System.Collections.Generic.IList<string>), bool? enableAutoOSUpgrade = default(bool?), bool? zonalResiliency = default(bool?), ApplicationTypeVersionsCleanupPolicy applicationTypeVersionsCleanupPolicy = default(ApplicationTypeVersionsCleanupPolicy), bool? enableIpv6 = default(bool?), string subnetId = default(string), System.Collections.Generic.IList<IPTag> ipTags = default(System.Collections.Generic.IList<IPTag>), string ipv6Address = default(string), bool? enableServicePublicIP = default(bool?), System.Collections.Generic.IList<Subnet> auxiliarySubnets = default(System.Collections.Generic.IList<Subnet>), System.Collections.Generic.IList<ServiceEndpoint> serviceEndpoints = default(System.Collections.Generic.IList<ServiceEndpoint>), string zonalUpdateMode = default(string), bool? useCustomVnet = default(bool?), string publicIPPrefixId = default(string))
 
-        : base(location, id, name, type, tags, etag, systemData)
+        /// <param name="publicIPv6PrefixId">Specify the resource id of a public IPv6 prefix that the load balancer will
+        /// allocate a public IPv6 address from. This setting cannot be changed once
+        /// the cluster is created.
+        /// </param>
+
+        /// <param name="ddosProtectionPlanId">Specify the resource id of a DDoS network protection plan that will be
+        /// associated with the virtual network of the cluster.
+        /// </param>
+
+        /// <param name="upgradeDescription">The policy to use when upgrading the cluster.
+        /// </param>
+
+        /// <param name="httpGatewayTokenAuthConnectionPort">The port used for token-auth based HTTPS connections to the cluster. Cannot
+        /// be set to the same port as HttpGatewayEndpoint.
+        /// </param>
+
+        /// <param name="enableHttpGatewayExclusiveAuthMode">If true, token-based authentication is not allowed on the
+        /// HttpGatewayEndpoint. This is required to support TLS versions 1.3 and
+        /// above. If token-based authentication is used,
+        /// HttpGatewayTokenAuthConnectionPort must be defined.
+        /// </param>
+
+        /// <param name="autoGeneratedDomainNameLabelScope">This property is the entry point to using a public CA cert for your cluster
+        /// cert. It specifies the level of reuse allowed for the custom FQDN created,
+        /// matching the subject of the public CA cert.
+        /// Possible values include: &#39;TenantReuse&#39;, &#39;SubscriptionReuse&#39;,
+        /// &#39;ResourceGroupReuse&#39;, &#39;NoReuse&#39;</param>
+
+        /// <param name="allocatedOutboundPorts">The number of outbound ports allocated for SNAT for each node in the
+        /// backend pool of the default load balancer. The default value is 0 which
+        /// provides dynamic port allocation based on pool size.
+        /// </param>
+
+        /// <param name="vmImage">The VM image the node types are configured with. This property controls the
+        /// Service Fabric component packages to be used for the cluster. Allowed
+        /// values are: &#39;Windows&#39;. The default value is &#39;Windows&#39;.
+        /// </param>
+        public ManagedCluster(string location, Sku sku, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), string clusterState = default(string), string dnsName = default(string), string fqdn = default(string), string ipv4Address = default(string), string clusterId = default(string), System.Collections.Generic.IList<string> clusterCertificateThumbprints = default(System.Collections.Generic.IList<string>), int? clientConnectionPort = default(int?), int? httpGatewayConnectionPort = default(int?), string adminUserName = default(string), string adminPassword = default(string), System.Collections.Generic.IList<LoadBalancingRule> loadBalancingRules = default(System.Collections.Generic.IList<LoadBalancingRule>), bool? allowRdpAccess = default(bool?), System.Collections.Generic.IList<NetworkSecurityRule> networkSecurityRules = default(System.Collections.Generic.IList<NetworkSecurityRule>), System.Collections.Generic.IList<ClientCertificate> clients = default(System.Collections.Generic.IList<ClientCertificate>), AzureActiveDirectory azureActiveDirectory = default(AzureActiveDirectory), System.Collections.Generic.IList<SettingsSectionDescription> fabricSettings = default(System.Collections.Generic.IList<SettingsSectionDescription>), string provisioningState = default(string), string clusterCodeVersion = default(string), string clusterUpgradeMode = default(string), string clusterUpgradeCadence = default(string), System.Collections.Generic.IList<string> addonFeatures = default(System.Collections.Generic.IList<string>), bool? enableAutoOSUpgrade = default(bool?), bool? zonalResiliency = default(bool?), ApplicationTypeVersionsCleanupPolicy applicationTypeVersionsCleanupPolicy = default(ApplicationTypeVersionsCleanupPolicy), bool? enableIpv6 = default(bool?), string subnetId = default(string), System.Collections.Generic.IList<IpTag> ipTags = default(System.Collections.Generic.IList<IpTag>), string ipv6Address = default(string), bool? enableServicePublicIP = default(bool?), System.Collections.Generic.IList<Subnet> auxiliarySubnets = default(System.Collections.Generic.IList<Subnet>), System.Collections.Generic.IList<ServiceEndpoint> serviceEndpoints = default(System.Collections.Generic.IList<ServiceEndpoint>), string zonalUpdateMode = default(string), bool? useCustomVnet = default(bool?), string publicIPPrefixId = default(string), string publicIPv6PrefixId = default(string), string ddosProtectionPlanId = default(string), ClusterUpgradePolicy upgradeDescription = default(ClusterUpgradePolicy), int? httpGatewayTokenAuthConnectionPort = default(int?), bool? enableHttpGatewayExclusiveAuthMode = default(bool?), string autoGeneratedDomainNameLabelScope = default(string), int? allocatedOutboundPorts = default(int?), string vmImage = default(string))
+
+        : base(location, id, name, type, systemData, tags)
         {
+            this.Etag = etag;
             this.Sku = sku;
             this.ClusterState = clusterState;
             this.DnsName = dnsName;
@@ -216,6 +262,14 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
             this.ZonalUpdateMode = zonalUpdateMode;
             this.UseCustomVnet = useCustomVnet;
             this.PublicIPPrefixId = publicIPPrefixId;
+            this.PublicIPv6PrefixId = publicIPv6PrefixId;
+            this.DdosProtectionPlanId = ddosProtectionPlanId;
+            this.UpgradeDescription = upgradeDescription;
+            this.HttpGatewayTokenAuthConnectionPort = httpGatewayTokenAuthConnectionPort;
+            this.EnableHttpGatewayExclusiveAuthMode = enableHttpGatewayExclusiveAuthMode;
+            this.AutoGeneratedDomainNameLabelScope = autoGeneratedDomainNameLabelScope;
+            this.AllocatedOutboundPorts = allocatedOutboundPorts;
+            this.VMImage = vmImage;
             CustomInit();
         }
 
@@ -224,6 +278,16 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
         /// </summary>
         partial void CustomInit();
 
+
+        /// <summary>
+        /// Gets if eTag is provided in the response body, it may also be provided as a
+        /// header per the normal etag convention.  Entity tags are used for comparing
+        /// two or more entities from the same requested resource. HTTP/1.1 uses entity
+        /// tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match
+        /// (section 14.26), and If-Range (section 14.27) header fields.&#34;,
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "etag")]
+        public string Etag {get; private set; }
 
         /// <summary>
         /// Gets or sets the sku of the managed cluster
@@ -371,9 +435,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
         public System.Collections.Generic.IList<string> AddonFeatures {get; set; }
 
         /// <summary>
-        /// Gets or sets setting this to true enables automatic OS upgrade for the node
-        /// types that are created using any platform OS image with version &#39;latest&#39;.
-        /// The default value for this setting is false.
+        /// Gets or sets enables automatic OS upgrade for node types created using OS
+        /// images with version &#39;latest&#39;. The default value for this setting is false.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.enableAutoOSUpgrade")]
         public bool? EnableAutoOSUpgrade {get; set; }
@@ -412,7 +475,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
         /// address of the cluster.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.ipTags")]
-        public System.Collections.Generic.IList<IPTag> IPTags {get; set; }
+        public System.Collections.Generic.IList<IpTag> IPTags {get; set; }
 
         /// <summary>
         /// Gets iPv6 address for the cluster if IPv6 is enabled.
@@ -455,11 +518,73 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
         public bool? UseCustomVnet {get; set; }
 
         /// <summary>
-        /// Gets or sets specify the resource id of a public IP prefix that the load
-        /// balancer will allocate a public IP address from. Only supports IPv4.
+        /// Gets or sets specify the resource id of a public IPv4 prefix that the load
+        /// balancer will allocate a public IPv4 address from. This setting cannot be
+        /// changed once the cluster is created.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.publicIPPrefixId")]
         public string PublicIPPrefixId {get; set; }
+
+        /// <summary>
+        /// Gets or sets specify the resource id of a public IPv6 prefix that the load
+        /// balancer will allocate a public IPv6 address from. This setting cannot be
+        /// changed once the cluster is created.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.publicIPv6PrefixId")]
+        public string PublicIPv6PrefixId {get; set; }
+
+        /// <summary>
+        /// Gets or sets specify the resource id of a DDoS network protection plan that
+        /// will be associated with the virtual network of the cluster.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.ddosProtectionPlanId")]
+        public string DdosProtectionPlanId {get; set; }
+
+        /// <summary>
+        /// Gets or sets the policy to use when upgrading the cluster.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.upgradeDescription")]
+        public ClusterUpgradePolicy UpgradeDescription {get; set; }
+
+        /// <summary>
+        /// Gets or sets the port used for token-auth based HTTPS connections to the
+        /// cluster. Cannot be set to the same port as HttpGatewayEndpoint.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.httpGatewayTokenAuthConnectionPort")]
+        public int? HttpGatewayTokenAuthConnectionPort {get; set; }
+
+        /// <summary>
+        /// Gets or sets if true, token-based authentication is not allowed on the
+        /// HttpGatewayEndpoint. This is required to support TLS versions 1.3 and
+        /// above. If token-based authentication is used,
+        /// HttpGatewayTokenAuthConnectionPort must be defined.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.enableHttpGatewayExclusiveAuthMode")]
+        public bool? EnableHttpGatewayExclusiveAuthMode {get; set; }
+
+        /// <summary>
+        /// Gets or sets this property is the entry point to using a public CA cert for
+        /// your cluster cert. It specifies the level of reuse allowed for the custom
+        /// FQDN created, matching the subject of the public CA cert. Possible values include: &#39;TenantReuse&#39;, &#39;SubscriptionReuse&#39;, &#39;ResourceGroupReuse&#39;, &#39;NoReuse&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.autoGeneratedDomainNameLabelScope")]
+        public string AutoGeneratedDomainNameLabelScope {get; set; }
+
+        /// <summary>
+        /// Gets or sets the number of outbound ports allocated for SNAT for each node
+        /// in the backend pool of the default load balancer. The default value is 0
+        /// which provides dynamic port allocation based on pool size.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.allocatedOutboundPorts")]
+        public int? AllocatedOutboundPorts {get; set; }
+
+        /// <summary>
+        /// Gets or sets the VM image the node types are configured with. This property
+        /// controls the Service Fabric component packages to be used for the cluster.
+        /// Allowed values are: &#39;Windows&#39;. The default value is &#39;Windows&#39;.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.VMImage")]
+        public string VMImage {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -473,6 +598,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "Sku");
             }
+
             if (this.Sku != null)
             {
                 this.Sku.Validate();
@@ -566,6 +692,14 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
                         element.Validate();
                     }
                 }
+            }
+
+
+
+
+            if (this.UpgradeDescription != null)
+            {
+                this.UpgradeDescription.Validate();
             }
 
 

@@ -16,6 +16,7 @@
 function New-AzMySqlServer {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServer])]
     [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.CmdletBreakingChangeAttribute("16.0.0", "2.0.0", "2026/05")]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Description('Creates a new server.')]
     param(
         [Parameter(Mandatory, HelpMessage = 'The name of the server.')]

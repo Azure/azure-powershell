@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-List the vm resources currently being monitored by the Elastic monitor resource.
+List all VM resources currently being monitored by the Elastic monitor resource, helping you manage observability.
 .Description
-List the vm resources currently being monitored by the Elastic monitor resource.
+List all VM resources currently being monitored by the Elastic monitor resource, helping you manage observability.
 .Example
 Get-AzElasticVMHost -ResourceGroupName azure-elastic-test -Name elastic-pwsh02
 

@@ -7,26 +7,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Extensions;
 
-    /// <summary>CVE analysis result resource</summary>
+    /// <summary>The object representing a firmware analysis CVE result resource</summary>
     public partial class CveResource :
         Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResource,
         Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResourceInternal,
         Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IValidates
     {
         /// <summary>
-        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResource" />
+        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IProxyResource"
+        /// />
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResource __resource = new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.Resource();
+        private Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IProxyResource __proxyResource = new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ProxyResource();
 
-        /// <summary>ID of the SBOM component</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inlined)]
-        public string ComponentId { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)Property).ComponentId; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)Property).ComponentId = value ?? null; }
-
-        /// <summary>Name of the SBOM component</summary>
+        /// <summary>Name of the affected SBOM component.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inlined)]
         public string ComponentName { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)Property).ComponentName; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)Property).ComponentName = value ?? null; }
 
-        /// <summary>Version of the SBOM component.</summary>
+        /// <summary>Version of the affected SBOM component.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inlined)]
         public string ComponentVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)Property).ComponentVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)Property).ComponentVersion = value ?? null; }
 
@@ -34,22 +31,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inlined)]
         public string CveId { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)Property).CveId; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)Property).CveId = value ?? null; }
 
-        /// <summary>
-        /// A single CVSS score to represent the CVE. If a V3 score is specified, then it will use the V3 score. Otherwise if the
-        /// V2 score is specified it will be the V2 score.
-        /// </summary>
+        /// <summary>Name of the CVE.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inlined)]
+        public string CveName { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)Property).CveName; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)Property).CveName = value ?? null; }
+
+        /// <summary>Legacy property for the effective CVE score.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inlined)]
         public string CvssScore { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)Property).CvssScore; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)Property).CvssScore = value ?? null; }
 
-        /// <summary>CVSS V2 score of the CVE.</summary>
+        /// <summary>All known CVSS scores for the CVE.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICvssScore> CvssScores { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)Property).CvssScores; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)Property).CvssScores = value ?? null /* arrayOf */; }
+
+        /// <summary>Legacy property for the CVE CVSS version 2 score, if one existed.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inlined)]
         public string CvssV2Score { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)Property).CvssV2Score; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)Property).CvssV2Score = value ?? null; }
 
-        /// <summary>CVSS V3 score of the CVE.</summary>
+        /// <summary>Legacy property for the CVE CVSS version 3 score, if one existed.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inlined)]
         public string CvssV3Score { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)Property).CvssV3Score; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)Property).CvssV3Score = value ?? null; }
 
-        /// <summary>CVSS version of the CVE.</summary>
+        /// <summary>
+        /// Legacy property for the what CVSS version score was stored in the cvssScore property
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inlined)]
         public string CvssVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)Property).CvssVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)Property).CvssVersion = value ?? null; }
 
@@ -57,51 +61,92 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inlined)]
         public string Description { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)Property).Description; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)Property).Description = value ?? null; }
 
+        /// <summary>The most recent CVSS score of the CVE.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inlined)]
+        public float? EffectiveCvssScore { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)Property).EffectiveCvssScore; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)Property).EffectiveCvssScore = value ?? default(float); }
+
+        /// <summary>The version of the effectiveCvssScore property.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inlined)]
+        public int? EffectiveCvssVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)Property).EffectiveCvssVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)Property).EffectiveCvssVersion = value ?? default(int); }
+
         /// <summary>
         /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inherited)]
-        public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__resource).Id; }
+        public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).Id; }
 
         /// <summary>The list of reference links for the CVE.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inlined)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveLink> Link { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)Property).Link; }
 
         /// <summary>Internal Acessors for Component</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveComponent Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResourceInternal.Component { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)Property).Component; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)Property).Component = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveComponent Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResourceInternal.Component { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)Property).Component; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)Property).Component = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Link</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveLink> Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResourceInternal.Link { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)Property).Link; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)Property).Link = value; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveLink> Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResourceInternal.Link { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)Property).Link; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)Property).Link = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResult Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResourceInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.CveResult()); set { {_property = value;} } }
 
+        /// <summary>Internal Acessors for ProvisioningState</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResourceInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)Property).ProvisioningState = value ?? null; }
+
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__resource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__resource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__resource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__resource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for SystemData</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__resource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__resource).SystemData = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).SystemData = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__resource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__resource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).Type = value ?? null; }
 
         /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inherited)]
-        public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__resource).Name; }
+        public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).Name; }
 
-        /// <summary>Name of the CVE.</summary>
+        /// <summary>ID of the SBOM component.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inlined)]
-        public string PropertiesName { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)Property).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)Property).Name = value ?? null; }
+        public string PropertiesComponentComponentId { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)Property).ComponentComponentId; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)Property).ComponentComponentId = value ?? null; }
+
+        /// <summary>ID of the affected SBOM component.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inlined)]
+        public string PropertiesComponentId { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)Property).ComponentId; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)Property).ComponentId = value ?? null; }
+
+        /// <summary>Name of the SBOM component.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inlined)]
+        public string PropertiesComponentName { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)Property).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)Property).Name = value ?? null; }
 
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResult _property;
 
-        /// <summary>The properties of a CVE result found within a firmware image</summary>
+        /// <summary>The resource-specific properties for this resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResult Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.CveResult()); set => this._property = value; }
+
+        /// <summary>The status of the last operation.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inlined)]
+        public string ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)Property).ProvisioningState; }
 
         /// <summary>Severity of the CVE.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inlined)]
@@ -111,37 +156,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inherited)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__resource).SystemData; }
+        internal Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).SystemData = value ?? null /* model class */; }
 
         /// <summary>The timestamp of resource creation (UTC).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inherited)]
-        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__resource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__resource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt; }
 
         /// <summary>The identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inherited)]
-        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__resource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__resource).SystemDataCreatedBy = value ?? null; }
+        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy; }
 
         /// <summary>The type of identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inherited)]
-        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__resource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__resource).SystemDataCreatedByType = value ?? null; }
+        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType; }
 
         /// <summary>The timestamp of resource last modification (UTC)</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inherited)]
-        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__resource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__resource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt; }
 
         /// <summary>The identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inherited)]
-        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__resource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__resource).SystemDataLastModifiedBy = value ?? null; }
+        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy; }
 
         /// <summary>The type of identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inherited)]
-        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__resource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__resource).SystemDataLastModifiedByType = value ?? null; }
+        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType; }
 
         /// <summary>
         /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inherited)]
-        public string Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__resource).Type; }
+        public string Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)__proxyResource).Type; }
+
+        /// <summary>Version of the SBOM component.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inlined)]
+        public string Version { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)Property).Version; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)Property).Version = value ?? null; }
 
         /// <summary>Creates an new <see cref="CveResource" /> instance.</summary>
         public CveResource()
@@ -157,46 +206,35 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         /// </returns>
         public async global::System.Threading.Tasks.Task Validate(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener eventListener)
         {
-            await eventListener.AssertNotNull(nameof(__resource), __resource);
-            await eventListener.AssertObjectIsValid(nameof(__resource), __resource);
+            await eventListener.AssertNotNull(nameof(__proxyResource), __proxyResource);
+            await eventListener.AssertObjectIsValid(nameof(__proxyResource), __proxyResource);
         }
     }
-    /// CVE analysis result resource
+    /// The object representing a firmware analysis CVE result resource
     public partial interface ICveResource :
         Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IJsonSerializable,
-        Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResource
+        Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IProxyResource
     {
-        /// <summary>ID of the SBOM component</summary>
+        /// <summary>Name of the affected SBOM component.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"ID of the SBOM component",
-        SerializedName = @"componentId",
-        PossibleTypes = new [] { typeof(string) })]
-        string ComponentId { get; set; }
-        /// <summary>Name of the SBOM component</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Name of the SBOM component",
-        SerializedName = @"name",
+        Description = @"Name of the affected SBOM component.",
+        SerializedName = @"componentName",
         PossibleTypes = new [] { typeof(string) })]
         string ComponentName { get; set; }
-        /// <summary>Version of the SBOM component.</summary>
+        /// <summary>Version of the affected SBOM component.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Version of the SBOM component.",
-        SerializedName = @"version",
+        Description = @"Version of the affected SBOM component.",
+        SerializedName = @"componentVersion",
         PossibleTypes = new [] { typeof(string) })]
         string ComponentVersion { get; set; }
         /// <summary>ID of the CVE result.</summary>
@@ -210,9 +248,63 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         SerializedName = @"cveId",
         PossibleTypes = new [] { typeof(string) })]
         string CveId { get; set; }
+        /// <summary>Name of the CVE.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Name of the CVE.",
+        SerializedName = @"cveName",
+        PossibleTypes = new [] { typeof(string) })]
+        string CveName { get; set; }
+        /// <summary>Legacy property for the effective CVE score.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Legacy property for the effective CVE score.",
+        SerializedName = @"cvssScore",
+        PossibleTypes = new [] { typeof(string) })]
+        string CvssScore { get; set; }
+        /// <summary>All known CVSS scores for the CVE.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"All known CVSS scores for the CVE.",
+        SerializedName = @"cvssScores",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICvssScore) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICvssScore> CvssScores { get; set; }
+        /// <summary>Legacy property for the CVE CVSS version 2 score, if one existed.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Legacy property for the CVE CVSS version 2 score, if one existed.",
+        SerializedName = @"cvssV2Score",
+        PossibleTypes = new [] { typeof(string) })]
+        string CvssV2Score { get; set; }
+        /// <summary>Legacy property for the CVE CVSS version 3 score, if one existed.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Legacy property for the CVE CVSS version 3 score, if one existed.",
+        SerializedName = @"cvssV3Score",
+        PossibleTypes = new [] { typeof(string) })]
+        string CvssV3Score { get; set; }
         /// <summary>
-        /// A single CVSS score to represent the CVE. If a V3 score is specified, then it will use the V3 score. Otherwise if the
-        /// V2 score is specified it will be the V2 score.
+        /// Legacy property for the what CVSS version score was stored in the cvssScore property
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
         Required = false,
@@ -220,40 +312,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"A single CVSS score to represent the CVE. If a V3 score is specified, then it will use the V3 score. Otherwise if the V2 score is specified it will be the V2 score.",
-        SerializedName = @"cvssScore",
-        PossibleTypes = new [] { typeof(string) })]
-        string CvssScore { get; set; }
-        /// <summary>CVSS V2 score of the CVE.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"CVSS V2 score of the CVE.",
-        SerializedName = @"cvssV2Score",
-        PossibleTypes = new [] { typeof(string) })]
-        string CvssV2Score { get; set; }
-        /// <summary>CVSS V3 score of the CVE.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"CVSS V3 score of the CVE.",
-        SerializedName = @"cvssV3Score",
-        PossibleTypes = new [] { typeof(string) })]
-        string CvssV3Score { get; set; }
-        /// <summary>CVSS version of the CVE.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"CVSS version of the CVE.",
+        Description = @"Legacy property for the what CVSS version score was stored in the cvssScore property",
         SerializedName = @"cvssVersion",
         PossibleTypes = new [] { typeof(string) })]
         string CvssVersion { get; set; }
@@ -268,6 +327,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         SerializedName = @"description",
         PossibleTypes = new [] { typeof(string) })]
         string Description { get; set; }
+        /// <summary>The most recent CVSS score of the CVE.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The most recent CVSS score of the CVE.",
+        SerializedName = @"effectiveCvssScore",
+        PossibleTypes = new [] { typeof(float) })]
+        float? EffectiveCvssScore { get; set; }
+        /// <summary>The version of the effectiveCvssScore property.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The version of the effectiveCvssScore property.",
+        SerializedName = @"effectiveCvssVersion",
+        PossibleTypes = new [] { typeof(int) })]
+        int? EffectiveCvssVersion { get; set; }
         /// <summary>The list of reference links for the CVE.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
         Required = false,
@@ -279,17 +360,51 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         SerializedName = @"links",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveLink) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveLink> Link { get;  }
-        /// <summary>Name of the CVE.</summary>
+        /// <summary>ID of the SBOM component.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Name of the CVE.",
+        Description = @"ID of the SBOM component.",
+        SerializedName = @"componentId",
+        PossibleTypes = new [] { typeof(string) })]
+        string PropertiesComponentComponentId { get; set; }
+        /// <summary>ID of the affected SBOM component.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"ID of the affected SBOM component.",
+        SerializedName = @"componentId",
+        PossibleTypes = new [] { typeof(string) })]
+        string PropertiesComponentId { get; set; }
+        /// <summary>Name of the SBOM component.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Name of the SBOM component.",
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(string) })]
-        string PropertiesName { get; set; }
+        string PropertiesComponentName { get; set; }
+        /// <summary>The status of the last operation.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The status of the last operation.",
+        SerializedName = @"provisioningState",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Pending", "Extracting", "Analyzing")]
+        string ProvisioningState { get;  }
         /// <summary>Severity of the CVE.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
         Required = false,
@@ -301,43 +416,68 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         SerializedName = @"severity",
         PossibleTypes = new [] { typeof(string) })]
         string Severity { get; set; }
+        /// <summary>Version of the SBOM component.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Version of the SBOM component.",
+        SerializedName = @"version",
+        PossibleTypes = new [] { typeof(string) })]
+        string Version { get; set; }
 
     }
-    /// CVE analysis result resource
+    /// The object representing a firmware analysis CVE result resource
     internal partial interface ICveResourceInternal :
-        Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal
+        Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IProxyResourceInternal
     {
-        /// <summary>The SBOM component for the CVE.</summary>
+        /// <summary>Legacy property for what is now componentName</summary>
         Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveComponent Component { get; set; }
-        /// <summary>ID of the SBOM component</summary>
-        string ComponentId { get; set; }
-        /// <summary>Name of the SBOM component</summary>
+        /// <summary>Name of the affected SBOM component.</summary>
         string ComponentName { get; set; }
-        /// <summary>Version of the SBOM component.</summary>
+        /// <summary>Version of the affected SBOM component.</summary>
         string ComponentVersion { get; set; }
         /// <summary>ID of the CVE result.</summary>
         string CveId { get; set; }
-        /// <summary>
-        /// A single CVSS score to represent the CVE. If a V3 score is specified, then it will use the V3 score. Otherwise if the
-        /// V2 score is specified it will be the V2 score.
-        /// </summary>
+        /// <summary>Name of the CVE.</summary>
+        string CveName { get; set; }
+        /// <summary>Legacy property for the effective CVE score.</summary>
         string CvssScore { get; set; }
-        /// <summary>CVSS V2 score of the CVE.</summary>
+        /// <summary>All known CVSS scores for the CVE.</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICvssScore> CvssScores { get; set; }
+        /// <summary>Legacy property for the CVE CVSS version 2 score, if one existed.</summary>
         string CvssV2Score { get; set; }
-        /// <summary>CVSS V3 score of the CVE.</summary>
+        /// <summary>Legacy property for the CVE CVSS version 3 score, if one existed.</summary>
         string CvssV3Score { get; set; }
-        /// <summary>CVSS version of the CVE.</summary>
+        /// <summary>
+        /// Legacy property for the what CVSS version score was stored in the cvssScore property
+        /// </summary>
         string CvssVersion { get; set; }
         /// <summary>The CVE description.</summary>
         string Description { get; set; }
+        /// <summary>The most recent CVSS score of the CVE.</summary>
+        float? EffectiveCvssScore { get; set; }
+        /// <summary>The version of the effectiveCvssScore property.</summary>
+        int? EffectiveCvssVersion { get; set; }
         /// <summary>The list of reference links for the CVE.</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveLink> Link { get; set; }
-        /// <summary>Name of the CVE.</summary>
-        string PropertiesName { get; set; }
-        /// <summary>The properties of a CVE result found within a firmware image</summary>
+        /// <summary>ID of the SBOM component.</summary>
+        string PropertiesComponentComponentId { get; set; }
+        /// <summary>ID of the affected SBOM component.</summary>
+        string PropertiesComponentId { get; set; }
+        /// <summary>Name of the SBOM component.</summary>
+        string PropertiesComponentName { get; set; }
+        /// <summary>The resource-specific properties for this resource.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResult Property { get; set; }
+        /// <summary>The status of the last operation.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Pending", "Extracting", "Analyzing")]
+        string ProvisioningState { get; set; }
         /// <summary>Severity of the CVE.</summary>
         string Severity { get; set; }
+        /// <summary>Version of the SBOM component.</summary>
+        string Version { get; set; }
 
     }
 }

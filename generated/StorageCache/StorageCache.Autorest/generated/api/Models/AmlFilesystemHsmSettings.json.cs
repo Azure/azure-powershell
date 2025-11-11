@@ -68,6 +68,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models
             {_container = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonString>("container"), out var __jsonContainer) ? (string)__jsonContainer : (string)_container;}
             {_loggingContainer = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonString>("loggingContainer"), out var __jsonLoggingContainer) ? (string)__jsonLoggingContainer : (string)_loggingContainer;}
             {_importPrefix = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonString>("importPrefix"), out var __jsonImportPrefix) ? (string)__jsonImportPrefix : (string)_importPrefix;}
+            {_importPrefixesInitial = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonArray>("importPrefixesInitial"), out var __jsonImportPrefixesInitial) ? If( __jsonImportPrefixesInitial as Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(string) (__u is Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonString __t ? (string)(__t.ToString()) : null)) ))() : null : _importPrefixesInitial;}
             AfterFromJson(json);
         }
 
@@ -105,6 +106,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models
             AddIf( null != (((object)this._container)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonString(this._container.ToString()) : null, "container" ,container.Add );
             AddIf( null != (((object)this._loggingContainer)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonString(this._loggingContainer.ToString()) : null, "loggingContainer" ,container.Add );
             AddIf( null != (((object)this._importPrefix)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonString(this._importPrefix.ToString()) : null, "importPrefix" ,container.Add );
+            if (null != this._importPrefixesInitial)
+            {
+                var __w = new Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.XNodeArray();
+                foreach( var __x in this._importPrefixesInitial )
+                {
+                    AddIf(null != (((object)__x)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonString(__x.ToString()) : null ,__w.Add);
+                }
+                container.Add("importPrefixesInitial",__w);
+            }
             AfterToJson(ref container);
             return container;
         }

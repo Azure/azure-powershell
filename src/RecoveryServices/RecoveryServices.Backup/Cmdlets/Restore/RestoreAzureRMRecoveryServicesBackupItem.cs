@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -348,6 +348,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [ValidatePattern(@"^/subscriptions/[^/]+/resourceGroups/[^/]+/providers/Microsoft.Compute/diskAccesses/[^/]+$")]
         public string TargetDiskAccessId { get; set; }
 
+        [Parameter(Mandatory = false, ParameterSetName = AzureManagedVMReplaceExistingParameterSet,
+            HelpMessage = ParamHelpMsgs.Encryption.CVMOsDiskEncryptionSetId)]
+        [Parameter(Mandatory = false, ParameterSetName = AzureManagedVMCreateNewParameterSet,
+            HelpMessage = ParamHelpMsgs.Encryption.CVMOsDiskEncryptionSetId)]
+        public string CVMOsDiskEncryptionSetId { get; set; }
+
         public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
@@ -567,6 +573,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 if (MultipleSourceFilePath != null)
                 {
                     providerParameters.Add(RestoreFSBackupItemParams.MultipleSourceFilePath, MultipleSourceFilePath);
+                }
+
+                if (CVMOsDiskEncryptionSetId != null)
+                {
+                    providerParameters.Add(RestoreVMBackupItemParams.CVMOsDiskEncryptionSetId, CVMOsDiskEncryptionSetId);
                 }
 
                 PsBackupProviderManager providerManager =

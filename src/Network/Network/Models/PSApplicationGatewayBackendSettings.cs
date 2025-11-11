@@ -35,6 +35,8 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Target = ViewControl.Table)]
         public bool? PickHostNameFromBackendAddress { get; set; }
         [Ps1Xml(Target = ViewControl.Table)]
+        public bool? EnableL4ClientIpPreservation { get; set; }
+        [Ps1Xml(Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
         public string Type { get; set; }
 

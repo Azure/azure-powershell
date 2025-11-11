@@ -64,6 +64,8 @@ function setupEnv() {
 
     $diagnosticSettingName = 'test-diagnostic-setting' + (RandomString -allChars $false -len 6)
     $null = $env.Add("diagnosticSettingName", $diagnosticSettingName)
+    $subscriptiondiagnosticSettingName = 'test-diagnostic-setting' + (RandomString -allChars $false -len 6)
+    $null = $env.Add("subscriptiondiagnosticSettingName", $subscriptiondiagnosticSettingName)
 
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
@@ -73,5 +75,6 @@ function setupEnv() {
 }
 function cleanupEnv() {
     # Clean resources you create for testing
+    Remove-AzResourceGroup -Name $env.resourceGroupName
 }
 

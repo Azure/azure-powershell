@@ -3,6 +3,7 @@
     <PsModuleName>DynatraceObservability</PsModuleName>
     <PsRootModuleName>DynatraceObservability</PsRootModuleName>
     <PsModuleFolder>DynatraceObservability.Autorest</PsModuleFolder>
+    <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability</RootNamespace>
   </PropertyGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.autorest.props" />

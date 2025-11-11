@@ -39,22 +39,13 @@ title: Autoscale
 module-version: 0.1.0
 subject-prefix: Autoscale
 namespace: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale
-nested-object-to-string: true
-
-# If there are post APIs for some kinds of actions in the RP, you may need to 
-# uncomment following line to support viaIdentity for these post APIs
-# identity-correction-for-post: true
-
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
 
 directive:
   # Following is two common directive which are normally required in all the RPs
   # 1. Remove the unexpanded parameter set
   # 2. For New-* cmdlets, ViaIdentity is not required, so CreateViaIdentityExpanded is removed as well
   - where:
-      variant: ^Create$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))|^CreateViaIdentityExpanded$
     remove: true
   - where:
       verb: Set
@@ -67,14 +58,6 @@ directive:
       verb: Update
       subject: AutoscaleSetting
     hide: true
-  # Rename 'Equals'
-  - from: source-file-csharp
-    where: $
-    transform: $ = $.replace('public static Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Support.ComparisonOperationType Equals = @"Equals";', 'public static Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Support.ComparisonOperationType Equal = @"Equals";');
-
-  - from: source-file-csharp
-    where: $
-    transform: $ = $.replace('public static Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Support.ScaleRuleMetricDimensionOperationType Equals = @"Equals";', 'public static Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Support.ScaleRuleMetricDimensionOperationType Equal = @"Equals";');
 
   - from: swagger-document
     where: $.definitions.TimeWindow
@@ -99,11 +82,11 @@ directive:
         },
         "description": "A specific date-time for the profile."
       }
-
+# Add breaking change for them, will add back.
   - model-cmdlet:
-    - AutoscaleProfile
-    - ScaleRule
-    - AutoscaleNotification
-    - WebhookNotification
-    - ScaleRuleMetricDimension
+    - model-name: AutoscaleProfile
+    - model-name: ScaleRule
+    - model-name: AutoscaleNotification
+    - model-name: WebhookNotification
+    - model-name: ScaleRuleMetricDimension
 ```

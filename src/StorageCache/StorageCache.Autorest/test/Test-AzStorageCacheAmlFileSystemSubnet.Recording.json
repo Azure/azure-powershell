@@ -1,0 +1,119 @@
+{
+  "Test-AzStorageCacheAmlFileSystemSubnet+[NoContext]+CheckExpanded+$POST+https://management.azure.com/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/providers/Microsoft.StorageCache/checkAmlFSSubnets?api-version=2025-07-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/providers/Microsoft.StorageCache/checkAmlFSSubnets?api-version=2025-07-01",
+      "Content": "{\r\n  \"sku\": {\r\n    \"name\": \"AMLFS-Durable-Premium-250\"\r\n  },\r\n  \"filesystemSubnet\": \"/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.Network/virtualNetworks/acctest43511/subnets/acctest43511\",\r\n  \"storageCapacityTiB\": 16,\r\n  \"location\": \"canadacentral\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "307" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-served-by": [ "689b4b6f-6c53-4a21-b5e2-071f4f6f0591_134002811388778622,689b4b6f-6c53-4a21-b5e2-071f4f6f0591_134002811388778622" ],
+        "x-ms-request-id": [ "06a4d0e1-b160-407b-b95d-e6017c21f11d" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=5b6f93fb-9681-4be9-a906-3a8b714fd24c/eastus/f0ccc08c-7a00-46ae-81a6-f2e2272255ba" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-correlation-request-id": [ "6adcb11a-dc23-4544-9738-22116af6ee5d" ],
+        "x-ms-routing-request-id": [ "EASTUS:20250910T180920Z:6adcb11a-dc23-4544-9738-22116af6ee5d" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 704107766D1E4160A4814CCD4C353023 Ref B: BL2AA2010205025 Ref C: 2025-09-10T18:09:20Z" ],
+        "Date": [ "Wed, 10 Sep 2025 18:09:19 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Test-AzStorageCacheAmlFileSystemSubnet+[NoContext]+CheckViaJsonString+$POST+https://management.azure.com/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/providers/Microsoft.StorageCache/checkAmlFSSubnets?api-version=2025-07-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/providers/Microsoft.StorageCache/checkAmlFSSubnets?api-version=2025-07-01",
+      "Content": "{\r\n    \"location\": \"canadacentral\",\r\n    \"filesystemSubnet\": \"/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.Network/virtualNetworks/acctest43511/subnets/acctest43511\",\r\n    \"sku\": {\r\n        \"name\": \"AMLFS-Durable-Premium-250\"\r\n    },\r\n    \"storageCapacityTiB\": 16\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "321" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-served-by": [ "689b4b6f-6c53-4a21-b5e2-071f4f6f0591_134002811388778622,689b4b6f-6c53-4a21-b5e2-071f4f6f0591_134002811388778622" ],
+        "x-ms-request-id": [ "b2ccc384-a5a7-47cb-ab17-9fc0cc5937f7" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=5b6f93fb-9681-4be9-a906-3a8b714fd24c/eastus/e2261287-b7ae-4039-8bb9-680646aa7e07" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-correlation-request-id": [ "0f2500c2-d985-46cc-b903-59ce49bbdc86" ],
+        "x-ms-routing-request-id": [ "EASTUS:20250910T180921Z:0f2500c2-d985-46cc-b903-59ce49bbdc86" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: F84B747B50E4429FA404815F887D8518 Ref B: BL2AA2010205025 Ref C: 2025-09-10T18:09:20Z" ],
+        "Date": [ "Wed, 10 Sep 2025 18:09:20 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Test-AzStorageCacheAmlFileSystemSubnet+[NoContext]+CheckViaJsonFilePath+$POST+https://management.azure.com/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/providers/Microsoft.StorageCache/checkAmlFSSubnets?api-version=2025-07-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/providers/Microsoft.StorageCache/checkAmlFSSubnets?api-version=2025-07-01",
+      "Content": "ew0KICAgICJsb2NhdGlvbiI6ICJjYW5hZGFjZW50cmFsIiwNCiAgICAiZmlsZXN5c3RlbVN1Ym5ldCI6ICIvc3Vic2NyaXB0aW9ucy8wYTcxNWEzYi04YTE2LTQzYmEtYTZiYi0xZTM4YWQwNTA3OTEvcmVzb3VyY2VHcm91cHMvYWNjdGVzdDQzNTExL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay92aXJ0dWFsTmV0d29ya3MvYWNjdGVzdDQzNTExL3N1Ym5ldHMvYWNjdGVzdDQzNTExIiwNCiAgICAic2t1Ijogew0KICAgICAgICAibmFtZSI6ICJBTUxGUy1EdXJhYmxlLVByZW1pdW0tMjUwIg0KICAgIH0sDQogICAgInN0b3JhZ2VDYXBhY2l0eVRpQiI6IDE2DQp9DQo=",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "323" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-served-by": [ "689b4b6f-6c53-4a21-b5e2-071f4f6f0591_134002811388778622,689b4b6f-6c53-4a21-b5e2-071f4f6f0591_134002811388778622" ],
+        "x-ms-request-id": [ "1cd86778-7434-4219-a3da-fa666dba342a" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=5b6f93fb-9681-4be9-a906-3a8b714fd24c/eastus/d463b0ae-ee20-4d0f-92d8-3052fbc34116" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-correlation-request-id": [ "d07c722b-e34b-4dcc-8e82-c436ba75b6b4" ],
+        "x-ms-routing-request-id": [ "EASTUS:20250910T180922Z:d07c722b-e34b-4dcc-8e82-c436ba75b6b4" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 27B51DA22E7F4322B7F0FE71713140D8 Ref B: BL2AA2010205025 Ref C: 2025-09-10T18:09:21Z" ],
+        "Date": [ "Wed, 10 Sep 2025 18:09:21 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}

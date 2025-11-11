@@ -28,7 +28,10 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// in the future.
         /// Possible values include: &#39;None&#39;, &#39;AADDS&#39;, &#39;AD&#39;, &#39;AADKERB&#39;</param>
 
-        /// <param name="activeDirectoryProperties">Required if directoryServiceOptions are AD, optional if they are AADKERB.
+        /// <param name="activeDirectoryProperties">Additional information about the directory service. Required if
+        /// directoryServiceOptions is AD (AD DS authentication). Optional for
+        /// directoryServiceOptions AADDS (Entra DS authentication) and AADKERB (Entra
+        /// authentication).
         /// </param>
 
         /// <param name="defaultSharePermission">Default share permission for users using Kerberos authentication if RBAC
@@ -36,12 +39,16 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// Possible values include: &#39;None&#39;, &#39;StorageFileDataSmbShareReader&#39;,
         /// &#39;StorageFileDataSmbShareContributor&#39;,
         /// &#39;StorageFileDataSmbShareElevatedContributor&#39;</param>
-        public AzureFilesIdentityBasedAuthentication(string directoryServiceOptions, ActiveDirectoryProperties activeDirectoryProperties = default(ActiveDirectoryProperties), string defaultSharePermission = default(string))
+
+        /// <param name="smbOAuthSettings">Required for Managed Identities access using OAuth over SMB.
+        /// </param>
+        public AzureFilesIdentityBasedAuthentication(string directoryServiceOptions, ActiveDirectoryProperties activeDirectoryProperties = default(ActiveDirectoryProperties), string defaultSharePermission = default(string), SmbOAuthSettings smbOAuthSettings = default(SmbOAuthSettings))
 
         {
             this.DirectoryServiceOptions = directoryServiceOptions;
             this.ActiveDirectoryProperties = activeDirectoryProperties;
             this.DefaultSharePermission = defaultSharePermission;
+            this.SmbOAuthSettings = smbOAuthSettings;
             CustomInit();
         }
 
@@ -59,8 +66,10 @@ namespace Microsoft.Azure.Management.Storage.Models
         public string DirectoryServiceOptions {get; set; }
 
         /// <summary>
-        /// Gets or sets required if directoryServiceOptions are AD, optional if they
-        /// are AADKERB.
+        /// Gets or sets additional information about the directory service. Required
+        /// if directoryServiceOptions is AD (AD DS authentication). Optional for
+        /// directoryServiceOptions AADDS (Entra DS authentication) and AADKERB (Entra
+        /// authentication).
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "activeDirectoryProperties")]
         public ActiveDirectoryProperties ActiveDirectoryProperties {get; set; }
@@ -71,6 +80,12 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "defaultSharePermission")]
         public string DefaultSharePermission {get; set; }
+
+        /// <summary>
+        /// Gets or sets required for Managed Identities access using OAuth over SMB.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "smbOAuthSettings")]
+        public SmbOAuthSettings SmbOAuthSettings {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -84,10 +99,8 @@ namespace Microsoft.Azure.Management.Storage.Models
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "DirectoryServiceOptions");
             }
 
-            if (this.ActiveDirectoryProperties != null)
-            {
-                this.ActiveDirectoryProperties.Validate();
-            }
+
+
 
         }
     }

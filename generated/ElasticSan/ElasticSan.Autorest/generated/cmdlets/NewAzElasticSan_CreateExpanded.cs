@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSan))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Description(@"create ElasticSan.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}", ApiVersion = "2024-05-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}", ApiVersion = "2025-09-01")]
     public partial class NewAzElasticSan_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IContext
@@ -41,22 +41,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Cmdlets
         /// <summary>A dictionary to carry over additional data for pipeline.</summary>
         private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
 
-        /// <summary>A buffer to record first returned object in response.</summary>
-        private object _firstResponse = null;
-
         /// <summary>Response for ElasticSan request.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSan _parametersBody = new Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ElasticSan();
-
-        /// <summary>
-        /// A flag to tell whether it is the first returned object in a call. Zero means no response yet. One means 1 returned object.
-        /// Two means multiple returned objects in response.
-        /// </summary>
-        private int _responseSize = 0;
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter AsJob { get; set; }
+
+        /// <summary>Enable or Disable scale up setting on Elastic San Appliance.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Enable or Disable scale up setting on Elastic San Appliance.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Enable or Disable scale up setting on Elastic San Appliance.",
+        SerializedName = @"autoScalePolicyEnforcement",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("None", "Enabled", "Disabled")]
+        public string AutoScalePolicyEnforcement { get => _parametersBody.AutoScalePolicyEnforcement ?? null; set => _parametersBody.AutoScalePolicyEnforcement = value; }
 
         /// <summary>Logical zone for Elastic San resource; example: ["1"].</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -88,6 +91,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Cmdlets
 
         /// <summary>Accessor for cancellationTokenSource.</summary>
         public global::System.Threading.CancellationTokenSource CancellationTokenSource { get => _cancellationTokenSource ; set { _cancellationTokenSource = value; } }
+
+        /// <summary>Maximum scale up size on Elastic San appliance in TiB.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Maximum scale up size on Elastic San appliance in TiB.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Maximum scale up size on Elastic San appliance in TiB.",
+        SerializedName = @"capacityUnitScaleUpLimitTiB",
+        PossibleTypes = new [] { typeof(long) })]
+        public long CapacityUnitScaleUpLimitTiB { get => _parametersBody.CapacityUnitScaleUpLimitTiB ?? default(long); set => _parametersBody.CapacityUnitScaleUpLimitTiB = value; }
 
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.ElasticSan Client => Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Module.Instance.ClientAPI;
@@ -127,6 +141,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Cmdlets
         [global::System.Management.Automation.ValidateNotNull]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.ParameterCategory.Runtime)]
         public Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.SendAsyncStep[] HttpPipelinePrepend { get; set; }
+
+        /// <summary>Unit to increase Capacity Unit on Elastic San appliance in TiB.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Unit to increase Capacity Unit on Elastic San appliance in TiB.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Unit to increase Capacity Unit on Elastic San appliance in TiB.",
+        SerializedName = @"increaseCapacityUnitByTiB",
+        PossibleTypes = new [] { typeof(long) })]
+        public long IncreaseCapacityUnitByTiB { get => _parametersBody.IncreaseCapacityUnitByTiB ?? default(long); set => _parametersBody.IncreaseCapacityUnitByTiB = value; }
 
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
@@ -277,6 +302,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Cmdlets
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ITrackedResourceTags) })]
         public Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ITrackedResourceTags Tag { get => _parametersBody.Tag ?? null /* object */; set => _parametersBody.Tag = value; }
 
+        /// <summary>Unused size on Elastic San appliance in TiB.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Unused size on Elastic San appliance in TiB.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Unused size on Elastic San appliance in TiB.",
+        SerializedName = @"unusedSizeTiB",
+        PossibleTypes = new [] { typeof(long) })]
+        public long UnusedSizeTiB { get => _parametersBody.UnusedSizeTiB ?? default(long); set => _parametersBody.UnusedSizeTiB = value; }
+
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
@@ -346,11 +382,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            if (1 ==_responseSize)
-            {
-                // Flush buffer
-                WriteObject(_firstResponse);
-            }
             var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
             if (telemetryInfo != null)
             {
@@ -666,24 +697,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Cmdlets
                 // onOk - response for 200 / application/json
                 // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSan
                 var result = (await response);
-                if (null != result)
-                {
-                    if (0 == _responseSize)
-                    {
-                        _firstResponse = result;
-                        _responseSize = 1;
-                    }
-                    else
-                    {
-                        if (1 ==_responseSize)
-                        {
-                            // Flush buffer
-                            WriteObject(_firstResponse.AddMultipleTypeNameIntoPSObject());
-                        }
-                        WriteObject(result.AddMultipleTypeNameIntoPSObject());
-                        _responseSize = 2;
-                    }
-                }
+                WriteObject(result, false);
             }
         }
     }

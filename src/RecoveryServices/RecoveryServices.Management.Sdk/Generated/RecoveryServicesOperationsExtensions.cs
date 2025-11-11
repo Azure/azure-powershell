@@ -13,6 +13,41 @@ namespace Microsoft.Azure.Management.RecoveryServices
     public static partial class RecoveryServicesOperationsExtensions
     {
         /// <summary>
+        /// API to get details about capabilities provided by
+        /// Microsoft.RecoveryServices RP
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='location'>
+        /// The location of the resource.
+        /// </param>
+        public static CapabilitiesResponse Capabilities(this IRecoveryServicesOperations operations, string location, string type, CapabilitiesProperties properties = default(CapabilitiesProperties))
+        {
+                return ((IRecoveryServicesOperations)operations).CapabilitiesAsync(location, type, properties).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// API to get details about capabilities provided by
+        /// Microsoft.RecoveryServices RP
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='location'>
+        /// The location of the resource.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<CapabilitiesResponse> CapabilitiesAsync(this IRecoveryServicesOperations operations, string location, string type, CapabilitiesProperties properties = default(CapabilitiesProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.CapabilitiesWithHttpMessagesAsync(location, type, properties, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// API to check for resource name availability.
         /// A name is available if no other resource exists that has the same
         /// SubscriptionId, Resource Name and Type
@@ -26,7 +61,7 @@ namespace Microsoft.Azure.Management.RecoveryServices
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='location'>
-        /// Location of the resource
+        /// The name of Azure region.
         /// </param>
         public static CheckNameAvailabilityResult CheckNameAvailability(this IRecoveryServicesOperations operations, string resourceGroupName, string location, string type = default(string), string name = default(string))
         {
@@ -47,7 +82,7 @@ namespace Microsoft.Azure.Management.RecoveryServices
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='location'>
-        /// Location of the resource
+        /// The name of Azure region.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -55,41 +90,6 @@ namespace Microsoft.Azure.Management.RecoveryServices
         public static async System.Threading.Tasks.Task<CheckNameAvailabilityResult> CheckNameAvailabilityAsync(this IRecoveryServicesOperations operations, string resourceGroupName, string location, string type = default(string), string name = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.CheckNameAvailabilityWithHttpMessagesAsync(resourceGroupName, location, type, name, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// API to get details about capabilities provided by
-        /// Microsoft.RecoveryServices RP
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='location'>
-        /// Location of the resource
-        /// </param>
-        public static CapabilitiesResponse Capabilities(this IRecoveryServicesOperations operations, string location, string type, CapabilitiesProperties properties = default(CapabilitiesProperties))
-        {
-                return ((IRecoveryServicesOperations)operations).CapabilitiesAsync(location, type, properties).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// API to get details about capabilities provided by
-        /// Microsoft.RecoveryServices RP
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='location'>
-        /// Location of the resource
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<CapabilitiesResponse> CapabilitiesAsync(this IRecoveryServicesOperations operations, string location, string type, CapabilitiesProperties properties = default(CapabilitiesProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.CapabilitiesWithHttpMessagesAsync(location, type, properties, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

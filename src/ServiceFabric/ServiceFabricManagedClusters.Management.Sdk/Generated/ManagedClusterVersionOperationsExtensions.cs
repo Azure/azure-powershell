@@ -13,52 +13,52 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
     public static partial class ManagedClusterVersionOperationsExtensions
     {
         /// <summary>
-        /// Gets information about an available Service Fabric managed cluster code version.
+        /// Gets all available code versions for Service Fabric cluster resources by
+        /// environment.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='location'>
-        /// The location for the cluster code versions. This is different from cluster location.
+        /// The location for the cluster code versions. This is different from cluster
+        /// location.
         /// </param>
-        /// <param name='clusterVersion'>
-        /// The cluster code version.
-        /// </param>
-        public static ManagedClusterCodeVersionResult Get(this IManagedClusterVersionOperations operations, string location, string clusterVersion)
+        public static System.Collections.Generic.IList<ManagedClusterCodeVersionResult> ListByEnvironment(this IManagedClusterVersionOperations operations, string location)
         {
-                return ((IManagedClusterVersionOperations)operations).GetAsync(location, clusterVersion).GetAwaiter().GetResult();
+                return ((IManagedClusterVersionOperations)operations).ListByEnvironmentAsync(location).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Gets information about an available Service Fabric managed cluster code version.
+        /// Gets all available code versions for Service Fabric cluster resources by
+        /// environment.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='location'>
-        /// The location for the cluster code versions. This is different from cluster location.
-        /// </param>
-        /// <param name='clusterVersion'>
-        /// The cluster code version.
+        /// The location for the cluster code versions. This is different from cluster
+        /// location.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ManagedClusterCodeVersionResult> GetAsync(this IManagedClusterVersionOperations operations, string location, string clusterVersion, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<System.Collections.Generic.IList<ManagedClusterCodeVersionResult>> ListByEnvironmentAsync(this IManagedClusterVersionOperations operations, string location, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.GetWithHttpMessagesAsync(location, clusterVersion, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListByEnvironmentWithHttpMessagesAsync(location, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
         }
         /// <summary>
-        /// Gets information about an available Service Fabric cluster code version by environment.
+        /// Gets information about an available Service Fabric cluster code version by
+        /// environment.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='location'>
-        /// The location for the cluster code versions. This is different from cluster location.
+        /// The location for the cluster code versions. This is different from cluster
+        /// location.
         /// </param>
         /// <param name='clusterVersion'>
         /// The cluster code version.
@@ -69,13 +69,15 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         }
 
         /// <summary>
-        /// Gets information about an available Service Fabric cluster code version by environment.
+        /// Gets information about an available Service Fabric cluster code version by
+        /// environment.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='location'>
-        /// The location for the cluster code versions. This is different from cluster location.
+        /// The location for the cluster code versions. This is different from cluster
+        /// location.
         /// </param>
         /// <param name='clusterVersion'>
         /// The cluster code version.
@@ -91,13 +93,15 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
             }
         }
         /// <summary>
-        /// Gets all available code versions for Service Fabric cluster resources by location.
+        /// Gets all available code versions for Service Fabric cluster resources by
+        /// location.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='location'>
-        /// The location for the cluster code versions. This is different from cluster location.
+        /// The location for the cluster code versions. This is different from cluster
+        /// location.
         /// </param>
         public static System.Collections.Generic.IList<ManagedClusterCodeVersionResult> List(this IManagedClusterVersionOperations operations, string location)
         {
@@ -105,13 +109,15 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         }
 
         /// <summary>
-        /// Gets all available code versions for Service Fabric cluster resources by location.
+        /// Gets all available code versions for Service Fabric cluster resources by
+        /// location.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='location'>
-        /// The location for the cluster code versions. This is different from cluster location.
+        /// The location for the cluster code versions. This is different from cluster
+        /// location.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -124,34 +130,44 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
             }
         }
         /// <summary>
-        /// Gets all available code versions for Service Fabric cluster resources by environment.
+        /// Gets information about an available Service Fabric managed cluster code
+        /// version.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='location'>
-        /// The location for the cluster code versions. This is different from cluster location.
+        /// The location for the cluster code versions. This is different from cluster
+        /// location.
         /// </param>
-        public static System.Collections.Generic.IList<ManagedClusterCodeVersionResult> ListByEnvironment(this IManagedClusterVersionOperations operations, string location)
+        /// <param name='clusterVersion'>
+        /// The cluster code version.
+        /// </param>
+        public static ManagedClusterCodeVersionResult Get(this IManagedClusterVersionOperations operations, string location, string clusterVersion)
         {
-                return ((IManagedClusterVersionOperations)operations).ListByEnvironmentAsync(location).GetAwaiter().GetResult();
+                return ((IManagedClusterVersionOperations)operations).GetAsync(location, clusterVersion).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Gets all available code versions for Service Fabric cluster resources by environment.
+        /// Gets information about an available Service Fabric managed cluster code
+        /// version.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='location'>
-        /// The location for the cluster code versions. This is different from cluster location.
+        /// The location for the cluster code versions. This is different from cluster
+        /// location.
+        /// </param>
+        /// <param name='clusterVersion'>
+        /// The cluster code version.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<System.Collections.Generic.IList<ManagedClusterCodeVersionResult>> ListByEnvironmentAsync(this IManagedClusterVersionOperations operations, string location, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ManagedClusterCodeVersionResult> GetAsync(this IManagedClusterVersionOperations operations, string location, string clusterVersion, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListByEnvironmentWithHttpMessagesAsync(location, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.GetWithHttpMessagesAsync(location, clusterVersion, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

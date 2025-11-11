@@ -37,13 +37,68 @@ Get-AzRelayAuthorizationRule -ResourceGroupName lucas-relay-rg -Namespace namesp
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IAuthorizationRule
+Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRule
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+HYBRIDCONNECTIONINPUTOBJECT <IRelayIdentity>: Identity Parameter
+  [AuthorizationRuleName <String>]: The authorization rule name.
+  [HybridConnectionName <String>]: The hybrid connection name.
+  [Id <String>]: Resource identity path
+  [NamespaceName <String>]: The namespace name
+  [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
+  [PrivateLinkResourceName <String>]: The PrivateLinkResource name
+  [RelayName <String>]: The relay name.
+  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [SubscriptionId <String>]: Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+
 INPUTOBJECT <IRelayIdentity>: Identity Parameter
+  [AuthorizationRuleName <String>]: The authorization rule name.
+  [HybridConnectionName <String>]: The hybrid connection name.
+  [Id <String>]: Resource identity path
+  [NamespaceName <String>]: The namespace name
+  [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
+  [PrivateLinkResourceName <String>]: The PrivateLinkResource name
+  [RelayName <String>]: The relay name.
+  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [SubscriptionId <String>]: Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+
+NAMESPACE1INPUTOBJECT <IRelayIdentity>: Identity Parameter
+  [AuthorizationRuleName <String>]: The authorization rule name.
+  [HybridConnectionName <String>]: The hybrid connection name.
+  [Id <String>]: Resource identity path
+  [NamespaceName <String>]: The namespace name
+  [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
+  [PrivateLinkResourceName <String>]: The PrivateLinkResource name
+  [RelayName <String>]: The relay name.
+  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [SubscriptionId <String>]: Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+
+NAMESPACE2INPUTOBJECT <IRelayIdentity>: Identity Parameter
+  [AuthorizationRuleName <String>]: The authorization rule name.
+  [HybridConnectionName <String>]: The hybrid connection name.
+  [Id <String>]: Resource identity path
+  [NamespaceName <String>]: The namespace name
+  [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
+  [PrivateLinkResourceName <String>]: The PrivateLinkResource name
+  [RelayName <String>]: The relay name.
+  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [SubscriptionId <String>]: Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+
+NAMESPACEINPUTOBJECT <IRelayIdentity>: Identity Parameter
+  [AuthorizationRuleName <String>]: The authorization rule name.
+  [HybridConnectionName <String>]: The hybrid connection name.
+  [Id <String>]: Resource identity path
+  [NamespaceName <String>]: The namespace name
+  [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
+  [PrivateLinkResourceName <String>]: The PrivateLinkResource name
+  [RelayName <String>]: The relay name.
+  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [SubscriptionId <String>]: Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+
+WCFRELAYINPUTOBJECT <IRelayIdentity>: Identity Parameter
   [AuthorizationRuleName <String>]: The authorization rule name.
   [HybridConnectionName <String>]: The hybrid connection name.
   [Id <String>]: Resource identity path
@@ -57,12 +112,17 @@ INPUTOBJECT <IRelayIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.relay/get-azrelayauthorizationrule
 #>
 function Get-AzRelayAuthorizationRule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IAuthorizationRule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRule])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
     [Parameter(ParameterSetName='Get1', Mandatory)]
     [Parameter(ParameterSetName='Get2', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityHybridConnection', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityNamespace', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityNamespace1', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityNamespace2', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityWcfRelay', Mandatory)]
     [Alias('AuthorizationRuleName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
     [System.String]
@@ -105,6 +165,7 @@ param(
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='Get1', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityNamespace1', Mandatory)]
     [Parameter(ParameterSetName='List1', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
     [System.String]
@@ -112,6 +173,7 @@ param(
     ${HybridConnection},
 
     [Parameter(ParameterSetName='Get2', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityNamespace2', Mandatory)]
     [Parameter(ParameterSetName='List2', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
     [System.String]
@@ -124,8 +186,37 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityHybridConnection', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayIdentity]
+    # Identity Parameter
+    ${HybridConnectionInputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityNamespace', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayIdentity]
+    # Identity Parameter
+    ${NamespaceInputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityNamespace1', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayIdentity]
+    # Identity Parameter
+    ${Namespace1InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityNamespace2', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayIdentity]
+    # Identity Parameter
+    ${Namespace2InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityWcfRelay', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayIdentity]
+    # Identity Parameter
+    ${WcfRelayInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -183,6 +274,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Get = 'Az.Relay.private\Get-AzRelayAuthorizationRule_Get';
@@ -191,13 +285,16 @@ begin {
             GetViaIdentity = 'Az.Relay.private\Get-AzRelayAuthorizationRule_GetViaIdentity';
             GetViaIdentity1 = 'Az.Relay.private\Get-AzRelayAuthorizationRule_GetViaIdentity1';
             GetViaIdentity2 = 'Az.Relay.private\Get-AzRelayAuthorizationRule_GetViaIdentity2';
+            GetViaIdentityHybridConnection = 'Az.Relay.private\Get-AzRelayAuthorizationRule_GetViaIdentityHybridConnection';
+            GetViaIdentityNamespace = 'Az.Relay.private\Get-AzRelayAuthorizationRule_GetViaIdentityNamespace';
+            GetViaIdentityNamespace1 = 'Az.Relay.private\Get-AzRelayAuthorizationRule_GetViaIdentityNamespace1';
+            GetViaIdentityNamespace2 = 'Az.Relay.private\Get-AzRelayAuthorizationRule_GetViaIdentityNamespace2';
+            GetViaIdentityWcfRelay = 'Az.Relay.private\Get-AzRelayAuthorizationRule_GetViaIdentityWcfRelay';
             List = 'Az.Relay.private\Get-AzRelayAuthorizationRule_List';
             List1 = 'Az.Relay.private\Get-AzRelayAuthorizationRule_List1';
             List2 = 'Az.Relay.private\Get-AzRelayAuthorizationRule_List2';
         }
-        if (('Get', 'Get1', 'Get2', 'List', 'List1', 'List2') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'Get1', 'Get2', 'List', 'List1', 'List2') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -206,6 +303,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -246,12 +346,12 @@ Lists all available Relay REST API operations.
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IOperation
+Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IOperation
 .Link
 https://learn.microsoft.com/powershell/module/az.relay/get-azrelayoperation
 #>
 function Get-AzRelayOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IOperation])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IOperation])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -310,12 +410,18 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             List = 'Az.Relay.private\Get-AzRelayOperation_List';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -347,20 +453,20 @@ end {
 
 <#
 .Synopsis
-Create or update NetworkRuleSet for a Namespace.
+Create NetworkRuleSet for a Namespace.
 .Description
-Create or update NetworkRuleSet for a Namespace.
+Create NetworkRuleSet for a Namespace.
 .Example
 {{ Add code here }}
 .Example
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.INetworkRuleSet
+Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSet
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.INetworkRuleSet
+Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSet
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -378,41 +484,41 @@ INPUTOBJECT <IRelayIdentity>: Identity Parameter
   [SubscriptionId <String>]: Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 
 IPRULE <INwRuleSetIPRules[]>: List of IpRules
-  [Action <NetworkRuleIPAction?>]: The IP Filter Action
+  [Action <String>]: The IP Filter Action
   [IPMask <String>]: IP Mask
 
 PARAMETER <INetworkRuleSet>: Description of topic resource.
-  [DefaultAction <DefaultAction?>]: Default Action for Network Rule Set
-  [IPRule <INwRuleSetIPRules[]>]: List of IpRules
-    [Action <NetworkRuleIPAction?>]: The IP Filter Action
+  [DefaultAction <String>]: Default Action for Network Rule Set
+  [IPRule <List<INwRuleSetIPRules>>]: List of IpRules
+    [Action <String>]: The IP Filter Action
     [IPMask <String>]: IP Mask
-  [PublicNetworkAccess <PublicNetworkAccess?>]: This determines if traffic is allowed over public network. By default it is enabled
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
+  [PublicNetworkAccess <String>]: This determines if traffic is allowed over public network. By default it is enabled
 .Link
 https://learn.microsoft.com/powershell/module/az.relay/new-azrelaynamespacenetworkruleset
 #>
 function New-AzRelayNamespaceNetworkRuleSet {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.INetworkRuleSet])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSet])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
     [System.String]
     # The namespace name
     ${NamespaceName},
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
     [System.String]
     # Name of the Resource group within the Azure subscription.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -425,14 +531,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Relay.Support.DefaultAction])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.PSArgumentCompleterAttribute("Allow", "Deny")]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Support.DefaultAction]
+    [System.String]
     # Default Action for Network Rule Set
     ${DefaultAction},
 
@@ -440,26 +545,36 @@ param(
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.INwRuleSetIPRules[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INwRuleSetIPRules[]]
     # List of IpRules
-    # To construct, see NOTES section for IPRULE properties and create a hash table.
     ${IPRule},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Relay.Support.PublicNetworkAccess])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.PSArgumentCompleterAttribute("Enabled", "Disabled", "SecuredByPerimeter")]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Support.PublicNetworkAccess]
+    [System.String]
     # This determines if traffic is allowed over public network.
     # By default it is enabled
     ${PublicNetworkAccess},
 
     [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.INetworkRuleSet]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSet]
     # Description of topic resource.
-    # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -517,15 +632,18 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             CreateExpanded = 'Az.Relay.private\New-AzRelayNamespaceNetworkRuleSet_CreateExpanded';
             CreateViaIdentity = 'Az.Relay.private\New-AzRelayNamespaceNetworkRuleSet_CreateViaIdentity';
             CreateViaIdentityExpanded = 'Az.Relay.private\New-AzRelayNamespaceNetworkRuleSet_CreateViaIdentityExpanded';
+            CreateViaJsonFilePath = 'Az.Relay.private\New-AzRelayNamespaceNetworkRuleSet_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.Relay.private\New-AzRelayNamespaceNetworkRuleSet_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -534,6 +652,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -586,7 +707,62 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+HYBRIDCONNECTIONINPUTOBJECT <IRelayIdentity>: Identity Parameter
+  [AuthorizationRuleName <String>]: The authorization rule name.
+  [HybridConnectionName <String>]: The hybrid connection name.
+  [Id <String>]: Resource identity path
+  [NamespaceName <String>]: The namespace name
+  [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
+  [PrivateLinkResourceName <String>]: The PrivateLinkResource name
+  [RelayName <String>]: The relay name.
+  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [SubscriptionId <String>]: Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+
 INPUTOBJECT <IRelayIdentity>: Identity Parameter
+  [AuthorizationRuleName <String>]: The authorization rule name.
+  [HybridConnectionName <String>]: The hybrid connection name.
+  [Id <String>]: Resource identity path
+  [NamespaceName <String>]: The namespace name
+  [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
+  [PrivateLinkResourceName <String>]: The PrivateLinkResource name
+  [RelayName <String>]: The relay name.
+  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [SubscriptionId <String>]: Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+
+NAMESPACE1INPUTOBJECT <IRelayIdentity>: Identity Parameter
+  [AuthorizationRuleName <String>]: The authorization rule name.
+  [HybridConnectionName <String>]: The hybrid connection name.
+  [Id <String>]: Resource identity path
+  [NamespaceName <String>]: The namespace name
+  [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
+  [PrivateLinkResourceName <String>]: The PrivateLinkResource name
+  [RelayName <String>]: The relay name.
+  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [SubscriptionId <String>]: Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+
+NAMESPACE2INPUTOBJECT <IRelayIdentity>: Identity Parameter
+  [AuthorizationRuleName <String>]: The authorization rule name.
+  [HybridConnectionName <String>]: The hybrid connection name.
+  [Id <String>]: Resource identity path
+  [NamespaceName <String>]: The namespace name
+  [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
+  [PrivateLinkResourceName <String>]: The PrivateLinkResource name
+  [RelayName <String>]: The relay name.
+  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [SubscriptionId <String>]: Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+
+NAMESPACEINPUTOBJECT <IRelayIdentity>: Identity Parameter
+  [AuthorizationRuleName <String>]: The authorization rule name.
+  [HybridConnectionName <String>]: The hybrid connection name.
+  [Id <String>]: Resource identity path
+  [NamespaceName <String>]: The namespace name
+  [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
+  [PrivateLinkResourceName <String>]: The PrivateLinkResource name
+  [RelayName <String>]: The relay name.
+  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [SubscriptionId <String>]: Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+
+WCFRELAYINPUTOBJECT <IRelayIdentity>: Identity Parameter
   [AuthorizationRuleName <String>]: The authorization rule name.
   [HybridConnectionName <String>]: The hybrid connection name.
   [Id <String>]: Resource identity path
@@ -606,6 +782,11 @@ param(
     [Parameter(ParameterSetName='Delete', Mandatory)]
     [Parameter(ParameterSetName='Delete1', Mandatory)]
     [Parameter(ParameterSetName='Delete2', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityHybridConnection', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityNamespace', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityNamespace1', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityNamespace2', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityWcfRelay', Mandatory)]
     [Alias('AuthorizationRuleName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
     [System.String]
@@ -639,12 +820,14 @@ param(
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='Delete1', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityNamespace1', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
     [System.String]
     # The hybrid connection name.
     ${HybridConnection},
 
     [Parameter(ParameterSetName='Delete2', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityNamespace2', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
     [System.String]
     # The relay name.
@@ -656,8 +839,37 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityHybridConnection', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayIdentity]
+    # Identity Parameter
+    ${HybridConnectionInputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityNamespace', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayIdentity]
+    # Identity Parameter
+    ${NamespaceInputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityNamespace1', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayIdentity]
+    # Identity Parameter
+    ${Namespace1InputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityNamespace2', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayIdentity]
+    # Identity Parameter
+    ${Namespace2InputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityWcfRelay', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayIdentity]
+    # Identity Parameter
+    ${WcfRelayInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -721,6 +933,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Delete = 'Az.Relay.private\Remove-AzRelayAuthorizationRule_Delete';
@@ -729,10 +944,13 @@ begin {
             DeleteViaIdentity = 'Az.Relay.private\Remove-AzRelayAuthorizationRule_DeleteViaIdentity';
             DeleteViaIdentity1 = 'Az.Relay.private\Remove-AzRelayAuthorizationRule_DeleteViaIdentity1';
             DeleteViaIdentity2 = 'Az.Relay.private\Remove-AzRelayAuthorizationRule_DeleteViaIdentity2';
+            DeleteViaIdentityHybridConnection = 'Az.Relay.private\Remove-AzRelayAuthorizationRule_DeleteViaIdentityHybridConnection';
+            DeleteViaIdentityNamespace = 'Az.Relay.private\Remove-AzRelayAuthorizationRule_DeleteViaIdentityNamespace';
+            DeleteViaIdentityNamespace1 = 'Az.Relay.private\Remove-AzRelayAuthorizationRule_DeleteViaIdentityNamespace1';
+            DeleteViaIdentityNamespace2 = 'Az.Relay.private\Remove-AzRelayAuthorizationRule_DeleteViaIdentityNamespace2';
+            DeleteViaIdentityWcfRelay = 'Az.Relay.private\Remove-AzRelayAuthorizationRule_DeleteViaIdentityWcfRelay';
         }
-        if (('Delete', 'Delete1', 'Delete2') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Delete', 'Delete1', 'Delete2') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -741,6 +959,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -772,9 +993,9 @@ end {
 
 <#
 .Synopsis
-Creates or updates an authorization rule for a namespace.
+Update an authorization rule for a namespace.
 .Description
-Creates or updates an authorization rule for a namespace.
+Update an authorization rule for a namespace.
 .Example
 Set-AzRelayAuthorizationRule -ResourceGroupName Relay-ServiceBus-EastUS -Namespace namespace-pwsh01 -Name authRule-01 -Rights 'Listen' | Format-List
 .Example
@@ -795,27 +1016,21 @@ $authRule.Rights += 'Send'
 Set-AzRelayAuthorizationRule -ResourceGroupName lucas-relay-rg -Namespace namespace-pwsh01 -WcfRelay wcf-01 -Name authRule-01 -InputObject $authRule | Format-List
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IAuthorizationRule
+Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRule
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IAuthorizationRule
+Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRule
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IAuthorizationRule>: Single item in a List or Get AuthorizationRule operation
-  [Rights <AccessRights[]>]: The rights associated with the rule.
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
+  [Rights <List<String>>]: The rights associated with the rule.
 .Link
 https://learn.microsoft.com/powershell/module/az.relay/set-azrelayauthorizationrule
 #>
 function Set-AzRelayAuthorizationRule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IAuthorizationRule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRule])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -847,6 +1062,8 @@ param(
 
     [Parameter(ParameterSetName='Update1', Mandatory)]
     [Parameter(ParameterSetName='UpdateExpanded1', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath1', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString1', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
     [System.String]
     # The hybrid connection name.
@@ -854,6 +1071,8 @@ param(
 
     [Parameter(ParameterSetName='Update2', Mandatory)]
     [Parameter(ParameterSetName='UpdateExpanded2', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath2', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString2', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
     [System.String]
     # The relay name.
@@ -863,18 +1082,690 @@ param(
     [Parameter(ParameterSetName='Update1', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='Update2', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IAuthorizationRule]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRule]
     # Single item in a List or Get AuthorizationRule operation
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateExpanded1')]
     [Parameter(ParameterSetName='UpdateExpanded2')]
     [AllowEmptyCollection()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Relay.Support.AccessRights])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.PSArgumentCompleterAttribute("Manage", "Send", "Listen")]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Support.AccessRights[]]
+    [System.String[]]
+    # The rights associated with the rule.
+    ${Rights},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath1', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath2', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString1', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString2', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $mapping = @{
+            Update = 'Az.Relay.private\Set-AzRelayAuthorizationRule_Update';
+            Update1 = 'Az.Relay.private\Set-AzRelayAuthorizationRule_Update1';
+            Update2 = 'Az.Relay.private\Set-AzRelayAuthorizationRule_Update2';
+            UpdateExpanded = 'Az.Relay.private\Set-AzRelayAuthorizationRule_UpdateExpanded';
+            UpdateExpanded1 = 'Az.Relay.private\Set-AzRelayAuthorizationRule_UpdateExpanded1';
+            UpdateExpanded2 = 'Az.Relay.private\Set-AzRelayAuthorizationRule_UpdateExpanded2';
+            UpdateViaJsonFilePath = 'Az.Relay.private\Set-AzRelayAuthorizationRule_UpdateViaJsonFilePath';
+            UpdateViaJsonFilePath1 = 'Az.Relay.private\Set-AzRelayAuthorizationRule_UpdateViaJsonFilePath1';
+            UpdateViaJsonFilePath2 = 'Az.Relay.private\Set-AzRelayAuthorizationRule_UpdateViaJsonFilePath2';
+            UpdateViaJsonString = 'Az.Relay.private\Set-AzRelayAuthorizationRule_UpdateViaJsonString';
+            UpdateViaJsonString1 = 'Az.Relay.private\Set-AzRelayAuthorizationRule_UpdateViaJsonString1';
+            UpdateViaJsonString2 = 'Az.Relay.private\Set-AzRelayAuthorizationRule_UpdateViaJsonString2';
+        }
+        if (('Update', 'Update1', 'Update2', 'UpdateExpanded', 'UpdateExpanded1', 'UpdateExpanded2', 'UpdateViaJsonFilePath', 'UpdateViaJsonFilePath1', 'UpdateViaJsonFilePath2', 'UpdateViaJsonString', 'UpdateViaJsonString1', 'UpdateViaJsonString2') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Update a service hybrid connection.
+This operation is idempotent.
+.Description
+Update a service hybrid connection.
+This operation is idempotent.
+.Example
+Set-AzRelayHybridConnection -ResourceGroupName Relay-ServiceBus-EastUS -Namespace namespace-pwsh01 -Name connection-01 -UserMetadata "Update UserMetaData" | Format-List
+.Example
+$connection = Get-AzRelayHybridConnection -ResourceGroupName Relay-ServiceBus-EastUS -Namespace namespace-pwsh01 -Name connection-01
+$connection.UserMetadata = "testHybridConnection"
+Set-AzRelayHybridConnection -ResourceGroupName Relay-ServiceBus-EastUS -Namespace namespace-pwsh01 -Name connection-01 -InputObject $connection | Format-List
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IHybridConnection
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IHybridConnection
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IHybridConnection>: Description of hybrid connection resource.
+  [RequiresClientAuthorization <Boolean?>]: Returns true if client authorization is needed for this hybrid connection; otherwise, false.
+  [UserMetadata <String>]: The usermetadata is a placeholder to store user-defined string data for the hybrid connection endpoint. For example, it can be used to store descriptive data, such as a list of teams and their contact information. Also, user-defined configuration settings can be stored.
+.Link
+https://learn.microsoft.com/powershell/module/az.relay/set-azrelayhybridconnection
+#>
+function Set-AzRelayHybridConnection {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IHybridConnection])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Alias('HybridConnectionName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
+    [System.String]
+    # The hybrid connection name.
+    ${Name},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
+    [System.String]
+    # The namespace name
+    ${Namespace},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
+    [System.String]
+    # Name of the Resource group within the Azure subscription.
+    ${ResourceGroupName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # Subscription credentials which uniquely identify the Microsoft Azure subscription.
+    # The subscription ID forms part of the URI for every service call.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IHybridConnection]
+    # Description of hybrid connection resource.
+    ${InputObject},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Body')]
+    [System.String]
+    # The usermetadata is a placeholder to store user-defined string data for the hybrid connection endpoint.
+    # For example, it can be used to store descriptive data, such as a list of teams and their contact information.
+    # Also, user-defined configuration settings can be stored.
+    ${UserMetadata},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $mapping = @{
+            Update = 'Az.Relay.private\Set-AzRelayHybridConnection_Update';
+            UpdateExpanded = 'Az.Relay.private\Set-AzRelayHybridConnection_UpdateExpanded';
+            UpdateViaJsonFilePath = 'Az.Relay.private\Set-AzRelayHybridConnection_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.Relay.private\Set-AzRelayHybridConnection_UpdateViaJsonString';
+        }
+        if (('Update', 'UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Update a WCF relay.
+This operation is idempotent.
+.Description
+Update a WCF relay.
+This operation is idempotent.
+.Example
+$wcf = Get-AzWcfRelay -ResourceGroupName Relay-ServiceBus-EastUS -Namespace namespace-pwsh01 -Name wcfRelay-01
+$wcf.UserMetadata = "User Meta Data"
+Set-AzWcfRelay -ResourceGroupName Relay-ServiceBus-EastUS -Namespace namespace-pwsh01 -Name wcfRelay-01 -InputObject $wcf | Format-List
+.Example
+Set-AzWcfRelay -ResourceGroupName Relay-ServiceBus-EastUS -Namespace namespace-pwsh01 -Name wcfRelay-01 -UserMetadata "usermetadata is a placeholder to store user-defined string data for the HybridConnection endpoint.e.g. it can be used to store descriptive data, such as list of teams and their contact information also user-defined configuration settings can be stored." | Format-List
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IWcfRelay
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IWcfRelay
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IWcfRelay>: Description of the WCF relay resource.
+  [RelayType <String>]: WCF relay type.
+  [RequiresClientAuthorization <Boolean?>]: Returns true if client authorization is needed for this relay; otherwise, false.
+  [RequiresTransportSecurity <Boolean?>]: Returns true if transport security is needed for this relay; otherwise, false.
+  [UserMetadata <String>]: The usermetadata is a placeholder to store user-defined string data for the WCF Relay endpoint. For example, it can be used to store descriptive data, such as list of teams and their contact information. Also, user-defined configuration settings can be stored.
+.Link
+https://learn.microsoft.com/powershell/module/az.relay/set-azwcfrelay
+#>
+function Set-AzWcfRelay {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IWcfRelay])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
+    [System.String]
+    # The relay name.
+    ${Name},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
+    [System.String]
+    # The namespace name
+    ${Namespace},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
+    [System.String]
+    # Name of the Resource group within the Azure subscription.
+    ${ResourceGroupName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # Subscription credentials which uniquely identify the Microsoft Azure subscription.
+    # The subscription ID forms part of the URI for every service call.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IWcfRelay]
+    # Description of the WCF relay resource.
+    ${InputObject},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Body')]
+    [System.String]
+    # The usermetadata is a placeholder to store user-defined string data for the WCF Relay endpoint.
+    # For example, it can be used to store descriptive data, such as list of teams and their contact information.
+    # Also, user-defined configuration settings can be stored.
+    ${UserMetadata},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.PSArgumentCompleterAttribute("NetTcp", "Http")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Body')]
+    [System.String]
+    # WCF relay type.
+    ${WcfRelayType},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $mapping = @{
+            Update = 'Az.Relay.private\Set-AzWcfRelay_Update';
+            UpdateExpanded = 'Az.Relay.private\Set-AzWcfRelay_UpdateExpanded';
+            UpdateViaJsonFilePath = 'Az.Relay.private\Set-AzWcfRelay_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.Relay.private\Set-AzWcfRelay_UpdateViaJsonString';
+        }
+        if (('Update', 'UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Update an authorization rule for a WCF relay.
+.Description
+Update an authorization rule for a WCF relay.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRule
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRule
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IRelayIdentity>: Identity Parameter
+  [AuthorizationRuleName <String>]: The authorization rule name.
+  [HybridConnectionName <String>]: The hybrid connection name.
+  [Id <String>]: Resource identity path
+  [NamespaceName <String>]: The namespace name
+  [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
+  [PrivateLinkResourceName <String>]: The PrivateLinkResource name
+  [RelayName <String>]: The relay name.
+  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [SubscriptionId <String>]: Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+
+NAMESPACEINPUTOBJECT <IRelayIdentity>: Identity Parameter
+  [AuthorizationRuleName <String>]: The authorization rule name.
+  [HybridConnectionName <String>]: The hybrid connection name.
+  [Id <String>]: Resource identity path
+  [NamespaceName <String>]: The namespace name
+  [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
+  [PrivateLinkResourceName <String>]: The PrivateLinkResource name
+  [RelayName <String>]: The relay name.
+  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [SubscriptionId <String>]: Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+
+PARAMETER <IAuthorizationRule>: Single item in a List or Get AuthorizationRule operation
+  [Rights <List<String>>]: The rights associated with the rule.
+
+WCFRELAYINPUTOBJECT <IRelayIdentity>: Identity Parameter
+  [AuthorizationRuleName <String>]: The authorization rule name.
+  [HybridConnectionName <String>]: The hybrid connection name.
+  [Id <String>]: Resource identity path
+  [NamespaceName <String>]: The namespace name
+  [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
+  [PrivateLinkResourceName <String>]: The PrivateLinkResource name
+  [RelayName <String>]: The relay name.
+  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [SubscriptionId <String>]: Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+.Link
+https://learn.microsoft.com/powershell/module/az.relay/update-azrelayauthorizationrule
+#>
+function Update-AzRelayAuthorizationRule {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRule])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Update', Mandatory)]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityNamespace', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityNamespaceExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityWcfRelay', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityWcfRelayExpanded', Mandatory)]
+    [Alias('AuthorizationRuleName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
+    [System.String]
+    # The authorization rule name.
+    ${Name},
+
+    [Parameter(ParameterSetName='Update', Mandatory)]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
+    [System.String]
+    # The namespace name
+    ${Namespace},
+
+    [Parameter(ParameterSetName='Update', Mandatory)]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
+    [System.String]
+    # Name of the Resource group within the Azure subscription.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Update')]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # Subscription credentials which uniquely identify the Microsoft Azure subscription.
+    # The subscription ID forms part of the URI for every service call.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='Update', Mandatory)]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityNamespace', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityNamespaceExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
+    [System.String]
+    # The relay name.
+    ${WcfRelay},
+
+    [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityNamespace', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpdateViaIdentityNamespaceExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayIdentity]
+    # Identity Parameter
+    ${NamespaceInputObject},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityWcfRelay', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpdateViaIdentityWcfRelayExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayIdentity]
+    # Identity Parameter
+    ${WcfRelayInputObject},
+
+    [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpdateViaIdentityNamespace', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpdateViaIdentityWcfRelay', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRule]
+    # Single item in a List or Get AuthorizationRule operation
+    ${Parameter},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityNamespaceExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityWcfRelayExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.PSArgumentCompleterAttribute("Manage", "Send", "Listen")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Body')]
+    [System.String[]]
     # The rights associated with the rule.
     ${Rights},
 
@@ -934,18 +1825,21 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
-            Update = 'Az.Relay.private\Set-AzRelayAuthorizationRule_Update';
-            Update1 = 'Az.Relay.private\Set-AzRelayAuthorizationRule_Update1';
-            Update2 = 'Az.Relay.private\Set-AzRelayAuthorizationRule_Update2';
-            UpdateExpanded = 'Az.Relay.private\Set-AzRelayAuthorizationRule_UpdateExpanded';
-            UpdateExpanded1 = 'Az.Relay.private\Set-AzRelayAuthorizationRule_UpdateExpanded1';
-            UpdateExpanded2 = 'Az.Relay.private\Set-AzRelayAuthorizationRule_UpdateExpanded2';
+            Update = 'Az.Relay.private\Update-AzRelayAuthorizationRule_Update';
+            UpdateExpanded = 'Az.Relay.private\Update-AzRelayAuthorizationRule_UpdateExpanded';
+            UpdateViaIdentity = 'Az.Relay.private\Update-AzRelayAuthorizationRule_UpdateViaIdentity';
+            UpdateViaIdentityExpanded = 'Az.Relay.private\Update-AzRelayAuthorizationRule_UpdateViaIdentityExpanded';
+            UpdateViaIdentityNamespace = 'Az.Relay.private\Update-AzRelayAuthorizationRule_UpdateViaIdentityNamespace';
+            UpdateViaIdentityNamespaceExpanded = 'Az.Relay.private\Update-AzRelayAuthorizationRule_UpdateViaIdentityNamespaceExpanded';
+            UpdateViaIdentityWcfRelay = 'Az.Relay.private\Update-AzRelayAuthorizationRule_UpdateViaIdentityWcfRelay';
+            UpdateViaIdentityWcfRelayExpanded = 'Az.Relay.private\Update-AzRelayAuthorizationRule_UpdateViaIdentityWcfRelayExpanded';
         }
-        if (('Update', 'Update1', 'Update2', 'UpdateExpanded', 'UpdateExpanded1', 'UpdateExpanded2') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Update', 'UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -954,6 +1848,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -985,63 +1882,85 @@ end {
 
 <#
 .Synopsis
-Creates or updates a service hybrid connection.
+Update a service hybrid connection.
 This operation is idempotent.
 .Description
-Creates or updates a service hybrid connection.
+Update a service hybrid connection.
 This operation is idempotent.
 .Example
-Set-AzRelayHybridConnection -ResourceGroupName Relay-ServiceBus-EastUS -Namespace namespace-pwsh01 -Name connection-01 -UserMetadata "Update UserMetaData" | Format-List
+{{ Add code here }}
 .Example
-$connection = Get-AzRelayHybridConnection -ResourceGroupName Relay-ServiceBus-EastUS -Namespace namespace-pwsh01 -Name connection-01
-$connection.UserMetadata = "testHybridConnection"
-Set-AzRelayHybridConnection -ResourceGroupName Relay-ServiceBus-EastUS -Namespace namespace-pwsh01 -Name connection-01 -InputObject $connection | Format-List
+{{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IHybridConnection
+Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IHybridConnection
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IHybridConnection
+Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IHybridConnection
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-INPUTOBJECT <IHybridConnection>: Description of hybrid connection resource.
+INPUTOBJECT <IRelayIdentity>: Identity Parameter
+  [AuthorizationRuleName <String>]: The authorization rule name.
+  [HybridConnectionName <String>]: The hybrid connection name.
+  [Id <String>]: Resource identity path
+  [NamespaceName <String>]: The namespace name
+  [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
+  [PrivateLinkResourceName <String>]: The PrivateLinkResource name
+  [RelayName <String>]: The relay name.
+  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [SubscriptionId <String>]: Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+
+NAMESPACEINPUTOBJECT <IRelayIdentity>: Identity Parameter
+  [AuthorizationRuleName <String>]: The authorization rule name.
+  [HybridConnectionName <String>]: The hybrid connection name.
+  [Id <String>]: Resource identity path
+  [NamespaceName <String>]: The namespace name
+  [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
+  [PrivateLinkResourceName <String>]: The PrivateLinkResource name
+  [RelayName <String>]: The relay name.
+  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [SubscriptionId <String>]: Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+
+PARAMETER <IHybridConnection>: Description of hybrid connection resource.
   [RequiresClientAuthorization <Boolean?>]: Returns true if client authorization is needed for this hybrid connection; otherwise, false.
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
   [UserMetadata <String>]: The usermetadata is a placeholder to store user-defined string data for the hybrid connection endpoint. For example, it can be used to store descriptive data, such as a list of teams and their contact information. Also, user-defined configuration settings can be stored.
 .Link
-https://learn.microsoft.com/powershell/module/az.relay/set-azrelayhybridconnection
+https://learn.microsoft.com/powershell/module/az.relay/update-azrelayhybridconnection
 #>
-function Set-AzRelayHybridConnection {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IHybridConnection])]
+function Update-AzRelayHybridConnection {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IHybridConnection])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='Update', Mandatory)]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityNamespace', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityNamespaceExpanded', Mandatory)]
     [Alias('HybridConnectionName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
     [System.String]
     # The hybrid connection name.
     ${Name},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='Update', Mandatory)]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
     [System.String]
     # The namespace name
     ${Namespace},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='Update', Mandatory)]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
     [System.String]
     # Name of the Resource group within the Azure subscription.
     ${ResourceGroupName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='Update')]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -1049,14 +1968,39 @@ param(
     # The subscription ID forms part of the URI for every service call.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IHybridConnection]
-    # Description of hybrid connection resource.
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayIdentity]
+    # Identity Parameter
     ${InputObject},
 
+    [Parameter(ParameterSetName='UpdateViaIdentityNamespace', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpdateViaIdentityNamespaceExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayIdentity]
+    # Identity Parameter
+    ${NamespaceInputObject},
+
+    [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpdateViaIdentityNamespace', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IHybridConnection]
+    # Description of hybrid connection resource.
+    ${Parameter},
+
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityNamespaceExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true if client authorization is needed for this hybrid connection; otherwise, false.
+    ${RequiresClientAuthorization},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityNamespaceExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Body')]
     [System.String]
     # The usermetadata is a placeholder to store user-defined string data for the hybrid connection endpoint.
@@ -1120,14 +2064,19 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
-            Update = 'Az.Relay.private\Set-AzRelayHybridConnection_Update';
-            UpdateExpanded = 'Az.Relay.private\Set-AzRelayHybridConnection_UpdateExpanded';
+            Update = 'Az.Relay.private\Update-AzRelayHybridConnection_Update';
+            UpdateExpanded = 'Az.Relay.private\Update-AzRelayHybridConnection_UpdateExpanded';
+            UpdateViaIdentity = 'Az.Relay.private\Update-AzRelayHybridConnection_UpdateViaIdentity';
+            UpdateViaIdentityExpanded = 'Az.Relay.private\Update-AzRelayHybridConnection_UpdateViaIdentityExpanded';
+            UpdateViaIdentityNamespace = 'Az.Relay.private\Update-AzRelayHybridConnection_UpdateViaIdentityNamespace';
+            UpdateViaIdentityNamespaceExpanded = 'Az.Relay.private\Update-AzRelayHybridConnection_UpdateViaIdentityNamespaceExpanded';
         }
-        if (('Update', 'UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Update', 'UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1136,196 +2085,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-
-        throw
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-    } catch {
-
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Creates or updates a WCF relay.
-This operation is idempotent.
-.Description
-Creates or updates a WCF relay.
-This operation is idempotent.
-.Example
-$wcf = Get-AzWcfRelay -ResourceGroupName Relay-ServiceBus-EastUS -Namespace namespace-pwsh01 -Name wcfRelay-01
-$wcf.UserMetadata = "User Meta Data"
-Set-AzWcfRelay -ResourceGroupName Relay-ServiceBus-EastUS -Namespace namespace-pwsh01 -Name wcfRelay-01 -InputObject $wcf | Format-List
-.Example
-Set-AzWcfRelay -ResourceGroupName Relay-ServiceBus-EastUS -Namespace namespace-pwsh01 -Name wcfRelay-01 -UserMetadata "usermetadata is a placeholder to store user-defined string data for the HybridConnection endpoint.e.g. it can be used to store descriptive data, such as list of teams and their contact information also user-defined configuration settings can be stored." | Format-List
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IWcfRelay
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IWcfRelay
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IWcfRelay>: Description of the WCF relay resource.
-  [RelayType <Relaytype?>]: WCF relay type.
-  [RequiresClientAuthorization <Boolean?>]: Returns true if client authorization is needed for this relay; otherwise, false.
-  [RequiresTransportSecurity <Boolean?>]: Returns true if transport security is needed for this relay; otherwise, false.
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
-  [UserMetadata <String>]: The usermetadata is a placeholder to store user-defined string data for the WCF Relay endpoint. For example, it can be used to store descriptive data, such as list of teams and their contact information. Also, user-defined configuration settings can be stored.
-.Link
-https://learn.microsoft.com/powershell/module/az.relay/set-azwcfrelay
-#>
-function Set-AzWcfRelay {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IWcfRelay])]
-[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
-    [System.String]
-    # The relay name.
-    ${Name},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
-    [System.String]
-    # The namespace name
-    ${Namespace},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
-    [System.String]
-    # Name of the Resource group within the Azure subscription.
-    ${ResourceGroupName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # Subscription credentials which uniquely identify the Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IWcfRelay]
-    # Description of the WCF relay resource.
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Body')]
-    [System.String]
-    # The usermetadata is a placeholder to store user-defined string data for the WCF Relay endpoint.
-    # For example, it can be used to store descriptive data, such as list of teams and their contact information.
-    # Also, user-defined configuration settings can be stored.
-    ${UserMetadata},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Relay.Support.Relaytype])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Support.Relaytype]
-    # WCF relay type.
-    ${WcfRelayType},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
         }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        $mapping = @{
-            Update = 'Az.Relay.private\Set-AzWcfRelay_Update';
-            UpdateExpanded = 'Az.Relay.private\Set-AzWcfRelay_UpdateExpanded';
-        }
-        if (('Update', 'UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

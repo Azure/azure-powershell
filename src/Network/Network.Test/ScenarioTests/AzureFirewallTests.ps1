@@ -2219,7 +2219,7 @@ function Test-InvokeAzureFirewallPacketCapture {
         $filter2 = New-AzFirewallPacketCaptureRule -Source "10.0.0.5" -Destination "172.20.10.2" -DestinationPort "80","443"
     
         # Create the firewall packet capture parameters
-        $Params =  New-AzFirewallPacketCaptureParameter  -DurationInSeconds 30 -NumberOfPackets 500 -SASUrl $sasurl -Filename "AzFwPowershellPacketCapture" -Flag "Syn","Ack" -Protocol "Any" -Filter $Filter1, $Filter2
+        $Params =  New-AzFirewallPacketCaptureParameter  -DurationInSeconds 30 -NumberOfPackets 500 -SASUrl $sasurl -Filename "AzFwPowershellPacketCapture" -Flag "Syn","Ack" -Protocol "Any" -Filter $Filter1, $Filter2 -Operation "Start"
 
         # Invoke a firewall packet capture
         $response = Invoke-AzFirewallPacketCapture -AzureFirewall $azureFirewall -Parameter $Params
@@ -2231,6 +2231,83 @@ function Test-InvokeAzureFirewallPacketCapture {
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Tests Invoke-AzureFirewallPacketCaptureOperation
+#>
+function Test-InvokeAzureFirewallPacketCaptureOperation {
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $azureFirewallName = Get-ResourceName
+    $resourceTypeParent = "Microsoft.Network/AzureFirewalls"
+    $location = Get-ProviderLocation $resourceTypeParent "eastus"
+
+    $vnetName = Get-ResourceName
+    $subnetName = "AzureFirewallSubnet"
+	$mgmtSubnetName = "AzureFirewallManagementSubnet"
+    $publicIp1Name = Get-ResourceName
+    $mgmtPublicIpName = Get-ResourceName
+
+    try {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "testval" }
+
+        # Create the Virtual Network
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
+        $mgmtSubnet = New-AzVirtualNetworkSubnetConfig -Name $mgmtSubnetName -AddressPrefix 10.0.100.0/24
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet,$mgmtSubnet
+        
+        # Get full subnet details
+        $subnet = Get-AzVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name $subnetName
+        $mgmtSubnet = Get-AzVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name $mgmtSubnetName
+
+        # Create public ips
+        $tag = New-AzPublicIpTag -IpTagType "FirstPartyUsage" -Tag "/NonProd"
+        $publicip1 = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIp1Name -location $location -AllocationMethod Static -Sku Standard -IpTag $tag
+        $mgmtPublicIp = New-AzPublicIpAddress -ResourceGroupName $rgname -name $mgmtPublicIpName -location $location -AllocationMethod Static -Sku Standard -IpTag $tag
+
+        # Create AzureFirewall with a management IP
+        $azureFirewall = New-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname -Location $location -VirtualNetwork $vnet -PublicIpAddress $publicip1 -ManagementPublicIpAddress $mgmtPublicIp
+
+        # Get AzureFirewall
+        $getAzureFirewall = Get-AzFirewall -name $azureFirewallName -ResourceGroupName $rgname
+
+        $sasurl = "https://powershellpacketcapture.blob.core.windows.net/testcapture?sp=wDummyURL"
+
+        # Create a filter rules
+        $filter1 = New-AzFirewallPacketCaptureRule -Source "10.0.0.2","192.123.12.1" -Destination "172.32.1.2" -DestinationPort "80","443"
+        $filter2 = New-AzFirewallPacketCaptureRule -Source "10.0.0.5" -Destination "172.20.10.2" -DestinationPort "80","443"
+    
+        # Create the firewall packet capture parameters
+        $Params =  New-AzFirewallPacketCaptureParameter  -DurationInSeconds 1200 -NumberOfPackets 20000 -SASUrl $sasurl -Filename "AzFwPowershellPacketCapture" -Flag "Syn","Ack" -Protocol "Any" -Filter $Filter1, $Filter2 -Operation "Start"
+        Start-Sleep -Seconds 120
+
+        # Invoke a firewall packet capture
+        $response = Invoke-AzFirewallPacketCaptureOperation -AzureFirewall $azureFirewall -Parameter $Params 
+        Assert-NotNull $response
+        Assert-AreEqual "AzureFirewallPacketCaptureStartSucceeded" $response.StatusCode
+        Assert-AreEqual "Packet Capture Started" $response.Message
+
+        $Params = New-AzFirewallPacketCaptureParameter -Operation "Status" 
+        $response = Invoke-AzFirewallPacketCaptureOperation -AzureFirewall $azureFirewall -Parameter $Params
+        Assert-NotNull $response
+        Assert-AreEqual "AzureFirewallPacketCaptureInProgress" $response.StatusCode
+        Assert-AreEqual "Packet capture in progress. Please wait till it is finished or stop the current capture before starting another." $response.Message
+
+        $Params = New-AzFirewallPacketCaptureParameter -Operation "Stop"
+        $response = Invoke-AzFirewallPacketCaptureOperation -AzureFirewall $azureFirewall -Parameter $Params  
+        Assert-NotNull $response
+        Assert-AreEqual "AzureFirewallPacketCaptureStopSucceeded" $response.StatusCode 
+        Assert-AreEqual "Packet capture stopped successfully. Ready to start a new packet capture." $response.Message
+
+    }
+    finally {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
 
 <#
 .SYNOPSIS

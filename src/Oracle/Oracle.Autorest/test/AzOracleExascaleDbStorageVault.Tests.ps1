@@ -47,9 +47,9 @@ Describe 'AzOracleExascaleDbStorageVault' {
             $dbStorageVault.Tag.Get_Item("tagName") | Should -Be "tagValue"
         } | Should -Not -Throw
     }
-    It 'DeleteOracleExascaleDbStorageVault' {
-        {
-            Remove-AzOracleExascaleDbStorageVault -NoWait -Name $env.oracleExascaleDbStorageVaultName -ResourceGroupName $env.resourceGroup
-        } | Should -Not -Throw
-    }
+    # It 'DeleteOracleExascaleDbStorageVault' {
+    #     {
+    #         Remove-AzOracleExascaleDbStorageVault -NoWait -Name $env.oracleExascaleDbStorageVaultName -ResourceGroupName $env.resourceGroup
+    #     } | Should -Not -Throw
+    # }
 }

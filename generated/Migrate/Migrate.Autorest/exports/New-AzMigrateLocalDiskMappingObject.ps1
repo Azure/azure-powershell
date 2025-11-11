@@ -62,6 +62,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
     # Specifies the disk format.
+    # 'VHD' or 'VHDX' for Hyper-V Generation 1; 'VHDX' for Hyper-V Generation 2.
     ${Format},
 
     [Parameter()]
@@ -69,13 +70,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.Int64]
     # Specifies the disk physical sector size in bytes.
-    ${PhysicalSectorSize},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [System.String]
-    # Specifies the storage path ARM ID where the disk will be stored.
-    ${TargetStoragePathId}
+    ${PhysicalSectorSize}
 )
 
 begin {

@@ -30,8 +30,9 @@ New-AzVM [[-ResourceGroupName] <String>] [[-Location] <String>] [-EdgeZone <Stri
  [-SharedGalleryImageId <String>] [-SecurityType <String>] [-EnableVtpm <Boolean>]
  [-EnableSecureBoot <Boolean>] [-IfMatch <String>] [-IfNoneMatch <String>] [-SshKeyType <String>]
  [-ZonePlacementPolicy <String>] [-IncludeZone <String[]>] [-ExcludeZone <String[]>]
- [-AlignRegionalDisksToVMZone] [-EnableProxyAgent] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AlignRegionalDisksToVMZone] [-EnableProxyAgent] [-AddProxyAgentExtension]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### DefaultParameterSet
@@ -57,7 +58,7 @@ New-AzVM [[-ResourceGroupName] <String>] [[-Location] <String>] [-EdgeZone <Stri
  [-Priority <String>] [-EvictionPolicy <String>] [-MaxPrice <Double>] [-EncryptionAtHost]
  [-HostGroupId <String>] [-CapacityReservationGroupId <String>] [-UserData <String>]
  [-PlatformFaultDomain <Int32>] [-HibernationEnabled] [-vCPUCountAvailable <Int32>] [-vCPUCountPerCore <Int32>]
- [-IfMatch <String>] [-IfNoneMatch <String>] [-DefaultProfile <IAzureContextContainer>] 
+ [-IfMatch <String>] [-IfNoneMatch <String>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -380,6 +381,21 @@ This example shows how the simple cmdlet call with minimal parameters will resul
 =======
 
 ## PARAMETERS
+
+### -AddProxyAgentExtension
+Specifies whether to implicitly install the ProxyAgent Extension. This option is currently applicable only for Linux OS.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: SimpleParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
 
 ### -AddressPrefix
 The address prefix for the virtual network which will be created for the VM.

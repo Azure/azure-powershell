@@ -64,21 +64,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models
             {
                 return;
             }
-            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)SubscriptionId;}
-            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)ResourceGroupName;}
-            {_galleryName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonString>("galleryName"), out var __jsonGalleryName) ? (string)__jsonGalleryName : (string)GalleryName;}
-            {_galleryImageName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonString>("galleryImageName"), out var __jsonGalleryImageName) ? (string)__jsonGalleryImageName : (string)GalleryImageName;}
-            {_galleryImageVersionName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonString>("galleryImageVersionName"), out var __jsonGalleryImageVersionName) ? (string)__jsonGalleryImageVersionName : (string)GalleryImageVersionName;}
-            {_galleryApplicationName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonString>("galleryApplicationName"), out var __jsonGalleryApplicationName) ? (string)__jsonGalleryApplicationName : (string)GalleryApplicationName;}
-            {_galleryApplicationVersionName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonString>("galleryApplicationVersionName"), out var __jsonGalleryApplicationVersionName) ? (string)__jsonGalleryApplicationVersionName : (string)GalleryApplicationVersionName;}
-            {_location = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonString>("location"), out var __jsonLocation) ? (string)__jsonLocation : (string)Location;}
-            {_commandId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonString>("commandId"), out var __jsonCommandId) ? (string)__jsonCommandId : (string)CommandId;}
-            {_vMName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonString>("vmName"), out var __jsonVMName) ? (string)__jsonVMName : (string)VMName;}
-            {_runCommandName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonString>("runCommandName"), out var __jsonRunCommandName) ? (string)__jsonRunCommandName : (string)RunCommandName;}
-            {_vMScaleSetName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonString>("vmScaleSetName"), out var __jsonVMScaleSetName) ? (string)__jsonVMScaleSetName : (string)VMScaleSetName;}
-            {_instanceId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonString>("instanceId"), out var __jsonInstanceId) ? (string)__jsonInstanceId : (string)InstanceId;}
-            {_operationId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonString>("operationId"), out var __jsonOperationId) ? (string)__jsonOperationId : (string)OperationId;}
-            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)Id;}
+            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)_subscriptionId;}
+            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)_resourceGroupName;}
+            {_galleryName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonString>("galleryName"), out var __jsonGalleryName) ? (string)__jsonGalleryName : (string)_galleryName;}
+            {_galleryImageName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonString>("galleryImageName"), out var __jsonGalleryImageName) ? (string)__jsonGalleryImageName : (string)_galleryImageName;}
+            {_galleryImageVersionName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonString>("galleryImageVersionName"), out var __jsonGalleryImageVersionName) ? (string)__jsonGalleryImageVersionName : (string)_galleryImageVersionName;}
+            {_galleryApplicationName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonString>("galleryApplicationName"), out var __jsonGalleryApplicationName) ? (string)__jsonGalleryApplicationName : (string)_galleryApplicationName;}
+            {_galleryApplicationVersionName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonString>("galleryApplicationVersionName"), out var __jsonGalleryApplicationVersionName) ? (string)__jsonGalleryApplicationVersionName : (string)_galleryApplicationVersionName;}
+            {_location = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonString>("location"), out var __jsonLocation) ? (string)__jsonLocation : (string)_location;}
+            {_commandId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonString>("commandId"), out var __jsonCommandId) ? (string)__jsonCommandId : (string)_commandId;}
+            {_vMName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonString>("vmName"), out var __jsonVMName) ? (string)__jsonVMName : (string)_vMName;}
+            {_runCommandName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonString>("runCommandName"), out var __jsonRunCommandName) ? (string)__jsonRunCommandName : (string)_runCommandName;}
+            {_vMScaleSetName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonString>("vmScaleSetName"), out var __jsonVMScaleSetName) ? (string)__jsonVMScaleSetName : (string)_vMScaleSetName;}
+            {_instanceId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonString>("instanceId"), out var __jsonInstanceId) ? (string)__jsonInstanceId : (string)_instanceId;}
+            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
             AfterFromJson(json);
         }
 
@@ -126,7 +125,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models
             AddIf( null != (((object)this._runCommandName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonString(this._runCommandName.ToString()) : null, "runCommandName" ,container.Add );
             AddIf( null != (((object)this._vMScaleSetName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonString(this._vMScaleSetName.ToString()) : null, "vmScaleSetName" ,container.Add );
             AddIf( null != (((object)this._instanceId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonString(this._instanceId.ToString()) : null, "instanceId" ,container.Add );
-            AddIf( null != (((object)this._operationId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonString(this._operationId.ToString()) : null, "operationId" ,container.Add );
             AddIf( null != (((object)this._id)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonString(this._id.ToString()) : null, "id" ,container.Add );
             AfterToJson(ref container);
             return container;

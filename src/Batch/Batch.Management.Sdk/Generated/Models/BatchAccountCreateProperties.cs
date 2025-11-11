@@ -29,16 +29,15 @@ namespace Microsoft.Azure.Management.Batch.Models
 
         /// <param name="poolAllocationMode">The pool allocation mode also affects how clients may authenticate to the
         /// Batch Service API. If the mode is BatchService, clients may authenticate
-        /// using access keys or Azure Active Directory. If the mode is
-        /// UserSubscription, clients must use Azure Active Directory. The default is
-        /// BatchService.
+        /// using access keys or Microsoft Entra ID. If the mode is UserSubscription,
+        /// clients must use Microsoft Entra ID. The default is BatchService.
         /// Possible values include: &#39;BatchService&#39;, &#39;UserSubscription&#39;</param>
 
         /// <param name="keyVaultReference">A reference to the Azure key vault associated with the Batch account.
         /// </param>
 
         /// <param name="publicNetworkAccess">If not specified, the default value is &#39;enabled&#39;.
-        /// Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;</param>
+        /// Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;, &#39;SecuredByPerimeter&#39;</param>
 
         /// <param name="networkProfile">The network profile only takes effect when publicNetworkAccess is enabled.
         /// </param>
@@ -80,9 +79,9 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// <summary>
         /// Gets or sets the pool allocation mode also affects how clients may
         /// authenticate to the Batch Service API. If the mode is BatchService, clients
-        /// may authenticate using access keys or Azure Active Directory. If the mode
-        /// is UserSubscription, clients must use Azure Active Directory. The default
-        /// is BatchService. Possible values include: &#39;BatchService&#39;, &#39;UserSubscription&#39;
+        /// may authenticate using access keys or Microsoft Entra ID. If the mode is
+        /// UserSubscription, clients must use Microsoft Entra ID. The default is
+        /// BatchService. Possible values include: &#39;BatchService&#39;, &#39;UserSubscription&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "poolAllocationMode")]
         public PoolAllocationMode? PoolAllocationMode {get; set; }
@@ -95,7 +94,7 @@ namespace Microsoft.Azure.Management.Batch.Models
         public KeyVaultReference KeyVaultReference {get; set; }
 
         /// <summary>
-        /// Gets or sets if not specified, the default value is &#39;enabled&#39;. Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;
+        /// Gets or sets if not specified, the default value is &#39;enabled&#39;. Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;, &#39;SecuredByPerimeter&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "publicNetworkAccess")]
         public PublicNetworkAccessType? PublicNetworkAccess {get; set; }

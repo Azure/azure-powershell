@@ -27,6 +27,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Inlined)]
         public string ClusterArmId { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespacePropertiesInternal)Property).ClusterArmId; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespacePropertiesInternal)Property).ClusterArmId = value ?? null; }
 
+        /// <summary>Setting to Enable or Disable Confidential Compute</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Inlined)]
+        public string ConfidentialComputeMode { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespacePropertiesInternal)Property).ConfidentialComputeMode; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespacePropertiesInternal)Property).ConfidentialComputeMode = value ?? null; }
+
         /// <summary>The time the Namespace was created.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Inlined)]
         public global::System.DateTime? CreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespacePropertiesInternal)Property).CreatedAt; }
@@ -109,6 +113,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
 
         /// <summary>Internal Acessors for MetricId</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal.MetricId { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespacePropertiesInternal)Property).MetricId; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespacePropertiesInternal)Property).MetricId = value ?? null; }
+
+        /// <summary>Internal Acessors for PlatformCapability</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IPlatformCapabilities Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal.PlatformCapability { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespacePropertiesInternal)Property).PlatformCapability; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespacePropertiesInternal)Property).PlatformCapability = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for PlatformCapabilityConfidentialCompute</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IConfidentialCompute Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal.PlatformCapabilityConfidentialCompute { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespacePropertiesInternal)Property).PlatformCapabilityConfidentialCompute; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespacePropertiesInternal)Property).PlatformCapabilityConfidentialCompute = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for PrincipalId</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceInternal.PrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IIdentityInternal)Identity).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IIdentityInternal)Identity).PrincipalId = value ?? null; }
@@ -339,6 +349,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
         SerializedName = @"clusterArmId",
         PossibleTypes = new [] { typeof(string) })]
         string ClusterArmId { get; set; }
+        /// <summary>Setting to Enable or Disable Confidential Compute</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Setting to Enable or Disable Confidential Compute",
+        SerializedName = @"mode",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.PSArgumentCompleterAttribute("Disabled", "Enabled")]
+        string ConfidentialComputeMode { get; set; }
         /// <summary>The time the Namespace was created.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Info(
         Required = false,
@@ -479,7 +501,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
         Description = @"The minimum TLS version for the cluster to support, e.g. '1.2'",
         SerializedName = @"minimumTlsVersion",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.PSArgumentCompleterAttribute("1.0", "1.1", "1.2")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.PSArgumentCompleterAttribute("1.0", "1.1", "1.2", "1.3")]
         string MinimumTlsVersion { get; set; }
         /// <summary>ObjectId from the KeyVault</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Info(
@@ -723,6 +745,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
         string AlternateName { get; set; }
         /// <summary>Cluster ARM ID of the Namespace.</summary>
         string ClusterArmId { get; set; }
+        /// <summary>Setting to Enable or Disable Confidential Compute</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.PSArgumentCompleterAttribute("Disabled", "Enabled")]
+        string ConfidentialComputeMode { get; set; }
         /// <summary>The time the Namespace was created.</summary>
         global::System.DateTime? CreatedAt { get; set; }
         /// <summary>This property disables SAS authentication for the Event Hubs namespace.</summary>
@@ -761,8 +786,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
         /// <summary>Identifier for Azure Insights metrics.</summary>
         string MetricId { get; set; }
         /// <summary>The minimum TLS version for the cluster to support, e.g. '1.2'</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.PSArgumentCompleterAttribute("1.0", "1.1", "1.2")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.PSArgumentCompleterAttribute("1.0", "1.1", "1.2", "1.3")]
         string MinimumTlsVersion { get; set; }
+
+        Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IPlatformCapabilities PlatformCapability { get; set; }
+
+        Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IConfidentialCompute PlatformCapabilityConfidentialCompute { get; set; }
         /// <summary>ObjectId from the KeyVault</summary>
         string PrincipalId { get; set; }
         /// <summary>List of private endpoint connections.</summary>

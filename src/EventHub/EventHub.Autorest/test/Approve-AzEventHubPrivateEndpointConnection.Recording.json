@@ -1,8 +1,8 @@
 {
-  "Approve-AzEventHubPrivateEndpointConnection+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/privateEndpointConnections?api-version=2024-05-01-preview+1": {
+  "Approve-AzEventHubPrivateEndpointConnection+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/privateEndpointConnections?api-version=2025-05-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/privateEndpointConnections?api-version=2024-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/privateEndpointConnections?api-version=2025-05-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -46,10 +46,10 @@
       "isContentBase64": false
     }
   },
-  "Approve-AzEventHubPrivateEndpointConnection+[NoContext]+SetExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/privateEndpointConnections/aa75dd61-a07d-4d48-9397-96841bb107ee?api-version=2024-05-01-preview+1": {
+  "Approve-AzEventHubPrivateEndpointConnection+[NoContext]+SetExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/privateEndpointConnections/aa75dd61-a07d-4d48-9397-96841bb107ee?api-version=2025-05-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/privateEndpointConnections/aa75dd61-a07d-4d48-9397-96841bb107ee?api-version=2024-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/privateEndpointConnections/aa75dd61-a07d-4d48-9397-96841bb107ee?api-version=2025-05-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -93,10 +93,10 @@
       "isContentBase64": false
     }
   },
-  "Approve-AzEventHubPrivateEndpointConnection+[NoContext]+SetExpanded+$PUT+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/privateEndpointConnections/aa75dd61-a07d-4d48-9397-96841bb107ee?api-version=2024-05-01-preview+2": {
+  "Approve-AzEventHubPrivateEndpointConnection+[NoContext]+SetExpanded+$PUT+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/privateEndpointConnections/aa75dd61-a07d-4d48-9397-96841bb107ee?api-version=2025-05-01-preview+2": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/privateEndpointConnections/aa75dd61-a07d-4d48-9397-96841bb107ee?api-version=2024-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/privateEndpointConnections/aa75dd61-a07d-4d48-9397-96841bb107ee?api-version=2025-05-01-preview",
       "Content": "{\n  \"properties\": {\n    \"privateEndpoint\": {\n      \"id\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.Network/privateEndpoints/privateEndpoint-iq47tv\"\n    },\n    \"privateLinkServiceConnectionState\": {\n      \"status\": \"Approved\",\n      \"description\": \"\"\n    },\n    \"provisioningState\": \"Succeeded\"\n  }\n}",
       "isContentBase64": false,
       "Headers": {
@@ -111,7 +111,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/privateEndpointConnections/aa75dd61-a07d-4d48-9397-96841bb107ee/operationStatus/aa75dd61-a07d-4d48-9397-96841bb107ee?api-version=2024-05-01-preview\u0026operationType=Update\u0026t=638822001015857564\u0026c=MIIHpTCCBo2gAwIBAgITOgWb3H4Nzb-7yQG2EQAEBZvcfjANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSU5GUkEgQ0EgMDEwHhcNMjUwNDIwMTYwOTMwWhcNMjUxMDE3MTYwOTMwWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAOQIgzzH-VcKVet59WCOBXckh79xW1hbkHMURYkchOyLYB5B081v4XF81Tau0MswD-I5EC5wDpX2hlTE5Ew5ued_Nc0Yqm_KULsTmhe7wDQfYu3aJCVRN_lb6_I4PX-bqRGi_f81tm2sc8izwz4kUtcG-o0nFr5X4z77uPBIs0hdE1mnqDEDdhDIel7WL6yPGKcmPObNOEMgK_MWj-4X-GuiXR6CP70eaR9kw0p6b7NT1RyIgOHvGGnlhNdKR5Xj5otDRKWM9BKplQqfhGCyCp2jAFOTtjVtNLxETdf160AkQFO78ujVQ6W4Anq-cq47e4O9djqiEtBvdEwTk_SAjUUCAwEAAaOCBJIwggSOMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFghfmRS4WsmTQCAWQCAQcwggHaBggrBgEFBQcBAQSCAcwwggHIMGYGCCsGAQUFBzAChlpodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQlkyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMElORlJBJTIwQ0ElMjAwMSg0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JZMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3J0MFYGCCsGAQUFBzAChkpodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CWTJQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSU5GUkElMjBDQSUyMDAxKDQpLmNydDBWBggrBgEFBQcwAoZKaHR0cDovL2NybDMuYW1lLmdibC9haWEvQlkyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMElORlJBJTIwQ0ElMjAwMSg0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JZMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3J0MB0GA1UdDgQWBBS69DNKCdMMQyMfLqr2jXm9_K9rVzAOBgNVHQ8BAf8EBAMCBaAwggE1BgNVHR8EggEsMIIBKDCCASSgggEgoIIBHIZCaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JshjRodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JshjRodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JshjRodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JshjRodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwIwDAYKKwYBBAGCN3sEAjAfBgNVHSMEGDAWgBTl2Ztn_PjsurvwwKidileIud8-YzAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBABQKPAm-rjP1TtYpav8wx6zSJf_0AzETZajof3mtVJpljGw7i35Op8ReOqQfnQM9s4z_M9wmKyzUZmcX1CcGLq7S7ug6m5sHg3VBhmRdbQXDSisP9OEUju4eK7VT7zXjx2wwVyE6ut3mxBUGOOrhzSVZT8U-UwzuSz7XEZUhndc5VazPQGz66aWaBd1YS3F0PladM957_WYKTI86v_MhKM8huvyoMbTJlzj0IuWDGtPAh11239Eu-XMaxl7GkemR25Yp-cTc654T_9udTTHD17FuAx-nCO5-naIEMwl7Jn9rD_mjyP-kZLs_SKdVCfKEfLOJ7AodgwunqMxqeavsYOQ\u0026s=w1qLEpnWd-2u202-fm7phkwDqtH53abi3yUBk8BlgcN34_QIOyz0rHHLb_C7juTnuWl_Uq-Wsg-9vPPT0Aiaq5LV7kDB14FESh9s0SLpxQexUw8Z9qrBhRj5jG3SaJF5JaenrEVfg8cNA_fEQK63VpNwsgdxL8nBeJO5vyUJBPfAdqIuXEfDwf2FwxVXtUj4oU0gx1b50RnwWdMX0pNutrt2IjBpGAl389ZL7J6zMU99qNCosaMv8vTaJo64yevYjzksxtBBAjiZzjG7fcWg6YkpMjr9AfdzqCA3xTqt28dXyyEZX7mcmkAd50R79nbuDH5zFbIy3eZtuyKN189fsQ\u0026h=pn1De-DdixrPxdrizbs6Qe31ZewHuT_IZkpeXxmgC_w" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/privateEndpointConnections/aa75dd61-a07d-4d48-9397-96841bb107ee/operationStatus/aa75dd61-a07d-4d48-9397-96841bb107ee?api-version=2025-05-01-preview\u0026operationType=Update\u0026t=638822001015857564\u0026c=MIIHpTCCBo2gAwIBAgITOgWb3H4Nzb-7yQG2EQAEBZvcfjANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSU5GUkEgQ0EgMDEwHhcNMjUwNDIwMTYwOTMwWhcNMjUxMDE3MTYwOTMwWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAOQIgzzH-VcKVet59WCOBXckh79xW1hbkHMURYkchOyLYB5B081v4XF81Tau0MswD-I5EC5wDpX2hlTE5Ew5ued_Nc0Yqm_KULsTmhe7wDQfYu3aJCVRN_lb6_I4PX-bqRGi_f81tm2sc8izwz4kUtcG-o0nFr5X4z77uPBIs0hdE1mnqDEDdhDIel7WL6yPGKcmPObNOEMgK_MWj-4X-GuiXR6CP70eaR9kw0p6b7NT1RyIgOHvGGnlhNdKR5Xj5otDRKWM9BKplQqfhGCyCp2jAFOTtjVtNLxETdf160AkQFO78ujVQ6W4Anq-cq47e4O9djqiEtBvdEwTk_SAjUUCAwEAAaOCBJIwggSOMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFghfmRS4WsmTQCAWQCAQcwggHaBggrBgEFBQcBAQSCAcwwggHIMGYGCCsGAQUFBzAChlpodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQlkyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMElORlJBJTIwQ0ElMjAwMSg0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JZMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3J0MFYGCCsGAQUFBzAChkpodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CWTJQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSU5GUkElMjBDQSUyMDAxKDQpLmNydDBWBggrBgEFBQcwAoZKaHR0cDovL2NybDMuYW1lLmdibC9haWEvQlkyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMElORlJBJTIwQ0ElMjAwMSg0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JZMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3J0MB0GA1UdDgQWBBS69DNKCdMMQyMfLqr2jXm9_K9rVzAOBgNVHQ8BAf8EBAMCBaAwggE1BgNVHR8EggEsMIIBKDCCASSgggEgoIIBHIZCaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JshjRodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JshjRodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JshjRodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JshjRodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwIwDAYKKwYBBAGCN3sEAjAfBgNVHSMEGDAWgBTl2Ztn_PjsurvwwKidileIud8-YzAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBABQKPAm-rjP1TtYpav8wx6zSJf_0AzETZajof3mtVJpljGw7i35Op8ReOqQfnQM9s4z_M9wmKyzUZmcX1CcGLq7S7ug6m5sHg3VBhmRdbQXDSisP9OEUju4eK7VT7zXjx2wwVyE6ut3mxBUGOOrhzSVZT8U-UwzuSz7XEZUhndc5VazPQGz66aWaBd1YS3F0PladM957_WYKTI86v_MhKM8huvyoMbTJlzj0IuWDGtPAh11239Eu-XMaxl7GkemR25Yp-cTc654T_9udTTHD17FuAx-nCO5-naIEMwl7Jn9rD_mjyP-kZLs_SKdVCfKEfLOJ7AodgwunqMxqeavsYOQ\u0026s=w1qLEpnWd-2u202-fm7phkwDqtH53abi3yUBk8BlgcN34_QIOyz0rHHLb_C7juTnuWl_Uq-Wsg-9vPPT0Aiaq5LV7kDB14FESh9s0SLpxQexUw8Z9qrBhRj5jG3SaJF5JaenrEVfg8cNA_fEQK63VpNwsgdxL8nBeJO5vyUJBPfAdqIuXEfDwf2FwxVXtUj4oU0gx1b50RnwWdMX0pNutrt2IjBpGAl389ZL7J6zMU99qNCosaMv8vTaJo64yevYjzksxtBBAjiZzjG7fcWg6YkpMjr9AfdzqCA3xTqt28dXyyEZX7mcmkAd50R79nbuDH5zFbIy3eZtuyKN189fsQ\u0026h=pn1De-DdixrPxdrizbs6Qe31ZewHuT_IZkpeXxmgC_w" ],
         "x-ms-correlation-request-id": [ "faa52a1f-737c-4d59-82ca-59ca6c125061" ],
         "x-ms-client-request-id": [ "7038d15b-d6b7-4958-88de-3736025bd844_RP" ],
         "x-ms-messaging-activity-id": [ "2991b06b-0222-4718-8a6c-3d2765d7da6a" ],
@@ -136,10 +136,10 @@
       "isContentBase64": false
     }
   },
-  "Approve-AzEventHubPrivateEndpointConnection+[NoContext]+SetExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/privateEndpointConnections/aa75dd61-a07d-4d48-9397-96841bb107ee?api-version=2024-05-01-preview+3": {
+  "Approve-AzEventHubPrivateEndpointConnection+[NoContext]+SetExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/privateEndpointConnections/aa75dd61-a07d-4d48-9397-96841bb107ee?api-version=2025-05-01-preview+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/privateEndpointConnections/aa75dd61-a07d-4d48-9397-96841bb107ee?api-version=2024-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/privateEndpointConnections/aa75dd61-a07d-4d48-9397-96841bb107ee?api-version=2025-05-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -183,10 +183,10 @@
       "isContentBase64": false
     }
   },
-  "Approve-AzEventHubPrivateEndpointConnection+[NoContext]+SetExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/privateEndpointConnections/aa75dd61-a07d-4d48-9397-96841bb107ee?api-version=2024-05-01-preview+4": {
+  "Approve-AzEventHubPrivateEndpointConnection+[NoContext]+SetExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/privateEndpointConnections/aa75dd61-a07d-4d48-9397-96841bb107ee?api-version=2025-05-01-preview+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/privateEndpointConnections/aa75dd61-a07d-4d48-9397-96841bb107ee?api-version=2024-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/privateEndpointConnections/aa75dd61-a07d-4d48-9397-96841bb107ee?api-version=2025-05-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -230,10 +230,10 @@
       "isContentBase64": false
     }
   },
-  "Approve-AzEventHubPrivateEndpointConnection+[NoContext]+SetExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/privateEndpointConnections/aa75dd61-a07d-4d48-9397-96841bb107ee?api-version=2024-05-01-preview+5": {
+  "Approve-AzEventHubPrivateEndpointConnection+[NoContext]+SetExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/privateEndpointConnections/aa75dd61-a07d-4d48-9397-96841bb107ee?api-version=2025-05-01-preview+5": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/privateEndpointConnections/aa75dd61-a07d-4d48-9397-96841bb107ee?api-version=2024-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/privateEndpointConnections/aa75dd61-a07d-4d48-9397-96841bb107ee?api-version=2025-05-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -277,10 +277,10 @@
       "isContentBase64": false
     }
   },
-  "Approve-AzEventHubPrivateEndpointConnection+[NoContext]+SetExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/privateEndpointConnections/aa75dd61-a07d-4d48-9397-96841bb107ee?api-version=2024-05-01-preview+6": {
+  "Approve-AzEventHubPrivateEndpointConnection+[NoContext]+SetExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/privateEndpointConnections/aa75dd61-a07d-4d48-9397-96841bb107ee?api-version=2025-05-01-preview+6": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/privateEndpointConnections/aa75dd61-a07d-4d48-9397-96841bb107ee?api-version=2024-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/privateEndpointConnections/aa75dd61-a07d-4d48-9397-96841bb107ee?api-version=2025-05-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -324,10 +324,10 @@
       "isContentBase64": false
     }
   },
-  "Approve-AzEventHubPrivateEndpointConnection+[NoContext]+SetViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/privateEndpointConnections/77a55a15-da11-4147-85e0-5adca6eac06c?api-version=2024-05-01-preview+1": {
+  "Approve-AzEventHubPrivateEndpointConnection+[NoContext]+SetViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/privateEndpointConnections/77a55a15-da11-4147-85e0-5adca6eac06c?api-version=2025-05-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/privateEndpointConnections/77a55a15-da11-4147-85e0-5adca6eac06c?api-version=2024-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/privateEndpointConnections/77a55a15-da11-4147-85e0-5adca6eac06c?api-version=2025-05-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -371,10 +371,10 @@
       "isContentBase64": false
     }
   },
-  "Approve-AzEventHubPrivateEndpointConnection+[NoContext]+SetViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/privateEndpointConnections/77a55a15-da11-4147-85e0-5adca6eac06c?api-version=2024-05-01-preview+2": {
+  "Approve-AzEventHubPrivateEndpointConnection+[NoContext]+SetViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/privateEndpointConnections/77a55a15-da11-4147-85e0-5adca6eac06c?api-version=2025-05-01-preview+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/privateEndpointConnections/77a55a15-da11-4147-85e0-5adca6eac06c?api-version=2024-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/privateEndpointConnections/77a55a15-da11-4147-85e0-5adca6eac06c?api-version=2025-05-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -418,10 +418,10 @@
       "isContentBase64": false
     }
   },
-  "Approve-AzEventHubPrivateEndpointConnection+[NoContext]+SetViaIdentityExpanded+$PUT+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/privateEndpointConnections/77a55a15-da11-4147-85e0-5adca6eac06c?api-version=2024-05-01-preview+3": {
+  "Approve-AzEventHubPrivateEndpointConnection+[NoContext]+SetViaIdentityExpanded+$PUT+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/privateEndpointConnections/77a55a15-da11-4147-85e0-5adca6eac06c?api-version=2025-05-01-preview+3": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/privateEndpointConnections/77a55a15-da11-4147-85e0-5adca6eac06c?api-version=2024-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/privateEndpointConnections/77a55a15-da11-4147-85e0-5adca6eac06c?api-version=2025-05-01-preview",
       "Content": "{\n  \"properties\": {\n    \"privateEndpoint\": {\n      \"id\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.Network/privateEndpoints/privateEndpoint-uedzlo\"\n    },\n    \"privateLinkServiceConnectionState\": {\n      \"status\": \"Approved\",\n      \"description\": \"Bye\"\n    },\n    \"provisioningState\": \"Succeeded\"\n  }\n}",
       "isContentBase64": false,
       "Headers": {
@@ -436,7 +436,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/privateEndpointConnections/77a55a15-da11-4147-85e0-5adca6eac06c/operationStatus/77a55a15-da11-4147-85e0-5adca6eac06c?api-version=2024-05-01-preview\u0026operationType=Update\u0026t=638822001484748576\u0026c=MIIHpTCCBo2gAwIBAgITOgWb3H4Nzb-7yQG2EQAEBZvcfjANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSU5GUkEgQ0EgMDEwHhcNMjUwNDIwMTYwOTMwWhcNMjUxMDE3MTYwOTMwWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAOQIgzzH-VcKVet59WCOBXckh79xW1hbkHMURYkchOyLYB5B081v4XF81Tau0MswD-I5EC5wDpX2hlTE5Ew5ued_Nc0Yqm_KULsTmhe7wDQfYu3aJCVRN_lb6_I4PX-bqRGi_f81tm2sc8izwz4kUtcG-o0nFr5X4z77uPBIs0hdE1mnqDEDdhDIel7WL6yPGKcmPObNOEMgK_MWj-4X-GuiXR6CP70eaR9kw0p6b7NT1RyIgOHvGGnlhNdKR5Xj5otDRKWM9BKplQqfhGCyCp2jAFOTtjVtNLxETdf160AkQFO78ujVQ6W4Anq-cq47e4O9djqiEtBvdEwTk_SAjUUCAwEAAaOCBJIwggSOMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFghfmRS4WsmTQCAWQCAQcwggHaBggrBgEFBQcBAQSCAcwwggHIMGYGCCsGAQUFBzAChlpodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQlkyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMElORlJBJTIwQ0ElMjAwMSg0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JZMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3J0MFYGCCsGAQUFBzAChkpodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CWTJQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSU5GUkElMjBDQSUyMDAxKDQpLmNydDBWBggrBgEFBQcwAoZKaHR0cDovL2NybDMuYW1lLmdibC9haWEvQlkyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMElORlJBJTIwQ0ElMjAwMSg0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JZMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3J0MB0GA1UdDgQWBBS69DNKCdMMQyMfLqr2jXm9_K9rVzAOBgNVHQ8BAf8EBAMCBaAwggE1BgNVHR8EggEsMIIBKDCCASSgggEgoIIBHIZCaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JshjRodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JshjRodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JshjRodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JshjRodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwIwDAYKKwYBBAGCN3sEAjAfBgNVHSMEGDAWgBTl2Ztn_PjsurvwwKidileIud8-YzAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBABQKPAm-rjP1TtYpav8wx6zSJf_0AzETZajof3mtVJpljGw7i35Op8ReOqQfnQM9s4z_M9wmKyzUZmcX1CcGLq7S7ug6m5sHg3VBhmRdbQXDSisP9OEUju4eK7VT7zXjx2wwVyE6ut3mxBUGOOrhzSVZT8U-UwzuSz7XEZUhndc5VazPQGz66aWaBd1YS3F0PladM957_WYKTI86v_MhKM8huvyoMbTJlzj0IuWDGtPAh11239Eu-XMaxl7GkemR25Yp-cTc654T_9udTTHD17FuAx-nCO5-naIEMwl7Jn9rD_mjyP-kZLs_SKdVCfKEfLOJ7AodgwunqMxqeavsYOQ\u0026s=pCNH2b8FZvPCkf8s9vychv06OBkOWTsd4lCEPl7mk9KPMLfM8K0MGqzr7gedbZaBS8ggi_tsKdtJE7QPIiJ4S4WLIRJ5EiqcdW_CwE4ypgd_36A1e4gGMdN1_7J_ToteBKAGEl0PkrGdzfkyWFDj9kkr6zHzcATp1UBr3Uua1V-vAR323xY9XuRMK_7YEpiv-kdRWb0xrfKg-K3fV41zOAEghUs0uDyt99adQdo2-QWcpNi6UG0C2t3t9aCX743qzgRdryEWtP1bHQZzffF8NIyIh87dy7leEAmfrrDD57HYOhY0JiPTZJMshNPatIcQ0742b4htaS_-ga7O7c2ZDA\u0026h=5a5eDAmP1qMhzRSMgV9iK7isO8TjnZaABCaWjSkG6jw" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/privateEndpointConnections/77a55a15-da11-4147-85e0-5adca6eac06c/operationStatus/77a55a15-da11-4147-85e0-5adca6eac06c?api-version=2025-05-01-preview\u0026operationType=Update\u0026t=638822001484748576\u0026c=MIIHpTCCBo2gAwIBAgITOgWb3H4Nzb-7yQG2EQAEBZvcfjANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSU5GUkEgQ0EgMDEwHhcNMjUwNDIwMTYwOTMwWhcNMjUxMDE3MTYwOTMwWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAOQIgzzH-VcKVet59WCOBXckh79xW1hbkHMURYkchOyLYB5B081v4XF81Tau0MswD-I5EC5wDpX2hlTE5Ew5ued_Nc0Yqm_KULsTmhe7wDQfYu3aJCVRN_lb6_I4PX-bqRGi_f81tm2sc8izwz4kUtcG-o0nFr5X4z77uPBIs0hdE1mnqDEDdhDIel7WL6yPGKcmPObNOEMgK_MWj-4X-GuiXR6CP70eaR9kw0p6b7NT1RyIgOHvGGnlhNdKR5Xj5otDRKWM9BKplQqfhGCyCp2jAFOTtjVtNLxETdf160AkQFO78ujVQ6W4Anq-cq47e4O9djqiEtBvdEwTk_SAjUUCAwEAAaOCBJIwggSOMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFghfmRS4WsmTQCAWQCAQcwggHaBggrBgEFBQcBAQSCAcwwggHIMGYGCCsGAQUFBzAChlpodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQlkyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMElORlJBJTIwQ0ElMjAwMSg0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JZMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3J0MFYGCCsGAQUFBzAChkpodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CWTJQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSU5GUkElMjBDQSUyMDAxKDQpLmNydDBWBggrBgEFBQcwAoZKaHR0cDovL2NybDMuYW1lLmdibC9haWEvQlkyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMElORlJBJTIwQ0ElMjAwMSg0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JZMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3J0MB0GA1UdDgQWBBS69DNKCdMMQyMfLqr2jXm9_K9rVzAOBgNVHQ8BAf8EBAMCBaAwggE1BgNVHR8EggEsMIIBKDCCASSgggEgoIIBHIZCaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JshjRodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JshjRodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JshjRodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JshjRodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwIwDAYKKwYBBAGCN3sEAjAfBgNVHSMEGDAWgBTl2Ztn_PjsurvwwKidileIud8-YzAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBABQKPAm-rjP1TtYpav8wx6zSJf_0AzETZajof3mtVJpljGw7i35Op8ReOqQfnQM9s4z_M9wmKyzUZmcX1CcGLq7S7ug6m5sHg3VBhmRdbQXDSisP9OEUju4eK7VT7zXjx2wwVyE6ut3mxBUGOOrhzSVZT8U-UwzuSz7XEZUhndc5VazPQGz66aWaBd1YS3F0PladM957_WYKTI86v_MhKM8huvyoMbTJlzj0IuWDGtPAh11239Eu-XMaxl7GkemR25Yp-cTc654T_9udTTHD17FuAx-nCO5-naIEMwl7Jn9rD_mjyP-kZLs_SKdVCfKEfLOJ7AodgwunqMxqeavsYOQ\u0026s=pCNH2b8FZvPCkf8s9vychv06OBkOWTsd4lCEPl7mk9KPMLfM8K0MGqzr7gedbZaBS8ggi_tsKdtJE7QPIiJ4S4WLIRJ5EiqcdW_CwE4ypgd_36A1e4gGMdN1_7J_ToteBKAGEl0PkrGdzfkyWFDj9kkr6zHzcATp1UBr3Uua1V-vAR323xY9XuRMK_7YEpiv-kdRWb0xrfKg-K3fV41zOAEghUs0uDyt99adQdo2-QWcpNi6UG0C2t3t9aCX743qzgRdryEWtP1bHQZzffF8NIyIh87dy7leEAmfrrDD57HYOhY0JiPTZJMshNPatIcQ0742b4htaS_-ga7O7c2ZDA\u0026h=5a5eDAmP1qMhzRSMgV9iK7isO8TjnZaABCaWjSkG6jw" ],
         "x-ms-correlation-request-id": [ "80a866e8-7d5b-4ed6-ac50-4187f4754881" ],
         "x-ms-client-request-id": [ "4e587325-3d82-4751-a7f6-fb06ac95c7f7_RP" ],
         "x-ms-messaging-activity-id": [ "f6ae7372-af5f-48d1-b23c-f145d8323def" ],
@@ -461,10 +461,10 @@
       "isContentBase64": false
     }
   },
-  "Approve-AzEventHubPrivateEndpointConnection+[NoContext]+SetViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/privateEndpointConnections/77a55a15-da11-4147-85e0-5adca6eac06c?api-version=2024-05-01-preview+4": {
+  "Approve-AzEventHubPrivateEndpointConnection+[NoContext]+SetViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/privateEndpointConnections/77a55a15-da11-4147-85e0-5adca6eac06c?api-version=2025-05-01-preview+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/privateEndpointConnections/77a55a15-da11-4147-85e0-5adca6eac06c?api-version=2024-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/privateEndpointConnections/77a55a15-da11-4147-85e0-5adca6eac06c?api-version=2025-05-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -508,10 +508,10 @@
       "isContentBase64": false
     }
   },
-  "Approve-AzEventHubPrivateEndpointConnection+[NoContext]+SetViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/privateEndpointConnections/77a55a15-da11-4147-85e0-5adca6eac06c?api-version=2024-05-01-preview+5": {
+  "Approve-AzEventHubPrivateEndpointConnection+[NoContext]+SetViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/privateEndpointConnections/77a55a15-da11-4147-85e0-5adca6eac06c?api-version=2025-05-01-preview+5": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/privateEndpointConnections/77a55a15-da11-4147-85e0-5adca6eac06c?api-version=2024-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/privateEndpointConnections/77a55a15-da11-4147-85e0-5adca6eac06c?api-version=2025-05-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -555,10 +555,10 @@
       "isContentBase64": false
     }
   },
-  "Approve-AzEventHubPrivateEndpointConnection+[NoContext]+SetViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/privateEndpointConnections/77a55a15-da11-4147-85e0-5adca6eac06c?api-version=2024-05-01-preview+6": {
+  "Approve-AzEventHubPrivateEndpointConnection+[NoContext]+SetViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/privateEndpointConnections/77a55a15-da11-4147-85e0-5adca6eac06c?api-version=2025-05-01-preview+6": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/privateEndpointConnections/77a55a15-da11-4147-85e0-5adca6eac06c?api-version=2024-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/privateEndpointConnections/77a55a15-da11-4147-85e0-5adca6eac06c?api-version=2025-05-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -602,10 +602,10 @@
       "isContentBase64": false
     }
   },
-  "Approve-AzEventHubPrivateEndpointConnection+[NoContext]+SetViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/privateEndpointConnections/77a55a15-da11-4147-85e0-5adca6eac06c?api-version=2024-05-01-preview+7": {
+  "Approve-AzEventHubPrivateEndpointConnection+[NoContext]+SetViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/privateEndpointConnections/77a55a15-da11-4147-85e0-5adca6eac06c?api-version=2025-05-01-preview+7": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/privateEndpointConnections/77a55a15-da11-4147-85e0-5adca6eac06c?api-version=2024-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/privateEndpointConnections/77a55a15-da11-4147-85e0-5adca6eac06c?api-version=2025-05-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {

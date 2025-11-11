@@ -24,22 +24,15 @@ namespace Microsoft.Azure.Management.Compute
     public partial interface ICapacityReservationsOperations
     {
         /// <summary>
-        /// The operation to create or update a capacity reservation. Please
-        /// note some properties can be set only during capacity reservation
-        /// creation. Please refer to https://aka.ms/CapacityReservation for
-        /// more details.
+        /// Lists all of the capacity reservations in the specified capacity
+        /// reservation group. Use the nextLink property in the response to get
+        /// the next page of capacity reservations.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='capacityReservationGroupName'>
         /// The name of the capacity reservation group.
-        /// </param>
-        /// <param name='capacityReservationName'>
-        /// The name of the capacity reservation.
-        /// </param>
-        /// <param name='parameters'>
-        /// Parameters supplied to the Create capacity reservation.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -56,72 +49,13 @@ namespace Microsoft.Azure.Management.Compute
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<CapacityReservation>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string capacityReservationGroupName, string capacityReservationName, CapacityReservation parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// The operation to update a capacity reservation.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='capacityReservationGroupName'>
-        /// The name of the capacity reservation group.
-        /// </param>
-        /// <param name='capacityReservationName'>
-        /// The name of the capacity reservation.
-        /// </param>
-        /// <param name='parameters'>
-        /// Parameters supplied to the Update capacity reservation operation.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<CapacityReservation>> UpdateWithHttpMessagesAsync(string resourceGroupName, string capacityReservationGroupName, string capacityReservationName, CapacityReservationUpdate parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// The operation to delete a capacity reservation. This operation is
-        /// allowed only when all the associated resources are disassociated
-        /// from the capacity reservation. Please refer to
-        /// https://aka.ms/CapacityReservation for more details.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='capacityReservationGroupName'>
-        /// The name of the capacity reservation group.
-        /// </param>
-        /// <param name='capacityReservationName'>
-        /// The name of the capacity reservation.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string capacityReservationGroupName, string capacityReservationName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<CapacityReservation>>> ListByCapacityReservationGroupWithHttpMessagesAsync(string resourceGroupName, string capacityReservationGroupName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// The operation that retrieves information about the capacity
         /// reservation.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='capacityReservationGroupName'>
         /// The name of the capacity reservation group.
@@ -153,40 +87,13 @@ namespace Microsoft.Azure.Management.Compute
         /// </exception>
         Task<AzureOperationResponse<CapacityReservation>> GetWithHttpMessagesAsync(string resourceGroupName, string capacityReservationGroupName, string capacityReservationName, string expand = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Lists all of the capacity reservations in the specified capacity
-        /// reservation group. Use the nextLink property in the response to get
-        /// the next page of capacity reservations.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='capacityReservationGroupName'>
-        /// The name of the capacity reservation group.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<IPage<CapacityReservation>>> ListByCapacityReservationGroupWithHttpMessagesAsync(string resourceGroupName, string capacityReservationGroupName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
         /// The operation to create or update a capacity reservation. Please
         /// note some properties can be set only during capacity reservation
         /// creation. Please refer to https://aka.ms/CapacityReservation for
         /// more details.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='capacityReservationGroupName'>
         /// The name of the capacity reservation group.
@@ -212,12 +119,107 @@ namespace Microsoft.Azure.Management.Compute
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<CapacityReservation>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string capacityReservationGroupName, string capacityReservationName, CapacityReservation parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<CapacityReservation,CapacityReservationsCreateOrUpdateHeaders>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string capacityReservationGroupName, string capacityReservationName, CapacityReservation parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// The operation to update a capacity reservation.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='capacityReservationGroupName'>
+        /// The name of the capacity reservation group.
+        /// </param>
+        /// <param name='capacityReservationName'>
+        /// The name of the capacity reservation.
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters supplied to the Update capacity reservation operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<CapacityReservation>> UpdateWithHttpMessagesAsync(string resourceGroupName, string capacityReservationGroupName, string capacityReservationName, CapacityReservationUpdate parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// The operation to delete a capacity reservation. This operation is
+        /// allowed only when all the associated resources are disassociated
+        /// from the capacity reservation. Please refer to
+        /// https://aka.ms/CapacityReservation for more details. Note: Block
+        /// capacity reservations cannot be deleted after it has been
+        /// successfully allocated until the schedule end time.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='capacityReservationGroupName'>
+        /// The name of the capacity reservation group.
+        /// </param>
+        /// <param name='capacityReservationName'>
+        /// The name of the capacity reservation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string capacityReservationGroupName, string capacityReservationName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// The operation to create or update a capacity reservation. Please
+        /// note some properties can be set only during capacity reservation
+        /// creation. Please refer to https://aka.ms/CapacityReservation for
+        /// more details.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='capacityReservationGroupName'>
+        /// The name of the capacity reservation group.
+        /// </param>
+        /// <param name='capacityReservationName'>
+        /// The name of the capacity reservation.
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters supplied to the Create capacity reservation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<CapacityReservation,CapacityReservationsCreateOrUpdateHeaders>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string capacityReservationGroupName, string capacityReservationName, CapacityReservation parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// The operation to update a capacity reservation.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='capacityReservationGroupName'>
         /// The name of the capacity reservation group.
@@ -248,10 +250,12 @@ namespace Microsoft.Azure.Management.Compute
         /// The operation to delete a capacity reservation. This operation is
         /// allowed only when all the associated resources are disassociated
         /// from the capacity reservation. Please refer to
-        /// https://aka.ms/CapacityReservation for more details.
+        /// https://aka.ms/CapacityReservation for more details. Note: Block
+        /// capacity reservations cannot be deleted after it has been
+        /// successfully allocated until the schedule end time.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='capacityReservationGroupName'>
         /// The name of the capacity reservation group.

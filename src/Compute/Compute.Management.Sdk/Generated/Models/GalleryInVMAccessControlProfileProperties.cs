@@ -39,9 +39,9 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// specify the Endpoint type for which this profile is defining the
         /// access control for. Possible values are: 'WireServer' or 'IMDS'.
         /// Possible values include: 'WireServer', 'IMDS'</param>
-        /// <param name="provisioningState">Possible values include:
-        /// 'Creating', 'Updating', 'Failed', 'Succeeded', 'Deleting',
-        /// 'Migrating'</param>
+        /// <param name="provisioningState">The provisioning state, which only
+        /// appears in the response. Possible values include: 'Creating',
+        /// 'Updating', 'Failed', 'Succeeded', 'Deleting', 'Migrating'</param>
         /// <param name="description">The description of this gallery
         /// inVMAccessControlProfile resources. This property is
         /// updatable.</param>

@@ -23,7 +23,7 @@ Update current billing features for an Application Insights component.
 https://learn.microsoft.com/powershell/module/az.applicationinsights/set-azapplicationinsightsdailycap
 #>
 function Set-AzApplicationInsightsDailyCap {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20150501.IApplicationInsightsComponentBillingFeatures])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsComponentBillingFeatures])]
     [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]

@@ -691,6 +691,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid claims challenge format. It should be a valid base64 encoded string..
+        /// </summary>
+        internal static string InvalidClaimsChallenge {
+            get {
+                return ResourceManager.GetString("InvalidClaimsChallenge", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Endpoint provided is invalid. Please check the value and retry again with the correct value..
         /// </summary>
         internal static string InvalidEndpointProvided {

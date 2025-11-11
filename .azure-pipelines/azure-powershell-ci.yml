@@ -20,7 +20,7 @@ variables:
   WindowsAgentPoolName: pool-windows-2019
   WindowsAgentPoolVMImage: ''
   LinuxName: linux
-  LinuxAgentPoolName: pool-ubuntu-2004
+  LinuxAgentPoolName: pool-ubuntu-2404
   LinuxAgentPoolVMImage: ''
   MacOSName: macOS
   MacOSAgentPoolName: 'Azure Pipelines'

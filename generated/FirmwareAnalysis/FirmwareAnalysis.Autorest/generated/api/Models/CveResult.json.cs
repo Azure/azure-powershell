@@ -67,14 +67,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
             }
             {_component = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonObject>("component"), out var __jsonComponent) ? Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.CveComponent.FromJson(__jsonComponent) : _component;}
             {_cveId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonString>("cveId"), out var __jsonCveId) ? (string)__jsonCveId : (string)_cveId;}
+            {_componentId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonString>("componentId"), out var __jsonComponentId) ? (string)__jsonComponentId : (string)_componentId;}
+            {_componentName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonString>("componentName"), out var __jsonComponentName) ? (string)__jsonComponentName : (string)_componentName;}
+            {_componentVersion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonString>("componentVersion"), out var __jsonComponentVersion) ? (string)__jsonComponentVersion : (string)_componentVersion;}
             {_severity = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonString>("severity"), out var __jsonSeverity) ? (string)__jsonSeverity : (string)_severity;}
-            {_name = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonString>("name"), out var __jsonName) ? (string)__jsonName : (string)_name;}
+            {_cveName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonString>("cveName"), out var __jsonCveName) ? (string)__jsonCveName : (string)_cveName;}
             {_cvssScore = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonString>("cvssScore"), out var __jsonCvssScore) ? (string)__jsonCvssScore : (string)_cvssScore;}
-            {_cvssVersion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonString>("cvssVersion"), out var __jsonCvssVersion) ? (string)__jsonCvssVersion : (string)_cvssVersion;}
             {_cvssV2Score = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonString>("cvssV2Score"), out var __jsonCvssV2Score) ? (string)__jsonCvssV2Score : (string)_cvssV2Score;}
             {_cvssV3Score = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonString>("cvssV3Score"), out var __jsonCvssV3Score) ? (string)__jsonCvssV3Score : (string)_cvssV3Score;}
-            {_link = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonArray>("links"), out var __jsonLinks) ? If( __jsonLinks as Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveLink>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveLink) (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.CveLink.FromJson(__u) )) ))() : null : _link;}
+            {_cvssVersion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonString>("cvssVersion"), out var __jsonCvssVersion) ? (string)__jsonCvssVersion : (string)_cvssVersion;}
+            {_effectiveCvssScore = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber>("effectiveCvssScore"), out var __jsonEffectiveCvssScore) ? (float?)__jsonEffectiveCvssScore : _effectiveCvssScore;}
+            {_effectiveCvssVersion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber>("effectiveCvssVersion"), out var __jsonEffectiveCvssVersion) ? (int?)__jsonEffectiveCvssVersion : _effectiveCvssVersion;}
+            {_cvssScores = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonArray>("cvssScores"), out var __jsonCvssScores) ? If( __jsonCvssScores as Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICvssScore>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICvssScore) (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.CvssScore.FromJson(__u) )) ))() : null : _cvssScores;}
+            {_link = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonArray>("links"), out var __jsonLinks) ? If( __jsonLinks as Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveLink>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__q, (__p)=>(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveLink) (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.CveLink.FromJson(__p) )) ))() : null : _link;}
             {_description = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonString>("description"), out var __jsonDescription) ? (string)__jsonDescription : (string)_description;}
+            {_provisioningState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonString>("provisioningState"), out var __jsonProvisioningState) ? (string)__jsonProvisioningState : (string)_provisioningState;}
             AfterFromJson(json);
         }
 
@@ -111,25 +118,43 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
             }
             AddIf( null != this._component ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode) this._component.ToJson(null,serializationMode) : null, "component" ,container.Add );
             AddIf( null != (((object)this._cveId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonString(this._cveId.ToString()) : null, "cveId" ,container.Add );
+            AddIf( null != (((object)this._componentId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonString(this._componentId.ToString()) : null, "componentId" ,container.Add );
+            AddIf( null != (((object)this._componentName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonString(this._componentName.ToString()) : null, "componentName" ,container.Add );
+            AddIf( null != (((object)this._componentVersion)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonString(this._componentVersion.ToString()) : null, "componentVersion" ,container.Add );
             AddIf( null != (((object)this._severity)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonString(this._severity.ToString()) : null, "severity" ,container.Add );
-            AddIf( null != (((object)this._name)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonString(this._name.ToString()) : null, "name" ,container.Add );
+            AddIf( null != (((object)this._cveName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonString(this._cveName.ToString()) : null, "cveName" ,container.Add );
             AddIf( null != (((object)this._cvssScore)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonString(this._cvssScore.ToString()) : null, "cvssScore" ,container.Add );
-            AddIf( null != (((object)this._cvssVersion)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonString(this._cvssVersion.ToString()) : null, "cvssVersion" ,container.Add );
             AddIf( null != (((object)this._cvssV2Score)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonString(this._cvssV2Score.ToString()) : null, "cvssV2Score" ,container.Add );
             AddIf( null != (((object)this._cvssV3Score)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonString(this._cvssV3Score.ToString()) : null, "cvssV3Score" ,container.Add );
+            AddIf( null != (((object)this._cvssVersion)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonString(this._cvssVersion.ToString()) : null, "cvssVersion" ,container.Add );
+            AddIf( null != this._effectiveCvssScore ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber((float)this._effectiveCvssScore) : null, "effectiveCvssScore" ,container.Add );
+            AddIf( null != this._effectiveCvssVersion ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber((int)this._effectiveCvssVersion) : null, "effectiveCvssVersion" ,container.Add );
+            if (null != this._cvssScores)
+            {
+                var __w = new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.XNodeArray();
+                foreach( var __x in this._cvssScores )
+                {
+                    AddIf(__x?.ToJson(null, serializationMode) ,__w.Add);
+                }
+                container.Add("cvssScores",__w);
+            }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode.IncludeRead))
             {
                 if (null != this._link)
                 {
-                    var __w = new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.XNodeArray();
-                    foreach( var __x in this._link )
+                    var __r = new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.XNodeArray();
+                    foreach( var __s in this._link )
                     {
-                        AddIf(__x?.ToJson(null, serializationMode) ,__w.Add);
+                        AddIf(__s?.ToJson(null, serializationMode) ,__r.Add);
                     }
-                    container.Add("links",__w);
+                    container.Add("links",__r);
                 }
             }
             AddIf( null != (((object)this._description)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonString(this._description.ToString()) : null, "description" ,container.Add );
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode.IncludeRead))
+            {
+                AddIf( null != (((object)this._provisioningState)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonString(this._provisioningState.ToString()) : null, "provisioningState" ,container.Add );
+            }
             AfterToJson(ref container);
             return container;
         }

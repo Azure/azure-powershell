@@ -185,6 +185,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceInternal)this).NewRelicAccountProperty = (Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicAccountProperties) content.GetValueForProperty("NewRelicAccountProperty",((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceInternal)this).NewRelicAccountProperty, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.NewRelicAccountPropertiesTypeConverter.ConvertFrom);
             }
+            if (content.Contains("SaaSData"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceInternal)this).SaaSData = (Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ISaaSData) content.GetValueForProperty("SaaSData",((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceInternal)this).SaaSData, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.SaaSDataTypeConverter.ConvertFrom);
+            }
             if (content.Contains("MarketplaceSubscriptionStatus"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceInternal)this).MarketplaceSubscriptionStatus = (string) content.GetValueForProperty("MarketplaceSubscriptionStatus",((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceInternal)this).MarketplaceSubscriptionStatus, global::System.Convert.ToString);
@@ -300,6 +304,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models
             if (content.Contains("SingleSignOnPropertyProvisioningState"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceInternal)this).SingleSignOnPropertyProvisioningState = (string) content.GetValueForProperty("SingleSignOnPropertyProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceInternal)this).SingleSignOnPropertyProvisioningState, global::System.Convert.ToString);
+            }
+            if (content.Contains("SaaSDataSaaSresourceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceInternal)this).SaaSDataSaaSresourceId = (string) content.GetValueForProperty("SaaSDataSaaSresourceId",((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceInternal)this).SaaSDataSaaSresourceId, global::System.Convert.ToString);
             }
             if (content.Contains("AccountInfoIngestionKey"))
             {
@@ -410,6 +418,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceInternal)this).NewRelicAccountProperty = (Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicAccountProperties) content.GetValueForProperty("NewRelicAccountProperty",((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceInternal)this).NewRelicAccountProperty, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.NewRelicAccountPropertiesTypeConverter.ConvertFrom);
             }
+            if (content.Contains("SaaSData"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceInternal)this).SaaSData = (Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ISaaSData) content.GetValueForProperty("SaaSData",((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceInternal)this).SaaSData, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.SaaSDataTypeConverter.ConvertFrom);
+            }
             if (content.Contains("MarketplaceSubscriptionStatus"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceInternal)this).MarketplaceSubscriptionStatus = (string) content.GetValueForProperty("MarketplaceSubscriptionStatus",((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceInternal)this).MarketplaceSubscriptionStatus, global::System.Convert.ToString);
@@ -525,6 +537,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models
             if (content.Contains("SingleSignOnPropertyProvisioningState"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceInternal)this).SingleSignOnPropertyProvisioningState = (string) content.GetValueForProperty("SingleSignOnPropertyProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceInternal)this).SingleSignOnPropertyProvisioningState, global::System.Convert.ToString);
+            }
+            if (content.Contains("SaaSDataSaaSresourceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceInternal)this).SaaSDataSaaSresourceId = (string) content.GetValueForProperty("SaaSDataSaaSresourceId",((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceInternal)this).SaaSDataSaaSresourceId, global::System.Convert.ToString);
             }
             if (content.Contains("AccountInfoIngestionKey"))
             {

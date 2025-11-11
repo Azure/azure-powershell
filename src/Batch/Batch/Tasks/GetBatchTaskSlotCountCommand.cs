@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Batch
         public string JobId { get; set; }
 
         [Parameter(
-            Position = 0, 
+            Position = 0,
             ParameterSetName = Constants.ParentObjectParameterSet,
             ValueFromPipeline = true,
             HelpMessage = "Specifies the job that contains tasks that this cmdlet gets. To obtain a **PSCloudJob** object, use the Get-AzBatchJob cmdlet."

@@ -126,7 +126,7 @@
                         {
                             "type": "Microsoft.DevCenter/devcenters",
                             "name": "[parameters('devCenterName')]",
-                            "apiVersion": "2024-05-01-preview",
+                            "apiVersion": "2025-04-01-preview",
                             "location": "[parameters('location')]",
                             "identity": {
                                 "type": "UserAssigned",
@@ -138,7 +138,7 @@
                         {
                             "type": "Microsoft.DevCenter/projects",
                             "name": "[parameters('projectName')]",
-                            "apiVersion": "2024-05-01-preview",
+                            "apiVersion": "2025-04-01-preview",
                             "location": "[parameters('location')]",
                             "properties": {
                                 "devCenterId": "[resourceId('Microsoft.DevCenter/devcenters', parameters('devCenterName'))]",
@@ -152,7 +152,7 @@
                         {
                             "type": "Microsoft.DevCenter/projects",
                             "name": "[parameters('projectName2')]",
-                            "apiVersion": "2024-05-01-preview",
+                            "apiVersion": "2025-04-01-preview",
                             "location": "[parameters('location')]",
                             "properties": {
                                 "devCenterId": "[resourceId('Microsoft.DevCenter/devcenters', parameters('devCenterName'))]",
@@ -166,7 +166,7 @@
                         {
                             "type": "Microsoft.DevCenter/networkconnections",
                             "name": "[parameters('networkConnectionName')]",
-                            "apiVersion": "2024-05-01-preview",
+                            "apiVersion": "2025-04-01-preview",
                             "location": "[parameters('location')]",
                             "properties": {
                                 "subnetId": "[parameters('subnetId')]",
@@ -282,7 +282,7 @@
                         {
                             "type": "microsoft.devcenter/devcenters/catalogs",
                             "name": "[concat(parameters('devCenterName'), '/', parameters('catalogName'))]",
-                            "apiVersion": "2024-05-01-preview",
+                            "apiVersion": "2025-04-01-preview",
                             "properties": {
                                 "gitHub": {
                                     "uri": "[parameters('gitHubRepo')]",
@@ -295,7 +295,7 @@
                         {
                             "type": "microsoft.devcenter/devcenters/attachednetworks",
                             "name": "[concat(parameters('devCenterName'), '/', parameters('attachedNetworkName'))]",
-                            "apiVersion": "2024-05-01-preview",
+                            "apiVersion": "2025-04-01-preview",
                             "properties": {
                                 "networkConnectionId": "[resourceId('Microsoft.DevCenter/networkConnections', parameters('networkConnectionName'))]"
                             }
@@ -304,7 +304,7 @@
                             "type": "microsoft.devcenter/devcenters/devboxdefinitions",
                             "name": "[concat(parameters('devCenterName'), '/', parameters('devBoxDefinitionName'))]",
                             "location": "[parameters('location')]",
-                            "apiVersion": "2024-05-01-preview",
+                            "apiVersion": "2025-04-01-preview",
                             "properties": {
                                 "imageReference": {
                                     "id": "[parameters('imageReferenceId')]"
@@ -319,7 +319,7 @@
                         {
                             "type": "microsoft.devcenter/devcenters/environmenttypes",
                             "name": "[concat(parameters('devCenterName'), '/', parameters('environmentTypeName'))]",
-                            "apiVersion": "2024-05-01-preview"
+                            "apiVersion": "2025-04-01-preview"
                         }
                     ]
                 }
@@ -343,7 +343,7 @@
                         {
                             "type": "microsoft.devcenter/projects/pools",
                             "name": "[concat(parameters('projectName'), '/', parameters('poolName'))]",
-                            "apiVersion": "2024-05-01-preview",
+                            "apiVersion": "2025-04-01-preview",
                             "location": "[parameters('location')]",
                             "properties": {
                                 "devBoxDefinitionName": "[parameters('devBoxDefinitionName')]",
@@ -360,7 +360,7 @@
                         {
                             "type": "microsoft.devcenter/projects/pools",
                             "name": "[concat(parameters('projectName2'), '/', parameters('poolName2'))]",
-                            "apiVersion": "2024-05-01-preview",
+                            "apiVersion": "2025-04-01-preview",
                             "location": "[parameters('location')]",
                             "properties": {
                                 "devBoxDefinitionName": "[parameters('devBoxDefinitionName')]",
@@ -377,7 +377,7 @@
                         {
                             "type": "microsoft.devcenter/projects/environmenttypes",
                             "name": "[concat(parameters('projectName'), '/', parameters('environmentTypeName'))]",
-                            "apiVersion": "2024-05-01-preview",
+                            "apiVersion": "2025-04-01-preview",
                             "properties": {
                                 "deploymentTargetId": "[concat('/subscriptions/', parameters('subscriptionId'))]",
                                 "status": "Enabled",
@@ -405,7 +405,7 @@
                         {
                             "type": "microsoft.devcenter/projects/pools/schedules",
                             "name": "[concat(parameters('projectName'), '/', parameters('poolName'), '/default')]",
-                            "apiVersion": "2024-05-01-preview",
+                            "apiVersion": "2025-04-01-preview",
                             "properties": {
                                 "frequency": "Daily",
                                 "state": "Enabled",

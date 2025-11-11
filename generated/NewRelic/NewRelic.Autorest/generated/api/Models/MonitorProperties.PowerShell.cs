@@ -121,6 +121,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitorPropertiesInternal)this).PlanData = (Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IPlanData) content.GetValueForProperty("PlanData",((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitorPropertiesInternal)this).PlanData, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.PlanDataTypeConverter.ConvertFrom);
             }
+            if (content.Contains("SaaSData"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitorPropertiesInternal)this).SaaSData = (Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ISaaSData) content.GetValueForProperty("SaaSData",((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitorPropertiesInternal)this).SaaSData, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.SaaSDataTypeConverter.ConvertFrom);
+            }
             if (content.Contains("ProvisioningState"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitorPropertiesInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitorPropertiesInternal)this).ProvisioningState, global::System.Convert.ToString);
@@ -228,6 +232,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models
             if (content.Contains("SingleSignOnPropertyProvisioningState"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitorPropertiesInternal)this).SingleSignOnPropertyProvisioningState = (string) content.GetValueForProperty("SingleSignOnPropertyProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitorPropertiesInternal)this).SingleSignOnPropertyProvisioningState, global::System.Convert.ToString);
+            }
+            if (content.Contains("SaaSDataSaaSresourceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitorPropertiesInternal)this).SaaSDataSaaSresourceId = (string) content.GetValueForProperty("SaaSDataSaaSresourceId",((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitorPropertiesInternal)this).SaaSDataSaaSresourceId, global::System.Convert.ToString);
             }
             if (content.Contains("AccountInfoIngestionKey"))
             {
@@ -274,6 +282,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitorPropertiesInternal)this).PlanData = (Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IPlanData) content.GetValueForProperty("PlanData",((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitorPropertiesInternal)this).PlanData, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.PlanDataTypeConverter.ConvertFrom);
             }
+            if (content.Contains("SaaSData"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitorPropertiesInternal)this).SaaSData = (Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ISaaSData) content.GetValueForProperty("SaaSData",((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitorPropertiesInternal)this).SaaSData, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.SaaSDataTypeConverter.ConvertFrom);
+            }
             if (content.Contains("ProvisioningState"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitorPropertiesInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitorPropertiesInternal)this).ProvisioningState, global::System.Convert.ToString);
@@ -381,6 +393,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models
             if (content.Contains("SingleSignOnPropertyProvisioningState"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitorPropertiesInternal)this).SingleSignOnPropertyProvisioningState = (string) content.GetValueForProperty("SingleSignOnPropertyProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitorPropertiesInternal)this).SingleSignOnPropertyProvisioningState, global::System.Convert.ToString);
+            }
+            if (content.Contains("SaaSDataSaaSresourceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitorPropertiesInternal)this).SaaSDataSaaSresourceId = (string) content.GetValueForProperty("SaaSDataSaaSresourceId",((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitorPropertiesInternal)this).SaaSDataSaaSresourceId, global::System.Convert.ToString);
             }
             if (content.Contains("AccountInfoIngestionKey"))
             {

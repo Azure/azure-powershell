@@ -3,6 +3,7 @@
     <PsModuleName>DataTransfer</PsModuleName>
     <PsRootModuleName>DataTransfer</PsRootModuleName>
     <PsModuleFolder>DataTransfer.Autorest</PsModuleFolder>
+    <RootNamespace>ADT</RootNamespace>
   </PropertyGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.autorest.props" />

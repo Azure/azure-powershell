@@ -12,13 +12,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Cmdlets
 
     /// <summary>Get an analysis result summary of a firmware by name.</summary>
     /// <remarks>
-    /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/firmwares/{firmwareId}/summaries/{summaryName}"
+    /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/firmwares/{firmwareId}/summaries/{summaryType}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzFirmwareAnalysisSummary_GetViaIdentity")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryResource))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Description(@"Get an analysis result summary of a firmware by name.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/firmwares/{firmwareId}/summaries/{summaryName}", ApiVersion = "2024-01-10")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/firmwares/{firmwareId}/summaries/{summaryType}", ApiVersion = "2025-08-02")]
     public partial class GetAzFirmwareAnalysisSummary_GetViaIdentity : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IContext
@@ -362,11 +362,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Cmdlets
                         {
                             ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.FirmwareId"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
                         }
-                        if (null == InputObject.SummaryName)
+                        if (null == InputObject.SummaryType)
                         {
-                            ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.SummaryName"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
+                            ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.SummaryType"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
                         }
-                        await this.Client.SummariesGet(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.WorkspaceName ?? null, InputObject.FirmwareId ?? null, InputObject.SummaryName ?? null, onOk, onDefault, this, Pipeline);
+                        await this.Client.SummariesGet(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.WorkspaceName ?? null, InputObject.FirmwareId ?? null, InputObject.SummaryType ?? null, onOk, onDefault, this, Pipeline);
                     }
                     await ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }

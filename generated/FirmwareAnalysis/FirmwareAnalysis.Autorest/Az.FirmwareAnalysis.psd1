@@ -1,7 +1,7 @@
 @{
   GUID = 'e097ff3f-acb2-48da-86fe-937d86006ea5'
   RootModule = './Az.FirmwareAnalysis.psm1'
-  ModuleVersion = '0.1.0'
+  ModuleVersion = '0.2.0'
   CompatiblePSEditions = 'Core', 'Desktop'
   Author = 'Microsoft Corporation'
   CompanyName = 'Microsoft Corporation'
@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.FirmwareAnalysis.private.dll'
   FormatsToProcess = './Az.FirmwareAnalysis.format.ps1xml'
-  FunctionsToExport = 'Get-AzFirmwareAnalysisBinaryHardening', 'Get-AzFirmwareAnalysisCryptoCertificate', 'Get-AzFirmwareAnalysisCryptoKey', 'Get-AzFirmwareAnalysisCve', 'Get-AzFirmwareAnalysisFirmware', 'Get-AzFirmwareAnalysisPasswordHash', 'Get-AzFirmwareAnalysisSbomComponent', 'Get-AzFirmwareAnalysisSummary', 'Get-AzFirmwareAnalysisWorkspace', 'New-AzFirmwareAnalysisFirmware', 'New-AzFirmwareAnalysisWorkspace', 'New-AzFirmwareAnalysisWorkspaceUploadUrl', 'Remove-AzFirmwareAnalysisFirmware', 'Remove-AzFirmwareAnalysisWorkspace', 'Update-AzFirmwareAnalysisFirmware', 'Update-AzFirmwareAnalysisWorkspace'
+  FunctionsToExport = 'Get-AzFirmwareAnalysisBinaryHardening', 'Get-AzFirmwareAnalysisCryptoCertificate', 'Get-AzFirmwareAnalysisCryptoKey', 'Get-AzFirmwareAnalysisCve', 'Get-AzFirmwareAnalysisFirmware', 'Get-AzFirmwareAnalysisPasswordHash', 'Get-AzFirmwareAnalysisSbomComponent', 'Get-AzFirmwareAnalysisSummary', 'Get-AzFirmwareAnalysisUsageMetric', 'Get-AzFirmwareAnalysisWorkspace', 'New-AzFirmwareAnalysisFirmware', 'New-AzFirmwareAnalysisWorkspace', 'New-AzFirmwareAnalysisWorkspaceUploadUrl', 'Remove-AzFirmwareAnalysisFirmware', 'Remove-AzFirmwareAnalysisWorkspace', 'Update-AzFirmwareAnalysisFirmware', 'Update-AzFirmwareAnalysisWorkspace'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'FirmwareAnalysis'

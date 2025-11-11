@@ -2551,7 +2551,7 @@ namespace Microsoft.Azure.Management.Storage
         /// Failover is disaster recovery testing drills. This type of failover is
         /// invoked by setting FailoverType parameter to &#39;Planned&#39;. Learn more about
         /// the failover options here-
-        /// https://learn.microsoft.com/en-us/azure/storage/common/storage-disaster-recovery-guidance
+        /// https://learn.microsoft.com/azure/storage/common/storage-disaster-recovery-guidance
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group within the user&#39;s subscription. The name is
@@ -3458,7 +3458,7 @@ namespace Microsoft.Azure.Management.Storage
         /// Failover is disaster recovery testing drills. This type of failover is
         /// invoked by setting FailoverType parameter to &#39;Planned&#39;. Learn more about
         /// the failover options here-
-        /// https://learn.microsoft.com/en-us/azure/storage/common/storage-disaster-recovery-guidance
+        /// https://learn.microsoft.com/azure/storage/common/storage-disaster-recovery-guidance
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group within the user&#39;s subscription. The name is

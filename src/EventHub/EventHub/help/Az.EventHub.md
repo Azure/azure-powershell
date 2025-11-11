@@ -56,6 +56,12 @@ Gets a description for the specified Private Endpoint Connection name.
 ### [Get-AzEventHubPrivateLink](Get-AzEventHubPrivateLink.md)
 Gets lists of resources that supports Privatelinks.
 
+### [Get-AzEventHubNetworkSecurityPerimeterConfigurationsForAssociation](Get-AzEventHubNetworkSecurityPerimeterConfigurationsForAssociation.md)
+Gets the network security configuration of an EventHub namespace for a given ResourceAssociationName.
+
+### [Get-AzEventHubNetworkSecurityPerimeterConfiguration](Get-AzEventHubNetworkSecurityPerimeterConfiguration.md)
+Gets list of NSP configurations an EventHub namespace.
+
 ### [Get-AzEventHubSchemaGroup](Get-AzEventHubSchemaGroup.md)
 Gets the details of an EventHub schema group.
 

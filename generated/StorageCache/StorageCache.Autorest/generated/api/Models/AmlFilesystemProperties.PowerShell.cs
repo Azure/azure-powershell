@@ -96,6 +96,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemPropertiesInternal)this).Hsm = (Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemPropertiesHsm) content.GetValueForProperty("Hsm",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemPropertiesInternal)this).Hsm, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.AmlFilesystemPropertiesHsmTypeConverter.ConvertFrom);
             }
+            if (content.Contains("RootSquashSetting"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemPropertiesInternal)this).RootSquashSetting = (Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemRootSquashSettings) content.GetValueForProperty("RootSquashSetting",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemPropertiesInternal)this).RootSquashSetting, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.AmlFilesystemRootSquashSettingsTypeConverter.ConvertFrom);
+            }
             if (content.Contains("StorageCapacityTiB"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemPropertiesInternal)this).StorageCapacityTiB = (float?) content.GetValueForProperty("StorageCapacityTiB",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemPropertiesInternal)this).StorageCapacityTiB, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
@@ -160,6 +164,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemPropertiesInternal)this).HsmArchiveStatus = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemArchive>) content.GetValueForProperty("HsmArchiveStatus",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemPropertiesInternal)this).HsmArchiveStatus, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemArchive>(__y, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.AmlFilesystemArchiveTypeConverter.ConvertFrom));
             }
+            if (content.Contains("RootSquashSettingMode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemPropertiesInternal)this).RootSquashSettingMode = (string) content.GetValueForProperty("RootSquashSettingMode",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemPropertiesInternal)this).RootSquashSettingMode, global::System.Convert.ToString);
+            }
+            if (content.Contains("RootSquashSettingNoSquashNidList"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemPropertiesInternal)this).RootSquashSettingNoSquashNidList = (string) content.GetValueForProperty("RootSquashSettingNoSquashNidList",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemPropertiesInternal)this).RootSquashSettingNoSquashNidList, global::System.Convert.ToString);
+            }
+            if (content.Contains("RootSquashSettingSquashUid"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemPropertiesInternal)this).RootSquashSettingSquashUid = (long?) content.GetValueForProperty("RootSquashSettingSquashUid",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemPropertiesInternal)this).RootSquashSettingSquashUid, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("RootSquashSettingSquashGid"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemPropertiesInternal)this).RootSquashSettingSquashGid = (long?) content.GetValueForProperty("RootSquashSettingSquashGid",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemPropertiesInternal)this).RootSquashSettingSquashGid, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("RootSquashSettingStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemPropertiesInternal)this).RootSquashSettingStatus = (string) content.GetValueForProperty("RootSquashSettingStatus",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemPropertiesInternal)this).RootSquashSettingStatus, global::System.Convert.ToString);
+            }
             if (content.Contains("ContainerStorageInterfacePersistentVolumeClaim"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemPropertiesInternal)this).ContainerStorageInterfacePersistentVolumeClaim = (string) content.GetValueForProperty("ContainerStorageInterfacePersistentVolumeClaim",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemPropertiesInternal)this).ContainerStorageInterfacePersistentVolumeClaim, global::System.Convert.ToString);
@@ -191,6 +215,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models
             if (content.Contains("SettingImportPrefix"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemPropertiesInternal)this).SettingImportPrefix = (string) content.GetValueForProperty("SettingImportPrefix",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemPropertiesInternal)this).SettingImportPrefix, global::System.Convert.ToString);
+            }
+            if (content.Contains("SettingImportPrefixesInitial"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemPropertiesInternal)this).SettingImportPrefixesInitial = (System.Collections.Generic.List<string>) content.GetValueForProperty("SettingImportPrefixesInitial",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemPropertiesInternal)this).SettingImportPrefixesInitial, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
             if (content.Contains("SourceVaultId"))
             {
@@ -233,6 +261,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemPropertiesInternal)this).Hsm = (Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemPropertiesHsm) content.GetValueForProperty("Hsm",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemPropertiesInternal)this).Hsm, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.AmlFilesystemPropertiesHsmTypeConverter.ConvertFrom);
             }
+            if (content.Contains("RootSquashSetting"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemPropertiesInternal)this).RootSquashSetting = (Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemRootSquashSettings) content.GetValueForProperty("RootSquashSetting",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemPropertiesInternal)this).RootSquashSetting, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.AmlFilesystemRootSquashSettingsTypeConverter.ConvertFrom);
+            }
             if (content.Contains("StorageCapacityTiB"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemPropertiesInternal)this).StorageCapacityTiB = (float?) content.GetValueForProperty("StorageCapacityTiB",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemPropertiesInternal)this).StorageCapacityTiB, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
@@ -297,6 +329,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemPropertiesInternal)this).HsmArchiveStatus = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemArchive>) content.GetValueForProperty("HsmArchiveStatus",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemPropertiesInternal)this).HsmArchiveStatus, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemArchive>(__y, Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.AmlFilesystemArchiveTypeConverter.ConvertFrom));
             }
+            if (content.Contains("RootSquashSettingMode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemPropertiesInternal)this).RootSquashSettingMode = (string) content.GetValueForProperty("RootSquashSettingMode",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemPropertiesInternal)this).RootSquashSettingMode, global::System.Convert.ToString);
+            }
+            if (content.Contains("RootSquashSettingNoSquashNidList"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemPropertiesInternal)this).RootSquashSettingNoSquashNidList = (string) content.GetValueForProperty("RootSquashSettingNoSquashNidList",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemPropertiesInternal)this).RootSquashSettingNoSquashNidList, global::System.Convert.ToString);
+            }
+            if (content.Contains("RootSquashSettingSquashUid"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemPropertiesInternal)this).RootSquashSettingSquashUid = (long?) content.GetValueForProperty("RootSquashSettingSquashUid",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemPropertiesInternal)this).RootSquashSettingSquashUid, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("RootSquashSettingSquashGid"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemPropertiesInternal)this).RootSquashSettingSquashGid = (long?) content.GetValueForProperty("RootSquashSettingSquashGid",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemPropertiesInternal)this).RootSquashSettingSquashGid, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("RootSquashSettingStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemPropertiesInternal)this).RootSquashSettingStatus = (string) content.GetValueForProperty("RootSquashSettingStatus",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemPropertiesInternal)this).RootSquashSettingStatus, global::System.Convert.ToString);
+            }
             if (content.Contains("ContainerStorageInterfacePersistentVolumeClaim"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemPropertiesInternal)this).ContainerStorageInterfacePersistentVolumeClaim = (string) content.GetValueForProperty("ContainerStorageInterfacePersistentVolumeClaim",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemPropertiesInternal)this).ContainerStorageInterfacePersistentVolumeClaim, global::System.Convert.ToString);
@@ -328,6 +380,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models
             if (content.Contains("SettingImportPrefix"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemPropertiesInternal)this).SettingImportPrefix = (string) content.GetValueForProperty("SettingImportPrefix",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemPropertiesInternal)this).SettingImportPrefix, global::System.Convert.ToString);
+            }
+            if (content.Contains("SettingImportPrefixesInitial"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemPropertiesInternal)this).SettingImportPrefixesInitial = (System.Collections.Generic.List<string>) content.GetValueForProperty("SettingImportPrefixesInitial",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemPropertiesInternal)this).SettingImportPrefixesInitial, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
             if (content.Contains("SourceVaultId"))
             {

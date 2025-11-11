@@ -14,10 +14,12 @@ namespace Microsoft.Azure.Management.KeyVault
     public partial interface IPrivateEndpointConnectionsOperations
     {
         /// <summary>
-        /// Gets the specified private endpoint connection associated with the key vault.
+        /// Gets the specified private endpoint connection associated with the key
+        /// vault.
         /// </summary>
         /// <remarks>
-        /// Gets the specified private endpoint connection associated with the key vault.
+        /// Gets the specified private endpoint connection associated with the key
+        /// vault.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group that contains the key vault.
@@ -43,10 +45,12 @@ namespace Microsoft.Azure.Management.KeyVault
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<PrivateEndpointConnection>> GetWithHttpMessagesAsync(string resourceGroupName, string vaultName, string privateEndpointConnectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Updates the specified private endpoint connection associated with the key vault.
+        /// Updates the specified private endpoint connection associated with the key
+        /// vault.
         /// </summary>
         /// <remarks>
-        /// Updates the specified private endpoint connection associated with the key vault.
+        /// Updates the specified private endpoint connection associated with the key
+        /// vault.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group that contains the key vault.
@@ -75,10 +79,12 @@ namespace Microsoft.Azure.Management.KeyVault
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<PrivateEndpointConnection,PrivateEndpointConnectionsPutHeaders>> PutWithHttpMessagesAsync(string resourceGroupName, string vaultName, string privateEndpointConnectionName, PrivateEndpointConnection properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Deletes the specified private endpoint connection associated with the key vault.
+        /// Deletes the specified private endpoint connection associated with the key
+        /// vault.
         /// </summary>
         /// <remarks>
-        /// Deletes the specified private endpoint connection associated with the key vault.
+        /// Deletes the specified private endpoint connection associated with the key
+        /// vault.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group that contains the key vault.
@@ -104,10 +110,12 @@ namespace Microsoft.Azure.Management.KeyVault
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<PrivateEndpointConnection,PrivateEndpointConnectionsDeleteHeaders>> DeleteWithHttpMessagesAsync(string resourceGroupName, string vaultName, string privateEndpointConnectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// The List operation gets information about the private endpoint connections associated with the vault.
+        /// The List operation gets information about the private endpoint connections
+        /// associated with the vault.
         /// </summary>
         /// <remarks>
-        /// The List operation gets information about the private endpoint connections associated with the vault.
+        /// The List operation gets information about the private endpoint connections
+        /// associated with the vault.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group that contains the key vault.
@@ -130,10 +138,12 @@ namespace Microsoft.Azure.Management.KeyVault
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<PrivateEndpointConnection>>> ListByResourceWithHttpMessagesAsync(string resourceGroupName, string vaultName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Deletes the specified private endpoint connection associated with the key vault.
+        /// Deletes the specified private endpoint connection associated with the key
+        /// vault.
         /// </summary>
         /// <remarks>
-        /// Deletes the specified private endpoint connection associated with the key vault.
+        /// Deletes the specified private endpoint connection associated with the key
+        /// vault.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group that contains the key vault.
@@ -159,10 +169,12 @@ namespace Microsoft.Azure.Management.KeyVault
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<PrivateEndpointConnection,PrivateEndpointConnectionsDeleteHeaders>> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string vaultName, string privateEndpointConnectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// The List operation gets information about the private endpoint connections associated with the vault.
+        /// The List operation gets information about the private endpoint connections
+        /// associated with the vault.
         /// </summary>
         /// <remarks>
-        /// The List operation gets information about the private endpoint connections associated with the vault.
+        /// The List operation gets information about the private endpoint connections
+        /// associated with the vault.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

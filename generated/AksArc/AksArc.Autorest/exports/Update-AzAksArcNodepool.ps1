@@ -50,33 +50,33 @@ function Update-AzAksArcNodepool {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IAgentPool])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Path')]
     [System.String]
     # The name of the Kubernetes cluster on which get is called.
     ${ClusterName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Path')]
     [System.String]
     # Parameter for the name of the agent pool in the provisioned cluster.
     ${Name},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IAksArcIdentity]
     # Identity Parameter
@@ -88,6 +88,31 @@ param(
     # Number of nodes in the agent pool.
     # The default value is 1.
     ${Count},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Whether to enable auto-scaler.
+    # Default value is false
+    ${EnableAutoScaling},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
+    [System.Int32]
+    # The maximum number of pods that can run on a node.
+    ${MaxPod},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
+    [System.Int32]
+    # The maximum number of nodes for auto-scaling
+    ${MaxCount},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
+    [System.Int32]
+    # The minimum number of nodes for auto-scaling
+    ${MinCount},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
@@ -105,6 +130,22 @@ param(
     ${NodeTaint},
 
     [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AksArc.PSArgumentCompleterAttribute("CBLMariner", "Windows2019", "Windows2022")]
+    [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
+    [System.String]
+    # Specifies the OS SKU used by the agent pool.
+    # The default is CBLMariner if OSType is Linux.
+    # The default is Windows2019 when OSType is Windows.
+    ${OSSku},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AksArc.PSArgumentCompleterAttribute("Windows", "Linux")]
+    [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
+    [System.String]
+    # The particular KubernetesVersion Image OS Type (Linux, Windows)
+    ${OSType},
+
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
     [System.String]
     # The VM sku size of the agent pool node VMs.
@@ -116,25 +157,6 @@ param(
     [System.Collections.Hashtable]
     # Resource tags
     ${Tag},
-
-    [Parameter(ParameterSetName='AutoScaling', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    # Whether to enable auto-scaler.
-    # Default value is false
-    ${EnableAutoScaling},
-
-    [Parameter(ParameterSetName='AutoScaling', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
-    [System.Int32]
-    # The maximum number of nodes for auto-scaling
-    ${MaxCount},
-
-    [Parameter(ParameterSetName='AutoScaling', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
-    [System.Int32]
-    # The minimum number of nodes for auto-scaling
-    ${MinCount},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Runtime')]
@@ -195,6 +217,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -215,12 +246,9 @@ begin {
 
         $mapping = @{
             UpdateExpanded = 'Az.AksArc.custom\Update-AzAksArcNodepool';
-            CreateViaIdentityExpanded = 'Az.AksArc.custom\Update-AzAksArcNodepool';
-            AutoScaling = 'Az.AksArc.custom\Update-AzAksArcNodepool';
+            UpdateViaIdentityExpanded = 'Az.AksArc.custom\Update-AzAksArcNodepool';
         }
-        if (('UpdateExpanded', 'CreateViaIdentityExpanded', 'AutoScaling') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -234,6 +262,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

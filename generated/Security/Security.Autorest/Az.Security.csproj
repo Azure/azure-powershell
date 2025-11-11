@@ -3,6 +3,7 @@
     <PsModuleName>Security</PsModuleName>
     <PsRootModuleName>Security</PsRootModuleName>
     <PsModuleFolder>Security.Autorest</PsModuleFolder>
+    <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.Security</RootNamespace>
   </PropertyGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.autorest.props" />

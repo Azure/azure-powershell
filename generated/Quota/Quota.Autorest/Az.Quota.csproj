@@ -2,9 +2,10 @@
   <PropertyGroup>
     <PsModuleName>Quota</PsModuleName>
     <PsRootModuleName>Quota</PsRootModuleName>
+    <PsModuleFolder>Quota.Autorest</PsModuleFolder>
+    <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.Quota</RootNamespace>
   </PropertyGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.autorest.props" />
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
-
 </Project>

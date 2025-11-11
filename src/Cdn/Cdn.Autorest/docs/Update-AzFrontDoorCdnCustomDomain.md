@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzFrontDoorCdnCustomDomain
 
 ## SYNOPSIS
-update an existing domain within a profile.
+Update an existing domain within a profile.
 
 ## SYNTAX
 
@@ -57,7 +57,7 @@ Update-AzFrontDoorCdnCustomDomain -CustomDomainName <String> -ProfileName <Strin
 ```
 
 ## DESCRIPTION
-update an existing domain within a profile.
+Update an existing domain within a profile.
 
 ## EXAMPLES
 
@@ -277,7 +277,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Name of the Resource group within the Azure subscription.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -292,7 +293,8 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-Azure Subscription ID.
+The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String

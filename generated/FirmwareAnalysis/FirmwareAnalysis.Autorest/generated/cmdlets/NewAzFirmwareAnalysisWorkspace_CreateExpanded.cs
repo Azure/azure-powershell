@@ -10,15 +10,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Cmdlets;
     using System;
 
-    /// <summary>The operation to Create a firmware analysis workspace.</summary>
+    /// <summary>The operation to create a firmware analysis workspace.</summary>
     /// <remarks>
     /// [OpenAPI] Create=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzFirmwareAnalysisWorkspace_CreateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspace))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Description(@"The operation to Create a firmware analysis workspace.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Description(@"The operation to create a firmware analysis workspace.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}", ApiVersion = "2024-01-10")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}", ApiVersion = "2025-08-02")]
     public partial class NewAzFirmwareAnalysisWorkspace_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IContext
@@ -43,14 +43,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Cmdlets
         /// <summary>A buffer to record first returned object in response.</summary>
         private object _firstResponse = null;
 
+        /// <summary>Firmware analysis workspace.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspace _resourceBody = new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.Workspace();
+
         /// <summary>
         /// A flag to tell whether it is the first returned object in a call. Zero means no response yet. One means 1 returned object.
         /// Two means multiple returned objects in response.
         /// </summary>
         private int _responseSize = 0;
-
-        /// <summary>Firmware analysis workspace.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspace _workspaceBody = new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.Workspace();
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Cmdlets
         Description = @"The geo-location where the resource lives",
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
-        public string Location { get => _workspaceBody.Location ?? null; set => _workspaceBody.Location = value; }
+        public string Location { get => _resourceBody.Location ?? null; set => _resourceBody.Location = value; }
 
         /// <summary>
         /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
@@ -160,6 +160,72 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Category(global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.ParameterCategory.Path)]
         public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
 
+        /// <summary>
+        /// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the
+        /// resource this may be omitted.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Category(global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.",
+        SerializedName = @"capacity",
+        PossibleTypes = new [] { typeof(int) })]
+        public int SkuCapacity { get => _resourceBody.SkuCapacity ?? default(int); set => _resourceBody.SkuCapacity = value; }
+
+        /// <summary>
+        /// If the service has different generations of hardware, for the same SKU, then that can be captured here.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "If the service has different generations of hardware, for the same SKU, then that can be captured here.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Category(global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"If the service has different generations of hardware, for the same SKU, then that can be captured here.",
+        SerializedName = @"family",
+        PossibleTypes = new [] { typeof(string) })]
+        public string SkuFamily { get => _resourceBody.SkuFamily ?? null; set => _resourceBody.SkuFamily = value; }
+
+        /// <summary>The name of the SKU. E.g. P3. It is typically a letter+number code</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The name of the SKU. E.g. P3. It is typically a letter+number code")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Category(global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The name of the SKU. E.g. P3. It is typically a letter+number code",
+        SerializedName = @"name",
+        PossibleTypes = new [] { typeof(string) })]
+        public string SkuName { get => _resourceBody.SkuName ?? null; set => _resourceBody.SkuName = value; }
+
+        /// <summary>
+        /// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. ")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Category(global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. ",
+        SerializedName = @"size",
+        PossibleTypes = new [] { typeof(string) })]
+        public string SkuSize { get => _resourceBody.SkuSize ?? null; set => _resourceBody.SkuSize = value; }
+
+        /// <summary>
+        /// This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required
+        /// on a PUT.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Category(global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.",
+        SerializedName = @"tier",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PSArgumentCompleterAttribute("Free", "Basic", "Standard", "Premium")]
+        public string SkuTier { get => _resourceBody.SkuTier ?? null; set => _resourceBody.SkuTier = value; }
+
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
 
@@ -189,7 +255,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Cmdlets
         Description = @"Resource tags.",
         SerializedName = @"tags",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ITrackedResourceTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ITrackedResourceTags Tag { get => _workspaceBody.Tag ?? null /* object */; set => _workspaceBody.Tag = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ITrackedResourceTags Tag { get => _resourceBody.Tag ?? null /* object */; set => _resourceBody.Tag = value; }
 
         /// <summary>
         /// <c>overrideOnCreated</c> will be called before the regular onCreated has been processed, allowing customization of what
@@ -420,7 +486,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.WorkspacesCreate(SubscriptionId, ResourceGroupName, Name, _workspaceBody, onOk, onCreated, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode.IncludeCreate);
+                    await this.Client.WorkspacesCreate(SubscriptionId, ResourceGroupName, Name, _resourceBody, onOk, onCreated, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode.IncludeCreate);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.UndeclaredResponseException urexception)

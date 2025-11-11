@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// </param>
 
         /// <param name="policy">The Storage Account ManagementPolicy, in JSON format. See more details in:
-        /// https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+        /// https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview.
         /// </param>
         public ManagementPolicy(string id = default(string), string name = default(string), string type = default(string), System.DateTime? lastModifiedTime = default(System.DateTime?), ManagementPolicySchema policy = default(ManagementPolicySchema))
 
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// <summary>
         /// Gets or sets the Storage Account ManagementPolicy, in JSON format. See more
         /// details in:
-        /// https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+        /// https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.policy")]
         public ManagementPolicySchema Policy {get; set; }

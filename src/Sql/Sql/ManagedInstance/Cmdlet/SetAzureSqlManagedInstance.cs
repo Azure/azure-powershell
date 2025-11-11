@@ -141,6 +141,13 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         public int? VCore { get; set; }
 
         /// <summary>
+        /// Gets or sets the memory size in GB for instance
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Determines how much memory in GB to associate with instance")]
+        public int? MemorySizeInGB { get; set; }
+
+        /// <summary>
         /// Gets or sets whether or not the public data endpoint is enabled.
         /// </summary>
         [Parameter(Mandatory = false,
@@ -380,6 +387,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
             updateData[0].LicenseType = this.LicenseType ?? updateData[0].LicenseType;
             updateData[0].StorageSizeInGB = this.StorageSizeInGB ?? model.FirstOrDefault().StorageSizeInGB;
             updateData[0].VCores = this.VCore ?? updateData[0].VCores;
+            updateData[0].MemorySizeInGB = this.MemorySizeInGB ?? updateData[0].MemorySizeInGB;
             updateData[0].PublicDataEndpointEnabled = this.PublicDataEndpointEnabled ?? updateData[0].PublicDataEndpointEnabled;
             updateData[0].ProxyOverride = this.ProxyOverride ?? this.ProxyOverride;
             updateData[0].Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true);

@@ -190,9 +190,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhubPropertiesInternal)this).RetentionDescriptionRetentionTimeInHour = (long?) content.GetValueForProperty("RetentionDescriptionRetentionTimeInHour",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhubPropertiesInternal)this).RetentionDescriptionRetentionTimeInHour, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             }
-            if (content.Contains("RetentionDescriptionMinCompactionLagInMin"))
+            if (content.Contains("RetentionDescriptionMinCompactionLagTimeInMinute"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhubPropertiesInternal)this).RetentionDescriptionMinCompactionLagInMin = (long?) content.GetValueForProperty("RetentionDescriptionMinCompactionLagInMin",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhubPropertiesInternal)this).RetentionDescriptionMinCompactionLagInMin, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhubPropertiesInternal)this).RetentionDescriptionMinCompactionLagTimeInMinute = (long?) content.GetValueForProperty("RetentionDescriptionMinCompactionLagTimeInMinute",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhubPropertiesInternal)this).RetentionDescriptionMinCompactionLagTimeInMinute, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             }
             if (content.Contains("RetentionDescriptionTombstoneRetentionTimeInHour"))
             {
@@ -339,9 +339,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhubPropertiesInternal)this).RetentionDescriptionRetentionTimeInHour = (long?) content.GetValueForProperty("RetentionDescriptionRetentionTimeInHour",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhubPropertiesInternal)this).RetentionDescriptionRetentionTimeInHour, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             }
-            if (content.Contains("RetentionDescriptionMinCompactionLagInMin"))
+            if (content.Contains("RetentionDescriptionMinCompactionLagTimeInMinute"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhubPropertiesInternal)this).RetentionDescriptionMinCompactionLagInMin = (long?) content.GetValueForProperty("RetentionDescriptionMinCompactionLagInMin",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhubPropertiesInternal)this).RetentionDescriptionMinCompactionLagInMin, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhubPropertiesInternal)this).RetentionDescriptionMinCompactionLagTimeInMinute = (long?) content.GetValueForProperty("RetentionDescriptionMinCompactionLagTimeInMinute",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhubPropertiesInternal)this).RetentionDescriptionMinCompactionLagTimeInMinute, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             }
             if (content.Contains("RetentionDescriptionTombstoneRetentionTimeInHour"))
             {

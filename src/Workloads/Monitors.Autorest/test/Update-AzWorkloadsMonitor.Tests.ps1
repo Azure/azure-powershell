@@ -16,12 +16,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzWorkloadsMonitor'))
 
 Describe 'Update-AzWorkloadsMonitor' {
     It 'UpdateExpanded' {
-        $response = Update-AzWorkloadsMonitor -MonitorName $env.MonitorName -ResourceGroupName $env.MonitorRg -SubscriptionId $env.WaaSSubscriptionId -Tag @{name="suha"}
+        $response = Update-AzWorkloadsMonitor -MonitorName $env.MonitorName -ResourceGroupName $env.MonitorRg -SubscriptionId $env.WaaSSubscriptionId -Tag @{name="thanmayee"}
         $response.ProvisioningState | Should -Be "Succeeded"
     }
 
     It 'UpdateViaIdentityExpanded' {
-        $monGetbyIdResponse = Update-AzWorkloadsMonitor -InputObject "/subscriptions/$($env.WaaSSubscriptionId)/resourceGroups/$($env.MonitorRg)/providers/Microsoft.Workloads/monitors/$($env.MonitorName)" -Tag @{name="suhaById"}
+        $monGetbyIdResponse = Update-AzWorkloadsMonitor -InputObject "/subscriptions/$($env.WaaSSubscriptionId)/resourceGroups/$($env.MonitorRg)/providers/Microsoft.Workloads/monitors/$($env.MonitorName)" -Tag @{name="thanmayeeById"}
         $monGetbyIdResponse.ProvisioningState | Should -Be "Succeeded"
     }
 }

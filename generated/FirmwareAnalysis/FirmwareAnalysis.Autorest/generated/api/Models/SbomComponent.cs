@@ -30,7 +30,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         /// <summary>Backing field for <see cref="FilePath" /> property.</summary>
         private System.Collections.Generic.List<string> _filePath;
 
-        /// <summary>File paths related to the component.</summary>
+        /// <summary>
+        /// File paths related to the component. Note, relatedFiles should be used instead of this property.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<string> FilePath { get => this._filePath; set => this._filePath = value; }
 
@@ -40,6 +42,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         /// <summary>License for the component.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Owned)]
         public string License { get => this._license; set => this._license = value; }
+
+        /// <summary>Internal Acessors for ProvisioningState</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISbomComponentInternal.ProvisioningState { get => this._provisioningState; set { {_provisioningState = value;} } }
+
+        /// <summary>Backing field for <see cref="ProvisioningState" /> property.</summary>
+        private string _provisioningState;
+
+        /// <summary>The status of the last operation.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Owned)]
+        public string ProvisioningState { get => this._provisioningState; }
 
         /// <summary>Backing field for <see cref="Version" /> property.</summary>
         private string _version;
@@ -80,14 +92,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         SerializedName = @"componentName",
         PossibleTypes = new [] { typeof(string) })]
         string ComponentName { get; set; }
-        /// <summary>File paths related to the component.</summary>
+        /// <summary>
+        /// File paths related to the component. Note, relatedFiles should be used instead of this property.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"File paths related to the component.",
+        Description = @"File paths related to the component. Note, relatedFiles should be used instead of this property.",
         SerializedName = @"filePaths",
         PossibleTypes = new [] { typeof(string) })]
         System.Collections.Generic.List<string> FilePath { get; set; }
@@ -102,6 +116,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         SerializedName = @"license",
         PossibleTypes = new [] { typeof(string) })]
         string License { get; set; }
+        /// <summary>The status of the last operation.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The status of the last operation.",
+        SerializedName = @"provisioningState",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Pending", "Extracting", "Analyzing")]
+        string ProvisioningState { get;  }
         /// <summary>Version for the component.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
         Required = false,
@@ -123,10 +149,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         string ComponentId { get; set; }
         /// <summary>Name for the component.</summary>
         string ComponentName { get; set; }
-        /// <summary>File paths related to the component.</summary>
+        /// <summary>
+        /// File paths related to the component. Note, relatedFiles should be used instead of this property.
+        /// </summary>
         System.Collections.Generic.List<string> FilePath { get; set; }
         /// <summary>License for the component.</summary>
         string License { get; set; }
+        /// <summary>The status of the last operation.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Pending", "Extracting", "Analyzing")]
+        string ProvisioningState { get; set; }
         /// <summary>Version for the component.</summary>
         string Version { get; set; }
 

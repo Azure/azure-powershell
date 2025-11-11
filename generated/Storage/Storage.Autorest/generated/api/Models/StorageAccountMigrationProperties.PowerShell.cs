@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.PowerShell;
 
-    /// <summary>The properties of a storage account’s ongoing or enqueued migration.</summary>
+    /// <summary>The properties of a storage account's ongoing or enqueued migration.</summary>
     [System.ComponentModel.TypeConverter(typeof(StorageAccountMigrationPropertiesTypeConverter))]
     public partial class StorageAccountMigrationProperties
     {
@@ -180,7 +180,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             return ToJsonString();
         }
     }
-    /// The properties of a storage account’s ongoing or enqueued migration.
+    /// The properties of a storage account's ongoing or enqueued migration.
     [System.ComponentModel.TypeConverter(typeof(StorageAccountMigrationPropertiesTypeConverter))]
     public partial interface IStorageAccountMigrationProperties
 

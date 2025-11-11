@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Models
                   managementEndpoint: cluster.ManagementEndpoint,
                   nodeTypes: cluster.NodeTypes,
                   provisioningState: cluster.ProvisioningState,
-                  vmImage: cluster.VmImage,
+                  vmImage: cluster.VMImage,
                   diagnosticsStorageAccountConfig: cluster.DiagnosticsStorageAccountConfig,
                   upgradeDescription: cluster.UpgradeDescription,
                   azureActiveDirectory: cluster.AzureActiveDirectory,

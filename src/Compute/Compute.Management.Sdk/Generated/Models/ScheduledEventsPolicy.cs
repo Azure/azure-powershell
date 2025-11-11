@@ -40,11 +40,15 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="scheduledEventsAdditionalPublishingTargets">The
         /// configuration parameters used while publishing
         /// scheduledEventsAdditionalPublishingTargets.</param>
-        public ScheduledEventsPolicy(UserInitiatedRedeploy userInitiatedRedeploy = default(UserInitiatedRedeploy), UserInitiatedReboot userInitiatedReboot = default(UserInitiatedReboot), ScheduledEventsAdditionalPublishingTargets scheduledEventsAdditionalPublishingTargets = default(ScheduledEventsAdditionalPublishingTargets))
+        /// <param name="allInstancesDown">The configuration parameters used
+        /// while creating AllInstancesDown scheduled event setting
+        /// creation.</param>
+        public ScheduledEventsPolicy(UserInitiatedRedeploy userInitiatedRedeploy = default(UserInitiatedRedeploy), UserInitiatedReboot userInitiatedReboot = default(UserInitiatedReboot), ScheduledEventsAdditionalPublishingTargets scheduledEventsAdditionalPublishingTargets = default(ScheduledEventsAdditionalPublishingTargets), AllInstancesDown allInstancesDown = default(AllInstancesDown))
         {
             UserInitiatedRedeploy = userInitiatedRedeploy;
             UserInitiatedReboot = userInitiatedReboot;
             ScheduledEventsAdditionalPublishingTargets = scheduledEventsAdditionalPublishingTargets;
+            AllInstancesDown = allInstancesDown;
             CustomInit();
         }
 
@@ -73,6 +77,13 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [JsonProperty(PropertyName = "scheduledEventsAdditionalPublishingTargets")]
         public ScheduledEventsAdditionalPublishingTargets ScheduledEventsAdditionalPublishingTargets { get; set; }
+
+        /// <summary>
+        /// Gets or sets the configuration parameters used while creating
+        /// AllInstancesDown scheduled event setting creation.
+        /// </summary>
+        [JsonProperty(PropertyName = "allInstancesDown")]
+        public AllInstancesDown AllInstancesDown { get; set; }
 
     }
 }

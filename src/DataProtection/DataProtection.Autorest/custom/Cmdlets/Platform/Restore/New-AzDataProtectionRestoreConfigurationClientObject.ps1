@@ -40,7 +40,7 @@ function New-AzDataProtectionRestoreConfigurationClientObject{
         ${ConflictPolicy},
 
         [Parameter(Mandatory=$false, HelpMessage='Namespaces mapping from source namespaces to target namespaces to resolve namespace naming conflicts in the target cluster.')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.KubernetesClusterRestoreCriteriaNamespaceMappings]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.KubernetesClusterRestoreCriteriaNamespaceMappings]
         ${NamespaceMapping},
 
         [Parameter(Mandatory=$false, HelpMessage='Restore mode for persistent volumes. Allowed values are RestoreWithVolumeData, RestoreWithoutVolumeData. Default value is RestoreWithVolumeData')]
@@ -49,11 +49,11 @@ function New-AzDataProtectionRestoreConfigurationClientObject{
         ${PersistentVolumeRestoreMode},
         
         [Parameter(Mandatory=$false, HelpMessage='Hook reference to be executed during restore.')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.NamespacedNameResource[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.NamespacedNameResource[]]
         ${RestoreHookReference},
 
         [Parameter(Mandatory=$false, HelpMessage='Resource modifier reference to be executed during restore.')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.NamespacedNameResource]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.NamespacedNameResource]
         ${ResourceModifierReference},
 
         [Parameter(Mandatory=$false, HelpMessage='Staging resource group Id for restore.')]
@@ -74,7 +74,7 @@ function New-AzDataProtectionRestoreConfigurationClientObject{
 
         $restoreCriteria = $null
         if($hasStagingResourceGroupId -and $hasStagingStorageAccountId){
-            $restoreCriteria =  [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.KubernetesClusterVaultTierRestoreCriteria]::new()
+            $restoreCriteria =  [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.KubernetesClusterVaultTierRestoreCriteria]::new()
             $restoreCriteria.ObjectType = "KubernetesClusterVaultTierRestoreCriteria"
 
             $restoreCriteria.StagingResourceGroupId = $StagingResourceGroupId
@@ -84,7 +84,7 @@ function New-AzDataProtectionRestoreConfigurationClientObject{
             throw "Both StagingResourceGroupId and StagingStorageAccountId are mandatory for vaulted tier restore for AzureKubernetesService. Please either provide or remove both of them."
         }
         else {
-            $restoreCriteria =  [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.KubernetesClusterRestoreCriteria]::new()
+            $restoreCriteria =  [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.KubernetesClusterRestoreCriteria]::new()
             $restoreCriteria.ObjectType = "KubernetesClusterRestoreCriteria"
         }        
 

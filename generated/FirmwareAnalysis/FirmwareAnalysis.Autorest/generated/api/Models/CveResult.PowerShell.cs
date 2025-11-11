@@ -84,38 +84,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).CveId = (string) content.GetValueForProperty("CveId",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).CveId, global::System.Convert.ToString);
             }
-            if (content.Contains("Severity"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).Severity = (string) content.GetValueForProperty("Severity",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).Severity, global::System.Convert.ToString);
-            }
-            if (content.Contains("Name"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).Name, global::System.Convert.ToString);
-            }
-            if (content.Contains("CvssScore"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).CvssScore = (string) content.GetValueForProperty("CvssScore",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).CvssScore, global::System.Convert.ToString);
-            }
-            if (content.Contains("CvssVersion"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).CvssVersion = (string) content.GetValueForProperty("CvssVersion",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).CvssVersion, global::System.Convert.ToString);
-            }
-            if (content.Contains("CvssV2Score"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).CvssV2Score = (string) content.GetValueForProperty("CvssV2Score",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).CvssV2Score, global::System.Convert.ToString);
-            }
-            if (content.Contains("CvssV3Score"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).CvssV3Score = (string) content.GetValueForProperty("CvssV3Score",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).CvssV3Score, global::System.Convert.ToString);
-            }
-            if (content.Contains("Link"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).Link = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveLink>) content.GetValueForProperty("Link",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).Link, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveLink>(__y, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.CveLinkTypeConverter.ConvertFrom));
-            }
-            if (content.Contains("Description"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).Description, global::System.Convert.ToString);
-            }
             if (content.Contains("ComponentId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).ComponentId = (string) content.GetValueForProperty("ComponentId",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).ComponentId, global::System.Convert.ToString);
@@ -127,6 +95,66 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
             if (content.Contains("ComponentVersion"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).ComponentVersion = (string) content.GetValueForProperty("ComponentVersion",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).ComponentVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("Severity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).Severity = (string) content.GetValueForProperty("Severity",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).Severity, global::System.Convert.ToString);
+            }
+            if (content.Contains("CveName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).CveName = (string) content.GetValueForProperty("CveName",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).CveName, global::System.Convert.ToString);
+            }
+            if (content.Contains("CvssScore"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).CvssScore = (string) content.GetValueForProperty("CvssScore",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).CvssScore, global::System.Convert.ToString);
+            }
+            if (content.Contains("CvssV2Score"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).CvssV2Score = (string) content.GetValueForProperty("CvssV2Score",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).CvssV2Score, global::System.Convert.ToString);
+            }
+            if (content.Contains("CvssV3Score"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).CvssV3Score = (string) content.GetValueForProperty("CvssV3Score",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).CvssV3Score, global::System.Convert.ToString);
+            }
+            if (content.Contains("CvssVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).CvssVersion = (string) content.GetValueForProperty("CvssVersion",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).CvssVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("EffectiveCvssScore"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).EffectiveCvssScore = (float?) content.GetValueForProperty("EffectiveCvssScore",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).EffectiveCvssScore, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
+            }
+            if (content.Contains("EffectiveCvssVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).EffectiveCvssVersion = (int?) content.GetValueForProperty("EffectiveCvssVersion",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).EffectiveCvssVersion, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("CvssScores"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).CvssScores = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICvssScore>) content.GetValueForProperty("CvssScores",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).CvssScores, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICvssScore>(__y, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.CvssScoreTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("Link"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).Link = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveLink>) content.GetValueForProperty("Link",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).Link, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveLink>(__y, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.CveLinkTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("Description"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).Description, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProvisioningState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).ProvisioningState, global::System.Convert.ToString);
+            }
+            if (content.Contains("ComponentComponentId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).ComponentComponentId = (string) content.GetValueForProperty("ComponentComponentId",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).ComponentComponentId, global::System.Convert.ToString);
+            }
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("Version"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).Version = (string) content.GetValueForProperty("Version",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).Version, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
@@ -153,38 +181,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).CveId = (string) content.GetValueForProperty("CveId",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).CveId, global::System.Convert.ToString);
             }
-            if (content.Contains("Severity"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).Severity = (string) content.GetValueForProperty("Severity",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).Severity, global::System.Convert.ToString);
-            }
-            if (content.Contains("Name"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).Name, global::System.Convert.ToString);
-            }
-            if (content.Contains("CvssScore"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).CvssScore = (string) content.GetValueForProperty("CvssScore",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).CvssScore, global::System.Convert.ToString);
-            }
-            if (content.Contains("CvssVersion"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).CvssVersion = (string) content.GetValueForProperty("CvssVersion",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).CvssVersion, global::System.Convert.ToString);
-            }
-            if (content.Contains("CvssV2Score"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).CvssV2Score = (string) content.GetValueForProperty("CvssV2Score",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).CvssV2Score, global::System.Convert.ToString);
-            }
-            if (content.Contains("CvssV3Score"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).CvssV3Score = (string) content.GetValueForProperty("CvssV3Score",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).CvssV3Score, global::System.Convert.ToString);
-            }
-            if (content.Contains("Link"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).Link = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveLink>) content.GetValueForProperty("Link",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).Link, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveLink>(__y, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.CveLinkTypeConverter.ConvertFrom));
-            }
-            if (content.Contains("Description"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).Description, global::System.Convert.ToString);
-            }
             if (content.Contains("ComponentId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).ComponentId = (string) content.GetValueForProperty("ComponentId",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).ComponentId, global::System.Convert.ToString);
@@ -196,6 +192,66 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
             if (content.Contains("ComponentVersion"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).ComponentVersion = (string) content.GetValueForProperty("ComponentVersion",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).ComponentVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("Severity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).Severity = (string) content.GetValueForProperty("Severity",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).Severity, global::System.Convert.ToString);
+            }
+            if (content.Contains("CveName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).CveName = (string) content.GetValueForProperty("CveName",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).CveName, global::System.Convert.ToString);
+            }
+            if (content.Contains("CvssScore"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).CvssScore = (string) content.GetValueForProperty("CvssScore",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).CvssScore, global::System.Convert.ToString);
+            }
+            if (content.Contains("CvssV2Score"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).CvssV2Score = (string) content.GetValueForProperty("CvssV2Score",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).CvssV2Score, global::System.Convert.ToString);
+            }
+            if (content.Contains("CvssV3Score"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).CvssV3Score = (string) content.GetValueForProperty("CvssV3Score",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).CvssV3Score, global::System.Convert.ToString);
+            }
+            if (content.Contains("CvssVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).CvssVersion = (string) content.GetValueForProperty("CvssVersion",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).CvssVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("EffectiveCvssScore"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).EffectiveCvssScore = (float?) content.GetValueForProperty("EffectiveCvssScore",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).EffectiveCvssScore, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
+            }
+            if (content.Contains("EffectiveCvssVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).EffectiveCvssVersion = (int?) content.GetValueForProperty("EffectiveCvssVersion",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).EffectiveCvssVersion, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("CvssScores"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).CvssScores = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICvssScore>) content.GetValueForProperty("CvssScores",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).CvssScores, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICvssScore>(__y, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.CvssScoreTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("Link"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).Link = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveLink>) content.GetValueForProperty("Link",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).Link, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveLink>(__y, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.CveLinkTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("Description"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).Description, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProvisioningState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).ProvisioningState, global::System.Convert.ToString);
+            }
+            if (content.Contains("ComponentComponentId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).ComponentComponentId = (string) content.GetValueForProperty("ComponentComponentId",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).ComponentComponentId, global::System.Convert.ToString);
+            }
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("Version"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).Version = (string) content.GetValueForProperty("Version",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveResultInternal)this).Version, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

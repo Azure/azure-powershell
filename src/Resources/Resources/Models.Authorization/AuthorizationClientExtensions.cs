@@ -98,7 +98,9 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             {
                 if (oe.IsAuthorizationDeniedException() || oe.IsNotFoundException())
                 {
-                    adObject = new PSADObject() { Id = assignment.PrincipalId, Type = UnknownType};
+                    // fall back to cached principal type from response,
+                    // then finally fall back to "Unknown"
+                    adObject = new PSADObject() { Id = assignment.PrincipalId, Type = assignment.PrincipalType ?? UnknownType};
                 }
                 //Swallow exceptions when displaying active directive object
             }
@@ -197,7 +199,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             foreach (RoleAssignment assignment in assignments)
             {
                 assignment.RoleDefinitionId = assignment.RoleDefinitionId.GuidFromFullyQualifiedId();
-                PSADObject adObject = adObjects.SingleOrDefault(o => o.Id == assignment.PrincipalId) ?? new PSADObject() { Id = assignment.PrincipalId, Type = UnknownType };
+                PSADObject adObject = adObjects.SingleOrDefault(o => o.Id == assignment.PrincipalId) ?? new PSADObject() { Id = assignment.PrincipalId, Type = assignment.PrincipalType ?? UnknownType };
                 PSRoleDefinition roleDefinition = roleDefinitions.SingleOrDefault(r => r.Id == assignment.RoleDefinitionId) ?? new PSRoleDefinition() { Id = assignment.RoleDefinitionId };
                 var psRoleAssignment = new PSRoleAssignment()
                 {

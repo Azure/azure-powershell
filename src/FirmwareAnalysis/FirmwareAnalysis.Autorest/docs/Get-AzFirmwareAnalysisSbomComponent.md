@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzFirmwareAnalysisSbomComponent
 
 ## SYNOPSIS
-Lists SBOM analysis results of a firmware.
+Lists sbom analysis results of a firmware.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Get-AzFirmwareAnalysisSbomComponent -FirmwareId <String> -ResourceGroupName <Str
 ```
 
 ## DESCRIPTION
-Lists SBOM analysis results of a firmware.
+Lists sbom analysis results of a firmware.
 
 ## EXAMPLES
 

@@ -14,7 +14,8 @@ namespace Microsoft.Azure.Management.Search.Models
     public static class PrivateLinkServiceConnectionProvisioningState
     {
         /// <summary>
-        /// The private link service connection is in the process of being created along with other resources for it to be fully functional.
+        /// The private link service connection is in the process of being created
+        /// along with other resources for it to be fully functional.
         /// </summary>
         public const string Updating = "Updating";
         /// <summary>
@@ -22,19 +23,23 @@ namespace Microsoft.Azure.Management.Search.Models
         /// </summary>
         public const string Deleting = "Deleting";
         /// <summary>
-        /// The private link service connection has failed to be provisioned or deleted.
+        /// The private link service connection has failed to be provisioned or
+        /// deleted.
         /// </summary>
         public const string Failed = "Failed";
         /// <summary>
-        /// The private link service connection has finished provisioning and is ready for approval.
+        /// The private link service connection has finished provisioning and is ready
+        /// for approval.
         /// </summary>
         public const string Succeeded = "Succeeded";
         /// <summary>
-        /// Provisioning request for the private link service connection resource has been accepted but the process of creation has not commenced yet.
+        /// Provisioning request for the private link service connection resource has
+        /// been accepted but the process of creation has not commenced yet.
         /// </summary>
         public const string Incomplete = "Incomplete";
         /// <summary>
-        /// Provisioning request for the private link service connection resource has been canceled
+        /// Provisioning request for the private link service connection resource has
+        /// been canceled.
         /// </summary>
         public const string Canceled = "Canceled";
     }

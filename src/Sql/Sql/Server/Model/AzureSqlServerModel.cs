@@ -108,5 +108,15 @@ namespace Microsoft.Azure.Commands.Sql.Server.Model
         /// Gets or sets a federated client id to use in xtcmk scenario
         /// </summary>
         public Guid? FederatedClientId { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value for the soft-delete retention days for the server
+        /// </summary>
+        public int? SoftDeleteRetentionDays { get; set; }
+
+        /// <summary>
+        /// Sets a value for the create mode for the server
+        /// </summary>
+        public string CreateMode { get; set; } = "Normal";
     }
 }

@@ -1,0 +1,85 @@
+{
+  "resourceType": "dashboards",
+  "apiVersion": "2025-08-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.dashboard"
+  },
+  "commands": [
+    {
+      "name": "Get-AzGrafanaDashboard",
+      "description": "Get the properties of a specific dashboard for grafana resource.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/dashboards/{dashboardName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.dashboard/get-azgrafanadashboard"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get the properties of a specific dashboard for grafana resource.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.dashboardName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzGrafanaManagedDashboard",
+      "description": "Delete a dashboard for Grafana resource.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/dashboards/{dashboardName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.dashboard/remove-azgrafanamanageddashboard"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-DashboardName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a dashboard for Grafana resource.",
+          "parameters": [
+            {
+              "name": "-DashboardName",
+              "value": "[Path.dashboardName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

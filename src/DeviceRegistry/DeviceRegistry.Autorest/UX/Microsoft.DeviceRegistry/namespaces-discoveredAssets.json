@@ -1,0 +1,95 @@
+{
+  "resourceType": "namespaces/discoveredAssets",
+  "apiVersion": "2025-10-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.deviceregistry"
+  },
+  "commands": [
+    {
+      "name": "Get-AzDeviceRegistryNamespaceDiscoveredAsset",
+      "description": "Get a NamespaceDiscoveredAsset",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/discoveredAssets/{discoveredAssetName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.deviceregistry/get-azdeviceregistrynamespacediscoveredasset"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-DiscoveredAssetName <String>",
+              "-NamespaceName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a NamespaceDiscoveredAsset",
+          "parameters": [
+            {
+              "name": "-DiscoveredAssetName",
+              "value": "[Path.discoveredAssetName]"
+            },
+            {
+              "name": "-NamespaceName",
+              "value": "[Path.namespaceName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzDeviceRegistryNamespaceDiscoveredAsset",
+      "description": "Delete a NamespaceDiscoveredAsset",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/discoveredAssets/{discoveredAssetName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.deviceregistry/remove-azdeviceregistrynamespacediscoveredasset"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-DiscoveredAssetName <String>",
+              "-NamespaceName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a NamespaceDiscoveredAsset",
+          "parameters": [
+            {
+              "name": "-DiscoveredAssetName",
+              "value": "[Path.discoveredAssetName]"
+            },
+            {
+              "name": "-NamespaceName",
+              "value": "[Path.namespaceName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

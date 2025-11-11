@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Policy for accessing the disk via network. Available values are: AllowAll, AllowPrivate, DeyAll")]
+            HelpMessage = "Policy for accessing the disk via network. Available values are: AllowAll, AllowPrivate, DenyAll")]
         [PSArgumentCompleter("AllowAll", "AllowPrivate", "DenyAll")]
         public string NetworkAccessPolicy { get; set; }
 
@@ -179,6 +179,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [PSArgumentCompleter("X64", "Arm64")]
         public string Architecture { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Refers to the security capability of the disk supported to create a Trusted launch or Confidential VM.")]
+        [PSArgumentCompleter("TrustedLaunchSupported", "TrustedLaunchAndConfidentialVMSupported")]
+        public string SupportedSecurityOption { get; set; }
 
         protected override void ProcessRecord()
         {
@@ -299,6 +305,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     vSupportedCapabilities = new SupportedCapabilities();
                 }
                 vSupportedCapabilities.Architecture = this.Architecture;
+            }
+
+            if (this.IsParameterBound(c => c.SupportedSecurityOption))
+            {
+                if (vSupportedCapabilities == null)
+                {
+                    vSupportedCapabilities = new SupportedCapabilities();
+                }
+                vSupportedCapabilities.SupportedSecurityOption = this.SupportedSecurityOption;
             }
 
             var vDiskUpdate = new PSDiskUpdate

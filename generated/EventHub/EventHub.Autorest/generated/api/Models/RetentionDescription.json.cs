@@ -79,7 +79,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
             }
             {_cleanupPolicy = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonString>("cleanupPolicy"), out var __jsonCleanupPolicy) ? (string)__jsonCleanupPolicy : (string)_cleanupPolicy;}
             {_retentionTimeInHour = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonNumber>("retentionTimeInHours"), out var __jsonRetentionTimeInHours) ? (long?)__jsonRetentionTimeInHours : _retentionTimeInHour;}
-            {_minCompactionLagInMin = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonNumber>("minCompactionLagInMins"), out var __jsonMinCompactionLagInMins) ? (long?)__jsonMinCompactionLagInMins : _minCompactionLagInMin;}
+            {_minCompactionLagTimeInMinute = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonNumber>("minCompactionLagTimeInMinutes"), out var __jsonMinCompactionLagTimeInMinutes) ? (long?)__jsonMinCompactionLagTimeInMinutes : _minCompactionLagTimeInMinute;}
             {_tombstoneRetentionTimeInHour = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonNumber>("tombstoneRetentionTimeInHours"), out var __jsonTombstoneRetentionTimeInHours) ? (int?)__jsonTombstoneRetentionTimeInHours : _tombstoneRetentionTimeInHour;}
             AfterFromJson(json);
         }
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
             }
             AddIf( null != (((object)this._cleanupPolicy)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonString(this._cleanupPolicy.ToString()) : null, "cleanupPolicy" ,container.Add );
             AddIf( null != this._retentionTimeInHour ? (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonNumber((long)this._retentionTimeInHour) : null, "retentionTimeInHours" ,container.Add );
-            AddIf( null != this._minCompactionLagInMin ? (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonNumber((long)this._minCompactionLagInMin) : null, "minCompactionLagInMins" ,container.Add );
+            AddIf( null != this._minCompactionLagTimeInMinute ? (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonNumber((long)this._minCompactionLagTimeInMinute) : null, "minCompactionLagTimeInMinutes" ,container.Add );
             AddIf( null != this._tombstoneRetentionTimeInHour ? (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonNumber((int)this._tombstoneRetentionTimeInHour) : null, "tombstoneRetentionTimeInHours" ,container.Add );
             AfterToJson(ref container);
             return container;

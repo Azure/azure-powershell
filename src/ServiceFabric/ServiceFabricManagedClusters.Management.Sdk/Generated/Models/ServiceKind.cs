@@ -14,11 +14,13 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
     public static class ServiceKind
     {
         /// <summary>
-        /// Does not use Service Fabric to make its state highly available or reliable. The value is 0.
+        /// Does not use Service Fabric to make its state highly available or reliable.
+        /// The value is 0.
         /// </summary>
         public const string Stateless = "Stateless";
         /// <summary>
-        /// Uses Service Fabric to make its state or part of its state highly available and reliable. The value is 1.
+        /// Uses Service Fabric to make its state or part of its state highly available
+        /// and reliable. The value is 1.
         /// </summary>
         public const string Stateful = "Stateful";
     }

@@ -3,6 +3,7 @@
     <PsModuleName>Mdp</PsModuleName>
     <PsRootModuleName>Mdp</PsRootModuleName>
     <PsModuleFolder>Mdp.Autorest</PsModuleFolder>
+    <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.Mdp</RootNamespace>
   </PropertyGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.autorest.props" />

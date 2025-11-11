@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
     /// <summary>
     /// OperationResultsOperations operations.
     /// </summary>
-    internal partial class OperationResultsOperations : Microsoft.Rest.IServiceOperations<ServiceFabricManagementClient>, IOperationResultsOperations
+    internal partial class OperationResultsOperations : Microsoft.Rest.IServiceOperations<ServiceFabricManagedClustersManagementClient>, IOperationResultsOperations
     {
         /// <summary>
         /// Initializes a new instance of the OperationResultsOperations class.
@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        internal OperationResultsOperations (ServiceFabricManagementClient client)
+        internal OperationResultsOperations (ServiceFabricManagedClustersManagementClient client)
         {
             if (client == null) 
             {
@@ -34,15 +34,15 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         }
 
         /// <summary>
-        /// Gets a reference to the ServiceFabricManagementClient
+        /// Gets a reference to the ServiceFabricManagedClustersManagementClient
         /// </summary>
-        public ServiceFabricManagementClient Client { get; private set; }
+        public ServiceFabricManagedClustersManagementClient Client { get; private set; }
 
         /// <summary>
         /// Get long running operation result.
         /// </summary>
         /// <param name='location'>
-        /// The location for the cluster code versions. This is different from cluster location.
+        /// The name of Azure region.
         /// </param>
         /// <param name='operationId'>
         /// operation identifier.
@@ -65,30 +65,42 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> GetWithHttpMessagesAsync(string location, string operationId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<OperationResultsGetHeaders>> GetWithHttpMessagesAsync(string location, string operationId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
 
  
+            if (this.Client.ApiVersion == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+
             if (this.Client.SubscriptionId == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-
+            if (this.Client.SubscriptionId != null)
+            {
+                if (this.Client.SubscriptionId.Length < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "Client.SubscriptionId", 1);
+                }
+            }
             if (location == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "location");
             }
-
+            if (location != null)
+            {
+                if (location.Length < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "location", 1);
+                }
+            }
             if (operationId == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "operationId");
-            }
-
-            if (this.Client.ApiVersion == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
             }
 
             // Tracing
@@ -178,11 +190,11 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
 
             if ((int)_statusCode != 200 && (int)_statusCode != 202 && (int)_statusCode != 204)
             {
-                var ex = new ErrorModelException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                var ex = new ErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    ErrorModel _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorModel>(_responseContent, this.Client.DeserializationSettings);
+                    ErrorResponse _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, this.Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
                         ex.Body = _errorBody;
@@ -206,13 +218,26 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
                 throw ex;
             }
             // Create Result
-            var _result = new Microsoft.Rest.Azure.AzureOperationResponse();
+            var _result = new Microsoft.Rest.Azure.AzureOperationHeaderResponse<OperationResultsGetHeaders>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
             {
                 _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            try
+            {
+                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<OperationResultsGetHeaders>(Newtonsoft.Json.JsonSerializer.Create(this.Client.DeserializationSettings));
+            }
+            catch (Newtonsoft.Json.JsonException ex)
+            {
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw new Microsoft.Rest.SerializationException("Unable to deserialize the headers.", _httpResponse.GetHeadersAsJson().ToString(), ex);
             }
             if (_shouldTrace)
             {

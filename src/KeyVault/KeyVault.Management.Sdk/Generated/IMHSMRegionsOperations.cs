@@ -14,10 +14,12 @@ namespace Microsoft.Azure.Management.KeyVault
     public partial interface IMhsmRegionsOperations
     {
         /// <summary>
-        /// The List operation gets information about the regions associated with the managed HSM Pool.
+        /// The List operation gets information about the regions associated with the
+        /// managed HSM Pool.
         /// </summary>
         /// <remarks>
-        /// The List operation gets information about the regions associated with the managed HSM Pool.
+        /// The List operation gets information about the regions associated with the
+        /// managed HSM Pool.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group that contains the managed HSM pool.
@@ -40,10 +42,12 @@ namespace Microsoft.Azure.Management.KeyVault
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<MhsmGeoReplicatedRegion>>> ListByResourceWithHttpMessagesAsync(string resourceGroupName, string name, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// The List operation gets information about the regions associated with the managed HSM Pool.
+        /// The List operation gets information about the regions associated with the
+        /// managed HSM Pool.
         /// </summary>
         /// <remarks>
-        /// The List operation gets information about the regions associated with the managed HSM Pool.
+        /// The List operation gets information about the regions associated with the
+        /// managed HSM Pool.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

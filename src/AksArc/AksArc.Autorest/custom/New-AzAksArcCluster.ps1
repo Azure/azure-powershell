@@ -75,13 +75,6 @@ function New-AzAksArcCluster {
         [System.String]
         # ARM Id of the extended location.
         ${CustomLocationName},
-    
-        [Parameter(Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
-        [System.String]
-        # List of ARM resource Ids (maximum 1) for the infrastructure network object e.g.
-        # /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/logicalNetworks/{logicalNetworkName}
-        ${VnetId},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
@@ -92,7 +85,6 @@ function New-AzAksArcCluster {
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
         [System.String]
-        # Location
         ${Location},
 
         [Parameter()]
@@ -100,7 +92,14 @@ function New-AzAksArcCluster {
         [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
         [System.String[]]
         ${AdminGroupObjectID},
-    
+
+        [Parameter(ParameterSetName='CreateExpanded')]
+        [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
+        [System.String]
+        # List of ARM resource Ids (maximum 1) for the infrastructure network object e.g.
+        # /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/logicalNetworks/{logicalNetworkName}
+        ${VnetId},
+
         [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
         [System.String]
@@ -126,7 +125,7 @@ function New-AzAksArcCluster {
         # The version of Kubernetes in use by the provisioned cluster.
         ${KubernetesVersion},
     
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
         [System.Management.Automation.SwitchParameter]
         # Indicates whether Azure Hybrid Benefit is opted in.
@@ -190,12 +189,9 @@ function New-AzAksArcCluster {
         [Parameter(ParameterSetName='AutoScaling', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
         [System.Management.Automation.SwitchParameter]
-        # Indicates whether to enable NFS CSI Driver.
-        # The default value is true.
         ${EnableAutoScaling},
 
         [Parameter(ParameterSetName='CreateExpanded')]
-        [Parameter(ParameterSetName='AutoScaling', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Path')]
         [System.Int32]
         ${MaxPod},
@@ -410,36 +406,10 @@ function New-AzAksArcCluster {
     )
 
     process {
-        $Scope = GetConnectedClusterResourceURI -SubscriptionId $SubscriptionId -ResourceGroupName $ResourceGroupName -ClusterName $ClusterName
-        $null = $PSBoundParameters.Remove("SubscriptionId")
-        $null = $PSBoundParameters.Remove("ResourceGroupName")
-        $null = $PSBoundParameters.Remove("ClusterName")
-        $null = $PSBoundParameters.Add("ConnectedClusterResourceUri", $Scope)
-
-        # Network Validations
-        # Logical Network
-        if (($PSBoundParameters.ContainsKey('ControlPlaneIP')) -And ($VnetId -match $logicalNetworkArmIDRegex)) {
-            $response = Invoke-AzRestMethod -Path "$VnetId/?api-version=2024-01-01" -Method GET
-            if ($response.StatusCode -eq 200) {
-                $lnet = ($response.Content | ConvertFrom-Json)
-                $err = ValidateLogicalNetwork -lnet $lnet -ControlPlaneIP $ControlPlaneIP
-                if ($err) {
-                    throw $err
-                }
-            } else {
-                throw "Logical network with ID $VnetId not found."
-            }
-        } 
-
-        # Edit parameters
-        $null = $PSBoundParameters.Add("InfraNetworkProfileVnetSubnetId", @($VnetId))
-        $null = $PSBoundParameters.Add("ExtendedLocationType", "CustomLocation")
-        $null = $PSBoundParameters.Add("NetworkProfileNetworkPolicy", "calico")
-        $null = $PSBoundParameters.Remove("Location")
-        $null = $PSBoundParameters.Remove("VnetId")
-
-        $CustomLocationID = ConvertCustomLocationNameToID -CustomLocationName $CustomLocationName -SubscriptionId $SubscriptionId -ResourceGroupName $ResourceGroupName
-        $null = $PSBoundParameters.Add("ExtendedLocationName", $CustomLocationID)
+        # Get custom location resource ID.
+        $CustomLocationID = ConvertCustomLocationNameToID -CustomLocationName $CustomLocationName `
+            -SubscriptionId $SubscriptionId `
+            -ResourceGroupName $ResourceGroupName
         $null = $PSBoundParameters.Remove("CustomLocationName")
 
         # Create connected cluster parent resource
@@ -450,56 +420,82 @@ function New-AzAksArcCluster {
         } elseif ($Location -ne $cllocation) {
             throw "Location parameter must be equal to custom location's location $cllocation"
         }
-
-        CreateConnectedCluster -SubscriptionId $SubscriptionId -ResourceGroupName $ResourceGroupName -ClusterName $ClusterName -Location $Location -AdminGroupObjectID $AdminGroupObjectID -EnableAzureRbac:$EnableAzureRbac
+        $connectedCluster = CreateConnectedCluster -SubscriptionId $SubscriptionId `
+            -ResourceGroupName $ResourceGroupName `
+            -ClusterName $ClusterName `
+            -Location $Location `
+            -AdminGroupObjectID $AdminGroupObjectID `
+            -EnableAzureRbac:$EnableAzureRbac
+        $connectedClusterObject = $connectedCluster.Content | ConvertFrom-Json
+        $null = $PSBoundParameters.Add("ConnectedClusterResourceUri", $connectedClusterObject.id)
+        $null = $PSBoundParameters.Remove("Location")
         $null = $PSBoundParameters.Remove("AdminGroupObjectID")
-        
-        # Generate public ssh key if one is not provided
-        $SshPublicKeyObj = [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.LinuxProfilePropertiesSshPublicKeysItem]::New()
-        if ($PSBoundParameters.ContainsKey('SshKeyValue')) {
-            $SshPublicKeyObj.KeyData = $SshKeyValue
-        } else {
-            $SshPublicKeyObj = GenerateSSHKey ClusterName $ClusterName
-        }
-        $null = $PSBoundParameters.Remove("SshKeyValue")
-        $null = $PSBoundParameters.Add("SshPublicKey", @($SshPublicKeyObj))
+        $null = $PSBoundParameters.Remove("EnableAzureRbac")
+        $null = $PSBoundParameters.Remove("SubscriptionId")
+        $null = $PSBoundParameters.Remove("ResourceGroupName")
+        $null = $PSBoundParameters.Remove("ClusterName")
 
-        # Configure Agent Pool
-        $AgentPoolProfile = CreateAgentPoolProfile -EnableAutoScaling:$EnableAutoScaling -MinCount $MinCount -MaxCount $MaxCount -MaxPod $MaxPod -NodeTaint $NodeTaint -NodeLabel $NodeLabel
-        $null = $PSBoundParameters.Add("AgentPoolProfile", $AgentPoolProfile)
-        
-        if ($PSBoundParameters.ContainsKey('EnableAzureHybridBenefit')) {
-            $null = $PSBoundParameters.Remove("EnableAzureHybridBenefit")
-        }
+        # TODO: If user passed in JsonFilePath or JsonString, let the back-end validate its correctness for now.
+        # Below is validation for CreateExpanded parameter set.
+        if (($PSCmdlet.ParameterSetName -ne "CreateViaJsonFilePath") -and ($PSCmdlet.ParameterSetName -ne "CreateViaJsonString")) {
+            # Edit parameters
+            $null = $PSBoundParameters.Add("InfraNetworkProfileVnetSubnetId", @($VnetId))
+            $null = $PSBoundParameters.Remove("VnetId")
+            $null = $PSBoundParameters.Add("ExtendedLocationType", "CustomLocation")
+            $null = $PSBoundParameters.Add("NetworkProfileNetworkPolicy", "calico")
+            $null = $PSBoundParameters.Add("ExtendedLocationName", $CustomLocationID)
 
-        if ($PSBoundParameters.ContainsKey('NodeTaint')) {
-            $null = $PSBoundParameters.Remove("NodeTaint")
-        }
+            # Generate public ssh key if one is not provided.
+            $SshPublicKeyObj = [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.LinuxProfilePropertiesSshPublicKeysItem]::New()
+            if ($PSBoundParameters.ContainsKey('SshKeyValue')) {
+                $SshPublicKeyObj.KeyData = $SshKeyValue
+            } else {
+                try {
+                    $SshPublicKeyObj = GenerateSSHKey ClusterName $ClusterName
+                } catch {
+                    if ($_.Exception.Message -like "*ssh-keygen not found*") {
+                        throw "ssh-keygen command not found. Please install OpenSSH client tools and ensure ssh-keygen is in your PATH, or pass your SSH public key to the -SshKeyValue parameter."
+                    } else {
+                        throw $_.Exception.Message
+                    }
+                }
+            }
+            $null = $PSBoundParameters.Remove("SshKeyValue")
+            $null = $PSBoundParameters.Add("SshPublicKey", @($SshPublicKeyObj))
 
-        if ($PSBoundParameters.ContainsKey('NodeLabel')) {
-            $null = $PSBoundParameters.Remove("NodeLabel")
+            # Configure Agent Pool
+            $AgentPoolProfile = CreateAgentPoolProfile -EnableAutoScaling:$EnableAutoScaling `
+                -MinCount $MinCount `
+                -MaxCount $MaxCount `
+                -MaxPod $MaxPod `
+                -NodeTaint $NodeTaint `
+                -NodeLabel $NodeLabel
+            $null = $PSBoundParameters.Add("AgentPoolProfile", $AgentPoolProfile)
+            $null = $PSBoundParameters.Remove("EnableAutoScaling")
+            
+            if ($PSBoundParameters.ContainsKey('MinCount')) {
+                $null = $PSBoundParameters.Remove("MinCount")
+            }
+            if ($PSBoundParameters.ContainsKey('MaxCount')) {
+                $null = $PSBoundParameters.Remove("MaxCount")
+            }
+            if ($PSBoundParameters.ContainsKey('MaxPod')) {
+                $null = $PSBoundParameters.Remove("MaxPod")
+            } 
+            if ($EnableAzureHybridBenefit) {
+                $null = $PSBoundParameters.Add("LicenseProfileAzureHybridBenefit", "True")
+                $null = $PSBoundParameters.Remove("EnableAzureHybridBenefit")
+            } else {
+                $null = $PSBoundParameters.Add("LicenseProfileAzureHybridBenefit", "False")
+            }
+            if ($PSBoundParameters.ContainsKey('NodeTaint')) {
+                $null = $PSBoundParameters.Remove("NodeTaint")
+            }
+            if ($PSBoundParameters.ContainsKey('NodeLabel')) {
+                $null = $PSBoundParameters.Remove("NodeLabel")
+            }
         }
-
-        if ($PSBoundParameters.ContainsKey('MinCount')) {
-            $null = $PSBoundParameters.Remove("MinCount")
-        }
-
-        if ($PSBoundParameters.ContainsKey('MaxCount')) {
-            $null = $PSBoundParameters.Remove("MaxCount")
-        }
-
-        if ($PSBoundParameters.ContainsKey('MaxPod')) {
-            $null = $PSBoundParameters.Remove("MaxPod")
-        }
-
-        # Create Provisioned Cluster
-        if ($EnableAzureHybridBenefit) {
-            $null = $PSBoundParameters.Add("LicenseProfileAzureHybridBenefit", $true)
-        } else {
-            $null = $PSBoundParameters.Add("LicenseProfileAzureHybridBenefit", $false)
-        }
-
         Az.AksArc.internal\New-AzAksArcCluster @PSBoundParameters
     }
-    }
+}
     

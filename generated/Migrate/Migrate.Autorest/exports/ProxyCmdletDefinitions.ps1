@@ -2913,7 +2913,7 @@ end {
 .Synopsis
 Retrieves the status of an Azure Migrate job.
 .Description
-The Get-AzMigrateJob cmdlet retrives the status of an Azure Migrate job.
+The Get-AzMigrateJob cmdlet retrieves the status of an Azure Migrate job.
 .Example
 Get-AzMigrateJob -JobID "/Subscriptions/xxx-xxx-xxx/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationJobs/997e2a92-5afe-49c7-a81a-89660aec9b7b" 
 .Example
@@ -3181,7 +3181,7 @@ end {
 .Synopsis
 Retrieves the status of an Azure Migrate job.
 .Description
-The Get-AzMigrateLocalJob cmdlet retrives the status of an Azure Migrate job.
+The Get-AzMigrateLocalJob cmdlet retrieves the status of an Azure Migrate job.
 .Example
 Get-AzMigrateLocalJob -ID "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/test-rg/providers/Microsoft.DataReplication/replicationVaults/testproj1234replicationvault/jobs/0203aa1b-1dff-4653-89a9-b90a76d1601a"
 .Example
@@ -3735,11 +3735,13 @@ Retrieves the details of the replicating server status.
 .Description
 The Get-AzMigrateServerMigrationStatus cmdlet retrieves the replication status for the replicating server.
 .Example
-Get-AzMigrateServerMigrationStatus -ResourceGroupName cbtpvtrg -ProjectName migpvt
+Get-AzMigrateServerMigrationStatus -ProjectName "cbt-resync-gql" -ResourceGroupName "ankitbaluni-resync-rg"
 .Example
-Get-AzMigrateServerMigrationStatus -ProjectName "migpvt-ecyproj" -ResourceGroupName "cbtprivatestamprg" -MachineName "CVM-Win2019"
+Get-AzMigrateServerMigrationStatus -ProjectName "cbt-resync-gql" -ResourceGroupName "ankitbaluni-resync-rg" -MachineName "Rhel8-Vm"
 .Example
-Get-AzMigrateServerMigrationStatus -ProjectName "migpvt-ecyproj" -ResourceGroupName "cbtprivatestamprg" -ApplianceName "migpvt"
+Get-AzMigrateServerMigrationStatus -ProjectName "cbt-resync-gql" -ResourceGroupName "ankitbaluni-resync-rg" -ApplianceName "cbtresyncgql"
+.Example
+Get-AzMigrateServerMigrationStatus -ProjectName "cbt-resync-gql" -ResourceGroupName "ankitbaluni-resync-rg" -MachineName "Rhel8-Vm" -Expedite
 
 .Outputs
 System.Management.Automation.PSObject[]
@@ -3753,15 +3755,13 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
-    # [Parameter(ParameterSetName = 'GetByPrioritiseServer', Mandatory)]
-    #  Specifies the Resource Group of the Azure Migrate Project in the current subscription.
+    # Specifies the Resource Group of the Azure Migrate Project in the current subscription.
     ${ResourceGroupName},
 
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
-    # [Parameter(ParameterSetName = 'GetByPrioritiseServer', Mandatory)]
-    #  Specifies the Azure Migrate project  in the current subscription.
+    # Specifies the Azure Migrate project  in the current subscription.
     ${ProjectName},
 
     [Parameter()]
@@ -3771,19 +3771,25 @@ param(
     # Azure Subscription ID.
     ${SubscriptionId},
 
+    [Parameter(ParameterSetName='GetByPrioritiseServer', Mandatory)]
+    [Parameter(ParameterSetName='GetHealthByMachineName', Mandatory)]
+    [Parameter(ParameterSetName='GetByMachineName', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Specifies the display name of the replicating machine.
+    ${MachineName},
+
+    [Parameter(ParameterSetName='GetByPrioritiseServer', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.Management.Automation.SwitchParameter]
+    # Specifies whether to expedite the operation of a replicating server.
+    ${Expedite},
+
     [Parameter(ParameterSetName='GetByApplianceName', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
     # Specifies the name of the appliance.
     ${ApplianceName},
-
-    [Parameter(ParameterSetName='GetHealthByMachineName', Mandatory)]
-    [Parameter(ParameterSetName='GetByMachineName', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [System.String]
-    # [Parameter(ParameterSetName = 'GetByPrioritiseServer', Mandatory)]
-    #  Specifies the display name of the replicating machine.
-    ${MachineName},
 
     [Parameter(ParameterSetName='GetHealthByMachineName', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
@@ -3878,11 +3884,12 @@ begin {
 
         $mapping = @{
             ListByName = 'Az.Migrate.custom\Get-AzMigrateServerMigrationStatus';
+            GetByPrioritiseServer = 'Az.Migrate.custom\Get-AzMigrateServerMigrationStatus';
             GetByApplianceName = 'Az.Migrate.custom\Get-AzMigrateServerMigrationStatus';
             GetHealthByMachineName = 'Az.Migrate.custom\Get-AzMigrateServerMigrationStatus';
             GetByMachineName = 'Az.Migrate.custom\Get-AzMigrateServerMigrationStatus';
         }
-        if (('ListByName', 'GetByApplianceName', 'GetHealthByMachineName', 'GetByMachineName') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('ListByName', 'GetByPrioritiseServer', 'GetByApplianceName', 'GetHealthByMachineName', 'GetByMachineName') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
@@ -4612,7 +4619,7 @@ param(
     ${IsOSDisk},
 
     [Parameter(Mandatory)]
-    [ArgumentCompleter({ "Standard_LRS", "Premium_LRS", "StandardSSD_LRS", "PremiumV2_LRS"})]
+    [ArgumentCompleter({ "Standard_LRS", "Premium_LRS", "StandardSSD_LRS", "PremiumV2_LRS", "UltraSSD_LRS", "StandardSSD_ZRS", "Premium_ZRS"})]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
     # Specifies the type of disks to be used for the Azure VM.
@@ -4621,7 +4628,7 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
-    # Specifies the disk encyption set to be used.
+    # Specifies the disk encryption set to be used.
     ${DiskEncryptionSetID}
 )
 
@@ -4751,6 +4758,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
     # Specifies the disk format.
+    # 'VHD' or 'VHDX' for Hyper-V Generation 1; 'VHDX' for Hyper-V Generation 2.
     ${Format},
 
     [Parameter()]
@@ -4758,13 +4766,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.Int64]
     # Specifies the disk physical sector size in bytes.
-    ${PhysicalSectorSize},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [System.String]
-    # Specifies the storage path ARM ID where the disk will be stored.
-    ${TargetStoragePathId}
+    ${PhysicalSectorSize}
 )
 
 begin {
@@ -5019,6 +5021,18 @@ param(
     [System.String]
     # Specifies the name of the VM to be created.
     ${TargetVMName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Specifies the source appliance name for the AzLocal scenario.
+    ${SourceApplianceName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Specifies the target appliance name for the AzLocal scenario.
+    ${TargetApplianceName},
 
     [Parameter(ParameterSetName='ByIdDefaultUser', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
@@ -5702,7 +5716,7 @@ param(
     [Parameter(ParameterSetName='ByInputObjectDefaultUser')]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
-    # Specifies the disk encyption set to be used.
+    # Specifies the disk encryption set to be used.
     ${DiskEncryptionSetID},
 
     [Parameter()]
@@ -6935,7 +6949,7 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-DYNAMICMEMORYCONFIG <ProtectedItemDynamicMemoryConfig>: Specifies the dynamic memory configration of RAM.
+DYNAMICMEMORYCONFIG <ProtectedItemDynamicMemoryConfig>: Specifies the dynamic memory configuration of RAM.
   MaximumMemoryInMegaByte <Int64>: Gets or sets maximum memory in MB.
   MinimumMemoryInMegaByte <Int64>: Gets or sets minimum memory in MB.
   TargetMemoryBufferPercentage <Int32>: Gets or sets target memory buffer in %.
@@ -6969,7 +6983,7 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.ProtectedItemDynamicMemoryConfig]
-    # Specifies the dynamic memory configration of RAM.
+    # Specifies the dynamic memory configuration of RAM.
     # To construct, see NOTES section for DYNAMICMEMORYCONFIG properties and create a hash table.
     ${DynamicMemoryConfig},
 
@@ -6984,6 +6998,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.AzLocalNicInput[]]
     # Specifies the nics on the source server to be included for replication.
     ${NicToInclude},
+
+    [Parameter()]
+    [ArgumentCompleter({ "WindowsGuest" , "LinuxGuest" })]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Specifies the OS type of the VM, either WindowsGuest or LinuxGuest.
+    ${OsType},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]

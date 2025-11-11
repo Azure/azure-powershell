@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzFirmwareAnalysisSummary
 Describe 'Get-AzFirmwareAnalysisSummary' {
     It 'Get' {
         { 
-            $config = Get-AzFirmwareAnalysisSummary -FirmwareId '7795b9a8-97bb-ba4b-b21a-8dc6ae2dabb9' -ResourceGroupName 'FirmwareAnalysisRG' -WorkspaceName 'default' -Name 'CVE'
+            $config = Get-AzFirmwareAnalysisSummary -FirmwareId $env.FirmwareId -ResourceGroupName $env.ResourceGroup -WorkspaceName $env.WorkspaceName -Type 'CVE'
             $config.Count | Should -BeGreaterThan 0
         } | Should -Not -Throw
     }

@@ -16,7 +16,7 @@ Sets properties for an Azure SQL Managed Instance.
 ```
 Set-AzSqlInstance [-Name] <String> [-ResourceGroupName] <String> [-AdministratorPassword <SecureString>]
  [-Edition <String>] [-IsGeneralPurposeV2 <Boolean>] [-SubnetId <String>] [-LicenseType <String>]
- [-StorageSizeInGB <Int32>] [-StorageIOps <Int32>] [-VCore <Int32>]
+ [-StorageSizeInGB <Int32>] [-StorageIOps <Int32>] [-VCore <Int32>] [-MemorySizeInGB <Int32>]
  [-PublicDataEndpointEnabled <Boolean>] [-ProxyOverride <String>] [-Tag <Hashtable>] [-AssignIdentity]
  [-InstancePoolName <String>] [-MinimalTlsVersion <String>] [-PrimaryUserAssignedIdentityId <String>]
  [-KeyId <String>] [-Force] [-ComputeGeneration <String>] [-MaintenanceConfigurationId <String>]
@@ -30,7 +30,7 @@ Set-AzSqlInstance [-Name] <String> [-ResourceGroupName] <String> [-Administrator
 ```
 Set-AzSqlInstance [-InputObject] <AzureSqlManagedInstanceModel> [-AdministratorPassword <SecureString>]
  [-Edition <String>] [-IsGeneralPurposeV2 <Boolean>] [-SubnetId <String>] [-LicenseType <String>]
- [-StorageSizeInGB <Int32>] [-StorageIOps <Int32>]  [-VCore <Int32>]
+ [-StorageSizeInGB <Int32>] [-StorageIOps <Int32>]  [-VCore <Int32>] [-MemorySizeInGB <Int32>]
  [-PublicDataEndpointEnabled <Boolean>] [-ProxyOverride <String>] [-Tag <Hashtable>] [-AssignIdentity]
  [-InstancePoolName <String>] [-MinimalTlsVersion <String>] [-PrimaryUserAssignedIdentityId <String>]
  [-KeyId <String>] [-Force] [-ComputeGeneration <String>] [-MaintenanceConfigurationId <String>]
@@ -44,7 +44,7 @@ Set-AzSqlInstance [-InputObject] <AzureSqlManagedInstanceModel> [-AdministratorP
 ```
 Set-AzSqlInstance [-ResourceId] <String> [-AdministratorPassword <SecureString>] [-Edition <String>]
  [-IsGeneralPurposeV2 <Boolean>] [-SubnetId <String>] [-LicenseType <String>]
- [-StorageSizeInGB <Int32>] [-StorageIOps <Int32>] [-VCore <Int32>]
+ [-StorageSizeInGB <Int32>] [-StorageIOps <Int32>] [-VCore <Int32>] [-MemorySizeInGB <Int32>]
  [-PublicDataEndpointEnabled <Boolean>] [-ProxyOverride <String>] [-Tag <Hashtable>] [-AssignIdentity]
  [-InstancePoolName <String>] [-MinimalTlsVersion <String>] [-PrimaryUserAssignedIdentityId <String>]
  [-KeyId <String>] [-Force] [-ComputeGeneration <String>] [-MaintenanceConfigurationId <String>]
@@ -80,6 +80,7 @@ AdministratorPassword    :
 SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
 LicenseType              : LicenseIncluded
 VCores                   : 16
+MemorySizeInGB           :
 StorageSizeInGB          : 1024
 StorageIOps              :
 InstancePoolName         :
@@ -105,6 +106,7 @@ AdministratorPassword    :
 SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
 LicenseType              : LicenseIncluded
 VCores                   : 16
+MemorySizeInGB           :
 StorageSizeInGB          : 1024
 StorageIOps              :
 InstancePoolName         :
@@ -132,6 +134,7 @@ AdministratorPassword    :
 SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
 LicenseType              : LicenseIncluded
 VCores                   : 8
+MemorySizeInGB           :
 StorageSizeInGB          : 1024
 StorageIOps              : 4000
 InstancePoolName         :
@@ -185,6 +188,7 @@ AdministratorPassword      :
 SubnetId                   : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
 LicenseType                : LicenseIncluded
 VCores                     : 8
+MemorySizeInGB             :
 StorageSizeInGB            : 256
 StorageIOps                :
 Collation                  : SQL_Latin1_General_CP1_CI_AS
@@ -222,6 +226,7 @@ AdministratorPassword      :
 SubnetId                   : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
 LicenseType                : LicenseIncluded
 VCores                     : 8
+MemorySizeInGB             :
 StorageSizeInGB            : 256
 StorageIOps                :
 Collation                  : SQL_Latin1_General_CP1_CI_AS
@@ -259,6 +264,7 @@ AdministratorPassword      :
 SubnetId                   : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/target_subnet_name
 LicenseType                : LicenseIncluded
 VCores                     : 8
+MemorySizeInGB             :
 StorageSizeInGB            : 256
 StorageIOps                :
 Collation                  : SQL_Latin1_General_CP1_CI_AS
@@ -296,6 +302,7 @@ AdministratorPassword      :
 SubnetId                   : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/target_subnet_name
 LicenseType                : LicenseIncluded
 VCores                     : 8
+MemorySizeInGB             :
 StorageSizeInGB            : 256
 StorageIOps                :
 Collation                  : SQL_Latin1_General_CP1_CI_AS
@@ -334,6 +341,7 @@ AdministratorPassword            :
 SubnetId                         : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/target_subnet_name
 LicenseType                      : LicenseIncluded
 VCores                           : 8
+MemorySizeInGB             :
 StorageSizeInGB                  : 256
 StorageIOps                      :
 Collation                        : SQL_Latin1_General_CP1_CI_AS
@@ -373,6 +381,7 @@ AdministratorPassword      :
 SubnetId                   : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/target_subnet_name
 LicenseType                : LicenseIncluded
 VCores                     : 8
+MemorySizeInGB             :
 StorageSizeInGB            : 256
 StorageIOps                :
 Collation                  : SQL_Latin1_General_CP1_CI_AS
@@ -393,7 +402,7 @@ PricingModel               : Regular
 
 This command updates managed instance with given with database format and pricing model specified.
 
-### Example 10: Update an existing managed instance to use Windows authentication metadata mode
+### Example 11: Update an existing managed instance to use Windows authentication metadata mode
 ```powershell
 Set-AzSqlInstance -Name managedInstance1 -ResourceGroupName ResourceGroup01 -AuthenticationMetadata Windows
 ```
@@ -412,6 +421,7 @@ AdministratorPassword            :
 SubnetId                         : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
 LicenseType                      : LicenseIncluded
 VCores                           : 8
+MemorySizeInGB                   :
 StorageSizeInGB                  : 256
 Collation                        : SQL_Latin1_General_CP1_CI_AS
 PublicDataEndpointEnabled        : False
@@ -437,6 +447,32 @@ AuthenticationMetadata           : Windows
 ```
 
 This command updates an existing managed instance to use Windows metadata for authentication of synced users.
+
+### Example 12: Change existing instance by setting new value to MemorySizeInGB and keeping current or setting new value for VCores and keeping NextGen GP edition (v2)
+```powershell
+Set-AzSqlInstance -Name "managedinstance1" -ResourceGroupName "ResourceGroup01" -MemorySizeInGB 64 -VCore 8 -IsGeneralPurposeV2 $true
+```
+
+```output
+Location                 : westcentralus
+Id                       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance1
+ResourceGroupName        : resourcegroup01
+ManagedInstanceName      : managedInstance1
+Tags                     :
+Identity                 : Microsoft.Azure.Management.Sql.Models.ResourceIdentity
+Sku                      : Microsoft.Azure.Management.Internal.Resources.Models.Sku
+IsGeneralPurposeV2       : true
+FullyQualifiedDomainName : managedInstance1.wcusxxxxxxxxxxxxx.database.windows.net
+AdministratorLogin       : adminLogin1
+AdministratorPassword    :
+SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
+LicenseType              : LicenseIncluded
+VCores                   : 8
+MemorySizeInGB           : 64
+StorageSizeInGB          : 1024
+StorageIOps              : 4000
+InstancePoolName         :
+```
 
 ## PARAMETERS
 
@@ -883,6 +919,21 @@ Accept wildcard characters: False
 
 ### -VCore
 Determines how much VCore to associate with instance
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MemorySizeInGB
+Determines how much memory in GB to associate with instance
 
 ```yaml
 Type: System.Nullable`1[System.Int32]

@@ -13,10 +13,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryResourcePropertiesInternal
     {
 
+        /// <summary>Internal Acessors for ProvisioningState</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryResourcePropertiesInternal.ProvisioningState { get => this._provisioningState; set { {_provisioningState = value;} } }
+
+        /// <summary>Backing field for <see cref="ProvisioningState" /> property.</summary>
+        private string _provisioningState;
+
+        /// <summary>The status of the last operation.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Owned)]
+        public string ProvisioningState { get => this._provisioningState; }
+
         /// <summary>Backing field for <see cref="SummaryType" /> property.</summary>
         private string _summaryType;
 
-        /// <summary>Describes the type of summary.</summary>
+        /// <summary>The type of summary.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Owned)]
         public string SummaryType { get => this._summaryType; set => this._summaryType = value; }
 
@@ -30,17 +40,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
     public partial interface ISummaryResourceProperties :
         Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IJsonSerializable
     {
-        /// <summary>Describes the type of summary.</summary>
+        /// <summary>The status of the last operation.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The status of the last operation.",
+        SerializedName = @"provisioningState",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Pending", "Extracting", "Analyzing")]
+        string ProvisioningState { get;  }
+        /// <summary>The type of summary.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
         Required = true,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Describes the type of summary.",
+        Description = @"The type of summary.",
         SerializedName = @"summaryType",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PSArgumentCompleterAttribute("Firmware", "CVE", "BinaryHardening", "CryptoCertificate", "CryptoKey")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PSArgumentCompleterAttribute("Firmware", "CommonVulnerabilitiesAndExposures", "BinaryHardening", "CryptoCertificate", "CryptoKey")]
         string SummaryType { get; set; }
 
     }
@@ -48,8 +70,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
     internal partial interface ISummaryResourcePropertiesInternal
 
     {
-        /// <summary>Describes the type of summary.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PSArgumentCompleterAttribute("Firmware", "CVE", "BinaryHardening", "CryptoCertificate", "CryptoKey")]
+        /// <summary>The status of the last operation.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Pending", "Extracting", "Analyzing")]
+        string ProvisioningState { get; set; }
+        /// <summary>The type of summary.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PSArgumentCompleterAttribute("Firmware", "CommonVulnerabilitiesAndExposures", "BinaryHardening", "CryptoCertificate", "CryptoKey")]
         string SummaryType { get; set; }
 
     }

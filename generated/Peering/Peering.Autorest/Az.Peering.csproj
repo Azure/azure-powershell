@@ -3,6 +3,7 @@
     <PsModuleName>Peering</PsModuleName>
     <PsRootModuleName>Peering</PsRootModuleName>
     <PsModuleFolder>Peering.Autorest</PsModuleFolder>
+    <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.Peering</RootNamespace>
   </PropertyGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.autorest.props" />

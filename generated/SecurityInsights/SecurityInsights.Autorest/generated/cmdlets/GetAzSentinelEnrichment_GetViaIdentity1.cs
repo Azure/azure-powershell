@@ -13,6 +13,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Cmdlets
     /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityInsights/enrichment/domain/whois/"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzSentinelEnrichment_GetViaIdentity1")]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.ParameterSetBreakingChange(new string[] {"GetViaIdentity"}, "15.0.0", "4.0.0", "2025/11/19")]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.PreviewMessage("*****************************************************************************************\r\n* This cmdlet will undergo a breaking change in Az v15.0.0, to be released on November 19th 2025. *\r\n* At least one change applies to this cmdlet.                                                     *\r\n* See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *\r\n**************************************************************************************************")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IEnrichmentDomainWhois))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Description(@"Get whois information for a single domain name")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Generated]

@@ -1,95 +1,9 @@
 {
-  "Update-AzElasticVMCollection+[NoContext]+UpdateExpanded+$POST+https://management.azure.com/subscriptions/cff37b56-870a-448f-a2fb-1a89235d4d32/resourceGroups/elastic-rg-pl0jai/providers/Microsoft.Elastic/monitors/elastic-mfvsw9/vmCollectionUpdate?api-version=2024-03-01+1": {
+  "Update-AzElasticVMCollection+[NoContext]+UpdateExpanded+$POST+https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/es-cloudtests-portal/providers/Microsoft.Elastic/monitors/PortalCloudTest-6939106/vmCollectionUpdate?api-version=2025-06-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/cff37b56-870a-448f-a2fb-1a89235d4d32/resourceGroups/elastic-rg-pl0jai/providers/Microsoft.Elastic/monitors/elastic-mfvsw9/vmCollectionUpdate?api-version=2024-03-01",
-      "Content": "{\n  \"vmResourceId\": \"/subscriptions/xxxxxx/resourceGroups/vidhi-rg/providers/Microsoft.Compute/virtualMachines/vidhi-linuxOS\",\n  \"operationName\": \"Add\"\n}",
-      "isContentBase64": false,
-      "Headers": {
-      },
-      "ContentHeaders": {
-        "Content-Type": [ "application/json" ],
-        "Content-Length": [ "153" ]
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
-        "x-ms-providerhub-traffic": [ "True" ],
-        "Request-Context": [ "appId=cid-v1:13f6b276-8851-4983-9417-68bc36807add" ],
-        "mise-correlation-id": [ "c28e7e44-a074-4727-8aff-beb0f87e219e" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "a2349024-19df-4892-9f5b-1e37e8fafc0c" ],
-        "x-ms-correlation-request-id": [ "79618fe5-72b9-44f9-8129-8aad07c1d286" ],
-        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
-        "x-ms-routing-request-id": [ "WESTINDIA:20241015T055056Z:79618fe5-72b9-44f9-8129-8aad07c1d286" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 2B8CACF532A84B6E8BCFF81E58FFFBE8 Ref B: MAA201060513037 Ref C: 2024-10-15T05:50:55Z" ],
-        "Date": [ "Tue, 15 Oct 2024 05:50:56 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "217" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"deploymentId\":\"cacf5460ea0f5e0897b3090f4054b8d1\",\"vmResourceId\":\"/subscriptions/xxxxxx/resourceGroups/vidhi-rg/providers/Microsoft.Compute/virtualMachines/vidhi-linuxOS\",\"installDate\":\"2024-10-15T05:50:56.6412105Z\"}",
-      "isContentBase64": false
-    }
-  },
-  "Update-AzElasticVMCollection+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/cff37b56-870a-448f-a2fb-1a89235d4d32/resourceGroups/elastic-rg-pl0jai/providers/Microsoft.Elastic/monitors/elastic-mfvsw9?api-version=2024-03-01+1": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cff37b56-870a-448f-a2fb-1a89235d4d32/resourceGroups/elastic-rg-pl0jai/providers/Microsoft.Elastic/monitors/elastic-mfvsw9?api-version=2024-03-01",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "x-ms-unique-id": [ "117" ],
-        "x-ms-client-request-id": [ "854cbb43-db38-4e9b-bb80-9a7a0c60c590" ],
-        "CommandName": [ "Get-AzElasticMonitor" ],
-        "FullCommandName": [ "Get-AzElasticMonitor_Get" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.23", "Az.Elastic/0.1.0" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "ETag": [ "\"0000af5c-0000-0800-0000-670e02b70000\"" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
-        "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-request-id": [ "e0e69bdc-72bb-4080-ae7d-2a9181f92815" ],
-        "x-ms-correlation-request-id": [ "af86f8e8-2058-43bb-83e1-d4cb93a2b45d" ],
-        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
-        "x-ms-routing-request-id": [ "WESTINDIA:20241015T055057Z:af86f8e8-2058-43bb-83e1-d4cb93a2b45d" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: C72BBE3F18BF407BBFF2D54DAD3DE989 Ref B: MAA201060513037 Ref C: 2024-10-15T05:50:56Z" ],
-        "Date": [ "Tue, 15 Oct 2024 05:50:57 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "1613" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/cff37b56-870a-448f-a2fb-1a89235d4d32/resourceGroups/elastic-rg-pl0jai/providers/Microsoft.Elastic/monitors/elastic-mfvsw9\",\"name\":\"elastic-mfvsw9\",\"type\":\"microsoft.elastic/monitors\",\"sku\":{\"name\":\"ess-consumption-2024_Monthly\"},\"location\":\"westus2\",\"tags\":{\"key02\":\"2\",\"key03\":\"3\",\"key04\":\"4\",\"key01\":\"1\"},\"systemData\":{\"createdBy\":\"testrefresh199@mpliftrelastic20211117outlo.onmicrosoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-10-15T05:13:39.9550004Z\",\"lastModifiedBy\":\"testrefresh199@mpliftrelastic20211117outlo.onmicrosoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-10-15T05:50:47.7006038Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"monitoringStatus\":\"Enabled\",\"elasticProperties\":{\"elasticCloudUser\":{\"emailAddress\":\"testrefresh199@mpliftrelastic20211117outlo.onmicrosoft.com\",\"id\":\"2164737578\",\"elasticCloudSsoDefaultUrl\":\"https://cloud.elastic.co\"},\"elasticCloudDeployment\":{\"name\":\"elastic-mfvsw9\",\"deploymentId\":\"cacf5460ea0f5e0897b3090f4054b8d1\",\"azureSubscriptionId\":\"cff37b56-870a-448f-a2fb-1a89235d4d32\",\"elasticsearchRegion\":\"azure-westus2\",\"elasticsearchServiceUrl\":\"https://elastic-mfvsw9.es.westus2.azure.elastic-cloud.com\",\"kibanaServiceUrl\":\"https://c46d7ffbc4684a578898800991587f58.westus2.azure.elastic-cloud.com:9243\",\"kibanaSsoUrl\":\"/sso/v1/go/ec:2419531357:kibana-elastic-mfvsw9?acs=https://elastic-mfvsw9.kb.westus2.azure.elastic-cloud.com:9243/api/security/saml/callback\u0026sp_login_url=https://elastic-mfvsw9.kb.westus2.azure.elastic-cloud.com:9243\"}},\"liftrResourceCategory\":\"MonitorLogs\",\"liftrResourcePreference\":0,\"generateApiKey\":false}}",
-      "isContentBase64": false
-    }
-  },
-  "Update-AzElasticVMCollection+[NoContext]+UpdateViaIdentityExpanded+$POST+https://management.azure.com/subscriptions/cff37b56-870a-448f-a2fb-1a89235d4d32/resourceGroups/elastic-rg-pl0jai/providers/Microsoft.Elastic/monitors/elastic-mfvsw9/vmCollectionUpdate?api-version=2024-03-01+2": {
-    "Request": {
-      "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/cff37b56-870a-448f-a2fb-1a89235d4d32/resourceGroups/elastic-rg-pl0jai/providers/Microsoft.Elastic/monitors/elastic-mfvsw9/vmCollectionUpdate?api-version=2024-03-01",
-      "Content": "{\n  \"vmResourceId\": \"/subscriptions/xxxxxx/resourceGroups/vidhi-rg/providers/Microsoft.Compute/virtualMachines/vidhi-linuxOS\",\n  \"operationName\": \"Delete\"\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/es-cloudtests-portal/providers/Microsoft.Elastic/monitors/PortalCloudTest-6939106/vmCollectionUpdate?api-version=2025-06-01",
+      "Content": "{\r\n  \"vmResourceId\": \"/subscriptions/xxxxxx/resourceGroups/vidhi-rg/providers/Microsoft.Compute/virtualMachines/vidhi-linuxOS\",\r\n  \"operationName\": \"Add\"\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -103,19 +17,107 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-operation-identifier": [ "tenantId=c9967a4f-613f-442b-88f6-1e46aad03123,objectId=a1cb3b7f-f1c0-4ef4-8929-2b7c856bf5f0/eastus/b08d688e-8ba9-4c66-804d-6f76c20da0a9" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Request-Context": [ "appId=cid-v1:13f6b276-8851-4983-9417-68bc36807add" ],
-        "mise-correlation-id": [ "e36da1af-d1d0-446c-a070-6502fe555578" ],
+        "mise-correlation-id": [ "a3589964-cdac-4de3-9aba-4b55cbdbc8b6" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "a2b8d302-86e4-437c-93b4-34660b0b9290" ],
-        "x-ms-correlation-request-id": [ "0a239858-bb8b-400a-a800-985ffd227fc9" ],
-        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
-        "x-ms-routing-request-id": [ "WESTINDIA:20241015T055059Z:0a239858-bb8b-400a-a800-985ffd227fc9" ],
+        "x-ms-request-id": [ "1a894cf9-2a09-475d-86b4-6bdb68f50aa3" ],
+        "x-ms-correlation-request-id": [ "6b9a0be7-c10d-43b0-8ab3-50bba8c40b6e" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "198" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2998" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251017T031025Z:6b9a0be7-c10d-43b0-8ab3-50bba8c40b6e" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 055BB56249F64732A1D60E819C9FB901 Ref B: MAA201060513037 Ref C: 2024-10-15T05:50:58Z" ],
-        "Date": [ "Tue, 15 Oct 2024 05:50:58 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 82CD76DCAEAD43ADBE4FF293DE020B87 Ref B: PNQ231110908052 Ref C: 2025-10-17T03:10:24Z" ],
+        "Date": [ "Fri, 17 Oct 2025 03:10:25 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "249" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"68f1b3a13d06b427bd682af1\",\"deploymentId\":\"c1d96e6e5385275ebda1084a8a68215e\",\"vmResourceId\":\"/subscriptions/xxxxxx/resourceGroups/vidhi-rg/providers/Microsoft.Compute/virtualMachines/vidhi-linuxOS\",\"installDate\":\"2025-10-17T03:10:25.2413634Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzElasticVMCollection+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/es-cloudtests-portal/providers/Microsoft.Elastic/monitors/PortalCloudTest-6939106?api-version=2025-06-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/es-cloudtests-portal/providers/Microsoft.Elastic/monitors/PortalCloudTest-6939106?api-version=2025-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "46" ],
+        "x-ms-client-request-id": [ "a61f8f98-0b16-4978-af86-58d27b5af2b8" ],
+        "CommandName": [ "Get-AzElasticMonitor" ],
+        "FullCommandName": [ "Get-AzElasticMonitor_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.5.3", "Az.Elastic/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"1601896b-0000-0800-0000-68f1b39e0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "0d7a728f-d2ad-454f-8d75-33f20520fed0" ],
+        "x-ms-correlation-request-id": [ "e5a5de6b-e5f8-40a5-8f12-ca2cd44ff979" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251017T031025Z:e5a5de6b-e5f8-40a5-8f12-ca2cd44ff979" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: B555BA76162A42D39FAF50448CB7AC5F Ref B: PNQ231110908052 Ref C: 2025-10-17T03:10:25Z" ],
+        "Date": [ "Fri, 17 Oct 2025 03:10:25 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2006" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/es-cloudtests-portal/providers/Microsoft.Elastic/monitors/PortalCloudTest-6939106\",\"name\":\"PortalCloudTest-6939106\",\"type\":\"microsoft.elastic/monitors\",\"sku\":{\"name\":\"ess-consumption-2024_Monthly@TIDgmz7xq9ge3py\"},\"kind\":\"elastic-hosted-search\",\"location\":\"westus2\",\"tags\":{\"key02\":\"2\",\"key01\":\"1\",\"key04\":\"4\",\"key03\":\"3\"},\"systemData\":{\"createdBy\":\"TEST_TEST_user3@testtestliftrtest5.onmicrosoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-09-30T20:22:33.2490102Z\",\"lastModifiedBy\":\"joytesting1310@testtestliftrtest5.onmicrosoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-17T03:10:21.8261557Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"monitoringStatus\":\"Enabled\",\"elasticProperties\":{\"elasticCloudUser\":{\"emailAddress\":\"TEST_TEST_user3@testtestliftrtest5.onmicrosoft.com\",\"id\":\"1847077549\",\"elasticCloudSsoDefaultUrl\":\"https://cloud.elastic.co\"},\"elasticCloudDeployment\":{\"name\":\"PortalCloudTest-6939106\",\"deploymentId\":\"c1d96e6e5385275ebda1084a8a68215e\",\"azureSubscriptionId\":\"e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e\",\"elasticsearchRegion\":\"azure-westus2\",\"elasticsearchServiceUrl\":\"https://portalcloudtest-6939106-c1d96e.es.westus2.azure.elastic-cloud.com\",\"kibanaServiceUrl\":\"https://013f4e5896ec48ee88cbfd13b3abd04a.westus2.azure.elastic-cloud.com\",\"kibanaSsoUrl\":\"/sso/v1/go/ec:1677795862:kibana-portalcloudtest-6939106-c1d96e?acs=https://portalcloudtest-6939106-c1d96e.kb.westus2.azure.elastic-cloud.com/api/security/saml/callback\u0026sp_login_url=https://portalcloudtest-6939106-c1d96e.kb.westus2.azure.elastic-cloud.com\"}},\"planDetails\":{\"offerID\":\"ec-azure-pp\",\"publisherID\":\"elastic\",\"termID\":\"gmz7xq9ge3py\",\"planID\":\"ess-consumption-2024\"},\"version\":\"9.0.7\",\"sourceCampaignName\":\"\",\"sourceCampaignId\":\"\",\"liftrResourceCategory\":\"MonitorLogs\",\"liftrResourcePreference\":0,\"generateApiKey\":false,\"hostingType\":\"Hosted\",\"projectDetails\":{\"projectType\":\"NotApplicable\",\"configurationType\":\"NotApplicable\"}}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzElasticVMCollection+[NoContext]+UpdateViaIdentityExpanded+$POST+https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/es-cloudtests-portal/providers/Microsoft.Elastic/monitors/PortalCloudTest-6939106/vmCollectionUpdate?api-version=2025-06-01+2": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/es-cloudtests-portal/providers/Microsoft.Elastic/monitors/PortalCloudTest-6939106/vmCollectionUpdate?api-version=2025-06-01",
+      "Content": "{\r\n  \"vmResourceId\": \"/subscriptions/xxxxxx/resourceGroups/vidhi-rg/providers/Microsoft.Compute/virtualMachines/vidhi-linuxOS\",\r\n  \"operationName\": \"Delete\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "159" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=c9967a4f-613f-442b-88f6-1e46aad03123,objectId=a1cb3b7f-f1c0-4ef4-8929-2b7c856bf5f0/eastus/c0154c60-8d77-477a-8e0a-83eea7e13516" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:13f6b276-8851-4983-9417-68bc36807add" ],
+        "mise-correlation-id": [ "a2c187b8-fdb3-4aeb-894e-19e35b809b98" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "165eb703-7662-4a89-aeb6-29b1390b03dd" ],
+        "x-ms-correlation-request-id": [ "15ac7077-4405-4014-b482-20bc4332d119" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251017T031026Z:15ac7077-4405-4014-b482-20bc4332d119" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: FABC7CBD0AC945E7839B5A78777163BB Ref B: PNQ231110908052 Ref C: 2025-10-17T03:10:26Z" ],
+        "Date": [ "Fri, 17 Oct 2025 03:10:26 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "4" ],

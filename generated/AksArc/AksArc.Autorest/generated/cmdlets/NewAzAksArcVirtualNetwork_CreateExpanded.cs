@@ -41,15 +41,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc.Cmdlets
         /// <summary>A dictionary to carry over additional data for pipeline.</summary>
         private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
 
-        /// <summary>A buffer to record first returned object in response.</summary>
-        private object _firstResponse = null;
-
-        /// <summary>
-        /// A flag to tell whether it is the first returned object in a call. Zero means no response yet. One means 1 returned object.
-        /// Two means multiple returned objects in response.
-        /// </summary>
-        private int _responseSize = 0;
-
         /// <summary>The Virtual Network resource definition.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetwork _virtualNetworksBody = new Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.VirtualNetwork();
 
@@ -68,17 +59,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc.Cmdlets
 
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.AksArc.AksArc Client => Microsoft.Azure.PowerShell.Cmdlets.AksArc.Module.Instance.ClientAPI;
-
-        /// <summary>ARM Id of the extended location.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "ARM Id of the extended location.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"ARM Id of the extended location.",
-        SerializedName = @"name",
-        PossibleTypes = new [] { typeof(string) })]
-        public string CustomLocationID { get => _virtualNetworksBody.ExtendedLocationName ?? null; set => _virtualNetworksBody.ExtendedLocationName = value; }
 
         /// <summary>
         /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
@@ -101,6 +81,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc.Cmdlets
         SerializedName = @"dnsServers",
         PossibleTypes = new [] { typeof(string) })]
         public string[] DnsServer { get => _virtualNetworksBody.DnsServer?.ToArray() ?? null /* fixedArrayOf */; set => _virtualNetworksBody.DnsServer = (value != null ? new System.Collections.Generic.List<string>(value) : null); }
+
+        /// <summary>ARM Id of the extended location.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "ARM Id of the extended location.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"ARM Id of the extended location.",
+        SerializedName = @"name",
+        PossibleTypes = new [] { typeof(string) })]
+        public string ExtendedLocationName { get => _virtualNetworksBody.ExtendedLocationName ?? null; set => _virtualNetworksBody.ExtendedLocationName = value; }
 
         /// <summary>The extended location type. Allowed value: 'CustomLocation'</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The extended location type. Allowed value: 'CustomLocation'")]
@@ -401,11 +392,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            if (1 ==_responseSize)
-            {
-                // Flush buffer
-                WriteObject(_firstResponse);
-            }
             var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.AksArc.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
             if (telemetryInfo != null)
             {
@@ -721,24 +707,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc.Cmdlets
                 // onOk - response for 200 / application/json
                 // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetwork
                 var result = (await response);
-                if (null != result)
-                {
-                    if (0 == _responseSize)
-                    {
-                        _firstResponse = result;
-                        _responseSize = 1;
-                    }
-                    else
-                    {
-                        if (1 ==_responseSize)
-                        {
-                            // Flush buffer
-                            WriteObject(_firstResponse.AddMultipleTypeNameIntoPSObject());
-                        }
-                        WriteObject(result.AddMultipleTypeNameIntoPSObject());
-                        _responseSize = 2;
-                    }
-                }
+                WriteObject(result, false);
             }
         }
     }

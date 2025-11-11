@@ -7,6 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Extensions;
 
+    /// <summary>Paged collection of ManagedGrafana items</summary>
     public partial class ManagedGrafanaListResponse :
         Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaListResponse,
         Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaListResponseInternal
@@ -15,12 +16,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models
         /// <summary>Backing field for <see cref="NextLink" /> property.</summary>
         private string _nextLink;
 
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Origin(Microsoft.Azure.PowerShell.Cmdlets.Dashboard.PropertyOrigin.Owned)]
         public string NextLink { get => this._nextLink; set => this._nextLink = value; }
 
         /// <summary>Backing field for <see cref="Value" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafana> _value;
 
+        /// <summary>The ManagedGrafana items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Origin(Microsoft.Azure.PowerShell.Cmdlets.Dashboard.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafana> Value { get => this._value; set => this._value = value; }
 
@@ -30,37 +33,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models
 
         }
     }
+    /// Paged collection of ManagedGrafana items
     public partial interface IManagedGrafanaListResponse :
         Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.IJsonSerializable
     {
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"",
+        Description = @"The link to the next page of items",
         SerializedName = @"nextLink",
         PossibleTypes = new [] { typeof(string) })]
         string NextLink { get; set; }
-
+        /// <summary>The ManagedGrafana items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Info(
-        Required = false,
+        Required = true,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"",
+        Description = @"The ManagedGrafana items on this page",
         SerializedName = @"value",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafana) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafana> Value { get; set; }
 
     }
+    /// Paged collection of ManagedGrafana items
     internal partial interface IManagedGrafanaListResponseInternal
 
     {
+        /// <summary>The link to the next page of items</summary>
         string NextLink { get; set; }
-
+        /// <summary>The ManagedGrafana items on this page</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafana> Value { get; set; }
 
     }

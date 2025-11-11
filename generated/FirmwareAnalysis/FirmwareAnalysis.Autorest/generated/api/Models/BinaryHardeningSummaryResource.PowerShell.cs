@@ -80,29 +80,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningSummaryResourceInternal)this).TotalFile = (long?) content.GetValueForProperty("TotalFile",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningSummaryResourceInternal)this).TotalFile, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             }
-            if (content.Contains("Nx"))
+            if (content.Contains("NotExecutableStackCount"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningSummaryResourceInternal)this).Nx = (int?) content.GetValueForProperty("Nx",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningSummaryResourceInternal)this).Nx, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningSummaryResourceInternal)this).NotExecutableStackCount = (long?) content.GetValueForProperty("NotExecutableStackCount",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningSummaryResourceInternal)this).NotExecutableStackCount, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             }
-            if (content.Contains("Pie"))
+            if (content.Contains("PositionIndependentExecutableCount"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningSummaryResourceInternal)this).Pie = (int?) content.GetValueForProperty("Pie",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningSummaryResourceInternal)this).Pie, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningSummaryResourceInternal)this).PositionIndependentExecutableCount = (long?) content.GetValueForProperty("PositionIndependentExecutableCount",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningSummaryResourceInternal)this).PositionIndependentExecutableCount, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             }
-            if (content.Contains("Relro"))
+            if (content.Contains("RelocationReadOnlyCount"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningSummaryResourceInternal)this).Relro = (int?) content.GetValueForProperty("Relro",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningSummaryResourceInternal)this).Relro, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningSummaryResourceInternal)this).RelocationReadOnlyCount = (long?) content.GetValueForProperty("RelocationReadOnlyCount",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningSummaryResourceInternal)this).RelocationReadOnlyCount, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             }
-            if (content.Contains("Canary"))
+            if (content.Contains("StackCanaryCount"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningSummaryResourceInternal)this).Canary = (int?) content.GetValueForProperty("Canary",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningSummaryResourceInternal)this).Canary, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningSummaryResourceInternal)this).StackCanaryCount = (long?) content.GetValueForProperty("StackCanaryCount",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningSummaryResourceInternal)this).StackCanaryCount, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             }
-            if (content.Contains("Stripped"))
+            if (content.Contains("StrippedBinaryCount"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningSummaryResourceInternal)this).Stripped = (int?) content.GetValueForProperty("Stripped",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningSummaryResourceInternal)this).Stripped, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningSummaryResourceInternal)this).StrippedBinaryCount = (long?) content.GetValueForProperty("StrippedBinaryCount",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningSummaryResourceInternal)this).StrippedBinaryCount, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             }
             if (content.Contains("SummaryType"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryResourcePropertiesInternal)this).SummaryType = (string) content.GetValueForProperty("SummaryType",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryResourcePropertiesInternal)this).SummaryType, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProvisioningState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryResourcePropertiesInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryResourcePropertiesInternal)this).ProvisioningState, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
@@ -125,29 +129,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningSummaryResourceInternal)this).TotalFile = (long?) content.GetValueForProperty("TotalFile",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningSummaryResourceInternal)this).TotalFile, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             }
-            if (content.Contains("Nx"))
+            if (content.Contains("NotExecutableStackCount"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningSummaryResourceInternal)this).Nx = (int?) content.GetValueForProperty("Nx",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningSummaryResourceInternal)this).Nx, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningSummaryResourceInternal)this).NotExecutableStackCount = (long?) content.GetValueForProperty("NotExecutableStackCount",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningSummaryResourceInternal)this).NotExecutableStackCount, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             }
-            if (content.Contains("Pie"))
+            if (content.Contains("PositionIndependentExecutableCount"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningSummaryResourceInternal)this).Pie = (int?) content.GetValueForProperty("Pie",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningSummaryResourceInternal)this).Pie, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningSummaryResourceInternal)this).PositionIndependentExecutableCount = (long?) content.GetValueForProperty("PositionIndependentExecutableCount",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningSummaryResourceInternal)this).PositionIndependentExecutableCount, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             }
-            if (content.Contains("Relro"))
+            if (content.Contains("RelocationReadOnlyCount"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningSummaryResourceInternal)this).Relro = (int?) content.GetValueForProperty("Relro",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningSummaryResourceInternal)this).Relro, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningSummaryResourceInternal)this).RelocationReadOnlyCount = (long?) content.GetValueForProperty("RelocationReadOnlyCount",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningSummaryResourceInternal)this).RelocationReadOnlyCount, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             }
-            if (content.Contains("Canary"))
+            if (content.Contains("StackCanaryCount"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningSummaryResourceInternal)this).Canary = (int?) content.GetValueForProperty("Canary",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningSummaryResourceInternal)this).Canary, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningSummaryResourceInternal)this).StackCanaryCount = (long?) content.GetValueForProperty("StackCanaryCount",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningSummaryResourceInternal)this).StackCanaryCount, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             }
-            if (content.Contains("Stripped"))
+            if (content.Contains("StrippedBinaryCount"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningSummaryResourceInternal)this).Stripped = (int?) content.GetValueForProperty("Stripped",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningSummaryResourceInternal)this).Stripped, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningSummaryResourceInternal)this).StrippedBinaryCount = (long?) content.GetValueForProperty("StrippedBinaryCount",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningSummaryResourceInternal)this).StrippedBinaryCount, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             }
             if (content.Contains("SummaryType"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryResourcePropertiesInternal)this).SummaryType = (string) content.GetValueForProperty("SummaryType",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryResourcePropertiesInternal)this).SummaryType, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProvisioningState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryResourcePropertiesInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryResourcePropertiesInternal)this).ProvisioningState, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

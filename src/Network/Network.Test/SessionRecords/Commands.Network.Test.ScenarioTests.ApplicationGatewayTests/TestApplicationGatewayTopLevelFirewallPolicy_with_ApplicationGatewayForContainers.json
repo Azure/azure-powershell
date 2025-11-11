@@ -1,0 +1,83 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/66de82f3-ad93-4605-bbdb-237fe7ef3a06/resourceGroups/appgwTest/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/testwafpolicy?api-version=2024-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjZkZTgyZjMtYWQ5My00NjA1LWJiZGItMjM3ZmU3ZWYzYTA2L3Jlc291cmNlR3JvdXBzL2FwcGd3VGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvQXBwbGljYXRpb25HYXRld2F5V2ViQXBwbGljYXRpb25GaXJld2FsbFBvbGljaWVzL3Rlc3R3YWZwb2xpY3k/YXBpLXZlcnNpb249MjAyNC0wNy0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "3c7cba41-58c5-44b4-b9ab-0c151d8a00a1"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.1825.31117",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/27.0.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "W/\"a949eda1-7aa8-45e2-8cb8-a841e9abfda9\""
+        ],
+        "x-ms-request-id": [
+          "e4bd761a-88f6-41a0-8365-1f0be052247e"
+        ],
+        "x-ms-correlation-request-id": [
+          "66c82526-dcbf-4c48-b285-883089b91c92"
+        ],
+        "x-ms-arm-service-request-id": [
+          "a2233ca6-235f-4819-afa5-d65697024b56"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "16499"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20250717T212311Z:66c82526-dcbf-4c48-b285-883089b91c92"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: E73FDF56A0D5454CA123397B9E08DFC2 Ref B: CYS013050704031 Ref C: 2025-07-17T21:23:11Z"
+        ],
+        "Date": [
+          "Thu, 17 Jul 2025 21:23:11 GMT"
+        ],
+        "Content-Length": [
+          "973"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"testwafpolicy\",\r\n  \"id\": \"/subscriptions/66de82f3-ad93-4605-bbdb-237fe7ef3a06/resourceGroups/appgwTest/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/testwafpolicy\",\r\n  \"etag\": \"W/\\\"a949eda1-7aa8-45e2-8cb8-a841e9abfda9\\\"\",\r\n  \"type\": \"Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies\",\r\n  \"location\": \"eastus2euap\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"customRules\": [],\r\n    \"policySettings\": {\r\n      \"requestBodyCheck\": true,\r\n      \"maxRequestBodySizeInKb\": 128,\r\n      \"fileUploadLimitInMb\": 100,\r\n      \"state\": \"Disabled\",\r\n      \"mode\": \"Detection\",\r\n      \"requestBodyInspectLimitInKB\": 128,\r\n      \"fileUploadEnforcement\": true,\r\n      \"requestBodyEnforcement\": true\r\n    },\r\n    \"managedRules\": {\r\n      \"managedRuleSets\": [\r\n        {\r\n          \"ruleSetType\": \"Microsoft_DefaultRuleSet\",\r\n          \"ruleSetVersion\": \"2.1\",\r\n          \"ruleGroupOverrides\": []\r\n        }\r\n      ],\r\n      \"exclusions\": []\r\n    },\r\n    \"applicationGatewayForContainers\": [\r\n      {\r\n        \"id\": \"/subscriptions/66de82f3-ad93-4605-bbdb-237fe7ef3a06/resourcegroups/appgwtest/providers/microsoft.servicenetworking/trafficcontrollers/test1\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "66de82f3-ad93-4605-bbdb-237fe7ef3a06"
+  }
+}

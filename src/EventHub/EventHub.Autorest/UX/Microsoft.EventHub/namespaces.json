@@ -1,6 +1,6 @@
 {
   "resourceType": "namespaces",
-  "apiVersion": "2024-05-01-preview",
+  "apiVersion": "2025-05-01-preview",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.eventhub"
   },

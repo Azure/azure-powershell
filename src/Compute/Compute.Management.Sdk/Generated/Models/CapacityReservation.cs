@@ -36,10 +36,14 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         /// <param name="location">Resource location</param>
         /// <param name="sku">SKU of the resource for which capacity needs be
-        /// reserved. The SKU name and capacity is required to be set.
-        /// Currently VM Skus with the capability called
-        /// 'CapacityReservationSupported' set to true are supported. Refer to
-        /// List Microsoft.Compute SKUs in a region
+        /// reserved. The SKU name and capacity is required to be set.  For
+        /// Block capacity reservations, sku.capacity can only accept values 1,
+        /// 2, 4, 8, 16, 32, 64. Currently VM Skus with the capability called
+        /// 'CapacityReservationSupported' set to true are supported. When
+        /// 'CapacityReservationSupported' is true, the SKU capability also
+        /// specifies the 'SupportedCapacityReservationTypes', which lists the
+        /// types of capacity reservations (such as Targeted or Block) that the
+        /// SKU supports. Refer to List Microsoft.Compute SKUs in a region
         /// (https://docs.microsoft.com/rest/api/compute/resourceskus/list) for
         /// supported values.</param>
         /// <param name="id">Resource Id</param>
@@ -67,14 +71,16 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="timeCreated">Specifies the time at which the Capacity
         /// Reservation resource was created. Minimum api-version:
         /// 2021-11-01.</param>
-        /// <param name="zones">Availability Zone to use for this capacity
-        /// reservation. The zone has to be single value and also should be
-        /// part for the list of zones specified during the capacity
-        /// reservation group creation. The zone can be assigned only during
-        /// creation. If not provided, the reservation supports only non-zonal
-        /// deployments. If provided, enforces VM/VMSS using this capacity
-        /// reservation to be in same zone.</param>
-        public CapacityReservation(string location, Sku sku, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string reservationId = default(string), int? platformFaultDomainCount = default(int?), IList<SubResourceReadOnly> virtualMachinesAssociated = default(IList<SubResourceReadOnly>), System.DateTime? provisioningTime = default(System.DateTime?), string provisioningState = default(string), CapacityReservationInstanceView instanceView = default(CapacityReservationInstanceView), System.DateTime? timeCreated = default(System.DateTime?), IList<string> zones = default(IList<string>))
+        /// <param name="scheduleProfile">Defines the schedule for Block-type
+        /// capacity reservations. Specifies the schedule during which capacity
+        /// reservation is active and VM or VMSS resource can be allocated
+        /// using reservation. This property is required and only supported
+        /// when the capacity reservation group type is 'Block'. The
+        /// scheduleProfile, start, and end fields are immutable after
+        /// creation. Minimum API version: 2025-04-01. Please refer to
+        /// https://aka.ms/blockcapacityreservation for more details.</param>
+        /// <param name="zones">The availability zones.</param>
+        public CapacityReservation(string location, Sku sku, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string reservationId = default(string), int? platformFaultDomainCount = default(int?), IList<SubResourceReadOnly> virtualMachinesAssociated = default(IList<SubResourceReadOnly>), System.DateTime? provisioningTime = default(System.DateTime?), string provisioningState = default(string), CapacityReservationInstanceView instanceView = default(CapacityReservationInstanceView), System.DateTime? timeCreated = default(System.DateTime?), ScheduleProfile scheduleProfile = default(ScheduleProfile), IList<string> zones = default(IList<string>))
             : base(location, id, name, type, tags)
         {
             ReservationId = reservationId;
@@ -84,6 +90,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             ProvisioningState = provisioningState;
             InstanceView = instanceView;
             TimeCreated = timeCreated;
+            ScheduleProfile = scheduleProfile;
             Sku = sku;
             Zones = zones;
             CustomInit();
@@ -145,11 +152,28 @@ namespace Microsoft.Azure.Management.Compute.Models
         public System.DateTime? TimeCreated { get; private set; }
 
         /// <summary>
+        /// Gets or sets defines the schedule for Block-type capacity
+        /// reservations. Specifies the schedule during which capacity
+        /// reservation is active and VM or VMSS resource can be allocated
+        /// using reservation. This property is required and only supported
+        /// when the capacity reservation group type is 'Block'. The
+        /// scheduleProfile, start, and end fields are immutable after
+        /// creation. Minimum API version: 2025-04-01. Please refer to
+        /// https://aka.ms/blockcapacityreservation for more details.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.scheduleProfile")]
+        public ScheduleProfile ScheduleProfile { get; set; }
+
+        /// <summary>
         /// Gets or sets SKU of the resource for which capacity needs be
-        /// reserved. The SKU name and capacity is required to be set.
-        /// Currently VM Skus with the capability called
-        /// 'CapacityReservationSupported' set to true are supported. Refer to
-        /// List Microsoft.Compute SKUs in a region
+        /// reserved. The SKU name and capacity is required to be set.  For
+        /// Block capacity reservations, sku.capacity can only accept values 1,
+        /// 2, 4, 8, 16, 32, 64. Currently VM Skus with the capability called
+        /// 'CapacityReservationSupported' set to true are supported. When
+        /// 'CapacityReservationSupported' is true, the SKU capability also
+        /// specifies the 'SupportedCapacityReservationTypes', which lists the
+        /// types of capacity reservations (such as Targeted or Block) that the
+        /// SKU supports. Refer to List Microsoft.Compute SKUs in a region
         /// (https://docs.microsoft.com/rest/api/compute/resourceskus/list) for
         /// supported values.
         /// </summary>
@@ -157,13 +181,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         public Sku Sku { get; set; }
 
         /// <summary>
-        /// Gets or sets availability Zone to use for this capacity
-        /// reservation. The zone has to be single value and also should be
-        /// part for the list of zones specified during the capacity
-        /// reservation group creation. The zone can be assigned only during
-        /// creation. If not provided, the reservation supports only non-zonal
-        /// deployments. If provided, enforces VM/VMSS using this capacity
-        /// reservation to be in same zone.
+        /// Gets or sets the availability zones.
         /// </summary>
         [JsonProperty(PropertyName = "zones")]
         public IList<string> Zones { get; set; }

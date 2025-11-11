@@ -50,7 +50,8 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </param>
 
         /// <param name="serviceLevel">The service level of the file system
-        /// Possible values include: &#39;Standard&#39;, &#39;Premium&#39;, &#39;Ultra&#39;, &#39;StandardZRS&#39;</param>
+        /// Possible values include: &#39;Standard&#39;, &#39;Premium&#39;, &#39;Ultra&#39;, &#39;StandardZRS&#39;,
+        /// &#39;Flexible&#39;</param>
 
         /// <param name="qosType">The qos type of the pool
         /// Possible values include: &#39;Auto&#39;, &#39;Manual&#39;</param>
@@ -76,9 +77,14 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// <param name="utilizedThroughputMibps">Utilized throughput of pool in MiB/s
         /// </param>
 
+        /// <param name="customThroughputMibps">Maximum throughput in MiB/s that can be achieved by this pool and this will
+        /// be accepted as input only for manual qosType pool with Flexible service
+        /// level
+        /// </param>
+
         /// <param name="coolAccess">If enabled (true) the pool can contain cool Access enabled volumes.
         /// </param>
-        public CapacityPool(string location, string serviceLevel, long size, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), string qosType = default(string), string encryptionType = default(string), string poolId = default(string), string provisioningState = default(string), double? totalThroughputMibps = default(double?), double? utilizedThroughputMibps = default(double?), bool? coolAccess = default(bool?))
+        public CapacityPool(string location, string serviceLevel, long size, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), string qosType = default(string), string encryptionType = default(string), string poolId = default(string), string provisioningState = default(string), double? totalThroughputMibps = default(double?), double? utilizedThroughputMibps = default(double?), double? customThroughputMibps = default(double?), bool? coolAccess = default(bool?))
 
         : base(location, id, name, type, systemData, tags)
         {
@@ -91,6 +97,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
             this.ProvisioningState = provisioningState;
             this.TotalThroughputMibps = totalThroughputMibps;
             this.UtilizedThroughputMibps = utilizedThroughputMibps;
+            this.CustomThroughputMibps = customThroughputMibps;
             this.CoolAccess = coolAccess;
             CustomInit();
         }
@@ -109,7 +116,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
         public string Etag {get; private set; }
 
         /// <summary>
-        /// Gets or sets the service level of the file system Possible values include: &#39;Standard&#39;, &#39;Premium&#39;, &#39;Ultra&#39;, &#39;StandardZRS&#39;
+        /// Gets or sets the service level of the file system Possible values include: &#39;Standard&#39;, &#39;Premium&#39;, &#39;Ultra&#39;, &#39;StandardZRS&#39;, &#39;Flexible&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.serviceLevel")]
         public string ServiceLevel {get; set; }
@@ -158,6 +165,14 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.utilizedThroughputMibps")]
         public double? UtilizedThroughputMibps {get; private set; }
+
+        /// <summary>
+        /// Gets or sets maximum throughput in MiB/s that can be achieved by this pool
+        /// and this will be accepted as input only for manual qosType pool with
+        /// Flexible service level
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.customThroughputMibps")]
+        public double? CustomThroughputMibps {get; set; }
 
         /// <summary>
         /// Gets or sets if enabled (true) the pool can contain cool Access enabled

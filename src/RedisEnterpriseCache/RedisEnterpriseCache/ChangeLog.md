@@ -19,6 +19,10 @@
 -->
 ## Upcoming Release
 
+## Version 1.6.0
+* Added a new required property: PublicNetworkAccess for Cluster.
+* Updated the default value of AccessKeysAuthentication property for Database to 'Disabled'.
+
 ## Version 1.5.0
 * Added support for listing all SKUs a cluster can scale to.
 * Added a new enum: NoCluster for Clustering policy.

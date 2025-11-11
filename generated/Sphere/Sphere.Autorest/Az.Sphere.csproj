@@ -3,6 +3,7 @@
     <PsModuleName>Sphere</PsModuleName>
     <PsRootModuleName>Sphere</PsRootModuleName>
     <PsModuleFolder>Sphere.Autorest</PsModuleFolder>
+    <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.Sphere</RootNamespace>
   </PropertyGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.autorest.props" />

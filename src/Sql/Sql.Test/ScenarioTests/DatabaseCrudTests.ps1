@@ -1349,7 +1349,7 @@ function Test-CancelDatabaseOperationInternal
 		}
 		Catch
 		{
-			$ErrorMessage = $_.Exception.Message
+			$ErrorMessage = (ConvertFrom-Json $_.Exception.Response.Content).error.message
 			Assert-AreEqual True $ErrorMessage.Contains("Cannot cancel management operation '" + $dbactivityId + "' in the current state")
 		}
 	}

@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzFirmwareAnalysisWork
 Describe 'Update-AzFirmwareAnalysisWorkspace' {
     It 'UpdateExpanded' {
         { 
-            $config = Update-AzFirmwareAnalysisWorkspace -ResourceGroupName 'FirmwareAnalysisRG' -Name 'testworkspace'
+            $config = Update-AzFirmwareAnalysisWorkspace -ResourceGroupName $env.ResourceGroup -WorkspaceName $env.WorkspaceName
             $config.Count | Should -BeGreaterThan 0
         } | Should -Not -Throw
     }

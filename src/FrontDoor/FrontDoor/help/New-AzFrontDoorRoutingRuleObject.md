@@ -1,38 +1,40 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-Help.xml
+external help file: Az.FrontDoor-help.xml
 Module Name: Az.FrontDoor
-online version: https://learn.microsoft.com/powershell/module/az.frontdoor/new-azfrontdoorroutingruleobject
+online version: https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-azfrontdoorroutingruleobject
 schema: 2.0.0
 ---
 
 # New-AzFrontDoorRoutingRuleObject
 
 ## SYNOPSIS
-Create a PSRoutingRuleObject for Front Door creation
+Create an in-memory object for RoutingRule.
 
 ## SYNTAX
 
 ### ByFieldsWithForwardingParameterSet (Default)
 ```
-New-AzFrontDoorRoutingRuleObject -ResourceGroupName <String> -FrontDoorName <String> -Name <String>
- -FrontendEndpointName <String[]> -BackendPoolName <String> [-AcceptedProtocol <PSProtocol[]>]
- [-PatternToMatch <String[]>] [-CustomForwardingPath <String>] [-ForwardingProtocol <String>]
- [-EnableCaching <Boolean>] [-QueryParameterStripDirective <String>] [-DynamicCompression <PSEnabledState>]
- [-EnabledState <PSEnabledState>] [-RulesEngineName <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+New-AzFrontDoorRoutingRuleObject [-AcceptedProtocol <String[]>] [-EnabledState <String>]
+ [-FrontendEndpointName <String[]>] [-Name <String>] [-ResourceGroupName <String>] [-FrontDoorName <String>]
+ [-PatternsToMatch <String[]>] [-RouteConfiguration <IRouteConfiguration>] [-RuleEngineName <String>]
+ [-WebApplicationFirewallPolicyLinkId <String>] [-Id <String>] [-BackendPoolName <String>]
+ [-CacheDuration <TimeSpan>] [-DynamicCompression <String>] [-QueryParameter <String>]
+ [-QueryParameterStripDirective <String>] [-CustomForwardingPath <String>] [-ForwardingProtocol <String>]
+ [-EnableCaching <Boolean>] [<CommonParameters>]
 ```
 
 ### ByFieldsWithRedirectParameterSet
 ```
-New-AzFrontDoorRoutingRuleObject -ResourceGroupName <String> -FrontDoorName <String> -Name <String>
- -FrontendEndpointName <String[]> [-AcceptedProtocol <PSProtocol[]>] [-PatternToMatch <String[]>]
- [-RedirectType <String>] [-RedirectProtocol <String>] [-CustomHost <String>] [-CustomPath <String>]
- [-CustomFragment <String>] [-CustomQueryString <String>] [-EnabledState <PSEnabledState>]
- [-RulesEngineName <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzFrontDoorRoutingRuleObject [-AcceptedProtocol <String[]>] [-EnabledState <String>]
+ [-FrontendEndpointName <String[]>] [-Name <String>] [-ResourceGroupName <String>] [-FrontDoorName <String>]
+ [-PatternsToMatch <String[]>] [-RouteConfiguration <IRouteConfiguration>] [-RuleEngineName <String>]
+ [-WebApplicationFirewallPolicyLinkId <String>] [-Id <String>] [-CustomFragment <String>]
+ [-CustomHost <String>] [-CustomPath <String>] [-CustomQueryString <String>] [-RedirectProtocol <String>]
+ [-RedirectType <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a PSRoutingRuleObject for Front Door creation
+Create an in-memory object for RoutingRule.
 
 ## EXAMPLES
 
@@ -42,18 +44,28 @@ New-AzFrontDoorRoutingRuleObject -Name $routingRuleName -FrontDoorName $frontDoo
 ```
 
 ```output
-FrontendEndpointIds          : {/subscriptions/{subid}/resourceGroups/{rgname}/pro
-                               viders/Microsoft.Network/frontDoors/{frontdoorname}/FrontendEndpoints/frontendEndpoint1}
-AcceptedProtocols            : {Http, Https}
-PatternsToMatch              : {/*}
-HealthProbeSettings          :
-RouteConfiguration           : Microsoft.Azure.Commands.FrontDoor.Models.PSForwardingConfiguration
-EnabledState                 : Enabled
-ResourceState                :
-Id                           :
-Name                         : {routingRuleName}
-Type                         :
+AcceptedProtocol                   : {Http, Https}
+EnabledState                       : Enabled
+FrontendEndpoint                   : {{
+                                       "id": "/subscriptions/{subid}/resourceGroups/{rg}/providers/Microsoft.Network/frontDoors/{fname}/FrontendEndpoints/frontendEndpoint1"
+                                     }}
+Id                                 :
+Name                               :
+PatternsToMatch                    : {/*}
+ResourceState                      :
+RouteConfiguration                 : {
+                                       "@odata.type": "#Microsoft.Azure.FrontDoor.Models.FrontdoorForwardingConfiguration",
+                                       "backendPool": {
+                                         "id": "/subscriptions/{subid}/resourceGroups/{rg}/providers/Microsoft.Network/frontDoors/{fname}/BackendPools/backendPool1"
+                                       },
+                                       "forwardingProtocol": "MatchRequest"
+                                     }
+RuleEngineId                       :
+Type                               :
+WebApplicationFirewallPolicyLinkId :
 ```
+
+Create a PSRoutingRuleObject for Front Door creation with a forwarding rule
 
 ### Example 2: Create a PSRoutingRuleObject for Front Door creation with a redirect rule
 ```powershell
@@ -65,17 +77,27 @@ New-AzFrontDoorRoutingRuleObject -Name $routingRuleName -FrontDoorName $frontDoo
 ```
 
 ```output
-FrontendEndpointIds          : {/subscriptions/{subid}/resourceGroups/{rgname}/pro
-                               viders/Microsoft.Network/frontDoors/{frontdoorname}/FrontendEndpoints/frontendEndpoint1}
-AcceptedProtocols            : {Http, Https}
-PatternsToMatch              : {/*}
-HealthProbeSettings          :
-RouteConfiguration           : Microsoft.Azure.Commands.FrontDoor.Models.PSRedirectConfiguration
-EnabledState                 : Enabled
-ResourceState                :
-Id                           :
-Name                         : {routingRuleName}
-Type                         :
+AcceptedProtocol                   : {Http, Https}
+EnabledState                       : Enabled
+FrontendEndpoint                   : {{
+                                       "id": "/subscriptions/{subid}/resourceGroups/{rg}/providers/Microsoft.Network/frontDoors/{fname}/FrontendEndpoints/frontendEndpoint1"
+                                     }}
+Id                                 :
+Name                               :
+PatternsToMatch                    : {/*}
+ResourceState                      :
+RouteConfiguration                 : {
+                                       "@odata.type": "#Microsoft.Azure.FrontDoor.Models.FrontdoorRedirectConfiguration",
+                                       "redirectType": "Moved",
+                                       "redirectProtocol": "MatchRequest",
+                                       "customHost": "www.contoso.com",
+                                       "customPath": "/images/contoso.png",
+                                       "customFragment": "section-header-2",
+                                       "customQueryString": "field1=value1\u0026field2=value2"
+                                     }
+RuleEngineId                       :
+Type                               :
+WebApplicationFirewallPolicyLinkId :
 ```
 
 Create a PSRoutingRuleObject for Front Door creation
@@ -84,13 +106,11 @@ Create a PSRoutingRuleObject for Front Door creation
 
 ### -AcceptedProtocol
 Protocol schemes to match for this rule.
-Default value is {Https, Http}
 
 ```yaml
-Type: Microsoft.Azure.Commands.FrontDoor.Models.PSProtocol[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
-Accepted values: Http, Https
 
 Required: False
 Position: Named
@@ -100,14 +120,31 @@ Accept wildcard characters: False
 ```
 
 ### -BackendPoolName
-Resource id of the BackendPool which this rule routes to
+Resource ID.
 
 ```yaml
 Type: System.String
 Parameter Sets: ByFieldsWithForwardingParameterSet
 Aliases:
 
-Required: True
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CacheDuration
+The duration for which the content needs to be cached.
+Allowed format is in ISO 8601 format (http://en.wikipedia.org/wiki/ISO_8601#Durations).
+HTTP requires the value to be no more than a year.
+
+```yaml
+Type: System.TimeSpan
+Parameter Sets: ByFieldsWithForwardingParameterSet
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -115,7 +152,7 @@ Accept wildcard characters: False
 ```
 
 ### -CustomForwardingPath
-The custom path used to rewrite resource paths matched by this rule.
+A custom path used to rewrite resource paths matched by this rule.
 Leave empty to use incoming path.
 
 ```yaml
@@ -131,7 +168,9 @@ Accept wildcard characters: False
 ```
 
 ### -CustomFragment
-Fragment to add to the redirect URL. Fragment is the part of the URL that comes after #. Do not include the #.
+Fragment to add to the redirect URL.
+Fragment is the part of the URL that comes after #.
+Do not include the #.
 
 ```yaml
 Type: System.String
@@ -146,7 +185,8 @@ Accept wildcard characters: False
 ```
 
 ### -CustomHost
-Host to redirect. Leave empty to use the incoming host as the destination host.
+Host to redirect.
+Leave empty to use the incoming host as the destination host.
 
 ```yaml
 Type: System.String
@@ -161,7 +201,9 @@ Accept wildcard characters: False
 ```
 
 ### -CustomPath
-The full path to redirect. Path cannot be empty and must start with /. Leave empty to use the incoming path as destination path.
+The full path to redirect.
+Path cannot be empty and must start with /.
+Leave empty to use the incoming path as destination path.
 
 ```yaml
 Type: System.String
@@ -176,7 +218,10 @@ Accept wildcard characters: False
 ```
 
 ### -CustomQueryString
-The set of query strings to be placed in the redirect URL. Setting this value would replace any existing query string; leave empty to preserve the incoming query string. Query string must be in `<key>=<value>` format. The first ? and & will be added automatically so do not include them in the front, but do separate multiple query strings with &.
+The set of query strings to be placed in the redirect URL.
+Setting this value would replace any existing query string; leave empty to preserve the incoming query string.
+Query string must be in \<key\>=\<value\> format.
+The first ? and & will be added automatically so do not include them in the front, but do separate multiple query strings with &.
 
 ```yaml
 Type: System.String
@@ -190,30 +235,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
-
-```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
-Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DynamicCompression
-Whether to enable dynamic compression for cached content when caching is enabled.
-Default value is Enabled
+Whether to use dynamic compression for cached content.
 
 ```yaml
-Type: Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState
+Type: System.String
 Parameter Sets: ByFieldsWithForwardingParameterSet
 Aliases:
-Accepted values: Enabled, Disabled
 
 Required: False
 Position: Named
@@ -223,8 +251,6 @@ Accept wildcard characters: False
 ```
 
 ### -EnableCaching
-Whether to enable caching for this route.
-Default value is false
 
 ```yaml
 Type: System.Boolean
@@ -240,13 +266,12 @@ Accept wildcard characters: False
 
 ### -EnabledState
 Whether to enable use of this rule.
-Default value is Enabled
+Permitted values are 'Enabled' or 'Disabled'.
 
 ```yaml
-Type: Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState
+Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Enabled, Disabled
 
 Required: False
 Position: Named
@@ -256,8 +281,7 @@ Accept wildcard characters: False
 ```
 
 ### -ForwardingProtocol
-The protocol this rule will use when forwarding traffic to backends
-Default value is MatchRequest.
+Protocol this rule will use when forwarding traffic to backends.
 
 ```yaml
 Type: System.String
@@ -279,7 +303,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -287,38 +311,7 @@ Accept wildcard characters: False
 ```
 
 ### -FrontendEndpointName
-The names of Frontend endpoints associated with this rule
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-RoutingRule name.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PatternToMatch
-The route patterns of the rule,  Must not have any * except possibly after the final / at the end of the path.
-Default value is /*
+Frontend endpoints associated with this rule.
 
 ```yaml
 Type: System.String[]
@@ -332,9 +325,68 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Id
+Resource ID.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Resource name.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PatternsToMatch
+The route patterns of the rule.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases: PatternToMatch
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -QueryParameter
+query parameters to include or exclude (comma separated).
+
+```yaml
+Type: System.String
+Parameter Sets: ByFieldsWithForwardingParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -QueryParameterStripDirective
-The treatment of URL query terms when forming the cache key.
-Default value is StripAll
+Treatment of URL query terms when forming the cache key.
 
 ```yaml
 Type: System.String
@@ -349,7 +401,7 @@ Accept wildcard characters: False
 ```
 
 ### -RedirectProtocol
-The protocol of the destination to where the traffic is redirected. Default value is MatchRequest
+The protocol of the destination to where the traffic is redirected.
 
 ```yaml
 Type: System.String
@@ -364,7 +416,7 @@ Accept wildcard characters: False
 ```
 
 ### -RedirectType
-The redirect type the rule will use when redirecting traffic. Default Value is Moved
+The redirect type the rule will use when redirecting traffic.
 
 ```yaml
 Type: System.String
@@ -379,22 +431,51 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The resource group name that the RoutingRule will be created in.
+Resource Group name.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RulesEngineName
-A reference to a specific Rules Engine Configuration to apply to this route.
+### -RouteConfiguration
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRouteConfiguration
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RuleEngineName
+Resource ID.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: RulesEngineName
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WebApplicationFirewallPolicyLinkId
+Resource ID.
 
 ```yaml
 Type: System.String
@@ -413,15 +494,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.FrontDoor.Models.PSRoutingRule
+### Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.RoutingRule
 
 ## NOTES
 
 ## RELATED LINKS
-
-[New-AzFrontDoor](./New-AzFrontDoor.md)
-[Set-AzFrontDoor](./Set-AzFrontDoor.md)

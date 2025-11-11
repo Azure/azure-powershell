@@ -3,6 +3,7 @@
     <PsModuleName>MobileNetwork</PsModuleName>
     <PsRootModuleName>MobileNetwork</PsRootModuleName>
     <PsModuleFolder>MobileNetwork.Autorest</PsModuleFolder>
+    <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork</RootNamespace>
   </PropertyGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.autorest.props" />

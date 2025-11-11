@@ -13,6 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Cmdlets
     /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzCloudService_Get")]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudService", "15.0.0", "9.0.0", "2025/11/03", DeprecatedOutputProperties=new string[] {"Extension","LoadBalancerConfiguration","Secret","Role","Zone"}, NewOutputProperties=new string[] {"Extension","LoadBalancerConfiguration","Secret","Role","Zone"}, ChangeDescription="The types of the properties 'Extension', 'LoadBalancerConfiguration', 'Secret', 'Role', and 'Zone' will be changed from object to 'List'.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudService))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.CloudService.Description(@"Display information about a cloud service.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.CloudService.Generated]

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzScVmmVMTemplate
 
 ## SYNOPSIS
-update the VirtualMachineTemplate resource.
+Update the VirtualMachineTemplate resource.
 
 ## SYNTAX
 
@@ -38,7 +38,7 @@ Update-AzScVmmVMTemplate -InputObject <IScVmmIdentity> [-Tag <Hashtable>] [-Defa
 ```
 
 ## DESCRIPTION
-update the VirtualMachineTemplate resource.
+Update the VirtualMachineTemplate resource.
 
 ## EXAMPLES
 

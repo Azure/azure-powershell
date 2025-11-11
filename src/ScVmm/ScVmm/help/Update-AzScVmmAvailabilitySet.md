@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzScVmmAvailabilitySet
 
 ## SYNOPSIS
-update the AvailabilitySets resource.
+Update the AvailabilitySets resource.
 
 ## SYNTAX
 
@@ -38,7 +38,7 @@ Update-AzScVmmAvailabilitySet -InputObject <IScVmmIdentity> [-Tag <Hashtable>] [
 ```
 
 ## DESCRIPTION
-update the AvailabilitySets resource.
+Update the AvailabilitySets resource.
 
 ## EXAMPLES
 

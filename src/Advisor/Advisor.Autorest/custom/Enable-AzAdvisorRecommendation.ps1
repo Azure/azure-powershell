@@ -22,7 +22,7 @@ Enables Azure Advisor recommendation(s).
 https://learn.microsoft.com/powershell/module/az.advisor/Enable-AzAdvisorRecommendation
 #>
 function Enable-AzAdvisorRecommendation{
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IResourceRecommendationBase])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IResourceRecommendationBase])]
 [CmdletBinding(DefaultParameterSetName='IdParameterSet', SupportsShouldProcess, PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='IdParameterSet', Mandatory, HelpMessage='Id of the recommendation to be suppressed.')]

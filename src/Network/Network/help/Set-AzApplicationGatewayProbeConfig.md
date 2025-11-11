@@ -17,6 +17,7 @@ Set-AzApplicationGatewayProbeConfig -ApplicationGateway <PSApplicationGateway> -
  -Protocol <String> [-HostName <String>] [-Path <String>] -Interval <Int32> -Timeout <Int32>
  -UnhealthyThreshold <Int32> [-PickHostNameFromBackendHttpSettings] [-MinServers <Int32>] [-Port <Int32>]
  [-Match <PSApplicationGatewayProbeHealthResponseMatch>] [-DefaultProfile <IAzureContextContainer>]
+ [-EnableProbeProxyProtocolHeader <Boolean>]
  [<CommonParameters>]
 ```
 
@@ -249,6 +250,21 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableProbeProxyProtocolHeader
+Whether to send Proxy Protocol header along with the Health Probe over TCP or TLS protocol. Default value is false.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

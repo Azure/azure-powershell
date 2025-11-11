@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Automanage
-Module Guid: b573b797-567a-4f0d-8ba3-6a447bed6278
+Module Guid: e54e2b12-08b9-4e24-8906-d2acb72fb103
 Download Help Link: https://learn.microsoft.com/powershell/module/az.automanage
 Help Version: 1.0.0.0
 Locale: en-US
@@ -36,16 +36,16 @@ Get information about a report associated with a configuration profile assignmen
 Get information about a report associated with a configuration profile assignment run
 
 ### [New-AzAutomanageConfigProfile](New-AzAutomanageConfigProfile.md)
-Creates a configuration profile
+Create a configuration profile
 
 ### [New-AzAutomanageConfigProfileAssignment](New-AzAutomanageConfigProfileAssignment.md)
-Creates an association between a VM and Automanage configuration profile
+Create an association between a VM and Automanage configuration profile
 
 ### [New-AzAutomanageConfigProfileHciAssignment](New-AzAutomanageConfigProfileHciAssignment.md)
-Creates an association between a AzureStackHCI cluster and Automanage configuration profile
+Create an association between a AzureStackHCI cluster and Automanage configuration profile
 
 ### [New-AzAutomanageConfigProfileHcrpAssignment](New-AzAutomanageConfigProfileHcrpAssignment.md)
-Creates an association between a ARC machine and Automanage configuration profile
+Create an association between a ARC machine and Automanage configuration profile
 
 ### [Remove-AzAutomanageConfigProfile](Remove-AzAutomanageConfigProfile.md)
 Delete a configuration profile
@@ -60,5 +60,14 @@ Delete a configuration profile assignment
 Delete a configuration profile assignment
 
 ### [Update-AzAutomanageConfigProfile](Update-AzAutomanageConfigProfile.md)
-Updates a configuration profile
+Update a configuration profile
+
+### [Update-AzAutomanageConfigProfileAssignment](Update-AzAutomanageConfigProfileAssignment.md)
+Update an association between a VM and Automanage configuration profile
+
+### [Update-AzAutomanageConfigProfileHciAssignment](Update-AzAutomanageConfigProfileHciAssignment.md)
+Update an association between a AzureStackHCI cluster and Automanage configuration profile
+
+### [Update-AzAutomanageConfigProfileHcrpAssignment](Update-AzAutomanageConfigProfileHcrpAssignment.md)
+Update an association between a ARC machine and Automanage configuration profile
 

@@ -8,6 +8,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
     using static Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Extensions;
 
     /// <summary>Storage SKU and its properties</summary>
+    [Microsoft.Azure.PowerShell.Cmdlets.Storage.DoNotFormat]
     public partial class SkuInformation :
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISkuInformation,
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISkuInformationInternal
@@ -38,6 +39,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<string> Location { get => this._location; }
+
+        /// <summary>Backing field for <see cref="LocationInfo" /> property.</summary>
+        private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISkuInformationLocationInfoItem> _locationInfo;
+
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISkuInformationLocationInfoItem> LocationInfo { get => this._locationInfo; set => this._locationInfo = value; }
 
         /// <summary>Internal Acessors for Capability</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISkuCapability> Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISkuInformationInternal.Capability { get => this._capability; set { {_capability = value;} } }
@@ -135,6 +142,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         SerializedName = @"locations",
         PossibleTypes = new [] { typeof(string) })]
         System.Collections.Generic.List<string> Location { get;  }
+
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"",
+        SerializedName = @"locationInfo",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISkuInformationLocationInfoItem) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISkuInformationLocationInfoItem> LocationInfo { get; set; }
         /// <summary>
         /// The SKU name. Required for account creation; optional for update. Note that in older versions, SKU name was called accountType.
         /// </summary>
@@ -203,6 +221,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// East US, Southeast Asia, etc.).
         /// </summary>
         System.Collections.Generic.List<string> Location { get; set; }
+
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISkuInformationLocationInfoItem> LocationInfo { get; set; }
         /// <summary>
         /// The SKU name. Required for account creation; optional for update. Note that in older versions, SKU name was called accountType.
         /// </summary>

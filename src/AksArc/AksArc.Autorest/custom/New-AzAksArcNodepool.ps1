@@ -74,12 +74,6 @@ param(
     # Parameter for the name of the agent pool in the provisioned cluster.
     ${Name},
 
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IAksArcIdentity]
-    # Identity Parameter
-    ${InputObject},
-
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
     [System.Int32]

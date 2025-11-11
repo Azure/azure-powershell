@@ -41,34 +41,39 @@ module-version: 1.0.0
 title: ConfidentialLedger
 subject-prefix: $(service-name)
 
-# If there are post APIs for some kinds of actions in the RP, you may need to 
-# uncomment following line to support viaIdentity for these post APIs
-# identity-correction-for-post: true
-
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
-
 directive:
+  - from: swagger-document
+    where: $.definitions.ResourceLocation.properties.location
+    transform: >-
+      return {
+        "description": "The Azure location where the Confidential Ledger is running.",
+        "type": "string",
+        "x-ms-mutability": [
+          "create",
+          "read",
+          "update"
+        ]
+      }
   # Following is two common directive which are normally required in all the RPs
   # 1. Remove the unexpanded parameter set
   # 2. For New-* cmdlets, ViaIdentity is not required, so CreateViaIdentityExpanded is removed as well
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+      variant: ^(Create|Update|Check)(?!.*?(Expanded))
+    remove: true
+  - where:
+      variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$|^CheckViaIdentityExpanded$
     remove: true
   # Remove the set-* cmdlet
   - where:
       verb: Set
     remove: true
-  - where: # Only generate one version of CheckNameAvailability
-      verb: Test
-      variant: ^Check$|^CheckViaIdentity$|^CheckViaIdentityExpanded$
-    remove: true
   - where: # Hide auto-generated Update since we implement a custom one requiring the 'Location' parameter.
       verb: Update
       Subject: Ledger
     hide: true
-  - model-cmdlet: # Generate objects for common models.
-    - AADBasedSecurityPrincipal
-    - CertBasedSecurityPrincipal
+  - model-cmdlet:
+      - model-name: AADBasedSecurityPrincipal
+        cmdlet-name: New-AzConfidentialLedgerAADBasedSecurityPrincipalObject
+      - model-name: CertBasedSecurityPrincipal
+        cmdlet-name: New-AzConfidentialLedgerCertBasedSecurityPrincipalObject
 ```

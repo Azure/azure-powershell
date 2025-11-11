@@ -172,6 +172,14 @@ Tags              :
 
 This command gets the resource with the provided resource id, which is a virtual machine called "testVM" in the resource group "testRG".
 
+### Example 8: Get a resource with expanded properties
+
+```powershell
+Get-AzResource -Name testVM -ResourceGroupName testRG -ExpandProperties
+```
+
+This command gets the resource named "testVM" in the resource group "testRG" and expands the properties to include additional details such as CreatedTime, ChangedTime, and other resource metadata.
+
 ## PARAMETERS
 
 ### -ApiVersion

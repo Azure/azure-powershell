@@ -94,26 +94,11 @@ This command restores a secret, including all of its versions, from the backup f
 
 ## PARAMETERS
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -129,7 +114,7 @@ The URI of the KeyVault Secret.
 Please ensure it follows the format: `https://<vault-name>.vault.azure.net/secrets/<secret-name>/<version>`
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: BySecretUri
 Aliases: SecretId
 
@@ -144,7 +129,7 @@ Accept wildcard characters: False
 Specifies the input file that contains the backup of the secret to restore.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -159,7 +144,7 @@ Accept wildcard characters: False
 KeyVault object
 
 ```yaml
-Type: PSKeyVault
+Type: Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
 Parameter Sets: ByInputObject
 Aliases:
 
@@ -174,7 +159,7 @@ Accept wildcard characters: False
 KeyVault Resource Id
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByParentResourceId
 Aliases: ResourceId
 
@@ -189,7 +174,7 @@ Accept wildcard characters: False
 Specifies the name of the key vault into which to restore the secret.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByVaultName
 Aliases:
 
@@ -200,12 +185,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -WhatIf
 Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

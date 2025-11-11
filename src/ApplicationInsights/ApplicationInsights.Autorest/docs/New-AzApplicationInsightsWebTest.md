@@ -17,7 +17,7 @@ Creates or updates an Application Insights web test definition.
 New-AzApplicationInsightsWebTest -Name <String> -ResourceGroupName <String> -Location <String>
  [-SubscriptionId <String>] [-ContentIgnoreCase] [-ContentMatch <String>] [-ContentPassIfTextFound]
  [-Description <String>] [-Enabled] [-Frequency <Int32>] [-GeoLocation <IWebTestGeolocation[]>]
- [-Kind <WebTestKindEnum>] [-RequestBody <String>] [-RequestFollowRedirect] [-RequestHeader <IHeaderField[]>]
+ [-Kind <String>] [-RequestBody <String>] [-RequestFollowRedirect] [-RequestHeader <IHeaderField[]>]
  [-RequestHttpVerb <String>] [-RequestParseDependent] [-RequestUrl <String>] [-RetryEnabled]
  [-RuleExpectedHttpStatusCode <Int32>] [-RuleIgnoreHttpsStatusCode]
  [-RuleSslCertRemainingLifetimeCheck <Int32>] [-RuleSslCheck] [-Tag <Hashtable>] [-TestName <String>]
@@ -28,9 +28,10 @@ New-AzApplicationInsightsWebTest -Name <String> -ResourceGroupName <String> -Loc
 ```
 New-AzApplicationInsightsWebTest -Name <String> -ResourceGroupName <String> -Location <String>
  [-SubscriptionId <String>] [-Configuration <String>] [-ContentMatch <String>] [-Description <String>]
- [-Enabled] [-Frequency <Int32>] [-GeoLocation <IWebTestGeolocation[]>] [-Kind <WebTestKindEnum>]
+ [-Enabled] [-Frequency <Int32>] [-GeoLocation <IWebTestGeolocation[]>] [-Kind <String>]
  [-RequestParseDependent] [-RequestUrl <String>] [-RetryEnabled] [-RuleExpectedHttpStatusCode <Int32>]
- [-Tag <Hashtable>] [-TestName <String>] [-Timeout <Int32>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [-RuleIgnoreHttpsStatusCode] [-RuleSslCertRemainingLifetimeCheck <Int32>] [-RuleSslCheck] [-Tag <Hashtable>]
+ [-TestName <String>] [-Timeout <Int32>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -81,7 +82,21 @@ This command creates or updates a standard kind of the Application Insights web 
 
 The switch parameter "-Enabled" must be set explicitly to $false to disable the test.
 
-### Example 3: Creates or updates a ping kind of the Application Insights web test
+### Example 3: Creates a standard kind of the Application Insights web test with a custom header
+```powershell
+$headerField = New-AzApplicationInsightsWebTestHeaderFieldObject -Name "HeaderName1" -Value "HeaderValue1"
+New-AzApplicationInsightsWebTest -ResourceGroupName exampleRG -Name expwshelltestheader2 -Location 'westus2' -Tag @{"hidden-link:<RESOURCE URL>" = "Resource"} -RequestUrl "https://www.bing.com" -RequestHttpVerb "GET" -TestName 'expwshelltestheader2' -RuleExpectedHttpStatusCode 200 -Frequency 300 -Enabled -Timeout 120 -Kind 'standard' -RetryEnabled -GeoLocation $geoLocation -RequestHeader $headerField
+```
+
+```output
+Name            	Location 	WebTestKind 	ResourceGroupName  	Enabled
+----            	-------- 	----------- 	-----------------  	-------
+expwshellheader2 	westus2  	standard    	exampleRG		    True
+```
+
+This command creates a standard kind of the Application Insights web test with a custom header
+
+### Example 4: Creates or updates a ping kind of the Application Insights web test
 ```powershell
 $geoLocation = @()
 $geoLocation += New-AzApplicationInsightsWebTestGeolocationObject -Location "emea-nl-ams-azr"
@@ -101,7 +116,7 @@ pingwebtest-pwsh01 westus2  ping        azpwsh-rg-test      True
 
 This command creates or updates an ping kind of the Application Insights web test.
 
-### Example 4: Creates or updates a ping kind of the Application Insights web test with custom configuration
+### Example 5: Creates or updates a ping kind of the Application Insights web test with custom configuration
 ```powershell
 $geoLocation = @()
 $geoLocation += New-AzApplicationInsightsWebTestGeolocationObject -Location "emea-nl-ams-azr"
@@ -200,7 +215,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -262,10 +278,9 @@ Accept wildcard characters: False
 
 ### -GeoLocation
 A list of where to physically run the tests from to give global coverage for accessibility of your application.
-To construct, see NOTES section for GEOLOCATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20220615.IWebTestGeolocation[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IWebTestGeolocation[]
 Parameter Sets: (All)
 Aliases:
 
@@ -280,7 +295,7 @@ Accept wildcard characters: False
 The kind of web test this is, valid choices are ping, multistep, and standard.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.WebTestKindEnum
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -353,10 +368,9 @@ Accept wildcard characters: False
 
 ### -RequestHeader
 List of headers and their values to add to the WebTest call.
-To construct, see NOTES section for REQUESTHEADER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20220615.IHeaderField[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IHeaderField[]
 Parameter Sets: CreateStandard
 Aliases:
 
@@ -463,7 +477,7 @@ When set, validation will ignore the status code.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateStandard
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -479,7 +493,7 @@ Value must be positive and the SSLCheck must be set to true.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateStandard
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -494,7 +508,7 @@ Checks to see if the SSL cert is still valid.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateStandard
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -603,7 +617,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20220615.IWebTest
+### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IWebTest
 
 ## NOTES
 

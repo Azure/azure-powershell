@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Sql.Properties;
 using Microsoft.Azure.Commands.Sql.Replication.Model;
 using Microsoft.Azure.Commands.Sql.Database.Services;
+using Microsoft.Azure.Management.Sql.Models;
 using Microsoft.Rest.Azure;
 using System.Collections;
 using System.Collections.Generic;
@@ -216,7 +217,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
             {
                 ModelAdapter.GetDatabase(copyResourceGroupName, copyServerName, this.CopyDatabaseName);
             }
-            catch (CloudException ex)
+            catch (ErrorResponseException ex)
             {
                 if (ex.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
                 {

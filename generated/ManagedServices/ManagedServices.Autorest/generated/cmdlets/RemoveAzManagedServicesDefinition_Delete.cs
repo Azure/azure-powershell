@@ -13,7 +13,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Cmdlets
     /// [OpenAPI] Delete=>DELETE:"/{scope}/providers/Microsoft.ManagedServices/registrationDefinitions/{registrationDefinitionId}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Remove, @"AzManagedServicesDefinition_Delete", SupportsShouldProcess = true)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.CmdletBreakingChange("15.0.0", "9.0.0", "2025/11/03", ChangeDescription="The types of the properties 'Authorization' and 'EligibleAuthorization' will be changed to 'List'.")]
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Description(@"Deletes the registration definition.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Generated]

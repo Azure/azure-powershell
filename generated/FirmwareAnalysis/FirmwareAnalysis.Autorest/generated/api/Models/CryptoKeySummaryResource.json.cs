@@ -66,11 +66,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
                 return;
             }
             __summaryResourceProperties = new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.SummaryResourceProperties(json);
-            {_totalKey = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber>("totalKeys"), out var __jsonTotalKeys) ? (long?)__jsonTotalKeys : _totalKey;}
-            {_publicKey = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber>("publicKeys"), out var __jsonPublicKeys) ? (long?)__jsonPublicKeys : _publicKey;}
-            {_privateKey = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber>("privateKeys"), out var __jsonPrivateKeys) ? (long?)__jsonPrivateKeys : _privateKey;}
-            {_pairedKey = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber>("pairedKeys"), out var __jsonPairedKeys) ? (long?)__jsonPairedKeys : _pairedKey;}
-            {_shortKeySize = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber>("shortKeySize"), out var __jsonShortKeySize) ? (long?)__jsonShortKeySize : _shortKeySize;}
+            {_totalKeyCount = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber>("totalKeyCount"), out var __jsonTotalKeyCount) ? (long?)__jsonTotalKeyCount : _totalKeyCount;}
+            {_publicKeyCount = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber>("publicKeyCount"), out var __jsonPublicKeyCount) ? (long?)__jsonPublicKeyCount : _publicKeyCount;}
+            {_privateKeyCount = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber>("privateKeyCount"), out var __jsonPrivateKeyCount) ? (long?)__jsonPrivateKeyCount : _privateKeyCount;}
+            {_pairedKeyCount = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber>("pairedKeyCount"), out var __jsonPairedKeyCount) ? (long?)__jsonPairedKeyCount : _pairedKeyCount;}
+            {_shortKeySizeCount = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber>("shortKeySizeCount"), out var __jsonShortKeySizeCount) ? (long?)__jsonShortKeySizeCount : _shortKeySizeCount;}
             AfterFromJson(json);
         }
 
@@ -106,11 +106,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
                 return container;
             }
             __summaryResourceProperties?.ToJson(container, serializationMode);
-            AddIf( null != this._totalKey ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber((long)this._totalKey) : null, "totalKeys" ,container.Add );
-            AddIf( null != this._publicKey ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber((long)this._publicKey) : null, "publicKeys" ,container.Add );
-            AddIf( null != this._privateKey ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber((long)this._privateKey) : null, "privateKeys" ,container.Add );
-            AddIf( null != this._pairedKey ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber((long)this._pairedKey) : null, "pairedKeys" ,container.Add );
-            AddIf( null != this._shortKeySize ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber((long)this._shortKeySize) : null, "shortKeySize" ,container.Add );
+            AddIf( null != this._totalKeyCount ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber((long)this._totalKeyCount) : null, "totalKeyCount" ,container.Add );
+            AddIf( null != this._publicKeyCount ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber((long)this._publicKeyCount) : null, "publicKeyCount" ,container.Add );
+            AddIf( null != this._privateKeyCount ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber((long)this._privateKeyCount) : null, "privateKeyCount" ,container.Add );
+            AddIf( null != this._pairedKeyCount ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber((long)this._pairedKeyCount) : null, "pairedKeyCount" ,container.Add );
+            AddIf( null != this._shortKeySizeCount ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNumber((long)this._shortKeySizeCount) : null, "shortKeySizeCount" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

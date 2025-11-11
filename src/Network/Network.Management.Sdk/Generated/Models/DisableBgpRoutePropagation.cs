@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class DisableBgpRoutePropagation
     {
+        /// <summary>
+        /// BGP route propagation is enabled.
+        /// </summary>
         public const string False = "False";
+        /// <summary>
+        /// BGP route propagation is disabled.
+        /// </summary>
         public const string True = "True";
     }
 }

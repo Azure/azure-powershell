@@ -15,7 +15,7 @@ Updates an Azure NetApp Files (ANF) pool according to the optional modifiers pro
 ### ByFieldsParameterSet (Default)
 ```
 Update-AzNetAppFilesPool -ResourceGroupName <String> [-Location <String>] -AccountName <String> -Name <String>
- [-PoolSize <Int64>] [-QosType <String>] [-CoolAccess] [-Tag <Hashtable>]
+ [-PoolSize <Int64>] [-QosType <String>] [-CoolAccess] [-CustomThroughput <Double>] [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -23,22 +23,25 @@ Update-AzNetAppFilesPool -ResourceGroupName <String> [-Location <String>] -Accou
 ### ByParentObjectParameterSet
 ```
 Update-AzNetAppFilesPool -Name <String> [-PoolSize <Int64>] [-QosType <String>] [-CoolAccess]
- [-Tag <Hashtable>] -AccountObject <PSNetAppFilesAccount> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-CustomThroughput <Double>] [-Tag <Hashtable>] -AccountObject <PSNetAppFilesAccount>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
-Update-AzNetAppFilesPool [-PoolSize <Int64>] [-QosType <String>] [-CoolAccess] [-Tag <Hashtable>]
- -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Update-AzNetAppFilesPool [-PoolSize <Int64>] [-QosType <String>] [-CoolAccess]
+ [-CustomThroughput <Double>] [-Tag <Hashtable>] -ResourceId <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
-Update-AzNetAppFilesPool [-PoolSize <Int64>] [-QosType <String>] [-CoolAccess] [-Tag <Hashtable>]
- -InputObject <PSNetAppFilesPool> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzNetAppFilesPool [-PoolSize <Int64>] [-QosType <String>] [-CoolAccess]
+ [-CustomThroughput <Double>] [-Tag <Hashtable>] -InputObject <PSNetAppFilesPool>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -103,6 +106,21 @@ If enabled (true) the pool can contain cool Access enabled volumes.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CustomThroughput
+Maximum throughput in MiB/s that can be achieved by this pool and this will be accepted as input only for manual qosType pool with Flexible service level
+
+```yaml
+Type: System.Nullable`1[System.Double]
 Parameter Sets: (All)
 Aliases:
 

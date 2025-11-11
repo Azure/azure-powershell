@@ -47,7 +47,7 @@ param(
     ${IsOSDisk},
 
     [Parameter(Mandatory)]
-    [ArgumentCompleter({ "Standard_LRS", "Premium_LRS", "StandardSSD_LRS", "PremiumV2_LRS"})]
+    [ArgumentCompleter({ "Standard_LRS", "Premium_LRS", "StandardSSD_LRS", "PremiumV2_LRS", "UltraSSD_LRS", "StandardSSD_ZRS", "Premium_ZRS"})]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
     # Specifies the type of disks to be used for the Azure VM.
@@ -56,7 +56,7 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
-    # Specifies the disk encyption set to be used.
+    # Specifies the disk encryption set to be used.
     ${DiskEncryptionSetID}
 )
 

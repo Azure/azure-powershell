@@ -28,11 +28,11 @@ PS C:\> {{ Add code here }}
 {{ Add output here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IFunction
+Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IFunction
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IStreamAnalyticsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IFunction
+Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IFunction
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -66,7 +66,7 @@ INPUTOBJECT <IStreamAnalyticsIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticsfunction
 #>
 function New-AzStreamAnalyticsFunction {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IFunction])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IFunction])]
 [CmdletBinding(DefaultParameterSetName='Create', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Create', Mandatory)]
@@ -117,7 +117,6 @@ param(
     # Set to '*' to allow a new function to be created, but to prevent updating an existing function.
     # Other values will result in a 412 Pre-condition Failed response.
     ${IfNoneMatch},
-
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -171,9 +170,9 @@ begin {
     try {
         $functionParameters = Get-Content -Path $File | Out-String
         
-        if ([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.FunctionTypeConverter]::CanConvertFrom($functionParameters))
+        if ([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.FunctionTypeConverter]::CanConvertFrom($functionParameters))
         {
-          $function = [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.FunctionTypeConverter]::ConvertFrom($functionParameters)
+          $function = [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.FunctionTypeConverter]::ConvertFrom($functionParameters)
         } else {
           throw "The json format is invalid"
         }
@@ -220,7 +219,7 @@ end {
 
 function New-FunctionObjectFromJson 
 {
-  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IFunction])]
+  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IFunction])]
   [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.DoNotExportAttribute()]
   param (
     [Parameter()]
@@ -234,22 +233,22 @@ function New-FunctionObjectFromJson
   # Remove binding object from source object
   $Source.properties.properties.PSObject.Properties.Remove("binding");
 
-  $function = [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.Function]::DeserializeFromPSObject($Source)
+  $function = [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Function]::DeserializeFromPSObject($Source)
 
   if ($binding.type -eq "Microsoft.MachineLearning/WebService") {
-    $function.Binding = [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.AzureMachineLearningStudioFunctionBinding]::DeserializeFromPSObject($binding)
+    $function.Binding = [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.AzureMachineLearningStudioFunctionBinding]::DeserializeFromPSObject($binding)
   }
 
   if ($binding.type -eq "Microsoft.StreamAnalytics/JavascriptUdf") {
-    $function.Binding = [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.JavaScriptFunctionBinding]::DeserializeFromPSObject($binding)
+    $function.Binding = [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.JavaScriptFunctionBinding]::DeserializeFromPSObject($binding)
   }
 
   if ($binding.type -eq "Microsoft.StreamAnalytics/CLRUdf") {
-    $function.Binding = [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.CSharpFunctionBinding]::DeserializeFromPSObject($binding)
+    $function.Binding = [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.CSharpFunctionBinding]::DeserializeFromPSObject($binding)
   }
 
   if ($binding.type -eq "Microsoft.MachineLearningServices") {
-    $function.Binding = [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.AzureMachineLearningServiceFunctionBinding]::DeserializeFromPSObject($binding)
+    $function.Binding = [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.AzureMachineLearningServiceFunctionBinding]::DeserializeFromPSObject($binding)
   }
   return $function
 }

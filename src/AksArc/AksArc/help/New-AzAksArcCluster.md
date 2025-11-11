@@ -15,11 +15,11 @@ Create the provisioned cluster instance
 ### CreateExpanded (Default)
 ```
 New-AzAksArcCluster -ClusterName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-MinCount <Int32>] [-MaxCount <Int32>] [-MaxPod <Int32>] -CustomLocationName <String> -VnetId <String>
- [-ControlPlaneIP <String>] [-Location <String>] [-AdminGroupObjectID <String[]>] [-SshAuthIp <String>]
- [-ControlPlaneCount <Int32>] [-ControlPlaneVMSize <String>] [-KubernetesVersion <String>]
- [-EnableAzureHybridBenefit] [-EnableAzureRbac] [-LoadBalancerCount <Int32>] [-PodCidr <String>]
- [-NfCsiDriverEnabled] [-SmbCsiDriverEnabled] [-SshKeyValue <String>] [-EnableAutoScaling]
+ [-MinCount <Int32>] [-MaxCount <Int32>] [-MaxPod <Int32>] -CustomLocationName <String>
+ [-ControlPlaneIP <String>] [-Location <String>] [-AdminGroupObjectID <String[]>] [-VnetId <String>]
+ [-SshAuthIp <String>] [-ControlPlaneCount <Int32>] [-ControlPlaneVMSize <String>]
+ [-KubernetesVersion <String>] [-EnableAzureHybridBenefit] [-EnableAzureRbac] [-LoadBalancerCount <Int32>]
+ [-PodCidr <String>] [-NfCsiDriverEnabled] [-SmbCsiDriverEnabled] [-SshKeyValue <String>] [-EnableAutoScaling]
  [-NodeLabel <Hashtable>] [-NodeTaint <String[]>] [-AutoScalerProfileBalanceSimilarNodeGroup <String>]
  [-AutoScalerProfileExpander <String>] [-AutoScalerProfileMaxEmptyBulkDelete <String>]
  [-AutoScalerProfileMaxGracefulTerminationSec <String>] [-AutoScalerProfileMaxNodeProvisionTime <String>]
@@ -36,29 +36,28 @@ New-AzAksArcCluster -ClusterName <String> -ResourceGroupName <String> [-Subscrip
 ### AutoScaling
 ```
 New-AzAksArcCluster -ClusterName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -MinCount <Int32> -MaxCount <Int32> -MaxPod <Int32> -CustomLocationName <String> -VnetId <String>
- [-ControlPlaneIP <String>] [-Location <String>] [-AdminGroupObjectID <String[]>] [-EnableAzureHybridBenefit]
- [-EnableAzureRbac] [-EnableAutoScaling] [-NodeLabel <Hashtable>] [-NodeTaint <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -MinCount <Int32> -MaxCount <Int32> -CustomLocationName <String> [-ControlPlaneIP <String>]
+ [-Location <String>] [-AdminGroupObjectID <String[]>] [-EnableAzureRbac] [-EnableAutoScaling]
+ [-NodeLabel <Hashtable>] [-NodeTaint <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
 New-AzAksArcCluster -ClusterName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -CustomLocationName <String> -VnetId <String> [-ControlPlaneIP <String>] [-Location <String>]
- [-AdminGroupObjectID <String[]>] [-EnableAzureHybridBenefit] [-EnableAzureRbac] [-NodeLabel <Hashtable>]
- [-NodeTaint <String[]>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ -CustomLocationName <String> [-ControlPlaneIP <String>] [-Location <String>] [-AdminGroupObjectID <String[]>]
+ [-EnableAzureRbac] [-NodeLabel <Hashtable>] [-NodeTaint <String[]>] -JsonFilePath <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzAksArcCluster -ClusterName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -CustomLocationName <String> -VnetId <String> [-ControlPlaneIP <String>] [-Location <String>]
- [-AdminGroupObjectID <String[]>] [-EnableAzureHybridBenefit] [-EnableAzureRbac] [-NodeLabel <Hashtable>]
- [-NodeTaint <String[]>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ -CustomLocationName <String> [-ControlPlaneIP <String>] [-Location <String>] [-AdminGroupObjectID <String[]>]
+ [-EnableAzureRbac] [-NodeLabel <Hashtable>] [-NodeTaint <String[]>] -JsonString <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -533,8 +532,6 @@ Accept wildcard characters: False
 ```
 
 ### -EnableAutoScaling
-Indicates whether to enable NFS CSI Driver.
-The default value is true.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -566,7 +563,7 @@ Default value is false
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -654,7 +651,6 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-Location
 
 ```yaml
 Type: System.String
@@ -702,18 +698,6 @@ Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.Int32
-Parameter Sets: AutoScaling
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -907,10 +891,10 @@ List of ARM resource Ids (maximum 1) for the infrastructure network object e.g.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

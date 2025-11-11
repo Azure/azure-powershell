@@ -23,7 +23,7 @@ Create an in-memory object for InitialAgentPoolConfiguration.
 New-AzNetworkCloudInitialAgentPoolConfigurationObject -Count <Int64> -Mode <AgentPoolMode> -Name <String> -VMSkuName <String> -AdministratorConfigurationAdminUsername <String> -AdministratorConfigurationSshPublicKey <ISshPublicKey[]>  -AgentOptionHugepagesCount <Int64> -AgentOptionHugepagesSize <HugepagesSize> -AttachedNetworkConfigurationL2Network <IL2NetworkAttachmentConfiguration[]> -AttachedNetworkConfigurationL3Network <IL3NetworkAttachmentConfiguration[]> -AttachedNetworkConfigurationTrunkedNetwork <ITrunkedNetworkAttachmentConfiguration[]> -AvailabilityZone <String[]> -Label <IKubernetesLabel[]> -Taint <IKubernetesLabel[]> -UpgradeSettingMaxSurge <String>
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.InitialAgentPoolConfiguration
+Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.InitialAgentPoolConfiguration
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -33,30 +33,30 @@ ADMINISTRATORCONFIGURATIONSSHPUBLICKEY <ISshPublicKey[]>: The SSH configuration 
   KeyData <String>: The SSH public key data.
 
 ATTACHEDNETWORKCONFIGURATIONL2NETWORK <IL2NetworkAttachmentConfiguration[]>: The list of Layer 2 Networks and related configuration for attachment.
-  NetworkId <String>: The resource ID of the network that is being configured for attachment.
-  [PluginType <KubernetesPluginType?>]: The indicator of how this network will be utilized by the Kubernetes cluster.
+  [NetworkId <String>]: The resource ID of the network that is being configured for attachment.
+  [PluginType <String>]: The indicator of how this network will be utilized by the Kubernetes cluster.
 
 ATTACHEDNETWORKCONFIGURATIONL3NETWORK <IL3NetworkAttachmentConfiguration[]>: The list of Layer 3 Networks and related configuration for attachment.
   NetworkId <String>: The resource ID of the network that is being configured for attachment.
-  [IpamEnabled <L3NetworkConfigurationIpamEnabled?>]: The indication of whether this network will or will not perform IP address management and allocate IP addresses when attached.
-  [PluginType <KubernetesPluginType?>]: The indicator of how this network will be utilized by the Kubernetes cluster.
+  [IpamEnabled <String>]: The indication of whether this network will or will not perform IP address management and allocate IP addresses when attached.
+  [PluginType <String>]: The indicator of how this network will be utilized by the Kubernetes cluster.
 
 ATTACHEDNETWORKCONFIGURATIONTRUNKEDNETWORK <ITrunkedNetworkAttachmentConfiguration[]>: The list of Trunked Networks and related configuration for attachment.
-  NetworkId <String>: The resource ID of the network that is being configured for attachment.
-  [PluginType <KubernetesPluginType?>]: The indicator of how this network will be utilized by the Kubernetes cluster.
+  [NetworkId <String>]: The resource ID of the network that is being configured for attachment.
+  [PluginType <String>]: The indicator of how this network will be utilized by the Kubernetes cluster.
 
 LABEL <IKubernetesLabel[]>: The labels applied to the nodes in this agent pool.
-  Key <String>: The name of the label or taint.
-  Value <String>: The value of the label or taint.
+  [Key <String>]: The name of the label or taint.
+  [Value <String>]: The value of the label or taint.
 
 TAINT <IKubernetesLabel[]>: The taints applied to the nodes in this agent pool.
-  Key <String>: The name of the label or taint.
-  Value <String>: The value of the label or taint.
+  [Key <String>]: The name of the label or taint.
+  [Value <String>]: The value of the label or taint.
 .Link
-https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-AzNetworkCloudInitialAgentPoolConfigurationObject
+https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-aznetworkcloudinitialagentpoolconfigurationobject
 #>
 function New-AzNetworkCloudInitialAgentPoolConfigurationObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.InitialAgentPoolConfiguration])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.InitialAgentPoolConfiguration])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -66,9 +66,9 @@ param(
     ${Count},
 
     [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.AgentPoolMode])]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("System", "User", "NotApplicable")]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.AgentPoolMode]
+    [System.String]
     # The selection of how this agent pool is utilized, either as a system pool or a user pool.
     # System pools run the features and critical services for the Kubernetes Cluster, while user pools are dedicated to user workloads.
     # Every Kubernetes cluster must contain at least one system node pool with at least one node.
@@ -95,10 +95,9 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.ISshPublicKey[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ISshPublicKey[]]
     # The SSH configuration for the operating systems that run the nodes in the Kubernetes cluster.
     # In some cases, specification of public keys may be required to produce a working environment.
-    # To construct, see NOTES section for ADMINISTRATORCONFIGURATIONSSHPUBLICKEY properties and create a hash table.
     ${AdministratorConfigurationSshPublicKey},
 
     [Parameter()]
@@ -108,31 +107,28 @@ param(
     ${AgentOptionHugepagesCount},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.HugepagesSize])]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("2M", "1G")]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.HugepagesSize]
+    [System.String]
     # The size of the hugepages to allocate.
     ${AgentOptionHugepagesSize},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IL2NetworkAttachmentConfiguration[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IL2NetworkAttachmentConfiguration[]]
     # The list of Layer 2 Networks and related configuration for attachment.
-    # To construct, see NOTES section for ATTACHEDNETWORKCONFIGURATIONL2NETWORK properties and create a hash table.
     ${AttachedNetworkConfigurationL2Network},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IL3NetworkAttachmentConfiguration[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IL3NetworkAttachmentConfiguration[]]
     # The list of Layer 3 Networks and related configuration for attachment.
-    # To construct, see NOTES section for ATTACHEDNETWORKCONFIGURATIONL3NETWORK properties and create a hash table.
     ${AttachedNetworkConfigurationL3Network},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.ITrunkedNetworkAttachmentConfiguration[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ITrunkedNetworkAttachmentConfiguration[]]
     # The list of Trunked Networks and related configuration for attachment.
-    # To construct, see NOTES section for ATTACHEDNETWORKCONFIGURATIONTRUNKEDNETWORK properties and create a hash table.
     ${AttachedNetworkConfigurationTrunkedNetwork},
 
     [Parameter()]
@@ -144,16 +140,14 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IKubernetesLabel[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IKubernetesLabel[]]
     # The labels applied to the nodes in this agent pool.
-    # To construct, see NOTES section for LABEL properties and create a hash table.
     ${Label},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IKubernetesLabel[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IKubernetesLabel[]]
     # The taints applied to the nodes in this agent pool.
-    # To construct, see NOTES section for TAINT properties and create a hash table.
     ${Taint},
 
     [Parameter()]
@@ -197,6 +191,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -225,6 +222,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

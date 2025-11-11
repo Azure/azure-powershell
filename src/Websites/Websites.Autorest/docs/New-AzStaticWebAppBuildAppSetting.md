@@ -45,7 +45,7 @@ This command creates or updates the app settings of a static site build.
 
 ### Example 2: Create or updates the app settings of a static site build by pipeline
 ```powershell
-Get-AzStaticWebAppBuildAppSetting -ResourceGroupName resourceGroup -Name taticweb00 -EnvironmentName 'default' | New-AzStaticWebAppBuildAppSetting -AppSetting @{'buildsetting1' = 'someval'; 'buildsetting2' = 'someval2' }
+Get-AzStaticWebAppBuildAppSetting -ResourceGroupName resourceGroup -Name staticweb00 -EnvironmentName 'default' | New-AzStaticWebAppBuildAppSetting -AppSetting @{'buildsetting1' = 'someval'; 'buildsetting2' = 'someval2' }
 ```
 
 ```output

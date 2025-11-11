@@ -81,6 +81,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {_resourceAccessRule = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonArray>("resourceAccessRules"), out var __jsonResourceAccessRules) ? If( __jsonResourceAccessRules as Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceAccessRule>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceAccessRule) (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ResourceAccessRule.FromJson(__u) )) ))() : null : _resourceAccessRule;}
             {_virtualNetworkRule = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonArray>("virtualNetworkRules"), out var __jsonVirtualNetworkRules) ? If( __jsonVirtualNetworkRules as Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IVirtualNetworkRule>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__q, (__p)=>(Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IVirtualNetworkRule) (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.VirtualNetworkRule.FromJson(__p) )) ))() : null : _virtualNetworkRule;}
             {_iPRule = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonArray>("ipRules"), out var __jsonIPRules) ? If( __jsonIPRules as Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonArray, out var __l) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IIPRule>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__l, (__k)=>(Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IIPRule) (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IPRule.FromJson(__k) )) ))() : null : _iPRule;}
+            {_ipv6Rule = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonArray>("ipv6Rules"), out var __jsonIpv6Rules) ? If( __jsonIpv6Rules as Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonArray, out var __g) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IIPRule>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__g, (__f)=>(Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IIPRule) (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IPRule.FromJson(__f) )) ))() : null : _ipv6Rule;}
             {_defaultAction = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("defaultAction"), out var __jsonDefaultAction) ? (string)__jsonDefaultAction : (string)_defaultAction;}
             AfterFromJson(json);
         }
@@ -131,6 +132,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
                     AddIf(__n?.ToJson(null, serializationMode) ,__m.Add);
                 }
                 container.Add("ipRules",__m);
+            }
+            if (null != this._ipv6Rule)
+            {
+                var __h = new Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.XNodeArray();
+                foreach( var __i in this._ipv6Rule )
+                {
+                    AddIf(__i?.ToJson(null, serializationMode) ,__h.Add);
+                }
+                container.Add("ipv6Rules",__h);
             }
             AddIf( null != (((object)this._defaultAction)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString(this._defaultAction.ToString()) : null, "defaultAction" ,container.Add );
             AfterToJson(ref container);

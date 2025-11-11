@@ -25,12 +25,12 @@ Lists all of the available Azure attestation operations.
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.IOperationList
+Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IOperationList
 .Link
 https://learn.microsoft.com/powershell/module/az.attestation/get-azattestationoperation
 #>
 function Get-AzAttestationOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.IOperationList])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IOperationList])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -89,12 +89,18 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             List = 'Az.Attestation.private\Get-AzAttestationOperation_List';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -126,16 +132,16 @@ end {
 
 <#
 .Synopsis
-Creates a new Attestation Provider.
+Create a new Attestation Provider.
 .Description
-Creates a new Attestation Provider.
+Create a new Attestation Provider.
 .Example
 New-AzAttestationProvider -Name testprovider1 -ResourceGroupName test-rg -Location "eastus"
 .Example
 New-AzAttestationProvider -Name testprovider2 -ResourceGroupName test-rg -Location "eastus" -PolicySigningCertificateKeyPath .\cert1.pem
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.IAttestationProvider
+Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IAttestationProvider
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -157,13 +163,13 @@ POLICYSIGNINGCERTIFICATEKEY <IJsonWebKey[]>: The value of the "keys" parameter i
   [Qi <String>]: RSA Private Key Parameter
   [Use <String>]: Use ("public key use") identifies the intended use of         the public key. The "use" parameter is employed to indicate whether         a public key is used for encrypting data or verifying the signature         on data. Values are commonly "sig" (signature) or "enc" (encryption).
   [X <String>]: X coordinate for the Elliptic Curve point
-  [X5C <String[]>]: The "x5c" (X.509 certificate chain) parameter contains a chain of one         or more PKIX certificates [RFC5280].  The certificate chain is         represented as a JSON array of certificate value strings.  Each         string in the array is a base64-encoded (Section 4 of [RFC4648] --         not base64url-encoded) DER [ITU.X690.1994] PKIX certificate value.         The PKIX certificate containing the key value MUST be the first         certificate.
+  [X5C <List<String>>]: The "x5c" (X.509 certificate chain) parameter contains a chain of one         or more PKIX certificates [RFC5280].  The certificate chain is         represented as a JSON array of certificate value strings.  Each         string in the array is a base64-encoded (Section 4 of [RFC4648] --         not base64url-encoded) DER [ITU.X690.1994] PKIX certificate value.         The PKIX certificate containing the key value MUST be the first         certificate.
   [Y <String>]: Y coordinate for the Elliptic Curve point
 .Link
 https://learn.microsoft.com/powershell/module/az.attestation/new-azattestationprovider
 #>
 function New-AzAttestationProvider {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.IAttestationProvider])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IAttestationProvider])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -187,27 +193,38 @@ param(
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Attestation.Category('Body')]
     [System.String]
     # The supported Azure location where the attestation provider should be created.
     ${Location},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Attestation.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api10.IJsonWebKey[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IJsonWebKey[]]
     # The value of the "keys" parameter is an array of JWK values.
     # Bydefault, the order of the JWK values within the array does not implyan order of preference among them, although applications of JWK Setscan choose to assign a meaning to the order for their purposes, ifdesired.
-    # To construct, see NOTES section for POLICYSIGNINGCERTIFICATEKEY properties and create a hash table.
     ${PolicySigningCertificateKey},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Attestation.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.IAttestationServiceCreationParamsTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IAttestationServiceCreationParamsTags]))]
     [System.Collections.Hashtable]
     # The tags that will be assigned to the attestation provider.
     ${Tag},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Attestation.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Attestation.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -265,13 +282,16 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             CreateExpanded = 'Az.Attestation.private\New-AzAttestationProvider_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.Attestation.private\New-AzAttestationProvider_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.Attestation.private\New-AzAttestationProvider_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -280,6 +300,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

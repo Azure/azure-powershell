@@ -14,10 +14,14 @@ namespace Microsoft.Azure.Management.ServiceFabric
     public partial interface IApplicationTypeVersionsOperations
     {
         /// <summary>
-        /// Get a Service Fabric application type version resource created or in the process of being created in the Service Fabric application type name resource.
+        /// Get a Service Fabric application type version resource created or in the
+        /// process of being created in the Service Fabric application type name
+        /// resource.
         /// </summary>
         /// <remarks>
-        /// Get a Service Fabric application type version resource created or in the process of being created in the Service Fabric application type name resource.
+        /// Get a Service Fabric application type version resource created or in the
+        /// process of being created in the Service Fabric application type name
+        /// resource.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -46,10 +50,12 @@ namespace Microsoft.Azure.Management.ServiceFabric
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ApplicationTypeVersionResource>> GetWithHttpMessagesAsync(string resourceGroupName, string clusterName, string applicationTypeName, string version, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Create or update a Service Fabric application type version resource with the specified name.
+        /// Create or update a Service Fabric application type version resource with
+        /// the specified name.
         /// </summary>
         /// <remarks>
-        /// Create or update a Service Fabric application type version resource with the specified name.
+        /// Create or update a Service Fabric application type version resource with
+        /// the specified name.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -81,10 +87,12 @@ namespace Microsoft.Azure.Management.ServiceFabric
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ApplicationTypeVersionResource>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string clusterName, string applicationTypeName, string version, ApplicationTypeVersionResource parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Delete a Service Fabric application type version resource with the specified name.
+        /// Delete a Service Fabric application type version resource with the
+        /// specified name.
         /// </summary>
         /// <remarks>
-        /// Delete a Service Fabric application type version resource with the specified name.
+        /// Delete a Service Fabric application type version resource with the
+        /// specified name.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -110,10 +118,12 @@ namespace Microsoft.Azure.Management.ServiceFabric
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string clusterName, string applicationTypeName, string version, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets all application type version resources created or in the process of being created in the Service Fabric application type name resource.
+        /// Gets all application type version resources created or in the process of
+        /// being created in the Service Fabric application type name resource.
         /// </summary>
         /// <remarks>
-        /// Gets all application type version resources created or in the process of being created in the Service Fabric application type name resource.
+        /// Gets all application type version resources created or in the process of
+        /// being created in the Service Fabric application type name resource.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -139,10 +149,12 @@ namespace Microsoft.Azure.Management.ServiceFabric
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<ApplicationTypeVersionResource>>> ListWithHttpMessagesAsync(string resourceGroupName, string clusterName, string applicationTypeName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Create or update a Service Fabric application type version resource with the specified name.
+        /// Create or update a Service Fabric application type version resource with
+        /// the specified name.
         /// </summary>
         /// <remarks>
-        /// Create or update a Service Fabric application type version resource with the specified name.
+        /// Create or update a Service Fabric application type version resource with
+        /// the specified name.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -174,10 +186,12 @@ namespace Microsoft.Azure.Management.ServiceFabric
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ApplicationTypeVersionResource>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string clusterName, string applicationTypeName, string version, ApplicationTypeVersionResource parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Delete a Service Fabric application type version resource with the specified name.
+        /// Delete a Service Fabric application type version resource with the
+        /// specified name.
         /// </summary>
         /// <remarks>
-        /// Delete a Service Fabric application type version resource with the specified name.
+        /// Delete a Service Fabric application type version resource with the
+        /// specified name.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -203,10 +217,12 @@ namespace Microsoft.Azure.Management.ServiceFabric
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string clusterName, string applicationTypeName, string version, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets all application type version resources created or in the process of being created in the Service Fabric application type name resource.
+        /// Gets all application type version resources created or in the process of
+        /// being created in the Service Fabric application type name resource.
         /// </summary>
         /// <remarks>
-        /// Gets all application type version resources created or in the process of being created in the Service Fabric application type name resource.
+        /// Gets all application type version resources created or in the process of
+        /// being created in the Service Fabric application type name resource.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

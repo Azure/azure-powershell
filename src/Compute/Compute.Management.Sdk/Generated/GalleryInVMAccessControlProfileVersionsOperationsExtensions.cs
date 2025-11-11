@@ -22,27 +22,122 @@ namespace Microsoft.Azure.Management.Compute
     public static partial class GalleryInVMAccessControlProfileVersionsOperationsExtensions
     {
             /// <summary>
+            /// List gallery inVMAccessControlProfile versions in a gallery
+            /// inVMAccessControlProfile
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='galleryName'>
+            /// The name of the Shared Image Gallery.
+            /// </param>
+            /// <param name='inVMAccessControlProfileName'>
+            /// The name of the gallery inVMAccessControlProfile to be retrieved.
+            /// </param>
+            public static IPage<GalleryInVMAccessControlProfileVersion> ListByGalleryInVMAccessControlProfile(this IGalleryInVMAccessControlProfileVersionsOperations operations, string resourceGroupName, string galleryName, string inVMAccessControlProfileName)
+            {
+                return operations.ListByGalleryInVMAccessControlProfileAsync(resourceGroupName, galleryName, inVMAccessControlProfileName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// List gallery inVMAccessControlProfile versions in a gallery
+            /// inVMAccessControlProfile
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='galleryName'>
+            /// The name of the Shared Image Gallery.
+            /// </param>
+            /// <param name='inVMAccessControlProfileName'>
+            /// The name of the gallery inVMAccessControlProfile to be retrieved.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<GalleryInVMAccessControlProfileVersion>> ListByGalleryInVMAccessControlProfileAsync(this IGalleryInVMAccessControlProfileVersionsOperations operations, string resourceGroupName, string galleryName, string inVMAccessControlProfileName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListByGalleryInVMAccessControlProfileWithHttpMessagesAsync(resourceGroupName, galleryName, inVMAccessControlProfileName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Retrieves information about a gallery inVMAccessControlProfile version.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='galleryName'>
+            /// The name of the Shared Image Gallery.
+            /// </param>
+            /// <param name='inVMAccessControlProfileName'>
+            /// The name of the gallery inVMAccessControlProfile to be retrieved.
+            /// </param>
+            /// <param name='inVMAccessControlProfileVersionName'>
+            /// The name of the gallery inVMAccessControlProfile version to be retrieved.
+            /// </param>
+            public static GalleryInVMAccessControlProfileVersion Get(this IGalleryInVMAccessControlProfileVersionsOperations operations, string resourceGroupName, string galleryName, string inVMAccessControlProfileName, string inVMAccessControlProfileVersionName)
+            {
+                return operations.GetAsync(resourceGroupName, galleryName, inVMAccessControlProfileName, inVMAccessControlProfileVersionName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Retrieves information about a gallery inVMAccessControlProfile version.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='galleryName'>
+            /// The name of the Shared Image Gallery.
+            /// </param>
+            /// <param name='inVMAccessControlProfileName'>
+            /// The name of the gallery inVMAccessControlProfile to be retrieved.
+            /// </param>
+            /// <param name='inVMAccessControlProfileVersionName'>
+            /// The name of the gallery inVMAccessControlProfile version to be retrieved.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<GalleryInVMAccessControlProfileVersion> GetAsync(this IGalleryInVMAccessControlProfileVersionsOperations operations, string resourceGroupName, string galleryName, string inVMAccessControlProfileName, string inVMAccessControlProfileVersionName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, galleryName, inVMAccessControlProfileName, inVMAccessControlProfileVersionName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// Create or update a gallery inVMAccessControlProfile version.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='galleryName'>
-            /// The name of the Shared Image Gallery in which the inVMAccessControlProfile
-            /// resides.
+            /// The name of the Shared Image Gallery.
             /// </param>
             /// <param name='inVMAccessControlProfileName'>
-            /// The name of the gallery inVMAccessControlProfile in which the
-            /// inVMAccessControlProfile version is to be created.
+            /// The name of the gallery inVMAccessControlProfile to be retrieved.
             /// </param>
             /// <param name='inVMAccessControlProfileVersionName'>
-            /// The name of the gallery inVMAccessControlProfile version to be created.
-            /// Needs to follow semantic version name pattern: The allowed characters are
-            /// digit and period. Digits must be within the range of a 32-bit integer.
-            /// Format: &lt;MajorVersion&gt;.&lt;MinorVersion&gt;.&lt;Patch&gt;
+            /// The name of the gallery inVMAccessControlProfile version to be retrieved.
             /// </param>
             /// <param name='galleryInVMAccessControlProfileVersion'>
             /// Parameters supplied to the create or update gallery
@@ -60,21 +155,16 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='galleryName'>
-            /// The name of the Shared Image Gallery in which the inVMAccessControlProfile
-            /// resides.
+            /// The name of the Shared Image Gallery.
             /// </param>
             /// <param name='inVMAccessControlProfileName'>
-            /// The name of the gallery inVMAccessControlProfile in which the
-            /// inVMAccessControlProfile version is to be created.
+            /// The name of the gallery inVMAccessControlProfile to be retrieved.
             /// </param>
             /// <param name='inVMAccessControlProfileVersionName'>
-            /// The name of the gallery inVMAccessControlProfile version to be created.
-            /// Needs to follow semantic version name pattern: The allowed characters are
-            /// digit and period. Digits must be within the range of a 32-bit integer.
-            /// Format: &lt;MajorVersion&gt;.&lt;MinorVersion&gt;.&lt;Patch&gt;
+            /// The name of the gallery inVMAccessControlProfile version to be retrieved.
             /// </param>
             /// <param name='galleryInVMAccessControlProfileVersion'>
             /// Parameters supplied to the create or update gallery
@@ -98,21 +188,16 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='galleryName'>
-            /// The name of the Shared Image Gallery in which the inVMAccessControlProfile
-            /// resides.
+            /// The name of the Shared Image Gallery.
             /// </param>
             /// <param name='inVMAccessControlProfileName'>
-            /// The name of the gallery inVMAccessControlProfile in which the
-            /// inVMAccessControlProfile version is to be updated.
+            /// The name of the gallery inVMAccessControlProfile to be retrieved.
             /// </param>
             /// <param name='inVMAccessControlProfileVersionName'>
-            /// The name of the gallery inVMAccessControlProfile version to be updated.
-            /// Needs to follow semantic version name pattern: The allowed characters are
-            /// digit and period. Digits must be within the range of a 32-bit integer.
-            /// Format: &lt;MajorVersion&gt;.&lt;MinorVersion&gt;.&lt;Patch&gt;
+            /// The name of the gallery inVMAccessControlProfile version to be retrieved.
             /// </param>
             /// <param name='galleryInVMAccessControlProfileVersion'>
             /// Parameters supplied to the update gallery inVMAccessControlProfile version
@@ -130,21 +215,16 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='galleryName'>
-            /// The name of the Shared Image Gallery in which the inVMAccessControlProfile
-            /// resides.
+            /// The name of the Shared Image Gallery.
             /// </param>
             /// <param name='inVMAccessControlProfileName'>
-            /// The name of the gallery inVMAccessControlProfile in which the
-            /// inVMAccessControlProfile version is to be updated.
+            /// The name of the gallery inVMAccessControlProfile to be retrieved.
             /// </param>
             /// <param name='inVMAccessControlProfileVersionName'>
-            /// The name of the gallery inVMAccessControlProfile version to be updated.
-            /// Needs to follow semantic version name pattern: The allowed characters are
-            /// digit and period. Digits must be within the range of a 32-bit integer.
-            /// Format: &lt;MajorVersion&gt;.&lt;MinorVersion&gt;.&lt;Patch&gt;
+            /// The name of the gallery inVMAccessControlProfile version to be retrieved.
             /// </param>
             /// <param name='galleryInVMAccessControlProfileVersion'>
             /// Parameters supplied to the update gallery inVMAccessControlProfile version
@@ -162,80 +242,22 @@ namespace Microsoft.Azure.Management.Compute
             }
 
             /// <summary>
-            /// Retrieves information about a gallery inVMAccessControlProfile version.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='galleryName'>
-            /// The name of the Shared Image Gallery in which the inVMAccessControlProfile
-            /// resides.
-            /// </param>
-            /// <param name='inVMAccessControlProfileName'>
-            /// The name of the gallery inVMAccessControlProfile in which the
-            /// inVMAccessControlProfile version resides.
-            /// </param>
-            /// <param name='inVMAccessControlProfileVersionName'>
-            /// The name of the gallery inVMAccessControlProfile version to be retrieved.
-            /// </param>
-            public static GalleryInVMAccessControlProfileVersion Get(this IGalleryInVMAccessControlProfileVersionsOperations operations, string resourceGroupName, string galleryName, string inVMAccessControlProfileName, string inVMAccessControlProfileVersionName)
-            {
-                return operations.GetAsync(resourceGroupName, galleryName, inVMAccessControlProfileName, inVMAccessControlProfileVersionName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Retrieves information about a gallery inVMAccessControlProfile version.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='galleryName'>
-            /// The name of the Shared Image Gallery in which the inVMAccessControlProfile
-            /// resides.
-            /// </param>
-            /// <param name='inVMAccessControlProfileName'>
-            /// The name of the gallery inVMAccessControlProfile in which the
-            /// inVMAccessControlProfile version resides.
-            /// </param>
-            /// <param name='inVMAccessControlProfileVersionName'>
-            /// The name of the gallery inVMAccessControlProfile version to be retrieved.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<GalleryInVMAccessControlProfileVersion> GetAsync(this IGalleryInVMAccessControlProfileVersionsOperations operations, string resourceGroupName, string galleryName, string inVMAccessControlProfileName, string inVMAccessControlProfileVersionName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, galleryName, inVMAccessControlProfileName, inVMAccessControlProfileVersionName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
             /// Delete a gallery inVMAccessControlProfile version.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='galleryName'>
-            /// The name of the Shared Image Gallery in which the inVMAccessControlProfile
-            /// resides.
+            /// The name of the Shared Image Gallery.
             /// </param>
             /// <param name='inVMAccessControlProfileName'>
-            /// The name of the gallery inVMAccessControlProfile in which the
-            /// inVMAccessControlProfile version resides.
+            /// The name of the gallery inVMAccessControlProfile to be retrieved.
             /// </param>
             /// <param name='inVMAccessControlProfileVersionName'>
-            /// The name of the gallery inVMAccessControlProfile version to be deleted.
+            /// The name of the gallery inVMAccessControlProfile version to be retrieved.
             /// </param>
             public static GalleryInVMAccessControlProfileVersionsDeleteHeaders Delete(this IGalleryInVMAccessControlProfileVersionsOperations operations, string resourceGroupName, string galleryName, string inVMAccessControlProfileName, string inVMAccessControlProfileVersionName)
             {
@@ -249,18 +271,16 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='galleryName'>
-            /// The name of the Shared Image Gallery in which the inVMAccessControlProfile
-            /// resides.
+            /// The name of the Shared Image Gallery.
             /// </param>
             /// <param name='inVMAccessControlProfileName'>
-            /// The name of the gallery inVMAccessControlProfile in which the
-            /// inVMAccessControlProfile version resides.
+            /// The name of the gallery inVMAccessControlProfile to be retrieved.
             /// </param>
             /// <param name='inVMAccessControlProfileVersionName'>
-            /// The name of the gallery inVMAccessControlProfile version to be deleted.
+            /// The name of the gallery inVMAccessControlProfile version to be retrieved.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -274,79 +294,22 @@ namespace Microsoft.Azure.Management.Compute
             }
 
             /// <summary>
-            /// List gallery inVMAccessControlProfile versions in a gallery
-            /// inVMAccessControlProfile
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='galleryName'>
-            /// The name of the Shared Image Gallery in which the inVMAccessControlProfile
-            /// resides.
-            /// </param>
-            /// <param name='inVMAccessControlProfileName'>
-            /// The name of the gallery inVMAccessControlProfile from which the
-            /// inVMAccessControlProfile versions are to be listed.
-            /// </param>
-            public static IPage<GalleryInVMAccessControlProfileVersion> ListByGalleryInVMAccessControlProfile(this IGalleryInVMAccessControlProfileVersionsOperations operations, string resourceGroupName, string galleryName, string inVMAccessControlProfileName)
-            {
-                return operations.ListByGalleryInVMAccessControlProfileAsync(resourceGroupName, galleryName, inVMAccessControlProfileName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// List gallery inVMAccessControlProfile versions in a gallery
-            /// inVMAccessControlProfile
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='galleryName'>
-            /// The name of the Shared Image Gallery in which the inVMAccessControlProfile
-            /// resides.
-            /// </param>
-            /// <param name='inVMAccessControlProfileName'>
-            /// The name of the gallery inVMAccessControlProfile from which the
-            /// inVMAccessControlProfile versions are to be listed.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<GalleryInVMAccessControlProfileVersion>> ListByGalleryInVMAccessControlProfileAsync(this IGalleryInVMAccessControlProfileVersionsOperations operations, string resourceGroupName, string galleryName, string inVMAccessControlProfileName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListByGalleryInVMAccessControlProfileWithHttpMessagesAsync(resourceGroupName, galleryName, inVMAccessControlProfileName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
             /// Create or update a gallery inVMAccessControlProfile version.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='galleryName'>
-            /// The name of the Shared Image Gallery in which the inVMAccessControlProfile
-            /// resides.
+            /// The name of the Shared Image Gallery.
             /// </param>
             /// <param name='inVMAccessControlProfileName'>
-            /// The name of the gallery inVMAccessControlProfile in which the
-            /// inVMAccessControlProfile version is to be created.
+            /// The name of the gallery inVMAccessControlProfile to be retrieved.
             /// </param>
             /// <param name='inVMAccessControlProfileVersionName'>
-            /// The name of the gallery inVMAccessControlProfile version to be created.
-            /// Needs to follow semantic version name pattern: The allowed characters are
-            /// digit and period. Digits must be within the range of a 32-bit integer.
-            /// Format: &lt;MajorVersion&gt;.&lt;MinorVersion&gt;.&lt;Patch&gt;
+            /// The name of the gallery inVMAccessControlProfile version to be retrieved.
             /// </param>
             /// <param name='galleryInVMAccessControlProfileVersion'>
             /// Parameters supplied to the create or update gallery
@@ -364,21 +327,16 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='galleryName'>
-            /// The name of the Shared Image Gallery in which the inVMAccessControlProfile
-            /// resides.
+            /// The name of the Shared Image Gallery.
             /// </param>
             /// <param name='inVMAccessControlProfileName'>
-            /// The name of the gallery inVMAccessControlProfile in which the
-            /// inVMAccessControlProfile version is to be created.
+            /// The name of the gallery inVMAccessControlProfile to be retrieved.
             /// </param>
             /// <param name='inVMAccessControlProfileVersionName'>
-            /// The name of the gallery inVMAccessControlProfile version to be created.
-            /// Needs to follow semantic version name pattern: The allowed characters are
-            /// digit and period. Digits must be within the range of a 32-bit integer.
-            /// Format: &lt;MajorVersion&gt;.&lt;MinorVersion&gt;.&lt;Patch&gt;
+            /// The name of the gallery inVMAccessControlProfile version to be retrieved.
             /// </param>
             /// <param name='galleryInVMAccessControlProfileVersion'>
             /// Parameters supplied to the create or update gallery
@@ -402,21 +360,16 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='galleryName'>
-            /// The name of the Shared Image Gallery in which the inVMAccessControlProfile
-            /// resides.
+            /// The name of the Shared Image Gallery.
             /// </param>
             /// <param name='inVMAccessControlProfileName'>
-            /// The name of the gallery inVMAccessControlProfile in which the
-            /// inVMAccessControlProfile version is to be updated.
+            /// The name of the gallery inVMAccessControlProfile to be retrieved.
             /// </param>
             /// <param name='inVMAccessControlProfileVersionName'>
-            /// The name of the gallery inVMAccessControlProfile version to be updated.
-            /// Needs to follow semantic version name pattern: The allowed characters are
-            /// digit and period. Digits must be within the range of a 32-bit integer.
-            /// Format: &lt;MajorVersion&gt;.&lt;MinorVersion&gt;.&lt;Patch&gt;
+            /// The name of the gallery inVMAccessControlProfile version to be retrieved.
             /// </param>
             /// <param name='galleryInVMAccessControlProfileVersion'>
             /// Parameters supplied to the update gallery inVMAccessControlProfile version
@@ -434,21 +387,16 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='galleryName'>
-            /// The name of the Shared Image Gallery in which the inVMAccessControlProfile
-            /// resides.
+            /// The name of the Shared Image Gallery.
             /// </param>
             /// <param name='inVMAccessControlProfileName'>
-            /// The name of the gallery inVMAccessControlProfile in which the
-            /// inVMAccessControlProfile version is to be updated.
+            /// The name of the gallery inVMAccessControlProfile to be retrieved.
             /// </param>
             /// <param name='inVMAccessControlProfileVersionName'>
-            /// The name of the gallery inVMAccessControlProfile version to be updated.
-            /// Needs to follow semantic version name pattern: The allowed characters are
-            /// digit and period. Digits must be within the range of a 32-bit integer.
-            /// Format: &lt;MajorVersion&gt;.&lt;MinorVersion&gt;.&lt;Patch&gt;
+            /// The name of the gallery inVMAccessControlProfile version to be retrieved.
             /// </param>
             /// <param name='galleryInVMAccessControlProfileVersion'>
             /// Parameters supplied to the update gallery inVMAccessControlProfile version
@@ -472,18 +420,16 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='galleryName'>
-            /// The name of the Shared Image Gallery in which the inVMAccessControlProfile
-            /// resides.
+            /// The name of the Shared Image Gallery.
             /// </param>
             /// <param name='inVMAccessControlProfileName'>
-            /// The name of the gallery inVMAccessControlProfile in which the
-            /// inVMAccessControlProfile version resides.
+            /// The name of the gallery inVMAccessControlProfile to be retrieved.
             /// </param>
             /// <param name='inVMAccessControlProfileVersionName'>
-            /// The name of the gallery inVMAccessControlProfile version to be deleted.
+            /// The name of the gallery inVMAccessControlProfile version to be retrieved.
             /// </param>
             public static GalleryInVMAccessControlProfileVersionsDeleteHeaders BeginDelete(this IGalleryInVMAccessControlProfileVersionsOperations operations, string resourceGroupName, string galleryName, string inVMAccessControlProfileName, string inVMAccessControlProfileVersionName)
             {
@@ -497,18 +443,16 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='galleryName'>
-            /// The name of the Shared Image Gallery in which the inVMAccessControlProfile
-            /// resides.
+            /// The name of the Shared Image Gallery.
             /// </param>
             /// <param name='inVMAccessControlProfileName'>
-            /// The name of the gallery inVMAccessControlProfile in which the
-            /// inVMAccessControlProfile version resides.
+            /// The name of the gallery inVMAccessControlProfile to be retrieved.
             /// </param>
             /// <param name='inVMAccessControlProfileVersionName'>
-            /// The name of the gallery inVMAccessControlProfile version to be deleted.
+            /// The name of the gallery inVMAccessControlProfile version to be retrieved.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.

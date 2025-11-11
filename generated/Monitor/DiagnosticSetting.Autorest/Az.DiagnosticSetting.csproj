@@ -3,6 +3,7 @@
     <PsModuleName>DiagnosticSetting</PsModuleName>
     <PsRootModuleName>Monitor</PsRootModuleName>
     <PsModuleFolder>DiagnosticSetting.Autorest</PsModuleFolder>
+    <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting</RootNamespace>
   </PropertyGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.autorest.props" />

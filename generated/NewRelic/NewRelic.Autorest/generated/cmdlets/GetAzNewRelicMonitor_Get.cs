@@ -10,16 +10,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Get a NewRelicMonitorResource</summary>
+    /// <summary>
+    /// Retrieves the properties and configuration details of a specific New Relic monitor resource, providing insight into its
+    /// setup and status
+    /// </summary>
     /// <remarks>
     /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/NewRelic.Observability/monitors/{monitorName}"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzNewRelicMonitor_Get")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResource))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Description(@"Get a NewRelicMonitorResource")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Description(@"Retrieves the properties and configuration details of a specific New Relic monitor resource, providing insight into its setup and status")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/NewRelic.Observability/monitors/{monitorName}", ApiVersion = "2024-01-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/NewRelic.Observability/monitors/{monitorName}", ApiVersion = "2025-05-01-preview")]
     public partial class GetAzNewRelicMonitor_Get : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IContext

@@ -44,9 +44,12 @@ Please understand the following impact to your storage account before you initia
 $account = Get-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -IncludeGeoReplicationStats
 $account.GeoReplicationStats
 
-Status LastSyncTime          CanFailover
------- ------------          -----------
-Live   11/29/2018 6:41:03 AM        True
+Status                        : Live
+LastSyncTime                  : 10/21/2025 3:42:38 AM
+CanFailover                   : True
+CanPlannedFailover            : True
+PostFailoverRedundancy        : Standard_LRS
+PostPlannedFailoverRedundancy : Standard_GRS
 
 $job = Invoke-AzStorageAccountFailover -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -Force -AsJob
 $job | Wait-Job
@@ -62,9 +65,12 @@ This command check the last sync time of a Storage account then invokes failover
 PS C:\>$account = Get-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -IncludeGeoReplicationStats
 PS C:\>$account.GeoReplicationStats
 
-Status LastSyncTime          CanFailover
------- ------------          -----------
-Live   11/29/2022 6:41:03 AM        True
+Status                        : Live
+LastSyncTime                  : 10/21/2025 3:42:38 AM
+CanFailover                   : True
+CanPlannedFailover            : True
+PostFailoverRedundancy        : Standard_LRS
+PostPlannedFailoverRedundancy : Standard_GRS
 
 PS C:\>$job = Invoke-AzStorageAccountFailover -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -FailoverType Planned -Force -AsJob
 PS C:\>$job | Wait-Job
@@ -80,9 +86,12 @@ This command check the last sync time and canFailover status of a Storage accoun
 PS C:\>$account = Get-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -IncludeGeoReplicationStats
 PS C:\>$account.GeoReplicationStats
 
-Status LastSyncTime          CanFailover
------- ------------          -----------
-Live   11/29/2022 6:41:03 AM        True
+Status                        : Live
+LastSyncTime                  : 10/21/2025 3:42:38 AM
+CanFailover                   : True
+CanPlannedFailover            : True
+PostFailoverRedundancy        : Standard_LRS
+PostPlannedFailoverRedundancy : Standard_GRS
 
 PS C:\>$job = Invoke-AzStorageAccountFailover -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -FailoverType Unplanned -Force -AsJob
 PS C:\>$job | Wait-Job

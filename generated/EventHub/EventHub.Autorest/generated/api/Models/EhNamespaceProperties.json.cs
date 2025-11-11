@@ -66,6 +66,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
                 return;
             }
             {_encryption = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonObject>("encryption"), out var __jsonEncryption) ? Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Encryption.FromJson(__jsonEncryption) : _encryption;}
+            {_platformCapability = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonObject>("platformCapabilities"), out var __jsonPlatformCapabilities) ? Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.PlatformCapabilities.FromJson(__jsonPlatformCapabilities) : _platformCapability;}
             {_geoDataReplication = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonObject>("geoDataReplication"), out var __jsonGeoDataReplication) ? Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.GeoDataReplicationProperties.FromJson(__jsonGeoDataReplication) : _geoDataReplication;}
             {_minimumTlsVersion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonString>("minimumTlsVersion"), out var __jsonMinimumTlsVersion) ? (string)__jsonMinimumTlsVersion : (string)_minimumTlsVersion;}
             {_provisioningState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonString>("provisioningState"), out var __jsonProvisioningState) ? (string)__jsonProvisioningState : (string)_provisioningState;}
@@ -118,6 +119,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
                 return container;
             }
             AddIf( null != this._encryption ? (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonNode) this._encryption.ToJson(null,serializationMode) : null, "encryption" ,container.Add );
+            AddIf( null != this._platformCapability ? (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonNode) this._platformCapability.ToJson(null,serializationMode) : null, "platformCapabilities" ,container.Add );
             AddIf( null != this._geoDataReplication ? (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonNode) this._geoDataReplication.ToJson(null,serializationMode) : null, "geoDataReplication" ,container.Add );
             AddIf( null != (((object)this._minimumTlsVersion)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonString(this._minimumTlsVersion.ToString()) : null, "minimumTlsVersion" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.SerializationMode.IncludeRead))

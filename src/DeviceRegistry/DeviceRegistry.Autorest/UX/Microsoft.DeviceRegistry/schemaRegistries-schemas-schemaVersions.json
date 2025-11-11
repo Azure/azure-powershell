@@ -1,0 +1,105 @@
+{
+  "resourceType": "schemaRegistries/schemas/schemaVersions",
+  "apiVersion": "2025-10-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.deviceregistry"
+  },
+  "commands": [
+    {
+      "name": "Get-AzDeviceRegistrySchemaVersion",
+      "description": "Get a SchemaVersion",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/schemaRegistries/{schemaRegistryName}/schemas/{schemaName}/schemaVersions/{schemaVersionName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.deviceregistry/get-azdeviceregistryschemaversion"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "-SchemaName <String>",
+              "-SchemaRegistryName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a SchemaVersion",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.schemaVersionName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SchemaName",
+              "value": "[Path.schemaName]"
+            },
+            {
+              "name": "-SchemaRegistryName",
+              "value": "[Path.schemaRegistryName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzDeviceRegistrySchemaVersion",
+      "description": "Delete a SchemaVersion",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/schemaRegistries/{schemaRegistryName}/schemas/{schemaName}/schemaVersions/{schemaVersionName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.deviceregistry/remove-azdeviceregistryschemaversion"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "-SchemaName <String>",
+              "-SchemaRegistryName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a SchemaVersion",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.schemaVersionName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SchemaName",
+              "value": "[Path.schemaName]"
+            },
+            {
+              "name": "-SchemaRegistryName",
+              "value": "[Path.schemaRegistryName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

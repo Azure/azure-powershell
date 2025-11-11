@@ -13,6 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
     /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/workspaces/{workspaceName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzDatabricksWorkspace_GetViaIdentity")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspace", "15.0.0", "2.0.0", "2025/11/03", DeprecatedOutputProperties=new string[] {"PrivateEndpointConnection","Authorization","ComplianceSecurityProfileComplianceStandard"}, NewOutputProperties=new string[] {"PrivateEndpointConnection","Authorization","ComplianceSecurityProfileComplianceStandard"}, ChangeDescription="The types of the properties 'PrivateEndpointConnection', 'Authorization' and 'ComplianceSecurityProfileComplianceStandard' will be changed from object to 'List'.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspace))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Description(@"Gets the workspace.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Generated]

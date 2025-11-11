@@ -50,7 +50,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyDefinition Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyRuleInternal.Definition { get => (this._definition = this._definition ?? new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ManagementPolicyDefinition()); set { {_definition = value;} } }
 
         /// <summary>Internal Acessors for DefinitionFilter</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyFilter Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyRuleInternal.DefinitionFilter { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyDefinitionInternal)Definition).Filter; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyDefinitionInternal)Definition).Filter = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyFilter Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyRuleInternal.DefinitionFilter { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyDefinitionInternal)Definition).Filter; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyDefinitionInternal)Definition).Filter = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Type</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyRuleInternal.Type { get => this._type; set { {_type = value;} } }

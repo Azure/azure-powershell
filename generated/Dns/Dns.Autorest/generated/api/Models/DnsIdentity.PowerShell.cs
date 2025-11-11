@@ -101,6 +101,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("SubscriptionId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnsIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnsIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
+            }
             if (content.Contains("ResourceGroupName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnsIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnsIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
@@ -109,17 +113,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnsIdentityInternal)this).ZoneName = (string) content.GetValueForProperty("ZoneName",((Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnsIdentityInternal)this).ZoneName, global::System.Convert.ToString);
             }
-            if (content.Contains("SubscriptionId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnsIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnsIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
-            }
             if (content.Contains("RelativeRecordSetName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnsIdentityInternal)this).RelativeRecordSetName = (string) content.GetValueForProperty("RelativeRecordSetName",((Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnsIdentityInternal)this).RelativeRecordSetName, global::System.Convert.ToString);
             }
             if (content.Contains("RecordType"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnsIdentityInternal)this).RecordType = (Microsoft.Azure.PowerShell.Cmdlets.Dns.Support.RecordType?) content.GetValueForProperty("RecordType",((Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnsIdentityInternal)this).RecordType, Microsoft.Azure.PowerShell.Cmdlets.Dns.Support.RecordType.CreateFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnsIdentityInternal)this).RecordType = (string) content.GetValueForProperty("RecordType",((Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnsIdentityInternal)this).RecordType, global::System.Convert.ToString);
             }
             if (content.Contains("Id"))
             {
@@ -142,6 +142,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("SubscriptionId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnsIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnsIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
+            }
             if (content.Contains("ResourceGroupName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnsIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnsIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
@@ -150,17 +154,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnsIdentityInternal)this).ZoneName = (string) content.GetValueForProperty("ZoneName",((Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnsIdentityInternal)this).ZoneName, global::System.Convert.ToString);
             }
-            if (content.Contains("SubscriptionId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnsIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnsIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
-            }
             if (content.Contains("RelativeRecordSetName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnsIdentityInternal)this).RelativeRecordSetName = (string) content.GetValueForProperty("RelativeRecordSetName",((Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnsIdentityInternal)this).RelativeRecordSetName, global::System.Convert.ToString);
             }
             if (content.Contains("RecordType"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnsIdentityInternal)this).RecordType = (Microsoft.Azure.PowerShell.Cmdlets.Dns.Support.RecordType?) content.GetValueForProperty("RecordType",((Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnsIdentityInternal)this).RecordType, Microsoft.Azure.PowerShell.Cmdlets.Dns.Support.RecordType.CreateFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnsIdentityInternal)this).RecordType = (string) content.GetValueForProperty("RecordType",((Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnsIdentityInternal)this).RecordType, global::System.Convert.ToString);
             }
             if (content.Contains("Id"))
             {

@@ -220,5 +220,27 @@ namespace AzDev.Services
             reason = "Projects in module do not consist of AutoRestBased nor SdkBased.";
             return ModuleType.Other;
         }
+
+        // Domain mapping: map use-extension "@autorest/powershell" version strings to normalized SubType values
+        // - null/empty => v4 (default)
+        // - 3.x => v3
+        // - 4.x => v4
+        // - otherwise => Invalid
+        internal static string MapAutoRestPowerShellVersion(string val)
+        {
+            if (string.IsNullOrEmpty(val))
+            {
+                return "v4";
+            }
+            if (val.StartsWith("3.", StringComparison.Ordinal))
+            {
+                return "v3";
+            }
+            if (val.StartsWith("4.", StringComparison.Ordinal))
+            {
+                return "v4";
+            }
+            return "Invalid";
+        }
     }
 }

@@ -16,7 +16,7 @@ using Microsoft.Azure.Commands.Management.Search.Models;
 using Microsoft.Azure.Commands.Management.Search.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Search.Models;
-using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 
@@ -105,12 +105,38 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
             HelpMessage = SemanticSearchModeMessage)]
         public PSSemanticSearchMode? SemanticSearchMode { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = ComputeTypeMessage)]
+        public PSComputeType? ComputeType { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = DataExfiltrationProtectionsMessage)]
+        public PSDataExfiltrationProtection[] DataExfiltrationProtectionList { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = BypassMessage)]
+        public PSSearchBypass? Bypass { get; set; }
+
         public override void ExecuteCmdlet()
         {
-            var networkRuleSet = IPRuleList?.Any() == true ? new PSNetworkRuleSet
+            NetworkRuleSet networkRuleSet = null;
+            if (IPRuleList != null || Bypass != null)
             {
-                IpRules = IPRuleList
-            } : null;
+                networkRuleSet = new NetworkRuleSet();
+
+                if (IPRuleList != null)
+                {
+                    networkRuleSet.IPRules = IPRuleList.Select(ipRule => (IpRule)ipRule).ToList();
+                }
+
+                if (Bypass.HasValue)
+                {
+                    networkRuleSet.Bypass = Bypass.ToString();
+                }
+            }
 
             var identity = IdentityType.HasValue ? new PSIdentity
             {
@@ -137,20 +163,41 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
                 semanticSearchMode = SemanticSearchMode.ToString().ToLower();
             }
 
+            string computeType = null;
+            if (ComputeType.HasValue)
+            {
+                computeType = ComputeType.ToString().ToLower();
+            }
+
+            var dataExfiltrationProtections = new List<string>();
+
+            if (DataExfiltrationProtectionList != null)
+            {
+                dataExfiltrationProtections = DataExfiltrationProtectionList.Select(x => x.ToString()).ToList();
+            }
+
+            string publicNetworkAccess = null;
+            if (PublicNetworkAccess.HasValue)
+            {
+                publicNetworkAccess = PublicNetworkAccess.ToString().ToLower();
+            }
+
             Azure.Management.Search.Models.SearchService searchService =
                 new Azure.Management.Search.Models.SearchService(
                     name: Name,
                     location: Location,
-                    sku: new Sku((SkuName)Sku),
+                    sku: new Sku(Sku.ToString().ToLower()),
                     replicaCount: ReplicaCount,
                     partitionCount: PartitionCount,
                     hostingMode: (HostingMode?)HostingMode,
-                    publicNetworkAccess: (PublicNetworkAccess?)PublicNetworkAccess,
+                    publicNetworkAccess: publicNetworkAccess,
                     identity: (Identity)identity,
-                    networkRuleSet: (NetworkRuleSet)networkRuleSet,
+                    networkRuleSet: networkRuleSet,
                     disableLocalAuth: DisableLocalAuth,
                     authOptions: (DataPlaneAuthOptions)authOptions,
-                    semanticSearch: semanticSearchMode);
+                    semanticSearch: semanticSearchMode,
+                    computeType: computeType,
+                    dataExfiltrationProtections: dataExfiltrationProtections);
 
             if (ShouldProcess(Name, Resources.CreateSearchService))
             {

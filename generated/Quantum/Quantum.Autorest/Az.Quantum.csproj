@@ -3,6 +3,7 @@
     <PsModuleName>Quantum</PsModuleName>
     <PsRootModuleName>Quantum</PsRootModuleName>
     <PsModuleFolder>Quantum.Autorest</PsModuleFolder>
+    <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.Quantum</RootNamespace>
   </PropertyGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.autorest.props" />

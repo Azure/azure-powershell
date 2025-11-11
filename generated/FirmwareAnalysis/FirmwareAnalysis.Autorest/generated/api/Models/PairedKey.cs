@@ -45,7 +45,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         Create = true,
         Update = true,
         Description = @"ID of the paired key or certificate.",
-        SerializedName = @"id",
+        SerializedName = @"pairedKeyId",
         PossibleTypes = new [] { typeof(string) })]
         string Id { get; set; }
         /// <summary>The type indicating whether the paired object is a key or certificate.</summary>

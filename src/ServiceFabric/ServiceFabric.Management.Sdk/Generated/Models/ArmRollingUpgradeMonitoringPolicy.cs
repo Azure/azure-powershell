@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.ServiceFabric.Models
         /// </summary>
 
         /// <param name="failureAction">The activation Mode of the service package
-        /// Possible values include: 'Rollback', 'Manual'</param>
+        /// Possible values include: &#39;Rollback&#39;, &#39;Manual&#39;</param>
 
         /// <param name="healthCheckWaitDuration">The amount of time to wait after completing an upgrade domain before
         /// applying health policies. It is first interpreted as a string representing

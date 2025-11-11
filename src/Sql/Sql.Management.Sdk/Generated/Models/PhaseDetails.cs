@@ -25,7 +25,8 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </summary>
 
         /// <param name="phase">The operation phase.
-        /// Possible values include: &#39;Copying&#39;, &#39;Catchup&#39;, &#39;WaitingForCutover&#39;,
+        /// Possible values include: &#39;LogTransitionInProgress&#39;, &#39;Copying&#39;,
+        /// &#39;BuildingHyperscaleComponents&#39;, &#39;Catchup&#39;, &#39;WaitingForCutover&#39;,
         /// &#39;CutoverInProgress&#39;</param>
 
         /// <param name="phaseInformation">The operation phase information.
@@ -45,7 +46,7 @@ namespace Microsoft.Azure.Management.Sql.Models
 
 
         /// <summary>
-        /// Gets the operation phase. Possible values include: &#39;Copying&#39;, &#39;Catchup&#39;, &#39;WaitingForCutover&#39;, &#39;CutoverInProgress&#39;
+        /// Gets the operation phase. Possible values include: &#39;LogTransitionInProgress&#39;, &#39;Copying&#39;, &#39;BuildingHyperscaleComponents&#39;, &#39;Catchup&#39;, &#39;WaitingForCutover&#39;, &#39;CutoverInProgress&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "phase")]
         public string Phase {get; private set; }

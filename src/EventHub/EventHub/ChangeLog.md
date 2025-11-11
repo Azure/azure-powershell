@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 5.4.0
+* Added new cmdlets for Eventhubnetworksecurityperimeterconfiguration - 'Get-AzEventHubNetworkSecurityPerimeterConfigurationsForAssociation', 'Get-AzEventHubNetworkSecurityPerimeterConfiguration'
+
 ## Version 5.3.0
 * Added parameters 'MaxReplicationLagDurationInSeconds' and 'Replicalocation' in cmdlets 'New-AzEventHubNamespace' & 'Set-AzEventHubNamespace'
 * Added new cmdlets for doing namespace failover - 'Start-AzEventHubNamespaceFailOver'

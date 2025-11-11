@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.SignalR.Models
     using System.Linq;
 
     /// <summary>
-    /// Upstream auth settings.
+    /// Upstream auth settings. If not set, no auth is used for upstream messages.
     /// </summary>
     public partial class UpstreamAuthSettings
     {
@@ -24,11 +24,10 @@ namespace Microsoft.Azure.Management.SignalR.Models
         /// Initializes a new instance of the UpstreamAuthSettings class.
         /// </summary>
 
-        /// <param name="type">Gets or sets the type of auth. None or ManagedIdentity is supported now.
+        /// <param name="type">Upstream auth type enum.
         /// Possible values include: &#39;None&#39;, &#39;ManagedIdentity&#39;</param>
 
-        /// <param name="managedIdentity">Gets or sets the managed identity settings. It&#39;s required if the auth type
-        /// is set to ManagedIdentity.
+        /// <param name="managedIdentity">Managed identity settings for upstream.
         /// </param>
         public UpstreamAuthSettings(string type = default(string), ManagedIdentitySettings managedIdentity = default(ManagedIdentitySettings))
 
@@ -45,15 +44,13 @@ namespace Microsoft.Azure.Management.SignalR.Models
 
 
         /// <summary>
-        /// Gets or sets gets or sets the type of auth. None or ManagedIdentity is
-        /// supported now. Possible values include: &#39;None&#39;, &#39;ManagedIdentity&#39;
+        /// Gets or sets upstream auth type enum. Possible values include: &#39;None&#39;, &#39;ManagedIdentity&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
         public string Type {get; set; }
 
         /// <summary>
-        /// Gets or sets gets or sets the managed identity settings. It&#39;s required if
-        /// the auth type is set to ManagedIdentity.
+        /// Gets or sets managed identity settings for upstream.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "managedIdentity")]
         public ManagedIdentitySettings ManagedIdentity {get; set; }

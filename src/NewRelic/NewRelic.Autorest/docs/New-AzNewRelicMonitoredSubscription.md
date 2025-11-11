@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzNewRelicMonitoredSubscription
 
 ## SYNOPSIS
-Add the subscriptions that should be monitored by the NewRelic monitor resource.
+Add subscriptions to be monitored by the New Relic monitor resource, enabling observability and monitoring.
 
 ## SYNTAX
 
@@ -34,7 +34,7 @@ New-AzNewRelicMonitoredSubscription -MonitorName <String> -ResourceGroupName <St
 ```
 
 ## DESCRIPTION
-Add the subscriptions that should be monitored by the NewRelic monitor resource.
+Add subscriptions to be monitored by the New Relic monitor resource, enabling observability and monitoring.
 
 ## EXAMPLES
 

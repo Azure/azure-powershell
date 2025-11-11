@@ -3,6 +3,7 @@
     <PsModuleName>LambdaTest</PsModuleName>
     <PsRootModuleName>LambdaTest</PsRootModuleName>
     <PsModuleFolder>LambdaTest.Autorest</PsModuleFolder>
+    <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.LambdaTest</RootNamespace>
   </PropertyGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.autorest.props" />

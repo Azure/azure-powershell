@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Management.Storage
         /// </param>
         /// <param name='policy'>
         /// The Storage Account ManagementPolicy, in JSON format. See more details in:
-        /// https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+        /// https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.

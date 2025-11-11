@@ -32,7 +32,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the RunCommandInput class.
         /// </summary>
-        /// <param name="commandId">The run command id.</param>
+        /// <param name="commandId">Specifies a commandId of predefined
+        /// built-in script. Command IDs available for Linux are listed at
+        /// https://aka.ms/RunCommandManagedLinux#available-commands, Windows
+        /// at
+        /// https://aka.ms/RunCommandManagedWindows#available-commands.</param>
         /// <param name="script">Optional. The script to be executed.  When
         /// this value is given, the given script will override the default
         /// script of the command.</param>
@@ -51,7 +55,10 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the run command id.
+        /// Gets or sets specifies a commandId of predefined built-in script.
+        /// Command IDs available for Linux are listed at
+        /// https://aka.ms/RunCommandManagedLinux#available-commands, Windows
+        /// at https://aka.ms/RunCommandManagedWindows#available-commands.
         /// </summary>
         [JsonProperty(PropertyName = "commandId")]
         public string CommandId { get; set; }

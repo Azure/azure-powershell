@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Extensions;
 
-    /// <summary>Properties of the SBOM component for a CVE.</summary>
+    /// <summary>Legacy component of a CVE result.</summary>
     public partial class CveComponent :
         Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveComponent,
         Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICveComponentInternal
@@ -16,14 +16,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         /// <summary>Backing field for <see cref="ComponentId" /> property.</summary>
         private string _componentId;
 
-        /// <summary>ID of the SBOM component</summary>
+        /// <summary>ID of the SBOM component.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Owned)]
         public string ComponentId { get => this._componentId; set => this._componentId = value; }
 
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
         private string _name;
 
-        /// <summary>Name of the SBOM component</summary>
+        /// <summary>Name of the SBOM component.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Owned)]
         public string Name { get => this._name; set => this._name = value; }
 
@@ -40,29 +40,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
 
         }
     }
-    /// Properties of the SBOM component for a CVE.
+    /// Legacy component of a CVE result.
     public partial interface ICveComponent :
         Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IJsonSerializable
     {
-        /// <summary>ID of the SBOM component</summary>
+        /// <summary>ID of the SBOM component.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"ID of the SBOM component",
+        Description = @"ID of the SBOM component.",
         SerializedName = @"componentId",
         PossibleTypes = new [] { typeof(string) })]
         string ComponentId { get; set; }
-        /// <summary>Name of the SBOM component</summary>
+        /// <summary>Name of the SBOM component.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Name of the SBOM component",
+        Description = @"Name of the SBOM component.",
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(string) })]
         string Name { get; set; }
@@ -79,13 +79,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         string Version { get; set; }
 
     }
-    /// Properties of the SBOM component for a CVE.
+    /// Legacy component of a CVE result.
     internal partial interface ICveComponentInternal
 
     {
-        /// <summary>ID of the SBOM component</summary>
+        /// <summary>ID of the SBOM component.</summary>
         string ComponentId { get; set; }
-        /// <summary>Name of the SBOM component</summary>
+        /// <summary>Name of the SBOM component.</summary>
         string Name { get; set; }
         /// <summary>Version of the SBOM component.</summary>
         string Version { get; set; }

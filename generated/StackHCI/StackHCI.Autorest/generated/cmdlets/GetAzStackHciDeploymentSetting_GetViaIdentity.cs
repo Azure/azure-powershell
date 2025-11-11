@@ -13,6 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Cmdlets
     /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/deploymentSettings/{deploymentSettingsName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzStackHciDeploymentSetting_GetViaIdentity")]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IDeploymentSetting", "15.0.0", "3.0.0", "2025/11", DeprecatedOutputProperties=new string[] {"DeploymentStatusStep","ValidationStatusStep","DeploymentConfigurationScaleUnit","ArcNodeResourceId"}, NewOutputProperties=new string[] {"DeploymentStatusStep","ValidationStatusStep","DeploymentConfigurationScaleUnit","ArcNodeResourceId"}, ChangeDescription="The types of the properties DeploymentStatusStep, ValidationStatusStep, DeploymentConfigurationScaleUnit and ArcNodeResourceId will be changed from single object or fixed array to 'List'.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IDeploymentSetting))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Description(@"Get a DeploymentSetting")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Generated]

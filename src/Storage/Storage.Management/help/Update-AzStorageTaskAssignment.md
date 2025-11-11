@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzStorageTaskAssignment
 
 ## SYNOPSIS
-update storage task assignment properties
+Update storage task assignment properties
 
 ## SYNTAX
 
@@ -41,7 +41,7 @@ Update-AzStorageTaskAssignment -InputObject <IStorageIdentity> [-Description <St
 ```
 
 ## DESCRIPTION
-update storage task assignment properties
+Update storage task assignment properties
 
 ## EXAMPLES
 

@@ -13,13 +13,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResultInternal
     {
 
-        /// <summary>Backing field for <see cref="Architecture" /> property.</summary>
-        private string _architecture;
-
-        /// <summary>The architecture of the uploaded firmware.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Owned)]
-        public string Architecture { get => this._architecture; set => this._architecture = value; }
-
         /// <summary>Backing field for <see cref="BinaryHardeningId" /> property.</summary>
         private string _binaryHardeningId;
 
@@ -27,63 +20,87 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Owned)]
         public string BinaryHardeningId { get => this._binaryHardeningId; set => this._binaryHardeningId = value; }
 
-        /// <summary>Backing field for <see cref="Class" /> property.</summary>
-        private string _class;
+        /// <summary>Backing field for <see cref="ExecutableArchitecture" /> property.</summary>
+        private string _executableArchitecture;
+
+        /// <summary>The architecture of the binary being reported on.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Owned)]
+        public string ExecutableArchitecture { get => this._executableArchitecture; set => this._executableArchitecture = value; }
+
+        /// <summary>Backing field for <see cref="ExecutableClass" /> property.</summary>
+        private string _executableClass;
 
         /// <summary>The executable class to indicate 32 or 64 bit.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Owned)]
-        public string Class { get => this._class; set => this._class = value; }
-
-        /// <summary>Backing field for <see cref="Feature" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningFeatures _feature;
-
-        /// <summary>Binary hardening features.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Owned)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningFeatures Feature { get => (this._feature = this._feature ?? new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.BinaryHardeningFeatures()); set => this._feature = value; }
-
-        /// <summary>Canary (stack canaries) flag.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inlined)]
-        public bool? FeatureCanary { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningFeaturesInternal)Feature).Canary; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningFeaturesInternal)Feature).Canary = value ?? default(bool); }
-
-        /// <summary>NX (no-execute) flag.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inlined)]
-        public bool? FeatureNx { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningFeaturesInternal)Feature).Nx; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningFeaturesInternal)Feature).Nx = value ?? default(bool); }
-
-        /// <summary>PIE (position independent executable) flag.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inlined)]
-        public bool? FeaturePie { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningFeaturesInternal)Feature).Pie; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningFeaturesInternal)Feature).Pie = value ?? default(bool); }
-
-        /// <summary>RELRO (relocation read-only) flag.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inlined)]
-        public bool? FeatureRelro { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningFeaturesInternal)Feature).Relro; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningFeaturesInternal)Feature).Relro = value ?? default(bool); }
-
-        /// <summary>Stripped flag.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inlined)]
-        public bool? FeatureStripped { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningFeaturesInternal)Feature).Stripped; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningFeaturesInternal)Feature).Stripped = value ?? default(bool); }
+        public string ExecutableClass { get => this._executableClass; set => this._executableClass = value; }
 
         /// <summary>Backing field for <see cref="FilePath" /> property.</summary>
         private string _filePath;
 
-        /// <summary>The executable path.</summary>
+        /// <summary>The path to the binary in the firmware.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Owned)]
         public string FilePath { get => this._filePath; set => this._filePath = value; }
 
-        /// <summary>Internal Acessors for Feature</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningFeatures Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResultInternal.Feature { get => (this._feature = this._feature ?? new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.BinaryHardeningFeatures()); set { {_feature = value;} } }
+        /// <summary>Internal Acessors for ProvisioningState</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResultInternal.ProvisioningState { get => this._provisioningState; set { {_provisioningState = value;} } }
+
+        /// <summary>Internal Acessors for SecurityHardeningFeature</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningFeatures Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResultInternal.SecurityHardeningFeature { get => (this._securityHardeningFeature = this._securityHardeningFeature ?? new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.BinaryHardeningFeatures()); set { {_securityHardeningFeature = value;} } }
+
+        /// <summary>Backing field for <see cref="ProvisioningState" /> property.</summary>
+        private string _provisioningState;
+
+        /// <summary>The status of the last operation.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Owned)]
+        public string ProvisioningState { get => this._provisioningState; }
 
         /// <summary>Backing field for <see cref="Rpath" /> property.</summary>
         private string _rpath;
 
-        /// <summary>The rpath of the uploaded firmware.</summary>
+        /// <summary>
+        /// The rpath property of the uploaded binary, which is a deprecated method of specifying additional paths to load objects
+        /// at runtime.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Owned)]
         public string Rpath { get => this._rpath; set => this._rpath = value; }
 
         /// <summary>Backing field for <see cref="Runpath" /> property.</summary>
         private string _runpath;
 
-        /// <summary>The runpath of the uploaded firmware.</summary>
+        /// <summary>
+        /// The runpath property of the uploaded binary, which is a method of specifying additional paths to load objects at runtime.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Owned)]
         public string Runpath { get => this._runpath; set => this._runpath = value; }
+
+        /// <summary>Backing field for <see cref="SecurityHardeningFeature" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningFeatures _securityHardeningFeature;
+
+        /// <summary>The security hardening features of the binary.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningFeatures SecurityHardeningFeature { get => (this._securityHardeningFeature = this._securityHardeningFeature ?? new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.BinaryHardeningFeatures()); set => this._securityHardeningFeature = value; }
+
+        /// <summary>Flag indicating if the binary was compiled with stack canaries enabled.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inlined)]
+        public bool? SecurityHardeningFeatureCanary { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningFeaturesInternal)SecurityHardeningFeature).Canary; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningFeaturesInternal)SecurityHardeningFeature).Canary = value ?? default(bool); }
+
+        /// <summary>Flag indicating the binary's stack is set to NX (no-execute).</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inlined)]
+        public bool? SecurityHardeningFeatureNoExecute { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningFeaturesInternal)SecurityHardeningFeature).NoExecute; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningFeaturesInternal)SecurityHardeningFeature).NoExecute = value ?? default(bool); }
+
+        /// <summary>
+        /// Flag indicating the binary was compiled to be a position independent executable.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inlined)]
+        public bool? SecurityHardeningFeaturePositionIndependentExecutable { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningFeaturesInternal)SecurityHardeningFeature).PositionIndependentExecutable; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningFeaturesInternal)SecurityHardeningFeature).PositionIndependentExecutable = value ?? default(bool); }
+
+        /// <summary>Flag indicating the binary has enabled relocation read-only protections.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inlined)]
+        public bool? SecurityHardeningFeatureRelocationReadOnly { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningFeaturesInternal)SecurityHardeningFeature).RelocationReadOnly; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningFeaturesInternal)SecurityHardeningFeature).RelocationReadOnly = value ?? default(bool); }
+
+        /// <summary>Flag indicating if debug symbols have been stripped from the binary.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inlined)]
+        public bool? SecurityHardeningFeatureStripped { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningFeaturesInternal)SecurityHardeningFeature).Stripped; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningFeaturesInternal)SecurityHardeningFeature).Stripped = value ?? default(bool); }
 
         /// <summary>Creates an new <see cref="BinaryHardeningResult" /> instance.</summary>
         public BinaryHardeningResult()
@@ -95,17 +112,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
     public partial interface IBinaryHardeningResult :
         Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IJsonSerializable
     {
-        /// <summary>The architecture of the uploaded firmware.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"The architecture of the uploaded firmware.",
-        SerializedName = @"architecture",
-        PossibleTypes = new [] { typeof(string) })]
-        string Architecture { get; set; }
         /// <summary>ID for the binary hardening result.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
         Required = false,
@@ -117,6 +123,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         SerializedName = @"binaryHardeningId",
         PossibleTypes = new [] { typeof(string) })]
         string BinaryHardeningId { get; set; }
+        /// <summary>The architecture of the binary being reported on.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The architecture of the binary being reported on.",
+        SerializedName = @"executableArchitecture",
+        PossibleTypes = new [] { typeof(string) })]
+        string ExecutableArchitecture { get; set; }
         /// <summary>The executable class to indicate 32 or 64 bit.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
         Required = false,
@@ -125,127 +142,158 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         Create = true,
         Update = true,
         Description = @"The executable class to indicate 32 or 64 bit.",
-        SerializedName = @"class",
+        SerializedName = @"executableClass",
         PossibleTypes = new [] { typeof(string) })]
-        string Class { get; set; }
-        /// <summary>Canary (stack canaries) flag.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PSArgumentCompleterAttribute("x86", "x64")]
+        string ExecutableClass { get; set; }
+        /// <summary>The path to the binary in the firmware.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Canary (stack canaries) flag.",
-        SerializedName = @"canary",
-        PossibleTypes = new [] { typeof(bool) })]
-        bool? FeatureCanary { get; set; }
-        /// <summary>NX (no-execute) flag.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"NX (no-execute) flag.",
-        SerializedName = @"nx",
-        PossibleTypes = new [] { typeof(bool) })]
-        bool? FeatureNx { get; set; }
-        /// <summary>PIE (position independent executable) flag.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"PIE (position independent executable) flag.",
-        SerializedName = @"pie",
-        PossibleTypes = new [] { typeof(bool) })]
-        bool? FeaturePie { get; set; }
-        /// <summary>RELRO (relocation read-only) flag.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"RELRO (relocation read-only) flag.",
-        SerializedName = @"relro",
-        PossibleTypes = new [] { typeof(bool) })]
-        bool? FeatureRelro { get; set; }
-        /// <summary>Stripped flag.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Stripped flag.",
-        SerializedName = @"stripped",
-        PossibleTypes = new [] { typeof(bool) })]
-        bool? FeatureStripped { get; set; }
-        /// <summary>The executable path.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"The executable path.",
+        Description = @"The path to the binary in the firmware.",
         SerializedName = @"filePath",
         PossibleTypes = new [] { typeof(string) })]
         string FilePath { get; set; }
-        /// <summary>The rpath of the uploaded firmware.</summary>
+        /// <summary>The status of the last operation.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The status of the last operation.",
+        SerializedName = @"provisioningState",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Pending", "Extracting", "Analyzing")]
+        string ProvisioningState { get;  }
+        /// <summary>
+        /// The rpath property of the uploaded binary, which is a deprecated method of specifying additional paths to load objects
+        /// at runtime.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The rpath of the uploaded firmware.",
+        Description = @"The rpath property of the uploaded binary, which is a deprecated method of specifying additional paths to load objects at runtime.",
         SerializedName = @"rpath",
         PossibleTypes = new [] { typeof(string) })]
         string Rpath { get; set; }
-        /// <summary>The runpath of the uploaded firmware.</summary>
+        /// <summary>
+        /// The runpath property of the uploaded binary, which is a method of specifying additional paths to load objects at runtime.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The runpath of the uploaded firmware.",
+        Description = @"The runpath property of the uploaded binary, which is a method of specifying additional paths to load objects at runtime.",
         SerializedName = @"runpath",
         PossibleTypes = new [] { typeof(string) })]
         string Runpath { get; set; }
+        /// <summary>Flag indicating if the binary was compiled with stack canaries enabled.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Flag indicating if the binary was compiled with stack canaries enabled.",
+        SerializedName = @"canary",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? SecurityHardeningFeatureCanary { get; set; }
+        /// <summary>Flag indicating the binary's stack is set to NX (no-execute).</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Flag indicating the binary's stack is set to NX (no-execute).",
+        SerializedName = @"noExecute",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? SecurityHardeningFeatureNoExecute { get; set; }
+        /// <summary>
+        /// Flag indicating the binary was compiled to be a position independent executable.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Flag indicating the binary was compiled to be a position independent executable.",
+        SerializedName = @"positionIndependentExecutable",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? SecurityHardeningFeaturePositionIndependentExecutable { get; set; }
+        /// <summary>Flag indicating the binary has enabled relocation read-only protections.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Flag indicating the binary has enabled relocation read-only protections.",
+        SerializedName = @"relocationReadOnly",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? SecurityHardeningFeatureRelocationReadOnly { get; set; }
+        /// <summary>Flag indicating if debug symbols have been stripped from the binary.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Flag indicating if debug symbols have been stripped from the binary.",
+        SerializedName = @"stripped",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? SecurityHardeningFeatureStripped { get; set; }
 
     }
     /// Binary hardening of a firmware.
     internal partial interface IBinaryHardeningResultInternal
 
     {
-        /// <summary>The architecture of the uploaded firmware.</summary>
-        string Architecture { get; set; }
         /// <summary>ID for the binary hardening result.</summary>
         string BinaryHardeningId { get; set; }
+        /// <summary>The architecture of the binary being reported on.</summary>
+        string ExecutableArchitecture { get; set; }
         /// <summary>The executable class to indicate 32 or 64 bit.</summary>
-        string Class { get; set; }
-        /// <summary>Binary hardening features.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningFeatures Feature { get; set; }
-        /// <summary>Canary (stack canaries) flag.</summary>
-        bool? FeatureCanary { get; set; }
-        /// <summary>NX (no-execute) flag.</summary>
-        bool? FeatureNx { get; set; }
-        /// <summary>PIE (position independent executable) flag.</summary>
-        bool? FeaturePie { get; set; }
-        /// <summary>RELRO (relocation read-only) flag.</summary>
-        bool? FeatureRelro { get; set; }
-        /// <summary>Stripped flag.</summary>
-        bool? FeatureStripped { get; set; }
-        /// <summary>The executable path.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PSArgumentCompleterAttribute("x86", "x64")]
+        string ExecutableClass { get; set; }
+        /// <summary>The path to the binary in the firmware.</summary>
         string FilePath { get; set; }
-        /// <summary>The rpath of the uploaded firmware.</summary>
+        /// <summary>The status of the last operation.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Pending", "Extracting", "Analyzing")]
+        string ProvisioningState { get; set; }
+        /// <summary>
+        /// The rpath property of the uploaded binary, which is a deprecated method of specifying additional paths to load objects
+        /// at runtime.
+        /// </summary>
         string Rpath { get; set; }
-        /// <summary>The runpath of the uploaded firmware.</summary>
+        /// <summary>
+        /// The runpath property of the uploaded binary, which is a method of specifying additional paths to load objects at runtime.
+        /// </summary>
         string Runpath { get; set; }
+        /// <summary>The security hardening features of the binary.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningFeatures SecurityHardeningFeature { get; set; }
+        /// <summary>Flag indicating if the binary was compiled with stack canaries enabled.</summary>
+        bool? SecurityHardeningFeatureCanary { get; set; }
+        /// <summary>Flag indicating the binary's stack is set to NX (no-execute).</summary>
+        bool? SecurityHardeningFeatureNoExecute { get; set; }
+        /// <summary>
+        /// Flag indicating the binary was compiled to be a position independent executable.
+        /// </summary>
+        bool? SecurityHardeningFeaturePositionIndependentExecutable { get; set; }
+        /// <summary>Flag indicating the binary has enabled relocation read-only protections.</summary>
+        bool? SecurityHardeningFeatureRelocationReadOnly { get; set; }
+        /// <summary>Flag indicating if debug symbols have been stripped from the binary.</summary>
+        bool? SecurityHardeningFeatureStripped { get; set; }
 
     }
 }

@@ -14,12 +14,9 @@
 
 using Azure.Core;
 using Azure.Identity;
-
 using Hyak.Common;
-
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-
 using System;
 using System.Net;
 using System.Net.Sockets;
@@ -52,8 +49,9 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             var resource = interactiveParameters.Environment.GetEndpoint(interactiveParameters.ResourceId) ?? interactiveParameters.ResourceId;
             var scopes = AuthenticationHelpers.GetScope(onPremise, resource);
             var clientId = Constants.PowerShellClientId;
+            var claimsChallenge = interactiveParameters.ClaimsChallenge;
 
-            var requestContext = new TokenRequestContext(scopes, isCaeEnabled: true);
+            var requestContext = new TokenRequestContext(scopes, claims: claimsChallenge, isCaeEnabled: true);
             var authority = interactiveParameters.Environment.ActiveDirectoryAuthority;
 
             var options = new InteractiveBrowserCredentialOptions()
@@ -63,7 +61,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
                 TokenCachePersistenceOptions = tokenCacheProvider.GetTokenCachePersistenceOptions(),
                 AuthorityHost = new Uri(authority),
                 RedirectUri = GetReplyUrl(onPremise, interactiveParameters.PromptAction),
-                LoginHint = interactiveParameters.UserId,
+                LoginHint = interactiveParameters.UserId
             };
             options.DisableInstanceDiscovery = interactiveParameters.DisableInstanceDiscovery ?? options.DisableInstanceDiscovery;
             var browserCredential = new InteractiveBrowserCredential(options);

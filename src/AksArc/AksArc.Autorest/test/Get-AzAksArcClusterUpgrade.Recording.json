@@ -1,0 +1,48 @@
+{
+  "Get-AzAksArcClusterUpgrade+[NoContext]+Get+$GET+https://management.azure.com//subscriptions/69f14c19-881e-42c7-99b9-3286116410aa/resourceGroups/EDGECI-REGISTRATION-HC1n25r0638-jrXozscA/providers/Microsoft.Kubernetes/connectedClusters/s-aszc/providers/Microsoft.HybridContainerService/provisionedClusterInstances/default/upgradeProfiles/default?api-version=2024-01-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com//subscriptions/69f14c19-881e-42c7-99b9-3286116410aa/resourceGroups/EDGECI-REGISTRATION-HC1n25r0638-jrXozscA/providers/Microsoft.Kubernetes/connectedClusters/s-aszc/providers/Microsoft.HybridContainerService/provisionedClusterInstances/default/upgradeProfiles/default?api-version=2024-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "67854af8-84dc-4986-9e41-13f43449a628" ],
+        "CommandName": [ "Az.AksArc.internal\\Get-AzAksArcClusterUpgrade" ],
+        "FullCommandName": [ "Get-AzAksArcClusterUpgrade_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.AksArc/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"2200f1b1-0000-0a00-0000-68df54ad0000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=d9b73d5e-a9d3-41ba-88c3-796a643e3edd,objectId=2717d02a-6a0e-4f54-b968-8543e7eb3a3a/canadacentral/bd72bab6-9450-4b8f-b9f4-57400004ea0c" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "799444c6-abc3-4d92-ae38-11e7e3f9f31f" ],
+        "x-ms-correlation-request-id": [ "c720e71b-8579-457b-9d40-3b04702663ba" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "CANADACENTRAL:20251003T044659Z:c720e71b-8579-457b-9d40-3b04702663ba" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 1667ECAB2CDA441E801D3E58D8FEC377 Ref B: MWH011020806042 Ref C: 2025-10-03T04:46:59Z" ],
+        "Date": [ "Fri, 03 Oct 2025 04:46:59 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "787" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/69f14c19-881e-42c7-99b9-3286116410aa/resourceGroups/EDGECI-REGISTRATION-HC1n25r0638-jrXozscA/providers/Microsoft.Kubernetes/connectedClusters/s-aszc/providers/Microsoft.HybridContainerService/ProvisionedClusterInstances/default/upgradeProfiles/default\",\"name\":\"default\",\"type\":\"microsoft.hybridcontainerservice/provisionedclusterinstances/upgradeprofiles\",\"systemData\":{\"createdBy\":\"319f651f-7ddb-4fc6-9857-7aef9250bd05\",\"createdByType\":\"Application\",\"createdAt\":\"2025-09-26T19:07:08.7943399Z\",\"lastModifiedBy\":\"319f651f-7ddb-4fc6-9857-7aef9250bd05\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-10-03T04:44:29.2073136Z\"},\"properties\":{\"controlPlaneProfile\":{\"kubernetesVersion\":\"1.32.6\",\"osType\":\"Linux\",\"upgrades\":[]},\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  }
+}

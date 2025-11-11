@@ -8,7 +8,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
     using System.Linq;
 
     /// <summary>
-    /// ServicePlacementNonPartiallyPlaceServicePolicy
+    /// The type of placement policy for a service fabric service. Following are
+    /// the possible values.
     /// </summary>
     [Newtonsoft.Json.JsonObject("NonPartiallyPlaceService")]
     public partial class ServicePlacementNonPartiallyPlaceServicePolicy : ServicePlacementPolicy

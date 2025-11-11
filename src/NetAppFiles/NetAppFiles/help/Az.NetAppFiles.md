@@ -75,7 +75,7 @@ Gets details of an Azure NetApp Files (ANF) subvolume.
 Gets metadata details of an Azure NetApp Files (ANF) subvolume.
 
 ### [Get-AzNetAppFilesUsage](Get-AzNetAppFilesUsage.md)
-{{ Fill in the Synopsis }}
+Get usages
 
 ### [Get-AzNetAppFilesVolume](Get-AzNetAppFilesVolume.md)
 Gets details of an Azure NetApp Files (ANF) volume.

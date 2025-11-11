@@ -222,13 +222,13 @@ function Invoke-LiveTestCommand {
 
     do {
         try {
-            $expandedCommand = $ExecutionContext.InvokeCommand.ExpandString($Command)
-            Write-Host "##[section]Start executing the command `"$expandedCommand`"."
-            Write-Host "##[command]The command `"$expandedCommand`" is running."
+            $displayCommand = $Command.ToString()
+            Write-Host "##[section]Start executing the command `"$displayCommand`"."
+            Write-Host "##[command]The command `"$displayCommand`" is running."
 
             $cmdResult = $Command.InvokeWithContext($null, [psvariable]::new("ErrorActionPreference", "Stop"))
 
-            Write-Host "##[section]Finish executing the command `"$expandedCommand`"."
+            Write-Host "##[section]Finish executing the command `"$displayCommand`"."
 
             $cmdResult
             break

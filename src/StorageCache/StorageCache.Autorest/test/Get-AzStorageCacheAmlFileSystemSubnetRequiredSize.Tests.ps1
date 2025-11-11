@@ -15,7 +15,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzStorageCacheAmlFileSyst
 }
 
 Describe 'Get-AzStorageCacheAmlFileSystemSubnetRequiredSize' {
-    It 'GetExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetExpanded' {
+        {
+            # Retrieve the required subnet size for the AML file system
+            $result = Get-AzStorageCacheAmlFileSystemSubnetRequiredSize -SkuName "AMLFS-Durable-Premium-250" -StorageCapacityTiB 16
+            $result | Should -Not -Be $null
+            $result.FilesystemSubnetSize | Should -BeOfType [int]
+            $result.FilesystemSubnetSize | Should -BeGreaterThan 0
+        } | Should -Not -Throw
     }
 }

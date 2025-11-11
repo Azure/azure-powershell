@@ -30,7 +30,10 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="radiusServerScore">The initial score assigned to this radius server.
         /// </param>
 
-        /// <param name="radiusServerSecret">The secret used for this radius server.
+        /// <param name="radiusServerSecret">The secret used for this radius server. We will no longer return
+        /// radiusServerSecret in VirtualNetworkGateway
+        /// Create/Update/Get/List/UpdateTags APIs response. Please use
+        /// VirtualNetworkGateway ListRadiusSecrets API to fetch radius server secrets.
         /// </param>
         public RadiusServer(string radiusServerAddress, long? radiusServerScore = default(long?), string radiusServerSecret = default(string))
 
@@ -60,7 +63,10 @@ namespace Microsoft.Azure.Management.Network.Models
         public long? RadiusServerScore {get; set; }
 
         /// <summary>
-        /// Gets or sets the secret used for this radius server.
+        /// Gets or sets the secret used for this radius server. We will no longer
+        /// return radiusServerSecret in VirtualNetworkGateway
+        /// Create/Update/Get/List/UpdateTags APIs response. Please use
+        /// VirtualNetworkGateway ListRadiusSecrets API to fetch radius server secrets.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "radiusServerSecret")]
         public string RadiusServerSecret {get; set; }

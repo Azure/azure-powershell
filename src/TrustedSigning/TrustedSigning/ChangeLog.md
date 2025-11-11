@@ -18,9 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated Azure.Core from 1.45.0 to 1.47.3
+
+## Version 0.1.2
+* Updated InvokeCIPolicySigning to support signing files with the .cip extension
 
 ## Version 0.1.1
-* Modified InvokeCiPolicySigning to include ShouldProcess command confirmation
+* Modified InvokeCIPolicySigning to include ShouldProcess command confirmation
 
 ## Version 0.1.0
 * Renamed from Az.CodeSigning

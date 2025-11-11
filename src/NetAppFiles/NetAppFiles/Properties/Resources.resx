@@ -150,6 +150,9 @@
   <data name="RevertVolumeMessage" xml:space="preserve">
     <value>Reverting {0} to snapshot</value>
   </data>
+  <data name="SplitCloneFromParentMessage" xml:space="preserve">
+    <value>Spliting clone volume {0} from parent volume</value>
+  </data>
   <data name="SuspendVolumeReplicationMessage" xml:space="preserve">
     <value>Suspending volume replication on {0}</value>
   </data>

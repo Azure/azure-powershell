@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-The operation to Update firmware.
+The operation to update firmware.
 .Description
-The operation to Update firmware.
+The operation to update firmware.
 .Example
 Update-AzFirmwareAnalysisFirmware -FirmwareId firmwareId -ResourceGroupName resourceGroupName -WorkspaceName workspaceName -Description description -FileSize 1  -FileName fileName -Vendor vendor -Model model -Version version
 
@@ -34,9 +34,10 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IFirmwareAnalysisIdentity>: Identity Parameter
   [FirmwareId <String>]: The id of the firmware.
   [Id <String>]: Resource identity path
+  [Name <String>]: The Firmware analysis summary name describing the type of summary.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-  [SummaryName <String>]: The Firmware analysis summary name describing the type of summary.
+  [SummaryType <String>]: The Firmware analysis summary name describing the type of summary.
   [WorkspaceName <String>]: The name of the firmware analysis workspace.
 
 STATUSMESSAGE <IStatusMessage[]>: A list of errors or other messages generated during firmware analysis
@@ -46,9 +47,10 @@ STATUSMESSAGE <IStatusMessage[]>: A list of errors or other messages generated d
 WORKSPACEINPUTOBJECT <IFirmwareAnalysisIdentity>: Identity Parameter
   [FirmwareId <String>]: The id of the firmware.
   [Id <String>]: Resource identity path
+  [Name <String>]: The Firmware analysis summary name describing the type of summary.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-  [SummaryName <String>]: The Firmware analysis summary name describing the type of summary.
+  [SummaryType <String>]: The Firmware analysis summary name describing the type of summary.
   [WorkspaceName <String>]: The name of the firmware analysis workspace.
 .Link
 https://learn.microsoft.com/powershell/module/az.firmwareanalysis/update-azfirmwareanalysisfirmware
@@ -204,6 +206,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -228,8 +239,6 @@ begin {
             UpdateViaIdentityWorkspaceExpanded = 'Az.FirmwareAnalysis.private\Update-AzFirmwareAnalysisFirmware_UpdateViaIdentityWorkspaceExpanded';
         }
         if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -243,6 +252,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

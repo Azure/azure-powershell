@@ -32,8 +32,10 @@ require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
-  - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/stable/2025-04-15/afdx.json
-  - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/stable/2025-04-15/cdn.json
+  - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/stable/2025-06-01/afdx.json
+  - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/stable/2025-06-01/cdn.json
+  - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/preview/2024-07-22-preview/edgeaction.json
+
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 # - (this-folder)/relative-path-to-your-swagger 
 
@@ -42,7 +44,7 @@ module-version: 0.1.0
 # Normally, title is the service name
 title: Cdn
 subject-prefix: $(service-name)
-commit: 0cdef1ef00cf9020967dc099a67366d5a2c51d29
+commit: 9b87e611b5016ed5c8d0eea2ee4578be782e7feb
 
 # If there are post APIs for some kinds of actions in the RP, you may need to 
 # uncomment following line to support viaIdentity for these post APIs
@@ -345,6 +347,12 @@ directive:
   - where:
       subject: KeyGroupUpdate
     hide: true
+    
+  # Hide New-AzFrontDoorCdnRoute to customize
+  - where:
+      subject: Route 
+      verb: New
+    hide: true
 
   # Rename
   - where:
@@ -461,7 +469,7 @@ directive:
           "default": {
             "description": "CDN error response describing why the operation failed.",
             "schema": {
-              "$ref": "../../../../../common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+              "$ref": "../../../../../common-types/resource-management/v6/types.json#/definitions/ErrorResponse"
             }
           }
       }
@@ -487,4 +495,38 @@ directive:
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}"].delete
     transform: >-
       $["x-ms-long-running-operation-options"] = {"final-state-via": "azure-async-operation"}
+
+  - where:
+      subjectPrefix: Cdn
+      subject: Profile
+    set:
+      breaking-change:
+        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUserAssignedIdentities
+        replacement-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IManagedServiceIdentityUserAssignedIdentities
+        change-description: 	The type of property 'IdentityUserAssignedIdentity' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfile' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUserAssignedIdentities' to 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IManagedServiceIdentityUserAssignedIdentities'.
+        deprecated-by-version: 5.3.0
+        deprecated-by-azversion: 14.4.0
+        change-effective-date: 2025/11/01
+  - where:
+      subjectPrefix: FrontDoorCdn
+      subject: Profile
+    set:
+      breaking-change:
+        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUserAssignedIdentities
+        replacement-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IManagedServiceIdentityUserAssignedIdentities
+        change-description: 	The type of property 'IdentityUserAssignedIdentity' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfile' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUserAssignedIdentities' to 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IManagedServiceIdentityUserAssignedIdentities'.
+        deprecated-by-version: 5.3.0
+        deprecated-by-azversion: 14.4.0
+        change-effective-date: 2025/11/01
+  - where:
+      subjectPrefix: FrontDoorCdn
+      subject: ProfileSku
+    set:
+      breaking-change:
+        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUserAssignedIdentities
+        replacement-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IManagedServiceIdentityUserAssignedIdentities
+        change-description: 	The type of property 'IdentityUserAssignedIdentity' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfile' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUserAssignedIdentities' to 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IManagedServiceIdentityUserAssignedIdentities'.
+        deprecated-by-version: 5.3.0
+        deprecated-by-azversion: 14.4.0
+        change-effective-date: 2025/11/01
 ```

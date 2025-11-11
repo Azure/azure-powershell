@@ -30,9 +30,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AccessPolicyAssignmentCreateUpdate(string subscriptionId, string resourceGroupName, string clusterName, string databaseName, string accessPolicyAssignmentName, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IAccessPolicyAssignment body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IAccessPolicyAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AccessPolicyAssignmentCreateUpdate(string subscriptionId, string resourceGroupName, string clusterName, string databaseName, string accessPolicyAssignmentName, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IAccessPolicyAssignment body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IAccessPolicyAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-01-preview";
+            var apiVersion = @"2025-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -80,9 +80,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AccessPolicyAssignmentCreateUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IAccessPolicyAssignment body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IAccessPolicyAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AccessPolicyAssignmentCreateUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IAccessPolicyAssignment body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IAccessPolicyAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-01-preview";
+            var apiVersion = @"2025-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AccessPolicyAssignmentCreateUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IAccessPolicyAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task AccessPolicyAssignmentCreateUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IAccessPolicyAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -257,7 +257,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.AccessPolicyAssignment.FromJson(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.AccessPolicyAssignment.FromJson(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -293,7 +293,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AccessPolicyAssignmentCreateUpdate_Validate(string subscriptionId, string resourceGroupName, string clusterName, string databaseName, string accessPolicyAssignmentName, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IAccessPolicyAssignment body, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task AccessPolicyAssignmentCreateUpdate_Validate(string subscriptionId, string resourceGroupName, string clusterName, string databaseName, string accessPolicyAssignmentName, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IAccessPolicyAssignment body, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -330,7 +330,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task AccessPolicyAssignmentDelete(string subscriptionId, string resourceGroupName, string clusterName, string databaseName, string accessPolicyAssignmentName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-01-preview";
+            var apiVersion = @"2025-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -375,7 +375,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task AccessPolicyAssignmentDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-01-preview";
+            var apiVersion = @"2025-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -615,9 +615,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AccessPolicyAssignmentGet(string subscriptionId, string resourceGroupName, string clusterName, string databaseName, string accessPolicyAssignmentName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IAccessPolicyAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AccessPolicyAssignmentGet(string subscriptionId, string resourceGroupName, string clusterName, string databaseName, string accessPolicyAssignmentName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IAccessPolicyAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-01-preview";
+            var apiVersion = @"2025-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -660,9 +660,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AccessPolicyAssignmentGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IAccessPolicyAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AccessPolicyAssignmentGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IAccessPolicyAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-01-preview";
+            var apiVersion = @"2025-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -719,7 +719,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AccessPolicyAssignmentGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IAccessPolicyAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task AccessPolicyAssignmentGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IAccessPolicyAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -737,7 +737,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.AccessPolicyAssignment.FromJson(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.AccessPolicyAssignment.FromJson(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -804,9 +804,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AccessPolicyAssignmentList(string subscriptionId, string resourceGroupName, string clusterName, string databaseName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IAccessPolicyAssignmentList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AccessPolicyAssignmentList(string subscriptionId, string resourceGroupName, string clusterName, string databaseName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IAccessPolicyAssignmentList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-01-preview";
+            var apiVersion = @"2025-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -848,9 +848,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AccessPolicyAssignmentListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IAccessPolicyAssignmentList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AccessPolicyAssignmentListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IAccessPolicyAssignmentList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-01-preview";
+            var apiVersion = @"2025-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -905,7 +905,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AccessPolicyAssignmentList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IAccessPolicyAssignmentList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task AccessPolicyAssignmentList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IAccessPolicyAssignmentList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -923,7 +923,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.AccessPolicyAssignmentList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.AccessPolicyAssignmentList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -988,9 +988,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DatabasesCreate(string resourceGroupName, string clusterName, string databaseName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IDatabase body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IDatabase>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DatabasesCreate(string resourceGroupName, string clusterName, string databaseName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IDatabase body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IDatabase>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-01-preview";
+            var apiVersion = @"2025-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1036,9 +1036,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DatabasesCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IDatabase body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IDatabase>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DatabasesCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IDatabase body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IDatabase>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-01-preview";
+            var apiVersion = @"2025-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1096,7 +1096,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DatabasesCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IDatabase>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DatabasesCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IDatabase>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1210,7 +1210,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.Database.FromJson(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.Database.FromJson(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -1245,7 +1245,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DatabasesCreate_Validate(string resourceGroupName, string clusterName, string databaseName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IDatabase body, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task DatabasesCreate_Validate(string resourceGroupName, string clusterName, string databaseName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IDatabase body, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -1280,7 +1280,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task DatabasesDelete(string resourceGroupName, string clusterName, string databaseName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-01-preview";
+            var apiVersion = @"2025-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1324,7 +1324,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task DatabasesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-01-preview";
+            var apiVersion = @"2025-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1565,9 +1565,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DatabasesExport(string resourceGroupName, string clusterName, string databaseName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IExportClusterParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DatabasesExport(string resourceGroupName, string clusterName, string databaseName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IExportClusterParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-01-preview";
+            var apiVersion = @"2025-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1614,9 +1614,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DatabasesExportViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IExportClusterParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DatabasesExportViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IExportClusterParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-01-preview";
+            var apiVersion = @"2025-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1825,7 +1825,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DatabasesExport_Validate(string resourceGroupName, string clusterName, string databaseName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IExportClusterParameters body, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task DatabasesExport_Validate(string resourceGroupName, string clusterName, string databaseName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IExportClusterParameters body, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -1858,9 +1858,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DatabasesFlush(string resourceGroupName, string clusterName, string databaseName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IFlushParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DatabasesFlush(string resourceGroupName, string clusterName, string databaseName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IFlushParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-01-preview";
+            var apiVersion = @"2025-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1907,9 +1907,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DatabasesFlushViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IFlushParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DatabasesFlushViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IFlushParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-01-preview";
+            var apiVersion = @"2025-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2118,7 +2118,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DatabasesFlush_Validate(string resourceGroupName, string clusterName, string databaseName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IFlushParameters body, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task DatabasesFlush_Validate(string resourceGroupName, string clusterName, string databaseName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IFlushParameters body, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -2154,9 +2154,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DatabasesForceLinkToReplicationGroup(string resourceGroupName, string clusterName, string databaseName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IForceLinkParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api50.IErrorResponseAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DatabasesForceLinkToReplicationGroup(string resourceGroupName, string clusterName, string databaseName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IForceLinkParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api50.IErrorResponseAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-01-preview";
+            var apiVersion = @"2025-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2206,9 +2206,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DatabasesForceLinkToReplicationGroupViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IForceLinkParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api50.IErrorResponseAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DatabasesForceLinkToReplicationGroupViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IForceLinkParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api50.IErrorResponseAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-01-preview";
+            var apiVersion = @"2025-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2412,7 +2412,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DatabasesForceLinkToReplicationGroup_Validate(string resourceGroupName, string clusterName, string databaseName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IForceLinkParameters body, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task DatabasesForceLinkToReplicationGroup_Validate(string resourceGroupName, string clusterName, string databaseName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IForceLinkParameters body, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -2445,9 +2445,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DatabasesForceUnlink(string resourceGroupName, string clusterName, string databaseName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IForceUnlinkParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DatabasesForceUnlink(string resourceGroupName, string clusterName, string databaseName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IForceUnlinkParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-01-preview";
+            var apiVersion = @"2025-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2494,9 +2494,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DatabasesForceUnlinkViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IForceUnlinkParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DatabasesForceUnlinkViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IForceUnlinkParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-01-preview";
+            var apiVersion = @"2025-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2705,7 +2705,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DatabasesForceUnlink_Validate(string resourceGroupName, string clusterName, string databaseName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IForceUnlinkParameters body, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task DatabasesForceUnlink_Validate(string resourceGroupName, string clusterName, string databaseName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IForceUnlinkParameters body, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -2737,9 +2737,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DatabasesGet(string resourceGroupName, string clusterName, string databaseName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IDatabase>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DatabasesGet(string resourceGroupName, string clusterName, string databaseName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IDatabase>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-01-preview";
+            var apiVersion = @"2025-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2780,9 +2780,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DatabasesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IDatabase>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DatabasesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IDatabase>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-01-preview";
+            var apiVersion = @"2025-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2836,7 +2836,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DatabasesGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IDatabase>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DatabasesGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IDatabase>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2854,7 +2854,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.Database.FromJson(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.Database.FromJson(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -2919,9 +2919,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DatabasesImport(string resourceGroupName, string clusterName, string databaseName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IImportClusterParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DatabasesImport(string resourceGroupName, string clusterName, string databaseName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IImportClusterParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-01-preview";
+            var apiVersion = @"2025-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2968,9 +2968,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DatabasesImportViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IImportClusterParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DatabasesImportViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IImportClusterParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-01-preview";
+            var apiVersion = @"2025-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3179,7 +3179,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DatabasesImport_Validate(string resourceGroupName, string clusterName, string databaseName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IImportClusterParameters body, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task DatabasesImport_Validate(string resourceGroupName, string clusterName, string databaseName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IImportClusterParameters body, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -3210,9 +3210,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DatabasesListByCluster(string subscriptionId, string resourceGroupName, string clusterName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IDatabaseList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DatabasesListByCluster(string subscriptionId, string resourceGroupName, string clusterName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IDatabaseList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-01-preview";
+            var apiVersion = @"2025-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3252,9 +3252,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DatabasesListByClusterViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IDatabaseList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DatabasesListByClusterViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IDatabaseList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-01-preview";
+            var apiVersion = @"2025-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3306,7 +3306,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DatabasesListByCluster_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IDatabaseList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DatabasesListByCluster_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IDatabaseList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3324,7 +3324,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.DatabaseList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.DatabaseList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -3385,9 +3385,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DatabasesListKeys(string resourceGroupName, string clusterName, string databaseName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IAccessKeys>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DatabasesListKeys(string resourceGroupName, string clusterName, string databaseName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IAccessKeys>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-01-preview";
+            var apiVersion = @"2025-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3429,9 +3429,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DatabasesListKeysViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IAccessKeys>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DatabasesListKeysViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IAccessKeys>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-01-preview";
+            var apiVersion = @"2025-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3486,7 +3486,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DatabasesListKeys_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IAccessKeys>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DatabasesListKeys_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IAccessKeys>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3504,7 +3504,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.AccessKeys.FromJson(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.AccessKeys.FromJson(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -3569,9 +3569,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DatabasesRegenerateKey(string resourceGroupName, string clusterName, string databaseName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IRegenerateKeyParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IAccessKeys>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DatabasesRegenerateKey(string resourceGroupName, string clusterName, string databaseName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IRegenerateKeyParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IAccessKeys>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-01-preview";
+            var apiVersion = @"2025-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3618,9 +3618,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DatabasesRegenerateKeyViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IRegenerateKeyParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IAccessKeys>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DatabasesRegenerateKeyViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IRegenerateKeyParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IAccessKeys>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-01-preview";
+            var apiVersion = @"2025-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3679,7 +3679,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DatabasesRegenerateKey_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IAccessKeys>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DatabasesRegenerateKey_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IAccessKeys>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3794,7 +3794,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.AccessKeys.FromJson(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.AccessKeys.FromJson(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -3829,7 +3829,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DatabasesRegenerateKey_Validate(string resourceGroupName, string clusterName, string databaseName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IRegenerateKeyParameters body, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task DatabasesRegenerateKey_Validate(string resourceGroupName, string clusterName, string databaseName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IRegenerateKeyParameters body, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -3862,9 +3862,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DatabasesUpdate(string resourceGroupName, string clusterName, string databaseName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IDatabaseUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IDatabase>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DatabasesUpdate(string resourceGroupName, string clusterName, string databaseName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IDatabaseUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IDatabase>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-01-preview";
+            var apiVersion = @"2025-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3910,9 +3910,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DatabasesUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IDatabaseUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IDatabase>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DatabasesUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IDatabaseUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IDatabase>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-01-preview";
+            var apiVersion = @"2025-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3970,7 +3970,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DatabasesUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IDatabase>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DatabasesUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IDatabase>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -4084,7 +4084,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.Database.FromJson(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.Database.FromJson(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -4119,7 +4119,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DatabasesUpdate_Validate(string resourceGroupName, string clusterName, string databaseName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IDatabaseUpdate body, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task DatabasesUpdate_Validate(string resourceGroupName, string clusterName, string databaseName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IDatabaseUpdate body, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -4152,7 +4152,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task DatabasesUpgradeDbRedisVersion(string resourceGroupName, string clusterName, string databaseName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-01-preview";
+            var apiVersion = @"2025-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4195,7 +4195,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task DatabasesUpgradeDbRedisVersionViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-01-preview";
+            var apiVersion = @"2025-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4419,7 +4419,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task OperationsList(global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api30.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-01-preview";
+            var apiVersion = @"2025-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4455,7 +4455,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task OperationsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api30.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-01-preview";
+            var apiVersion = @"2025-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4565,9 +4565,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task OperationsStatusGet(string location, string operationId, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task OperationsStatusGet(string location, string operationId, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-01-preview";
+            var apiVersion = @"2025-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4606,9 +4606,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task OperationsStatusGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task OperationsStatusGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-01-preview";
+            var apiVersion = @"2025-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4659,7 +4659,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task OperationsStatusGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task OperationsStatusGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -4677,7 +4677,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.OperationStatus.FromJson(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.OperationStatus.FromJson(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -4741,7 +4741,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsDelete(string resourceGroupName, string clusterName, string subscriptionId, string privateEndpointConnectionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-01-preview";
+            var apiVersion = @"2025-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4787,7 +4787,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-01-preview";
+            var apiVersion = @"2025-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5030,7 +5030,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsGet(string resourceGroupName, string clusterName, string privateEndpointConnectionName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-01-preview";
+            var apiVersion = @"2025-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5075,7 +5075,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-01-preview";
+            var apiVersion = @"2025-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5213,7 +5213,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsList(string resourceGroupName, string clusterName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IPrivateEndpointConnectionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-01-preview";
+            var apiVersion = @"2025-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5257,7 +5257,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IPrivateEndpointConnectionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-01-preview";
+            var apiVersion = @"2025-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5392,7 +5392,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsPut(string resourceGroupName, string clusterName, string subscriptionId, string privateEndpointConnectionName, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IPrivateEndpointConnection body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-01-preview";
+            var apiVersion = @"2025-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5441,7 +5441,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsPutViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IPrivateEndpointConnection body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-01-preview";
+            var apiVersion = @"2025-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5678,7 +5678,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateLinkResourcesListByCluster(string resourceGroupName, string clusterName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IPrivateLinkResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-01-preview";
+            var apiVersion = @"2025-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5722,7 +5722,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateLinkResourcesListByClusterViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IPrivateLinkResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-01-preview";
+            var apiVersion = @"2025-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5855,9 +5855,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task RedisEnterpriseCreate(string resourceGroupName, string clusterName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ICluster body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ICluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task RedisEnterpriseCreate(string resourceGroupName, string clusterName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.ICluster body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.ICluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-01-preview";
+            var apiVersion = @"2025-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5903,9 +5903,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task RedisEnterpriseCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ICluster body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ICluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task RedisEnterpriseCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.ICluster body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.ICluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-01-preview";
+            var apiVersion = @"2025-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5960,7 +5960,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task RedisEnterpriseCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ICluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task RedisEnterpriseCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.ICluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -6074,7 +6074,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.Cluster.FromJson(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.Cluster.FromJson(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -6108,7 +6108,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task RedisEnterpriseCreate_Validate(string resourceGroupName, string clusterName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ICluster body, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task RedisEnterpriseCreate_Validate(string resourceGroupName, string clusterName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.ICluster body, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -6140,7 +6140,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task RedisEnterpriseDelete(string resourceGroupName, string clusterName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-01-preview";
+            var apiVersion = @"2025-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6182,7 +6182,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task RedisEnterpriseDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-01-preview";
+            var apiVersion = @"2025-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6415,9 +6415,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task RedisEnterpriseGet(string resourceGroupName, string clusterName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ICluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task RedisEnterpriseGet(string resourceGroupName, string clusterName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.ICluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-01-preview";
+            var apiVersion = @"2025-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6456,9 +6456,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task RedisEnterpriseGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ICluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task RedisEnterpriseGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.ICluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-01-preview";
+            var apiVersion = @"2025-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6509,7 +6509,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task RedisEnterpriseGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ICluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task RedisEnterpriseGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.ICluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -6527,7 +6527,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.Cluster.FromJson(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.Cluster.FromJson(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -6584,9 +6584,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task RedisEnterpriseList(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IClusterList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task RedisEnterpriseList(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IClusterList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-01-preview";
+            var apiVersion = @"2025-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6623,9 +6623,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task RedisEnterpriseListByResourceGroup(string resourceGroupName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IClusterList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task RedisEnterpriseListByResourceGroup(string resourceGroupName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IClusterList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-01-preview";
+            var apiVersion = @"2025-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6663,9 +6663,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task RedisEnterpriseListByResourceGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IClusterList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task RedisEnterpriseListByResourceGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IClusterList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-01-preview";
+            var apiVersion = @"2025-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6714,7 +6714,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task RedisEnterpriseListByResourceGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IClusterList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task RedisEnterpriseListByResourceGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IClusterList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -6732,7 +6732,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ClusterList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.ClusterList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -6788,9 +6788,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task RedisEnterpriseListSkusForScaling(string resourceGroupName, string clusterName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ISkuDetailsList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task RedisEnterpriseListSkusForScaling(string resourceGroupName, string clusterName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.ISkuDetailsList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-01-preview";
+            var apiVersion = @"2025-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6830,9 +6830,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task RedisEnterpriseListSkusForScalingViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ISkuDetailsList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task RedisEnterpriseListSkusForScalingViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.ISkuDetailsList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-01-preview";
+            var apiVersion = @"2025-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6884,7 +6884,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task RedisEnterpriseListSkusForScaling_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ISkuDetailsList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task RedisEnterpriseListSkusForScaling_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.ISkuDetailsList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -6902,7 +6902,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.SkuDetailsList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.SkuDetailsList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -6959,9 +6959,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task RedisEnterpriseListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IClusterList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task RedisEnterpriseListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IClusterList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-01-preview";
+            var apiVersion = @"2025-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7007,7 +7007,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task RedisEnterpriseList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IClusterList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task RedisEnterpriseList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IClusterList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -7025,7 +7025,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ClusterList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.ClusterList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -7078,9 +7078,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task RedisEnterpriseUpdate(string resourceGroupName, string clusterName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IClusterUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ICluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task RedisEnterpriseUpdate(string resourceGroupName, string clusterName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IClusterUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.ICluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-01-preview";
+            var apiVersion = @"2025-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7124,9 +7124,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task RedisEnterpriseUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IClusterUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ICluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task RedisEnterpriseUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IClusterUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.ICluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-05-01-preview";
+            var apiVersion = @"2025-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7181,7 +7181,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task RedisEnterpriseUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ICluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task RedisEnterpriseUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.ICluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -7295,7 +7295,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.Cluster.FromJson(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.Cluster.FromJson(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -7329,7 +7329,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task RedisEnterpriseUpdate_Validate(string resourceGroupName, string clusterName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IClusterUpdate body, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task RedisEnterpriseUpdate_Validate(string resourceGroupName, string clusterName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IClusterUpdate body, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {

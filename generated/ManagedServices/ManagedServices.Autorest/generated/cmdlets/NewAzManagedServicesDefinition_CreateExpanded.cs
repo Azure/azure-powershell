@@ -13,7 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Cmdlets
     /// [OpenAPI] CreateOrUpdate=>PUT:"/{scope}/providers/Microsoft.ManagedServices/registrationDefinitions/{registrationDefinitionId}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzManagedServicesDefinition_CreateExpanded", SupportsShouldProcess = true)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.CmdletBreakingChange("15.0.0", "9.0.0", "2025/11/03", ChangeDescription="The types of the properties 'DelegatedRoleDefinitionId' and 'JustInTimeAccessPolicyManagedByTenantApprover' will be changed to 'List'.")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IRegistrationDefinition", "15.0.0", "9.0.0", "2025/11/03", DeprecatedOutputProperties=new string[] {"Authorization","EligibleAuthorization","DelegatedRoleDefinitionId[]","JustInTimeAccessPolicyManagedByTenantApprover[]"}, NewOutputProperties=new string[] {"List[Authorization]","List[EligibleAuthorization]","List[DelegatedRoleDefinitionId]","List[JustInTimeAccessPolicyManagedByTenantApprover]"})]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IRegistrationDefinition))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Description(@"Creates or updates a registration definition.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Generated]
@@ -56,6 +56,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Cmdlets
         Description = @"The collection of authorization objects describing the access Azure Active Directory principals in the managedBy tenant will receive on the delegated resource in the managed tenant.",
         SerializedName = @"authorizations",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IAuthorization) })]
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.ParameterBreakingChange("Authorization", "15.0.0", "9.0.0", "2025/11/03", OldParamaterType="Array", NewParameterType="List")]
         public Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IAuthorization[] Authorization { get => _requestBody.Authorization ?? null /* arrayOf */; set => _requestBody.Authorization = value; }
 
         /// <summary>Wait for .NET debugger to attach</summary>
@@ -100,6 +101,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Cmdlets
         Description = @"The collection of eligible authorization objects describing the just-in-time access Azure Active Directory principals in the managedBy tenant will receive on the delegated resource in the managed tenant.",
         SerializedName = @"eligibleAuthorizations",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IEligibleAuthorization) })]
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.ParameterBreakingChange("EligibleAuthorization", "15.0.0", "9.0.0", "2025/11/03", OldParamaterType="Array", NewParameterType="List")]
         public Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IEligibleAuthorization[] EligibleAuthorization { get => _requestBody.EligibleAuthorization ?? null /* arrayOf */; set => _requestBody.EligibleAuthorization = value; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzApplicationGatewayFirewallPolicy
 
 ## SYNOPSIS
-Gets an application gateway firewall policy.
+Gets an application gateway or application gateway for containers firewall policy.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Get-AzApplicationGatewayFirewallPolicy [-Name <String>] [-ResourceGroupName <Str
 ```
 
 ## DESCRIPTION
-The **Get-AzApplicationGatewayFirewallPolicy** cmdlet gets an application gateway firewall policy..
+The **Get-AzApplicationGatewayFirewallPolicy** cmdlet gets an application gateway or application gateway for containers firewall policy..
 
 ## EXAMPLES
 

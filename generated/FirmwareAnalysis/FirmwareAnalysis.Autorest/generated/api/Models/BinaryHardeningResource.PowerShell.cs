@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.PowerShell;
 
-    /// <summary>binary hardening analysis result resource</summary>
+    /// <summary>The object representing a firmware analysis binary hardening result resource</summary>
     [System.ComponentModel.TypeConverter(typeof(BinaryHardeningResourceTypeConverter))]
     public partial class BinaryHardeningResource
     {
@@ -120,25 +120,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)this).Type, global::System.Convert.ToString);
             }
-            if (content.Contains("Feature"))
+            if (content.Contains("ExecutableClass"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal)this).Feature = (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningFeatures) content.GetValueForProperty("Feature",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal)this).Feature, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.BinaryHardeningFeaturesTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal)this).ExecutableClass = (string) content.GetValueForProperty("ExecutableClass",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal)this).ExecutableClass, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProvisioningState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal)this).ProvisioningState, global::System.Convert.ToString);
+            }
+            if (content.Contains("SecurityHardeningFeature"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal)this).SecurityHardeningFeature = (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningFeatures) content.GetValueForProperty("SecurityHardeningFeature",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal)this).SecurityHardeningFeature, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.BinaryHardeningFeaturesTypeConverter.ConvertFrom);
             }
             if (content.Contains("BinaryHardeningId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal)this).BinaryHardeningId = (string) content.GetValueForProperty("BinaryHardeningId",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal)this).BinaryHardeningId, global::System.Convert.ToString);
             }
-            if (content.Contains("Architecture"))
+            if (content.Contains("ExecutableArchitecture"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal)this).Architecture = (string) content.GetValueForProperty("Architecture",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal)this).Architecture, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal)this).ExecutableArchitecture = (string) content.GetValueForProperty("ExecutableArchitecture",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal)this).ExecutableArchitecture, global::System.Convert.ToString);
             }
             if (content.Contains("FilePath"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal)this).FilePath = (string) content.GetValueForProperty("FilePath",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal)this).FilePath, global::System.Convert.ToString);
-            }
-            if (content.Contains("Class"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal)this).Class = (string) content.GetValueForProperty("Class",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal)this).Class, global::System.Convert.ToString);
             }
             if (content.Contains("Runpath"))
             {
@@ -148,25 +152,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal)this).Rpath = (string) content.GetValueForProperty("Rpath",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal)this).Rpath, global::System.Convert.ToString);
             }
-            if (content.Contains("FeatureNx"))
+            if (content.Contains("SecurityHardeningFeatureNoExecute"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal)this).FeatureNx = (bool?) content.GetValueForProperty("FeatureNx",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal)this).FeatureNx, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal)this).SecurityHardeningFeatureNoExecute = (bool?) content.GetValueForProperty("SecurityHardeningFeatureNoExecute",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal)this).SecurityHardeningFeatureNoExecute, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
-            if (content.Contains("FeaturePie"))
+            if (content.Contains("SecurityHardeningFeaturePositionIndependentExecutable"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal)this).FeaturePie = (bool?) content.GetValueForProperty("FeaturePie",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal)this).FeaturePie, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal)this).SecurityHardeningFeaturePositionIndependentExecutable = (bool?) content.GetValueForProperty("SecurityHardeningFeaturePositionIndependentExecutable",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal)this).SecurityHardeningFeaturePositionIndependentExecutable, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
-            if (content.Contains("FeatureRelro"))
+            if (content.Contains("SecurityHardeningFeatureRelocationReadOnly"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal)this).FeatureRelro = (bool?) content.GetValueForProperty("FeatureRelro",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal)this).FeatureRelro, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal)this).SecurityHardeningFeatureRelocationReadOnly = (bool?) content.GetValueForProperty("SecurityHardeningFeatureRelocationReadOnly",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal)this).SecurityHardeningFeatureRelocationReadOnly, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
-            if (content.Contains("FeatureCanary"))
+            if (content.Contains("SecurityHardeningFeatureCanary"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal)this).FeatureCanary = (bool?) content.GetValueForProperty("FeatureCanary",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal)this).FeatureCanary, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal)this).SecurityHardeningFeatureCanary = (bool?) content.GetValueForProperty("SecurityHardeningFeatureCanary",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal)this).SecurityHardeningFeatureCanary, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
-            if (content.Contains("FeatureStripped"))
+            if (content.Contains("SecurityHardeningFeatureStripped"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal)this).FeatureStripped = (bool?) content.GetValueForProperty("FeatureStripped",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal)this).FeatureStripped, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal)this).SecurityHardeningFeatureStripped = (bool?) content.GetValueForProperty("SecurityHardeningFeatureStripped",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal)this).SecurityHardeningFeatureStripped, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             AfterDeserializeDictionary(content);
         }
@@ -229,25 +233,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)this).Type, global::System.Convert.ToString);
             }
-            if (content.Contains("Feature"))
+            if (content.Contains("ExecutableClass"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal)this).Feature = (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningFeatures) content.GetValueForProperty("Feature",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal)this).Feature, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.BinaryHardeningFeaturesTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal)this).ExecutableClass = (string) content.GetValueForProperty("ExecutableClass",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal)this).ExecutableClass, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProvisioningState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal)this).ProvisioningState, global::System.Convert.ToString);
+            }
+            if (content.Contains("SecurityHardeningFeature"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal)this).SecurityHardeningFeature = (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningFeatures) content.GetValueForProperty("SecurityHardeningFeature",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal)this).SecurityHardeningFeature, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.BinaryHardeningFeaturesTypeConverter.ConvertFrom);
             }
             if (content.Contains("BinaryHardeningId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal)this).BinaryHardeningId = (string) content.GetValueForProperty("BinaryHardeningId",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal)this).BinaryHardeningId, global::System.Convert.ToString);
             }
-            if (content.Contains("Architecture"))
+            if (content.Contains("ExecutableArchitecture"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal)this).Architecture = (string) content.GetValueForProperty("Architecture",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal)this).Architecture, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal)this).ExecutableArchitecture = (string) content.GetValueForProperty("ExecutableArchitecture",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal)this).ExecutableArchitecture, global::System.Convert.ToString);
             }
             if (content.Contains("FilePath"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal)this).FilePath = (string) content.GetValueForProperty("FilePath",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal)this).FilePath, global::System.Convert.ToString);
-            }
-            if (content.Contains("Class"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal)this).Class = (string) content.GetValueForProperty("Class",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal)this).Class, global::System.Convert.ToString);
             }
             if (content.Contains("Runpath"))
             {
@@ -257,25 +265,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal)this).Rpath = (string) content.GetValueForProperty("Rpath",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal)this).Rpath, global::System.Convert.ToString);
             }
-            if (content.Contains("FeatureNx"))
+            if (content.Contains("SecurityHardeningFeatureNoExecute"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal)this).FeatureNx = (bool?) content.GetValueForProperty("FeatureNx",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal)this).FeatureNx, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal)this).SecurityHardeningFeatureNoExecute = (bool?) content.GetValueForProperty("SecurityHardeningFeatureNoExecute",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal)this).SecurityHardeningFeatureNoExecute, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
-            if (content.Contains("FeaturePie"))
+            if (content.Contains("SecurityHardeningFeaturePositionIndependentExecutable"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal)this).FeaturePie = (bool?) content.GetValueForProperty("FeaturePie",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal)this).FeaturePie, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal)this).SecurityHardeningFeaturePositionIndependentExecutable = (bool?) content.GetValueForProperty("SecurityHardeningFeaturePositionIndependentExecutable",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal)this).SecurityHardeningFeaturePositionIndependentExecutable, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
-            if (content.Contains("FeatureRelro"))
+            if (content.Contains("SecurityHardeningFeatureRelocationReadOnly"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal)this).FeatureRelro = (bool?) content.GetValueForProperty("FeatureRelro",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal)this).FeatureRelro, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal)this).SecurityHardeningFeatureRelocationReadOnly = (bool?) content.GetValueForProperty("SecurityHardeningFeatureRelocationReadOnly",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal)this).SecurityHardeningFeatureRelocationReadOnly, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
-            if (content.Contains("FeatureCanary"))
+            if (content.Contains("SecurityHardeningFeatureCanary"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal)this).FeatureCanary = (bool?) content.GetValueForProperty("FeatureCanary",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal)this).FeatureCanary, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal)this).SecurityHardeningFeatureCanary = (bool?) content.GetValueForProperty("SecurityHardeningFeatureCanary",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal)this).SecurityHardeningFeatureCanary, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
-            if (content.Contains("FeatureStripped"))
+            if (content.Contains("SecurityHardeningFeatureStripped"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal)this).FeatureStripped = (bool?) content.GetValueForProperty("FeatureStripped",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal)this).FeatureStripped, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal)this).SecurityHardeningFeatureStripped = (bool?) content.GetValueForProperty("SecurityHardeningFeatureStripped",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IBinaryHardeningResourceInternal)this).SecurityHardeningFeatureStripped, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             AfterDeserializePSObject(content);
         }
@@ -330,7 +338,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
             return ToJsonString();
         }
     }
-    /// binary hardening analysis result resource
+    /// The object representing a firmware analysis binary hardening result resource
     [System.ComponentModel.TypeConverter(typeof(BinaryHardeningResourceTypeConverter))]
     public partial interface IBinaryHardeningResource
 

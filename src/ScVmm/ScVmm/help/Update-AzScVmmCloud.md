@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzScVmmCloud
 
 ## SYNOPSIS
-update the Clouds resource.
+Update the Clouds resource.
 
 ## SYNTAX
 
@@ -38,7 +38,7 @@ Update-AzScVmmCloud -InputObject <IScVmmIdentity> [-Tag <Hashtable>] [-DefaultPr
 ```
 
 ## DESCRIPTION
-update the Clouds resource.
+Update the Clouds resource.
 
 ## EXAMPLES
 

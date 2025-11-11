@@ -160,6 +160,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Spliting clone volume {0} from parent volume.
+        /// </summary>
+        internal static string SplitCloneFromParentMessage {
+            get {
+                return ResourceManager.GetString("SplitCloneFromParentMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Suspending volume replication on {0}.
         /// </summary>
         internal static string SuspendVolumeReplicationMessage {

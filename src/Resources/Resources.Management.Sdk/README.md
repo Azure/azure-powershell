@@ -54,6 +54,58 @@ These settings apply only when `--tag=package-resources-2024-11` is specified on
 ``` yaml $(tag) == 'package-resources-2024-11'
 input-file:
   - https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/resources/resource-manager/Microsoft.Resources/stable/2024-11-01/resources.json
+
+directive:
+  - from: resources.json
+    where: $.definitions
+    transform: >
+      $.ResourceGroupFilterWithExpand = {
+        "allOf": [
+          { "$ref": "#/definitions/ResourceGroupFilter" }
+        ],
+        "properties": {
+          "$expand": {
+            "type": "string",
+            "description": "Comma-separated list of additional properties to be included in the response. Valid values include createdTime, changedTime."
+          }
+        }
+      };
+
+  - from: resources.json
+    where: $.paths["/subscriptions/{subscriptionId}/resourcegroups"].get
+    transform: >
+      $["x-ms-odata"] = "#/definitions/ResourceGroupFilterWithExpand";
+
+  - from: resources.json
+    where: $.paths["/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}"].get.parameters
+    transform: >
+      $.push({
+        "name": "$expand",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Comma-separated list of additional properties to be included in the response. Valid values include createdTime, changedTime."
+      });
+
+  - from: resources.json
+    where: $.definitions.ResourceGroup.properties
+    transform: >
+      $.createdTime = {
+        "readOnly": true,
+        "type": "string",
+        "format": "date-time",
+        "description": "The created time of the resource group. This is only present if requested via the $expand query parameter."
+      };
+
+  - from: resources.json
+    where: $.definitions.ResourceGroup.properties
+    transform: >
+      $.changedTime = {
+        "readOnly": true,
+        "type": "string", 
+        "format": "date-time",
+        "description": "The changed time of the resource group. This is only present if requested via the $expand query parameter."
+      };
 ```
 
 ### Tag: package-privatelinks-2020-05

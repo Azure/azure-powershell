@@ -3,6 +3,7 @@
     <PsModuleName>Informatica</PsModuleName>
     <PsRootModuleName>Informatica</PsRootModuleName>
     <PsModuleFolder>Informatica.Autorest</PsModuleFolder>
+    <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.Informatica</RootNamespace>
   </PropertyGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.autorest.props" />

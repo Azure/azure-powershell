@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
 {
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SignalR" + "Upstream", SupportsShouldProcess = true, DefaultParameterSetName = ResourceGroupParameterSet)]
     [OutputType(typeof(PSServerlessUpstreamSettings))]
-    public class SetAzureRmSignalRUpstream : SignalRCmdletBase, IWithResourceId, IWithInputObject
+    public class SetAzureRmSignalRUpstream : SignalRCmdletBase, IWithResourceId, IWithSignalRInputObject
     {
         [Parameter(
 Mandatory = false,
@@ -94,7 +94,7 @@ HelpMessage = "Clear all the upstream settings.")]
                         this.LoadFromResourceId();
                         break;
                     case InputObjectParameterSet:
-                        this.LoadFromInputObject();
+                        this.LoadFromSignalRInputObject();
                         break;
                     default:
                         throw new ArgumentException(Resources.ParameterSetError);

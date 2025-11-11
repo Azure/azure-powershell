@@ -16,7 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Cmdlets
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzManagedServicesMarketplaceDefinition_List")]
-    [Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.CmdletBreakingChange("15.0.0", "9.0.0", "2025/11/03", ChangeDescription="The types of the properties 'Authorization' and 'EligibleAuthorization' will be changed to 'List'.")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IMarketplaceRegistrationDefinition", "15.0.0", "9.0.0", "2025/11/03", DeprecatedOutputProperties=new string[] {"Authorization[]","EligibleAuthorization[]"}, NewOutputProperties=new string[] {"List[Authorization]","List[EligibleAuthorization]"})]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IMarketplaceRegistrationDefinition))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Description(@"Gets a list of the marketplace registration definitions for the marketplace identifier.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Generated]

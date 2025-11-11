@@ -20,8 +20,9 @@ New-AzSqlServer -ServerName <String> [-SqlAdministratorCredentials <PSCredential
  [-PrimaryUserAssignedIdentityId <String>] [-KeyId <String>]
  [-UserAssignedIdentityId <System.Collections.Generic.List`1[System.String]>] [-IdentityType <String>] [-AsJob]
  [-EnableActiveDirectoryOnlyAuthentication] [-ExternalAdminName <String>] [-ExternalAdminSID <Guid>]
- [-FederatedClientId <Guid>] [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-FederatedClientId <Guid>] [-EnableSoftDelete <Boolean>] [-SoftDeleteRetentionDays <Int32>]
+ [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -100,6 +101,60 @@ PrimaryUserAssignedIdentityId : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx
 
 This command creates a version 12 Azure SQL Database server with TDE CMK enabled.
 
+### Example 4: Create a new Azure SQL Database server with soft delete retention enabled with default retention days
+```powershell
+New-AzSqlServer -ResourceGroupName "ResourceGroup01" -Location "Central US" -ServerName "server01" -ServerVersion "12.0" -SqlAdministratorCredentials (Get-Credential) -EnableSoftDelete $true
+```
+
+```output
+ResourceGroupName             : ResourceGroup01
+ServerName                    : server01
+Location                      : centralus
+SqlAdministratorLogin         : ramtest
+SqlAdministratorPassword      :
+ServerVersion                 : 12.0
+Tags                          :
+Identity                      :
+FullyQualifiedDomainName      : server01.database.windows.net
+MinimalTlsVersion             : 1.2
+PublicNetworkAccess           : Enabled
+RestrictOutboundNetworkAccess : Disabled
+Administrators                :
+PrimaryUserAssignedIdentityId :
+KeyId                         :
+FederatedClientId             :
+SoftDeleteRetentionDays       : 7
+```
+
+This command creates a version 12 Azure SQL Database server with soft-delete retention enabled (default 7 days).
+
+### Example 5: Create a new Azure SQL Database server with soft delete retention enabled with 30 retention days
+```powershell
+New-AzSqlServer -ResourceGroupName "ResourceGroup01" -Location "Central US" -ServerName "server01" -ServerVersion "12.0" -SqlAdministratorCredentials (Get-Credential) -EnableSoftDelete $true -SoftDeleteRetentionDays 30
+```
+
+```output
+ResourceGroupName             : ResourceGroup01
+ServerName                    : server01
+Location                      : centralus
+SqlAdministratorLogin         : ramtest
+SqlAdministratorPassword      :
+ServerVersion                 : 12.0
+Tags                          :
+Identity                      :
+FullyQualifiedDomainName      : server01.database.windows.net
+MinimalTlsVersion             : 1.2
+PublicNetworkAccess           : Enabled
+RestrictOutboundNetworkAccess : Disabled
+Administrators                :
+PrimaryUserAssignedIdentityId :
+KeyId                         :
+FederatedClientId             :
+SoftDeleteRetentionDays       : 30
+```
+
+This command creates a version 12 Azure SQL Database server with soft-delete retention set to 30 days.
+
 ## PARAMETERS
 
 ### -AsJob
@@ -152,6 +207,21 @@ Enable Active Directory Only Authentication on the server.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableSoftDelete
+Specifies whether or not soft-delete retention is enabled for the server.
+
+```yaml
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
 
@@ -360,6 +430,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SoftDeleteRetentionDays
+Specifies the soft-delete retention days for the server. The acceptable values for this parameter are 0-35. Specify 0 to disable the SoftDelete
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SqlAdministratorCredentials
 Specifies the SQL Database server administrator credentials for the new server. To obtain a
 **PSCredential** object, use the Get-Credential cmdlet. For more information, type `Get-Help
@@ -445,11 +530,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Sql.Server.Model.AzureSqlServerModel
-
 ## NOTES
 
 ## RELATED LINKS

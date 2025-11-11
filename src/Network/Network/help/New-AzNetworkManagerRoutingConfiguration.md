@@ -14,7 +14,7 @@ Creates a routing configuration.
 
 ```
 New-AzNetworkManagerRoutingConfiguration -Name <String> -NetworkManagerName <String>
- -ResourceGroupName <String> [-Description <String>] [-Force] [-AsJob]
+ -ResourceGroupName <String> [-Description <String>] [-RouteTableUsageMode <String>] [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -24,7 +24,7 @@ The **New-AzNetworkManagerRoutingConfiguration** cmdlet creates a routing config
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Create a routing configuration with default RouteTableUsageMode
 ```powershell
 New-AzNetworkManagerRoutingConfiguration -ResourceGroupName "psResourceGroup" -NetworkManagerName "psNetworkManager" -Name "psRoutingConfig" -Description "TestDescription"
 ```
@@ -34,6 +34,7 @@ DisplayName                                 :
 Description                                 : TestDescription
 Type                                        : Microsoft.Network/networkManagers/routingConfigurations
 ProvisioningState                           : Succeeded
+RouteTableUsageMode                         : ManagedOnly
 SystemData                                  : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSSystemData
 SystemDataText                              : {
                                                 "CreatedBy": "00000000-0000-0000-0000-000000000000",
@@ -48,7 +49,35 @@ Etag                                        :
 Id                                          : /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/routingConfigurations/psRoutingConfig
 ```
 
-Creates a routing configuration.
+Creates a routing configuration with default RouteTableUsageMode set to ManagedOnly.
+
+### Example 2: Create routing configuration with UseExisting RouteTableUsageMode
+
+```powershell
+New-AzNetworkManagerRoutingConfiguration -ResourceGroupName "psResourceGroup" -NetworkManagerName "psNetworkManager" -Name "psRoutingConfig" -Description "TestDescription" -RouteTableUsageMode "UseExisting"
+```
+
+```output
+DisplayName                                 :
+Description                                 : TestDescription
+Type                                        : Microsoft.Network/networkManagers/routingConfigurations
+ProvisioningState                           : Succeeded
+RouteTableUsageMode                         : UseExisting
+SystemData                                  : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSSystemData
+SystemDataText                              : {
+                                                "CreatedBy": "00000000-0000-0000-0000-000000000000",
+                                                "CreatedByType": "Application",
+                                                "CreatedAt": "2021-10-18T04:06:57",
+                                                "LastModifiedBy": "00000000-0000-0000-0000-000000000000",
+                                                "LastModifiedByType": "Application",
+                                                "LastModifiedAt": "2021-10-18T04:06:59"
+                                              }
+Name                                        : psRoutingConfig
+Etag                                        :
+Id                                          : /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/routingConfigurations/psRoutingConfig
+```
+
+Creates a routing configuration with UseExisting RouteTableUsageMode value.
 
 ## PARAMETERS
 
@@ -155,6 +184,21 @@ Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: True
+```
+
+### -RouteTableUsageMode
+Specifies the route table usage mode for the configuration. Valid values are 'ManagedOnly' and 'UseExisting'. If not specified, defaults to 'ManagedOnly'.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: ManagedOnly
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
 ```
 
 ### -Confirm

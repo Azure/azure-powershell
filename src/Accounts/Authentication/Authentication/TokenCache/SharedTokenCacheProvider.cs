@@ -12,12 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-
 using Azure.Identity;
-
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Identity.Client;
 using Microsoft.Identity.Client.Extensions.Msal;
+using System;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
@@ -105,7 +104,17 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         public override void ClearCache()
         {
-            var client = CreatePublicClient();
+            ClearCacheInternal(null);
+        }
+
+        public override void ClearCache(string authority)
+        {
+            ClearCacheInternal(authority);
+        }
+
+        private void ClearCacheInternal(string authority)
+        {
+            var client = CreatePublicClient(authority);
             var accounts = client.GetAccountsAsync().GetAwaiter().GetResult();
             foreach (var account in accounts)
             {

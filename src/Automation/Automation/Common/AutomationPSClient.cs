@@ -330,7 +330,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
         #region Module
 
         public Module CreateModule(string resourceGroupName, string automationAccountName, Uri contentLink,
-            string moduleName,bool isPowershell72Module = false)
+            string moduleName,bool IsPowerShell72Module = false)
         {
             ModuleCreateOrUpdateParameters moduleCreateOrUpdateParameters = new AutomationManagement.Models.ModuleCreateOrUpdateParameters()
             {
@@ -342,7 +342,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                     Version = null
                 },
             };
-            if (isPowershell72Module)
+            if (IsPowerShell72Module)
             {
                 this.automationManagementClient.PowerShell72Module.CreateOrUpdate(resourceGroupName,
                 automationAccountName,
@@ -358,15 +358,15 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 moduleCreateOrUpdateParameters
                 );
             }
-            return this.GetModule(resourceGroupName, automationAccountName, moduleName, isPowershell72Module);
+            return this.GetModule(resourceGroupName, automationAccountName, moduleName, IsPowerShell72Module);
         }
 
-        public Module GetModule(string resourceGroupName, string automationAccountName, string name, bool isPowershell72Module = false)
+        public Module GetModule(string resourceGroupName, string automationAccountName, string name, bool IsPowerShell72Module = false)
         {
             try
             {
                 AutomationManagement.Models.Module module =null;
-                if (isPowershell72Module)
+                if (IsPowerShell72Module)
                 {
                     module = this.automationManagementClient.PowerShell72Module.Get(resourceGroupName, automationAccountName, name);
                 }
@@ -390,13 +390,13 @@ namespace Microsoft.Azure.Commands.Automation.Common
         }
 
         public IEnumerable<Module> ListModules(string resourceGroupName, string automationAccountName,
-            ref string nextLink, bool isPowershell72Module = false)
+            ref string nextLink, bool IsPowerShell72Module = false)
         {
             Rest.Azure.IPage<AutomationManagement.Models.Module> response;
 
             if (string.IsNullOrEmpty(nextLink))
             {
-                if (isPowershell72Module)
+                if (IsPowerShell72Module)
                 {
                     response = this.automationManagementClient.PowerShell72Module.ListByAutomationAccount(resourceGroupName, automationAccountName);
                 }
@@ -407,7 +407,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             }
             else
             {
-                if (isPowershell72Module)
+                if (IsPowerShell72Module)
                 {
                     response = this.automationManagementClient.PowerShell72Module.ListByAutomationAccountNext(nextLink);
                 }
@@ -422,7 +422,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
         }
 
         public Module UpdateModule(string resourceGroupName, string automationAccountName, string name,
-            Uri contentLinkUri, string contentLinkVersion, bool isPowershell72Module = false)
+            Uri contentLinkUri, string contentLinkVersion, bool IsPowerShell72Module = false)
         {
             try
             {
@@ -441,7 +441,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 };
                 if (contentLinkUri != null)
                 {
-                    if (isPowershell72Module)
+                    if (IsPowerShell72Module)
                     {
                          this.automationManagementClient.PowerShell72Module.CreateOrUpdate(resourceGroupName,
                     automationAccountName,
@@ -460,7 +460,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                     }
                     
                 }
-                return this.GetModule(resourceGroupName, automationAccountName, name, isPowershell72Module);
+                return this.GetModule(resourceGroupName, automationAccountName, name, IsPowerShell72Module);
             }
             catch (ErrorResponseException cloudException)
             {
@@ -475,11 +475,11 @@ namespace Microsoft.Azure.Commands.Automation.Common
             }
         }
 
-        public void DeleteModule(string resourceGroupName, string automationAccountName, string name, bool isPowershell72Module = false)
+        public void DeleteModule(string resourceGroupName, string automationAccountName, string name, bool IsPowerShell72Module = false)
         {
             try
             {
-                if (isPowershell72Module)
+                if (IsPowerShell72Module)
                 {
                     this.automationManagementClient.PowerShell72Module.Delete(resourceGroupName, automationAccountName, name);
                 }

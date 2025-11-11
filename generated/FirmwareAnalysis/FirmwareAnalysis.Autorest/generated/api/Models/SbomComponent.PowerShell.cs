@@ -129,6 +129,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISbomComponentInternal)this).FilePath = (System.Collections.Generic.List<string>) content.GetValueForProperty("FilePath",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISbomComponentInternal)this).FilePath, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
+            if (content.Contains("ProvisioningState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISbomComponentInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISbomComponentInternal)this).ProvisioningState, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -165,6 +169,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
             if (content.Contains("FilePath"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISbomComponentInternal)this).FilePath = (System.Collections.Generic.List<string>) content.GetValueForProperty("FilePath",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISbomComponentInternal)this).FilePath, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("ProvisioningState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISbomComponentInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISbomComponentInternal)this).ProvisioningState, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

@@ -120,6 +120,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentityInternal)this).AmlFilesystemName = (string) content.GetValueForProperty("AmlFilesystemName",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentityInternal)this).AmlFilesystemName, global::System.Convert.ToString);
             }
+            if (content.Contains("AutoExportJobName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentityInternal)this).AutoExportJobName = (string) content.GetValueForProperty("AutoExportJobName",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentityInternal)this).AutoExportJobName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ImportJobName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentityInternal)this).ImportJobName = (string) content.GetValueForProperty("ImportJobName",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentityInternal)this).ImportJobName, global::System.Convert.ToString);
+            }
+            if (content.Contains("AutoImportJobName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentityInternal)this).AutoImportJobName = (string) content.GetValueForProperty("AutoImportJobName",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentityInternal)this).AutoImportJobName, global::System.Convert.ToString);
+            }
             if (content.Contains("Id"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentityInternal)this).Id, global::System.Convert.ToString);
@@ -152,6 +164,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models
             if (content.Contains("AmlFilesystemName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentityInternal)this).AmlFilesystemName = (string) content.GetValueForProperty("AmlFilesystemName",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentityInternal)this).AmlFilesystemName, global::System.Convert.ToString);
+            }
+            if (content.Contains("AutoExportJobName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentityInternal)this).AutoExportJobName = (string) content.GetValueForProperty("AutoExportJobName",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentityInternal)this).AutoExportJobName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ImportJobName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentityInternal)this).ImportJobName = (string) content.GetValueForProperty("ImportJobName",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentityInternal)this).ImportJobName, global::System.Convert.ToString);
+            }
+            if (content.Contains("AutoImportJobName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentityInternal)this).AutoImportJobName = (string) content.GetValueForProperty("AutoImportJobName",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentityInternal)this).AutoImportJobName, global::System.Convert.ToString);
             }
             if (content.Contains("Id"))
             {

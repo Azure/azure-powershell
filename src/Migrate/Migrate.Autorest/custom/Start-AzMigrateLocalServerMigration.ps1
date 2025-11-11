@@ -100,16 +100,15 @@ function Start-AzMigrateLocalServerMigration {
     )
     
     process {
+        $helperPath = [System.IO.Path]::Combine($PSScriptRoot, "Helper", "AzLocalCommonSettings.ps1")
+        Import-Module $helperPath
+        $helperPath = [System.IO.Path]::Combine($PSScriptRoot, "Helper", "AzLocalCommonHelper.ps1")
+        Import-Module $helperPath
+
+        CheckResourceGraphModuleDependency
+        CheckResourcesModuleDependency
+
         $performShutDown = $TurnOffSourceServer.IsPresent
-        $null = $PSBoundParameters.Remove('ProjectName')
-        $null = $PSBoundParameters.Remove('MachineName')
-        $null = $PSBoundParameters.Remove('TurnOffSourceServer')
-        $null = $PSBoundParameters.Remove('TargetObjectID')
-        $null = $PSBoundParameters.Remove('ResourceGroupName')
-        $null = $PSBoundParameters.Remove('InputObject')
-        $null = $PSBoundParameters.Remove('WhatIf')
-        $null = $PSBoundParameters.Remove('Confirm')
-        
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($parameterSet -eq 'ByInputObject') {
@@ -121,11 +120,12 @@ function Start-AzMigrateLocalServerMigration {
         $vaultName = $protectedItemIdArray[8]
         $protectedItemName = $protectedItemIdArray[10]
 
-        $null = $PSBoundParameters.Add("ResourceGroupName", $resourceGroupName)
-        $null = $PSBoundParameters.Add("VaultName", $vaultName)
-        $null = $PSBoundParameters.Add("Name", $protectedItemName)
-
-        $protectedItem = Az.Migrate.Internal\Get-AzMigrateProtectedItem @PSBoundParameters -ErrorVariable notPresent -ErrorAction SilentlyContinue
+        $protectedItem = Az.Migrate.Internal\Get-AzMigrateProtectedItem `
+            -ResourceGroupName $resourceGroupName `
+            -VaultName $vaultName `
+            -Name $protectedItemName `
+            -ErrorVariable notPresent `
+            -ErrorAction SilentlyContinue
         if ($null -eq $protectedItem) {
             throw "The replicating server doesn't exist. Please check the input and try again."
         }
@@ -136,9 +136,18 @@ function Start-AzMigrateLocalServerMigration {
             throw "The replicating server cannot be migrated right now. Current protection state is '$($protectedItem.Property.ProtectionStateDescription)'."
         }
 
-        $null = $PSBoundParameters.Remove("ResourceGroupName")
-        $null = $PSBoundParameters.Remove("VaultName")
-        $null = $PSBoundParameters.Remove("Name")
+        # Get ARC Resource Bridge info
+        $targetClusterId = $protectedItem.Property.CustomProperty.TargetHciClusterId
+        $targetClusterIdArray = $targetClusterId.Split("/")
+        $targetSubscription = $targetClusterIdArray[2]
+        $arbArgQuery = GetARGQueryForArcResourceBridge -HCIClusterID $targetClusterId
+        $arbArgResult = Az.ResourceGraph\Search-AzGraph -Query $arbArgQuery -Subscription $targetSubscription
+        if ($null -eq $arbArgResult) {
+            throw "$($ArcResourceBridgeValidationMessages.NoClusters). Validate target cluster with id '$targetClusterId' exists."
+        }
+        elseif ($arbArgResult.statusOfTheBridge -ne "Running") {
+            throw "$($ArcResourceBridgeValidationMessages.NotRunning). Make sure the Arc Resource Bridge is online before retrying."
+        }
 
         # Get the instance type from the protected item
         $instanceType = $protectedItem.Property.CustomProperty.InstanceType
@@ -159,22 +168,19 @@ function Start-AzMigrateLocalServerMigration {
         $customProperties.ShutdownSourceVM = $performShutDown
         $properties.CustomProperty = $customProperties
 
-        $null = $PSBoundParameters.Add('ResourceGroupName', $resourceGroupName)
-        $null = $PSBoundParameters.Add('VaultName', $vaultName)
-        $null = $PSBoundParameters.Add('ProtectedItemName', $protectedItemName)
-        $null = $PSBoundParameters.Add('NoWait', $true)
-        $null = $PSBoundParameters.Add('Property', $properties)
-
         if ($PSCmdlet.ShouldProcess($TargetObjectID, "Migrate VM.")) {
-            $operation = Az.Migrate.Internal\Invoke-AzMigratePlannedProtectedItemFailover @PSBoundParameters
-            $jobName = $operation.Target.Split("/")[-1].Split("?")[0].Split("_")[0]
-          
-            $null = $PSBoundParameters.Remove('ProtectedItemName')  
-            $null = $PSBoundParameters.Remove('NoWait')
-            $null = $PSBoundParameters.Remove('Property')
+            $operation = Az.Migrate.Internal\Invoke-AzMigratePlannedProtectedItemFailover `
+                -ResourceGroupName $resourceGroupName `
+                -VaultName $vaultName `
+                -ProtectedItemName $protectedItemName `
+                -Property $properties `
+                -NoWait
 
-            $null = $PSBoundParameters.Add('JobName', $jobName)
-            return Az.Migrate.Internal\Get-AzMigrateLocalReplicationJob @PSBoundParameters
+            $jobName = $operation.Target.Split("/")[-1].Split("?")[0].Split("_")[0]
+            return Az.Migrate.Internal\Get-AzMigrateLocalReplicationJob `
+                -ResourceGroupName $resourceGroupName `
+                -VaultName $vaultName `
+                -JobName $jobName
         }
     }
 }

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Get the list of all associated traffic filters for the given deployment.
+List all traffic filters associated with your Elastic monitor resource, helping you manage network traffic control.
 .Description
-Get the list of all associated traffic filters for the given deployment.
+List all traffic filters associated with your Elastic monitor resource, helping you manage network traffic control.
 .Example
 Get-AzElasticListAssociatedTrafficFilter -ResourceGroupName azure-elastic-test -MonitorName elastic-pwsh02
 

@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
+* The single server cmdlets are deprecated and will be removed by May 2026.
+
+## Version 1.5.0
 - Aligned with SimplySql, use a PSCredential object instead of UserName/Password parameters when calling Open-MySQLConnection
 - Introduced a Timeout value when running Test-AzMySqlFlexibleServerConnect with long running query
 

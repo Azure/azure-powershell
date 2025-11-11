@@ -20,7 +20,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Cmdlets
     [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Description(@"update PrivateEndpointConnections of service namespace.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.ExternalDocs(@"https://msdn.microsoft.com/en-us/library/azure/mt639408.aspx", @"")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/privateEndpointConnections/{privateEndpointConnectionName}", ApiVersion = "2024-05-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/privateEndpointConnections/{privateEndpointConnectionName}", ApiVersion = "2025-05-01-preview")]
     public partial class SetAzEventHubPrivateEndpointConnection_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.IContext

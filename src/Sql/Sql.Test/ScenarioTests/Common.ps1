@@ -66,6 +66,7 @@ function Get-SqlDataMaskingTestEnvironmentParameters ($testSuffix)
 			  databaseName = "sql-dm-cmdlet-db" + $testSuffix;
 			  userName = "testuser";
 			  loginName = "testlogin";
+			  <#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]#>
 			  pwd = "testp@ssMakingIt1007Longer";
 			  table1="table1";
 			  column1 = "column1";
@@ -1009,6 +1010,16 @@ function Get-DefaultManagedInstanceParametersV2()
 	}
 }
 
+function Get-DefaultManagedInstanceParametersV3()
+{
+	return @{
+		rg = "uroskrstic";
+		location = "westeurope";
+		subnet = "/subscriptions/62e48210-5e43-423e-889b-c277f3e08c39/resourceGroups/uroskrstic/providers/Microsoft.Network/virtualNetworks/vnet-uroskrstic-flexi-test-azpowershell/subnets/ManagedInstance";
+		subscriptionId = "62e48210-5e43-423e-889b-c277f3e08c39";
+	}
+}
+
 function Get-DefaultManagedInstanceNameAndRgForAADAdmin()
 {
 	return @{
@@ -1027,11 +1038,21 @@ function Get-DefaultManagedInstanceParametersHermesTesting()
 	}
 }
 
+function Get-DefaultManagedInstanceParametersMemorySizeInGBTesting()
+{
+	return @{
+		rg = "uroskrstic";
+		location = "northeurope";
+		subnet = "/subscriptions/62e48210-5e43-423e-889b-c277f3e08c39/resourceGroups/Gen8MMNeu/providers/Microsoft.Network/virtualNetworks/vnet-clperf-gen8mm-baseline-neu-gp8/subnets/ManagedInstance";
+		subscriptionId = "62e48210-5e43-423e-889b-c277f3e08c39";
+	}
+}
+
 <#
 	.SYNOPSIS
 	Creates the test environment needed to perform the Sql managed instance CRUD tests
 #>
-function Create-ManagedInstanceForTest ($resourceGroup, $vCore, $subnetId, $isV2)
+function Create-ManagedInstanceForTest ($resourceGroup, $vCore, $subnetId, $isV2, $isV3)
 {
 	if($vCore -eq $null)
 	{
@@ -1045,7 +1066,10 @@ function Create-ManagedInstanceForTest ($resourceGroup, $vCore, $subnetId, $isV2
 
 	$managedInstanceName = Get-ManagedInstanceName
 	$credentials = Get-ServerCredential
-	if($isV2) {
+	if ($isV3) {
+		$params = Get-DefaultManagedInstanceParametersV3
+	}
+	elseif($isV2) {
 		$params = Get-DefaultManagedInstanceParametersV2
 	}
 	else {

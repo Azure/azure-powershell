@@ -6,22 +6,22 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Extensions;
+    using Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.PowerShell;
+    using Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Cmdlets;
     using System;
 
-    /// <summary>
-    /// Patch the properties of the provided cluster, or update the tags associated with the cluster. Properties and tag updates
-    /// can be done independently.
-    /// </summary>
+    /// <summary>update a new cluster or update the properties of the cluster if it exists.</summary>
     /// <remarks>
-    /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}"
+    /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}"
+    /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzNetworkCloudCluster_UpdateViaIdentityExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.ICluster))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Description(@"Patch the properties of the provided cluster, or update the tags associated with the cluster. Properties and tag updates can be done independently.")]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICluster))]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Description(@"update a new cluster or update the properties of the cluster if it exists.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}", ApiVersion = "2025-02-01")]
     public partial class UpdateAzNetworkCloudCluster_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
-        Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IEventListener
+        Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IEventListener,
+        Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IContext
     {
         /// <summary>A unique id generatd for the this cmdlet when it is instantiated.</summary>
         private string __correlationId = System.Guid.NewGuid().ToString();
@@ -37,10 +37,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
-        /// <summary>
-        /// ClusterPatchParameters represents the body of the request to patch the cluster properties.
-        /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IClusterPatchParameters _clusterUpdateParametersBody = new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.ClusterPatchParameters();
+        /// <summary>Cluster represents the on-premises Network Cloud cluster.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICluster _clusterParametersBody = new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Cluster();
+
+        /// <summary>A dictionary to carry over additional data for pipeline.</summary>
+        private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
 
         /// <summary>
         /// The zone name used for this rack when created. Availability zones are used for workload placement.
@@ -53,7 +54,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         Description = @"The zone name used for this rack when created. Availability zones are used for workload placement.",
         SerializedName = @"availabilityZone",
         PossibleTypes = new [] { typeof(string) })]
-        public string AggregatorOrSingleRackDefinitionAvailabilityZone { get => _clusterUpdateParametersBody.AggregatorOrSingleRackDefinitionAvailabilityZone ?? null; set => _clusterUpdateParametersBody.AggregatorOrSingleRackDefinitionAvailabilityZone = value; }
+        public string AggregatorOrSingleRackDefinitionAvailabilityZone { get => _clusterParametersBody.AggregatorOrSingleRackDefinitionAvailabilityZone ?? null; set => _clusterParametersBody.AggregatorOrSingleRackDefinitionAvailabilityZone = value; }
 
         /// <summary>The unordered list of bare metal machine configuration.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -64,8 +65,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         ReadOnly = false,
         Description = @"The unordered list of bare metal machine configuration.",
         SerializedName = @"bareMetalMachineConfigurationData",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IBareMetalMachineConfigurationData) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IBareMetalMachineConfigurationData[] AggregatorOrSingleRackDefinitionBareMetalMachineConfiguration { get => _clusterUpdateParametersBody.AggregatorOrSingleRackDefinitionBareMetalMachineConfigurationData ?? null /* arrayOf */; set => _clusterUpdateParametersBody.AggregatorOrSingleRackDefinitionBareMetalMachineConfigurationData = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineConfigurationData) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineConfigurationData[] AggregatorOrSingleRackDefinitionBareMetalMachineConfiguration { get => _clusterParametersBody.AggregatorOrSingleRackDefinitionBareMetalMachineConfigurationData?.ToArray() ?? null /* fixedArrayOf */; set => _clusterParametersBody.AggregatorOrSingleRackDefinitionBareMetalMachineConfigurationData = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineConfigurationData>(value) : null); }
 
         /// <summary>The resource ID of the network rack that matches this rack definition.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The resource ID of the network rack that matches this rack definition.")]
@@ -76,7 +77,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         Description = @"The resource ID of the network rack that matches this rack definition.",
         SerializedName = @"networkRackId",
         PossibleTypes = new [] { typeof(string) })]
-        public string AggregatorOrSingleRackDefinitionNetworkRackId { get => _clusterUpdateParametersBody.AggregatorOrSingleRackDefinitionNetworkRackId ?? null; set => _clusterUpdateParametersBody.AggregatorOrSingleRackDefinitionNetworkRackId = value; }
+        public string AggregatorOrSingleRackDefinitionNetworkRackId { get => _clusterParametersBody.AggregatorOrSingleRackDefinitionNetworkRackId ?? null; set => _clusterParametersBody.AggregatorOrSingleRackDefinitionNetworkRackId = value; }
 
         /// <summary>The free-form description of the rack's location.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The free-form description of the rack's location.")]
@@ -87,7 +88,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         Description = @"The free-form description of the rack's location.",
         SerializedName = @"rackLocation",
         PossibleTypes = new [] { typeof(string) })]
-        public string AggregatorOrSingleRackDefinitionRackLocation { get => _clusterUpdateParametersBody.AggregatorOrSingleRackDefinitionRackLocation ?? null; set => _clusterUpdateParametersBody.AggregatorOrSingleRackDefinitionRackLocation = value; }
+        public string AggregatorOrSingleRackDefinitionRackLocation { get => _clusterParametersBody.AggregatorOrSingleRackDefinitionRackLocation ?? null; set => _clusterParametersBody.AggregatorOrSingleRackDefinitionRackLocation = value; }
 
         /// <summary>
         /// The unique identifier for the rack within Network Cloud cluster. An alternate unique alphanumeric value other than a serial
@@ -101,7 +102,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         Description = @"The unique identifier for the rack within Network Cloud cluster. An alternate unique alphanumeric value other than a serial number may be provided if desired.",
         SerializedName = @"rackSerialNumber",
         PossibleTypes = new [] { typeof(string) })]
-        public string AggregatorOrSingleRackDefinitionRackSerialNumber { get => _clusterUpdateParametersBody.AggregatorOrSingleRackDefinitionRackSerialNumber ?? null; set => _clusterUpdateParametersBody.AggregatorOrSingleRackDefinitionRackSerialNumber = value; }
+        public string AggregatorOrSingleRackDefinitionRackSerialNumber { get => _clusterParametersBody.AggregatorOrSingleRackDefinitionRackSerialNumber ?? null; set => _clusterParametersBody.AggregatorOrSingleRackDefinitionRackSerialNumber = value; }
 
         /// <summary>The resource ID of the sku for the rack being added.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The resource ID of the sku for the rack being added.")]
@@ -112,7 +113,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         Description = @"The resource ID of the sku for the rack being added.",
         SerializedName = @"rackSkuId",
         PossibleTypes = new [] { typeof(string) })]
-        public string AggregatorOrSingleRackDefinitionRackSkuId { get => _clusterUpdateParametersBody.AggregatorOrSingleRackDefinitionRackSkuId ?? null; set => _clusterUpdateParametersBody.AggregatorOrSingleRackDefinitionRackSkuId = value; }
+        public string AggregatorOrSingleRackDefinitionRackSkuId { get => _clusterParametersBody.AggregatorOrSingleRackDefinitionRackSkuId ?? null; set => _clusterParametersBody.AggregatorOrSingleRackDefinitionRackSkuId = value; }
 
         /// <summary>The list of storage appliance configuration data for this rack.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -123,8 +124,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         ReadOnly = false,
         Description = @"The list of storage appliance configuration data for this rack.",
         SerializedName = @"storageApplianceConfigurationData",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IStorageApplianceConfigurationData) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IStorageApplianceConfigurationData[] AggregatorOrSingleRackDefinitionStorageApplianceConfiguration { get => _clusterUpdateParametersBody.AggregatorOrSingleRackDefinitionStorageApplianceConfigurationData ?? null /* arrayOf */; set => _clusterUpdateParametersBody.AggregatorOrSingleRackDefinitionStorageApplianceConfigurationData = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IStorageApplianceConfigurationData) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IStorageApplianceConfigurationData[] AggregatorOrSingleRackDefinitionStorageApplianceConfiguration { get => _clusterParametersBody.AggregatorOrSingleRackDefinitionStorageApplianceConfigurationData?.ToArray() ?? null /* fixedArrayOf */; set => _clusterParametersBody.AggregatorOrSingleRackDefinitionStorageApplianceConfigurationData = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IStorageApplianceConfigurationData>(value) : null); }
 
         /// <summary>
         /// The resource ID of the analytics workspace that is to be used by the specified identity.
@@ -137,7 +138,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         Description = @"The resource ID of the analytics workspace that is to be used by the specified identity.",
         SerializedName = @"analyticsWorkspaceId",
         PossibleTypes = new [] { typeof(string) })]
-        public string AnalyticOutputSettingAnalyticsWorkspaceId { get => _clusterUpdateParametersBody.AnalyticOutputSettingAnalyticsWorkspaceId ?? null; set => _clusterUpdateParametersBody.AnalyticOutputSettingAnalyticsWorkspaceId = value; }
+        public string AnalyticOutputSettingAnalyticsWorkspaceId { get => _clusterParametersBody.AnalyticOutputSettingAnalyticsWorkspaceId ?? null; set => _clusterParametersBody.AnalyticOutputSettingAnalyticsWorkspaceId = value; }
 
         /// <summary>The type of managed identity that is being selected.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The type of managed identity that is being selected.")]
@@ -147,9 +148,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         ReadOnly = false,
         Description = @"The type of managed identity that is being selected.",
         SerializedName = @"identityType",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ManagedServiceIdentitySelectorType) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ManagedServiceIdentitySelectorType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ManagedServiceIdentitySelectorType AnalyticsOutputSettingsAssociatedIdentityType { get => _clusterUpdateParametersBody.AnalyticsOutputSettingsAssociatedIdentityType ?? ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ManagedServiceIdentitySelectorType)""); set => _clusterUpdateParametersBody.AnalyticsOutputSettingsAssociatedIdentityType = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("SystemAssignedIdentity", "UserAssignedIdentity")]
+        public string AnalyticsOutputSettingsAssociatedIdentityType { get => _clusterParametersBody.AnalyticsOutputSettingsAssociatedIdentityType ?? null; set => _clusterParametersBody.AnalyticsOutputSettingsAssociatedIdentityType = value; }
 
         /// <summary>
         /// The user assigned managed identity resource ID to use. Mutually exclusive with a system assigned identity type.
@@ -162,7 +163,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         Description = @"The user assigned managed identity resource ID to use. Mutually exclusive with a system assigned identity type.",
         SerializedName = @"userAssignedIdentityResourceId",
         PossibleTypes = new [] { typeof(string) })]
-        public string AnalyticsOutputSettingsAssociatedIdentityUserAssignedIdentityResourceId { get => _clusterUpdateParametersBody.AnalyticsOutputSettingsAssociatedIdentityUserAssignedIdentityResourceId ?? null; set => _clusterUpdateParametersBody.AnalyticsOutputSettingsAssociatedIdentityUserAssignedIdentityResourceId = value; }
+        public string AnalyticsOutputSettingsAssociatedIdentityUserAssignedIdentityResourceId { get => _clusterParametersBody.AnalyticsOutputSettingsAssociatedIdentityUserAssignedIdentityResourceId ?? null; set => _clusterParametersBody.AnalyticsOutputSettingsAssociatedIdentityUserAssignedIdentityResourceId = value; }
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
@@ -177,9 +178,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         ReadOnly = false,
         Description = @"The type of associated identity for CommandOutputSettings.",
         SerializedName = @"identityType",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ManagedServiceIdentitySelectorType) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ManagedServiceIdentitySelectorType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ManagedServiceIdentitySelectorType AssociatedIdentityType { get => _clusterUpdateParametersBody.CommandOutputSettingsAssociatedIdentityType ?? ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ManagedServiceIdentitySelectorType)""); set => _clusterUpdateParametersBody.CommandOutputSettingsAssociatedIdentityType = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("SystemAssignedIdentity", "UserAssignedIdentity")]
+        public string AssociatedIdentityType { get => _clusterParametersBody.AssociatedIdentityType ?? null; set => _clusterParametersBody.AssociatedIdentityType = value; }
 
         /// <summary>The resource ID of the user assigned identity for CommandOutputSettings.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The resource ID of the user assigned identity for CommandOutputSettings.")]
@@ -190,12 +191,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         Description = @"The resource ID of the user assigned identity for CommandOutputSettings.",
         SerializedName = @"userAssignedIdentityResourceId",
         PossibleTypes = new [] { typeof(string) })]
-        public string AssociatedIdentityUserAssignedIdentityResourceId { get => _clusterUpdateParametersBody.CommandOutputSettingsAssociatedIdentityUserAssignedIdentityResourceId ?? null; set => _clusterUpdateParametersBody.CommandOutputSettingsAssociatedIdentityUserAssignedIdentityResourceId = value; }
+        public string AssociatedIdentityUserAssignedIdentityResourceId { get => _clusterParametersBody.AssociatedIdentityUserAssignedIdentityResourceId ?? null; set => _clusterParametersBody.AssociatedIdentityUserAssignedIdentityResourceId = value; }
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter Break { get; set; }
+
+        /// <summary>Accessor for cancellationTokenSource.</summary>
+        public global::System.Threading.CancellationTokenSource CancellationTokenSource { get => _cancellationTokenSource ; set { _cancellationTokenSource = value; } }
 
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.NetworkCloud Client => Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Module.Instance.ClientAPI;
@@ -211,7 +215,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         Description = @"The customer-provided location information to identify where the cluster resides.",
         SerializedName = @"clusterLocation",
         PossibleTypes = new [] { typeof(string) })]
-        public string ClusterLocation { get => _clusterUpdateParametersBody.ClusterLocation ?? null; set => _clusterUpdateParametersBody.ClusterLocation = value; }
+        public string ClusterLocation { get => _clusterParametersBody.ClusterLocation ?? null; set => _clusterParametersBody.ClusterLocation = value; }
 
         /// <summary>The application ID, also known as client ID, of the service principal.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The application ID, also known as client ID, of the service principal.")]
@@ -222,7 +226,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         Description = @"The application ID, also known as client ID, of the service principal.",
         SerializedName = @"applicationId",
         PossibleTypes = new [] { typeof(string) })]
-        public string ClusterServicePrincipalApplicationId { get => _clusterUpdateParametersBody.ClusterServicePrincipalApplicationId ?? null; set => _clusterUpdateParametersBody.ClusterServicePrincipalApplicationId = value; }
+        public string ClusterServicePrincipalApplicationId { get => _clusterParametersBody.ServicePrincipalApplicationId ?? null; set => _clusterParametersBody.ServicePrincipalApplicationId = value; }
 
         /// <summary>The principal ID, also known as the object ID, of the service principal.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The principal ID, also known as the object ID, of the service principal.")]
@@ -233,7 +237,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         Description = @"The principal ID, also known as the object ID, of the service principal.",
         SerializedName = @"principalId",
         PossibleTypes = new [] { typeof(string) })]
-        public string ClusterServicePrincipalId { get => _clusterUpdateParametersBody.ClusterServicePrincipalId ?? null; set => _clusterUpdateParametersBody.ClusterServicePrincipalId = value; }
+        public string ClusterServicePrincipalId { get => _clusterParametersBody.ServicePrincipalId ?? null; set => _clusterParametersBody.ServicePrincipalId = value; }
 
         /// <summary>The password of the service principal.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The password of the service principal.")]
@@ -244,7 +248,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         Description = @"The password of the service principal.",
         SerializedName = @"password",
         PossibleTypes = new [] { typeof(System.Security.SecureString) })]
-        public System.Security.SecureString ClusterServicePrincipalPassword { get => _clusterUpdateParametersBody.ClusterServicePrincipalPassword ?? null; set => _clusterUpdateParametersBody.ClusterServicePrincipalPassword = value; }
+        public System.Security.SecureString ClusterServicePrincipalPassword { get => _clusterParametersBody.ServicePrincipalPassword ?? null; set => _clusterParametersBody.ServicePrincipalPassword = value; }
 
         /// <summary>
         /// The tenant ID, also known as the directory ID, of the tenant in which the service principal is created.
@@ -257,7 +261,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         Description = @"The tenant ID, also known as the directory ID, of the tenant in which the service principal is created.",
         SerializedName = @"tenantId",
         PossibleTypes = new [] { typeof(string) })]
-        public string ClusterServicePrincipalTenantId { get => _clusterUpdateParametersBody.ClusterServicePrincipalTenantId ?? null; set => _clusterUpdateParametersBody.ClusterServicePrincipalTenantId = value; }
+        public string ClusterServicePrincipalTenantId { get => _clusterParametersBody.ServicePrincipalTenantId ?? null; set => _clusterParametersBody.ServicePrincipalTenantId = value; }
 
         /// <summary>
         /// The URL of the storage account container that is to be used by the specified identities.
@@ -270,7 +274,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         Description = @"The URL of the storage account container that is to be used by the specified identities.",
         SerializedName = @"containerUrl",
         PossibleTypes = new [] { typeof(string) })]
-        public string CommandOutputSettingContainerUrl { get => _clusterUpdateParametersBody.CommandOutputSettingContainerUrl ?? null; set => _clusterUpdateParametersBody.CommandOutputSettingContainerUrl = value; }
+        public string CommandOutputSettingContainerUrl { get => _clusterParametersBody.CommandOutputSettingContainerUrl ?? null; set => _clusterParametersBody.CommandOutputSettingContainerUrl = value; }
 
         /// <summary>Selection of how the type evaluation is applied to the cluster calculation.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Selection of how the type evaluation is applied to the cluster calculation.")]
@@ -280,9 +284,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         ReadOnly = false,
         Description = @"Selection of how the type evaluation is applied to the cluster calculation.",
         SerializedName = @"grouping",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ValidationThresholdGrouping) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ValidationThresholdGrouping))]
-        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ValidationThresholdGrouping ComputeDeploymentThresholdGrouping { get => _clusterUpdateParametersBody.ComputeDeploymentThresholdGrouping ?? ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ValidationThresholdGrouping)""); set => _clusterUpdateParametersBody.ComputeDeploymentThresholdGrouping = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("PerCluster", "PerRack")]
+        public string ComputeDeploymentThresholdGrouping { get => _clusterParametersBody.ComputeDeploymentThresholdGrouping ?? null; set => _clusterParametersBody.ComputeDeploymentThresholdGrouping = value; }
 
         /// <summary>Selection of how the threshold should be evaluated.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Selection of how the threshold should be evaluated.")]
@@ -292,9 +296,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         ReadOnly = false,
         Description = @"Selection of how the threshold should be evaluated.",
         SerializedName = @"type",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ValidationThresholdType) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ValidationThresholdType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ValidationThresholdType ComputeDeploymentThresholdType { get => _clusterUpdateParametersBody.ComputeDeploymentThresholdType ?? ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ValidationThresholdType)""); set => _clusterUpdateParametersBody.ComputeDeploymentThresholdType = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("CountSuccess", "PercentSuccess")]
+        public string ComputeDeploymentThresholdType { get => _clusterParametersBody.ComputeDeploymentThresholdType ?? null; set => _clusterParametersBody.ComputeDeploymentThresholdType = value; }
 
         /// <summary>The numeric threshold value.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The numeric threshold value.")]
@@ -305,21 +309,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         Description = @"The numeric threshold value.",
         SerializedName = @"value",
         PossibleTypes = new [] { typeof(long) })]
-        public long ComputeDeploymentThresholdValue { get => _clusterUpdateParametersBody.ComputeDeploymentThresholdValue ?? default(long); set => _clusterUpdateParametersBody.ComputeDeploymentThresholdValue = value; }
+        public long ComputeDeploymentThresholdValue { get => _clusterParametersBody.ComputeDeploymentThresholdValue ?? default(long); set => _clusterParametersBody.ComputeDeploymentThresholdValue = value; }
 
         /// <summary>
-        /// The list of rack definitions for the compute racks in a multi-rackcluster, or an empty list in a single-rack cluster.
+        /// The list of rack definitions for the compute racks in a multi-rack cluster, or an empty list in a single-rack cluster.
         /// </summary>
         [global::System.Management.Automation.AllowEmptyCollection]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The list of rack definitions for the compute racks in a multi-rackcluster, or an empty list in a single-rack cluster.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The list of rack definitions for the compute racks in a multi-rack cluster, or an empty list in a single-rack cluster.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The list of rack definitions for the compute racks in a multi-rackcluster, or an empty list in a single-rack cluster.",
+        Description = @"The list of rack definitions for the compute racks in a multi-rack cluster, or an empty list in a single-rack cluster.",
         SerializedName = @"computeRackDefinitions",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IRackDefinition) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IRackDefinition[] ComputeRackDefinition { get => _clusterUpdateParametersBody.ComputeRackDefinition ?? null /* arrayOf */; set => _clusterUpdateParametersBody.ComputeRackDefinition = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IRackDefinition) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IRackDefinition[] ComputeRackDefinition { get => _clusterParametersBody.ComputeRackDefinition?.ToArray() ?? null /* fixedArrayOf */; set => _clusterParametersBody.ComputeRackDefinition = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IRackDefinition>(value) : null); }
 
         /// <summary>
         /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
@@ -330,6 +334,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
+
+        /// <summary>Determines whether to enable a system-assigned identity for the resource.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Determines whether to enable a system-assigned identity for the resource.")]
+        public System.Boolean? EnableSystemAssignedIdentity { get; set; }
+
+        /// <summary>Accessor for extensibleParameters.</summary>
+        public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -342,36 +353,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         [global::System.Management.Automation.ValidateNotNull]
         [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.ParameterCategory.Runtime)]
         public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.SendAsyncStep[] HttpPipelinePrepend { get; set; }
-
-        /// <summary>
-        /// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-        /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).",
-        SerializedName = @"type",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ManagedServiceIdentityType) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ManagedServiceIdentityType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ManagedServiceIdentityType IdentityType { get => _clusterUpdateParametersBody.IdentityType ?? ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ManagedServiceIdentityType)""); set => _clusterUpdateParametersBody.IdentityType = value; }
-
-        /// <summary>
-        /// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM
-        /// resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-        /// The dictionary values can be empty objects ({}) in requests.
-        /// </summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.ExportAs(typeof(global::System.Collections.Hashtable))]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.",
-        SerializedName = @"userAssignedIdentities",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50.IUserAssignedIdentities) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50.IUserAssignedIdentities IdentityUserAssignedIdentity { get => _clusterUpdateParametersBody.IdentityUserAssignedIdentity ?? null /* object */; set => _clusterUpdateParametersBody.IdentityUserAssignedIdentity = value; }
 
         /// <summary>Backing field for <see cref="IfMatch" /> property.</summary>
         private string _ifMatch;
@@ -437,7 +418,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.HttpPipeline Pipeline { get; set; }
+        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.HttpPipeline Pipeline { get; set; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -463,9 +444,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         ReadOnly = false,
         Description = @"The mode of operation for runtime protection.",
         SerializedName = @"enforcementLevel",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.RuntimeProtectionEnforcementLevel) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.RuntimeProtectionEnforcementLevel))]
-        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.RuntimeProtectionEnforcementLevel RuntimeProtectionConfigurationEnforcementLevel { get => _clusterUpdateParametersBody.RuntimeProtectionConfigurationEnforcementLevel ?? ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.RuntimeProtectionEnforcementLevel)""); set => _clusterUpdateParametersBody.RuntimeProtectionConfigurationEnforcementLevel = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("Audit", "Disabled", "OnDemand", "Passive", "RealTime")]
+        public string RuntimeProtectionConfigurationEnforcementLevel { get => _clusterParametersBody.RuntimeProtectionConfigurationEnforcementLevel ?? null; set => _clusterParametersBody.RuntimeProtectionConfigurationEnforcementLevel = value; }
 
         /// <summary>The resource ID of the key vault to archive the secrets of the cluster.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The resource ID of the key vault to archive the secrets of the cluster.")]
@@ -476,7 +457,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         Description = @"The resource ID of the key vault to archive the secrets of the cluster.",
         SerializedName = @"keyVaultId",
         PossibleTypes = new [] { typeof(string) })]
-        public string SecretArchiveKeyVaultId { get => _clusterUpdateParametersBody.SecretArchiveKeyVaultId ?? null; set => _clusterUpdateParametersBody.SecretArchiveKeyVaultId = value; }
+        public string SecretArchiveKeyVaultId { get => _clusterParametersBody.SecretArchiveKeyVaultId ?? null; set => _clusterParametersBody.SecretArchiveKeyVaultId = value; }
 
         /// <summary>The URI for the key vault used as the secret archive.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The URI for the key vault used as the secret archive.")]
@@ -487,7 +468,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         Description = @"The URI for the key vault used as the secret archive.",
         SerializedName = @"vaultUri",
         PossibleTypes = new [] { typeof(string) })]
-        public string SecretArchiveSettingVaultUri { get => _clusterUpdateParametersBody.SecretArchiveSettingVaultUri ?? null; set => _clusterUpdateParametersBody.SecretArchiveSettingVaultUri = value; }
+        public string SecretArchiveSettingVaultUri { get => _clusterParametersBody.SecretArchiveSettingVaultUri ?? null; set => _clusterParametersBody.SecretArchiveSettingVaultUri = value; }
 
         /// <summary>The type of managed identity that is being selected.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The type of managed identity that is being selected.")]
@@ -497,9 +478,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         ReadOnly = false,
         Description = @"The type of managed identity that is being selected.",
         SerializedName = @"identityType",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ManagedServiceIdentitySelectorType) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ManagedServiceIdentitySelectorType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ManagedServiceIdentitySelectorType SecretArchiveSettingsAssociatedIdentityType { get => _clusterUpdateParametersBody.SecretArchiveSettingsAssociatedIdentityType ?? ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ManagedServiceIdentitySelectorType)""); set => _clusterUpdateParametersBody.SecretArchiveSettingsAssociatedIdentityType = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("SystemAssignedIdentity", "UserAssignedIdentity")]
+        public string SecretArchiveSettingsAssociatedIdentityType { get => _clusterParametersBody.SecretArchiveSettingsAssociatedIdentityType ?? null; set => _clusterParametersBody.SecretArchiveSettingsAssociatedIdentityType = value; }
 
         /// <summary>
         /// The user assigned managed identity resource ID to use. Mutually exclusive with a system assigned identity type.
@@ -512,7 +493,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         Description = @"The user assigned managed identity resource ID to use. Mutually exclusive with a system assigned identity type.",
         SerializedName = @"userAssignedIdentityResourceId",
         PossibleTypes = new [] { typeof(string) })]
-        public string SecretArchiveSettingsAssociatedIdentityUserAssignedIdentityResourceId { get => _clusterUpdateParametersBody.SecretArchiveSettingsAssociatedIdentityUserAssignedIdentityResourceId ?? null; set => _clusterUpdateParametersBody.SecretArchiveSettingsAssociatedIdentityUserAssignedIdentityResourceId = value; }
+        public string SecretArchiveSettingsAssociatedIdentityUserAssignedIdentityResourceId { get => _clusterParametersBody.SecretArchiveSettingsAssociatedIdentityUserAssignedIdentityResourceId ?? null; set => _clusterParametersBody.SecretArchiveSettingsAssociatedIdentityUserAssignedIdentityResourceId = value; }
 
         /// <summary>
         /// The indicator if the specified key vault should be used to archive the secrets of the cluster.
@@ -524,21 +505,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         ReadOnly = false,
         Description = @"The indicator if the specified key vault should be used to archive the secrets of the cluster.",
         SerializedName = @"useKeyVault",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ClusterSecretArchiveEnabled) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ClusterSecretArchiveEnabled))]
-        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ClusterSecretArchiveEnabled SecretArchiveUseKeyVault { get => _clusterUpdateParametersBody.SecretArchiveUseKeyVault ?? ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ClusterSecretArchiveEnabled)""); set => _clusterUpdateParametersBody.SecretArchiveUseKeyVault = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("True", "False")]
+        public string SecretArchiveUseKeyVault { get => _clusterParametersBody.SecretArchiveUseKeyVault ?? null; set => _clusterParametersBody.SecretArchiveUseKeyVault = value; }
 
-        /// <summary>The Azure resource tags that will replace the existing ones.</summary>
+        /// <summary>Resource tags.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.ExportAs(typeof(global::System.Collections.Hashtable))]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The Azure resource tags that will replace the existing ones.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Resource tags.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The Azure resource tags that will replace the existing ones.",
+        Description = @"Resource tags.",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IClusterPatchParametersTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IClusterPatchParametersTags Tag { get => _clusterUpdateParametersBody.Tag ?? null /* object */; set => _clusterUpdateParametersBody.Tag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ITrackedResourceTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ITrackedResourceTags Tag { get => _clusterParametersBody.Tag ?? null /* object */; set => _clusterParametersBody.Tag = value; }
 
         /// <summary>
         /// The maximum number of worker nodes that can be offline within the increment of update, e.g., rack-by-rack.Limited by the
@@ -552,7 +533,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         Description = @"The maximum number of worker nodes that can be offline within the increment of update, e.g., rack-by-rack.Limited by the maximum number of machines in the increment. Defaults to the whole increment size.",
         SerializedName = @"maxUnavailable",
         PossibleTypes = new [] { typeof(long) })]
-        public long UpdateStrategyMaxUnavailable { get => _clusterUpdateParametersBody.UpdateStrategyMaxUnavailable ?? default(long); set => _clusterUpdateParametersBody.UpdateStrategyMaxUnavailable = value; }
+        public long UpdateStrategyMaxUnavailable { get => _clusterParametersBody.UpdateStrategyMaxUnavailable ?? default(long); set => _clusterParametersBody.UpdateStrategyMaxUnavailable = value; }
 
         /// <summary>Selection of how the threshold should be evaluated.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Selection of how the threshold should be evaluated.")]
@@ -562,9 +543,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         ReadOnly = false,
         Description = @"Selection of how the threshold should be evaluated.",
         SerializedName = @"thresholdType",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ValidationThresholdType) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ValidationThresholdType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ValidationThresholdType UpdateStrategyThresholdType { get => _clusterUpdateParametersBody.UpdateStrategyThresholdType ?? ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ValidationThresholdType)""); set => _clusterUpdateParametersBody.UpdateStrategyThresholdType = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("CountSuccess", "PercentSuccess")]
+        public string UpdateStrategyThresholdType { get => _clusterParametersBody.UpdateStrategyThresholdType ?? null; set => _clusterParametersBody.UpdateStrategyThresholdType = value; }
 
         /// <summary>The numeric threshold value.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The numeric threshold value.")]
@@ -575,7 +556,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         Description = @"The numeric threshold value.",
         SerializedName = @"thresholdValue",
         PossibleTypes = new [] { typeof(long) })]
-        public long UpdateStrategyThresholdValue { get => _clusterUpdateParametersBody.UpdateStrategyThresholdValue ?? default(long); set => _clusterUpdateParametersBody.UpdateStrategyThresholdValue = value; }
+        public long UpdateStrategyThresholdValue { get => _clusterParametersBody.UpdateStrategyThresholdValue ?? default(long); set => _clusterParametersBody.UpdateStrategyThresholdValue = value; }
 
         /// <summary>The mode of operation for runtime protection.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The mode of operation for runtime protection.")]
@@ -585,9 +566,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         ReadOnly = false,
         Description = @"The mode of operation for runtime protection.",
         SerializedName = @"strategyType",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ClusterUpdateStrategyType) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ClusterUpdateStrategyType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ClusterUpdateStrategyType UpdateStrategyType { get => _clusterUpdateParametersBody.UpdateStrategyType ?? ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ClusterUpdateStrategyType)""); set => _clusterUpdateParametersBody.UpdateStrategyType = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("Rack", "PauseAfterRack")]
+        public string UpdateStrategyType { get => _clusterParametersBody.UpdateStrategyType ?? null; set => _clusterParametersBody.UpdateStrategyType = value; }
 
         /// <summary>The time to wait between the increments of update defined by the strategy.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The time to wait between the increments of update defined by the strategy.")]
@@ -598,7 +579,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         Description = @"The time to wait between the increments of update defined by the strategy.",
         SerializedName = @"waitTimeMinutes",
         PossibleTypes = new [] { typeof(long) })]
-        public long UpdateStrategyWaitTimeMinute { get => _clusterUpdateParametersBody.UpdateStrategyWaitTimeMinute ?? default(long); set => _clusterUpdateParametersBody.UpdateStrategyWaitTimeMinute = value; }
+        public long UpdateStrategyWaitTimeMinute { get => _clusterParametersBody.UpdateStrategyWaitTimeMinute ?? default(long); set => _clusterParametersBody.UpdateStrategyWaitTimeMinute = value; }
+
+        /// <summary>
+        /// The array of user assigned identities associated with the resource. The elements in array will be ARM resource ids in
+        /// the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The array of user assigned identities associated with the resource. The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'")]
+        [global::System.Management.Automation.AllowEmptyCollection]
+        public string[] UserAssignedIdentity { get; set; }
 
         /// <summary>The mode selection for container vulnerability scanning.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The mode selection for container vulnerability scanning.")]
@@ -608,33 +597,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         ReadOnly = false,
         Description = @"The mode selection for container vulnerability scanning.",
         SerializedName = @"containerScan",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.VulnerabilityScanningSettingsContainerScan) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.VulnerabilityScanningSettingsContainerScan))]
-        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.VulnerabilityScanningSettingsContainerScan VulnerabilityScanningSettingContainerScan { get => _clusterUpdateParametersBody.VulnerabilityScanningSettingContainerScan ?? ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.VulnerabilityScanningSettingsContainerScan)""); set => _clusterUpdateParametersBody.VulnerabilityScanningSettingContainerScan = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("Disabled", "Enabled")]
+        public string VulnerabilityScanningSettingContainerScan { get => _clusterParametersBody.VulnerabilityScanningSettingContainerScan ?? null; set => _clusterParametersBody.VulnerabilityScanningSettingContainerScan = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IErrorResponse</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.ICluster">Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.ICluster</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICluster">Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICluster</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.ICluster> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICluster> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -671,7 +660,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
             clone.ProxyUseDefaultCredentials = this.ProxyUseDefaultCredentials;
             clone.HttpPipelinePrepend = this.HttpPipelinePrepend;
             clone.HttpPipelineAppend = this.HttpPipelineAppend;
-            clone._clusterUpdateParametersBody = this._clusterUpdateParametersBody;
+            clone._clusterParametersBody = this._clusterParametersBody;
             clone.IfMatch = this.IfMatch;
             clone.IfNoneMatch = this.IfNoneMatch;
             return clone;
@@ -744,11 +733,36 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
                         WriteError(new global::System.Management.Automation.ErrorRecord( new global::System.Exception(messageData().Message), string.Empty, global::System.Management.Automation.ErrorCategory.NotSpecified, null ) );
                         return ;
                     }
+                    case Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Events.Progress:
+                    {
+                        var data = messageData();
+                        int progress = (int)data.Value;
+                        string activityMessage, statusDescription;
+                        global::System.Management.Automation.ProgressRecordType recordType;
+                        if (progress < 100)
+                        {
+                            activityMessage = "In progress";
+                            statusDescription = "Checking operation status";
+                            recordType = System.Management.Automation.ProgressRecordType.Processing;
+                        }
+                        else
+                        {
+                            activityMessage = "Completed";
+                            statusDescription = "Completed";
+                            recordType = System.Management.Automation.ProgressRecordType.Completed;
+                        }
+                        WriteProgress(new global::System.Management.Automation.ProgressRecord(1, activityMessage, statusDescription)
+                        {
+                            PercentComplete = progress,
+                        RecordType = recordType
+                        });
+                        return ;
+                    }
                     case Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Events.DelayBeforePolling:
                     {
+                        var data = messageData();
                         if (true == MyInvocation?.BoundParameters?.ContainsKey("NoWait"))
                         {
-                            var data = messageData();
                             if (data.ResponseMessage is System.Net.Http.HttpResponseMessage response)
                             {
                                 var asyncOperation = response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -760,15 +774,69 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
                                 return;
                             }
                         }
+                        else
+                        {
+                            if (data.ResponseMessage is System.Net.Http.HttpResponseMessage response)
+                            {
+                                int delay = (int)(response.Headers.RetryAfter?.Delta?.TotalSeconds ?? 30);
+                                WriteDebug($"Delaying {delay} seconds before polling.");
+                                for (var now = 0; now < delay; ++now)
+                                {
+                                    WriteProgress(new global::System.Management.Automation.ProgressRecord(1, "In progress", "Checking operation status")
+                                    {
+                                        PercentComplete = now * 100 / delay
+                                    });
+                                    await global::System.Threading.Tasks.Task.Delay(1000, token);
+                                }
+                            }
+                        }
                         break;
                     }
                 }
-                await Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Module.Instance.Signal(id, token, messageData, (i,t,m) => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IEventListener)this).Signal(i,t,()=> Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.EventDataConverter.ConvertFrom( m() ) as Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.EventData ), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
+                await Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Module.Instance.Signal(id, token, messageData, (i, t, m) => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IEventListener)this).Signal(i, t, () => Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.EventDataConverter.ConvertFrom(m()) as Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.EventData), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
                 if (token.IsCancellationRequested)
                 {
                     return ;
                 }
                 WriteDebug($"{id}: {(messageData().Message ?? global::System.String.Empty)}");
+            }
+        }
+
+        private void PreProcessManagedIdentityParametersWithGetResult()
+        {
+            bool supportsSystemAssignedIdentity = (true == this.EnableSystemAssignedIdentity || null == this.EnableSystemAssignedIdentity && true == _clusterParametersBody?.IdentityType?.Contains("SystemAssigned"));
+            bool supportsUserAssignedIdentity = false;
+            if (this.UserAssignedIdentity?.Length > 0)
+            {
+                // calculate UserAssignedIdentity
+                _clusterParametersBody.IdentityUserAssignedIdentity.Clear();
+                foreach( var id in this.UserAssignedIdentity )
+                {
+                    _clusterParametersBody.IdentityUserAssignedIdentity.Add(id, new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.UserAssignedIdentity());
+                }
+            }
+            supportsUserAssignedIdentity = true == this.MyInvocation?.BoundParameters?.ContainsKey("UserAssignedIdentity") && this.UserAssignedIdentity?.Length > 0 ||
+                    true != this.MyInvocation?.BoundParameters?.ContainsKey("UserAssignedIdentity") && true == _clusterParametersBody.IdentityType?.Contains("UserAssigned");
+            if (!supportsUserAssignedIdentity)
+            {
+                _clusterParametersBody.IdentityUserAssignedIdentity = null;
+            }
+            // calculate IdentityType
+            if ((supportsUserAssignedIdentity && supportsSystemAssignedIdentity))
+            {
+                _clusterParametersBody.IdentityType = "SystemAssigned,UserAssigned";
+            }
+            else if ((supportsUserAssignedIdentity && !supportsSystemAssignedIdentity))
+            {
+                _clusterParametersBody.IdentityType = "UserAssigned";
+            }
+            else if ((!supportsUserAssignedIdentity && supportsSystemAssignedIdentity))
+            {
+                _clusterParametersBody.IdentityType = "SystemAssigned";
+            }
+            else
+            {
+                _clusterParametersBody.IdentityType = "None";
             }
         }
 
@@ -780,7 +848,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
             try
             {
                 // work
-                if (ShouldProcess($"Call remote 'ClustersUpdate' operation"))
+                if (ShouldProcess($"Call remote 'ClustersCreateOrUpdate' operation"))
                 {
                     if (true == MyInvocation?.BoundParameters?.ContainsKey("AsJob"))
                     {
@@ -831,7 +899,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
             using( NoSynchronizationContext )
             {
                 await ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
+                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName, this.ExtensibleParameters);
                 if (null != HttpPipelinePrepend)
                 {
                     Pipeline.Prepend((this.CommandRuntime as Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.PowerShell.IAsyncCommandRuntimeExtensions)?.Wrap(HttpPipelinePrepend) ?? HttpPipelinePrepend);
@@ -846,7 +914,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
                     await ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     if (InputObject?.Id != null)
                     {
-                        await this.Client.ClustersUpdateViaIdentity(InputObject.Id, this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null, this.InvocationInformation.BoundParameters.ContainsKey("IfNoneMatch") ? IfNoneMatch : null, _clusterUpdateParametersBody, onOk, onDefault, this, Pipeline);
+                        _clusterParametersBody = await this.Client.ClustersGetViaIdentityWithResult(InputObject.Id, this, Pipeline);
+                        this.PreProcessManagedIdentityParametersWithGetResult();
+                        this.Update_clusterParametersBody();
+                        await this.Client.ClustersCreateOrUpdateViaIdentity(InputObject.Id, this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null, this.InvocationInformation.BoundParameters.ContainsKey("IfNoneMatch") ? IfNoneMatch : null, _clusterParametersBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.SerializationMode.IncludeUpdate);
                     }
                     else
                     {
@@ -863,13 +934,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
                         {
                             ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.ClusterName"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
                         }
-                        await this.Client.ClustersUpdate(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.ClusterName ?? null, this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null, this.InvocationInformation.BoundParameters.ContainsKey("IfNoneMatch") ? IfNoneMatch : null, _clusterUpdateParametersBody, onOk, onDefault, this, Pipeline);
+                        _clusterParametersBody = await this.Client.ClustersGetWithResult(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.ClusterName ?? null, this, Pipeline);
+                        this.PreProcessManagedIdentityParametersWithGetResult();
+                        this.Update_clusterParametersBody();
+                        await this.Client.ClustersCreateOrUpdate(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.ClusterName ?? null, this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null, this.InvocationInformation.BoundParameters.ContainsKey("IfNoneMatch") ? IfNoneMatch : null, _clusterParametersBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.SerializationMode.IncludeUpdate);
                     }
                     await ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  IfMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null,IfNoneMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfNoneMatch") ? IfNoneMatch : null,body=_clusterUpdateParametersBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { IfMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null,IfNoneMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfNoneMatch") ? IfNoneMatch : null})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -889,11 +963,155 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         }
 
         /// <summary>
-        /// Intializes a new instance of the <see cref="UpdateAzNetworkCloudCluster_UpdateViaIdentityExpanded" /> cmdlet class.
+        /// Initializes a new instance of the <see cref="UpdateAzNetworkCloudCluster_UpdateViaIdentityExpanded" /> cmdlet class.
         /// </summary>
         public UpdateAzNetworkCloudCluster_UpdateViaIdentityExpanded()
         {
 
+        }
+
+        private void Update_clusterParametersBody()
+        {
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("Tag")))
+            {
+                this.Tag = (Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ITrackedResourceTags)(this.MyInvocation?.BoundParameters["Tag"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("ClusterLocation")))
+            {
+                this.ClusterLocation = (string)(this.MyInvocation?.BoundParameters["ClusterLocation"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("ComputeRackDefinition")))
+            {
+                this.ComputeRackDefinition = (Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IRackDefinition[])(this.MyInvocation?.BoundParameters["ComputeRackDefinition"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("CommandOutputSettingContainerUrl")))
+            {
+                this.CommandOutputSettingContainerUrl = (string)(this.MyInvocation?.BoundParameters["CommandOutputSettingContainerUrl"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("SecretArchiveSettingVaultUri")))
+            {
+                this.SecretArchiveSettingVaultUri = (string)(this.MyInvocation?.BoundParameters["SecretArchiveSettingVaultUri"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("VulnerabilityScanningSettingContainerScan")))
+            {
+                this.VulnerabilityScanningSettingContainerScan = (string)(this.MyInvocation?.BoundParameters["VulnerabilityScanningSettingContainerScan"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("AggregatorOrSingleRackDefinitionAvailabilityZone")))
+            {
+                this.AggregatorOrSingleRackDefinitionAvailabilityZone = (string)(this.MyInvocation?.BoundParameters["AggregatorOrSingleRackDefinitionAvailabilityZone"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("AggregatorOrSingleRackDefinitionBareMetalMachineConfiguration")))
+            {
+                this.AggregatorOrSingleRackDefinitionBareMetalMachineConfiguration = (Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineConfigurationData[])(this.MyInvocation?.BoundParameters["AggregatorOrSingleRackDefinitionBareMetalMachineConfiguration"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("AggregatorOrSingleRackDefinitionNetworkRackId")))
+            {
+                this.AggregatorOrSingleRackDefinitionNetworkRackId = (string)(this.MyInvocation?.BoundParameters["AggregatorOrSingleRackDefinitionNetworkRackId"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("AggregatorOrSingleRackDefinitionRackLocation")))
+            {
+                this.AggregatorOrSingleRackDefinitionRackLocation = (string)(this.MyInvocation?.BoundParameters["AggregatorOrSingleRackDefinitionRackLocation"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("AggregatorOrSingleRackDefinitionRackSerialNumber")))
+            {
+                this.AggregatorOrSingleRackDefinitionRackSerialNumber = (string)(this.MyInvocation?.BoundParameters["AggregatorOrSingleRackDefinitionRackSerialNumber"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("AggregatorOrSingleRackDefinitionRackSkuId")))
+            {
+                this.AggregatorOrSingleRackDefinitionRackSkuId = (string)(this.MyInvocation?.BoundParameters["AggregatorOrSingleRackDefinitionRackSkuId"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("AggregatorOrSingleRackDefinitionStorageApplianceConfiguration")))
+            {
+                this.AggregatorOrSingleRackDefinitionStorageApplianceConfiguration = (Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IStorageApplianceConfigurationData[])(this.MyInvocation?.BoundParameters["AggregatorOrSingleRackDefinitionStorageApplianceConfiguration"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("AnalyticOutputSettingAnalyticsWorkspaceId")))
+            {
+                this.AnalyticOutputSettingAnalyticsWorkspaceId = (string)(this.MyInvocation?.BoundParameters["AnalyticOutputSettingAnalyticsWorkspaceId"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("ClusterServicePrincipalApplicationId")))
+            {
+                this.ClusterServicePrincipalApplicationId = (string)(this.MyInvocation?.BoundParameters["ClusterServicePrincipalApplicationId"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("ClusterServicePrincipalPassword")))
+            {
+                this.ClusterServicePrincipalPassword = (System.Security.SecureString)(this.MyInvocation?.BoundParameters["ClusterServicePrincipalPassword"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("ClusterServicePrincipalId")))
+            {
+                this.ClusterServicePrincipalId = (string)(this.MyInvocation?.BoundParameters["ClusterServicePrincipalId"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("ClusterServicePrincipalTenantId")))
+            {
+                this.ClusterServicePrincipalTenantId = (string)(this.MyInvocation?.BoundParameters["ClusterServicePrincipalTenantId"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("ComputeDeploymentThresholdGrouping")))
+            {
+                this.ComputeDeploymentThresholdGrouping = (string)(this.MyInvocation?.BoundParameters["ComputeDeploymentThresholdGrouping"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("ComputeDeploymentThresholdType")))
+            {
+                this.ComputeDeploymentThresholdType = (string)(this.MyInvocation?.BoundParameters["ComputeDeploymentThresholdType"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("ComputeDeploymentThresholdValue")))
+            {
+                this.ComputeDeploymentThresholdValue = (long)(this.MyInvocation?.BoundParameters["ComputeDeploymentThresholdValue"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("RuntimeProtectionConfigurationEnforcementLevel")))
+            {
+                this.RuntimeProtectionConfigurationEnforcementLevel = (string)(this.MyInvocation?.BoundParameters["RuntimeProtectionConfigurationEnforcementLevel"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("SecretArchiveKeyVaultId")))
+            {
+                this.SecretArchiveKeyVaultId = (string)(this.MyInvocation?.BoundParameters["SecretArchiveKeyVaultId"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("SecretArchiveUseKeyVault")))
+            {
+                this.SecretArchiveUseKeyVault = (string)(this.MyInvocation?.BoundParameters["SecretArchiveUseKeyVault"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("UpdateStrategyMaxUnavailable")))
+            {
+                this.UpdateStrategyMaxUnavailable = (long)(this.MyInvocation?.BoundParameters["UpdateStrategyMaxUnavailable"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("UpdateStrategyType")))
+            {
+                this.UpdateStrategyType = (string)(this.MyInvocation?.BoundParameters["UpdateStrategyType"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("UpdateStrategyThresholdType")))
+            {
+                this.UpdateStrategyThresholdType = (string)(this.MyInvocation?.BoundParameters["UpdateStrategyThresholdType"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("UpdateStrategyThresholdValue")))
+            {
+                this.UpdateStrategyThresholdValue = (long)(this.MyInvocation?.BoundParameters["UpdateStrategyThresholdValue"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("UpdateStrategyWaitTimeMinute")))
+            {
+                this.UpdateStrategyWaitTimeMinute = (long)(this.MyInvocation?.BoundParameters["UpdateStrategyWaitTimeMinute"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("AnalyticsOutputSettingsAssociatedIdentityType")))
+            {
+                this.AnalyticsOutputSettingsAssociatedIdentityType = (string)(this.MyInvocation?.BoundParameters["AnalyticsOutputSettingsAssociatedIdentityType"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("AnalyticsOutputSettingsAssociatedIdentityUserAssignedIdentityResourceId")))
+            {
+                this.AnalyticsOutputSettingsAssociatedIdentityUserAssignedIdentityResourceId = (string)(this.MyInvocation?.BoundParameters["AnalyticsOutputSettingsAssociatedIdentityUserAssignedIdentityResourceId"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("AssociatedIdentityType")))
+            {
+                this.AssociatedIdentityType = (string)(this.MyInvocation?.BoundParameters["AssociatedIdentityType"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("AssociatedIdentityUserAssignedIdentityResourceId")))
+            {
+                this.AssociatedIdentityUserAssignedIdentityResourceId = (string)(this.MyInvocation?.BoundParameters["AssociatedIdentityUserAssignedIdentityResourceId"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("SecretArchiveSettingsAssociatedIdentityType")))
+            {
+                this.SecretArchiveSettingsAssociatedIdentityType = (string)(this.MyInvocation?.BoundParameters["SecretArchiveSettingsAssociatedIdentityType"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("SecretArchiveSettingsAssociatedIdentityUserAssignedIdentityResourceId")))
+            {
+                this.SecretArchiveSettingsAssociatedIdentityUserAssignedIdentityResourceId = (string)(this.MyInvocation?.BoundParameters["SecretArchiveSettingsAssociatedIdentityUserAssignedIdentityResourceId"]);
+            }
         }
 
         /// <param name="sendToPipeline"></param>
@@ -915,12 +1133,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IErrorResponse</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50.IErrorResponse> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IErrorResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -937,15 +1155,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50.IErrorResponse>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { IfMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null, IfNoneMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfNoneMatch") ? IfNoneMatch : null, body=_clusterUpdateParametersBody })
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IErrorResponse>(responseMessage, await response);
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { IfMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null, IfNoneMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfNoneMatch") ? IfNoneMatch : null, body=_clusterUpdateParametersBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -955,12 +1173,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.ICluster">Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.ICluster</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICluster">Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICluster</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.ICluster> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICluster> response)
         {
             using( NoSynchronizationContext )
             {
@@ -972,8 +1190,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.ICluster
-                WriteObject((await response));
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICluster
+                var result = (await response);
+                WriteObject(result, false);
             }
         }
     }

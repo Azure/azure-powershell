@@ -17,6 +17,7 @@ New-AzApplicationGatewayBackendSetting -Name <String> -Port <Int32> -Protocol <S
  [-ProbeId <String>] [-Probe <PSApplicationGatewayProbe>]
  [-TrustedRootCertificate <PSApplicationGatewayTrustedRootCertificate[]>] [-PickHostNameFromBackendAddress]
  [-HostName <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-EnableL4ClientIpPreservation <Boolean>]
  [<CommonParameters>]
 ```
 
@@ -184,6 +185,21 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableL4ClientIpPreservation
+Whether to send Proxy Protocol header to backend servers over TCP or TLS protocols. Default value is false.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

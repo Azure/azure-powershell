@@ -65,17 +65,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901
             {
                 return;
             }
-            {_authenticationIdentity = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonObject>("authenticationIdentity"), out var __jsonAuthenticationIdentity) ? Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IdentityModel.FromJson(__jsonAuthenticationIdentity) : AuthenticationIdentity;}
-            {_resourceAccessIdentity = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonObject>("resourceAccessIdentity"), out var __jsonResourceAccessIdentity) ? Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IdentityModel.FromJson(__jsonResourceAccessIdentity) : ResourceAccessIdentity;}
-            {_customProperty = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonObject>("customProperties"), out var __jsonCustomProperties) ? Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.FabricAgentModelCustomProperties.FromJson(__jsonCustomProperties) : CustomProperty;}
             {_correlationId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("correlationId"), out var __jsonCorrelationId) ? (string)__jsonCorrelationId : (string)CorrelationId;}
             {_machineId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("machineId"), out var __jsonMachineId) ? (string)__jsonMachineId : (string)MachineId;}
             {_machineName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("machineName"), out var __jsonMachineName) ? (string)__jsonMachineName : (string)MachineName;}
+            {_authenticationIdentity = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonObject>("authenticationIdentity"), out var __jsonAuthenticationIdentity) ? Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IdentityModel.FromJson(__jsonAuthenticationIdentity) : AuthenticationIdentity;}
+            {_resourceAccessIdentity = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonObject>("resourceAccessIdentity"), out var __jsonResourceAccessIdentity) ? Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IdentityModel.FromJson(__jsonResourceAccessIdentity) : ResourceAccessIdentity;}
             {_isResponsive = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonBoolean>("isResponsive"), out var __jsonIsResponsive) ? (bool?)__jsonIsResponsive : IsResponsive;}
             {_lastHeartbeat = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("lastHeartbeat"), out var __jsonLastHeartbeat) ? global::System.DateTime.TryParse((string)__jsonLastHeartbeat, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonLastHeartbeatValue) ? __jsonLastHeartbeatValue : LastHeartbeat : LastHeartbeat;}
             {_versionNumber = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("versionNumber"), out var __jsonVersionNumber) ? (string)__jsonVersionNumber : (string)VersionNumber;}
             {_provisioningState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("provisioningState"), out var __jsonProvisioningState) ? (string)__jsonProvisioningState : (string)ProvisioningState;}
             {_healthError = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray>("healthErrors"), out var __jsonHealthErrors) ? If( __jsonHealthErrors as Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IHealthErrorModel[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IHealthErrorModel) (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.HealthErrorModel.FromJson(__u) )) ))() : null : HealthError;}
+            {_customProperty = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonObject>("customProperties"), out var __jsonCustomProperties) ? Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.FabricAgentModelCustomProperties.FromJson(__jsonCustomProperties) : CustomProperty;}
             AfterFromJson(json);
         }
 
@@ -110,15 +110,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901
             {
                 return container;
             }
-            AddIf( null != this._authenticationIdentity ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) this._authenticationIdentity.ToJson(null,serializationMode) : null, "authenticationIdentity" ,container.Add );
-            AddIf( null != this._resourceAccessIdentity ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) this._resourceAccessIdentity.ToJson(null,serializationMode) : null, "resourceAccessIdentity" ,container.Add );
-            AddIf( null != this._customProperty ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) this._customProperty.ToJson(null,serializationMode) : null, "customProperties" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
             {
                 AddIf( null != (((object)this._correlationId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._correlationId.ToString()) : null, "correlationId" ,container.Add );
             }
             AddIf( null != (((object)this._machineId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._machineId.ToString()) : null, "machineId" ,container.Add );
             AddIf( null != (((object)this._machineName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._machineName.ToString()) : null, "machineName" ,container.Add );
+            AddIf( null != this._authenticationIdentity ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) this._authenticationIdentity.ToJson(null,serializationMode) : null, "authenticationIdentity" ,container.Add );
+            AddIf( null != this._resourceAccessIdentity ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) this._resourceAccessIdentity.ToJson(null,serializationMode) : null, "resourceAccessIdentity" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeReadOnly))
             {
                 AddIf( null != this._isResponsive ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonBoolean((bool)this._isResponsive) : null, "isResponsive" ,container.Add );
@@ -147,6 +146,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901
                     container.Add("healthErrors",__w);
                 }
             }
+            AddIf( null != this._customProperty ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) this._customProperty.ToJson(null,serializationMode) : null, "customProperties" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

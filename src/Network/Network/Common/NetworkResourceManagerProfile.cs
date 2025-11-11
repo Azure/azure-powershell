@@ -920,6 +920,54 @@ namespace Microsoft.Azure.Commands.Network
                 // MNM to CNM
                 cfg.CreateMap<MNM.LoadBalancerHealthPerRulePerBackendAddress, CNM.PSLoadBalancerHealthPerRulePerBackendAddress>();
 
+                // ExpressRouteFailoverSingleTestDetails
+                // CNM to MNM
+                cfg.CreateMap<CNM.PSExpressRouteFailoverSingleTestDetails, MNM.ExpressRouteFailoverSingleTestDetails>();
+
+                // ExpressRouteFailoverSingleTestDetails
+                // MNM to CNM
+                cfg.CreateMap<MNM.ExpressRouteFailoverSingleTestDetails, CNM.PSExpressRouteFailoverSingleTestDetails>();
+
+                // ExpressRouteFailoverRedundantRoute
+                // CNM to MNM
+                cfg.CreateMap<CNM.PSExpressRouteFailoverRedundantRoute, MNM.ExpressRouteFailoverRedundantRoute>();
+
+                // ExpressRouteFailoverRedundantRoute
+                // MNM to CNM
+                cfg.CreateMap<MNM.ExpressRouteFailoverRedundantRoute, CNM.PSExpressRouteFailoverRedundantRoute>();
+
+                // FailoverConnectionDetails
+                // CNM to MNM
+                cfg.CreateMap<CNM.PSFailoverConnectionDetails, MNM.FailoverConnectionDetails>();
+
+                // FailoverConnectionDetails
+                // MNM to CNM
+                cfg.CreateMap<MNM.FailoverConnectionDetails, CNM.PSFailoverConnectionDetails>();
+
+                // ExpressRouteFailoverTestDetails
+                // CNM to MNM
+                cfg.CreateMap<CNM.PSExpressRouteFailoverTestDetails, MNM.ExpressRouteFailoverTestDetails>();
+
+                // ExpressRouteFailoverTestDetails
+                // MNM to CNM
+                cfg.CreateMap<MNM.ExpressRouteFailoverTestDetails, CNM.PSExpressRouteFailoverTestDetails>();
+
+                // ExpressRouteFailoverCircuitResourceDetails
+                // CNM to MNM
+                cfg.CreateMap<CNM.PSExpressRouteFailoverCircuitResourceDetails, MNM.ExpressRouteFailoverCircuitResourceDetails>();
+
+                // ExpressRouteFailoverCircuitResourceDetails
+                // MNM to CNM
+                cfg.CreateMap<MNM.ExpressRouteFailoverCircuitResourceDetails, CNM.PSExpressRouteFailoverCircuitResourceDetails>();
+
+                // ExpressRouteFailoverConnectionResourceDetails
+                // CNM to MNM
+                cfg.CreateMap<CNM.PSExpressRouteFailoverConnectionResourceDetails, MNM.ExpressRouteFailoverConnectionResourceDetails>();
+
+                // ExpressRouteFailoverConnectionResourceDetails
+                // MNM to CNM
+                cfg.CreateMap<MNM.ExpressRouteFailoverConnectionResourceDetails, CNM.PSExpressRouteFailoverConnectionResourceDetails>();
+
                 // NatRulePortMapping
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSNatRulePortMapping, MNM.NatRulePortMapping>();
@@ -1469,6 +1517,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSApplicationGatewayFirewallPolicyLogScrubbingRule, MNM.WebApplicationFirewallScrubbingRules>();
                 cfg.CreateMap<CNM.PSApplicationGatewayFirewallPolicyManagedRules, MNM.ManagedRulesDefinition>();
                 cfg.CreateMap<CNM.PSApplicationGatewayFirewallPolicyManagedRuleSet, MNM.ManagedRuleSet>();
+                cfg.CreateMap<CNM.PSApplicationGatewayFirewallPolicyManagedRuleSetRuleGroup, MNM.ManagedRuleSetRuleGroup>();
                 cfg.CreateMap<CNM.PSApplicationGatewayFirewallPolicyManagedRuleGroupOverride, MNM.ManagedRuleGroupOverride>();
                 cfg.CreateMap<CNM.PSApplicationGatewayFirewallPolicyManagedRuleOverride, MNM.ManagedRuleOverride>();
                 cfg.CreateMap<CNM.PSApplicationGatewayFirewallPolicyExclusion, MNM.ApplicationGatewayFirewallExclusion>();
@@ -1573,6 +1622,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.WebApplicationFirewallScrubbingRules, CNM.PSApplicationGatewayFirewallPolicyLogScrubbingRule>();
                 cfg.CreateMap<MNM.ManagedRulesDefinition, CNM.PSApplicationGatewayFirewallPolicyManagedRules>();
                 cfg.CreateMap<MNM.ManagedRuleSet, CNM.PSApplicationGatewayFirewallPolicyManagedRuleSet>();
+                cfg.CreateMap<MNM.ManagedRuleSetRuleGroup, CNM.PSApplicationGatewayFirewallPolicyManagedRuleSetRuleGroup>();
                 cfg.CreateMap<MNM.ManagedRuleGroupOverride, CNM.PSApplicationGatewayFirewallPolicyManagedRuleGroupOverride>();
                 cfg.CreateMap<MNM.ManagedRuleOverride, CNM.PSApplicationGatewayFirewallPolicyManagedRuleOverride>();
                 cfg.CreateMap<MNM.ApplicationGatewayFirewallExclusion, CNM.PSApplicationGatewayFirewallPolicyExclusion>();
@@ -1907,6 +1957,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.VpnServerConfigRadiusClientRootCertificate, CNM.PSClientCertificate>();
                 cfg.CreateMap<MNM.AadAuthenticationParameters, CNM.PSAadAuthenticationParameters>();
                 cfg.CreateMap<MNM.P2SVpnConnectionHealthRequest, CNM.PSP2SVpnConnectionHealthRequest>();
+                cfg.CreateMap<MNM.RadiusAuthServer, CNM.PSRadiusAuthServer>();
 
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSP2SVpnGateway, MNM.P2SVpnGateway>();
@@ -1929,6 +1980,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSClientCertificate, MNM.VpnServerConfigRadiusClientRootCertificate>();
                 cfg.CreateMap<CNM.PSAadAuthenticationParameters, MNM.AadAuthenticationParameters>();
                 cfg.CreateMap<CNM.PSP2SVpnConnectionHealthRequest, MNM.P2SVpnConnectionHealthRequest>();
+                cfg.CreateMap<CNM.PSRadiusAuthServer, MNM.RadiusAuthServer>();
 
                 // SecurityPartnerProviders
                 // CNM to MNM
@@ -1999,6 +2051,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSAzureFirewallPacketCaptureRule, MNM.AzureFirewallPacketCaptureRule>();
                 cfg.CreateMap<CNM.PSAzureFirewallPacketCaptureParameters, MNM.FirewallPacketCaptureParameters>();
                 cfg.CreateMap<CNM.PSAzureFirewallAutoscaleConfiguration, MNM.AzureFirewallAutoscaleConfiguration>();
+                cfg.CreateMap<CNM.PSAzureFirewallPacketCaptureResponse, MNM.AzureFirewallPacketCaptureResponse>();
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.AzureFirewall, CNM.PSAzureFirewall>()

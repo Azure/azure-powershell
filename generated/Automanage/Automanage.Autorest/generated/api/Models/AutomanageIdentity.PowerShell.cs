@@ -83,10 +83,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentityInternal)this).VersionName = (string) content.GetValueForProperty("VersionName",((Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentityInternal)this).VersionName, global::System.Convert.ToString);
             }
-            if (content.Contains("ConfigurationProfileName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentityInternal)this).ConfigurationProfileName = (string) content.GetValueForProperty("ConfigurationProfileName",((Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentityInternal)this).ConfigurationProfileName, global::System.Convert.ToString);
-            }
             if (content.Contains("SubscriptionId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
@@ -94,6 +90,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models
             if (content.Contains("ResourceGroupName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ConfigurationProfileName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentityInternal)this).ConfigurationProfileName = (string) content.GetValueForProperty("ConfigurationProfileName",((Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentityInternal)this).ConfigurationProfileName, global::System.Convert.ToString);
             }
             if (content.Contains("ConfigurationProfileAssignmentName"))
             {
@@ -144,10 +144,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentityInternal)this).VersionName = (string) content.GetValueForProperty("VersionName",((Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentityInternal)this).VersionName, global::System.Convert.ToString);
             }
-            if (content.Contains("ConfigurationProfileName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentityInternal)this).ConfigurationProfileName = (string) content.GetValueForProperty("ConfigurationProfileName",((Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentityInternal)this).ConfigurationProfileName, global::System.Convert.ToString);
-            }
             if (content.Contains("SubscriptionId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
@@ -155,6 +151,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models
             if (content.Contains("ResourceGroupName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ConfigurationProfileName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentityInternal)this).ConfigurationProfileName = (string) content.GetValueForProperty("ConfigurationProfileName",((Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentityInternal)this).ConfigurationProfileName, global::System.Convert.ToString);
             }
             if (content.Contains("ConfigurationProfileAssignmentName"))
             {

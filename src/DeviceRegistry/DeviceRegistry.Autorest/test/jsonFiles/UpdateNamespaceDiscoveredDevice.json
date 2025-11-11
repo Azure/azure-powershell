@@ -1,0 +1,20 @@
+{
+  "properties": {
+    "discoveryId": "myDiscoveryId",
+    "operatingSystemVersion": "2000",
+    "endpoints": {
+      "inbound": {
+        "endpoint1": {
+          "address": "https://myendpoint1.westeurope-1.iothub.azure.net",
+          "endpointType": "Microsoft.IotHub",
+          "version": "1.1"
+        },
+        "endpoint2": {
+          "address": "https://myendpoint2.westeurope-1.iothub.azure.net",
+          "endpointType": "Microsoft.IotHub",
+          "version": "2.0"
+        }
+      }
+    }
+  }
+}

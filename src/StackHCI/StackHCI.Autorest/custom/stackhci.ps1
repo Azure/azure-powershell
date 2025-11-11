@@ -60,10 +60,12 @@ $DeletingCloudResourceMessage = "Deleting Azure resource with ID {0} representin
 $DeletingArcCloudResourceMessage = "Deleting Azure resource with ID {0} representing the Azure Stack HCI cluster Arc integration"
 $DeletingExtensionMessage = "Deleting extension {0} on cluster {1}"
 $AlreadyRegisteredArcMessageForCloudDeployment = "The nodes are already arc enabled for cloud deployment, so skipping arc for server registration"
+$AlreadyRegisteredArcMessageForArcMsi = "The nodes are already arc enabled, so skipping arc for server registration"
 $RegisterArcMessage = "Arc for servers registration triggered"
 $UnregisterArcMessage = "Arc for servers unregistration triggered"
 $ArcMachineAlreadyExistsInResourceGroupError = "Arc machine(s) with names: {0} already exists in the Resource Group {1}. Use a different Resource group for registration or specify a different Arc for Servers Resource Group."
 $SetAzureStackHCIRegistrationErrorMessage = "Exception occurred in Set-AzureStackHCIRegistration. ErrorMessage: {0}"
+$SetAzureStackHCIRegistrationMsiErrorMessage = "Exception occurred in Set-AzureStackHCIRegistrationMsi. ErrorMessage: {0}"
 $ArcAlreadyRegisteredInDifferentResourceGroupError = "Arc servers are already registered in Resource Group: {0}. To change resource groups, please unregister and register again"
 $ClusterCreationFailureMessage = "Failed to create cluster resource"
 $rpObjectIdNullError = "Resource Provider Object Id is Null. Failed to assign roles to HCI RP for ARC Onboarding"
@@ -208,9 +210,9 @@ $AuthorityAzureLocal = "https://login.$DOMAINFQDNMACRO"
 $BillingServiceApiScopeAzureLocal = "https://dp.aszrp.$DOMAINFQDNMACRO/.default"
 $GraphServiceApiScopeAzureLocal = "https://graph.$DOMAINFQDNMACRO"
 
-$RPAPIVersion = "2022-12-01";
-$HCIArcAPIVersion = "2023-03-01"
-$HCIArcExtensionAPIVersion = "2021-09-01"
+$RPAPIVersion = "2025-09-15-preview";
+$HCIArcAPIVersion = "2025-09-15-preview"
+$HCIArcExtensionAPIVersion = "2025-09-15-preview"
 $HCApiVersion = "2022-03-10"
 $HCIArcInstanceName = "/arcSettings/default"
 $HCIArcExtensions = "/Extensions"
@@ -377,7 +379,7 @@ Function Write-ErrorLog{
     )
     $ErrorLogMessage = $PSBoundParameters["Message"]
     $WriteErrorMessage = $PSBoundParameters["Message"]
-    
+
     if($PSBoundParameters["Exception"])
     {
         $exceptionFormatted = $Exception | Format-List * -Force | Out-String
@@ -405,6 +407,27 @@ Function Write-ErrorLog{
     if($PSBoundParameters["Category"] -eq "OperationStopped")
     {
         $Error.Add($AlreadyLoggedFlag) | Out-Null
+    }
+}
+
+function Test-ComputerNameHasDnsSuffix {
+    [CmdletBinding()]
+    [OutputType([bool])]
+    param(
+        [Parameter(Mandatory = $true)]
+        [string] $ComputerName
+    )
+
+    if ([string]::IsNullOrWhiteSpace($ComputerName)) { return $false }
+
+    # A fully qualified computer name contains at least one dot
+    if ($ComputerName -match "\.") {
+        Write-Output "$ComputerName is a Fully Qualified Computer Name (FQDN)."
+        return $true
+    }
+    else {
+        Write-Output "$ComputerName is NOT a Fully Qualified Computer Name (FQDN)."
+        return $false   
     }
 }
 
@@ -437,7 +460,19 @@ Function Write-NodeEventLog{
         if($IsManagementNode)
         {
             Write-VerboseLog ("Connecting from management node")
-            $ComputerNameWithDNSSuffix = $ComputerName + '.' + (Get-WmiObject Win32_ComputerSystem).Domain
+
+            $computerNameHasDNSSuffix = Test-ComputerNameHasDnsSuffix -ComputerName $ComputerName
+
+            if ($computerNameHasDNSSuffix -eq $true)
+            {
+                $ComputerNameWithDNSSuffix = $ComputerName
+            }
+            else
+            {
+                $DNSSuffix = (Get-ItemProperty 'HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters').Domain
+                $ComputerNameWithDNSSuffix = $ComputerName + '.' + $DNSSuffix
+            }
+
             if($Null -eq $Credentials)
             {
                 $session = New-PSSession -ComputerName $ComputerNameWithDNSSuffix
@@ -497,6 +532,7 @@ Function Print-FunctionParameters{
 }
 
 function Confirm-UserAcknowledgmentToUpgradeOS {
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
     [CmdletBinding(SupportsShouldProcess = $true, ConfirmImpact = 'High')]
     param(
         [Parameter(Mandatory=$true)]
@@ -521,6 +557,7 @@ function Confirm-UserAcknowledgmentToUpgradeOS {
 }
 
 function Confirm-UserAcknowledgmentUpgradeToSolution {
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
     [CmdletBinding()]
     param(
         [Parameter(Mandatory=$true)]
@@ -565,22 +602,63 @@ function Confirm-UserAcknowledgmentUpgradeToSolution {
     }
 }
 
+#If the Arc agent is installed AND its status is Connected AND resourceName is present, it validates that subscriptionId and resourceGroup match the expected values.
+#It ignores machines that are not Connected, have no resourceName, or lack the agent. Throws only when a Connected node is registered to a different scope.
 $CheckNodeArcRegistrationStateScriptBlock = {
+    param (
+        [string]$SubscriptionId,
+        [string]$ArcResourceGroupName,
+        [string]$ClusterNode
+    )
     if(Test-Path -Path "C:\Program Files\AzureConnectedMachineAgent\azcmagent.exe")
     {
         $arcAgentStatus = Invoke-Expression -Command "& 'C:\Program Files\AzureConnectedMachineAgent\azcmagent.exe' show -j"
-        
+
         # Parsing the status received from Arc agent
         $arcAgentStatusParsed = $arcAgentStatus | ConvertFrom-Json
 
         # Throw an error if the node is Arc enabled to a different resource group or subscription id
         # Agent can be is "Connected"  or disconnected state. If the resource name property on the agent is empty, that means, it is cleanly disconnected , and just the exe exists
         # If the resourceName exists and agent is in "Disconnected" state, indicates agent has temporary connectivity issues to the cloud
-        if(-not ([string]::IsNullOrEmpty($arcAgentStatusParsed.resourceName)) -And (($arcAgentStatusParsed.subscriptionId -ne $Using:SubscriptionId) -or ($arcAgentStatusParsed.resourceGroup -ne $Using:ArcResourceGroupName)))
-        {
-            $differentResourceExceptionMessage = "{0}:  Subscription Id: {1}, Resource Group: {2}" -f $Using:clusterNode, $arcAgentStatusParsed.subscriptionId, $arcAgentStatusParsed.resourceGroup
+        if (-not ([string]::IsNullOrEmpty($arcAgentStatusParsed.resourceName)) -and (($arcAgentStatusParsed.subscriptionId -ne $SubscriptionId) -or ($arcAgentStatusParsed.resourceGroup -ne $ArcResourceGroupName))) {
+            $differentResourceExceptionMessage = "{0}:  Subscription Id: {1}, Resource Group: {2}" -f $ClusterNode, $arcAgentStatusParsed.subscriptionId, $arcAgentStatusParsed.resourceGroup
             throw $differentResourceExceptionMessage
         }
+    }
+}
+
+# Requires the Arc agent to be installed, the node to be registered (resourceName present), actively Connected, and scoped to the expected subscription and resource group.
+# Throws on any deviation (missing agent, unregistered, disconnected, or mismatched scope).
+# This is used in New MSI Registration Flow where Arc enablement is a prerequisite for registration.
+$ValidateArcConnectionAndRegistrationScriptBlock = {
+    $agentPath = "C:\Program Files\AzureConnectedMachineAgent\azcmagent.exe"
+
+    # Check if the Arc agent is installed
+    if (-not (Test-Path -Path $agentPath)) {
+        throw "$Using:clusterNode is NOT Azure Arc-enabled. Agent not found."
+    }
+
+    # Get Arc agent status
+    $arcAgentStatus = Invoke-Expression -Command "& '$agentPath' show -j"
+    $arcAgentStatusParsed = $arcAgentStatus | ConvertFrom-Json
+
+    # Check if the node is registered
+    if ([string]::IsNullOrEmpty($arcAgentStatusParsed.resourceName)) {
+        throw "$Using:clusterNode has Arc agent installed but is NOT registered with Azure."
+    }
+
+    # Check connection status
+    if ($arcAgentStatusParsed.status -ne "Connected") {
+        throw "$Using:clusterNode is registered but NOT currently connected to Azure Arc. Status: $($arcAgentStatusParsed.status)"
+    }
+
+    # Validate subscription and resource group
+    if (($arcAgentStatusParsed.subscriptionId -ne $Using:SubscriptionId) -or 
+        ($arcAgentStatusParsed.resourceGroup -ne $Using:ArcResourceGroupName)) {
+        
+        $msg = "{0} is Arc-enabled but registered to a different Subscription or Resource Group. Subscription: {1}, Resource Group: {2}" -f `
+            $Using:clusterNode, $arcAgentStatusParsed.subscriptionId, $arcAgentStatusParsed.resourceGroup
+        throw $msg
     }
 }
 
@@ -589,6 +667,7 @@ $registerArcScript = {
     {
         #Setup Directory
         $LogsDirectory = $env:ArcLogsDirectory
+        $useStableAgentVersionFromEnv = $env:UseStableAgentVersion
         if([string]::IsNullOrEmpty($LogsDirectory))
         {
             $LogsDirectory = $env:windir + '\Tasks\ArcForServers'
@@ -599,7 +678,11 @@ $registerArcScript = {
             New-Item -ItemType Directory -Path $LogsDirectory -Force | Out-Null
         }
         # Params for Enable-AzureStackHCIArcIntegration 
-        $AgentInstaller_WebLink                  = 'https://aka.ms/AzureConnectedMachineAgent'
+        $AgentInstaller_WebLink                  =  if ($useStableAgentVersionFromEnv -eq 'True') {
+                                                        'https://aka.ms/hciarcagent'
+                                                    } else {
+                                                        'https://aka.ms/AzureConnectedMachineAgent'
+                                                    }
         $AgentInstaller_Name                     =  $env:windir  + '\Temp' + '\AzureConnectedMachineAgent.msi'
         $AgentInstaller_LogFile                  =  $LogsDirectory +'\ConnectedMachineAgentInstallationLog.txt'
         $AgentExecutable_Path                    =  $Env:Programfiles + '\AzureConnectedMachineAgent\azcmagent.exe'
@@ -649,6 +732,7 @@ $registerArcScript = {
             New-EventLog -LogName Application -Source 'HCI Registration' -ErrorAction SilentlyContinue
         }
         Write-Information 'Triggering Arc For Servers registration cmdlet'
+        Write-Information ('Link to download Azure Connected Machine Agent if needed: ' + $AgentInstaller_WebLink)
         $arcStatus = Get-AzureStackHCIArcIntegration
 
         $enableAzureStackHCIArcIntegrationRetrySleepTimeSeconds = 10
@@ -1271,7 +1355,7 @@ function Import-DependentModule
         {
             # Adding this statement to clear all the versions that exist in the current PS session
             Remove-Module -Name $ModuleName -ErrorAction Ignore
-            
+
             Import-Module -Name $ModuleName -MinimumVersion $MinVersion
         }
         catch
@@ -1310,7 +1394,7 @@ function Check-DependentModules
     {
         $missingDependentModules.Add($_.Exception.Message) | Out-Null
     }
-    
+
     if($missingDependentModules.Length -gt 0)
     {
         $missingDependentModules = $missingDependentModules -join ", "
@@ -1334,7 +1418,7 @@ param(
     )
 
     Write-Progress -Id $MainProgressBarId -activity $ProgressActivityName -status $InstallAzResourcesMessage -percentcomplete 10
-    
+
     Write-Progress -Id $MainProgressBarId -activity $ProgressActivityName -status $LoggingInToAzureMessage -percentcomplete 30
 
     if($EnvironmentName -eq $AzurePPE)
@@ -2025,7 +2109,10 @@ function Verify-NodesArcRegistrationState{
 
         try
         {
-            Invoke-Command -Session $nodeSession -ScriptBlock $CheckNodeArcRegistrationStateScriptBlock -ErrorAction Stop
+            Invoke-Command -Session $nodeSession `
+                -ScriptBlock $CheckNodeArcRegistrationStateScriptBlock `
+                -ArgumentList $SubscriptionId, $ArcResourceGroupName, $clusterNode `
+                -ErrorAction Stop
         }
         catch 
         {
@@ -2038,9 +2125,11 @@ function Verify-NodesArcRegistrationState{
                 Write-WarnLog $_.Exception.Message
             }
         }
-
-        # Cleanup node session
-        Remove-PSSession $nodeSession | Out-Null 
+        finally
+        {
+            # Cleanup node session
+            Remove-PSSession $nodeSession | Out-Null
+        }
     }
 
     if($NodesAlreadyArcEnabledDifferentResource.Length -gt 0)
@@ -2310,7 +2399,9 @@ param(
     [Switch] $IsWAC,
     [string] $Environment,
     [Object] $ArcResource,
-    [Object] $HCIResource
+    [Object] $HCIResource,
+    [Parameter(Mandatory = $false)]
+    [Switch] $useStableAgentVersion
     )
 
     if($IsManagementNode)
@@ -2330,7 +2421,7 @@ param(
         $session = New-PSSession -ComputerName localhost
     }
     Write-Progress -Id $ArcProgressBarId -ParentId $MainProgressBarId -Activity $RegisterArcProgressActivityName -Status $FetchingRegistrationState -PercentComplete 1
-    
+
     # Register resource providers
     Write-Progress -Id $ArcProgressBarId -ParentId $MainProgressBarId -Activity $RegisterArcProgressActivityName -Status $RegisterArcRPMessage -PercentComplete 10
     Write-VerboseLog ("$RegisterArcRPMessage")
@@ -2464,18 +2555,19 @@ param(
                 $actionArgument = ($currentAction -split '\r?\n')[0]
                 #Checks the 'Value' in the string for the environment variable. Currently, we only have one environment variable. May need to revisit if we add more.
                 $indexValue = $actionArgument.IndexOf("-Value")
+                $useStableAgentVersionValue = if ($using:useStableAgentVersion) { '$true' } else { '$false' }
 
                 if ($indexValue -eq -1){
-                    $action = New-ScheduledTaskAction -Execute "powershell.exe" -Argument "-Command $using:registerArcScript"
+                    $action = New-ScheduledTaskAction -Execute "powershell.exe" -Argument "-Command Set-Item -Path Env:\UseStableAgentVersion -Value $useStableAgentVersionValue;$using:registerArcScript"
                 }
                 else {
                     $logsdirectory = $actionArgument.substring($indexValue + 7)
                     $logsdirectory = $logsdirectory.substring(0, $logsdirectory.Length - 2)
-                    $action = New-ScheduledTaskAction -Execute "powershell.exe" -Argument "-Command Set-Item -Path Env:\ArcLogsDirectory -Value $logsdirectory; $using:registerArcScript"
+                    $action = New-ScheduledTaskAction -Execute "powershell.exe" -Argument "-Command Set-Item -Path Env:\ArcLogsDirectory -Value $logsdirectory; Set-Item -Path Env:\UseStableAgentVersion -Value $useStableAgentVersionValue; $using:registerArcScript"
                 }
             }
             else {
-                $action = New-ScheduledTaskAction -Execute "powershell.exe" -Argument "-Command Set-Item -Path Env:\ArcLogsDirectory -Value $using:ArcLogDir; $using:registerArcScript"
+                $action = New-ScheduledTaskAction -Execute "powershell.exe" -Argument "-Command Set-Item -Path Env:\ArcLogsDirectory -Value $using:ArcLogDir; Set-Item -Path Env:\UseStableAgentVersion -Value $useStableAgentVersionValue; $using:registerArcScript"
 
             }
             
@@ -2627,7 +2719,7 @@ param(
             # Default extension not deleted completely
             if($extension.Properties.managedBy -eq "Azure")
             {
-                Write-VerboseLog ("Mandatory extension: {0} is not deleted yet" -f $extensions.Name)
+                Write-VerboseLog ("Mandatory extension: {0} is not deleted" -f $extension.Name)
                 continue
             }
 
@@ -2768,6 +2860,514 @@ param(
     return $disabled
 }
 
+function Test-ClusterMsiSupport {
+    param(
+        [Parameter(Mandatory)]
+        [System.Management.Automation.Runspaces.PSSession]$ClusterNodeSession
+    )
+
+    $scriptBlock = {
+        # Returns $true if the cmdlet exists, $false otherwise
+        return [bool](Get-Command -Name 'Set-AzureStackHCIRegistrationMsi' -ErrorAction SilentlyContinue)
+    }
+
+    $result = Invoke-Command -Session $ClusterNodeSession -ScriptBlock $scriptBlock
+    return $result -eq $true
+}
+
+<#
+Checks whether all nodes in the given cluster are Arc-enabled.
+[bool] Returns $true if all nodes are Arc-enabled, $false otherwise.
+Logs which nodes are not enabled for easier debugging.
+#>
+function Test-ClusterArcEnabled {
+    param(
+        [Parameter(Mandatory=$true)]
+        [array]$ClusterNodes,
+        [Parameter(Mandatory=$false)]
+        [System.Management.Automation.PSCredential]$Credential,
+        [Parameter(Mandatory=$true)]
+        [string]$ClusterDNSSuffix,
+        [Parameter(Mandatory=$true)]
+        [string]$SubscriptionId,
+        [Parameter(Mandatory=$true)]
+        [string]$ArcResourceGroupName
+    )
+
+     # Make these values available to the script block via $Using:
+    $SubscriptionId = $SubscriptionId
+    $ArcResourceGroupName = $ArcResourceGroupName
+
+    $notArcNodes = @()
+
+    foreach ($node in $ClusterNodes) {
+        $nodeFQDN = $node.Name + "." + $ClusterDNSSuffix
+        $nodeSession = $null
+        $clusterNode = $node.Name
+        try {
+            if ($null -eq $Credential) {
+                $nodeSession = New-PSSession -ComputerName $nodeFQDN
+            } else {
+                $nodeSession = New-PSSession -ComputerName $nodeFQDN -Credential $Credential
+            }
+               
+            # Use shared script block to check Arc status
+            Invoke-Command -Session $nodeSession `
+                -ScriptBlock $ValidateArcConnectionAndRegistrationScriptBlock
+        } catch {
+            # If exception is thrown, Arc is not properly configured
+            $notArcNodes += $node.Name
+        } finally {
+            if ($nodeSession) {
+                Remove-PSSession $nodeSession | Out-Null
+            }
+        }
+    }
+
+    if ($notArcNodes.Count -eq 0) {
+        Write-VerboseLog "[Arc Check] All cluster nodes are Arc-enabled."
+        return $true
+    } else {
+        Write-VerboseLog "[Arc Check] The following nodes are NOT Arc-enabled: $($notArcNodes -join ', ')"
+        return $false
+    }
+}
+
+function Test-ArcNodeClusterLink {
+    param(
+        [Parameter(Mandatory=$true)]
+        [array]$ClusterNodes,
+        [Parameter(Mandatory=$true)]
+        [string]$SubscriptionId,
+        [Parameter(Mandatory=$true)]
+        [string]$ArcServerResourceGroupName,
+        [Parameter(Mandatory=$true)]
+        [string]$ResourceId,
+        [int]$MaxRetries = 6,
+        [int]$DelaySeconds = 30
+    )
+
+    $verificationErrors = @()
+
+    foreach ($node in $ClusterNodes) {
+        $nodeName = $node.Name
+        if (-not $nodeName) { $nodeName = $node }
+
+        $isLinked = $false
+        $lastError = $null
+
+        for ($attempt = 1; $attempt -le $MaxRetries; $attempt++) {
+            try {
+                $nodeResourceId = "/subscriptions/$SubscriptionId/resourceGroups/$ArcServerResourceGroupName/providers/Microsoft.HybridCompute/machines/$nodeName"
+                $arcNode = Get-AzResource -ResourceId $nodeResourceId -ApiVersion "2022-03-10" -ErrorAction Stop
+                $parentClusterId = $arcNode.Properties.parentClusterResourceId
+
+                if ($parentClusterId -eq $ResourceId) {
+                    Write-Verbose "$nodeName is correctly attached to cluster (attempt $attempt)."
+                    $isLinked = $true
+                    break
+                } else {
+                    $lastError = "$nodeName is NOT attached (attempt $attempt). Expected: $ResourceId, Actual: $parentClusterId"
+                    Write-Verbose $lastError
+                }
+            } catch {
+                $lastError = "Failed to verify node $nodeName (attempt $attempt): $($_.Exception.Message)"
+                Write-Verbose $lastError
+            }
+
+            if ($attempt -lt $MaxRetries) {
+                Start-Sleep -Seconds $DelaySeconds
+            }
+        }
+
+        if (-not $isLinked) {
+            $verificationErrors += $lastError
+            Write-Warning $lastError
+        }
+    }
+
+    if ($verificationErrors.Count -gt 0) {
+        Write-Warning "Some nodes failed verification after retries. This may affect cluster functionality."
+        return $false
+    } else {
+        Write-Host "All nodes successfully verified as linked to the cluster."
+        return $true
+    }
+}
+
+<#
+.SYNOPSIS
+    Handles MSI-based registration logic for an Arc-enabled HCI cluster.
+
+.DESCRIPTION
+    Performs Arc enablement check, reconciles Arc settings via RP, and obtains an Arc MSI token for the DP/Usage resource.
+    This function is used when all cluster nodes are Arc-enabled and supports MSI-based authentication.
+
+.PARAMETER ClusterNodes
+    Array of cluster nodes to validate Arc enablement
+
+.PARAMETER ResourceId
+    The Azure resource ID for the HCI cluster
+
+.PARAMETER ArcServerResourceGroupName
+    Resource group name for Arc server resources
+
+.EXAMPLE
+    Invoke-MSIFlow -ClusterNodes $nodes -ResourceId $resourceId -SubscriptionId $subscriptionId
+#>
+function Invoke-MSIFlow {
+    param(
+        [Parameter(Mandatory=$true)]
+        [array]$ClusterNodes,
+        [Parameter(Mandatory=$false)]
+        [System.Management.Automation.PSCredential]$Credential,
+        [Parameter(Mandatory=$true)]
+        [string]$ClusterDNSSuffix,
+        [Parameter(Mandatory=$true)]
+        [string]$ResourceId,
+        [Parameter(Mandatory=$true)]
+        [string]$RPAPIVersion,
+        [Parameter(Mandatory=$true)]
+        [string]$TenantId,
+        [Parameter(Mandatory=$true)]
+        [string]$Region,
+        [Parameter(Mandatory=$true)]
+        [string]$ResourceGroupName,
+        [Parameter(Mandatory=$false)]
+        [hashtable]$Tag,
+        [Parameter(Mandatory=$true)]
+        [string]$ResourceName,
+        [Parameter(Mandatory=$true)]
+        [string]$SubscriptionId,
+        [Parameter(Mandatory=$false)]
+        [PSCustomObject]$registrationOutput,
+        [Parameter(Mandatory=$true)]
+        [System.Management.Automation.Runspaces.PSSession]$ClusterNodeSession,
+        [Parameter(Mandatory=$false)]
+        [bool]$IsManagementNode,
+        [Parameter(Mandatory=$false)]
+        [string]$ComputerName,
+        [Parameter(Mandatory=$false)]
+        [Switch]$IsWAC,
+        [Parameter(Mandatory=$false)]
+        [string]$ArcServerResourceGroupName,
+        [Parameter(Mandatory=$false)]
+        [string]$EnvironmentName = $AzureCloud
+    )
+
+    try {
+        Write-VerboseLog "[MSI Flow] Starting MSI-based cluster registration."
+        Write-NodeEventLog -Message "[MSI Flow] Starting MSI-based cluster registration." -EventID 9133 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName
+        $resource = Get-AzResource -ResourceId $ResourceId -ApiVersion $RPAPIVersion -ErrorAction Ignore
+
+        #Confirm Arc is enabled on all nodes
+        $allArcEnabled = Test-ClusterArcEnabled -ClusterNodes $ClusterNodes -Credential $Credential -ClusterDNSSuffix $ClusterDNSSuffix -SubscriptionId $SubscriptionId -ArcResourceGroupName $ArcServerResourceGroupName
+        if (-not $allArcEnabled) {
+            throw [System.InvalidOperationException]::new("Not all cluster nodes are Arc-enabled. Aborting MSI registration.")
+        }
+
+        if($Null -eq $resource.Properties.ResourceProviderObjectId)
+        {
+            Write-VerboseLog("Populating Resource Provider Object Id for cluster: $ResourceId")
+            $properties = @{}
+            $payload = ConvertTo-Json -InputObject $properties
+            $resourceIdWithAPI = "{0}?api-version={1}" -f $ResourceId, $RPAPIVersion
+            Write-VerboseLog ("Patching Cloud Resource with properties : {0}" -f ($payload | Out-String))
+            Write-VerboseLog ("ResourceIdWithApi: $resourceIdWithAPI")
+            Invoke-AzRestMethod -Path $ResourceIdWithAPI -Method PATCH -Payload $Payload
+            $resource = Get-AzResource -ResourceId $ResourceId -ApiVersion $RPAPIVersion -ErrorAction Ignore
+        }
+
+        if ($Null -eq $resource.Properties.ResourceProviderObjectId)
+        {
+            Write-VerboseLog("Resource Provider Object Id is Null. Can't assign roles to HCI RP for ARC Onboarding")
+            Write-ErrorLog -Message $rpObjectIdNullError -Category OperationStopped
+            $resultValue = [OperationStatus]::ArcFailed
+            $errorValue = [ErrorDetail]::ArcPermissionsMissing
+            $rpObjectIdNullWacErrorCode = 9131
+            $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value $resultValue
+            Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacResult -PropertyValue $resultValue.ToString() -Output $registrationOutput
+            $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyErrorDetail -Value $errorValue
+            Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacErrorDetail -PropertyValue $errorValue.ToString() -Output $registrationOutput
+            Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacErrorCode -PropertyValue $rpObjectIdNullWacErrorCode -Output $registrationOutput
+            Write-Output $registrationOutput | Format-List
+            Write-NodeEventLog -Message $rpObjectIdNullError -EventID 9131 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName -Level Error
+            throw
+        }
+
+        $RPObjectId = $resource.Properties.ResourceProviderObjectId
+        if (ValidateCloudDeployment)
+        {
+            # In cloud deployment role assignment happens in the cloud already and the reg script runs in the context of the ARC MSI which does not have necessary permission to assign roles
+            Write-VerboseLog "Skipping assigning Azure Connected Machine Resource Manager role to the HCI RP For cloud based deployment"
+        }
+        else
+        {
+            $setRolesResult = Set-ArcRoleforRPSpn -RPObjectId $RPObjectId -ArcServerResourceGroupName $ArcServerResourceGroupName
+            if ($setRolesResult -ne [ErrorDetail]::Success) {
+                Write-VerboseLog("Failed to assign Arc roles to HCI Resource Provider")
+                Write-ErrorLog -Message $roleAssignmentHCIRPFailError -Category OperationStopped
+                $resultValue = [OperationStatus]::ArcFailed
+                $errorValue = $setRolesResult
+                $roleAssignmentHCIRPFailWacErrorCode = 9132
+                Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacResult -PropertyValue $resultValue.ToString() -Output $registrationOutput
+                $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value $resultValue
+                $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyErrorDetail -Value $errorValue
+                Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacErrorDetail -PropertyValue $errorValue.ToString() -Output $registrationOutput
+                Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacErrorCode -PropertyValue $roleAssignmentHCIRPFailWacErrorCode -Output $registrationOutput
+                Write-Output $registrationOutput | Format-List
+                Write-NodeEventLog -Message $rpObjectIdNullError -EventID 9132 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName -Level Error
+                throw
+            }
+        }
+
+        $clusterNodeNames = $ClusterNodes | ForEach-Object { $_.Name }
+
+        $reconcileParameters = @{ 
+            properties = @{ 
+                clusterNodes = @($clusterNodeNames)
+            }
+        }
+
+        Write-VerboseLog ("The payload for reconcile is set with nodes: $($clusterNodeNames -join ', ')")
+
+        $arcSettingsResourceId = $ResourceId + $HCIArcInstanceName
+        Write-VerboseLog ("Checking if ArcSettings resource $arcSettingsResourceId already exists")
+
+        $arcres = Get-AzResource -ResourceId $arcSettingsResourceId -ApiVersion $HCIArcAPIVersion -ErrorAction Ignore
+        if ($null -eq $arcres) {
+            Write-VerboseLog ("ArcSettings resource does not exist, creating a new one.")
+            $arcInstanceResourceGroup = @{ "arcInstanceResourceGroup" = $ArcServerResourceGroupName }
+            $arcres = New-AzResource -ResourceId $arcSettingsResourceId -ApiVersion $HCIArcAPIVersion -PropertyObject $arcInstanceResourceGroup -Force
+            Write-VerboseLog ("ArcSettings resource created successfully")
+        }
+
+        try {
+            Write-VerboseLog ("Invoking reconcile action on $arcSettingsResourceId")
+            Execute-Without-ProgressBar -ScriptBlock { Invoke-AzResourceAction -ResourceId $arcSettingsResourceId -ApiVersion $RPAPIVersion -Action reconcile -Parameters $reconcileParameters -Force | Out-Null }
+            Write-VerboseLog ("Reconcile action completed successfully")
+        }
+        catch {
+            Write-ErrorLog "ArcSettings reconcile failed: " + $_.Exception.Message -Category OperationStopped
+            $resultValue = [OperationStatus]::Failed
+            $ReconcileArcSettingsWacErrorCode = 9142
+            $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value $resultValue -Force
+            Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacResult -PropertyValue $resultValue.ToString() -Output $registrationOutput
+            Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacExceptionMessage -PropertyValue $_.Exception.Message.ToString() -Output $registrationOutput
+            Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacErrorCode -PropertyValue $ReconcileArcSettingsWacErrorCode -Output $registrationOutput
+            Write-Output $registrationOutput | Format-List
+            Write-NodeEventLog -Message ("ArcSettings reconcile failed: " + $_.Exception.Message) -EventID 9142 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName -Level Warning
+            throw "ArcSettings reconcile failed: " + $_.Exception.Message
+        }
+
+        Write-NodeEventLog -Message "[MSI Flow] Reconciled Arc settings with RP via API." -EventID 9133 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName
+
+        $nullRef = [ref]$null
+        $billingScopeRef = [ref]$null
+
+        Get-EnvironmentEndpoints -EnvironmentName $EnvironmentName `
+            -ServiceEndpoint $nullRef `
+            -Authority $nullRef `
+            -BillingServiceApiScope $billingScopeRef `
+            -GraphServiceApiScope $nullRef
+
+        $usageScope = $billingScopeRef.Value
+        Write-VerboseLog "[MSI Flow] Using Usage API scope for '$EnvironmentName': $usageScope"
+        Write-NodeEventLog -Message "[MSI Flow] Using Usage API scope for '$EnvironmentName': $usageScope" -EventID 9134 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName
+
+        if (-not $usageScope) { throw "usageScope is null or empty!" }
+
+        # Get MSI token from the cluster node
+        try {
+            # Local log for main session activity
+            Write-VerboseLog "[MSI Flow] Attempting to get Arc IMDS token from node: $ComputerName"
+
+            $usageResult = Invoke-Command -Session $ClusterNodeSession -ScriptBlock {
+                param($Scope, $NodeName)
+                $log = @()
+                function Write-VerboseLog {
+                    param([string]$Message)
+                    $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
+                    $script:log += "$timestamp [$NodeName] $Message"
+                }
+
+                function Get-ArcIMDSToken {
+                    [CmdletBinding()]
+                    [OutputType([string])]
+                    param ([string]$Scope)
+
+                    $apiVersion = "2020-06-01"
+                    $endpoint = $env:IDENTITY_ENDPOINT
+
+                    if (-not $endpoint) {
+                        Write-VerboseLog "No IDENTITY_ENDPOINT, using default endpoint."
+                        $endpoint = "http://localhost:40342/metadata/identity/oauth2/token"
+                    }
+
+                    if ($Scope.EndsWith('/.default')) {
+                        Write-VerboseLog "Scope ends with /.default, trimming."
+                        $Scope = $Scope.Substring(0, $Scope.Length - '/.default'.Length)
+                    }
+
+                    $endpointUrl = "{0}?resource={1}&api-version={2}" -f $endpoint, $Scope, $apiVersion
+                    Write-VerboseLog "Endpoint URL: $endpointUrl"
+
+                    $secretFile = ""
+                    try {
+                        Invoke-WebRequest -Method GET -Uri $endpointUrl -Headers @{Metadata='True'} -UseBasicParsing -ErrorAction Stop
+                        Write-VerboseLog "Unexpected: Challenge request did not fail as expected."
+                        return $null
+                    } catch {
+                        $wwwAuthHeader = $_.Exception.Response.Headers["WWW-Authenticate"]
+                        if ($wwwAuthHeader -match "Basic realm=.+") {
+                            $secretFile = ($wwwAuthHeader -split "Basic realm=")[1].Trim()
+                            Write-VerboseLog "Secret file path: $secretFile"
+                        } else {
+                            Write-VerboseLog "WWW-Authenticate header missing or malformed in MSI challenge response."
+                            return $null
+                        }
+                    }
+
+                    if ([string]::IsNullOrWhiteSpace($secretFile) -or -not (Test-Path $secretFile)) {
+                        Write-VerboseLog "Secret file for identity challenge not found or path is empty: $secretFile"
+                        return $null
+                    }
+
+                    $secret = (Get-Content -Raw $secretFile).Trim()
+                    Write-VerboseLog "Secret retrieved from file."
+
+                    try {
+                        $response = Invoke-WebRequest -Method GET -Uri $endpointUrl -Headers @{
+                            Metadata     = 'True'
+                            Authorization = "Basic $secret"
+                        } -UseBasicParsing -ErrorAction Stop
+
+                        $token = (ConvertFrom-Json $response.Content).access_token
+                        Write-VerboseLog "Successfully retrieved IMDS token."
+                        return $token
+                    } catch {
+                        $remoteError = "Failed to get Arc IMDS Token on node '$NodeName': $($_.Exception.Message)"
+                        $position = $_.InvocationInfo.PositionMessage
+                        Write-VerboseLog $remoteError
+                        Write-VerboseLog "Position: $position"
+                        throw $remoteError
+                    }
+                }
+
+                $token = $null
+                try {
+                    Write-VerboseLog "Starting Arc IMDS token retrieval..."
+                    $token = Get-ArcIMDSToken -Scope $Scope
+                    Write-VerboseLog "Get-ArcIMDSToken completed."
+                } catch {
+                    Write-VerboseLog "Exception in Get-ArcIMDSToken: $($_.Exception.Message)"
+                }
+
+                # Return both token and logs
+                return @{
+                    Token = $token
+                    Logs  = $log
+                }
+            } -ArgumentList $usageScope, $ComputerName
+
+            # Emit remote logs as local verbose output so they are captured in local transcript/log file
+            if ($usageResult.Logs) {
+                $usageResult.Logs | ForEach-Object { Write-Verbose $_ }
+            } else {
+                Write-Verbose "No remote logs returned."
+            }
+            Write-VerboseLog ("Arc IMDS token acquired (node={0})" -f $ComputerName)
+            $usageToken = $usageResult.Token
+            if([string]::IsNullOrEmpty($usageToken))
+            {
+                throw "Arc IMDS token retrieval returned null or empty token on node '$ComputerName'."
+            }
+        }
+        catch {
+            # Main session error handling
+            $errorMessage = "Failed to execute Arc IMDS token retrieval on node '$ComputerName': $($_.Exception.Message)"
+            $position = $_.InvocationInfo.PositionMessage
+            Write-ErrorLog $errorMessage -Exception $_ -Category ConnectionError -ErrorAction Continue
+            Write-VerboseLog "[MSI Flow] ERROR: $errorMessage"
+            Write-VerboseLog "[MSI Flow] Error occurred at: $position"
+            Write-NodeEventLog -Message ("Arc IMDS Command Execution Error: " + $position + " Details: " + $errorMessage) `
+                -EventID 9143 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName -Level Error
+            Write-Output $registrationOutput | Format-List
+            throw "Arc IMDS token retrieval failed on node '$ComputerName': $($_.Exception.Message)"
+        }
+
+        Write-VerboseLog "[MSI Flow] Obtained Arc MSI token for Usage API."
+
+        $resource = Get-AzResource -ResourceId $ResourceId -ApiVersion $RPAPIVersion -ErrorAction Ignore
+        $cloudId = $resource.Properties.cloudId
+        $serviceEndpoint = $resource.properties.serviceEndpoint
+
+        $TempServiceEndpoint = ""
+        $Authority = ""
+        $BillingServiceApiScope = ""
+        $GraphServiceApiScope = ""
+
+        Get-EnvironmentEndpoints -EnvironmentName $EnvironmentName -ServiceEndpoint ([ref]$TempServiceEndpoint ) -Authority ([ref]$Authority) -BillingServiceApiScope ([ref]$BillingServiceApiScope) -GraphServiceApiScope ([ref]$GraphServiceApiScope)
+
+        Write-Progress -Id $MainProgressBarId -activity $RegisterProgressActivityName -status $RegisterAndSyncMetadataMessage -percentcomplete 90
+
+        try {
+            # parameters for MSI registration
+            $Params = @{
+                BootstrapToken         = $usageToken
+                ServiceEndpoint        = $ServiceEndpoint
+                BillingServiceApiScope = $BillingServiceApiScope
+                CloudId                = $cloudId
+                SubscriptionId         = $SubscriptionId
+                ResourceName           = $ResourceName
+                ProviderNamespace      = "Microsoft.AzureStackHCI"
+                ResourceArmId          = $resourceId
+            }
+
+            $SetAzureStackHCIRegistrationMsiScript = {
+                Set-AzureStackHCIRegistrationMsi @Params -ErrorAction Stop
+            }
+
+            Run-InvokeCommand -ScriptBlock $SetAzureStackHCIRegistrationMsiScript -Session $ClusterNodeSession -Params $Params
+            $logParams = @{}
+            foreach ($kv in $Params.GetEnumerator()) {
+                if ($kv.Key -eq 'BootstrapToken') { continue }
+                $logParams[$kv.Key] = $kv.Value
+            }
+            Write-VerboseLog ("Successfully performed Set-AzureStackHCIRegistrationMsi with params:`n{0}" -f ($logParams | Format-List | Out-String))
+        }
+        catch {
+            $errorMessage = $_.Exception.Message.ToString()
+            Write-VerboseLog ($SetAzureStackHCIRegistrationMsiErrorMessage -f $errorMessage)
+            Write-ErrorLog ($SetAzureStackHCIRegistrationMsiErrorMessage -f $errorMessage) -Category OperationStopped -Exception $_ -ErrorAction Continue
+            $resultValue = [OperationStatus]::Failed
+            $SetAzureStackHCIRegistrationMsiErrorCode = 9144
+            $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value $resultValue
+            Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacResult -PropertyValue $resultValue.ToString() -Output $registrationOutput
+            Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacExceptionMessage -PropertyValue $errorMessage -Output $registrationOutput
+            Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacErrorCode  -PropertyValue $SetAzureStackHCIRegistrationMsiErrorCode -Output $registrationOutput
+            Write-Output $registrationOutput | Format-List
+            throw
+        }
+
+        Write-VerboseLog "[MSI Flow] MSI-based registration flow completed."
+        Write-NodeEventLog -Message "[MSI Flow] MSI-based registration flow completed successfully." -EventID 9135 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName
+    }
+    catch {
+        $positionMessage = $_.InvocationInfo.PositionMessage
+        $msiErrorMessage = "Exception in Registration: Function={0}, Line={1}, Error={2}" -f $_.InvocationInfo.InvocationName, $_.InvocationInfo.ScriptLineNumber, $_.Exception.Message
+        Write-ErrorLog $msiErrorMessage -Exception $_ -Category OperationStopped -ErrorAction Continue
+        Write-NodeEventLog -Message ("Exception occurred in Invoke-MSIFlow: " + $positionMessage + " Details: " + $msiErrorMessage) -EventID 9145 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName -Level Warning
+
+        if(-Not $Error.Contains($AlreadyLoggedFlag)) {
+            Write-ErrorLog ("Registration Failed: " + $msiErrorMessage) -Exception $_ -Category OperationStopped -ErrorAction Continue
+        }
+        
+        $msiException = New-Object System.Exception("Registration Failed: $($_.Exception.Message)", $_.Exception)
+        throw $msiException
+    }
+}
+
 class Identity {
     [string] $type = "SystemAssigned"
 }
@@ -2877,6 +3477,9 @@ $global:HCILogsDirectory
 
     .PARAMETER LogsDirectory
     Specifies the Path where the log files are to be saved. Has to be an absolute Path. Default value would be: C:\ProgramData\AzureStackHCI
+     
+    .PARAMETER useStableAgentVersion
+    Specifies whether to use the stable HCI Arc agent for server registration. When set to true, uses the stable HCI Arc agent. When set to false or not specified, uses the default Azure Connected Machine Agent.
 
     .OUTPUTS
     PSCustomObject. Returns following Properties in PSCustomObject
@@ -2911,6 +3514,13 @@ $global:HCILogsDirectory
     Result: Success
     ResourceId: /subscriptions/12a0f531-56cb-4340-9501-257726d741fd/resourceGroups/HciRG/providers/Microsoft.AzureStackHCI/clusters/HciCluster1
     PortalResourceURL: https://portal.azure.com/#@c31c0dbb-ce27-4c78-ad26-a5f717c14557/resource/subscriptions/12a0f531-56cb-4340-9501-257726d741fd/resourceGroups/HciRG/providers/Microsoft.AzureStackHCI/clusters/HciCluster1/overview
+
+     .EXAMPLE
+    Invoking with stable Arc agent version
+    C:\PS>Register-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -Region eastus -useStableAgentVersion
+    Result: Success
+    ResourceId: /subscriptions/12a0f531-56cb-4340-9501-257726d741fd/resourceGroups/DemoHCICluster1-rg/providers/Microsoft.AzureStackHCI/clusters/DemoHCICluster1
+    PortalResourceURL: https://portal.azure.com/#@c31c0dbb-ce27-4c78-ad26-a5f717c14557/resource/subscriptions/12a0f531-56cb-4340-9501-257726d741fd/resourceGroups/DemoHCICluster1-rg/providers/Microsoft.AzureStackHCI/clusters/DemoHCICluster1/overview
 #>
 function Register-AzStackHCI{
 [CmdletBinding(SupportsShouldProcess, ConfirmImpact = 'High')]
@@ -2973,7 +3583,9 @@ param(
         }
         return $true
     })]
-    [string] $LogsDirectory
+    [string] $LogsDirectory,
+    [Parameter(Mandatory = $false)]
+    [Switch] $useStableAgentVersion
     )
     
     if([string]::IsNullOrEmpty($ComputerName))
@@ -3025,6 +3637,7 @@ param(
         $osVersionInfo                  = Invoke-Command -Session $clusterNodeSession -ScriptBlock $osVersionDetectoid
         $cloudManagementCapable         = Invoke-Command -Session $clusterNodeSession -ScriptBlock $cloudManagementDetectoid
         $cloudManagementInfraCapable    = Invoke-Command -Session $clusterNodeSession -ScriptBlock $cloudManagementInfraDetectoid
+        $isRegistrationWithArcMsiCapable= Test-ClusterMsiSupport -ClusterNodeSession $clusterNodeSession
         Write-VerboseLog ("Display Version: {0}, Build Number: {1}, Cloud Management capable: {2}" -f $osVersionInfo.DisplayVersion, $osVersionInfo.BuildNumber, $cloudManagementCapable)
 
         $isCloudManagementSupported = ([Int]::Parse($osVersionInfo.BuildNumber) -ge $22H2BuildNumber) -and ($cloudManagementCapable -eq $true)
@@ -3033,6 +3646,7 @@ param(
         Write-VerboseLog ("Cloud Management supported: {0}" -f $isCloudManagementSupported)
         Write-VerboseLog ("Cloud Management Infra supported: {0}" -f $isCloudManagementInfraSupported)
         Write-VerboseLog ("Installing Mandatory extensions supported: {0}" -f $isDefaultExtensionSupported)
+        Write-VerboseLog ("Registering with Arc MSI supported: {0}" -f $isRegistrationWithArcMsiCapable)
 
         if ($EnvironmentName -eq $AzureLocal) 
         {
@@ -3047,7 +3661,7 @@ param(
                     $ResourceName = $RegContext.AzureResourceUri.Split('/')[8]
                     Write-VerboseLog ("resolved resource Name $ResourceName from registration context")
                 }
-                elseif ($ResourceName -ne $RegContext.AzureResourceUri.Split('/')[8]) 
+                elseif ($ResourceName -ne $RegContext.AzureResourceUri.Split('/')[8])
                 {
                     Write-ErrorLog -Message ($HCIResourceNameDifferentErrorMessage -f $RegContext.AzureResourceUri.Split('/')[8]) -ErrorAction Continue
                     $resultValue = [OperationStatus]::Failed
@@ -3228,7 +3842,7 @@ Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacErrorCode  -
                 throw
             }
         }
-                
+        
         if(($isDefaultExtensionSupported) -and (($null -eq $arcres) -or ($null -eq $arcres.Properties.DefaultExtensions.ConsentTime)))
         {
             Write-Warning $MandatoryExtensionInfoMessage
@@ -3449,8 +4063,12 @@ Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacErrorCode  -
                 $CreatingCloudResourceMessageProgress = $CreatingCloudResourceMessage -f $ResourceName
                 Write-Progress -Id $MainProgressBarId -activity $RegisterProgressActivityName -status $CreatingCloudResourceMessageProgress -percentcomplete 60
 
-                $properties = [ResourceProperties]::new($Region, @{}, $Tag)
-                $payload = ConvertTo-Json -InputObject $properties
+                $properties = @{
+                    location = $Region
+                    identity = @{ type = "SystemAssigned" }
+                    tags     = $Tag
+                }
+                $payload = $properties | ConvertTo-Json -Depth 10
                 $resourceIdWithAPI = "{0}?api-version={1}" -f $resourceId, $RPAPIVersion
                 Write-VerboseLog ("$CreatingCloudResourceMessageProgress with properties : {0}" -f ($payload | Out-String))
                 Write-VerboseLog ("ResourceIdWithApi: $resourceIdWithAPI")
@@ -3497,183 +4115,198 @@ Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacErrorCode  -
                 $resource = Get-AzResource -ResourceId $resourceId -ApiVersion $RPAPIVersion -ErrorAction Ignore
             }
 
-            if($resource.Properties.aadApplicationObjectId -eq $Null)
+            if ($isRegistrationWithArcMsiCapable -eq $true)
             {
-                # create cluster identity by calling HCI RP
-                $clusterIdentity = Execute-Without-ProgressBar -ScriptBlock { Invoke-AzResourceAction -ResourceId $resourceId -ApiVersion $RPAPIVersion -Action createClusterIdentity -Force }
-                # Get cluster again for identity details
-                $resource = Get-AzResource -ResourceId $resourceId -ApiVersion $RPAPIVersion -ErrorAction Ignore
-            }
-
-            # if the RPObjectId is null, we will do a patch call on the resource. Case: cluster was created before RPObjectId was introduced 
-            if($Null -eq $resource.Properties.ResourceProviderObjectId)
-            {
-                Write-VerboseLog("Populating Resource Provider Object Id for cluster: $resourceId")
-                $properties = @{}
-                $payload = ConvertTo-Json -InputObject $properties
-                $resourceIdWithAPI = "{0}?api-version={1}" -f $resourceId, $RPAPIVersion
-                Write-VerboseLog ("Patching Cloud Resource with properties : {0}" -f ($payload | Out-String))
-                Write-VerboseLog ("ResourceIdWithApi: $resourceIdWithAPI")
-                Invoke-AzRestMethod -Path $ResourceIdWithAPI -Method PATCH -Payload $Payload
-                $resource = Get-AzResource -ResourceId $resourceId -ApiVersion $RPAPIVersion -ErrorAction Ignore
-            }
-
-            if ($Null -eq $resource.Properties.ResourceProviderObjectId) 
-            {
-                Write-VerboseLog("Resource Provider Object Id is Null. Can't assign roles to HCI RP for ARC Onboarding")
-                Write-ErrorLog -Message $rpObjectIdNullError -Category OperationStopped
-                $resultValue = [OperationStatus]::ArcFailed
-                $errorValue = [ErrorDetail]::ArcPermissionsMissing
-                $rpObjectIdNullWacErrorCode = 9131
-                $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value $resultValue
-                Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacResult -PropertyValue $resultValue.ToString() -Output $registrationOutput
-                $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyErrorDetail -Value $errorValue
-                Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacErrorDetail -PropertyValue $errorValue.ToString() -Output $registrationOutput
-                Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacErrorCode -PropertyValue $rpObjectIdNullWacErrorCode -Output $registrationOutput
-                Write-Output $registrationOutput | Format-List
-                Write-NodeEventLog -Message $rpObjectIdNullError -EventID 9131 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName -Level Error
-                throw
-            }
-
-            $RPObjectId = $resource.Properties.ResourceProviderObjectId
-            if (ValidateCloudDeployment)
-            {
-                # In cloud deployment role assignment happens in the cloud already and the reg script runs in the context of the ARC MSI which does not have necessary permission to assign roles
-                Write-VerboseLog "Skipping assigning Azure Connected Machine Resource Manager role to the HCI RP For cloud based deployment"
+                Write-VerboseLog "[Registration] Entered MSI registration path"
+                Invoke-MSIFlow -ClusterNodes $clusterNodes -Credential $Credential -ClusterDNSSuffix $clusterDNSSuffix -ResourceId $resourceId -RPAPIVersion $RPAPIVersion -TenantId $TenantId -Region $Region -ResourceGroupName $ResourceGroupName -Tag $Tag -ResourceName $ResourceName -SubscriptionId $SubscriptionId -registrationOutput $registrationOutput -ClusterNodeSession $clusterNodeSession -IsManagementNode $IsManagementNode -ComputerName $ComputerName -IsWAC:$IsWAC -ArcServerResourceGroupName $ArcServerResourceGroupName -EnvironmentName $EnvironmentName
+                $operationStatus = [OperationStatus]::Success
             }
             else
             {
-                $setRolesResult = Set-ArcRoleforRPSpn -RPObjectId $RPObjectId -ArcServerResourceGroupName $ArcServerResourceGroupName
-                if($setRolesResult -ne [ErrorDetail]::Success) 
+                Write-VerboseLog "[Registration] Entered AAD registration path"
+                if($resource.Properties.aadApplicationObjectId -eq $Null)
                 {
-                    Write-VerboseLog("Failed to assign Arc roles to HCI Resource Provider")
-                    Write-ErrorLog -Message $roleAssignmentHCIRPFailError -Category OperationStopped
+                    # create cluster identity by calling HCI RP
+                    $clusterIdentity = Execute-Without-ProgressBar -ScriptBlock { Invoke-AzResourceAction -ResourceId $resourceId -ApiVersion $RPAPIVersion -Action createClusterIdentity -Force }
+                    # Get cluster again for identity details
+                    $resource = Get-AzResource -ResourceId $resourceId -ApiVersion $RPAPIVersion -ErrorAction Ignore
+                }
+
+                # if the RPObjectId is null, we will do a patch call on the resource. Case: cluster was created before RPObjectId was introduced
+                if($Null -eq $resource.Properties.ResourceProviderObjectId)
+                {
+                    Write-VerboseLog("Populating Resource Provider Object Id for cluster: $resourceId")
+                    $properties = @{}
+                    $payload = ConvertTo-Json -InputObject $properties
+                    $resourceIdWithAPI = "{0}?api-version={1}" -f $resourceId, $RPAPIVersion
+                    Write-VerboseLog ("Patching Cloud Resource with properties : {0}" -f ($payload | Out-String))
+                    Write-VerboseLog ("ResourceIdWithApi: $resourceIdWithAPI")
+                    Invoke-AzRestMethod -Path $ResourceIdWithAPI -Method PATCH -Payload $Payload
+                    $resource = Get-AzResource -ResourceId $resourceId -ApiVersion $RPAPIVersion -ErrorAction Ignore
+                }
+
+                if ($Null -eq $resource.Properties.ResourceProviderObjectId)
+                {
+                    Write-VerboseLog("Resource Provider Object Id is Null. Can't assign roles to HCI RP for ARC Onboarding")
+                    Write-ErrorLog -Message $rpObjectIdNullError -Category OperationStopped
                     $resultValue = [OperationStatus]::ArcFailed
-                    $errorValue = $setRolesResult
-                    $roleAssignmentHCIRPFailWacErrorCode = 9132
-                    Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacResult -PropertyValue $resultValue.ToString() -Output $registrationOutput
+                    $errorValue = [ErrorDetail]::ArcPermissionsMissing
+                    $rpObjectIdNullWacErrorCode = 9131
                     $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value $resultValue
+                    Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacResult -PropertyValue $resultValue.ToString() -Output $registrationOutput
                     $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyErrorDetail -Value $errorValue
                     Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacErrorDetail -PropertyValue $errorValue.ToString() -Output $registrationOutput
-                    Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacErrorCode -PropertyValue $roleAssignmentHCIRPFailWacErrorCode -Output $registrationOutput
+                    Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacErrorCode -PropertyValue $rpObjectIdNullWacErrorCode -Output $registrationOutput
                     Write-Output $registrationOutput | Format-List
-                    Write-NodeEventLog -Message $rpObjectIdNullError -EventID 9132 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName -Level Error
+                    Write-NodeEventLog -Message $rpObjectIdNullError -EventID 9131 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName -Level Error
                     throw
                 }
-            }
 
-            $serviceEndpoint = $resource.properties.serviceEndpoint
-            $appId = $resource.Properties.aadClientId
-            $cloudId = $resource.Properties.cloudId 
-            $objectId = $resource.Properties.aadApplicationObjectId
-            $spObjectId = $resource.Properties.aadServicePrincipalObjectId
-
-            # Add certificate
-
-            Write-Progress -Id $MainProgressBarId -activity $RegisterProgressActivityName -status $GettingCertificateMessage -percentcomplete 70
-
-            $CertificatesToBeMaintained = @{}
-            $NewCertificateFailedNodes = [System.Collections.ArrayList]::new()
-            $SetCertificateFailedNodes = [System.Collections.ArrayList]::new()
-            $OSNotLatestOnNodes = [System.Collections.ArrayList]::new()
-
-            $TempServiceEndpoint = ""
-            $Authority = ""
-            $BillingServiceApiScope = ""
-            $GraphServiceApiScope = ""
-
-            Get-EnvironmentEndpoints -EnvironmentName $EnvironmentName -ServiceEndpoint ([ref]$TempServiceEndpoint ) -Authority ([ref]$Authority) -BillingServiceApiScope ([ref]$BillingServiceApiScope) -GraphServiceApiScope ([ref]$GraphServiceApiScope)
-
-            $setupCertsError = Setup-Certificates -ClusterNodes $clusterNodes -Credential $Credential -ResourceName $ResourceName -ObjectId $objectId -CertificateThumbprint $CertificateThumbprint -AppId $appId -TenantId $TenantId -CloudId $cloudId `
-                                -ServiceEndpoint $ServiceEndpoint -BillingServiceApiScope $BillingServiceApiScope -GraphServiceApiScope $GraphServiceApiScope -Authority $Authority -NewCertificateFailedNodes $NewCertificateFailedNodes `
-                                -SetCertificateFailedNodes $SetCertificateFailedNodes -OSNotLatestOnNodes $OSNotLatestOnNodes -CertificatesToBeMaintained $CertificatesToBeMaintained -ClusterDNSSuffix $clusterDNSSuffix -ResourceId $resourceId
-
-            Write-VerboseLog ("Setup-Certificates returned {0}" -f $setupCertsError)
-            if($null -ne $setupCertsError)
-            {
-                Write-VerboseLog ("Setup-Certificates has failed")
-                Write-ErrorLog -Message $setupCertsError -Category OperationStopped
-                $resultValue = [OperationStatus]::Failed
-                $setupCertificatesFailedWacErrorCode = 9109
-                $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value $resultValue
-                Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacResult -PropertyValue $resultValue.ToString() -Output $registrationOutput
-                Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacErrorCode -PropertyValue $setupCertificatesFailedWacErrorCode -Output $registrationOutput
-                Write-Output $registrationOutput | Format-List
-                Write-NodeEventLog -Message $setupCertsError -EventID 9109 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName -Level Warning
-                throw
-            }
-
-            if(($SetCertificateFailedNodes.Count -ge 1) -or ($NewCertificateFailedNodes.Count -ge 1))
-            {
-                Write-VerboseLog ("Setup-Certificates failed on atleast one node")
-                $SettingCertificateFailedMessage = $SettingCertificateFailed -f ($NewCertificateFailedNodes -join ","),($SetCertificateFailedNodes -join ",")
-                Write-ErrorLog -Message $SettingCertificateFailedMessage -Category OperationStopped -ErrorAction Continue
-                $resultValue = [OperationStatus]::Failed
-                $SettingCertificateFailedWacErrorCode = 9110
-                $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value $resultValue
-                Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacResult -PropertyValue $resultValue.ToString() -Output $registrationOutput
-                Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacErrorCode -PropertyValue $SettingCertificateFailedWacErrorCode -Output $registrationOutput
-                Write-Output $registrationOutput | Format-List
-                Write-NodeEventLog -Message $SettingCertificateFailedMessage -EventID 9110 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName -Level Warning
-                throw
-            }
-
-            if($OSNotLatestOnNodes.Count -ge 1)
-            {
-                $NotAllTheNodesInClusterAreGAError = $NotAllTheNodesInClusterAreGA -f ($OSNotLatestOnNodes -join ",")
-                Write-ErrorLog -Message $NotAllTheNodesInClusterAreGAError -Category OperationStopped -ErrorAction Continue
-                $resultValue = [OperationStatus]::Failed
-                $NotAllTheNodesInClusterAreGAErrorWacErrorCode = 9111
-                $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value $resultValue
-                Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacResult -PropertyValue $resultValue.ToString() -Output $registrationOutput
-                Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacErrorCode -PropertyValue $NotAllTheNodesInClusterAreGAErrorWacErrorCode -Output $registrationOutput
-                Write-Output $registrationOutput | Format-List
-                Write-NodeEventLog -Message $NotAllTheNodesInClusterAreGAError -EventID 9111 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName -Level Warning
-                throw
-            }
-
-            Write-Progress -Id $MainProgressBarId -activity $RegisterProgressActivityName -status $RegisterAndSyncMetadataMessage -percentcomplete 90
-
-            # Register by calling on-prem usage service Cmdlet
-            try 
-            {
-                $Params = @{
-                    ServiceEndpoint = $ServiceEndpoint
-                    BillingServiceApiScope = $BillingServiceApiScope
-                    GraphServiceApiScope = $GraphServiceApiScope
-                    AADAuthority = $Authority
-                    AppId = $appId
-                    TenantId = $TenantId
-                    CloudId = $cloudId
-                    SubscriptionId = $SubscriptionId
-                    ObjectId = $objectId
-                    ResourceName = $ResourceName
-                    ProviderNamespace = "Microsoft.AzureStackHCI"
-                    ResourceArmId = $resourceId
-                    ServicePrincipalClientId = $spObjectId
-                    CertificateThumbprint = $CertificateThumbprint
+                $RPObjectId = $resource.Properties.ResourceProviderObjectId
+                if (ValidateCloudDeployment)
+                {
+                    # In cloud deployment role assignment happens in the cloud already and the reg script runs in the context of the ARC MSI which does not have necessary permission to assign roles
+                    Write-VerboseLog "Skipping assigning Azure Connected Machine Resource Manager role to the HCI RP For cloud based deployment"
+                }
+                else
+                {
+                    $setRolesResult = Set-ArcRoleforRPSpn -RPObjectId $RPObjectId -ArcServerResourceGroupName $ArcServerResourceGroupName
+                    if ($setRolesResult -ne [ErrorDetail]::Success) {
+                        Write-VerboseLog("Failed to assign Arc roles to HCI Resource Provider")
+                        Write-ErrorLog -Message $roleAssignmentHCIRPFailError -Category OperationStopped
+                        $resultValue = [OperationStatus]::ArcFailed
+                        $errorValue = $setRolesResult
+                        $roleAssignmentHCIRPFailWacErrorCode = 9132
+                        Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacResult -PropertyValue $resultValue.ToString() -Output $registrationOutput
+                        $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value $resultValue
+                        $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyErrorDetail -Value $errorValue
+                        Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacErrorDetail -PropertyValue $errorValue.ToString() -Output $registrationOutput
+                        Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacErrorCode -PropertyValue $roleAssignmentHCIRPFailWacErrorCode -Output $registrationOutput
+                        Write-Output $registrationOutput | Format-List
+                        Write-NodeEventLog -Message $rpObjectIdNullError -EventID 9132 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName -Level Error
+                        throw
+                    }
                 }
 
-                $SetAzureStackHCIRegistrationScript = {
-                    Set-AzureStackHCIRegistration -ErrorAction Stop @Params
+                $serviceEndpoint = $resource.properties.serviceEndpoint
+                $appId = $resource.Properties.aadClientId
+                $cloudId = $resource.Properties.cloudId
+                $objectId = $resource.Properties.aadApplicationObjectId
+                $spObjectId = $resource.Properties.aadServicePrincipalObjectId
+
+                # Add certificate
+
+                Write-Progress -Id $MainProgressBarId -activity $RegisterProgressActivityName -status $GettingCertificateMessage -percentcomplete 70
+
+                $CertificatesToBeMaintained = @{}
+                $NewCertificateFailedNodes = [System.Collections.ArrayList]::new()
+                $SetCertificateFailedNodes = [System.Collections.ArrayList]::new()
+                $OSNotLatestOnNodes = [System.Collections.ArrayList]::new()
+
+                $TempServiceEndpoint = ""
+                $Authority = ""
+                $BillingServiceApiScope = ""
+                $GraphServiceApiScope = ""
+
+                Get-EnvironmentEndpoints -EnvironmentName $EnvironmentName -ServiceEndpoint ([ref]$TempServiceEndpoint ) -Authority ([ref]$Authority) -BillingServiceApiScope ([ref]$BillingServiceApiScope) -GraphServiceApiScope ([ref]$GraphServiceApiScope)
+
+                $setupCertsError = Setup-Certificates -ClusterNodes $clusterNodes -Credential $Credential -ResourceName $ResourceName -ObjectId $objectId -CertificateThumbprint $CertificateThumbprint -AppId $appId -TenantId $TenantId -CloudId $cloudId `
+                                    -ServiceEndpoint $ServiceEndpoint -BillingServiceApiScope $BillingServiceApiScope -GraphServiceApiScope $GraphServiceApiScope -Authority $Authority -NewCertificateFailedNodes $NewCertificateFailedNodes `
+                                    -SetCertificateFailedNodes $SetCertificateFailedNodes -OSNotLatestOnNodes $OSNotLatestOnNodes -CertificatesToBeMaintained $CertificatesToBeMaintained -ClusterDNSSuffix $clusterDNSSuffix -ResourceId $resourceId
+
+                Write-VerboseLog ("Setup-Certificates returned {0}" -f $setupCertsError)
+                if($null -ne $setupCertsError)
+                {
+                    Write-VerboseLog ("Setup-Certificates has failed")
+                    Write-ErrorLog -Message $setupCertsError -Category OperationStopped
+                    $resultValue = [OperationStatus]::Failed
+                    $setupCertificatesFailedWacErrorCode = 9109
+                    $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value $resultValue
+                    Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacResult -PropertyValue $resultValue.ToString() -Output $registrationOutput
+                    Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacErrorCode -PropertyValue $setupCertificatesFailedWacErrorCode -Output $registrationOutput
+                    Write-Output $registrationOutput | Format-List
+                    Write-NodeEventLog -Message $setupCertsError -EventID 9109 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName -Level Warning
+                    throw
                 }
 
-                Run-InvokeCommand -ScriptBlock $SetAzureStackHCIRegistrationScript -Session $clusterNodeSession -Params $Params
-                Write-VerboseLog ("Successfully performed: {0}" -f ($Params | Out-String))
-            }
-            catch
-            {
-                $errorMessage = $_.Exception.Message.ToString()
-                Write-VerboseLog ($SetAzureStackHCIRegistrationErrorMessage -f $errorMessage)
-                Write-ErrorLog ($SetAzureStackHCIRegistrationErrorMessage -f $errorMessage) -Category OperationStopped -Exception $_ -ErrorAction Continue
-                $resultValue = [OperationStatus]::Failed
-                $SetAzureStackHCIRegistrationnWacErrorCode = 1
-                $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value $resultValue
-                Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacResult -PropertyValue $resultValue.ToString() -Output $registrationOutput
-                Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacExceptionMessage -PropertyValue $errorMessage -Output $registrationOutput
-                Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacErrorCode  -PropertyValue $SetAzureStackHCIRegistrationnWacErrorCode -Output $registrationOutput
-                Write-Output $registrationOutput | Format-List
-                throw
+                if(($SetCertificateFailedNodes.Count -ge 1) -or ($NewCertificateFailedNodes.Count -ge 1))
+                {
+                    Write-VerboseLog ("Setup-Certificates failed on atleast one node")
+                    $SettingCertificateFailedMessage = $SettingCertificateFailed -f ($NewCertificateFailedNodes -join ","),($SetCertificateFailedNodes -join ",")
+                    Write-ErrorLog -Message $SettingCertificateFailedMessage -Category OperationStopped -ErrorAction Continue
+                    $resultValue = [OperationStatus]::Failed
+                    $SettingCertificateFailedWacErrorCode = 9110
+                    $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value $resultValue
+                    Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacResult -PropertyValue $resultValue.ToString() -Output $registrationOutput
+                    Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacErrorCode -PropertyValue $SettingCertificateFailedWacErrorCode -Output $registrationOutput
+                    Write-Output $registrationOutput | Format-List
+                    Write-NodeEventLog -Message $SettingCertificateFailedMessage -EventID 9110 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName -Level Warning
+                    throw
+                }
+
+                if($OSNotLatestOnNodes.Count -ge 1)
+                {
+                    $NotAllTheNodesInClusterAreGAError = $NotAllTheNodesInClusterAreGA -f ($OSNotLatestOnNodes -join ",")
+                    Write-ErrorLog -Message $NotAllTheNodesInClusterAreGAError -Category OperationStopped -ErrorAction Continue
+                    $resultValue = [OperationStatus]::Failed
+                    $NotAllTheNodesInClusterAreGAErrorWacErrorCode = 9111
+                    $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value $resultValue
+                    Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacResult -PropertyValue $resultValue.ToString() -Output $registrationOutput
+                    Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacErrorCode -PropertyValue $NotAllTheNodesInClusterAreGAErrorWacErrorCode -Output $registrationOutput
+                    Write-Output $registrationOutput | Format-List
+                    Write-NodeEventLog -Message $NotAllTheNodesInClusterAreGAError -EventID 9111 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName -Level Warning
+                    throw
+                }
+
+                Write-Progress -Id $MainProgressBarId -activity $RegisterProgressActivityName -status $RegisterAndSyncMetadataMessage -percentcomplete 90
+
+                # Register by calling on-prem usage service Cmdlet
+                try
+                {
+                    # Legacy certificate-based registration
+                        $Params = @{
+                            ServiceEndpoint = $ServiceEndpoint
+                            BillingServiceApiScope = $BillingServiceApiScope
+                            GraphServiceApiScope = $GraphServiceApiScope
+                            AADAuthority = $Authority
+                            AppId = $appId
+                            TenantId = $TenantId
+                            CloudId = $cloudId
+                            SubscriptionId = $SubscriptionId
+                            ObjectId = $objectId
+                            ResourceName = $ResourceName
+                            ProviderNamespace = "Microsoft.AzureStackHCI"
+                            ResourceArmId = $resourceId
+                            ServicePrincipalClientId = $spObjectId
+                            CertificateThumbprint = $CertificateThumbprint
+                        }
+
+                        $SetAzureStackHCIRegistrationScript = {
+                            Set-AzureStackHCIRegistration -ErrorAction Stop @Params
+                        }
+
+                        Write-VerboseLog ("Using certificate-based registration with full parameters")
+
+
+                    Run-InvokeCommand -ScriptBlock $SetAzureStackHCIRegistrationScript -Session $clusterNodeSession -Params $Params
+                    Write-VerboseLog ("Successfully performed Set-AzureStackHCIRegistration with params {0}" -f ($Params | Out-String))
+                }
+                catch
+                {
+                    $errorMessage = $_.Exception.Message.ToString()
+                    Write-VerboseLog ($SetAzureStackHCIRegistrationErrorMessage -f $errorMessage)
+                    Write-ErrorLog ($SetAzureStackHCIRegistrationErrorMessage -f $errorMessage) -Category OperationStopped -Exception $_ -ErrorAction Continue
+                    $resultValue = [OperationStatus]::Failed
+                    $SetAzureStackHCIRegistrationnWacErrorCode = 1
+                    $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value $resultValue
+                    Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacResult -PropertyValue $resultValue.ToString() -Output $registrationOutput
+                    Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacExceptionMessage -PropertyValue $errorMessage -Output $registrationOutput
+                    Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacErrorCode  -PropertyValue $SetAzureStackHCIRegistrationnWacErrorCode -Output $registrationOutput
+                    Write-Output $registrationOutput | Format-List
+                    throw
+                }
+
+                $operationStatus = [OperationStatus]::Success
             }
 
             $isCloudManagementFeatureEnabled = $false
@@ -3854,132 +4487,152 @@ Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacErrorCode  -
             }
 
             $operationStatus = [OperationStatus]::Success
-        }
-
-        if (ValidateCloudDeployment)
-        {
-            # Arc Enablement is not required for cloud based deployment
-            Sync-AzureStackHCI
-            Write-Progress -Id $MainProgressBarId -activity $RegisterProgressActivityName -status $AlreadyRegisteredArcMessageForCloudDeployment -percentcomplete 100
-            Write-VerboseLog("$AlreadyRegisteredArcMessageForCloudDeployment")
-        }
-        else
-        {
-            # Arc enablement starts here
-            Write-Progress -Id $MainProgressBarId -activity $RegisterProgressActivityName -status $RegisterArcMessage -percentcomplete 93
-            Write-VerboseLog ("$RegisterArcMessage")
-            $ArcCmdletsAbsentOnNodes = [System.Collections.ArrayList]::new()
-
-            Foreach ($clusNode in $clusterNodes)
+            if (ValidateCloudDeployment)
             {
-                $nodeSession = $null
-
-                try
-                {
-                    if($Credential -eq $Null)
-                    {
-                        $nodeSession = New-PSSession -ComputerName ($clusNode.Name + "." + $clusterDNSSuffix)
-                    }
-                    else
-                    {
-                        $nodeSession = New-PSSession -ComputerName ($clusNode.Name + "." + $clusterDNSSuffix) -Credential $Credential
-                    }
-                }
-                catch
-                {
-                    Write-VerboseLog ("Exception occurred in establishing new PSSession to $($clusNode.Name). ErrorMessage : " + $_.Exception.Message)
-                    Write-VerboseLog ($_)
-                    $ArcCmdletsAbsentOnNodes.Add($clusNode.Name) | Out-Null
-                    continue
-                }
-
-                # Check if node has Arc registration Cmdlets
-                $cmdlet = Invoke-Command -Session $nodeSession -ScriptBlock { Get-Command Get-AzureStackHCIArcIntegration -Type Cmdlet -ErrorAction Ignore }
-
-                if($cmdlet -eq $null)
-                {
-                    Write-VerboseLog ("Arc cmdlet not present on node : {0}" -f $clusNode.Name)
-                    $ArcCmdletsAbsentOnNodes.Add($clusNode.Name) | Out-Null
-                }
-
-                if($nodeSession -ne $null)
-                {
-                    Remove-PSSession $nodeSession -ErrorAction Ignore | Out-Null
-                }
+                # Arc Enablement is not required for cloud based deployment
+                Sync-AzureStackHCI
+                Write-Progress -Id $MainProgressBarId -activity $RegisterProgressActivityName -status $AlreadyRegisteredArcMessageForCloudDeployment -percentcomplete 100
+                Write-VerboseLog("$AlreadyRegisteredArcMessageForCloudDeployment")
             }
-
-            if($ArcCmdletsAbsentOnNodes.Count -ge 1)
+            elseif ($isRegistrationWithArcMsiCapable)
             {
-                $ArcCmdletsNotAvailableErrorMsg = $ArcCmdletsNotAvailableError -f ($ArcCmdletsAbsentOnNodes -join ",")
-                Write-ErrorLog -Message $ArcCmdletsNotAvailableErrorMsg -Category OperationStopped -ErrorAction Continue
-                $resultValue = [OperationStatus]::Failed
-                $ArcCmdletsNotAvailableWacErrorCode = 9112
-                $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value $resultValue
-                Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacResult -PropertyValue $resultValue.ToString() -Output $registrationOutput
-                Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacErrorCode  -PropertyValue $ArcCmdletsNotAvailableWacErrorCode -Output $registrationOutput
-                Write-Output $registrationOutput | Format-List
-                Write-NodeEventLog -Message $ArcCmdletsNotAvailableErrorMsg -EventID 9112 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName -Level Warning
-                throw
+                # Arc Enablement is not required when we support Arc MSI based cluster registration
+
+                #
+                # The OS version that supports Arc MSI based cluster registration does not support AAD APP based cluster registration.
+                # So, if it's registration with arc msi capable, we tried that and either passed || failed.
+                # Nothing else to do.
+                #
+                Sync-AzureStackHCI
+                Write-Progress -Id $MainProgressBarId -activity $RegisterProgressActivityName -status $AlreadyRegisteredArcMessageForArcMsi -percentcomplete 100
+                Write-VerboseLog("$AlreadyRegisteredArcMessageForArcMsi")
             }
             else
             {
-                $arcResourceId = $resourceId + $HCIArcInstanceName
+                # Arc enablement starts here
+                Write-Progress -Id $MainProgressBarId -activity $RegisterProgressActivityName -status $RegisterArcMessage -percentcomplete 93
+                Write-VerboseLog ("$RegisterArcMessage")
+                $ArcCmdletsAbsentOnNodes = [System.Collections.ArrayList]::new()
 
-                Write-VerboseLog ("checking if Arc resource $arcResourceId already exists")
-                
-                if($null -eq $arcres)
+                Foreach ($clusNode in $clusterNodes)
                 {
-                    Write-VerboseLog ("Arc Resource does not exist, create new resource")
-                    $arcInstanceResourceGroup = @{"arcInstanceResourceGroup" = $ArcServerResourceGroupName}
-                    $arcres = New-AzResource -ResourceId $arcResourceId -ApiVersion $HCIArcAPIVersion -PropertyObject $arcInstanceResourceGroup -Force
-                }
-                else
-                {
-                    Write-VerboseLog ("Arc Resource already exists")
-                    if ($arcres.Properties.aggregateState -eq $ArcSettingsDisableInProgressState)
+                    $nodeSession = $null
+
+                    try
                     {
-                        Write-ErrorLog -Message $ArcRegistrationDisableInProgressError -Category OperationStopped -ErrorAction Continue
-                        $resultValue = [OperationStatus]::Failed
-                        $ArcRegistrationDisableInProgressWacErrorCode = 9113
-                        $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value $resultValue
-                        Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacResult -PropertyValue $resultValue.ToString() -Output $registrationOutput
-                        Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacErrorCode  -PropertyValue $ArcRegistrationDisableInProgressWacErrorCode -Output $registrationOutput
-                        Write-Output $registrationOutput | Format-List
-                        Write-NodeEventLog -Message $ArcRegistrationDisableInProgressError  -EventID 9113 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName -Level Warning
-                        throw
+                        if ($Credential -eq $Null)
+                        {
+                            $nodeSession = New-PSSession -ComputerName ($clusNode.Name + "." + $clusterDNSSuffix)
+                        }
+                        else
+                        {
+                            $nodeSession = New-PSSession -ComputerName ($clusNode.Name + "." + $clusterDNSSuffix) -Credential $Credential
+                        }
+                    }
+                    catch
+                    {
+                        Write-VerboseLog ("Exception occurred in establishing new PSSession to $($clusNode.Name). ErrorMessage : " + $_.Exception.Message)
+                        Write-VerboseLog ($_)
+                        $ArcCmdletsAbsentOnNodes.Add($clusNode.Name) | Out-Null
+                        continue
+                    }
+
+                    # Check if node has Arc registration Cmdlets
+                    $cmdlet = Invoke-Command -Session $nodeSession -ScriptBlock { Get-Command Get-AzureStackHCIArcIntegration -Type Cmdlet -ErrorAction Ignore }
+
+                    if ($cmdlet -eq $null)
+                    {
+                        Write-VerboseLog ("Arc cmdlet not present on node : {0}" -f $clusNode.Name)
+                        $ArcCmdletsAbsentOnNodes.Add($clusNode.Name) | Out-Null
+                    }
+
+                    if ($nodeSession -ne $null)
+                    {
+                        Remove-PSSession $nodeSession -ErrorAction Ignore | Out-Null
                     }
                 }
 
-                Write-VerboseLog ("Register-AzStackHCI: Arc registration triggered. ArcResourceGroupName: $ArcServerResourceGroupName")
-
-                if($isDefaultExtensionSupported)
+                if ($ArcCmdletsAbsentOnNodes.Count -ge 1)
                 {
-                    Write-VerboseLog "Mandatory extensions are supported. Triggering installation for mandatory extensions."
-                    Execute-Without-ProgressBar -ScriptBlock { Invoke-AzResourceAction -ResourceId $arcResourceId -ApiVersion $HCIArcAPIVersion -Action consentAndInstallDefaultExtensions -Force } | Out-Null
-                }
-
-                try {
-                    $arcResult = Register-ArcForServers -IsManagementNode $IsManagementNode -ComputerName $ComputerName -Credential $Credential -TenantId $TenantId -SubscriptionId $SubscriptionId -ResourceGroup $ArcServerResourceGroupName -Region $Region -ArcSpnCredential $ArcSpnCredential -ClusterDNSSuffix $clusterDNSSuffix -IsWAC:$IsWAC -Environment:$EnvironmentName -ArcResource $arcres
-                }
-                catch {
-                    $resultValue = [OperationStatus]::ArcFailed
-                    $RegisterArcForServersWacErrorCode = 3
-                    $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyErrorDetail -Value $resultValue
+                    $ArcCmdletsNotAvailableErrorMsg = $ArcCmdletsNotAvailableError -f ($ArcCmdletsAbsentOnNodes -join ",")
+                    Write-ErrorLog -Message $ArcCmdletsNotAvailableErrorMsg -Category OperationStopped -ErrorAction Continue
+                    $resultValue = [OperationStatus]::Failed
+                    $ArcCmdletsNotAvailableWacErrorCode = 9112
+                    $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value $resultValue
                     Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacResult -PropertyValue $resultValue.ToString() -Output $registrationOutput
-                    Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacExceptionMessage -PropertyValue $_.Exception.Message.toString() -Output $registrationOutput
-                    Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacErrorCode  -PropertyValue $RegisterArcForServersWacErrorCode  -Output $registrationOutput
+                    Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacErrorCode  -PropertyValue $ArcCmdletsNotAvailableWacErrorCode -Output $registrationOutput
                     Write-Output $registrationOutput | Format-List
-                    throw $_.Exception.Message
+                    Write-NodeEventLog -Message $ArcCmdletsNotAvailableErrorMsg -EventID 9112 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName -Level Warning
+                    throw
                 }
-
-                if($arcResult -ne [ErrorDetail]::Success)
+                else
                 {
-                    $operationStatus = [OperationStatus]::RegisterSucceededButArcFailed
-                    $errorValue = $arcResult
-                    $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyErrorDetail -Value $errorValue
-                    Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacErrorDetail -PropertyValue $errorValue.ToString() -Output $registrationOutput
+                    $arcResourceId = $resourceId + $HCIArcInstanceName
+
+                    Write-VerboseLog ("checking if Arc resource $arcResourceId already exists")
+
+                    if($null -eq $arcres)
+                    {
+                        Write-VerboseLog ("Arc Resource does not exist, create new resource")
+                        $arcInstanceResourceGroup = @{"arcInstanceResourceGroup" = $ArcServerResourceGroupName }
+                        $arcres = New-AzResource -ResourceId $arcResourceId -ApiVersion $HCIArcAPIVersion -PropertyObject $arcInstanceResourceGroup -Force
+                    }
+                    else
+                    {
+                        Write-VerboseLog ("Arc Resource already exists")
+                        if ($arcres.Properties.aggregateState -eq $ArcSettingsDisableInProgressState)
+                        {
+                            Write-ErrorLog -Message $ArcRegistrationDisableInProgressError -Category OperationStopped -ErrorAction Continue
+                            $resultValue = [OperationStatus]::Failed
+                            $ArcRegistrationDisableInProgressWacErrorCode = 9113
+                            $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value $resultValue
+                            Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacResult -PropertyValue $resultValue.ToString() -Output $registrationOutput
+                            Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacErrorCode  -PropertyValue $ArcRegistrationDisableInProgressWacErrorCode -Output $registrationOutput
+                            Write-Output $registrationOutput | Format-List
+                            Write-NodeEventLog -Message $ArcRegistrationDisableInProgressError  -EventID 9113 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName -Level Warning
+                            throw
+                        }
+                    }
+
+                    Write-VerboseLog ("Register-AzStackHCI: Arc registration triggered. ArcResourceGroupName: $ArcServerResourceGroupName")
+
+
+                    try
+                    {
+                        $arcResult = Register-ArcForServers -IsManagementNode $IsManagementNode -ComputerName $ComputerName -Credential $Credential -TenantId $TenantId -SubscriptionId $SubscriptionId -ResourceGroup $ArcServerResourceGroupName -Region $Region -ArcSpnCredential $ArcSpnCredential -ClusterDNSSuffix $clusterDNSSuffix -IsWAC:$IsWAC -Environment:$EnvironmentName -ArcResource $arcres -HCIResource $resource -useStableAgentVersion:$useStableAgentVersion
+                    }
+                    catch
+                    {
+                        $resultValue = [OperationStatus]::ArcFailed
+                        $RegisterArcForServersWacErrorCode = 3
+                        $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyErrorDetail -Value $resultValue
+                        Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacResult -PropertyValue $resultValue.ToString() -Output $registrationOutput
+                        Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacExceptionMessage -PropertyValue $_.Exception.Message.toString() -Output $registrationOutput
+                        Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacErrorCode  -PropertyValue $RegisterArcForServersWacErrorCode  -Output $registrationOutput
+                        Write-Output $registrationOutput | Format-List
+                        throw $_.Exception.Message
+                    }
+
+                    if ($arcResult -ne [ErrorDetail]::Success)
+                    {
+                        $operationStatus = [OperationStatus]::RegisterSucceededButArcFailed
+                        $errorValue = $arcResult
+                        $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyErrorDetail -Value $errorValue
+                        Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacErrorDetail -PropertyValue $errorValue.ToString() -Output $registrationOutput
+                    }
                 }
             }
+        }
+
+        Write-VerboseLog ("Verifying Arc node linkage to cluster...")
+        $result = Test-ArcNodeClusterLink -ClusterNodes $ClusterNodes `
+            -SubscriptionId $SubscriptionId `
+            -ArcServerResourceGroupName $ArcServerResourceGroupName `
+            -ResourceId $ResourceId
+        if (-not $result) {
+            Write-Warning "Arc linkage verification failed for at least one node. Registration might be incomplete!"
+        } else {
+            Write-VerboseLog "All nodes verified as linked to the cluster."
         }
 
         Write-Progress -Id $MainProgressBarId -activity $RegisterProgressActivityName -Completed
@@ -4114,6 +4767,195 @@ function New-ClusterWithRetries {
     return $true
 }
 
+function Invoke-MSIUnregistrationFlow {
+    param(
+        [Parameter(Mandatory=$true)]
+        [array]$ClusterNodes,
+        [Parameter(Mandatory=$false)]
+        [System.Management.Automation.PSCredential]$Credential,
+        [Parameter(Mandatory=$true)]
+        [string]$ClusterDNSSuffix,
+        [Parameter(Mandatory=$true)]
+        [string]$ResourceId,
+        [Parameter(Mandatory=$true)]
+        [string]$RPAPIVersion,
+        [Parameter(Mandatory=$true)]
+        [string]$SubscriptionId,
+        [Parameter(Mandatory=$true)]
+        [System.Management.Automation.Runspaces.PSSession]$ClusterNodeSession,
+        [Parameter(Mandatory=$false)]
+        [bool]$IsManagementNode,
+        [Parameter(Mandatory=$false)]
+        [string]$ComputerName,
+        [Parameter(Mandatory=$false)]
+        [Switch]$IsWAC,
+        [Parameter(Mandatory=$false)]
+        [string]$ArcServerResourceGroupName,
+        [Parameter(Mandatory=$false)]
+        [Switch]$DisableOnlyAzureArcServer = $false,
+        [Parameter(Mandatory=$false)]
+        [PSCustomObject]$UnregistrationOutput,
+        [Parameter(Mandatory=$false)]
+        [Switch]$Force,
+        [Parameter(Mandatory=$true)]
+        [string]$ResourceName,
+        [Parameter(Mandatory=$true)]
+        [string]$ResourceGroupName,
+        [Parameter(Mandatory=$false)]
+        [string]$UnregistrationSuccessDetailsMessage,
+        [Parameter(Mandatory=$false)]
+        [int]$MainProgressBarId,
+        [Parameter(Mandatory=$false)]
+        [string]$UnregisterProgressActivityName
+    )
+
+    try {
+        Write-VerboseLog "[MSI Unregistration Flow] Starting MSI-based Arc cleanup."
+        Write-NodeEventLog -Message "[MSI Unregistration Flow] Starting MSI-based Arc cleanup." -EventID 9146 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName
+
+        # Get cluster name for logging
+        $clusterName = Invoke-Command -Session $ClusterNodeSession -ScriptBlock { (Get-Cluster).Name }
+
+        # Get Arc resource information
+        $arcResourceId = $ResourceId + $HCIArcInstanceName
+        $arcres = Get-AzResource -ResourceId $arcResourceId -ApiVersion $HCIArcAPIVersion -ErrorAction Ignore
+        $arcResourceExtensions = $arcResourceId + $HCIArcExtensions
+
+        if($null -ne $arcres)
+        {
+            Write-VerboseLog ("[MSI Unregistration Flow] Disabling Azure Arc for Servers Mandatory extensions")
+            Write-VerboseLog ("[MSI Unregistration Flow] Querying installed extensions")
+            $extensions = Get-AzResource -ResourceId $arcResourceExtensions -ApiVersion $HCIArcExtensionAPIVersion
+            $ArcResourceGroupName = $arcres.Properties.arcInstanceResourceGroup
+        }
+
+        $extensionsCleanupSucceeded = $true
+
+        if($null -ne $extensions)
+        {
+            # Remove extensions one by one. If -Force is passed write warning and proceed, else write error and stop
+            for($extIndex = 0; $extIndex -lt $extensions.Count; $extIndex++)
+            {
+                $extension = $extensions[$extIndex]
+
+                # Default extension not deleted completely
+                if($extension.Properties.managedBy -eq "Azure")
+                {
+                    Write-VerboseLog ("[MSI Unregistration Flow] Mandatory extension: {0} is not deleted" -f $extension.Name)
+                    continue
+                }
+
+                try
+                {
+                    $DeletingExtensionMessageProgress = $DeletingExtensionMessage -f $extension.Name, $clusterName
+                    Write-VerboseLog ("[MSI Unregistration Flow] $DeletingExtensionMessageProgress")
+                    Execute-Without-ProgressBar -ScriptBlock { Remove-AzResource -ResourceId $extension.ResourceId -ApiVersion $HCIArcExtensionAPIVersion -Force -ErrorAction Stop | Out-Null }
+                    Write-VerboseLog ("[MSI Unregistration Flow] Completed extension deletion {0}" -f $extension.Name)
+                }
+                catch
+                {
+                    $extensionsCleanupSucceeded = $false
+                    $positionMessage = $_.InvocationInfo.PositionMessage
+                    Write-VerboseLog ("[MSI Unregistration Flow] Exception occurred in removing extension " + $extension.Name + ". ErrorMessage: " + $_.Exception.Message + " PositionalMessage: " + $positionMessage)
+
+                    if($Force -eq $true)
+                    {
+                        $ArcExtensionCleanupFailedWarningMsg = $ArcExtensionCleanupFailedWarning -f $extension.Name
+                        Write-WarnLog ("[MSI Unregistration Flow] $ArcExtensionCleanupFailedWarningMsg")
+                    }
+                    else
+                    {
+                        $ArcExtensionCleanupFailedErrorMsg = $ArcExtensionCleanupFailedError -f $extension.Name
+                        Write-ErrorLog -Message "[MSI Unregistration Flow] $ArcExtensionCleanupFailedErrorMsg" -Exception $_ -ErrorAction Continue
+                    }
+                }
+            }
+        }
+        if(($Force -eq $false) -and ($extensionsCleanupSucceeded -eq $false))
+        {
+            Write-VerboseLog ("[MSI Unregistration Flow] Not completing ARC unregistration because of extension cleanup failures")
+            return @{ Success = $false; EarlyReturn = $false }
+        }
+
+        # Remove Arc integration on cluster (MSI-specific - doesn't unregister Arc agents)
+        Write-VerboseLog "[MSI Unregistration Flow] Removing Arc integration on cluster"
+        try {
+            Invoke-Command -Session $ClusterNodeSession -ScriptBlock { Clear-AzureStackHCIArcIntegration -RemoveConfiguration }
+            Write-VerboseLog "[MSI Unregistration Flow] Successfully unregistered cluster from Arc for Servers"
+        }
+        catch {
+            Write-WarnLog "[MSI Unregistration Flow] Failed to clear Arc integration: $($_.Exception.Message)"
+        }
+
+        # Clean up Arc settings resource
+        if($arcres -ne $Null)
+        {
+            $DeletingArcCloudResourceMessageProgress = $DeletingArcCloudResourceMessage -f $arcResourceId
+            Write-VerboseLog "[MSI Unregistration Flow] $DeletingArcCloudResourceMessageProgress"
+            Execute-Without-ProgressBar -ScriptBlock {Remove-AzResource -ResourceId $arcResourceId -ApiVersion $HCIArcAPIVersion -Force | Out-Null }
+        }
+
+        # Remove role assignments and clean up Arc resource group
+        if (-not([string]::IsNullOrEmpty($ArcResourceGroupName)))
+        {
+            # Removing Arc onboarding permissions from HCI RP App on Arc resource group
+            Remove-ArcRoleAssignments -ResourceGroupName $ArcResourceGroupName -ResourceId $ResourceId | Out-Null
+        }
+        
+        Write-VerboseLog "[MSI Unregistration Flow] MSI-based Arc cleanup completed successfully."
+        Write-NodeEventLog -Message "[MSI Unregistration Flow] MSI-based Arc cleanup completed successfully." -EventID 9147 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName
+
+        Write-VerboseLog "[MSI Flow] Proceeding with cluster registration context cleanup"
+
+        try {
+            # Check if cluster is registered before attempting removal
+            $RegContext = Invoke-Command -Session $ClusterNodeSession -ScriptBlock { Get-AzureStackHCI }
+
+            if($RegContext.RegistrationStatus -eq [RegistrationStatus]::Registered)
+            {
+                Invoke-Command -Session $ClusterNodeSession -ScriptBlock { Remove-AzureStackHCIRegistration }
+                Execute-Without-ProgressBar -ScriptBlock { Remove-AzResource -ResourceId $ResourceId -ApiVersion $RPAPIVersion -Force | Out-Null }
+                Write-VerboseLog "[MSI Flow] Successfully completed Remove-AzureStackHCIRegistration on cluster"
+            }
+            else
+            {
+                Write-VerboseLog "[MSI Flow] Cluster is not registered, skipping Remove-AzureStackHCIRegistration"
+            }
+            $operationStatus = [OperationStatus]::Success
+            
+            $UnregistrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value $operationStatus
+            Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacResult -PropertyValue $operationStatus.ToString() -Output $UnregistrationOutput
+
+            if ($operationStatus -eq [OperationStatus]::Success)
+            {
+                $UnregistrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyDetails -Value $UnregistrationSuccessDetailsMessage
+                Write-NodeEventLog -Message $UnregistrationSuccessDetailsMessage -EventID 9007 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName
+            }
+            
+            Write-Output $UnregistrationOutput | Format-List
+            return @{ Success = $true }
+            
+        } catch {
+            $operationStatus = [OperationStatus]::Failed
+            Write-ErrorLog "Failed to complete cluster registration context cleanup. Error: $($_.Exception.Message)"
+            Write-NodeEventLog -Message "Failed to complete cluster registration context cleanup in MSI flow" -EventID 9148 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName -Level Warning
+            $UnregistrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value $operationStatus
+            Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacResult -PropertyValue $operationStatus.ToString() -Output $UnregistrationOutput
+            Write-Output $UnregistrationOutput | Format-List
+
+            return @{ Success = $false }
+        }
+    }
+    catch {
+        $positionMessage = $_.InvocationInfo.PositionMessage
+        $msiErrorMessage = "Exception: Function={0}, Line={1}, Error={2}" -f $_.InvocationInfo.InvocationName, $_.InvocationInfo.ScriptLineNumber, $_.Exception.Message
+
+        Write-NodeEventLog -Message ("Exception occurred in Invoke-MSIUnregistrationFlow: " + $positionMessage + " Details: " + $msiErrorMessage) -EventID 9149 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName -Level Warning
+        Write-ErrorLog ("Unregistration Failed: " + $msiErrorMessage) -Exception $_ -Category OperationStopped -ErrorAction Continue
+        return @{ Success = $false }
+    }
+}
+
 <#
     .Description
     Unregister-AzStackHCI deletes the Microsoft.AzureStackHCI cloud resource representing the on-premises cluster and unregisters the on-premises cluster with Azure.
@@ -4141,7 +4983,7 @@ function New-ClusterWithRetries {
     GraphAccessToken is deprecated.
 
     .PARAMETER AccountId
-    Specifies the AccoundId. Specifying this along with ArmAccessToken will avoid Azure interactive logon.
+    Specifies the AccountId. Specifying this along with ArmAccessToken will avoid Azure interactive logon.
 
     .PARAMETER EnvironmentName
     Specifies the Azure Environment. Default is AzureCloud. Valid values are AzureCloud, AzureChinaCloud, AzurePPE, AzureCanary, AzureUSGovernment
@@ -4328,34 +5170,75 @@ param(
 
             $TenantId = Azure-Login -SubscriptionId $SubscriptionId -TenantId $TenantId -ArmAccessToken $ArmAccessToken -GraphAccessToken $GraphAccessToken -AccountId $AccountId -EnvironmentName $EnvironmentName -ProgressActivityName $UnregisterProgressActivityName -UseDeviceAuthentication $UseDeviceAuthentication -Region $Region
 
-            Write-Progress -Id $MainProgressBarId -activity $UnregisterProgressActivityName -status $UnregisterArcMessage -percentcomplete 40
             
-            if ($EnvironmentName -ne $AzureLocal)
-            {
-                $arcUnregisterRes = Unregister-ArcForServers -IsManagementNode $IsManagementNode -ComputerName $ComputerName -Credential $Credential -ResourceId $resourceId -Force:$Force -ClusterDNSSuffix $clusterDNSSuffix
+            $IsMsiFlow = $false
+            try {
+                $IsMsiFlow = Test-ClusterMsiSupport -ClusterNodeSession $clusterNodeSession
+                Write-VerboseLog "MSI Flow Detection: $IsMsiFlow"
+            } catch {
+                    Write-VerboseLog "Could not determine MSI support, defaulting to certificate-based flow"
+                    $IsMsiFlow = $false
+            }
 
-                if($arcUnregisterRes -eq $false)
+            if ($EnvironmentName -ne $AzureLocal) 
+            {
+                if ($IsMsiFlow)
                 {
-                    $resultValue = [OperationStatus]::Failed
-                    $unregisterArcForServersWacErrorCode = 9117
-                    $unregistrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value $resultValue
-                    Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacResult -PropertyValue $resultValue.ToString() -Output $unregistrationOutput
-                    Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacErrorCode -PropertyValue $unregisterArcForServersWacErrorCode -Output $unregistrationOutput
-                    Write-Output $unregistrationOutput | Format-List
-                    Write-NodeEventLog -Message "ARC unregistration failed" -EventID 9117 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName -Level Warning
-                    return
+                    Write-VerboseLog "[Unregistration] Using MSI unregistration flow - replacing Unregister-ArcForServers"
+                    # MSI flow handles everything that Unregister-ArcForServers would do, but preserves Arc agents
+                    $clusterNodes = Invoke-Command -Session $clusterNodeSession -ScriptBlock { Get-ClusterNode }
+                    $msiUnregResult = Invoke-MSIUnregistrationFlow -ClusterNodes $clusterNodes -Credential $Credential -ClusterDNSSuffix $clusterDNSSuffix -ResourceId $resourceId -RPAPIVersion $RPAPIVersion -SubscriptionId $SubscriptionId -ClusterNodeSession $clusterNodeSession -IsManagementNode $IsManagementNode -ComputerName $ComputerName -IsWAC:$IsWAC -ArcServerResourceGroupName $ArcServerResourceGroupName -DisableOnlyAzureArcServer:$DisableOnlyAzureArcServer -UnregistrationOutput $unregistrationOutput -Force:$Force -ResourceName $ResourceName -ResourceGroupName $ResourceGroupName -UnregistrationSuccessDetailsMessage $UnregistrationSuccessDetailsMessage -MainProgressBarId $MainProgressBarId -UnregisterProgressActivityName $UnregisterProgressActivityName
+                    $arcUnregisterRes = [bool]($msiUnregResult -and $msiUnregResult.Success)
+                    $arcUnregFailureErrorCode = 9140
+                    $arcFailureEventId        = 9140
+                    $arcDisableOnlySuccessEvt = 9141
                 }
                 else
                 {
-                    if ($DisableOnlyAzureArcServer -eq $true)
-                    {
-                        $resultValue = [OperationStatus]::Success
+                    Write-VerboseLog "[Unregistration] Using legacy Unregister-ArcForServers flow"
+                    Write-Progress -Id $MainProgressBarId -activity $UnregisterProgressActivityName -status $UnregisterArcMessage -percentcomplete 50
+                    $arcUnregisterRes = Unregister-ArcForServers -IsManagementNode $IsManagementNode -ComputerName $ComputerName -Credential $Credential -ResourceId $resourceId -Force:$Force -ClusterDNSSuffix $clusterDNSSuffix
+                    Write-Progress -Id $MainProgressBarId -activity $UnregisterProgressActivityName -status $UnregisterArcMessage -percentcomplete 100
+                    $arcUnregFailureErrorCode = 9117
+                    $arcFailureEventId        = 9117
+                    $arcDisableOnlySuccessEvt = 9008
+                }
+
+                if (-not $arcUnregisterRes)
+                {
+                    Write-ErrorLog ("Unregistration flow failed")
+                    $resultValue = [OperationStatus]::Failed
+                    $unregistrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value $resultValue
+                    Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacResult     -PropertyValue $resultValue.ToString() -Output $unregistrationOutput
+                    Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacErrorCode  -PropertyValue $arcUnregFailureErrorCode -Output $unregistrationOutput
+                    Write-Output $unregistrationOutput | Format-List
+                    Write-NodeEventLog -Message ("Unregistration failed") -EventID $arcFailureEventId -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName -Level Warning
+                    return
+                }
+
+                if ($DisableOnlyAzureArcServer)
+                {
+                    Write-VerboseLog ("[Unregistration] DisableOnlyAzureArcServer specified, Arc cleanup completed, stopping here")
+                    $resultValue = [OperationStatus]::Success
+                    $unregistrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value $resultValue
+                    Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacResult -PropertyValue $resultValue.ToString() -Output $unregistrationOutput
+                    Write-Output $unregistrationOutput | Format-List
+                    $msg = ("Disabling only ARC for Servers. UnRegistration completed successfully")
+                    Write-NodeEventLog -Message $msg -EventID $arcDisableOnlySuccessEvt -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName
+                    return
+                }
+
+                if ($IsMsiFlow)
+                {
+                    $resultValue = [OperationStatus]::Success
+                    if (-not ($unregistrationOutput.PSObject.Properties.Name -contains $OutputPropertyResult)) {
                         $unregistrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value $resultValue
-                        Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacResult -PropertyValue $resultValue.ToString() -Output $unregistrationOutput
-                        Write-Output $unregistrationOutput | Format-List
-                        Write-NodeEventLog -Message "Disabling only ARC for Servers. UnRegistration completed successfully" -EventID 9008 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName
-                        return
                     }
+                    if (-not ($unregistrationOutput.PSObject.Properties.Name -contains $OutputPropertyWacResult)) {
+                        Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacResult -PropertyValue $resultValue.ToString() -Output $unregistrationOutput
+                    }
+                    Write-Output $unregistrationOutput | Format-List
+                    return
                 }
             }
 
@@ -4727,7 +5610,18 @@ function Get-SetupLoggingDetails
 
     if($isManagementNode)
     {
-        $ComputerNameWithDNSSuffix = $ComputerName + '.' + (Get-WmiObject Win32_ComputerSystem).Domain
+        $computerNameHasDNSSuffix = Test-ComputerNameHasDnsSuffix -ComputerName $ComputerName
+            
+        if ($computerNameHasDNSSuffix -eq $true)
+        {
+            $ComputerNameWithDNSSuffix = $ComputerName
+        }
+        else
+        {
+            $DNSSuffix = (Get-ItemProperty 'HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters').Domain
+            $ComputerNameWithDNSSuffix = $ComputerName + '.' + $DNSSuffix
+        }
+
         $nodeSessionParams.Add('ComputerName', $ComputerNameWithDNSSuffix)
 
         if($null -ne $Credential)

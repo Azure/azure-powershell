@@ -15,21 +15,22 @@
 namespace Microsoft.Azure.Commands.Network
 {
     using AutoMapper;
+    using Microsoft.Azure.Commands.Network.Models;
+    using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+    using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+    using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+    using Microsoft.Azure.Management.Network;
+    using Microsoft.Azure.Management.Network.Models;
+    using Microsoft.WindowsAzure.Commands.Common;
     using System;
     using System.Collections;
     using System.Collections.Generic;
+    using System.IO;
+    using System.Linq;
     using System.Management.Automation;
     using System.Security;
-    using Microsoft.Azure.Commands.Network.Models;
-    using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
-    using Microsoft.Azure.Management.Network;
-    using Microsoft.WindowsAzure.Commands.Common;
-    using MNM = Microsoft.Azure.Management.Network.Models;
-    using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-    using System.Linq;
-    using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
     using System.Security.Cryptography.X509Certificates;
-    using System.IO;
+    using MNM = Microsoft.Azure.Management.Network.Models;
 
     [Cmdlet("Update",
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VpnServerConfiguration",
@@ -286,6 +287,28 @@ namespace Microsoft.Azure.Commands.Network
                 throw new PSArgumentException(Properties.Resources.VpnServerConfigurationNotFound);
             }
 
+            // Fetch Radius server secrets using new Post API and backfill before calling PUT.
+            var radiusAuthServers = new List<RadiusAuthServer>();
+            if (vpnServerConfigurationToUpdate.VpnAuthenticationTypes != null && vpnServerConfigurationToUpdate.VpnAuthenticationTypes.Contains(MNM.VpnAuthenticationType.Radius))
+            {
+                radiusAuthServers = (List<RadiusAuthServer>)this.VpnServerConfigurationClient.ListRadiusSecrets(vpnServerConfigurationToUpdate.ResourceGroupName, vpnServerConfigurationToUpdate.Name).Value;
+                if (radiusAuthServers != null && radiusAuthServers.Any())
+                {
+                    if (!string.IsNullOrWhiteSpace(vpnServerConfigurationToUpdate.RadiusServerAddress) && string.IsNullOrWhiteSpace(vpnServerConfigurationToUpdate.RadiusServerSecret))
+                    {
+                        vpnServerConfigurationToUpdate.RadiusServerSecret = radiusAuthServers.Find(radius => radius.RadiusServerAddress == vpnServerConfigurationToUpdate.RadiusServerAddress).RadiusServerSecret ?? "";
+                    }
+
+                    if (vpnServerConfigurationToUpdate.RadiusServers != null && vpnServerConfigurationToUpdate.RadiusServers.Any())
+                    {
+                        foreach (var radiusServer in vpnServerConfigurationToUpdate.RadiusServers)
+                        {
+                            radiusServer.RadiusServerSecret = radiusAuthServers.Find(radius => radius.RadiusServerAddress == radiusServer.RadiusServerAddress).RadiusServerSecret ?? "";
+                        }
+                    }
+                }
+            }
+
             if (this.VpnProtocol != null)
             {
                 vpnServerConfigurationToUpdate.VpnProtocols = new List<string>(this.VpnProtocol);
@@ -468,7 +491,7 @@ namespace Microsoft.Azure.Commands.Network
                         if (vpnServerConfigurationToUpdate.VpnAuthenticationTypes.Count() == 1)
                         {
                             throw new ArgumentException(Properties.Resources.VpnMultiAuthIkev2OpenvpnOnlyAad);
-                        } 
+                        }
                         else if (vpnServerConfigurationToUpdate.VpnAuthenticationTypes.Count() > 1)
                         {
                             if (!ShouldContinue(Properties.Resources.VpnMultiAuthIkev2OpenvpnAadWarning, Properties.Resources.ConfirmMessage))

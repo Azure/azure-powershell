@@ -2,9 +2,10 @@
   <PropertyGroup>
     <PsModuleName>MariaDb</PsModuleName>
     <PsRootModuleName>MariaDb</PsRootModuleName>
+    <PsModuleFolder>MariaDb.Autorest</PsModuleFolder>
+    <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.MariaDb</RootNamespace>
   </PropertyGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.autorest.props" />
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
-
 </Project>
