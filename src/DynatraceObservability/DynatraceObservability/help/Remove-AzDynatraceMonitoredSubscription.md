@@ -1,51 +1,74 @@
 ---
 external help file: Az.DynatraceObservability-help.xml
 Module Name: Az.DynatraceObservability
-online version: https://learn.microsoft.com/powershell/module/az.dynatraceobservability/get-azdynatracemonitorlinkableenv
+online version: https://learn.microsoft.com/powershell/module/az.dynatraceobservability/remove-azdynatracemonitoredsubscription
 schema: 2.0.0
 ---
 
-# Get-AzDynatraceMonitorLinkableEnv
+# Remove-AzDynatraceMonitoredSubscription
 
 ## SYNOPSIS
-Gets all the Dynatrace environments that a user can link a azure resource to
+Delete the subscriptions that are being monitored by the Dynatrace monitor resource
 
 ## SYNTAX
 
-### ListExpanded (Default)
+### Delete (Default)
 ```
-Get-AzDynatraceMonitorLinkableEnv -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- -Region <String> -TenantId <String> -UserPrincipal <String> [-DefaultProfile <PSObject>]
+Remove-AzDynatraceMonitoredSubscription -MonitorName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ListViaJsonFilePath
+### DeleteViaIdentity
 ```
-Get-AzDynatraceMonitorLinkableEnv -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### ListViaJsonString
-```
-Get-AzDynatraceMonitorLinkableEnv -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- -JsonString <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzDynatraceMonitoredSubscription -InputObject <IDynatraceObservabilityIdentity>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets all the Dynatrace environments that a user can link a azure resource to
+Delete the subscriptions that are being monitored by the Dynatrace monitor resource
 
 ## EXAMPLES
 
-### Example 1: Gets all the Dynatrace environments that a user can link a azure resource
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzDynatraceMonitorLinkableEnv -ResourceGroupName dyobrg -Name dyob-pwsh01 -Region 'East US' -UserPrincipal 'user@microsoft.com' -TenantId 'xxxxxxxx-xxxxx-xxxx-xxxx-xxxxx'
+{{ Add code here }}
 ```
 
-This command gets all the Dynatrace environments that a user can link a azure resource.
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
+
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -63,42 +86,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -JsonFilePath
-Path of Json file supplied to the List operation
+### -InputObject
+Identity Parameter
 
 ```yaml
-Type: System.String
-Parameter Sets: ListViaJsonFilePath
+Type: Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceObservabilityIdentity
+Parameter Sets: DeleteViaIdentity
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -JsonString
-Json string supplied to the List operation
-
-```yaml
-Type: System.String
-Parameter Sets: ListViaJsonString
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
+### -MonitorName
 Monitor resource name
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -108,15 +116,30 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Region
-Azure region in which we want to link the environment
+### -NoWait
+Run the command asynchronously
 
 ```yaml
-Type: System.String
-Parameter Sets: ListExpanded
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+Returns true when the command succeeds
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -129,7 +152,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -144,43 +167,13 @@ The ID of the target subscription.
 The value must be an UUID.
 
 ```yaml
-Type: System.String[]
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: Delete
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TenantId
-Tenant Id of the user in which they want to link the environment
-
-```yaml
-Type: System.String
-Parameter Sets: ListExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -UserPrincipal
-user principal id of the user
-
-```yaml
-Type: System.String
-Parameter Sets: ListExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -221,9 +214,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceObservabilityIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ILinkableEnvironmentResponse
+### System.Boolean
 
 ## NOTES
 

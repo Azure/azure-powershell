@@ -1,48 +1,65 @@
 ---
 external help file: Az.DynatraceObservability-help.xml
 Module Name: Az.DynatraceObservability
-online version: https://learn.microsoft.com/powershell/module/az.dynatraceobservability/remove-azdynatracemonitor
+online version: https://learn.microsoft.com/powershell/module/az.dynatraceobservability/new-azdynatracemonitoredsubscription
 schema: 2.0.0
 ---
 
-# Remove-AzDynatraceMonitor
+# New-AzDynatraceMonitoredSubscription
 
 ## SYNOPSIS
-Delete a MonitorResource
+Add the subscriptions that should be monitored by the Dynatrace monitor resource.
 
 ## SYNTAX
 
-### Delete (Default)
+### CreateExpanded (Default)
 ```
-Remove-AzDynatraceMonitor -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+New-AzDynatraceMonitoredSubscription -MonitorName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-MonitoredSubscriptionList <IMonitoredSubscription[]>] [-Operation <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
-### DeleteViaIdentity
+### CreateViaJsonFilePath
 ```
-Remove-AzDynatraceMonitor -InputObject <IDynatraceObservabilityIdentity> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzDynatraceMonitoredSubscription -MonitorName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzDynatraceMonitoredSubscription -MonitorName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Delete a MonitorResource
+Add the subscriptions that should be monitored by the Dynatrace monitor resource.
 
 ## EXAMPLES
 
-### Example 1: Remove a dynatrace monitor
+### Example 1: {{ Add title here }}
 ```powershell
-Remove-AzDynatraceMonitor -ResourceGroupName dyobrg -Name dyob-pwsh02
+{{ Add code here }}
 ```
 
-This command removes a dynatrace monitor.
-
-### Example 2: Remove a dynatrace monitor by pipeline
-```powershell
-Get-AzDynatraceMonitor -ResourceGroupName dyobrg -Name dyob-pwsh02 | Remove-AzDynatraceMonitor
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-This command removes a dynatrace monitor by pipeline.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -77,28 +94,58 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
+### -JsonFilePath
+Path of Json file supplied to the Create operation
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceObservabilityIdentity
-Parameter Sets: DeleteViaIdentity
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MonitoredSubscriptionList
+List of subscriptions and the state of the monitoring.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitoredSubscription[]
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MonitorName
 Monitor resource name
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
-Aliases: MonitorName
+Parameter Sets: (All)
+Aliases:
 
 Required: True
 Position: Named
@@ -122,12 +169,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Returns true when the command succeeds
+### -Operation
+The operation for the patch on the resource.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -143,7 +190,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -159,7 +206,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -205,11 +252,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceObservabilityIdentity
-
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitoredSubscriptionProperties
 
 ## NOTES
 
