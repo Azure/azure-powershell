@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Migrate-help.xml
 Module Name: Az.Migrate
 online version: https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratenicmapping
 schema: 2.0.0
@@ -13,9 +13,9 @@ Creates an object to update NIC properties of a replicating server.
 ## SYNTAX
 
 ```
-New-AzMigrateNicMapping -NicID <String> [-TargetNicIP <String>] [-TargetNicName <String>]
- [-TargetNicSelectionType <String>] [-TargetNicSubnet <String>] [-TestNicIP <String>]
- [-TestNicSubnet <String>] [<CommonParameters>]
+New-AzMigrateNicMapping -NicID <String> [-TargetNicSelectionType <String>] [-TargetNicSubnet <String>]
+ [-TargetNicName <String>] [-TargetNicIP <String>] [-TestNicSubnet <String>] [-TestNicIP <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -156,4 +156,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

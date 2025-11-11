@@ -102,11 +102,7 @@ param(
         $hasApplianceName = $PSBoundParameters.ContainsKey("ApplianceName")
         
         $discoverySolutionName = "Servers-Discovery-ServerDiscovery"
-        $discoverySolution = Get-AzMigrateSolution `
-            -SubscriptionId $SubscriptionId `
-            -ResourceGroupName $ResourceGroupName `
-            -MigrateProjectName $ProjectName `
-            -Name $discoverySolutionName
+        $discoverySolution = Az.Migrate.private\Get-AzMigrateSolution_Get -SubscriptionId $SubscriptionId -ResourceGroupName $ResourceGroupName -MigrateProjectName $ProjectName -Name $discoverySolutionName
         if ($discoverySolution.Name -ne $discoverySolutionName)
         {
             throw "Server Discovery Solution not found."

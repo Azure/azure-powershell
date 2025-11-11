@@ -185,34 +185,37 @@ function Get-AzMigrateLocalServerReplication {
                 throw "Unknown machine site '$siteName' with Type '$siteType'."
             }
             
-            # Occasionally, Get Machine Site will not return machine site even when the site exist,
-            # hence retry get machine site.
             if ($siteType -eq $SiteTypes.VMwareSites) {
-                $siteObject = InvokeAzMigrateGetCommandWithRetries `
-                    -CommandName 'Get-AzMigrateSite' `
-                    -Parameters $PSBoundParameters `
-                    -ErrorMessage "Machine site '$siteName' with Type '$siteType' not found."
+                $siteObject = Az.Migrate.private\Get-AzMigrateSite_Get @PSBoundParameters `
+                    -ErrorVariable notPresent `
+                    -ErrorAction SilentlyContinue
             } elseif ($siteType -eq $SiteTypes.HyperVSites) {
-                $siteObject = InvokeAzMigrateGetCommandWithRetries `
-                    -CommandName 'Az.Migrate.Internal\Get-AzMigrateHyperVSite' `
-                    -Parameters $PSBoundParameters `
-                    -ErrorMessage "Machine site '$siteName' with Type '$siteType' not found."
+                $siteObject = Az.Migrate.Internal\Get-AzMigrateHyperVSite @PSBoundParameters `
+                    -ErrorVariable notPresent `
+                    -ErrorAction SilentlyContinue
+            }
+
+            $null = $PSBoundParameters.Remove('SiteName')
+
+            if ($null -eq $siteObject)
+            {
+                throw "Machine site '$siteName' with Type '$siteType' not found. Please verify in your Azure Migrate project resource group '$ResourceGroupName' and re-run this command if exists."
             }
 
             # $siteObject is not null or exception would have been thrown
             $ProjectName = $siteObject.DiscoverySolutionId.Split("/")[8]
-
-            $null = $PSBoundParameters.Remove('SiteName')
 
             # Get the migrate solution.
             $amhSolutionName = $AzMigrateSolutions.DataReplicationSolution
             $null = $PSBoundParameters.Add("Name", $amhSolutionName)
             $null = $PSBoundParameters.Add("MigrateProjectName", $ProjectName)
 
-            $solution = InvokeAzMigrateGetCommandWithRetries `
-                -CommandName 'Get-AzMigrateSolution' `
-                -Parameters $PSBoundParameters `
-                -ErrorMessage "No Data Replication Service Solution '$amhSolutionName' found in resource group '$ResourceGroupName' and project '$ProjectName'. Please verify your appliance setup."
+            $solution = Az.Migrate.private\Get-AzMigrateSolution_Get @PSBoundParameters `
+                -ErrorVariable notPresent `
+                -ErrorAction SilentlyContinue
+            if ($null -ne $solution -and ($solution.Count -ge 1)) {
+                throw "No Data Replication Service Solution '$amhSolutionName' found in resource group '$ResourceGroupName' and project '$ProjectName'. Please verify your appliance setup."
+            }
 
             $null = $PSBoundParameters.Remove("Name")
             $null = $PSBoundParameters.Remove("MigrateProjectName")
@@ -246,10 +249,12 @@ function Get-AzMigrateLocalServerReplication {
             $null = $PSBoundParameters.Add("Name", $amhSolutionName)
             $null = $PSBoundParameters.Add("MigrateProjectName", $ProjectName)
 
-            $solution = InvokeAzMigrateGetCommandWithRetries `
-                -CommandName 'Get-AzMigrateSolution' `
-                -Parameters $PSBoundParameters `
-                -ErrorMessage "No Data Replication Service Solution '$amhSolutionName' found in resource group '$ResourceGroupName' and project '$ProjectName'. Please verify your appliance setup."
+            $solution = Az.Migrate.private\Get-AzMigrateSolution_Get @PSBoundParameters `
+                -ErrorVariable notPresent `
+                -ErrorAction SilentlyContinue
+            if ($null -ne $solution -and ($solution.Count -ge 1)) {
+                throw "No Data Replication Service Solution '$amhSolutionName' found in resource group '$ResourceGroupName' and project '$ProjectName'. Please verify your appliance setup."
+            }
 
             $null = $PSBoundParameters.Remove("Name")
             $null = $PSBoundParameters.Remove("MigrateProjectName")

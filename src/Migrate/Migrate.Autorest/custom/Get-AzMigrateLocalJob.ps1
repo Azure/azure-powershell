@@ -205,35 +205,42 @@ param(
         Import-Module $helperPath
 
         $parameterSet = $PSCmdlet.ParameterSetName
+        $null = $PSBoundParameters.Remove('ID')
+        $null = $PSBoundParameters.Remove('ResourceGroupName')
+        $null = $PSBoundParameters.Remove('ProjectName')
+        $null = $PSBoundParameters.Remove('Name')
+        $null = $PSBoundParameters.Remove('InputObject')
+        $null = $PSBoundParameters.Remove('ResourceGroupID')
+        $null = $PSBoundParameters.Remove('ProjectID')
+
         if (($parameterSet -match 'Name') -or ($parameterSet -eq 'ListById'))
         {
             if ($parameterSet -eq 'ListById')
             {
                 $ProjectIdArray = $ProjectID.Split("/")
-                if ($ProjectIdArray.Length -lt 9) {
+                if ($ProjectIdArray.Length -lt 9)
+                {
                     throw "Invalid Project ID '$ProjectID'"
                 }
                 $ProjectName = $ProjectIdArray[8]
                 $ResourceGroupName = $ResourceGroupID.Split("/")[4]
             }
 
-            # Get the data replication solution
+            # Get the migrate solution.
             $amhSolutionName = $AzMigrateSolutions.DataReplicationSolution
-            $amhSolution = InvokeAzMigrateGetCommandWithRetries `
-                -CommandName "Get-AzMigrateSolution" `
-                -Parameters @{
-                    "SubscriptionId" = $SubscriptionId;
-                    "ResourceGroupName" = $ResourceGroupName;
-                    "MigrateProjectName" = $ProjectName;
-                    "Name" = $amhSolutionName;
-                } `
-                -ErrorMessage "No Data Replication Service Solution '$amhSolutionName' found. Please verify your appliance setup."
+            $null = $PSBoundParameters.Add("ResourceGroupName", $ResourceGroupName)
+            $null = $PSBoundParameters.Add("Name", $amhSolutionName)
+            $null = $PSBoundParameters.Add("MigrateProjectName", $ProjectName)
 
-            if ($amhSolution -and ($amhSolution.Count -ge 1))
+            $solution = Az.Migrate.private\Get-AzMigrateSolution_Get @PSBoundParameters `
+                -ErrorVariable notPresent `
+                -ErrorAction SilentlyContinue
+            if ($null -ne $solution -and ($solution.Count -ge 1))
             {
-                $vaultId = $amhSolution.DetailExtendedDetail["vaultId"]
+                $vaultId = $solution.DetailExtendedDetail["vaultId"]
                 $vaultIdArray = $vaultId.Split("/")
-                if ($vaultIdArray.Length -lt 9) {
+                if ($vaultIdArray.Length -lt 9)
+                {
                     throw "Invalid Vault ID '$vaultId'"
                 }
                 $vaultName = $vaultIdArray[8]
@@ -242,6 +249,10 @@ param(
             {
                 throw "Solution not found."
             }
+
+            $null = $PSBoundParameters.Remove("ResourceGroupName")
+            $null = $PSBoundParameters.Remove("Name")
+            $null = $PSBoundParameters.Remove("MigrateProjectName")
         }
         else
         {
@@ -261,22 +272,14 @@ param(
             $Name = $jobIdArray[10]
         }
         
+        $null = $PSBoundParameters.Add('ResourceGroupName', $ResourceGroupName)
+        $null = $PSBoundParameters.Add('VaultName', $vaultName)
+
         if ($parameterSet -match 'Get')
         {
-            return Az.Migrate.Internal\Get-AzMigrateLocalReplicationJob `
-                -ResourceGroupName $ResourceGroupName `
-                -VaultName $vaultName `
-                -JobName $Name `
-                -ErrorVariable notPresent `
-                -ErrorAction SilentlyContinue
+            $null = $PSBoundParameters.Add('JobName', $Name)
         }
-        else
-        {
-            return Az.Migrate.Internal\Get-AzMigrateLocalReplicationJob `
-                -ResourceGroupName $ResourceGroupName `
-                -VaultName $vaultName `
-                -ErrorVariable notPresent `
-                -ErrorAction SilentlyContinue
-        }
+
+        return  Az.Migrate.Internal\Get-AzMigrateLocalReplicationJob @PSBoundParameters
     }
 }

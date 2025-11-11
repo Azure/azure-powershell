@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Migrate-help.xml
 Module Name: Az.Migrate
 online version: https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratereplicationprotectioncontainermapping
 schema: 2.0.0
@@ -15,20 +15,23 @@ Gets the details of a protection container mapping.
 ### List1 (Default)
 ```
 Get-AzMigrateReplicationProtectionContainerMapping -ResourceGroupName <String> -ResourceName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### List
+```
+Get-AzMigrateReplicationProtectionContainerMapping -FabricName <String> -ProtectionContainerName <String>
+ -ResourceGroupName <String> -ResourceName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzMigrateReplicationProtectionContainerMapping -FabricName <String> -MappingName <String>
  -ProtectionContainerName <String> -ResourceGroupName <String> -ResourceName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentityReplicationFabric
-```
-Get-AzMigrateReplicationProtectionContainerMapping -MappingName <String> -ProtectionContainerName <String>
- -ReplicationFabricInputObject <IMigrateIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentityReplicationProtectionContainer
@@ -38,10 +41,10 @@ Get-AzMigrateReplicationProtectionContainerMapping -MappingName <String>
  [<CommonParameters>]
 ```
 
-### List
+### GetViaIdentityReplicationFabric
 ```
-Get-AzMigrateReplicationProtectionContainerMapping -FabricName <String> -ProtectionContainerName <String>
- -ResourceGroupName <String> -ResourceName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+Get-AzMigrateReplicationProtectionContainerMapping -MappingName <String> -ProtectionContainerName <String>
+ -ReplicationFabricInputObject <IMigrateIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -86,7 +89,7 @@ Fabric name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -101,7 +104,7 @@ Protection Container mapping name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentityReplicationFabric, GetViaIdentityReplicationProtectionContainer
+Parameter Sets: Get, GetViaIdentityReplicationProtectionContainer, GetViaIdentityReplicationFabric
 Aliases:
 
 Required: True
@@ -116,7 +119,7 @@ Protection container name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentityReplicationFabric, List
+Parameter Sets: List, Get, GetViaIdentityReplicationFabric
 Aliases:
 
 Required: True
@@ -161,7 +164,7 @@ The name of the resource group where the recovery services vault is present.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List, List1
+Parameter Sets: List1, List, Get
 Aliases:
 
 Required: True
@@ -176,7 +179,7 @@ The name of the recovery services vault.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List, List1
+Parameter Sets: List1, List, Get
 Aliases:
 
 Required: True
@@ -191,7 +194,7 @@ Azure Subscription Id in which migrate project was created.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List, List1
+Parameter Sets: List1, List, Get
 Aliases:
 
 Required: False
@@ -215,4 +218,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

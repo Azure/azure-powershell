@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Migrate-help.xml
 Module Name: Az.Migrate
 online version: https://learn.microsoft.com/powershell/module/az.migrate/get-azmigraterunasaccount
 schema: 2.0.0
@@ -18,10 +18,10 @@ Get-AzMigrateRunAsAccount -ResourceGroupName <String> -SiteName <String> [-Subsc
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### Get
+### GetViaIdentityVMwareSite
 ```
-Get-AzMigrateRunAsAccount -AccountName <String> -ResourceGroupName <String> -SiteName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzMigrateRunAsAccount -AccountName <String> -VMwareSiteInputObject <IMigrateIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentitySubscription
@@ -30,10 +30,11 @@ Get-AzMigrateRunAsAccount -AccountName <String> -SiteName <String> -Subscription
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetViaIdentityVMwareSite
+### Get
 ```
-Get-AzMigrateRunAsAccount -AccountName <String> -VMwareSiteInputObject <IMigrateIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzMigrateRunAsAccount -AccountName <String> -ResourceGroupName <String> -SiteName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -74,7 +75,7 @@ Run as account ARM name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentitySubscription, GetViaIdentityVMwareSite
+Parameter Sets: GetViaIdentityVMwareSite, GetViaIdentitySubscription, Get
 Aliases:
 
 Required: True
@@ -106,7 +107,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -121,7 +122,7 @@ Site name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentitySubscription, List
+Parameter Sets: List, GetViaIdentitySubscription, Get
 Aliases:
 
 Required: True
@@ -136,7 +137,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: False
@@ -190,4 +191,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Migrate-help.xml
 Module Name: Az.Migrate
 online version: https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratediscoveredserver
 schema: 2.0.0
@@ -15,26 +15,28 @@ Get All discovered servers in a migrate project.
 ### List (Default)
 ```
 Get-AzMigrateDiscoveredServer -ProjectName <String> -ResourceGroupName <String> [-DisplayName <String>]
- [-SourceMachineType <String>] [-SubscriptionId <String[]>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzMigrateDiscoveredServer -Name <String> -ProjectName <String> -ResourceGroupName <String>
- [-SourceMachineType <String>] [-SubscriptionId <String[]>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### GetInSite
-```
-Get-AzMigrateDiscoveredServer -ApplianceName <String> -Name <String> -ProjectName <String>
- -ResourceGroupName <String> [-SourceMachineType <String>] [-SubscriptionId <String[]>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-SourceMachineType <String>] [-SubscriptionId <String[]>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ListInSite
 ```
-Get-AzMigrateDiscoveredServer -ApplianceName <String> -ProjectName <String> -ResourceGroupName <String>
- [-DisplayName <String>] [-SourceMachineType <String>] [-SubscriptionId <String[]>] [-Confirm] [-WhatIf]
+Get-AzMigrateDiscoveredServer -ProjectName <String> -ResourceGroupName <String> [-DisplayName <String>]
+ [-SourceMachineType <String>] [-SubscriptionId <String[]>] -ApplianceName <String>
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### GetInSite
+```
+Get-AzMigrateDiscoveredServer -ProjectName <String> -ResourceGroupName <String> [-SourceMachineType <String>]
+ [-SubscriptionId <String[]>] -ApplianceName <String> -Name <String>
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### Get
+```
+Get-AzMigrateDiscoveredServer -ProjectName <String> -ResourceGroupName <String> [-SourceMachineType <String>]
+ [-SubscriptionId <String[]>] -Name <String> [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -61,7 +63,6 @@ idclab-a360-fareast-corp-micros-86617dcf-effe-59ad-8c3a-cdd3ea7300d3_5029c9aa-3c
 idclab-a360-fareast-corp-micros-86617dcf-effe-59ad-8c3a-cdd3ea7300d3_5029dabc-cc94-780f-76fd-e39acb0e9dce Microsoft.OffAzure/VMwareSites/machines
 idclab-a360-fareast-corp-micros-86617dcf-effe-59ad-8c3a-cdd3ea7300d3_50299579-fc18-4152-ade2-c4a57946f72b Microsoft.OffAzure/VMwareSites/machines
 idclab-a360-fareast-corp-micros-86617dcf-effe-59ad-8c3a-cdd3ea7300d3_5029cc18-efdc-7315-3b09-9d12a0f337e2 Microsoft.OffAzure/VMwareSites/machines
-
 ```
 
 Get All servers in a migrate project.
@@ -75,7 +76,6 @@ Get-AzMigrateDiscoveredServer -Name idclab-a360-fareast-corp-micros-86617dcf-eff
 Name                                                                                                      Typeo…
 ----                                                                                                      ----o…
 idclab-a360-fareast-corp-micros-86617dcf-effe-59ad-8c3a-cdd3ea7300d3_5029e62c-31d2-a6c3-5316-aa39f47c49fc Microsoft.OffAzure/VMwareSites/machines
-
 ```
 
 Get a server in a migrate project by name.
@@ -99,7 +99,6 @@ idclab-a360-fareast-corp-micros-86617dcf-effe-59ad-8c3a-cdd3ea7300d3_5029c9aa-3c
 idclab-a360-fareast-corp-micros-86617dcf-effe-59ad-8c3a-cdd3ea7300d3_5029dabc-cc94-780f-76fd-e39acb0e9dce Microsoft.OffAzure/VMwareSites/machines
 idclab-a360-fareast-corp-micros-86617dcf-effe-59ad-8c3a-cdd3ea7300d3_50299579-fc18-4152-ade2-c4a57946f72b Microsoft.OffAzure/VMwareSites/machines
 idclab-a360-fareast-corp-micros-86617dcf-effe-59ad-8c3a-cdd3ea7300d3_5029cc18-efdc-7315-3b09-9d12a0f337e2 Microsoft.OffAzure/VMwareSites/machines
-
 ```
 
 List all servers for an appliance in a project.
@@ -113,7 +112,6 @@ Get-AzMigrateDiscoveredServer -Name idclab-a360-fareast-corp-micros-86617dcf-eff
 Name                                                                                                      Typeo…
 ----                                                                                                      ----o…
 idclab-a360-fareast-corp-micros-86617dcf-effe-59ad-8c3a-cdd3ea7300d3_5029e62c-31d2-a6c3-5316-aa39f47c49fc Microsoft.OffAzure/VMwareSites/machines
-
 ```
 
 Get a server for an appliance in a project.
@@ -134,7 +132,6 @@ ContosoAppSrv2                10-150-8-52-b090bef3-b733-5e34-bc8f-eb6f2701432a_5
 ContosoCSASR                  10-150-8-52-b090bef3-b733-5e34-bc8f-eb6f2701432a_50096b80-7061-672c-8db0-07ee41212869 Microsoft.OffAzure/VMwareSites/machines
 ContosoVMwareMigration2       10-150-8-52-b090bef3-b733-5e34-bc8f-eb6f2701432a_50099d31-71d5-2bd1-fada-8c4eba2f279a Microsoft.OffAzure/VMwareSites/machines
 ContosoAppSrv1                10-150-8-52-b090bef3-b733-5e34-bc8f-eb6f2701432a_50097d3f-c1f6-9217-825c-936db54043df Microsoft.OffAzure/VMwareSites/machines
-
 ```
 
 List servers in a migrate project and filter responses with display name.
@@ -184,7 +181,7 @@ This internally maps to a site.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetInSite, ListInSite
+Parameter Sets: ListInSite, GetInSite
 Aliases:
 
 Required: True
@@ -216,7 +213,7 @@ For users, use display name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetInSite
+Parameter Sets: GetInSite, Get
 Aliases:
 
 Required: True
@@ -332,4 +329,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

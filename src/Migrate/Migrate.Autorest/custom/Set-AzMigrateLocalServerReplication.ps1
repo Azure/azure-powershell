@@ -172,10 +172,12 @@ function Set-AzMigrateLocalServerReplication {
         $null = $PSBoundParameters.Add("VaultName", $VaultName)
         $null = $PSBoundParameters.Add("Name", $MachineName)
       
-        $ProtectedItem = InvokeAzMigrateGetCommandWithRetries `
-            -CommandName 'Az.Migrate.Internal\Get-AzMigrateProtectedItem' `
-            -Parameters $PSBoundParameters `
-            -ErrorMessage "Replication item is not found with Id '$TargetObjectID'."
+        $ProtectedItem = Az.Migrate.Internal\Get-AzMigrateProtectedItem @PSBoundParameters `
+            -ErrorVariable notPresent `
+            -ErrorAction SilentlyContinue
+        if ($null -eq $ProtectedItem) {
+            throw "Replication item is not found with Id '$TargetObjectID'. Re-run this command if exists."
+        }
       
         $null = $PSBoundParameters.Remove("ResourceGroupName")
         $null = $PSBoundParameters.Remove("VaultName")
@@ -282,16 +284,18 @@ function Set-AzMigrateLocalServerReplication {
             $null = $PSBoundParameters.Add("MachineName", $MachineName)
             
             if ($SiteType -eq $SiteTypes.HyperVSites) {
-                $machine = InvokeAzMigrateGetCommandWithRetries `
-                    -CommandName 'Az.Migrate.Internal\Get-AzMigrateHyperVMachine' `
-                    -Parameters $PSBoundParameters `
-                    -ErrorMessage "Machine '$MachineName' not found in resource group '$ResourceGroupName' and site '$SiteName'."
+                $machine = Az.Migrate.Internal\Get-AzMigrateHyperVMachine @PSBoundParameters `
+                    -ErrorVariable notPresent `
+                    -ErrorAction SilentlyContinue
             }
             elseif ($SiteType -eq $SiteTypes.VMwareSites) {
-                $machine = InvokeAzMigrateGetCommandWithRetries `
-                    -CommandName 'Az.Migrate.Internal\Get-AzMigrateMachine' `
-                    -Parameters $PSBoundParameters `
-                    -ErrorMessage "Machine '$MachineName' not found in resource group '$ResourceGroupName' and site '$SiteName'."
+                $machine = Az.Migrate.Internal\Get-AzMigrateMachine @PSBoundParameters `
+                    -ErrorVariable notPresent `
+                    -ErrorAction SilentlyContinue
+            }
+
+            if ($null -eq $machine) {
+                throw "Machine '$MachineName' not found in resource group '$ResourceGroupName' and site '$SiteName'."
             }
 
             $null = $PSBoundParameters.Remove("ResourceGroupName")

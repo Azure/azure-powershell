@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Migrate-help.xml
 Module Name: Az.Migrate
 online version: https://learn.microsoft.com/powershell/module/az.migrate/remove-azmigratelocalserverreplication
 schema: 2.0.0
@@ -15,13 +15,15 @@ Stops replication for the migrated server.
 ### ByID (Default)
 ```
 Remove-AzMigrateLocalServerReplication -TargetObjectID <String> [-SubscriptionId <String>]
- [-ForceRemove <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ForceRemove <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
-Remove-AzMigrateLocalServerReplication -InputObject <IMigrateIdentity> [-SubscriptionId <String>]
- [-ForceRemove <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzMigrateLocalServerReplication [-SubscriptionId <String>] -InputObject <IMigrateIdentity>
+ [-ForceRemove <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -230,4 +232,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

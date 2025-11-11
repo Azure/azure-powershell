@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Migrate-help.xml
 Module Name: Az.Migrate
 online version: https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratesolution
 schema: 2.0.0
@@ -14,14 +14,15 @@ Gets a solution in the migrate project.
 
 ### Get (Default)
 ```
-Get-AzMigrateSolution -MigrateProjectName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzMigrateSolution -Name <String> -MigrateProjectName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentityMigrateProject
 ```
-Get-AzMigrateSolution -MigrateProjectInputObject <IMigrateIdentity> -Name <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzMigrateSolution -Name <String> -MigrateProjectInputObject <IMigrateIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -149,4 +150,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
