@@ -1,0 +1,234 @@
+{
+  "Remove-AzDynatraceMonitoredSubscription+Delete by explicit parameters (validation only then expected failure)+Actual delete currently throws (InternalServerError)+$DELETE+https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrgm7bzx8/providers/Dynatrace.Observability/monitors/dyobe59zdr/monitoredSubscriptions/default?api-version=2024-04-24+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrgm7bzx8/providers/Dynatrace.Observability/monitors/dyobe59zdr/monitoredSubscriptions/default?api-version=2024-04-24",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "22" ],
+        "x-ms-client-request-id": [ "f23ab8c6-91a5-413d-a50a-cf0b8d1f55d2" ],
+        "CommandName": [ "Remove-AzDynatraceMonitoredSubscription" ],
+        "FullCommandName": [ "Remove-AzDynatraceMonitoredSubscription_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.DynatraceObservability/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 500,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=888d76fa-54b2-4ced-8ee5-aac1585adee7,objectId=5cd9a09c-ba05-4fc8-8c8a-6d4d17e49a6e/centralindia/d5c75f80-dc32-4d72-8db3-cbf0e0affe28" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-failure-cause": [ "service" ],
+        "x-ms-request-id": [ "62dcbb12-227f-45b9-9688-0bb963eb0a53" ],
+        "x-ms-correlation-request-id": [ "8af9ee2c-f2f0-4166-9704-d511b0761b51" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "2999" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20251111T092629Z:8af9ee2c-f2f0-4166-9704-d511b0761b51" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 6D3A085C3EDE470BB4CFB9FB00C962F6 Ref B: PNQ231110907062 Ref C: 2025-11-11T09:26:28Z" ],
+        "Date": [ "Tue, 11 Nov 2025 09:26:29 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "173" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"ResourceDeletionFailed\",\"message\":\"Resource deletion failed as RP returned status code: \u0027InternalServerError\u0027 and error message \u0027Internal Server Error\u0027.\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzDynatraceMonitoredSubscription+Delete via identity (validation then expected failure)+Pipes monitored subscription object and validates with WhatIf+$GET+https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrgm7bzx8/providers/Dynatrace.Observability/monitors/dyobe59zdr/monitoredSubscriptions/default?api-version=2024-04-24+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrgm7bzx8/providers/Dynatrace.Observability/monitors/dyobe59zdr/monitoredSubscriptions/default?api-version=2024-04-24",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "23" ],
+        "x-ms-client-request-id": [ "e7e2e03b-87e1-456c-9463-7e62c2076035" ],
+        "CommandName": [ "Get-AzDynatraceMonitoredSubscription" ],
+        "FullCommandName": [ "Get-AzDynatraceMonitoredSubscription_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.DynatraceObservability/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=888d76fa-54b2-4ced-8ee5-aac1585adee7,objectId=5cd9a09c-ba05-4fc8-8c8a-6d4d17e49a6e/eastus/2997f47e-4c01-4a0d-a660-1aa3f57c6f9c" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:fab059ea-d726-424a-9451-6beb3dc74944" ],
+        "mise-correlation-id": [ "e5b7c8f7-712e-49b3-aa68-8afda3ce0256" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "746a9caf-b7e2-459a-8be5-8fd275f09dae" ],
+        "x-ms-correlation-request-id": [ "00161775-b68f-4d8b-9911-3623b4aa2fe2" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251111T092630Z:00161775-b68f-4d8b-9911-3623b4aa2fe2" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: AA1DD62F9C1840E5A851ADD94314FB0D Ref B: PNQ231110907062 Ref C: 2025-11-11T09:26:29Z" ],
+        "Date": [ "Tue, 11 Nov 2025 09:26:29 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "324" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrgm7bzx8/providers/Dynatrace.Observability/monitors/dyobe59zdr/monitoredSubscriptions/default\",\"name\":\"default\",\"type\":\"Dynatrace.Observability/monitors/monitoredSubscriptions\",\"properties\":{\"operation\":\"AddBegin\",\"monitoredSubscriptionList\":[]}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzDynatraceMonitoredSubscription+Delete via identity (validation then expected failure)+Actual delete via identity expected to throw+$GET+https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrgm7bzx8/providers/Dynatrace.Observability/monitors/dyobe59zdr/monitoredSubscriptions/default?api-version=2024-04-24+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrgm7bzx8/providers/Dynatrace.Observability/monitors/dyobe59zdr/monitoredSubscriptions/default?api-version=2024-04-24",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "24" ],
+        "x-ms-client-request-id": [ "73c150e1-5769-41c7-8b04-2201a92cc439" ],
+        "CommandName": [ "Get-AzDynatraceMonitoredSubscription" ],
+        "FullCommandName": [ "Get-AzDynatraceMonitoredSubscription_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.DynatraceObservability/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=888d76fa-54b2-4ced-8ee5-aac1585adee7,objectId=5cd9a09c-ba05-4fc8-8c8a-6d4d17e49a6e/eastus/9c173f51-6b5b-4c48-8d65-a75144c4d306" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:fab059ea-d726-424a-9451-6beb3dc74944" ],
+        "mise-correlation-id": [ "c3597596-e301-437d-8435-a1a1b0ffe5ac" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "c33bba78-d0be-4bf0-b5f9-61ec7462c08c" ],
+        "x-ms-correlation-request-id": [ "9e813d21-a01c-4571-8f57-bd19e812ee9b" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251111T092632Z:9e813d21-a01c-4571-8f57-bd19e812ee9b" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 346C7B1051D544BD90B12993CFA32F21 Ref B: PNQ231110907062 Ref C: 2025-11-11T09:26:30Z" ],
+        "Date": [ "Tue, 11 Nov 2025 09:26:31 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "324" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrgm7bzx8/providers/Dynatrace.Observability/monitors/dyobe59zdr/monitoredSubscriptions/default\",\"name\":\"default\",\"type\":\"Dynatrace.Observability/monitors/monitoredSubscriptions\",\"properties\":{\"operation\":\"AddBegin\",\"monitoredSubscriptionList\":[]}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzDynatraceMonitoredSubscription+Delete via identity (validation then expected failure)+Actual delete via identity expected to throw+$DELETE+https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrgm7bzx8/providers/Dynatrace.Observability/monitors/dyobe59zdr/monitoredSubscriptions/default?api-version=2024-04-24+2": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrgm7bzx8/providers/Dynatrace.Observability/monitors/dyobe59zdr/monitoredSubscriptions/default?api-version=2024-04-24",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "25" ],
+        "x-ms-client-request-id": [ "82464adb-79d2-4cf8-b2fd-ca9e86763ea0" ],
+        "CommandName": [ "Remove-AzDynatraceMonitoredSubscription" ],
+        "FullCommandName": [ "Remove-AzDynatraceMonitoredSubscription_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.DynatraceObservability/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 500,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=888d76fa-54b2-4ced-8ee5-aac1585adee7,objectId=5cd9a09c-ba05-4fc8-8c8a-6d4d17e49a6e/southindia/2808ea59-1817-4f3f-b980-823505d6d37e" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-failure-cause": [ "service" ],
+        "x-ms-request-id": [ "061a12b8-36cb-46e2-8fee-5e52bcf2b48c" ],
+        "x-ms-correlation-request-id": [ "0473aa8a-0285-4f6c-9ec7-ffa0bbbfa2b6" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "2999" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20251111T092636Z:0473aa8a-0285-4f6c-9ec7-ffa0bbbfa2b6" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: EE46EB78E90A410C9DC7BF8E734F8238 Ref B: PNQ231110908036 Ref C: 2025-11-11T09:26:35Z" ],
+        "Date": [ "Tue, 11 Nov 2025 09:26:36 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "173" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"ResourceDeletionFailed\",\"message\":\"Resource deletion failed as RP returned status code: \u0027InternalServerError\u0027 and error message \u0027Internal Server Error\u0027.\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzDynatraceMonitoredSubscription+Idempotent delete behavior (current service state)+Second delete also throws (still failing backend)+$DELETE+https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrgm7bzx8/providers/Dynatrace.Observability/monitors/dyobe59zdr/monitoredSubscriptions/default?api-version=2024-04-24+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrgm7bzx8/providers/Dynatrace.Observability/monitors/dyobe59zdr/monitoredSubscriptions/default?api-version=2024-04-24",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "26" ],
+        "x-ms-client-request-id": [ "87231158-4cbf-4d3c-9f0c-399afcc42831" ],
+        "CommandName": [ "Remove-AzDynatraceMonitoredSubscription" ],
+        "FullCommandName": [ "Remove-AzDynatraceMonitoredSubscription_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.DynatraceObservability/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 500,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=888d76fa-54b2-4ced-8ee5-aac1585adee7,objectId=5cd9a09c-ba05-4fc8-8c8a-6d4d17e49a6e/eastus/ddc7ce3f-f0bb-4715-af46-2555c55aee7a" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-failure-cause": [ "service" ],
+        "x-ms-request-id": [ "4d183b5e-96be-4278-9a42-0ff5d0d9ea31" ],
+        "x-ms-correlation-request-id": [ "de75834f-563c-45d6-9e09-4c4f11d603bb" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "2999" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251111T092639Z:de75834f-563c-45d6-9e09-4c4f11d603bb" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 494FFF1979CB4366A6A05F561871D6EB Ref B: PNQ231110907042 Ref C: 2025-11-11T09:26:38Z" ],
+        "Date": [ "Tue, 11 Nov 2025 09:26:39 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "173" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"ResourceDeletionFailed\",\"message\":\"Resource deletion failed as RP returned status code: \u0027InternalServerError\u0027 and error message \u0027Internal Server Error\u0027.\"}}",
+      "isContentBase64": false
+    }
+  }
+}

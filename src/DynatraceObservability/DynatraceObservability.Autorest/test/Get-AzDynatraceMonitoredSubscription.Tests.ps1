@@ -15,15 +15,21 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDynatraceMonitoredSubsc
 }
 
 Describe 'Get-AzDynatraceMonitoredSubscription' {
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get parameter set (single monitored subscription)' {
+        # The cmdlet exposes parameter sets: Get (MonitorName + ResourceGroupName) and GetViaIdentity (InputObject), List (MonitorName + ResourceGroupName)
+        # There is no -MonitorInputObject or -ConfigurationName parameter; remove invalid usage.
+        { Get-AzDynatraceMonitoredSubscription -ResourceGroupName $env.resourceGroup -MonitorName $env.dynatraceName01 } | Should -Not -Throw
     }
 
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List parameter set (enumerates monitored subscriptions)' {
+        $result = Get-AzDynatraceMonitoredSubscription -ResourceGroupName $env.resourceGroup -MonitorName $env.dynatraceName01
+        $result | Should -Not -BeNullOrEmpty
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity parameter set' {
+        # Obtain one monitored subscription object (first item) then pipe as identity
+        $all = Get-AzDynatraceMonitoredSubscription -ResourceGroupName $env.resourceGroup -MonitorName $env.dynatraceName01
+        $first = $all | Select-Object -First 1
+        { $first | Get-AzDynatraceMonitoredSubscription } | Should -Not -Throw
     }
 }
