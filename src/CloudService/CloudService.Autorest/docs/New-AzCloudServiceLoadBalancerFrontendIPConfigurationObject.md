@@ -1,31 +1,31 @@
 ---
 external help file:
 Module Name: Az.CloudService
-online version: https://learn.microsoft.com/powershell/module/az.cloudservice/new-azcloudserviceloadbalancerfrontendipconfigurationobject
+online version: https://learn.microsoft.com/powershell/module/Az.CloudService/new-azcloudserviceloadbalancerfrontendipconfigurationobject
 schema: 2.0.0
 ---
 
 # New-AzCloudServiceLoadBalancerFrontendIPConfigurationObject
 
 ## SYNOPSIS
-Create a in-memory object for LoadBalancerFrontendIPConfiguration
+Create an in-memory object for LoadBalancerFrontendIPConfiguration.
 
 ## SYNTAX
 
 ### DefaultParameterSet (Default)
 ```
-New-AzCloudServiceLoadBalancerFrontendIPConfigurationObject [-Name <String>] [-PublicIPAddressId <String>]
+New-AzCloudServiceLoadBalancerFrontendIPConfigurationObject -Name <String> [-PublicIPAddressId <String>]
  [<CommonParameters>]
 ```
 
 ### PrivateIP
 ```
-New-AzCloudServiceLoadBalancerFrontendIPConfigurationObject [-Name <String>] [-PrivateIPAddress <String>]
+New-AzCloudServiceLoadBalancerFrontendIPConfigurationObject -Name <String> [-PrivateIPAddress <String>]
  [-SubnetId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a in-memory object for LoadBalancerFrontendIPConfiguration
+Create an in-memory object for LoadBalancerFrontendIPConfiguration.
 
 ## EXAMPLES
 
@@ -53,14 +53,15 @@ This command creates load balancer frontend IP configuration object with a Priva
 ## PARAMETERS
 
 ### -Name
-Name of FrontendIpConfiguration.
+The name of the resource that is unique within the set of frontend IP configurations used by the load balancer.
+This name can be used to access the resource.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -68,7 +69,7 @@ Accept wildcard characters: False
 ```
 
 ### -PrivateIPAddress
-Private IP Address
+The virtual network private IP address of the IP configuration.
 
 ```yaml
 Type: System.String
@@ -98,7 +99,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubnetId
-Subnet ID
+Resource Id.
 
 ```yaml
 Type: System.String
@@ -119,7 +120,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.LoadBalancerFrontendIPConfiguration
+### Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.LoadBalancerFrontendIPConfiguration
 
 ## NOTES
 

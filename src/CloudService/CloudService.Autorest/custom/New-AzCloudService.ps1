@@ -21,8 +21,7 @@ Create a CloudService Resource
 #>
 
 function New-AzCloudService {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudService')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.OutputBreakingChangeAttribute("Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudService", "15.0.0", "9.0.0", "2025/11/03", ReplacementCmdletOutputType = "Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudService", DeprecatedOutputProperties = ("Zone, Extension, LoadBalancerConfiguration, Secret, Role"), NewOutputProperties = ("Zone, Extension, LoadBalancerConfiguration, Secret, Role will be changed from object to 'List'."))]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudService')]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(ParameterSetName='quickCreateParameterSetWithoutStorage', Mandatory)]
@@ -87,7 +86,7 @@ function New-AzCloudService {
         [Parameter(ParameterSetName='quickCreateParameterSetWithoutStorage', HelpMessage="Describes a cloud service extension profile.")]
         [Parameter(ParameterSetName='quickCreateParameterSetWithStorage', HelpMessage="Describes a cloud service extension profile.")]
         [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudServiceExtensionProfile]
+        [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceExtensionProfile]
         # Describes a cloud service extension profile.
         # To construct, see NOTES section for EXTENSIONPROFILE properties and create a hash table.
         ${ExtensionProfile},
@@ -105,16 +104,16 @@ function New-AzCloudService {
         [Parameter(ParameterSetName='quickCreateParameterSetWithoutStorage')]
         [Parameter(ParameterSetName='quickCreateParameterSetWithStorage')]
         [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudServiceTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceTags]))]
         [System.Collections.Hashtable]
         # Resource tags.
         ${Tag},
 
         [Parameter(ParameterSetName='quickCreateParameterSetWithoutStorage', HelpMessage="Update mode for the cloud service.")]
         [Parameter(ParameterSetName='quickCreateParameterSetWithStorage', HelpMessage="Update mode for the cloud service.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Support.CloudServiceUpgradeMode])]
+        [Microsoft.Azure.PowerShell.Cmdlets.CloudService.PSArgumentCompleterAttribute("Auto", "Manual", "Simultaneous")]
         [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Support.CloudServiceUpgradeMode]
+        [System.String]
         # Update mode for the cloud service.
         # Role instances are allocated to update domains when the service is deployed.
         # Updates can be initiated manually in each update domain or initiated automatically in all update domains.Possible Values are <br /><br />**Auto**<br /><br />**Manual** <br /><br />**Simultaneous**<br /><br />If not specified, the default value is Auto.
