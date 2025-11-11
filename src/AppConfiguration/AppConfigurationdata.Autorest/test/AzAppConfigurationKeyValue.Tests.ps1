@@ -28,4 +28,9 @@ Describe 'Get-AzAppConfigurationKeyValue' -Tag 'LiveOnly' {
             Get-AzAppConfigurationKeyValue -Endpoint $env.endpoint
         } | Should -Not -Throw
     }
+
+    It 'List returns all paged results' {
+        $allResults = Get-AzAppConfigurationKeyValue -Endpoint $env:endpoint -Key '*'
+        $allResults.Count | Should BeGreaterThan 100
+    }
 }
