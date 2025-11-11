@@ -28,14 +28,14 @@ For information on how to develop for `Az.Quota`, see [how-to.md](how-to.md).
 
 ``` yaml
 # lock the commit
-commit: 4442e8121686218ce2951ab4dc734e489aa5bc08
+commit: c5e7614651632a4ab28b4b9fc499ab9eca400b40
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/quota/resource-manager/Microsoft.Quota/stable/2023-02-01/quota.json
+  - $(repo)/specification/quota/resource-manager/Microsoft.Quota/Quota/stable/2025-09-01/openapi.json
 
 title: Quota
-module-version: 0.1.0
+module-version: 0.2.0
 
 identity-correction-for-post: true
 resourcegroup-append: true
