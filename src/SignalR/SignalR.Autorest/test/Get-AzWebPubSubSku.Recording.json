@@ -1,17 +1,17 @@
 {
-  "Get-AzWebPubSubSku+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-1/skus?api-version=2022-08-01-preview+1": {
+  "Get-AzWebPubSubSku+[NoContext]+List+$GET+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-1/skus?api-version=2022-08-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-1/skus?api-version=2022-08-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-1/skus?api-version=2022-08-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "35" ],
-        "x-ms-client-request-id": [ "de685650-3bab-4145-89a4-93b482657022" ],
+        "x-ms-unique-id": [ "30" ],
+        "x-ms-client-request-id": [ "0bbb8af4-528b-4ca1-b2fc-1a5dff9fb6aa" ],
         "CommandName": [ "Get-AzWebPubSubSku" ],
         "FullCommandName": [ "Get-AzWebPubSubSku_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.7", "Az.SignalR/0.2.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.4", "Az.SignalR/2.2.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -24,21 +24,24 @@
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-client-request-id": [ "de685650-3bab-4145-89a4-93b482657022" ],
-        "x-rp-server-mvid": [ "54bef194-19f7-4c41-9b83-6785272e94c3" ],
-        "x-ms-request-id": [ "05467c3b-d68e-49ed-b2d8-2dcd523627b2" ],
-        "Server": [ "Kestrel" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11973" ],
-        "x-ms-correlation-request-id": [ "e7999c16-950a-451b-93ff-37a2a60f4408" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20221109T075017Z:e7999c16-950a-451b-93ff-37a2a60f4408" ],
-        "Date": [ "Wed, 09 Nov 2022 07:50:16 GMT" ]
+        "x-ms-client-request-id": [ "0bbb8af4-528b-4ca1-b2fc-1a5dff9fb6aa" ],
+        "x-rp-server-mvid": [ "420fb398-3c19-4929-a9ce-d7d5ca0c0ebe" ],
+        "x-ms-request-id": [ "e1314946-1eda-4a00-a9da-eb641bd286b4" ],
+        "x-ms-operation-identifier": [ "tenantId=213e87ed-8e08-4eb4-a63c-c073058f7b00,objectId=6f20525e-bd2b-4c30-bd2a-c1b766142389/eastus/2b8886a6-879f-4b9c-8adc-d2595530de52" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "245" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3745" ],
+        "x-ms-correlation-request-id": [ "51a196c5-0627-4318-8b98-86d5eb853336" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251105T061156Z:51a196c5-0627-4318-8b98-86d5eb853336" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: E00740DC5F7C491482BD1442FA6A70B9 Ref B: TYO201100114049 Ref C: 2025-11-05T06:11:56Z" ],
+        "Date": [ "Wed, 05 Nov 2025 06:11:56 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "739" ],
+        "Content-Length": [ "1246" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"resourceType\":\"Microsoft.SignalRService/WebPubSub\",\"sku\":{\"name\":\"Free_F1\",\"tier\":\"Free\",\"capacity\":null},\"capacity\":{\"minimum\":1,\"maximum\":1,\"default\":1,\"allowedValues\":[1],\"scaleType\":\"Manual\"}},{\"resourceType\":\"Microsoft.SignalRService/WebPubSub\",\"sku\":{\"name\":\"Standard_S1\",\"tier\":\"Standard\",\"capacity\":null},\"capacity\":{\"minimum\":1,\"maximum\":100,\"default\":1,\"allowedValues\":[1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100],\"scaleType\":\"Manual\"}},{\"resourceType\":\"Microsoft.SignalRService/WebPubSub\",\"sku\":{\"name\":\"Premium_P1\",\"tier\":\"Premium\",\"capacity\":null},\"capacity\":{\"minimum\":1,\"maximum\":100,\"default\":1,\"allowedValues\":[1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100],\"scaleType\":\"Automatic\"}}],\"nextLink\":null}",
+      "Content": "{\"value\":[{\"resourceType\":\"Microsoft.SignalRService/WebPubSub\",\"sku\":{\"name\":\"Free_F1\",\"tier\":\"Free\",\"capacity\":null},\"capacity\":{\"minimum\":1,\"maximum\":1,\"default\":1,\"allowedValues\":[1],\"scaleType\":\"Manual\"}},{\"resourceType\":\"Microsoft.SignalRService/WebPubSub\",\"sku\":{\"name\":\"Standard_S1\",\"tier\":\"Standard\",\"capacity\":null},\"capacity\":{\"minimum\":1,\"maximum\":100,\"default\":1,\"allowedValues\":[1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100],\"scaleType\":\"Manual\"}},{\"resourceType\":\"Microsoft.SignalRService/WebPubSub\",\"sku\":{\"name\":\"Premium_P1\",\"tier\":\"Premium\",\"capacity\":null},\"capacity\":{\"minimum\":1,\"maximum\":100,\"default\":1,\"allowedValues\":[1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100],\"scaleType\":\"Automatic\"}},{\"resourceType\":\"Microsoft.SignalRService/WebPubSub\",\"sku\":{\"name\":\"Standard_S2\",\"tier\":\"Standard\",\"capacity\":null},\"capacity\":{\"minimum\":100,\"maximum\":1000,\"default\":100,\"allowedValues\":[100,200,300,400,500,600,700,800,900,1000],\"scaleType\":\"Manual\"}},{\"resourceType\":\"Microsoft.SignalRService/WebPubSub\",\"sku\":{\"name\":\"Premium_P2\",\"tier\":\"Premium\",\"capacity\":null},\"capacity\":{\"minimum\":100,\"maximum\":1000,\"default\":100,\"allowedValues\":[100,200,300,400,500,600,700,800,900,1000],\"scaleType\":\"Automatic\"}}],\"nextLink\":null}",
       "isContentBase64": false
     }
   }

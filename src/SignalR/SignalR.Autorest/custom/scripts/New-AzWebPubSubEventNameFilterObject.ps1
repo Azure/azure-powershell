@@ -21,11 +21,12 @@ Create an in-memory object for EventNameFilter.
 Create an in-memory object for EventNameFilter.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.EventNameFilter
+Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.EventNameFilter
 #>
 function New-AzWebPubSubEventNameFilterObject
 {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.EventNameFilter')]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.EventNameFilter')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -43,7 +44,7 @@ function New-AzWebPubSubEventNameFilterObject
 
     process
     {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.EventNameFilter]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.EventNameFilter]::New()
 
         if ($PSBoundParameters.ContainsKey('SystemEvent'))
         {
