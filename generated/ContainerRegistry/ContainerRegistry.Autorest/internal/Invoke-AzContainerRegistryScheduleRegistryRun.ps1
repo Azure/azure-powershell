@@ -25,11 +25,11 @@ Schedules a new run based on the request parameters and add it to the run queue.
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.IRunRequest
-.Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IRunRequest
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.IRun
+Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IRun
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -66,11 +66,13 @@ RUNREQUEST <IRunRequest>: The request parameters for scheduling a run.
 https://learn.microsoft.com/powershell/module/az.containerregistry/invoke-azcontainerregistryscheduleregistryrun
 #>
 function Invoke-AzContainerRegistryScheduleRegistryRun {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.IRun])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IRun])]
 [CmdletBinding(DefaultParameterSetName='ScheduleExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Schedule', Mandatory)]
     [Parameter(ParameterSetName='ScheduleExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ScheduleViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='ScheduleViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [System.String]
     # The name of the container registry.
@@ -78,6 +80,8 @@ param(
 
     [Parameter(ParameterSetName='Schedule', Mandatory)]
     [Parameter(ParameterSetName='ScheduleExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ScheduleViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='ScheduleViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [System.String]
     # The name of the resource group to which the container registry belongs.
@@ -85,6 +89,8 @@ param(
 
     [Parameter(ParameterSetName='Schedule')]
     [Parameter(ParameterSetName='ScheduleExpanded')]
+    [Parameter(ParameterSetName='ScheduleViaJsonFilePath')]
+    [Parameter(ParameterSetName='ScheduleViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -97,15 +103,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='Schedule', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='ScheduleViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.IRunRequest]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IRunRequest]
     # The request parameters for scheduling a run.
-    # To construct, see NOTES section for RUNREQUEST properties and create a hash table.
     ${RunRequest},
 
     [Parameter(ParameterSetName='ScheduleExpanded', Mandatory)]
@@ -135,6 +139,18 @@ param(
     [System.String]
     # The template that describes the repository and tag information for run log artifact.
     ${LogTemplate},
+
+    [Parameter(ParameterSetName='ScheduleViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Schedule operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='ScheduleViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # Json string supplied to the Schedule operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -204,16 +220,19 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Schedule = 'Az.ContainerRegistry.private\Invoke-AzContainerRegistryScheduleRegistryRun_Schedule';
             ScheduleExpanded = 'Az.ContainerRegistry.private\Invoke-AzContainerRegistryScheduleRegistryRun_ScheduleExpanded';
             ScheduleViaIdentity = 'Az.ContainerRegistry.private\Invoke-AzContainerRegistryScheduleRegistryRun_ScheduleViaIdentity';
             ScheduleViaIdentityExpanded = 'Az.ContainerRegistry.private\Invoke-AzContainerRegistryScheduleRegistryRun_ScheduleViaIdentityExpanded';
+            ScheduleViaJsonFilePath = 'Az.ContainerRegistry.private\Invoke-AzContainerRegistryScheduleRegistryRun_ScheduleViaJsonFilePath';
+            ScheduleViaJsonString = 'Az.ContainerRegistry.private\Invoke-AzContainerRegistryScheduleRegistryRun_ScheduleViaJsonString';
         }
-        if (('Schedule', 'ScheduleExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Schedule', 'ScheduleExpanded', 'ScheduleViaJsonFilePath', 'ScheduleViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -222,6 +241,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

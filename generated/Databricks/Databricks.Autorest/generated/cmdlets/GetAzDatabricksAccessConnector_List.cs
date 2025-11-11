@@ -13,6 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
     /// [OpenAPI] ListByResourceGroup=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/accessConnectors"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzDatabricksAccessConnector_List")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IAccessConnector", "15.0.0", "2.0.0", "2025/11/03", DeprecatedOutputProperties=new string[] {"ReferedBy"}, NewOutputProperties=new string[] {"ReferedBy"}, ChangeDescription="The types of the properties 'ReferedBy' will be changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IAccessConnector))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Description(@"Gets all the Azure Databricks Access Connectors within a resource group.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Generated]

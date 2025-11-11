@@ -5,7 +5,7 @@ if (-Not (Test-Path -Path $loadEnvPath)) {
 . ($loadEnvPath)
 $TestRecordingFile = Join-Path $PSScriptRoot 'Get-AzWvdSessionHost.Recording.json'
 $currentPath = $PSScriptRoot
-$sessionHostPath = $env.HostPoolPersistent + "/userSess-sh-0"
+$sessionHostPath = $env.HostPoolPersistent + '/' + $env.SessionHostName
 while(-not $mockingPath) {
     $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
     $currentPath = Split-Path -Path $currentPath -Parent

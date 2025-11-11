@@ -160,7 +160,7 @@ Accept wildcard characters: False
 ```
 
 ### -ProvisioningCanaryPolicy
-Policy on whether a Canary VM should be provisioned during a session host provisioning operation.
+Policy on whether a Canary VM(a single VM to validate the configuration) should be provisioned during a session host provisioning operation.
 
 ```yaml
 Type: System.String
@@ -175,7 +175,7 @@ Accept wildcard characters: False
 ```
 
 ### -ProvisioningInstanceCount
-the number of session hosts to exist in the Host Pool.
+The number of session hosts to exist in the Host Pool.
 
 ```yaml
 Type: System.Int32
@@ -285,6 +285,7 @@ Accept wildcard characters: False
 
 ### -UpdateLogOffMessage
 Log off message sent to user for logoff.
+Default value is an empty string.
 
 ```yaml
 Type: System.String

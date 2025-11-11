@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Creates a configuration profile
+Create a configuration profile
 .Description
-Creates a configuration profile
+Create a configuration profile
 .Example
 $confprof = @{
           "Antimalware/Enable"='false';
@@ -34,12 +34,12 @@ $confprof = @{
 New-AzAutomanageConfigProfile -ResourceGroupName automangerg -Name confpro-pwsh01 -Location eastus -Configuration $confprof
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationProfile
+Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IConfigurationProfile
 .Link
 https://learn.microsoft.com/powershell/module/az.automanage/new-azautomanageconfigprofile
 #>
 function New-AzAutomanageConfigProfile {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationProfile])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IConfigurationProfile])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -63,25 +63,37 @@ param(
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Body')]
     [System.String]
     # The geo-location where the resource lives
     ${Location},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationDictionary]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IConfigurationDictionary]))]
     [System.Collections.Hashtable]
     # configuration dictionary of the configuration profile.
     ${Configuration},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -139,6 +151,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -159,10 +180,10 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.Automanage.private\New-AzAutomanageConfigProfile_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.Automanage.private\New-AzAutomanageConfigProfile_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.Automanage.private\New-AzAutomanageConfigProfile_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -176,6 +197,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

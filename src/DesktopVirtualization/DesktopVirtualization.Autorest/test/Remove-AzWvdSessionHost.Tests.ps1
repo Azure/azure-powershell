@@ -13,17 +13,18 @@ while(-not $mockingPath) {
 
 Describe 'Remove-AzWvdSessionHost' {
     It 'Delete' {
+         # This will fail when there's no existed session host
         Remove-AzWvdSessionHost -SubscriptionId $env.SubscriptionId `
                             -ResourceGroupName $env.ResourceGroupPersistent `
-                            -HostPoolName $env.HostPoolPersistent `
-                            -Name $env.SessionHostNameRemove `
+                            -HostPoolName $env.SHMHostPoolPersistent `
+                            -Name $env.SHMSessionHostNameRemove `
                             -Force
 
         try {
             Get-AzWvdSessionHost -SubscriptionId $env.SubscriptionId `
                             -ResourceGroupName $env.ResourceGroupPersistent `
-                            -HostPoolName $env.HostPoolPersistent `
-                            -Name $env.SessionHostNameRemove
+                            -HostPoolName $env.SHMHostPoolPersistent `
+                            -Name $env.SHMSessionHostNameRemove
             throw "Get should have failed."
         } catch {
 

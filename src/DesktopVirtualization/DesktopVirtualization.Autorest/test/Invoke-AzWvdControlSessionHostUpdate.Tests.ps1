@@ -16,14 +16,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzWvdControlSessionHos
 
 Describe 'Invoke-AzWvdControlSessionHostUpdate' {
     It 'PostExpanded' {
-        Invoke-AzWvdInitiateSessionHostUpdate -HostPoolName $env.AutomatedHostpoolPersistent -ResourceGroupName $env.ResourceGroupPersistent `
+        Invoke-AzWvdInitiateSessionHostUpdate -HostPoolName $env.SHMHostPoolPersistent -ResourceGroupName $env.ResourceGroupPersistent `
         -SubscriptionId $env.subscriptionId -ScheduledDateTimeZone 'Pacific Standard Time' `
         -UpdateDeleteOriginalVM `
         -UpdateLogOffDelayMinute 0 `
         -UpdateLogOffMessage 'Updating Session Hosts. Will Log off' `
         -UpdateMaxVmsRemoved 1
 
-        Invoke-AzWvdControlSessionHostUpdate -HostPoolName $env.AutomatedHostpoolPersistent -ResourceGroupName $env.ResourceGroupPersistent `
+        Invoke-AzWvdControlSessionHostUpdate -HostPoolName $env.SHMHostPoolPersistent -ResourceGroupName $env.ResourceGroupPersistent `
         -SubscriptionId $env.subscriptionId `
         -Action Cancel `
         -CancelMessage "Giving up"

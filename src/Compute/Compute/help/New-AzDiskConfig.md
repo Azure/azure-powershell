@@ -25,9 +25,9 @@ New-AzDiskConfig [[-SkuName] <String>] [-Tier <String>] [-LogicalSectorSize <Int
  [-DiskEncryptionSetId <String>] [-EncryptionType <String>] [-DiskAccessId <String>]
  [-NetworkAccessPolicy <String>] [-BurstingEnabled <Boolean>] [-PublicNetworkAccess <String>]
  [-AcceleratedNetwork <Boolean>] [-DataAccessAuthMode <String>] [-Architecture <String>]
- [-PerformancePlus <Boolean>] [-OptimizedForFrequentAttach <Boolean>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-PerformancePlus <Boolean>] [-OptimizedForFrequentAttach <Boolean>] [-SecurityMetadataUri <String>]
+ [-SecurityDataUri <String>] [-SupportedSecurityOption <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -92,6 +92,17 @@ New-AzDisk -ResourceGroupName 'ResourceGroup01' -DiskName 'Disk01' -Disk $diskCo
 ```
 
 Create a disk with OptimizedForFrequentAttach as true, to improves reliability and performance of the data disks that will be frequently (more than 5 times a day) detached from one virtual machine and attached to another.
+
+### Example 5
+```powershell
+$accountType = <Account Type>
+$sourceUri = <Source URI of the blob>
+$storageAccountId = <Storage Account ID>
+$diskConfig = New-AzDiskConfig -AccountType $accountType -CreateOption Import -SourceUri $sourceUri -StorageAccountId $storageAccountId -SupportedSecurityOption 'TrustedLaunchSupported'
+New-AzDisk -ResourceGroupName 'ResourceGroup01' -DiskName 'Disk01' -Disk $diskConfig
+```
+
+Creation of managed disk using CreateOption of Import, with SupportedSecurityOption as TrustedLaunchSupported
 
 ## PARAMETERS
 
@@ -554,6 +565,36 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -SecurityDataUri
+If createOption is ImportSecure, this is the URI of a blob to be imported into VM guest state.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SecurityMetadataUri
+If createOption is ImportSecure, this is the URI of a blob to be imported into VM metadata for Confidential VM.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -SkuName
 Specifies the Sku name of the storage account.  Available values are Standard_LRS, Premium_LRS, StandardSSD_LRS, and UltraSSD_LRS, Premium_ZRS and StandardSSD_ZRS.  UltraSSD_LRS can only be used with Empty value for CreateOption parameter.
 
@@ -601,6 +642,22 @@ Accept wildcard characters: False
 
 ### -StorageAccountId
 Specifies the storage account ID.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SupportedSecurityOption
+Refers to the security capability of the disk supported to create a Trusted launch or Confidential VM.
+Possible values include: 'TrustedLaunchSupported', 'TrustedLaunchAndConfidentialVMSupported'
 
 ```yaml
 Type: System.String

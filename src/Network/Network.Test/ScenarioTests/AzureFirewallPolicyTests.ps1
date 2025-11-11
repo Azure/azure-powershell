@@ -2296,3 +2296,25 @@ function Test-AzureFirewallPolicyApplicationRuleFqdnTagDefaultProtocol {
         # No cleanup required
     }
 }
+
+<#
+.SYNOPSIS function Test-AzureFirewallPolicyWithParentBasePolicy.
+#>
+function Test-AzureFirewallPolicyWithParentBasePolicy {
+    $rgname = Get-ResourceGroupName
+    $azureFirewallPolicyName = Get-ResourceName
+    $azureFirewallChildPolicyName = "${azureFirewallPolicyName}-child"
+    $azureFirewallChildPolicyName2 = "${azureFirewallPolicyName}-child2"
+    $location = "canadacentral"
+     # Create the resource group
+    $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "testval" }
+    # Create AzureFirewallPolicy
+    $azureFirewallPolicy = New-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname -Location $location
+    # Create ChildAzureFirewallPolicy with ParentBasePolicy
+    $azureFirewallChildPolicy = New-AzFirewallPolicy -Name $azureFirewallChildPolicyName -ResourceGroupName $rgname -Location $location -BasePolicy $azureFirewallPolicy.Id
+    # Get/Set Child
+    $fwp = Get-AzFirewallPolicy -Name $azureFirewallChildPolicyName -ResourceGroupName $rgname
+    $fwp | Set-AzFirewallPolicy
+    $azureFirewallChildPolicy2 = New-AzFirewallPolicy -Name $azureFirewallChildPolicyName2 -ResourceGroupName $rgname -Location $location
+    Set-AzFirewallPolicy -Name $azureFirewallChildPolicyName2 -ResourceGroupName $rgname -Location $location -BasePolicy $azureFirewallPolicy.Id
+}

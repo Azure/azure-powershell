@@ -57,7 +57,7 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-Force flag to delete App Attach package.
+Allows force delete
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -87,7 +87,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the App Attach package arm object
+The name of the App Attach package
 
 ```yaml
 Type: System.String

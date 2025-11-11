@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Improved user experience and consistency. This may introduce breaking changes. Please refer to [here](https://go.microsoft.com/fwlink/?linkid=2340249).
+* The parameters of the `New-AzNginxDeployment` and `Update-AzNginxDeployment` cmdlets will be changed by new Managed Identity settings.
+
+## Version 1.2.1
 * Added breaking change announcement for below cmdlets from fixed array to list.
   - `Get-AzNginxConfiguration`
   - `New-AzNginxConfiguration`

@@ -58,7 +58,7 @@ Describe 'New-AzWvdAppAttachPackage' {
 
     It 'ImageObject' {
         try {
-            $image = Import-AzWvdAppAttachPackageInfo -HostPoolName $env.HostPoolPersistent2 `
+            $image = Import-AzWvdAppAttachPackageInfo -HostPoolName $env.HostPoolPersistent `
                 -ResourceGroupName $env.ResourceGroupPersistent `
                 -SubscriptionId $env.SubscriptionId `
                 -Path $env.MSIXImagePath
@@ -68,13 +68,13 @@ Describe 'New-AzWvdAppAttachPackage' {
                 $image = $image[0]
             }
 
-            $image.ImagePackageFamilyName | Should -Be  'Mozilla.MozillaFirefox_gmpnhwe7bv608'
-            $image.ImagePath | Should -Be 'C:\AppAttach\Firefox20110.0.1.vhdx'
-            $image.ImagePackageName | Should -Be 'Mozilla.MozillaFirefox'
-            $image.ImagePackageAlias | Should -Be 'mozillamozillafirefox'
+            $image.ImagePackageFamilyName | Should -Be  $env.MSIXImageFamilyName
+            $image.ImagePath | Should -Be $env.MSIXImagePath
+            $image.ImagePackageName | Should -Be $env.MSIXImagePackageName
+            $image.ImagePackageAlias | Should -Be $env.MSIXImagePackageAlias
             $image.ImageIsActive | Should -Be $False
             $image.ImageIsRegularRegistration | Should -Be $False
-            $image.ImagePackageRelativePath | Should -Be '\apps\Mozilla.MozillaFirefox_110.0.1.0_x64__gmpnhwe7bv608'
+            $image.ImagePackageRelativePath | Should -Be $env.MSIXImagePackageRelativePath
 
             $package_created_1 = New-AzWvdAppAttachPackage -Name "TestPackage" `
                 -ResourceGroupName $env.ResourceGroup `
@@ -87,10 +87,10 @@ Describe 'New-AzWvdAppAttachPackage' {
                 -ResourceGroupName $env.ResourceGroup `
                 -SubscriptionId $env.SubscriptionId  
 
-            $packages[0].ImagePackageFamilyName | Should -Be  'Mozilla.MozillaFirefox_gmpnhwe7bv608'
-            $packages[0].ImagePath | Should -Be 'C:\AppAttach\Firefox20110.0.1.vhdx'
-            $packages[0].ImagePackageName | Should -Be 'Mozilla.MozillaFirefox'
-            $packages[0].ImagePackageRelativePath | Should -Be '\apps\Mozilla.MozillaFirefox_110.0.1.0_x64__gmpnhwe7bv608'
+            $packages[0].ImagePackageFamilyName | Should -Be  $env.MSIXImageFamilyName
+            $packages[0].ImagePath | Should -Be $env.MSIXImagePath
+            $packages[0].ImagePackageName | Should -Be $env.MSIXImagePackageName
+            $packages[0].ImagePackageRelativePath | Should -Be $env.MSIXImagePackageRelativePath
             ($packages[0].ImagePackageApplication | ConvertTo-Json) | Should -Be ($image.ImagePackageApplication | ConvertTo-Json)
         }
         finally{
@@ -102,7 +102,7 @@ Describe 'New-AzWvdAppAttachPackage' {
 
     It 'ImageObjectByPipeline' {
         try {
-            $image = Import-AzWvdAppAttachPackageInfo -HostPoolName $env.HostPoolPersistent2 `
+            $image = Import-AzWvdAppAttachPackageInfo -HostPoolName $env.HostPoolPersistent `
                 -ResourceGroupName $env.ResourceGroupPersistent `
                 -SubscriptionId $env.SubscriptionId `
                 -Path $env.MSIXImagePath
@@ -112,13 +112,13 @@ Describe 'New-AzWvdAppAttachPackage' {
                 $image = $image[0]
             }
 
-            $image.ImagePackageFamilyName | Should -Be  'Mozilla.MozillaFirefox_gmpnhwe7bv608'
-            $image.ImagePath | Should -Be 'C:\AppAttach\Firefox20110.0.1.vhdx'
-            $image.ImagePackageName | Should -Be 'Mozilla.MozillaFirefox'
-            $image.ImagePackageAlias | Should -Be 'mozillamozillafirefox'
+            $image.ImagePackageFamilyName | Should -Be  $env.MSIXImageFamilyName
+            $image.ImagePath | Should -Be $env.MSIXImagePath
+            $image.ImagePackageName | Should -Be $env.MSIXImagePackageName
+            $image.ImagePackageAlias | Should -Be $env.MSIXImagePackageAlias
             $image.ImageIsActive | Should -Be $False
             $image.ImageIsRegularRegistration | Should -Be $False
-            $image.ImagePackageRelativePath | Should -Be '\apps\Mozilla.MozillaFirefox_110.0.1.0_x64__gmpnhwe7bv608'
+            $image.ImagePackageRelativePath | Should -Be $env.MSIXImagePackageRelativePath
 
             $image | New-AzWvdAppAttachPackage -Name "TestPackage" `
                 -ResourceGroupName $env.ResourceGroup `
@@ -130,10 +130,10 @@ Describe 'New-AzWvdAppAttachPackage' {
                 -ResourceGroupName $env.ResourceGroup `
                 -SubscriptionId $env.SubscriptionId  
 
-            $packages[0].ImagePackageFamilyName | Should -Be  'Mozilla.MozillaFirefox_gmpnhwe7bv608'
-            $packages[0].ImagePath | Should -Be 'C:\AppAttach\Firefox20110.0.1.vhdx'
-            $packages[0].ImagePackageName | Should -Be 'Mozilla.MozillaFirefox'
-            $packages[0].ImagePackageRelativePath | Should -Be '\apps\Mozilla.MozillaFirefox_110.0.1.0_x64__gmpnhwe7bv608'
+            $packages[0].ImagePackageFamilyName | Should -Be  $env.MSIXImageFamilyName
+            $packages[0].ImagePath | Should -Be $env.MSIXImagePath
+            $packages[0].ImagePackageName | Should -Be $env.MSIXImagePackageName
+            $packages[0].ImagePackageRelativePath | Should -Be $env.MSIXImagePackageRelativePath
             ($packages[0].ImagePackageApplication | ConvertTo-Json) | Should -Be ($image.ImagePackageApplication | ConvertTo-Json)
         }
         finally{

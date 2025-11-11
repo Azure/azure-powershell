@@ -18,7 +18,7 @@ Update-AzWvdApplication -GroupName <String> -Name <String> -ResourceGroupName <S
  [-FriendlyName <String>] [-ShowInPortal] [-SubscriptionId <String>] [-ApplicationType <String>]
  [-CommandLineArgument <String>] [-CommandLineSetting <String>] [-FilePath <String>] [-IconIndex <Int32>]
  [-IconPath <String>] [-MsixPackageApplicationId <String>] [-MsixPackageFamilyName <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ResetIcon
@@ -40,7 +40,7 @@ Update-AzWvdApplication -ApplicationGroupInputObject <IDesktopVirtualizationIden
  [-Description <String>] [-FriendlyName <String>] [-ShowInPortal] [-ApplicationType <String>]
  [-CommandLineArgument <String>] [-CommandLineSetting <String>] [-FilePath <String>] [-IconIndex <Int32>]
  [-IconPath <String>] [-MsixPackageApplicationId <String>] [-MsixPackageFamilyName <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -48,8 +48,8 @@ Update-AzWvdApplication -ApplicationGroupInputObject <IDesktopVirtualizationIden
 Update-AzWvdApplication -InputObject <IDesktopVirtualizationIdentity> [-Description <String>]
  [-FriendlyName <String>] [-ShowInPortal] [-ApplicationType <String>] [-CommandLineArgument <String>]
  [-CommandLineSetting <String>] [-FilePath <String>] [-IconIndex <Int32>] [-IconPath <String>]
- [-MsixPackageApplicationId <String>] [-MsixPackageFamilyName <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-MsixPackageApplicationId <String>] [-MsixPackageFamilyName <String>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
@@ -422,21 +422,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tag
-tags to be updated
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityApplicationGroupExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

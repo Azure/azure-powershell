@@ -233,7 +233,7 @@ Tasks to apply.
 To construct, see NOTES section for TASK properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.ICustomizationTask[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.ICustomizationTask[]
 Parameter Sets: (All)
 Aliases:
 

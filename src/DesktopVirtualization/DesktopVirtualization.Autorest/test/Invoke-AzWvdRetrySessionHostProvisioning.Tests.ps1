@@ -16,8 +16,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzWvdRetrySessionHostP
 
 Describe 'Invoke-AzWvdRetrySessionHostProvisioning' {
     It 'Retry' {
-        Invoke-AzWvdRetrySessionHostProvisioning -HostPoolName $env.SHMHostPoolPersistent -ResourceGroupName $env.ResourceGroupPersistent `
+        # This test might file when there are active sessions in the host pool
+        Invoke-AzWvdRetrySessionHostProvisioning -HostPoolName $env.SHMHostPoolPersistent -ResourceGroupName $env.ResourceGroup `
         -SubscriptionId $env.subscriptionId `
-        -SessionHostName 'shm-1'
+        -SessionHostName $env.SHMSessionHostReprovisioning
     }
 }

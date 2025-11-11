@@ -8,14 +8,22 @@ schema: 2.0.0
 # Get-AzWvdPrivateEndpointConnection
 
 ## SYNOPSIS
-Get a private endpoint connection.
+Get a PrivateEndpointConnectionWithSystemData
 
 ## SYNTAX
 
 ### List (Default)
 ```
-Get-AzWvdPrivateEndpointConnection -ResourceGroupName <String> [-SubscriptionId <String[]>]
- -WorkspaceName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzWvdPrivateEndpointConnection -HostPoolName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-InitialSkip <Int32>] [-IsDescending] [-PageSize <Int32>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### Get
+```
+Get-AzWvdPrivateEndpointConnection -HostPoolName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentityWorkspace
@@ -33,20 +41,13 @@ Get-AzWvdPrivateEndpointConnection -Name <String> -HostPoolInputObject <IDesktop
 ### Get1
 ```
 Get-AzWvdPrivateEndpointConnection -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- -HostPoolName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzWvdPrivateEndpointConnection -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  -WorkspaceName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List1
 ```
 Get-AzWvdPrivateEndpointConnection -ResourceGroupName <String> [-SubscriptionId <String[]>]
- -HostPoolName <String> [-InitialSkip <Int32>] [-IsDescending] [-PageSize <Int32>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ -WorkspaceName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity1
@@ -62,7 +63,7 @@ Get-AzWvdPrivateEndpointConnection -InputObject <IDesktopVirtualizationIdentity>
 ```
 
 ## DESCRIPTION
-Get a private endpoint connection.
+Get a PrivateEndpointConnectionWithSystemData
 
 ## EXAMPLES
 
@@ -158,7 +159,7 @@ The name of the host pool within the specified resource group
 
 ```yaml
 Type: System.String
-Parameter Sets: Get1, List1
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -173,7 +174,7 @@ Initial number of items to skip.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: List1
+Parameter Sets: List
 Aliases:
 
 Required: False
@@ -203,7 +204,7 @@ Indicates whether the collection is descending.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: List1
+Parameter Sets: List
 Aliases:
 
 Required: False
@@ -214,11 +215,11 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the private endpoint connection associated with the Azure resource.
+The name parameter for private endpoint
 
 ```yaml
 Type: System.String
-Parameter Sets: GetViaIdentityWorkspace, GetViaIdentityHostPool, Get1, Get
+Parameter Sets: Get, GetViaIdentityWorkspace, GetViaIdentityHostPool, Get1
 Aliases: PrivateEndpointConnectionName
 
 Required: True
@@ -233,7 +234,7 @@ Number of items per page.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: List1
+Parameter Sets: List
 Aliases:
 
 Required: False
@@ -249,7 +250,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: List, Get1, Get, List1
+Parameter Sets: List, Get, Get1, List1
 Aliases:
 
 Required: True
@@ -265,7 +266,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List, Get1, Get, List1
+Parameter Sets: List, Get, Get1, List1
 Aliases:
 
 Required: False
@@ -295,7 +296,7 @@ The name of the workspace
 
 ```yaml
 Type: System.String
-Parameter Sets: List, Get
+Parameter Sets: Get1, List1
 Aliases:
 
 Required: True

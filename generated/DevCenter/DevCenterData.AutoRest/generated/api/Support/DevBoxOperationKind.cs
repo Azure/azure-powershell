@@ -10,11 +10,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Support
     public partial struct DevBoxOperationKind :
         System.IEquatable<DevBoxOperationKind>
     {
+        /// <summary>The operation represents a Dev Box align to the current network connection.</summary>
+        public static Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Support.DevBoxOperationKind Align = @"Align";
+
+        /// <summary>The operation represents a Dev Box manual snapshot creation.</summary>
+        public static Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Support.DevBoxOperationKind CaptureSnapshot = @"CaptureSnapshot";
+
         /// <summary>The operation represents a Dev Box repair.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Support.DevBoxOperationKind Repair = @"Repair";
 
         /// <summary>The operation represents a Dev Box restart.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Support.DevBoxOperationKind Restart = @"Restart";
+
+        /// <summary>The operation represents a Dev Box restore from snapshot.</summary>
+        public static Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Support.DevBoxOperationKind RestoreSnapshot = @"RestoreSnapshot";
 
         /// <summary>The operation represents a Dev Box start.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Support.DevBoxOperationKind Start = @"Start";

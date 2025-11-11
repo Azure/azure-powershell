@@ -159,7 +159,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20.ICheckNameAvailabilityResponse
+### Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.ICheckNameAvailabilityResponse
 
 ## NOTES
 

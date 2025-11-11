@@ -8,38 +8,40 @@ schema: 2.0.0
 # Set-AzSearchSharedPrivateLinkResource
 
 ## SYNOPSIS
-Update the shared private link resource for the Azure Cognitive Search service.
+Update the shared private link resource for the Azure AI Search service.
 
 ## SYNTAX
 
 ### ResourceNameParameterSet (Default)
 ```
 Set-AzSearchSharedPrivateLinkResource [-ResourceGroupName] <String> [-ServiceName] <String> [-Name] <String>
- -RequestMessage <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -RequestMessage <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ParentObjectParameterSet
 ```
 Set-AzSearchSharedPrivateLinkResource [-ParentObject] <PSSearchService> [-Name] <String>
- -RequestMessage <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -RequestMessage <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
 Set-AzSearchSharedPrivateLinkResource [-ResourceId] <String> -RequestMessage <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
 Set-AzSearchSharedPrivateLinkResource -RequestMessage <String> [-InputObject] <PSSharedPrivateLinkResource>
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-This **Set-AzSearchSharedPrivateLinkResource** updates the shared private link resource for the Azure Cognitive Search service.
+This **Set-AzSearchSharedPrivateLinkResource** updates the shared private link resource for the Azure AI Search service.
 
 ## EXAMPLES
 
@@ -60,7 +62,7 @@ RequestMessage        : Please kindly approve
 ResourceRegion        :
 ```
 
-This example updates the request message for the pending shared private link resource for the Azure Cognitive Search service.
+This example updates the request message for the pending shared private link resource for the Azure AI Search service.
 
 ## PARAMETERS
 
@@ -110,7 +112,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Azure Cognitive Search Shared private link resource
+Azure AI Search Shared private link resource
 
 ```yaml
 Type: System.String
@@ -125,7 +127,7 @@ Accept wildcard characters: False
 ```
 
 ### -ParentObject
-Azure Cognitive Search Service Input Object.
+Azure AI Search Service Input Object.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Management.Search.Models.PSSearchService
@@ -185,7 +187,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServiceName
-Azure Cognitive Search Service name.
+Azure AI Search Service name.
 
 ```yaml
 Type: System.String

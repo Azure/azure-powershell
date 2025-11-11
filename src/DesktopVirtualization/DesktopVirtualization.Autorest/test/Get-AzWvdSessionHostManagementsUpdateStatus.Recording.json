@@ -1,17 +1,17 @@
 {
-  "Get-AzWvdSessionHostManagementsUpdateStatus+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbhpuHP/sessionHostManagements/default/sessionHostUpdateStatuses/default?api-version=2025-03-01-preview+1": {
+  "Get-AzWvdSessionHostManagementsUpdateStatus+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/6738509d-84ed-4ad6-974a-7dc4e3c34146/resourceGroups/zhongjie-rg-wus/providers/Microsoft.DesktopVirtualization/hostPools/zhongjie-automated2/sessionHostManagements/default/sessionHostUpdateStatuses/default?api-version=2025-04-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbhpuHP/sessionHostManagements/default/sessionHostUpdateStatuses/default?api-version=2025-03-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/6738509d-84ed-4ad6-974a-7dc4e3c34146/resourceGroups/zhongjie-rg-wus/providers/Microsoft.DesktopVirtualization/hostPools/zhongjie-automated2/sessionHostManagements/default/sessionHostUpdateStatuses/default?api-version=2025-04-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "156" ],
-        "x-ms-client-request-id": [ "1cdef537-8523-44de-9832-9ab18ca49779" ],
+        "x-ms-unique-id": [ "155" ],
+        "x-ms-client-request-id": [ "14376d74-3678-47aa-8aae-887aaee90ab9" ],
         "CommandName": [ "Get-AzWvdSessionHostManagementsUpdateStatus" ],
         "FullCommandName": [ "Get-AzWvdSessionHostManagementsUpdateStatus_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v8.1.0", "PSVersion/v7.5.1", "Az.DesktopVirtualization/5.4.2" ],
+        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.5.4", "Az.DesktopVirtualization/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -23,32 +23,32 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
-        "Set-Cookie": [ "ARRAffinity=f5a17254951e5cf9c5b38779db50e2bfcb7bdbef0315c86a85e59a1c7e1471bf;Path=/;HttpOnly;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com", "ARRAffinitySameSite=f5a17254951e5cf9c5b38779db50e2bfcb7bdbef0315c86a85e59a1c7e1471bf;Path=/;HttpOnly;SameSite=None;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com" ],
-        "x-ms-operation-identifier": [ "tenantId=74bc2df0-fc57-4361-b150-2d6dd51cb663,objectId=6af0f1bf-5c93-4451-a61d-ebfd80741d5b/southeastasia/8ae1933f-db0d-4689-b1b8-440dde71a788" ],
+        "Set-Cookie": [ "ARRAffinity=39eae58dae3e9ce3daa32a653411adeefc8bac631df7d8341ac09f4a2566b7ae;Path=/;HttpOnly;Secure;Domain=rdarmprovider-g-us-r0.wvd.microsoft.com", "ARRAffinitySameSite=39eae58dae3e9ce3daa32a653411adeefc8bac631df7d8341ac09f4a2566b7ae;Path=/;HttpOnly;SameSite=None;Secure;Domain=rdarmprovider-g-us-r0.wvd.microsoft.com" ],
+        "x-ms-operation-identifier": [ "tenantId=715492f1-ef6e-4eea-9176-7c81e765c3c8,objectId=1db230a9-e046-46ab-912b-9cea769323a2/westus2/b6a82144-8d66-43e8-9126-d6bbc15af764" ],
         "X-Rate-Limit-Limit": [ "0" ],
         "X-Rate-Limit-Remaining": [ "9223372036854775807" ],
         "X-Rate-Limit-Reset": [ "0" ],
-        "x-ms-opsarmpath64": [ "L3N1YnNjcmlwdGlvbnMvZGJlZGVmMjUtMTg0Yy00MzBmLWIzODMtMGVlYjg3YzMyMDVkL3Jlc291cmNlR3JvdXBzL2FsZWNiVXNlclNlc3Npb25UZXN0cy9wcm92aWRlcnMvTWljcm9zb2Z0LkRlc2t0b3BWaXJ0dWFsaXphdGlvbi9ob3N0UG9vbHMvYWxlY2JocHVIUC9zZXNzaW9uSG9zdE1hbmFnZW1lbnRzL2RlZmF1bHQvc2Vzc2lvbkhvc3RVcGRhdGVTdGF0dXNlcy9kZWZhdWx0" ],
-        "x-ms-lamport-ts": [ "212363529" ],
-        "x-ms-correlation-id": [ "ec8df2d4-f023-44b1-8f1a-66589b5f106c" ],
-        "x-ms-request-id": [ "1cdef537-8523-44de-9832-9ab18ca49779" ],
+        "x-ms-opsarmpath64": [ "L3N1YnNjcmlwdGlvbnMvNjczODUwOWQtODRlZC00YWQ2LTk3NGEtN2RjNGUzYzM0MTQ2L3Jlc291cmNlR3JvdXBzL3pob25namllLXJnLXd1cy9wcm92aWRlcnMvTWljcm9zb2Z0LkRlc2t0b3BWaXJ0dWFsaXphdGlvbi9ob3N0UG9vbHMvemhvbmdqaWUtYXV0b21hdGVkMi9zZXNzaW9uSG9zdE1hbmFnZW1lbnRzL2RlZmF1bHQvc2Vzc2lvbkhvc3RVcGRhdGVTdGF0dXNlcy9kZWZhdWx0" ],
+        "x-ms-lamport-ts": [ "10197656258" ],
+        "x-ms-correlation-id": [ "01230c20-e1ef-46ee-881a-0cdd7a7ca9ca" ],
+        "x-ms-request-id": [ "14376d74-3678-47aa-8aae-887aaee90ab9" ],
         "X-Powered-By": [ "ASP.NET" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
         "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
-        "x-ms-correlation-request-id": [ "7e41cdbd-8fde-4b4c-be18-bdd347d92312" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20250626T024345Z:7e41cdbd-8fde-4b4c-be18-bdd347d92312" ],
+        "x-ms-correlation-request-id": [ "4e0dc1c6-b025-43e0-bb07-e4a7d654de19" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20251106T071855Z:4e0dc1c6-b025-43e0-bb07-e4a7d654de19" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 07657C57B37A46C4A4AB799BEB090270 Ref B: MAA201060515011 Ref C: 2025-06-26T02:43:44Z" ],
-        "Date": [ "Thu, 26 Jun 2025 02:43:44 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: A9E6B16B8E904ECBAF625E30A1A02C27 Ref B: JKT201051407060 Ref C: 2025-11-06T07:18:54Z" ],
+        "Date": [ "Thu, 06 Nov 2025 07:18:54 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1508" ],
+        "Content-Length": [ "1821" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbhpuHP/sessionHostUpdateStatuses/default\",\"status\":\"UpdatingSessionHosts\",\"startTime\":\"2025-06-25T18:56:58Z\",\"endTime\":null,\"percentComplete\":0.0,\"error\":null,\"correlationId\":\"4d22cef7-39a8-42d2-aa07-a9792a41a4a1\",\"progress\":{\"totalSessionHosts\":5,\"sessionHostsRollbackFailed\":0,\"executionStartTime\":\"2025-06-25T18:56:58.6758392\",\"sessionHostsInProgress\":1,\"sessionHostsCompleted\":0},\"scheduledDateTime\":null,\"sessionHostManagement\":{\"properties\":{\"failedSessionHostCleanupPolicy\":\"KeepAll\",\"scheduledDateTimeZone\":\"Pacific Standard Time\",\"update\":{\"deleteOriginalVm\":true,\"maxVmsRemoved\":1,\"logOffDelayMinutes\":0,\"logOffMessage\":\"Updating Session Hosts. Will Log off\"},\"provisioning\":{\"instanceCount\":0,\"canaryPolicy\":\"Auto\",\"setDrainMode\":false}}},\"properties\":{\"correlationId\":\"4d22cef7-39a8-42d2-aa07-a9792a41a4a1\",\"progress\":{\"totalSessionHosts\":5,\"sessionHostsRollbackFailed\":0,\"executionStartTime\":\"2025-06-25T18:56:58.6758392\",\"sessionHostsInProgress\":1,\"sessionHostsCompleted\":0},\"scheduledDateTime\":null,\"sessionHostManagement\":{\"properties\":{\"failedSessionHostCleanupPolicy\":\"KeepAll\",\"scheduledDateTimeZone\":\"Pacific Standard Time\",\"update\":{\"deleteOriginalVm\":true,\"maxVmsRemoved\":1,\"logOffDelayMinutes\":0,\"logOffMessage\":\"Updating Session Hosts. Will Log off\"},\"provisioning\":{\"instanceCount\":0,\"canaryPolicy\":\"Auto\",\"setDrainMode\":false}}}}}",
+      "Content": "{\"id\":\"/subscriptions/6738509d-84ed-4ad6-974a-7dc4e3c34146/resourceGroups/zhongjie-rg-wus/providers/Microsoft.DesktopVirtualization/hostPools/zhongjie-automated2/sessionHostUpdateStatuses/default\",\"status\":\"Failed\",\"startTime\":\"2025-11-05T22:59:17Z\",\"endTime\":\"2025-11-05T22:59:21Z\",\"percentComplete\":100.0,\"error\":{\"code\":\"UpdateFailure\",\"message\":\"[{\\\"faultCode\\\":\\\"HostpoolHasNoSessionHosts_1024\\\",\\\"faultText\\\":\\\"The Host Pool has no Session Hosts which can be updated.  All session hosts are already at the same version as the session host configuration.\\\",\\\"faultContext\\\":\\\"HostpoolNotEmptyRule\\\",\\\"faultType\\\":0}]\"},\"correlationId\":\"dc72d019-ab6d-475a-958f-4b7b1040eb0f\",\"progress\":{\"totalSessionHosts\":0,\"sessionHostsRollbackFailed\":0,\"executionStartTime\":\"2025-11-05T22:59:17.7676297\",\"sessionHostsInProgress\":0,\"sessionHostsCompleted\":0},\"scheduledDateTime\":null,\"sessionHostManagement\":{\"properties\":{\"failedSessionHostCleanupPolicy\":\"KeepAll\",\"scheduledDateTimeZone\":\"Pacific Standard Time\",\"update\":{\"deleteOriginalVm\":true,\"maxVmsRemoved\":1,\"logOffDelayMinutes\":0,\"logOffMessage\":\"Updating Session Hosts. Will Log off\"},\"provisioning\":{\"instanceCount\":2,\"canaryPolicy\":\"Auto\",\"setDrainMode\":false}}},\"properties\":{\"correlationId\":\"dc72d019-ab6d-475a-958f-4b7b1040eb0f\",\"progress\":{\"totalSessionHosts\":0,\"sessionHostsRollbackFailed\":0,\"executionStartTime\":\"2025-11-05T22:59:17.7676297\",\"sessionHostsInProgress\":0,\"sessionHostsCompleted\":0},\"scheduledDateTime\":null,\"sessionHostManagement\":{\"properties\":{\"failedSessionHostCleanupPolicy\":\"KeepAll\",\"scheduledDateTimeZone\":\"Pacific Standard Time\",\"update\":{\"deleteOriginalVm\":true,\"maxVmsRemoved\":1,\"logOffDelayMinutes\":0,\"logOffMessage\":\"Updating Session Hosts. Will Log off\"},\"provisioning\":{\"instanceCount\":2,\"canaryPolicy\":\"Auto\",\"setDrainMode\":false}}}}}",
       "isContentBase64": false
     }
   }

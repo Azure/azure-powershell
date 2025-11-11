@@ -15,17 +15,18 @@ Create a ScalingPlanPooledSchedule.
 ### CreateExpanded (Default)
 ```
 New-AzWvdScalingPlanPooledSchedule -ResourceGroupName <String> -ScalingPlanName <String>
- -ScalingPlanScheduleName <String> -DaysOfWeek <String[]> -OffPeakStartTimeHour <Int32>
- -OffPeakStartTimeMinute <Int32> -PeakStartTimeHour <Int32> -PeakStartTimeMinute <Int32>
- -RampDownCapacityThresholdPct <Int32> -RampDownStartTimeHour <Int32> -RampDownStartTimeMinute <Int32>
- -RampUpCapacityThresholdPct <Int32> -RampUpStartTimeHour <Int32> -RampUpStartTimeMinute <Int32>
- [-SubscriptionId <String>] [-CreateDeleteRampDownMaximumHostPoolSize <Int32>]
- [-CreateDeleteRampDownMinimumHostPoolSize <Int32>] [-CreateDeleteRampUpMaximumHostPoolSize <Int32>]
- [-CreateDeleteRampUpMinimumHostPoolSize <Int32>] [-OffPeakLoadBalancingAlgorithm <String>]
- [-PeakLoadBalancingAlgorithm <String>] [-RampDownForceLogoffUser] [-RampDownLoadBalancingAlgorithm <String>]
- [-RampDownMinimumHostsPct <Int32>] [-RampDownNotificationMessage <String>] [-RampDownStopHostsWhen <String>]
- [-RampDownWaitTimeMinute <Int32>] [-RampUpLoadBalancingAlgorithm <String>] [-RampUpMinimumHostsPct <Int32>]
- [-ScalingMethod <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -ScalingPlanScheduleName <String> [-SubscriptionId <String>]
+ [-CreateDeleteRampDownMaximumHostPoolSize <Int32>] [-CreateDeleteRampDownMinimumHostPoolSize <Int32>]
+ [-CreateDeleteRampUpMaximumHostPoolSize <Int32>] [-CreateDeleteRampUpMinimumHostPoolSize <Int32>]
+ [-DaysOfWeek <String[]>] [-OffPeakLoadBalancingAlgorithm <String>] [-OffPeakStartTimeHour <Int32>]
+ [-OffPeakStartTimeMinute <Int32>] [-PeakLoadBalancingAlgorithm <String>] [-PeakStartTimeHour <Int32>]
+ [-PeakStartTimeMinute <Int32>] [-RampDownCapacityThresholdPct <Int32>] [-RampDownForceLogoffUser]
+ [-RampDownLoadBalancingAlgorithm <String>] [-RampDownMinimumHostsPct <Int32>]
+ [-RampDownNotificationMessage <String>] [-RampDownStartTimeHour <Int32>] [-RampDownStartTimeMinute <Int32>]
+ [-RampDownStopHostsWhen <String>] [-RampDownWaitTimeMinute <Int32>] [-RampUpCapacityThresholdPct <Int32>]
+ [-RampUpLoadBalancingAlgorithm <String>] [-RampUpMinimumHostsPct <Int32>] [-RampUpStartTimeHour <Int32>]
+ [-RampUpStartTimeMinute <Int32>] [-ScalingMethod <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -159,7 +160,7 @@ Type: System.String[]
 Parameter Sets: CreateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -235,7 +236,7 @@ Type: System.Int32
 Parameter Sets: CreateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -250,7 +251,7 @@ Type: System.Int32
 Parameter Sets: CreateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -280,7 +281,7 @@ Type: System.Int32
 Parameter Sets: CreateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -295,7 +296,7 @@ Type: System.Int32
 Parameter Sets: CreateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -310,7 +311,7 @@ Type: System.Int32
 Parameter Sets: CreateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -385,7 +386,7 @@ Type: System.Int32
 Parameter Sets: CreateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -400,7 +401,7 @@ Type: System.Int32
 Parameter Sets: CreateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -445,7 +446,7 @@ Type: System.Int32
 Parameter Sets: CreateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -490,7 +491,7 @@ Type: System.Int32
 Parameter Sets: CreateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -505,7 +506,7 @@ Type: System.Int32
 Parameter Sets: CreateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
