@@ -11,8 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.DiagnosticSetting.private.dll'
   FormatsToProcess = './Az.DiagnosticSetting.format.ps1xml'
-  FunctionsToExport = 'Get-AzDiagnosticSetting', 'Get-AzDiagnosticSettingCategory', 'Get-AzEventCategory', 'Get-AzSubscriptionDiagnosticSetting', 'New-AzDiagnosticSetting', 'New-AzDiagnosticSettingLogSettingsObject', 'New-AzDiagnosticSettingMetricSettingsObject', 'New-AzDiagnosticSettingSubscriptionLogSettingsObject', 'New-AzSubscriptionDiagnosticSetting', 'Remove-AzDiagnosticSetting', 'Remove-AzSubscriptionDiagnosticSetting', '*'
-  AliasesToExport = '*'
+  FunctionsToExport = 'Get-AzDiagnosticSetting', 'Get-AzDiagnosticSettingCategory', 'Get-AzEventCategory', 'Get-AzSubscriptionDiagnosticSetting', 'New-AzDiagnosticSetting', 'New-AzDiagnosticSettingLogSettingsObject', 'New-AzDiagnosticSettingMetricSettingsObject', 'New-AzDiagnosticSettingSubscriptionLogSettingsObject', 'New-AzSubscriptionDiagnosticSetting', 'Remove-AzDiagnosticSetting', 'Remove-AzSubscriptionDiagnosticSetting', 'Update-AzDiagnosticSetting', 'Update-AzSubscriptionDiagnosticSetting'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'DiagnosticSetting'
