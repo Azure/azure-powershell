@@ -20,6 +20,8 @@
 
 -->
 ## Upcoming Release
+
+## Version 10.5.1
 * Supported `-DryRun` and `-ExportBicep` 
 * Improved user experience and consistency. This may introduce breaking changes. Please refer to [here](https://go.microsoft.com/fwlink/?linkid=2340249).
 * Updated Azure.Core from 1.45.0 to 1.47.3
