@@ -15,6 +15,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Cmdlets
     /// [OpenAPI] CreateTeam=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/incidents/{incidentId}/createTeam"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzSentinelIncidentTeam_Create", SupportsShouldProcess = true)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.ParameterSetBreakingChange(new string[] {"Create"}, "15.0.0", "4.0.0", "2025/11/19")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.ITeamInformation))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Description(@"Creates a Microsoft team to investigate the incident by sharing information and insights between participants.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Generated]

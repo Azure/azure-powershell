@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzCdnOriginGroup
 
 ## SYNOPSIS
-update an existing origin group within an endpoint.
+Update an existing origin group within an endpoint.
 
 ## SYNTAX
 
@@ -77,7 +77,7 @@ Update-AzCdnOriginGroup -InputObject <ICdnIdentity> [-HealthProbeSetting <IHealt
 ```
 
 ## DESCRIPTION
-update an existing origin group within an endpoint.
+Update an existing origin group within an endpoint.
 
 ## EXAMPLES
 
@@ -323,7 +323,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Name of the Resource group within the Azure subscription.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -354,7 +355,8 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-Azure Subscription ID.
+The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String

@@ -1,0 +1,395 @@
+{
+  "New-AzDeviceRegistryNamespace+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/test-namespace-create-expanded1?api-version=2025-10-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/test-namespace-create-expanded1?api-version=2025-10-01",
+      "Content": "{\n  \"location\": \"eastus2\",\n  \"properties\": {\n    \"messaging\": {\n      \"endpoints\": {\n        \"myendpoint2\": {\n          \"endpointType\": \"Microsoft.Devices/IotHubs\",\n          \"address\": \"https://myendpoint2.westeurope-1.iothub.azure.net\",\n          \"resourceId\": \"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.IotHub/namespaces/contoso-hub-namespace2\"\n        },\n        \"myendpoint1\": {\n          \"endpointType\": \"Microsoft.Devices/IotHubs\",\n          \"address\": \"https://myendpoint1.westeurope-1.iothub.azure.net\",\n          \"resourceId\": \"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.IotHub/namespaces/contoso-hub-namespace1\"\n        }\n      }\n    }\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "775" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0000ff52-0000-0200-0000-687f5c6d0000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=e3029257-ff30-403c-a905-c87ef1aa933a/eastus2/97c15a49-6411-4d35-a5be-a9a18a2c4c23" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-correlation-request-id": [ "2409a91e-cb35-4cd3-8f15-1f39e2ac68fc" ],
+        "mise-correlation-id": [ "81838ba3-0a58-4d45-9cc3-3cd3ae6be1d4" ],
+        "x-envoy-upstream-service-time": [ "7" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-azure-ref": [ "20250722T093956Z-157d4df6468hdqq6hC1BN12n2400000009s000000000bq5u" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "x-ms-request-id": [ "6adeac63-d947-45ce-a496-7b1e1435e810" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "199" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20250722T093957Z:2409a91e-cb35-4cd3-8f15-1f39e2ac68fc" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-MSEdge-Ref": [ "Ref A: 2FAC0A5C26AB4624A3FD094209FB9907 Ref B: MWH011020808040 Ref C: 2025-07-22T09:39:56Z" ],
+        "Date": [ "Tue, 22 Jul 2025 09:39:56 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1188" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/test-namespace-create-expanded1\",\"name\":\"test-namespace-create-expanded1\",\"type\":\"microsoft.deviceregistry/namespaces\",\"location\":\"eastus2\",\"systemData\":{\"createdBy\":\"rylo@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-07-22T07:48:52.4682531Z\",\"lastModifiedBy\":\"rylo@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-07-22T09:39:56.8586277Z\"},\"properties\":{\"messaging\":{\"endpoints\":{\"myendpoint2\":{\"resourceId\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.IotHub/namespaces/contoso-hub-namespace2\",\"address\":\"https://myendpoint2.westeurope-1.iothub.azure.net\",\"endpointType\":\"Microsoft.Devices/IotHubs\"},\"myendpoint1\":{\"resourceId\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.IotHub/namespaces/contoso-hub-namespace1\",\"address\":\"https://myendpoint1.westeurope-1.iothub.azure.net\",\"endpointType\":\"Microsoft.Devices/IotHubs\"}}},\"uuid\":\"984d6eda-3d05-4f59-89aa-1821c05102b8\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzDeviceRegistryNamespace+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/test-namespace-create-expanded1?api-version=2025-10-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/test-namespace-create-expanded1?api-version=2025-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "78972b94-fce8-4395-a70f-178732f1304a" ],
+        "CommandName": [ "New-AzDeviceRegistryNamespace" ],
+        "FullCommandName": [ "New-AzDeviceRegistryNamespace_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.24", "Az.DeviceRegistry/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0000ff52-0000-0200-0000-687f5c6d0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "249" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "2200eac3-3e8e-4416-b69f-10b3b87c7d61" ],
+        "x-ms-correlation-request-id": [ "5e000574-d9a5-467f-b287-d9a679ee0e60" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20250722T094027Z:5e000574-d9a5-467f-b287-d9a679ee0e60" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: FBC7BE783FBE4C48A5374CAC46995FFD Ref B: MWH011020808040 Ref C: 2025-07-22T09:40:27Z" ],
+        "Date": [ "Tue, 22 Jul 2025 09:40:26 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1188" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/test-namespace-create-expanded1\",\"name\":\"test-namespace-create-expanded1\",\"type\":\"microsoft.deviceregistry/namespaces\",\"location\":\"eastus2\",\"systemData\":{\"createdBy\":\"rylo@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-07-22T07:48:52.4682531Z\",\"lastModifiedBy\":\"rylo@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-07-22T09:39:56.8586277Z\"},\"properties\":{\"messaging\":{\"endpoints\":{\"myendpoint2\":{\"resourceId\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.IotHub/namespaces/contoso-hub-namespace2\",\"address\":\"https://myendpoint2.westeurope-1.iothub.azure.net\",\"endpointType\":\"Microsoft.Devices/IotHubs\"},\"myendpoint1\":{\"resourceId\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.IotHub/namespaces/contoso-hub-namespace1\",\"address\":\"https://myendpoint1.westeurope-1.iothub.azure.net\",\"endpointType\":\"Microsoft.Devices/IotHubs\"}}},\"uuid\":\"984d6eda-3d05-4f59-89aa-1821c05102b8\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzDeviceRegistryNamespace+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/test-namespace-create-expanded1?api-version=2025-10-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/test-namespace-create-expanded1?api-version=2025-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "78972b94-fce8-4395-a70f-178732f1304a" ],
+        "CommandName": [ "New-AzDeviceRegistryNamespace" ],
+        "FullCommandName": [ "New-AzDeviceRegistryNamespace_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.24", "Az.DeviceRegistry/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0000ff52-0000-0200-0000-687f5c6d0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "249" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "eebc1605-bea8-4c4c-847f-75e2a277a919" ],
+        "x-ms-correlation-request-id": [ "f5c5209b-1ffe-4d86-bb00-c1ba6763a394" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20250722T094027Z:f5c5209b-1ffe-4d86-bb00-c1ba6763a394" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 46A0DC703FD64EF5911821988131EA5B Ref B: MWH011020808040 Ref C: 2025-07-22T09:40:27Z" ],
+        "Date": [ "Tue, 22 Jul 2025 09:40:27 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1188" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/test-namespace-create-expanded1\",\"name\":\"test-namespace-create-expanded1\",\"type\":\"microsoft.deviceregistry/namespaces\",\"location\":\"eastus2\",\"systemData\":{\"createdBy\":\"rylo@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-07-22T07:48:52.4682531Z\",\"lastModifiedBy\":\"rylo@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-07-22T09:39:56.8586277Z\"},\"properties\":{\"messaging\":{\"endpoints\":{\"myendpoint2\":{\"resourceId\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.IotHub/namespaces/contoso-hub-namespace2\",\"address\":\"https://myendpoint2.westeurope-1.iothub.azure.net\",\"endpointType\":\"Microsoft.Devices/IotHubs\"},\"myendpoint1\":{\"resourceId\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.IotHub/namespaces/contoso-hub-namespace1\",\"address\":\"https://myendpoint1.westeurope-1.iothub.azure.net\",\"endpointType\":\"Microsoft.Devices/IotHubs\"}}},\"uuid\":\"984d6eda-3d05-4f59-89aa-1821c05102b8\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzDeviceRegistryNamespace+[NoContext]+CreateViaJsonFilePath+$PUT+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/test-namespace-create-json-file-path?api-version=2025-10-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/test-namespace-create-json-file-path?api-version=2025-10-01",
+      "Content": "{\r\n  \"location\": \"eastus2\",\r\n  \"properties\": {        \r\n    \"messaging\": {\r\n      \"endpoints\": {\r\n        \"myendpoint1\": {\r\n          \"address\": \"https://myendpoint1.westeurope-1.iothub.azure.net\",\r\n          \"endpointType\": \"Microsoft.Devices/IotHubs\",\r\n          \"resourceId\": \"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.IotHub/namespaces/contoso-hub-namespace1\"\r\n        },\r\n        \"myendpoint2\": {\r\n          \"address\": \"https://myendpoint2.westeurope-1.iothub.azure.net\",\r\n          \"endpointType\": \"Microsoft.Devices/IotHubs\",\r\n          \"resourceId\": \"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.IotHub/namespaces/contoso-hub-namespace2\"\r\n        }\r\n      }\r\n    }\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "844" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"00000053-0000-0200-0000-687f5c8c0000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=e3029257-ff30-403c-a905-c87ef1aa933a/eastus2/34bb5044-09d3-4b16-a5e4-799e80f9623f" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-correlation-request-id": [ "ce63185e-3e19-4d1b-b419-2beada6281c0" ],
+        "mise-correlation-id": [ "f658297e-ebbb-437f-9ab1-5bf3ec5b45a0" ],
+        "x-envoy-upstream-service-time": [ "7" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-azure-ref": [ "20250722T094028Z-157d4df64686vjhqhC1BN11uwn00000009u0000000009qqq" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "x-ms-request-id": [ "dd2fef6c-da0b-417c-8d85-b3b08861063b" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "199" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20250722T094028Z:ce63185e-3e19-4d1b-b419-2beada6281c0" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-MSEdge-Ref": [ "Ref A: D6E73180D12E40A9B31000B649E2924F Ref B: MWH011020808040 Ref C: 2025-07-22T09:40:27Z" ],
+        "Date": [ "Tue, 22 Jul 2025 09:40:28 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1225" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/test-namespace-create-json-file-path\",\"name\":\"test-namespace-create-json-file-path\",\"type\":\"microsoft.deviceregistry/namespaces\",\"location\":\"eastus2\",\"systemData\":{\"createdBy\":\"rylo@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-07-22T08:01:04.1705266Z\",\"lastModifiedBy\":\"rylo@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-07-22T09:40:28.1442994Z\"},\"identity\":{\"type\":\"None\"},\"properties\":{\"messaging\":{\"endpoints\":{\"myendpoint1\":{\"resourceId\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.IotHub/namespaces/contoso-hub-namespace1\",\"address\":\"https://myendpoint1.westeurope-1.iothub.azure.net\",\"endpointType\":\"Microsoft.Devices/IotHubs\"},\"myendpoint2\":{\"resourceId\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.IotHub/namespaces/contoso-hub-namespace2\",\"address\":\"https://myendpoint2.westeurope-1.iothub.azure.net\",\"endpointType\":\"Microsoft.Devices/IotHubs\"}}},\"uuid\":\"0e118251-965b-4de9-a5db-b20a570cff33\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzDeviceRegistryNamespace+[NoContext]+CreateViaJsonFilePath+$GET+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/test-namespace-create-json-file-path?api-version=2025-10-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/test-namespace-create-json-file-path?api-version=2025-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "3bc04190-ddc4-4a05-9b03-ad920a18c5e9" ],
+        "CommandName": [ "New-AzDeviceRegistryNamespace" ],
+        "FullCommandName": [ "New-AzDeviceRegistryNamespace_CreateViaJsonFilePath" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.24", "Az.DeviceRegistry/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"00000053-0000-0200-0000-687f5c8c0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "249" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "55a0a114-cd55-49c5-995c-5b385ba136f4" ],
+        "x-ms-correlation-request-id": [ "a8b87cdc-ccff-4c4d-bdc3-2afec5a702bf" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20250722T094058Z:a8b87cdc-ccff-4c4d-bdc3-2afec5a702bf" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: DA9E093D93D24C9D8896561D367D3370 Ref B: MWH011020808040 Ref C: 2025-07-22T09:40:58Z" ],
+        "Date": [ "Tue, 22 Jul 2025 09:40:58 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1225" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/test-namespace-create-json-file-path\",\"name\":\"test-namespace-create-json-file-path\",\"type\":\"microsoft.deviceregistry/namespaces\",\"location\":\"eastus2\",\"systemData\":{\"createdBy\":\"rylo@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-07-22T08:01:04.1705266Z\",\"lastModifiedBy\":\"rylo@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-07-22T09:40:28.1442994Z\"},\"identity\":{\"type\":\"None\"},\"properties\":{\"messaging\":{\"endpoints\":{\"myendpoint1\":{\"resourceId\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.IotHub/namespaces/contoso-hub-namespace1\",\"address\":\"https://myendpoint1.westeurope-1.iothub.azure.net\",\"endpointType\":\"Microsoft.Devices/IotHubs\"},\"myendpoint2\":{\"resourceId\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.IotHub/namespaces/contoso-hub-namespace2\",\"address\":\"https://myendpoint2.westeurope-1.iothub.azure.net\",\"endpointType\":\"Microsoft.Devices/IotHubs\"}}},\"uuid\":\"0e118251-965b-4de9-a5db-b20a570cff33\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzDeviceRegistryNamespace+[NoContext]+CreateViaJsonFilePath+$GET+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/test-namespace-create-json-file-path?api-version=2025-10-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/test-namespace-create-json-file-path?api-version=2025-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "6" ],
+        "x-ms-client-request-id": [ "3bc04190-ddc4-4a05-9b03-ad920a18c5e9" ],
+        "CommandName": [ "New-AzDeviceRegistryNamespace" ],
+        "FullCommandName": [ "New-AzDeviceRegistryNamespace_CreateViaJsonFilePath" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.24", "Az.DeviceRegistry/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"00000053-0000-0200-0000-687f5c8c0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "249" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "c2b37dcb-0217-41f0-a1bb-5876ccc7ef0f" ],
+        "x-ms-correlation-request-id": [ "8e69e45e-055a-442a-8fcd-406a58d38b60" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20250722T094059Z:8e69e45e-055a-442a-8fcd-406a58d38b60" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: A3F56FA6C40E4830816CF9272D749D13 Ref B: MWH011020808040 Ref C: 2025-07-22T09:40:58Z" ],
+        "Date": [ "Tue, 22 Jul 2025 09:40:58 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1225" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/test-namespace-create-json-file-path\",\"name\":\"test-namespace-create-json-file-path\",\"type\":\"microsoft.deviceregistry/namespaces\",\"location\":\"eastus2\",\"systemData\":{\"createdBy\":\"rylo@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-07-22T08:01:04.1705266Z\",\"lastModifiedBy\":\"rylo@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-07-22T09:40:28.1442994Z\"},\"identity\":{\"type\":\"None\"},\"properties\":{\"messaging\":{\"endpoints\":{\"myendpoint1\":{\"resourceId\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.IotHub/namespaces/contoso-hub-namespace1\",\"address\":\"https://myendpoint1.westeurope-1.iothub.azure.net\",\"endpointType\":\"Microsoft.Devices/IotHubs\"},\"myendpoint2\":{\"resourceId\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.IotHub/namespaces/contoso-hub-namespace2\",\"address\":\"https://myendpoint2.westeurope-1.iothub.azure.net\",\"endpointType\":\"Microsoft.Devices/IotHubs\"}}},\"uuid\":\"0e118251-965b-4de9-a5db-b20a570cff33\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzDeviceRegistryNamespace+[NoContext]+CreateViaJsonString+$PUT+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/test-namespace-create-json-string?api-version=2025-10-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/test-namespace-create-json-string?api-version=2025-10-01",
+      "Content": "{\r\n  \"location\": \"eastus2\",\r\n  \"properties\": {        \r\n    \"messaging\": {\r\n      \"endpoints\": {\r\n        \"myendpoint1\": {\r\n          \"address\": \"https://myendpoint1.westeurope-1.iothub.azure.net\",\r\n          \"endpointType\": \"Microsoft.Devices/IotHubs\",\r\n          \"resourceId\": \"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.IotHub/namespaces/contoso-hub-namespace1\"\r\n        },\r\n        \"myendpoint2\": {\r\n          \"address\": \"https://myendpoint2.westeurope-1.iothub.azure.net\",\r\n          \"endpointType\": \"Microsoft.Devices/IotHubs\",\r\n          \"resourceId\": \"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.IotHub/namespaces/contoso-hub-namespace2\"\r\n        }\r\n      }\r\n    }\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "844" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"00000153-0000-0200-0000-687f5cab0000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=e3029257-ff30-403c-a905-c87ef1aa933a/eastus2/1f229670-40bb-439d-8353-e30ad13fbd33" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-correlation-request-id": [ "6f4d43d1-cb7f-4262-b9b7-37e33d673061" ],
+        "mise-correlation-id": [ "d8c792e4-ed43-42b9-8a2c-c3fddae45a2f" ],
+        "x-envoy-upstream-service-time": [ "7" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-azure-ref": [ "20250722T094059Z-157d4df6468xhks9hC1BN11wb80000000970000000005xsx" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "x-ms-request-id": [ "1e4166cb-56f1-46b1-8716-26d01aafd814" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "199" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20250722T094059Z:6f4d43d1-cb7f-4262-b9b7-37e33d673061" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-MSEdge-Ref": [ "Ref A: E062A621849C47A0ABC44C51D0BF4D89 Ref B: MWH011020808040 Ref C: 2025-07-22T09:40:59Z" ],
+        "Date": [ "Tue, 22 Jul 2025 09:40:59 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1219" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/test-namespace-create-json-string\",\"name\":\"test-namespace-create-json-string\",\"type\":\"microsoft.deviceregistry/namespaces\",\"location\":\"eastus2\",\"systemData\":{\"createdBy\":\"rylo@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-07-22T08:22:22.2177853Z\",\"lastModifiedBy\":\"rylo@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-07-22T09:40:59.3628311Z\"},\"identity\":{\"type\":\"None\"},\"properties\":{\"messaging\":{\"endpoints\":{\"myendpoint1\":{\"resourceId\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.IotHub/namespaces/contoso-hub-namespace1\",\"address\":\"https://myendpoint1.westeurope-1.iothub.azure.net\",\"endpointType\":\"Microsoft.Devices/IotHubs\"},\"myendpoint2\":{\"resourceId\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.IotHub/namespaces/contoso-hub-namespace2\",\"address\":\"https://myendpoint2.westeurope-1.iothub.azure.net\",\"endpointType\":\"Microsoft.Devices/IotHubs\"}}},\"uuid\":\"c33a2bfb-3775-4180-900f-37b71c7d0aa3\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzDeviceRegistryNamespace+[NoContext]+CreateViaJsonString+$GET+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/test-namespace-create-json-string?api-version=2025-10-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/test-namespace-create-json-string?api-version=2025-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "8" ],
+        "x-ms-client-request-id": [ "db9cb935-1138-470d-a90a-f24db66a13c1" ],
+        "CommandName": [ "New-AzDeviceRegistryNamespace" ],
+        "FullCommandName": [ "New-AzDeviceRegistryNamespace_CreateViaJsonString" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.24", "Az.DeviceRegistry/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"00000153-0000-0200-0000-687f5cab0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "249" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "ea18db91-8e31-458c-b857-51fc121c5a32" ],
+        "x-ms-correlation-request-id": [ "1cbbefff-522b-4cc2-9498-ae843ce083dd" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20250722T094130Z:1cbbefff-522b-4cc2-9498-ae843ce083dd" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: FB65ADBDBA894434B68E818A2A94AD12 Ref B: MWH011020808040 Ref C: 2025-07-22T09:41:29Z" ],
+        "Date": [ "Tue, 22 Jul 2025 09:41:29 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1219" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/test-namespace-create-json-string\",\"name\":\"test-namespace-create-json-string\",\"type\":\"microsoft.deviceregistry/namespaces\",\"location\":\"eastus2\",\"systemData\":{\"createdBy\":\"rylo@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-07-22T08:22:22.2177853Z\",\"lastModifiedBy\":\"rylo@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-07-22T09:40:59.3628311Z\"},\"identity\":{\"type\":\"None\"},\"properties\":{\"messaging\":{\"endpoints\":{\"myendpoint1\":{\"resourceId\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.IotHub/namespaces/contoso-hub-namespace1\",\"address\":\"https://myendpoint1.westeurope-1.iothub.azure.net\",\"endpointType\":\"Microsoft.Devices/IotHubs\"},\"myendpoint2\":{\"resourceId\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.IotHub/namespaces/contoso-hub-namespace2\",\"address\":\"https://myendpoint2.westeurope-1.iothub.azure.net\",\"endpointType\":\"Microsoft.Devices/IotHubs\"}}},\"uuid\":\"c33a2bfb-3775-4180-900f-37b71c7d0aa3\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzDeviceRegistryNamespace+[NoContext]+CreateViaJsonString+$GET+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/test-namespace-create-json-string?api-version=2025-10-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/test-namespace-create-json-string?api-version=2025-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "9" ],
+        "x-ms-client-request-id": [ "db9cb935-1138-470d-a90a-f24db66a13c1" ],
+        "CommandName": [ "New-AzDeviceRegistryNamespace" ],
+        "FullCommandName": [ "New-AzDeviceRegistryNamespace_CreateViaJsonString" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.24", "Az.DeviceRegistry/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"00000153-0000-0200-0000-687f5cab0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "249" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "bf4bd5b0-a24a-428b-8046-260eb70e25fe" ],
+        "x-ms-correlation-request-id": [ "d05c3d5f-a88b-43fc-93ff-840f4a4817fd" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20250722T094130Z:d05c3d5f-a88b-43fc-93ff-840f4a4817fd" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 4FA29A14E1614F3E8FD3CBC802121640 Ref B: MWH011020808040 Ref C: 2025-07-22T09:41:30Z" ],
+        "Date": [ "Tue, 22 Jul 2025 09:41:29 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1219" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/test-namespace-create-json-string\",\"name\":\"test-namespace-create-json-string\",\"type\":\"microsoft.deviceregistry/namespaces\",\"location\":\"eastus2\",\"systemData\":{\"createdBy\":\"rylo@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-07-22T08:22:22.2177853Z\",\"lastModifiedBy\":\"rylo@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-07-22T09:40:59.3628311Z\"},\"identity\":{\"type\":\"None\"},\"properties\":{\"messaging\":{\"endpoints\":{\"myendpoint1\":{\"resourceId\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.IotHub/namespaces/contoso-hub-namespace1\",\"address\":\"https://myendpoint1.westeurope-1.iothub.azure.net\",\"endpointType\":\"Microsoft.Devices/IotHubs\"},\"myendpoint2\":{\"resourceId\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.IotHub/namespaces/contoso-hub-namespace2\",\"address\":\"https://myendpoint2.westeurope-1.iothub.azure.net\",\"endpointType\":\"Microsoft.Devices/IotHubs\"}}},\"uuid\":\"c33a2bfb-3775-4180-900f-37b71c7d0aa3\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  }
+}

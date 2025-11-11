@@ -44,13 +44,25 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="maxPatchPublishDate">This is used to install patches
         /// that were published on or before this given max published
         /// date.</param>
-        public WindowsParameters(IList<string> classificationsToInclude = default(IList<string>), IList<string> kbNumbersToInclude = default(IList<string>), IList<string> kbNumbersToExclude = default(IList<string>), bool? excludeKbsRequiringReboot = default(bool?), System.DateTime? maxPatchPublishDate = default(System.DateTime?))
+        /// <param name="patchNameMasksToInclude">This is used to include
+        /// patches that match the given patch name masks. Alphanumeric strings
+        /// and wildcard expressions consisting of * and ? are only supported
+        /// as input values in the list. Null, empty and only whitespaces
+        /// strings as inputs values are not supported.</param>
+        /// <param name="patchNameMasksToExclude">This is used to exclude
+        /// patches that match the given patch name masks. Alphanumeric strings
+        /// and wildcard expressions consisting of * and ? are only supported
+        /// as input values in the list. Null, empty and only whitespaces
+        /// strings as inputs values are not supported.</param>
+        public WindowsParameters(IList<string> classificationsToInclude = default(IList<string>), IList<string> kbNumbersToInclude = default(IList<string>), IList<string> kbNumbersToExclude = default(IList<string>), bool? excludeKbsRequiringReboot = default(bool?), System.DateTime? maxPatchPublishDate = default(System.DateTime?), IList<string> patchNameMasksToInclude = default(IList<string>), IList<string> patchNameMasksToExclude = default(IList<string>))
         {
             ClassificationsToInclude = classificationsToInclude;
             KbNumbersToInclude = kbNumbersToInclude;
             KbNumbersToExclude = kbNumbersToExclude;
             ExcludeKbsRequiringReboot = excludeKbsRequiringReboot;
             MaxPatchPublishDate = maxPatchPublishDate;
+            PatchNameMasksToInclude = patchNameMasksToInclude;
+            PatchNameMasksToExclude = patchNameMasksToExclude;
             CustomInit();
         }
 
@@ -92,6 +104,26 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [JsonProperty(PropertyName = "maxPatchPublishDate")]
         public System.DateTime? MaxPatchPublishDate { get; set; }
+
+        /// <summary>
+        /// Gets or sets this is used to include patches that match the given
+        /// patch name masks. Alphanumeric strings and wildcard expressions
+        /// consisting of * and ? are only supported as input values in the
+        /// list. Null, empty and only whitespaces strings as inputs values are
+        /// not supported.
+        /// </summary>
+        [JsonProperty(PropertyName = "patchNameMasksToInclude")]
+        public IList<string> PatchNameMasksToInclude { get; set; }
+
+        /// <summary>
+        /// Gets or sets this is used to exclude patches that match the given
+        /// patch name masks. Alphanumeric strings and wildcard expressions
+        /// consisting of * and ? are only supported as input values in the
+        /// list. Null, empty and only whitespaces strings as inputs values are
+        /// not supported.
+        /// </summary>
+        [JsonProperty(PropertyName = "patchNameMasksToExclude")]
+        public IList<string> PatchNameMasksToExclude { get; set; }
 
     }
 }

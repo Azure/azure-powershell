@@ -106,6 +106,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IDeploymentInfoResponseInternal)this).DeploymentUrl = (string) content.GetValueForProperty("DeploymentUrl",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IDeploymentInfoResponseInternal)this).DeploymentUrl, global::System.Convert.ToString);
             }
+            if (content.Contains("ProjectType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IDeploymentInfoResponseInternal)this).ProjectType = (string) content.GetValueForProperty("ProjectType",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IDeploymentInfoResponseInternal)this).ProjectType, global::System.Convert.ToString);
+            }
+            if (content.Contains("ConfigurationType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IDeploymentInfoResponseInternal)this).ConfigurationType = (string) content.GetValueForProperty("ConfigurationType",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IDeploymentInfoResponseInternal)this).ConfigurationType, global::System.Convert.ToString);
+            }
             if (content.Contains("MarketplaceSaaInfoMarketplaceSubscription"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IDeploymentInfoResponseInternal)this).MarketplaceSaaInfoMarketplaceSubscription = (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoMarketplaceSubscription) content.GetValueForProperty("MarketplaceSaaInfoMarketplaceSubscription",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IDeploymentInfoResponseInternal)this).MarketplaceSaaInfoMarketplaceSubscription, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.MarketplaceSaaSInfoMarketplaceSubscriptionTypeConverter.ConvertFrom);
@@ -133,6 +141,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
             if (content.Contains("MarketplaceSubscriptionId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IDeploymentInfoResponseInternal)this).MarketplaceSubscriptionId = (string) content.GetValueForProperty("MarketplaceSubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IDeploymentInfoResponseInternal)this).MarketplaceSubscriptionId, global::System.Convert.ToString);
+            }
+            if (content.Contains("MarketplaceSubscriptionPublisherId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IDeploymentInfoResponseInternal)this).MarketplaceSubscriptionPublisherId = (string) content.GetValueForProperty("MarketplaceSubscriptionPublisherId",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IDeploymentInfoResponseInternal)this).MarketplaceSubscriptionPublisherId, global::System.Convert.ToString);
+            }
+            if (content.Contains("MarketplaceSubscriptionOfferId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IDeploymentInfoResponseInternal)this).MarketplaceSubscriptionOfferId = (string) content.GetValueForProperty("MarketplaceSubscriptionOfferId",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IDeploymentInfoResponseInternal)this).MarketplaceSubscriptionOfferId, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
@@ -179,6 +195,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IDeploymentInfoResponseInternal)this).DeploymentUrl = (string) content.GetValueForProperty("DeploymentUrl",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IDeploymentInfoResponseInternal)this).DeploymentUrl, global::System.Convert.ToString);
             }
+            if (content.Contains("ProjectType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IDeploymentInfoResponseInternal)this).ProjectType = (string) content.GetValueForProperty("ProjectType",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IDeploymentInfoResponseInternal)this).ProjectType, global::System.Convert.ToString);
+            }
+            if (content.Contains("ConfigurationType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IDeploymentInfoResponseInternal)this).ConfigurationType = (string) content.GetValueForProperty("ConfigurationType",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IDeploymentInfoResponseInternal)this).ConfigurationType, global::System.Convert.ToString);
+            }
             if (content.Contains("MarketplaceSaaInfoMarketplaceSubscription"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IDeploymentInfoResponseInternal)this).MarketplaceSaaInfoMarketplaceSubscription = (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoMarketplaceSubscription) content.GetValueForProperty("MarketplaceSaaInfoMarketplaceSubscription",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IDeploymentInfoResponseInternal)this).MarketplaceSaaInfoMarketplaceSubscription, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.MarketplaceSaaSInfoMarketplaceSubscriptionTypeConverter.ConvertFrom);
@@ -206,6 +230,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
             if (content.Contains("MarketplaceSubscriptionId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IDeploymentInfoResponseInternal)this).MarketplaceSubscriptionId = (string) content.GetValueForProperty("MarketplaceSubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IDeploymentInfoResponseInternal)this).MarketplaceSubscriptionId, global::System.Convert.ToString);
+            }
+            if (content.Contains("MarketplaceSubscriptionPublisherId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IDeploymentInfoResponseInternal)this).MarketplaceSubscriptionPublisherId = (string) content.GetValueForProperty("MarketplaceSubscriptionPublisherId",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IDeploymentInfoResponseInternal)this).MarketplaceSubscriptionPublisherId, global::System.Convert.ToString);
+            }
+            if (content.Contains("MarketplaceSubscriptionOfferId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IDeploymentInfoResponseInternal)this).MarketplaceSubscriptionOfferId = (string) content.GetValueForProperty("MarketplaceSubscriptionOfferId",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IDeploymentInfoResponseInternal)this).MarketplaceSubscriptionOfferId, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

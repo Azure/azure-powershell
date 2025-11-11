@@ -106,6 +106,27 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public string Path { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Enable or disable dedicated connection per backend server. Default is set to false.")]
+        public bool? DedicatedBackendConnection { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Verify or skip both chain and expiry validations of the certificate on the backend server. Default is set to true.")]
+        public bool? ValidateCertChainAndExpiry { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "When enabled, verifies if the Common Name of the certificate provided by the backend server matches the Server Name Indication (SNI) value. Default value is true.")]
+        public bool? ValidateSNI { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Specify an SNI value to match the common name of the certificate on the backend. By default, the application gateway uses the incoming request's host header as the SNI. Default value is null.")]
+        [ValidateNotNullOrEmpty]
+        public string SniName { get; set; } 
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -187,6 +208,40 @@ namespace Microsoft.Azure.Commands.Network
             if (this.Path != null)
             {
                 backendHttpSettings.Path = this.Path;
+            }
+
+            if (this.DedicatedBackendConnection.HasValue)
+            {
+                backendHttpSettings.DedicatedBackendConnection = this.DedicatedBackendConnection.Value;
+            }
+            else
+            {
+                // Default value is false according to the API specification
+                backendHttpSettings.DedicatedBackendConnection = false;
+            }
+            if (this.ValidateCertChainAndExpiry.HasValue)
+            {
+                backendHttpSettings.ValidateCertChainAndExpiry = this.ValidateCertChainAndExpiry.Value;
+            }
+            else
+            {
+                // Default value is true according to the API specification
+                backendHttpSettings.ValidateCertChainAndExpiry = true;
+            }
+            
+            if (this.ValidateSNI.HasValue)
+            {
+                backendHttpSettings.ValidateSNI = this.ValidateSNI.Value;
+            }
+            else
+            {
+                // Default value is true according to the API specification
+                backendHttpSettings.ValidateSNI = true;
+            }
+
+            if (this.SniName != null)
+            {
+                backendHttpSettings.SniName = this.SniName;
             }
 
             backendHttpSettings.Id = ApplicationGatewayChildResourceHelper.GetResourceNotSetId(

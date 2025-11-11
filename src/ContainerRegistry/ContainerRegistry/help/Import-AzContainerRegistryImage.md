@@ -15,16 +15,23 @@ Copies an image to this container registry from the specified container registry
 ### ImportExpanded (Default)
 ```
 Import-AzContainerRegistryImage -RegistryName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -SourceImage <String> [-Mode <ImportMode>] [-Password <String>] [-SourceRegistryUri <String>]
+ -SourceImage <String> [-Mode <String>] [-Password <String>] [-SourceRegistryUri <String>]
  [-SourceResourceId <String>] [-TargetTag <String[]>] [-UntaggedTargetRepository <String[]>]
  [-Username <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Import
+### ImportViaJsonFilePath
 ```
 Import-AzContainerRegistryImage -RegistryName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -Parameter <IImportImageParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ImportViaJsonString
+```
+Import-AzContainerRegistryImage -RegistryName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -35,7 +42,7 @@ Copies an image to this container registry from the specified container registry
 
 ### Example 1: Import image from a public/azure registry to an azure container registry.
 ```powershell
-Import-AzContainerRegistryImage -SourceImage library/busybox:latest -ResourceGroupName $resourceGroupName -RegistryName $RegistryName -SourceRegistryUri docker.io -TargetTag busybox:latest
+Import-AzContainerRegistryImage -SourceImage library/busybox:latest -ResourceGroupName YourResourceGroupName -RegistryName YourRegistryName -SourceRegistryUri docker.io -TargetTag busybox:latest
 ```
 
 Import busybox to ACR.
@@ -78,12 +85,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Import operation
+
+```yaml
+Type: System.String
+Parameter Sets: ImportViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Import operation
+
+```yaml
+Type: System.String
+Parameter Sets: ImportViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Mode
 When Force, any existing target tags will be overwritten.
 When NoForce, any existing target tags will fail the operation before any copying begins.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.ImportMode
+Type: System.String
 Parameter Sets: ImportExpanded
 Aliases:
 
@@ -106,22 +143,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Parameter
-.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IImportImageParameters
-Parameter Sets: Import
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -331,8 +352,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IImportImageParameters
 
 ## OUTPUTS
 

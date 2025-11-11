@@ -30,6 +30,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("'CustomizeDevBoxes'", "CustomizeDevBoxes", global::System.Management.Automation.CompletionResultType.ParameterValue, "CustomizeDevBoxes");
             }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "ConnectWithDevBoxTunnels".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'ConnectWithDevBoxTunnels'", "ConnectWithDevBoxTunnels", global::System.Management.Automation.CompletionResultType.ParameterValue, "ConnectWithDevBoxTunnels");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "CreateDevBoxTunnels".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'CreateDevBoxTunnels'", "CreateDevBoxTunnels", global::System.Management.Automation.CompletionResultType.ParameterValue, "CreateDevBoxTunnels");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "DeleteDevBoxTunnels".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'DeleteDevBoxTunnels'", "DeleteDevBoxTunnels", global::System.Management.Automation.CompletionResultType.ParameterValue, "DeleteDevBoxTunnels");
+            }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "DeleteDevBoxes".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
                 yield return new global::System.Management.Automation.CompletionResult("'DeleteDevBoxes'", "DeleteDevBoxes", global::System.Management.Automation.CompletionResultType.ParameterValue, "DeleteDevBoxes");

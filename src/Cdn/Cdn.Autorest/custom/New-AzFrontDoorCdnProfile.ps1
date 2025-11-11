@@ -43,49 +43,51 @@ function New-AzFrontDoorCdnProfile {
         [System.String]
         # Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
         ${Name},
-    
+
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
         [System.String]
-        # Name of the Resource group within the Azure subscription.
+        # The name of the resource group.
+        # The name is case insensitive.
         ${ResourceGroupName},
-    
+
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String]
-        # Azure Subscription ID.
+        # The ID of the target subscription.
+        # The value must be an UUID.
         ${SubscriptionId},
-    
+
         [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
         [System.String]
-        # Resource location.
+        # The geo-location where the resource lives
         ${Location},
-    
+
         [Parameter(ParameterSetName='CreateExpanded')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("None", "SystemAssigned", "UserAssigned", "SystemAssigned, UserAssigned")]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("None", "SystemAssigned", "UserAssigned", "SystemAssigned,UserAssigned")]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
         [System.String]
         # Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
         ${IdentityType},
-    
+
         [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUserAssignedIdentities]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IManagedServiceIdentityUserAssignedIdentities]))]
         [System.Collections.Hashtable]
         # The set of user assigned identities associated with the resource.
         # The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
         # The dictionary values can be empty objects ({}) in requests.
         ${IdentityUserAssignedIdentity},
-    
+
         [Parameter(ParameterSetName='CreateExpanded')]
         [AllowEmptyCollection()]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileScrubbingRules[]]
         # List of log scrubbing rules applied to the Azure Front Door profile logs.
         ${LogScrubbingRule},
-    
+
         [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Enabled", "Disabled")]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
@@ -93,40 +95,40 @@ function New-AzFrontDoorCdnProfile {
         # State of the log scrubbing config.
         # Default value is Enabled.
         ${LogScrubbingState},
-    
+
         [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
         [System.Int32]
         # Send and receive timeout on forwarding request to the origin.
         # When timeout is reached, the request fails and returns.
         ${OriginResponseTimeoutSecond},
-    
+
         [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Standard_Verizon", "Premium_Verizon", "Custom_Verizon", "Standard_Akamai", "Standard_ChinaCdn", "Standard_Microsoft", "Standard_AzureFrontDoor", "Premium_AzureFrontDoor", "Standard_955BandWidth_ChinaCdn", "Standard_AvgBandWidth_ChinaCdn", "StandardPlus_ChinaCdn", "StandardPlus_955BandWidth_ChinaCdn", "StandardPlus_AvgBandWidth_ChinaCdn")]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
         [System.String]
         # Name of the pricing tier.
         ${SkuName},
-    
+
         [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ITrackedResourceTags]))]
         [System.Collections.Hashtable]
         # Resource tags.
         ${Tag},
-    
+
         [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
         [System.String]
         # Path of Json file supplied to the Create operation
         ${JsonFilePath},
-    
+
         [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
         [System.String]
         # Json string supplied to the Create operation
         ${JsonString},
-    
+
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
@@ -135,52 +137,52 @@ function New-AzFrontDoorCdnProfile {
         # The DefaultProfile parameter is not functional.
         # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
         ${DefaultProfile},
-    
+
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
         # Run the command as a job
         ${AsJob},
-    
+
         [Parameter(DontShow)]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
         # Wait for .NET debugger to attach
         ${Break},
-    
+
         [Parameter(DontShow)]
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SendAsyncStep[]]
         # SendAsync Pipeline Steps to be appended to the front of the pipeline
         ${HttpPipelineAppend},
-    
+
         [Parameter(DontShow)]
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SendAsyncStep[]]
         # SendAsync Pipeline Steps to be prepended to the front of the pipeline
         ${HttpPipelinePrepend},
-    
+
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
         # Run the command asynchronously
         ${NoWait},
-    
+
         [Parameter(DontShow)]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
         [System.Uri]
         # The URI for the proxy server to use
         ${Proxy},
-    
+
         [Parameter(DontShow)]
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
         [System.Management.Automation.PSCredential]
         # Credentials for a proxy server to use for the remote call
         ${ProxyCredential},
-    
+
         [Parameter(DontShow)]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]

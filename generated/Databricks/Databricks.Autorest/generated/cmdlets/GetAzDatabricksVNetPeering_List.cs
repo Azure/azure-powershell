@@ -13,6 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
     /// [OpenAPI] ListByWorkspace=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/workspaces/{workspaceName}/virtualNetworkPeerings"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzDatabricksVNetPeering_List")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IVirtualNetworkPeering", "15.0.0", "2.0.0", "2025/11/03", DeprecatedOutputProperties=new string[] {"DatabrickAddressSpaceAddressPrefix","RemoteAddressSpaceAddressPrefix"}, NewOutputProperties=new string[] {"DatabrickAddressSpaceAddressPrefix","RemoteAddressSpaceAddressPrefix"}, ChangeDescription="The types of the properties 'DatabrickAddressSpaceAddressPrefix' and 'RemoteAddressSpaceAddressPrefix' will be changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IVirtualNetworkPeering))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Description(@"Lists the workspace vNet Peerings.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Generated]

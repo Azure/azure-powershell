@@ -32,12 +32,16 @@ namespace Microsoft.Azure.Management.RecoveryServices.Models
 
         /// <param name="multiUserAuthorization">MUA Settings of a vault
         /// Possible values include: &#39;Invalid&#39;, &#39;Enabled&#39;, &#39;Disabled&#39;</param>
-        public SecuritySettings(ImmutabilitySettings immutabilitySettings = default(ImmutabilitySettings), SoftDeleteSettings softDeleteSettings = default(SoftDeleteSettings), string multiUserAuthorization = default(string))
+
+        /// <param name="sourceScanConfiguration">Source scan configuration of vault
+        /// </param>
+        public SecuritySettings(ImmutabilitySettings immutabilitySettings = default(ImmutabilitySettings), SoftDeleteSettings softDeleteSettings = default(SoftDeleteSettings), string multiUserAuthorization = default(string), SourceScanConfiguration sourceScanConfiguration = default(SourceScanConfiguration))
 
         {
             this.ImmutabilitySettings = immutabilitySettings;
             this.SoftDeleteSettings = softDeleteSettings;
             this.MultiUserAuthorization = multiUserAuthorization;
+            this.SourceScanConfiguration = sourceScanConfiguration;
             CustomInit();
         }
 
@@ -64,5 +68,11 @@ namespace Microsoft.Azure.Management.RecoveryServices.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "multiUserAuthorization")]
         public string MultiUserAuthorization {get; private set; }
+
+        /// <summary>
+        /// Gets or sets source scan configuration of vault
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "sourceScanConfiguration")]
+        public SourceScanConfiguration SourceScanConfiguration {get; set; }
     }
 }

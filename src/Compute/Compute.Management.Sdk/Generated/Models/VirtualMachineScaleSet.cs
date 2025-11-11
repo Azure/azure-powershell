@@ -112,15 +112,22 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// 'Unaligned'</param>
         /// <param name="skuProfile">Specifies the sku profile for the virtual
         /// machine scale set.</param>
+        /// <param name="highSpeedInterconnectPlacement">Specifies the high
+        /// speed interconnect placement for the virtual machine scale set.
+        /// Possible values include: 'None', 'Trunk'</param>
         /// <param name="identity">The identity of the virtual machine scale
         /// set, if configured.</param>
-        /// <param name="zones">The virtual machine scale set zones.</param>
+        /// <param name="zones">The availability zones.</param>
         /// <param name="extendedLocation">The extended location of the Virtual
         /// Machine Scale Set.</param>
         /// <param name="etag">Etag is property returned in Create/Update/Get
         /// response of the VMSS, so that customer can supply it in the header
         /// to ensure optimistic updates</param>
-        public VirtualMachineScaleSet(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), Sku sku = default(Sku), Plan plan = default(Plan), UpgradePolicy upgradePolicy = default(UpgradePolicy), ScheduledEventsPolicy scheduledEventsPolicy = default(ScheduledEventsPolicy), AutomaticRepairsPolicy automaticRepairsPolicy = default(AutomaticRepairsPolicy), VirtualMachineScaleSetVMProfile virtualMachineProfile = default(VirtualMachineScaleSetVMProfile), string provisioningState = default(string), bool? overprovision = default(bool?), bool? doNotRunExtensionsOnOverprovisionedVMs = default(bool?), string uniqueId = default(string), bool? singlePlacementGroup = default(bool?), bool? zoneBalance = default(bool?), int? platformFaultDomainCount = default(int?), SubResource proximityPlacementGroup = default(SubResource), SubResource hostGroup = default(SubResource), AdditionalCapabilities additionalCapabilities = default(AdditionalCapabilities), ScaleInPolicy scaleInPolicy = default(ScaleInPolicy), string orchestrationMode = default(string), SpotRestorePolicy spotRestorePolicy = default(SpotRestorePolicy), PriorityMixPolicy priorityMixPolicy = default(PriorityMixPolicy), System.DateTime? timeCreated = default(System.DateTime?), bool? constrainedMaximumCapacity = default(bool?), ResiliencyPolicy resiliencyPolicy = default(ResiliencyPolicy), string zonalPlatformFaultDomainAlignMode = default(string), SkuProfile skuProfile = default(SkuProfile), VirtualMachineScaleSetIdentity identity = default(VirtualMachineScaleSetIdentity), IList<string> zones = default(IList<string>), ExtendedLocation extendedLocation = default(ExtendedLocation), string etag = default(string))
+        /// <param name="placement">Placement section specifies the
+        /// user-defined constraints for virtual machine scale set hardware
+        /// placement. This property cannot be changed once VMSS is
+        /// provisioned. Minimum api-version: 2025-04-01.</param>
+        public VirtualMachineScaleSet(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), Sku sku = default(Sku), Plan plan = default(Plan), UpgradePolicy upgradePolicy = default(UpgradePolicy), ScheduledEventsPolicy scheduledEventsPolicy = default(ScheduledEventsPolicy), AutomaticRepairsPolicy automaticRepairsPolicy = default(AutomaticRepairsPolicy), VirtualMachineScaleSetVMProfile virtualMachineProfile = default(VirtualMachineScaleSetVMProfile), string provisioningState = default(string), bool? overprovision = default(bool?), bool? doNotRunExtensionsOnOverprovisionedVMs = default(bool?), string uniqueId = default(string), bool? singlePlacementGroup = default(bool?), bool? zoneBalance = default(bool?), int? platformFaultDomainCount = default(int?), SubResource proximityPlacementGroup = default(SubResource), SubResource hostGroup = default(SubResource), AdditionalCapabilities additionalCapabilities = default(AdditionalCapabilities), ScaleInPolicy scaleInPolicy = default(ScaleInPolicy), string orchestrationMode = default(string), SpotRestorePolicy spotRestorePolicy = default(SpotRestorePolicy), PriorityMixPolicy priorityMixPolicy = default(PriorityMixPolicy), System.DateTime? timeCreated = default(System.DateTime?), bool? constrainedMaximumCapacity = default(bool?), ResiliencyPolicy resiliencyPolicy = default(ResiliencyPolicy), string zonalPlatformFaultDomainAlignMode = default(string), SkuProfile skuProfile = default(SkuProfile), string highSpeedInterconnectPlacement = default(string), VirtualMachineScaleSetIdentity identity = default(VirtualMachineScaleSetIdentity), IList<string> zones = default(IList<string>), ExtendedLocation extendedLocation = default(ExtendedLocation), string etag = default(string), Placement placement = default(Placement))
             : base(location, id, name, type, tags)
         {
             Sku = sku;
@@ -148,10 +155,12 @@ namespace Microsoft.Azure.Management.Compute.Models
             ResiliencyPolicy = resiliencyPolicy;
             ZonalPlatformFaultDomainAlignMode = zonalPlatformFaultDomainAlignMode;
             SkuProfile = skuProfile;
+            HighSpeedInterconnectPlacement = highSpeedInterconnectPlacement;
             Identity = identity;
             Zones = zones;
             ExtendedLocation = extendedLocation;
             Etag = etag;
+            Placement = placement;
             CustomInit();
         }
 
@@ -347,6 +356,14 @@ namespace Microsoft.Azure.Management.Compute.Models
         public SkuProfile SkuProfile { get; set; }
 
         /// <summary>
+        /// Gets or sets specifies the high speed interconnect placement for
+        /// the virtual machine scale set. Possible values include: 'None',
+        /// 'Trunk'
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.highSpeedInterconnectPlacement")]
+        public string HighSpeedInterconnectPlacement { get; set; }
+
+        /// <summary>
         /// Gets or sets the identity of the virtual machine scale set, if
         /// configured.
         /// </summary>
@@ -354,7 +371,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         public VirtualMachineScaleSetIdentity Identity { get; set; }
 
         /// <summary>
-        /// Gets or sets the virtual machine scale set zones.
+        /// Gets or sets the availability zones.
         /// </summary>
         [JsonProperty(PropertyName = "zones")]
         public IList<string> Zones { get; set; }
@@ -373,6 +390,15 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [JsonProperty(PropertyName = "etag")]
         public string Etag { get; private set; }
+
+        /// <summary>
+        /// Gets or sets placement section specifies the user-defined
+        /// constraints for virtual machine scale set hardware placement. This
+        /// property cannot be changed once VMSS is provisioned. Minimum
+        /// api-version: 2025-04-01.
+        /// </summary>
+        [JsonProperty(PropertyName = "placement")]
+        public Placement Placement { get; set; }
 
         /// <summary>
         /// Validate the object.
@@ -394,6 +420,10 @@ namespace Microsoft.Azure.Management.Compute.Models
             if (PriorityMixPolicy != null)
             {
                 PriorityMixPolicy.Validate();
+            }
+            if (ResiliencyPolicy != null)
+            {
+                ResiliencyPolicy.Validate();
             }
         }
     }

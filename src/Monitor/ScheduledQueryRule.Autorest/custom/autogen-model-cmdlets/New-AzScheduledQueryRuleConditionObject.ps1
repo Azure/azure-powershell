@@ -21,17 +21,18 @@ Create an in-memory object for Condition.
 Create an in-memory object for Condition.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.Api20210801.Condition
+Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.Condition
 .Link
-https://learn.microsoft.com/powershell/module/Az.Monitor/new-AzScheduledQueryRuleConditionObject
+https://learn.microsoft.com/powershell/module/Az.Monitor/new-azscheduledqueryruleconditionobject
 #>
 function New-AzScheduledQueryRuleConditionObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.Api20210801.Condition')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.Condition')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
         [Parameter(HelpMessage="List of Dimensions conditions.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.Api20210801.IDimension[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.IDimension[]]
         $Dimension,
         [Parameter(HelpMessage="The number of violations to trigger an alert. Should be smaller or equal to numberOfEvaluationPeriods. Default value is 1.")]
         [long]
@@ -46,8 +47,8 @@ function New-AzScheduledQueryRuleConditionObject {
         [string]
         $MetricName,
         [Parameter(HelpMessage="The criteria operator. Relevant and required only for rules of the kind LogAlert.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Support.ConditionOperator])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Support.ConditionOperator]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.PSArgumentCompleterAttribute("Equals", "GreaterThan", "GreaterThanOrEqual", "LessThan", "LessThanOrEqual")]
+        [string]
         $Operator,
         [Parameter(HelpMessage="Log query alert.")]
         [string]
@@ -59,13 +60,13 @@ function New-AzScheduledQueryRuleConditionObject {
         [double]
         $Threshold,
         [Parameter(HelpMessage="Aggregation type. Relevant and required only for rules of the kind LogAlert.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Support.TimeAggregation])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Support.TimeAggregation]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.PSArgumentCompleterAttribute("Count", "Average", "Minimum", "Maximum", "Total")]
+        [string]
         $TimeAggregation
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.Api20210801.Condition]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.Condition]::New()
 
         if ($PSBoundParameters.ContainsKey('Dimension')) {
             $Object.Dimension = $Dimension

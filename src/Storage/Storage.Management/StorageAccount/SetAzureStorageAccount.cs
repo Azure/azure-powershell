@@ -401,6 +401,24 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "Specifies if managed identities can access SMB shares using OAuth.")]
+        [ValidateNotNullOrEmpty]
+        public bool EnableSmbOAuth
+        {
+            get
+            {
+                return enableSmbOAuth.Value;
+            }
+            set
+            {
+                enableSmbOAuth = value;
+            }
+        }
+        private bool? enableSmbOAuth = null;
+
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Allow or disallow anonymous access to all blobs or containers in the storage account.")]
         [ValidateNotNullOrEmpty]
         public bool AllowBlobPublicAccess
@@ -619,6 +637,36 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [PSArgumentCompleter("PrivateLink", "AAD")]
         [ValidateNotNullOrEmpty]
         public string AllowedCopyScope { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Describes the available zones for the product where storage account resource can be created")]
+        [ValidateNotNullOrEmpty]
+        public string[] Zone { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The availability zone pinning policy for the storage account.")]
+        [PSArgumentCompleter("None", "Any")]
+        [ValidateNotNullOrEmpty]
+        public string ZonePlacementPolicy { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Status indicating whether Geo Priority Replication is enabled for the account.")]
+        [ValidateNotNullOrEmpty]
+        public bool EnableBlobGeoPriorityReplication
+        {
+            get
+            {
+                return enableBlobGeoPriorityReplication != null ? enableBlobGeoPriorityReplication.Value : false;
+            }
+            set
+            {
+                enableBlobGeoPriorityReplication = value;
+            }
+        }
+        private bool? enableBlobGeoPriorityReplication = null;
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
@@ -901,6 +949,17 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         }
                         updateParameters.AzureFilesIdentityBasedAuthentication.DefaultSharePermission = this.DefaultSharePermission;
                     }
+                    if (this.enableSmbOAuth != null)
+                    {
+                        if (updateParameters.AzureFilesIdentityBasedAuthentication == null)
+                        {
+                            updateParameters.AzureFilesIdentityBasedAuthentication = new AzureFilesIdentityBasedAuthentication();
+                        }
+                        updateParameters.AzureFilesIdentityBasedAuthentication.SmbOAuthSettings = new SmbOAuthSettings
+                        {
+                            IsSmbOAuthEnabled = this.enableSmbOAuth.Value
+                        };
+                    }
                     if (this.EnableLargeFileShare.IsPresent)
                     {
                         updateParameters.LargeFileSharesState = LargeFileSharesState.Enabled;
@@ -987,6 +1046,18 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     if (this.AllowedCopyScope != null)
                     {
                         updateParameters.AllowedCopyScope = this.AllowedCopyScope;
+                    }
+                    if (this.Zone != null)
+                    {
+                        updateParameters.Zones = new List<string>(this.Zone);
+                    }
+                    if (this.ZonePlacementPolicy != null)
+                    {
+                        updateParameters.Placement = new Placement(this.ZonePlacementPolicy);
+                    }
+                    if (this.enableBlobGeoPriorityReplication != null)
+                    {
+                        updateParameters.GeoPriorityReplicationStatus = new GeoPriorityReplicationStatus(this.enableBlobGeoPriorityReplication);
                     }
 
                     var updatedAccountResponse = this.StorageClient.StorageAccounts.Update(

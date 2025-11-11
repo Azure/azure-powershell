@@ -259,6 +259,10 @@ namespace Microsoft.Azure.Management.Compute.Models
             {
                 PriorityMixPolicy.Validate();
             }
+            if (ResiliencyPolicy != null)
+            {
+                ResiliencyPolicy.Validate();
+            }
         }
     }
 }

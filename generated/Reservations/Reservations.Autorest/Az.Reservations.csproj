@@ -3,6 +3,7 @@
     <PsModuleName>Reservations</PsModuleName>
     <PsRootModuleName>Reservations</PsRootModuleName>
     <PsModuleFolder>Reservations.Autorest</PsModuleFolder>
+    <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.Reservations</RootNamespace>
   </PropertyGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.autorest.props" />

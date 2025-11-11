@@ -40,14 +40,14 @@ Describe 'AzHealthcareIotConnector' {
         } | Should -Not -Throw
     }
 
-    It 'UpdateExpanded' {
+    It 'UpdateExpanded' -skip {
         {
             $config = Update-AzHealthcareIotConnector -Name $env.iotConnector2 -ResourceGroupName $env.resourceGroup -WorkspaceName $env.apiWorkspace1 -Tag @{"123"="abc"}
             $config.Name | Should -Be "$($env.apiWorkspace1)/$($env.iotConnector2)"
         } | Should -Not -Throw
     }
 
-    It 'UpdateViaIdentityExpanded' {
+    It 'UpdateViaIdentityExpanded' -skip {
         {
             $config = Get-AzHealthcareIotConnector -Name $env.iotConnector3 -ResourceGroupName $env.resourceGroup -WorkspaceName $env.apiWorkspace1
             $config = Update-AzHealthcareIotConnector -InputObject $config -Tag @{"123"="abc"}

@@ -133,7 +133,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
             Mandatory = false,
             HelpMessage = "Indicates whether object replication metrics feature is enabled for the policy.",
             ParameterSetName = AccountObjectParameterSet)]
-        [ValidateNotNullOrEmpty]
         public bool EnableMetric
         {
             get
@@ -146,6 +145,27 @@ namespace Microsoft.Azure.Commands.Management.Storage
             }
         }
         private bool? enableMetric = null;
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Indicates whether object replication priority replication feature is enabled for the policy.",
+            ParameterSetName = AccountNameParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Indicates whether object replication priority replication feature is enabled for the policy.",
+            ParameterSetName = AccountObjectParameterSet)]
+        public bool EnablePriorityReplication
+        {
+            get
+            {
+                return enablePriorityReplication.Value;
+            }
+            set
+            {
+                enablePriorityReplication = value;
+            }
+        }
+        private bool? enablePriorityReplication = null;
 
         [Parameter(
             Mandatory = true,
@@ -209,6 +229,13 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         policyToSet.Metrics = new ObjectReplicationPolicyPropertiesMetrics()
                         {
                             Enabled = this.enableMetric
+                        };
+                    }
+                    if (this.enablePriorityReplication != null)
+                    {
+                        policyToSet.PriorityReplication = new ObjectReplicationPolicyPropertiesPriorityReplication()
+                        {
+                            Enabled = this.enablePriorityReplication
                         };
                     }
                 }
