@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Add monitoring for a subscription
 ```powershell
-{{ Add code here }}
+Set-AzDatadogMonitoredSubscriptionCreateor -ResourceGroupName "myResourceGroup" -MonitorName "myDatadogMonitor" -SubscriptionId "12345678-1234-1234-1234-123456789012" -Operation "Add"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+SubscriptionId                        Status    Error TagRules
+--------------                        ------    ----- --------
+12345678-1234-1234-1234-123456789012 Enabled         Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.Api20250611.MonitoringTagRules
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+This command adds a subscription to the Datadog monitor for monitoring, enabling log and metric collection from the specified subscription.
