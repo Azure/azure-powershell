@@ -1,6 +1,6 @@
 {
   "ModuleName": "Az.ArcResourceBridge",
-  "ModuleVersion": "1.1.1",
+  "ModuleVersion": "2.0.0",
   "Cmdlets": [
     {
       "VerbName": "Get",
@@ -14,18 +14,18 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027.IAppliance",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027.IAppliance, Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IAppliance",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IAppliance, Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "Distro": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.Distro]",
-              "InfrastructureConfigProvider": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.Provider]",
-              "IdentityType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.ResourceIdentityType]",
-              "Status": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.Status]",
+              "Distro": "System.String",
               "IdentityPrincipalId": "System.String",
               "IdentityTenantId": "System.String",
+              "IdentityType": "System.String",
+              "InfrastructureConfigProvider": "System.String",
               "ProvisioningState": "System.String",
               "PublicKey": "System.String",
+              "Status": "System.String",
               "Version": "System.String"
             }
           },
@@ -68,7 +68,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IArcResourceBridgeIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IArcResourceBridgeIdentity, Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IArcResourceBridgeIdentity, Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "ResourceGroupName": "System.String",
@@ -106,7 +106,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -116,7 +116,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -251,7 +251,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -267,7 +267,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -416,7 +416,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -432,7 +432,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -566,7 +566,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -582,7 +582,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -666,7 +666,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IArcResourceBridgeIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IArcResourceBridgeIdentity, Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IArcResourceBridgeIdentity, Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Id": "System.String",
                     "ResourceGroupName": "System.String",
@@ -722,7 +722,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -738,7 +738,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -856,7 +856,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -872,7 +872,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -961,11 +961,11 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027.IApplianceListCredentialResults",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027.IApplianceListCredentialResults, Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IApplianceListCredentialResults",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IApplianceListCredentialResults, Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "Kubeconfig": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027.IApplianceCredentialKubeconfig[]",
+              "Kubeconfig": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IApplianceCredentialKubeconfig]",
               "HybridConnectionConfigExpirationTime": "System.Nullable`1[System.Int64]",
               "HybridConnectionConfigHybridConnectionName": "System.String",
               "HybridConnectionConfigRelay": "System.String",
@@ -1033,7 +1033,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -1043,7 +1043,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -1178,7 +1178,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1194,7 +1194,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1283,13 +1283,13 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027.IApplianceListKeysResults",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027.IApplianceListKeysResults, Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IApplianceListKeysResults",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IApplianceListKeysResults, Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "Kubeconfig": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027.IApplianceCredentialKubeconfig[]",
-              "ArtifactProfile": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027.IApplianceListKeysResultsArtifactProfiles",
-              "SshKey": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027.IApplianceListKeysResultsSshKeys"
+              "ArtifactProfile": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IApplianceListKeysResultsArtifactProfiles",
+              "SshKey": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IApplianceListKeysResultsSshKeys",
+              "Kubeconfig": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IApplianceCredentialKubeconfig]"
             }
           },
           "ParameterSets": [
@@ -1353,7 +1353,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -1363,7 +1363,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -1498,7 +1498,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1514,7 +1514,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1603,9 +1603,12 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System",
-            "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IApplianceGetTelemetryConfigResult",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IApplianceGetTelemetryConfigResult, Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "TelemetryInstrumentationKey": "System.String"
+            }
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -1620,22 +1623,6 @@
             "Name": "System.String[]",
             "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "ElementType": "System.String"
-          },
-          "ValidateNotNullOrEmpty": false
-        },
-        {
-          "Name": "InputObject",
-          "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IArcResourceBridgeIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IArcResourceBridgeIdentity, Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-            "Properties": {
-              "Id": "System.String",
-              "ResourceGroupName": "System.String",
-              "ResourceName": "System.String",
-              "SubscriptionId": "System.String",
-              "UpgradeGraph": "System.String"
-            }
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -1666,7 +1653,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -1676,7 +1663,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -1723,7 +1710,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "Get",
+          "Name": "__AllParameterSets",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -1781,7 +1768,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1797,297 +1784,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "Proxy",
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.Uri",
-                  "AssemblyQualifiedName": "System.Uri, System.Private.Uri, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "ProxyCredential",
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.PSCredential",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "ProxyUseDefaultCredentials",
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "ProgressAction",
-                "AliasList": [
-                  "proga"
-                ],
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.ActionPreference",
-                  "AssemblyQualifiedName": "System.Management.Automation.ActionPreference, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            }
-          ]
-        },
-        {
-          "Name": "GetViaIdentity",
-          "Parameters": [
-            {
-              "ParameterMetadata": {
-                "Name": "InputObject",
-                "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IArcResourceBridgeIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IArcResourceBridgeIdentity, Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "Properties": {
-                    "Id": "System.String",
-                    "ResourceGroupName": "System.String",
-                    "ResourceName": "System.String",
-                    "SubscriptionId": "System.String",
-                    "UpgradeGraph": "System.String"
-                  }
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": true,
-              "Position": -2147483648,
-              "ValueFromPipeline": true,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "DefaultProfile",
-                "AliasList": [
-                  "AzureRMContext",
-                  "AzureCredential"
-                ],
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.PSObject",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "Break",
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "HttpPipelineAppend",
-                "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "HttpPipelinePrepend",
-                "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "Proxy",
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.Uri",
-                  "AssemblyQualifiedName": "System.Uri, System.Private.Uri, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "ProxyCredential",
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.PSCredential",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "ProxyUseDefaultCredentials",
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "ProgressAction",
-                "AliasList": [
-                  "proga"
-                ],
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.ActionPreference",
-                  "AssemblyQualifiedName": "System.Management.Automation.ActionPreference, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            }
-          ]
-        },
-        {
-          "Name": "__AllParameterSets",
-          "Parameters": [
-            {
-              "ParameterMetadata": {
-                "Name": "DefaultProfile",
-                "AliasList": [
-                  "AzureRMContext",
-                  "AzureCredential"
-                ],
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.PSObject",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "Break",
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "HttpPipelineAppend",
-                "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "HttpPipelinePrepend",
-                "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2176,11 +1873,11 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027.IUpgradeGraph",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027.IUpgradeGraph, Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IUpgradeGraph",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IUpgradeGraph, Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "SupportedVersion": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027.ISupportedVersion[]",
+              "SupportedVersion": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.ISupportedVersion]",
               "ApplianceVersion": "System.String",
               "Id": "System.String",
               "Name": "System.String"
@@ -2234,7 +1931,23 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IArcResourceBridgeIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IArcResourceBridgeIdentity, Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IArcResourceBridgeIdentity, Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "Id": "System.String",
+              "ResourceGroupName": "System.String",
+              "ResourceName": "System.String",
+              "SubscriptionId": "System.String",
+              "UpgradeGraph": "System.String"
+            }
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "ApplianceInputObject",
+          "Type": {
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IArcResourceBridgeIdentity",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IArcResourceBridgeIdentity, Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "ResourceGroupName": "System.String",
@@ -2272,7 +1985,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -2282,7 +1995,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -2432,7 +2145,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2448,7 +2161,178 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Proxy",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Uri",
+                  "AssemblyQualifiedName": "System.Uri, System.Private.Uri, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProxyCredential",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.PSCredential",
+                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProxyUseDefaultCredentials",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProgressAction",
+                "AliasList": [
+                  "proga"
+                ],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.ActionPreference",
+                  "AssemblyQualifiedName": "System.Management.Automation.ActionPreference, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "GetViaIdentityAppliance",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "UpgradeGraph",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ApplianceInputObject",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IArcResourceBridgeIdentity",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IArcResourceBridgeIdentity, Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "Id": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "ResourceName": "System.String",
+                    "SubscriptionId": "System.String",
+                    "UpgradeGraph": "System.String"
+                  }
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": true,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzureRMContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.PSObject",
+                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Break",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "HttpPipelineAppend",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "HttpPipelinePrepend",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2532,7 +2416,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IArcResourceBridgeIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IArcResourceBridgeIdentity, Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IArcResourceBridgeIdentity, Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Id": "System.String",
                     "ResourceGroupName": "System.String",
@@ -2588,7 +2472,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2604,7 +2488,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2722,7 +2606,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2738,7 +2622,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2827,18 +2711,18 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027.IAppliance",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027.IAppliance, Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IAppliance",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IAppliance, Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "Distro": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.Distro]",
-              "InfrastructureConfigProvider": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.Provider]",
-              "IdentityType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.ResourceIdentityType]",
-              "Status": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.Status]",
+              "Distro": "System.String",
               "IdentityPrincipalId": "System.String",
               "IdentityTenantId": "System.String",
+              "IdentityType": "System.String",
+              "InfrastructureConfigProvider": "System.String",
               "ProvisioningState": "System.String",
               "PublicKey": "System.String",
+              "Status": "System.String",
               "Version": "System.String"
             }
           },
@@ -2887,27 +2771,27 @@
         {
           "Name": "Distro",
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.Distro",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.Distro, Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
           },
           "ValidateNotNullOrEmpty": false
         },
         {
-          "Name": "IdentityType",
+          "Name": "EnableSystemAssignedIdentity",
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.ResourceIdentityType",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.ResourceIdentityType, Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
         {
           "Name": "InfrastructureConfigProvider",
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.Provider",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.Provider, Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -2931,6 +2815,24 @@
         },
         {
           "Name": "Version",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "JsonFilePath",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "JsonString",
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
@@ -2974,7 +2876,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -2984,7 +2886,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -3089,6 +2991,170 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzureRMContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.PSObject",
+                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Break",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "HttpPipelineAppend",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "HttpPipelinePrepend",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "NoWait",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Proxy",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Uri",
+                  "AssemblyQualifiedName": "System.Uri, System.Private.Uri, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProxyCredential",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.PSCredential",
+                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProxyUseDefaultCredentials",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProgressAction",
+                "AliasList": [
+                  "proga"
+                ],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.ActionPreference",
+                  "AssemblyQualifiedName": "System.Management.Automation.ActionPreference, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "CreateExpanded",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
                 "Name": "Location",
                 "Type": {
                   "Namespace": "System",
@@ -3106,9 +3172,9 @@
               "ParameterMetadata": {
                 "Name": "Distro",
                 "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.Distro",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.Distro, Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -3119,11 +3185,11 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "IdentityType",
+                "Name": "EnableSystemAssignedIdentity",
                 "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.ResourceIdentityType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.ResourceIdentityType, Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -3136,9 +3202,9 @@
               "ParameterMetadata": {
                 "Name": "InfrastructureConfigProvider",
                 "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.Provider",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.Provider, Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -3180,6 +3246,51 @@
             {
               "ParameterMetadata": {
                 "Name": "Version",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Name",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "SubscriptionId",
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
@@ -3247,7 +3358,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3263,7 +3374,455 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "NoWait",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Proxy",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Uri",
+                  "AssemblyQualifiedName": "System.Uri, System.Private.Uri, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProxyCredential",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.PSCredential",
+                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProxyUseDefaultCredentials",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProgressAction",
+                "AliasList": [
+                  "proga"
+                ],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.ActionPreference",
+                  "AssemblyQualifiedName": "System.Management.Automation.ActionPreference, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "CreateViaJsonFilePath",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "JsonFilePath",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Name",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "SubscriptionId",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzureRMContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.PSObject",
+                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Break",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "HttpPipelineAppend",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "HttpPipelinePrepend",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "NoWait",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Proxy",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Uri",
+                  "AssemblyQualifiedName": "System.Uri, System.Private.Uri, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProxyCredential",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.PSCredential",
+                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProxyUseDefaultCredentials",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProgressAction",
+                "AliasList": [
+                  "proga"
+                ],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.ActionPreference",
+                  "AssemblyQualifiedName": "System.Management.Automation.ActionPreference, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "CreateViaJsonString",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "JsonString",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Name",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "SubscriptionId",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzureRMContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.PSObject",
+                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Break",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "HttpPipelineAppend",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "HttpPipelinePrepend",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3409,7 +3968,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IArcResourceBridgeIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IArcResourceBridgeIdentity, Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IArcResourceBridgeIdentity, Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "ResourceGroupName": "System.String",
@@ -3456,7 +4015,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -3466,7 +4025,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -3633,7 +4192,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3649,7 +4208,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3763,7 +4322,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IArcResourceBridgeIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IArcResourceBridgeIdentity, Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IArcResourceBridgeIdentity, Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Id": "System.String",
                     "ResourceGroupName": "System.String",
@@ -3834,7 +4393,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3850,7 +4409,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -4013,7 +4572,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -4029,7 +4588,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -4148,18 +4707,18 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027.IAppliance",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027.IAppliance, Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IAppliance",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IAppliance, Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "Distro": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.Distro]",
-              "InfrastructureConfigProvider": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.Provider]",
-              "IdentityType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.ResourceIdentityType]",
-              "Status": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.Status]",
+              "Distro": "System.String",
               "IdentityPrincipalId": "System.String",
               "IdentityTenantId": "System.String",
+              "IdentityType": "System.String",
+              "InfrastructureConfigProvider": "System.String",
               "ProvisioningState": "System.String",
               "PublicKey": "System.String",
+              "Status": "System.String",
               "Version": "System.String"
             }
           },
@@ -4201,7 +4760,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IArcResourceBridgeIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IArcResourceBridgeIdentity, Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IArcResourceBridgeIdentity, Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "ResourceGroupName": "System.String",
@@ -4218,6 +4777,24 @@
             "Namespace": "System.Collections",
             "Name": "System.Collections.Hashtable",
             "AssemblyQualifiedName": "System.Collections.Hashtable, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "JsonFilePath",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "JsonString",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -4248,7 +4825,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -4258,7 +4835,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -4304,6 +4881,394 @@
         }
       ],
       "ParameterSets": [
+        {
+          "Name": "UpdateViaJsonString",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "Name",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "SubscriptionId",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "JsonString",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzureRMContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.PSObject",
+                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Break",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "HttpPipelineAppend",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "HttpPipelinePrepend",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Proxy",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Uri",
+                  "AssemblyQualifiedName": "System.Uri, System.Private.Uri, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProxyCredential",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.PSCredential",
+                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProxyUseDefaultCredentials",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProgressAction",
+                "AliasList": [
+                  "proga"
+                ],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.ActionPreference",
+                  "AssemblyQualifiedName": "System.Management.Automation.ActionPreference, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "UpdateViaJsonFilePath",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "Name",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "SubscriptionId",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "JsonFilePath",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzureRMContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.PSObject",
+                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Break",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "HttpPipelineAppend",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "HttpPipelinePrepend",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Proxy",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Uri",
+                  "AssemblyQualifiedName": "System.Uri, System.Private.Uri, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProxyCredential",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.PSCredential",
+                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProxyUseDefaultCredentials",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProgressAction",
+                "AliasList": [
+                  "proga"
+                ],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.ActionPreference",
+                  "AssemblyQualifiedName": "System.Management.Automation.ActionPreference, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
         {
           "Name": "UpdateExpanded",
           "Parameters": [
@@ -4407,7 +5372,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -4423,7 +5388,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -4507,7 +5472,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IArcResourceBridgeIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IArcResourceBridgeIdentity, Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IArcResourceBridgeIdentity, Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Id": "System.String",
                     "ResourceGroupName": "System.String",
@@ -4578,7 +5543,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -4594,7 +5559,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -4674,21 +5639,6 @@
           "Parameters": [
             {
               "ParameterMetadata": {
-                "Name": "Tag",
-                "Type": {
-                  "Namespace": "System.Collections",
-                  "Name": "System.Collections.Hashtable",
-                  "AssemblyQualifiedName": "System.Collections.Hashtable, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
                   "AzureRMContext",
@@ -4727,7 +5677,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -4743,7 +5693,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep[], Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -4864,320 +5814,10 @@
     "System.Char": {
       "Name": "System.Char"
     },
-    "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.Distro]": {
-      "Namespace": "System",
-      "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.Distro]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.Distro, Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-      "GenericTypeArguments": [
-        "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.Distro"
-      ]
-    },
-    "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.Distro": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.Distro",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.Distro, Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Methods": [
-        {
-          "Name": "CompleteArgument",
-          "Parameters": [
-            {
-              "Name": "commandName",
-              "Type": "System.String"
-            },
-            {
-              "Name": "parameterName",
-              "Type": "System.String"
-            },
-            {
-              "Name": "wordToComplete",
-              "Type": "System.String"
-            },
-            {
-              "Name": "commandAst",
-              "Type": "System.Management.Automation.Language.CommandAst"
-            },
-            {
-              "Name": "fakeBoundParameters",
-              "Type": "System.Collections.IDictionary"
-            }
-          ],
-          "ReturnType": "System.Collections.Generic.IEnumerable`1[System.Management.Automation.CompletionResult]"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "e",
-              "Type": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.Distro"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Object"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "ToString",
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "GetType",
-          "ReturnType": "System.Type"
-        }
-      ]
-    },
-    "System.Collections.Generic.IEnumerable`1[System.Management.Automation.CompletionResult]": {
-      "Namespace": "System.Collections.Generic",
-      "Name": "System.Collections.Generic.IEnumerable`1[System.Management.Automation.CompletionResult]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[System.Management.Automation.CompletionResult, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-      "GenericTypeArguments": [
-        "System.Management.Automation.CompletionResult"
-      ]
-    },
-    "System.Management.Automation.CompletionResult": {
-      "Namespace": "System.Management.Automation",
-      "Name": "System.Management.Automation.CompletionResult",
-      "AssemblyQualifiedName": "System.Management.Automation.CompletionResult, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-    },
-    "System.Type": {
-      "Namespace": "System",
-      "Name": "System.Type",
-      "AssemblyQualifiedName": "System.Type, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-    },
-    "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.Provider]": {
-      "Namespace": "System",
-      "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.Provider]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.Provider, Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-      "GenericTypeArguments": [
-        "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.Provider"
-      ]
-    },
-    "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.Provider": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.Provider",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.Provider, Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Methods": [
-        {
-          "Name": "CompleteArgument",
-          "Parameters": [
-            {
-              "Name": "commandName",
-              "Type": "System.String"
-            },
-            {
-              "Name": "parameterName",
-              "Type": "System.String"
-            },
-            {
-              "Name": "wordToComplete",
-              "Type": "System.String"
-            },
-            {
-              "Name": "commandAst",
-              "Type": "System.Management.Automation.Language.CommandAst"
-            },
-            {
-              "Name": "fakeBoundParameters",
-              "Type": "System.Collections.IDictionary"
-            }
-          ],
-          "ReturnType": "System.Collections.Generic.IEnumerable`1[System.Management.Automation.CompletionResult]"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "e",
-              "Type": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.Provider"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Object"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "ToString",
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "GetType",
-          "ReturnType": "System.Type"
-        }
-      ]
-    },
-    "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.ResourceIdentityType]": {
-      "Namespace": "System",
-      "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.ResourceIdentityType]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.ResourceIdentityType, Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-      "GenericTypeArguments": [
-        "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.ResourceIdentityType"
-      ]
-    },
-    "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.ResourceIdentityType": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.ResourceIdentityType",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.ResourceIdentityType, Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Methods": [
-        {
-          "Name": "CompleteArgument",
-          "Parameters": [
-            {
-              "Name": "commandName",
-              "Type": "System.String"
-            },
-            {
-              "Name": "parameterName",
-              "Type": "System.String"
-            },
-            {
-              "Name": "wordToComplete",
-              "Type": "System.String"
-            },
-            {
-              "Name": "commandAst",
-              "Type": "System.Management.Automation.Language.CommandAst"
-            },
-            {
-              "Name": "fakeBoundParameters",
-              "Type": "System.Collections.IDictionary"
-            }
-          ],
-          "ReturnType": "System.Collections.Generic.IEnumerable`1[System.Management.Automation.CompletionResult]"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "e",
-              "Type": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.ResourceIdentityType"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Object"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "ToString",
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "GetType",
-          "ReturnType": "System.Type"
-        }
-      ]
-    },
-    "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.Status]": {
-      "Namespace": "System",
-      "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.Status]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.Status, Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-      "GenericTypeArguments": [
-        "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.Status"
-      ]
-    },
-    "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.Status": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.Status",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.Status, Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Methods": [
-        {
-          "Name": "CompleteArgument",
-          "Parameters": [
-            {
-              "Name": "commandName",
-              "Type": "System.String"
-            },
-            {
-              "Name": "parameterName",
-              "Type": "System.String"
-            },
-            {
-              "Name": "wordToComplete",
-              "Type": "System.String"
-            },
-            {
-              "Name": "commandAst",
-              "Type": "System.Management.Automation.Language.CommandAst"
-            },
-            {
-              "Name": "fakeBoundParameters",
-              "Type": "System.Collections.IDictionary"
-            }
-          ],
-          "ReturnType": "System.Collections.Generic.IEnumerable`1[System.Management.Automation.CompletionResult]"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "e",
-              "Type": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.Status"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Object"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "ToString",
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "GetType",
-          "ReturnType": "System.Type"
-        }
-      ]
-    },
     "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep, Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.SendAsyncStep, Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Target": "System.Object",
         "Method": "System.Reflection.MethodInfo"
@@ -5352,93 +5992,27 @@
       "Name": "System.Delegate",
       "AssemblyQualifiedName": "System.Delegate, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
     },
-    "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027.IApplianceCredentialKubeconfig[]": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027.IApplianceCredentialKubeconfig[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027.IApplianceCredentialKubeconfig[], Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027.IApplianceCredentialKubeconfig"
+    "System.Type": {
+      "Namespace": "System",
+      "Name": "System.Type",
+      "AssemblyQualifiedName": "System.Type, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
     },
-    "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027.IApplianceCredentialKubeconfig": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027.IApplianceCredentialKubeconfig",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027.IApplianceCredentialKubeconfig, Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+    "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IApplianceCredentialKubeconfig]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IApplianceCredentialKubeconfig]",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IApplianceCredentialKubeconfig, Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "GenericTypeArguments": [
+        "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IApplianceCredentialKubeconfig"
+      ]
+    },
+    "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IApplianceCredentialKubeconfig": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IApplianceCredentialKubeconfig",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IApplianceCredentialKubeconfig, Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.AccessProfileType]",
+        "Name": "System.String",
         "Value": "System.String"
       }
-    },
-    "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.AccessProfileType]": {
-      "Namespace": "System",
-      "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.AccessProfileType]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.AccessProfileType, Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-      "GenericTypeArguments": [
-        "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.AccessProfileType"
-      ]
-    },
-    "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.AccessProfileType": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.AccessProfileType",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.AccessProfileType, Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Methods": [
-        {
-          "Name": "CompleteArgument",
-          "Parameters": [
-            {
-              "Name": "commandName",
-              "Type": "System.String"
-            },
-            {
-              "Name": "parameterName",
-              "Type": "System.String"
-            },
-            {
-              "Name": "wordToComplete",
-              "Type": "System.String"
-            },
-            {
-              "Name": "commandAst",
-              "Type": "System.Management.Automation.Language.CommandAst"
-            },
-            {
-              "Name": "fakeBoundParameters",
-              "Type": "System.Collections.IDictionary"
-            }
-          ],
-          "ReturnType": "System.Collections.Generic.IEnumerable`1[System.Management.Automation.CompletionResult]"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "e",
-              "Type": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.AccessProfileType"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Object"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "ToString",
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "GetType",
-          "ReturnType": "System.Type"
-        }
-      ]
     },
     "System.Nullable`1[System.Int64]": {
       "Namespace": "System",
@@ -5448,26 +6022,28 @@
         "System.Int64"
       ]
     },
-    "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027.IApplianceListKeysResultsArtifactProfiles": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027.IApplianceListKeysResultsArtifactProfiles",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027.IApplianceListKeysResultsArtifactProfiles, Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+    "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IApplianceListKeysResultsArtifactProfiles": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IApplianceListKeysResultsArtifactProfiles",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IApplianceListKeysResultsArtifactProfiles, Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
     },
-    "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027.IApplianceListKeysResultsSshKeys": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027.IApplianceListKeysResultsSshKeys",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027.IApplianceListKeysResultsSshKeys, Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+    "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IApplianceListKeysResultsSshKeys": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IApplianceListKeysResultsSshKeys",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IApplianceListKeysResultsSshKeys, Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
     },
-    "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027.ISupportedVersion[]": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027.ISupportedVersion[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027.ISupportedVersion[], Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027.ISupportedVersion"
+    "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.ISupportedVersion]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.ISupportedVersion]",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.ISupportedVersion, Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "GenericTypeArguments": [
+        "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.ISupportedVersion"
+      ]
     },
-    "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027.ISupportedVersion": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027.ISupportedVersion",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027.ISupportedVersion, Az.ArcResourceBridge.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+    "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.ISupportedVersion": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.ISupportedVersion",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.ISupportedVersion, Az.ArcResourceBridge.private, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "CatalogVersionName": "System.String",
         "CatalogVersionNamespace": "System.String",
