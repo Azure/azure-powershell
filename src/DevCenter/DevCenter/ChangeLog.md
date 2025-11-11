@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 
+## Version 3.0.0
+
 * Updated control plane to 2025-04-01-preview
 * Updated data plane to 2025-04-01-preview
 
