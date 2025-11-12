@@ -85,13 +85,14 @@ function setupEnv() {
         }
     )
 
+    Write-Host "Creating resource groups..." -ForegroundColor Green
     $resourceGroupsToCreate | ForEach-Object {
-        Write-Host "Creating resource group $($psitem.Name)" -ForegroundColor Yellow
+        Write-Host "Resource group: $($psitem.Name)" -ForegroundColor Yellow
         New-AzResourceGroup @psitem | Out-Null
     }
 
     # Create storage accounts
-    Write-Host "Creating storage accounts" -ForegroundColor Green
+    Write-Host "Creating storage accounts..." -ForegroundColor Green
     $storageAccountsToCreate = @(
         @{
             Name = $storageAccountWindows
@@ -110,7 +111,7 @@ function setupEnv() {
     )
 
     $storageAccountsToCreate | ForEach-Object {
-        Write-Host "Creating storage account $($psitem.Name)" -ForegroundColor Green
+        Write-Host "Storage account: $($psitem.Name)" -ForegroundColor Yellow
         New-AzStorageAccount @psitem | Out-Null
     }
 
@@ -148,9 +149,9 @@ function setupEnv() {
 
     $env.add('servicePlansToCreate', $servicePlansToCreate) | Out-Null
 
-    Write-Host "Creating function app plans" -ForegroundColor Green
+    Write-Host "Creating function app plans..." -ForegroundColor Green
     $servicePlansToCreate | ForEach-Object {
-        Write-Host "Creating plan $($psitem.Name)" -ForegroundColor Yellow
+        Write-Host "Plan: $($psitem.Name)" -ForegroundColor Yellow
         New-AzFunctionAppPlan @psitem | Out-Null
     }
 
@@ -200,8 +201,9 @@ function setupEnv() {
 
     $env.add('functionAppsToCreate', $functionAppsToCreate) | Out-Null
 
+    Write-Host "Creating function apps..." -ForegroundColor Green
     $functionAppsToCreate | ForEach-Object {
-        Write-Host "Creating function app $($psitem.Name)" -ForegroundColor Yellow
+        Write-Host "Function app: $($psitem.Name)" -ForegroundColor Yellow
         New-AzFunctionApp @psitem | Out-Null
     }
 
@@ -250,18 +252,18 @@ function setupEnv() {
 
     # Create user assigned identity
     Write-Host "Create user assigned managed identity" -ForegroundColor Yellow
-    $identityInfo = New-AzUserAssignedIdentity -ResourceGroupName $env.resourceGroupNameWindowsPremium -Name ID1 -Location $env.location
+    $identityInfo = New-AzUserAssignedIdentity -ResourceGroupName $resourceGroupNameWindowsPremium -Name ID1 -Location $location
     $env.add('identityInfo', $identityInfo) | Out-Null
 
     # Create new ApplInsights project
     Write-Host "Create application insights project" -ForegroundColor Yellow
     $newApplInsightsName = $functionNamePowerShell + "-new"
-    $newApplInsights = New-AzApplicationInsights -ResourceGroupName $env.resourceGroupNameWindowsPremium -Name $newApplInsightsName -Location $location
+    $newApplInsights = New-AzApplicationInsights -ResourceGroupName $resourceGroupNameWindowsPremium -Name $newApplInsightsName -Location $location
     $env.add('newApplInsights', $newApplInsights) | Out-Null
 
     # Create Flex Consumption resources
     Write-Host "Creating Flex Consumption resources..." -ForegroundColor Green
-    $flexTestRunId = 114125
+    $flexTestRunId = 112925
     $flexLocation = 'East Asia'
     $flexResourceGroupName = "Functions-Flex-RG-" + $flexTestRunId
 
@@ -315,10 +317,10 @@ function cleanupEnv() {
     $env:FunctionsTestMode = $null
 
     # Clean test resources
-    Remove-AzResourceGroup -Name $env.flexResourceGroupName
     Remove-AzResourceGroup -Name $env.resourceGroupNameWindowsPremium
     Remove-AzResourceGroup -Name $env.resourceGroupNameLinuxPremium
     Remove-AzResourceGroup -Name $env.resourceGroupNameWindowsConsumption
     Remove-AzResourceGroup -Name $env.resourceGroupNameLinuxConsumption
+    Remove-AzResourceGroup -Name $env.flexResourceGroupName
 }
 

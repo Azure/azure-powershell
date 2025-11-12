@@ -33,10 +33,10 @@ Describe 'New-AzFunctionApp - Flex Consumption' {
         # Write-Verbose "Creating resource group: $flexResourceGroupName in location: $flexLocation" -Verbose
         # New-AzResourceGroup -Name $flexResourceGroupName -Location $flexLocation | Out-Null
 
-        $flexTestRunId = $env['flexTestRunId']
-        $flexLocation = $env['flexLocation']
-        $flexResourceGroupName = $env['flexResourceGroupName']
-        $flexIdentityInfo = $env['flexIdentityInfo']
+        $flexTestRunId = $env.flexTestRunId
+        $flexLocation = $env.flexLocation
+        $flexResourceGroupName = $env.flexResourceGroupName
+        $flexIdentityInfo = $env.flexIdentityInfo
 
         # Helper function to validate core Flex Consumption properties
         function Test-FlexConsumptionProperties {
@@ -151,7 +151,7 @@ Describe 'New-AzFunctionApp - Flex Consumption' {
             "Name" = "Functions-Flex-DotNetIsolated-" + $flexTestRunId
             "Runtime" = "DotNet-Isolated"
             "RuntimeVersion" = $null  # Use default
-            "StorageAccountName" = $env['flexStorageAccountDotNetIsolated']
+            "StorageAccountName" = $env.flexStorageAccountDotNetIsolated
             "ExpectedSku" = "FC1"
             "ExpectedAppSettings" = $expectedAppSettings
             "ExpectedProperties" = @{
@@ -172,7 +172,7 @@ Describe 'New-AzFunctionApp - Flex Consumption' {
             "Name" = "Functions-Flex-Node-" + $flexTestRunId
             "Runtime" = "Node"
             "RuntimeVersion" = $null  # Use default
-            "StorageAccountName" = $env['flexStorageAccountNode']
+            "StorageAccountName" = $env.flexStorageAccountNode
             "ExpectedSku" = "FC1"
             "ExpectedAppSettings" = $expectedAppSettings
             "ExpectedProperties" = @{
@@ -192,7 +192,7 @@ Describe 'New-AzFunctionApp - Flex Consumption' {
             "Name" = "Functions-Flex-Python-" + $flexTestRunId
             "Runtime" = "Python"
             "RuntimeVersion" = $null  # Use default
-            "StorageAccountName" = $env['flexStorageAccountPython']
+            "StorageAccountName" = $env.flexStorageAccountPython
             "ExpectedSku" = "FC1"
             "ExpectedAppSettings" = $expectedAppSettings
             "ExpectedProperties" = @{
@@ -212,7 +212,7 @@ Describe 'New-AzFunctionApp - Flex Consumption' {
             "Name" = "Functions-Flex-Java-" + $flexTestRunId
             "Runtime" = "Java"
             "RuntimeVersion" = $null  # Use default
-            "StorageAccountName" = $env['flexStorageAccountJava']
+            "StorageAccountName" = $env.flexStorageAccountJava
             "ExpectedSku" = "FC1"
             "ExpectedAppSettings" = $expectedAppSettings
             "ExpectedProperties" = @{
@@ -232,7 +232,7 @@ Describe 'New-AzFunctionApp - Flex Consumption' {
             "Name" = "Functions-Flex-PowerShell-" + $flexTestRunId
             "Runtime" = "PowerShell"
             "RuntimeVersion" = $null  # Use default
-            "StorageAccountName" = $env['flexStorageAccountPowerShell']
+            "StorageAccountName" = $env.flexStorageAccountPowerShell
             "ExpectedSku" = "FC1"
             "ExpectedAppSettings" = $expectedAppSettings
             "ExpectedProperties" = @{
@@ -252,7 +252,7 @@ Describe 'New-AzFunctionApp - Flex Consumption' {
             "Name" = "Functions-Flex-Custom-" + $flexTestRunId
             "Runtime" = "Custom"
             "RuntimeVersion" = $null  # Use default
-            "StorageAccountName" = $env['flexStorageAccountCustom']
+            "StorageAccountName" = $env.flexStorageAccountCustom
             "ExpectedSku" = "FC1"
             "ExpectedAppSettings" = $expectedAppSettings
             "ExpectedProperties" = @{
@@ -474,7 +474,7 @@ Describe 'New-AzFunctionApp - Flex Consumption' {
         $appName = "Functions-Pwsh-UserAssignedIdentity-" + $flexTestRunId
         $storageAccountName = $baseTestCase.StorageAccountName
         $runtime = $baseTestCase.Runtime
-        $flexIdentityInfo = $env['flexIdentityInfo']
+        $flexIdentityInfo = $env.flexIdentityInfo
 
         try {
             Write-Verbose "Creating Flex Consumption app with UserAssigned identity for deployment storage" -Verbose
