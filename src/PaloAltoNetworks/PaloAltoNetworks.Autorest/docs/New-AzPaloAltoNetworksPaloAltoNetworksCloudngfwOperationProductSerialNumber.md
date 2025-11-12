@@ -22,27 +22,16 @@ New-AzPaloAltoNetworksPaloAltoNetworksCloudngfwOperationProductSerialNumber [-Su
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create product serial number
 ```powershell
-{{ Add code here }}
+New-AzPaloAltoNetworksPaloAltoNetworksCloudngfwOperationProductSerialNumber
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Status
+------
+Product Serial Number is already created.
 ```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
 
 ## PARAMETERS
 

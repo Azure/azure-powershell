@@ -22,27 +22,31 @@ Get-AzPaloAltoNetworksPaloAltoNetworksCloudngfwOperationSupportInfo [-Subscripti
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get Support information for the subscription
 ```powershell
-{{ Add code here }}
+Get-AzPaloAltoNetworksPaloAltoNetworksCloudngfwOperationSupportInfo
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+AccountId                 : 1768331
+AccountRegistrationStatus : Registered
+Credit                    : 0
+EndDateForCredit          :
+FreeTrial                 : Disabled
+FreeTrialCreditLeft       : 0
+FreeTrialDaysLeft         : 0
+HelpUrl                   : https://live.paloaltonetworks.com?productSku=PAN-CLOUD-NGFW-AZURE-PAYG
+HubUrl                    :
+MonthlyCreditLeft         : 0
+ProductSerial             : 001990770730
+ProductSku                : PAN-CLOUD-NGFW-AZURE-PAYG
+RegisterUrl               : https://support.paloaltonetworks.com/Home/Register?tenantId=888d76fa-54b2-4ced-8ee5-aac1585
+                            adee7&productSku=PAN-CLOUD-NGFW-AZURE-PAYG&productSerial=001990770730&userEmail=prakgupta@m
+                            icrosoft.com
+StartDateForCredit        :
+SupportUrl                : https://support.paloaltonetworks.com?productSku=PAN-CLOUD-NGFW-AZURE-PAYG&cspAccount=176833
+                            1&userEmail=prakgupta@microsoft.com
 ```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
 
 ## PARAMETERS
 
