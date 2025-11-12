@@ -59,7 +59,8 @@ Describe 'New-AzWvdHostPool' {
                                 -ValidationEnvironment:$false `
                                 -PreferredAppGroupType 'Desktop' `
                                 -StartVMOnConnect:$false `
-                                -ManagementType 'Standard'
+                                -ManagementType 'Standard' `
+                                -AllowRdpShortPathWithPrivateLink 'Enabled'
 
                 $hostPool.Name | Should -Be $env.HostPool
                 $hostPool.Location | Should -Be $env.Location
@@ -77,6 +78,7 @@ Describe 'New-AzWvdHostPool' {
                 # $hostPool.ValidationEnvironment | Should -Be $false
                 $hostPool.PreferredAppGroupType | Should -Be 'Desktop'
                 $hostPool.StartVMOnConnect | Should -Be $false
+                $hostPool.AllowRdpShortPathWithPrivateLink | Should -Be 'Enabled'
 
             $hostPool = Get-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
                             -ResourceGroupName $env.ResourceGroup `
@@ -97,6 +99,7 @@ Describe 'New-AzWvdHostPool' {
                 # $hostPool.ValidationEnvironment | Should -Be $false
                 $hostPool.PreferredAppGroupType | Should -Be 'Desktop'
                 $hostPool.StartVMOnConnect | Should -Be $false
+                $hostPool.AllowRdpShortPathWithPrivateLink | Should -Be 'Enabled'
         }
         finally{
                 $hostPool = Remove-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
