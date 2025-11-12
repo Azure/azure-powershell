@@ -61,6 +61,8 @@ SystemDataLastModifiedByType        :
 Type                                : firewalls/metrics
 ```
 
+Get metrics configurations object of a firewall.
+
 ## PARAMETERS
 
 ### -DefaultProfile

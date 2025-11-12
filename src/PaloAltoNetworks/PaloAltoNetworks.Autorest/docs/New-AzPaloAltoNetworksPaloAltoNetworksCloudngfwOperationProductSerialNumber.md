@@ -33,6 +33,8 @@ Status
 Product Serial Number is already created.
 ```
 
+Create product serial number.
+
 ## PARAMETERS
 
 ### -DefaultProfile

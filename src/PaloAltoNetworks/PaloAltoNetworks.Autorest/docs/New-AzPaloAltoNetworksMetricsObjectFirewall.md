@@ -50,6 +50,8 @@ SystemDataLastModifiedByType        :
 Type                                : firewalls/metrics
 ```
 
+Create a new metric config object.
+
 ## PARAMETERS
 
 ### -ApplicationInsightsConnectionString

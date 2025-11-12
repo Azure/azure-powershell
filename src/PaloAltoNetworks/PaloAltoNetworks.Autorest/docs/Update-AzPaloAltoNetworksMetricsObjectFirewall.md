@@ -56,6 +56,8 @@ SystemDataLastModifiedByType        :
 Type                                : firewalls/metrics
 ```
 
+Update metrics config object.
+
 ## PARAMETERS
 
 ### -AsJob

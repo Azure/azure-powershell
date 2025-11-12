@@ -48,6 +48,8 @@ SupportUrl                : https://support.paloaltonetworks.com?productSku=PAN-
                             1&userEmail=prakgupta@microsoft.com
 ```
 
+Get Support information for the subscription.
+
 ## PARAMETERS
 
 ### -DefaultProfile

@@ -33,6 +33,8 @@ SerialNumber Status
              Allocated
 ```
 
+Get Product serial number status.
+
 ## PARAMETERS
 
 ### -DefaultProfile

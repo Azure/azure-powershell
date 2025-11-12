@@ -47,6 +47,8 @@ BrownfieldAutomation - Prisma Access (1983641518)
 AWS-CNGFW-SO-V2-API-TESTING-2 - Prisma Access (1053540296)
 ```
 
+Get the list of Cloud Manager Tenants for a subscription.
+
 ## PARAMETERS
 
 ### -DefaultProfile
