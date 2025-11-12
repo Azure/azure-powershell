@@ -199,6 +199,11 @@ param(
 )
 
     process {
+        $helperPath = [System.IO.Path]::Combine($PSScriptRoot, "Helper", "AzLocalCommonSettings.ps1")
+        Import-Module $helperPath
+        $helperPath = [System.IO.Path]::Combine($PSScriptRoot, "Helper", "AzLocalCommonHelper.ps1")
+        Import-Module $helperPath
+
         $parameterSet = $PSCmdlet.ParameterSetName
         $null = $PSBoundParameters.Remove('ID')
         $null = $PSBoundParameters.Remove('ResourceGroupName')
@@ -208,29 +213,40 @@ param(
         $null = $PSBoundParameters.Remove('ResourceGroupID')
         $null = $PSBoundParameters.Remove('ProjectID')
 
-        if (($parameterSet -match 'Name') -or ($parameterSet -eq 'ListById')) {
-            if ($parameterSet -eq 'ListById') {
+        if (($parameterSet -match 'Name') -or ($parameterSet -eq 'ListById'))
+        {
+            if ($parameterSet -eq 'ListById')
+            {
                 $ProjectIdArray = $ProjectID.Split("/")
-                if ($ProjectIdArray.Length -lt 9) {
+                if ($ProjectIdArray.Length -lt 9)
+                {
                     throw "Invalid Project ID '$ProjectID'"
                 }
                 $ProjectName = $ProjectIdArray[8]
                 $ResourceGroupName = $ResourceGroupID.Split("/")[4]
             }
+
+            # Get the migrate solution.
+            $amhSolutionName = $AzMigrateSolutions.DataReplicationSolution
             $null = $PSBoundParameters.Add("ResourceGroupName", $ResourceGroupName)
-            $null = $PSBoundParameters.Add("Name", "Servers-Migration-ServerMigration_DataReplication")
+            $null = $PSBoundParameters.Add("Name", $amhSolutionName)
             $null = $PSBoundParameters.Add("MigrateProjectName", $ProjectName)
-                
-            $solution = Az.Migrate.private\Get-AzMigrateSolution_Get @PSBoundParameters
-            if ($solution -and ($solution.Count -ge 1)) {
+
+            $solution = Az.Migrate.private\Get-AzMigrateSolution_Get @PSBoundParameters `
+                -ErrorVariable notPresent `
+                -ErrorAction SilentlyContinue
+            if ($null -ne $solution -and ($solution.Count -ge 1))
+            {
                 $vaultId = $solution.DetailExtendedDetail["vaultId"]
                 $vaultIdArray = $vaultId.Split("/")
-                if ($vaultIdArray.Length -lt 9) {
+                if ($vaultIdArray.Length -lt 9)
+                {
                     throw "Invalid Vault ID '$vaultId'"
                 }
                 $vaultName = $vaultIdArray[8]
             }
-            else {
+            else
+            {
                 throw "Solution not found."
             }
 
@@ -238,14 +254,19 @@ param(
             $null = $PSBoundParameters.Remove("Name")
             $null = $PSBoundParameters.Remove("MigrateProjectName")
         }
-        else {
-            if ($parameterSet -eq 'GetByInputObject') {
+        else
+        {
+            if ($parameterSet -eq 'GetByInputObject')
+            {
                 $ID = $InputObject.Id
             }
+
             $jobIdArray = $ID.split('/')
-            if ($jobIdArray.Length -lt 11) {
+            if ($jobIdArray.Length -lt 11)
+            {
                 throw "Invalid Job ID '$ID'"
             }
+
             $ResourceGroupName = $jobIdArray[4]
             $vaultName = $jobIdArray[8]
             $Name = $jobIdArray[10]
@@ -253,10 +274,12 @@ param(
         
         $null = $PSBoundParameters.Add('ResourceGroupName', $ResourceGroupName)
         $null = $PSBoundParameters.Add('VaultName', $vaultName)
-        if ($parameterSet -match 'Get') {
+
+        if ($parameterSet -match 'Get')
+        {
             $null = $PSBoundParameters.Add('JobName', $Name)
         }
 
-        return  Az.Migrate.Internal\Get-AzMigrateLocalReplicationJob @PSBoundParameters -ErrorVariable notPresent -ErrorAction SilentlyContinue
+        return  Az.Migrate.Internal\Get-AzMigrateLocalReplicationJob @PSBoundParameters
     }
 }

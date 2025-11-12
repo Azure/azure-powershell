@@ -16,9 +16,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzMigrateLocalServerRepli
 
 Describe 'New-AzMigrateLocalServerReplication' -Tag 'LiveOnly' {
     It 'ByIdDefaultUser' {
+        $targetRGId = "/subscriptions/$($env.hciTargetRgSubId)/resourceGroups/$($env.hciMigResourceGroup)-target"
         $output = New-AzMigrateLocalServerReplication `
             -MachineId $env.hciSDSMachineId1 `
-            -TargetResourceGroupId $env.hciTargetRGId `
+            -SourceApplianceName $env.hciSourceApplianceName `
+            -TargetApplianceName $env.hciTargetApplianceName `
+            -TargetResourceGroupId $targetRGId `
             -TargetVMName $env.hciTgtVMName1 `
             -TargetStoragePathId $env.hciTgtStoragePathId `
             -TargetVirtualSwitchId $env.hciTgtVirtualSwitchId `
@@ -29,11 +32,14 @@ Describe 'New-AzMigrateLocalServerReplication' -Tag 'LiveOnly' {
     }
 
     It 'ByIdPowerUser' {
-        $diskToInclude = New-AzMigrateLocalDiskMappingObject -DiskID $env.hciDiskId2 -IsOSDisk "true" -IsDynamic "true" -Size 1 -Format "VHDX"
+        $targetRGId = "/subscriptions/$($env.hciTargetRgSubId)/resourceGroups/$($env.hciMigResourceGroup)-target"
+        $diskToInclude = New-AzMigrateLocalDiskMappingObject -DiskID $env.hciDiskId2 -IsOSDisk "true" -IsDynamic "true" -Size 10 -Format "VHDX"
         $nicToInclude = New-AzMigrateLocalNicMappingObject -NicID $env.hciNicId2 -TargetVirtualSwitchId $env.hciTgtVirtualSwitchId
         $output = New-AzMigrateLocalServerReplication `
             -MachineId $env.hciSDSMachineId2 `
-            -TargetResourceGroupId $env.hciTargetRGId `
+            -SourceApplianceName $env.hciSourceApplianceName `
+            -TargetApplianceName $env.hciTargetApplianceName `
+            -TargetResourceGroupId $targetRGId `
             -TargetVMName $env.hciTgtVMName2 `
             -TargetStoragePathId $env.hciTgtStoragePathId `
             -DiskToInclude $diskToInclude `

@@ -143,3 +143,8 @@ $TargetVMRamInMB = @{
     Gen2Min = 32
     Gen2Max = 12582912 # 12 TB
 }
+
+$AzMigrateSolutions = @{
+    DataReplicationSolution = "Servers-Migration-ServerMigration_DataReplication"
+    DiscoverySolution = "Servers-Discovery-ServerDiscovery"
+}

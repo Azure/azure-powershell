@@ -123,10 +123,12 @@ function Remove-AzMigrateLocalServerReplication {
         $null = $PSBoundParameters.Add("VaultName", $vaultName)
         $null = $PSBoundParameters.Add("Name", $protectedItemName)
 
-        $ProtectedItem = InvokeAzMigrateGetCommandWithRetries `
-            -CommandName 'Az.Migrate.Internal\Get-AzMigrateProtectedItem' `
-            -Parameters $PSBoundParameters `
-            -ErrorMessage "Replication item is not found with Id '$TargetObjectID'."
+        $ProtectedItem = Az.Migrate.Internal\Get-AzMigrateProtectedItem @PSBoundParameters `
+            -ErrorVariable notPresent `
+            -ErrorAction SilentlyContinue
+        if ($null -eq $ProtectedItem) {
+            throw "Replication item is not found with Id '$TargetObjectID'. Re-run this command if exists."
+        }
 
         $null = $PSBoundParameters.Remove('Name')
 
