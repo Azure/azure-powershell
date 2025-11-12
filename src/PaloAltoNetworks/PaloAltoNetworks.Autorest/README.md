@@ -34,7 +34,7 @@ input-file:
   - $(repo)/specification/paloaltonetworks/resource-manager/PaloAltoNetworks.Cloudngfw/stable/2025-10-08/PaloAltoNetworks.Cloudngfw.json
 
 title: PaloAltoNetworks
-module-version: 0.3.0
+module-version: 0.2.0
 subject-prefix: $(service-name)
 
 directive:

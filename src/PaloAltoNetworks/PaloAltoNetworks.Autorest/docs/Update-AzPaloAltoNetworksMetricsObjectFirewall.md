@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.PaloAltoNetworks-help.xml
 Module Name: Az.PaloAltoNetworks
 online version: https://learn.microsoft.com/powershell/module/az.paloaltonetworks/update-azpaloaltonetworksmetricsobjectfirewall
 schema: 2.0.0
