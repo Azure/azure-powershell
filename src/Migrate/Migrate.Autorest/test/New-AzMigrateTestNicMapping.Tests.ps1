@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzMigrateTestNicMapping')
 }
 
 Describe 'New-AzMigrateTestNicMapping' {
-    It 'VMwareCbt' -Skip {
+    It 'VMwareCbt' {
         $output = New-AzMigrateTestNicMapping -NicID "a2399354-653a-464e-a567-d30ef5467a31" -TestNicSubnet "subnet1"
         $output.Count | Should -BeGreaterOrEqual 1
     }

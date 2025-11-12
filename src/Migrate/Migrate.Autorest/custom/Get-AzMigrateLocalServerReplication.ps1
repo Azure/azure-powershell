@@ -195,12 +195,11 @@ function Get-AzMigrateLocalServerReplication {
                     -ErrorAction SilentlyContinue
             }
 
-            $null = $PSBoundParameters.Remove('SiteName')
-
             if ($null -eq $siteObject)
             {
                 throw "Machine site '$siteName' with Type '$siteType' not found. Please verify in your Azure Migrate project resource group '$ResourceGroupName' and re-run this command if exists."
             }
+            $null = $PSBoundParameters.Remove('SiteName')
 
             # $siteObject is not null or exception would have been thrown
             $ProjectName = $siteObject.DiscoverySolutionId.Split("/")[8]
@@ -213,7 +212,7 @@ function Get-AzMigrateLocalServerReplication {
             $solution = Az.Migrate.private\Get-AzMigrateSolution_Get @PSBoundParameters `
                 -ErrorVariable notPresent `
                 -ErrorAction SilentlyContinue
-            if ($null -ne $solution -and ($solution.Count -ge 1)) {
+            if ($null -eq $solution) {
                 throw "No Data Replication Service Solution '$amhSolutionName' found in resource group '$ResourceGroupName' and project '$ProjectName'. Please verify your appliance setup."
             }
 
@@ -252,7 +251,7 @@ function Get-AzMigrateLocalServerReplication {
             $solution = Az.Migrate.private\Get-AzMigrateSolution_Get @PSBoundParameters `
                 -ErrorVariable notPresent `
                 -ErrorAction SilentlyContinue
-            if ($null -ne $solution -and ($solution.Count -ge 1)) {
+            if ($null -eq $solution) {
                 throw "No Data Replication Service Solution '$amhSolutionName' found in resource group '$ResourceGroupName' and project '$ProjectName'. Please verify your appliance setup."
             }
 

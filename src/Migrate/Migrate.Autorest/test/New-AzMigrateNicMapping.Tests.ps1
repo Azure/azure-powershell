@@ -12,7 +12,7 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'New-AzMigrateNicMapping' {
-    It 'VMwareCbt' -Skip {
+    It 'VMwareCbt' {
         $output = New-AzMigrateNicMapping -NicID abcd -TargetNicSelectionType primary -TargetNicIP "172.17.1.17"
         $output.Count | Should -BeGreaterOrEqual 1 
         $output.NicID | Should -Be abcd

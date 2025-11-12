@@ -12,7 +12,7 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Set-AzMigrateDiskMapping' {
-    It 'VMwareCbt' -Skip {
+    It 'VMwareCbt' {
         $output = Set-AzMigrateDiskMapping -DiskID abc -DiskName "Diskname"
         $output.Count | Should -BeGreaterOrEqual 1 
         $output.TargetDiskName | Should -Be "DiskName"
