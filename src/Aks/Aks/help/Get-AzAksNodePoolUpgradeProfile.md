@@ -15,24 +15,19 @@ Gets the upgrade profile for an agent pool.
 ### Get (Default)
 ```
 Get-AzAksNodePoolUpgradeProfile -ClusterName <String> -NodePoolName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
- [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
- [-ProxyUseDefaultCredentials] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentityManagedCluster
 ```
 Get-AzAksNodePoolUpgradeProfile -NodePoolName <String> -ManagedClusterInputObject <IAksIdentity>
- [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
- [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
- [-ProxyUseDefaultCredentials] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzAksNodePoolUpgradeProfile -InputObject <IAksIdentity> [-DefaultProfile <PSObject>] [-Break]
- [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>]
- [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials]
+Get-AzAksNodePoolUpgradeProfile -InputObject <IAksIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -55,21 +50,6 @@ default Microsoft.ContainerService/managedClusters/agentPools/upgradeProfiles
 Get Aks node pool upgrade profile with resource group name and cluster name.
 
 ## PARAMETERS
-
-### -Break
-Wait for .NET debugger to attach
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -ClusterName
 The name of the managed cluster resource.
@@ -94,36 +74,6 @@ Use the SubscriptionId parameter when available if executing the cmdlet against 
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -HttpPipelineAppend
-SendAsync Pipeline Steps to be appended to the front of the pipeline
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -HttpPipelinePrepend
-SendAsync Pipeline Steps to be prepended to the front of the pipeline
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[]
-Parameter Sets: (All)
-Aliases:
 
 Required: False
 Position: Named
@@ -177,51 +127,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Proxy
-The URI for the proxy server to use
-
-```yaml
-Type: System.Uri
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProxyCredential
-Credentials for a proxy server to use for the remote call
-
-```yaml
-Type: System.Management.Automation.PSCredential
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProxyUseDefaultCredentials
-Use the default credentials for the proxy
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -240,6 +145,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String[]

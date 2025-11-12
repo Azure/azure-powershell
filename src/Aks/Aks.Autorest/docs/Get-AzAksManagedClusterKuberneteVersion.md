@@ -1,46 +1,45 @@
 ---
 external help file:
 Module Name: Az.Aks
-online version: https://learn.microsoft.com/powershell/module/az.aks/get-azaksmanagedclusterosoption
+online version: https://learn.microsoft.com/powershell/module/az.aks/get-azaksmanagedclusterkuberneteversion
 schema: 2.0.0
 ---
 
-# Get-AzAksManagedClusterOSOption
+# Get-AzAksManagedClusterKuberneteVersion
 
 ## SYNOPSIS
-Gets supported OS options in the specified subscription.
+Contains extra metadata on the version, including supported patch versions, capabilities, available upgrades, and details on preview status of the version
 
 ## SYNTAX
 
-### Get (Default)
 ```
-Get-AzAksManagedClusterOSOption -Location <String> [-SubscriptionId <String[]>] [-ResourceType <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentity
-```
-Get-AzAksManagedClusterOSOption -InputObject <IAksIdentity> [-ResourceType <String>]
+Get-AzAksManagedClusterKuberneteVersion -Location <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets supported OS options in the specified subscription.
+Contains extra metadata on the version, including supported patch versions, capabilities, available upgrades, and details on preview status of the version
 
 ## EXAMPLES
 
-### Example 1: Get supported OS options
+### Example 1: Get AKS Kubernete Version
 ```powershell
-Get-AzAksManagedClusterOSOption -Location eastus
+Get-AzAksManagedClusterKuberneteVersion -Location eastus
 ```
 
 ```output
-Name
-----
-default
+IsDefault IsPreview Version
+--------- --------- -------
+          True      1.34
+                    1.33
+True                1.32
+                    1.31
+                    1.30
+                    1.29
+                    1.28
 ```
 
-
+Get extra metadata on the version, including supported patch versions, capabilities, available upgrades, and details on preview status of the version
 
 ## PARAMETERS
 
@@ -60,45 +59,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity
-Parameter Sets: GetViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Location
-The name of Azure region.
-
-```yaml
-Type: System.String
-Parameter Sets: Get
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceType
-The resource type for which the OS options needs to be returned
+The name of the Azure region.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -107,10 +76,11 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -125,11 +95,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity
-
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IOSOptionProfile
+### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IKubernetesVersionListResult
 
 ## NOTES
 
