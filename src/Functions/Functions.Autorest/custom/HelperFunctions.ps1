@@ -1,7 +1,7 @@
 # Load Az.Functions module constants
 $constants = @{}
 $constants["AllowedStorageTypes"] = @('Standard_GRS', 'Standard_RAGRS', 'Standard_LRS', 'Standard_ZRS', 'Premium_LRS', 'Standard_GZRS')
-$constants["RequiredStorageEndpoints"] = @('PrimaryEndpointFile', 'PrimaryEndpointQueue', 'PrimaryEndpointTable')
+$constants["RequiredStorageEndpoints"] = @('PrimaryEndpointBlob', 'PrimaryEndpointFile', 'PrimaryEndpointQueue', 'PrimaryEndpointTable')
 $constants["DefaultFunctionsVersion"] = '4'
 $constants["RuntimeToFormattedName"] = @{
     'dotnet' = 'DotNet'
@@ -41,6 +41,7 @@ $constants["ReservedFunctionAppSettingNames"] = @(
 $constants["SetDefaultValueParameterWarningMessage"] = "This default value is subject to change over time. Please set this value explicitly to ensure the behavior is not accidentally impacted by future changes."
 $constants["DEBUG_PREFIX"] = '[Stacks API] - '
 $constants["DefaultCentauriImage"] = 'mcr.microsoft.com/azure-functions/dotnet8-quickstart-demo:1.0'
+$constants["FlexConsumptionSupportedRuntimes"] = @('DotNet-Isolated', 'Custom', 'Node', 'Python', 'Java', 'PowerShell')
 
 foreach ($variableName in $constants.Keys)
 {
@@ -97,7 +98,7 @@ function GetConnectionString
                               -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
                               -Exception $exception
     }
-    
+
     $skuName = $storageAccountInfo.SkuName
     if (-not ($AllowedStorageTypes -contains $skuName))
     {
@@ -493,7 +494,7 @@ function AddFunctionAppSettings
         $App.AppServicePlan = ($App.ServerFarmId -split "/")[-1]
     }
 
-    $App.OSType = if ($App.kind.ToString() -match "linux"){ "Linux" } else { "Windows" }
+    $App.OSType = if ($App.kind.ToString() -match "linux" -or $App.Reserved){ "Linux" } else { "Windows" }
 
     if ($App.Type -eq "Microsoft.Web/sites/slots")
     {
@@ -541,7 +542,17 @@ function AddFunctionAppSettings
 
     # Add application settings and runtime
     $App.ApplicationSettings = ConvertWebAppApplicationSettingToHashtable -ApplicationSetting $settings -RedactAppSettings
-    $App.Runtime = GetRuntime -Settings $settings -AppKind $App.kind
+
+    # Add runtime
+    $theRuntimeName = [string]$App.RuntimeName
+    $App.Runtime = if ((-not [string]::IsNullOrEmpty($theRuntimeName)) -and ($RuntimeToFormattedName.ContainsKey($theRuntimeName)))
+    {
+        $RuntimeToFormattedName[$theRuntimeName]
+    }
+    else
+    {
+        GetRuntime -Settings $settings -AppKind $App.kind
+    }
 
     # Get the app site config
     $config = GetAzWebAppConfig -Name $App.Name -ResourceGroupName $App.ResourceGroup @PSBoundParameters
@@ -729,26 +740,34 @@ function GetFunctionAppPlans
     Write-Progress -Activity $activityName -Status "Completed" -Completed
 }
 
-function ValidateFunctionName
+function ValidateFunctionAppNameAvailability
 {
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
     param
     (
-        [Parameter(Mandatory=$true)]
-        [ValidateNotNullOrEmpty()]
         [System.String]
         $Name,
-
         $SubscriptionId,
         $HttpPipelineAppend,
         $HttpPipelinePrepend
     )
 
-    $result = Az.Functions.internal\Test-AzNameAvailability -Type Site @PSBoundParameters
+    # Check if the function app name is available
+    if ([string]::IsNullOrEmpty($Name))
+    {
+        $errorMessage = "Function app name cannot be null or empty."
+        $exception = [System.InvalidOperationException]::New($errorMessage)
+        ThrowTerminatingError -ErrorId "FunctionAppNameIsNullOrEmpty" `
+                              -ErrorMessage $errorMessage `
+                              -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                              -Exception $exception
+    }
+
+    $result = Az.Functions.internal\Test-AzNameAvailability -Name $Name -Type Site @PSBoundParameters
 
     if (-not $result.NameAvailable)
     {
-        $errorMessage = "Function name '$Name' is not available.  Please try a different name."
+        $errorMessage = "Function app name '$Name' is not available.  Please try a different name."
         $exception = [System.InvalidOperationException]::New($errorMessage)
         ThrowTerminatingError -ErrorId "FunctionAppNameIsNotAvailable" `
                               -ErrorMessage $errorMessage `
@@ -1086,32 +1105,14 @@ function GetStackDefinitionForRuntime
 
     if ($runtimeJsonDefinition.EndOfLifeDate)
     {
-        $today = Get-Today
-        $sixMonthsFromToday = (Get-Today).AddMonths(6)
-        $endOfLifeDate = $runtimeJsonDefinition.EndOfLifeDate
-        $formattedEOLDate = ([DateTime]$endOfLifeDate).ToString("MMMM dd yyyy")
-
         $defaultRuntimeVersion = GetDefaultOrLatestRuntimeVersion -SupportedRuntimes $supportedRuntimes `
                                                                   -Runtime $Runtime `
                                                                   -FunctionsExtensionVersion $functionsExtensionVersion
 
-        if ($endOfLifeDate -le $today)
-        {
-            $errorMsg = "Use $Runtime $defaultRuntimeVersion as $Runtime $RuntimeVersion has reached end-of-life "
-            $errorMsg += "on $formattedEOLDate and is no longer supported. Learn more: aka.ms/FunctionsStackUpgrade."
-
-            $exception = [System.InvalidOperationException]::New($errorMsg)
-            ThrowTerminatingError -ErrorId "RuntimeVersionEndOfLife" `
-                                  -ErrorMessage $errorMsg `
-                                  -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
-                                  -Exception $exception
-        }
-        elseif ($endOfLifeDate -lt $sixMonthsFromToday)
-        {
-            $warningMsg = "Use $Runtime $defaultRuntimeVersion as $Runtime $RuntimeVersion will reach end-of-life on $formattedEOLDate"
-            $warningMsg += " and will no longer be supported. Learn more: aka.ms/FunctionsStackUpgrade."
-            Write-Warning $warningMsg
-        }
+        Validate-EndOfLifeDate -EndOfLifeDate $runtimeJsonDefinition.EndOfLifeDate `
+                               -Runtime $Runtime `
+                               -RuntimeVersion $RuntimeVersion `
+                               -DefaultRuntimeVersion $defaultRuntimeVersion
     }
 
     return $runtimeJsonDefinition
@@ -1775,9 +1776,9 @@ function GetBuiltInFunctionAppStacksDefinition
 
     if (-not $DoNotShowWarning)
     {
-        $warmingMessage = "Failed to get Function App Stack definitions from ARM API. "
-        $warmingMessage += "Please open an issue at https://github.com/Azure/azure-powershell/issues with the following title: "
-        $warmingMessage += "[Az.Functions] Failed to get Function App Stack definitions from ARM API."
+        $warmingMessage = "Failed to retrieve Function App stack definitions from the ARM API. "
+        $warmingMessage += "Please open an issue at https://github.com/Azure/azure-powershell/issues, including the region, and use the following title: "
+        $warmingMessage += "[Az.Functions] Failed to retrieve Function App stack definitions from ARM API."
         Write-Warning $warmingMessage
     }
 
@@ -1792,13 +1793,28 @@ function GetBuiltInFunctionAppStacksDefinition
 function GetFunctionAppStackDefinition
 {
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
-    param ()
+    param (
+        [Parameter(Mandatory=$false)]
+        [ValidateSet("PremiumAndConsumption", "FlexConsumption")]
+        $StackType = "PremiumAndConsumption",
+
+        [Parameter(Mandatory=$false)]
+        [System.String]
+        $Location,
+
+        [Parameter(Mandatory=$false)]
+        [System.String]
+        $Runtime
+    )
 
     if ($env:FunctionsTestMode -or ($null -ne $env:SYSTEM_DEFINITIONID -or $null -ne $env:Release_DefinitionId -or $null -ne $env:AZUREPS_HOST_ENVIRONMENT))
     {
-        Write-Debug "$DEBUG_PREFIX Running on test mode. Using built in json file definition."
-        $json = GetBuiltInFunctionAppStacksDefinition -DoNotShowWarning
-        return $json
+        if ($StackType -eq "PremiumAndConsumption")
+        {
+            Write-Debug "$DEBUG_PREFIX Running on test mode. Using built in json file definition."
+            $json = GetBuiltInFunctionAppStacksDefinition -DoNotShowWarning
+            return $json
+        }
     }
 
     # Make sure there is an active Azure session
@@ -1829,16 +1845,39 @@ function GetFunctionAppStackDefinition
 
     Write-Debug "$DEBUG_PREFIX Get AccessToken."
     $token =  . "$PSScriptRoot/../utils/Unprotect-SecureString.ps1" (Get-AzAccessToken -AsSecureString).Token
+
     $headers = @{
         Authorization="Bearer $token"
     }
 
-    $params = @{
-        stackOsType = 'All'
-        removeDeprecatedStacks = 'true'
+    $apiEndPoint = $null
+    $params = @{}
+    $apiVersion = '2020-10-01'
+
+    if ($StackType -eq "PremiumAndConsumption")
+    {
+        $params = @{
+            stackOsType = 'All'
+            removeDeprecatedStacks = 'true'
+        }
+
+        $apiEndPoint = $resourceManagerUrl + "providers/Microsoft.Web/functionAppStacks?api-version={0}" -f $apiVersion
+    }
+    elseif ($StackType -eq "FlexConsumption")
+    {
+        $removeHiddenStacks = if ($env:FunctionsTestMode) { $false } else { $true }
+        $removeDeprecatedStacks = $true
+
+        $apiEndPoint = $resourceManagerUrl +
+            "providers/Microsoft.Web/locations/{0}/functionAppStacks?api-version={1}&removeHiddenStacks={2}&removeDeprecatedStacks={3}&stack={4}&sku=FC1" -f `
+            $Location,
+            $apiVersion,
+            $removeHiddenStacks.ToString().ToLower(),
+            $removeDeprecatedStacks.ToString().ToLower(),
+            $Runtime.ToString().ToLower()
     }
 
-    $apiEndPoint = $resourceManagerUrl + "providers/Microsoft.Web/functionAppStacks?api-version=2020-10-01"
+    Write-Debug "$DEBUG_PREFIX Target API endpoint: $apiEndPoint"
 
     $maxNumberOfTries = 3
     $currentCount = 1
@@ -1851,8 +1890,15 @@ function GetFunctionAppStackDefinition
         $result = $null
         try
         {
-            Write-Debug "$DEBUG_PREFIX Pull down Function App Stack definitions from ARM API. Attempt $currentCount of $maxNumberOfTries."
-            $result = Invoke-WebRequest -Uri $apiEndPoint -Method Get -Headers $headers -body $params -ErrorAction Stop
+            Write-Debug "$DEBUG_PREFIX Get Function App Stack definitions from ARM API. Attempt $currentCount of $maxNumberOfTries."
+            if ($StackType -eq "FlexConsumption")
+            {
+                $result = Invoke-WebRequest -Uri $apiEndPoint -Method Get -Headers $headers -ErrorAction Stop
+            }
+            else
+            {
+                $result = Invoke-WebRequest -Uri $apiEndPoint -Method Get -Headers $headers -body $params -ErrorAction Stop
+            }
         }
         catch
         {
@@ -1885,11 +1931,13 @@ function GetFunctionAppStackDefinition
 
     } while ($currentCount -le $maxNumberOfTries)
 
-
-    # At this point, we failed to get the stack definition from the ARM API.
-    # Return the built in json file definition
-    $json = GetBuiltInFunctionAppStacksDefinition
-    return $json
+    if ($StackType -eq "PremiumAndConsumption")
+    {
+        # At this point, we failed to get the stack definition from the ARM API.
+        # Return the built in json file definition
+        $json = GetBuiltInFunctionAppStacksDefinition
+        return $json
+    }
 }
 
 function ContainsProperty
@@ -2168,6 +2216,17 @@ function AddRuntimeToDictionary
         $list = New-Object System.Collections.Generic.List[[Runtime]]
     }
 
+    # Only add runtime versions that are not in the list already
+    foreach ($existingRuntime in $list)
+    {
+        if ($existingRuntime.Version -eq $Runtime.Version)
+        {
+            Write-Debug "$DEBUG_PREFIX Runtime version $($Runtime.Version) for runtime $($Runtime.Name) already exists. Skipping..."
+            return
+        }
+    }
+
+    Write-Debug "$DEBUG_PREFIX Adding runtime version $($Runtime.Version) for runtime $($Runtime.Name)."
     $list.Add($Runtime)
     $RuntimeToVersionDictionary[$Runtime.Name] = $list
 
@@ -2294,7 +2353,7 @@ function RegisterFunctionsTabCompleters
             $runtimeValues | Where-Object { $_ -like "$wordToComplete*" }
         }
 
-        # New-AzFunction app ArgumentCompleter for the Runtime parameter
+        # New-AzFunction app ArgumentCompleter for the FunctionsVersion parameter
         $GetAllFunctionsVersionsCompleter = {
 
             param ($commandName, $parameterName, $wordToComplete, $commandAst, $fakeBoundParameters)
@@ -2304,10 +2363,22 @@ function RegisterFunctionsTabCompleters
             $functionsVersions | Where-Object { $_ -like "$wordToComplete*" }
         }
 
+        # Get-AzFunctionFlexConsumptionRuntime app ArgumentCompleter for the Runtime parameter
+        $GetFlexConsumptionRuntimeCompleter = {
+
+            param ($commandName, $parameterName, $wordToComplete, $commandAst, $fakeBoundParameters)
+
+            $runtimeValues = $AllRuntimeVersions.Keys | Sort-Object | ForEach-Object { if ($_ -ne "dotnet") { $_ } }
+
+            $runtimeValues | Where-Object { $_ -like "$wordToComplete*" }
+        }
+
         # Register tab completers
         Register-ArgumentCompleter -CommandName New-AzFunctionApp -ParameterName FunctionsVersion -ScriptBlock $GetAllFunctionsVersionsCompleter
         Register-ArgumentCompleter -CommandName New-AzFunctionApp -ParameterName Runtime -ScriptBlock $GetAllRuntimesCompleter
         Register-ArgumentCompleter -CommandName New-AzFunctionApp -ParameterName RuntimeVersion -ScriptBlock $GetRuntimeVersionCompleter
+
+        Register-ArgumentCompleter -CommandName Get-AzFunctionAppFlexConsumptionRuntime -ParameterName Runtime -ScriptBlock $GetFlexConsumptionRuntimeCompleter
 
         $global:StacksAndTabCompletersInitialized = $true
     }
@@ -2485,4 +2556,763 @@ function Get-Today {
         return [datetime]"2024-01-01"
     }
     return Get-Date
+}
+
+function New-PlanName
+{
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
+    param
+    (
+        [Parameter(Mandatory = $true)]
+        [ValidateNotNullOrEmpty()]
+        [System.String]
+        $ResourceGroupName
+    )
+
+    if ($env:FunctionsTestMode -and $env:FunctionsUseFlexStackTestData)
+    {
+        $suffix = "-0000"
+    }
+    else
+    {
+        $suffix = "-" + ([guid]::NewGuid().ToString().Substring(0,4))
+    }
+
+    $name = $ResourceGroupName -replace '[^a-zA-Z0-9]', ''
+    $prefix = "ASP-$name"
+    return $prefix.Substring(0, [Math]::Min(35, $prefix.Length)) + $suffix
+}
+
+function New-FlexConsumptionAppPlan
+{
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
+    param
+    (
+        [Parameter(Mandatory = $true)]
+        [ValidateNotNullOrEmpty()]
+        [System.String]
+        $Name,
+
+        [Parameter(Mandatory = $true)]
+        [ValidateNotNullOrEmpty()]
+        [System.String]
+        $ResourceGroupName,
+
+        [Parameter(Mandatory = $true)]
+        [ValidateNotNullOrEmpty()]
+        [System.String]
+        $Location,
+
+        [System.Management.Automation.SwitchParameter]
+        $EnableZoneRedundancy,
+
+        $SubscriptionId,
+        $HttpPipelineAppend,
+        $HttpPipelinePrepend
+    )
+
+    foreach ($paramName in @("Location", "EnableZoneRedundancy"))
+    {
+        if ($PSBoundParameters.ContainsKey($paramName))
+        {
+            $PSBoundParameters.Remove($paramName)  | Out-Null
+        }
+    }
+
+    $servicePlan = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.AppServicePlan
+    $servicePlan.Location = $Location
+    $servicePlan.Reserved = $true
+    $servicePlan.Kind = "functionapp"
+    $servicePlan.SkuName = "FC1"
+    $servicePlan.SkuTier = "FlexConsumption"
+    $servicePlan.SkuSize = "FC"
+    $servicePlan.SkuFamily = "FC"
+
+    if ($EnableZoneRedundancy.IsPresent)
+    {
+        $servicePlan.ZoneRedundant = $true
+        $servicePlan.Capacity = 3
+    }
+
+    # Add plan definition
+    $PSBoundParameters.Add("AppServicePlan", $servicePlan)  | Out-Null
+
+    # Save the ErrorActionPreference
+    $currentErrorActionPreference = $ErrorActionPreference
+    $ErrorActionPreference = 'Stop'
+    $plan = $null
+
+    $activityName = "Creating Flex Consumption Plan"
+
+    try
+    {
+        Write-Progress -Activity $activityName `
+                       -Status "Creating plan $Name in resource group $ResourceGroupName" `
+                       -PercentComplete 50
+
+        $plan = Az.Functions.internal\New-AzFunctionAppPlan @PSBoundParameters
+
+        Write-Progress -Activity $activityName `
+                       -Status "Plan creation completed successfully." `
+                       -Completed
+    }
+    catch
+    {
+        $errorMessage = GetErrorMessage -Response $_
+        if ($errorMessage)
+        {
+            $exception = [System.InvalidOperationException]::New($errorMessage)
+            ThrowTerminatingError -ErrorId "FailedToCreateFunctionAppFlexConsumPlan" `
+                                    -ErrorMessage $errorMessage `
+                                    -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                                    -Exception $exception
+        }
+
+        throw $_
+    }
+    finally
+    {
+        $ErrorActionPreference = $currentErrorActionPreference
+    }
+
+    return $plan
+}
+
+function Get-StorageAccountInfo
+{
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
+    param
+    (
+        [Parameter(Mandatory = $true)]
+        [System.String]
+        $Name,
+
+        $SubscriptionId,
+        $HttpPipelineAppend,
+        $HttpPipelinePrepend
+    )
+
+    $paramsToRemove = @(
+        "Name"
+    )
+    foreach ($paramName in $paramsToRemove)
+    {
+        if ($PSBoundParameters.ContainsKey($paramName))
+        {
+            $PSBoundParameters.Remove($paramName)  | Out-Null
+        }
+    }
+
+    # Get storage account
+    $storageAccountInfo = GetStorageAccount -Name $Name @PSBoundParameters
+
+    if (-not $storageAccountInfo)
+    {
+        $errorMessage = "Storage account '$Name' does not exist."
+        $exception = [System.InvalidOperationException]::New($errorMessage)
+        ThrowTerminatingError -ErrorId "StorageAccountNotFound" `
+                              -ErrorMessage $errorMessage `
+                              -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                              -Exception $exception
+    }
+
+    if ($storageAccountInfo.ProvisioningState -ne "Succeeded")
+    {
+        $errorMessage = "Storage account '$Name' is not ready. Please run 'Get-AzStorageAccount' and ensure that the ProvisioningState is 'Succeeded'"
+        $exception = [System.InvalidOperationException]::New($errorMessage)
+        ThrowTerminatingError -ErrorId "StorageAccountNotFound" `
+                              -ErrorMessage $errorMessage `
+                              -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                              -Exception $exception
+    }
+
+    $skuName = $storageAccountInfo.SkuName
+    if (-not ($AllowedStorageTypes -contains $skuName))
+    {
+        $storageOptions = $AllowedStorageTypes -join ", "
+        $errorMessage = "Storage type '$skuName' is not allowed'. Currently supported storage options: $storageOptions"
+        $exception = [System.InvalidOperationException]::New($errorMessage)
+        ThrowTerminatingError -ErrorId "StorageTypeNotSupported" `
+                              -ErrorMessage $errorMessage `
+                              -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                              -Exception $exception
+    }
+
+    # Validate endpoints
+    foreach ($endpoint in $RequiredStorageEndpoints)
+    {
+        if ([string]::IsNullOrEmpty($storageAccountInfo.$endpoint))
+        {
+            $errorMessage = "Storage account '$StorageAccountName' has no '$endpoint' endpoint. It must have table, queue, and blob endpoints all enabled."
+            $exception = [System.InvalidOperationException]::New($errorMessage)
+            ThrowTerminatingError -ErrorId "StorageAccountRequiredEndpointNotAvailable" `
+                                  -ErrorMessage $errorMessage `
+                                  -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                                  -Exception $exception
+        }
+    }
+
+    return $storageAccountInfo
+}
+
+function Get-ConnectionString
+{
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
+    param
+    (
+        $StorageAccountInfo
+    )
+
+    if (-not $StorageAccountInfo)
+    {
+        throw "StorageAccountInfo cannot be null."
+    }
+
+    $resourceGroupName = ($storageAccountInfo.Id -split "/")[4]
+    $keys = Az.Functions.internal\Get-AzStorageAccountKey -ResourceGroupName $resourceGroupName -Name $storageAccountInfo.Name @PSBoundParameters -ErrorAction SilentlyContinue
+
+    if (-not $keys)
+    {
+        $errorMessage = "Failed to get key for storage account '$StorageAccountName'."
+        $exception = [System.InvalidOperationException]::New($errorMessage)
+        ThrowTerminatingError -ErrorId "FailedToGetStorageAccountKey" `
+                              -ErrorMessage $errorMessage `
+                              -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                              -Exception $exception
+    }
+
+    if ([string]::IsNullOrEmpty($keys[0].Value))
+    {
+        $errorMessage = "Storage account '$StorageAccountName' has no key value."
+        $exception = [System.InvalidOperationException]::New($errorMessage)
+        ThrowTerminatingError -ErrorId "StorageAccountHasNoKeyValue" `
+                              -ErrorMessage $errorMessage `
+                              -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                              -Exception $exception
+    }
+
+    $suffix = GetEndpointSuffix
+    $accountKey = $keys[0].Value
+
+    $connectionString = "DefaultEndpointsProtocol=https;AccountName=$StorageAccountName;AccountKey=$accountKey" + $suffix
+
+    return $connectionString
+}
+
+function Format-FlexConsumptionLocation
+{
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
+    param (
+        [Parameter(Mandatory = $true)]
+        [System.String]
+        $Location
+    )
+
+    $normalizedLocation = $Location.ToLower().Replace(" ", "")
+    return $normalizedLocation
+}
+
+function Resolve-UserAssignedIdentity
+{
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
+    param
+    (
+        [Parameter(Mandatory = $true)]
+        [System.String]
+        $IdentityResourceId,
+
+        $SubscriptionId,
+        $HttpPipelineAppend,
+        $HttpPipelinePrepend
+    )
+
+    $paramsToRemove = @(
+        "IdentityResourceId"
+    )
+    foreach ($paramName in $paramsToRemove)
+    {
+        if ($PSBoundParameters.ContainsKey($paramName))
+        {
+            $PSBoundParameters.Remove($paramName)  | Out-Null
+        }
+    }
+
+    # Parse the resource ID using regex
+    if ($IdentityResourceId -match "^/subscriptions/(?<SubscriptionId>[^/]+)/resourceGroups/(?<ResourceGroup>[^/]+)/providers/Microsoft\.ManagedIdentity/userAssignedIdentities/(?<IdentityName>[^/]+)$") {
+        $subscriptionId = $matches['SubscriptionId']
+        $resourceGroup = $matches['ResourceGroup']
+        $identityName   = $matches['IdentityName']
+
+        if ([string]::IsNullOrEmpty($resourceGroup) -or [string]::IsNullOrEmpty($identityName) -or [string]::IsNullOrEmpty($subscriptionId))
+        {
+            $errorMessage = "Invalid identity resource ID: '$IdentityResourceId'. Unable to parse resource group name and identity name."
+            $exception = [System.InvalidOperationException]::New($errorMessage)
+            ThrowTerminatingError -ErrorId "InvalidIdentityResourceId" `
+                                -ErrorMessage $errorMessage `
+                                -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                                -Exception $exception
+        }
+
+        # Check if identity exists
+        $identity = Az.Functions.internal\Get-AzUserAssignedIdentity -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroup -ResourceName $identityName -ErrorAction SilentlyContinue @PSBoundParameters
+
+        if (-not $identity)
+        {
+            $errorMessage = "User-assigned identity '$identityName' does not exist in resource group '$resourceGroup' in subscription '$subscriptionId'."
+            $exception = [System.InvalidOperationException]::New($errorMessage)
+            ThrowTerminatingError -ErrorId "StorageAccountHasNoKeyValue" `
+                                -ErrorMessage $errorMessage `
+                                -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                                -Exception $exception
+
+        }
+
+        return $identity
+    }
+    else
+    {
+        $errorMessage = "Invalid resource ID format: '$IdentityResourceId'."
+        $exception = [System.InvalidOperationException]::New($errorMessage)
+        ThrowTerminatingError -ErrorId "InvalidIdentityResourceIdFormat" `
+                            -ErrorMessage $errorMessage `
+                            -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                            -Exception $exception
+    }
+}
+
+function Get-FlexFunctionAppRuntime
+{
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
+    param
+    (
+        [Parameter(ParameterSetName = 'AllVersions', Mandatory = $true)]
+        [Parameter(ParameterSetName = 'ByVersion', Mandatory = $true)]
+        [Parameter(ParameterSetName = 'DefaultOrLatest', Mandatory = $true)]
+        [ValidateNotNullOrEmpty()]
+        [System.String]
+        $Location,
+
+        [Parameter(ParameterSetName = 'AllVersions', Mandatory = $true)]
+        [Parameter(ParameterSetName = 'ByVersion', Mandatory = $true)]
+        [Parameter(ParameterSetName = 'DefaultOrLatest', Mandatory = $true)]
+        [ValidateNotNullOrEmpty()]
+        [System.String]
+        $Runtime,
+
+        [Parameter(ParameterSetName = 'ByVersion', Mandatory = $true)]
+        [ValidateNotNullOrEmpty()]
+        [System.String]
+        $Version,
+
+        [Parameter(ParameterSetName = 'DefaultOrLatest', Mandatory = $true)]
+        [switch]
+        $DefaultOrLatest
+    )
+
+    # Map dotnet-isolated -> dotnet for this endpoint
+    $runtimeForAPI = if ($Runtime -eq 'dotnet-isolated') { 'dotnet' } else { $Runtime }
+
+    $json = $null
+
+    # Format location for Flex Consumption (remove spaces and make lowercase)
+    $formattedLocation = Format-FlexConsumptionLocation -Location $Location
+
+    if ($env:FunctionsTestMode -and $env:FunctionsUseFlexStackTestData)
+    {
+        # Test hook to use mock Flex Consumption stacks during playback mode.
+        if ($formattedLocation -ne "eastasia")
+        {
+            $message = "In test mode, only 'East Asia' location is supported for Flex Consumption stack definitions."
+            throw $message
+        }
+
+        $filePath = Join-Path -Path $PSScriptRoot "FunctionsStackFlexData/$formattedLocation/$runtimeForAPI.json"
+        $json = Get-Content $filePath -Raw -ErrorAction Stop
+    }
+
+    # Get Flex Consumption Function App Runtime Definitions
+    else
+    {
+        $json = GetFunctionAppStackDefinition -StackType FlexConsumption -Location $formattedLocation -Runtime $runtimeForAPI
+    }
+
+    if (-not $json)
+    {
+        $errorMessage = "Failed to retrieve Flex Consumption Function App stack definitions from the ARM API for runtime '{0}' in location '{1}'. Please try a different region." -f
+                        $Runtime, $Location
+        $exception = [System.InvalidOperationException]::new($errorMessage)
+        ThrowTerminatingError -ErrorId "FlexConsumptionStackRetrievalFailed" `
+                              -ErrorMessage $errorMessage `
+                              -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                              -Exception $exception
+    }
+
+    $functionAppStackDefinition = $json | ConvertFrom-Json
+    $stacks = New-Object -TypeName 'System.Collections.Generic.List[PSCustomObject]'
+
+    # Flatten: runtime -> majorVersions -> minorVersions
+    foreach ($item in $functionAppStackDefinition)
+    {
+        $runtimeName = $item.name
+        foreach ($maj in ($item.properties.majorVersions | Where-Object { $_ }))
+        {
+            foreach ($min in ($maj.minorVersions | Where-Object { $_ }))
+            {
+                # We only consider linuxRuntimeSettings for Flex Consumption
+                $linux = $min.stackSettings.linuxRuntimeSettings
+
+                if (-not $linux) { continue }
+
+                # Only FC1 (Flex Consumption)
+                $sku = @($linux.Sku) | Where-Object {
+                    $_.skuCode -eq 'FC1'
+                }
+
+                if (-not $sku) { continue }
+
+                # Name preference: FUNCTIONS_WORKER_RUNTIME if present
+                $runtimeName = if ($linux.appSettingsDictionary.FUNCTIONS_WORKER_RUNTIME) {
+                    $linux.appSettingsDictionary.FUNCTIONS_WORKER_RUNTIME
+                }
+
+                # Set runtime name and version
+                if ($sku.skuCode -eq 'FC1') {
+                    if (-not $runtimeName) {
+                        $runtimeName = $sku.functionAppConfigProperties.Runtime.Name
+                    }
+                    $runtimeVersion = $sku.functionAppConfigProperties.Runtime.Version
+                }
+
+                # Parse end of life date
+                $runtimeEndOfLifeDate = if ($linux.endOfLifeDate) {  ParseEndOfLifeDate -Runtime $runtimeName -DateString $linux.endOfLifeDate } else { $null }
+
+                # Create runtime object
+                $result = [pscustomobject]@{
+                    Name               = $runtimeName
+                    Version            = $runtimeVersion
+                    IsDefault          = ([bool]$linux.isDefault)
+                    EndOfLifeDate      = $runtimeEndOfLifeDate
+                    Sku                = $sku
+                    #AppInsightsSupported = [bool]$linux.appInsightsSettings.isSupported
+                    #GitHubActions_IsSupported = [bool]$linux.gitHubActionSettings.isSupported
+                    #GitHubActions_Version     = $linux.gitHubActionSettings.supportedVersion
+                }
+
+                $result.PSTypeNames.Insert(0,'Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.FunctionAppFlexConsumptionRuntime')
+                $stacks.Add($result)
+            }
+        }
+
+        switch ($PSCmdlet.ParameterSetName) {
+
+            'AllVersions' {
+                # Return all versions for $Runtime
+                return $stacks
+            }
+
+            'ByVersion' {
+                # Return specific version
+                $matched = $stacks | Where-Object { $_.Version -eq $Version } | Select-Object -First 1
+                if (-not $matched)
+                {
+                    $map = @{
+                        '11'  = '11.0'
+                        '8'   = '8.0'
+                        '8.0' = '8'
+                        '7'   = '7.0'
+                        '6.0' = '6'
+                        '1.8' = '8.0'
+                        '17'  = '17.0'
+                    }
+
+                    if ($map.ContainsKey($Version))
+                    {
+                        $newVersion = $map[$Version]
+                        $matched = $stacks | Where-Object { $_.Version -eq $newVersion } | Select-Object -First 1
+                    }
+                }
+
+                if (-not $matched)
+                {
+                    $supportedVersions = $stacks | ForEach-Object { $_.Version } | Sort-Object | Get-Unique
+                    $supportedVersionsString = $supportedVersions -join ", "
+                    $errorMessage = "Invalid version {0} for runtime {1} for function apps on the Flex Consumption plan. Supported versions for runtime {1} are {2}." -f
+                                    $Version, $Runtime, $supportedVersionsString
+                    $exception = [System.InvalidOperationException]::New($errorMessage)
+                    ThrowTerminatingError -ErrorId "RuntimeVersionNotSupportedInFlexConsumption" `
+                                          -ErrorMessage $errorMessage `
+                                          -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                                          -Exception $exception
+                }
+
+                return $matched
+            }
+
+            'DefaultOrLatest' {
+                # Return default/latest version, which ever is the newest one
+                $defaultStack = $stacks | Where-Object { $_.IsDefault } | Sort-Object -Property Version -Descending | Select-Object -First 1
+
+                if (-not $defaultStack)
+                {
+                    # Fallback: get latest version
+                    $defaultStack = $stacks | Sort-Object -Property Version -Descending | Select-Object -First 1
+
+                    if (-not $defaultStack)
+                    {
+                        $errorMessage = "No runtime versions found for runtime '$Runtime' in location '$Location'."
+                        $exception = [System.InvalidOperationException]::New($errorMessage)
+                        ThrowTerminatingError -ErrorId "NoRuntimeVersionsFoundInFlexConsumption" `
+                                            -ErrorMessage $errorMessage `
+                                            -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                                            -Exception $exception
+                    }
+                }
+
+                return $defaultStack
+            }
+        }
+    }
+}
+
+function Validate-InstanceMemoryMB
+{
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
+    param
+    (
+        [Parameter(Mandatory=$true)]
+        [PSCustomObject]
+        $SkuInstanceMemoryMB,
+
+        [Parameter(Mandatory=$false)]
+        [int]
+        $InstanceMemoryMB
+    )
+
+    $skuMemEntries = @($SkuInstanceMemoryMB) | Where-Object { $_ -ne $null }
+
+    if (-not $skuMemEntries)
+    {
+        $errorMessage = "No instance memory sizes were returned by the SKU payload. Unable to determine a default size."
+        $exception = [System.InvalidOperationException]::New($errorMessage)
+        ThrowTerminatingError -ErrorId "NoInstanceMemorySizesFound" `
+                              -ErrorMessage $errorMessage `
+                              -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                              -Exception $exception
+    }
+
+    # Normalize and dedupe sizes (ints)
+    $allowedSizes = $skuMemEntries | ForEach-Object { [int]$_.size } | Where-Object { $_ -gt 0 } | Sort-Object -Unique
+
+    # Find default; if none is flagged, fall back to the smallest size (common platform pattern)
+    $defaultSize = $skuMemEntries | Where-Object { $_.isDefault -eq $true } | Select-Object -ExpandProperty size -First 1
+
+    if ($null -eq $defaultSize)
+    {
+        $defaultSize = $allowedSizes | Select-Object -First 1
+    }
+
+    if ($InstanceMemoryMB -gt 0)
+    {
+        # Strict validation: must be one of the discrete supported sizes for this runtime/region
+        if ($allowedSizes -notcontains [int]$InstanceMemoryMB)
+        {
+            $errorMessage = "Invalid InstanceMemoryMB '{0}'. Allowed values for this runtime are: {1}. " +
+                            "Use one of the supported sizes." -f $InstanceMemoryMB, ($allowedSizes -join ', ')
+            $exception = [System.ArgumentOutOfRangeException]::New($errorMessage)
+            ThrowTerminatingError -ErrorId "InstanceMemoryMBNotSupported" `
+                                  -ErrorMessage $errorMessage `
+                                  -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidArgument) `
+                                  -Exception $exception
+        }
+    }
+    else
+    {
+        # If not provided, set to default size
+        $InstanceMemoryMB = [int]$defaultSize
+        Write-Warning "InstanceMemoryMB not specified. Setting default value to '$InstanceMemoryMB'. $SetDefaultValueParameterWarningMessage"
+    }
+
+    return $InstanceMemoryMB
+}
+
+function Validate-MaximumInstanceCount
+{
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
+    param
+    (
+        [Parameter(Mandatory = $true)]
+        [PSCustomObject]
+        $SkuMaximumInstanceCount,   # expects keys: lowestMaximumInstanceCount, highestMaximumInstanceCount, defaultValue
+
+        [Parameter(Mandatory = $false)]
+        [int]
+        $MaximumInstanceCount
+    )
+
+    # Validate SKU payload
+    if (-not $SkuMaximumInstanceCount -or
+        -not $SkuMaximumInstanceCount.lowestMaximumInstanceCount -or
+        -not $SkuMaximumInstanceCount.highestMaximumInstanceCount) {
+        $errorMessage = "No maximum instance count range was returned by the SKU payload. Unable to determine a default value."
+        $exception = [System.InvalidOperationException]::new($errorMessage)
+        ThrowTerminatingError -ErrorId "NoMaximumInstanceCountFound" `
+                              -ErrorMessage $errorMessage `
+                              -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                              -Exception $exception
+    }
+
+    # Extract range and default
+    $min = [int]$SkuMaximumInstanceCount.lowestMaximumInstanceCount
+    $max = [int]$SkuMaximumInstanceCount.highestMaximumInstanceCount
+    $default = [int]$SkuMaximumInstanceCount.defaultValue
+
+    if ($MaximumInstanceCount -gt 0)
+    {
+        # Validate range
+        if ($MaximumInstanceCount -lt $min -or $MaximumInstanceCount -gt $max) {
+            $errorMessage = "Invalid MaximumInstanceCount '{0}'. Allowed range for this runtime is {1} - {2}. " +
+                            "Use a value within the supported range." -f $MaximumInstanceCount, $min, $max
+            $exception = [System.ArgumentOutOfRangeException]::new('MaximumInstanceCount', $MaximumInstanceCount, $errorMessage)
+            ThrowTerminatingError -ErrorId "MaximumInstanceCountOutOfRange" `
+                                  -ErrorMessage $errorMessage `
+                                  -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidArgument) `
+                                  -Exception $exception
+        }
+    }
+    else
+    {
+        # If not provided, set to default
+        $MaximumInstanceCount = $default
+        Write-Warning "MaximumInstanceCount not specified. Setting default value to '$MaximumInstanceCount'. $SetDefaultValueParameterWarningMessage"
+    }
+
+    return $MaximumInstanceCount
+}
+
+function Test-FlexConsumptionLocation
+{
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
+    param
+    (
+        [Parameter(Mandatory = $true)]
+        [ValidateNotNullOrEmpty()]
+        [String]
+        $Location,
+
+        [Parameter(Mandatory = $false)]
+        [System.Management.Automation.SwitchParameter]
+        $ZoneRedundant
+    )
+
+    # Validate Flex Consumption location
+    $formattedLocation = Format-FlexConsumptionLocation -Location $Location
+    $flexConsumptionRegions = Get-AzFunctionAppAvailableLocation -PlanType FlexConsumption -ZoneRedundant:$ZoneRedundant
+
+    $found = $false
+    foreach ($region in $flexConsumptionRegions)
+    {
+        $regionName = Format-FlexConsumptionLocation -Location $region.Name
+
+        if ($region.Name -eq $Location)
+        {
+            $found = $true
+            break
+        }
+        elseif ($regionName -eq $formattedLocation)
+        {
+            $found = $true
+            break
+        }
+    }
+
+    return $found
+}
+
+function Validate-FlexConsumptionLocation
+{
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
+    param
+    (
+        [Parameter(Mandatory = $true)]
+        [ValidateNotNullOrEmpty()]
+        [String]
+        $Location,
+
+        [Parameter(Mandatory = $false)]
+        [System.Management.Automation.SwitchParameter]
+        $ZoneRedundant
+    )
+
+    $isRegionSupported = Test-FlexConsumptionLocation -Location $Location -ZoneRedundant:$ZoneRedundant
+
+    if (-not $isRegionSupported)
+    {
+        $errorMessage = $null
+        $errorId = $null
+        if ($ZoneRedundant.IsPresent)
+        {
+            $errorMessage = "The specified location '$Location' doesn't support zone redundancy in Flex Consumption. "
+            $errorMessage += "Use: 'Get-AzFunctionAppAvailableLocation -PlanType FlexConsumption -ZoneRedundant' for the list of supported locations."
+            $errorId = "RegionNotSupportedForZoneRedundancyInFlexConsumption"
+        }
+        else
+        {
+            $errorMessage = "The specified location '$Location' doesn't support Flex Consumption. "
+            $errorMessage += "Use: 'Get-AzFunctionAppAvailableLocation -PlanType FlexConsumption' for the list of supported locations."
+            $errorId = "RegionNotSupportedForFlexConsumption"
+        }
+
+        $exception = [System.InvalidOperationException]::New($errorMessage)
+        ThrowTerminatingError -ErrorId $errorId `
+                              -ErrorMessage $errorMessage `
+                              -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                              -Exception $exception
+    }
+}
+
+function Validate-EndOfLifeDate
+{
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
+    param
+    (
+        [Parameter(Mandatory = $true)]
+        [ValidateNotNullOrEmpty()]
+        [DateTime]
+        $EndOfLifeDate,
+        [Parameter(Mandatory = $true)]
+        [ValidateNotNullOrEmpty()]
+        [String]
+        $Runtime,
+        [Parameter(Mandatory = $true)]
+        [ValidateNotNullOrEmpty()]
+        [String]
+        $RuntimeVersion,
+        [Parameter(Mandatory = $true)]
+        [ValidateNotNullOrEmpty()]
+        [String]
+        $DefaultRuntimeVersion
+    )
+
+    $today = Get-Today
+    $sixMonthsFromToday = (Get-Today).AddMonths(6)
+    $endOfLifeDate = [DateTime]::Parse($EndOfLifeDate)
+    $formattedEOLDate = $endOfLifeDate.ToString("MMMM dd yyyy")
+
+    if ($endOfLifeDate -le $today)
+    {
+        $errorMsg = "Use $Runtime $DefaultRuntimeVersion as $Runtime $RuntimeVersion has reached end-of-life "
+        $errorMsg += "on $formattedEOLDate and is no longer supported. Learn more: aka.ms/FunctionsStackUpgrade."
+
+        $exception = [System.InvalidOperationException]::New($errorMsg)
+        ThrowTerminatingError -ErrorId "RuntimeVersionEndOfLife" `
+                                -ErrorMessage $errorMsg `
+                                -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                                -Exception $exception
+    }
+    elseif ($endOfLifeDate -lt $sixMonthsFromToday)
+    {
+        $warningMsg = "Use $Runtime $DefaultRuntimeVersion as $Runtime $RuntimeVersion will reach end-of-life on $formattedEOLDate"
+        $warningMsg += " and will no longer be supported. Learn more: aka.ms/FunctionsStackUpgrade."
+        Write-Warning $warningMsg
+    }
 }
