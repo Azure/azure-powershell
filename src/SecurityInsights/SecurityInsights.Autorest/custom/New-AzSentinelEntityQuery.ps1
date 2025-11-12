@@ -23,7 +23,7 @@ Creates or updates the entity query.
 https://learn.microsoft.com/powershell/module/az.securityinsights/new-azsentinelentityquery
 #>
 function New-AzSentinelEntityQuery {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.CustomEntityQuery])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.CustomEntityQuery])]
     [CmdletBinding(DefaultParameterSetName = 'Activity', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter()]
@@ -46,7 +46,9 @@ function New-AzSentinelEntityQuery {
         [System.String]
         # The name of the workspace.
         ${WorkspaceName},
-
+        
+        [Parameter()]
+        [Alias('EntityQueryId')]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.DefaultInfo(Script = '(New-Guid).Guid')]
         [System.String]
@@ -54,9 +56,9 @@ function New-AzSentinelEntityQuery {
         ${Id},
 
         [Parameter(Mandatory)]
-        [ArgumentCompleter( { param ( $CommandName, $EntityQueryName, $WordToComplete, $CommandAst, $FakeBoundParameters ) return @('Activity') })]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("Activity","Expansion")]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.EntityQueryKind]
+        [System.String]
         # Kind of the the Entity Query
         ${Kind},
 
@@ -81,9 +83,9 @@ function New-AzSentinelEntityQuery {
         ${QueryDefinitionQuery},
 
         [Parameter(ParameterSetName = 'Activity', Mandatory)]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.EntityType])]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("Account", "Host", "File", "AzureResource", "CloudApplication", "DNS", "FileHash", "IP", "Malware", "Process", "RegistryKey", "RegistryValue", "SecurityGroup", "URL", "IoTDevice", "SecurityAlert", "HuntingBookmark", "MailCluster", "MailMessage", "Mailbox", "SubmissionMail")]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.EntityType]
+        [System.String]
         ${InputEntityType},
         
         [Parameter(ParameterSetName = 'Activity')]
@@ -93,7 +95,7 @@ function New-AzSentinelEntityQuery {
 
         [Parameter(ParameterSetName = 'Activity')]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')] 
-        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.ActivityEntityQueriesPropertiesEntitiesFilter]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ActivityEntityQueriesPropertiesEntitiesFilter]
         ${EntitiesFilter},
 
         [Parameter(ParameterSetName = 'Activity')]
@@ -165,7 +167,7 @@ function New-AzSentinelEntityQuery {
         try {
 
             if ($PSBoundParameters['Kind'] -eq 'Activity'){
-                $EntityQuery = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.ActivityCustomEntityQuery]::new()
+                $EntityQuery = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ActivityCustomEntityQuery]::new()
                 
                 $EntityQuery.Title = $PSBoundParameters['Title']
                 $null = $PSBoundParameters.Remove('Title')
