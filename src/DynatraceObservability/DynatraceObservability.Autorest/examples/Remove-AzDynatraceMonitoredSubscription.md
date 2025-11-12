@@ -1,22 +1,39 @@
-### Example 1: {{ Add title here }}
+### Example 1: Validate delete parameters (WhatIf)
 ```powershell
-{{ Add code here }}
+$rg = "myResourceGroup"
+$monitor = "myDynatraceMonitor"
+Remove-AzDynatraceMonitoredSubscription -ResourceGroupName $rg -MonitorName $monitor -WhatIf
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Performs a dry run; this matches the recorded validation step.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Delete monitored subscription (explicit parameters)
 ```powershell
-{{ Add code here }}
+$rg = "myResourceGroup"
+$monitor = "myDynatraceMonitor"
+Remove-AzDynatraceMonitoredSubscription -ResourceGroupName $rg -MonitorName $monitor -Confirm:$false
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Attempts deletion. If the backend is fully provisioned, this should succeed; otherwise you may see `ResourceDeletionFailed`.
+
+### Example 3: Idempotent second delete
+```powershell
+$rg = "myResourceGroup"
+$monitor = "myDynatraceMonitor"
+Remove-AzDynatraceMonitoredSubscription -ResourceGroupName $rg -MonitorName $monitor -Confirm:$false -ErrorAction SilentlyContinue
 ```
 
-{{ Add description here }}
+Safe to run again; if already deleted, no change occurs.
+
+### Example 4: Handle transient backend errors
+```powershell
+$rg = "myResourceGroup"; $monitor = "myDynatraceMonitor"
+try {
+	Remove-AzDynatraceMonitoredSubscription -ResourceGroupName $rg -MonitorName $monitor -Confirm:$false
+} catch {
+	Write-Warning "Deletion failed: $($_.Exception.Message). Retry after confirming the monitored subscription was fully created." 
+}
+```
+
+Provides a pattern for handling intermittent service errors gracefully.
 
