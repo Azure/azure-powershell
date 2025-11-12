@@ -21,27 +21,18 @@ Get-AzPaloAltoNetworksPaloAltoNetworksCloudngfwOperationProductSerialNumberStatu
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get Product serial number status
 ```powershell
-{{ Add code here }}
+Get-AzPaloAltoNetworksPaloAltoNetworksCloudngfwOperationProductSerialNumberStatus
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+SerialNumber Status
+------------ ------
+             Allocated
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Get Product serial number status.
 
 ## PARAMETERS
 

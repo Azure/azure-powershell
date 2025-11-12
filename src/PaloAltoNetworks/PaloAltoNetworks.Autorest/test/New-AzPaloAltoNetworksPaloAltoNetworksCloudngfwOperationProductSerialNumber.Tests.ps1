@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzPaloAltoNetworksPaloAlt
 }
 
 Describe 'New-AzPaloAltoNetworksPaloAltoNetworksCloudngfwOperationProductSerialNumber' {
-    It 'Create' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Create' {
+        { New-AzPaloAltoNetworksPaloAltoNetworksCloudngfwOperationProductSerialNumber } | Should -Not -Throw
     }
 }

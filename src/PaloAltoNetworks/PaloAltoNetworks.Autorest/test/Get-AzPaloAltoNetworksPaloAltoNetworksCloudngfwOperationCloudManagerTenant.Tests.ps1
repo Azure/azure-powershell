@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzPaloAltoNetworksPaloAlt
 }
 
 Describe 'Get-AzPaloAltoNetworksPaloAltoNetworksCloudngfwOperationCloudManagerTenant' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        { Get-AzPaloAltoNetworksPaloAltoNetworksCloudngfwOperationCloudManagerTenant } | Should -Not -Throw
     }
 }

@@ -15,15 +15,16 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzPaloAltoNetworksMetrics
 }
 
 Describe 'Get-AzPaloAltoNetworksMetricsObjectFirewall' {
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        { Get-AzPaloAltoNetworksMetricsObjectFirewall -FirewallName "italynorth-test-fw" -ResourceGroupName "eastus-rg" } | Should -Not -Throw
     }
 
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        { Get-AzPaloAltoNetworksMetricsObjectFirewall -FirewallName "italynorth-test-fw" -ResourceGroupName "eastus-rg" } | Should -Not -Throw
     }
 
     It 'GetViaIdentity' -skip {
+        # Skip this test as it requires complex identity object setup
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }
