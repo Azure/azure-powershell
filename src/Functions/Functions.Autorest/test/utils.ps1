@@ -98,12 +98,14 @@ function setupEnv() {
             ResourceGroupName = $resourceGroupNameWindowsPremium
             Location = $location
             SkuName = "Standard_GRS"
+            AllowBlobPublicAccess = $false
         },
         @{
             Name = $storageAccountLinux
             ResourceGroupName = $resourceGroupNameLinuxPremium
             Location = $location
             SkuName = "Standard_GRS"
+            AllowBlobPublicAccess = $false
         }
     )
 
@@ -159,8 +161,8 @@ function setupEnv() {
             StorageAccountName = $storageAccountWindows
             OSType = "Windows"
             Runtime = "PowerShell"
-            RuntimeVersion = '7.2'
-            Name = "Functions-PowerShell-72-" + (RandomString -len 6)
+            RuntimeVersion = '7.4'
+            Name = "Functions-PowerShell-74-" + (RandomString -len 6)
             FunctionsVersion = 4
         },
         @{
@@ -169,8 +171,8 @@ function setupEnv() {
             StorageAccountName = $storageAccountLinux
             OSType = "Linux"
             Runtime = "Node"
-            RuntimeVersion = 18
-            Name = "Functions-Node-18-" + (RandomString -len 6)
+            RuntimeVersion = 22
+            Name = "Functions-Node-22-" + (RandomString -len 6)
             FunctionsVersion = 4
         },
         @{
@@ -179,8 +181,8 @@ function setupEnv() {
             StorageAccountName = $storageAccountWindows
             OSType = "Windows"
             Runtime = "DotNet"
-            RuntimeVersion = 6
-            Name = "Functions-DotNet-6-" + (RandomString -len 6)
+            RuntimeVersion = 8
+            Name = "Functions-DotNet-8-" + (RandomString -len 6)
             FunctionsVersion = 4
         },
         @{
@@ -189,8 +191,8 @@ function setupEnv() {
             Location = $location
             OSType = "Linux"
             Runtime = "Python"
-            RuntimeVersion = "3.10"
-            Name = "Functions-Python-310-" + (RandomString -len 6)
+            RuntimeVersion = "3.12"
+            Name = "Functions-Python-312-" + (RandomString -len 6)
             FunctionsVersion = 4
         }
     )
@@ -203,7 +205,15 @@ function setupEnv() {
     }
 
     # Create names to be used in the tests
-    $functionNamePowerShell = "Functions-PowerShell-" + (RandomString -len 10)
+    $planNameWorkerTypeWindowsNew = "Func-Windows-Premium-New-" + (RandomString -len 6)
+    $planNameWorkerTypeWindowsNew2 = "Func-Windows-Premium-New2-" + (RandomString -len 6)
+    $planNameWorkerTypeWindowsNew3 = "Func-Windows-Premium-New3-" + (RandomString -len 6)
+    $functionNamePowerShell = "Functions-PowerShellTest-" + (RandomString -len 10)
+    $functionNamePowerShellNew1 = "Func-PowerShell-NewTest1-" + (RandomString -len 10)
+    $functionNamePowerShellNew2 = "Func-PowerShell-NewTest2-" + (RandomString -len 10)
+    $functionNamePowerShellNew3 = "Func-PowerShell-NewTest3-" + (RandomString -len 10)
+    $functionNamePowerShellNew4 = "Func-PowerShell-NewTest4-" + (RandomString -len 10)
+    $functionNamePowerShellNew5 = "Func-PowerShell-NewTest5-" + (RandomString -len 10)
     $functionNameContainer = "Functions-CustomImage-" + (RandomString -len 10)
     $functionNameTestApp = "Functions-TestAppName-" + (RandomString -len 10)
     $functionNameDotNet = "Functions-DotNet-" + (RandomString -len 10)
@@ -212,10 +222,19 @@ function setupEnv() {
     $functionNamePython = "Functions-Python-" + (RandomString -len 10)
     $functionAppPlanName= "Functions-MyPlan-" + (RandomString -len 10)
     $functionAppTestPlanName= "Functions-MyTestPlan1-" + (RandomString -len 10)
+    $functionAppTestPlanName2= "Functions-MyTestPlan2-" + (RandomString -len 10)
     $functionNameDotNetIsolated = "Functions-DotNet-Isolated" + (RandomString -len 10)
     $functionNameCustomHandler = "Functions-CustomHandler" + (RandomString -len 10)
 
+    $env.add('planNameWorkerTypeWindowsNew', $planNameWorkerTypeWindowsNew) | Out-Null
+    $env.add('planNameWorkerTypeWindowsNew2', $planNameWorkerTypeWindowsNew2) | Out-Null
+    $env.add('planNameWorkerTypeWindowsNew3', $planNameWorkerTypeWindowsNew3) | Out-Null
     $env.add('functionNamePowerShell', $functionNamePowerShell) | Out-Null
+    $env.add('functionNamePowerShellNew1', $functionNamePowerShellNew1) | Out-Null
+    $env.add('functionNamePowerShellNew2', $functionNamePowerShellNew2) | Out-Null
+    $env.add('functionNamePowerShellNew3', $functionNamePowerShellNew3) | Out-Null
+    $env.add('functionNamePowerShellNew4', $functionNamePowerShellNew4) | Out-Null
+    $env.add('functionNamePowerShellNew5', $functionNamePowerShellNew5) | Out-Null
     $env.add('functionNameContainer', $functionNameContainer) | Out-Null
     $env.add('functionNameTestApp', $functionNameTestApp) | Out-Null
     $env.add('functionNameDotNet', $functionNameDotNet) | Out-Null
@@ -224,6 +243,7 @@ function setupEnv() {
     $env.add('functionNamePython', $functionNamePython) | Out-Null
     $env.add('functionAppPlanName', $functionAppPlanName) | Out-Null
     $env.add('functionAppTestPlanName', $functionAppTestPlanName) | Out-Null
+    $env.add('functionAppTestPlanName2', $functionAppTestPlanName2) | Out-Null
     $env.add('functionNameDotNetIsolated', $functionNameDotNetIsolated) | Out-Null
     $env.add('functionNameCustomHandler', $functionNameCustomHandler) | Out-Null
 
@@ -238,6 +258,45 @@ function setupEnv() {
     $newApplInsights = New-AzApplicationInsights -ResourceGroupName $env.resourceGroupNameWindowsPremium -Name $newApplInsightsName -Location $location
     $env.add('newApplInsights', $newApplInsights) | Out-Null
 
+    # Create Flex Consumption resources
+    Write-Verbose "Creating Flex Consumption resources..." -Verbose
+    $flexTestRunId = 111125
+    $flexLocation = 'East Asia'
+    $flexResourceGroupName = "Functions-Flex-RG-" + $flexTestRunId
+
+    # Create resource group and storage accounts for Flex Consumption tests
+    Write-Verbose "Creating resource group: $flexResourceGroupName in location: $flexLocation" -Verbose
+    New-AzResourceGroup -Name $flexResourceGroupName -Location $flexLocation | Out-Null
+
+    # Create one storage account per runtime for Flex Consumption tests.
+    # The storage account name must be unique and at most 24 characters long.
+    Write-Verbose "Creating storage accounts for Flex Consumption tests" -Verbose
+    $flexStorageAccountInfo=@{}
+    foreach ($runtimeName in @("DotNet-Isolated", "Node", "Java", "PowerShell", "Python", "Custom"))
+    {
+        $storageAccountName = "funcappflexsa" + $flexTestRunId + $runtimeName.ToLower()
+        $storageAccountName = $storageAccountName.Substring(0, [Math]::Min($storageAccountName.Length, 24))
+        Write-Verbose "Creating storage account: $storageAccountName in resource group: $flexResourceGroupName" -Verbose
+        New-AzStorageAccount -ResourceGroupName $flexResourceGroupName `
+                             -Name $storageAccountName `
+                             -Location $flexLocation `
+                             -SkuName Standard_GRS `
+                             -Kind StorageV2 `
+                             -AllowBlobPublicAccess $false | Out-Null
+
+        $flexStorageAccountInfo[$runtimeName] = $storageAccountName
+    }
+
+    Write-Host "Create user assigned managed identity for Flex Consumption tests" -ForegroundColor Yellow
+    $flexIdentityName = "my-flex-app-uai-" + $flexTestRunId
+    $flexIdentityInfo = New-AzUserAssignedIdentity -ResourceGroupName $flexResourceGroupName -Name $flexIdentityName -Location $flexLocation
+
+    $env.add('flexTestRunId', $flexTestRunId) | Out-Null
+    $env.add('flexLocation', $flexLocation) | Out-Null
+    $env.add('flexResourceGroupName', $flexResourceGroupName) | Out-Null
+    $env.add('flexStorageAccountInfo', $flexStorageAccountInfo) | Out-Null
+    $env.add('flexIdentityInfo', $flexIdentityInfo) | Out-Null
+
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'
@@ -251,6 +310,7 @@ function cleanupEnv() {
     $env:FunctionsTestMode = $null
 
     # Clean test resources
+    Remove-AzResourceGroup -Name $env.flexResourceGroupName
     Remove-AzResourceGroup -Name $env.resourceGroupNameWindowsPremium
     Remove-AzResourceGroup -Name $env.resourceGroupNameLinuxPremium
     Remove-AzResourceGroup -Name $env.resourceGroupNameWindowsConsumption
