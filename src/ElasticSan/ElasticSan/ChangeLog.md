@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.5.0
 * Supported auto scale when creating and updating an Elastic SAN.
     - `New-AzElasticSan`
     - `Update-AzElasticSan`

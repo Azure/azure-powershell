@@ -1,6 +1,6 @@
 {
   "ModuleName": "Az.TrustedSigning",
-  "ModuleVersion": "0.1.2",
+  "ModuleVersion": "0.1.3",
   "Cmdlets": [
     {
       "VerbName": "Get",
@@ -16,7 +16,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.TrustedSigning.Models.PSSigningCertificate]",
-            "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.TrustedSigning.Models.PSSigningCertificate, Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.TrustedSigning.Models.PSSigningCertificate, Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "GenericTypeArguments": [
               "Microsoft.Azure.Commands.TrustedSigning.Models.PSSigningCertificate"
             ]
@@ -362,7 +362,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrustedSigning.Models",
             "Name": "Microsoft.Azure.Commands.TrustedSigning.Models.PSSigningCertificate",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrustedSigning.Models.PSSigningCertificate, Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrustedSigning.Models.PSSigningCertificate, Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Thumbprint": "System.String",
               "Subject": "System.String",
@@ -9923,7 +9923,7 @@
     "Microsoft.Azure.Commands.TrustedSigning.Models.PSSigningCertificate": {
       "Namespace": "Microsoft.Azure.Commands.TrustedSigning.Models",
       "Name": "Microsoft.Azure.Commands.TrustedSigning.Models.PSSigningCertificate",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrustedSigning.Models.PSSigningCertificate, Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrustedSigning.Models.PSSigningCertificate, Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Thumbprint": "System.String",
         "Subject": "System.String",
