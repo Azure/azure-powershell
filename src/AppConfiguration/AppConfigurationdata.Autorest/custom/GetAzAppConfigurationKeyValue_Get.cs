@@ -26,7 +26,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Cmdlets
                     var baseUri = new Uri(responseMessage.RequestMessage.RequestUri.GetLeftPart(UriPartial.Authority));
                     var absoluteUri = new Uri(baseUri, result.NextLink);
                     
-                    // CRITICAL: Modify the result's NextLink 
+                    // Modify the result's NextLink 
                     if (result is Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.KeyValueListResult mutableResult)
                     {
                         mutableResult.NextLink = absoluteUri.ToString();
