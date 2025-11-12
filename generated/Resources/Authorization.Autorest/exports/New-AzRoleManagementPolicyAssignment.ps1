@@ -24,12 +24,12 @@ $scope = "/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/"
 New-AzRoleManagementPolicyAssignment -Scope $scope -Name "0a4d3ef7-147b-4777-a958-ae9dfab3c331"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IRoleManagementPolicyAssignment
+Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IRoleManagementPolicyAssignment
 .Link
 https://learn.microsoft.com/powershell/module/az.resources/new-azrolemanagementpolicyassignment
 #>
 function New-AzRoleManagementPolicyAssignment {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IRoleManagementPolicyAssignment])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IRoleManagementPolicyAssignment])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -45,17 +45,29 @@ param(
     # The scope of the role management policy assignment to upsert.
     ${Scope},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
     [System.String]
     # The policy id role management policy assignment.
     ${PolicyId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
     [System.String]
     # The role definition of management policy assignment.
     ${RoleDefinitionId},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -113,6 +125,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -133,6 +154,8 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.Authorization.private\New-AzRoleManagementPolicyAssignment_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.Authorization.private\New-AzRoleManagementPolicyAssignment_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.Authorization.private\New-AzRoleManagementPolicyAssignment_CreateViaJsonString';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -141,6 +164,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

@@ -97,6 +97,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource identity path",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -105,6 +108,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name (hash of schedule name + time) of the role assignment schedule to get.",
         SerializedName = @"roleAssignmentScheduleInstanceName",
         PossibleTypes = new [] { typeof(string) })]
@@ -113,6 +119,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name (guid) of the role assignment schedule to get.",
         SerializedName = @"roleAssignmentScheduleName",
         PossibleTypes = new [] { typeof(string) })]
@@ -121,6 +130,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the role assignment to create. It can be any valid GUID.",
         SerializedName = @"roleAssignmentScheduleRequestName",
         PossibleTypes = new [] { typeof(string) })]
@@ -131,6 +143,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name (hash of schedule name + time) of the role eligibility schedule to get.",
         SerializedName = @"roleEligibilityScheduleInstanceName",
         PossibleTypes = new [] { typeof(string) })]
@@ -139,6 +154,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name (guid) of the role eligibility schedule to get.",
         SerializedName = @"roleEligibilityScheduleName",
         PossibleTypes = new [] { typeof(string) })]
@@ -147,6 +165,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the role eligibility to create. It can be any valid GUID.",
         SerializedName = @"roleEligibilityScheduleRequestName",
         PossibleTypes = new [] { typeof(string) })]
@@ -155,6 +176,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of format {guid_guid} the role management policy assignment to get.",
         SerializedName = @"roleManagementPolicyAssignmentName",
         PossibleTypes = new [] { typeof(string) })]
@@ -163,6 +187,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name (guid) of the role management policy to get.",
         SerializedName = @"roleManagementPolicyName",
         PossibleTypes = new [] { typeof(string) })]
@@ -171,6 +198,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The scope of the role management policy.",
         SerializedName = @"scope",
         PossibleTypes = new [] { typeof(string) })]
