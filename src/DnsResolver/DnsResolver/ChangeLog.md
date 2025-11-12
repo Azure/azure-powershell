@@ -18,8 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Add managedDomainList for usage in DnsSecurityRules
-* Remove requirement of DnsResolverDomainLists in DnsSecurityRules if user is using a managedDomainList.
+* Added managedDomainList for usage in DnsSecurityRules
+* Removed requirement of DnsResolverDomainLists in DnsSecurityRules if user is using a managedDomainList.
 
 ## Version 1.2.0
 * Added domain list post request for using storage based larger domain lists
