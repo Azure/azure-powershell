@@ -110,7 +110,7 @@ function setupEnv() {
     )
 
     $storageAccountsToCreate | ForEach-Object {
-        Write-Host "Creating storage account $($psitem.Name)" -ForegroundColor Yellow
+        Write-Host "Creating storage account $($psitem.Name)" -ForegroundColor Green
         New-AzStorageAccount @psitem | Out-Null
     }
 
@@ -148,8 +148,9 @@ function setupEnv() {
 
     $env.add('servicePlansToCreate', $servicePlansToCreate) | Out-Null
 
+    Write-Host "Creating function app plans" -ForegroundColor Green
     $servicePlansToCreate | ForEach-Object {
-        Write-Host "Creating service plan $($psitem.Name)" -ForegroundColor Yellow
+        Write-Host "Creating plan $($psitem.Name)" -ForegroundColor Yellow
         New-AzFunctionAppPlan @psitem | Out-Null
     }
 
@@ -259,32 +260,37 @@ function setupEnv() {
     $env.add('newApplInsights', $newApplInsights) | Out-Null
 
     # Create Flex Consumption resources
-    Write-Verbose "Creating Flex Consumption resources..." -Verbose
-    $flexTestRunId = 111125
+    Write-Host "Creating Flex Consumption resources..." -ForegroundColor Green
+    $flexTestRunId = 114125
     $flexLocation = 'East Asia'
     $flexResourceGroupName = "Functions-Flex-RG-" + $flexTestRunId
 
-    # Create resource group and storage accounts for Flex Consumption tests
-    Write-Verbose "Creating resource group: $flexResourceGroupName in location: $flexLocation" -Verbose
+    # Create resource group for Flex Consumption tests
+    Write-Host "Creating resource group: $flexResourceGroupName in location: $flexLocation" -ForegroundColor Yellow
     New-AzResourceGroup -Name $flexResourceGroupName -Location $flexLocation | Out-Null
 
     # Create one storage account per runtime for Flex Consumption tests.
     # The storage account name must be unique and at most 24 characters long.
-    Write-Verbose "Creating storage accounts for Flex Consumption tests" -Verbose
-    $flexStorageAccountInfo=@{}
+    Write-Host "Creating storage accounts for Flex Consumption tests" -ForegroundColor Green
+
     foreach ($runtimeName in @("DotNet-Isolated", "Node", "Java", "PowerShell", "Python", "Custom"))
     {
-        $storageAccountName = "funcappflexsa" + $flexTestRunId + $runtimeName.ToLower()
+        # Create unique storage account name: flexapp[runtime]sa[runid]
+        $runtimeNameNormalized = $runtimeName.Replace("-", "").ToLower()
+        $storageAccountName = "flexapp" + $runtimeNameNormalized + "sa" + $flexTestRunId
         $storageAccountName = $storageAccountName.Substring(0, [Math]::Min($storageAccountName.Length, 24))
-        Write-Verbose "Creating storage account: $storageAccountName in resource group: $flexResourceGroupName" -Verbose
-        New-AzStorageAccount -ResourceGroupName $flexResourceGroupName `
-                             -Name $storageAccountName `
-                             -Location $flexLocation `
-                             -SkuName Standard_GRS `
-                             -Kind StorageV2 `
-                             -AllowBlobPublicAccess $false | Out-Null
 
-        $flexStorageAccountInfo[$runtimeName] = $storageAccountName
+        Write-Host "Creating storage account: $storageAccountName in resource group: $flexResourceGroupName" -ForegroundColor Yellow
+        New-AzStorageAccount -ResourceGroupName $flexResourceGroupName `
+                            -Name $storageAccountName `
+                            -Location $flexLocation `
+                            -SkuName Standard_GRS `
+                            -Kind StorageV2 `
+                            -AllowBlobPublicAccess $false | Out-Null
+
+        # Add to $env with a key like 'flexStorageAccountDotNetIsolated', 'flexStorageAccountNode', etc.
+        $envKey = "flexStorageAccount" + $runtimeName.Replace("-", "")
+        $env.add($envKey, $storageAccountName) | Out-Null
     }
 
     Write-Host "Create user assigned managed identity for Flex Consumption tests" -ForegroundColor Yellow
@@ -294,7 +300,6 @@ function setupEnv() {
     $env.add('flexTestRunId', $flexTestRunId) | Out-Null
     $env.add('flexLocation', $flexLocation) | Out-Null
     $env.add('flexResourceGroupName', $flexResourceGroupName) | Out-Null
-    $env.add('flexStorageAccountInfo', $flexStorageAccountInfo) | Out-Null
     $env.add('flexIdentityInfo', $flexIdentityInfo) | Out-Null
 
     $envFile = 'env.json'
