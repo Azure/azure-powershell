@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Management.Search
         public SearchManagementClient Client { get; private set; }
 
         /// <summary>
-        /// Gets a list of all Search quota usages in the given subscription.
+        /// Get a list of all Azure AI Search quota usages across the subscription.
         /// </summary>
         /// <param name='searchManagementRequestOptions'>
         /// 
@@ -262,7 +262,7 @@ namespace Microsoft.Azure.Management.Search
 
         }
         /// <summary>
-        /// Gets a list of all Search quota usages in the given subscription.
+        /// Get a list of all Azure AI Search quota usages across the subscription.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

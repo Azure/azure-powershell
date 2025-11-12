@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzVmssVMRunCommand
 
 ## SYNOPSIS
-The operation to create or update the VMSS VM run command.
+The operation to update the VMSS VM run command.
 
 ## SYNTAX
 
@@ -41,8 +41,22 @@ Set-AzVmssVMRunCommand -InstanceId <String> -ResourceGroupName <String> -RunComm
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### UpdateViaJsonFilePath
+```
+Set-AzVmssVMRunCommand -InstanceId <String> -ResourceGroupName <String> -RunCommandName <String>
+ -VMScaleSetName <String> [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaJsonString
+```
+Set-AzVmssVMRunCommand -InstanceId <String> -ResourceGroupName <String> -RunCommandName <String>
+ -VMScaleSetName <String> [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-The operation to create or update the VMSS VM run command.
+The operation to update the VMSS VM run command.
 
 ## EXAMPLES
 
@@ -159,7 +173,7 @@ If set to true, provisioning will complete as soon as the script starts and will
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, ScriptLocalPath
 Aliases:
 
 Required: False
@@ -191,7 +205,7 @@ ObjectId should not be used if this is provided.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, ScriptLocalPath
 Aliases:
 
 Required: False
@@ -207,7 +221,7 @@ ClientId should not be used if this is provided.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, ScriptLocalPath
 Aliases:
 
 Required: False
@@ -224,7 +238,7 @@ Refer errorBlobManagedIdentity parameter.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, ScriptLocalPath
 Aliases:
 
 Required: False
@@ -249,12 +263,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Location
 Resource location
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, ScriptLocalPath
 Aliases:
 
 Required: True
@@ -285,7 +329,7 @@ ObjectId should not be used if this is provided.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, ScriptLocalPath
 Aliases:
 
 Required: False
@@ -301,7 +345,7 @@ ClientId should not be used if this is provided.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, ScriptLocalPath
 Aliases:
 
 Required: False
@@ -318,7 +362,7 @@ Refer outputBlobManagedIdentity parameter.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, ScriptLocalPath
 Aliases:
 
 Required: False
@@ -330,11 +374,10 @@ Accept wildcard characters: False
 
 ### -Parameter
 The parameters used by the script.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IRunCommandInputParameter[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IRunCommandInputParameter[]
+Parameter Sets: UpdateExpanded, ScriptLocalPath
 Aliases:
 
 Required: False
@@ -346,11 +389,10 @@ Accept wildcard characters: False
 
 ### -ProtectedParameter
 The parameters used by the script.
-To construct, see NOTES section for PROTECTEDPARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IRunCommandInputParameter[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IRunCommandInputParameter[]
+Parameter Sets: UpdateExpanded, ScriptLocalPath
 Aliases:
 
 Required: False
@@ -380,7 +422,7 @@ Specifies the user account password on the VM when executing the run command.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, ScriptLocalPath
 Aliases:
 
 Required: False
@@ -395,7 +437,7 @@ Specifies the user account on the VM when executing the run command.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, ScriptLocalPath
 Aliases:
 
 Required: False
@@ -440,7 +482,7 @@ ObjectId should not be used if this is provided.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, ScriptLocalPath
 Aliases:
 
 Required: False
@@ -456,7 +498,7 @@ ClientId should not be used if this is provided.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, ScriptLocalPath
 Aliases:
 
 Required: False
@@ -533,7 +575,7 @@ Resource tags
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, ScriptLocalPath
 Aliases:
 
 Required: False
@@ -548,7 +590,7 @@ The timeout in seconds to execute the run command.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, ScriptLocalPath
 Aliases:
 
 Required: False
@@ -566,7 +608,7 @@ See instance view of run command in case of script failures to see executionMess
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, ScriptLocalPath
 Aliases:
 
 Required: False
@@ -629,7 +671,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IVirtualMachineRunCommand
+### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IVirtualMachineRunCommand
 
 ## NOTES
 

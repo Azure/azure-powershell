@@ -1,7 +1,83 @@
 ## 14.6.0 - November 2025
+#### Az.Compute 10.5.0
+* Added '-Redeploy' switch parameter for 'Update-AzHost' cmdlet to enable dedicated host redeployment.
+* Added '-SupportedSecurityOption' parameter to 'New-AzDiskConfig' cmdlet.
+* ComputeRP related cmdlets will now use 2025-04-01 version of the ComputeRP API.
+* Added '-AddProxyAgentExtension' parameter (Switch) to 'New-AzVmss' and 'New-AzVM'
+* Added '-AddProxyAgentExtension' parameter (Bool) to 'Set-AzVMProxyAgentSetting' and  'Set-AzVmssProxyAgentSetting'
+
+#### Az.DataProtection 2.8.0
+* Added support for AzureDataLakeStorage workload
+
+#### Az.DeviceRegistry 1.0.0
+* General availability for module Az.DeviceRegistry
+* GA stable release of API version 2025-10-01 for Az.DeviceRegistry. New updates include:
+    - Schema and Schema Version asynchronous delete. No longer synchronous.
+    - Namespace Asset and Namespace Discovered Asset EventGroups.
+    - Namespace Device x509 certificate authentication now supports intermediate certificates and key secret names.
+
+#### Az.FrontDoor 1.13.1
+* Added breaking change messages for next version
+
+#### Az.Migrate 2.10.1
+* Fixed bugs in 'Initialize-AzMigrateLocalReplicationInfrastructure'
+  - Correct AMH solution tool name of 'ServerMigration_DataReplication' is now being passed in to address replication count missing and UX experience load issues in Azure Migrate on Azure portal.
+* Address Join-Path compatibility issue in older version of PowerShell environment such as PowerShell 5.1 in the following commands
+ - 'Initialize-AzMigrateLocalReplicationInfrastructure'
+ - 'Initialize-AzMigrateReplicationInfrastructure'
+ - 'New-AzMigrateLocalServerReplication'
+ - 'Get-AzMigrateLocalServerReplication'
+ - 'Set-AzMigrateLocalServerReplication'
+ - 'Start-AzMigrateLocalServerMigration'
+
+#### Az.Network 7.23.0
+* Added 'GeoLocationXFFHeader' and 'ClientAddrXFFHeader' as valid VariableNames in 'NewAzureApplicationGatewayFirewallCustomRuleGroupByVariable'.
+* Bug fix for 'AzureFirewallPolicy' to ensure 'BasePolicy' is properly set via 'Set-AzFirewallPolicy' cmdlet either via pipe or direct value.
+
 #### Az.RecoveryServices 7.10.0
+* Added Cross region restore support for new region - northeastus5.
+* Added support for vault soft delete feature - Get soft deleted vault, Undelete softdeleted vault, Get deleted backup items in a soft deleted vault using ARG.
 * Added Availability Zone support in Update Protection
 * Added Platform Fault Domain support in Enable, Update, and Switch Protection workflows
+
+#### Az.RedisEnterpriseCache 1.6.0
+* Added a new required property: PublicNetworkAccess for Cluster.
+* Updated the default value of AccessKeysAuthentication property for Database to 'Disabled'.
+
+#### Az.SignalR 2.3.0
+* Added cmdlets for managing replicas:
+    - Get-AzSignalRReplica: get replica(s) for SignalR
+    - New-AzSignalRReplica: create a new replica for SignalR
+    - Remove-AzSignalRReplica: remove a replica from SignalR
+    - Restart-AzSignalRReplica: restart a SignalR replica
+    - Start-AzSignalRReplica: start a SignalR replica
+    - Stop-AzSignalRReplica: stop a SignalR replica
+    - Update-AzSignalRReplica: update a SignalR replica
+* Added cmdlets for managing network IP rules
+    - New-AzSignalRNetworkIpRuleObject: create a new network IP rule object for SignalR
+    - Add-AzSignalRNetworkIpRule: add network IP rule(s) to SignalR
+    - Remove-AzSignalRNetworkIpRule: remove network IP rule(s) from SignalR
+
+#### Az.Sql 6.3.0
+* Updated with support for Immutable Long-Term Retention Backups
+    - Updated 'Set-AzSqlDatabaseBackupLongTermRetentionPolicy' cmdlet to expose 'TimeBasedImmutability' and 'TimeBasedImmutabilityMode' parameters.
+    - Updated 'AzureSqlDatabaseBackupLongTermRetentionPolicyModel' to add 'TimeBasedImmutability' and 'TimeBasedImmutabilityMode' properties.
+    - Updated 'AzureSqlDatabaseLongTermRetentionBackupModel' to add 'TimeBasedImmutability', 'TimeBasedImmutabilityMode', and 'LegalHoldImmutability' properties.
+    - Added new cmdlets 'Lock-AzSqlDatabaseLongTermRetentionBackupImmutability' and 'Remove-AzSqlDatabaseLongTermRetentionBackupImmutability' for managing time-based immutability on LTR backups.
+    - Added new cmdlets 'Set-AzSqlDatabaseLongTermRetentionBackupLegalHold' and 'Remove-AzSqlDatabaseLongTermRetentionBackupLegalHold' for managing legal hold immutability on LTR backups.
+
+#### Az.StackHCI 2.6.4
+* Fixed bug: Buse boolean in comparision
+
+#### Az.Storage 9.3.0
+* Supported Blob Geo Replication SLA on Storage accounts
+    - 'New-AzStorageAccount'
+    - 'Set-AzStorageAccount'
+* Supported enable Priority Replication when set object replication policy
+    - 'Set-AzStorageObjectReplicationPolicy'
+* Supported get and reconcile NSP Configuration on a Storage account: 
+    - 'Get-AzStorageNetworkSecurityPerimeterConfiguration'
+    - 'Invoke-AzStorageReconcileNetworkSecurityPerimeterConfiguration'
 
 ## 14.5.0 - October 2025
 #### Az.Automation 1.11.2

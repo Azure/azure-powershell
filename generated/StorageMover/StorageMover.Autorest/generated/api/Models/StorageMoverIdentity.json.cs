@@ -76,15 +76,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
             {
                 return;
             }
-            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)SubscriptionId;}
-            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)ResourceGroupName;}
-            {_storageMoverName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString>("storageMoverName"), out var __jsonStorageMoverName) ? (string)__jsonStorageMoverName : (string)StorageMoverName;}
-            {_agentName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString>("agentName"), out var __jsonAgentName) ? (string)__jsonAgentName : (string)AgentName;}
-            {_endpointName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString>("endpointName"), out var __jsonEndpointName) ? (string)__jsonEndpointName : (string)EndpointName;}
-            {_projectName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString>("projectName"), out var __jsonProjectName) ? (string)__jsonProjectName : (string)ProjectName;}
-            {_jobDefinitionName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString>("jobDefinitionName"), out var __jsonJobDefinitionName) ? (string)__jsonJobDefinitionName : (string)JobDefinitionName;}
-            {_jobRunName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString>("jobRunName"), out var __jsonJobRunName) ? (string)__jsonJobRunName : (string)JobRunName;}
-            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)Id;}
+            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)_subscriptionId;}
+            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)_resourceGroupName;}
+            {_storageMoverName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString>("storageMoverName"), out var __jsonStorageMoverName) ? (string)__jsonStorageMoverName : (string)_storageMoverName;}
+            {_agentName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString>("agentName"), out var __jsonAgentName) ? (string)__jsonAgentName : (string)_agentName;}
+            {_endpointName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString>("endpointName"), out var __jsonEndpointName) ? (string)__jsonEndpointName : (string)_endpointName;}
+            {_projectName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString>("projectName"), out var __jsonProjectName) ? (string)__jsonProjectName : (string)_projectName;}
+            {_jobDefinitionName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString>("jobDefinitionName"), out var __jsonJobDefinitionName) ? (string)__jsonJobDefinitionName : (string)_jobDefinitionName;}
+            {_jobRunName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString>("jobRunName"), out var __jsonJobRunName) ? (string)__jsonJobRunName : (string)_jobRunName;}
+            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
             AfterFromJson(json);
         }
 

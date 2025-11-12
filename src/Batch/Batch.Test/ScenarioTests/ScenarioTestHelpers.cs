@@ -29,7 +29,6 @@ using System.Threading.Tasks;
 using System.IO;
 #endif
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using System.Threading;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
@@ -38,6 +37,7 @@ using BatchAccountCreateParameters = Microsoft.Azure.Management.Batch.Models.Bat
 using BatchAccountKeys = Microsoft.Azure.Management.Batch.Models.BatchAccountKeys;
 using ApplicationPackage = Microsoft.Azure.Management.Batch.Models.ApplicationPackage;
 using System.Security.Policy;
+using System.Management.Automation;
 
 
 namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
@@ -94,98 +94,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         /// <summary>
-        /// Adds a test certificate for use in Scenario tests. Returns the thumbprint of the cert.
-        /// </summary>
-        [Obsolete]
-        public static string AddTestCertificate(BatchTestRunner runner, BatchAccountContext context, string filePath)
-        {
-            BatchClient client = new BatchClient(runner.BatchManagementClient, runner.ResourceManagementClient);
-
-            X509Certificate2 cert = new X509Certificate2(filePath);
-            ListCertificateOptions getParameters = new ListCertificateOptions(context)
-            {
-                ThumbprintAlgorithm = BatchTestHelpers.TestCertificateAlgorithm,
-                Thumbprint = cert.Thumbprint,
-                Select = "thumbprint,state"
-            };
-
-            try
-            {
-                PSCertificate existingCert = client.ListCertificates(getParameters).FirstOrDefault();
-                DateTime start = DateTime.Now;
-                TimeSpan timeout = GetTimeout(TimeSpan.FromMinutes(5));
-                DateTime end = start.Add(timeout);
-
-                // Cert might still be deleting from other tests, so we wait for the delete to finish.
-                while (existingCert != null && existingCert.State == CertificateState.Deleting)
-                {
-                    if (DateTime.Now > end)
-                    {
-                        throw new TimeoutException("Timed out waiting for existing cert to be deleted.");
-                    }
-                    Sleep(5000);
-                    existingCert = client.ListCertificates(getParameters).FirstOrDefault();
-                }
-            }
-            catch (BatchException ex)
-            {
-                // When the cert doesn't exist, we get a 404 error. For all other errors, throw.
-                if (ex == null || !ex.Message.Contains("NotFound"))
-                {
-                    throw;
-                }
-            }
-
-            NewCertificateParameters parameters = new NewCertificateParameters(
-                context, null, cert.RawData, PSCertificateKind.Cer);
-
-            client.AddCertificate(parameters);
-
-            return cert.Thumbprint;
-        }
-
-        /// <summary>
-        /// Deletes a certificate.
-        /// </summary>
-        public static void DeleteTestCertificate(BatchTestRunner runner, BatchAccountContext context, string thumbprintAlgorithm, string thumbprint)
-        {
-            BatchClient client = new BatchClient(runner.BatchManagementClient, runner.ResourceManagementClient);
-
-            CertificateOperationParameters parameters = new CertificateOperationParameters(context, thumbprintAlgorithm,
-                thumbprint);
-
-            client.DeleteCertificate(parameters);
-        }
-
-        /// <summary>
-        /// Deletes a certificate.
-        /// </summary>
-        [Obsolete]
-        public static void WaitForCertificateToFailDeletion(BatchTestRunner runner, BatchAccountContext context, string thumbprintAlgorithm, string thumbprint)
-        {
-            BatchClient client = new BatchClient(runner.BatchManagementClient, runner.ResourceManagementClient);
-
-            ListCertificateOptions parameters = new ListCertificateOptions(context)
-            {
-                ThumbprintAlgorithm = BatchTestHelpers.TestCertificateAlgorithm,
-                Thumbprint = thumbprint
-            };
-
-            PSCertificate cert = client.ListCertificates(parameters).First();
-
-            DateTime timeout = DateTime.Now.Add(GetTimeout(TimeSpan.FromMinutes(2)));
-            while (cert.State != CertificateState.DeleteFailed)
-            {
-                if (DateTime.Now > timeout)
-                {
-                    throw new TimeoutException("Timed out waiting for failed certificate deletion");
-                }
-                Sleep(10000);
-                cert = client.ListCertificates(parameters).First();
-            }
-        }
-
-        /// <summary>
         /// Creates a test pool for use in Scenario tests.
         /// </summary>
         public static void CreateTestPool(
@@ -194,15 +102,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             string poolId,
             int? targetDedicated,
             int? targetLowPriority,
-            CertificateReference certReference = null,
             StartTask startTask = null,
             UpgradePolicy upgradePolicy = null)
         {
-            PSCertificateReference[] certReferences = null;
-            if (certReference != null)
-            {
-                certReferences = new PSCertificateReference[] { new PSCertificateReference(certReference) };
-            }
             PSStartTask psStartTask = null;
             if (startTask != null)
             {
@@ -215,19 +117,17 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 psUpgradePolicy = new PSUpgradePolicy(upgradePolicy);
             }
 
-            PSCloudServiceConfiguration paasConfiguration = new PSCloudServiceConfiguration("4", "*");
-           
+            PSVirtualMachineConfiguration virtualMachineConfiguration = new PSVirtualMachineConfiguration(new PSImageReference("offer", "publisher", "sku"), "node agent");
+
             NewPoolParameters parameters = new NewPoolParameters(context, poolId)
             {
                 VirtualMachineSize = "standard_d1_v2",
-                CloudServiceConfiguration = paasConfiguration,
+                VirtualMachineConfiguration = virtualMachineConfiguration,
                 TargetDedicatedComputeNodes = targetDedicated,
                 TargetLowPriorityComputeNodes = targetLowPriority,
-                CertificateReferences = certReferences,
                 UpgradePolicy = psUpgradePolicy,
                 StartTask = psStartTask,
-                InterComputeNodeCommunicationEnabled = true,
-                TargetCommunicationMode = NodeCommunicationMode.Classic
+                InterComputeNodeCommunicationEnabled = true
             };
 
             CreatePoolIfNotExists(runner, parameters);
@@ -242,15 +142,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             string poolId,
             int? targetDedicated,
             int? targetLowPriority,
-            CertificateReference certReference = null,
             StartTask startTask = null,
-            UpgradePolicy upgradePolicy = null)
+            UpgradePolicy upgradePolicy = null,
+            PSNetworkConfiguration networkConfiguration = null)
         {
-            PSCertificateReference[] certReferences = null;
-            if (certReference != null)
-            {
-                certReferences = new PSCertificateReference[] { new PSCertificateReference(certReference) };
-            }
             PSStartTask psStartTask = null;
             if (startTask != null)
             {
@@ -262,6 +157,12 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             {
                 psUpgradePolicy = new PSUpgradePolicy(upgradePolicy);
             }
+            PSNetworkConfiguration pSNetworkConfiguration = null;
+            if(networkConfiguration != null)
+            {
+                pSNetworkConfiguration = networkConfiguration;
+            }
+
 
             string vmSize = "STANDARD_D2S_V3";
             string publisher = "canonical";
@@ -272,18 +173,18 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             PSImageReference imageReference = new PSImageReference(offer: offer, publisher: publisher, sku: sku);
             PSVirtualMachineConfiguration vmConfiguration = new PSVirtualMachineConfiguration(imageReference, nodeAgent);
             vmConfiguration.NodePlacementConfiguration = new PSNodePlacementConfiguration(NodePlacementPolicyType.Zonal);
-
+            
             NewPoolParameters parameters = new NewPoolParameters(context, poolId)
             {
                 VirtualMachineSize = vmSize,
                 VirtualMachineConfiguration = vmConfiguration,
                 TargetDedicatedComputeNodes = targetDedicated,
                 TargetLowPriorityComputeNodes = targetLowPriority,
-                CertificateReferences = certReferences,
                 UpgradePolicy = psUpgradePolicy,
                 StartTask = psStartTask,
                 TaskSlotsPerNode = 1,
-                InterComputeNodeCommunicationEnabled = true
+                InterComputeNodeCommunicationEnabled = true,
+                NetworkConfiguration = pSNetworkConfiguration
             };
 
             CreatePoolIfNotExists(runner, parameters);
@@ -510,7 +411,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 
             DateTime timeout = DateTime.Now.AddMinutes(10);
 
-            while (job.State != JobState.Completed && DateTime.Now < timeout)
+            while (job.State != Azure.Batch.Common.JobState.Completed && DateTime.Now < timeout)
             {
                 job = client.ListJobs(new ListJobOptions(context)).First(cloudJob => cloudJob.Id == jobId);
 
