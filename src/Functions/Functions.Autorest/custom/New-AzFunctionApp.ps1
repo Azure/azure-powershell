@@ -452,6 +452,30 @@ Example:
             }
         }
 
+        # Set function app managed identity
+        if ($IdentityType)
+        {
+            $functionAppDef.IdentityType = $IdentityType
+
+            if ($IdentityType -eq "UserAssigned")
+            {
+                # Set UserAssigned managed identiy
+                if (-not $IdentityID)
+                {
+                    $errorMessage = "IdentityID is required for UserAssigned identity"
+                    $exception = [System.InvalidOperationException]::New($errorMessage)
+                    ThrowTerminatingError -ErrorId "IdentityIDIsRequiredForUserAssignedIdentity" `
+                                            -ErrorMessage $errorMessage `
+                                            -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                                            -Exception $exception
+
+                }
+
+                $identityUserAssignedIdentity = NewIdentityUserAssignedIdentity -IdentityID $IdentityID
+                $functionAppDef.IdentityUserAssignedIdentity = $identityUserAssignedIdentity
+            }
+        }
+
         $servicePlan = $null
         $dockerRegistryServerUrl = $null
         
@@ -995,30 +1019,6 @@ Example:
                 }
             }
 
-            # Set function app managed identity
-            if ($IdentityType)
-            {
-                $functionAppDef.IdentityType = $IdentityType
-
-                if ($IdentityType -eq "UserAssigned")
-                {
-                    # Set UserAssigned managed identiy
-                    if (-not $IdentityID)
-                    {
-                        $errorMessage = "IdentityID is required for UserAssigned identity"
-                        $exception = [System.InvalidOperationException]::New($errorMessage)
-                        ThrowTerminatingError -ErrorId "IdentityIDIsRequiredForUserAssignedIdentity" `
-                                                -ErrorMessage $errorMessage `
-                                                -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
-                                                -Exception $exception
-
-                    }
-
-                    $identityUserAssignedIdentity = NewIdentityUserAssignedIdentity -IdentityID $IdentityID
-                    $functionAppDef.IdentityUserAssignedIdentity = $identityUserAssignedIdentity
-                }
-            }
-
             # Set app settings and site configuration
             $siteConfig.AppSetting = $appSettings
             $functionAppDef.Config = $siteConfig
@@ -1081,7 +1081,7 @@ Example:
                 }
                 if ($flexConsumptionStorageContainerCreated)
                 {
-                    Az.Functions.internal\Remove-AzBlobContainer -ResourceGroupName $ResourceGroupName -StorageAccountName $DeploymentStorageName -ContainerName $DeploymentStorageContainerName @params
+                    Az.Functions.internal\Remove-AzBlobContainer -ResourceGroupName $ResourceGroupName -AccountName $DeploymentStorageName -ContainerName $DeploymentStorageContainerName @params
                 }
 
                 if ($appInsightCreated -and ($null -ne $newAppInsightsProject))
