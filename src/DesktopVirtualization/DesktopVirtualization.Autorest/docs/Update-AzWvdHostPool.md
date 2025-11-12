@@ -17,15 +17,16 @@ Update a host pool.
 Update-AzWvdHostPool -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-AgentUpdateMaintenanceWindow <IMaintenanceWindowPatchProperties[]>]
  [-AgentUpdateMaintenanceWindowTimeZone <String>] [-AgentUpdateType <String>]
- [-AgentUpdateUseSessionHostLocalTime] [-CustomRdpProperty <String>] [-Description <String>]
- [-DirectUdp <String>] [-FriendlyName <String>] [-IdentityType <String>]
- [-IdentityUserAssignedIdentity <Hashtable>] [-LoadBalancerType <String>] [-ManagedPrivateUdp <String>]
- [-MaxSessionLimit <Int32>] [-PersonalDesktopAssignmentType <String>] [-PreferredAppGroupType <String>]
- [-PublicNetworkAccess <String>] [-PublicUdp <String>] [-RegistrationInfoExpirationTime <DateTime>]
- [-RegistrationInfoRegistrationTokenOperation <String>] [-RelayUdp <String>] [-Ring <Int32>]
- [-SsoadfsAuthority <String>] [-SsoClientId <String>] [-SsoClientSecretKeyVaultPath <String>]
- [-SsoSecretType <String>] [-StartVMOnConnect] [-Tag <Hashtable>] [-ValidationEnvironment]
- [-VMTemplate <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AgentUpdateUseSessionHostLocalTime] [-AllowRdpShortPathWithPrivateLink <String>]
+ [-CustomRdpProperty <String>] [-Description <String>] [-DirectUdp <String>] [-FriendlyName <String>]
+ [-IdentityType <String>] [-IdentityUserAssignedIdentity <Hashtable>] [-LoadBalancerType <String>]
+ [-ManagedPrivateUdp <String>] [-MaxSessionLimit <Int32>] [-PersonalDesktopAssignmentType <String>]
+ [-PreferredAppGroupType <String>] [-PublicNetworkAccess <String>] [-PublicUdp <String>]
+ [-RegistrationInfoExpirationTime <DateTime>] [-RegistrationInfoRegistrationTokenOperation <String>]
+ [-RelayUdp <String>] [-Ring <Int32>] [-SsoadfsAuthority <String>] [-SsoClientId <String>]
+ [-SsoClientSecretKeyVaultPath <String>] [-SsoSecretType <String>] [-StartVMOnConnect] [-Tag <Hashtable>]
+ [-ValidationEnvironment] [-VMTemplate <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -33,15 +34,16 @@ Update-AzWvdHostPool -Name <String> -ResourceGroupName <String> [-SubscriptionId
 Update-AzWvdHostPool -InputObject <IDesktopVirtualizationIdentity>
  [-AgentUpdateMaintenanceWindow <IMaintenanceWindowPatchProperties[]>]
  [-AgentUpdateMaintenanceWindowTimeZone <String>] [-AgentUpdateType <String>]
- [-AgentUpdateUseSessionHostLocalTime] [-CustomRdpProperty <String>] [-Description <String>]
- [-DirectUdp <String>] [-FriendlyName <String>] [-IdentityType <String>]
- [-IdentityUserAssignedIdentity <Hashtable>] [-LoadBalancerType <String>] [-ManagedPrivateUdp <String>]
- [-MaxSessionLimit <Int32>] [-PersonalDesktopAssignmentType <String>] [-PreferredAppGroupType <String>]
- [-PublicNetworkAccess <String>] [-PublicUdp <String>] [-RegistrationInfoExpirationTime <DateTime>]
- [-RegistrationInfoRegistrationTokenOperation <String>] [-RelayUdp <String>] [-Ring <Int32>]
- [-SsoadfsAuthority <String>] [-SsoClientId <String>] [-SsoClientSecretKeyVaultPath <String>]
- [-SsoSecretType <String>] [-StartVMOnConnect] [-Tag <Hashtable>] [-ValidationEnvironment]
- [-VMTemplate <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AgentUpdateUseSessionHostLocalTime] [-AllowRdpShortPathWithPrivateLink <String>]
+ [-CustomRdpProperty <String>] [-Description <String>] [-DirectUdp <String>] [-FriendlyName <String>]
+ [-IdentityType <String>] [-IdentityUserAssignedIdentity <Hashtable>] [-LoadBalancerType <String>]
+ [-ManagedPrivateUdp <String>] [-MaxSessionLimit <Int32>] [-PersonalDesktopAssignmentType <String>]
+ [-PreferredAppGroupType <String>] [-PublicNetworkAccess <String>] [-PublicUdp <String>]
+ [-RegistrationInfoExpirationTime <DateTime>] [-RegistrationInfoRegistrationTokenOperation <String>]
+ [-RelayUdp <String>] [-Ring <Int32>] [-SsoadfsAuthority <String>] [-SsoClientId <String>]
+ [-SsoClientSecretKeyVaultPath <String>] [-SsoSecretType <String>] [-StartVMOnConnect] [-Tag <Hashtable>]
+ [-ValidationEnvironment] [-VMTemplate <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
@@ -136,6 +138,21 @@ Whether to use localTime of the virtual machine.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AllowRdpShortPathWithPrivateLink
+Controls if the use of RDPShortPath transport is allowed, possibly bypassing Private Link routes.
+
+```yaml
+Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
