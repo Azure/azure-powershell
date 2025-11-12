@@ -4,3 +4,4 @@
 "Az.Aks","Get-AzAksManagedClusterOutboundNetworkDependencyEndpoint","1","2","Is_Alias","5100","2","select is an alias of 'Select-Object'.","select Category,Endpoint","Use formal name 'Select-Object' of the alias 'select'."
 "Az.Aks","Get-AzAksManagedClusterOutboundNetworkDependencyEndpoint","1","2","Is_Alias","5100","2","select is an alias of 'Select-Object'.","select Category,Endpoint","Use formal name 'Select-Object' of the alias 'select'."
 "Az.Aks","New-AzAksCluster","5","1","Invalid_Cmdlet","5000","1","New-AzADGroup is not a valid command name.","New-AzADGroup -DisplayName myAKSAdminGroup -MailNickname myAKSAdminGroup","Check the spell of New-AzADGroup."
+"Az.Aks","Set-AzAksCluster","3","1","Invalid_Cmdlet","5000","1","New-AzADGroup is not a valid command name.","New-AzADGroup -DisplayName myAKSAdminGroup -MailNickname myAKSAdminGroup","Check the spell of New-AzADGroup."

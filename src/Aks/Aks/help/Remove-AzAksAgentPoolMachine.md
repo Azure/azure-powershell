@@ -72,27 +72,12 @@ Deletes specific machines in an agent pool.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove a agent pool machine
 ```powershell
-{{ Add code here }}
+Remove-AzAksAgentPoolMachine -AgentPoolName pool1 -ResourceGroupName AKS_TEST_RG -ResourceName AKS_Test_Cluster -MachineName 'aks-pool1-12988240-vmss000008'
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Remove a agent pool machine.
 
 ## PARAMETERS
 
