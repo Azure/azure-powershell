@@ -50,7 +50,7 @@ INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VirtualNetworkLinkName <String>]: The name of the virtual network link.
-  [VirtualNetworkName <String>]: The name of the virtual network.
+  [VirtualNetworkName <String>]: The name of the VirtualNetwork
 .Link
 https://learn.microsoft.com/powershell/module/az.dnsresolver/remove-azdnsresolverpolicy
 #>

@@ -25,12 +25,12 @@ New-AzDnsForwardingRulesetVirtualNetworkLink -DnsForwardingRulesetName dnsForwar
 New-AzDnsForwardingRulesetVirtualNetworkLink -DnsForwardingRulesetName dnsForwardingRuleset -Name sampleVnetLink -ResourceGroupName sampleRG -VirtualNetworkId "/subscriptions/ea40042d-63d8-4d02-9261-fb31450e6c64/resourceGroups/sampleRG/providers/Microsoft.Network/virtualNetworks/vnet-hub" -Metadata @{"key0" = "value0"}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IVirtualNetworkLink
+Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IVirtualNetworkLink
 .Link
 https://learn.microsoft.com/powershell/module/az.dnsresolver/new-azdnsforwardingrulesetvirtualnetworklink
 #>
 function New-AzDnsForwardingRulesetVirtualNetworkLink {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IVirtualNetworkLink])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IVirtualNetworkLink])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -84,7 +84,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IVirtualNetworkLinkPropertiesMetadata]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IVirtualNetworkLinkPropertiesMetadata]))]
     [System.Collections.Hashtable]
     # Metadata attached to the virtual network link.
     ${Metadata},

@@ -25,11 +25,11 @@ Invoke-AzDnsResolverBulkDnsResolverDomainList -ResourceGroupName exampleResource
 Invoke-AzDnsResolverBulkDnsResolverDomainList -ResourceGroupName exampleResourceGroupName -DnsResolverDomainListName exampleDomainListName -Action "Download" -StorageUrl "https://exampleStorageAccount.blob.core.windows.net/exampleContainerName/exampleFileName.txt?sp=r&st=2025-05-16T03:54:40Z&se=2025-05-16T11:54:40Z&spr=https&sv=2024-11-04&sr=b&sig={exampleSasToken}"
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsResolverDomainListBulk
+Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IDnsResolverDomainListBulk
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsResolverDomainList
+Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IDnsResolverDomainList
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -49,7 +49,7 @@ INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VirtualNetworkLinkName <String>]: The name of the virtual network link.
-  [VirtualNetworkName <String>]: The name of the virtual network.
+  [VirtualNetworkName <String>]: The name of the VirtualNetwork
 
 PARAMETER <IDnsResolverDomainListBulk>: Describes a DNS resolver domain list for bulk UPLOAD or DOWNLOAD operations.
   Action <Action>: The action to take in the request, Upload or Download.
@@ -58,7 +58,7 @@ PARAMETER <IDnsResolverDomainListBulk>: Describes a DNS resolver domain list for
 https://learn.microsoft.com/powershell/module/az.dnsresolver/invoke-azdnsresolverbulkdnsresolverdomainlist
 #>
 function Invoke-AzDnsResolverBulkDnsResolverDomainList {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsResolverDomainList])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IDnsResolverDomainList])]
 [CmdletBinding(DefaultParameterSetName='BulkExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Bulk', Mandatory)]
@@ -111,7 +111,7 @@ param(
     [Parameter(ParameterSetName='Bulk', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='BulkViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsResolverDomainListBulk]
+    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IDnsResolverDomainListBulk]
     # Describes a DNS resolver domain list for bulk UPLOAD or DOWNLOAD operations.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},

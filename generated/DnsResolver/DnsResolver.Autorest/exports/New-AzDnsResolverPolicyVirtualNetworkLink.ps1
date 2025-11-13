@@ -25,12 +25,12 @@ New-AzDnsResolverPolicyVirtualNetworkLink  -Name sampleResolverPolicyLink -Resou
 New-AzDnsResolverPolicyVirtualNetworkLink  -Name sampleResolverPolicyLink -ResourceGroupName powershell-test-rg -DnsResolverPolicyName samplePolicyName -VirtualNetworkId /subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname16y71mjc -Location westus2 -Tag @{"key0" = "value0"}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsResolverPolicyVirtualNetworkLink
+Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IDnsResolverPolicyVirtualNetworkLink
 .Link
 https://learn.microsoft.com/powershell/module/az.dnsresolver/new-azdnsresolverpolicyvirtualnetworklink
 #>
 function New-AzDnsResolverPolicyVirtualNetworkLink {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsResolverPolicyVirtualNetworkLink])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IDnsResolverPolicyVirtualNetworkLink])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -90,7 +90,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api50.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api60.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},

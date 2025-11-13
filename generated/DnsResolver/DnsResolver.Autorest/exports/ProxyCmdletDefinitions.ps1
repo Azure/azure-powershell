@@ -27,7 +27,7 @@ Get-AzDnsForwardingRulesetForwardingRule -DnsForwardingRulesetName DnsResolverNa
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IForwardingRule
+Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IForwardingRule
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -47,12 +47,12 @@ INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VirtualNetworkLinkName <String>]: The name of the virtual network link.
-  [VirtualNetworkName <String>]: The name of the virtual network.
+  [VirtualNetworkName <String>]: The name of the VirtualNetwork
 .Link
 https://learn.microsoft.com/powershell/module/az.dnsresolver/get-azdnsforwardingrulesetforwardingrule
 #>
 function Get-AzDnsForwardingRulesetForwardingRule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IForwardingRule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IForwardingRule])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -251,7 +251,7 @@ Get-AzDnsForwardingRulesetVirtualNetworkLink -DnsForwardingRulesetName pstestdns
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IVirtualNetworkLink
+Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IVirtualNetworkLink
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -271,12 +271,12 @@ INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VirtualNetworkLinkName <String>]: The name of the virtual network link.
-  [VirtualNetworkName <String>]: The name of the virtual network.
+  [VirtualNetworkName <String>]: The name of the VirtualNetwork
 .Link
 https://learn.microsoft.com/powershell/module/az.dnsresolver/get-azdnsforwardingrulesetvirtualnetworklink
 #>
 function Get-AzDnsForwardingRulesetVirtualNetworkLink {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IVirtualNetworkLink])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IVirtualNetworkLink])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -479,9 +479,9 @@ Get-AzDnsForwardingRuleset -ResourceGroupName sampleRG -VirtualNetworkName virtu
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsForwardingRuleset
+Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IDnsForwardingRuleset
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IVirtualNetworkDnsForwardingRuleset
+Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IVirtualNetworkDnsForwardingRuleset
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -501,13 +501,13 @@ INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VirtualNetworkLinkName <String>]: The name of the virtual network link.
-  [VirtualNetworkName <String>]: The name of the virtual network.
+  [VirtualNetworkName <String>]: The name of the VirtualNetwork
 .Link
 https://learn.microsoft.com/powershell/module/az.dnsresolver/get-azdnsforwardingruleset
 #>
 function Get-AzDnsForwardingRuleset {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsForwardingRuleset], [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IVirtualNetworkDnsForwardingRuleset])]
-[CmdletBinding(DefaultParameterSetName='List1', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IDnsForwardingRuleset], [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IVirtualNetworkDnsForwardingRuleset])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
     [Alias('DnsForwardingRulesetName')]
@@ -517,7 +517,7 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
-    [Parameter(ParameterSetName='List', Mandatory)]
+    [Parameter(ParameterSetName='List1', Mandatory)]
     [Parameter(ParameterSetName='List2', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Category('Path')]
     [System.String]
@@ -546,7 +546,7 @@ param(
     [Parameter(ParameterSetName='List2', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Category('Path')]
     [System.String]
-    # The name of the virtual network.
+    # The name of the VirtualNetwork
     ${VirtualNetworkName},
 
     [Parameter(ParameterSetName='List')]
@@ -713,7 +713,7 @@ Get-AzDnsResolverDomainList -ResourceGroupName powershell-test-rg -Name psdnsres
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsResolverDomainList
+Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IDnsResolverDomainList
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -733,13 +733,13 @@ INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VirtualNetworkLinkName <String>]: The name of the virtual network link.
-  [VirtualNetworkName <String>]: The name of the virtual network.
+  [VirtualNetworkName <String>]: The name of the VirtualNetwork
 .Link
 https://learn.microsoft.com/powershell/module/az.dnsresolver/get-azdnsresolverdomainlist
 #>
 function Get-AzDnsResolverDomainList {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsResolverDomainList])]
-[CmdletBinding(DefaultParameterSetName='List1', PositionalBinding=$false)]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IDnsResolverDomainList])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
     [Alias('DnsResolverDomainListName')]
@@ -749,7 +749,7 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
-    [Parameter(ParameterSetName='List', Mandatory)]
+    [Parameter(ParameterSetName='List1', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -933,7 +933,7 @@ Get-AzDnsResolverInboundEndpoint -DnsResolverName pstestdnsresolvername -Name sa
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IInboundEndpoint
+Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IInboundEndpoint
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -953,12 +953,12 @@ INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VirtualNetworkLinkName <String>]: The name of the virtual network link.
-  [VirtualNetworkName <String>]: The name of the virtual network.
+  [VirtualNetworkName <String>]: The name of the VirtualNetwork
 .Link
 https://learn.microsoft.com/powershell/module/az.dnsresolver/get-azdnsresolverinboundendpoint
 #>
 function Get-AzDnsResolverInboundEndpoint {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IInboundEndpoint])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IInboundEndpoint])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -1157,7 +1157,7 @@ Get-AzDnsResolverOutboundEndpoint -DnsResolverName sampleResolver -Name sampleOu
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IOutboundEndpoint
+Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IOutboundEndpoint
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1177,12 +1177,12 @@ INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VirtualNetworkLinkName <String>]: The name of the virtual network link.
-  [VirtualNetworkName <String>]: The name of the virtual network.
+  [VirtualNetworkName <String>]: The name of the VirtualNetwork
 .Link
 https://learn.microsoft.com/powershell/module/az.dnsresolver/get-azdnsresolveroutboundendpoint
 #>
 function Get-AzDnsResolverOutboundEndpoint {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IOutboundEndpoint])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IOutboundEndpoint])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -1381,7 +1381,7 @@ Get-AzDnsResolverPolicyDnsSecurityRule -ResourceGroupName powershell-test-rg -Dn
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsSecurityRule
+Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IDnsSecurityRule
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1401,12 +1401,12 @@ INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VirtualNetworkLinkName <String>]: The name of the virtual network link.
-  [VirtualNetworkName <String>]: The name of the virtual network.
+  [VirtualNetworkName <String>]: The name of the VirtualNetwork
 .Link
 https://learn.microsoft.com/powershell/module/az.dnsresolver/get-azdnsresolverpolicydnssecurityrule
 #>
 function Get-AzDnsResolverPolicyDnsSecurityRule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsSecurityRule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IDnsSecurityRule])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -1605,7 +1605,7 @@ Get-AzDnsResolverPolicyVirtualNetworkLink -ResourceGroupName powershell-test-rg 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsResolverPolicyVirtualNetworkLink
+Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IDnsResolverPolicyVirtualNetworkLink
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1625,12 +1625,12 @@ INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VirtualNetworkLinkName <String>]: The name of the virtual network link.
-  [VirtualNetworkName <String>]: The name of the virtual network.
+  [VirtualNetworkName <String>]: The name of the VirtualNetwork
 .Link
 https://learn.microsoft.com/powershell/module/az.dnsresolver/get-azdnsresolverpolicyvirtualnetworklink
 #>
 function Get-AzDnsResolverPolicyVirtualNetworkLink {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsResolverPolicyVirtualNetworkLink])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IDnsResolverPolicyVirtualNetworkLink])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -1831,9 +1831,9 @@ Get-AzDnsResolverPolicy -ResourceGroupName powershell-test-rg -Name psdnsresolve
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsResolverPolicy
+Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IDnsResolverPolicy
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.ISubResource
+Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.ISubResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1853,13 +1853,13 @@ INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VirtualNetworkLinkName <String>]: The name of the virtual network link.
-  [VirtualNetworkName <String>]: The name of the virtual network.
+  [VirtualNetworkName <String>]: The name of the VirtualNetwork
 .Link
 https://learn.microsoft.com/powershell/module/az.dnsresolver/get-azdnsresolverpolicy
 #>
 function Get-AzDnsResolverPolicy {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsResolverPolicy], [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.ISubResource])]
-[CmdletBinding(DefaultParameterSetName='List1', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IDnsResolverPolicy], [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.ISubResource])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
     [Alias('DnsResolverPolicyName')]
@@ -1869,7 +1869,7 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
-    [Parameter(ParameterSetName='List', Mandatory)]
+    [Parameter(ParameterSetName='List1', Mandatory)]
     [Parameter(ParameterSetName='List2', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Category('Path')]
     [System.String]
@@ -1898,7 +1898,7 @@ param(
     [Parameter(ParameterSetName='List2', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Category('Path')]
     [System.String]
-    # The name of the virtual network.
+    # The name of the VirtualNetwork
     ${VirtualNetworkName},
 
     [Parameter(ParameterSetName='List')]
@@ -2066,9 +2066,9 @@ Get-AzDnsResolver -ResourceGroupName powershell-test-rg -VirtualNetworkName virt
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsResolver
+Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IDnsResolver
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.ISubResource
+Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.ISubResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -2088,13 +2088,13 @@ INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VirtualNetworkLinkName <String>]: The name of the virtual network link.
-  [VirtualNetworkName <String>]: The name of the virtual network.
+  [VirtualNetworkName <String>]: The name of the VirtualNetwork
 .Link
 https://learn.microsoft.com/powershell/module/az.dnsresolver/get-azdnsresolver
 #>
 function Get-AzDnsResolver {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsResolver], [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.ISubResource])]
-[CmdletBinding(DefaultParameterSetName='List1', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IDnsResolver], [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.ISubResource])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
     [Alias('DnsResolverName')]
@@ -2104,7 +2104,7 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
-    [Parameter(ParameterSetName='List', Mandatory)]
+    [Parameter(ParameterSetName='List1', Mandatory)]
     [Parameter(ParameterSetName='List2', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Category('Path')]
     [System.String]
@@ -2133,7 +2133,7 @@ param(
     [Parameter(ParameterSetName='List2', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Category('Path')]
     [System.String]
-    # The name of the virtual network.
+    # The name of the VirtualNetwork
     ${VirtualNetworkName},
 
     [Parameter(ParameterSetName='List')]
@@ -2296,11 +2296,11 @@ Invoke-AzDnsResolverBulkDnsResolverDomainList -ResourceGroupName exampleResource
 Invoke-AzDnsResolverBulkDnsResolverDomainList -ResourceGroupName exampleResourceGroupName -DnsResolverDomainListName exampleDomainListName -Action "Download" -StorageUrl "https://exampleStorageAccount.blob.core.windows.net/exampleContainerName/exampleFileName.txt?sp=r&st=2025-05-16T03:54:40Z&se=2025-05-16T11:54:40Z&spr=https&sv=2024-11-04&sr=b&sig={exampleSasToken}"
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsResolverDomainListBulk
+Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IDnsResolverDomainListBulk
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsResolverDomainList
+Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IDnsResolverDomainList
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -2320,7 +2320,7 @@ INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VirtualNetworkLinkName <String>]: The name of the virtual network link.
-  [VirtualNetworkName <String>]: The name of the virtual network.
+  [VirtualNetworkName <String>]: The name of the VirtualNetwork
 
 PARAMETER <IDnsResolverDomainListBulk>: Describes a DNS resolver domain list for bulk UPLOAD or DOWNLOAD operations.
   Action <Action>: The action to take in the request, Upload or Download.
@@ -2329,7 +2329,7 @@ PARAMETER <IDnsResolverDomainListBulk>: Describes a DNS resolver domain list for
 https://learn.microsoft.com/powershell/module/az.dnsresolver/invoke-azdnsresolverbulkdnsresolverdomainlist
 #>
 function Invoke-AzDnsResolverBulkDnsResolverDomainList {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsResolverDomainList])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IDnsResolverDomainList])]
 [CmdletBinding(DefaultParameterSetName='BulkExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Bulk', Mandatory)]
@@ -2382,7 +2382,7 @@ param(
     [Parameter(ParameterSetName='Bulk', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='BulkViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsResolverDomainListBulk]
+    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IDnsResolverDomainListBulk]
     # Describes a DNS resolver domain list for bulk UPLOAD or DOWNLOAD operations.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -2566,7 +2566,7 @@ $targetIPConfig = New-AzDnsResolverIPConfigurationObject -PrivateIPAddress 10.0.
 New-AzDnsForwardingRulesetForwardingRule -DnsForwardingRulesetName dnsForwardingRuleset -Name sampleForwardingRule -ResourceGroupName sampleRG -TargetDnsServer $targetIPConfig -Metadata @{"key0" = "value0"}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IForwardingRule
+Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IForwardingRule
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -2579,7 +2579,7 @@ TARGETDNSSERVER <ITargetDnsServer[]>: DNS servers to forward the DNS query to.
 https://learn.microsoft.com/powershell/module/az.dnsresolver/new-azdnsforwardingrulesetforwardingrule
 #>
 function New-AzDnsForwardingRulesetForwardingRule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IForwardingRule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IForwardingRule])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -2634,7 +2634,7 @@ param(
     [Parameter(Mandatory)]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.ITargetDnsServer[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.ITargetDnsServer[]]
     # DNS servers to forward the DNS query to.
     # To construct, see NOTES section for TARGETDNSSERVER properties and create a hash table.
     ${TargetDnsServer},
@@ -2648,7 +2648,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IForwardingRulePropertiesMetadata]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IForwardingRulePropertiesMetadata]))]
     [System.Collections.Hashtable]
     # Metadata attached to the forwarding rule.
     ${Metadata},
@@ -2800,12 +2800,12 @@ New-AzDnsForwardingRulesetVirtualNetworkLink -DnsForwardingRulesetName dnsForwar
 New-AzDnsForwardingRulesetVirtualNetworkLink -DnsForwardingRulesetName dnsForwardingRuleset -Name sampleVnetLink -ResourceGroupName sampleRG -VirtualNetworkId "/subscriptions/ea40042d-63d8-4d02-9261-fb31450e6c64/resourceGroups/sampleRG/providers/Microsoft.Network/virtualNetworks/vnet-hub" -Metadata @{"key0" = "value0"}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IVirtualNetworkLink
+Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IVirtualNetworkLink
 .Link
 https://learn.microsoft.com/powershell/module/az.dnsresolver/new-azdnsforwardingrulesetvirtualnetworklink
 #>
 function New-AzDnsForwardingRulesetVirtualNetworkLink {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IVirtualNetworkLink])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IVirtualNetworkLink])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -2859,7 +2859,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IVirtualNetworkLinkPropertiesMetadata]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IVirtualNetworkLinkPropertiesMetadata]))]
     [System.Collections.Hashtable]
     # Metadata attached to the virtual network link.
     ${Metadata},
@@ -3025,7 +3025,7 @@ New-AzDnsResolverOutboundEndpoint -DnsResolverName sampleResolver -Name sampleOu
 New-AzDnsForwardingRuleset -Name dnsForwardingRuleset -ResourceGroupName sampleRG -Location westus2 -DnsResolverOutboundEndpoint  @{id = "/subscriptions/ea40042d-63d8-4d02-9261-fb31450e6c64/resourceGroups/sampleRG/providers/Microsoft.Network/dnsResolvers/sampleResolver/outboundEndpoints/sampleOutboundEndpoint";} -Tag @{"key0" = "value0"}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsForwardingRuleset
+Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IDnsForwardingRuleset
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -3037,7 +3037,7 @@ DNSRESOLVEROUTBOUNDENDPOINT <ISubResource[]>: The reference to the DNS resolver 
 https://learn.microsoft.com/powershell/module/az.dnsresolver/new-azdnsforwardingruleset
 #>
 function New-AzDnsForwardingRuleset {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsForwardingRuleset])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IDnsForwardingRuleset])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -3080,7 +3080,7 @@ param(
     [Parameter(Mandatory)]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.ISubResource[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.ISubResource[]]
     # The reference to the DNS resolver outbound endpoints that are used to route DNS queries matching the forwarding rules in the ruleset to the target DNS servers.
     # To construct, see NOTES section for DNSRESOLVEROUTBOUNDENDPOINT properties and create a hash table.
     ${DnsResolverOutboundEndpoint},
@@ -3093,7 +3093,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api50.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api60.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -3257,12 +3257,12 @@ New-AzDnsResolverDomainList -Name sampleResolverDomainList -ResourceGroupName po
 New-AzDnsResolverDomainList -Name sampleResolverDomainList -ResourceGroupName powershell-test-rg -Location westus2 -Domain @("contoso.com.", "example.com.") -Tag @{"key0" = "value0"}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsResolverDomainList
+Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IDnsResolverDomainList
 .Link
 https://learn.microsoft.com/powershell/module/az.dnsresolver/new-azdnsresolverdomainlist
 #>
 function New-AzDnsResolverDomainList {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsResolverDomainList])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IDnsResolverDomainList])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -3318,7 +3318,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api50.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api60.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -3484,7 +3484,7 @@ New-AzDnsResolverInboundEndpoint -DnsResolverName pstestdnsresolvername -Name sa
 New-AzDnsResolverInboundEndpoint -DnsResolverName pstestdnsresolvername -Name sampleInboundEndpoint1 -ResourceGroupName powershell-test-rg -IPConfiguration $ipConfiguration -Tag @{"key0" = "value0"}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IInboundEndpoint
+Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IInboundEndpoint
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -3498,7 +3498,7 @@ IPCONFIGURATION <IIPConfiguration[]>: IP configurations for the inbound endpoint
 https://learn.microsoft.com/powershell/module/az.dnsresolver/new-azdnsresolverinboundendpoint
 #>
 function New-AzDnsResolverInboundEndpoint {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IInboundEndpoint])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IInboundEndpoint])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -3547,7 +3547,7 @@ param(
     [Parameter(Mandatory)]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IIPConfiguration[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IIPConfiguration[]]
     # IP configurations for the inbound endpoint.
     # To construct, see NOTES section for IPCONFIGURATION properties and create a hash table.
     ${IPConfiguration},
@@ -3560,7 +3560,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api50.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api60.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -3724,12 +3724,12 @@ New-AzDnsResolverOutboundEndpoint -DnsResolverName sampleResolver -Name sampleOu
 New-AzDnsResolverOutboundEndpoint -DnsResolverName sampleResolver -Name sampleOutboundEndpoint -ResourceGroupName powershell-test-rg -SubscriptionId ea40042d-63d8-4d02-9261-fb31450e6c67 -SubnetId "/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-08b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname16y71mjc/subnets/test-subnet" -Location westus2 -Tag @{"key0" = "value0"}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IOutboundEndpoint
+Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IOutboundEndpoint
 .Link
 https://learn.microsoft.com/powershell/module/az.dnsresolver/new-azdnsresolveroutboundendpoint
 #>
 function New-AzDnsResolverOutboundEndpoint {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IOutboundEndpoint])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IOutboundEndpoint])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -3789,7 +3789,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api50.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api60.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -3952,9 +3952,11 @@ New-AzDnsResolverPolicyDnsSecurityRule -Name sampleSecurityRule -ResourceGroupNa
 
 .Example
 New-AzDnsResolverPolicyDnsSecurityRule -Name sampleSecurityRule -ResourceGroupName powershell-test-rg -DnsResolverPolicyName samplePolicyName -Location westus2 -DnsSecurityRuleState "Enabled" -ActionType "Block" -Priority 100 -DnsResolverDomainList @{id = "/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/dnsResolverDomainLists/exampleDomainListName";} -Tag @{"key0" = "value0"}
+.Example
+New-AzDnsResolverPolicyDnsSecurityRule -Name sampleSecurityRule -ResourceGroupName powershell-test-rg -DnsResolverPolicyName samplePolicyName -Location westus2 -DnsSecurityRuleState "Enabled" -ActionType "Block" -Priority 100 -ManagedDomainList @("AzureDnsThreatIntel")
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsSecurityRule
+Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IDnsSecurityRule
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -3966,7 +3968,7 @@ DNSRESOLVERDOMAINLIST <ISubResource[]>: DNS resolver policy domains lists that t
 https://learn.microsoft.com/powershell/module/az.dnsresolver/new-azdnsresolverpolicydnssecurityrule
 #>
 function New-AzDnsResolverPolicyDnsSecurityRule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsSecurityRule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IDnsSecurityRule])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -4013,14 +4015,6 @@ param(
     ${IfNoneMatch},
 
     [Parameter(Mandatory)]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.ISubResource[]]
-    # DNS resolver policy domains lists that the DNS security rule applies to.
-    # To construct, see NOTES section for DNSRESOLVERDOMAINLIST properties and create a hash table.
-    ${DnsResolverDomainList},
-
-    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Category('Body')]
     [System.String]
     # The geo-location where the resource lives
@@ -4040,6 +4034,14 @@ param(
     ${ActionType},
 
     [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.ISubResource[]]
+    # DNS resolver policy domains lists that the DNS security rule applies to.
+    # To construct, see NOTES section for DNSRESOLVERDOMAINLIST properties and create a hash table.
+    ${DnsResolverDomainList},
+
+    [Parameter()]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Support.DnsSecurityRuleState])]
     [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Support.DnsSecurityRuleState]
@@ -4047,8 +4049,16 @@ param(
     ${DnsSecurityRuleState},
 
     [Parameter()]
+    [AllowEmptyCollection()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Support.ManagedDomainList])]
     [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api50.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Support.ManagedDomainList[]]
+    # Managed domain lists that the DNS security rule applies to.
+    ${ManagedDomainList},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api60.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -4212,12 +4222,12 @@ New-AzDnsResolverPolicyVirtualNetworkLink  -Name sampleResolverPolicyLink -Resou
 New-AzDnsResolverPolicyVirtualNetworkLink  -Name sampleResolverPolicyLink -ResourceGroupName powershell-test-rg -DnsResolverPolicyName samplePolicyName -VirtualNetworkId /subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname16y71mjc -Location westus2 -Tag @{"key0" = "value0"}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsResolverPolicyVirtualNetworkLink
+Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IDnsResolverPolicyVirtualNetworkLink
 .Link
 https://learn.microsoft.com/powershell/module/az.dnsresolver/new-azdnsresolverpolicyvirtualnetworklink
 #>
 function New-AzDnsResolverPolicyVirtualNetworkLink {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsResolverPolicyVirtualNetworkLink])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IDnsResolverPolicyVirtualNetworkLink])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -4277,7 +4287,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api50.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api60.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -4441,12 +4451,12 @@ New-AzDnsResolverPolicy -Name sampleResolverPolicy -ResourceGroupName powershell
 New-AzDnsResolverPolicy -Name sampleResolverPolicy -ResourceGroupName powershell-test-rg -Location westus2 -Tag @{"key0" = "value0"}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsResolverPolicy
+Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IDnsResolverPolicy
 .Link
 https://learn.microsoft.com/powershell/module/az.dnsresolver/new-azdnsresolverpolicy
 #>
 function New-AzDnsResolverPolicy {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsResolverPolicy])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IDnsResolverPolicy])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -4494,7 +4504,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api50.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api60.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -4658,12 +4668,12 @@ New-AzDnsResolver -Name sampleResolver -ResourceGroupName powershell-test-rg -Vi
 New-AzDnsResolver -Name sampleResolver -ResourceGroupName powershell-test-rg -VirtualNetworkId /subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname16y71mjc -Location westus2 -Tag @{"key0" = "value0"}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsResolver
+Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IDnsResolver
 .Link
 https://learn.microsoft.com/powershell/module/az.dnsresolver/new-azdnsresolver
 #>
 function New-AzDnsResolver {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsResolver])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IDnsResolver])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -4717,7 +4727,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api50.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api60.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -4907,7 +4917,7 @@ INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VirtualNetworkLinkName <String>]: The name of the virtual network link.
-  [VirtualNetworkName <String>]: The name of the virtual network.
+  [VirtualNetworkName <String>]: The name of the VirtualNetwork
 .Link
 https://learn.microsoft.com/powershell/module/az.dnsresolver/remove-azdnsforwardingrulesetforwardingrule
 #>
@@ -5137,7 +5147,7 @@ INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VirtualNetworkLinkName <String>]: The name of the virtual network link.
-  [VirtualNetworkName <String>]: The name of the virtual network.
+  [VirtualNetworkName <String>]: The name of the VirtualNetwork
 .Link
 https://learn.microsoft.com/powershell/module/az.dnsresolver/remove-azdnsforwardingrulesetvirtualnetworklink
 #>
@@ -5381,7 +5391,7 @@ INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VirtualNetworkLinkName <String>]: The name of the virtual network link.
-  [VirtualNetworkName <String>]: The name of the virtual network.
+  [VirtualNetworkName <String>]: The name of the VirtualNetwork
 .Link
 https://learn.microsoft.com/powershell/module/az.dnsresolver/remove-azdnsforwardingruleset
 #>
@@ -5617,7 +5627,7 @@ INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VirtualNetworkLinkName <String>]: The name of the virtual network link.
-  [VirtualNetworkName <String>]: The name of the virtual network.
+  [VirtualNetworkName <String>]: The name of the VirtualNetwork
 .Link
 https://learn.microsoft.com/powershell/module/az.dnsresolver/remove-azdnsresolverdomainlist
 #>
@@ -5854,7 +5864,7 @@ INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VirtualNetworkLinkName <String>]: The name of the virtual network link.
-  [VirtualNetworkName <String>]: The name of the virtual network.
+  [VirtualNetworkName <String>]: The name of the VirtualNetwork
 .Link
 https://learn.microsoft.com/powershell/module/az.dnsresolver/remove-azdnsresolverinboundendpoint
 #>
@@ -6096,7 +6106,7 @@ INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VirtualNetworkLinkName <String>]: The name of the virtual network link.
-  [VirtualNetworkName <String>]: The name of the virtual network.
+  [VirtualNetworkName <String>]: The name of the VirtualNetwork
 .Link
 https://learn.microsoft.com/powershell/module/az.dnsresolver/remove-azdnsresolveroutboundendpoint
 #>
@@ -6338,7 +6348,7 @@ INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VirtualNetworkLinkName <String>]: The name of the virtual network link.
-  [VirtualNetworkName <String>]: The name of the virtual network.
+  [VirtualNetworkName <String>]: The name of the VirtualNetwork
 .Link
 https://learn.microsoft.com/powershell/module/az.dnsresolver/remove-azdnsresolverpolicydnssecurityrule
 #>
@@ -6580,7 +6590,7 @@ INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VirtualNetworkLinkName <String>]: The name of the virtual network link.
-  [VirtualNetworkName <String>]: The name of the virtual network.
+  [VirtualNetworkName <String>]: The name of the VirtualNetwork
 .Link
 https://learn.microsoft.com/powershell/module/az.dnsresolver/remove-azdnsresolverpolicyvirtualnetworklink
 #>
@@ -6822,7 +6832,7 @@ INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VirtualNetworkLinkName <String>]: The name of the virtual network link.
-  [VirtualNetworkName <String>]: The name of the virtual network.
+  [VirtualNetworkName <String>]: The name of the VirtualNetwork
 .Link
 https://learn.microsoft.com/powershell/module/az.dnsresolver/remove-azdnsresolverpolicy
 #>
@@ -7058,7 +7068,7 @@ INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VirtualNetworkLinkName <String>]: The name of the virtual network link.
-  [VirtualNetworkName <String>]: The name of the virtual network.
+  [VirtualNetworkName <String>]: The name of the VirtualNetwork
 .Link
 https://learn.microsoft.com/powershell/module/az.dnsresolver/remove-azdnsresolver
 #>
@@ -7272,7 +7282,7 @@ Update-AzDnsForwardingRulesetForwardingRule -InputObject $inputObject  -Metadata
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IForwardingRule
+Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IForwardingRule
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -7292,7 +7302,7 @@ INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VirtualNetworkLinkName <String>]: The name of the virtual network link.
-  [VirtualNetworkName <String>]: The name of the virtual network.
+  [VirtualNetworkName <String>]: The name of the VirtualNetwork
 
 TARGETDNSSERVER <ITargetDnsServer[]>: DNS servers to forward the DNS query to.
   IPAddress <String>: DNS server IP address.
@@ -7301,7 +7311,7 @@ TARGETDNSSERVER <ITargetDnsServer[]>: DNS servers to forward the DNS query to.
 https://learn.microsoft.com/powershell/module/az.dnsresolver/update-azdnsforwardingrulesetforwardingrule
 #>
 function Update-AzDnsForwardingRulesetForwardingRule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IForwardingRule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IForwardingRule])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -7356,7 +7366,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IForwardingRulePatchPropertiesMetadata]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IForwardingRulePatchPropertiesMetadata]))]
     [System.Collections.Hashtable]
     # Metadata attached to the forwarding rule.
     ${Metadata},
@@ -7364,7 +7374,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.ITargetDnsServer[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.ITargetDnsServer[]]
     # DNS servers to forward the DNS query to.
     # To construct, see NOTES section for TARGETDNSSERVER properties and create a hash table.
     ${TargetDnsServer},
@@ -7520,7 +7530,7 @@ Update-AzDnsForwardingRulesetVirtualNetworkLink -InputObject $inputObject -Metad
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IVirtualNetworkLink
+Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IVirtualNetworkLink
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -7540,12 +7550,12 @@ INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VirtualNetworkLinkName <String>]: The name of the virtual network link.
-  [VirtualNetworkName <String>]: The name of the virtual network.
+  [VirtualNetworkName <String>]: The name of the VirtualNetwork
 .Link
 https://learn.microsoft.com/powershell/module/az.dnsresolver/update-azdnsforwardingrulesetvirtualnetworklink
 #>
 function Update-AzDnsForwardingRulesetVirtualNetworkLink {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IVirtualNetworkLink])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IVirtualNetworkLink])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -7593,7 +7603,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IVirtualNetworkLinkPatchPropertiesMetadata]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IVirtualNetworkLinkPatchPropertiesMetadata]))]
     [System.Collections.Hashtable]
     # Metadata attached to the virtual network link.
     ${Metadata},
@@ -7761,7 +7771,7 @@ Update-AzDnsForwardingRuleset -InputObject $inputObject -Tag @{"key0" = "value0"
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsForwardingRuleset
+Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IDnsForwardingRuleset
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -7784,12 +7794,12 @@ INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VirtualNetworkLinkName <String>]: The name of the virtual network link.
-  [VirtualNetworkName <String>]: The name of the virtual network.
+  [VirtualNetworkName <String>]: The name of the VirtualNetwork
 .Link
 https://learn.microsoft.com/powershell/module/az.dnsresolver/update-azdnsforwardingruleset
 #>
 function Update-AzDnsForwardingRuleset {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsForwardingRuleset])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IDnsForwardingRuleset])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -7832,14 +7842,14 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.ISubResource[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.ISubResource[]]
     # The reference to the DNS resolver outbound endpoints that are used to route DNS queries matching the forwarding rules in the ruleset to the target DNS servers.
     # To construct, see NOTES section for DNSRESOLVEROUTBOUNDENDPOINT properties and create a hash table.
     ${DnsResolverOutboundEndpoint},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsForwardingRulesetPatchTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IDnsForwardingRulesetPatchTags]))]
     [System.Collections.Hashtable]
     # Tags for DNS Resolver.
     ${Tag},
@@ -8007,7 +8017,7 @@ Update-AzDnsResolverDomainList -InputObject $dnsResolverDomainListObject  -Tag @
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsResolverDomainList
+Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IDnsResolverDomainList
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -8027,12 +8037,12 @@ INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VirtualNetworkLinkName <String>]: The name of the virtual network link.
-  [VirtualNetworkName <String>]: The name of the virtual network.
+  [VirtualNetworkName <String>]: The name of the VirtualNetwork
 .Link
 https://learn.microsoft.com/powershell/module/az.dnsresolver/update-azdnsresolverdomainlist
 #>
 function Update-AzDnsResolverDomainList {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsResolverDomainList])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IDnsResolverDomainList])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -8081,7 +8091,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsResolverDomainListPatchTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IDnsResolverDomainListPatchTags]))]
     [System.Collections.Hashtable]
     # Tags for DNS resolver domain list.
     ${Tag},
@@ -8249,7 +8259,7 @@ Update-AzDnsResolverInboundEndpoint -InputObject $inputobject -Tag @{"value0" = 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IInboundEndpoint
+Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IInboundEndpoint
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -8269,12 +8279,12 @@ INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VirtualNetworkLinkName <String>]: The name of the virtual network link.
-  [VirtualNetworkName <String>]: The name of the virtual network.
+  [VirtualNetworkName <String>]: The name of the VirtualNetwork
 .Link
 https://learn.microsoft.com/powershell/module/az.dnsresolver/update-azdnsresolverinboundendpoint
 #>
 function Update-AzDnsResolverInboundEndpoint {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IInboundEndpoint])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IInboundEndpoint])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -8322,7 +8332,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IInboundEndpointPatchTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IInboundEndpointPatchTags]))]
     [System.Collections.Hashtable]
     # Tags for inbound endpoint.
     ${Tag},
@@ -8490,7 +8500,7 @@ Update-AzDnsResolverOutboundEndpoint -InputObject $inputObject -Tag @{"value0" =
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IOutboundEndpoint
+Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IOutboundEndpoint
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -8510,12 +8520,12 @@ INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VirtualNetworkLinkName <String>]: The name of the virtual network link.
-  [VirtualNetworkName <String>]: The name of the virtual network.
+  [VirtualNetworkName <String>]: The name of the VirtualNetwork
 .Link
 https://learn.microsoft.com/powershell/module/az.dnsresolver/update-azdnsresolveroutboundendpoint
 #>
 function Update-AzDnsResolverOutboundEndpoint {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IOutboundEndpoint])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IOutboundEndpoint])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -8563,7 +8573,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IOutboundEndpointPatchTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IOutboundEndpointPatchTags]))]
     [System.Collections.Hashtable]
     # Tags for outbound endpoint.
     ${Tag},
@@ -8731,7 +8741,7 @@ Update-AzDnsResolverPolicyDnsSecurityRule -InputObject $dnsSecurityRuleObject  -
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsSecurityRule
+Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IDnsSecurityRule
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -8754,12 +8764,12 @@ INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VirtualNetworkLinkName <String>]: The name of the virtual network link.
-  [VirtualNetworkName <String>]: The name of the virtual network.
+  [VirtualNetworkName <String>]: The name of the VirtualNetwork
 .Link
 https://learn.microsoft.com/powershell/module/az.dnsresolver/update-azdnsresolverpolicydnssecurityrule
 #>
 function Update-AzDnsResolverPolicyDnsSecurityRule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsSecurityRule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IDnsSecurityRule])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -8815,7 +8825,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.ISubResource[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.ISubResource[]]
     # DNS resolver policy domains lists that the DNS security rule applies to.
     # To construct, see NOTES section for DNSRESOLVERDOMAINLIST properties and create a hash table.
     ${DnsResolverDomainList},
@@ -8828,6 +8838,14 @@ param(
     ${DnsSecurityRuleState},
 
     [Parameter()]
+    [AllowEmptyCollection()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Support.ManagedDomainList])]
+    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Support.ManagedDomainList[]]
+    # Managed domain lists that the DNS security rule applies to.
+    ${ManagedDomainList},
+
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Category('Body')]
     [System.Int32]
     # The priority of the DNS security rule.
@@ -8835,7 +8853,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsSecurityRulePatchTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IDnsSecurityRulePatchTags]))]
     [System.Collections.Hashtable]
     # Tags for DNS security rule.
     ${Tag},
@@ -9003,7 +9021,7 @@ Update-AzDnsResolverPolicyVirtualNetworkLink  -InputObject $dnsResolverPolicyLin
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsResolverPolicyVirtualNetworkLink
+Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IDnsResolverPolicyVirtualNetworkLink
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -9023,12 +9041,12 @@ INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VirtualNetworkLinkName <String>]: The name of the virtual network link.
-  [VirtualNetworkName <String>]: The name of the virtual network.
+  [VirtualNetworkName <String>]: The name of the VirtualNetwork
 .Link
 https://learn.microsoft.com/powershell/module/az.dnsresolver/update-azdnsresolverpolicyvirtualnetworklink
 #>
 function Update-AzDnsResolverPolicyVirtualNetworkLink {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsResolverPolicyVirtualNetworkLink])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IDnsResolverPolicyVirtualNetworkLink])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -9076,7 +9094,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsResolverPolicyVirtualNetworkLinkPatchTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IDnsResolverPolicyVirtualNetworkLinkPatchTags]))]
     [System.Collections.Hashtable]
     # Tags for the DNS resolver policy virtual network link.
     ${Tag},
@@ -9244,7 +9262,7 @@ Update-AzDnsResolverPolicy -InputObject $dnsResolverPolicyObject  -Tag @{}
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsResolverPolicy
+Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IDnsResolverPolicy
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -9264,12 +9282,12 @@ INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VirtualNetworkLinkName <String>]: The name of the virtual network link.
-  [VirtualNetworkName <String>]: The name of the virtual network.
+  [VirtualNetworkName <String>]: The name of the VirtualNetwork
 .Link
 https://learn.microsoft.com/powershell/module/az.dnsresolver/update-azdnsresolverpolicy
 #>
 function Update-AzDnsResolverPolicy {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsResolverPolicy])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IDnsResolverPolicy])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -9311,7 +9329,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsResolverPolicyPatchTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IDnsResolverPolicyPatchTags]))]
     [System.Collections.Hashtable]
     # Tags for DNS resolver policy.
     ${Tag},
@@ -9479,7 +9497,7 @@ Update-AzDnsResolver -InputObject $dnsResolverObject  -Tag @{}
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsResolver
+Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IDnsResolver
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -9499,12 +9517,12 @@ INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VirtualNetworkLinkName <String>]: The name of the virtual network link.
-  [VirtualNetworkName <String>]: The name of the virtual network.
+  [VirtualNetworkName <String>]: The name of the VirtualNetwork
 .Link
 https://learn.microsoft.com/powershell/module/az.dnsresolver/update-azdnsresolver
 #>
 function Update-AzDnsResolver {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsResolver])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IDnsResolver])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -9546,7 +9564,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsResolverPatchTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IDnsResolverPatchTags]))]
     [System.Collections.Hashtable]
     # Tags for DNS Resolver.
     ${Tag},
@@ -9709,12 +9727,12 @@ Create a in-memory object for IPConfiguration
 New-AzDnsResolverIPConfigurationObject -PrivateIPAddress 1.1.2.12 -PrivateIPAllocationMethod Dynamic -SubnetId /subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname44yqt9mb/subnets/pssubnetname44c6v0lr
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IPConfiguration
+Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IPConfiguration
 .Link
 https://learn.microsoft.com/powershell/module/az.dnsresolver/new-azdnsresolveripconfigurationobject
 #>
 function New-AzDnsResolverIPConfigurationObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IPConfiguration])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IPConfiguration])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -9823,12 +9841,12 @@ Create a in-memory object for Target DNS server
 New-AzDnsResolverIPConfigurationObject -PrivateIPAddress 10.0.0.3 -PrivateIPAllocationMethod Dynamic -SubnetId /subscriptions/ea40042d-63d8-4d02-9261-fb31450e6c67/resourceGroups/sampleRG/providers/Microsoft.Network/virtualNetworks/vnet-hub/subnets/test-subnet
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.TargetDnsServer
+Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.TargetDnsServer
 .Link
 https://learn.microsoft.com/powershell/module/az.dnsresolver/new-azdnsresolvertargetdnsserverobject
 #>
 function New-AzDnsResolverTargetDnsServerObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.TargetDnsServer])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.TargetDnsServer])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]

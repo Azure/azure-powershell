@@ -29,7 +29,7 @@ Get-AzDnsResolverDomainList -ResourceGroupName powershell-test-rg -Name psdnsres
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsResolverDomainList
+Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IDnsResolverDomainList
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -49,13 +49,13 @@ INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VirtualNetworkLinkName <String>]: The name of the virtual network link.
-  [VirtualNetworkName <String>]: The name of the virtual network.
+  [VirtualNetworkName <String>]: The name of the VirtualNetwork
 .Link
 https://learn.microsoft.com/powershell/module/az.dnsresolver/get-azdnsresolverdomainlist
 #>
 function Get-AzDnsResolverDomainList {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsResolverDomainList])]
-[CmdletBinding(DefaultParameterSetName='List1', PositionalBinding=$false)]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IDnsResolverDomainList])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
     [Alias('DnsResolverDomainListName')]
@@ -65,7 +65,7 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
-    [Parameter(ParameterSetName='List', Mandatory)]
+    [Parameter(ParameterSetName='List1', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Category('Path')]
     [System.String]
     # The name of the resource group.

@@ -110,7 +110,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models
         /// <summary>Backing field for <see cref="VirtualNetworkName" /> property.</summary>
         private string _virtualNetworkName;
 
-        /// <summary>The name of the virtual network.</summary>
+        /// <summary>The name of the VirtualNetwork</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Origin(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.PropertyOrigin.Owned)]
         public string VirtualNetworkName { get => this._virtualNetworkName; set => this._virtualNetworkName = value; }
 
@@ -229,11 +229,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models
         SerializedName = @"virtualNetworkLinkName",
         PossibleTypes = new [] { typeof(string) })]
         string VirtualNetworkLinkName { get; set; }
-        /// <summary>The name of the virtual network.</summary>
+        /// <summary>The name of the VirtualNetwork</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The name of the virtual network.",
+        Description = @"The name of the VirtualNetwork",
         SerializedName = @"virtualNetworkName",
         PossibleTypes = new [] { typeof(string) })]
         string VirtualNetworkName { get; set; }
@@ -270,7 +270,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models
         string SubscriptionId { get; set; }
         /// <summary>The name of the virtual network link.</summary>
         string VirtualNetworkLinkName { get; set; }
-        /// <summary>The name of the virtual network.</summary>
+        /// <summary>The name of the VirtualNetwork</summary>
         string VirtualNetworkName { get; set; }
 
     }

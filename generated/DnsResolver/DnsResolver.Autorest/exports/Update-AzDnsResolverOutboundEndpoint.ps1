@@ -28,7 +28,7 @@ Update-AzDnsResolverOutboundEndpoint -InputObject $inputObject -Tag @{"value0" =
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IOutboundEndpoint
+Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IOutboundEndpoint
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -48,12 +48,12 @@ INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VirtualNetworkLinkName <String>]: The name of the virtual network link.
-  [VirtualNetworkName <String>]: The name of the virtual network.
+  [VirtualNetworkName <String>]: The name of the VirtualNetwork
 .Link
 https://learn.microsoft.com/powershell/module/az.dnsresolver/update-azdnsresolveroutboundendpoint
 #>
 function Update-AzDnsResolverOutboundEndpoint {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IOutboundEndpoint])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IOutboundEndpoint])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -101,7 +101,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IOutboundEndpointPatchTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IOutboundEndpointPatchTags]))]
     [System.Collections.Hashtable]
     # Tags for outbound endpoint.
     ${Tag},

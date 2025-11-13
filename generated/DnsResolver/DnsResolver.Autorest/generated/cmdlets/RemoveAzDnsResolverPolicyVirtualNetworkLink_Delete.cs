@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Description(@"Deletes a DNS resolver policy virtual network link. WARNING: This operation cannot be undone.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverPolicies/{dnsResolverPolicyName}/virtualNetworkLinks/{dnsResolverPolicyVirtualNetworkLinkName}", ApiVersion = "2025-05-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverPolicies/{dnsResolverPolicyName}/virtualNetworkLinks/{dnsResolverPolicyVirtualNetworkLinkName}", ApiVersion = "2025-10-01-preview")]
     public partial class RemoveAzDnsResolverPolicyVirtualNetworkLink_Delete : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener
     {
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Cmdlets
         Required = false,
         ReadOnly = false,
         Description = @"ETag of the resource. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting any concurrent changes.",
-        SerializedName = @"If-Match",
+        SerializedName = @"if-match",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.ParameterCategory.Header)]
         public string IfMatch { get => this._ifMatch; set => this._ifMatch = value; }
@@ -203,12 +203,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Cmdlets
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api50.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api50.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api60.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api60.IErrorResponse</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api50.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api60.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnNoContent</c> will be called before the regular onNoContent has been processed, allowing customization of
@@ -481,12 +481,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api50.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api50.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api60.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api60.IErrorResponse</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api50.IErrorResponse> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api60.IErrorResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -503,7 +503,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api50.IErrorResponse>(responseMessage, await response);
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api60.IErrorResponse>(responseMessage, await response);
                     WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, DnsResolverPolicyName=DnsResolverPolicyName, Name=Name, IfMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }

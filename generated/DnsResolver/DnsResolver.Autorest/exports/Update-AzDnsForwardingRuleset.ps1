@@ -28,7 +28,7 @@ Update-AzDnsForwardingRuleset -InputObject $inputObject -Tag @{"key0" = "value0"
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsForwardingRuleset
+Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IDnsForwardingRuleset
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -51,12 +51,12 @@ INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VirtualNetworkLinkName <String>]: The name of the virtual network link.
-  [VirtualNetworkName <String>]: The name of the virtual network.
+  [VirtualNetworkName <String>]: The name of the VirtualNetwork
 .Link
 https://learn.microsoft.com/powershell/module/az.dnsresolver/update-azdnsforwardingruleset
 #>
 function Update-AzDnsForwardingRuleset {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsForwardingRuleset])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IDnsForwardingRuleset])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -99,14 +99,14 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.ISubResource[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.ISubResource[]]
     # The reference to the DNS resolver outbound endpoints that are used to route DNS queries matching the forwarding rules in the ruleset to the target DNS servers.
     # To construct, see NOTES section for DNSRESOLVEROUTBOUNDENDPOINT properties and create a hash table.
     ${DnsResolverOutboundEndpoint},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsForwardingRulesetPatchTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IDnsForwardingRulesetPatchTags]))]
     [System.Collections.Hashtable]
     # Tags for DNS Resolver.
     ${Tag},

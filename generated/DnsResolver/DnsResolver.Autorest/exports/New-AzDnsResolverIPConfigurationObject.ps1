@@ -23,12 +23,12 @@ Create a in-memory object for IPConfiguration
 New-AzDnsResolverIPConfigurationObject -PrivateIPAddress 1.1.2.12 -PrivateIPAllocationMethod Dynamic -SubnetId /subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname44yqt9mb/subnets/pssubnetname44c6v0lr
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IPConfiguration
+Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IPConfiguration
 .Link
 https://learn.microsoft.com/powershell/module/az.dnsresolver/new-azdnsresolveripconfigurationobject
 #>
 function New-AzDnsResolverIPConfigurationObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IPConfiguration])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IPConfiguration])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
