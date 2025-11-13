@@ -25,20 +25,71 @@ Describe 'New-AzFunctionApp - Flex Consumption' {
         $env:FunctionsUseFlexStackTestData = $true
 
         # Set Flex Consumption test variables
-        # $flexTestRunId = 111125
-        # $flexLocation = 'East Asia'
-        # $flexResourceGroupName = "Functions-Flex-RG-" + $flexTestRunId        
-
-        # # Create resource group and storage accounts for Flex Consumption tests
-        # Write-Verbose "Creating resource group: $flexResourceGroupName in location: $flexLocation" -Verbose
-        # New-AzResourceGroup -Name $flexResourceGroupName -Location $flexLocation | Out-Null
-
         $flexTestRunId = $env.flexTestRunId
         $flexLocation = $env.flexLocation
         $flexResourceGroupName = $env.flexResourceGroupName
         $flexIdentityInfo = $env.flexIdentityInfo
 
         # Helper function to validate core Flex Consumption properties
+        function Get-AppPackageContainerName {
+            param(
+                # The source name used to derive the container name (e.g., function app name)
+                [Parameter(Mandatory)]
+                [string]$Name,
+
+                # Optional prefix to use before normalized name and suffix
+                [string]$Prefix = 'app-package',
+
+                # Maximum length for the normalized core (alphanumeric only, before casing and prefix/suffix)
+                [int]$MaxCoreLength = 32
+            )
+
+            # Remove non-alphanumeric characters
+            $tempName = $Name -replace '[^a-zA-Z0-9]', ''
+
+            # Truncate to the allowed max length and lowercase
+            $normalizedName = $tempName.Substring(0, [Math]::Min($MaxCoreLength, $tempName.Length))
+            $normalizedName = $normalizedName.ToLower()
+
+            # Determine suffix: deterministic when FunctionsTestMode is set (truthy), random otherwise
+            if ($env:FunctionsTestMode) {
+                $randomSuffix = 0
+            }
+            else {
+                # Get-Random upper bound is exclusive; 9,999,999 yields range [0..9,999,998]
+                # Your original code used -Maximum 9999999, which keeps the 7-digit padding contract.
+                $randomSuffix = Get-Random -Minimum 0 -Maximum 9999999
+            }
+
+            $conainerName = "app-package-$normalizedName-{0:D7}" -f $randomSuffix
+            return $conainerName
+        }
+
+        function Get-FlexPlanName
+        {
+        param
+        (
+            [Parameter(Mandatory = $true)]
+            [ValidateNotNullOrEmpty()]
+            [string]$ResourceGroupName
+        )
+
+        if ($env:FunctionsTestMode -and $env:FunctionsUseFlexStackTestData)
+        {
+            $suffix = "-0000"
+        }
+        else
+        {
+            Write-Verbose "Test flags are not set. This will cause a failure in the test case in playback mode." -Verbose
+            # Get-Random upper bound is exclusive; 9999 yields range [0..9998]
+            $randomNumber = Get-Random -Minimum 0 -Maximum 9999
+            $suffix = "-{0:D4}" -f $randomNumber
+        }
+        $name = $ResourceGroupName -replace '[^a-zA-Z0-9]', ''
+        $prefix = "ASP-$name"
+        return $prefix.Substring(0, [Math]::Min(35, $prefix.Length)) + $suffix
+    }
+
         function Test-FlexConsumptionProperties {
             param(
                 [Parameter(Mandatory=$true)]
@@ -668,5 +719,129 @@ Describe 'New-AzFunctionApp - Flex Consumption' {
         # Verify no function app was actually created
         $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $flexResourceGroupName -ErrorAction SilentlyContinue
         $functionApp | Should -BeNull
+    }
+
+    It "Cleans up plan and container when Flex Consumption app creation fails (missing App Insights)" {
+
+        # Use the PowerShell test case as base
+        $baseTestCase = $flexConsumptionTestCases | Where-Object { $_.Runtime -eq "PowerShell" }
+
+        $appName = "Functions-Cleanup-Test-" + $flexTestRunId
+        $storageAccountName = $baseTestCase.StorageAccountName
+        $runtime = $baseTestCase.Runtime
+        $invalidAppInsightsName = "non-existent-app-insights-" + $flexTestRunId
+
+        Write-Verbose "Testing cleanup on failure with invalid Application Insights" -Verbose
+        Write-Verbose "Function app name: $appName" -Verbose
+        Write-Verbose "Storage account name: $storageAccountName" -Verbose
+        Write-Verbose "Invalid App Insights name: $invalidAppInsightsName" -Verbose
+
+        Write-Verbose "Getting storage account context for the container validation..." -Verbose
+        $storageAccount = Get-AzStorageAccount -ResourceGroupName $flexResourceGroupName -Name $storageAccountName
+        $storageContext = $storageAccount.Context
+
+        Write-Verbose "Capturing existing plans and containers before the test..." -Verbose
+        $plansBefore = Get-AzFunctionAppPlan -ResourceGroupName $flexResourceGroupName -ErrorAction SilentlyContinue
+        $containersBefore = Get-AzStorageContainer -Context $storageContext -ErrorAction SilentlyContinue
+
+        $planNamesBeforetest = @($plansBefore | ForEach-Object { $_.Name })
+        $containerNamesBefore = @($containersBefore | ForEach-Object { $_.Name })
+
+        Write-Verbose "Plans before test: $($planNamesBeforetest.Count)" -Verbose
+        Write-Verbose "Containers before test: $($containerNamesBefore.Count)" -Verbose
+
+        $errorId = "ApplicationInsightsProjectNotFound"
+        $expectedErrorMessage = "Failed to get application insights project name '$invalidAppInsightsName'. Please make sure the project exist."
+
+        $myError = $null
+        try {
+            Write-Verbose "Create the Flex Consumption function app..." -Verbose
+            New-AzFunctionApp -Name $appName `
+                                -ResourceGroupName $flexResourceGroupName `
+                                -StorageAccountName $storageAccountName `
+                                -Runtime $runtime `
+                                -FlexConsumptionLocation $flexLocation `
+                                -ApplicationInsightsName $invalidAppInsightsName `
+                                -ErrorAction Stop
+        }
+        catch {
+            Write-Verbose "Catch the expected exception" -Verbose
+            $myError = $_
+        }
+
+        Write-Verbose "Validate FullyQualifiedErrorId is $errorId" -Verbose
+        $myError.FullyQualifiedErrorId | Should Be $errorId
+
+        Write-Verbose "Validate Exception.Message is $expectedErrorMessage" -Verbose
+        $myError.Exception.Message | Should Match $expectedErrorMessage
+
+        Write-Verbose "Verifying no function app was created" -Verbose
+        $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $flexResourceGroupName -ErrorAction SilentlyContinue
+        $functionApp | Should -BeNull
+
+        Write-Verbose "Wait for the plan to be deleted by the backend..." -Verbose
+        Start-Sleep -Seconds 10
+
+        Write-Verbose "Verifying the Flex Consumption plan was cleaned up." -Verbose
+        $expectedPlanName = Get-FlexPlanName -ResourceGroupName $flexResourceGroupName
+        Write-Verbose "Expected Flex plan name: $expectedPlanName" -Verbose
+
+        $flexPlan = Get-AzFunctionAppPlan -ResourceGroupName $flexResourceGroupName -Name $expectedPlanName -ErrorAction SilentlyContinue
+        $flexPlan | Should -BeNull
+
+        Write-Verbose "Verifying the deployment container was cleaned up." -Verbose
+        $expectedContainerName = Get-AppPackageContainerName -Name $appName
+        Write-Verbose "Expected deployment container name: $expectedContainerName" -Verbose
+        $deploymentContainer = Get-AzStorageContainer -Context $storageContext -Name $expectedContainerName -ErrorAction SilentlyContinue
+        $deploymentContainer | Should -BeNull
+    }
+
+    It "Removes Flex Consumption app and deletes the plan automatically" {
+
+        # Use the PowerShell test case as base
+        $baseTestCase = $flexConsumptionTestCases | Where-Object { $_.Runtime -eq "PowerShell" }
+
+        $appName = "Functions-Remove-FlexPlan-" + $flexTestRunId
+        $storageAccountName = $baseTestCase.StorageAccountName
+        $runtime = $baseTestCase.Runtime
+
+        Write-Verbose "Testing automatic plan deletion when removing Flex Consumption app" -Verbose
+        Write-Verbose "Function app name: $appName" -Verbose
+        Write-Verbose "Storage account name: $storageAccountName" -Verbose
+        Write-Verbose "Runtime: $runtime" -Verbose
+
+        Write-Verbose "Create the Flex Consumption function app." -Verbose
+        New-AzFunctionApp -Name $appName `
+                          -ResourceGroupName $flexResourceGroupName `
+                          -StorageAccountName $storageAccountName `
+                          -Runtime $runtime `
+                          -FlexConsumptionLocation $flexLocation
+
+        Write-Verbose "Verify the function app was created." -Verbose
+        $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $flexResourceGroupName
+        $functionApp | Should -Not -BeNullOrEmpty
+
+        Write-Verbose "Get the plan name." -Verbose
+        $planName = $functionApp.AppServicePlan
+        Write-Verbose "App service plan name: $planName" -Verbose
+
+        Write-Verbose "Verify the plan exists and is Flex Consumption." -Verbose
+        $plan = Get-AzFunctionAppPlan -Name $planName -ResourceGroupName $flexResourceGroupName
+        $plan | Should -Not -BeNullOrEmpty
+        $plan.SkuTier | Should -Be "FlexConsumption"
+
+        Write-Verbose "Removing function app: $appName" -Verbose
+        Remove-AzFunctionApp -Name $appName -ResourceGroupName $flexResourceGroupName -Force
+
+        Write-Verbose "Verify the function app was deleted." -Verbose
+        $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $flexResourceGroupName -ErrorAction SilentlyContinue
+        $functionApp | Should -BeNull
+
+        Write-Verbose "Wait for the plan to be deleted by the backend." -Verbose
+        Start-Sleep -Seconds 10
+
+        Write-Verbose "Verifying that the Flex Consumption plan was deleted." -Verbose
+        $plan = Get-AzFunctionAppPlan -Name $planName -ResourceGroupName $flexResourceGroupName -ErrorAction SilentlyContinue
+        $plan | Should -BeNull
     }
 }
