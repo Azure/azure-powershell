@@ -4,7 +4,7 @@
 
 ```yaml
 # pin the swagger version by using the commit id instead of branch name
-commit: commitId
+commit: 38ff6d42ea00d97b4bbc7e109f66b3b7b8171517
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
