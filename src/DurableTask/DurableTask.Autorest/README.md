@@ -8,17 +8,17 @@ commit: commitId
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
-  - $(repo)/specification/xxx/resource-manager/readme.md
+  - $(repo)/specification/durabletask/resource-manager/readme.md
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 # - (this-folder)/relative-path-to-your-local-readme.md
 
 try-require: 
-  - $(repo)/specification/xxx/resource-manager/readme.powershell.md
+  - $(repo)/specification/durabletask/resource-manager/readme.powershell.md
 
 # For new RP, the version is 0.1.0
 module-version: 0.1.0
 # Normally, title is the service name
-title: Databricks
+title: DurableTask
 subject-prefix: $(service-name)
 
 
