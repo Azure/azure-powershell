@@ -8,6 +8,7 @@ schema: 2.0.0
 # Get-AzPaloAltoNetworksPaloAltoNetworksCloudngfwOperationProductSerialNumberStatus
 
 ## SYNOPSIS
+Get Product serial number status
 
 ## SYNTAX
 
@@ -18,6 +19,7 @@ Get-AzPaloAltoNetworksPaloAltoNetworksCloudngfwOperationProductSerialNumberStatu
 ```
 
 ## DESCRIPTION
+Get Product serial number status
 
 ## EXAMPLES
 
