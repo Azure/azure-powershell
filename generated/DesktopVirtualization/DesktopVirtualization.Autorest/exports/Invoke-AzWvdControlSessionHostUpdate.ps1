@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Control post of a hostpool.
+Control actions on a session host post
 .Description
-Control post of a hostpool.
+Control actions on a session host post
 .Example
 Invoke-AzWvdControlSessionHostUpdate -HostPoolName HostPoolName `
                             -ResourceGroupName resourceGroupName `
@@ -37,19 +37,19 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-HOSTPOOLUPDATECONTROLPARAMETER <IHostPoolUpdateControlParameter>: Represents properties for a hostpool update control request.
+HOSTPOOLUPDATECONTROLPARAMETER <IHostPoolUpdateControlParameter>: Object containing control action for hostpool update.
   Action <String>: Action types for controlling hostpool update.
   [CancelMessage <String>]: The cancel message sent to the user on the session host. This is can only be specified if the action is 'Cancel'.
 
 INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
-  [AppAttachPackageName <String>]: The name of the App Attach package arm object
+  [AppAttachPackageName <String>]: The name of the App Attach package
   [ApplicationGroupName <String>]: The name of the application group
   [ApplicationName <String>]: The name of the application within the specified application group
   [DesktopName <String>]: The name of the desktop within the specified desktop group
   [HostPoolName <String>]: The name of the host pool within the specified resource group
   [Id <String>]: Resource identity path
   [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
-  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
+  [PrivateEndpointConnectionName <String>]: The name parameter for private endpoint
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScalingPlanName <String>]: The name of the scaling plan.
   [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
@@ -105,7 +105,7 @@ param(
     [Parameter(ParameterSetName='PostViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolUpdateControlParameter]
-    # Represents properties for a hostpool update control request.
+    # Object containing control action for hostpool update.
     ${HostPoolUpdateControlParameter},
 
     [Parameter(ParameterSetName='PostExpanded', Mandatory)]

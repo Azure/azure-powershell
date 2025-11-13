@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Extensions;
 
-    /// <summary>Represents a SessionHostManagementPatch definition.</summary>
+    /// <summary>SessionHostManagement properties that can be patched.</summary>
     public partial class SessionHostManagementPatch :
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementPatch,
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementPatchInternal
@@ -31,17 +31,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementPatchProperties _property;
 
-        /// <summary>Detailed properties for SessionHostManagementPatch</summary>
+        /// <summary>Detailed properties for SessionHostManagement</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementPatchProperties Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SessionHostManagementPatchProperties()); set => this._property = value; }
 
         /// <summary>
-        /// Policy on whether a Canary VM should be provisioned during a session host provisioning operation.
+        /// Policy on whether a Canary VM(a single VM to validate the configuration) should be provisioned during a session host provisioning
+        /// operation.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
         public string ProvisioningCanaryPolicy { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementPatchPropertiesInternal)Property).ProvisioningCanaryPolicy; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementPatchPropertiesInternal)Property).ProvisioningCanaryPolicy = value ?? null; }
 
-        /// <summary>the number of session hosts to exist in the Host Pool.</summary>
+        /// <summary>The number of session hosts to exist in the Host Pool.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
         public int? ProvisioningInstanceCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementPatchPropertiesInternal)Property).ProvisioningInstanceCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementPatchPropertiesInternal)Property).ProvisioningInstanceCount = value ?? default(int); }
 
@@ -64,7 +65,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
         public int? UpdateLogOffDelayMinute { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementPatchPropertiesInternal)Property).UpdateLogOffDelayMinute; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementPatchPropertiesInternal)Property).UpdateLogOffDelayMinute = value ?? default(int); }
 
-        /// <summary>Log off message sent to user for logoff.</summary>
+        /// <summary>Log off message sent to user for logoff. Default value is an empty string.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
         public string UpdateLogOffMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementPatchPropertiesInternal)Property).UpdateLogOffMessage; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementPatchPropertiesInternal)Property).UpdateLogOffMessage = value ?? null; }
 
@@ -78,7 +79,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
 
         }
     }
-    /// Represents a SessionHostManagementPatch definition.
+    /// SessionHostManagement properties that can be patched.
     public partial interface ISessionHostManagementPatch :
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IJsonSerializable
     {
@@ -97,7 +98,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("KeepAll", "KeepOne", "KeepNone")]
         string FailedSessionHostCleanupPolicy { get; set; }
         /// <summary>
-        /// Policy on whether a Canary VM should be provisioned during a session host provisioning operation.
+        /// Policy on whether a Canary VM(a single VM to validate the configuration) should be provisioned during a session host provisioning
+        /// operation.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
@@ -105,19 +107,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Policy on whether a Canary VM should be provisioned during a session host provisioning operation.",
+        Description = @"Policy on whether a Canary VM(a single VM to validate the configuration) should be provisioned during a session host provisioning operation.",
         SerializedName = @"canaryPolicy",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Auto", "Never", "Always")]
         string ProvisioningCanaryPolicy { get; set; }
-        /// <summary>the number of session hosts to exist in the Host Pool.</summary>
+        /// <summary>The number of session hosts to exist in the Host Pool.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"the number of session hosts to exist in the Host Pool.",
+        Description = @"The number of session hosts to exist in the Host Pool.",
         SerializedName = @"instanceCount",
         PossibleTypes = new [] { typeof(int) })]
         int? ProvisioningInstanceCount { get; set; }
@@ -168,14 +170,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         SerializedName = @"logOffDelayMinutes",
         PossibleTypes = new [] { typeof(int) })]
         int? UpdateLogOffDelayMinute { get; set; }
-        /// <summary>Log off message sent to user for logoff.</summary>
+        /// <summary>Log off message sent to user for logoff. Default value is an empty string.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Log off message sent to user for logoff.",
+        Description = @"Log off message sent to user for logoff. Default value is an empty string.",
         SerializedName = @"logOffMessage",
         PossibleTypes = new [] { typeof(string) })]
         string UpdateLogOffMessage { get; set; }
@@ -192,7 +194,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         int? UpdateMaxVmsRemoved { get; set; }
 
     }
-    /// Represents a SessionHostManagementPatch definition.
+    /// SessionHostManagement properties that can be patched.
     internal partial interface ISessionHostManagementPatchInternal
 
     {
@@ -201,16 +203,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// </summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("KeepAll", "KeepOne", "KeepNone")]
         string FailedSessionHostCleanupPolicy { get; set; }
-        /// <summary>Detailed properties for SessionHostManagementPatch</summary>
+        /// <summary>Detailed properties for SessionHostManagement</summary>
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementPatchProperties Property { get; set; }
         /// <summary>Parameters that apply when session hosts are provisioned.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostProvisioningConfigurationPatchProperties Provisioning { get; set; }
         /// <summary>
-        /// Policy on whether a Canary VM should be provisioned during a session host provisioning operation.
+        /// Policy on whether a Canary VM(a single VM to validate the configuration) should be provisioned during a session host provisioning
+        /// operation.
         /// </summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Auto", "Never", "Always")]
         string ProvisioningCanaryPolicy { get; set; }
-        /// <summary>the number of session hosts to exist in the Host Pool.</summary>
+        /// <summary>The number of session hosts to exist in the Host Pool.</summary>
         int? ProvisioningInstanceCount { get; set; }
         /// <summary>Whether the session host should be set in drain mode following provisioning.</summary>
         bool? ProvisioningSetDrainMode { get; set; }
@@ -225,7 +228,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         bool? UpdateDeleteOriginalVM { get; set; }
         /// <summary>Grace period before logging off users in minutes.</summary>
         int? UpdateLogOffDelayMinute { get; set; }
-        /// <summary>Log off message sent to user for logoff.</summary>
+        /// <summary>Log off message sent to user for logoff. Default value is an empty string.</summary>
         string UpdateLogOffMessage { get; set; }
         /// <summary>The maximum number of virtual machines to be removed during hostpool update.</summary>
         int? UpdateMaxVmsRemoved { get; set; }

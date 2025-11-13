@@ -7,9 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Extensions;
 
-    /// <summary>
-    /// Represents the definition of contents retrieved after expanding the MSIX Image.
-    /// </summary>
+    /// <summary>Represents the definition of contents retrieved after expanding the MSIX Image.</summary>
     public partial class ExpandMsixImage
     {
 

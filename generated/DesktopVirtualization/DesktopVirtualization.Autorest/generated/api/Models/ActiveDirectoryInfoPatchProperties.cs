@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Extensions;
 
-    /// <summary>Active directory info. Only one should be populated based on the join type.</summary>
+    /// <summary>Active directory info. Only one should be populated based on the join type</summary>
     public partial class ActiveDirectoryInfoPatchProperties :
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IActiveDirectoryInfoPatchProperties,
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IActiveDirectoryInfoPatchPropertiesInternal
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
 
         }
     }
-    /// Active directory info. Only one should be populated based on the join type.
+    /// Active directory info. Only one should be populated based on the join type
     public partial interface IActiveDirectoryInfoPatchProperties :
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IJsonSerializable
     {
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         string DomainCredentialsUsernameKeyVaultSecretUri { get; set; }
 
     }
-    /// Active directory info. Only one should be populated based on the join type.
+    /// Active directory info. Only one should be populated based on the join type
     internal partial interface IActiveDirectoryInfoPatchPropertiesInternal
 
     {

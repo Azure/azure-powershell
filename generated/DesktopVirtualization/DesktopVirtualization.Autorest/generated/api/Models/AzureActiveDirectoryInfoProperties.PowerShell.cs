@@ -8,7 +8,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
     using Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PowerShell;
 
     /// <summary>
-    /// Azure Active directory info. Only one should be populated based on the join type.
+    /// Azure Active directory info. Only one should be populated based on the join type
     /// </summary>
     [System.ComponentModel.TypeConverter(typeof(AzureActiveDirectoryInfoPropertiesTypeConverter))]
     public partial class AzureActiveDirectoryInfoProperties
@@ -160,7 +160,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             return ToJsonString();
         }
     }
-    /// Azure Active directory info. Only one should be populated based on the join type.
+    /// Azure Active directory info. Only one should be populated based on the join type
     [System.ComponentModel.TypeConverter(typeof(AzureActiveDirectoryInfoPropertiesTypeConverter))]
     public partial interface IAzureActiveDirectoryInfoProperties
 

@@ -41,6 +41,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
         public bool? AgentUpdateUseSessionHostLocalTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAgentUpdatePropertiesInternal)AgentUpdate).UseSessionHostLocalTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAgentUpdatePropertiesInternal)AgentUpdate).UseSessionHostLocalTime = value ?? default(bool); }
 
+        /// <summary>Backing field for <see cref="AllowRdpShortPathWithPrivateLink" /> property.</summary>
+        private string _allowRdpShortPathWithPrivateLink;
+
+        /// <summary>
+        /// Controls if the use of RDPShortPath transport is allowed, possibly bypassing Private Link routes.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
+        public string AllowRdpShortPathWithPrivateLink { get => this._allowRdpShortPathWithPrivateLink; set => this._allowRdpShortPathWithPrivateLink = value; }
+
         /// <summary>Backing field for <see cref="AppAttachPackageReference" /> property.</summary>
         private System.Collections.Generic.List<string> _appAttachPackageReference;
 
@@ -68,6 +77,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// <summary>Custom rdp property of HostPool.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
         public string CustomRdpProperty { get => this._customRdpProperty; set => this._customRdpProperty = value; }
+
+        /// <summary>Backing field for <see cref="DeploymentScope" /> property.</summary>
+        private string _deploymentScope;
+
+        /// <summary>DeploymentScope type for HostPool.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
+        public string DeploymentScope { get => this._deploymentScope; set => this._deploymentScope = value; }
 
         /// <summary>Backing field for <see cref="Description" /> property.</summary>
         private string _description;
@@ -163,6 +179,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
         public string ObjectId { get => this._objectId; }
 
+        /// <summary>Backing field for <see cref="OboTenantId" /> property.</summary>
+        private string _oboTenantId;
+
+        /// <summary>Tenant that the resource is being requested on behalf of.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
+        public string OboTenantId { get => this._oboTenantId; set => this._oboTenantId = value; }
+
         /// <summary>Backing field for <see cref="PersonalDesktopAssignmentType" /> property.</summary>
         private string _personalDesktopAssignmentType;
 
@@ -210,10 +233,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// <summary>Backing field for <see cref="RegistrationInfo" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IRegistrationInfo _registrationInfo;
 
-        /// <summary>
-        /// The registration info of HostPool. This is not returned on GET. In order to get the registration token use the retrieveRegistrationToken
-        /// or listRegistrationTokens POST calls.
-        /// </summary>
+        /// <summary>The registration info of HostPool.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IRegistrationInfo RegistrationInfo { get => (this._registrationInfo = this._registrationInfo ?? new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.RegistrationInfo()); set => this._registrationInfo = value; }
 
@@ -354,6 +374,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         SerializedName = @"useSessionHostLocalTime",
         PossibleTypes = new [] { typeof(bool) })]
         bool? AgentUpdateUseSessionHostLocalTime { get; set; }
+        /// <summary>
+        /// Controls if the use of RDPShortPath transport is allowed, possibly bypassing Private Link routes.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Controls if the use of RDPShortPath transport is allowed, possibly bypassing Private Link routes.",
+        SerializedName = @"allowRDPShortPathWithPrivateLink",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Disabled", "Enabled")]
+        string AllowRdpShortPathWithPrivateLink { get; set; }
         /// <summary>List of App Attach Package links.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
@@ -398,6 +432,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         SerializedName = @"customRdpProperty",
         PossibleTypes = new [] { typeof(string) })]
         string CustomRdpProperty { get; set; }
+        /// <summary>DeploymentScope type for HostPool.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"DeploymentScope type for HostPool.",
+        SerializedName = @"deploymentScope",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Geographical", "Regional")]
+        string DeploymentScope { get; set; }
         /// <summary>Description of HostPool.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
@@ -512,6 +558,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         SerializedName = @"objectId",
         PossibleTypes = new [] { typeof(string) })]
         string ObjectId { get;  }
+        /// <summary>Tenant that the resource is being requested on behalf of.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Tenant that the resource is being requested on behalf of.",
+        SerializedName = @"oboTenantId",
+        PossibleTypes = new [] { typeof(string) })]
+        string OboTenantId { get; set; }
         /// <summary>PersonalDesktopAssignment type for HostPool.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
@@ -741,6 +798,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         string AgentUpdateType { get; set; }
         /// <summary>Whether to use localTime of the virtual machine.</summary>
         bool? AgentUpdateUseSessionHostLocalTime { get; set; }
+        /// <summary>
+        /// Controls if the use of RDPShortPath transport is allowed, possibly bypassing Private Link routes.
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Disabled", "Enabled")]
+        string AllowRdpShortPathWithPrivateLink { get; set; }
         /// <summary>List of App Attach Package links.</summary>
         System.Collections.Generic.List<string> AppAttachPackageReference { get; set; }
         /// <summary>List of applicationGroup links.</summary>
@@ -749,6 +811,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         bool? CloudPcResource { get; set; }
         /// <summary>Custom rdp property of HostPool.</summary>
         string CustomRdpProperty { get; set; }
+        /// <summary>DeploymentScope type for HostPool.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Geographical", "Regional")]
+        string DeploymentScope { get; set; }
         /// <summary>Description of HostPool.</summary>
         string Description { get; set; }
         /// <summary>
@@ -782,6 +847,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         int? MaxSessionLimit { get; set; }
         /// <summary>ObjectId of HostPool. (internal use)</summary>
         string ObjectId { get; set; }
+        /// <summary>Tenant that the resource is being requested on behalf of.</summary>
+        string OboTenantId { get; set; }
         /// <summary>PersonalDesktopAssignment type for HostPool.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Automatic", "Direct")]
         string PersonalDesktopAssignmentType { get; set; }
@@ -805,10 +872,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// </summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Default", "Enabled", "Disabled")]
         string PublicUdp { get; set; }
-        /// <summary>
-        /// The registration info of HostPool. This is not returned on GET. In order to get the registration token use the retrieveRegistrationToken
-        /// or listRegistrationTokens POST calls.
-        /// </summary>
+        /// <summary>The registration info of HostPool.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IRegistrationInfo RegistrationInfo { get; set; }
         /// <summary>Expiration time of registration token.</summary>
         global::System.DateTime? RegistrationInfoExpirationTime { get; set; }

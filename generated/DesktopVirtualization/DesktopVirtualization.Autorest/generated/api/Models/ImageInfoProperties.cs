@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Extensions;
 
-    /// <summary>Image configurations of session host in a HostPool.</summary>
+    /// <summary>Image configurations of session host in a HostPool</summary>
     public partial class ImageInfoProperties :
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IImageInfoProperties,
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IImageInfoPropertiesInternal
@@ -22,7 +22,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ICustomInfoProperties CustomInfo { get => (this._customInfo = this._customInfo ?? new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.CustomInfoProperties()); set => this._customInfo = value; }
 
-        /// <summary>The resource id of the custom image.</summary>
+        /// <summary>The resource ID of the image.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
         public string CustomInfoResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ICustomInfoPropertiesInternal)CustomInfo).ResourceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ICustomInfoPropertiesInternal)CustomInfo).ResourceId = value ?? null; }
 
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMarketplaceInfoProperties MarketplaceInfo { get => (this._marketplaceInfo = this._marketplaceInfo ?? new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.MarketplaceInfoProperties()); set => this._marketplaceInfo = value; }
 
-        /// <summary>The exact version of the image.</summary>
+        /// <summary>The version of the image.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
         public string MarketplaceInfoExactVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMarketplaceInfoPropertiesInternal)MarketplaceInfo).ExactVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMarketplaceInfoPropertiesInternal)MarketplaceInfo).ExactVersion = value ?? null; }
 
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
         public string MarketplaceInfoPublisher { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMarketplaceInfoPropertiesInternal)MarketplaceInfo).Publisher; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMarketplaceInfoPropertiesInternal)MarketplaceInfo).Publisher = value ?? null; }
 
-        /// <summary>The sku of the image.</summary>
+        /// <summary>The SKU of the image.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
         public string MarketplaceInfoSku { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMarketplaceInfoPropertiesInternal)MarketplaceInfo).Sku; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMarketplaceInfoPropertiesInternal)MarketplaceInfo).Sku = value ?? null; }
 
@@ -70,18 +70,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
 
         }
     }
-    /// Image configurations of session host in a HostPool.
+    /// Image configurations of session host in a HostPool
     public partial interface IImageInfoProperties :
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IJsonSerializable
     {
-        /// <summary>The resource id of the custom image.</summary>
+        /// <summary>The resource ID of the image.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The resource id of the custom image.",
+        Description = @"The resource ID of the image.",
         SerializedName = @"resourceId",
         PossibleTypes = new [] { typeof(string) })]
         string CustomInfoResourceId { get; set; }
@@ -97,14 +97,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Marketplace", "Custom")]
         string ImageType { get; set; }
-        /// <summary>The exact version of the image.</summary>
+        /// <summary>The version of the image.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The exact version of the image.",
+        Description = @"The version of the image.",
         SerializedName = @"exactVersion",
         PossibleTypes = new [] { typeof(string) })]
         string MarketplaceInfoExactVersion { get; set; }
@@ -130,20 +130,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         SerializedName = @"publisher",
         PossibleTypes = new [] { typeof(string) })]
         string MarketplaceInfoPublisher { get; set; }
-        /// <summary>The sku of the image.</summary>
+        /// <summary>The SKU of the image.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The sku of the image.",
+        Description = @"The SKU of the image.",
         SerializedName = @"sku",
         PossibleTypes = new [] { typeof(string) })]
         string MarketplaceInfoSku { get; set; }
 
     }
-    /// Image configurations of session host in a HostPool.
+    /// Image configurations of session host in a HostPool
     internal partial interface IImageInfoPropertiesInternal
 
     {
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// The values to uniquely identify a custom image. Only one should be populated based on the image type.
         /// </summary>
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ICustomInfoProperties CustomInfo { get; set; }
-        /// <summary>The resource id of the custom image.</summary>
+        /// <summary>The resource ID of the image.</summary>
         string CustomInfoResourceId { get; set; }
         /// <summary>The type of image session hosts use in the hostpool.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Marketplace", "Custom")]
@@ -160,13 +160,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// The values to uniquely identify a marketplace image. Only one should be populated based on the image type.
         /// </summary>
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMarketplaceInfoProperties MarketplaceInfo { get; set; }
-        /// <summary>The exact version of the image.</summary>
+        /// <summary>The version of the image.</summary>
         string MarketplaceInfoExactVersion { get; set; }
         /// <summary>The offer of the image.</summary>
         string MarketplaceInfoOffer { get; set; }
         /// <summary>The publisher of the image.</summary>
         string MarketplaceInfoPublisher { get; set; }
-        /// <summary>The sku of the image.</summary>
+        /// <summary>The SKU of the image.</summary>
         string MarketplaceInfoSku { get; set; }
 
     }

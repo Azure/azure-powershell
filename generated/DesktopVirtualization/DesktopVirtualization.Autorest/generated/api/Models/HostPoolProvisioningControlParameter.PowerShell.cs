@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PowerShell;
 
-    /// <summary>Represents properties for a hostpool provisioning control request.</summary>
+    /// <summary>Object containing control action for hostpool provisioning.</summary>
     [System.ComponentModel.TypeConverter(typeof(HostPoolProvisioningControlParameterTypeConverter))]
     public partial class HostPoolProvisioningControlParameter
     {
@@ -166,7 +166,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             return ToJsonString();
         }
     }
-    /// Represents properties for a hostpool provisioning control request.
+    /// Object containing control action for hostpool provisioning.
     [System.ComponentModel.TypeConverter(typeof(HostPoolProvisioningControlParameterTypeConverter))]
     public partial interface IHostPoolProvisioningControlParameter
 

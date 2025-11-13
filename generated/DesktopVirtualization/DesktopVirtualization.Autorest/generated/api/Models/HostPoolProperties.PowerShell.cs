@@ -161,10 +161,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPropertiesInternal)this).VMTemplate = (string) content.GetValueForProperty("VMTemplate",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPropertiesInternal)this).VMTemplate, global::System.Convert.ToString);
             }
-            if (content.Contains("ManagementType"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPropertiesInternal)this).ManagementType = (string) content.GetValueForProperty("ManagementType",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPropertiesInternal)this).ManagementType, global::System.Convert.ToString);
-            }
             if (content.Contains("ApplicationGroupReference"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPropertiesInternal)this).ApplicationGroupReference = (System.Collections.Generic.List<string>) content.GetValueForProperty("ApplicationGroupReference",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPropertiesInternal)this).ApplicationGroupReference, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
@@ -224,6 +220,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             if (content.Contains("RelayUdp"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPropertiesInternal)this).RelayUdp = (string) content.GetValueForProperty("RelayUdp",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPropertiesInternal)this).RelayUdp, global::System.Convert.ToString);
+            }
+            if (content.Contains("ManagementType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPropertiesInternal)this).ManagementType = (string) content.GetValueForProperty("ManagementType",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPropertiesInternal)this).ManagementType, global::System.Convert.ToString);
+            }
+            if (content.Contains("DeploymentScope"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPropertiesInternal)this).DeploymentScope = (string) content.GetValueForProperty("DeploymentScope",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPropertiesInternal)this).DeploymentScope, global::System.Convert.ToString);
+            }
+            if (content.Contains("OboTenantId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPropertiesInternal)this).OboTenantId = (string) content.GetValueForProperty("OboTenantId",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPropertiesInternal)this).OboTenantId, global::System.Convert.ToString);
+            }
+            if (content.Contains("AllowRdpShortPathWithPrivateLink"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPropertiesInternal)this).AllowRdpShortPathWithPrivateLink = (string) content.GetValueForProperty("AllowRdpShortPathWithPrivateLink",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPropertiesInternal)this).AllowRdpShortPathWithPrivateLink, global::System.Convert.ToString);
             }
             if (content.Contains("RegistrationInfoExpirationTime"))
             {
@@ -322,10 +334,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPropertiesInternal)this).VMTemplate = (string) content.GetValueForProperty("VMTemplate",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPropertiesInternal)this).VMTemplate, global::System.Convert.ToString);
             }
-            if (content.Contains("ManagementType"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPropertiesInternal)this).ManagementType = (string) content.GetValueForProperty("ManagementType",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPropertiesInternal)this).ManagementType, global::System.Convert.ToString);
-            }
             if (content.Contains("ApplicationGroupReference"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPropertiesInternal)this).ApplicationGroupReference = (System.Collections.Generic.List<string>) content.GetValueForProperty("ApplicationGroupReference",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPropertiesInternal)this).ApplicationGroupReference, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
@@ -385,6 +393,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             if (content.Contains("RelayUdp"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPropertiesInternal)this).RelayUdp = (string) content.GetValueForProperty("RelayUdp",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPropertiesInternal)this).RelayUdp, global::System.Convert.ToString);
+            }
+            if (content.Contains("ManagementType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPropertiesInternal)this).ManagementType = (string) content.GetValueForProperty("ManagementType",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPropertiesInternal)this).ManagementType, global::System.Convert.ToString);
+            }
+            if (content.Contains("DeploymentScope"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPropertiesInternal)this).DeploymentScope = (string) content.GetValueForProperty("DeploymentScope",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPropertiesInternal)this).DeploymentScope, global::System.Convert.ToString);
+            }
+            if (content.Contains("OboTenantId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPropertiesInternal)this).OboTenantId = (string) content.GetValueForProperty("OboTenantId",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPropertiesInternal)this).OboTenantId, global::System.Convert.ToString);
+            }
+            if (content.Contains("AllowRdpShortPathWithPrivateLink"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPropertiesInternal)this).AllowRdpShortPathWithPrivateLink = (string) content.GetValueForProperty("AllowRdpShortPathWithPrivateLink",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPropertiesInternal)this).AllowRdpShortPathWithPrivateLink, global::System.Convert.ToString);
             }
             if (content.Contains("RegistrationInfoExpirationTime"))
             {

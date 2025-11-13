@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Extensions;
 
-    /// <summary>Represents properties for a hostpool provisioning control request.</summary>
+    /// <summary>Object containing control action for hostpool provisioning.</summary>
     public partial class HostPoolProvisioningControlParameter :
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolProvisioningControlParameter,
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolProvisioningControlParameterInternal
@@ -16,7 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// <summary>Backing field for <see cref="Action" /> property.</summary>
         private string _action= @"Cancel";
 
-        /// <summary>Action types for controlling hostpool provisioning.</summary>
+        /// <summary>Action types for controlling hostpool update.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
         public string Action { get => this._action; }
 
@@ -36,18 +36,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
 
         }
     }
-    /// Represents properties for a hostpool provisioning control request.
+    /// Object containing control action for hostpool provisioning.
     public partial interface IHostPoolProvisioningControlParameter :
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IJsonSerializable
     {
-        /// <summary>Action types for controlling hostpool provisioning.</summary>
+        /// <summary>Action types for controlling hostpool update.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = true,
         ReadOnly = true,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Action types for controlling hostpool provisioning.",
+        Description = @"Action types for controlling hostpool update.",
         SerializedName = @"action",
         PossibleTypes = new [] { typeof(string) })]
         string Action { get;  }
@@ -64,11 +64,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         string CancelMessage { get; set; }
 
     }
-    /// Represents properties for a hostpool provisioning control request.
+    /// Object containing control action for hostpool provisioning.
     internal partial interface IHostPoolProvisioningControlParameterInternal
 
     {
-        /// <summary>Action types for controlling hostpool provisioning.</summary>
+        /// <summary>Action types for controlling hostpool update.</summary>
         string Action { get; set; }
         /// <summary>The cancel message sent to the user on the session host.</summary>
         string CancelMessage { get; set; }

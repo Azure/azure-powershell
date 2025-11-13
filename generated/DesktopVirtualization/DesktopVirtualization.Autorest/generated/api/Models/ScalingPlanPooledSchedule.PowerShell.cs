@@ -155,10 +155,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceInternal)this).Type, global::System.Convert.ToString);
             }
-            if (content.Contains("ScalingMethod"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).ScalingMethod = (string) content.GetValueForProperty("ScalingMethod",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).ScalingMethod, global::System.Convert.ToString);
-            }
             if (content.Contains("CreateDelete"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).CreateDelete = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ICreateDeleteProperties) content.GetValueForProperty("CreateDelete",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).CreateDelete, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.CreateDeletePropertiesTypeConverter.ConvertFrom);
@@ -187,6 +183,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).DaysOfWeek = (System.Collections.Generic.List<string>) content.GetValueForProperty("DaysOfWeek",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).DaysOfWeek, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
+            if (content.Contains("ScalingMethod"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).ScalingMethod = (string) content.GetValueForProperty("ScalingMethod",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).ScalingMethod, global::System.Convert.ToString);
+            }
             if (content.Contains("RampUpLoadBalancingAlgorithm"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).RampUpLoadBalancingAlgorithm = (string) content.GetValueForProperty("RampUpLoadBalancingAlgorithm",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).RampUpLoadBalancingAlgorithm, global::System.Convert.ToString);
@@ -197,7 +197,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             }
             if (content.Contains("RampUpCapacityThresholdPct"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).RampUpCapacityThresholdPct = (int) content.GetValueForProperty("RampUpCapacityThresholdPct",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).RampUpCapacityThresholdPct, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).RampUpCapacityThresholdPct = (int?) content.GetValueForProperty("RampUpCapacityThresholdPct",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).RampUpCapacityThresholdPct, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("PeakLoadBalancingAlgorithm"))
             {
@@ -213,7 +213,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             }
             if (content.Contains("RampDownCapacityThresholdPct"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).RampDownCapacityThresholdPct = (int) content.GetValueForProperty("RampDownCapacityThresholdPct",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).RampDownCapacityThresholdPct, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).RampDownCapacityThresholdPct = (int?) content.GetValueForProperty("RampDownCapacityThresholdPct",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).RampDownCapacityThresholdPct, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("RampDownForceLogoffUser"))
             {
@@ -253,35 +253,35 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             }
             if (content.Contains("RampUpStartTimeHour"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).RampUpStartTimeHour = (int) content.GetValueForProperty("RampUpStartTimeHour",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).RampUpStartTimeHour, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).RampUpStartTimeHour = (int?) content.GetValueForProperty("RampUpStartTimeHour",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).RampUpStartTimeHour, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("RampUpStartTimeMinute"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).RampUpStartTimeMinute = (int) content.GetValueForProperty("RampUpStartTimeMinute",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).RampUpStartTimeMinute, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).RampUpStartTimeMinute = (int?) content.GetValueForProperty("RampUpStartTimeMinute",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).RampUpStartTimeMinute, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("PeakStartTimeHour"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).PeakStartTimeHour = (int) content.GetValueForProperty("PeakStartTimeHour",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).PeakStartTimeHour, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).PeakStartTimeHour = (int?) content.GetValueForProperty("PeakStartTimeHour",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).PeakStartTimeHour, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("PeakStartTimeMinute"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).PeakStartTimeMinute = (int) content.GetValueForProperty("PeakStartTimeMinute",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).PeakStartTimeMinute, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).PeakStartTimeMinute = (int?) content.GetValueForProperty("PeakStartTimeMinute",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).PeakStartTimeMinute, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("RampDownStartTimeHour"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).RampDownStartTimeHour = (int) content.GetValueForProperty("RampDownStartTimeHour",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).RampDownStartTimeHour, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).RampDownStartTimeHour = (int?) content.GetValueForProperty("RampDownStartTimeHour",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).RampDownStartTimeHour, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("RampDownStartTimeMinute"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).RampDownStartTimeMinute = (int) content.GetValueForProperty("RampDownStartTimeMinute",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).RampDownStartTimeMinute, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).RampDownStartTimeMinute = (int?) content.GetValueForProperty("RampDownStartTimeMinute",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).RampDownStartTimeMinute, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("OffPeakStartTimeHour"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).OffPeakStartTimeHour = (int) content.GetValueForProperty("OffPeakStartTimeHour",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).OffPeakStartTimeHour, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).OffPeakStartTimeHour = (int?) content.GetValueForProperty("OffPeakStartTimeHour",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).OffPeakStartTimeHour, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("OffPeakStartTimeMinute"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).OffPeakStartTimeMinute = (int) content.GetValueForProperty("OffPeakStartTimeMinute",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).OffPeakStartTimeMinute, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).OffPeakStartTimeMinute = (int?) content.GetValueForProperty("OffPeakStartTimeMinute",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).OffPeakStartTimeMinute, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             AfterDeserializeDictionary(content);
         }
@@ -344,10 +344,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceInternal)this).Type, global::System.Convert.ToString);
             }
-            if (content.Contains("ScalingMethod"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).ScalingMethod = (string) content.GetValueForProperty("ScalingMethod",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).ScalingMethod, global::System.Convert.ToString);
-            }
             if (content.Contains("CreateDelete"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).CreateDelete = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ICreateDeleteProperties) content.GetValueForProperty("CreateDelete",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).CreateDelete, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.CreateDeletePropertiesTypeConverter.ConvertFrom);
@@ -376,6 +372,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).DaysOfWeek = (System.Collections.Generic.List<string>) content.GetValueForProperty("DaysOfWeek",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).DaysOfWeek, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
+            if (content.Contains("ScalingMethod"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).ScalingMethod = (string) content.GetValueForProperty("ScalingMethod",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).ScalingMethod, global::System.Convert.ToString);
+            }
             if (content.Contains("RampUpLoadBalancingAlgorithm"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).RampUpLoadBalancingAlgorithm = (string) content.GetValueForProperty("RampUpLoadBalancingAlgorithm",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).RampUpLoadBalancingAlgorithm, global::System.Convert.ToString);
@@ -386,7 +386,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             }
             if (content.Contains("RampUpCapacityThresholdPct"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).RampUpCapacityThresholdPct = (int) content.GetValueForProperty("RampUpCapacityThresholdPct",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).RampUpCapacityThresholdPct, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).RampUpCapacityThresholdPct = (int?) content.GetValueForProperty("RampUpCapacityThresholdPct",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).RampUpCapacityThresholdPct, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("PeakLoadBalancingAlgorithm"))
             {
@@ -402,7 +402,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             }
             if (content.Contains("RampDownCapacityThresholdPct"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).RampDownCapacityThresholdPct = (int) content.GetValueForProperty("RampDownCapacityThresholdPct",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).RampDownCapacityThresholdPct, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).RampDownCapacityThresholdPct = (int?) content.GetValueForProperty("RampDownCapacityThresholdPct",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).RampDownCapacityThresholdPct, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("RampDownForceLogoffUser"))
             {
@@ -442,35 +442,35 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             }
             if (content.Contains("RampUpStartTimeHour"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).RampUpStartTimeHour = (int) content.GetValueForProperty("RampUpStartTimeHour",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).RampUpStartTimeHour, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).RampUpStartTimeHour = (int?) content.GetValueForProperty("RampUpStartTimeHour",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).RampUpStartTimeHour, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("RampUpStartTimeMinute"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).RampUpStartTimeMinute = (int) content.GetValueForProperty("RampUpStartTimeMinute",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).RampUpStartTimeMinute, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).RampUpStartTimeMinute = (int?) content.GetValueForProperty("RampUpStartTimeMinute",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).RampUpStartTimeMinute, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("PeakStartTimeHour"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).PeakStartTimeHour = (int) content.GetValueForProperty("PeakStartTimeHour",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).PeakStartTimeHour, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).PeakStartTimeHour = (int?) content.GetValueForProperty("PeakStartTimeHour",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).PeakStartTimeHour, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("PeakStartTimeMinute"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).PeakStartTimeMinute = (int) content.GetValueForProperty("PeakStartTimeMinute",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).PeakStartTimeMinute, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).PeakStartTimeMinute = (int?) content.GetValueForProperty("PeakStartTimeMinute",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).PeakStartTimeMinute, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("RampDownStartTimeHour"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).RampDownStartTimeHour = (int) content.GetValueForProperty("RampDownStartTimeHour",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).RampDownStartTimeHour, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).RampDownStartTimeHour = (int?) content.GetValueForProperty("RampDownStartTimeHour",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).RampDownStartTimeHour, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("RampDownStartTimeMinute"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).RampDownStartTimeMinute = (int) content.GetValueForProperty("RampDownStartTimeMinute",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).RampDownStartTimeMinute, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).RampDownStartTimeMinute = (int?) content.GetValueForProperty("RampDownStartTimeMinute",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).RampDownStartTimeMinute, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("OffPeakStartTimeHour"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).OffPeakStartTimeHour = (int) content.GetValueForProperty("OffPeakStartTimeHour",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).OffPeakStartTimeHour, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).OffPeakStartTimeHour = (int?) content.GetValueForProperty("OffPeakStartTimeHour",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).OffPeakStartTimeHour, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("OffPeakStartTimeMinute"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).OffPeakStartTimeMinute = (int) content.GetValueForProperty("OffPeakStartTimeMinute",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).OffPeakStartTimeMinute, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).OffPeakStartTimeMinute = (int?) content.GetValueForProperty("OffPeakStartTimeMinute",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleInternal)this).OffPeakStartTimeMinute, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             AfterDeserializePSObject(content);
         }

@@ -17,7 +17,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         private string _canaryPolicy;
 
         /// <summary>
-        /// Policy on whether a Canary VM should be provisioned during a session host provisioning operation.
+        /// Policy on whether a Canary VM(a single VM to validate the configuration) should be provisioned during a session host provisioning
+        /// operation.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
         public string CanaryPolicy { get => this._canaryPolicy; set => this._canaryPolicy = value; }
@@ -25,7 +26,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// <summary>Backing field for <see cref="InstanceCount" /> property.</summary>
         private int? _instanceCount;
 
-        /// <summary>the number of session hosts to exist in the Host Pool.</summary>
+        /// <summary>The number of session hosts to exist in the Host Pool.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
         public int? InstanceCount { get => this._instanceCount; set => this._instanceCount = value; }
 
@@ -49,7 +50,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IJsonSerializable
     {
         /// <summary>
-        /// Policy on whether a Canary VM should be provisioned during a session host provisioning operation.
+        /// Policy on whether a Canary VM(a single VM to validate the configuration) should be provisioned during a session host provisioning
+        /// operation.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
@@ -57,19 +59,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Policy on whether a Canary VM should be provisioned during a session host provisioning operation.",
+        Description = @"Policy on whether a Canary VM(a single VM to validate the configuration) should be provisioned during a session host provisioning operation.",
         SerializedName = @"canaryPolicy",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Auto", "Never", "Always")]
         string CanaryPolicy { get; set; }
-        /// <summary>the number of session hosts to exist in the Host Pool.</summary>
+        /// <summary>The number of session hosts to exist in the Host Pool.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"the number of session hosts to exist in the Host Pool.",
+        Description = @"The number of session hosts to exist in the Host Pool.",
         SerializedName = @"instanceCount",
         PossibleTypes = new [] { typeof(int) })]
         int? InstanceCount { get; set; }
@@ -91,11 +93,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
 
     {
         /// <summary>
-        /// Policy on whether a Canary VM should be provisioned during a session host provisioning operation.
+        /// Policy on whether a Canary VM(a single VM to validate the configuration) should be provisioned during a session host provisioning
+        /// operation.
         /// </summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Auto", "Never", "Always")]
         string CanaryPolicy { get; set; }
-        /// <summary>the number of session hosts to exist in the Host Pool.</summary>
+        /// <summary>The number of session hosts to exist in the Host Pool.</summary>
         int? InstanceCount { get; set; }
         /// <summary>Whether the session host should be set in drain mode following provisioning.</summary>
         bool? SetDrainMode { get; set; }

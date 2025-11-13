@@ -30,7 +30,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// <summary>Backing field for <see cref="SessionHostsInProgress" /> property.</summary>
         private int? _sessionHostsInProgress;
 
-        /// <summary>The number of sessionHosts in progress in the sessionHostManagement operation.</summary>
+        /// <summary>The number of sessionHosts in progress in the sessionHostManagement operation</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
         public int? SessionHostsInProgress { get => this._sessionHostsInProgress; set => this._sessionHostsInProgress = value; }
 
@@ -84,14 +84,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         SerializedName = @"sessionHostsCompleted",
         PossibleTypes = new [] { typeof(int) })]
         int? SessionHostsCompleted { get; set; }
-        /// <summary>The number of sessionHosts in progress in the sessionHostManagement operation.</summary>
+        /// <summary>The number of sessionHosts in progress in the sessionHostManagement operation</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The number of sessionHosts in progress in the sessionHostManagement operation.",
+        Description = @"The number of sessionHosts in progress in the sessionHostManagement operation",
         SerializedName = @"sessionHostsInProgress",
         PossibleTypes = new [] { typeof(int) })]
         int? SessionHostsInProgress { get; set; }
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         global::System.DateTime? ExecutionStartTime { get; set; }
         /// <summary>The number of sessionHosts completed in the sessionHostManagement operation.</summary>
         int? SessionHostsCompleted { get; set; }
-        /// <summary>The number of sessionHosts in progress in the sessionHostManagement operation.</summary>
+        /// <summary>The number of sessionHosts in progress in the sessionHostManagement operation</summary>
         int? SessionHostsInProgress { get; set; }
         /// <summary>
         /// The number of sessionHosts rollback failed in the sessionHostManagement operation.

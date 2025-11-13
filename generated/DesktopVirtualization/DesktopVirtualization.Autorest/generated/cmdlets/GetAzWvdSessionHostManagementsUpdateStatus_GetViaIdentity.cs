@@ -10,15 +10,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Get the session host get status for a given hostpool.</summary>
+    /// <summary>Get a SessionHostManagementUpdateStatus.</summary>
     /// <remarks>
     /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/sessionHostManagements/default/sessionHostUpdateStatuses/default"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzWvdSessionHostManagementsUpdateStatus_GetViaIdentity")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementUpdateStatus))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Description(@"Get the session host get status for a given hostpool.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Description(@"Get a SessionHostManagementUpdateStatus.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/sessionHostManagements/default/sessionHostUpdateStatuses/default", ApiVersion = "2025-03-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/sessionHostManagements/default/sessionHostUpdateStatuses/default", ApiVersion = "2025-09-01-preview")]
     public partial class GetAzWvdSessionHostManagementsUpdateStatus_GetViaIdentity : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IContext

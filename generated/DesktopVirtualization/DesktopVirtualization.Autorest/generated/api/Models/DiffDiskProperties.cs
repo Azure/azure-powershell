@@ -8,7 +8,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
     using static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Extensions;
 
     /// <summary>
-    /// Specifies the ephemeral Disk Settings for the operating system disk used by the virtual machine.
+    /// Specifies the ephemeral disk settings for the operating system disk used by the virtual machine.
     /// </summary>
     public partial class DiffDiskProperties :
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDiffDiskProperties,
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// Gets or sets specifies the ephemeral disk placement for operating system disk. The defaulting behavior is: CacheDisk if
         /// one is configured for the VM size otherwise ResourceDisk is used. Refer to the VM size documentation for Windows VM at
         /// https://docs.microsoft.com/azure/virtual-machines/windows/sizes and Linux VM at https://docs.microsoft.com/azure/virtual-machines/linux/sizes
-        /// to check which VM sizes exposes a cache disk. Possible values include: 'CacheDisk', 'ResourceDisk'
+        /// to check which VM sizes exposes a cache disk. Possible values include: 'CacheDisk', 'ResourceDisk'.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
         public string Placement { get => this._placement; set => this._placement = value; }
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
 
         }
     }
-    /// Specifies the ephemeral Disk Settings for the operating system disk used by the virtual machine.
+    /// Specifies the ephemeral disk settings for the operating system disk used by the virtual machine.
     public partial interface IDiffDiskProperties :
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IJsonSerializable
     {
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// Gets or sets specifies the ephemeral disk placement for operating system disk. The defaulting behavior is: CacheDisk if
         /// one is configured for the VM size otherwise ResourceDisk is used. Refer to the VM size documentation for Windows VM at
         /// https://docs.microsoft.com/azure/virtual-machines/windows/sizes and Linux VM at https://docs.microsoft.com/azure/virtual-machines/linux/sizes
-        /// to check which VM sizes exposes a cache disk. Possible values include: 'CacheDisk', 'ResourceDisk'
+        /// to check which VM sizes exposes a cache disk. Possible values include: 'CacheDisk', 'ResourceDisk'.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
@@ -68,14 +68,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Gets or sets specifies the ephemeral disk placement for operating system disk. The defaulting behavior is: CacheDisk if one is configured for the VM size otherwise ResourceDisk is used. Refer to the VM size documentation for Windows VM at https://docs.microsoft.com/azure/virtual-machines/windows/sizes and Linux VM at https://docs.microsoft.com/azure/virtual-machines/linux/sizes to check which VM sizes exposes a cache disk. Possible values include: 'CacheDisk', 'ResourceDisk'",
+        Description = @"Gets or sets specifies the ephemeral disk placement for operating system disk. The defaulting behavior is: CacheDisk if one is configured for the VM size otherwise ResourceDisk is used. Refer to the VM size documentation for Windows VM at https://docs.microsoft.com/azure/virtual-machines/windows/sizes and Linux VM at https://docs.microsoft.com/azure/virtual-machines/linux/sizes to check which VM sizes exposes a cache disk. Possible values include: 'CacheDisk', 'ResourceDisk'.",
         SerializedName = @"placement",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("CacheDisk", "ResourceDisk")]
         string Placement { get; set; }
 
     }
-    /// Specifies the ephemeral Disk Settings for the operating system disk used by the virtual machine.
+    /// Specifies the ephemeral disk settings for the operating system disk used by the virtual machine.
     internal partial interface IDiffDiskPropertiesInternal
 
     {
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// Gets or sets specifies the ephemeral disk placement for operating system disk. The defaulting behavior is: CacheDisk if
         /// one is configured for the VM size otherwise ResourceDisk is used. Refer to the VM size documentation for Windows VM at
         /// https://docs.microsoft.com/azure/virtual-machines/windows/sizes and Linux VM at https://docs.microsoft.com/azure/virtual-machines/linux/sizes
-        /// to check which VM sizes exposes a cache disk. Possible values include: 'CacheDisk', 'ResourceDisk'
+        /// to check which VM sizes exposes a cache disk. Possible values include: 'CacheDisk', 'ResourceDisk'.
         /// </summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("CacheDisk", "ResourceDisk")]
         string Placement { get; set; }

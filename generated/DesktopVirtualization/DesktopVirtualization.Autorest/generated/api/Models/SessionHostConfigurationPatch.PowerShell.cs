@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PowerShell;
 
-    /// <summary>Represents a SessionHostConfigurationPatch definition.</summary>
+    /// <summary>SessionHostConfiguration properties that can be patched.</summary>
     [System.ComponentModel.TypeConverter(typeof(SessionHostConfigurationPatchTypeConverter))]
     public partial class SessionHostConfigurationPatch
     {
@@ -484,7 +484,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             return ToJsonString();
         }
     }
-    /// Represents a SessionHostConfigurationPatch definition.
+    /// SessionHostConfiguration properties that can be patched.
     [System.ComponentModel.TypeConverter(typeof(SessionHostConfigurationPatchTypeConverter))]
     public partial interface ISessionHostConfigurationPatch
 

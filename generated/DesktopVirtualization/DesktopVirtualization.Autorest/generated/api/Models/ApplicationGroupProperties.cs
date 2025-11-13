@@ -64,6 +64,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
         public string ObjectId { get => this._objectId; }
 
+        /// <summary>Backing field for <see cref="OboTenantId" /> property.</summary>
+        private string _oboTenantId;
+
+        /// <summary>Tenant that the resource is being requested on behalf of.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
+        public string OboTenantId { get => this._oboTenantId; set => this._oboTenantId = value; }
+
         /// <summary>Backing field for <see cref="ShowInFeed" /> property.</summary>
         private bool? _showInFeed;
 
@@ -155,6 +162,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         SerializedName = @"objectId",
         PossibleTypes = new [] { typeof(string) })]
         string ObjectId { get;  }
+        /// <summary>Tenant that the resource is being requested on behalf of.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Tenant that the resource is being requested on behalf of.",
+        SerializedName = @"oboTenantId",
+        PossibleTypes = new [] { typeof(string) })]
+        string OboTenantId { get; set; }
         /// <summary>Boolean representing whether the applicationGroup is show in the feed.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
@@ -196,6 +214,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         string HostPoolArmPath { get; set; }
         /// <summary>ObjectId of ApplicationGroup. (internal use)</summary>
         string ObjectId { get; set; }
+        /// <summary>Tenant that the resource is being requested on behalf of.</summary>
+        string OboTenantId { get; set; }
         /// <summary>Boolean representing whether the applicationGroup is show in the feed.</summary>
         bool? ShowInFeed { get; set; }
         /// <summary>Workspace arm path of ApplicationGroup.</summary>

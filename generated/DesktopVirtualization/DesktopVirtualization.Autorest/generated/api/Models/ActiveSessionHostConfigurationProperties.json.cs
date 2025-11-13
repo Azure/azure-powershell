@@ -7,7 +7,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Extensions;
 
-    /// <summary>Session host configurations of HostPool.</summary>
+    /// <summary>
+    /// Represents a ActiveSessionHostConfiguration definition. This has all of the sessionHostConfiguration properties except
+    /// provisioningState
+    /// </summary>
     public partial class ActiveSessionHostConfigurationProperties
     {
 

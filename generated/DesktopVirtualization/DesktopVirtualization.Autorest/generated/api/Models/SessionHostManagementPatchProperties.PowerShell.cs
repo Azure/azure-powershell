@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PowerShell;
 
-    /// <summary>Session host Managements of HostPool.</summary>
+    /// <summary>Represents a SessionHostManagementPatch definition.</summary>
     [System.ComponentModel.TypeConverter(typeof(SessionHostManagementPatchPropertiesTypeConverter))]
     public partial class SessionHostManagementPatchProperties
     {
@@ -238,7 +238,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             return ToJsonString();
         }
     }
-    /// Session host Managements of HostPool.
+    /// Represents a SessionHostManagementPatch definition.
     [System.ComponentModel.TypeConverter(typeof(SessionHostManagementPatchPropertiesTypeConverter))]
     public partial interface ISessionHostManagementPatchProperties
 

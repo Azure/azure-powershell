@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedule))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Description(@"create a ScalingPlanPersonalSchedule.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/scalingPlans/{scalingPlanName}/personalSchedules/{scalingPlanScheduleName}", ApiVersion = "2025-03-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/scalingPlans/{scalingPlanName}/personalSchedules/{scalingPlanScheduleName}", ApiVersion = "2025-09-01-preview")]
     public partial class NewAzWvdScalingPlanPersonalSchedule_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IContext
@@ -65,10 +65,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
 
         /// <summary>Set of days of the week on which this schedule is active.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Set of days of the week on which this schedule is active.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Set of days of the week on which this schedule is active.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Description = @"Set of days of the week on which this schedule is active.",
         SerializedName = @"daysOfWeek",
@@ -165,26 +165,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
         public int OffPeakMinutesToWaitOnLogoff { get => _scalingPlanScheduleBody.OffPeakMinutesToWaitOnLogoff ?? default(int); set => _scalingPlanScheduleBody.OffPeakMinutesToWaitOnLogoff = value; }
 
         /// <summary>The hour.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The hour.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The hour.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Description = @"The hour.",
         SerializedName = @"hour",
         PossibleTypes = new [] { typeof(int) })]
-        public int OffPeakStartTimeHour { get => _scalingPlanScheduleBody.OffPeakStartTimeHour; set => _scalingPlanScheduleBody.OffPeakStartTimeHour = value; }
+        public int OffPeakStartTimeHour { get => _scalingPlanScheduleBody.OffPeakStartTimeHour ?? default(int); set => _scalingPlanScheduleBody.OffPeakStartTimeHour = value; }
 
         /// <summary>The minute.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The minute.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The minute.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Description = @"The minute.",
         SerializedName = @"minute",
         PossibleTypes = new [] { typeof(int) })]
-        public int OffPeakStartTimeMinute { get => _scalingPlanScheduleBody.OffPeakStartTimeMinute; set => _scalingPlanScheduleBody.OffPeakStartTimeMinute = value; }
+        public int OffPeakStartTimeMinute { get => _scalingPlanScheduleBody.OffPeakStartTimeMinute ?? default(int); set => _scalingPlanScheduleBody.OffPeakStartTimeMinute = value; }
 
         /// <summary>
         /// The desired configuration of Start VM On Connect for the hostpool during the off-peak phase.
@@ -253,26 +253,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
         public int PeakMinutesToWaitOnLogoff { get => _scalingPlanScheduleBody.PeakMinutesToWaitOnLogoff ?? default(int); set => _scalingPlanScheduleBody.PeakMinutesToWaitOnLogoff = value; }
 
         /// <summary>The hour.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The hour.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The hour.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Description = @"The hour.",
         SerializedName = @"hour",
         PossibleTypes = new [] { typeof(int) })]
-        public int PeakStartTimeHour { get => _scalingPlanScheduleBody.PeakStartTimeHour; set => _scalingPlanScheduleBody.PeakStartTimeHour = value; }
+        public int PeakStartTimeHour { get => _scalingPlanScheduleBody.PeakStartTimeHour ?? default(int); set => _scalingPlanScheduleBody.PeakStartTimeHour = value; }
 
         /// <summary>The minute.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The minute.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The minute.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Description = @"The minute.",
         SerializedName = @"minute",
         PossibleTypes = new [] { typeof(int) })]
-        public int PeakStartTimeMinute { get => _scalingPlanScheduleBody.PeakStartTimeMinute; set => _scalingPlanScheduleBody.PeakStartTimeMinute = value; }
+        public int PeakStartTimeMinute { get => _scalingPlanScheduleBody.PeakStartTimeMinute ?? default(int); set => _scalingPlanScheduleBody.PeakStartTimeMinute = value; }
 
         /// <summary>
         /// The desired configuration of Start VM On Connect for the hostpool during the peak phase.
@@ -362,26 +362,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
         public int RampDownMinutesToWaitOnLogoff { get => _scalingPlanScheduleBody.RampDownMinutesToWaitOnLogoff ?? default(int); set => _scalingPlanScheduleBody.RampDownMinutesToWaitOnLogoff = value; }
 
         /// <summary>The hour.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The hour.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The hour.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Description = @"The hour.",
         SerializedName = @"hour",
         PossibleTypes = new [] { typeof(int) })]
-        public int RampDownStartTimeHour { get => _scalingPlanScheduleBody.RampDownStartTimeHour; set => _scalingPlanScheduleBody.RampDownStartTimeHour = value; }
+        public int RampDownStartTimeHour { get => _scalingPlanScheduleBody.RampDownStartTimeHour ?? default(int); set => _scalingPlanScheduleBody.RampDownStartTimeHour = value; }
 
         /// <summary>The minute.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The minute.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The minute.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Description = @"The minute.",
         SerializedName = @"minute",
         PossibleTypes = new [] { typeof(int) })]
-        public int RampDownStartTimeMinute { get => _scalingPlanScheduleBody.RampDownStartTimeMinute; set => _scalingPlanScheduleBody.RampDownStartTimeMinute = value; }
+        public int RampDownStartTimeMinute { get => _scalingPlanScheduleBody.RampDownStartTimeMinute ?? default(int); set => _scalingPlanScheduleBody.RampDownStartTimeMinute = value; }
 
         /// <summary>
         /// The desired configuration of Start VM On Connect for the hostpool during the ramp down phase.
@@ -464,26 +464,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
         public int RampUpMinutesToWaitOnLogoff { get => _scalingPlanScheduleBody.RampUpMinutesToWaitOnLogoff ?? default(int); set => _scalingPlanScheduleBody.RampUpMinutesToWaitOnLogoff = value; }
 
         /// <summary>The hour.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The hour.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The hour.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Description = @"The hour.",
         SerializedName = @"hour",
         PossibleTypes = new [] { typeof(int) })]
-        public int RampUpStartTimeHour { get => _scalingPlanScheduleBody.RampUpStartTimeHour; set => _scalingPlanScheduleBody.RampUpStartTimeHour = value; }
+        public int RampUpStartTimeHour { get => _scalingPlanScheduleBody.RampUpStartTimeHour ?? default(int); set => _scalingPlanScheduleBody.RampUpStartTimeHour = value; }
 
         /// <summary>The minute.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The minute.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The minute.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Description = @"The minute.",
         SerializedName = @"minute",
         PossibleTypes = new [] { typeof(int) })]
-        public int RampUpStartTimeMinute { get => _scalingPlanScheduleBody.RampUpStartTimeMinute; set => _scalingPlanScheduleBody.RampUpStartTimeMinute = value; }
+        public int RampUpStartTimeMinute { get => _scalingPlanScheduleBody.RampUpStartTimeMinute ?? default(int); set => _scalingPlanScheduleBody.RampUpStartTimeMinute = value; }
 
         /// <summary>
         /// The desired configuration of Start VM On Connect for the hostpool during the ramp up phase. If this is disabled, session
@@ -578,12 +578,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ICloudError</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IErrorResponse</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ICloudError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
@@ -875,12 +875,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ICloudError</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IErrorResponse</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ICloudError> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IErrorResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -897,7 +897,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ICloudError>(responseMessage, await response);
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IErrorResponse>(responseMessage, await response);
                     WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }

@@ -47,7 +47,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         private int? _sessionHostsInProgress;
 
         /// <summary>
-        /// The number of sessionHosts in progress in the sessionHostManagement provisioning operation.
+        /// The number of sessionHosts in progress in the sessionHostManagement provisioning operation
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
         public int? SessionHostsInProgress { get => this._sessionHostsInProgress; set => this._sessionHostsInProgress = value; }
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         PossibleTypes = new [] { typeof(int) })]
         int? SessionHostsCompleted { get; set; }
         /// <summary>
-        /// The number of sessionHosts in progress in the sessionHostManagement provisioning operation.
+        /// The number of sessionHosts in progress in the sessionHostManagement provisioning operation
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The number of sessionHosts in progress in the sessionHostManagement provisioning operation.",
+        Description = @"The number of sessionHosts in progress in the sessionHostManagement provisioning operation",
         SerializedName = @"sessionHostsInProgress",
         PossibleTypes = new [] { typeof(int) })]
         int? SessionHostsInProgress { get; set; }
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// </summary>
         int? SessionHostsCompleted { get; set; }
         /// <summary>
-        /// The number of sessionHosts in progress in the sessionHostManagement provisioning operation.
+        /// The number of sessionHosts in progress in the sessionHostManagement provisioning operation
         /// </summary>
         int? SessionHostsInProgress { get; set; }
 

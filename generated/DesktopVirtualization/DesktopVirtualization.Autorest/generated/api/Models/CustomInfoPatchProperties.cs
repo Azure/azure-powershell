@@ -16,7 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// <summary>Backing field for <see cref="ResourceId" /> property.</summary>
         private string _resourceId;
 
-        /// <summary>The resource id of the custom image.</summary>
+        /// <summary>The resource ID of the image.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
         public string ResourceId { get => this._resourceId; set => this._resourceId = value; }
 
@@ -30,14 +30,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
     public partial interface ICustomInfoPatchProperties :
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IJsonSerializable
     {
-        /// <summary>The resource id of the custom image.</summary>
+        /// <summary>The resource ID of the image.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The resource id of the custom image.",
+        Description = @"The resource ID of the image.",
         SerializedName = @"resourceId",
         PossibleTypes = new [] { typeof(string) })]
         string ResourceId { get; set; }
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
     internal partial interface ICustomInfoPatchPropertiesInternal
 
     {
-        /// <summary>The resource id of the custom image.</summary>
+        /// <summary>The resource ID of the image.</summary>
         string ResourceId { get; set; }
 
     }

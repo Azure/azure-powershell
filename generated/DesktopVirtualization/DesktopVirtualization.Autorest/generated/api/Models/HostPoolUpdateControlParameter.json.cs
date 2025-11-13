@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Extensions;
 
-    /// <summary>Represents properties for a hostpool update control request.</summary>
+    /// <summary>Object containing control action for hostpool update.</summary>
     public partial class HostPoolUpdateControlParameter
     {
 

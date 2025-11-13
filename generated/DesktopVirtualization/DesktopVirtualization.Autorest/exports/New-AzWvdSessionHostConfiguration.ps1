@@ -165,7 +165,7 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
-    # The resource id of the custom image.
+    # The resource ID of the image.
     ${CustomInfoResourceId},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -182,7 +182,7 @@ param(
     # Gets or sets specifies the ephemeral disk placement for operating system disk.
     # The defaulting behavior is: CacheDisk if one is configured for the VM size otherwise ResourceDisk is used.
     # Refer to the VM size documentation for Windows VM at https://docs.microsoft.com/azure/virtual-machines/windows/sizes and Linux VM at https://docs.microsoft.com/azure/virtual-machines/linux/sizes to check which VM sizes exposes a cache disk.
-    # Possible values include: 'CacheDisk', 'ResourceDisk'
+    # Possible values include: 'CacheDisk', 'ResourceDisk'.
     ${DiffDiskSettingPlacement},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -207,13 +207,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Standard_LRS", "Premium_LRS", "StandardSSD_LRS")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
-    # The disk type used by virtual machine in hostpool session host.
+    # Managed Disk information.
     ${ManagedDiskType},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
-    # The exact version of the image.
+    # The version of the image.
     ${MarketplaceInfoExactVersion},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -231,7 +231,7 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
-    # The sku of the image.
+    # The SKU of the image.
     ${MarketplaceInfoSku},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -258,14 +258,14 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Management.Automation.SwitchParameter]
-    # Whether to use vTPM on the virtual machine.
+    # Whether to use vTpm on the virtual machine.
     ${SecurityInfoVTpmEnabled},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
     # The Location for the session host to be created in.
-    # It will default to the location of the hostpool if not provided.
+    # It will default to the location of the hostpool if not provided
     ${VMLocation},
 
     [Parameter(ParameterSetName='CreateExpanded')]

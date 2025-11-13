@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Extensions;
 
-    /// <summary>A ScalingPlanPersonalSchedule.</summary>
+    /// <summary>ScalingPlanPersonalSchedule properties that can be patched.</summary>
     public partial class ScalingPlanPersonalSchedulePatchProperties :
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchProperties,
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal
@@ -282,7 +282,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
 
         }
     }
-    /// A ScalingPlanPersonalSchedule.
+    /// ScalingPlanPersonalSchedule properties that can be patched.
     public partial interface IScalingPlanPersonalSchedulePatchProperties :
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IJsonSerializable
     {
@@ -667,7 +667,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         string RampUpStartVMOnConnect { get; set; }
 
     }
-    /// A ScalingPlanPersonalSchedule.
+    /// ScalingPlanPersonalSchedule properties that can be patched.
     internal partial interface IScalingPlanPersonalSchedulePatchPropertiesInternal
 
     {

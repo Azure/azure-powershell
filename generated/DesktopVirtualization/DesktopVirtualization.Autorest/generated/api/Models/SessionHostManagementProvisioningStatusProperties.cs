@@ -97,18 +97,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         public int? ProgressSessionHostsCompleted { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementProvisioningOperationProgressInternal)Progress).SessionHostsCompleted; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementProvisioningOperationProgressInternal)Progress).SessionHostsCompleted = value ?? default(int); }
 
         /// <summary>
-        /// The number of sessionHosts in progress in the sessionHostManagement provisioning operation.
+        /// The number of sessionHosts in progress in the sessionHostManagement provisioning operation
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
         public int? ProgressSessionHostsInProgress { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementProvisioningOperationProgressInternal)Progress).SessionHostsInProgress; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementProvisioningOperationProgressInternal)Progress).SessionHostsInProgress = value ?? default(int); }
 
         /// <summary>
-        /// Policy on whether a Canary VM should be provisioned during a session host provisioning operation.
+        /// Policy on whether a Canary VM(a single VM to validate the configuration) should be provisioned during a session host provisioning
+        /// operation.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
         public string ProvisioningCanaryPolicy { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementInternal)SessionHostManagement).ProvisioningCanaryPolicy; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementInternal)SessionHostManagement).ProvisioningCanaryPolicy = value ?? null; }
 
-        /// <summary>the number of session hosts to exist in the Host Pool.</summary>
+        /// <summary>The number of session hosts to exist in the Host Pool.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
         public int? ProvisioningInstanceCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementInternal)SessionHostManagement).ProvisioningInstanceCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementInternal)SessionHostManagement).ProvisioningInstanceCount = value ?? default(int); }
 
@@ -277,7 +278,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         PossibleTypes = new [] { typeof(int) })]
         int? ProgressSessionHostsCompleted { get; set; }
         /// <summary>
-        /// The number of sessionHosts in progress in the sessionHostManagement provisioning operation.
+        /// The number of sessionHosts in progress in the sessionHostManagement provisioning operation
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
@@ -285,12 +286,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The number of sessionHosts in progress in the sessionHostManagement provisioning operation.",
+        Description = @"The number of sessionHosts in progress in the sessionHostManagement provisioning operation",
         SerializedName = @"sessionHostsInProgress",
         PossibleTypes = new [] { typeof(int) })]
         int? ProgressSessionHostsInProgress { get; set; }
         /// <summary>
-        /// Policy on whether a Canary VM should be provisioned during a session host provisioning operation.
+        /// Policy on whether a Canary VM(a single VM to validate the configuration) should be provisioned during a session host provisioning
+        /// operation.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
@@ -298,19 +300,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Policy on whether a Canary VM should be provisioned during a session host provisioning operation.",
+        Description = @"Policy on whether a Canary VM(a single VM to validate the configuration) should be provisioned during a session host provisioning operation.",
         SerializedName = @"canaryPolicy",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Auto", "Never", "Always")]
         string ProvisioningCanaryPolicy { get; set; }
-        /// <summary>the number of session hosts to exist in the Host Pool.</summary>
+        /// <summary>The number of session hosts to exist in the Host Pool.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"the number of session hosts to exist in the Host Pool.",
+        Description = @"The number of session hosts to exist in the Host Pool.",
         SerializedName = @"instanceCount",
         PossibleTypes = new [] { typeof(int) })]
         int? ProvisioningInstanceCount { get; set; }
@@ -525,17 +527,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// </summary>
         int? ProgressSessionHostsCompleted { get; set; }
         /// <summary>
-        /// The number of sessionHosts in progress in the sessionHostManagement provisioning operation.
+        /// The number of sessionHosts in progress in the sessionHostManagement provisioning operation
         /// </summary>
         int? ProgressSessionHostsInProgress { get; set; }
         /// <summary>Parameters that apply when session hosts are provisioned.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostProvisioningConfigurationProperties Provisioning { get; set; }
         /// <summary>
-        /// Policy on whether a Canary VM should be provisioned during a session host provisioning operation.
+        /// Policy on whether a Canary VM(a single VM to validate the configuration) should be provisioned during a session host provisioning
+        /// operation.
         /// </summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Auto", "Never", "Always")]
         string ProvisioningCanaryPolicy { get; set; }
-        /// <summary>the number of session hosts to exist in the Host Pool.</summary>
+        /// <summary>The number of session hosts to exist in the Host Pool.</summary>
         int? ProvisioningInstanceCount { get; set; }
         /// <summary>Whether the session host should be set in drain mode following provisioning.</summary>
         bool? ProvisioningSetDrainMode { get; set; }

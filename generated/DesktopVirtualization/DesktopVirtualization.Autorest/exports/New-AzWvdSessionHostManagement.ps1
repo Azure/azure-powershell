@@ -88,13 +88,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Auto", "Never", "Always")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
-    # Policy on whether a Canary VM should be provisioned during a session host provisioning operation.
+    # Policy on whether a Canary VM(a single VM to validate the configuration) should be provisioned during a session host provisioning operation.
     ${ProvisioningCanaryPolicy},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Int32]
-    # the number of session hosts to exist in the Host Pool.
+    # The number of session hosts to exist in the Host Pool.
     ${ProvisioningInstanceCount},
 
     [Parameter(ParameterSetName='CreateExpanded')]

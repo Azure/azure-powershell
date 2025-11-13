@@ -21,7 +21,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
 
         /// <summary>Set of days of the week on which this schedule is active.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<string> DaysOfWeek { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).DaysOfWeek; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).DaysOfWeek = value ; }
+        public System.Collections.Generic.List<string> DaysOfWeek { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).DaysOfWeek; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).DaysOfWeek = value ?? null /* arrayOf */; }
 
         /// <summary>
         /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
@@ -102,11 +102,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
 
         /// <summary>The hour.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
-        public int OffPeakStartTimeHour { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).OffPeakStartTimeHour; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).OffPeakStartTimeHour = value ; }
+        public int? OffPeakStartTimeHour { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).OffPeakStartTimeHour; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).OffPeakStartTimeHour = value ?? default(int); }
 
         /// <summary>The minute.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
-        public int OffPeakStartTimeMinute { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).OffPeakStartTimeMinute; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).OffPeakStartTimeMinute = value ; }
+        public int? OffPeakStartTimeMinute { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).OffPeakStartTimeMinute; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).OffPeakStartTimeMinute = value ?? default(int); }
 
         /// <summary>
         /// The desired configuration of Start VM On Connect for the hostpool during the off-peak phase.
@@ -138,11 +138,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
 
         /// <summary>The hour.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
-        public int PeakStartTimeHour { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).PeakStartTimeHour; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).PeakStartTimeHour = value ; }
+        public int? PeakStartTimeHour { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).PeakStartTimeHour; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).PeakStartTimeHour = value ?? default(int); }
 
         /// <summary>The minute.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
-        public int PeakStartTimeMinute { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).PeakStartTimeMinute; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).PeakStartTimeMinute = value ; }
+        public int? PeakStartTimeMinute { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).PeakStartTimeMinute; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).PeakStartTimeMinute = value ?? default(int); }
 
         /// <summary>
         /// The desired configuration of Start VM On Connect for the hostpool during the peak phase.
@@ -181,11 +181,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
 
         /// <summary>The hour.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
-        public int RampDownStartTimeHour { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).RampDownStartTimeHour; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).RampDownStartTimeHour = value ; }
+        public int? RampDownStartTimeHour { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).RampDownStartTimeHour; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).RampDownStartTimeHour = value ?? default(int); }
 
         /// <summary>The minute.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
-        public int RampDownStartTimeMinute { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).RampDownStartTimeMinute; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).RampDownStartTimeMinute = value ; }
+        public int? RampDownStartTimeMinute { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).RampDownStartTimeMinute; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).RampDownStartTimeMinute = value ?? default(int); }
 
         /// <summary>
         /// The desired configuration of Start VM On Connect for the hostpool during the ramp down phase.
@@ -223,11 +223,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
 
         /// <summary>The hour.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
-        public int RampUpStartTimeHour { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).RampUpStartTimeHour; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).RampUpStartTimeHour = value ; }
+        public int? RampUpStartTimeHour { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).RampUpStartTimeHour; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).RampUpStartTimeHour = value ?? default(int); }
 
         /// <summary>The minute.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
-        public int RampUpStartTimeMinute { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).RampUpStartTimeMinute; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).RampUpStartTimeMinute = value ; }
+        public int? RampUpStartTimeMinute { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).RampUpStartTimeMinute; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).RampUpStartTimeMinute = value ?? default(int); }
 
         /// <summary>
         /// The desired configuration of Start VM On Connect for the hostpool during the ramp up phase. If this is disabled, session
@@ -301,7 +301,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
     {
         /// <summary>Set of days of the week on which this schedule is active.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
@@ -365,7 +365,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         int? OffPeakMinutesToWaitOnLogoff { get; set; }
         /// <summary>The hour.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
@@ -373,10 +373,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         Description = @"The hour.",
         SerializedName = @"hour",
         PossibleTypes = new [] { typeof(int) })]
-        int OffPeakStartTimeHour { get; set; }
+        int? OffPeakStartTimeHour { get; set; }
         /// <summary>The minute.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
@@ -384,7 +384,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         Description = @"The minute.",
         SerializedName = @"minute",
         PossibleTypes = new [] { typeof(int) })]
-        int OffPeakStartTimeMinute { get; set; }
+        int? OffPeakStartTimeMinute { get; set; }
         /// <summary>
         /// The desired configuration of Start VM On Connect for the hostpool during the off-peak phase.
         /// </summary>
@@ -453,7 +453,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         int? PeakMinutesToWaitOnLogoff { get; set; }
         /// <summary>The hour.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
@@ -461,10 +461,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         Description = @"The hour.",
         SerializedName = @"hour",
         PossibleTypes = new [] { typeof(int) })]
-        int PeakStartTimeHour { get; set; }
+        int? PeakStartTimeHour { get; set; }
         /// <summary>The minute.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
@@ -472,7 +472,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         Description = @"The minute.",
         SerializedName = @"minute",
         PossibleTypes = new [] { typeof(int) })]
-        int PeakStartTimeMinute { get; set; }
+        int? PeakStartTimeMinute { get; set; }
         /// <summary>
         /// The desired configuration of Start VM On Connect for the hostpool during the peak phase.
         /// </summary>
@@ -541,7 +541,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         int? RampDownMinutesToWaitOnLogoff { get; set; }
         /// <summary>The hour.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
@@ -549,10 +549,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         Description = @"The hour.",
         SerializedName = @"hour",
         PossibleTypes = new [] { typeof(int) })]
-        int RampDownStartTimeHour { get; set; }
+        int? RampDownStartTimeHour { get; set; }
         /// <summary>The minute.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
@@ -560,7 +560,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         Description = @"The minute.",
         SerializedName = @"minute",
         PossibleTypes = new [] { typeof(int) })]
-        int RampDownStartTimeMinute { get; set; }
+        int? RampDownStartTimeMinute { get; set; }
         /// <summary>
         /// The desired configuration of Start VM On Connect for the hostpool during the ramp down phase.
         /// </summary>
@@ -643,7 +643,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         int? RampUpMinutesToWaitOnLogoff { get; set; }
         /// <summary>The hour.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
@@ -651,10 +651,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         Description = @"The hour.",
         SerializedName = @"hour",
         PossibleTypes = new [] { typeof(int) })]
-        int RampUpStartTimeHour { get; set; }
+        int? RampUpStartTimeHour { get; set; }
         /// <summary>The minute.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
@@ -662,7 +662,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         Description = @"The minute.",
         SerializedName = @"minute",
         PossibleTypes = new [] { typeof(int) })]
-        int RampUpStartTimeMinute { get; set; }
+        int? RampUpStartTimeMinute { get; set; }
         /// <summary>
         /// The desired configuration of Start VM On Connect for the hostpool during the ramp up phase. If this is disabled, session
         /// hosts must be turned on using rampUpAutoStartHosts or by turning them on manually.
@@ -706,9 +706,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// <summary>Starting time for off-peak period.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ITime OffPeakStartTime { get; set; }
         /// <summary>The hour.</summary>
-        int OffPeakStartTimeHour { get; set; }
+        int? OffPeakStartTimeHour { get; set; }
         /// <summary>The minute.</summary>
-        int OffPeakStartTimeMinute { get; set; }
+        int? OffPeakStartTimeMinute { get; set; }
         /// <summary>
         /// The desired configuration of Start VM On Connect for the hostpool during the off-peak phase.
         /// </summary>
@@ -733,9 +733,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// <summary>Starting time for peak period.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ITime PeakStartTime { get; set; }
         /// <summary>The hour.</summary>
-        int PeakStartTimeHour { get; set; }
+        int? PeakStartTimeHour { get; set; }
         /// <summary>The minute.</summary>
-        int PeakStartTimeMinute { get; set; }
+        int? PeakStartTimeMinute { get; set; }
         /// <summary>
         /// The desired configuration of Start VM On Connect for the hostpool during the peak phase.
         /// </summary>
@@ -762,9 +762,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// <summary>Starting time for ramp down period.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ITime RampDownStartTime { get; set; }
         /// <summary>The hour.</summary>
-        int RampDownStartTimeHour { get; set; }
+        int? RampDownStartTimeHour { get; set; }
         /// <summary>The minute.</summary>
-        int RampDownStartTimeMinute { get; set; }
+        int? RampDownStartTimeMinute { get; set; }
         /// <summary>
         /// The desired configuration of Start VM On Connect for the hostpool during the ramp down phase.
         /// </summary>
@@ -794,9 +794,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// <summary>Starting time for ramp up period.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ITime RampUpStartTime { get; set; }
         /// <summary>The hour.</summary>
-        int RampUpStartTimeHour { get; set; }
+        int? RampUpStartTimeHour { get; set; }
         /// <summary>The minute.</summary>
-        int RampUpStartTimeMinute { get; set; }
+        int? RampUpStartTimeMinute { get; set; }
         /// <summary>
         /// The desired configuration of Start VM On Connect for the hostpool during the ramp up phase. If this is disabled, session
         /// hosts must be turned on using rampUpAutoStartHosts or by turning them on manually.

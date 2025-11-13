@@ -16,7 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// <summary>Backing field for <see cref="ExactVersion" /> property.</summary>
         private string _exactVersion;
 
-        /// <summary>The exact version of the image.</summary>
+        /// <summary>The version of the image.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
         public string ExactVersion { get => this._exactVersion; set => this._exactVersion = value; }
 
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// <summary>Backing field for <see cref="Sku" /> property.</summary>
         private string _sku;
 
-        /// <summary>The sku of the image.</summary>
+        /// <summary>The SKU of the image.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
         public string Sku { get => this._sku; set => this._sku = value; }
 
@@ -51,14 +51,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
     public partial interface IMarketplaceInfoProperties :
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IJsonSerializable
     {
-        /// <summary>The exact version of the image.</summary>
+        /// <summary>The version of the image.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = true,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The exact version of the image.",
+        Description = @"The version of the image.",
         SerializedName = @"exactVersion",
         PossibleTypes = new [] { typeof(string) })]
         string ExactVersion { get; set; }
@@ -84,14 +84,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         SerializedName = @"publisher",
         PossibleTypes = new [] { typeof(string) })]
         string Publisher { get; set; }
-        /// <summary>The sku of the image.</summary>
+        /// <summary>The SKU of the image.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = true,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The sku of the image.",
+        Description = @"The SKU of the image.",
         SerializedName = @"sku",
         PossibleTypes = new [] { typeof(string) })]
         string Sku { get; set; }
@@ -101,13 +101,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
     internal partial interface IMarketplaceInfoPropertiesInternal
 
     {
-        /// <summary>The exact version of the image.</summary>
+        /// <summary>The version of the image.</summary>
         string ExactVersion { get; set; }
         /// <summary>The offer of the image.</summary>
         string Offer { get; set; }
         /// <summary>The publisher of the image.</summary>
         string Publisher { get; set; }
-        /// <summary>The sku of the image.</summary>
+        /// <summary>The SKU of the image.</summary>
         string Sku { get; set; }
 
     }

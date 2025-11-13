@@ -49,14 +49,14 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
-  [AppAttachPackageName <String>]: The name of the App Attach package arm object
+  [AppAttachPackageName <String>]: The name of the App Attach package
   [ApplicationGroupName <String>]: The name of the application group
   [ApplicationName <String>]: The name of the application within the specified application group
   [DesktopName <String>]: The name of the desktop within the specified desktop group
   [HostPoolName <String>]: The name of the host pool within the specified resource group
   [Id <String>]: Resource identity path
   [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
-  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
+  [PrivateEndpointConnectionName <String>]: The name parameter for private endpoint
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScalingPlanName <String>]: The name of the scaling plan.
   [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
@@ -141,7 +141,7 @@ param(
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
-    # The resource id of the custom image.
+    # The resource ID of the image.
     ${CustomInfoResourceId},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -160,7 +160,7 @@ param(
     # Gets or sets specifies the ephemeral disk placement for operating system disk.
     # The defaulting behavior is: CacheDisk if one is configured for the VM size otherwise ResourceDisk is used.
     # Refer to the VM size documentation for Windows VM at https://docs.microsoft.com/azure/virtual-machines/windows/sizes and Linux VM at https://docs.microsoft.com/azure/virtual-machines/linux/sizes to check which VM sizes exposes a cache disk.
-    # Possible values include: 'CacheDisk', 'ResourceDisk'
+    # Possible values include: 'CacheDisk', 'ResourceDisk'.
     ${DiffDiskSettingPlacement},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -197,14 +197,14 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Standard_LRS", "Premium_LRS", "StandardSSD_LRS")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
-    # The disk type used by virtual machine in hostpool session host.
+    # Managed Disk information.
     ${ManagedDiskType},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
-    # The exact version of the image.
+    # The version of the image.
     ${MarketplaceInfoExactVersion},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -225,7 +225,7 @@ param(
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
-    # The sku of the image.
+    # The SKU of the image.
     ${MarketplaceInfoSku},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -256,13 +256,14 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
     # The security type used by virtual machine in hostpool session host.
+    # Default is Standard.
     ${SecurityInfoType},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.Management.Automation.SwitchParameter]
-    # Whether to use vTPM on the virtual machine.
+    # Whether to use vTpm on the virtual machine.
     ${SecurityInfoVTpmEnabled},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -283,7 +284,8 @@ param(
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
-    # The Location for the session host to be created in
+    # The Location for the session host to be created in.
+    # It will default to the location of the hostpool if not provided
     ${VMLocation},
 
     [Parameter(ParameterSetName='UpdateExpanded')]

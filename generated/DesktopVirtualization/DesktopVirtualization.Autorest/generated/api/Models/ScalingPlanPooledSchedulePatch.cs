@@ -136,7 +136,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
         public int? PeakStartTimeMinute { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchPropertiesInternal)Property).PeakStartTimeMinute; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchPropertiesInternal)Property).PeakStartTimeMinute = value ?? default(int); }
 
-        /// <summary>Name of the ScalingPlanPooledSchedule.</summary>
+        /// <summary>Name of the ScalingPlanPooledSchedule</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
         public string PropertiesName { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchPropertiesInternal)Property).Name; }
 
@@ -404,14 +404,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         SerializedName = @"minute",
         PossibleTypes = new [] { typeof(int) })]
         int? PeakStartTimeMinute { get; set; }
-        /// <summary>Name of the ScalingPlanPooledSchedule.</summary>
+        /// <summary>Name of the ScalingPlanPooledSchedule</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
         ReadOnly = true,
         Read = true,
         Create = false,
         Update = false,
-        Description = @"Name of the ScalingPlanPooledSchedule.",
+        Description = @"Name of the ScalingPlanPooledSchedule",
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(string) })]
         string PropertiesName { get;  }
@@ -637,7 +637,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         int? PeakStartTimeHour { get; set; }
         /// <summary>The minute.</summary>
         int? PeakStartTimeMinute { get; set; }
-        /// <summary>Name of the ScalingPlanPooledSchedule.</summary>
+        /// <summary>Name of the ScalingPlanPooledSchedule</summary>
         string PropertiesName { get; set; }
         /// <summary>Detailed properties for ScalingPlanPooledSchedule</summary>
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchProperties Property { get; set; }

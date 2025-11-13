@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Description(@"Initiates a hostpool post or schedule an post for the future.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/sessionHostManagements/default/initiateSessionHostUpdate", ApiVersion = "2025-03-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/sessionHostManagements/default/initiateSessionHostUpdate", ApiVersion = "2025-09-01-preview")]
     public partial class InvokeAzWvdInitiateSessionHostUpdate_PostExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IContext
@@ -224,13 +224,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
         PossibleTypes = new [] { typeof(int) })]
         public int UpdateLogOffDelayMinute { get => _updateSessionHostsRequestBody.UpdateLogOffDelayMinute ?? default(int); set => _updateSessionHostsRequestBody.UpdateLogOffDelayMinute = value; }
 
-        /// <summary>Log off message sent to user for logoff.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Log off message sent to user for logoff.")]
+        /// <summary>Log off message sent to user for logoff. Default value is an empty string.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Log off message sent to user for logoff. Default value is an empty string.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Log off message sent to user for logoff.",
+        Description = @"Log off message sent to user for logoff. Default value is an empty string.",
         SerializedName = @"logOffMessage",
         PossibleTypes = new [] { typeof(string) })]
         public string UpdateLogOffMessage { get => _updateSessionHostsRequestBody.UpdateLogOffMessage ?? null; set => _updateSessionHostsRequestBody.UpdateLogOffMessage = value; }
@@ -559,7 +559,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
                     return ;
                 }
                 // onNoContent - response for 204 /
-                if (true == MyInvocation?.BoundParameters?.ContainsKey("PassThru"))
+                if (true == InvocationInformation?.BoundParameters?.ContainsKey("PassThru"))
                 {
                     WriteObject(true);
                 }

@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Extensions;
 
-    /// <summary>Session host Managements of HostPool.</summary>
+    /// <summary>Represents a SessionHostManagementPatch definition.</summary>
     public partial class SessionHostManagementPatchProperties
     {
 
