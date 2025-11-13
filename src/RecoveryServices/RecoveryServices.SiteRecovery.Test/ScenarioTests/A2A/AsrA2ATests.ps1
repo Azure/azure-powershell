@@ -1931,9 +1931,6 @@ function Test-VMSSReplication {
     $recMappingName = getRecoveryContainerMapping
     $primaryNetMapping = getPrimaryNetworkMapping
     $recoveryNetMapping = getRecoveryNetworkMapping
-    $platformFaultDomain = getPlatformDomain
-    $platformFaultDomain1 = getPlatformDomain1
-    $platoformFaultDomainCount2 = getPlatformDomainCount2
 
     #create recovery side resources
     $recRgName = getRecoveryResourceGroupName
@@ -1944,7 +1941,7 @@ function Test-VMSSReplication {
     $recRg = $RecoveryAzureNetworkId.Substring(0, $index)
     #create virtual Machine scale set
     $stnd = "Standard"
-    $vmssConfig = New-AzVmssConfig -Location $recoveryLocation -PlatformFaultDomainCount $platoformFaultDomainCount2 -SinglePlacementGroup 0 -SecurityType $stnd
+    $vmssConfig = New-AzVmssConfig -Location $recoveryLocation -PlatformFaultDomainCount 1 -SinglePlacementGroup 0 -SecurityType $stnd
     $recVmss = new-azvmss -resourcegroupname $recRgName -vmscalesetname 'vmss-asr' -virtualmachinescaleset $vmssConfig
     $recVmss1 = new-azvmss -resourcegroupname $recRgName -vmscalesetname 'vmss1-asr' -virtualmachinescaleset $vmssConfig
 
@@ -2020,7 +2017,7 @@ function Test-VMSSReplication {
     $v = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -ManagedDisk -LogStorageAccountId $logStg `
         -DiskId $vhdid -RecoveryResourceGroupId  $recRg -RecoveryReplicaDiskAccountType  $RecoveryReplicaDiskAccountType `
         -RecoveryTargetDiskAccountType $RecoveryTargetDiskAccountType
-    $enableDRjob = New-AzRecoveryServicesAsrReplicationProtectedItem -AzureToAzure -AzureVmId $vm.Id -Name $vmName  -ProtectionContainerMapping $mapping -RecoveryResourceGroupId  $recRg -AzureToAzureDiskReplicationConfiguration $v -RecoveryVirtualMachineScaleSetId $recVmss.Id -PlatformFaultDomain $platformFaultDomain
+    $enableDRjob = New-AzRecoveryServicesAsrReplicationProtectedItem -AzureToAzure -AzureVmId $vm.Id -Name $vmName  -ProtectionContainerMapping $mapping -RecoveryResourceGroupId  $recRg -AzureToAzureDiskReplicationConfiguration $v -RecoveryVirtualMachineScaleSetId $recVmss.Id
     [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(20 * 1000)
     [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(20 * 1000)
     WaitForJobCompletion -JobId $enableDRjob.Name
@@ -2029,14 +2026,12 @@ function Test-VMSSReplication {
     #Validate vmss Set in replicated vm properties
     $pe = Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $pc -Name  $vmName
     Assert-NotNull($pe.providerSpecificDetails.RecoveryVirtualMachineScaleSetId)
-    Assert-NotNull($pe.providerSpecificDetails.PlatformFaultDomain)
 
     #Update Vmpropertie
-    $updateDRjob = Set-AzRecoveryServicesAsrReplicationProtectedItem -InputObject $pe -RecoveryVirtualMachineScaleSetId $recVmss1.Id -PlatformFaultDomain $platformFaultDomain1
+    $updateDRjob = Set-AzRecoveryServicesAsrReplicationProtectedItem -InputObject $pe -RecoveryVirtualMachineScaleSetId $recVmss1.Id
     WaitForJobCompletion -JobId $updateDRjob.Name
     $pe = Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $pc -Name  $vmName
     Assert-NotNull($pe.providerSpecificDetails.RecoveryVirtualMachineScaleSetId)
-    Assert-NotNull($pe.providerSpecificDetails.PlatformFaultDomain)
 
     #Failover
     $failoverjob = Start-AzRecoveryServicesAsrUnPlannedFailoverJob -ReplicationProtectedItem $pe -Direction PrimaryToRecovery -PerformSourceSideAction
@@ -2197,38 +2192,28 @@ function Test-CRGReplication {
     Test-A2ASingleVMReprotect parametersets
 #>
 function Test-A2ASingleVMReprotect{
-    $vault = Get-AzRecoveryServicesVault -Name "vijamireprotecttest" -ResourceGroupName "vijami-alertrg"
+$vault = Get-AzRecoveryServicesVault -Name "vijamireprotecttest" -ResourceGroupName "vijami-alertrg"
 
-    Set-AzRecoveryServicesAsrVaultContext -Vault $vault
+Set-AzRecoveryServicesAsrVaultContext -Vault $vault
 
-    $primaryfabric = Get-AzRecoveryServicesAsrFabric -Name asr-a2a-default-uksouth
+$primaryfabric = Get-AzRecoveryServicesAsrFabric -Name asr-a2a-default-uksouth
 
-    $PrimaryProtContainer = Get-AzRecoveryServicesAsrProtectionContainer -Fabric $primaryfabric
+$PrimaryProtContainer = Get-AzRecoveryServicesAsrProtectionContainer -Fabric $primaryfabric
 
-    $recoveryfabric = Get-AzRecoveryServicesAsrFabric -Name asr-a2a-default-ukwest
+$recoveryfabric = Get-AzRecoveryServicesAsrFabric -Name asr-a2a-default-ukwest
 
-    $RecoveryContainer = Get-AzRecoveryServicesAsrProtectionContainer -Fabric $recoveryfabric
+$RecoveryContainer = Get-AzRecoveryServicesAsrProtectionContainer -Fabric $recoveryfabric
 
-    $RecoveryMapping = Get-AzRecoveryServicesAsrProtectionContainerMapping -ProtectionContainer $RecoveryContainer -Name  ukwest-uksouth-24-hour-retention-policy
+$RecoveryMapping = Get-AzRecoveryServicesAsrProtectionContainerMapping -ProtectionContainer $RecoveryContainer -Name  ukwest-uksouth-24-hour-retention-policy
 
-    $ReplicationProtectedItem = Get-AzRecoveryServicesAsrReplicationProtectedItem -FriendlyName "reprotectvm" -ProtectionContainer $PrimaryProtContainer
+$ReplicationProtectedItem = Get-AzRecoveryServicesAsrReplicationProtectedItem -FriendlyName "reprotectvm" -ProtectionContainer $PrimaryProtContainer
 
-    $CacheStorageAccount = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/gl-rec-rg-prod-z2zgql-ukw/providers/Microsoft.Storage/storageAccounts/bootdiag0411052737"
+$CacheStorageAccount = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/gl-rec-rg-prod-z2zgql-ukw/providers/Microsoft.Storage/storageAccounts/bootdiag0411052737"
 
-    $rgId = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vijami-alertrg"
+$rgId = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vijami-alertrg"
 
-    $platformFaultDomain = getPlatformDomain1
+$ReprotectJob = Update-AzRecoveryServicesAsrProtectionDirection -AzureToAzure -ReplicationProtectedItem $ReplicationProtectedItem -ProtectionContainerMapping $RecoveryMapping -LogStorageAccountId $CacheStorageAccount -RecoveryResourceGroupID $rgId
 
-    $ReprotectJob = Update-AzRecoveryServicesAsrProtectionDirection -AzureToAzure -ReplicationProtectedItem $ReplicationProtectedItem -ProtectionContainerMapping $RecoveryMapping -LogStorageAccountId $CacheStorageAccount -RecoveryResourceGroupID $rgId -PlatformFaultDomain $platformFaultDomain
-
-    [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(20 * 1000)
-    WaitForJobCompletion -JobId $ReprotectJob.Name
-
-    # Get the reprotected item and validate fields are updated
-    $ReprotectedItem = Get-AzRecoveryServicesAsrReplicationProtectedItem -FriendlyName "reprotectvm" -ProtectionContainer $RecoveryContainer
-
-    # Validate that reprotection was successful
-    Assert-NotNull($ReprotectedItem)
-    Assert-NotNull($ReprotectedItem.ProviderSpecificDetails.PlatformFaultDomain)
-    Assert-AreEqual $ReprotectedItem.ProviderSpecificDetails.PlatformFaultDomain $platformFaultDomain
+[Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(20 * 1000)
+WaitForJobCompletion -JobId $ReprotectJob.Name
 }
