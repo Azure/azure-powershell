@@ -18,11 +18,42 @@ using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.Server.Adapter;
 using Microsoft.Azure.Commands.Sql.Server.Model;
 using System.Collections.Generic;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
 {
     public abstract class AzureSqlServerCmdletBase : AzureSqlCmdletBase<IEnumerable<AzureSqlServerModel>, AzureSqlServerAdapter>
     {
+        /// <summary>
+        /// Validates soft delete retention parameters and throws appropriate exceptions if invalid
+        /// </summary>
+        /// <param name="enableSoftDelete">Whether soft delete is enabled</param>
+        /// <param name="softDeleteRetentionDays">Number of retention days specified</param>
+        protected void ValidateSoftDeleteParameters(bool? enableSoftDelete, int? softDeleteRetentionDays)
+        {
+            if (softDeleteRetentionDays.HasValue)
+            {
+                if (enableSoftDelete == true)
+                {
+                    if (softDeleteRetentionDays.Value < 1 || softDeleteRetentionDays.Value > 7)
+                    {
+                        throw new PSArgumentException(Properties.Resources.InvalidSoftDeleteRetentionDaysRange, "SoftDeleteRetentionDays");
+                    }
+                }
+                else if (enableSoftDelete == false)
+                {
+                    if (softDeleteRetentionDays.Value != 0)
+                    {
+                        throw new PSArgumentException(Properties.Resources.InvalidSoftDeleteRetentionDaysForDisablingSoftDelete, "SoftDeleteRetentionDays");
+                    }
+                }
+                else
+                {
+                    throw new PSArgumentException(Properties.Resources.MissingEnableSoftDelete, "EnableSoftDelete");
+                }
+            }
+        }
+
         /// <summary>
         /// Initializes the model adapter
         /// </summary>

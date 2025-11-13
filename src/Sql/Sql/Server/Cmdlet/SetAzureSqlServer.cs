@@ -137,8 +137,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         /// Value for soft-delete retention days for the server.
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "Specifies the number of days to retain a deleted server for possible restoration. Valid values are 0-35. A value of 0 disables soft-delete retention. If EnableSoftDelete is set without an explicit value, the default retention is 7 days.")]
-        [ValidateRange(0, 35)]
+            HelpMessage = "Specifies the number of days to retain a deleted server for possible restoration. Valid values are 0-7. A value of 0 disables soft-delete retention. If EnableSoftDelete is set without an explicit value, the default retention is 7 days.")]
         public int? SoftDeleteRetentionDays { get; set; }
 
         /// <summary>
@@ -152,27 +151,8 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            if (SoftDeleteRetentionDays.HasValue)
-            {
-                if (EnableSoftDelete == true)
-                {
-                    if (SoftDeleteRetentionDays.Value < 1 || SoftDeleteRetentionDays.Value > 35)
-                    {
-                        throw new PSArgumentException(Properties.Resources.InvalidSoftDeleteRetentionDaysRange, "SoftDeleteRetentionDays");
-                    }
-                }
-                else if (EnableSoftDelete == false)
-                {
-                    if (SoftDeleteRetentionDays.Value != 0)
-                    {
-                        throw new PSArgumentException(Properties.Resources.InvalidSoftDeleteRetentionDaysForDisablingSoftDelete, "SoftDeleteRetentionDays");
-                    }
-                }
-                else
-                {
-                    throw new PSArgumentException(Properties.Resources.MissingEnableSoftDelete, "EnableSoftDelete");
-                }
-            }
+            // Validate soft delete parameters using shared method
+            ValidateSoftDeleteParameters(this.EnableSoftDelete, this.SoftDeleteRetentionDays);
             
             base.ExecuteCmdlet();
         }

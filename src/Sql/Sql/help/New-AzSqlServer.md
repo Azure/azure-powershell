@@ -110,7 +110,7 @@ New-AzSqlServer -ResourceGroupName "ResourceGroup01" -Location "Central US" -Ser
 ResourceGroupName             : ResourceGroup01
 ServerName                    : server01
 Location                      : centralus
-SqlAdministratorLogin         : ramtest
+SqlAdministratorLogin         : adminLogin
 SqlAdministratorPassword      :
 ServerVersion                 : 12.0
 Tags                          :
@@ -137,7 +137,7 @@ New-AzSqlServer -ResourceGroupName "ResourceGroup01" -Location "Central US" -Ser
 ResourceGroupName             : ResourceGroup01
 ServerName                    : server01
 Location                      : centralus
-SqlAdministratorLogin         : ramtest
+SqlAdministratorLogin         : adminLogin
 SqlAdministratorPassword      :
 ServerVersion                 : 12.0
 Tags                          :
@@ -431,7 +431,7 @@ Accept wildcard characters: False
 ```
 
 ### -SoftDeleteRetentionDays
-Specifies the soft-delete retention days for the server. The acceptable values for this parameter are 0-35. Specify 0 to disable the SoftDelete
+Specifies the soft-delete retention days for the server. The acceptable values for this parameter are 0-7. Specify 0 to disable the SoftDelete
 
 ```yaml
 Type: System.Nullable`1[System.Int32]

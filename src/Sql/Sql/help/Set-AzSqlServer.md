@@ -88,7 +88,7 @@ This command enables soft-delete retention on the Azure SQL Server named server0
 
 ### Example 4: Disable soft-delete retention for the server
 ```powershell
-Set-AzSqlServer -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -EnableSoftDelete $false -SoftDeleteRetentionDays 0
+Set-AzSqlServer -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -EnableSoftDelete $false
 ```
 
 ```output
@@ -329,7 +329,7 @@ Accept wildcard characters: False
 ```
 
 ### -SoftDeleteRetentionDays
-Value for soft-delete retention days for the server such that the server can be restored for the specified number of days after dropping. Only valid values are from 0-35. If set to 0, soft-delete retention is disabled.
+Value for soft-delete retention days for the server such that the server can be restored for the specified number of days after dropping. Only valid values are from 0-7. If set to 0, soft-delete retention is disabled.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
