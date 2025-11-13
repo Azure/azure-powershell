@@ -18,7 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-## Version 0.2.0
 * Added support of Monitored subscription and made it compatible with latest OpenAPI spec. Please see details [here](https://github.com/Azure/azure-rest-api-specs/blob/main/specification/datadog/resource-manager/Microsoft.Datadog/stable/2025-06-11/datadog.json).
 
 ## Version 0.2.0
