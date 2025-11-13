@@ -7,15 +7,13 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
 {
 
     /// <summary>
-    /// Defines values for VectorDataType.
+    /// Defines values for DefaultPriorityLevel.
     /// </summary>
 
 
-    public static class VectorDataType
+    public static class DefaultPriorityLevel
     {
-        public const string Float32 = "float32";
-        public const string Uint8 = "uint8";
-        public const string Int8 = "int8";
-        public const string Float16 = "float16";
+        public const string High = "High";
+        public const string Low = "Low";
     }
 }

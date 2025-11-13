@@ -130,7 +130,15 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// <param name="enablePerRegionPerPartitionAutoscale">Flag to indicate enabling/disabling of PerRegionPerPartitionAutoscale
         /// feature on the account
         /// </param>
-        public DatabaseAccountUpdateProperties(ConsistencyPolicy consistencyPolicy = default(ConsistencyPolicy), System.Collections.Generic.IList<Location> locations = default(System.Collections.Generic.IList<Location>), System.Collections.Generic.IList<IpAddressOrRange> ipRules = default(System.Collections.Generic.IList<IpAddressOrRange>), bool? isVirtualNetworkFilterEnabled = default(bool?), bool? enableAutomaticFailover = default(bool?), System.Collections.Generic.IList<Capability> capabilities = default(System.Collections.Generic.IList<Capability>), System.Collections.Generic.IList<VirtualNetworkRule> virtualNetworkRules = default(System.Collections.Generic.IList<VirtualNetworkRule>), bool? enableMultipleWriteLocations = default(bool?), bool? enableCassandraConnector = default(bool?), string connectorOffer = default(string), bool? disableKeyBasedMetadataWriteAccess = default(bool?), string keyVaultKeyUri = default(string), string defaultIdentity = default(string), string publicNetworkAccess = default(string), bool? enableFreeTier = default(bool?), ApiProperties apiProperties = default(ApiProperties), bool? enableAnalyticalStorage = default(bool?), AnalyticalStorageConfiguration analyticalStorageConfiguration = default(AnalyticalStorageConfiguration), BackupPolicy backupPolicy = default(BackupPolicy), System.Collections.Generic.IList<CorsPolicy> cors = default(System.Collections.Generic.IList<CorsPolicy>), NetworkAclBypass? networkAclBypass = default(NetworkAclBypass?), System.Collections.Generic.IList<string> networkAclBypassResourceIds = default(System.Collections.Generic.IList<string>), bool? disableLocalAuth = default(bool?), Capacity capacity = default(Capacity), DatabaseAccountKeysMetadata keysMetadata = default(DatabaseAccountKeysMetadata), bool? enablePartitionMerge = default(bool?), string minimalTlsVersion = default(string), bool? enableBurstCapacity = default(bool?), string customerManagedKeyStatus = default(string), bool? enablePerRegionPerPartitionAutoscale = default(bool?))
+
+        /// <param name="enablePriorityBasedExecution">Flag to indicate enabling/disabling of Priority Based Execution Preview
+        /// feature on the account
+        /// </param>
+
+        /// <param name="defaultPriorityLevel">Enum to indicate default Priority Level of request for Priority Based
+        /// Execution.
+        /// Possible values include: &#39;High&#39;, &#39;Low&#39;</param>
+        public DatabaseAccountUpdateProperties(ConsistencyPolicy consistencyPolicy = default(ConsistencyPolicy), System.Collections.Generic.IList<Location> locations = default(System.Collections.Generic.IList<Location>), System.Collections.Generic.IList<IpAddressOrRange> ipRules = default(System.Collections.Generic.IList<IpAddressOrRange>), bool? isVirtualNetworkFilterEnabled = default(bool?), bool? enableAutomaticFailover = default(bool?), System.Collections.Generic.IList<Capability> capabilities = default(System.Collections.Generic.IList<Capability>), System.Collections.Generic.IList<VirtualNetworkRule> virtualNetworkRules = default(System.Collections.Generic.IList<VirtualNetworkRule>), bool? enableMultipleWriteLocations = default(bool?), bool? enableCassandraConnector = default(bool?), string connectorOffer = default(string), bool? disableKeyBasedMetadataWriteAccess = default(bool?), string keyVaultKeyUri = default(string), string defaultIdentity = default(string), string publicNetworkAccess = default(string), bool? enableFreeTier = default(bool?), ApiProperties apiProperties = default(ApiProperties), bool? enableAnalyticalStorage = default(bool?), AnalyticalStorageConfiguration analyticalStorageConfiguration = default(AnalyticalStorageConfiguration), BackupPolicy backupPolicy = default(BackupPolicy), System.Collections.Generic.IList<CorsPolicy> cors = default(System.Collections.Generic.IList<CorsPolicy>), NetworkAclBypass? networkAclBypass = default(NetworkAclBypass?), System.Collections.Generic.IList<string> networkAclBypassResourceIds = default(System.Collections.Generic.IList<string>), bool? disableLocalAuth = default(bool?), Capacity capacity = default(Capacity), DatabaseAccountKeysMetadata keysMetadata = default(DatabaseAccountKeysMetadata), bool? enablePartitionMerge = default(bool?), string minimalTlsVersion = default(string), bool? enableBurstCapacity = default(bool?), string customerManagedKeyStatus = default(string), bool? enablePerRegionPerPartitionAutoscale = default(bool?), bool? enablePriorityBasedExecution = default(bool?), string defaultPriorityLevel = default(string))
 
         {
             this.ConsistencyPolicy = consistencyPolicy;
@@ -163,6 +171,8 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
             this.EnableBurstCapacity = enableBurstCapacity;
             this.CustomerManagedKeyStatus = customerManagedKeyStatus;
             this.EnablePerRegionPerPartitionAutoscale = enablePerRegionPerPartitionAutoscale;
+            this.EnablePriorityBasedExecution = enablePriorityBasedExecution;
+            this.DefaultPriorityLevel = defaultPriorityLevel;
             CustomInit();
         }
 
@@ -375,6 +385,20 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "enablePerRegionPerPartitionAutoscale")]
         public bool? EnablePerRegionPerPartitionAutoscale {get; set; }
+
+        /// <summary>
+        /// Gets or sets flag to indicate enabling/disabling of Priority Based
+        /// Execution Preview feature on the account
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "enablePriorityBasedExecution")]
+        public bool? EnablePriorityBasedExecution {get; set; }
+
+        /// <summary>
+        /// Gets or sets enum to indicate default Priority Level of request for
+        /// Priority Based Execution. Possible values include: &#39;High&#39;, &#39;Low&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "defaultPriorityLevel")]
+        public string DefaultPriorityLevel {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -423,6 +447,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
             {
                 this.Capacity.Validate();
             }
+
 
 
 
