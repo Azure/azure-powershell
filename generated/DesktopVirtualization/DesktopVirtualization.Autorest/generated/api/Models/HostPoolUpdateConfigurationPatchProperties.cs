@@ -30,7 +30,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// <summary>Backing field for <see cref="LogOffMessage" /> property.</summary>
         private string _logOffMessage;
 
-        /// <summary>Log off message sent to user for logoff.</summary>
+        /// <summary>Log off message sent to user for logoff. Default value is an empty string.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
         public string LogOffMessage { get => this._logOffMessage; set => this._logOffMessage = value; }
 
@@ -75,14 +75,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         SerializedName = @"logOffDelayMinutes",
         PossibleTypes = new [] { typeof(int) })]
         int? LogOffDelayMinute { get; set; }
-        /// <summary>Log off message sent to user for logoff.</summary>
+        /// <summary>Log off message sent to user for logoff. Default value is an empty string.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Log off message sent to user for logoff.",
+        Description = @"Log off message sent to user for logoff. Default value is an empty string.",
         SerializedName = @"logOffMessage",
         PossibleTypes = new [] { typeof(string) })]
         string LogOffMessage { get; set; }
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         bool? DeleteOriginalVM { get; set; }
         /// <summary>Grace period before logging off users in minutes.</summary>
         int? LogOffDelayMinute { get; set; }
-        /// <summary>Log off message sent to user for logoff.</summary>
+        /// <summary>Log off message sent to user for logoff. Default value is an empty string.</summary>
         string LogOffMessage { get; set; }
         /// <summary>The maximum number of virtual machines to be removed during hostpool update.</summary>
         int? MaxVmsRemoved { get; set; }

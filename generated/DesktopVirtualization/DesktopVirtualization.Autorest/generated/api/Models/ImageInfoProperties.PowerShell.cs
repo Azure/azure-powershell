@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PowerShell;
 
-    /// <summary>Image configurations of session host in a HostPool.</summary>
+    /// <summary>Image configurations of session host in a HostPool</summary>
     [System.ComponentModel.TypeConverter(typeof(ImageInfoPropertiesTypeConverter))]
     public partial class ImageInfoProperties
     {
@@ -210,7 +210,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             return ToJsonString();
         }
     }
-    /// Image configurations of session host in a HostPool.
+    /// Image configurations of session host in a HostPool
     [System.ComponentModel.TypeConverter(typeof(ImageInfoPropertiesTypeConverter))]
     public partial interface IImageInfoProperties
 

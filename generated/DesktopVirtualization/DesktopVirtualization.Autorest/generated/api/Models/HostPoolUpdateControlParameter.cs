@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Extensions;
 
-    /// <summary>Represents properties for a hostpool update control request.</summary>
+    /// <summary>Object containing control action for hostpool update.</summary>
     public partial class HostPoolUpdateControlParameter :
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolUpdateControlParameter,
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolUpdateControlParameterInternal
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
 
         }
     }
-    /// Represents properties for a hostpool update control request.
+    /// Object containing control action for hostpool update.
     public partial interface IHostPoolUpdateControlParameter :
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IJsonSerializable
     {
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         string CancelMessage { get; set; }
 
     }
-    /// Represents properties for a hostpool update control request.
+    /// Object containing control action for hostpool update.
     internal partial interface IHostPoolUpdateControlParameterInternal
 
     {

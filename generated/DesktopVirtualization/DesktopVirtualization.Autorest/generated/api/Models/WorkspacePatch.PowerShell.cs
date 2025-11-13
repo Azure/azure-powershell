@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PowerShell;
 
-    /// <summary>Workspace properties that can be patched.</summary>
+    /// <summary>Workspace properties that can be patched.A patch model</summary>
     [System.ComponentModel.TypeConverter(typeof(WorkspacePatchTypeConverter))]
     public partial class WorkspacePatch
     {
@@ -194,7 +194,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             AfterDeserializePSObject(content);
         }
     }
-    /// Workspace properties that can be patched.
+    /// Workspace properties that can be patched.A patch model
     [System.ComponentModel.TypeConverter(typeof(WorkspacePatchTypeConverter))]
     public partial interface IWorkspacePatch
 

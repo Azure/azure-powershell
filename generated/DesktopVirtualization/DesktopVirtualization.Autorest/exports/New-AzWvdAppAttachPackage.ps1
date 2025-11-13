@@ -70,15 +70,15 @@ APPATTACHPACKAGE <AppAttachPackage>:
   [CustomData <String>]: Field that can be populated with custom data and filtered on in list GET calls
   [FailHealthCheckOnStagingFailure <String>]: Parameter indicating how the health check should behave if this package fails staging
   [HostPoolReference <List<String>>]: List of Hostpool resource Ids.
-  [ImageCertificateExpiry <DateTime?>]: Date certificate expires, found in the appxmanifest.xml. 
-  [ImageCertificateName <String>]: Certificate name found in the appxmanifest.xml. 
-  [ImageDisplayName <String>]: User friendly Name to be displayed in the portal. 
-  [ImageIsActive <Boolean?>]: Make this version of the package the active one across the hostpool. 
+  [ImageCertificateExpiry <DateTime?>]: Date certificate expires, found in the appxmanifest.xml.
+  [ImageCertificateName <String>]: Certificate name found in the appxmanifest.xml.
+  [ImageDisplayName <String>]: User friendly Name to be displayed in the portal.
+  [ImageIsActive <Boolean?>]: Make this version of the package the active one across the hostpool.
   [ImageIsPackageTimestamped <String>]: Is package timestamped so it can ignore the certificate expiry date
   [ImageIsRegularRegistration <Boolean?>]: Specifies how to register Package in feed.
-  [ImageLastUpdated <DateTime?>]: Date the package source was last updated, for Msix packages this is found in the appxmanifest.xml. 
+  [ImageLastUpdated <DateTime?>]: Date Package was last updated, found in the appxmanifest.xml.
   [ImagePackageAlias <String>]: Alias of App Attach Package. Assigned at import time
-  [ImagePackageApplication <List<IMsixPackageApplications>>]: List of package applications. 
+  [ImagePackageApplication <List<IMsixPackageApplications>>]: List of package applications.
     [AppId <String>]: Package Application Id, found in appxmanifest.xml.
     [AppUserModelId <String>]: Used to activate Package Application. Consists of Package Name and ApplicationID. Found in appxmanifest.xml.
     [Description <String>]: Description of Package Application.
@@ -86,24 +86,24 @@ APPATTACHPACKAGE <AppAttachPackage>:
     [IconImageName <String>]: User friendly name.
     [RawIcon <Byte[]>]: the icon a 64 bit string as a byte array.
     [RawPng <Byte[]>]: the icon a 64 bit string as a byte array.
-  [ImagePackageDependency <List<IMsixPackageDependencies>>]: List of package dependencies. 
-    [DependencyName <String>]: Name of the package dependency. For Msix packages, this is the other packages this package depends upon, for APP-V packages this is the locations of the user and deployment config files
+  [ImagePackageDependency <List<IMsixPackageDependencies>>]: List of package dependencies.
+    [DependencyName <String>]: Name of package dependency.
     [MinVersion <String>]: Dependency version required.
     [Publisher <String>]: Name of dependency publisher.
-  [ImagePackageFamilyName <String>]: Identifier not including the package version, for Msix packages it is the family name from the appxmanifest.xml. 
-  [ImagePackageFullName <String>]: Identifier including the package version, for Msix packages it is the full name from the appxmanifest.xml. 
-  [ImagePackageName <String>]: Package Name from appxmanifest.xml. 
-  [ImagePackageRelativePath <String>]: Relative Path to the package inside the image. 
-  [ImagePath <String>]: VHD/CIM/APP-V image path on Network Share.
-  [ImageVersion <String>]: Package Version found in the appxmanifest.xml. 
-  [KeyVaultUrl <String>]: URL of keyvault location to store certificate
+  [ImagePackageFamilyName <String>]: Package Family Name from appxmanifest.xml. Contains Package Name and Publisher name.
+  [ImagePackageFullName <String>]: Package Full Name from appxmanifest.xml.
+  [ImagePackageName <String>]: Package Name from appxmanifest.xml.
+  [ImagePackageRelativePath <String>]: Relative Path to the package inside the image.
+  [ImagePath <String>]: VHD/CIM image path on Network Share.
+  [ImageVersion <String>]: Package version found in the appxmanifest.xml.
+  [KeyVaultUrl <String>]: URL path to certificate name located in keyVault
   [PackageLookbackUrl <String>]: Lookback url to third party control plane, is null for native app attach packages
   [PackageOwnerName <String>]: Specific name of package owner, is "AppAttach" for native app attach packages
   [Location <String>]: The geo-location where the resource lives
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
 
-IMAGEPACKAGEAPPLICATION <IMsixPackageApplications[]>: List of package applications. 
+IMAGEPACKAGEAPPLICATION <IMsixPackageApplications[]>: List of package applications.
   [AppId <String>]: Package Application Id, found in appxmanifest.xml.
   [AppUserModelId <String>]: Used to activate Package Application. Consists of Package Name and ApplicationID. Found in appxmanifest.xml.
   [Description <String>]: Description of Package Application.
@@ -112,8 +112,8 @@ IMAGEPACKAGEAPPLICATION <IMsixPackageApplications[]>: List of package applicatio
   [RawIcon <Byte[]>]: the icon a 64 bit string as a byte array.
   [RawPng <Byte[]>]: the icon a 64 bit string as a byte array.
 
-IMAGEPACKAGEDEPENDENCY <IMsixPackageDependencies[]>: List of package dependencies. 
-  [DependencyName <String>]: Name of the package dependency. For Msix packages, this is the other packages this package depends upon, for APP-V packages this is the locations of the user and deployment config files
+IMAGEPACKAGEDEPENDENCY <IMsixPackageDependencies[]>: List of package dependencies.
+  [DependencyName <String>]: Name of package dependency.
   [MinVersion <String>]: Dependency version required.
   [Publisher <String>]: Name of dependency publisher.
 .Link
@@ -127,7 +127,7 @@ param(
     [Alias('AppAttachPackageName')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.String]
-    # The name of the App Attach package arm object
+    # The name of the App Attach package
     ${Name},
 
     [Parameter(Mandatory)]
@@ -220,7 +220,7 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.DateTime]
-    # Date the package source was last updated, for Msix packages this is found in the appxmanifest.xml.
+    # Date Package was last updated, found in the appxmanifest.xml.
     ${ImageLastUpdated},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -247,13 +247,14 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
-    # Identifier not including the package version, for Msix packages it is the family name from the appxmanifest.xml.
+    # Package Family Name from appxmanifest.xml.
+    # Contains Package Name and Publisher name.
     ${ImagePackageFamilyName},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
-    # Identifier including the package version, for Msix packages it is the full name from the appxmanifest.xml.
+    # Package Full Name from appxmanifest.xml.
     ${ImagePackageFullName},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -271,20 +272,20 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
-    # VHD/CIM/APP-V image path on Network Share.
+    # VHD/CIM image path on Network Share.
     ${ImagePath},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
-    # Package Version found in the appxmanifest.xml.
+    # Package version found in the appxmanifest.xml.
     ${ImageVersion},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='ImageObject', DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
-    # URL of keyvault location to store certificate
+    # URL path to certificate name located in keyVault
     ${KeyVaultUrl},
 
     [Parameter(ParameterSetName='CreateExpanded')]

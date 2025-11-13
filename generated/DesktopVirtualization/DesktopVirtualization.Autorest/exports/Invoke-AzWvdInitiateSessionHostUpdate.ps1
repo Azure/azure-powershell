@@ -39,14 +39,14 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
-  [AppAttachPackageName <String>]: The name of the App Attach package arm object
+  [AppAttachPackageName <String>]: The name of the App Attach package
   [ApplicationGroupName <String>]: The name of the application group
   [ApplicationName <String>]: The name of the application within the specified application group
   [DesktopName <String>]: The name of the desktop within the specified desktop group
   [HostPoolName <String>]: The name of the host pool within the specified resource group
   [Id <String>]: Resource identity path
   [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
-  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
+  [PrivateEndpointConnectionName <String>]: The name parameter for private endpoint
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScalingPlanName <String>]: The name of the scaling plan.
   [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
@@ -60,7 +60,7 @@ UPDATESESSIONHOSTSREQUESTBODY <IUpdateSessionHostsRequestBody>: Object containin
   [ScheduledDateTimeZone <String>]: The timeZone as defined in https://docs.microsoft.com/dotnet/api/system.timezoneinfo.findsystemtimezonebyid.
   [UpdateDeleteOriginalVM <Boolean?>]: Whether not to save original disk. False by default.
   [UpdateLogOffDelayMinute <Int32?>]: Grace period before logging off users in minutes.
-  [UpdateLogOffMessage <String>]: Log off message sent to user for logoff.
+  [UpdateLogOffMessage <String>]: Log off message sent to user for logoff. Default value is an empty string.
   [UpdateMaxVmsRemoved <Int32?>]: The maximum number of virtual machines to be removed during hostpool update.
 .Link
 https://learn.microsoft.com/powershell/module/az.desktopvirtualization/invoke-azwvdinitiatesessionhostupdate
@@ -148,6 +148,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
     # Log off message sent to user for logoff.
+    # Default value is an empty string.
     ${UpdateLogOffMessage},
 
     [Parameter(ParameterSetName='PostExpanded')]

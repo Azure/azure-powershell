@@ -44,7 +44,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// <summary>Backing field for <see cref="Schedule" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingSchedule> _schedule;
 
-        /// <summary>List Pooled ScalingSchedule definitions.</summary>
+        /// <summary>List of ScalingSchedule definitions.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingSchedule> Schedule { get => this._schedule; set => this._schedule = value; }
 
@@ -109,14 +109,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         SerializedName = @"hostPoolReferences",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingHostPoolReference) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingHostPoolReference> HostPoolReference { get; set; }
-        /// <summary>List Pooled ScalingSchedule definitions.</summary>
+        /// <summary>List of ScalingSchedule definitions.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"List Pooled ScalingSchedule definitions.",
+        Description = @"List of ScalingSchedule definitions.",
         SerializedName = @"schedules",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingSchedule) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingSchedule> Schedule { get; set; }
@@ -145,7 +145,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         string FriendlyName { get; set; }
         /// <summary>List of ScalingHostPoolReference definitions.</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingHostPoolReference> HostPoolReference { get; set; }
-        /// <summary>List Pooled ScalingSchedule definitions.</summary>
+        /// <summary>List of ScalingSchedule definitions.</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingSchedule> Schedule { get; set; }
         /// <summary>Timezone of the scaling plan.</summary>
         string TimeZone { get; set; }

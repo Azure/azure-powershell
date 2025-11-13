@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Extensions;
 
-    /// <summary>Image configurations of session host in a HostPool.</summary>
+    /// <summary>Image configurations of session host in a HostPool</summary>
     public partial class ImageInfoProperties
     {
 

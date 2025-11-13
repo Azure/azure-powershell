@@ -10,7 +10,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
     /// <summary>
     /// Boot Diagnostics is a debugging feature which allows you to view Console Output and Screenshot to diagnose VM status.
     /// <br><br> You can easily view the output of your console log. <br><br> Azure also enables you to see a screenshot of the
-    /// VM from the hypervisor.
+    /// VM from the hypervisor
     /// </summary>
     public partial class BootDiagnosticsInfoPatchProperties
     {

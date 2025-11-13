@@ -61,7 +61,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// <summary>Backing field for <see cref="Schedule" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingSchedule> _schedule;
 
-        /// <summary>List of Pooled ScalingSchedule definitions.</summary>
+        /// <summary>List of ScalingPlanPooledSchedule definitions.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingSchedule> Schedule { get => this._schedule; set => this._schedule = value; }
 
@@ -149,14 +149,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         SerializedName = @"objectId",
         PossibleTypes = new [] { typeof(string) })]
         string ObjectId { get;  }
-        /// <summary>List of Pooled ScalingSchedule definitions.</summary>
+        /// <summary>List of ScalingPlanPooledSchedule definitions.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"List of Pooled ScalingSchedule definitions.",
+        Description = @"List of ScalingPlanPooledSchedule definitions.",
         SerializedName = @"schedules",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingSchedule) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingSchedule> Schedule { get; set; }
@@ -190,7 +190,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         string HostPoolType { get; set; }
         /// <summary>ObjectId of scaling plan. (internal use)</summary>
         string ObjectId { get; set; }
-        /// <summary>List of Pooled ScalingSchedule definitions.</summary>
+        /// <summary>List of ScalingPlanPooledSchedule definitions.</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingSchedule> Schedule { get; set; }
         /// <summary>Timezone of the scaling plan.</summary>
         string TimeZone { get; set; }

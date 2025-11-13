@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Extensions;
 
-    /// <summary>A ScalingPlanPersonalSchedule.</summary>
+    /// <summary>ScalingPlanPersonalSchedule properties that can be patched.</summary>
     public partial class ScalingPlanPersonalSchedulePatchProperties
     {
 

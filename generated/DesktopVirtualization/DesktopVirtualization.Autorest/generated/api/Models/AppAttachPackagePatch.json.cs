@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Extensions;
 
-    /// <summary>Schema for patchable App Attach Package properties.</summary>
+    /// <summary>Schema for updatable App Attach Package properties.</summary>
     public partial class AppAttachPackagePatch
     {
 

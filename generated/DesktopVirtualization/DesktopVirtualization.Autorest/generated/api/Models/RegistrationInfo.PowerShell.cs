@@ -7,10 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PowerShell;
 
-    /// <summary>
-    /// Represents a RegistrationInfo definition. This is not returned on HostPool GET. In order to get the registration token
-    /// use the retrieveRegistrationToken or listRegistrationTokens POST calls.
-    /// </summary>
+    /// <summary>Represents a RegistrationInfo definition.</summary>
     [System.ComponentModel.TypeConverter(typeof(RegistrationInfoTypeConverter))]
     public partial class RegistrationInfo
     {
@@ -173,8 +170,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             return ToJsonString();
         }
     }
-    /// Represents a RegistrationInfo definition. This is not returned on HostPool GET. In order to get the registration token
-    /// use the retrieveRegistrationToken or listRegistrationTokens POST calls.
+    /// Represents a RegistrationInfo definition.
     [System.ComponentModel.TypeConverter(typeof(RegistrationInfoTypeConverter))]
     public partial interface IRegistrationInfo
 

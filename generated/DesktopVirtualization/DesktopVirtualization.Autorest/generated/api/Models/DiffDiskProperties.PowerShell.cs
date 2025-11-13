@@ -8,7 +8,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
     using Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PowerShell;
 
     /// <summary>
-    /// Specifies the ephemeral Disk Settings for the operating system disk used by the virtual machine.
+    /// Specifies the ephemeral disk settings for the operating system disk used by the virtual machine.
     /// </summary>
     [System.ComponentModel.TypeConverter(typeof(DiffDiskPropertiesTypeConverter))]
     public partial class DiffDiskProperties
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             return ToJsonString();
         }
     }
-    /// Specifies the ephemeral Disk Settings for the operating system disk used by the virtual machine.
+    /// Specifies the ephemeral disk settings for the operating system disk used by the virtual machine.
     [System.ComponentModel.TypeConverter(typeof(DiffDiskPropertiesTypeConverter))]
     public partial interface IDiffDiskProperties
 

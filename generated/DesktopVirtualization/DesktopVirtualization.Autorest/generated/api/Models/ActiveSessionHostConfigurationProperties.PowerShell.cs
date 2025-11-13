@@ -7,7 +7,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PowerShell;
 
-    /// <summary>Session host configurations of HostPool.</summary>
+    /// <summary>
+    /// Represents a ActiveSessionHostConfiguration definition. This has all of the sessionHostConfiguration properties except
+    /// provisioningState
+    /// </summary>
     [System.ComponentModel.TypeConverter(typeof(ActiveSessionHostConfigurationPropertiesTypeConverter))]
     public partial class ActiveSessionHostConfigurationProperties
     {
@@ -527,7 +530,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             return ToJsonString();
         }
     }
-    /// Session host configurations of HostPool.
+    /// Represents a ActiveSessionHostConfiguration definition. This has all of the sessionHostConfiguration properties except
+    /// provisioningState
     [System.ComponentModel.TypeConverter(typeof(ActiveSessionHostConfigurationPropertiesTypeConverter))]
     public partial interface IActiveSessionHostConfigurationProperties
 

@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Extensions;
 
-    /// <summary>Security information.</summary>
+    /// <summary>Security Information.</summary>
     public partial class SecurityInfoPatchProperties :
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISecurityInfoPatchProperties,
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISecurityInfoPatchPropertiesInternal
@@ -23,14 +23,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// <summary>Backing field for <see cref="Type" /> property.</summary>
         private string _type;
 
-        /// <summary>The security type used by virtual machine in hostpool session host.</summary>
+        /// <summary>
+        /// The security type used by virtual machine in hostpool session host. Default is Standard.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
         public string Type { get => this._type; set => this._type = value; }
 
         /// <summary>Backing field for <see cref="VTpmEnabled" /> property.</summary>
         private bool? _vTpmEnabled;
 
-        /// <summary>Whether to use vTPM on the virtual machine.</summary>
+        /// <summary>Whether to use vTpm on the virtual machine.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
         public bool? VTpmEnabled { get => this._vTpmEnabled; set => this._vTpmEnabled = value; }
 
@@ -40,7 +42,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
 
         }
     }
-    /// Security information.
+    /// Security Information.
     public partial interface ISecurityInfoPatchProperties :
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IJsonSerializable
     {
@@ -55,41 +57,45 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         SerializedName = @"secureBootEnabled",
         PossibleTypes = new [] { typeof(bool) })]
         bool? SecureBootEnabled { get; set; }
-        /// <summary>The security type used by virtual machine in hostpool session host.</summary>
+        /// <summary>
+        /// The security type used by virtual machine in hostpool session host. Default is Standard.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The security type used by virtual machine in hostpool session host.",
+        Description = @"The security type used by virtual machine in hostpool session host. Default is Standard.",
         SerializedName = @"type",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Standard", "TrustedLaunch", "ConfidentialVM")]
         string Type { get; set; }
-        /// <summary>Whether to use vTPM on the virtual machine.</summary>
+        /// <summary>Whether to use vTpm on the virtual machine.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Whether to use vTPM on the virtual machine.",
+        Description = @"Whether to use vTpm on the virtual machine.",
         SerializedName = @"vTpmEnabled",
         PossibleTypes = new [] { typeof(bool) })]
         bool? VTpmEnabled { get; set; }
 
     }
-    /// Security information.
+    /// Security Information.
     internal partial interface ISecurityInfoPatchPropertiesInternal
 
     {
         /// <summary>Whether to use secureBoot on the virtual machine.</summary>
         bool? SecureBootEnabled { get; set; }
-        /// <summary>The security type used by virtual machine in hostpool session host.</summary>
+        /// <summary>
+        /// The security type used by virtual machine in hostpool session host. Default is Standard.
+        /// </summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Standard", "TrustedLaunch", "ConfidentialVM")]
         string Type { get; set; }
-        /// <summary>Whether to use vTPM on the virtual machine.</summary>
+        /// <summary>Whether to use vTpm on the virtual machine.</summary>
         bool? VTpmEnabled { get; set; }
 
     }

@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfiguration))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Description(@"update a SessionHostConfiguration.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/sessionHostConfigurations/default", ApiVersion = "2025-03-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/sessionHostConfigurations/default", ApiVersion = "2025-09-01-preview")]
     public partial class UpdateAzWvdSessionHostConfiguration_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IContext
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
         /// <summary>A dictionary to carry over additional data for pipeline.</summary>
         private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
 
-        /// <summary>Represents a SessionHostConfigurationPatch definition.</summary>
+        /// <summary>SessionHostConfiguration properties that can be patched.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPatch _sessionHostConfigurationBody = new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SessionHostConfigurationPatch();
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
@@ -111,13 +111,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         public string CustomConfigurationScriptUrl { get => _sessionHostConfigurationBody.CustomConfigurationScriptUrl ?? null; set => _sessionHostConfigurationBody.CustomConfigurationScriptUrl = value; }
 
-        /// <summary>The resource id of the custom image.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The resource id of the custom image.")]
+        /// <summary>The resource ID of the image.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The resource ID of the image.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The resource id of the custom image.",
+        Description = @"The resource ID of the image.",
         SerializedName = @"resourceId",
         PossibleTypes = new [] { typeof(string) })]
         public string CustomInfoResourceId { get => _sessionHostConfigurationBody.CustomInfoResourceId ?? null; set => _sessionHostConfigurationBody.CustomInfoResourceId = value; }
@@ -148,14 +148,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
         /// Gets or sets specifies the ephemeral disk placement for operating system disk. The defaulting behavior is: CacheDisk if
         /// one is configured for the VM size otherwise ResourceDisk is used. Refer to the VM size documentation for Windows VM at
         /// https://docs.microsoft.com/azure/virtual-machines/windows/sizes and Linux VM at https://docs.microsoft.com/azure/virtual-machines/linux/sizes
-        /// to check which VM sizes exposes a cache disk. Possible values include: 'CacheDisk', 'ResourceDisk'
+        /// to check which VM sizes exposes a cache disk. Possible values include: 'CacheDisk', 'ResourceDisk'.
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Gets or sets specifies the ephemeral disk placement for operating system disk. The defaulting behavior is: CacheDisk if one is configured for the VM size otherwise ResourceDisk is used. Refer to the VM size documentation for Windows VM at https://docs.microsoft.com/azure/virtual-machines/windows/sizes and Linux VM at https://docs.microsoft.com/azure/virtual-machines/linux/sizes to check which VM sizes exposes a cache disk. Possible values include: 'CacheDisk', 'ResourceDisk'")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Gets or sets specifies the ephemeral disk placement for operating system disk. The defaulting behavior is: CacheDisk if one is configured for the VM size otherwise ResourceDisk is used. Refer to the VM size documentation for Windows VM at https://docs.microsoft.com/azure/virtual-machines/windows/sizes and Linux VM at https://docs.microsoft.com/azure/virtual-machines/linux/sizes to check which VM sizes exposes a cache disk. Possible values include: 'CacheDisk', 'ResourceDisk'.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Gets or sets specifies the ephemeral disk placement for operating system disk. The defaulting behavior is: CacheDisk if one is configured for the VM size otherwise ResourceDisk is used. Refer to the VM size documentation for Windows VM at https://docs.microsoft.com/azure/virtual-machines/windows/sizes and Linux VM at https://docs.microsoft.com/azure/virtual-machines/linux/sizes to check which VM sizes exposes a cache disk. Possible values include: 'CacheDisk', 'ResourceDisk'",
+        Description = @"Gets or sets specifies the ephemeral disk placement for operating system disk. The defaulting behavior is: CacheDisk if one is configured for the VM size otherwise ResourceDisk is used. Refer to the VM size documentation for Windows VM at https://docs.microsoft.com/azure/virtual-machines/windows/sizes and Linux VM at https://docs.microsoft.com/azure/virtual-machines/linux/sizes to check which VM sizes exposes a cache disk. Possible values include: 'CacheDisk', 'ResourceDisk'.",
         SerializedName = @"placement",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("CacheDisk", "ResourceDisk")]
@@ -232,25 +232,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
 
-        /// <summary>The disk type used by virtual machine in hostpool session host.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The disk type used by virtual machine in hostpool session host.")]
+        /// <summary>Managed Disk information.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Managed Disk information.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The disk type used by virtual machine in hostpool session host.",
+        Description = @"Managed Disk information.",
         SerializedName = @"type",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Standard_LRS", "Premium_LRS", "StandardSSD_LRS")]
         public string ManagedDiskType { get => _sessionHostConfigurationBody.ManagedDiskType ?? null; set => _sessionHostConfigurationBody.ManagedDiskType = value; }
 
-        /// <summary>The exact version of the image.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The exact version of the image.")]
+        /// <summary>The version of the image.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The version of the image.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The exact version of the image.",
+        Description = @"The version of the image.",
         SerializedName = @"exactVersion",
         PossibleTypes = new [] { typeof(string) })]
         public string MarketplaceInfoExactVersion { get => _sessionHostConfigurationBody.MarketplaceInfoExactVersion ?? null; set => _sessionHostConfigurationBody.MarketplaceInfoExactVersion = value; }
@@ -277,13 +277,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         public string MarketplaceInfoPublisher { get => _sessionHostConfigurationBody.MarketplaceInfoPublisher ?? null; set => _sessionHostConfigurationBody.MarketplaceInfoPublisher = value; }
 
-        /// <summary>The sku of the image.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The sku of the image.")]
+        /// <summary>The SKU of the image.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The SKU of the image.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The sku of the image.",
+        Description = @"The SKU of the image.",
         SerializedName = @"sku",
         PossibleTypes = new [] { typeof(string) })]
         public string MarketplaceInfoSku { get => _sessionHostConfigurationBody.MarketplaceInfoSku ?? null; set => _sessionHostConfigurationBody.MarketplaceInfoSku = value; }
@@ -360,25 +360,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
         public global::System.Management.Automation.SwitchParameter SecurityInfoSecureBootEnabled { get => _sessionHostConfigurationBody.SecurityInfoSecureBootEnabled ?? default(global::System.Management.Automation.SwitchParameter); set => _sessionHostConfigurationBody.SecurityInfoSecureBootEnabled = value; }
 
-        /// <summary>The security type used by virtual machine in hostpool session host.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The security type used by virtual machine in hostpool session host.")]
+        /// <summary>
+        /// The security type used by virtual machine in hostpool session host. Default is Standard.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The security type used by virtual machine in hostpool session host. Default is Standard.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The security type used by virtual machine in hostpool session host.",
+        Description = @"The security type used by virtual machine in hostpool session host. Default is Standard.",
         SerializedName = @"type",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Standard", "TrustedLaunch", "ConfidentialVM")]
         public string SecurityInfoType { get => _sessionHostConfigurationBody.SecurityInfoType ?? null; set => _sessionHostConfigurationBody.SecurityInfoType = value; }
 
-        /// <summary>Whether to use vTPM on the virtual machine.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Whether to use vTPM on the virtual machine.")]
+        /// <summary>Whether to use vTpm on the virtual machine.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Whether to use vTpm on the virtual machine.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Whether to use vTPM on the virtual machine.",
+        Description = @"Whether to use vTpm on the virtual machine.",
         SerializedName = @"vTpmEnabled",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
         public global::System.Management.Automation.SwitchParameter SecurityInfoVTpmEnabled { get => _sessionHostConfigurationBody.SecurityInfoVTpmEnabled ?? default(global::System.Management.Automation.SwitchParameter); set => _sessionHostConfigurationBody.SecurityInfoVTpmEnabled = value; }
@@ -405,13 +407,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         public string VMAdminCredentialsUsernameKeyVaultSecretUri { get => _sessionHostConfigurationBody.VMAdminCredentialsUsernameKeyVaultSecretUri ?? null; set => _sessionHostConfigurationBody.VMAdminCredentialsUsernameKeyVaultSecretUri = value; }
 
-        /// <summary>The Location for the session host to be created in</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The Location for the session host to be created in")]
+        /// <summary>
+        /// The Location for the session host to be created in. It will default to the location of the hostpool if not provided
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The Location for the session host to be created in. It will default to the location of the hostpool if not provided")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The Location for the session host to be created in",
+        Description = @"The Location for the session host to be created in. It will default to the location of the hostpool if not provided",
         SerializedName = @"vmLocation",
         PossibleTypes = new [] { typeof(string) })]
         public string VMLocation { get => _sessionHostConfigurationBody.VMLocation ?? null; set => _sessionHostConfigurationBody.VMLocation = value; }

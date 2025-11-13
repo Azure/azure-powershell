@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Extensions;
 
-    /// <summary>Represents a SessionHostManagement definition.</summary>
+    /// <summary>Schema for SessionHostManagement properties.</summary>
     public partial class SessionHostManagement
     {
 

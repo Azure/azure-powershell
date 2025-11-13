@@ -54,7 +54,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
         public int? UpdateLogOffDelayMinute { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolUpdateConfigurationPatchPropertiesInternal)Update).LogOffDelayMinute; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolUpdateConfigurationPatchPropertiesInternal)Update).LogOffDelayMinute = value ?? default(int); }
 
-        /// <summary>Log off message sent to user for logoff.</summary>
+        /// <summary>Log off message sent to user for logoff. Default value is an empty string.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
         public string UpdateLogOffMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolUpdateConfigurationPatchPropertiesInternal)Update).LogOffMessage; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolUpdateConfigurationPatchPropertiesInternal)Update).LogOffMessage = value ?? null; }
 
@@ -120,14 +120,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         SerializedName = @"logOffDelayMinutes",
         PossibleTypes = new [] { typeof(int) })]
         int? UpdateLogOffDelayMinute { get; set; }
-        /// <summary>Log off message sent to user for logoff.</summary>
+        /// <summary>Log off message sent to user for logoff. Default value is an empty string.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Log off message sent to user for logoff.",
+        Description = @"Log off message sent to user for logoff. Default value is an empty string.",
         SerializedName = @"logOffMessage",
         PossibleTypes = new [] { typeof(string) })]
         string UpdateLogOffMessage { get; set; }
@@ -165,7 +165,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         bool? UpdateDeleteOriginalVM { get; set; }
         /// <summary>Grace period before logging off users in minutes.</summary>
         int? UpdateLogOffDelayMinute { get; set; }
-        /// <summary>Log off message sent to user for logoff.</summary>
+        /// <summary>Log off message sent to user for logoff. Default value is an empty string.</summary>
         string UpdateLogOffMessage { get; set; }
         /// <summary>The maximum number of virtual machines to be removed during hostpool update.</summary>
         int? UpdateMaxVmsRemoved { get; set; }

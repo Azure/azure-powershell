@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Extensions;
 
-    /// <summary>The current status of the session host update async operation.</summary>
+    /// <summary>Schema for SessionHostManagementUpdateStatus properties.</summary>
     public partial class SessionHostManagementUpdateStatus :
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementUpdateStatus,
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementUpdateStatusInternal
@@ -21,7 +21,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
         public string Code { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IErrorDetailInternal)Error).Code; }
 
-        /// <summary>The correlation Id for Log Analytics.</summary>
+        /// <summary>The correlation Id for Log Analytics..</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
         public string CorrelationId { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementUpdateStatusPropertiesInternal)Property).CorrelationId; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementUpdateStatusPropertiesInternal)Property).CorrelationId = value ?? null; }
 
@@ -137,11 +137,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         public string Name { get => this._name; set => this._name = value; }
 
         /// <summary>Backing field for <see cref="PercentComplete" /> property.</summary>
-        private float? _percentComplete;
+        private double? _percentComplete;
 
         /// <summary>Percent of the operation that is complete.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
-        public float? PercentComplete { get => this._percentComplete; set => this._percentComplete = value; }
+        public double? PercentComplete { get => this._percentComplete; set => this._percentComplete = value; }
 
         /// <summary>Time that the sessionHostManagement operation was created.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
         public int? ProgressSessionHostsCompleted { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementUpdateStatusPropertiesInternal)Property).ProgressSessionHostsCompleted; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementUpdateStatusPropertiesInternal)Property).ProgressSessionHostsCompleted = value ?? default(int); }
 
-        /// <summary>The number of sessionHosts in progress in the sessionHostManagement operation.</summary>
+        /// <summary>The number of sessionHosts in progress in the sessionHostManagement operation</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
         public int? ProgressSessionHostsInProgress { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementUpdateStatusPropertiesInternal)Property).ProgressSessionHostsInProgress; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementUpdateStatusPropertiesInternal)Property).ProgressSessionHostsInProgress = value ?? default(int); }
 
@@ -170,17 +170,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementUpdateStatusProperties _property;
 
-        /// <summary>The custom properties of the SessionHost Update Status.</summary>
+        /// <summary>Properties bag for sessionHostManagement Update Statuses.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementUpdateStatusProperties Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SessionHostManagementUpdateStatusProperties()); set => this._property = value; }
 
         /// <summary>
-        /// Policy on whether a Canary VM should be provisioned during a session host provisioning operation.
+        /// Policy on whether a Canary VM(a single VM to validate the configuration) should be provisioned during a session host provisioning
+        /// operation.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
         public string ProvisioningCanaryPolicy { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementUpdateStatusPropertiesInternal)Property).ProvisioningCanaryPolicy; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementUpdateStatusPropertiesInternal)Property).ProvisioningCanaryPolicy = value ?? null; }
 
-        /// <summary>the number of session hosts to exist in the Host Pool.</summary>
+        /// <summary>The number of session hosts to exist in the Host Pool.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
         public int? ProvisioningInstanceCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementUpdateStatusPropertiesInternal)Property).ProvisioningInstanceCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementUpdateStatusPropertiesInternal)Property).ProvisioningInstanceCount = value ?? default(int); }
 
@@ -253,7 +254,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// <summary>Backing field for <see cref="Status" /> property.</summary>
         private string _status;
 
-        /// <summary>Operation status</summary>
+        /// <summary>
+        /// Operation status. Current defined values are < Error | Scheduled | UpdatingSessionHosts | ValidatingSessionHostUpdate
+        /// | Paused | Pausing | Cancelling > | Succeeded | Failed | Canceled
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
         public string Status { get => this._status; }
 
@@ -283,7 +287,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
 
         }
     }
-    /// The current status of the session host update async operation.
+    /// Schema for SessionHostManagementUpdateStatus properties.
     public partial interface ISessionHostManagementUpdateStatus :
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IJsonSerializable
     {
@@ -309,14 +313,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         SerializedName = @"code",
         PossibleTypes = new [] { typeof(string) })]
         string Code { get;  }
-        /// <summary>The correlation Id for Log Analytics.</summary>
+        /// <summary>The correlation Id for Log Analytics..</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The correlation Id for Log Analytics.",
+        Description = @"The correlation Id for Log Analytics..",
         SerializedName = @"correlationId",
         PossibleTypes = new [] { typeof(string) })]
         string CorrelationId { get; set; }
@@ -398,8 +402,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         Update = true,
         Description = @"Percent of the operation that is complete.",
         SerializedName = @"percentComplete",
-        PossibleTypes = new [] { typeof(float) })]
-        float? PercentComplete { get; set; }
+        PossibleTypes = new [] { typeof(double) })]
+        double? PercentComplete { get; set; }
         /// <summary>Time that the sessionHostManagement operation was created.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
@@ -422,14 +426,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         SerializedName = @"sessionHostsCompleted",
         PossibleTypes = new [] { typeof(int) })]
         int? ProgressSessionHostsCompleted { get; set; }
-        /// <summary>The number of sessionHosts in progress in the sessionHostManagement operation.</summary>
+        /// <summary>The number of sessionHosts in progress in the sessionHostManagement operation</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The number of sessionHosts in progress in the sessionHostManagement operation.",
+        Description = @"The number of sessionHosts in progress in the sessionHostManagement operation",
         SerializedName = @"sessionHostsInProgress",
         PossibleTypes = new [] { typeof(int) })]
         int? ProgressSessionHostsInProgress { get; set; }
@@ -460,7 +464,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         PossibleTypes = new [] { typeof(int) })]
         int? ProgressTotalSessionHost { get; set; }
         /// <summary>
-        /// Policy on whether a Canary VM should be provisioned during a session host provisioning operation.
+        /// Policy on whether a Canary VM(a single VM to validate the configuration) should be provisioned during a session host provisioning
+        /// operation.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
@@ -468,19 +473,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Policy on whether a Canary VM should be provisioned during a session host provisioning operation.",
+        Description = @"Policy on whether a Canary VM(a single VM to validate the configuration) should be provisioned during a session host provisioning operation.",
         SerializedName = @"canaryPolicy",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Auto", "Never", "Always")]
         string ProvisioningCanaryPolicy { get; set; }
-        /// <summary>the number of session hosts to exist in the Host Pool.</summary>
+        /// <summary>The number of session hosts to exist in the Host Pool.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"the number of session hosts to exist in the Host Pool.",
+        Description = @"The number of session hosts to exist in the Host Pool.",
         SerializedName = @"instanceCount",
         PossibleTypes = new [] { typeof(int) })]
         int? ProvisioningInstanceCount { get; set; }
@@ -636,17 +641,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         SerializedName = @"startTime",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
         global::System.DateTime? StartTime { get; set; }
-        /// <summary>Operation status</summary>
+        /// <summary>
+        /// Operation status. Current defined values are < Error | Scheduled | UpdatingSessionHosts | ValidatingSessionHostUpdate
+        /// | Paused | Pausing | Cancelling > | Succeeded | Failed | Canceled
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
         ReadOnly = true,
         Read = true,
         Create = false,
         Update = false,
-        Description = @"Operation status",
+        Description = @"Operation status. Current defined values are < Error | Scheduled | UpdatingSessionHosts | ValidatingSessionHostUpdate | Paused | Pausing | Cancelling > | Succeeded | Failed | Canceled",
         SerializedName = @"status",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Error", "Scheduled", "UpdatingSessionHosts", "ValidatingSessionHostUpdate", "Paused", "Pausing", "Cancelling", "Succeeded", "Failed", "Canceled")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Error", "Scheduled", "UpdatingSessionHosts", "ValidatingSessionHostUpdate", "Paused", "Pausing", "Cancelling", "Succeeded", "Failed", "Cancelled")]
         string Status { get;  }
         /// <summary>The error target.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
@@ -705,7 +713,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         int? UpdateMaxVmsRemoved { get; set; }
 
     }
-    /// The current status of the session host update async operation.
+    /// Schema for SessionHostManagementUpdateStatus properties.
     internal partial interface ISessionHostManagementUpdateStatusInternal
 
     {
@@ -713,7 +721,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IErrorAdditionalInfo> AdditionalInfo { get; set; }
         /// <summary>The error code.</summary>
         string Code { get; set; }
-        /// <summary>The correlation Id for Log Analytics.</summary>
+        /// <summary>The correlation Id for Log Analytics..</summary>
         string CorrelationId { get; set; }
         /// <summary>The error details.</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IErrorDetail> Detail { get; set; }
@@ -733,14 +741,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// <summary>Name of the async operation.</summary>
         string Name { get; set; }
         /// <summary>Percent of the operation that is complete.</summary>
-        float? PercentComplete { get; set; }
+        double? PercentComplete { get; set; }
         /// <summary>Progress information on the sessionHostManagement operation.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementOperationProgress Progress { get; set; }
         /// <summary>Time that the sessionHostManagement operation was created.</summary>
         global::System.DateTime? ProgressExecutionStartTime { get; set; }
         /// <summary>The number of sessionHosts completed in the sessionHostManagement operation.</summary>
         int? ProgressSessionHostsCompleted { get; set; }
-        /// <summary>The number of sessionHosts in progress in the sessionHostManagement operation.</summary>
+        /// <summary>The number of sessionHosts in progress in the sessionHostManagement operation</summary>
         int? ProgressSessionHostsInProgress { get; set; }
         /// <summary>
         /// The number of sessionHosts rollback failed in the sessionHostManagement operation.
@@ -750,16 +758,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// The number of sessionHosts to be started in the sessionHostManagement operation.
         /// </summary>
         int? ProgressTotalSessionHost { get; set; }
-        /// <summary>The custom properties of the SessionHost Update Status.</summary>
+        /// <summary>Properties bag for sessionHostManagement Update Statuses.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementUpdateStatusProperties Property { get; set; }
         /// <summary>Parameters that apply when session hosts are provisioned.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostProvisioningConfigurationProperties Provisioning { get; set; }
         /// <summary>
-        /// Policy on whether a Canary VM should be provisioned during a session host provisioning operation.
+        /// Policy on whether a Canary VM(a single VM to validate the configuration) should be provisioned during a session host provisioning
+        /// operation.
         /// </summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Auto", "Never", "Always")]
         string ProvisioningCanaryPolicy { get; set; }
-        /// <summary>the number of session hosts to exist in the Host Pool.</summary>
+        /// <summary>The number of session hosts to exist in the Host Pool.</summary>
         int? ProvisioningInstanceCount { get; set; }
         /// <summary>Whether the session host should be set in drain mode following provisioning.</summary>
         bool? ProvisioningSetDrainMode { get; set; }
@@ -804,8 +813,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         string SessionHostManagementType { get; set; }
         /// <summary>The start time of the operation.</summary>
         global::System.DateTime? StartTime { get; set; }
-        /// <summary>Operation status</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Error", "Scheduled", "UpdatingSessionHosts", "ValidatingSessionHostUpdate", "Paused", "Pausing", "Cancelling", "Succeeded", "Failed", "Canceled")]
+        /// <summary>
+        /// Operation status. Current defined values are < Error | Scheduled | UpdatingSessionHosts | ValidatingSessionHostUpdate
+        /// | Paused | Pausing | Cancelling > | Succeeded | Failed | Canceled
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Error", "Scheduled", "UpdatingSessionHosts", "ValidatingSessionHostUpdate", "Paused", "Pausing", "Cancelling", "Succeeded", "Failed", "Cancelled")]
         string Status { get; set; }
         /// <summary>The error target.</summary>
         string Target { get; set; }

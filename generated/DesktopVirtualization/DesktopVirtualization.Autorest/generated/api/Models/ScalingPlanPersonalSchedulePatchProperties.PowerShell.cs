@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PowerShell;
 
-    /// <summary>A ScalingPlanPersonalSchedule.</summary>
+    /// <summary>ScalingPlanPersonalSchedule properties that can be patched.</summary>
     [System.ComponentModel.TypeConverter(typeof(ScalingPlanPersonalSchedulePatchPropertiesTypeConverter))]
     public partial class ScalingPlanPersonalSchedulePatchProperties
     {
@@ -423,7 +423,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             return ToJsonString();
         }
     }
-    /// A ScalingPlanPersonalSchedule.
+    /// ScalingPlanPersonalSchedule properties that can be patched.
     [System.ComponentModel.TypeConverter(typeof(ScalingPlanPersonalSchedulePatchPropertiesTypeConverter))]
     public partial interface IScalingPlanPersonalSchedulePatchProperties
 

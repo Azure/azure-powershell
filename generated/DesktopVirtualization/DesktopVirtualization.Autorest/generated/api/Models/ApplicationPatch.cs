@@ -70,13 +70,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
         public bool? ShowInPortal { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationPatchPropertiesInternal)Property).ShowInPortal; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationPatchPropertiesInternal)Property).ShowInPortal = value ?? default(bool); }
 
-        /// <summary>Backing field for <see cref="Tag" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationPatchTags _tag;
-
-        /// <summary>tags to be updated</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
-        public Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationPatchTags Tag { get => (this._tag = this._tag ?? new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ApplicationPatchTags()); set => this._tag = value; }
-
         /// <summary>Creates an new <see cref="ApplicationPatch" /> instance.</summary>
         public ApplicationPatch()
         {
@@ -213,17 +206,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         SerializedName = @"showInPortal",
         PossibleTypes = new [] { typeof(bool) })]
         bool? ShowInPortal { get; set; }
-        /// <summary>tags to be updated</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"tags to be updated",
-        SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationPatchTags) })]
-        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationPatchTags Tag { get; set; }
 
     }
     /// Application properties that can be patched.
@@ -259,8 +241,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationPatchProperties Property { get; set; }
         /// <summary>Specifies whether to show the RemoteApp program in the RD Web Access server.</summary>
         bool? ShowInPortal { get; set; }
-        /// <summary>tags to be updated</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationPatchTags Tag { get; set; }
 
     }
 }

@@ -97,6 +97,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// <summary>Internal Acessors for StatusTimestamp</summary>
         global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostPropertiesInternal.StatusTimestamp { get => this._statusTimestamp; set { {_statusTimestamp = value;} } }
 
+        /// <summary>Internal Acessors for UpdateState</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostPropertiesInternal.UpdateState { get => this._updateState; set { {_updateState = value;} } }
+
         /// <summary>Internal Acessors for VirtualMachineId</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostPropertiesInternal.VirtualMachineId { get => this._virtualMachineId; set { {_virtualMachineId = value;} } }
 
@@ -184,7 +187,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
 
         /// <summary>Update state of a SessionHost.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
-        public string UpdateState { get => this._updateState; set => this._updateState = value; }
+        public string UpdateState { get => this._updateState; }
 
         /// <summary>Backing field for <see cref="VirtualMachineId" /> property.</summary>
         private string _virtualMachineId;
@@ -429,15 +432,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// <summary>Update state of a SessionHost.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
-        ReadOnly = false,
+        ReadOnly = true,
         Read = true,
-        Create = true,
-        Update = true,
+        Create = false,
+        Update = false,
         Description = @"Update state of a SessionHost.",
         SerializedName = @"updateState",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Initial", "Pending", "Started", "Succeeded", "Failed")]
-        string UpdateState { get; set; }
+        string UpdateState { get;  }
         /// <summary>Virtual Machine Id of SessionHost's underlying virtual machine.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,

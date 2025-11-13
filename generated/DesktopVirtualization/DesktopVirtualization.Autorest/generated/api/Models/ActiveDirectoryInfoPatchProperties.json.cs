@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Extensions;
 
-    /// <summary>Active directory info. Only one should be populated based on the join type.</summary>
+    /// <summary>Active directory info. Only one should be populated based on the join type</summary>
     public partial class ActiveDirectoryInfoPatchProperties
     {
 

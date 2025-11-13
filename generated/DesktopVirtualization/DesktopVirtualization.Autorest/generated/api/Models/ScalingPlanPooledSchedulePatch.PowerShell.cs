@@ -155,10 +155,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceInternal)this).Type, global::System.Convert.ToString);
             }
-            if (content.Contains("ScalingMethod"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchInternal)this).ScalingMethod = (string) content.GetValueForProperty("ScalingMethod",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchInternal)this).ScalingMethod, global::System.Convert.ToString);
-            }
             if (content.Contains("CreateDelete"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchInternal)this).CreateDelete = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ICreateDeleteProperties) content.GetValueForProperty("CreateDelete",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchInternal)this).CreateDelete, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.CreateDeletePropertiesTypeConverter.ConvertFrom);
@@ -186,6 +182,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             if (content.Contains("DaysOfWeek"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchInternal)this).DaysOfWeek = (System.Collections.Generic.List<string>) content.GetValueForProperty("DaysOfWeek",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchInternal)this).DaysOfWeek, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("ScalingMethod"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchInternal)this).ScalingMethod = (string) content.GetValueForProperty("ScalingMethod",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchInternal)this).ScalingMethod, global::System.Convert.ToString);
             }
             if (content.Contains("RampUpLoadBalancingAlgorithm"))
             {
@@ -344,10 +344,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceInternal)this).Type, global::System.Convert.ToString);
             }
-            if (content.Contains("ScalingMethod"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchInternal)this).ScalingMethod = (string) content.GetValueForProperty("ScalingMethod",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchInternal)this).ScalingMethod, global::System.Convert.ToString);
-            }
             if (content.Contains("CreateDelete"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchInternal)this).CreateDelete = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ICreateDeleteProperties) content.GetValueForProperty("CreateDelete",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchInternal)this).CreateDelete, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.CreateDeletePropertiesTypeConverter.ConvertFrom);
@@ -375,6 +371,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             if (content.Contains("DaysOfWeek"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchInternal)this).DaysOfWeek = (System.Collections.Generic.List<string>) content.GetValueForProperty("DaysOfWeek",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchInternal)this).DaysOfWeek, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("ScalingMethod"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchInternal)this).ScalingMethod = (string) content.GetValueForProperty("ScalingMethod",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchInternal)this).ScalingMethod, global::System.Convert.ToString);
             }
             if (content.Contains("RampUpLoadBalancingAlgorithm"))
             {

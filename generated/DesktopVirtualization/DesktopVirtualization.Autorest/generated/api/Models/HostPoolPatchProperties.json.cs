@@ -99,6 +99,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             {_directUdp = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString>("directUDP"), out var __jsonDirectUdp) ? (string)__jsonDirectUdp : (string)_directUdp;}
             {_publicUdp = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString>("publicUDP"), out var __jsonPublicUdp) ? (string)__jsonPublicUdp : (string)_publicUdp;}
             {_relayUdp = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString>("relayUDP"), out var __jsonRelayUdp) ? (string)__jsonRelayUdp : (string)_relayUdp;}
+            {_allowRdpShortPathWithPrivateLink = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString>("allowRDPShortPathWithPrivateLink"), out var __jsonAllowRdpShortPathWithPrivateLink) ? (string)__jsonAllowRdpShortPathWithPrivateLink : (string)_allowRdpShortPathWithPrivateLink;}
             AfterFromJson(json);
         }
 
@@ -143,6 +144,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             AddIf( null != (((object)this._directUdp)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString(this._directUdp.ToString()) : null, "directUDP" ,container.Add );
             AddIf( null != (((object)this._publicUdp)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString(this._publicUdp.ToString()) : null, "publicUDP" ,container.Add );
             AddIf( null != (((object)this._relayUdp)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString(this._relayUdp.ToString()) : null, "relayUDP" ,container.Add );
+            AddIf( null != (((object)this._allowRdpShortPathWithPrivateLink)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString(this._allowRdpShortPathWithPrivateLink.ToString()) : null, "allowRDPShortPathWithPrivateLink" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

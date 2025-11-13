@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Extensions;
 
-    /// <summary>Properties bag for sessionHostManagement Update Statuses.</summary>
+    /// <summary>The current status of the session host update async operation.</summary>
     public partial class SessionHostManagementUpdateStatusProperties
     {
 

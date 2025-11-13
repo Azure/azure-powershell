@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Extensions;
 
-    /// <summary>A ScalingPlanPooledSchedule.</summary>
+    /// <summary>A ScalingPlanPooledSchedule that can be patched.</summary>
     public partial class ScalingPlanPooledSchedulePatchProperties :
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchProperties,
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchPropertiesInternal
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
         private string _name;
 
-        /// <summary>Name of the ScalingPlanPooledSchedule.</summary>
+        /// <summary>Name of the ScalingPlanPooledSchedule</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
         public string Name { get => this._name; }
 
@@ -243,7 +243,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
 
         }
     }
-    /// A ScalingPlanPooledSchedule.
+    /// A ScalingPlanPooledSchedule that can be patched.
     public partial interface IScalingPlanPooledSchedulePatchProperties :
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IJsonSerializable
     {
@@ -315,14 +315,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")]
         System.Collections.Generic.List<string> DaysOfWeek { get; set; }
-        /// <summary>Name of the ScalingPlanPooledSchedule.</summary>
+        /// <summary>Name of the ScalingPlanPooledSchedule</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
         ReadOnly = true,
         Read = true,
         Create = false,
         Update = false,
-        Description = @"Name of the ScalingPlanPooledSchedule.",
+        Description = @"Name of the ScalingPlanPooledSchedule",
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(string) })]
         string Name { get;  }
@@ -567,7 +567,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         string ScalingMethod { get; set; }
 
     }
-    /// A ScalingPlanPooledSchedule.
+    /// A ScalingPlanPooledSchedule that can be patched.
     internal partial interface IScalingPlanPooledSchedulePatchPropertiesInternal
 
     {
@@ -598,7 +598,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// <summary>Set of days of the week on which this schedule is active.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")]
         System.Collections.Generic.List<string> DaysOfWeek { get; set; }
-        /// <summary>Name of the ScalingPlanPooledSchedule.</summary>
+        /// <summary>Name of the ScalingPlanPooledSchedule</summary>
         string Name { get; set; }
         /// <summary>Load balancing algorithm for off-peak period.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("BreadthFirst", "DepthFirst")]

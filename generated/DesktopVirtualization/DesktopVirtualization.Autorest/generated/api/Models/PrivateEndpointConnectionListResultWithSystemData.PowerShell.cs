@@ -7,9 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PowerShell;
 
-    /// <summary>
-    /// List of private endpoint connection associated with the specified storage account
-    /// </summary>
+    /// <summary>List of private endpoint connection associated with the specified HostPool</summary>
     [System.ComponentModel.TypeConverter(typeof(PrivateEndpointConnectionListResultWithSystemDataTypeConverter))]
     public partial class PrivateEndpointConnectionListResultWithSystemData
     {
@@ -169,7 +167,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             return ToJsonString();
         }
     }
-    /// List of private endpoint connection associated with the specified storage account
+    /// List of private endpoint connection associated with the specified HostPool
     [System.ComponentModel.TypeConverter(typeof(PrivateEndpointConnectionListResultWithSystemDataTypeConverter))]
     public partial interface IPrivateEndpointConnectionListResultWithSystemData
 

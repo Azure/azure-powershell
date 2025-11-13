@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PowerShell;
 
-    /// <summary>Properties bag for sessionHostManagement Update Statuses.</summary>
+    /// <summary>The current status of the session host update async operation.</summary>
     [System.ComponentModel.TypeConverter(typeof(SessionHostManagementUpdateStatusPropertiesTypeConverter))]
     public partial class SessionHostManagementUpdateStatusProperties
     {
@@ -399,7 +399,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             return ToJsonString();
         }
     }
-    /// Properties bag for sessionHostManagement Update Statuses.
+    /// The current status of the session host update async operation.
     [System.ComponentModel.TypeConverter(typeof(SessionHostManagementUpdateStatusPropertiesTypeConverter))]
     public partial interface ISessionHostManagementUpdateStatusProperties
 

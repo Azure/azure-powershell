@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PowerShell;
 
-    /// <summary>Schema for patchable App Attach Package properties.</summary>
+    /// <summary>Schema for updatable App Attach Package properties.</summary>
     [System.ComponentModel.TypeConverter(typeof(AppAttachPackagePatchTypeConverter))]
     public partial class AppAttachPackagePatch
     {
@@ -418,7 +418,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             return ToJsonString();
         }
     }
-    /// Schema for patchable App Attach Package properties.
+    /// Schema for updatable App Attach Package properties.
     [System.ComponentModel.TypeConverter(typeof(AppAttachPackagePatchTypeConverter))]
     public partial interface IAppAttachPackagePatch
 

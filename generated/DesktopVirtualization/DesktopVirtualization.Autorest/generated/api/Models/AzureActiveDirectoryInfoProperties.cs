@@ -8,7 +8,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
     using static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Extensions;
 
     /// <summary>
-    /// Azure Active directory info. Only one should be populated based on the join type.
+    /// Azure Active directory info. Only one should be populated based on the join type
     /// </summary>
     public partial class AzureActiveDirectoryInfoProperties :
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAzureActiveDirectoryInfoProperties,
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
 
         }
     }
-    /// Azure Active directory info. Only one should be populated based on the join type.
+    /// Azure Active directory info. Only one should be populated based on the join type
     public partial interface IAzureActiveDirectoryInfoProperties :
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IJsonSerializable
     {
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         string MdmProviderGuid { get; set; }
 
     }
-    /// Azure Active directory info. Only one should be populated based on the join type.
+    /// Azure Active directory info. Only one should be populated based on the join type
     internal partial interface IAzureActiveDirectoryInfoPropertiesInternal
 
     {

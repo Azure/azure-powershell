@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Extensions;
 
-    /// <summary>Security information.</summary>
+    /// <summary>Security Information.</summary>
     public partial class SecurityInfoProperties :
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISecurityInfoProperties,
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISecurityInfoPropertiesInternal
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// <summary>Backing field for <see cref="VTpmEnabled" /> property.</summary>
         private bool? _vTpmEnabled;
 
-        /// <summary>Whether to use vTPM on the virtual machine.</summary>
+        /// <summary>Whether to use vTpm on the virtual machine.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
         public bool? VTpmEnabled { get => this._vTpmEnabled; set => this._vTpmEnabled = value; }
 
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
 
         }
     }
-    /// Security information.
+    /// Security Information.
     public partial interface ISecurityInfoProperties :
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IJsonSerializable
     {
@@ -71,20 +71,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Standard", "TrustedLaunch", "ConfidentialVM")]
         string Type { get; set; }
-        /// <summary>Whether to use vTPM on the virtual machine.</summary>
+        /// <summary>Whether to use vTpm on the virtual machine.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Whether to use vTPM on the virtual machine.",
+        Description = @"Whether to use vTpm on the virtual machine.",
         SerializedName = @"vTpmEnabled",
         PossibleTypes = new [] { typeof(bool) })]
         bool? VTpmEnabled { get; set; }
 
     }
-    /// Security information.
+    /// Security Information.
     internal partial interface ISecurityInfoPropertiesInternal
 
     {
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// </summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Standard", "TrustedLaunch", "ConfidentialVM")]
         string Type { get; set; }
-        /// <summary>Whether to use vTPM on the virtual machine.</summary>
+        /// <summary>Whether to use vTpm on the virtual machine.</summary>
         bool? VTpmEnabled { get; set; }
 
     }

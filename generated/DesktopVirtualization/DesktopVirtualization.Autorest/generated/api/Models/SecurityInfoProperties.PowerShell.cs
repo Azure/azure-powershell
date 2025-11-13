@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PowerShell;
 
-    /// <summary>Security information.</summary>
+    /// <summary>Security Information.</summary>
     [System.ComponentModel.TypeConverter(typeof(SecurityInfoPropertiesTypeConverter))]
     public partial class SecurityInfoProperties
     {
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             return ToJsonString();
         }
     }
-    /// Security information.
+    /// Security Information.
     [System.ComponentModel.TypeConverter(typeof(SecurityInfoPropertiesTypeConverter))]
     public partial interface ISecurityInfoProperties
 
