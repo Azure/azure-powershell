@@ -31,9 +31,9 @@ Get-AzDnsForwardingRuleset -ResourceGroupName sampleRG -VirtualNetworkName virtu
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsForwardingRuleset
+Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IDnsForwardingRuleset
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IVirtualNetworkDnsForwardingRuleset
+Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IVirtualNetworkDnsForwardingRuleset
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -53,13 +53,13 @@ INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VirtualNetworkLinkName <String>]: The name of the virtual network link.
-  [VirtualNetworkName <String>]: The name of the virtual network.
+  [VirtualNetworkName <String>]: The name of the VirtualNetwork
 .Link
 https://learn.microsoft.com/powershell/module/az.dnsresolver/get-azdnsforwardingruleset
 #>
 function Get-AzDnsForwardingRuleset {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsForwardingRuleset], [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IVirtualNetworkDnsForwardingRuleset])]
-[CmdletBinding(DefaultParameterSetName='List1', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IDnsForwardingRuleset], [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IVirtualNetworkDnsForwardingRuleset])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
     [Alias('DnsForwardingRulesetName')]
@@ -69,7 +69,7 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
-    [Parameter(ParameterSetName='List', Mandatory)]
+    [Parameter(ParameterSetName='List1', Mandatory)]
     [Parameter(ParameterSetName='List2', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Category('Path')]
     [System.String]
@@ -98,7 +98,7 @@ param(
     [Parameter(ParameterSetName='List2', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Category('Path')]
     [System.String]
-    # The name of the virtual network.
+    # The name of the VirtualNetwork
     ${VirtualNetworkName},
 
     [Parameter(ParameterSetName='List')]

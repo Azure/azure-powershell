@@ -13,10 +13,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Cmdlets
     /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverPolicies/{dnsResolverPolicyName}/dnsSecurityRules/{dnsSecurityRuleName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzDnsResolverPolicyDnsSecurityRule_UpdateExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsSecurityRule))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IDnsSecurityRule))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Description(@"Updates a DNS security rule.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverPolicies/{dnsResolverPolicyName}/dnsSecurityRules/{dnsSecurityRuleName}", ApiVersion = "2025-05-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverPolicies/{dnsResolverPolicyName}/dnsSecurityRules/{dnsSecurityRuleName}", ApiVersion = "2025-10-01-preview")]
     public partial class UpdateAzDnsResolverPolicyDnsSecurityRule_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener
     {
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Cmdlets
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
         /// <summary>Describes a DNS security rule for PATCH operation.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsSecurityRulePatch _parametersBody = new Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.DnsSecurityRulePatch();
+        private Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IDnsSecurityRulePatch _parametersBody = new Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.DnsSecurityRulePatch();
 
         /// <summary>The type of action to take.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The type of action to take.")]
@@ -81,8 +81,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Cmdlets
         ReadOnly = false,
         Description = @"DNS resolver policy domains lists that the DNS security rule applies to.",
         SerializedName = @"dnsResolverDomainLists",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.ISubResource) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.ISubResource[] DnsResolverDomainList { get => _parametersBody.DnsResolverDomainList ?? null /* arrayOf */; set => _parametersBody.DnsResolverDomainList = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.ISubResource) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.ISubResource[] DnsResolverDomainList { get => _parametersBody.DnsResolverDomainList ?? null /* arrayOf */; set => _parametersBody.DnsResolverDomainList = value; }
 
         /// <summary>Backing field for <see cref="DnsResolverPolicyName" /> property.</summary>
         private string _dnsResolverPolicyName;
@@ -134,13 +134,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Cmdlets
         Required = false,
         ReadOnly = false,
         Description = @"ETag of the resource. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting any concurrent changes.",
-        SerializedName = @"If-Match",
+        SerializedName = @"if-match",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.ParameterCategory.Header)]
         public string IfMatch { get => this._ifMatch; set => this._ifMatch = value; }
 
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
+
+        /// <summary>Managed domain lists that the DNS security rule applies to.</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Managed domain lists that the DNS security rule applies to.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Managed domain lists that the DNS security rule applies to.",
+        SerializedName = @"managedDomainLists",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Support.ManagedDomainList) })]
+        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Support.ManagedDomainList))]
+        public Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Support.ManagedDomainList[] ManagedDomainList { get => _parametersBody.ManagedDomainList ?? null /* arrayOf */; set => _parametersBody.ManagedDomainList = value; }
 
         /// <summary>
         /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
@@ -246,32 +259,32 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Cmdlets
         ReadOnly = false,
         Description = @"Tags for DNS security rule.",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsSecurityRulePatchTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsSecurityRulePatchTags Tag { get => _parametersBody.Tag ?? null /* object */; set => _parametersBody.Tag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IDnsSecurityRulePatchTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IDnsSecurityRulePatchTags Tag { get => _parametersBody.Tag ?? null /* object */; set => _parametersBody.Tag = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api50.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api50.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api60.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api60.IErrorResponse</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api50.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api60.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsSecurityRule">Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsSecurityRule</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IDnsSecurityRule">Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IDnsSecurityRule</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsSecurityRule> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IDnsSecurityRule> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -535,12 +548,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api50.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api50.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api60.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api60.IErrorResponse</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api50.IErrorResponse> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api60.IErrorResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -557,7 +570,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api50.IErrorResponse>(responseMessage, await response);
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api60.IErrorResponse>(responseMessage, await response);
                     WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, DnsResolverPolicyName=DnsResolverPolicyName, Name=Name, IfMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null, body=_parametersBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
@@ -575,12 +588,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsSecurityRule">Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsSecurityRule</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IDnsSecurityRule">Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IDnsSecurityRule</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsSecurityRule> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IDnsSecurityRule> response)
         {
             using( NoSynchronizationContext )
             {
@@ -592,7 +605,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsSecurityRule
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IDnsSecurityRule
                 WriteObject((await response));
             }
         }

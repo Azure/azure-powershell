@@ -24,9 +24,11 @@ New-AzDnsResolverPolicyDnsSecurityRule -Name sampleSecurityRule -ResourceGroupNa
 
 .Example
 New-AzDnsResolverPolicyDnsSecurityRule -Name sampleSecurityRule -ResourceGroupName powershell-test-rg -DnsResolverPolicyName samplePolicyName -Location westus2 -DnsSecurityRuleState "Enabled" -ActionType "Block" -Priority 100 -DnsResolverDomainList @{id = "/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/dnsResolverDomainLists/exampleDomainListName";} -Tag @{"key0" = "value0"}
+.Example
+New-AzDnsResolverPolicyDnsSecurityRule -Name sampleSecurityRule -ResourceGroupName powershell-test-rg -DnsResolverPolicyName samplePolicyName -Location westus2 -DnsSecurityRuleState "Enabled" -ActionType "Block" -Priority 100 -ManagedDomainList @("AzureDnsThreatIntel")
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsSecurityRule
+Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IDnsSecurityRule
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -38,7 +40,7 @@ DNSRESOLVERDOMAINLIST <ISubResource[]>: DNS resolver policy domains lists that t
 https://learn.microsoft.com/powershell/module/az.dnsresolver/new-azdnsresolverpolicydnssecurityrule
 #>
 function New-AzDnsResolverPolicyDnsSecurityRule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsSecurityRule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IDnsSecurityRule])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -85,14 +87,6 @@ param(
     ${IfNoneMatch},
 
     [Parameter(Mandatory)]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.ISubResource[]]
-    # DNS resolver policy domains lists that the DNS security rule applies to.
-    # To construct, see NOTES section for DNSRESOLVERDOMAINLIST properties and create a hash table.
-    ${DnsResolverDomainList},
-
-    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Category('Body')]
     [System.String]
     # The geo-location where the resource lives
@@ -112,6 +106,14 @@ param(
     ${ActionType},
 
     [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.ISubResource[]]
+    # DNS resolver policy domains lists that the DNS security rule applies to.
+    # To construct, see NOTES section for DNSRESOLVERDOMAINLIST properties and create a hash table.
+    ${DnsResolverDomainList},
+
+    [Parameter()]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Support.DnsSecurityRuleState])]
     [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Support.DnsSecurityRuleState]
@@ -119,8 +121,16 @@ param(
     ${DnsSecurityRuleState},
 
     [Parameter()]
+    [AllowEmptyCollection()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Support.ManagedDomainList])]
     [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api50.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Support.ManagedDomainList[]]
+    # Managed domain lists that the DNS security rule applies to.
+    ${ManagedDomainList},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api60.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},

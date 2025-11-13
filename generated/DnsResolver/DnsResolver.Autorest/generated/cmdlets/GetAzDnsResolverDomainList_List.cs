@@ -8,15 +8,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Cmdlets
     using static Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Extensions;
     using System;
 
-    /// <summary>Lists DNS resolver domain lists within a resource group.</summary>
+    /// <summary>Lists DNS resolver domain lists in all resource groups of a subscription.</summary>
     /// <remarks>
-    /// [OpenAPI] ListByResourceGroup=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverDomainLists"
+    /// [OpenAPI] List=>GET:"/subscriptions/{subscriptionId}/providers/Microsoft.Network/dnsResolverDomainLists"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzDnsResolverDomainList_List")]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsResolverDomainList))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Description(@"Lists DNS resolver domain lists within a resource group.")]
+    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.PreviewMessage("*****************************************************************************************\r\n* This cmdlet will undergo a breaking change in Az v16.0.0, to be released in May 2026. *\r\n* At least one change applies to this cmdlet.                                                     *\r\n* See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *\r\n**************************************************************************************************")]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IDnsResolverDomainList))]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Description(@"Lists DNS resolver domain lists in all resource groups of a subscription.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverDomainLists", ApiVersion = "2025-05-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.Network/dnsResolverDomainLists", ApiVersion = "2025-10-01-preview")]
     public partial class GetAzDnsResolverDomainList_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener
     {
@@ -102,20 +103,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter ProxyUseDefaultCredentials { get; set; }
 
-        /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
-        private string _resourceGroupName;
-
-        /// <summary>The name of the resource group. The name is case insensitive.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The name of the resource group. The name is case insensitive.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(
-        Required = true,
-        ReadOnly = false,
-        Description = @"The name of the resource group. The name is case insensitive.",
-        SerializedName = @"resourceGroupName",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.ParameterCategory.Path)]
-        public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
-
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string[] _subscriptionId;
 
@@ -155,24 +142,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Cmdlets
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api50.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api50.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api60.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api60.IErrorResponse</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api50.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api60.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsResolverDomainListResult">Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsResolverDomainListResult</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IDnsResolverDomainListResult">Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IDnsResolverDomainListResult</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsResolverDomainListResult> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IDnsResolverDomainListResult> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -336,13 +323,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Cmdlets
                     foreach( var SubscriptionId in this.SubscriptionId )
                     {
                         await ((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                        await this.Client.DnsResolverDomainListsListByResourceGroup(SubscriptionId, ResourceGroupName, this.InvocationInformation.BoundParameters.ContainsKey("Top") ? Top : default(int?), onOk, onDefault, this, Pipeline);
+                        await this.Client.DnsResolverDomainListsList(SubscriptionId, this.InvocationInformation.BoundParameters.ContainsKey("Top") ? Top : default(int?), onOk, onDefault, this, Pipeline);
                         await ((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,Top=this.InvocationInformation.BoundParameters.ContainsKey("Top") ? Top : default(int?)})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,Top=this.InvocationInformation.BoundParameters.ContainsKey("Top") ? Top : default(int?)})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -380,12 +367,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api50.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api50.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api60.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api60.IErrorResponse</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api50.IErrorResponse> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api60.IErrorResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -402,15 +389,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api50.IErrorResponse>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Top=this.InvocationInformation.BoundParameters.ContainsKey("Top") ? Top : default(int?) })
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api60.IErrorResponse>(responseMessage, await response);
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, Top=this.InvocationInformation.BoundParameters.ContainsKey("Top") ? Top : default(int?) })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Top=this.InvocationInformation.BoundParameters.ContainsKey("Top") ? Top : default(int?) })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, Top=this.InvocationInformation.BoundParameters.ContainsKey("Top") ? Top : default(int?) })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -420,12 +407,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsResolverDomainListResult">Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsResolverDomainListResult</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IDnsResolverDomainListResult">Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IDnsResolverDomainListResult</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsResolverDomainListResult> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IDnsResolverDomainListResult> response)
         {
             using( NoSynchronizationContext )
             {
@@ -451,7 +438,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Cmdlets
                         {
                             requestMessage = requestMessage.Clone(new global::System.Uri( _nextLink ),Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Method.Get );
                             await ((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.FollowingNextLink); if( ((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                            await this.Client.DnsResolverDomainListsListByResourceGroup_Call(requestMessage, onOk, onDefault, this, Pipeline);
+                            await this.Client.DnsResolverDomainListsList_Call(requestMessage, onOk, onDefault, this, Pipeline);
                         }
                     }
                 }

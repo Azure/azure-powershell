@@ -28,7 +28,7 @@ Update-AzDnsForwardingRulesetForwardingRule -InputObject $inputObject  -Metadata
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IForwardingRule
+Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IForwardingRule
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -48,7 +48,7 @@ INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VirtualNetworkLinkName <String>]: The name of the virtual network link.
-  [VirtualNetworkName <String>]: The name of the virtual network.
+  [VirtualNetworkName <String>]: The name of the VirtualNetwork
 
 TARGETDNSSERVER <ITargetDnsServer[]>: DNS servers to forward the DNS query to.
   IPAddress <String>: DNS server IP address.
@@ -57,7 +57,7 @@ TARGETDNSSERVER <ITargetDnsServer[]>: DNS servers to forward the DNS query to.
 https://learn.microsoft.com/powershell/module/az.dnsresolver/update-azdnsforwardingrulesetforwardingrule
 #>
 function Update-AzDnsForwardingRulesetForwardingRule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IForwardingRule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IForwardingRule])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -112,7 +112,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IForwardingRulePatchPropertiesMetadata]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.IForwardingRulePatchPropertiesMetadata]))]
     [System.Collections.Hashtable]
     # Metadata attached to the forwarding rule.
     ${Metadata},
@@ -120,7 +120,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.ITargetDnsServer[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.ITargetDnsServer[]]
     # DNS servers to forward the DNS query to.
     # To construct, see NOTES section for TARGETDNSSERVER properties and create a hash table.
     ${TargetDnsServer},

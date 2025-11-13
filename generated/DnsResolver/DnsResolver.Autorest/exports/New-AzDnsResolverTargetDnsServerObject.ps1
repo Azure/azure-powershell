@@ -23,12 +23,12 @@ Create a in-memory object for Target DNS server
 New-AzDnsResolverIPConfigurationObject -PrivateIPAddress 10.0.0.3 -PrivateIPAllocationMethod Dynamic -SubnetId /subscriptions/ea40042d-63d8-4d02-9261-fb31450e6c67/resourceGroups/sampleRG/providers/Microsoft.Network/virtualNetworks/vnet-hub/subnets/test-subnet
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.TargetDnsServer
+Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.TargetDnsServer
 .Link
 https://learn.microsoft.com/powershell/module/az.dnsresolver/new-azdnsresolvertargetdnsserverobject
 #>
 function New-AzDnsResolverTargetDnsServerObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.TargetDnsServer])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.TargetDnsServer])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]

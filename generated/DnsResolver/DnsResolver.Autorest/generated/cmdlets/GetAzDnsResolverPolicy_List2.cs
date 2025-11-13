@@ -13,10 +13,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Cmdlets
     /// [OpenAPI] ListByVirtualNetwork=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/listDnsResolverPolicies"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzDnsResolverPolicy_List2", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.ISubResource))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.ISubResource))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Description(@"Lists DNS resolver policy resource IDs linked to a virtual network.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/listDnsResolverPolicies", ApiVersion = "2025-05-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/listDnsResolverPolicies", ApiVersion = "2025-10-01-preview")]
     public partial class GetAzDnsResolverPolicy_List2 : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener
     {
@@ -137,12 +137,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Cmdlets
         /// <summary>Backing field for <see cref="VirtualNetworkName" /> property.</summary>
         private string _virtualNetworkName;
 
-        /// <summary>The name of the virtual network.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The name of the virtual network.")]
+        /// <summary>The name of the VirtualNetwork</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The name of the VirtualNetwork")]
         [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"The name of the virtual network.",
+        Description = @"The name of the VirtualNetwork",
         SerializedName = @"virtualNetworkName",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.ParameterCategory.Path)]
@@ -153,24 +153,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Cmdlets
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api50.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api50.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api60.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api60.IErrorResponse</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api50.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api60.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.ISubResourceListResult">Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.ISubResourceListResult</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.ISubResourceListResult">Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.ISubResourceListResult</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.ISubResourceListResult> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.ISubResourceListResult> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -381,12 +381,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api50.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api50.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api60.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api60.IErrorResponse</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api50.IErrorResponse> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api60.IErrorResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -403,7 +403,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api50.IErrorResponse>(responseMessage, await response);
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api60.IErrorResponse>(responseMessage, await response);
                     WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, VirtualNetworkName=VirtualNetworkName })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
@@ -421,12 +421,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.ISubResourceListResult">Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.ISubResourceListResult</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.ISubResourceListResult">Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.ISubResourceListResult</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.ISubResourceListResult> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20251001Preview.ISubResourceListResult> response)
         {
             using( NoSynchronizationContext )
             {
