@@ -51,7 +51,7 @@
                                                                                 "CENTRALUSEUAP:20210407T060124Z:d3698dc7-0d95-421f-83fe-1cfcb6530036"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 12 Nov 2025 17:35:48 GMT"
+                                                             "Thu, 13 Nov 2025 08:59:45 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "474"
@@ -67,8 +67,8 @@
                         "StatusCode":  200
                     },
                     {
-                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTestRG/providers/Microsoft.RecoveryServices/vaults/PwsTestVault/replicationFabrics?api-version=2024-10-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1B3c1Rlc3RWYXVsdC9yZXBsaWNhdGlvbkZhYnJpY3M/YXBpLXZlcnNpb249MjAyNC0xMC0wMQ==",
+                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTestRG/providers/Microsoft.RecoveryServices/vaults/PwsTestVault/replicationFabrics?api-version=2025-08-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1B3c1Rlc3RWYXVsdC9yZXBsaWNhdGlvbkZhYnJpY3M/YXBpLXZlcnNpb249MjAyNS0wOC0wMQ==",
                         "RequestMethod":  "GET",
                         "RequestBody":  "",
                         "RequestHeaders":  {
@@ -121,7 +121,7 @@
                                                                                 "CENTRALUSEUAP:20210407T060125Z:7a9668d9-26bf-4b2c-9d55-ede808903421"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 12 Nov 2025 17:35:48 GMT"
+                                                             "Thu, 13 Nov 2025 08:59:45 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "6344"
@@ -137,8 +137,8 @@
                         "StatusCode":  200
                     },
                     {
-                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTestRG/providers/Microsoft.RecoveryServices/vaults/PwsTestVault/replicationFabrics/9a60d28b65543435e52e1b81073c6a3aca7dd5d00d201e49fbe4e86848c495ed?api-version=2024-10-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1B3c1Rlc3RWYXVsdC9yZXBsaWNhdGlvbkZhYnJpY3MvOWE2MGQyOGI2NTU0MzQzNWU1MmUxYjgxMDczYzZhM2FjYTdkZDVkMDBkMjAxZTQ5ZmJlNGU4Njg0OGM0OTVlZD9hcGktdmVyc2lvbj0yMDI0LTEwLTAx",
+                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTestRG/providers/Microsoft.RecoveryServices/vaults/PwsTestVault/replicationFabrics/9a60d28b65543435e52e1b81073c6a3aca7dd5d00d201e49fbe4e86848c495ed?api-version=2025-08-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1B3c1Rlc3RWYXVsdC9yZXBsaWNhdGlvbkZhYnJpY3MvOWE2MGQyOGI2NTU0MzQzNWU1MmUxYjgxMDczYzZhM2FjYTdkZDVkMDBkMjAxZTQ5ZmJlNGU4Njg0OGM0OTVlZD9hcGktdmVyc2lvbj0yMDI1LTA4LTAx",
                         "RequestMethod":  "GET",
                         "RequestBody":  "",
                         "RequestHeaders":  {
@@ -191,7 +191,7 @@
                                                                                 "CENTRALUSEUAP:20210407T060125Z:bc950fbb-d4c9-41b1-8264-8248780c3dba"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 12 Nov 2025 17:35:48 GMT"
+                                                             "Thu, 13 Nov 2025 08:59:45 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "6264"
@@ -207,8 +207,8 @@
                         "StatusCode":  200
                     },
                     {
-                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTestRG/providers/Microsoft.RecoveryServices/vaults/PwsTestVault/replicationFabrics/9a60d28b65543435e52e1b81073c6a3aca7dd5d00d201e49fbe4e86848c495ed/replicationProtectionContainers?api-version=2024-10-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1B3c1Rlc3RWYXVsdC9yZXBsaWNhdGlvbkZhYnJpY3MvOWE2MGQyOGI2NTU0MzQzNWU1MmUxYjgxMDczYzZhM2FjYTdkZDVkMDBkMjAxZTQ5ZmJlNGU4Njg0OGM0OTVlZC9yZXBsaWNhdGlvblByb3RlY3Rpb25Db250YWluZXJzP2FwaS12ZXJzaW9uPTIwMjQtMTAtMDE=",
+                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTestRG/providers/Microsoft.RecoveryServices/vaults/PwsTestVault/replicationFabrics/9a60d28b65543435e52e1b81073c6a3aca7dd5d00d201e49fbe4e86848c495ed/replicationProtectionContainers?api-version=2025-08-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1B3c1Rlc3RWYXVsdC9yZXBsaWNhdGlvbkZhYnJpY3MvOWE2MGQyOGI2NTU0MzQzNWU1MmUxYjgxMDczYzZhM2FjYTdkZDVkMDBkMjAxZTQ5ZmJlNGU4Njg0OGM0OTVlZC9yZXBsaWNhdGlvblByb3RlY3Rpb25Db250YWluZXJzP2FwaS12ZXJzaW9uPTIwMjUtMDgtMDE=",
                         "RequestMethod":  "GET",
                         "RequestBody":  "",
                         "RequestHeaders":  {
@@ -261,7 +261,7 @@
                                                                                 "CENTRALUSEUAP:20210407T060126Z:af6d2607-b272-4f46-8547-1aee5b6f0dd0"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 12 Nov 2025 17:35:48 GMT"
+                                                             "Thu, 13 Nov 2025 08:59:45 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "666"
@@ -277,8 +277,8 @@
                         "StatusCode":  200
                     },
                     {
-                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTestRG/providers/Microsoft.RecoveryServices/vaults/PwsTestVault/replicationFabrics/9a60d28b65543435e52e1b81073c6a3aca7dd5d00d201e49fbe4e86848c495ed/replicationProtectionContainers/cloud_01fbe5d9-6391-45fc-a729-bef0b458c9fe?api-version=2024-10-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1B3c1Rlc3RWYXVsdC9yZXBsaWNhdGlvbkZhYnJpY3MvOWE2MGQyOGI2NTU0MzQzNWU1MmUxYjgxMDczYzZhM2FjYTdkZDVkMDBkMjAxZTQ5ZmJlNGU4Njg0OGM0OTVlZC9yZXBsaWNhdGlvblByb3RlY3Rpb25Db250YWluZXJzL2Nsb3VkXzAxZmJlNWQ5LTYzOTEtNDVmYy1hNzI5LWJlZjBiNDU4YzlmZT9hcGktdmVyc2lvbj0yMDI0LTEwLTAx",
+                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTestRG/providers/Microsoft.RecoveryServices/vaults/PwsTestVault/replicationFabrics/9a60d28b65543435e52e1b81073c6a3aca7dd5d00d201e49fbe4e86848c495ed/replicationProtectionContainers/cloud_01fbe5d9-6391-45fc-a729-bef0b458c9fe?api-version=2025-08-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1B3c1Rlc3RWYXVsdC9yZXBsaWNhdGlvbkZhYnJpY3MvOWE2MGQyOGI2NTU0MzQzNWU1MmUxYjgxMDczYzZhM2FjYTdkZDVkMDBkMjAxZTQ5ZmJlNGU4Njg0OGM0OTVlZC9yZXBsaWNhdGlvblByb3RlY3Rpb25Db250YWluZXJzL2Nsb3VkXzAxZmJlNWQ5LTYzOTEtNDVmYy1hNzI5LWJlZjBiNDU4YzlmZT9hcGktdmVyc2lvbj0yMDI1LTA4LTAx",
                         "RequestMethod":  "GET",
                         "RequestBody":  "",
                         "RequestHeaders":  {
@@ -331,7 +331,7 @@
                                                                                 "CENTRALUSEUAP:20210407T060126Z:7c52add0-7c66-4c27-8e8c-2ef72ad169a0"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 12 Nov 2025 17:35:48 GMT"
+                                                             "Thu, 13 Nov 2025 08:59:45 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "638"
@@ -347,8 +347,8 @@
                         "StatusCode":  200
                     },
                     {
-                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTestRG/providers/Microsoft.RecoveryServices/vaults/PwsTestVault/replicationFabrics/9a60d28b65543435e52e1b81073c6a3aca7dd5d00d201e49fbe4e86848c495ed/replicationProtectionContainers/cloud_01fbe5d9-6391-45fc-a729-bef0b458c9fe/replicationProtectionContainerMappings?api-version=2024-10-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1B3c1Rlc3RWYXVsdC9yZXBsaWNhdGlvbkZhYnJpY3MvOWE2MGQyOGI2NTU0MzQzNWU1MmUxYjgxMDczYzZhM2FjYTdkZDVkMDBkMjAxZTQ5ZmJlNGU4Njg0OGM0OTVlZC9yZXBsaWNhdGlvblByb3RlY3Rpb25Db250YWluZXJzL2Nsb3VkXzAxZmJlNWQ5LTYzOTEtNDVmYy1hNzI5LWJlZjBiNDU4YzlmZS9yZXBsaWNhdGlvblByb3RlY3Rpb25Db250YWluZXJNYXBwaW5ncz9hcGktdmVyc2lvbj0yMDI0LTEwLTAx",
+                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTestRG/providers/Microsoft.RecoveryServices/vaults/PwsTestVault/replicationFabrics/9a60d28b65543435e52e1b81073c6a3aca7dd5d00d201e49fbe4e86848c495ed/replicationProtectionContainers/cloud_01fbe5d9-6391-45fc-a729-bef0b458c9fe/replicationProtectionContainerMappings?api-version=2025-08-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1B3c1Rlc3RWYXVsdC9yZXBsaWNhdGlvbkZhYnJpY3MvOWE2MGQyOGI2NTU0MzQzNWU1MmUxYjgxMDczYzZhM2FjYTdkZDVkMDBkMjAxZTQ5ZmJlNGU4Njg0OGM0OTVlZC9yZXBsaWNhdGlvblByb3RlY3Rpb25Db250YWluZXJzL2Nsb3VkXzAxZmJlNWQ5LTYzOTEtNDVmYy1hNzI5LWJlZjBiNDU4YzlmZS9yZXBsaWNhdGlvblByb3RlY3Rpb25Db250YWluZXJNYXBwaW5ncz9hcGktdmVyc2lvbj0yMDI1LTA4LTAx",
                         "RequestMethod":  "GET",
                         "RequestBody":  "",
                         "RequestHeaders":  {
@@ -401,7 +401,7 @@
                                                                                 "CENTRALUSEUAP:20210407T060127Z:8b5ceaec-164e-43fe-9121-1aa2bb122de3"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 12 Nov 2025 17:35:48 GMT"
+                                                             "Thu, 13 Nov 2025 08:59:45 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "2446"
@@ -417,8 +417,8 @@
                         "StatusCode":  200
                     },
                     {
-                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTestRG/providers/Microsoft.RecoveryServices/vaults/PwsTestVault/replicationPolicies/Ploicyv2a-failback?api-version=2024-10-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1B3c1Rlc3RWYXVsdC9yZXBsaWNhdGlvblBvbGljaWVzL1Bsb2ljeXYyYS1mYWlsYmFjaz9hcGktdmVyc2lvbj0yMDI0LTEwLTAx",
+                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTestRG/providers/Microsoft.RecoveryServices/vaults/PwsTestVault/replicationPolicies/Ploicyv2a-failback?api-version=2025-08-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1B3c1Rlc3RWYXVsdC9yZXBsaWNhdGlvblBvbGljaWVzL1Bsb2ljeXYyYS1mYWlsYmFjaz9hcGktdmVyc2lvbj0yMDI1LTA4LTAx",
                         "RequestMethod":  "GET",
                         "RequestBody":  "",
                         "RequestHeaders":  {
@@ -471,7 +471,7 @@
                                                                                 "CENTRALUSEUAP:20210407T060127Z:42a4a124-b69d-432c-a2c3-d01e491da4b6"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 12 Nov 2025 17:35:48 GMT"
+                                                             "Thu, 13 Nov 2025 08:59:45 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "507"
@@ -487,8 +487,8 @@
                         "StatusCode":  200
                     },
                     {
-                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTestRG/providers/Microsoft.RecoveryServices/vaults/PwsTestVault/replicationPolicies/Policyv2a?api-version=2024-10-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1B3c1Rlc3RWYXVsdC9yZXBsaWNhdGlvblBvbGljaWVzL1BvbGljeXYyYT9hcGktdmVyc2lvbj0yMDI0LTEwLTAx",
+                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTestRG/providers/Microsoft.RecoveryServices/vaults/PwsTestVault/replicationPolicies/Policyv2a?api-version=2025-08-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1B3c1Rlc3RWYXVsdC9yZXBsaWNhdGlvblBvbGljaWVzL1BvbGljeXYyYT9hcGktdmVyc2lvbj0yMDI1LTA4LTAx",
                         "RequestMethod":  "GET",
                         "RequestBody":  "",
                         "RequestHeaders":  {
@@ -541,7 +541,7 @@
                                                                                 "CENTRALUSEUAP:20210407T060127Z:095e4788-e50b-4a6e-8f50-e7e2ab75983a"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 12 Nov 2025 17:35:48 GMT"
+                                                             "Thu, 13 Nov 2025 08:59:45 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "526"
@@ -557,8 +557,8 @@
                         "StatusCode":  200
                     },
                     {
-                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTestRG/providers/Microsoft.RecoveryServices/vaults/PwsTestVault/replicationPolicies/Policyv2a?api-version=2024-10-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1B3c1Rlc3RWYXVsdC9yZXBsaWNhdGlvblBvbGljaWVzL1BvbGljeXYyYT9hcGktdmVyc2lvbj0yMDI0LTEwLTAx",
+                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTestRG/providers/Microsoft.RecoveryServices/vaults/PwsTestVault/replicationPolicies/Policyv2a?api-version=2025-08-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1B3c1Rlc3RWYXVsdC9yZXBsaWNhdGlvblBvbGljaWVzL1BvbGljeXYyYT9hcGktdmVyc2lvbj0yMDI1LTA4LTAx",
                         "RequestMethod":  "GET",
                         "RequestBody":  "",
                         "RequestHeaders":  {
@@ -611,7 +611,7 @@
                                                                                 "CENTRALUSEUAP:20210407T060128Z:ee856cd4-f538-40d3-90fa-a0a5e5886610"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 12 Nov 2025 17:35:48 GMT"
+                                                             "Thu, 13 Nov 2025 08:59:45 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "526"
@@ -627,8 +627,8 @@
                         "StatusCode":  200
                     },
                     {
-                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTestRG/providers/Microsoft.RecoveryServices/vaults/PwsTestVault/replicationPolicies/Policyv2a?api-version=2024-10-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1B3c1Rlc3RWYXVsdC9yZXBsaWNhdGlvblBvbGljaWVzL1BvbGljeXYyYT9hcGktdmVyc2lvbj0yMDI0LTEwLTAx",
+                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTestRG/providers/Microsoft.RecoveryServices/vaults/PwsTestVault/replicationPolicies/Policyv2a?api-version=2025-08-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1B3c1Rlc3RWYXVsdC9yZXBsaWNhdGlvblBvbGljaWVzL1BvbGljeXYyYT9hcGktdmVyc2lvbj0yMDI1LTA4LTAx",
                         "RequestMethod":  "GET",
                         "RequestBody":  "",
                         "RequestHeaders":  {
@@ -681,7 +681,7 @@
                                                                                 "CENTRALUSEUAP:20210407T060131Z:c919de88-8bd2-4774-a6dc-fcadec3e2c1e"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 12 Nov 2025 17:35:48 GMT"
+                                                             "Thu, 13 Nov 2025 08:59:45 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "526"
@@ -697,8 +697,8 @@
                         "StatusCode":  200
                     },
                     {
-                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTestRG/providers/Microsoft.RecoveryServices/vaults/PwsTestVault/replicationFabrics/9a60d28b65543435e52e1b81073c6a3aca7dd5d00d201e49fbe4e86848c495ed/replicationProtectionContainers/cloud_01fbe5d9-6391-45fc-a729-bef0b458c9fe/replicationProtectionContainerMappings/pcmmappingv2a?api-version=2024-10-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1B3c1Rlc3RWYXVsdC9yZXBsaWNhdGlvbkZhYnJpY3MvOWE2MGQyOGI2NTU0MzQzNWU1MmUxYjgxMDczYzZhM2FjYTdkZDVkMDBkMjAxZTQ5ZmJlNGU4Njg0OGM0OTVlZC9yZXBsaWNhdGlvblByb3RlY3Rpb25Db250YWluZXJzL2Nsb3VkXzAxZmJlNWQ5LTYzOTEtNDVmYy1hNzI5LWJlZjBiNDU4YzlmZS9yZXBsaWNhdGlvblByb3RlY3Rpb25Db250YWluZXJNYXBwaW5ncy9wY21tYXBwaW5ndjJhP2FwaS12ZXJzaW9uPTIwMjQtMTAtMDE=",
+                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTestRG/providers/Microsoft.RecoveryServices/vaults/PwsTestVault/replicationFabrics/9a60d28b65543435e52e1b81073c6a3aca7dd5d00d201e49fbe4e86848c495ed/replicationProtectionContainers/cloud_01fbe5d9-6391-45fc-a729-bef0b458c9fe/replicationProtectionContainerMappings/pcmmappingv2a?api-version=2025-08-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1B3c1Rlc3RWYXVsdC9yZXBsaWNhdGlvbkZhYnJpY3MvOWE2MGQyOGI2NTU0MzQzNWU1MmUxYjgxMDczYzZhM2FjYTdkZDVkMDBkMjAxZTQ5ZmJlNGU4Njg0OGM0OTVlZC9yZXBsaWNhdGlvblByb3RlY3Rpb25Db250YWluZXJzL2Nsb3VkXzAxZmJlNWQ5LTYzOTEtNDVmYy1hNzI5LWJlZjBiNDU4YzlmZS9yZXBsaWNhdGlvblByb3RlY3Rpb25Db250YWluZXJNYXBwaW5ncy9wY21tYXBwaW5ndjJhP2FwaS12ZXJzaW9uPTIwMjUtMDgtMDE=",
                         "RequestMethod":  "GET",
                         "RequestBody":  "",
                         "RequestHeaders":  {
@@ -751,7 +751,7 @@
                                                                                 "CENTRALUSEUAP:20210407T060128Z:dfc6e9fb-e9b3-4de5-ab09-833b12e1774f"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 12 Nov 2025 17:35:48 GMT"
+                                                             "Thu, 13 Nov 2025 08:59:45 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "1067"
@@ -767,8 +767,8 @@
                         "StatusCode":  200
                     },
                     {
-                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTestRG/providers/Microsoft.RecoveryServices/vaults/PwsTestVault/replicationFabrics/9a60d28b65543435e52e1b81073c6a3aca7dd5d00d201e49fbe4e86848c495ed/replicationProtectionContainers/cloud_01fbe5d9-6391-45fc-a729-bef0b458c9fe/replicationProtectableItems?api-version=2024-10-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1B3c1Rlc3RWYXVsdC9yZXBsaWNhdGlvbkZhYnJpY3MvOWE2MGQyOGI2NTU0MzQzNWU1MmUxYjgxMDczYzZhM2FjYTdkZDVkMDBkMjAxZTQ5ZmJlNGU4Njg0OGM0OTVlZC9yZXBsaWNhdGlvblByb3RlY3Rpb25Db250YWluZXJzL2Nsb3VkXzAxZmJlNWQ5LTYzOTEtNDVmYy1hNzI5LWJlZjBiNDU4YzlmZS9yZXBsaWNhdGlvblByb3RlY3RhYmxlSXRlbXM/YXBpLXZlcnNpb249MjAyNC0xMC0wMQ==",
+                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTestRG/providers/Microsoft.RecoveryServices/vaults/PwsTestVault/replicationFabrics/9a60d28b65543435e52e1b81073c6a3aca7dd5d00d201e49fbe4e86848c495ed/replicationProtectionContainers/cloud_01fbe5d9-6391-45fc-a729-bef0b458c9fe/replicationProtectableItems?api-version=2025-08-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1B3c1Rlc3RWYXVsdC9yZXBsaWNhdGlvbkZhYnJpY3MvOWE2MGQyOGI2NTU0MzQzNWU1MmUxYjgxMDczYzZhM2FjYTdkZDVkMDBkMjAxZTQ5ZmJlNGU4Njg0OGM0OTVlZC9yZXBsaWNhdGlvblByb3RlY3Rpb25Db250YWluZXJzL2Nsb3VkXzAxZmJlNWQ5LTYzOTEtNDVmYy1hNzI5LWJlZjBiNDU4YzlmZS9yZXBsaWNhdGlvblByb3RlY3RhYmxlSXRlbXM/YXBpLXZlcnNpb249MjAyNS0wOC0wMQ==",
                         "RequestMethod":  "GET",
                         "RequestBody":  "",
                         "RequestHeaders":  {
@@ -818,7 +818,7 @@
                                                                                 "CENTRALUSEUAP:20210407T060129Z:d9ab24ab-2e6a-44f3-bb7d-76cc433bb0c3"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 12 Nov 2025 17:35:48 GMT"
+                                                             "Thu, 13 Nov 2025 08:59:45 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "210528"
@@ -834,8 +834,8 @@
                         "StatusCode":  200
                     },
                     {
-                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTestRG/providers/Microsoft.RecoveryServices/vaults/PwsTestVault/replicationFabrics/9a60d28b65543435e52e1b81073c6a3aca7dd5d00d201e49fbe4e86848c495ed/replicationProtectionContainers/cloud_01fbe5d9-6391-45fc-a729-bef0b458c9fe/replicationProtectableItems?api-version=2024-10-01\u0026$skipToken=ReplicationGroup%3ABegin",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1B3c1Rlc3RWYXVsdC9yZXBsaWNhdGlvbkZhYnJpY3MvOWE2MGQyOGI2NTU0MzQzNWU1MmUxYjgxMDczYzZhM2FjYTdkZDVkMDBkMjAxZTQ5ZmJlNGU4Njg0OGM0OTVlZC9yZXBsaWNhdGlvblByb3RlY3Rpb25Db250YWluZXJzL2Nsb3VkXzAxZmJlNWQ5LTYzOTEtNDVmYy1hNzI5LWJlZjBiNDU4YzlmZS9yZXBsaWNhdGlvblByb3RlY3RhYmxlSXRlbXM/YXBpLXZlcnNpb249MjAyNC0xMC0wMSYkc2tpcFRva2VuPVJlcGxpY2F0aW9uR3JvdXAlM0FCZWdpbg==",
+                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTestRG/providers/Microsoft.RecoveryServices/vaults/PwsTestVault/replicationFabrics/9a60d28b65543435e52e1b81073c6a3aca7dd5d00d201e49fbe4e86848c495ed/replicationProtectionContainers/cloud_01fbe5d9-6391-45fc-a729-bef0b458c9fe/replicationProtectableItems?api-version=2025-08-01\u0026$skipToken=ReplicationGroup%3ABegin",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1B3c1Rlc3RWYXVsdC9yZXBsaWNhdGlvbkZhYnJpY3MvOWE2MGQyOGI2NTU0MzQzNWU1MmUxYjgxMDczYzZhM2FjYTdkZDVkMDBkMjAxZTQ5ZmJlNGU4Njg0OGM0OTVlZC9yZXBsaWNhdGlvblByb3RlY3Rpb25Db250YWluZXJzL2Nsb3VkXzAxZmJlNWQ5LTYzOTEtNDVmYy1hNzI5LWJlZjBiNDU4YzlmZS9yZXBsaWNhdGlvblByb3RlY3RhYmxlSXRlbXM/YXBpLXZlcnNpb249MjAyNS0wOC0wMSYkc2tpcFRva2VuPVJlcGxpY2F0aW9uR3JvdXAlM0FCZWdpbg==",
                         "RequestMethod":  "GET",
                         "RequestBody":  "",
                         "RequestHeaders":  {
@@ -888,7 +888,7 @@
                                                                                 "CENTRALUSEUAP:20210407T060130Z:eac6f98c-5c46-44ed-800f-02b2153e483e"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 12 Nov 2025 17:35:48 GMT"
+                                                             "Thu, 13 Nov 2025 08:59:45 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "28"
@@ -904,8 +904,8 @@
                         "StatusCode":  200
                     },
                     {
-                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTestRG/providers/Microsoft.RecoveryServices/vaults/PwsTestVault/replicationFabrics/9a60d28b65543435e52e1b81073c6a3aca7dd5d00d201e49fbe4e86848c495ed/replicationProtectionContainers/cloud_01fbe5d9-6391-45fc-a729-bef0b458c9fe/replicationProtectableItems/d375a4fa-963a-11eb-a892-000d3ad78fab?api-version=2024-10-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1B3c1Rlc3RWYXVsdC9yZXBsaWNhdGlvbkZhYnJpY3MvOWE2MGQyOGI2NTU0MzQzNWU1MmUxYjgxMDczYzZhM2FjYTdkZDVkMDBkMjAxZTQ5ZmJlNGU4Njg0OGM0OTVlZC9yZXBsaWNhdGlvblByb3RlY3Rpb25Db250YWluZXJzL2Nsb3VkXzAxZmJlNWQ5LTYzOTEtNDVmYy1hNzI5LWJlZjBiNDU4YzlmZS9yZXBsaWNhdGlvblByb3RlY3RhYmxlSXRlbXMvZDM3NWE0ZmEtOTYzYS0xMWViLWE4OTItMDAwZDNhZDc4ZmFiP2FwaS12ZXJzaW9uPTIwMjQtMTAtMDE=",
+                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTestRG/providers/Microsoft.RecoveryServices/vaults/PwsTestVault/replicationFabrics/9a60d28b65543435e52e1b81073c6a3aca7dd5d00d201e49fbe4e86848c495ed/replicationProtectionContainers/cloud_01fbe5d9-6391-45fc-a729-bef0b458c9fe/replicationProtectableItems/d375a4fa-963a-11eb-a892-000d3ad78fab?api-version=2025-08-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1B3c1Rlc3RWYXVsdC9yZXBsaWNhdGlvbkZhYnJpY3MvOWE2MGQyOGI2NTU0MzQzNWU1MmUxYjgxMDczYzZhM2FjYTdkZDVkMDBkMjAxZTQ5ZmJlNGU4Njg0OGM0OTVlZC9yZXBsaWNhdGlvblByb3RlY3Rpb25Db250YWluZXJzL2Nsb3VkXzAxZmJlNWQ5LTYzOTEtNDVmYy1hNzI5LWJlZjBiNDU4YzlmZS9yZXBsaWNhdGlvblByb3RlY3RhYmxlSXRlbXMvZDM3NWE0ZmEtOTYzYS0xMWViLWE4OTItMDAwZDNhZDc4ZmFiP2FwaS12ZXJzaW9uPTIwMjUtMDgtMDE=",
                         "RequestMethod":  "GET",
                         "RequestBody":  "",
                         "RequestHeaders":  {
@@ -958,7 +958,7 @@
                                                                                 "CENTRALUSEUAP:20210407T060130Z:6138eb13-4f67-49fe-be3d-4be2539d1002"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 12 Nov 2025 17:35:48 GMT"
+                                                             "Thu, 13 Nov 2025 08:59:45 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "1798"
@@ -974,8 +974,8 @@
                         "StatusCode":  200
                     },
                     {
-                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTestRG/providers/Microsoft.RecoveryServices/vaults/PwsTestVault/replicationFabrics/9a60d28b65543435e52e1b81073c6a3aca7dd5d00d201e49fbe4e86848c495ed/replicationProtectionContainers/cloud_01fbe5d9-6391-45fc-a729-bef0b458c9fe/replicationProtectedItems/V2A-W2K19-202?api-version=2024-10-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1B3c1Rlc3RWYXVsdC9yZXBsaWNhdGlvbkZhYnJpY3MvOWE2MGQyOGI2NTU0MzQzNWU1MmUxYjgxMDczYzZhM2FjYTdkZDVkMDBkMjAxZTQ5ZmJlNGU4Njg0OGM0OTVlZC9yZXBsaWNhdGlvblByb3RlY3Rpb25Db250YWluZXJzL2Nsb3VkXzAxZmJlNWQ5LTYzOTEtNDVmYy1hNzI5LWJlZjBiNDU4YzlmZS9yZXBsaWNhdGlvblByb3RlY3RlZEl0ZW1zL1YyQS1XMksxOS0yMDI/YXBpLXZlcnNpb249MjAyNC0xMC0wMQ==",
+                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTestRG/providers/Microsoft.RecoveryServices/vaults/PwsTestVault/replicationFabrics/9a60d28b65543435e52e1b81073c6a3aca7dd5d00d201e49fbe4e86848c495ed/replicationProtectionContainers/cloud_01fbe5d9-6391-45fc-a729-bef0b458c9fe/replicationProtectedItems/V2A-W2K19-202?api-version=2025-08-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1B3c1Rlc3RWYXVsdC9yZXBsaWNhdGlvbkZhYnJpY3MvOWE2MGQyOGI2NTU0MzQzNWU1MmUxYjgxMDczYzZhM2FjYTdkZDVkMDBkMjAxZTQ5ZmJlNGU4Njg0OGM0OTVlZC9yZXBsaWNhdGlvblByb3RlY3Rpb25Db250YWluZXJzL2Nsb3VkXzAxZmJlNWQ5LTYzOTEtNDVmYy1hNzI5LWJlZjBiNDU4YzlmZS9yZXBsaWNhdGlvblByb3RlY3RlZEl0ZW1zL1YyQS1XMksxOS0yMDI/YXBpLXZlcnNpb249MjAyNS0wOC0wMQ==",
                         "RequestMethod":  "PUT",
                         "RequestBody":  "{\r\n  \"properties\": {\r\n    \"policyId\": \"/Subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTestRG/providers/Microsoft.RecoveryServices/vaults/PwsTestVault/replicationPolicies/Policyv2a\",\r\n    \"protectableItemId\": \"/Subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTestRG/providers/Microsoft.RecoveryServices/vaults/PwsTestVault/replicationFabrics/9a60d28b65543435e52e1b81073c6a3aca7dd5d00d201e49fbe4e86848c495ed/replicationProtectionContainers/cloud_01fbe5d9-6391-45fc-a729-bef0b458c9fe/replicationProtectableItems/d375a4fa-963a-11eb-a892-000d3ad78fab\",\r\n    \"providerSpecificDetails\": {\r\n      \"instanceType\": \"InMageAzureV2\",\r\n      \"masterTargetId\": \"30AE6187-5869-8E44-B8AF6AA66E3ECC8F\",\r\n      \"processServerId\": \"30AE6187-5869-8E44-B8AF6AA66E3ECC8F\",\r\n      \"runAsAccountId\": \"2\",\r\n      \"targetAzureNetworkId\": \"/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTestRG/providers/Microsoft.Network/virtualNetworks/PwsTestNw\",\r\n      \"targetAzureSubnetId\": \"subnet1\",\r\n      \"enableRdpOnTargetOption\": \"Never\",\r\n      \"targetAzureVmName\": \"V2A-W2K19-202\",\r\n      \"logStorageAccountId\": \"/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTestRG/providers/Microsoft.Storage/storageAccounts/pwsteststor\",\r\n      \"targetAzureV2ResourceGroupId\": \"/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTestRG\",\r\n      \"targetAvailabilitySetId\": \"/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTestRG/providers/Microsoft.Compute/availabilitySets/PwsTestAvSet\",\r\n      \"targetProximityPlacementGroupId\": \"/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTestRG/providers/Microsoft.Compute/proximityPlacementGroups/PwsTestPpg\",\r\n      \"sqlServerLicenseType\": \"AHUB\",\r\n      \"targetVmSize\": \"Standard_F2s_v2\",\r\n      \"targetVmTags\": {\r\n        \"VmTag1\": \"powershellVm\"\r\n      },\r\n      \"seedManagedDiskTags\": {\r\n        \"DiskTag1\": \"powershellDisk\"\r\n      },\r\n      \"targetManagedDiskTags\": {\r\n        \"DiskTag1\": \"powershellDisk\"\r\n      },\r\n      \"targetNicTags\": {\r\n        \"NicTag1\": \"powershellNic\"\r\n      }\r\n    }\r\n  }\r\n}",
                         "RequestHeaders":  {
@@ -1040,7 +1040,7 @@
                                                                                 "CENTRALUSEUAP:20210407T060132Z:800904e0-2964-4562-a4f6-3de96d7fa4da"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 12 Nov 2025 17:35:48 GMT"
+                                                             "Thu, 13 Nov 2025 08:59:45 GMT"
                                                          ],
                                                 "Expires":  [
                                                                 "-1"
@@ -1053,8 +1053,8 @@
                         "StatusCode":  202
                     },
                     {
-                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTestRG/providers/Microsoft.RecoveryServices/vaults/PwsTestVault/replicationJobs/d2806567-8cf4-4b21-a76f-526eddbcd862?api-version=2024-10-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1B3c1Rlc3RWYXVsdC9yZXBsaWNhdGlvbkpvYnMvZDI4MDY1NjctOGNmNC00YjIxLWE3NmYtNTI2ZWRkYmNkODYyP2FwaS12ZXJzaW9uPTIwMjQtMTAtMDE=",
+                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTestRG/providers/Microsoft.RecoveryServices/vaults/PwsTestVault/replicationJobs/d2806567-8cf4-4b21-a76f-526eddbcd862?api-version=2025-08-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1B3c1Rlc3RWYXVsdC9yZXBsaWNhdGlvbkpvYnMvZDI4MDY1NjctOGNmNC00YjIxLWE3NmYtNTI2ZWRkYmNkODYyP2FwaS12ZXJzaW9uPTIwMjUtMDgtMDE=",
                         "RequestMethod":  "GET",
                         "RequestBody":  "",
                         "RequestHeaders":  {
@@ -1107,7 +1107,7 @@
                                                                                 "CENTRALUSEUAP:20210407T060134Z:9be4ac3d-34ca-4aca-a196-b77eeb90a877"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 12 Nov 2025 17:35:48 GMT"
+                                                             "Thu, 13 Nov 2025 08:59:45 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "3345"

@@ -57,7 +57,7 @@
                                                                      "Ref A: 424201DE58474E57AECDE7B054027516 Ref B: MAA201060513027 Ref C: 2025-03-19T09:36:36Z"
                                                                  ],
                                                 "Date":  [
-                                                             "Wed, 12 Nov 2025 17:35:31 GMT"
+                                                             "Thu, 13 Nov 2025 08:59:08 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "1102"
@@ -132,7 +132,7 @@
                                                                      "Ref A: 7EE7C6C7556B4219B3B1350039FDB2D9 Ref B: MAA201060514029 Ref C: 2025-03-19T09:36:38Z"
                                                                  ],
                                                 "Date":  [
-                                                             "Wed, 12 Nov 2025 17:35:31 GMT"
+                                                             "Thu, 13 Nov 2025 08:59:08 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "425"
@@ -207,7 +207,7 @@
                                                                      "Ref A: 541AED41979D48E898C07820E36E8EDE Ref B: MAA201060514029 Ref C: 2025-03-19T09:36:39Z"
                                                                  ],
                                                 "Date":  [
-                                                             "Wed, 12 Nov 2025 17:35:31 GMT"
+                                                             "Thu, 13 Nov 2025 08:59:08 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "753"
@@ -223,8 +223,8 @@
                         "StatusCode":  200
                     },
                     {
-                        "RequestUri":  "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationFabrics/asr-a2a-default-eastus2?api-version=2024-10-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0NsdXN0ZXJSRy1WaWphbWktcmVjLTExMDMxMTUxMjYvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9wb3dlcnNoZWxsLWNsdXN0ZXItdmF1bHQvcmVwbGljYXRpb25GYWJyaWNzL2Fzci1hMmEtZGVmYXVsdC1lYXN0dXMyP2FwaS12ZXJzaW9uPTIwMjQtMTAtMDE=",
+                        "RequestUri":  "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationFabrics/asr-a2a-default-eastus2?api-version=2025-08-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0NsdXN0ZXJSRy1WaWphbWktcmVjLTExMDMxMTUxMjYvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9wb3dlcnNoZWxsLWNsdXN0ZXItdmF1bHQvcmVwbGljYXRpb25GYWJyaWNzL2Fzci1hMmEtZGVmYXVsdC1lYXN0dXMyP2FwaS12ZXJzaW9uPTIwMjUtMDgtMDE=",
                         "RequestMethod":  "GET",
                         "RequestHeaders":  {
                                                "x-ms-client-request-id":  [
@@ -282,7 +282,7 @@
                                                                      "Ref A: A5FB35B765DC43EB85DDA545C4711A30 Ref B: MAA201060516033 Ref C: 2025-03-19T09:36:41Z"
                                                                  ],
                                                 "Date":  [
-                                                             "Wed, 12 Nov 2025 17:35:31 GMT"
+                                                             "Thu, 13 Nov 2025 08:59:08 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "977"
@@ -298,8 +298,8 @@
                         "StatusCode":  200
                     },
                     {
-                        "RequestUri":  "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationFabrics/asr-a2a-default-eastus2/replicationProtectionContainers/asr-a2a-default-eastus2-container?api-version=2024-10-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0NsdXN0ZXJSRy1WaWphbWktcmVjLTExMDMxMTUxMjYvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9wb3dlcnNoZWxsLWNsdXN0ZXItdmF1bHQvcmVwbGljYXRpb25GYWJyaWNzL2Fzci1hMmEtZGVmYXVsdC1lYXN0dXMyL3JlcGxpY2F0aW9uUHJvdGVjdGlvbkNvbnRhaW5lcnMvYXNyLWEyYS1kZWZhdWx0LWVhc3R1czItY29udGFpbmVyP2FwaS12ZXJzaW9uPTIwMjQtMTAtMDE=",
+                        "RequestUri":  "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationFabrics/asr-a2a-default-eastus2/replicationProtectionContainers/asr-a2a-default-eastus2-container?api-version=2025-08-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0NsdXN0ZXJSRy1WaWphbWktcmVjLTExMDMxMTUxMjYvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9wb3dlcnNoZWxsLWNsdXN0ZXItdmF1bHQvcmVwbGljYXRpb25GYWJyaWNzL2Fzci1hMmEtZGVmYXVsdC1lYXN0dXMyL3JlcGxpY2F0aW9uUHJvdGVjdGlvbkNvbnRhaW5lcnMvYXNyLWEyYS1kZWZhdWx0LWVhc3R1czItY29udGFpbmVyP2FwaS12ZXJzaW9uPTIwMjUtMDgtMDE=",
                         "RequestMethod":  "GET",
                         "RequestHeaders":  {
                                                "x-ms-client-request-id":  [
@@ -357,7 +357,7 @@
                                                                      "Ref A: 4392C0BB8E114FF5AAC4EA4CB20FEEED Ref B: MAA201060516017 Ref C: 2025-03-19T09:36:42Z"
                                                                  ],
                                                 "Date":  [
-                                                             "Wed, 12 Nov 2025 17:35:31 GMT"
+                                                             "Thu, 13 Nov 2025 08:59:08 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "636"
@@ -373,8 +373,8 @@
                         "StatusCode":  200
                     },
                     {
-                        "RequestUri":  "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationFabrics/asr-a2a-default-eastus2/replicationProtectionContainers/asr-a2a-default-eastus2-container/replicationProtectionContainerMappings?api-version=2024-10-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0NsdXN0ZXJSRy1WaWphbWktcmVjLTExMDMxMTUxMjYvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9wb3dlcnNoZWxsLWNsdXN0ZXItdmF1bHQvcmVwbGljYXRpb25GYWJyaWNzL2Fzci1hMmEtZGVmYXVsdC1lYXN0dXMyL3JlcGxpY2F0aW9uUHJvdGVjdGlvbkNvbnRhaW5lcnMvYXNyLWEyYS1kZWZhdWx0LWVhc3R1czItY29udGFpbmVyL3JlcGxpY2F0aW9uUHJvdGVjdGlvbkNvbnRhaW5lck1hcHBpbmdzP2FwaS12ZXJzaW9uPTIwMjQtMTAtMDE=",
+                        "RequestUri":  "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationFabrics/asr-a2a-default-eastus2/replicationProtectionContainers/asr-a2a-default-eastus2-container/replicationProtectionContainerMappings?api-version=2025-08-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0NsdXN0ZXJSRy1WaWphbWktcmVjLTExMDMxMTUxMjYvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9wb3dlcnNoZWxsLWNsdXN0ZXItdmF1bHQvcmVwbGljYXRpb25GYWJyaWNzL2Fzci1hMmEtZGVmYXVsdC1lYXN0dXMyL3JlcGxpY2F0aW9uUHJvdGVjdGlvbkNvbnRhaW5lcnMvYXNyLWEyYS1kZWZhdWx0LWVhc3R1czItY29udGFpbmVyL3JlcGxpY2F0aW9uUHJvdGVjdGlvbkNvbnRhaW5lck1hcHBpbmdzP2FwaS12ZXJzaW9uPTIwMjUtMDgtMDE=",
                         "RequestMethod":  "GET",
                         "RequestHeaders":  {
                                                "x-ms-client-request-id":  [
@@ -432,7 +432,7 @@
                                                                      "Ref A: 07F72CB5A5CD4CC99590BDA9CC540F87 Ref B: MAA201060514045 Ref C: 2025-03-19T09:36:43Z"
                                                                  ],
                                                 "Date":  [
-                                                             "Wed, 12 Nov 2025 17:35:31 GMT"
+                                                             "Thu, 13 Nov 2025 08:59:08 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "3903"
@@ -448,8 +448,8 @@
                         "StatusCode":  200
                     },
                     {
-                        "RequestUri":  "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationPolicies/24-hour-retention-policy?api-version=2024-10-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0NsdXN0ZXJSRy1WaWphbWktcmVjLTExMDMxMTUxMjYvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9wb3dlcnNoZWxsLWNsdXN0ZXItdmF1bHQvcmVwbGljYXRpb25Qb2xpY2llcy8yNC1ob3VyLXJldGVudGlvbi1wb2xpY3k/YXBpLXZlcnNpb249MjAyNC0xMC0wMQ==",
+                        "RequestUri":  "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationPolicies/24-hour-retention-policy?api-version=2025-08-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0NsdXN0ZXJSRy1WaWphbWktcmVjLTExMDMxMTUxMjYvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9wb3dlcnNoZWxsLWNsdXN0ZXItdmF1bHQvcmVwbGljYXRpb25Qb2xpY2llcy8yNC1ob3VyLXJldGVudGlvbi1wb2xpY3k/YXBpLXZlcnNpb249MjAyNS0wOC0wMQ==",
                         "RequestMethod":  "GET",
                         "RequestHeaders":  {
                                                "x-ms-client-request-id":  [
@@ -507,7 +507,7 @@
                                                                      "Ref A: 7DB764C5FB414C1E842AE9A931618B85 Ref B: MAA201060514017 Ref C: 2025-03-19T09:36:44Z"
                                                                  ],
                                                 "Date":  [
-                                                             "Wed, 12 Nov 2025 17:35:31 GMT"
+                                                             "Thu, 13 Nov 2025 08:59:08 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "654"
@@ -523,8 +523,8 @@
                         "StatusCode":  200
                     },
                     {
-                        "RequestUri":  "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationPolicies/24-hour-retention-policy?api-version=2024-10-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0NsdXN0ZXJSRy1WaWphbWktcmVjLTExMDMxMTUxMjYvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9wb3dlcnNoZWxsLWNsdXN0ZXItdmF1bHQvcmVwbGljYXRpb25Qb2xpY2llcy8yNC1ob3VyLXJldGVudGlvbi1wb2xpY3k/YXBpLXZlcnNpb249MjAyNC0xMC0wMQ==",
+                        "RequestUri":  "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationPolicies/24-hour-retention-policy?api-version=2025-08-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0NsdXN0ZXJSRy1WaWphbWktcmVjLTExMDMxMTUxMjYvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9wb3dlcnNoZWxsLWNsdXN0ZXItdmF1bHQvcmVwbGljYXRpb25Qb2xpY2llcy8yNC1ob3VyLXJldGVudGlvbi1wb2xpY3k/YXBpLXZlcnNpb249MjAyNS0wOC0wMQ==",
                         "RequestMethod":  "GET",
                         "RequestHeaders":  {
                                                "x-ms-client-request-id":  [
@@ -582,7 +582,7 @@
                                                                      "Ref A: CF0928943206410F99C56A5FE87AFE89 Ref B: MAA201060513051 Ref C: 2025-03-19T09:36:45Z"
                                                                  ],
                                                 "Date":  [
-                                                             "Wed, 12 Nov 2025 17:35:31 GMT"
+                                                             "Thu, 13 Nov 2025 08:59:08 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "654"
@@ -598,8 +598,8 @@
                         "StatusCode":  200
                     },
                     {
-                        "RequestUri":  "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationFabrics/asr-a2a-default-eastus2/replicationProtectionContainers/asr-a2a-default-eastus2-container/replicationProtectionClusters/powershell-cluster?api-version=2024-10-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0NsdXN0ZXJSRy1WaWphbWktcmVjLTExMDMxMTUxMjYvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9wb3dlcnNoZWxsLWNsdXN0ZXItdmF1bHQvcmVwbGljYXRpb25GYWJyaWNzL2Fzci1hMmEtZGVmYXVsdC1lYXN0dXMyL3JlcGxpY2F0aW9uUHJvdGVjdGlvbkNvbnRhaW5lcnMvYXNyLWEyYS1kZWZhdWx0LWVhc3R1czItY29udGFpbmVyL3JlcGxpY2F0aW9uUHJvdGVjdGlvbkNsdXN0ZXJzL3Bvd2Vyc2hlbGwtY2x1c3Rlcj9hcGktdmVyc2lvbj0yMDI0LTEwLTAx",
+                        "RequestUri":  "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationFabrics/asr-a2a-default-eastus2/replicationProtectionContainers/asr-a2a-default-eastus2-container/replicationProtectionClusters/powershell-cluster?api-version=2025-08-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0NsdXN0ZXJSRy1WaWphbWktcmVjLTExMDMxMTUxMjYvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9wb3dlcnNoZWxsLWNsdXN0ZXItdmF1bHQvcmVwbGljYXRpb25GYWJyaWNzL2Fzci1hMmEtZGVmYXVsdC1lYXN0dXMyL3JlcGxpY2F0aW9uUHJvdGVjdGlvbkNvbnRhaW5lcnMvYXNyLWEyYS1kZWZhdWx0LWVhc3R1czItY29udGFpbmVyL3JlcGxpY2F0aW9uUHJvdGVjdGlvbkNsdXN0ZXJzL3Bvd2Vyc2hlbGwtY2x1c3Rlcj9hcGktdmVyc2lvbj0yMDI1LTA4LTAx",
                         "RequestMethod":  "GET",
                         "RequestHeaders":  {
                                                "x-ms-client-request-id":  [
@@ -657,7 +657,7 @@
                                                                      "Ref A: F2D4E398F8A94D538FE306C1B528DEB5 Ref B: MAA201060515045 Ref C: 2025-03-19T09:36:47Z"
                                                                  ],
                                                 "Date":  [
-                                                             "Wed, 12 Nov 2025 17:35:31 GMT"
+                                                             "Thu, 13 Nov 2025 08:59:08 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "8740"
@@ -673,8 +673,8 @@
                         "StatusCode":  200
                     },
                     {
-                        "RequestUri":  "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationFabrics/asr-a2a-default-eastus2/replicationProtectionContainers/asr-a2a-default-eastus2-container/replicationProtectionClusters/powershell-cluster/failoverCommit?api-version=2024-10-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0NsdXN0ZXJSRy1WaWphbWktcmVjLTExMDMxMTUxMjYvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9wb3dlcnNoZWxsLWNsdXN0ZXItdmF1bHQvcmVwbGljYXRpb25GYWJyaWNzL2Fzci1hMmEtZGVmYXVsdC1lYXN0dXMyL3JlcGxpY2F0aW9uUHJvdGVjdGlvbkNvbnRhaW5lcnMvYXNyLWEyYS1kZWZhdWx0LWVhc3R1czItY29udGFpbmVyL3JlcGxpY2F0aW9uUHJvdGVjdGlvbkNsdXN0ZXJzL3Bvd2Vyc2hlbGwtY2x1c3Rlci9mYWlsb3ZlckNvbW1pdD9hcGktdmVyc2lvbj0yMDI0LTEwLTAx",
+                        "RequestUri":  "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationFabrics/asr-a2a-default-eastus2/replicationProtectionContainers/asr-a2a-default-eastus2-container/replicationProtectionClusters/powershell-cluster/failoverCommit?api-version=2025-08-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0NsdXN0ZXJSRy1WaWphbWktcmVjLTExMDMxMTUxMjYvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9wb3dlcnNoZWxsLWNsdXN0ZXItdmF1bHQvcmVwbGljYXRpb25GYWJyaWNzL2Fzci1hMmEtZGVmYXVsdC1lYXN0dXMyL3JlcGxpY2F0aW9uUHJvdGVjdGlvbkNvbnRhaW5lcnMvYXNyLWEyYS1kZWZhdWx0LWVhc3R1czItY29udGFpbmVyL3JlcGxpY2F0aW9uUHJvdGVjdGlvbkNsdXN0ZXJzL3Bvd2Vyc2hlbGwtY2x1c3Rlci9mYWlsb3ZlckNvbW1pdD9hcGktdmVyc2lvbj0yMDI1LTA4LTAx",
                         "RequestMethod":  "POST",
                         "RequestHeaders":  {
                                                "x-ms-client-request-id":  [
@@ -742,7 +742,7 @@
                                                                      "Ref A: 864B9F3FD007439D805E8298F859B8E2 Ref B: MAA201060515009 Ref C: 2025-03-19T09:36:59Z"
                                                                  ],
                                                 "Date":  [
-                                                             "Wed, 12 Nov 2025 17:35:31 GMT"
+                                                             "Thu, 13 Nov 2025 08:59:08 GMT"
                                                          ],
                                                 "Expires":  [
                                                                 "-1"
@@ -755,8 +755,8 @@
                         "StatusCode":  202
                     },
                     {
-                        "RequestUri":  "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/ef7c5d21-bdbc-4aa6-93cf-e003f480aefa?api-version=2024-10-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0NsdXN0ZXJSRy1WaWphbWktcmVjLTExMDMxMTUxMjYvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9wb3dlcnNoZWxsLWNsdXN0ZXItdmF1bHQvcmVwbGljYXRpb25Kb2JzL2VmN2M1ZDIxLWJkYmMtNGFhNi05M2NmLWUwMDNmNDgwYWVmYT9hcGktdmVyc2lvbj0yMDI0LTEwLTAx",
+                        "RequestUri":  "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/ef7c5d21-bdbc-4aa6-93cf-e003f480aefa?api-version=2025-08-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0NsdXN0ZXJSRy1WaWphbWktcmVjLTExMDMxMTUxMjYvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9wb3dlcnNoZWxsLWNsdXN0ZXItdmF1bHQvcmVwbGljYXRpb25Kb2JzL2VmN2M1ZDIxLWJkYmMtNGFhNi05M2NmLWUwMDNmNDgwYWVmYT9hcGktdmVyc2lvbj0yMDI1LTA4LTAx",
                         "RequestMethod":  "GET",
                         "RequestHeaders":  {
                                                "x-ms-client-request-id":  [
@@ -814,7 +814,7 @@
                                                                      "Ref A: 65E0FDD94A254FA1AC3E0BE50F307B98 Ref B: MAA201060516033 Ref C: 2025-03-19T09:37:01Z"
                                                                  ],
                                                 "Date":  [
-                                                             "Wed, 12 Nov 2025 17:35:31 GMT"
+                                                             "Thu, 13 Nov 2025 08:59:08 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "2701"
@@ -830,8 +830,8 @@
                         "StatusCode":  200
                     },
                     {
-                        "RequestUri":  "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/ef7c5d21-bdbc-4aa6-93cf-e003f480aefa?api-version=2024-10-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0NsdXN0ZXJSRy1WaWphbWktcmVjLTExMDMxMTUxMjYvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9wb3dlcnNoZWxsLWNsdXN0ZXItdmF1bHQvcmVwbGljYXRpb25Kb2JzL2VmN2M1ZDIxLWJkYmMtNGFhNi05M2NmLWUwMDNmNDgwYWVmYT9hcGktdmVyc2lvbj0yMDI0LTEwLTAx",
+                        "RequestUri":  "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/ef7c5d21-bdbc-4aa6-93cf-e003f480aefa?api-version=2025-08-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0NsdXN0ZXJSRy1WaWphbWktcmVjLTExMDMxMTUxMjYvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9wb3dlcnNoZWxsLWNsdXN0ZXItdmF1bHQvcmVwbGljYXRpb25Kb2JzL2VmN2M1ZDIxLWJkYmMtNGFhNi05M2NmLWUwMDNmNDgwYWVmYT9hcGktdmVyc2lvbj0yMDI1LTA4LTAx",
                         "RequestMethod":  "GET",
                         "RequestHeaders":  {
                                                "x-ms-client-request-id":  [
@@ -889,7 +889,7 @@
                                                                      "Ref A: E11FCCA88E1E4BEBA1FA32A9A4B6304E Ref B: MAA201060514039 Ref C: 2025-03-19T09:37:02Z"
                                                                  ],
                                                 "Date":  [
-                                                             "Wed, 12 Nov 2025 17:35:31 GMT"
+                                                             "Thu, 13 Nov 2025 08:59:08 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "4234"
@@ -905,8 +905,8 @@
                         "StatusCode":  200
                     },
                     {
-                        "RequestUri":  "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/ef7c5d21-bdbc-4aa6-93cf-e003f480aefa?api-version=2024-10-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0NsdXN0ZXJSRy1WaWphbWktcmVjLTExMDMxMTUxMjYvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9wb3dlcnNoZWxsLWNsdXN0ZXItdmF1bHQvcmVwbGljYXRpb25Kb2JzL2VmN2M1ZDIxLWJkYmMtNGFhNi05M2NmLWUwMDNmNDgwYWVmYT9hcGktdmVyc2lvbj0yMDI0LTEwLTAx",
+                        "RequestUri":  "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/ef7c5d21-bdbc-4aa6-93cf-e003f480aefa?api-version=2025-08-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0NsdXN0ZXJSRy1WaWphbWktcmVjLTExMDMxMTUxMjYvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9wb3dlcnNoZWxsLWNsdXN0ZXItdmF1bHQvcmVwbGljYXRpb25Kb2JzL2VmN2M1ZDIxLWJkYmMtNGFhNi05M2NmLWUwMDNmNDgwYWVmYT9hcGktdmVyc2lvbj0yMDI1LTA4LTAx",
                         "RequestMethod":  "GET",
                         "RequestHeaders":  {
                                                "x-ms-client-request-id":  [
@@ -964,7 +964,7 @@
                                                                      "Ref A: 2B55F2BA26264E41BEEF40C18FEF774B Ref B: MAA201060513021 Ref C: 2025-03-19T09:37:24Z"
                                                                  ],
                                                 "Date":  [
-                                                             "Wed, 12 Nov 2025 17:35:31 GMT"
+                                                             "Thu, 13 Nov 2025 08:59:08 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "4234"
@@ -980,8 +980,8 @@
                         "StatusCode":  200
                     },
                     {
-                        "RequestUri":  "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/ef7c5d21-bdbc-4aa6-93cf-e003f480aefa?api-version=2024-10-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0NsdXN0ZXJSRy1WaWphbWktcmVjLTExMDMxMTUxMjYvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9wb3dlcnNoZWxsLWNsdXN0ZXItdmF1bHQvcmVwbGljYXRpb25Kb2JzL2VmN2M1ZDIxLWJkYmMtNGFhNi05M2NmLWUwMDNmNDgwYWVmYT9hcGktdmVyc2lvbj0yMDI0LTEwLTAx",
+                        "RequestUri":  "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/ef7c5d21-bdbc-4aa6-93cf-e003f480aefa?api-version=2025-08-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0NsdXN0ZXJSRy1WaWphbWktcmVjLTExMDMxMTUxMjYvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9wb3dlcnNoZWxsLWNsdXN0ZXItdmF1bHQvcmVwbGljYXRpb25Kb2JzL2VmN2M1ZDIxLWJkYmMtNGFhNi05M2NmLWUwMDNmNDgwYWVmYT9hcGktdmVyc2lvbj0yMDI1LTA4LTAx",
                         "RequestMethod":  "GET",
                         "RequestHeaders":  {
                                                "x-ms-client-request-id":  [
@@ -1039,7 +1039,7 @@
                                                                      "Ref A: C96659CB943A41019A1F990E08AF1A78 Ref B: MAA201060513045 Ref C: 2025-03-19T09:37:45Z"
                                                                  ],
                                                 "Date":  [
-                                                             "Wed, 12 Nov 2025 17:35:31 GMT"
+                                                             "Thu, 13 Nov 2025 08:59:08 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "4248"
@@ -1055,8 +1055,8 @@
                         "StatusCode":  200
                     },
                     {
-                        "RequestUri":  "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/ef7c5d21-bdbc-4aa6-93cf-e003f480aefa?api-version=2024-10-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0NsdXN0ZXJSRy1WaWphbWktcmVjLTExMDMxMTUxMjYvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9wb3dlcnNoZWxsLWNsdXN0ZXItdmF1bHQvcmVwbGljYXRpb25Kb2JzL2VmN2M1ZDIxLWJkYmMtNGFhNi05M2NmLWUwMDNmNDgwYWVmYT9hcGktdmVyc2lvbj0yMDI0LTEwLTAx",
+                        "RequestUri":  "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/ef7c5d21-bdbc-4aa6-93cf-e003f480aefa?api-version=2025-08-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0NsdXN0ZXJSRy1WaWphbWktcmVjLTExMDMxMTUxMjYvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9wb3dlcnNoZWxsLWNsdXN0ZXItdmF1bHQvcmVwbGljYXRpb25Kb2JzL2VmN2M1ZDIxLWJkYmMtNGFhNi05M2NmLWUwMDNmNDgwYWVmYT9hcGktdmVyc2lvbj0yMDI1LTA4LTAx",
                         "RequestMethod":  "GET",
                         "RequestHeaders":  {
                                                "x-ms-client-request-id":  [
@@ -1114,7 +1114,7 @@
                                                                      "Ref A: 3211673BF95A4E95A2DED35550D6059F Ref B: MAA201060513031 Ref C: 2025-03-19T09:38:06Z"
                                                                  ],
                                                 "Date":  [
-                                                             "Wed, 12 Nov 2025 17:35:31 GMT"
+                                                             "Thu, 13 Nov 2025 08:59:08 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "4248"
@@ -1130,8 +1130,8 @@
                         "StatusCode":  200
                     },
                     {
-                        "RequestUri":  "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/ef7c5d21-bdbc-4aa6-93cf-e003f480aefa?api-version=2024-10-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0NsdXN0ZXJSRy1WaWphbWktcmVjLTExMDMxMTUxMjYvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9wb3dlcnNoZWxsLWNsdXN0ZXItdmF1bHQvcmVwbGljYXRpb25Kb2JzL2VmN2M1ZDIxLWJkYmMtNGFhNi05M2NmLWUwMDNmNDgwYWVmYT9hcGktdmVyc2lvbj0yMDI0LTEwLTAx",
+                        "RequestUri":  "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/ef7c5d21-bdbc-4aa6-93cf-e003f480aefa?api-version=2025-08-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0NsdXN0ZXJSRy1WaWphbWktcmVjLTExMDMxMTUxMjYvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9wb3dlcnNoZWxsLWNsdXN0ZXItdmF1bHQvcmVwbGljYXRpb25Kb2JzL2VmN2M1ZDIxLWJkYmMtNGFhNi05M2NmLWUwMDNmNDgwYWVmYT9hcGktdmVyc2lvbj0yMDI1LTA4LTAx",
                         "RequestMethod":  "GET",
                         "RequestHeaders":  {
                                                "x-ms-client-request-id":  [
@@ -1189,7 +1189,7 @@
                                                                      "Ref A: 629C151E36474830843315F907088540 Ref B: MAA201060516039 Ref C: 2025-03-19T09:38:28Z"
                                                                  ],
                                                 "Date":  [
-                                                             "Wed, 12 Nov 2025 17:35:31 GMT"
+                                                             "Thu, 13 Nov 2025 08:59:08 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "4294"
@@ -1267,7 +1267,7 @@
                                                                      "Ref A: FB6A9528D419471D9A0A59C5EA980CDF Ref B: MAA201060516045 Ref C: 2025-03-19T09:38:29Z"
                                                                  ],
                                                 "Date":  [
-                                                             "Wed, 12 Nov 2025 17:35:31 GMT"
+                                                             "Thu, 13 Nov 2025 08:59:08 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "4542"
