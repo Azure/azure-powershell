@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Aks
-Module Guid: c58774ba-be69-4451-842a-3d5d9ccc6473
+Module Guid: 5da8f512-93fb-480b-b709-4acce5862f98
 Download Help Link: https://learn.microsoft.com/powershell/module/az.aks
 Help Version: 1.0.0.0
 Locale: en-US
@@ -11,14 +11,23 @@ Locale: en-US
 Microsoft Azure PowerShell: Aks cmdlets
 
 ## Az.Aks Cmdlets
+### [Get-AzAksMachine](Get-AzAksMachine.md)
+Get a specific machine in the specified agent pool.
+
 ### [Get-AzAksMaintenanceConfiguration](Get-AzAksMaintenanceConfiguration.md)
 Gets the specified maintenance configuration of a managed cluster.
 
 ### [Get-AzAksManagedClusterCommandResult](Get-AzAksManagedClusterCommandResult.md)
 Gets the results of a command which has been run on the Managed Cluster.
 
-### [Get-AzAksManagedClusterOSOption](Get-AzAksManagedClusterOSOption.md)
-Gets supported OS options in the specified subscription.
+### [Get-AzAksManagedClusterKuberneteVersion](Get-AzAksManagedClusterKuberneteVersion.md)
+Contains extra metadata on the version, including supported patch versions, capabilities, available upgrades, and details on preview status of the version
+
+### [Get-AzAksManagedClusterMeshRevisionProfile](Get-AzAksManagedClusterMeshRevisionProfile.md)
+Contains extra metadata on the revision, including supported revisions, cluster compatibility and available upgrades
+
+### [Get-AzAksManagedClusterMeshUpgradeProfile](Get-AzAksManagedClusterMeshUpgradeProfile.md)
+Gets available upgrades for a service mesh in a cluster.
 
 ### [Get-AzAksManagedClusterOutboundNetworkDependencyEndpoint](Get-AzAksManagedClusterOutboundNetworkDependencyEndpoint.md)
 Gets a list of egress endpoints (network endpoints of all outbound dependencies) in the specified managed cluster.
@@ -29,6 +38,12 @@ Gets the upgrade profile for an agent pool.
 
 ### [Get-AzAksSnapshot](Get-AzAksSnapshot.md)
 Gets a snapshot.
+
+### [Get-AzAksTrustedAccessRole](Get-AzAksTrustedAccessRole.md)
+List supported trusted access roles.
+
+### [Get-AzAksTrustedAccessRoleBinding](Get-AzAksTrustedAccessRoleBinding.md)
+Get a trusted access role binding.
 
 ### [Get-AzAksUpgradeProfile](Get-AzAksUpgradeProfile.md)
 Gets the upgrade profile of a managed cluster.
@@ -54,10 +69,10 @@ If the operation completes before cancellation can take place, a 409 error code 
 Rotates the service account signing keys of a managed cluster.
 
 ### [New-AzAksMaintenanceConfiguration](New-AzAksMaintenanceConfiguration.md)
-create a maintenance configuration in the specified managed cluster.
+Create a maintenance configuration in the specified managed cluster.
 
 ### [New-AzAksSnapshot](New-AzAksSnapshot.md)
-create a snapshot.
+Create a snapshot.
 
 ### [New-AzAksTimeInWeekObject](New-AzAksTimeInWeekObject.md)
 Create an in-memory object for TimeInWeek.
@@ -65,11 +80,20 @@ Create an in-memory object for TimeInWeek.
 ### [New-AzAksTimeSpanObject](New-AzAksTimeSpanObject.md)
 Create an in-memory object for TimeSpan.
 
+### [New-AzAksTrustedAccessRoleBinding](New-AzAksTrustedAccessRoleBinding.md)
+Create a trusted access role binding
+
+### [Remove-AzAksAgentPoolMachine](Remove-AzAksAgentPoolMachine.md)
+Deletes specific machines in an agent pool.
+
 ### [Remove-AzAksMaintenanceConfiguration](Remove-AzAksMaintenanceConfiguration.md)
 Deletes a maintenance configuration.
 
 ### [Remove-AzAksSnapshot](Remove-AzAksSnapshot.md)
 Deletes a snapshot.
+
+### [Remove-AzAksTrustedAccessRoleBinding](Remove-AzAksTrustedAccessRoleBinding.md)
+Delete a trusted access role binding.
 
 ### [Start-AzAksCluster](Start-AzAksCluster.md)
 See [starting a cluster](https://docs.microsoft.com/azure/aks/start-stop-cluster) for more details about starting a cluster.
@@ -86,5 +110,8 @@ A cluster does not accrue charges while it is stopped.
 See [stopping a cluster](https://docs.microsoft.com/azure/aks/start-stop-cluster) for more details about stopping a cluster.
 
 ### [Update-AzAksMaintenanceConfiguration](Update-AzAksMaintenanceConfiguration.md)
-update a maintenance configuration in the specified managed cluster.
+Update a maintenance configuration in the specified managed cluster.
+
+### [Update-AzAksTrustedAccessRoleBinding](Update-AzAksTrustedAccessRoleBinding.md)
+Update a trusted access role binding
 

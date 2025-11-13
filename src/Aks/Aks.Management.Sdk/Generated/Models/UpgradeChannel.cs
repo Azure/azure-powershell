@@ -42,10 +42,8 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         public const string Patch = "patch";
         /// <summary>
         /// Automatically upgrade the node image to the latest version available.
-        /// Microsoft provides patches and new images for image nodes frequently
-        /// (usually weekly), but your running nodes won&#39;t get the new images unless
-        /// you do a node image upgrade. Turning on the node-image channel will
-        /// automatically update your node images whenever a new version is available.
+        /// Consider using nodeOSUpgradeChannel instead as that allows you to configure
+        /// node OS patching separate from Kubernetes version patching
         /// </summary>
         public const string NodeImage = "node-image";
         /// <summary>

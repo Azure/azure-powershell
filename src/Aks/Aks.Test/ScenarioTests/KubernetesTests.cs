@@ -164,7 +164,8 @@ namespace Commands.Aks.Test.ScenarioTests
             TestRunner.RunTestScript("Test-AutoScalerProfile");
         }
 
-        [Fact]
+        //The current test tenants do not support any GPU vm size.
+        [Fact(Skip = "The only vm size for MIG is not supported with quota on all regions.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGpuInstanceProfile()
         {
@@ -178,7 +179,7 @@ namespace Commands.Aks.Test.ScenarioTests
             TestRunner.RunTestScript("Test-EnableUptimeSLA");
         }
 
-        [Fact]
+        [Fact(Skip = "All test tenants do not support edge zones.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestEdgeZone()
         {
@@ -192,7 +193,7 @@ namespace Commands.Aks.Test.ScenarioTests
             TestRunner.RunTestScript("Test-AadProfile");
         }
 
-        [Fact]
+        [Fact(Skip = "All test tenants do not support the size for a host in this test.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestHostGroupID()
         {

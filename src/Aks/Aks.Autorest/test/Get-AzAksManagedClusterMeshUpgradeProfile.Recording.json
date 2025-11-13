@@ -1,0 +1,178 @@
+{
+  "Get-AzAksManagedClusterMeshUpgradeProfile+[NoContext]+List+$GET+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/AKS_TEST_RG/providers/Microsoft.ContainerService/managedClusters/AKS_Test_Cluster/meshUpgradeProfiles?api-version=2025-08-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/AKS_TEST_RG/providers/Microsoft.ContainerService/managedClusters/AKS_Test_Cluster/meshUpgradeProfiles?api-version=2025-08-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "4cd32bed-66e4-4b4e-b5db-6a8906effffb" ],
+        "CommandName": [ "Get-AzAksManagedClusterMeshUpgradeProfile" ],
+        "FullCommandName": [ "Get-AzAksManagedClusterMeshUpgradeProfile_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.4", "Az.Aks/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=213e87ed-8e08-4eb4-a63c-c073058f7b00,objectId=2fdc06a3-8018-46f5-ac20-cec39e684201/eastus/5649e52b-c5a8-4d8a-ae4f-5e0bad6b77a3" ],
+        "x-ms-correlation-request-id": [ "21c1fa15-7b0e-4f7c-951a-9d1b41820ae2" ],
+        "x-ms-request-id": [ "7edf28c0-e923-44e4-843a-7940588192d4" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251110T081536Z:21c1fa15-7b0e-4f7c-951a-9d1b41820ae2" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 56344CF0A3DA49E098376AF2E9073CE6 Ref B: JKT201051407029 Ref C: 2025-11-10T08:15:36Z" ],
+        "Date": [ "Mon, 10 Nov 2025 08:15:36 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "602" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n \"value\": [\n  {\n   \"id\": \"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/AKS_TEST_RG/providers/Microsoft.ContainerService/managedClusters/AKS_Test_Cluster/meshUpgradeProfiles/istio\",\n   \"name\": \"istio\",\n   \"type\": \"Microsoft.ContainerService/managedClusters/meshUpgradeProfiles\",\n   \"properties\": {\n    \"revision\": \"asm-1-25\",\n    \"upgrades\": [\n     \"asm-1-26\",\n     \"asm-1-27\"\n    ],\n    \"compatibleWith\": [\n     {\n      \"name\": \"KubernetesOfficial\",\n      \"versions\": [\n       \"1.29\",\n       \"1.30\",\n       \"1.31\",\n       \"1.32\",\n       \"1.33\"\n      ]\n     }\n    ]\n   }\n  }\n ]\n}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzAksManagedClusterMeshUpgradeProfile+[NoContext]+GetViaIdentityManagedCluster+$GET+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/AKS_TEST_RG/providers/Microsoft.ContainerService/managedClusters/AKS_Test_Cluster/meshUpgradeProfiles/asm-1-25?api-version=2025-08-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/AKS_TEST_RG/providers/Microsoft.ContainerService/managedClusters/AKS_Test_Cluster/meshUpgradeProfiles/asm-1-25?api-version=2025-08-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "9272b019-a13f-4c4e-a092-370690db0c7e" ],
+        "CommandName": [ "Get-AzAksManagedClusterMeshUpgradeProfile" ],
+        "FullCommandName": [ "Get-AzAksManagedClusterMeshUpgradeProfile_GetViaIdentityManagedCluster" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.4", "Az.Aks/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=213e87ed-8e08-4eb4-a63c-c073058f7b00,objectId=2fdc06a3-8018-46f5-ac20-cec39e684201/eastus/567f6c71-dd3c-458c-96b7-2b8d1ca8bdba" ],
+        "x-ms-correlation-request-id": [ "723f3df8-b459-4d05-a83b-8e808c4123dc" ],
+        "x-ms-request-id": [ "29d4381e-88ba-4210-8947-60951e396d4b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251110T081537Z:723f3df8-b459-4d05-a83b-8e808c4123dc" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: D076818FB8A04CB99C3DE3502E290A68 Ref B: JKT201051407029 Ref C: 2025-11-10T08:15:37Z" ],
+        "Date": [ "Mon, 10 Nov 2025 08:15:37 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "538" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n \"id\": \"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/AKS_TEST_RG/providers/Microsoft.ContainerService/managedClusters/AKS_Test_Cluster/meshUpgradeProfiles/asm-1-25\",\n \"name\": \"istio\",\n \"type\": \"Microsoft.ContainerService/managedClusters/meshUpgradeProfiles\",\n \"properties\": {\n  \"revision\": \"asm-1-25\",\n  \"upgrades\": [\n   \"asm-1-26\",\n   \"asm-1-27\"\n  ],\n  \"compatibleWith\": [\n   {\n    \"name\": \"KubernetesOfficial\",\n    \"versions\": [\n     \"1.29\",\n     \"1.30\",\n     \"1.31\",\n     \"1.32\",\n     \"1.33\"\n    ]\n   }\n  ]\n }\n}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzAksManagedClusterMeshUpgradeProfile+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/AKS_TEST_RG/providers/Microsoft.ContainerService/managedClusters/AKS_Test_Cluster/meshUpgradeProfiles/asm-1-25?api-version=2025-08-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/AKS_TEST_RG/providers/Microsoft.ContainerService/managedClusters/AKS_Test_Cluster/meshUpgradeProfiles/asm-1-25?api-version=2025-08-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "bd181471-7acc-4461-8db9-4740a961a857" ],
+        "CommandName": [ "Get-AzAksManagedClusterMeshUpgradeProfile" ],
+        "FullCommandName": [ "Get-AzAksManagedClusterMeshUpgradeProfile_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.4", "Az.Aks/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=213e87ed-8e08-4eb4-a63c-c073058f7b00,objectId=2fdc06a3-8018-46f5-ac20-cec39e684201/eastus/e9c6734b-3d0d-48c5-ac73-b0adddccb6af" ],
+        "x-ms-correlation-request-id": [ "aa9dc1d9-0096-48e5-9a54-e389f25819f5" ],
+        "x-ms-request-id": [ "06ffd12b-db68-464b-9eb9-dfed070de39a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251110T081537Z:aa9dc1d9-0096-48e5-9a54-e389f25819f5" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 739784FC83D8458BB52B498C0B730394 Ref B: JKT201051407029 Ref C: 2025-11-10T08:15:37Z" ],
+        "Date": [ "Mon, 10 Nov 2025 08:15:37 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "538" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n \"id\": \"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/AKS_TEST_RG/providers/Microsoft.ContainerService/managedClusters/AKS_Test_Cluster/meshUpgradeProfiles/asm-1-25\",\n \"name\": \"istio\",\n \"type\": \"Microsoft.ContainerService/managedClusters/meshUpgradeProfiles\",\n \"properties\": {\n  \"revision\": \"asm-1-25\",\n  \"upgrades\": [\n   \"asm-1-26\",\n   \"asm-1-27\"\n  ],\n  \"compatibleWith\": [\n   {\n    \"name\": \"KubernetesOfficial\",\n    \"versions\": [\n     \"1.29\",\n     \"1.30\",\n     \"1.31\",\n     \"1.32\",\n     \"1.33\"\n    ]\n   }\n  ]\n }\n}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzAksManagedClusterMeshUpgradeProfile+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/AKS_TEST_RG/providers/Microsoft.ContainerService/managedClusters/AKS_Test_Cluster/meshUpgradeProfiles/asm-1-25?api-version=2025-08-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/AKS_TEST_RG/providers/Microsoft.ContainerService/managedClusters/AKS_Test_Cluster/meshUpgradeProfiles/asm-1-25?api-version=2025-08-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "ac4a4d03-db93-4ba6-b35f-ae3e5497b848" ],
+        "CommandName": [ "Get-AzAksManagedClusterMeshUpgradeProfile" ],
+        "FullCommandName": [ "Get-AzAksManagedClusterMeshUpgradeProfile_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.4", "Az.Aks/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=213e87ed-8e08-4eb4-a63c-c073058f7b00,objectId=2fdc06a3-8018-46f5-ac20-cec39e684201/eastus/9751f334-7d0c-403b-9e62-123faa6e0e84" ],
+        "x-ms-correlation-request-id": [ "1fe8bce9-f04a-461a-b6dd-ff173ab235a0" ],
+        "x-ms-request-id": [ "693c3fd6-a160-4d4b-aad9-90411d442cbe" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251110T081539Z:1fe8bce9-f04a-461a-b6dd-ff173ab235a0" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: AA549A32D67A46009A15709AD19643D5 Ref B: JKT201051407029 Ref C: 2025-11-10T08:15:38Z" ],
+        "Date": [ "Mon, 10 Nov 2025 08:15:39 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "538" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n \"id\": \"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/AKS_TEST_RG/providers/Microsoft.ContainerService/managedClusters/AKS_Test_Cluster/meshUpgradeProfiles/asm-1-25\",\n \"name\": \"istio\",\n \"type\": \"Microsoft.ContainerService/managedClusters/meshUpgradeProfiles\",\n \"properties\": {\n  \"revision\": \"asm-1-25\",\n  \"upgrades\": [\n   \"asm-1-26\",\n   \"asm-1-27\"\n  ],\n  \"compatibleWith\": [\n   {\n    \"name\": \"KubernetesOfficial\",\n    \"versions\": [\n     \"1.29\",\n     \"1.30\",\n     \"1.31\",\n     \"1.32\",\n     \"1.33\"\n    ]\n   }\n  ]\n }\n}",
+      "isContentBase64": false
+    }
+  }
+}

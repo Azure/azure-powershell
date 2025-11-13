@@ -1,0 +1,52 @@
+{
+  "resourceType": "managedClusters/meshUpgradeProfiles",
+  "apiVersion": "2025-08-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.aks"
+  },
+  "commands": [
+    {
+      "name": "Get-AzAksManagedClusterMeshUpgradeProfile",
+      "description": "Gets available upgrades for a service mesh in a cluster.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/meshUpgradeProfiles/{mode}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.aks/get-azaksmanagedclustermeshupgradeprofile"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Mode <String>",
+              "-ResourceGroupName <String>",
+              "-ResourceName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets available upgrades for a service mesh in a cluster.",
+          "parameters": [
+            {
+              "name": "-Mode",
+              "value": "[Path.mode]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-ResourceName",
+              "value": "[Path.resourceName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
