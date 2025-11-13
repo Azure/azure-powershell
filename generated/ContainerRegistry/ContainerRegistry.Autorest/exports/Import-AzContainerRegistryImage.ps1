@@ -20,26 +20,10 @@ Copies an image to this container registry from the specified container registry
 .Description
 Copies an image to this container registry from the specified container registry.
 .Example
-Import-AzContainerRegistryImage -SourceImage library/busybox:latest -ResourceGroupName $resourceGroupName -RegistryName $RegistryName -SourceRegistryUri docker.io -TargetTag busybox:latest
+Import-AzContainerRegistryImage -SourceImage library/busybox:latest -ResourceGroupName YourResourceGroupName -RegistryName YourRegistryName -SourceRegistryUri docker.io -TargetTag busybox:latest
 
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IImportImageParameters
 .Outputs
 System.Boolean
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-PARAMETER <IImportImageParameters>: .
-  SourceImage <String>: Repository name of the source image.         Specify an image by repository ('hello-world'). This will use the 'latest' tag.         Specify an image by tag ('hello-world:latest').         Specify an image by sha256-based manifest digest ('hello-world@sha256:abc123').
-  [CredentialsPassword <String>]: The password used to authenticate with the source registry.
-  [CredentialsUsername <String>]: The username to authenticate with the source registry.
-  [Mode <ImportMode?>]: When Force, any existing target tags will be overwritten. When NoForce, any existing target tags will fail the operation before any copying begins.
-  [SourceRegistryUri <String>]: The address of the source registry (e.g. 'mcr.microsoft.com').
-  [SourceResourceId <String>]: The resource identifier of the source Azure Container Registry.
-  [TargetTag <String[]>]: List of strings of the form repo[:tag]. When tag is omitted the source will be used (or 'latest' if source tag is also omitted).
-  [UntaggedTargetRepository <String[]>]: List of strings of repository names to do a manifest only copy. No tag will be created.
 .Link
 https://learn.microsoft.com/powershell/module/az.containerregistry/import-azcontainerregistryimage
 #>
@@ -68,13 +52,6 @@ param(
     # The value must be an UUID.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='Import', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IImportImageParameters]
-    # .
-    # To construct, see NOTES section for PARAMETER properties and create a hash table.
-    ${Parameter},
-
     [Parameter(ParameterSetName='ImportExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
     [System.String]
@@ -83,9 +60,9 @@ param(
     ${SourceImage},
 
     [Parameter(ParameterSetName='ImportExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.ImportMode])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.PSArgumentCompleterAttribute("NoForce", "Force")]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.ImportMode]
+    [System.String]
     # When Force, any existing target tags will be overwritten.
     # When NoForce, any existing target tags will fail the operation before any copying begins.
     ${Mode},
@@ -131,6 +108,18 @@ param(
     [System.String]
     # The username to authenticate with the source registry.
     ${Username},
+
+    [Parameter(ParameterSetName='ImportViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Import operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='ImportViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # Json string supplied to the Import operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -206,6 +195,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -225,12 +223,11 @@ begin {
         }
 
         $mapping = @{
-            Import = 'Az.ContainerRegistry.private\Import-AzContainerRegistryImage_Import';
             ImportExpanded = 'Az.ContainerRegistry.private\Import-AzContainerRegistryImage_ImportExpanded';
+            ImportViaJsonFilePath = 'Az.ContainerRegistry.private\Import-AzContainerRegistryImage_ImportViaJsonFilePath';
+            ImportViaJsonString = 'Az.ContainerRegistry.private\Import-AzContainerRegistryImage_ImportViaJsonString';
         }
-        if (('Import', 'ImportExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('ImportExpanded', 'ImportViaJsonFilePath', 'ImportViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -244,6 +241,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

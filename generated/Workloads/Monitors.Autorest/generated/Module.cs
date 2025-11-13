@@ -28,11 +28,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors
 
         public global::System.Net.Http.HttpClientHandler _handler = new global::System.Net.Http.HttpClientHandler();
 
+        private static bool _init = false;
+
+        private static readonly global::System.Object _initLock = new global::System.Object();
+
+        private static Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Module _instance;
+
         /// <summary>the ISendAsync pipeline instance</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.HttpPipeline _pipeline;
 
         /// <summary>the ISendAsync pipeline instance (when proxy is enabled)</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.HttpPipeline _pipelineWithProxy;
+
+        private static readonly global::System.Object _singletonLock = new global::System.Object();
 
         public bool _useProxy = false;
 
@@ -56,14 +64,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors
         /// <summary>The delegate to get the telemetry info.</summary>
         public GetTelemetryInfoDelegate GetTelemetryInfo { get; set; }
 
-        /// <summary>Backing field for <see cref="Instance" /> property.</summary>
-        private static Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Module _instance;
-
         /// <summary>the singleton of this module class</summary>
-        public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Module Instance => Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Module._instance?? (Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Module._instance = new Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Module());
+        public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Module Instance { get { if (_instance == null) { lock (_singletonLock) { if (_instance == null) { _instance = new Module(); }}} return _instance; } }
 
         /// <summary>The Name of this module</summary>
-        public string Name => @"Az.Monitors";
+        public string Name => @"Az.Workloads";
 
         /// <summary>The delegate to call when this module is loaded (supporting a commmon module).</summary>
         public ModuleLoadPipelineDelegate OnModuleLoad { get; set; }
@@ -75,7 +80,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors
         public global::System.String ProfileName { get; set; }
 
         /// <summary>The ResourceID for this module (azure arm).</summary>
-        public string ResourceId => @"Az.Monitors";
+        public string ResourceId => @"Az.Workloads";
 
         /// <summary>The delegate to call in WriteObject to sanitize the output object.</summary>
         public SanitizerDelegate SanitizeOutput { get; set; }
@@ -125,9 +130,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors
         /// <summary>Initialization steps performed after the module is loaded.</summary>
         public void Init()
         {
-            OnModuleLoad?.Invoke( ResourceId, Name ,(step)=> { _pipeline.Prepend(step); } , (step)=> { _pipeline.Append(step); } );
-            OnModuleLoad?.Invoke( ResourceId, Name ,(step)=> { _pipelineWithProxy.Prepend(step); } , (step)=> { _pipelineWithProxy.Append(step); } );
-            CustomInit();
+            if (_init == false)
+            {
+                lock (_initLock) {
+                    if (_init == false) {
+                        OnModuleLoad?.Invoke( ResourceId, Name ,(step)=> { _pipeline.Prepend(step); } , (step)=> { _pipeline.Append(step); } );
+                        OnModuleLoad?.Invoke( ResourceId, Name ,(step)=> { _pipelineWithProxy.Prepend(step); } , (step)=> { _pipelineWithProxy.Append(step); } );
+                        CustomInit();
+                        _init = true;
+                    }
+                }
+            }
         }
 
         /// <summary>Creates the module instance.</summary>

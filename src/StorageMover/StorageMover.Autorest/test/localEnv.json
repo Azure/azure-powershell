@@ -1,25 +1,25 @@
 {
   "StorageMoverNameWithAgent": "testmoverpreview1",
+  "StoraccId": "/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.Storage/storageAccounts/storaccqoiut0lr",
   "Tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
-  "InitialStoMoverName": "testStoMover19drqmski",
-  "MultiCloudConnectorId": "/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/E2E-Management-RGsyn/providers/Microsoft.HybridConnectivity/publicCloudConnectors/e2e-sm-rp-connector",
-  "ProjectName": "testProject9drqmski",
-  "StorageAccountName": "storacc9drqmski",
   "InitialStoMoverTag": {
-    "tag1": "value1",
-    "tag2": "value2"
+    "tag2": "value2",
+    "tag1": "value1"
   },
+  "StorageAccountName": "storaccqoiut0lr",
   "SubscriptionId": "b6b34ad8-ca89-4f85-beb7-c2ec13702dac",
-  "ContainerName": "container9drqmski",
-  "ContainerEndpointName": "containerEndpoint9drqmski",
-  "NfsEndpointName": "nfsEndpoint9drqmski",
-  "ResourceGroupName": "choudharysumovetest",
   "Location": "eastus2euap",
+  "ResourceGroupName": "choudharysutest",
+  "ProjectName2": "testProject2qoiut0lr",
   "InitialSMDescription": "initial test SM description",
-  "JobDefinitionName": "testJob9drqmski",
-  "RandomString": "9drqmski",
+  "JobDefinitionName": "testJobqoiut0lr",
+  "ContainerEndpointName": "containerEndpointqoiut0lr",
   "AwsS3BucketId": "/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/aws_640698235822/providers/Microsoft.AWSConnector/s3Buckets/e2e-sm-rp-bucket",
-  "ProjectName2": "testProject29drqmski",
-  "StoraccId": "/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysumovetest/providers/Microsoft.Storage/storageAccounts/storacc9drqmski",
-  "AgentName": "testagent12"
+  "AgentName": "testagent12",
+  "NfsEndpointName": "nfsEndpointqoiut0lr",
+  "InitialStoMoverName": "testStoMover1qoiut0lr",
+  "RandomString": "qoiut0lr",
+  "ContainerName": "containerqoiut0lr",
+  "MultiCloudConnectorId": "/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/E2E-Management-RGsyn/providers/Microsoft.HybridConnectivity/publicCloudConnectors/e2e-sm-rp-connector",
+  "ProjectName": "testProjectqoiut0lr"
 }
