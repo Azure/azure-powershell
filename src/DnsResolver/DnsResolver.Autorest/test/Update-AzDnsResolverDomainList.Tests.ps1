@@ -18,19 +18,21 @@ Describe 'Update-AzDnsResolverDomainList' {
     It 'Update DNS Resolver Policy by adding tag, expect DNS resolver policy updated' {
         # ARRANGE
         $dnsResolverDomainListName = "psdnsresolverdomainlistname47";
-        $resourceGroupName = "powershell-test-rg-debug-update";
-        $location = "westus2";
 
-        $originalDnsResolverDomainList = New-AzDnsResolverDomainList -Name $dnsResolverDomainListName -ResourceGroupName $resourceGroupName -Location $location -Domain @("contoso.com.", "example.com.")
+        $originalDnsResolverDomainList = New-AzDnsResolverDomainList -Name $dnsResolverDomainListName -ResourceGroupName $RESOURCE_GROUP_NAME -Location $location -Domain @("contoso.com.", "example.com.")
 
         $tag  = GetRandomHashtable -size 5
 
         # ACT
-        $updatedDnsResolverDomainList = Update-AzDnsResolverDomainList -Name $dnsResolverDomainListName -ResourceGroupName $resourceGroupName -Tag $tag
+        $updatedDnsResolverDomainList = Update-AzDnsResolverDomainList -Name $dnsResolverDomainListName -ResourceGroupName $RESOURCE_GROUP_NAME -Tag $tag
 
         # ASSERT
         $updatedDnsResolverDomainList | Should -BeSuccessfullyCreated
         $updatedDnsResolverDomainList | Should -BeSameAsExpected -ExpectedValue $originalDnsResolverDomainList
         $updatedDnsResolverDomainList.Tag.Count | Should -Be $tag.Count
+
+        # UNDO
+        Start-Sleep -Seconds 5
+        Remove-AzDnsResolverDomainList -Name $dnsResolverDomainListName -ResourceGroupName $RESOURCE_GROUP_NAME
     }
 }

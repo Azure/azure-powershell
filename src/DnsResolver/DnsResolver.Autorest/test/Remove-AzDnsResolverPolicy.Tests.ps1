@@ -18,30 +18,26 @@ Describe 'Remove-AzDnsResolverPolicy' {
     It 'Delete a DNS resolver policy by name, expected DNS resolver policy deleted' {
         # ARRANGE
        $dnsResolverPolicyName = "psdnsresolverpolicyname65";
-       $resourceGroupName = "powershell-test-rg-debug-remove";
-       $location = "westus2";
 
-       New-AzDnsResolverPolicy -Name $dnsResolverPolicyName -ResourceGroupName $resourceGroupName -Location $location
+       New-AzDnsResolverPolicy -Name $dnsResolverPolicyName -ResourceGroupName $RESOURCE_GROUP_NAME -Location $location
 
        # ACT
-       Remove-AzDnsResolverPolicy -Name $dnsResolverPolicyName -ResourceGroupName $resourceGroupName
+       Remove-AzDnsResolverPolicy -Name $dnsResolverPolicyName -ResourceGroupName $RESOURCE_GROUP_NAME
 
        # ASSERT 
-        {Get-AzDnsResolverPolicy  -DnsResolverPolicyName $dnsResolverPolicyName -ResourceGroupName $resourceGroupName } | Should -Throw
+        {Get-AzDnsResolverPolicy  -DnsResolverPolicyName $dnsResolverPolicyName -ResourceGroupName $RESOURCE_GROUP_NAME } | Should -Throw
    }
 
    It 'Delete a DNS resolver policy via identity, expected DNS resolver policy deleted' {
         # ARRANGE
         $dnsResolverPolicyName = "psdnsresolverpolicyname66";
-        $resourceGroupName = "powershell-test-rg-debug-remove";
-        $location = "westus2";
 
-        New-AzDnsResolverPolicy -Name $dnsResolverPolicyName -ResourceGroupName $resourceGroupName -Location $location
+        New-AzDnsResolverPolicy -Name $dnsResolverPolicyName -ResourceGroupName $RESOURCE_GROUP_NAME -Location $location
 
         # ACT
-        Get-AzDnsResolverPolicy  -DnsResolverPolicyName $dnsResolverPolicyName -ResourceGroupName $resourceGroupName | Remove-AzDnsResolverPolicy
+        Get-AzDnsResolverPolicy  -DnsResolverPolicyName $dnsResolverPolicyName -ResourceGroupName $RESOURCE_GROUP_NAME | Remove-AzDnsResolverPolicy
 
         # ASSERT
-        {Get-AzDnsResolverPolicy  -DnsResolverPolicyName $dnsResolverPolicyName -ResourceGroupName $resourceGroupName } | Should -Throw
+        {Get-AzDnsResolverPolicy  -DnsResolverPolicyName $dnsResolverPolicyName -ResourceGroupName $RESOURCE_GROUP_NAME } | Should -Throw
     }
 }

@@ -17,31 +17,35 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzDnsResolverDomainList')
 Describe 'New-AzDnsResolverDomainList' {
     It 'Create DNS resolver domain list' {
         # ARRANGE
-        $dnsResolverDomainListName = "psdnsresolverdomainlistname0j0cdzg";
-        $resourceGroupName = "powershell-test-rg-debug-new";
-        $location = "westus2";
+        $dnsResolverDomainListName = "psdnsresolverdomainlistname0j0cdzg3d";
 
         # ACT
-        $domainList = New-AzDnsResolverDomainList -Name $dnsResolverDomainListName -ResourceGroupName $resourceGroupName -Location $location -Domain @("contoso.com.", "example.com.")
+        $domainList = New-AzDnsResolverDomainList -Name $dnsResolverDomainListName -ResourceGroupName $RESOURCE_GROUP_NAME -Location $location -Domain @("contoso.com.", "example.com.")
 
         # ASSERT
         $domainList | Should -BeSuccessfullyCreated
+
+        # UNDO
+        Start-Sleep -Seconds 5
+        Remove-AzDnsResolverDomainList -Name $dnsResolverDomainListName -ResourceGroupName $RESOURCE_GROUP_NAME
     }
 
     It 'Update DNS Resolver domain list with new tags.' {
         # ARRANGE
-        $dnsResolverDomainListName = "psdnsresolverdomainlistname4c7glpm";
-        $resourceGroupName = "powershell-test-rg-debug-new";
-        $location = "westus2";
+        $dnsResolverDomainListName = "psdnsresolverdomainlistname4c7glpm3d";
 
-        New-AzDnsResolverDomainList -Name $dnsResolverDomainListName -ResourceGroupName $resourceGroupName -Location $location -Domain @("contoso.com.", "example.com.")
+        New-AzDnsResolverDomainList -Name $dnsResolverDomainListName -ResourceGroupName $RESOURCE_GROUP_NAME -Location $location -Domain @("contoso.com.", "example.com.")
         $tag = GetRandomHashtable -size 2
 
         # ACT
-        $domainList = New-AzDnsResolverDomainList -Name $dnsResolverDomainListName -ResourceGroupName $resourceGroupName -Location $location -Domain @("contoso.com.", "example.com.") -Tag $tag
+        $domainList = New-AzDnsResolverDomainList -Name $dnsResolverDomainListName -ResourceGroupName $RESOURCE_GROUP_NAME -Location $location -Domain @("contoso.com.", "example.com.") -Tag $tag
 
         # ASSERT
         $domainList.ProvisioningState  | Should -Be "Succeeded"
         $domainList.Tag.Count | Should -Be $tag.Count
+
+        # UNDO
+        Start-Sleep -Seconds 5
+        Remove-AzDnsResolverDomainList -Name $dnsResolverDomainListName -ResourceGroupName $RESOURCE_GROUP_NAME
     }
 }

@@ -18,7 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
+* Added managedDomainList for usage in DnsSecurityRules
+* Removed requirement of DnsResolverDomainLists in DnsSecurityRules if user is using a managedDomainList.
 
 ## Version 1.2.0
 * Added domain list post request for using storage based larger domain lists
