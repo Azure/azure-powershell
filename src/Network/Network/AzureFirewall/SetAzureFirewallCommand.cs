@@ -21,7 +21,8 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Firewall", SupportsShouldProcess = true), OutputType(typeof(PSAzureFirewall))]
+    // TODO: Support WhatIf https://github.com/Azure/azure-powershell/issues/27667
+    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Firewall", SupportsShouldProcess = false), OutputType(typeof(PSAzureFirewall))]
     public class SetAzureFirewallCommand : AzureFirewallBaseCmdlet
     {
         [Parameter(
