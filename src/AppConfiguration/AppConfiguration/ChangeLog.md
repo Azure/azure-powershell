@@ -20,7 +20,7 @@
 ## Upcoming Release
 
 * Fixed GitHub issue #23731 'Problem with Get-AzAppConfigurationKeyValue when more that 100 records are present'
-    - fixed `NextLink` property to give absolute URI, allowing subsequent pages of results to be retrieved.
+    - Fixed `NextLink` property to give absolute URI, allowing subsequent pages of results to be retrieved.
 
 ## Version 2.0.0
 * Introduced various new features by upgrading code generator. Please see detail [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).
