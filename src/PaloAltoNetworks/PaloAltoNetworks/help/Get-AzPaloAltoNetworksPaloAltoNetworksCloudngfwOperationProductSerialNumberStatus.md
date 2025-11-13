@@ -120,6 +120,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### None
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IProductSerialNumberStatus
