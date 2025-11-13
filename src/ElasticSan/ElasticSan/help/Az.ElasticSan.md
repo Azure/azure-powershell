@@ -59,12 +59,6 @@ Remove a list of virtual network rules from a VolumeGroup
 ### [Remove-AzElasticSanVolumeSnapshot](Remove-AzElasticSanVolumeSnapshot.md)
 Delete a Volume Snapshot.
 
-### [Test-AzElasticSanVolumeBackup](Test-AzElasticSanVolumeBackup.md)
-Validate whether a disk snapshot backup can be taken for list of volumes.
-
-### [Test-AzElasticSanVolumeRestore](Test-AzElasticSanVolumeRestore.md)
-Validate whether a list of backed up disk snapshots can be restored into ElasticSan volumes.
-
 ### [Update-AzElasticSan](Update-AzElasticSan.md)
 Update a Elastic San.
 

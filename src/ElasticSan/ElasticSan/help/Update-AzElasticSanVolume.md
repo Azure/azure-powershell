@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzElasticSanVolume
 
 ## SYNOPSIS
-Update an Volume.
+update an Volume.
 
 ## SYNTAX
 
@@ -40,7 +40,7 @@ Update-AzElasticSanVolume -InputObject <IElasticSanIdentity> [-SizeGiB <Int64>] 
 ```
 
 ## DESCRIPTION
-Update an Volume.
+update an Volume.
 
 ## EXAMPLES
 

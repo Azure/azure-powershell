@@ -23,7 +23,7 @@ Describe 'New-AzElasticSanVolumeGroup' {
         $volGroup.Name | Should -Be $volGroupName
         $volGroup.ProtocolType | Should -Be "Iscsi"
         $volGroup.NetworkAclsVirtualNetworkRule.Count | Should -Be 2
-        $volGroup.EnforceDataIntegrityCheckForIscsi | Should -Be $false
+        $volGroup.EnforceDataIntegrityCheckForIscsi | Should -Be $true
 
         $volGroupName2 = 'testvolgroup2' + $env.RandomString
         $volGroup = New-AzElasticSanVolumeGroup -ResourceGroupName $env.ResourceGroupName -ElasticSanName $env.ElasticSanName1 -Name $volGroupName2 -ProtocolType 'Iscsi' -IdentityType 'SystemAssigned' -Encryption EncryptionAtRestWithPlatformKey -EnforceDataIntegrityCheckForIscsi $false

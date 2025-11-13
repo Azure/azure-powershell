@@ -1,6 +1,6 @@
 ---
 Module Name: Az.ElasticSan
-Module Guid: 456b0445-36ce-4b34-8599-4a4c894f5d1d
+Module Guid: ffcb466a-f0cf-4285-bdad-8a1bbeebe0c4
 Download Help Link: https://learn.microsoft.com/powershell/module/az.elasticsan
 Help Version: 1.0.0.0
 Locale: en-US
@@ -30,19 +30,19 @@ Get either a list of all volume groups from an Elastic SAN or get a single volum
 Get a Volume Snapshot.
 
 ### [New-AzElasticSan](New-AzElasticSan.md)
-Create ElasticSan.
+create ElasticSan.
 
 ### [New-AzElasticSanVirtualNetworkRuleObject](New-AzElasticSanVirtualNetworkRuleObject.md)
 Create an in-memory object for VirtualNetworkRule.
 
 ### [New-AzElasticSanVolume](New-AzElasticSanVolume.md)
-Create a Volume.
+create a Volume.
 
 ### [New-AzElasticSanVolumeGroup](New-AzElasticSanVolumeGroup.md)
 Create a Volume Group.
 
 ### [New-AzElasticSanVolumeSnapshot](New-AzElasticSanVolumeSnapshot.md)
-Create a Volume Snapshot.
+create a Volume Snapshot.
 
 ### [Remove-AzElasticSan](Remove-AzElasticSan.md)
 Delete a Elastic San.
@@ -59,17 +59,11 @@ Remove a list of virtual network rules from a VolumeGroup
 ### [Remove-AzElasticSanVolumeSnapshot](Remove-AzElasticSanVolumeSnapshot.md)
 Delete a Volume Snapshot.
 
-### [Test-AzElasticSanVolumeBackup](Test-AzElasticSanVolumeBackup.md)
-Validate whether a disk snapshot backup can be taken for list of volumes.
-
-### [Test-AzElasticSanVolumeRestore](Test-AzElasticSanVolumeRestore.md)
-Validate whether a list of backed up disk snapshots can be restored into ElasticSan volumes.
-
 ### [Update-AzElasticSan](Update-AzElasticSan.md)
-Update a Elastic San.
+update a Elastic San.
 
 ### [Update-AzElasticSanVolume](Update-AzElasticSanVolume.md)
-Update an Volume.
+update an Volume.
 
 ### [Update-AzElasticSanVolumeGroup](Update-AzElasticSanVolumeGroup.md)
 Update an VolumeGroup.

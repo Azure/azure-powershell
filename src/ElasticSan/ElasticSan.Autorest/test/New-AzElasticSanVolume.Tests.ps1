@@ -23,12 +23,6 @@ Describe 'Create/Remove volume, Create/Get/Remove snapshot' {
         $volume.SizeGiB | Should -Be 100
         $volume.CreationDataCreateSource | Should -Be 'None'
 
-        $testState=Test-AzElasticSanVolumeBackup -ResourceGroupName $env.ResourceGroupName -ElasticSanName $env.ElasticSanName1 -VolumeGroupName $env.VolumeGroupName -VolumeName $volName
-        $testState.ValidationStatus | Should -Be "Success"
-
-        $testState=Test-AzElasticSanVolumeRestore -ResourceGroupName $env.ResourceGroupName -ElasticSanName $env.ElasticSanName1 -VolumeGroupName $env.VolumeGroupName -DiskSnapshotId $env.diskSnapshotId
-        $testState.ValidationStatus | Should -Be "Success"
-
         $vg = New-AzElasticSanVolumeGroup -ResourceGroupName $env.ResourceGroupName2 -ElasticSanName $env.ElasticSanName3 -Name $vgName 
         $volume = New-AzElasticSanVolume -ResourceGroupName $env.ResourceGroupName2 -ElasticSanName $env.ElasticSanName3 -VolumeGroupName $vgName -Name testesvol1 -SizeGiB 1 
         $volume.Name | Should -be "testesvol1"
