@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzFunctionApp.ACA'))
 }
 
 
-Describe 'New-AzFunctionApp ACA Tests' -Tags 'LiveOnly' {
+Describe 'New-AzFunctionApp ACA Tests' -Tag 'LiveOnly' {
     
     BeforeAll {
 
