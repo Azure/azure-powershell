@@ -1,13 +1,60 @@
 {
-  "Remove-AzDynatraceMonitoredSubscription+Delete by explicit parameters (validation only then expected failure)+Actual delete currently throws (InternalServerError)+$DELETE+https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrg45en7g/providers/Dynatrace.Observability/monitors/dyob83ctr7/monitoredSubscriptions/default?api-version=2024-04-24+1": {
+  "Remove-AzDynatraceMonitoredSubscription+Delete by explicit parameters+Deletes (may still fail if backend not fully provisioned)+$DELETE+https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrgdjgr25/providers/Dynatrace.Observability/monitors/dyobxdag4n/monitoredSubscriptions/default?api-version=2024-04-24+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrg45en7g/providers/Dynatrace.Observability/monitors/dyob83ctr7/monitoredSubscriptions/default?api-version=2024-04-24",
+      "RequestUri": "https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrgdjgr25/providers/Dynatrace.Observability/monitors/dyobxdag4n/monitoredSubscriptions/default?api-version=2024-04-24",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "79" ],
-        "x-ms-client-request-id": [ "977aebfb-7967-4d4c-86dc-b6a037ccc3a7" ],
+        "x-ms-unique-id": [ "89" ],
+        "x-ms-client-request-id": [ "18496f5f-2ed9-4529-9428-230a2153ec15" ],
+        "CommandName": [ "Remove-AzDynatraceMonitoredSubscription" ],
+        "FullCommandName": [ "Remove-AzDynatraceMonitoredSubscription_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.DynatraceObservability/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=888d76fa-54b2-4ced-8ee5-aac1585adee7,objectId=5cd9a09c-ba05-4fc8-8c8a-6d4d17e49a6e/southeastasia/63e807c2-877f-44c5-a3a8-7a625ba46e64" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:fab059ea-d726-424a-9451-6beb3dc74944" ],
+        "mise-correlation-id": [ "4cffed91-8510-4eba-b47a-7c248da0d7bc" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "e08e64b0-e08f-4954-a731-9c8daa6f0c3b" ],
+        "x-ms-correlation-request-id": [ "3602e72c-e976-4d49-be28-2b9d9fd96cb1" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "2999" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20251113T144618Z:3602e72c-e976-4d49-be28-2b9d9fd96cb1" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: D1031D85D5AF433BACA1898B980982FE Ref B: SG2AA1070305052 Ref C: 2025-11-13T14:46:16Z" ],
+        "Date": [ "Thu, 13 Nov 2025 14:46:17 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "4" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "bnVsbA==",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzDynatraceMonitoredSubscription+Idempotent behavior+Second delete (resource may already be gone) should not throw+$DELETE+https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrgdjgr25/providers/Dynatrace.Observability/monitors/dyobxdag4n/monitoredSubscriptions/default?api-version=2024-04-24+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrgdjgr25/providers/Dynatrace.Observability/monitors/dyobxdag4n/monitoredSubscriptions/default?api-version=2024-04-24",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "90" ],
+        "x-ms-client-request-id": [ "6ca1fc01-3d22-424c-a206-9ff3b67dc29c" ],
         "CommandName": [ "Remove-AzDynatraceMonitoredSubscription" ],
         "FullCommandName": [ "Remove-AzDynatraceMonitoredSubscription_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -22,205 +69,19 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-operation-identifier": [ "tenantId=888d76fa-54b2-4ced-8ee5-aac1585adee7,objectId=5cd9a09c-ba05-4fc8-8c8a-6d4d17e49a6e/eastus/5036c58f-4ee5-4d52-ae26-44fb22a1b3a8" ],
+        "x-ms-operation-identifier": [ "tenantId=888d76fa-54b2-4ced-8ee5-aac1585adee7,objectId=5cd9a09c-ba05-4fc8-8c8a-6d4d17e49a6e/eastus/40a1de54-be74-44a8-ada3-41543016c02d" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "x-ms-failure-cause": [ "service" ],
-        "x-ms-request-id": [ "9dd7dbe0-258b-490d-8422-f3635dc1617b" ],
-        "x-ms-correlation-request-id": [ "dc712de1-e154-49d0-9fc8-591c9deba3c4" ],
+        "x-ms-request-id": [ "0b0d8206-05f4-421b-b0e7-1feabf82d785" ],
+        "x-ms-correlation-request-id": [ "ae9c53de-58ec-4f83-b359-c0808eccba8c" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "199" ],
         "x-ms-ratelimit-remaining-subscription-global-deletes": [ "2999" ],
-        "x-ms-routing-request-id": [ "EASTUS:20251112T111554Z:dc712de1-e154-49d0-9fc8-591c9deba3c4" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251113T144624Z:ae9c53de-58ec-4f83-b359-c0808eccba8c" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: B447D85571D748BBBE182D191D1CCD72 Ref B: JKT201051407042 Ref C: 2025-11-12T11:15:51Z" ],
-        "Date": [ "Wed, 12 Nov 2025 11:15:53 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "173" ],
-        "Content-Type": [ "application/json" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"error\":{\"code\":\"ResourceDeletionFailed\",\"message\":\"Resource deletion failed as RP returned status code: \u0027InternalServerError\u0027 and error message \u0027Internal Server Error\u0027.\"}}",
-      "isContentBase64": false
-    }
-  },
-  "Remove-AzDynatraceMonitoredSubscription+Delete via identity (validation then expected failure)+Pipes monitored subscription object and validates with WhatIf+$GET+https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrg45en7g/providers/Dynatrace.Observability/monitors/dyob83ctr7/monitoredSubscriptions/default?api-version=2024-04-24+1": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrg45en7g/providers/Dynatrace.Observability/monitors/dyob83ctr7/monitoredSubscriptions/default?api-version=2024-04-24",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "x-ms-unique-id": [ "80" ],
-        "x-ms-client-request-id": [ "c8b348a3-92e2-43c7-be6a-67f4295ac471" ],
-        "CommandName": [ "Get-AzDynatraceMonitoredSubscription" ],
-        "FullCommandName": [ "Get-AzDynatraceMonitoredSubscription_Get" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.DynatraceObservability/0.1.0" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-operation-identifier": [ "tenantId=888d76fa-54b2-4ced-8ee5-aac1585adee7,objectId=5cd9a09c-ba05-4fc8-8c8a-6d4d17e49a6e/eastus/97fb642b-dd93-4cce-8b9c-f879cc963a8b" ],
-        "x-ms-providerhub-traffic": [ "True" ],
-        "Request-Context": [ "appId=cid-v1:fab059ea-d726-424a-9451-6beb3dc74944" ],
-        "mise-correlation-id": [ "02bf1fda-19d7-4d06-a3fd-3b37cf4899ee" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "5dc69809-44a1-4dee-8b9b-13579927504f" ],
-        "x-ms-correlation-request-id": [ "8aae2aa4-c702-4a7c-92e6-2eca63266e74" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
-        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
-        "x-ms-routing-request-id": [ "EASTUS:20251112T111555Z:8aae2aa4-c702-4a7c-92e6-2eca63266e74" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 35BE6080F39045A18864160018DBA607 Ref B: JKT201051407042 Ref C: 2025-11-12T11:15:54Z" ],
-        "Date": [ "Wed, 12 Nov 2025 11:15:54 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "324" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrg45en7g/providers/Dynatrace.Observability/monitors/dyob83ctr7/monitoredSubscriptions/default\",\"name\":\"default\",\"type\":\"Dynatrace.Observability/monitors/monitoredSubscriptions\",\"properties\":{\"operation\":\"AddBegin\",\"monitoredSubscriptionList\":[]}}",
-      "isContentBase64": false
-    }
-  },
-  "Remove-AzDynatraceMonitoredSubscription+Delete via identity (validation then expected failure)+Actual delete via identity expected to throw+$GET+https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrg45en7g/providers/Dynatrace.Observability/monitors/dyob83ctr7/monitoredSubscriptions/default?api-version=2024-04-24+1": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrg45en7g/providers/Dynatrace.Observability/monitors/dyob83ctr7/monitoredSubscriptions/default?api-version=2024-04-24",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "x-ms-unique-id": [ "81" ],
-        "x-ms-client-request-id": [ "4f573daa-5216-48d0-b7db-3aaacee3d500" ],
-        "CommandName": [ "Get-AzDynatraceMonitoredSubscription" ],
-        "FullCommandName": [ "Get-AzDynatraceMonitoredSubscription_Get" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.DynatraceObservability/0.1.0" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-operation-identifier": [ "tenantId=888d76fa-54b2-4ced-8ee5-aac1585adee7,objectId=5cd9a09c-ba05-4fc8-8c8a-6d4d17e49a6e/eastus/78159a3e-8214-496d-99c1-c1a7aa6ce861" ],
-        "x-ms-providerhub-traffic": [ "True" ],
-        "Request-Context": [ "appId=cid-v1:fab059ea-d726-424a-9451-6beb3dc74944" ],
-        "mise-correlation-id": [ "2941920c-6fab-4d47-a559-7f1d47e4ccb9" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "0952a873-9d20-4196-a58d-fadf26f67c37" ],
-        "x-ms-correlation-request-id": [ "2a86eb35-e3d6-45ed-ac86-4c98b5d02f03" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
-        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
-        "x-ms-routing-request-id": [ "EASTUS:20251112T111555Z:2a86eb35-e3d6-45ed-ac86-4c98b5d02f03" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 041DB053CDA246539B100A58A61BA787 Ref B: JKT201051407042 Ref C: 2025-11-12T11:15:55Z" ],
-        "Date": [ "Wed, 12 Nov 2025 11:15:55 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "324" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrg45en7g/providers/Dynatrace.Observability/monitors/dyob83ctr7/monitoredSubscriptions/default\",\"name\":\"default\",\"type\":\"Dynatrace.Observability/monitors/monitoredSubscriptions\",\"properties\":{\"operation\":\"AddBegin\",\"monitoredSubscriptionList\":[]}}",
-      "isContentBase64": false
-    }
-  },
-  "Remove-AzDynatraceMonitoredSubscription+Delete via identity (validation then expected failure)+Actual delete via identity expected to throw+$DELETE+https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrg45en7g/providers/Dynatrace.Observability/monitors/dyob83ctr7/monitoredSubscriptions/default?api-version=2024-04-24+2": {
-    "Request": {
-      "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrg45en7g/providers/Dynatrace.Observability/monitors/dyob83ctr7/monitoredSubscriptions/default?api-version=2024-04-24",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "x-ms-unique-id": [ "82" ],
-        "x-ms-client-request-id": [ "d49fb009-49d0-4677-9df4-6a5abe49269e" ],
-        "CommandName": [ "Remove-AzDynatraceMonitoredSubscription" ],
-        "FullCommandName": [ "Remove-AzDynatraceMonitoredSubscription_DeleteViaIdentity" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.DynatraceObservability/0.1.0" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 500,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-operation-identifier": [ "tenantId=888d76fa-54b2-4ced-8ee5-aac1585adee7,objectId=5cd9a09c-ba05-4fc8-8c8a-6d4d17e49a6e/eastus/e7c4c55e-9db5-453b-b5bc-0a99d4e3ce7c" ],
-        "x-ms-providerhub-traffic": [ "True" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-failure-cause": [ "service" ],
-        "x-ms-request-id": [ "1033da6e-2586-42d7-8b0a-8feabe7b351b" ],
-        "x-ms-correlation-request-id": [ "4b2ccba5-71ca-4a56-aec4-08f539679b15" ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [ "199" ],
-        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "2999" ],
-        "x-ms-routing-request-id": [ "EASTUS:20251112T111559Z:4b2ccba5-71ca-4a56-aec4-08f539679b15" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: D7AF90269493409EB7D17DDE075009A8 Ref B: JKT201051407023 Ref C: 2025-11-12T11:15:59Z" ],
-        "Date": [ "Wed, 12 Nov 2025 11:15:59 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "173" ],
-        "Content-Type": [ "application/json" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"error\":{\"code\":\"ResourceDeletionFailed\",\"message\":\"Resource deletion failed as RP returned status code: \u0027InternalServerError\u0027 and error message \u0027Internal Server Error\u0027.\"}}",
-      "isContentBase64": false
-    }
-  },
-  "Remove-AzDynatraceMonitoredSubscription+Idempotent delete behavior (current service state)+Second delete also throws (still failing backend)+$DELETE+https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrg45en7g/providers/Dynatrace.Observability/monitors/dyob83ctr7/monitoredSubscriptions/default?api-version=2024-04-24+1": {
-    "Request": {
-      "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrg45en7g/providers/Dynatrace.Observability/monitors/dyob83ctr7/monitoredSubscriptions/default?api-version=2024-04-24",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "x-ms-unique-id": [ "83" ],
-        "x-ms-client-request-id": [ "2adb8d22-e315-43aa-bd7a-bdcffba6d93f" ],
-        "CommandName": [ "Remove-AzDynatraceMonitoredSubscription" ],
-        "FullCommandName": [ "Remove-AzDynatraceMonitoredSubscription_Delete" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.DynatraceObservability/0.1.0" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 500,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-operation-identifier": [ "tenantId=888d76fa-54b2-4ced-8ee5-aac1585adee7,objectId=5cd9a09c-ba05-4fc8-8c8a-6d4d17e49a6e/eastus/5105f5e2-cb97-4030-95b5-e681dd3223ce" ],
-        "x-ms-providerhub-traffic": [ "True" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-failure-cause": [ "service" ],
-        "x-ms-request-id": [ "e569f901-fb84-489d-9ec3-566f15edaec5" ],
-        "x-ms-correlation-request-id": [ "0a6d6207-0c79-44eb-b14e-32e89da90d6a" ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [ "199" ],
-        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "2999" ],
-        "x-ms-routing-request-id": [ "EASTUS:20251112T111604Z:0a6d6207-0c79-44eb-b14e-32e89da90d6a" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 06F6BB217EFB4F2285B91DCDA0BB9411 Ref B: JKT201051407034 Ref C: 2025-11-12T11:16:04Z" ],
-        "Date": [ "Wed, 12 Nov 2025 11:16:03 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: DBBD309DF5BA472E88EF4ACDD20B9081 Ref B: SG2AA1070303042 Ref C: 2025-11-13T14:46:23Z" ],
+        "Date": [ "Thu, 13 Nov 2025 14:46:24 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "173" ],

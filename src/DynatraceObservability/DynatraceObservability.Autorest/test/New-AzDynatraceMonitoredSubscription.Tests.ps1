@@ -19,56 +19,58 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzDynatraceMonitoredSubsc
 }
 
 Describe 'New-AzDynatraceMonitoredSubscription' {
-    It 'CreateExpandedParameterValidation' {
-        # Expanded parameter set uses -MonitoredSubscriptionList and optional -Operation
-                $sub = [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.MonitoredSubscription]::new()
-                $sub.SubscriptionId = $env.SubscriptionId
-                $list = @($sub)
-                $list[0] | Should -BeOfType 'Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.MonitoredSubscription'
-        { New-AzDynatraceMonitoredSubscription -ResourceGroupName $env.resourceGroup -MonitorName $env.dynatraceName01 -MonitoredSubscriptionList $list -Operation "AddBegin" -WhatIf } | Should -Not -Throw
+    It 'CreateExpandedLifecycle' {
+        # Perform real creation with fully qualified subscription resource ID; omit Status (output-only).
+        $sub = [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.MonitoredSubscription]::new()
+        $sub.SubscriptionId = "/subscriptions/$($env.SubscriptionId)"
+        $list = @($sub)
+        { New-AzDynatraceMonitoredSubscription -ResourceGroupName $env.resourceGroup -MonitorName $env.dynatraceName01 -MonitoredSubscriptionList $list -Operation "AddBegin" } | Should -Not -Throw
     }
 
-    It 'CreateViaJsonStringParameterValidation' {
-        # Correct JSON shape: top-level monitoredSubscriptionList & operation
+    It 'CreateViaJsonStringReal' {
+        # Wrap body under 'properties' to satisfy ARM resource schema (see successful recording payload).
         $jsonString = @{
-            monitoredSubscriptionList = @(
-                @{ subscriptionId = $env.SubscriptionId }
-            );
-            operation = "AddBegin"
-        } | ConvertTo-Json -Depth 4
-        { New-AzDynatraceMonitoredSubscription -ResourceGroupName $env.resourceGroup -MonitorName $env.dynatraceName01 -JsonString $jsonString -WhatIf } | Should -Not -Throw
+            properties = @{
+                operation = 'AddBegin'
+                monitoredSubscriptionList = @(
+                    @{ subscriptionId = "/subscriptions/$($env.SubscriptionId)" }
+                )
+            }
+        } | ConvertTo-Json -Depth 6
+        { New-AzDynatraceMonitoredSubscription -ResourceGroupName $env.resourceGroup -MonitorName $env.dynatraceName01 -JsonString $jsonString } | Should -Not -Throw
     }
 
-    It 'CreateViaJsonFilePathParameterValidation' {
+    It 'CreateViaJsonFilePathReal' {
         $tempFile = New-TemporaryFile
+        # Same shape as JSON string variant; top-level 'properties' required.
         $jsonContent = @{
-            monitoredSubscriptionList = @(
-                @{ subscriptionId = $env.SubscriptionId }
-            );
-            operation = "AddBegin"
-        } | ConvertTo-Json -Depth 4
+            properties = @{
+                operation = 'AddBegin'
+                monitoredSubscriptionList = @(
+                    @{ subscriptionId = "/subscriptions/$($env.SubscriptionId)" }
+                )
+            }
+        } | ConvertTo-Json -Depth 6
         Set-Content -Path $tempFile.FullName -Value $jsonContent
-        { New-AzDynatraceMonitoredSubscription -ResourceGroupName $env.resourceGroup -MonitorName $env.dynatraceName01 -JsonFilePath $tempFile.FullName -WhatIf } | Should -Not -Throw
+        { New-AzDynatraceMonitoredSubscription -ResourceGroupName $env.resourceGroup -MonitorName $env.dynatraceName01 -JsonFilePath $tempFile.FullName } | Should -Not -Throw
         Remove-Item -Path $tempFile.FullName -Force
     }
 
-    It 'CreateViaIdentityExpandedParameterValidation' {
-        # Identity form still validates same payload shape; using WhatIf to avoid remote call
-                $sub = [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.MonitoredSubscription]::new()
-                $sub.SubscriptionId = $env.SubscriptionId
-                $list = @($sub)
-        { New-AzDynatraceMonitoredSubscription -ResourceGroupName $env.resourceGroup -MonitorName $env.dynatraceName01 -MonitoredSubscriptionList $list -Operation "AddBegin" -WhatIf } | Should -Not -Throw
-    }
+    # Identity pipeline variant removed – cmdlet does not expose a monitor-object identity parameter set; explicit parameters used instead.
 
-    It 'JsonShape' {
+    It 'JsonShapeValidation' {
         $jsonString = @{
-            monitoredSubscriptionList = @(
-                @{ subscriptionId = $env.SubscriptionId }
-            );
-            operation = "AddBegin"
-        } | ConvertTo-Json -Depth 4
-        $jsonString | Should -Match '"monitoredSubscriptionList"'
-        $jsonString | Should -Not -Match '"subscriptionList"'
+            properties = @{
+                operation = 'AddBegin'
+                monitoredSubscriptionList = @(
+                    @{ subscriptionId = "/subscriptions/$($env.SubscriptionId)" }
+                )
+            }
+        } | ConvertTo-Json -Depth 6
+        # Ensure wrapper and required fields present; status should not be user-supplied; operation inside properties.
+        $jsonString | Should -Match '"properties"'
+        $jsonString | Should -Not -Match '"status"'
+        $jsonString | Should -Match '"/subscriptions/'
         $jsonString | Should -Match '"operation"\s*:\s*"AddBegin"'
     }
 }
