@@ -1,6 +1,6 @@
 ---
 Module Name: Az.DynatraceObservability
-Module Guid: f889aadf-56ba-485c-8077-283219e39439
+Module Guid: eada85a3-a8b1-4fc1-b953-defbdf14917f
 Download Help Link: https://learn.microsoft.com/powershell/module/az.dynatraceobservability
 Help Version: 1.0.0.0
 Locale: en-US
@@ -20,6 +20,9 @@ Gets list of App Services with Dynatrace PaaS OneAgent enabled
 ### [Get-AzDynatraceMonitoredResource](Get-AzDynatraceMonitoredResource.md)
 List the resources currently being monitored by the Dynatrace monitor resource.
 
+### [Get-AzDynatraceMonitoredSubscription](Get-AzDynatraceMonitoredSubscription.md)
+List the subscriptions currently being monitored by the Dynatrace monitor resource.
+
 ### [Get-AzDynatraceMonitorHost](Get-AzDynatraceMonitorHost.md)
 List the VM/VMSS resources currently being monitored by the Dynatrace resource.
 
@@ -27,7 +30,7 @@ List the VM/VMSS resources currently being monitored by the Dynatrace resource.
 Gets all the Dynatrace environments that a user can link a azure resource to
 
 ### [Get-AzDynatraceMonitorMarketplaceSaaSResourceDetail](Get-AzDynatraceMonitorMarketplaceSaaSResourceDetail.md)
-Get Marketplace SaaS resource details of a tenant under a specific subscription
+Get Marketplace SaaS resource details
 
 ### [Get-AzDynatraceMonitorMetricStatus](Get-AzDynatraceMonitorMetricStatus.md)
 Get metric status
@@ -44,30 +47,42 @@ Get a TagRule
 ### [Get-AzDynatraceMonitorVMHostPayload](Get-AzDynatraceMonitorVMHostPayload.md)
 Returns the payload that needs to be passed in the request body for installing Dynatrace agent on a VM.
 
+### [Invoke-AzDynatraceManageMonitorAgentInstallation](Invoke-AzDynatraceManageMonitorAgentInstallation.md)
+Performs Dynatrace agent install/uninstall action through the Azure Dynatrace resource on the provided list of resources.
+
 ### [New-AzDynatraceMonitor](New-AzDynatraceMonitor.md)
-create a MonitorResource
+Create a MonitorResource
+
+### [New-AzDynatraceMonitoredSubscription](New-AzDynatraceMonitoredSubscription.md)
+Add the subscriptions that should be monitored by the Dynatrace monitor resource.
 
 ### [New-AzDynatraceMonitorFilteringTagObject](New-AzDynatraceMonitorFilteringTagObject.md)
 Create an in-memory object for FilteringTag.
 
 ### [New-AzDynatraceMonitorSSOConfig](New-AzDynatraceMonitorSSOConfig.md)
-create a DynatraceSingleSignOnResource
+Create a DynatraceSingleSignOnResource
 
 ### [New-AzDynatraceMonitorTagRule](New-AzDynatraceMonitorTagRule.md)
-create a TagRule
+Create a TagRule
 
 ### [Remove-AzDynatraceMonitor](Remove-AzDynatraceMonitor.md)
 Delete a MonitorResource
+
+### [Remove-AzDynatraceMonitoredSubscription](Remove-AzDynatraceMonitoredSubscription.md)
+Delete the subscriptions that are being monitored by the Dynatrace monitor resource
 
 ### [Remove-AzDynatraceMonitorTagRule](Remove-AzDynatraceMonitorTagRule.md)
 Delete a TagRule
 
 ### [Update-AzDynatraceMonitor](Update-AzDynatraceMonitor.md)
-update a MonitorResource
+Update a MonitorResource
+
+### [Update-AzDynatraceMonitorPlan](Update-AzDynatraceMonitorPlan.md)
+Upgrades the billing Plan for Dynatrace monitor resource.
 
 ### [Update-AzDynatraceMonitorSSOConfig](Update-AzDynatraceMonitorSSOConfig.md)
-update a DynatraceSingleSignOnResource
+Update a DynatraceSingleSignOnResource
 
 ### [Update-AzDynatraceMonitorTagRule](Update-AzDynatraceMonitorTagRule.md)
-update a TagRule
+Update a TagRule
 

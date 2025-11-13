@@ -1,15 +1,15 @@
 {
-  "Get-AzDynatraceMonitorMarketplaceSaaSResourceDetail+[NoContext]+GetExpanded+$POST+https://management.azure.com/subscriptions/9e28142e-8a8c-4a93-a280-41a2df3e0215/providers/Dynatrace.Observability/getMarketplaceSaaSResourceDetails?api-version=2023-04-27+1": {
+  "Get-AzDynatraceMonitorMarketplaceSaaSResourceDetail+[NoContext]+GetExpanded+$POST+https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/providers/Dynatrace.Observability/getMarketplaceSaaSResourceDetails?api-version=2024-04-24+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/9e28142e-8a8c-4a93-a280-41a2df3e0215/providers/Dynatrace.Observability/getMarketplaceSaaSResourceDetails?api-version=2023-04-27",
-      "Content": "{\r\n  \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\"\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/providers/Dynatrace.Observability/getMarketplaceSaaSResourceDetails?api-version=2024-04-24",
+      "Content": "{\n  \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\"\n}",
       "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "58" ]
+        "Content-Length": [ "56" ]
       }
     },
     "Response": {
@@ -17,27 +17,28 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "800" ],
+        "x-ms-operation-identifier": [ "tenantId=888d76fa-54b2-4ced-8ee5-aac1585adee7,objectId=5cd9a09c-ba05-4fc8-8c8a-6d4d17e49a6e/eastus/7f6a4fb2-d2fb-434a-9726-eed5aea63960" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Request-Context": [ "appId=cid-v1:fab059ea-d726-424a-9451-6beb3dc74944" ],
-        "mise-correlation-id": [ "2766571b-35f9-4d33-bae2-199d4d065f6e" ],
-        "x-ms-correlation-request-id": [ "8ffce7dd-54ab-4757-b6a9-f30001701fd2" ],
-        "x-ms-client-request-id": [ "094fadc1-8653-457a-ae22-2af03db0617f" ],
+        "mise-correlation-id": [ "448eb61e-8b57-4e9b-afd9-336d90d24868" ],
+        "x-ms-correlation-request-id": [ "4dfa7aa8-a461-4112-9fd0-0ed01fce1bb0" ],
+        "x-ms-client-request-id": [ "4caf49f6-866d-4827-a5da-87a0551bdbac" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "43fe07e7-6279-4950-aaa4-819362901433" ],
-        "x-ms-ratelimit-remaining-subscription-global-writes": [ "12000" ],
-        "x-ms-routing-request-id": [ "WESTINDIA:20250311T083210Z:8ffce7dd-54ab-4757-b6a9-f30001701fd2" ],
+        "x-ms-request-id": [ "870ea271-a53f-49a3-b5cd-58bfa8b92c31" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251113T142953Z:4dfa7aa8-a461-4112-9fd0-0ed01fce1bb0" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 74BCC1FF1A1F4605AABB6FD484BD7250 Ref B: MAA201060515045 Ref C: 2025-03-11T08:31:50Z" ],
-        "Date": [ "Tue, 11 Mar 2025 08:32:10 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 8C17B7DF3B0E4BAC9F720176E82AC219 Ref B: SG2AA1070306031 Ref C: 2025-11-13T14:29:51Z" ],
+        "Date": [ "Thu, 13 Nov 2025 14:29:52 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "162" ],
+        "Content-Length": [ "237" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"marketplaceSaaSResourceId\":\"6126184a-8ad2-48c1-d3a2-5ebc1e2154fc\",\"planId\":\"azureportalintegration_privatepreview\",\"marketplaceSubscriptionStatus\":\"Subscribed\"}",
+      "Content": "{\"marketplaceSaaSResourceId\":\"8cb20ec6-1b80-4fb7-c79b-51b7bb2b505f\",\"marketplaceSaaSResourceName\":\"MpDt_auto-renew-testi_d9c2a45e-9c0c-4de0-9546-9cb060df7f43\",\"planId\":\"dynatrace_azure_trial\",\"marketplaceSubscriptionStatus\":\"Subscribed\"}",
       "isContentBase64": false
     }
   }

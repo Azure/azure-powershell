@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added complete help examples for Dynatrace Observability cmdlets
+    - Documented usage for 'Get-AzDynatraceMonitoredSubscription', 'New-AzDynatraceMonitoredSubscription', 'Remove-AzDynatraceMonitoredSubscription', 'Invoke-AzDynatraceManageMonitorAgentInstallation', and 'Update-AzDynatraceMonitorPlan' to improve discoverability of monitoring, agent lifecycle, and plan upgrade workflows per 2024-04-24 version.
 
 ## Version 0.3.0
 * Introduced various new features by upgrading code generator. Please see detail [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).
