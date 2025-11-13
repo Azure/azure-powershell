@@ -1,6 +1,6 @@
 {
   "resourceType": "hostPools/msixPackages",
-  "apiVersion": "2025-04-01-preview",
+  "apiVersion": "2025-09-01-preview",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.desktopvirtualization"
   },

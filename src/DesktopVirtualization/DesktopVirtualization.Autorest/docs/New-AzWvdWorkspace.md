@@ -17,10 +17,10 @@ Create a workspace.
 New-AzWvdWorkspace -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
  [-ApplicationGroupReference <String[]>] [-Description <String>] [-FriendlyName <String>]
  [-IdentityType <String>] [-IdentityUserAssignedIdentity <Hashtable>] [-Kind <String>] [-ManagedBy <String>]
- [-PlanName <String>] [-PlanProduct <String>] [-PlanPromotionCode <String>] [-PlanPublisher <String>]
- [-PlanVersion <String>] [-PublicNetworkAccess <String>] [-SkuCapacity <Int32>] [-SkuFamily <String>]
- [-SkuName <String>] [-SkuSize <String>] [-SkuTier <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-OboTenantId <String>] [-PlanName <String>] [-PlanProduct <String>] [-PlanPromotionCode <String>]
+ [-PlanPublisher <String>] [-PlanVersion <String>] [-PublicNetworkAccess <String>] [-SkuCapacity <Int32>]
+ [-SkuFamily <String>] [-SkuName <String>] [-SkuSize <String>] [-SkuTier <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -259,6 +259,21 @@ Parameter Sets: (All)
 Aliases: WorkspaceName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OboTenantId
+Tenant that the resource is being requested on behalf of.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -18,14 +18,16 @@ New-AzWvdHostPool -HostPoolType <String> -LoadBalancerType <String> -Location <S
  -PreferredAppGroupType <String> -ResourceGroupName <String> [-ManagementType <String>]
  [-SubscriptionId <String>] [-AgentUpdateMaintenanceWindow <IMaintenanceWindowProperties[]>]
  [-AgentUpdateMaintenanceWindowTimeZone <String>] [-AgentUpdateType <String>]
- [-AgentUpdateUseSessionHostLocalTime] [-CustomRdpProperty <String>] [-Description <String>]
- [-DirectUdp <String>] [-ExpirationTime <DateTime>] [-FriendlyName <String>] [-IdentityType <String>]
+ [-AgentUpdateUseSessionHostLocalTime] [-AllowRdpShortPathWithPrivateLink <String>]
+ [-CustomRdpProperty <String>] [-DeploymentScope <String>] [-Description <String>] [-DirectUdp <String>]
+ [-ExpirationTime <DateTime>] [-FriendlyName <String>] [-IdentityType <String>]
  [-IdentityUserAssignedIdentity <Hashtable>] [-Kind <String>] [-ManagedBy <String>]
- [-ManagedPrivateUdp <String>] [-MaxSessionLimit <Int32>] [-PersonalDesktopAssignmentType <String>]
- [-PlanName <String>] [-PlanProduct <String>] [-PlanPromotionCode <String>] [-PlanPublisher <String>]
- [-PlanVersion <String>] [-PublicNetworkAccess <String>] [-PublicUdp <String>]
- [-RegistrationInfoToken <String>] [-RegistrationTokenOperation <String>] [-RelayUdp <String>] [-Ring <Int32>]
- [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuName <String>] [-SkuSize <String>] [-SkuTier <String>]
+ [-ManagedPrivateUdp <String>] [-MaxSessionLimit <Int32>] [-OboTenantId <String>]
+ [-PersonalDesktopAssignmentType <String>] [-PlanName <String>] [-PlanProduct <String>]
+ [-PlanPromotionCode <String>] [-PlanPublisher <String>] [-PlanVersion <String>]
+ [-PublicNetworkAccess <String>] [-PublicUdp <String>] [-RegistrationInfoToken <String>]
+ [-RegistrationTokenOperation <String>] [-RelayUdp <String>] [-Ring <Int32>] [-SkuCapacity <Int32>]
+ [-SkuFamily <String>] [-SkuName <String>] [-SkuSize <String>] [-SkuTier <String>]
  [-SsoadfsAuthority <String>] [-SsoClientId <String>] [-SsoClientSecretKeyVaultPath <String>]
  [-SsoSecretType <String>] [-StartVMOnConnect] [-Tag <Hashtable>] [-ValidationEnvironment]
  [-VMTemplate <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -180,6 +182,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -AllowRdpShortPathWithPrivateLink
+Controls if the use of RDPShortPath transport is allowed, possibly bypassing Private Link routes.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -CustomRdpProperty
 Custom rdp property of HostPool.
 
@@ -203,6 +220,21 @@ Use the SubscriptionId parameter when available if executing the cmdlet against 
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DeploymentScope
+DeploymentScope type for HostPool.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
 
 Required: False
 Position: Named
@@ -484,6 +516,21 @@ Parameter Sets: (All)
 Aliases: HostPoolName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OboTenantId
+Tenant that the resource is being requested on behalf of.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
