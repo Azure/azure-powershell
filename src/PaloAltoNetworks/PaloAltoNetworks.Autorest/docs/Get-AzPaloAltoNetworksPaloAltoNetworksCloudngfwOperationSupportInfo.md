@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzPaloAltoNetworksPaloAltoNetworksCloudngfwOperationSupportInfo
 
 ## SYNOPSIS
-
+Get Support information for the subscription
 
 ## SYNTAX
 
@@ -18,6 +18,7 @@ Get-AzPaloAltoNetworksPaloAltoNetworksCloudngfwOperationSupportInfo [-Subscripti
 ```
 
 ## DESCRIPTION
+Get Support information for the subscription
 
 
 ## EXAMPLES

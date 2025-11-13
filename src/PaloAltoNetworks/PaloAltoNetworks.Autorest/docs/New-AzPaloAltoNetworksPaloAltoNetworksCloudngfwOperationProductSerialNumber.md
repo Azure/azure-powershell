@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzPaloAltoNetworksPaloAltoNetworksCloudngfwOperationProductSerialNumber
 
 ## SYNOPSIS
-
+Create product serial number
 
 ## SYNTAX
 
@@ -18,6 +18,7 @@ New-AzPaloAltoNetworksPaloAltoNetworksCloudngfwOperationProductSerialNumber [-Su
 ```
 
 ## DESCRIPTION
+Create product serial number
 
 
 ## EXAMPLES

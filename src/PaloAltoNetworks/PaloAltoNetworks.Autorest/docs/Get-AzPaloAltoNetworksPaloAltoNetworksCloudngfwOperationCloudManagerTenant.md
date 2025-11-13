@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzPaloAltoNetworksPaloAltoNetworksCloudngfwOperationCloudManagerTenant
 
 ## SYNOPSIS
-
+Get Cloud Manager Tenants for a subscription
 
 ## SYNTAX
 
@@ -18,6 +18,7 @@ Get-AzPaloAltoNetworksPaloAltoNetworksCloudngfwOperationCloudManagerTenant [-Sub
 ```
 
 ## DESCRIPTION
+Get Cloud Manager Tenants for a subscription
 
 
 ## EXAMPLES
