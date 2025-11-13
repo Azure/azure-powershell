@@ -59,27 +59,36 @@ Performs Dynatrace agent install/uninstall action through the Azure Dynatrace re
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Install Dynatrace agent on a VM using a request object
 ```powershell
-{{ Add code here }}
+$subId = (Get-AzContext).Subscription.Id
+$vmId  = "/subscriptions/$subId/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/appvm1"
+
+$request = New-Object Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ManageAgentInstallationRequest
+$request.Action = "Install"
+$vmEntry = New-Object Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ManageAgentList
+$vmEntry.Id = $vmId
+$request.ManageAgentInstallationList = @($vmEntry)
+
+Invoke-AzDynatraceManageMonitorAgentInstallation -MonitorName "myDynatraceMonitor" -ResourceGroupName "myResourceGroup" -Request $request -PassThru
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Creates a ManageAgentInstallationRequest to install the Dynatrace agent on the specified virtual machine and invokes the operation. PassThru returns true on success.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Uninstall Dynatrace agent using a JSON string
 ```powershell
-{{ Add code here }}
+$subId = (Get-AzContext).Subscription.Id
+$json = @{ 
+	action = "Uninstall"; 
+	manageAgentInstallationList = @(
+		@{ id = "/subscriptions/$subId/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/appvm1" }
+	)
+} | ConvertTo-Json -Depth 5
+
+Invoke-AzDynatraceManageMonitorAgentInstallation -MonitorName "myDynatraceMonitor" -ResourceGroupName "myResourceGroup" -JsonString $json -PassThru
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Provides the request payload as a JSON string to uninstall the Dynatrace agent from the target VM. Using -JsonString avoids manually constructing typed objects.
 
 ## PARAMETERS
 

@@ -35,27 +35,21 @@ List the subscriptions currently being monitored by the Dynatrace monitor resour
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List all monitored subscriptions for a Dynatrace monitor
 ```powershell
-{{ Add code here }}
+$subs = Get-AzDynatraceMonitoredSubscription -MonitorName "myDynatraceMonitor" -ResourceGroupName "myResourceGroup"
+$subs
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Returns all subscription monitoring entries (status, subscriptionId, log/metric rule flags) for the specified Dynatrace monitor resource.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Retrieve monitoring status for a specific subscription
 ```powershell
-{{ Add code here }}
+$subId = (Get-AzContext).Subscription.Id
+Get-AzDynatraceMonitoredSubscription -MonitorName "myDynatraceMonitor" -ResourceGroupName "myResourceGroup" -SubscriptionId $subId
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Filters the result to the provided subscription Id to quickly inspect its monitoring status and related rule settings.
 
 ## PARAMETERS
 

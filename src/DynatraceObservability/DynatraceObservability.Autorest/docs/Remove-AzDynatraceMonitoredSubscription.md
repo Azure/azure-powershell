@@ -30,27 +30,21 @@ Delete the subscriptions that are being monitored by the Dynatrace monitor resou
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove monitoring for a single subscription
 ```powershell
-{{ Add code here }}
+$subId = (Get-AzContext).Subscription.Id
+Remove-AzDynatraceMonitoredSubscription -MonitorName "myDynatraceMonitor" -ResourceGroupName "myResourceGroup" -SubscriptionId $subId -PassThru
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Deletes the monitored subscription entry for the specified subscription. PassThru returns true when the deletion succeeds.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Run removal asynchronously as a background job
 ```powershell
-{{ Add code here }}
+$subId = "11111111-1111-1111-1111-111111111111"
+Remove-AzDynatraceMonitoredSubscription -MonitorName "myDynatraceMonitor" -ResourceGroupName "myResourceGroup" -SubscriptionId $subId -AsJob
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Starts the removal operation as a PowerShell job allowing you to continue other tasks while the deletion completes.
 
 ## PARAMETERS
 

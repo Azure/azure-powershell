@@ -38,27 +38,35 @@ Add the subscriptions that should be monitored by the Dynatrace monitor resource
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Add subscriptions to monitoring using an object list
 ```powershell
-{{ Add code here }}
+$subIds = @("11111111-1111-1111-1111-111111111111","22222222-2222-2222-2222-222222222222")
+$list = @()
+foreach ($id in $subIds) {
+	$entry = New-Object Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.MonitoredSubscription
+	$entry.SubscriptionId = $id
+	$list += $entry
+}
+
+New-AzDynatraceMonitoredSubscription -MonitorName "myDynatraceMonitor" -ResourceGroupName "myResourceGroup" -MonitoredSubscriptionList $list -Operation "Add"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Constructs an array of MonitoredSubscription objects and adds them to the Dynatrace monitor. Use -Operation "Add" to append monitoring entries.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Add a subscription via JSON payload file
 ```powershell
-{{ Add code here }}
+$json = @{ 
+	monitoredSubscriptionList = @(
+		@{ subscriptionId = "33333333-3333-3333-3333-333333333333" }
+	);
+	operation = "Add" 
+} | ConvertTo-Json -Depth 5
+$json | Out-File -FilePath .\addSubs.json -Encoding utf8
+
+New-AzDynatraceMonitoredSubscription -MonitorName "myDynatraceMonitor" -ResourceGroupName "myResourceGroup" -JsonFilePath .\addSubs.json
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Supplies the monitored subscription list and operation through a JSON file, useful for automation scenarios or larger batch updates.
 
 ## PARAMETERS
 
