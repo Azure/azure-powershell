@@ -768,12 +768,13 @@ Example:
 
                 if (-not $DeploymentStorageContainerName)
                 {
+                    $useTestData = ($env:FunctionsTestMode -and $env:FunctionsUseFlexStackTestData)
                     # Generate a unique container name
                     $tempName = $Name -replace '[^a-zA-Z0-9]', ''
                     $normalizedName = $tempName.Substring(0, [Math]::Min(32, $tempName.Length))
                     $normalizedName = $normalizedName.ToLower()
 
-                    if ($env:FunctionsTestMode)
+                    if ($useTestData)
                     {
                         $randomSuffix = 0
                     }
@@ -783,6 +784,11 @@ Example:
                     }
 
                     $DeploymentStorageContainerName = "app-package-$normalizedName-{0:D7}" -f $randomSuffix
+
+                    if ($useTestData)
+                    {
+                        Write-Verbose "Setting DeploymentStorageContainerName to: '$DeploymentStorageContainerName'." -Verbose
+                    }
                 }
 
                 $StorageAccountInfo = Get-StorageAccountInfo -Name $DeploymentStorageName @params
@@ -1077,7 +1083,7 @@ Example:
             {
                 if ($flexConsumptionPlanCreated)
                 {
-                    Remove-AzFunctionAppPlan -ResourceGroupName $ResourceGroupName -Name $planName @params -Force
+                    Az.Functions\Remove-AzFunctionAppPlan -ResourceGroupName $ResourceGroupName -Name $planName @params -Force
                 }
                 if ($flexConsumptionStorageContainerCreated)
                 {
