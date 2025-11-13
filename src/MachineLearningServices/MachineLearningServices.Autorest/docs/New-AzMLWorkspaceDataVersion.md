@@ -8,43 +8,112 @@ schema: 2.0.0
 # New-AzMLWorkspaceDataVersion
 
 ## SYNOPSIS
-Create or update version.
+Create version.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzMLWorkspaceDataVersion -Name <String> -ResourceGroupName <String> -Version <String>
- -WorkspaceName <String> -DataType <DataType> -DataUri <String> [-SubscriptionId <String>]
+ -WorkspaceName <String> -DataType <String> -DataUri <String> [-SubscriptionId <String>]
  [-Description <String>] [-IsAnonymou] [-IsArchived] [-ResourceBaseProperty <Hashtable>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### CreateViaIdentityDataExpanded
+```
+New-AzMLWorkspaceDataVersion -DataInputObject <IMachineLearningServicesIdentity> -Version <String>
+ -DataType <String> -DataUri <String> [-Description <String>] [-IsAnonymou] [-IsArchived]
+ [-ResourceBaseProperty <Hashtable>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CreateViaIdentityWorkspaceExpanded
+```
+New-AzMLWorkspaceDataVersion -Name <String> -Version <String>
+ -WorkspaceInputObject <IMachineLearningServicesIdentity> -DataType <String> -DataUri <String>
+ [-Description <String>] [-IsAnonymou] [-IsArchived] [-ResourceBaseProperty <Hashtable>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzMLWorkspaceDataVersion -Name <String> -ResourceGroupName <String> -Version <String>
+ -WorkspaceName <String> -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzMLWorkspaceDataVersion -Name <String> -ResourceGroupName <String> -Version <String>
+ -WorkspaceName <String> -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Create or update version.
+Create version.
 
 ## EXAMPLES
 
 ### Example 1: Create or update data version
 ```powershell
-New-AzMLWorkspaceDataVersion  -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-portal01 -Name iris-data -Version 2 -DataType 'uri_file' -DataUri "https://azuremlexamples.blob.core.windows.net/datasets/iris.csv"
+New-AzMLWorkspaceDataVersion -ResourceGroupName ml-test -WorkspaceName mlworkspace-test2 -Name iris-data -Version 1 -DataType 'uri_file' -DataUri "https://mltestaccount03.blob.core.windows.net/azureml-blobstore-11111111-2222-3333-4444-123456789103/datasets/greenTaxiData.csv"
 ```
 
 ```output
-Name SystemDataCreatedAt SystemDataCreatedBy                 SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType ResourceGroupName
----- ------------------- -------------------                 ----------------------- ------------------------ ------------------------ ---------------------------- -----------------
-2    6/1/2022 3:11:06 PM UserName (Example)         User                    6/1/2022 3:11:06 PM                                                            ml-rg-test
+DataType                     : uri_file
+DataUri                      : https://mltestaccount03.blob.core.windows.net/azureml-blobstore-11111111-2222-3333-4444-123456789103/datasets/greenTaxiData.csv
+Description                  : 
+Id                           : /subscriptions/11111111-2222-3333-4444-123456789101/resourceGroups/ml-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test2/data/iris-data/versions/1
+IsAnonymou                   : False
+IsArchived                   : False
+Name                         : 1
+Property                     : {
+                                 "isAnonymous": false,
+                                 "isArchived": false,
+                                 "dataType": "uri_file",
+                                 "dataUri": "https://mltestaccount03.blob.core.windows.net/azureml-blobstore-11111111-2222-3333-4444-123456789103/datasets/greenTaxiData.csv"
+                               }
+ResourceBaseProperty         : {
+                               }
+ResourceGroupName            : ml-test
+SystemDataCreatedAt          : 11/5/2025 9:23:40 AM
+SystemDataCreatedBy          : User Name (Example)
+SystemDataCreatedByType      : User
+SystemDataLastModifiedAt     : 11/5/2025 9:23:40 AM
+SystemDataLastModifiedBy     : 
+SystemDataLastModifiedByType : 
+Tag                          : {
+                               }
+Type                         : Microsoft.MachineLearningServices/workspaces/data/versions
+XmsAsyncOperationTimeout     : 
 ```
 
-Create or update data version
+This command creates data version.
 
 ## PARAMETERS
+
+### -DataInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+Parameter Sets: CreateViaIdentityDataExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
 
 ### -DataType
 [Required] Specifies the type of data.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.DataType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityDataExpanded, CreateViaIdentityWorkspaceExpanded
 Aliases:
 
 Required: True
@@ -56,11 +125,11 @@ Accept wildcard characters: False
 
 ### -DataUri
 [Required] Uri of the data.
-Example: https://go.microsoft.com/fwlink/linkid=2202330
+Example: https://go.microsoft.com/fwlink/?linkid=2202330
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityDataExpanded, CreateViaIdentityWorkspaceExpanded
 Aliases:
 
 Required: True
@@ -91,7 +160,7 @@ The asset description text.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityDataExpanded, CreateViaIdentityWorkspaceExpanded
 Aliases:
 
 Required: False
@@ -106,7 +175,7 @@ If the name version are system generated (anonymous registration).
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityDataExpanded, CreateViaIdentityWorkspaceExpanded
 Aliases:
 
 Required: False
@@ -117,14 +186,44 @@ Accept wildcard characters: False
 ```
 
 ### -IsArchived
-Is the asset archived
+Is the asset archived?
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityDataExpanded, CreateViaIdentityWorkspaceExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -136,7 +235,7 @@ Container name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityWorkspaceExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -151,7 +250,7 @@ The asset property dictionary.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityDataExpanded, CreateViaIdentityWorkspaceExpanded
 Aliases:
 
 Required: False
@@ -167,7 +266,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -182,7 +281,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: False
@@ -198,7 +297,7 @@ Tags can be added, removed, and updated.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityDataExpanded, CreateViaIdentityWorkspaceExpanded
 Aliases:
 
 Required: False
@@ -223,12 +322,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -WorkspaceInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+Parameter Sets: CreateViaIdentityWorkspaceExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -WorkspaceName
 Name of Azure Machine Learning workspace.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -274,9 +388,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IDataVersionBase
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IDataVersionBase
 
 ## NOTES
 

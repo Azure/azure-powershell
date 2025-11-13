@@ -15,7 +15,7 @@ Get datastore.
 ### List (Default)
 ```
 Get-AzMLWorkspaceDatastore -ResourceGroupName <String> -WorkspaceName <String> [-SubscriptionId <String[]>]
- [-Count <Int32>] [-IsDefault] [-OrderBy <String>] [-OrderByAsc] [-SearchName <String[]>]
+ [-Count <Int32>] [-IsDefault] [-OrderBy <String>] [-OrderByAsc] [-SearchName <List<String>>]
  [-SearchText <String>] [-Skip <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -29,6 +29,12 @@ Get-AzMLWorkspaceDatastore -Name <String> -ResourceGroupName <String> -Workspace
 ```
 Get-AzMLWorkspaceDatastore -InputObject <IMachineLearningServicesIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
+```
+
+### GetViaIdentityWorkspace
+```
+Get-AzMLWorkspaceDatastore -Name <String> -WorkspaceInputObject <IMachineLearningServicesIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -100,7 +106,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
@@ -134,7 +139,7 @@ Datastore name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityWorkspace
 Aliases:
 
 Required: True
@@ -194,7 +199,7 @@ Accept wildcard characters: False
 Names of datastores to return.
 
 ```yaml
-Type: System.String[]
+Type: System.Collections.Generic.List`1[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
 Parameter Sets: List
 Aliases:
 
@@ -250,6 +255,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -WorkspaceInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+Parameter Sets: GetViaIdentityWorkspace
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -WorkspaceName
 Name of Azure Machine Learning workspace.
 
@@ -274,7 +294,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IDatastore
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IDatastore
 
 ## NOTES
 
