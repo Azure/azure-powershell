@@ -39,27 +39,26 @@ Add the subscriptions that should be monitored by the Dynatrace monitor resource
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Add the current subscription to monitoring using an object list
 ```powershell
-{{ Add code here }}
+$sub = [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.MonitoredSubscription]::new()
+$sub.SubscriptionId = "/subscriptions/$(Get-AzContext).Subscription.Id"
+$list = @($sub)
+New-AzDynatraceMonitoredSubscription -ResourceGroupName "rg-dynatrace" -MonitorName "dynatrace-monitor1" -MonitoredSubscriptionList $list -Operation AddBegin
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Adds the active Azure subscription to the Dynatrace monitor using the expanded parameter set. The Operation value AddBegin initiates monitoring for the supplied subscription list.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Add a subscription using a JSON payload
 ```powershell
-{{ Add code here }}
+$json = @{ 
+	monitoredSubscriptionList = @(@{ subscriptionId = "/subscriptions/$(Get-AzContext).Subscription.Id" })
+	operation = 'AddBegin'
+} | ConvertTo-Json -Depth 4
+New-AzDynatraceMonitoredSubscription -ResourceGroupName "rg-dynatrace" -MonitorName "dynatrace-monitor1" -JsonString $json
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Adds the current subscription by supplying a JSON definition (instead of building objects), enabling automation scenarios where the monitored subscription list is generated dynamically.
 
 ## PARAMETERS
 

@@ -37,27 +37,20 @@ List the subscriptions currently being monitored by the Dynatrace monitor resour
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List all monitored subscriptions for a Dynatrace monitor
 ```powershell
-{{ Add code here }}
+Get-AzDynatraceMonitoredSubscription -ResourceGroupName "rg-dynatrace" -MonitorName "dynatrace-monitor1"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Lists every subscription currently monitored by the specified Dynatrace monitor resource, returning subscription IDs and monitoring status details.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Filter the monitored subscriptions to the current context subscription
 ```powershell
-{{ Add code here }}
+$currentSub = (Get-AzContext).Subscription.Id
+Get-AzDynatraceMonitoredSubscription -ResourceGroupName "rg-dynatrace" -MonitorName "dynatrace-monitor1" -SubscriptionId $currentSub
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Returns only the monitored subscription matching the active Azure context, useful when a monitor tracks multiple subscriptions.
 
 ## PARAMETERS
 

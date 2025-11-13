@@ -60,27 +60,28 @@ Performs Dynatrace agent install/uninstall action through the Azure Dynatrace re
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Install the Dynatrace agent on a virtual machine
 ```powershell
-{{ Add code here }}
+$targets = @(
+	@{ resourceId = "/subscriptions/$(Get-AzContext).Subscription.Id/resourceGroups/rg-dynatrace/providers/Microsoft.Compute/virtualMachines/vm1" }
+)
+Invoke-AzDynatraceManageMonitorAgentInstallation -ResourceGroupName "rg-dynatrace" -MonitorName "dynatrace-monitor1" -Action Install -ManageAgentInstallationList $targets -PassThru
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Initiates agent installation on the specified VM through the Dynatrace monitor, returning True on success.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Uninstall the Dynatrace agent using a JSON request
 ```powershell
-{{ Add code here }}
+$json = @{ 
+	action = "Uninstall"; 
+	manageAgentInstallationList = @(
+		@{ resourceId = "/subscriptions/$(Get-AzContext).Subscription.Id/resourceGroups/rg-dynatrace/providers/Microsoft.Compute/virtualMachines/vm1" }
+	) 
+} | ConvertTo-Json -Depth 4
+Invoke-AzDynatraceManageMonitorAgentInstallation -ResourceGroupName "rg-dynatrace" -MonitorName "dynatrace-monitor1" -JsonString $json -PassThru
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Performs an uninstall using a JSON payload, simplifying scenarios where target resource lists are generated programmatically.
 
 ## PARAMETERS
 

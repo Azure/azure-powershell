@@ -61,27 +61,29 @@ Upgrades the billing Plan for Dynatrace monitor resource.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Upgrade the monitor to a PAYG monthly plan
 ```powershell
-{{ Add code here }}
+Update-AzDynatraceMonitorPlan -ResourceGroupName "rg-dynatrace" -MonitorName "dynatrace-monitor1" `
+	-PlanDataPlanDetail "dynatrace-enterprise" -PlanDataUsageType "PAYG" -PlanDataBillingCycle "MONTHLY" `
+	-PlanDataEffectiveDate (Get-Date) -PassThru
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Upgrades the billing plan for the Dynatrace monitor to the specified enterprise plan with a monthly Pay-As-You-Go cycle, returning True on success.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Upgrade using a JSON payload
 ```powershell
-{{ Add code here }}
+$json = @{ 
+	planData = @{ 
+		planDetail = "dynatrace-enterprise"; 
+		usageType = "PAYG"; 
+		billingCycle = "MONTHLY"; 
+		effectiveDate = (Get-Date).ToString("o") 
+	} 
+} | ConvertTo-Json -Depth 4
+Update-AzDynatraceMonitorPlan -ResourceGroupName "rg-dynatrace" -MonitorName "dynatrace-monitor1" -JsonString $json -PassThru
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Performs the same upgrade using a JSON request body, which is convenient for automation scenarios or when the plan details are generated dynamically.
 
 ## PARAMETERS
 

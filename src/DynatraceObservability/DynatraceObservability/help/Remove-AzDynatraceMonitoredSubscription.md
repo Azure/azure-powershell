@@ -31,27 +31,19 @@ Delete the subscriptions that are being monitored by the Dynatrace monitor resou
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove monitored subscription associations from a Dynatrace monitor
 ```powershell
-{{ Add code here }}
+Remove-AzDynatraceMonitoredSubscription -ResourceGroupName "rg-dynatrace" -MonitorName "dynatrace-monitor1" -Confirm:$false
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Deletes monitored subscription entries for the specified monitor. The -Confirm:$false switch suppresses the confirmation prompt for non-interactive execution.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Remove and return success status
 ```powershell
-{{ Add code here }}
+Remove-AzDynatraceMonitoredSubscription -ResourceGroupName "rg-dynatrace" -MonitorName "dynatrace-monitor1" -PassThru
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Performs the removal and returns a Boolean True on success, allowing script logic to branch based on the outcome.
 
 ## PARAMETERS
 
