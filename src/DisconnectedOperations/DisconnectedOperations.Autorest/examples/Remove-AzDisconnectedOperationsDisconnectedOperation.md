@@ -17,4 +17,3 @@ Remove-AzDisconnectedOperationsDisconnectedOperation -InputObject $disconnectedO
 ```
 
 No output is expected for this command.
-

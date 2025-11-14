@@ -23,27 +23,22 @@ Get deployment manifest.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get deployment manifest for a DisconnectedOperation
 ```powershell
-{{ Add code here }}
+Get-AzDisconnectedOperationsDisconnectedOperationDeploymentManifest -Name "Resource-1" -ResourceGroupName "ResourceGroup-1"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+BillingModel     : Capacity
+Cloud            : AzureCloud
+ConnectionIntent : Disconnected
+Location         : EastUS2EUAP
+ResourceId       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/ResourceGroup-1/providers/Microsoft.Edge/disconnectedoperations/Resource-1
+ResourceName     : Resource-1
+StampId          : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command gets the deployment manifest for the DisconnectedOperation `Resource-1` in resource group `ResourceGroup-1`.
 
 ## PARAMETERS
 

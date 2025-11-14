@@ -115,7 +115,39 @@ SystemDataLastModifiedByType :
 Type                         : Microsoft.Edge/disconnectedOperations/images
 ```
 
-This command gets the image `release-v2509` from the DisconnectedOperation `Resource-1` in resource group `ResourceGroup-1`.
+This command gets the image `release-v2509` from the DisconnectedOperation `Resource-1` in resource group `ResourceGroup-1` using InputObject of image.
+
+### Example 4: GetViaIdentityDisconnectedOperations for image.
+```powershell
+$disconnectedOperations = @{
+  "Name" = "Resource-1";
+  "ResourceGroupName" = "ResourceGroup-1";
+  "SubscriptionId" = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx";
+}
+Get-AzDisconnectedOperationsImage -ImageName -DisconnectedOperationInputObject $disconnectedOperations
+```
+
+```output
+CompatibleVersion            : {}
+Id                           : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/ResourceGroup-1/providers/Microsoft.Edge/disconnectedOperations/Resource-1/images/release-v2509
+Name                         : release-v2509
+ProvisioningState            : Succeeded
+ReleaseDate                  : 10/17/2025 00:00:00
+ReleaseDisplayName           : release-v2509
+ReleaseNote                  : https://aka.ms/aldo-publicdocs
+ReleaseType                  : Install
+ReleaseVersion               : 1.0.1
+ResourceGroupName            : ResourceGroup-1
+SystemDataCreatedAt          :
+SystemDataCreatedBy          :
+SystemDataCreatedByType      :
+SystemDataLastModifiedAt     :
+SystemDataLastModifiedBy     :
+SystemDataLastModifiedByType :
+Type                         : Microsoft.Edge/disconnectedOperations/images
+```
+
+This command gets the image `release-v2509` from the DisconnectedOperation `Resource-1` in resource group `ResourceGroup-1` using DisconnectedOperationsObject and ImageName..
 
 ## PARAMETERS
 

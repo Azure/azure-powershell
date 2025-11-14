@@ -31,27 +31,25 @@ Delete a DisconnectedOperation
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete a DisconnectedOperation by name and resource group
 ```powershell
-{{ Add code here }}
+Remove-AzDisconnectedOperationsDisconnectedOperation -Name "Resource-1" -ResourceGroupName "ResourceGroup-1"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+No output is expected for this command.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Delete a DisconnectedOperation by identity
 ```powershell
-{{ Add code here }}
+$disconnectedOperations = @{
+  "Name" = "disconnected-operation-name";
+  "ResourceGroupName" = "my-resource-group";
+  "SubscriptionId" = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx";
+}
+
+Remove-AzDisconnectedOperationsDisconnectedOperation -InputObject $disconnectedOperations
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+No output is expected for this command.
 
 ## PARAMETERS
 

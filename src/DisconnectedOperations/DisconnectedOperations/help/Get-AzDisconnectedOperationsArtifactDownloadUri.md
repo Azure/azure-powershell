@@ -23,27 +23,22 @@ Get artifact download link.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get download URI for an artifact
 ```powershell
-{{ Add code here }}
+Get-AzDisconnectedOperationsArtifactDownloadUri -ArtifactName "my-artifact" -ImageName "default" -Name "disconnected-operation-name" -ResourceGroupName "my-resource-group"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+ArtifactOrder     : 2
+Description       : Local data disk
+DownloadLink      : Downloadable link with 24 hrs validity
+LinkExpiry        : 11/11/2025 09:25:56
+ProvisioningState :
+Size              : 35068
+Title             : my-artifact.vhdx
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command gets the download URI for the artifact `my-artifact` from image `default` in resource group `my-resource-group`.
 
 ## PARAMETERS
 

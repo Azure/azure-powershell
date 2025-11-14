@@ -23,27 +23,16 @@ Get the URI to download the image.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get Image Download URI
 ```powershell
-{{ Add code here }}
+Get-AzDisconnectedOperationsImageDownloadUri -ImageName "release-v2509" -Name "Resource-1" -ResourceGroupName "ResourceGroup-1"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Get-AzDisconnectedOperationsImageDownloadUri_List: ResourcePostActionFailed: Bad Request
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command disabled due to api changes so it will return Bad Request error.
 
 ## PARAMETERS
 
