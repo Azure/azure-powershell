@@ -35,7 +35,7 @@ AppInsightsInstrumentationKey        UserStorageKey                             
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
 
-Lists all the keys associated with this workspace.This includes keys for the storage account, app insights and password for container registry
+Lists all the keys associated with this workspace.This includes keys for the storage account, app insights and password for container registry.
 
 ## PARAMETERS
 
