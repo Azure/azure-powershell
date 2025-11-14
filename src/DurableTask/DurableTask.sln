@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DurableTask", "DurableTask\DurableTask.csproj", "{21D185E5-8880-45D1-9F77-CEA3D39426B8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.DurableTask", "DurableTask.Autorest\Az.DurableTask.csproj", "{14F9399B-C639-4943-A112-A70F94F41A4D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.DurableTask", "DurableTask.Autorest\Az.DurableTask.csproj", "{EFDA7CE9-6BD4-4790-871C-EAE71DCFDE7D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,10 +58,10 @@ Global
 		{21D185E5-8880-45D1-9F77-CEA3D39426B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{21D185E5-8880-45D1-9F77-CEA3D39426B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{21D185E5-8880-45D1-9F77-CEA3D39426B8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{14F9399B-C639-4943-A112-A70F94F41A4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{14F9399B-C639-4943-A112-A70F94F41A4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{14F9399B-C639-4943-A112-A70F94F41A4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{14F9399B-C639-4943-A112-A70F94F41A4D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFDA7CE9-6BD4-4790-871C-EAE71DCFDE7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFDA7CE9-6BD4-4790-871C-EAE71DCFDE7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFDA7CE9-6BD4-4790-871C-EAE71DCFDE7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFDA7CE9-6BD4-4790-871C-EAE71DCFDE7D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{DA961A37-5C35-4995-9F96-2015EF2A81B0} = {1DECF974-D36A-43BB-8FD6-BD8108AE7A72}
