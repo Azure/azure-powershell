@@ -999,5 +999,9 @@
   {
     "alias": "DnsResolver",
     "module": "DnsResolver"
+  },
+  {
+    "module": "DurableTask",
+    "alias": "DurableTask"
   }
 ]
