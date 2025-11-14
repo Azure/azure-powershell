@@ -29,6 +29,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using System;
     using System.Runtime.InteropServices;
+    using System.Linq; // For merging dynamic parameters
+    using System.Collections.ObjectModel; // For RuntimeDefinedParameter attribute collection
     using LocalConstants = Microsoft.WindowsAzure.Commands.Storage.File.Constants;
     using LocalDirectory = System.IO.Directory;
     using LocalPath = System.IO.Path;
@@ -295,14 +297,34 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                 DoEndProcessing();
             }
         }
-        public object GetDynamicParameters()
+        // Override to merge base dynamic parameters (e.g. AcquirePolicyToken) with existing Windows-only parameter.
+        public override object GetDynamicParameters()
         {
+            var baseResult = base.GetDynamicParameters();
+            var dict = baseResult as RuntimeDefinedParameterDictionary;
+
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
                 context = new WindowsOnlyParameters();
-                return context;
+
+                if (dict == null)
+                {
+                    dict = new RuntimeDefinedParameterDictionary();
+                }
+
+                var winParamProp = typeof(WindowsOnlyParameters).GetProperty("PreserveSMBAttribute");
+                if (winParamProp != null && !dict.ContainsKey(winParamProp.Name))
+                {
+                    var attrs = winParamProp.GetCustomAttributes(true).OfType<Attribute>().ToArray();
+                    var attrCollection = new Collection<Attribute>(attrs.ToList());
+                    var rd = new RuntimeDefinedParameter(winParamProp.Name, winParamProp.PropertyType, attrCollection);
+                    dict.Add(winParamProp.Name, rd);
+                }
+
+                return dict;
             }
-            else return null;
+
+            return baseResult;
         }
         private WindowsOnlyParameters context;
     }

@@ -38,5 +38,6 @@ namespace Microsoft.Azure.Commands.Shared.Config
         public const string EnvCheckForUpgrade = "AZUREPS_CHECK_FOR_UPGRADE";
         public const string DisplaySecretsWarning = "DisplaySecretsWarning";
         public const string LoginExperienceV2 = "LoginExperienceV2";
+        public const string EnablePolicyToken = "EnablePolicyToken";
     }
 }
