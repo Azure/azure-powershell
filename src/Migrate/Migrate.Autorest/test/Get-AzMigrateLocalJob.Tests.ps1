@@ -15,48 +15,24 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzMigrateLocalJob'))
 }
 
 Describe 'Get-AzMigrateLocalJob' {
-    It 'ListByName' {
-        $output = Get-AzMigrateLocalJob `
-            -ProjectName $env.hciProjectName `
-            -ResourceGroupName $env.hciMigResourceGroup `
-            -SubscriptionId $env.hciSubscriptionId
-        $output.Count | Should -BeGreaterOrEqual 1
+    # See Test-AzMigrateLocalEndToEnd.Tests.ps1 for end to end tests.
+    It 'ListByName' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'GetByName' {
-        $output = Get-AzMigrateLocalJob `
-            -ProjectName $env.hciProjectName `
-            -ResourceGroupName $env.hciMigResourceGroup `
-            -SubscriptionId $env.hciSubscriptionId `
-            -Name $env.hciJobName
-        $output.Count | Should -BeGreaterOrEqual 1
+    It 'GetByName' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'GetById' {
-        $output = Get-AzMigrateLocalJob `
-            -SubscriptionId $env.hciSubscriptionId `
-            -ID $env.hciJobId
-        $output.Count | Should -BeGreaterOrEqual 1
+    It 'GetById' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'GetByInputObject' {
-        $output = Get-AzMigrateLocalJob `
-            -ProjectName $env.hciProjectName `
-            -ResourceGroupName $env.hciMigResourceGroup `
-            -SubscriptionId $env.hciSubscriptionId `
-            -Name $env.hciJobName
-        
-        $output1 = Get-AzMigrateLocalJob `
-            -InputObject $output `
-            -SubscriptionId $env.hciSubscriptionId
-        $output1.Count | Should -BeGreaterOrEqual 1
+    It 'GetByInputObject' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'ListById' {
-        $output = Get-AzMigrateLocalJob `
-            -ProjectID $env.hciProjectId `
-            -ResourceGroupID $env.hciMigResourceGroupId `
-            -SubscriptionId $env.hciSubscriptionId
-        $output.Count | Should -BeGreaterOrEqual 1
+    It 'ListById' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }
