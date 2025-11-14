@@ -1,0 +1,49 @@
+{
+  "New-AzPaloAltoNetworksPaloAltoNetworksCloudngfwOperationProductSerialNumber+[NoContext]+Create+$POST+https://management.azure.com/subscriptions/2bf4a339-294d-4c25-b0b2-ef649e9f5c27/providers/PaloAltoNetworks.Cloudngfw/createProductSerialNumber?api-version=2025-10-08+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/2bf4a339-294d-4c25-b0b2-ef649e9f5c27/providers/PaloAltoNetworks.Cloudngfw/createProductSerialNumber?api-version=2025-10-08",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "51" ],
+        "x-ms-client-request-id": [ "8607d6f5-9209-4679-bf14-d447d528eee6" ],
+        "CommandName": [ "New-AzPaloAltoNetworksPaloAltoNetworksCloudngfwOperationProductSerialNumber" ],
+        "FullCommandName": [ "New-AzPaloAltoNetworksPaloAltoNetworksCloudngfwOperationProductSerialNumber_Create" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.5.4", "Az.PaloAltoNetworks/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=888d76fa-54b2-4ced-8ee5-aac1585adee7,objectId=182c644e-b9cf-4c15-b42c-07d1afd8c10b/eastus/9c7e45e7-3baa-4977-8a14-cb86edd88c43" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:4aa06bd6-38f4-4944-9612-cd84d39b5e90" ],
+        "mise-correlation-id": [ "e04c3f71-2a06-4370-90b8-3ddb1bb8e443" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "3b66d8f7-9bea-4de1-a044-40d973156579" ],
+        "x-ms-correlation-request-id": [ "fb84130c-2782-4a20-bcf5-8b9e8c8453c5" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251112T113228Z:fb84130c-2782-4a20-bcf5-8b9e8c8453c5" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: AB18EE9A4B4E4D06BEF319F38078666F Ref B: PNQ231110909052 Ref C: 2025-11-12T11:32:27Z" ],
+        "Date": [ "Wed, 12 Nov 2025 11:32:27 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "54" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"status\":\"Product Serial Number is already created.\"}",
+      "isContentBase64": false
+    }
+  }
+}
