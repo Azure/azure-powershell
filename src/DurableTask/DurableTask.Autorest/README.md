@@ -48,6 +48,12 @@ directive:
       verb: Set
     remove: true
 
+  # Remove the Update-AzDurableTaskHub cmdlet
+  - where:
+      verb: Update
+      subject: TaskHub
+    remove: true
+
   # Remove the *-AzDurableTaskRetentionPolicy cmdlets
   - where:
       subject: RetentionPolicy
