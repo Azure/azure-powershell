@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Supported `-DryRun` and `-ExportBicep` 
 * Onboarded `Microsoft.Security/privateLinks` to Private Link Common Cmdlets
 
 ## Version 7.23.0

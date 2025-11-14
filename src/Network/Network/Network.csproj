@@ -16,6 +16,11 @@
     <PackageReference Include="Microsoft.Azure.PowerShell.AutoMapper" Version="6.2.2" />
   </ItemGroup>
 
+  <!-- Add shared WhatIf library source files -->
+  <ItemGroup>
+    <Compile Include="..\..\shared\WhatIf\**\*.cs" LinkBase="Shared\WhatIf" />
+  </ItemGroup>
+
   <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>

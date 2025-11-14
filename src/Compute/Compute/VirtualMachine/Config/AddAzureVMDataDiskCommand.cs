@@ -20,6 +20,7 @@ using Microsoft.Azure.Commands.Compute.Common;
 using CM = Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
+using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -154,19 +155,16 @@ namespace Microsoft.Azure.Commands.Compute
 
         public override void ExecuteCmdlet()
         {
+            // DryRun interception: build preview only, do not mutate the provided VM object
+            if (this.DryRun.IsPresent && TryHandleDryRun(BuildDryRunPreviewScript()))
+            {
+                return;
+            }
+
             if (this.ParameterSetName.Equals(VmNormalDiskParameterSet))
             {
-                var storageProfile = this.VM.StorageProfile;
-
-                if (storageProfile == null)
-                {
-                    storageProfile = new StorageProfile();
-                }
-
-                if (storageProfile.DataDisks == null)
-                {
-                    storageProfile.DataDisks = new List<DataDisk>();
-                }
+                var storageProfile = this.VM.StorageProfile ?? new StorageProfile();
+                storageProfile.DataDisks = storageProfile.DataDisks ?? new List<DataDisk>();
 
                 storageProfile.DataDisks.Add(new DataDisk
                 {
@@ -174,47 +172,26 @@ namespace Microsoft.Azure.Commands.Compute
                     Caching = this.Caching,
                     DiskSizeGB = this.DiskSizeInGB,
                     Lun = this.Lun.GetValueOrDefault(),
-                    Vhd = string.IsNullOrEmpty(this.VhdUri) ? null : new VirtualHardDisk
-                    {
-                        Uri = this.VhdUri
-                    },
+                    Vhd = string.IsNullOrEmpty(this.VhdUri) ? null : new VirtualHardDisk { Uri = this.VhdUri },
                     CreateOption = this.CreateOption,
-                    Image = string.IsNullOrEmpty(this.SourceImageUri) ? null : new VirtualHardDisk
-                    {
-                        Uri = this.SourceImageUri
-                    },
+                    Image = string.IsNullOrEmpty(this.SourceImageUri) ? null : new VirtualHardDisk { Uri = this.SourceImageUri },
                     DeleteOption = this.DeleteOption,
-                    SourceResource = string.IsNullOrEmpty(this.SourceResourceId) ? null : new ApiEntityReference 
-                    { 
-                        Id = this.SourceResourceId 
-                    }
+                    SourceResource = string.IsNullOrEmpty(this.SourceResourceId) ? null : new ApiEntityReference { Id = this.SourceResourceId }
                 });
 
                 this.VM.StorageProfile = storageProfile;
-
                 WriteObject(this.VM);
             }
-            else
+            else // Managed disk parameter set
             {
-                if (!string.IsNullOrEmpty(this.Name) && !string.IsNullOrEmpty(this.ManagedDiskId))
+                if (!string.IsNullOrEmpty(this.Name) && !string.IsNullOrEmpty(this.ManagedDiskId) &&
+                    !this.Name.Equals(GetDiskNameFromId(this.ManagedDiskId)))
                 {
-                    if (!this.Name.Equals(GetDiskNameFromId(this.ManagedDiskId)))
-                    {
-                        ThrowInvalidArgumentError("Disk name, {0}, does not match with given managed disk ID", this.Name);
-                    }
+                    ThrowInvalidArgumentError("Disk name, {0}, does not match with given managed disk ID", this.Name);
                 }
 
-                var storageProfile = this.VM.StorageProfile;
-
-                if (storageProfile == null)
-                {
-                    storageProfile = new StorageProfile();
-                }
-
-                if (storageProfile.DataDisks == null)
-                {
-                    storageProfile.DataDisks = new List<DataDisk>();
-                }
+                var storageProfile = this.VM.StorageProfile ?? new StorageProfile();
+                storageProfile.DataDisks = storageProfile.DataDisks ?? new List<DataDisk>();
 
                 storageProfile.DataDisks.Add(new DataDisk
                 {
@@ -226,16 +203,61 @@ namespace Microsoft.Azure.Commands.Compute
                     ManagedDisk = SetManagedDisk(this.ManagedDiskId, this.DiskEncryptionSetId, this.StorageAccountType),
                     WriteAcceleratorEnabled = this.WriteAccelerator.IsPresent,
                     DeleteOption = this.DeleteOption,
-                    SourceResource = string.IsNullOrEmpty(this.SourceResourceId) ? null : new ApiEntityReference
-                    {
-                        Id = this.SourceResourceId
-                    }
+                    SourceResource = string.IsNullOrEmpty(this.SourceResourceId) ? null : new ApiEntityReference { Id = this.SourceResourceId }
                 });
 
                 this.VM.StorageProfile = storageProfile;
-
                 WriteObject(this.VM);
             }
+        }
+
+        private string BuildDryRunPreviewScript()
+        {
+            try
+            {
+                string vmVar = GetVmVariableNameFromInvocation(); // Variable name used in -VM parameter
+                string previewVar = vmVar;            // Construct preview variable name
+
+                var lines = new List<string>();
+                lines.Add("# DryRun preview: resulting " + vmVar + " (simplified) after Add-AzVMDataDisk would execute");
+
+                string vmName = VM?.Name ?? "<null>";
+                string rgName = VM?.ResourceGroupName ?? "<null>";
+                string vmId = VM?.Id ?? "<null>";
+
+                // Build preview object
+                lines.Add(previewVar + " = [PSCustomObject]@{");
+                lines.Add("    Name='" + vmName + "'");
+                lines.Add("    ResourceGroupName='" + rgName + "'");
+                lines.Add("    Id='" + vmId + "'");
+                lines.Add("}" );
+                lines.Add("# You can inspect $" + previewVar + " to see the projected state.");
+                lines.Add("# Original invocation follows:");
+
+                return string.Join(Environment.NewLine, lines);
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        private string GetVmVariableNameFromInvocation()
+        {
+            try
+            {
+                var line = this.MyInvocation?.Line;
+                if (!string.IsNullOrWhiteSpace(line))
+                {
+                    var m = Regex.Match(line, @"-VM\s*[:=]?\s*(\$[a-zA-Z_][a-zA-Z0-9_]*)");
+                    if (m.Success)
+                    {
+                        return m.Groups[1].Value;
+                    }
+                }
+            }
+            catch { }
+            return "$vm"; // default fallback
         }
     }
 }

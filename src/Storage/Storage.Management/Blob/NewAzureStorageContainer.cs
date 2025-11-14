@@ -160,6 +160,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
         
         public override void ExecuteCmdlet()
         {
+            if (DryRun.IsPresent && TryHandleDryRun())
+            {
+                return; // prevent real execution
+            }
+
             base.ExecuteCmdlet();
 
             if (ShouldProcess(this.Name, "Create container"))
