@@ -47,4 +47,9 @@ directive:
   - where:
       verb: Set
     remove: true
+
+  # Remove the *-AzDurableTaskRetentionPolicy cmdlets
+  - where:
+      subject: RetentionPolicy
+    remove: true
 ```
