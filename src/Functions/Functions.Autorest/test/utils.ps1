@@ -261,9 +261,35 @@ function setupEnv() {
     $newApplInsights = New-AzApplicationInsights -ResourceGroupName $resourceGroupNameWindowsPremium -Name $newApplInsightsName -Location $location
     $env.add('newApplInsights', $newApplInsights) | Out-Null
 
+    # Create resources for Azure Container Apps tests
+    Write-Host "Creating resources for Azure Container Apps tests..." -ForegroundColor Green
+    $acaTestRunId = RandomString -len 4
+    $resourceGroupNameACA = "Functions-ACA-Test-" + $acaTestRunId
+    $locationACA = "WestCentralUS"
+    $storageAccountNameACA = "funcacastotorage" + $acaTestRunId
+    $workSpaceACAName = "workspace-azpstest" + $acaTestRunId
+    $environmentACAName = "azps-envtest" + $acaTestRunId
+
+    Write-Host "Create resource group." -ForegroundColor Yellow
+    New-AzResourceGroup -Name $resourceGroupNameACA -Location $locationACA | Out-Null
+    Write-Host "Create storage account." -ForegroundColor Yellow
+    New-AzStorageAccount -Name $storageAccountNameACA `
+                         -ResourceGroupName $resourceGroupNameACA `
+                         -Location $locationACA `
+                         -SkuName Standard_GRS `
+                         -Kind StorageV2 `
+                         -AllowBlobPublicAccess $false | Out-Null
+
+    $env.add('acaTestRunId', $acaTestRunId) | Out-Null
+    $env.add('resourceGroupNameACA', $resourceGroupNameACA) | Out-Null
+    $env.add('locationACA', $locationACA) | Out-Null
+    $env.add('storageAccountNameACA', $storageAccountNameACA) | Out-Null
+    $env.add('workSpaceACAName', $workSpaceACAName) | Out-Null
+    $env.add('environmentACAName', $environmentACAName) | Out-Null
+
     # Create Flex Consumption resources
     Write-Host "Creating Flex Consumption resources..." -ForegroundColor Green
-    $flexTestRunId = 112925
+    $flexTestRunId = RandomString -len 4
     $flexLocation = 'East Asia'
     $flexResourceGroupName = "Functions-Flex-RG-" + $flexTestRunId
 
@@ -293,6 +319,9 @@ function setupEnv() {
         # Add to $env with a key like 'flexStorageAccountDotNetIsolated', 'flexStorageAccountNode', etc.
         $envKey = "flexStorageAccount" + $runtimeName.Replace("-", "")
         $env.add($envKey, $storageAccountName) | Out-Null
+
+        # Wait between storage account creations to avoid conflicts
+        Start-TestSleep -Seconds 2
     }
 
     Write-Host "Create user assigned managed identity for Flex Consumption tests" -ForegroundColor Yellow
@@ -322,5 +351,6 @@ function cleanupEnv() {
     Remove-AzResourceGroup -Name $env.resourceGroupNameWindowsConsumption
     Remove-AzResourceGroup -Name $env.resourceGroupNameLinuxConsumption
     Remove-AzResourceGroup -Name $env.flexResourceGroupName
+    Remove-AzResourceGroup -Name $env.resourceGroupNameACA
 }
 
