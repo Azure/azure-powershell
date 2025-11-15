@@ -63,5 +63,34 @@
                 </TableRowEntries>
             </TableControl>
         </View>
+        <View>
+            <Name>FunctionAppFlexConsumptionRuntimeTableView</Name>
+            <ViewSelectedBy>
+                <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.FunctionAppFlexConsumptionRuntime</TypeName>
+            </ViewSelectedBy>
+            <TableControl>
+                <TableHeaders>
+                <TableColumnHeader><Label>Name</Label></TableColumnHeader>
+                <TableColumnHeader><Label>Version</Label></TableColumnHeader>
+                <TableColumnHeader><Label>IsDefault</Label></TableColumnHeader>
+                <TableColumnHeader><Label>EndOfLifeDate</Label></TableColumnHeader>
+                <TableColumnHeader><Label>Sku</Label></TableColumnHeader>
+                </TableHeaders>
+                <TableRowEntries>
+                <TableRowEntry>
+                    <TableColumnItems>
+                    <TableColumnItem><PropertyName>Name</PropertyName></TableColumnItem>
+                    <TableColumnItem><PropertyName>Version</PropertyName></TableColumnItem>
+                    <TableColumnItem><PropertyName>IsDefault</PropertyName></TableColumnItem>
+                    <TableColumnItem>
+                        <PropertyName>EndOfLifeDate</PropertyName>
+                        <FormatString>{0:d}</FormatString>
+                    </TableColumnItem>
+                    <TableColumnItem><PropertyName>Sku</PropertyName></TableColumnItem>
+                    </TableColumnItems>
+                </TableRowEntry>
+                </TableRowEntries>
+            </TableControl>
+        </View>
     </ViewDefinitions>
 </Configuration>

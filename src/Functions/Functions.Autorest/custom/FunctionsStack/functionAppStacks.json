@@ -9,6 +9,84 @@
       "preferredOs": "windows",
       "majorVersions": [
         {
+          "displayText": ".NET 10 Isolated",
+          "value": "dotnet10isolated",
+          "minorVersions": [
+            {
+              "displayText": ".NET 10 Isolated",
+              "value": "10 (LTS), isolated worker model",
+              "stackSettings": {
+                "windowsRuntimeSettings": {
+                  "runtimeVersion": "v10.0",
+                  "isPreview": true,
+                  "isDefault": false,
+                  "isHidden": false,
+                  "remoteDebuggingSupported": false,
+                  "appInsightsSettings": {
+                    "isSupported": true
+                  },
+                  "gitHubActionSettings": {
+                    "isSupported": true,
+                    "supportedVersion": "10.0.x"
+                  },
+                  "appSettingsDictionary": {
+                    "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated",
+                    "WEBSITE_USE_PLACEHOLDER_DOTNETISOLATED": "1"
+                  },
+                  "siteConfigPropertiesDictionary": {
+                    "use32BitWorkerProcess": false,
+                    "netFrameworkVersion": "v10.0"
+                  },
+                  "supportedFunctionsExtensionVersions": [
+                    "~4"
+                  ],
+                  "supportedFunctionsExtensionVersionsInfo": [
+                    {
+                      "version": "~4",
+                      "isDeprecated": false,
+                      "isDefault": false
+                    }
+                  ],
+                  "endOfLifeDate": "Fri Nov 10 2028 00:00:00 GMT+0000 (Coordinated Universal Time)"
+                },
+                "linuxRuntimeSettings": {
+                  "runtimeVersion": "DOTNET-ISOLATED|10.0",
+                  "isPreview": true,
+                  "isDefault": false,
+                  "isHidden": false,
+                  "remoteDebuggingSupported": false,
+                  "appInsightsSettings": {
+                    "isSupported": true
+                  },
+                  "gitHubActionSettings": {
+                    "isSupported": true,
+                    "supportedVersion": "10.0.x"
+                  },
+                  "appSettingsDictionary": {
+                    "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated",
+                    "WEBSITE_USE_PLACEHOLDER_DOTNETISOLATED": "1"
+                  },
+                  "siteConfigPropertiesDictionary": {
+                    "use32BitWorkerProcess": false,
+                    "linuxFxVersion": "DOTNET-ISOLATED|10.0"
+                  },
+                  "supportedFunctionsExtensionVersions": [
+                    "~4"
+                  ],
+                  "supportedFunctionsExtensionVersionsInfo": [
+                    {
+                      "version": "~4",
+                      "isDeprecated": false,
+                      "isDefault": false
+                    }
+                  ],
+                  "endOfLifeDate": "Fri Nov 10 2028 00:00:00 GMT+0000 (Coordinated Universal Time)"
+                }
+              }
+            }
+          ]
+        },
+        {
           "displayText": ".NET 9 Isolated",
           "value": "dotnet9isolated",
           "minorVersions": [
@@ -607,11 +685,11 @@
           "minorVersions": [
             {
               "displayText": "Node.js 22",
-              "value": "22",
+              "value": "22 LTS",
               "stackSettings": {
                 "windowsRuntimeSettings": {
                   "runtimeVersion": "~22",
-                  "isPreview": true,
+                  "isDefault": true,
                   "remoteDebuggingSupported": false,
                   "appInsightsSettings": {
                     "isSupported": true
@@ -684,7 +762,6 @@
               "stackSettings": {
                 "windowsRuntimeSettings": {
                   "runtimeVersion": "~20",
-                  "isDefault": true,
                   "remoteDebuggingSupported": false,
                   "appInsightsSettings": {
                     "isSupported": true
@@ -833,6 +910,44 @@
           "displayText": "Python 3",
           "value": "3",
           "minorVersions": [
+            {
+              "displayText": "Python 3.13",
+              "value": "3.13",
+              "stackSettings": {
+                "linuxRuntimeSettings": {
+                  "runtimeVersion": "Python|3.13",
+                  "remoteDebuggingSupported": false,
+                  "isPreview": true,
+                  "isDefault": false,
+                  "isHidden": false,
+                  "appInsightsSettings": {
+                    "isSupported": true
+                  },
+                  "gitHubActionSettings": {
+                    "isSupported": true,
+                    "supportedVersion": "3.13"
+                  },
+                  "appSettingsDictionary": {
+                    "FUNCTIONS_WORKER_RUNTIME": "python"
+                  },
+                  "siteConfigPropertiesDictionary": {
+                    "use32BitWorkerProcess": false,
+                    "linuxFxVersion": "Python|3.13"
+                  },
+                  "supportedFunctionsExtensionVersions": [
+                    "~4"
+                  ],
+                  "supportedFunctionsExtensionVersionsInfo": [
+                    {
+                      "version": "~4",
+                      "isDeprecated": false,
+                      "isDefault": true
+                    }
+                  ],
+                  "endOfLifeDate": "Wed Oct 31 2029 00:00:00 GMT+0000 (Coordinated Universal Time)"
+                }
+              }
+            },
             {
               "displayText": "Python 3.12",
               "value": "3.12",

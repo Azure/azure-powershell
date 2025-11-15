@@ -1,0 +1,104 @@
+{
+  "id": null,
+  "name": "custom",
+  "type": "Microsoft.Web/locations/functionAppStacks?stackOsType=All",
+  "location": "eastasia",
+  "properties": {
+    "displayText": "Custom Handler",
+    "value": "custom",
+    "preferredOs": "windows",
+    "majorVersions": [
+      {
+        "displayText": "Custom Handler",
+        "value": "custom",
+        "minorVersions": [
+          {
+            "displayText": "Custom Handler",
+            "value": "custom",
+            "stackSettings": {
+              "linuxRuntimeSettings": {
+                "runtimeVersion": "",
+                "isPreview": false,
+                "appInsightsSettings": {
+                  "isSupported": true
+                },
+                "remoteDebuggingSupported": false,
+                "gitHubActionSettings": {
+                  "isSupported": false
+                },
+                "appSettingsDictionary": {
+                  "FUNCTIONS_WORKER_RUNTIME": "custom"
+                },
+                "siteConfigPropertiesDictionary": {
+                  "use32BitWorkerProcess": false,
+                  "linuxFxVersion": ""
+                },
+                "supportedFunctionsExtensionVersions": [
+                  "~4",
+                  "~3",
+                  "~2"
+                ],
+                "supportedFunctionsExtensionVersionsInfo": [
+                  {
+                    "version": "~4",
+                    "isDeprecated": false,
+                    "isDefault": true
+                  },
+                  {
+                    "version": "~3",
+                    "isDeprecated": true,
+                    "isDefault": false
+                  },
+                  {
+                    "version": "~2",
+                    "isDeprecated": true,
+                    "isDefault": false
+                  }
+                ],
+                "Sku": [
+                  {
+                    "skuCode": "Y1"
+                  },
+                  {
+                    "skuCode": "Dedicated"
+                  },
+                  {
+                    "skuCode": "ElasticPremium"
+                  },
+                  {
+                    "skuCode": "FC1",
+                    "instanceMemoryMB": [
+                      {
+                        "size": "512",
+                        "isDefault": false
+                      },
+                      {
+                        "size": "2048",
+                        "isDefault": true
+                      },
+                      {
+                        "size": "4096",
+                        "isDefault": false
+                      }
+                    ],
+                    "maximumInstanceCount": {
+                      "lowestMaximumInstanceCount": 40,
+                      "highestMaximumInstanceCount": 1000,
+                      "defaultValue": 100
+                    },
+                    "functionAppConfigProperties": {
+                      "runtime": {
+                        "name": "custom",
+                        "version": "1.0"
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
