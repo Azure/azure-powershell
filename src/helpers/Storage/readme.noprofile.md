@@ -67,6 +67,7 @@ directive:
       subject: ^BlobContainerLegalHold$
     remove: true
   - where:
+      verb: Set|Update
       subject: ^BlobContainer$
     remove: true
   - where:
@@ -137,7 +138,6 @@ directive:
       subject: ^StorageAccountKey$
     remove: true
 
-
   # Hide Storage Account cmdlets
   - where:
       subject: ^StorageAccount.*
@@ -146,6 +146,10 @@ directive:
       subject: ^StorageAccount.*
     set:
       subject-prefix: ''
+  - where:
+       verb: New|Get|Remove
+       subject: ^BlobContainer$
+    hide: true
   
   # StorageAccount
   - where:
