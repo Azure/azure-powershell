@@ -14,15 +14,19 @@ function Get-AzFunctionAppAvailableLocation {
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AvailablePlanType])]
         [ValidateNotNullOrEmpty()]
         [System.String]
-        # Plan type (Consumption or Premium)
+        [ValidateSet("Consumption", "FlexConsumption", "Premium")]
         ${PlanType},
 
         [Parameter(HelpMessage='The OS type for the service plan.')]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.WorkerType])]
         [ValidateNotNullOrEmpty()]
         [System.String]
-        # OS type (Linux or Windows)
+        [ValidateSet("Linux", "Windows")]
         ${OSType},
+
+        [Parameter(HelpMessage='Filter the list to return only locations which support zone redundancy.')]
+        [System.Management.Automation.SwitchParameter]
+        ${ZoneRedundant},
 
         [Parameter(HelpMessage=' The credentials, account, tenant, and subscription used for communication with Azure.')]
         [Alias('AzureRMContext', 'AzureCredential')]
@@ -78,7 +82,8 @@ function Get-AzFunctionAppAvailableLocation {
         # Remove bound parameters from the dictionary that cannot be process by the intenal cmdlets
         $paramsToRemove = @(
             "OSType",
-            "PlanType"
+            "PlanType",
+            "ZoneRedundant"
         )
         foreach ($paramName in $paramsToRemove)
         {
@@ -88,21 +93,22 @@ function Get-AzFunctionAppAvailableLocation {
             }
         }
 
-        # Set default values for PlanType and OSType
+        # Set default PlanType to Premium if not specified
         if (-not $PlanType)
         {
             $PlanType = "Premium"
             Write-Verbose "PlanType not specified. Setting default PlanType to '$PlanType'." -Verbose
         }
 
-        if (-not $OSType)
+        # Set default OSType to Windows if not specified
+        if (($PlanType -ne 'FlexConsumption') -and (-not $OSType))
         {
             $OSType = "Windows"
             Write-Verbose "OSType not specified. Setting default OSType to '$OSType'." -Verbose
         }
 
         # Set Linux flag
-        if ($OSType -eq "Linux")
+        if (($PlanType -ne 'FlexConsumption') -and ($OSType -eq "Linux"))
         {
             $PSBoundParameters.Add("LinuxWorkersEnabled", $true)  | Out-Null
         }
@@ -116,11 +122,50 @@ function Get-AzFunctionAppAvailableLocation {
         {
             $PSBoundParameters.Add("Sku", 'Dynamic')  | Out-Null
         }
+        elseif ($PlanType -eq "FlexConsumption")
+        {
+            $PSBoundParameters.Add("Sku", 'FlexConsumption')  | Out-Null
+        }
         else
         {
-            throw "Unknown PlanType '$PlanType'"
+            $errorMessage = "PlanType '$PlanType' not supported. Valid inputs: Consumption, Premium, or FlexConsumption."
+            $exception = [System.InvalidOperationException]::New($errorMessage)
+            ThrowTerminatingError -ErrorId "PlanTypeNotSupported" `
+                                  -ErrorMessage $errorMessage `
+                                  -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                                  -Exception $exception
         }
 
-        Az.Functions.internal\Get-AzFunctionAppAvailableLocation @PSBoundParameters
+        # FlexConsumption is only supported on Linux
+        if (($PlanType -eq 'FlexConsumption') -and ($OSType -eq 'Windows'))
+        {
+            $errorMessage = "FlexConsumption plan type is only supported on Linux OS type."
+            $exception = [System.InvalidOperationException]::New($errorMessage)
+            ThrowTerminatingError -ErrorId "FlexConsumptionIsOnlySupportedOnLinux" `
+                                  -ErrorMessage $errorMessage `
+                                  -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                                  -Exception $exception
+        }
+
+        if ($ZoneRedundant.IsPresent -and ($PlanType -ne 'FlexConsumption'))
+        {
+            $errorMessage = "ZoneRedundant parameter is only applicable for FlexConsumption plan type."
+            $exception = [System.InvalidOperationException]::New($errorMessage)
+            ThrowTerminatingError -ErrorId "ZoneRedundantIsOnlyApplicableForFlexConsumption" `
+                                  -ErrorMessage $errorMessage `
+                                  -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                                  -Exception $exception
+        }
+
+        $regions = Az.Functions.internal\Get-AzFunctionAppAvailableLocation @PSBoundParameters
+
+        if ($ZoneRedundant.IsPresent -and ($PlanType -eq 'FlexConsumption'))
+        {
+            $regions | ForEach-Object { if ($_.OrgDomain -match "FCZONEREDUNDANCY") { $_ }}
+        }
+        else
+        {
+            $regions
+        }
     }
 }

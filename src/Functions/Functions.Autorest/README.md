@@ -3,6 +3,9 @@
 This directory contains the PowerShell module for the Functions service.
 
 ---
+## Status
+[![Az.Functions](https://img.shields.io/powershellgallery/v/Az.Functions.svg?style=flat-square&label=Az.Functions "Az.Functions")](https://www.powershellgallery.com/packages/Az.Functions/)
+
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -108,6 +111,7 @@ metadata:
   functionsToExport:
     - Get-AzFunctionApp
     - Get-AzFunctionAppAvailableLocation
+    - Get-AzFunctionAppFlexConsumptionRuntime
     - Get-AzFunctionAppPlan
     - Get-AzFunctionAppSetting
     - New-AzFunctionApp
