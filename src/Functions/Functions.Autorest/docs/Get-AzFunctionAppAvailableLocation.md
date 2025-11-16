@@ -14,7 +14,7 @@ Gets the location where a function app for the given os and plan type is availab
 
 ```
 Get-AzFunctionAppAvailableLocation [[-SubscriptionId] <String[]>] [[-PlanType] <String>] [[-OSType] <String>]
- [[-DefaultProfile] <PSObject>] [-ZoneRedundant] [<CommonParameters>]
+ [[-DefaultProfile] <PSObject>] [-ZoneRedundancy] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -149,7 +149,7 @@ This command gets the locations where Consumption is available for Windows.
 
 ### Example 4: Get the locations where Flex Consumption is available
 ```powershell
-Get-AzFunctionAppavailableLocation -PlanType FlexConsumption
+Get-AzFunctionAppAvailableLocation -PlanType FlexConsumption
 ```
 
 ```output
@@ -207,7 +207,7 @@ This command gets the locations where Flex Consumption is available.
 
 ### Example 5: Get the locations where Flex Consumption supports Zone Redundancy
 ```powershell
-Get-AzFunctionAppavailableLocation -PlanType FlexConsumption -ZoneRedundant
+Get-AzFunctionAppAvailableLocation -PlanType FlexConsumption -ZoneRedundancy
 ```
 
 ```output
@@ -296,7 +296,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ZoneRedundant
+### -ZoneRedundancy
 Filter the list to return only locations which support zone redundancy.
 
 ```yaml

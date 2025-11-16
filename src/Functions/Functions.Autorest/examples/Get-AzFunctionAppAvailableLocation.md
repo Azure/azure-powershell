@@ -132,7 +132,7 @@ Currently, Flex Consumption is supported only on Linux. To retrieve the list of 
 
 
 ```powershell
-Get-AzFunctionAppavailableLocation -PlanType FlexConsumption
+Get-AzFunctionAppAvailableLocation -PlanType FlexConsumption
 ```
 
 ```output
@@ -190,10 +190,10 @@ This command gets the locations where Flex Consumption is available.
 
 ### Example 5: Get the locations where Flex Consumption supports Zone Redundancy
 
-Flex Consumption plans can optionally be zone redundant in regions that support Availability Zones. To retrieve the list of regions where zone redundancy is available for Flex Consumption, set the PlanType parameter to 'FlexConsumption' and include the ZoneRedundant switch. Note that zone redundancy is currently supported only for Flex Consumption.
+Flex Consumption plans can optionally be zone redundant in regions that support Availability Zones. To retrieve the list of regions where zone redundancy is available for Flex Consumption, set the PlanType parameter to 'FlexConsumption' and include the ZoneRedundancy switch. Note that zone redundancy is currently supported only for Flex Consumption.
 
 ```powershell
-Get-AzFunctionAppavailableLocation -PlanType FlexConsumption -ZoneRedundant
+Get-AzFunctionAppAvailableLocation -PlanType FlexConsumption -ZoneRedundancy
 ```
 
 ```output
