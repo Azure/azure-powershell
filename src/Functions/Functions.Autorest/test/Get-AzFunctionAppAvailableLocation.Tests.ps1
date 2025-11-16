@@ -326,7 +326,7 @@ Describe 'Get-AzFunctionAppAvailableLocation' {
         $myError.Exception.Message | Should Match $expectedErrorMessage
     }
 
-    It 'Validate output for -PlanType FlexConsumption -ZoneRedundant' {
+    It 'Validate output for -PlanType FlexConsumption -ZoneRedundancy' {
 
         $expectedRegions = @(
             'Canada Central'
@@ -347,19 +347,19 @@ Describe 'Get-AzFunctionAppAvailableLocation' {
             'Israel Central'
         )
 
-        $actualRegions = @(Get-AzFunctionAppAvailableLocation -PlanType FlexConsumption -ZoneRedundant | ForEach-Object { $_.Name })
+        $actualRegions = @(Get-AzFunctionAppAvailableLocation -PlanType FlexConsumption -ZoneRedundancy | ForEach-Object { $_.Name })
         ValidateAvailableLocation -ActualRegions $actualRegions -ExpectedRegions $expectedRegions
     }
 
-    It "Validate -PlanType FlexConsumption -OSType Windows -ZoneRedundant fails" {
+    It "Validate -PlanType Premium -OSType Windows -ZoneRedundancy fails" {
 
-        $expectedErrorMessage = "ZoneRedundant parameter is only applicable for FlexConsumption plan type."
-        $expectedErrorId = "ZoneRedundantIsOnlyApplicableForFlexConsumption"
+        $expectedErrorMessage = "The ZoneRedundancy parameter is only applicable for FlexConsumption plan type."
+        $expectedErrorId = "ZoneRedundancyIsOnlyApplicableForFlexConsumption"
 
         $myError = $null
         try
         {
-            Get-AzFunctionAppAvailableLocation -PlanType Premium -OSType Windows -ZoneRedundant -ErrorAction Stop
+            Get-AzFunctionAppAvailableLocation -PlanType Premium -OSType Windows -ZoneRedundancy -ErrorAction Stop
         }
         catch
         {
