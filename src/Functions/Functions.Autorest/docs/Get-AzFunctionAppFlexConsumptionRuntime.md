@@ -14,24 +14,25 @@ Gets the Flex Consumption function app runtimes supported at the specified locat
 
 ### AllRuntimes (Default)
 ```
-Get-AzFunctionAppFlexConsumptionRuntime -Location <String> [<CommonParameters>]
+Get-AzFunctionAppFlexConsumptionRuntime -Location <String> [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ### AllVersions
 ```
-Get-AzFunctionAppFlexConsumptionRuntime -Location <String> -Runtime <String> [<CommonParameters>]
+Get-AzFunctionAppFlexConsumptionRuntime -Location <String> -Runtime <String> [-SubscriptionId <String>]
+ [<CommonParameters>]
 ```
 
 ### ByVersion
 ```
 Get-AzFunctionAppFlexConsumptionRuntime -Location <String> -Runtime <String> -Version <String>
- [<CommonParameters>]
+ [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ### DefaultOrLatest
 ```
 Get-AzFunctionAppFlexConsumptionRuntime -DefaultOrLatest -Location <String> -Runtime <String>
- [<CommonParameters>]
+ [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -151,6 +152,21 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The Azure subscription ID.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
