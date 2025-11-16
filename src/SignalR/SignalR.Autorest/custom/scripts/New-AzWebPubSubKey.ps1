@@ -24,7 +24,7 @@ PS C:\> $identity | New-AzWebPubSubKey -KeyType Primary
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IWebPubSubKeys
+Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubKeys
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -42,10 +42,12 @@ INPUTOBJECT <IWebPubSubIdentity>: Identity Parameter
 #>
 function New-AzWebPubSubKey
 {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IWebPubSubKeys])]
+    [OutputType([System.Boolean])]
     [CmdletBinding(DefaultParameterSetName='RegenerateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(ParameterSetName='RegenerateExpanded', Mandatory)]
+        [Parameter(ParameterSetName='RegenerateViaJsonFilePath', Mandatory)]
+        [Parameter(ParameterSetName='RegenerateViaJsonString', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Path')]
         [System.String]
         # The name of the resource group that contains the resource.
@@ -53,12 +55,16 @@ function New-AzWebPubSubKey
         ${ResourceGroupName},
 
         [Parameter(ParameterSetName='RegenerateExpanded', Mandatory)]
+        [Parameter(ParameterSetName='RegenerateViaJsonFilePath', Mandatory)]
+        [Parameter(ParameterSetName='RegenerateViaJsonString', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Path')]
         [System.String]
         # The name of the resource.
         ${ResourceName},
 
         [Parameter(ParameterSetName='RegenerateExpanded')]
+        [Parameter(ParameterSetName='RegenerateViaJsonFilePath')]
+        [Parameter(ParameterSetName='RegenerateViaJsonString')]
         [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String]
@@ -70,23 +76,35 @@ function New-AzWebPubSubKey
         [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity]
         # Identity Parameter
-        # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
         ${InputObject},
 
-        [Parameter(Mandatory)]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.KeyType])]
+        [Parameter(ParameterSetName='RegenerateExpanded')]
+        [Parameter(ParameterSetName='RegenerateViaIdentityExpanded')]
+        [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.PSArgumentCompleterAttribute("Primary", "Secondary", "Salt")]
         [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.KeyType]
-        # The keyType to regenerate.
-        # Must be either 'primary', 'secondary' or 'salt'(case-insensitive).
+        [System.String]
+        # The type of access key.
         ${KeyType},
+
+        [Parameter(ParameterSetName='RegenerateViaJsonFilePath', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
+        [System.String]
+        # Path of Json file supplied to the Regenerate operation
+        ${JsonFilePath},
+
+        [Parameter(ParameterSetName='RegenerateViaJsonString', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
+        [System.String]
+        # Json string supplied to the Regenerate operation
+        ${JsonString},
 
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Azure')]
         [System.Management.Automation.PSObject]
-        # The credentials, account, tenant, and subscription used for communication with Azure.
+        # The DefaultProfile parameter is not functional.
+        # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
         ${DefaultProfile},
 
         [Parameter()]
