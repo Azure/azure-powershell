@@ -636,7 +636,7 @@ Example:
                 $appSettings.Clear()
 
                 # Validate Flex Consumption location
-                Validate-FlexConsumptionLocation -Location $FlexConsumptionLocation -ZoneRedundant:$EnableZoneRedundancy
+                Validate-FlexConsumptionLocation -Location $FlexConsumptionLocation -ZoneRedundancy:$EnableZoneRedundancy
                 $FlexConsumptionLocation = Format-FlexConsumptionLocation -Location $FlexConsumptionLocation
 
                 # Validate runtime and runtime version

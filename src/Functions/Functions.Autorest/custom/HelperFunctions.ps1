@@ -3201,12 +3201,12 @@ function Test-FlexConsumptionLocation
 
         [Parameter(Mandatory = $false)]
         [System.Management.Automation.SwitchParameter]
-        $ZoneRedundant
+        $ZoneRedundancy
     )
 
     # Validate Flex Consumption location
     $formattedLocation = Format-FlexConsumptionLocation -Location $Location
-    $flexConsumptionRegions = Get-AzFunctionAppAvailableLocation -PlanType FlexConsumption -ZoneRedundant:$ZoneRedundant
+    $flexConsumptionRegions = Get-AzFunctionAppAvailableLocation -PlanType FlexConsumption -ZoneRedundancy:$ZoneRedundancy
 
     $found = $false
     foreach ($region in $flexConsumptionRegions)
@@ -3240,19 +3240,19 @@ function Validate-FlexConsumptionLocation
 
         [Parameter(Mandatory = $false)]
         [System.Management.Automation.SwitchParameter]
-        $ZoneRedundant
+        $ZoneRedundancy
     )
 
-    $isRegionSupported = Test-FlexConsumptionLocation -Location $Location -ZoneRedundant:$ZoneRedundant
+    $isRegionSupported = Test-FlexConsumptionLocation -Location $Location -ZoneRedundancy:$ZoneRedundancy
 
     if (-not $isRegionSupported)
     {
         $errorMessage = $null
         $errorId = $null
-        if ($ZoneRedundant.IsPresent)
+        if ($ZoneRedundancy.IsPresent)
         {
             $errorMessage = "The specified location '$Location' doesn't support zone redundancy in Flex Consumption. "
-            $errorMessage += "Use: 'Get-AzFunctionAppAvailableLocation -PlanType FlexConsumption -ZoneRedundant' for the list of supported locations."
+            $errorMessage += "Use: 'Get-AzFunctionAppAvailableLocation -PlanType FlexConsumption -ZoneRedundancy' for the list of supported locations."
             $errorId = "RegionNotSupportedForZoneRedundancyInFlexConsumption"
         }
         else

@@ -26,7 +26,7 @@ function Get-AzFunctionAppAvailableLocation {
 
         [Parameter(HelpMessage='Filter the list to return only locations which support zone redundancy.')]
         [System.Management.Automation.SwitchParameter]
-        ${ZoneRedundant},
+        ${ZoneRedundancy},
 
         [Parameter(HelpMessage=' The credentials, account, tenant, and subscription used for communication with Azure.')]
         [Alias('AzureRMContext', 'AzureCredential')]
@@ -83,7 +83,7 @@ function Get-AzFunctionAppAvailableLocation {
         $paramsToRemove = @(
             "OSType",
             "PlanType",
-            "ZoneRedundant"
+            "ZoneRedundancy"
         )
         foreach ($paramName in $paramsToRemove)
         {
@@ -147,11 +147,11 @@ function Get-AzFunctionAppAvailableLocation {
                                   -Exception $exception
         }
 
-        if ($ZoneRedundant.IsPresent -and ($PlanType -ne 'FlexConsumption'))
+        if ($ZoneRedundancy.IsPresent -and ($PlanType -ne 'FlexConsumption'))
         {
-            $errorMessage = "ZoneRedundant parameter is only applicable for FlexConsumption plan type."
+            $errorMessage = "The ZoneRedundancy parameter is only applicable for FlexConsumption plan type."
             $exception = [System.InvalidOperationException]::New($errorMessage)
-            ThrowTerminatingError -ErrorId "ZoneRedundantIsOnlyApplicableForFlexConsumption" `
+            ThrowTerminatingError -ErrorId "ZoneRedundancyIsOnlyApplicableForFlexConsumption" `
                                   -ErrorMessage $errorMessage `
                                   -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
                                   -Exception $exception
@@ -159,7 +159,7 @@ function Get-AzFunctionAppAvailableLocation {
 
         $regions = Az.Functions.internal\Get-AzFunctionAppAvailableLocation @PSBoundParameters
 
-        if ($ZoneRedundant.IsPresent -and ($PlanType -eq 'FlexConsumption'))
+        if ($ZoneRedundancy.IsPresent -and ($PlanType -eq 'FlexConsumption'))
         {
             $regions | ForEach-Object { if ($_.OrgDomain -match "FCZONEREDUNDANCY") { $_ }}
         }
