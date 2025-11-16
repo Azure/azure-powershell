@@ -2,6 +2,15 @@ function Get-AzFunctionAppFlexConsumptionRuntime {
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Description('Gets the Flex Consumption function app runtimes supported at the specified location.')]
     [CmdletBinding(DefaultParameterSetName='AllRuntimes')]
     param(
+        [Parameter(ParameterSetName='AllRuntimes', HelpMessage='The Azure subscription ID.')]
+        [Parameter(ParameterSetName='AllVersions')]
+        [Parameter(ParameterSetName='ByVersion')]
+        [Parameter(ParameterSetName='DefaultOrLatest')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+        [ValidateNotNullOrEmpty()]
+        [System.String]
+        ${SubscriptionId},
+
         [Parameter(ParameterSetName='AllRuntimes', Mandatory=$true, HelpMessage='The location where Flex Consumption function apps are supported.')]
         [Parameter(ParameterSetName='AllVersions', Mandatory=$true)]
         [Parameter(ParameterSetName='ByVersion', Mandatory=$true)]
