@@ -13,7 +13,7 @@ Creates a new CosmosDB Throughput Bucket Object (PSThroughputBucket).
 ## SYNTAX
 
 ```
-New-AzCosmosDBThroughputBucketObject -Id <Int32> -MaxThroughputPercentage <Int32>
+New-AzCosmosDBThroughputBucketObject -Id <Int32> -MaxThroughputPercentage <Int32> [-IsDefaultBucket <Boolean>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -26,6 +26,22 @@ Creates a new CosmosDB Throughput Bucket Object (PSThroughputBucket).
 ```powershell
 New-AzCosmosDBThroughputBucketObject -Id 1 -MaxThroughputPercentage 20
 ```
+
+Creates a throughput bucket with Id 1 and maximum throughput percentage of 20. This bucket is not marked as default.
+
+### Example 2
+```powershell
+New-AzCosmosDBThroughputBucketObject -Id 2 -MaxThroughputPercentage 30 -IsDefaultBucket $true
+```
+
+Creates a throughput bucket with Id 2 and maximum throughput percentage of 30, explicitly marked as the default bucket.
+
+### Example 3
+```powershell
+New-AzCosmosDBThroughputBucketObject -Id 3 -MaxThroughputPercentage 50 -IsDefaultBucket $false
+```
+
+Creates a throughput bucket with Id 3 and maximum throughput percentage of 50, explicitly marked as not default.
 
 ## PARAMETERS
 
@@ -53,6 +69,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IsDefaultBucket
+Boolean to indicate whether this is the default throughput bucket. If not specified, the bucket is not marked as default.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

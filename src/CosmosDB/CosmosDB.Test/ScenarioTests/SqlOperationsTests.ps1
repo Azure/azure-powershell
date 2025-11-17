@@ -2083,7 +2083,21 @@ function Test-SqlThroughputBucketsCmdlets-ManualContainer
   $UpdatedContainerThroughputValue = 900
 
   $ThroughputBucket1 = New-AzCosmosDBThroughputBucketObject -Id 1 -MaxThroughputPercentage 20
-  $ThroughputBucket2 = New-AzCosmosDBThroughputBucketObject -Id 2 -MaxThroughputPercentage 30
+  $ThroughputBucket2 = New-AzCosmosDBThroughputBucketObject -Id 2 -MaxThroughputPercentage 30 -IsDefaultBucket $false
+  $ThroughputBucket3 = New-AzCosmosDBThroughputBucketObject -Id 3 -MaxThroughputPercentage 50 -IsDefaultBucket $true
+
+  # Verify bucket objects are created correctly
+  Assert-AreEqual $ThroughputBucket1.Id 1
+  Assert-AreEqual $ThroughputBucket1.MaxThroughputPercentage 20
+  Assert-AreEqual $ThroughputBucket1.IsDefaultBucket $null
+
+  Assert-AreEqual $ThroughputBucket2.Id 2
+  Assert-AreEqual $ThroughputBucket2.MaxThroughputPercentage 30
+  Assert-AreEqual $ThroughputBucket2.IsDefaultBucket $false
+
+  Assert-AreEqual $ThroughputBucket3.Id 3
+  Assert-AreEqual $ThroughputBucket3.MaxThroughputPercentage 50
+  Assert-AreEqual $ThroughputBucket3.IsDefaultBucket $true
 
   Try{
       # Create a database (no shared throughput) and a container with dedicated throughput
@@ -2096,8 +2110,10 @@ function Test-SqlThroughputBucketsCmdlets-ManualContainer
       Assert-AreEqual $UpdatedContainerThroughput.ThroughputBucketsObject.Count 2
       Assert-AreEqual $UpdatedContainerThroughput.ThroughputBucketsObject[0].Id 1
       Assert-AreEqual $UpdatedContainerThroughput.ThroughputBucketsObject[0].MaxThroughputPercentage 20
+      Assert-AreEqual $UpdatedContainerThroughput.ThroughputBucketsObject[0].IsDefaultBucket $null
       Assert-AreEqual $UpdatedContainerThroughput.ThroughputBucketsObject[1].Id 2
       Assert-AreEqual $UpdatedContainerThroughput.ThroughputBucketsObject[1].MaxThroughputPercentage 30
+      Assert-AreEqual $UpdatedContainerThroughput.ThroughputBucketsObject[1].IsDefaultBucket $false
 
       # Updating throughput without specifying buckets should not change existing buckets
       $UpdatedContainerThroughputNoBucketsParam = Update-AzCosmosDBSqlContainerThroughput -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -Name $ContainerName -Throughput $UpdatedContainerThroughputValue
@@ -2105,8 +2121,32 @@ function Test-SqlThroughputBucketsCmdlets-ManualContainer
       Assert-AreEqual $UpdatedContainerThroughputNoBucketsParam.ThroughputBucketsObject.Count 2
       Assert-AreEqual $UpdatedContainerThroughputNoBucketsParam.ThroughputBucketsObject[0].Id 1
       Assert-AreEqual $UpdatedContainerThroughputNoBucketsParam.ThroughputBucketsObject[0].MaxThroughputPercentage 20
+      Assert-AreEqual $UpdatedContainerThroughputNoBucketsParam.ThroughputBucketsObject[0].IsDefaultBucket $null
       Assert-AreEqual $UpdatedContainerThroughputNoBucketsParam.ThroughputBucketsObject[1].Id 2
       Assert-AreEqual $UpdatedContainerThroughputNoBucketsParam.ThroughputBucketsObject[1].MaxThroughputPercentage 30
+      Assert-AreEqual $UpdatedContainerThroughputNoBucketsParam.ThroughputBucketsObject[1].IsDefaultBucket $false
+
+      # Test adding bucket 3 with IsDefaultBucket = true along with buckets 1 and 2
+      $UpdatedWithDefaultBucket = Update-AzCosmosDBSqlContainerThroughput -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -Name $ContainerName -Throughput $ContainerThroughputValue -ThroughputBucketsObject @($ThroughputBucket1, $ThroughputBucket2, $ThroughputBucket3)
+      Assert-AreEqual $UpdatedWithDefaultBucket.ThroughputBucketsObject.Count 3
+      Assert-AreEqual $UpdatedWithDefaultBucket.ThroughputBucketsObject[0].Id 1
+      Assert-AreEqual $UpdatedWithDefaultBucket.ThroughputBucketsObject[0].IsDefaultBucket $null
+      Assert-AreEqual $UpdatedWithDefaultBucket.ThroughputBucketsObject[1].Id 2
+      Assert-AreEqual $UpdatedWithDefaultBucket.ThroughputBucketsObject[1].IsDefaultBucket $false
+      Assert-AreEqual $UpdatedWithDefaultBucket.ThroughputBucketsObject[2].Id 3
+      Assert-AreEqual $UpdatedWithDefaultBucket.ThroughputBucketsObject[2].IsDefaultBucket $true
+
+      # Test changing the default bucket from bucket 3 to bucket 1
+      $ThroughputBucket1WithDefault = New-AzCosmosDBThroughputBucketObject -Id 1 -MaxThroughputPercentage 20 -IsDefaultBucket $true
+      $ThroughputBucket3NoDefault = New-AzCosmosDBThroughputBucketObject -Id 3 -MaxThroughputPercentage 50 -IsDefaultBucket $false
+      $ChangedDefaultBucket = Update-AzCosmosDBSqlContainerThroughput -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -Name $ContainerName -Throughput $ContainerThroughputValue -ThroughputBucketsObject @($ThroughputBucket1WithDefault, $ThroughputBucket2, $ThroughputBucket3NoDefault)
+      Assert-AreEqual $ChangedDefaultBucket.ThroughputBucketsObject.Count 3
+      Assert-AreEqual $ChangedDefaultBucket.ThroughputBucketsObject[0].Id 1
+      Assert-AreEqual $ChangedDefaultBucket.ThroughputBucketsObject[0].IsDefaultBucket $true
+      Assert-AreEqual $ChangedDefaultBucket.ThroughputBucketsObject[1].Id 2
+      Assert-AreEqual $ChangedDefaultBucket.ThroughputBucketsObject[1].IsDefaultBucket $false
+      Assert-AreEqual $ChangedDefaultBucket.ThroughputBucketsObject[2].Id 3
+      Assert-AreEqual $ChangedDefaultBucket.ThroughputBucketsObject[2].IsDefaultBucket $false
 
       # Removing all throughput buckets
       $UpdatedContainerThroughput = Update-AzCosmosDBSqlContainerThroughput -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -Name $ContainerName -Throughput $ContainerThroughputValue -ThroughputBucketsObject @()
