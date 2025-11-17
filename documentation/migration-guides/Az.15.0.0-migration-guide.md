@@ -537,13 +537,13 @@ The return type changed from PSFrontendEndpoint to Boolean. Way to use this cmdl
 
 #### Before
 
-``` powerhshell
+``` powershell
 Disable-AzFrontDoorCustomDomainHttps -ResourceGroupName "resourcegroup1" -FrontDoorName "frontdoor1" -FrontendEndpointName "frontendpointname1-custom-xyz"
 ```
 
 #### After
 
-``` powerhshell
+``` powershell
 Disable-AzFrontDoorCustomDomainHttps -ResourceGroupName "resourcegroup1" -FrontDoorName "frontdoor1" -FrontendEndpointName "frontendpointname1-custom-xyz"
 ```
 
@@ -553,13 +553,13 @@ The return type changed from PSFrontendEndpoint to Boolean. Way to use this cmdl
 
 #### Before
 
-``` powerhshell
+``` powershell
 Enable-AzFrontDoorCustomDomainHttps -ResourceGroupName "resourcegroup1" -FrontDoorName "frontdoor1" -FrontendEndpointName "frontendpointname1-custom-xyz" -MinimumTlsVersion "1.2"
 ```
 
 #### After
 
-``` powerhshell
+``` powershell
 Enable-AzFrontDoorCustomDomainHttps -ResourceGroupName "resourcegroup1" -FrontDoorName "frontdoor1" -FrontendEndpointName "frontendpointname1-custom-xyz" -MinimumTlsVersion "1.2"
 ```
 
@@ -569,7 +569,7 @@ The return type field name changed from plural to singular
 
 #### Before
 
-``` powerhshell
+``` powershell
 Get-AzFrontDoor -ResourceGroupName "rg1" -Name "frontDoor1"
 ```
 
@@ -594,7 +594,7 @@ Type                  : Microsoft.Network/frontdoor1
 
 #### After
 
-``` powerhshell
+``` powershell
 Enable-AzFrontDoorCustomDomainHttps -ResourceGroupName "resourcegroup1" -FrontDoorName "frontdoor1" -FrontendEndpointName "frontendpointname1-custom-xyz" -MinimumTlsVersion "1.2"
 ```
 
