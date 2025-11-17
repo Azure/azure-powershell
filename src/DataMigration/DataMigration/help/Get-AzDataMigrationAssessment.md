@@ -78,9 +78,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Config json File Format
+### -Config File Format
 
-```yaml
+```json
 {
     "action": "Assess",
     "outputFolder": "C:\\Output",
