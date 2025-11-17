@@ -31,7 +31,7 @@ commit: 84298cdc6b918812b002cc2ba05df0ec23f4e352
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file: 
-  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/datadog/resource-manager/Microsoft.Datadog/stable/2025-06-11/datadog.json
+  - $(repo)/specification/datadog/resource-manager/Microsoft.Datadog/stable/2025-06-11/datadog.json
   
 title: Datadog
 module-version: 0.1.0
