@@ -127,7 +127,7 @@ $disconnectedOperations = @{
   "ResourceGroupName" = "ResourceGroup-1";
   "SubscriptionId" = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx";
 }
-Get-AzDisconnectedOperationsImage -ImageName "defualt" -DisconnectedOperationInputObject $disconnectedOperations
+Get-AzDisconnectedOperationsImage -ImageName "default" -DisconnectedOperationInputObject $disconnectedOperations
 ```
 
 ```output

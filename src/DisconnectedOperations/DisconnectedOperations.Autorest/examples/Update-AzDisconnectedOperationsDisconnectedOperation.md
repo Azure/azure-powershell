@@ -1,6 +1,6 @@
 ### Example 1: Update a DisconnectedOperation by name and resource group
 ```powershell
-Update-AzDisconnectedOperationsDisconnectedOperation -Name "Resource-1" -ResourceGroupName "ResourceGroup-1 -RegistrationStatus "Registered"
+Update-AzDisconnectedOperationsDisconnectedOperation -Name "Resource-1" -ResourceGroupName "ResourceGroup-1" -RegistrationStatus "Registered"
 ```
 
 ```output
@@ -59,11 +59,7 @@ This command updates the DisconnectedOperation resource named `Resource-1` in th
 
 ### Example 3: Update a DisconnectedOperation by jsonString
 ```powershell
-Update-AzDisconnectedOperationsDisconnectedOperation -Name "Resource-1" -ResourceGroupName "ResourceGroup-1" -JsonString '{
-  "properties": {
-    "registrationStatus": "Registered"
-  }
-}'
+Update-AzDisconnectedOperationsDisconnectedOperation -Name "Resource-1" -ResourceGroupName "ResourceGroup-1" -JsonString '{"properties": {"registrationStatus": "Registered"}}'
 ```
 
 ```output
