@@ -5979,7 +5979,7 @@ function Test-VirtualMachineScaleSetAutomaticZonePlacement
     try
     {
         # Common
-        $loc = Get-ComputeVMLocation;
+        $loc = "eastus2euap";
         $vmssName = "vmssAutoZonePlacement" + $rgname;
         $vnetName = "vnetAutoZonePlacement" + $rgname;
         $subnetName = "subnetAutoZonePlacement" + $rgname;
@@ -6029,10 +6029,9 @@ function Test-VirtualMachineScaleSetAutomaticZonePlacement
         Assert-True { $vmssResult.ResiliencyPolicy.ZoneAllocationPolicy.MaxInstancePercentPerZonePolicy.Enabled }
 
         # Update vmss
-        $vmssUpdate = Update-AzVmss -ResourceGroupName $rgname -Name $vmssName -EnableMaxInstancePercentPerZone $false
+        $vmssUpdate = Update-AzVmss -ResourceGroupName $rgname -Name $vmssName -MaxZoneCount 3
 
-        # Assert the AutomaticZoneRebalancingPolicy is now disabled
-        Assert-False { $vmssUpdate.ResiliencyPolicy.AutomaticZoneRebalancingPolicy.Enabled };
+        Assert-AreEqual $vmssUpdate.ResiliencyPolicy.ZoneAllocationPolicy.MaxZoneCount 3;
     }
     finally
     {
