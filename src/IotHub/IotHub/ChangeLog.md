@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.8.1
 * Aligned dependency versions with other modules
 
 ## Version 2.8.0
