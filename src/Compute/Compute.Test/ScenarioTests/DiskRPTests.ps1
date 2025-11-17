@@ -1983,3 +1983,61 @@ function Test-SupportedSecurityOption
 		Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Testing disk availability policy
+#>
+function Test-DiskAvailabilityPolicy
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $diskname = 'disk' + $rgname;
+
+    try
+    {
+        # Common
+        $loc = Get-ComputeVMLocation;
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # Test disk config with AvailabilityPolicy set to None
+        $diskconfig = New-AzDiskConfig -Location $loc -DiskSizeGB 5 -SkuName Standard_LRS -OsType Windows -CreateOption Empty -ActionOnDiskDelay 'None';
+        Assert-NotNull $diskconfig.AvailabilityPolicy;
+        Assert-AreEqual 'None' $diskconfig.AvailabilityPolicy.ActionOnDiskDelay;
+
+        # Create disk with AvailabilityPolicy
+        $job = New-AzDisk -ResourceGroupName $rgname -DiskName $diskname -Disk $diskconfig -AsJob;
+        $result = $job | Wait-Job;
+        Assert-AreEqual "Completed" $result.State;
+
+        # Get disk and verify AvailabilityPolicy
+        $disk = Get-AzDisk -ResourceGroupName $rgname -DiskName $diskname;
+        Assert-NotNull $disk.AvailabilityPolicy;
+        Assert-AreEqual 'None' $disk.AvailabilityPolicy.ActionOnDiskDelay;
+
+        # Test update config with AvailabilityPolicy set to AutomaticReattach
+        $updateconfig = New-AzDiskUpdateConfig -ActionOnDiskDelay 'AutomaticReattach';
+        Assert-NotNull $updateconfig.AvailabilityPolicy;
+        Assert-AreEqual 'AutomaticReattach' $updateconfig.AvailabilityPolicy.ActionOnDiskDelay;
+
+        # Update disk with new AvailabilityPolicy
+        $job = Update-AzDisk -ResourceGroupName $rgname -DiskName $diskname -Disk $updateconfig -AsJob;
+        $result = $job | Wait-Job;
+        Assert-AreEqual "Completed" $result.State;
+
+        # Verify the update
+        $disk = Get-AzDisk -ResourceGroupName $rgname -DiskName $diskname;
+        Assert-NotNull $disk.AvailabilityPolicy;
+        Assert-AreEqual 'AutomaticReattach' $disk.AvailabilityPolicy.ActionOnDiskDelay;
+
+        # Cleanup
+        Remove-AzDisk -ResourceGroupName $rgname -DiskName $diskname -Force;
+        Clean-ResourceGroup $rgname
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+

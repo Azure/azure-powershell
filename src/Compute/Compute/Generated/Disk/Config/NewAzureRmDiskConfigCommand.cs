@@ -256,6 +256,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Determines on how to handle disks with slow I/O. Possible values include: 'None', 'AutomaticReattach'. None is the default behavior where the VM restarts upon slow disk I/O. AutomaticReattach will attempt to detach and reattach the disk upon I/O failure or slow response.")]
+        [PSArgumentCompleter("None", "AutomaticReattach")]
+        public string ActionOnDiskDelay { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "If createOption is ImportSecure, this is the URI of a blob to be imported into VM metadata for Confidential VM.")]
         public string SecurityMetadataUri { get; set; }
 
@@ -534,7 +541,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 SupportedCapabilities = vSupportedCapabilities,
                 PublicNetworkAccess = this.IsParameterBound(c => c.PublicNetworkAccess) ? PublicNetworkAccess : null,
                 DataAccessAuthMode = this.IsParameterBound(c => c.DataAccessAuthMode) ? DataAccessAuthMode : null,
-                OptimizedForFrequentAttach = this.IsParameterBound(c => c.OptimizedForFrequentAttach) ? OptimizedForFrequentAttach : null
+                OptimizedForFrequentAttach = this.IsParameterBound(c => c.OptimizedForFrequentAttach) ? OptimizedForFrequentAttach : null,
+                AvailabilityPolicy = this.IsParameterBound(c => c.ActionOnDiskDelay) ? new AvailabilityPolicy { ActionOnDiskDelay = ActionOnDiskDelay } : null
             };
 
             WriteObject(vDisk);
