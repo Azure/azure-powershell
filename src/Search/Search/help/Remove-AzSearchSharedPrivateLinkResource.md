@@ -8,37 +8,40 @@ schema: 2.0.0
 # Remove-AzSearchSharedPrivateLinkResource
 
 ## SYNOPSIS
-Remove the shared private link resource from the Azure Cognitive Search service.
+Remove the shared private link resource from the Azure AI Search service.
 
 ## SYNTAX
 
 ### ResourceNameParameterSet (Default)
 ```
 Remove-AzSearchSharedPrivateLinkResource [-ResourceGroupName] <String> [-ServiceName] <String> [-Name] <String>
- [-Force] [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Force] [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ParentObjectParameterSet
 ```
 Remove-AzSearchSharedPrivateLinkResource [-ParentObject] <PSSearchService> [-Name] <String> [-Force]
- [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
 Remove-AzSearchSharedPrivateLinkResource [-ResourceId] <String> [-Force] [-PassThru] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
 Remove-AzSearchSharedPrivateLinkResource [-InputObject] <PSSharedPrivateLinkResource> [-Force] [-PassThru]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzSearchSharedPrivateLinkResource** cmdlet removes the shared private link resource from the Azure Cognitive Search service.
+The **Remove-AzSearchSharedPrivateLinkResource** cmdlet removes the shared private link resource from the Azure AI Search service.
 
 ## EXAMPLES
 
@@ -53,7 +56,7 @@ Remove Shared Private Link Resource 'blob-pe'.
 [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
 ```
 
-This example deletes a shared private link resource by name of the Azure Cognitive Search service.
+This example deletes a shared private link resource by name of the Azure AI Search service.
 
 ## PARAMETERS
 
@@ -118,7 +121,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Azure Cognitive Search Shared private link resource
+Azure AI Search Shared private link resource
 
 ```yaml
 Type: System.String
@@ -133,7 +136,7 @@ Accept wildcard characters: False
 ```
 
 ### -ParentObject
-Azure Cognitive Search Service Input Object.
+Azure AI Search Service Input Object.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Management.Search.Models.PSSearchService
@@ -194,7 +197,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServiceName
-Azure Cognitive Search Service name.
+Azure AI Search Service name.
 
 ```yaml
 Type: System.String

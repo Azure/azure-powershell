@@ -48,10 +48,14 @@ namespace Microsoft.Azure.Management.Network.Models
         /// server for Tls protocol. Default value is false.
         /// </param>
 
+        /// <param name="enableL4ClientIPPreservation">Whether to send Proxy Protocol header to backend servers over TCP or TLS
+        /// protocols. Default value is false.
+        /// </param>
+
         /// <param name="provisioningState">The provisioning state of the backend HTTP settings resource.
         /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
         /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
-        public ApplicationGatewayBackendSettingsPropertiesFormat(int? port = default(int?), string protocol = default(string), int? timeout = default(int?), SubResource probe = default(SubResource), System.Collections.Generic.IList<SubResource> trustedRootCertificates = default(System.Collections.Generic.IList<SubResource>), string hostName = default(string), bool? pickHostNameFromBackendAddress = default(bool?), string provisioningState = default(string))
+        public ApplicationGatewayBackendSettingsPropertiesFormat(int? port = default(int?), string protocol = default(string), int? timeout = default(int?), SubResource probe = default(SubResource), System.Collections.Generic.IList<SubResource> trustedRootCertificates = default(System.Collections.Generic.IList<SubResource>), string hostName = default(string), bool? pickHostNameFromBackendAddress = default(bool?), bool? enableL4ClientIPPreservation = default(bool?), string provisioningState = default(string))
 
         {
             this.Port = port;
@@ -61,6 +65,7 @@ namespace Microsoft.Azure.Management.Network.Models
             this.TrustedRootCertificates = trustedRootCertificates;
             this.HostName = hostName;
             this.PickHostNameFromBackendAddress = pickHostNameFromBackendAddress;
+            this.EnableL4ClientIPPreservation = enableL4ClientIPPreservation;
             this.ProvisioningState = provisioningState;
             CustomInit();
         }
@@ -117,6 +122,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "pickHostNameFromBackendAddress")]
         public bool? PickHostNameFromBackendAddress {get; set; }
+
+        /// <summary>
+        /// Gets or sets whether to send Proxy Protocol header to backend servers over
+        /// TCP or TLS protocols. Default value is false.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "enableL4ClientIpPreservation")]
+        public bool? EnableL4ClientIPPreservation {get; set; }
 
         /// <summary>
         /// Gets the provisioning state of the backend HTTP settings resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;

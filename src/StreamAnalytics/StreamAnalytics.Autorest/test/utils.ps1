@@ -111,10 +111,10 @@ function setupEnv() {
     $iothubKey = $resourceKey.PrimaryKey
 
     # Update value of the template json.
-    $storageAccountParam = Get-Content .\test\template-json\StroageAccount.json | ConvertFrom-Json
+    $storageAccountParam = Get-Content .\test\template-json\StorageAccount.json | ConvertFrom-Json
     $storageAccountParam.properties.datasource.properties.storageAccounts[0].accountName = $env.storageAccount00
     $storageAccountParam.properties.datasource.properties.storageAccounts[0].accountKey = $storageAccountKey
-    Set-Content -Path .\test\template-json\StroageAccount.json -Value (ConvertTo-Json -InputObject $storageAccountParam -Depth 10)
+    Set-Content -Path .\test\template-json\StorageAccount.json -Value (ConvertTo-Json -InputObject $storageAccountParam -Depth 10)
 
     $iothubParam = Get-Content .\test\template-json\IotHub.json | ConvertFrom-Json
     $iothubParam.properties.datasource.properties.iotHubNamespace = $env.iothub00
@@ -132,7 +132,7 @@ function setupEnv() {
     New-AzStreamAnalyticsJob -ResourceGroupName $env.resourceGroup -Name $env.job02 -Location $env.location -SkuName 'Standard' -ClusterId $cluster00.Id
 
     New-AzStreamAnalyticsInput -ResourceGroupName $env.resourceGroup -JobName $env.job01 -Name $env.input01 -File .\test\template-json\IotHub.json
-    New-AzStreamAnalyticsOutput -ResourceGroupName $env.resourceGroup -JobName $env.job01 -Name $env.output01 -File .\test\template-json\StroageAccount.json
+    New-AzStreamAnalyticsOutput -ResourceGroupName $env.resourceGroup -JobName $env.job01 -Name $env.output01 -File .\test\template-json\StorageAccount.json
 
     New-AzStreamAnalyticsFunction -ResourceGroupName $env.resourceGroup -JobName $env.job01 -Name $env.function01 -File .\test\template-json\Function_JavascriptUdf.json
     New-AzStreamAnalyticsFunction -ResourceGroupName $env.resourceGroup -JobName $env.job01 -Name $env.mlsfunction -File .\test\template-json\MachineLearningServices.json

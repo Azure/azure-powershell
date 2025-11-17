@@ -31,12 +31,19 @@ Get-AzWorkloadsSapApplicationInstance -InputObject <ISapVirtualInstanceIdentity>
  [<CommonParameters>]
 ```
 
+### GetViaIdentitySapVirtualInstance
+```
+Get-AzWorkloadsSapApplicationInstance -Name <String>
+ -SapVirtualInstanceInputObject <ISapVirtualInstanceIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Gets the SAP Application Server Instance corresponding to the Virtual Instance for SAP solutions resource.
 
 ## EXAMPLES
 
-### Example 1: Get an overview of The App Server Instance(s)
+### Example 1: Get an overview of The App Server Instance(s) 
 ```powershell
 Get-AzWorkloadsSapApplicationInstance -ResourceGroupName DemoRGVIS -SapVirtualInstanceName DRT
 ```
@@ -95,7 +102,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentity
@@ -114,7 +120,7 @@ The name of SAP Application Server instance resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentitySapVirtualInstance
 Aliases:
 
 Required: True
@@ -137,6 +143,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SapVirtualInstanceInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentity
+Parameter Sets: GetViaIdentitySapVirtualInstance
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -180,7 +201,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api20240901.ISapApplicationServerInstance
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapApplicationServerInstance
 
 ## NOTES
 
@@ -189,3 +210,4 @@ ALIASES
 Get-AzVISApplicationInstance
 
 ## RELATED LINKS
+

@@ -23,11 +23,11 @@ Tests whether an output’s datasource is reachable and usable by the Azure Stre
 Test-AzStreamAnalyticsOutput -ResourceGroupName lucas-rg-test -JobName sajob-01-pwsh -Name output-01
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IOutput
+Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IOutput
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IStreamAnalyticsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IResourceTestStatus
+Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IResourceTestStatus
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -52,18 +52,32 @@ OUTPUT <IOutput>: An output object, containing all information associated with t
   [Datasource <IOutputDataSource>]: Describes the data source that output will be written to. Required on PUT (CreateOrReplace) requests.
     Type <String>: Indicates the type of data source output will be written to. Required on PUT (CreateOrReplace) requests.
   [ETag <String>]: 
-  [SerializationType <EventSerializationType?>]: Indicates the type of serialization that the input or output uses. Required on PUT (CreateOrReplace) requests.
+  [SerializationType <String>]: Indicates the type of serialization that the input or output uses. Required on PUT (CreateOrReplace) requests.
   [SizeWindow <Single?>]: 
   [TimeWindow <String>]: 
+
+STREAMINGJOBINPUTOBJECT <IStreamAnalyticsIdentity>: Identity Parameter
+  [ClusterName <String>]: The name of the cluster.
+  [FunctionName <String>]: The name of the function.
+  [Id <String>]: Resource identity path
+  [InputName <String>]: The name of the input.
+  [JobName <String>]: The name of the streaming job.
+  [Location <String>]: The region in which to retrieve the subscription's quota information. You can find out which regions Azure Stream Analytics is supported in here: https://azure.microsoft.com/en-us/regions/
+  [OutputName <String>]: The name of the output.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [TransformationName <String>]: The name of the transformation.
 .Link
 https://learn.microsoft.com/powershell/module/az.streamanalytics/test-azstreamanalyticsoutput
 #>
 function Test-AzStreamAnalyticsOutput {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IResourceTestStatus])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IResourceTestStatus])]
 [CmdletBinding(DefaultParameterSetName='TestExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Test', Mandatory)]
     [Parameter(ParameterSetName='TestExpanded', Mandatory)]
+    [Parameter(ParameterSetName='TestViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='TestViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category('Path')]
     [System.String]
     # The name of the streaming job.
@@ -71,6 +85,10 @@ param(
 
     [Parameter(ParameterSetName='Test', Mandatory)]
     [Parameter(ParameterSetName='TestExpanded', Mandatory)]
+    [Parameter(ParameterSetName='TestViaIdentityStreamingjob', Mandatory)]
+    [Parameter(ParameterSetName='TestViaIdentityStreamingjobExpanded', Mandatory)]
+    [Parameter(ParameterSetName='TestViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='TestViaJsonString', Mandatory)]
     [Alias('OutputName')]
     [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category('Path')]
     [System.String]
@@ -79,6 +97,8 @@ param(
 
     [Parameter(ParameterSetName='Test', Mandatory)]
     [Parameter(ParameterSetName='TestExpanded', Mandatory)]
+    [Parameter(ParameterSetName='TestViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='TestViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -87,6 +107,8 @@ param(
 
     [Parameter(ParameterSetName='Test')]
     [Parameter(ParameterSetName='TestExpanded')]
+    [Parameter(ParameterSetName='TestViaJsonFilePath')]
+    [Parameter(ParameterSetName='TestViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -98,38 +120,46 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IStreamAnalyticsIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='TestViaIdentityStreamingjob', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='TestViaIdentityStreamingjobExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IStreamAnalyticsIdentity]
+    # Identity Parameter
+    ${StreamingjobInputObject},
 
     [Parameter(ParameterSetName='Test', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='TestViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='TestViaIdentityStreamingjob', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IOutput]
+    [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IOutput]
     # An output object, containing all information associated with the named output.
     # All outputs are contained under a streaming job.
-    # To construct, see NOTES section for OUTPUT properties and create a hash table.
     ${Output},
 
     [Parameter(ParameterSetName='TestExpanded')]
     [Parameter(ParameterSetName='TestViaIdentityExpanded')]
+    [Parameter(ParameterSetName='TestViaIdentityStreamingjobExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IOutputDataSource]
+    [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IOutputDataSource]
     # Describes the data source that output will be written to.
     # Required on PUT (CreateOrReplace) requests.
-    # To construct, see NOTES section for DATASOURCE properties and create a hash table.
     ${Datasource},
 
     [Parameter(ParameterSetName='TestExpanded')]
     [Parameter(ParameterSetName='TestViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Support.EventSerializationType])]
+    [Parameter(ParameterSetName='TestViaIdentityStreamingjobExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.PSArgumentCompleterAttribute("Csv", "Avro", "Json", "CustomClr", "Parquet")]
     [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Support.EventSerializationType]
+    [System.String]
     # Indicates the type of serialization that the input or output uses.
     # Required on PUT (CreateOrReplace) requests.
     ${SerializationType},
 
     [Parameter(ParameterSetName='TestExpanded')]
     [Parameter(ParameterSetName='TestViaIdentityExpanded')]
+    [Parameter(ParameterSetName='TestViaIdentityStreamingjobExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category('Body')]
     [System.Single]
     # .
@@ -137,10 +167,23 @@ param(
 
     [Parameter(ParameterSetName='TestExpanded')]
     [Parameter(ParameterSetName='TestViaIdentityExpanded')]
+    [Parameter(ParameterSetName='TestViaIdentityStreamingjobExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category('Body')]
     [System.String]
     # .
     ${TimeWindow},
+
+    [Parameter(ParameterSetName='TestViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Test operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='TestViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category('Body')]
+    [System.String]
+    # Json string supplied to the Test operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -210,16 +253,21 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Test = 'Az.StreamAnalytics.private\Test-AzStreamAnalyticsOutput_Test';
             TestExpanded = 'Az.StreamAnalytics.private\Test-AzStreamAnalyticsOutput_TestExpanded';
             TestViaIdentity = 'Az.StreamAnalytics.private\Test-AzStreamAnalyticsOutput_TestViaIdentity';
             TestViaIdentityExpanded = 'Az.StreamAnalytics.private\Test-AzStreamAnalyticsOutput_TestViaIdentityExpanded';
+            TestViaIdentityStreamingjob = 'Az.StreamAnalytics.private\Test-AzStreamAnalyticsOutput_TestViaIdentityStreamingjob';
+            TestViaIdentityStreamingjobExpanded = 'Az.StreamAnalytics.private\Test-AzStreamAnalyticsOutput_TestViaIdentityStreamingjobExpanded';
+            TestViaJsonFilePath = 'Az.StreamAnalytics.private\Test-AzStreamAnalyticsOutput_TestViaJsonFilePath';
+            TestViaJsonString = 'Az.StreamAnalytics.private\Test-AzStreamAnalyticsOutput_TestViaJsonString';
         }
-        if (('Test', 'TestExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Test', 'TestExpanded', 'TestViaJsonFilePath', 'TestViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -228,6 +276,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

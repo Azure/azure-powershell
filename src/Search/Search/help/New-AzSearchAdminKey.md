@@ -8,30 +8,33 @@ schema: 2.0.0
 # New-AzSearchAdminKey
 
 ## SYNOPSIS
-Regenerates an admin key of the Azure Cognitive Search service.
+Regenerates an admin key of the Azure AI Search service.
 
 ## SYNTAX
 
 ### ResourceNameParameterSet (Default)
 ```
 New-AzSearchAdminKey [-ResourceGroupName] <String> [-ServiceName] <String> -KeyKind <PSSearchAdminKeyKind>
- [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ParentObjectParameterSet
 ```
 New-AzSearchAdminKey [-ParentObject] <PSSearchService> -KeyKind <PSSearchAdminKeyKind> [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ParentResourceIdParameterSet
 ```
 New-AzSearchAdminKey [-ParentResourceId] <String> -KeyKind <PSSearchAdminKeyKind> [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzSearchAdminKey** cmdlet regenerates an admin key of the Azure Cognitive Search service.
+The **New-AzSearchAdminKey** cmdlet regenerates an admin key of the Azure AI Search service.
 
 ## EXAMPLES
 
@@ -50,7 +53,7 @@ Primary                          Secondary
 85B3813D11904B591BE8A196C2C743A1 CEF791D5BAC2E6C0B232C56702F21E87
 ```
 
-The example regenerates Primary key of the Azure Cognitive Search service.
+The example regenerates Primary key of the Azure AI Search service.
 
 ## PARAMETERS
 
@@ -85,7 +88,7 @@ Accept wildcard characters: False
 ```
 
 ### -KeyKind
-Azure Cognitive Search Service admin key kind (Primary/Secondary).
+Azure AI Search Service admin key kind (Primary/Secondary).
 
 ```yaml
 Type: Microsoft.Azure.Commands.Management.Search.Models.PSSearchAdminKeyKind
@@ -101,7 +104,7 @@ Accept wildcard characters: False
 ```
 
 ### -ParentObject
-Azure Cognitive Search Service Input Object.
+Azure AI Search Service Input Object.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Management.Search.Models.PSSearchService
@@ -116,7 +119,7 @@ Accept wildcard characters: False
 ```
 
 ### -ParentResourceId
-Azure Cognitive Search Service Resource Id.
+Azure AI Search Service Resource Id.
 
 ```yaml
 Type: System.String
@@ -146,7 +149,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServiceName
-Azure Cognitive Search Service name.
+Azure AI Search Service name.
 
 ```yaml
 Type: System.String

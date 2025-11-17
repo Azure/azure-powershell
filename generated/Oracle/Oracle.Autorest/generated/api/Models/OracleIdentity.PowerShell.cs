@@ -128,6 +128,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IOracleIdentityInternal)this).Cloudvmclustername = (string) content.GetValueForProperty("Cloudvmclustername",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IOracleIdentityInternal)this).Cloudvmclustername, global::System.Convert.ToString);
             }
+            if (content.Contains("DbSystemName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IOracleIdentityInternal)this).DbSystemName = (string) content.GetValueForProperty("DbSystemName",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IOracleIdentityInternal)this).DbSystemName, global::System.Convert.ToString);
+            }
             if (content.Contains("ExadbVMClusterName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IOracleIdentityInternal)this).ExadbVMClusterName = (string) content.GetValueForProperty("ExadbVMClusterName",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IOracleIdentityInternal)this).ExadbVMClusterName, global::System.Convert.ToString);
@@ -151,6 +155,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             if (content.Contains("Autonomousdbversionsname"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IOracleIdentityInternal)this).Autonomousdbversionsname = (string) content.GetValueForProperty("Autonomousdbversionsname",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IOracleIdentityInternal)this).Autonomousdbversionsname, global::System.Convert.ToString);
+            }
+            if (content.Contains("Dbversionsname"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IOracleIdentityInternal)this).Dbversionsname = (string) content.GetValueForProperty("Dbversionsname",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IOracleIdentityInternal)this).Dbversionsname, global::System.Convert.ToString);
             }
             if (content.Contains("Dbsystemshapename"))
             {
@@ -179,6 +187,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             if (content.Contains("Systemversionname"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IOracleIdentityInternal)this).Systemversionname = (string) content.GetValueForProperty("Systemversionname",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IOracleIdentityInternal)this).Systemversionname, global::System.Convert.ToString);
+            }
+            if (content.Contains("NetworkAnchorName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IOracleIdentityInternal)this).NetworkAnchorName = (string) content.GetValueForProperty("NetworkAnchorName",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IOracleIdentityInternal)this).NetworkAnchorName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceAnchorName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IOracleIdentityInternal)this).ResourceAnchorName = (string) content.GetValueForProperty("ResourceAnchorName",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IOracleIdentityInternal)this).ResourceAnchorName, global::System.Convert.ToString);
             }
             if (content.Contains("Adbbackupid"))
             {
@@ -241,6 +257,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IOracleIdentityInternal)this).Cloudvmclustername = (string) content.GetValueForProperty("Cloudvmclustername",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IOracleIdentityInternal)this).Cloudvmclustername, global::System.Convert.ToString);
             }
+            if (content.Contains("DbSystemName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IOracleIdentityInternal)this).DbSystemName = (string) content.GetValueForProperty("DbSystemName",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IOracleIdentityInternal)this).DbSystemName, global::System.Convert.ToString);
+            }
             if (content.Contains("ExadbVMClusterName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IOracleIdentityInternal)this).ExadbVMClusterName = (string) content.GetValueForProperty("ExadbVMClusterName",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IOracleIdentityInternal)this).ExadbVMClusterName, global::System.Convert.ToString);
@@ -264,6 +284,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             if (content.Contains("Autonomousdbversionsname"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IOracleIdentityInternal)this).Autonomousdbversionsname = (string) content.GetValueForProperty("Autonomousdbversionsname",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IOracleIdentityInternal)this).Autonomousdbversionsname, global::System.Convert.ToString);
+            }
+            if (content.Contains("Dbversionsname"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IOracleIdentityInternal)this).Dbversionsname = (string) content.GetValueForProperty("Dbversionsname",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IOracleIdentityInternal)this).Dbversionsname, global::System.Convert.ToString);
             }
             if (content.Contains("Dbsystemshapename"))
             {
@@ -292,6 +316,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             if (content.Contains("Systemversionname"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IOracleIdentityInternal)this).Systemversionname = (string) content.GetValueForProperty("Systemversionname",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IOracleIdentityInternal)this).Systemversionname, global::System.Convert.ToString);
+            }
+            if (content.Contains("NetworkAnchorName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IOracleIdentityInternal)this).NetworkAnchorName = (string) content.GetValueForProperty("NetworkAnchorName",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IOracleIdentityInternal)this).NetworkAnchorName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceAnchorName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IOracleIdentityInternal)this).ResourceAnchorName = (string) content.GetValueForProperty("ResourceAnchorName",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IOracleIdentityInternal)this).ResourceAnchorName, global::System.Convert.ToString);
             }
             if (content.Contains("Adbbackupid"))
             {

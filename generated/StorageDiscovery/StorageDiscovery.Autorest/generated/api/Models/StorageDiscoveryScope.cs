@@ -26,11 +26,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models
         public System.Collections.Generic.List<string> ResourceType { get => this._resourceType; set => this._resourceType = value; }
 
         /// <summary>Backing field for <see cref="Tag" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.ITags _tag;
+        private Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryScopeTags _tag;
 
         /// <summary>Resource tags.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.PropertyOrigin.Owned)]
-        public Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.ITags Tag { get => (this._tag = this._tag ?? new Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.Tags()); set => this._tag = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryScopeTags Tag { get => (this._tag = this._tag ?? new Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.StorageDiscoveryScopeTags()); set => this._tag = value; }
 
         /// <summary>Backing field for <see cref="TagKeysOnly" /> property.</summary>
         private System.Collections.Generic.List<string> _tagKeysOnly;
@@ -81,8 +81,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models
         Update = true,
         Description = @"Resource tags.",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.ITags) })]
-        Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.ITags Tag { get; set; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryScopeTags) })]
+        Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryScopeTags Tag { get; set; }
         /// <summary>The storage account tags keys to filter</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.Info(
         Required = false,
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models
         [global::Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.PSArgumentCompleterAttribute("Microsoft.Storage/storageAccounts")]
         System.Collections.Generic.List<string> ResourceType { get; set; }
         /// <summary>Resource tags.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.ITags Tag { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryScopeTags Tag { get; set; }
         /// <summary>The storage account tags keys to filter</summary>
         System.Collections.Generic.List<string> TagKeysOnly { get; set; }
 

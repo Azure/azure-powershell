@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Migrate-help.xml
 Module Name: Az.Migrate
 online version: https://learn.microsoft.com/powershell/module/az.migrate/restart-azmigrateserverreplication
 schema: 2.0.0
@@ -20,7 +20,7 @@ Restart-AzMigrateServerReplication -TargetObjectID <String> [-SubscriptionId <St
 
 ### ByInputObjectVMwareCbt
 ```
-Restart-AzMigrateServerReplication -InputObject <IMigrationItem> [-SubscriptionId <String>]
+Restart-AzMigrateServerReplication [-SubscriptionId <String>] -InputObject <IMigrationItem>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -112,7 +112,7 @@ Specifies the machine object of the replicating server.
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IMigrationItem
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IMigrationItem
 Parameter Sets: ByInputObjectVMwareCbt
 Aliases:
 
@@ -161,9 +161,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IJob
+### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IJob
 
 ## NOTES
 
 ## RELATED LINKS
-

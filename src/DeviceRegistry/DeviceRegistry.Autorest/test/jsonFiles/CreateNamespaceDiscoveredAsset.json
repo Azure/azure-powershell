@@ -2,7 +2,7 @@
   "location": "eastus2",
   "extendedLocation": {
     "type": "CustomLocation",
-    "name": "/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.ExtendedLocation/customLocations/location-2pnh4"
+    "name": "/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.ExtendedLocation/customLocations/location-mkzkq"
   },
   "tags": {
     "sensor": "temperature,humidity,pressure"
@@ -14,6 +14,9 @@
     },
     "discoveryId": "myDiscoveryId",
     "version": 1,
+    "displayName": "test-ns-dasset-displayName",
+    "description": "my test discovered asset",
+    "externalAssetId": "test-dasset-externalAssetId",
     "manufacturer": "Contoso123",
     "manufacturerUri": "https://www.contoso.com/manufacturerUri",
     "model": "ContosoModel",
@@ -89,59 +92,59 @@
         ]
       }
     ],
-    "events": [
+    "eventGroups": [
       {
-        "name": "event1",
-        "eventNotifier": "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt5",
-        "eventConfiguration": "{\"publishingInterval\":7,\"samplingInterval\":1,\"queueSize\":8}",
-        "destinations": [
+        "name": "eventGroup1",
+        "dataSource": "nsu=http://microsoft.com/Opc/OpcPlc/EventGroup1",
+        "eventGroupConfiguration": "{\"publishingInterval\":10,\"samplingInterval\":15,\"queueSize\":20}",
+        "defaultDestinations": [
           {
             "target": "Mqtt",
             "configuration": {
-              "topic": "/contoso/testEvent1",
+              "topic": "/contoso/eventGroup1",
               "retain": "Keep",
-              "qos": "Qos0",
-              "ttl": 7200
+              "qos": "Qos1",
+              "ttl": 3600
             }
           }
         ],
-        "typeRef": "event1Ref",
-        "dataPoints": [
+        "typeRef": "eventGroup1TypeRef",
+        "events": [
           {
-            "name": "event1DataPoint1",
-            "dataSource": "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt6",
-            "dataPointConfiguration": "{\"publishingInterval\":8,\"samplingInterval\":8,\"queueSize\":4}"
-          },
-          {
-            "name": "event1DataPoint2",
-            "dataSource": "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt7",
-            "dataPointConfiguration": "{\"publishingInterval\":8,\"samplingInterval\":8,\"queueSize\":4}"
+            "name": "event1",
+            "dataSource": "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt5",
+            "eventConfiguration": "{\"publishingInterval\":7,\"samplingInterval\":1,\"queueSize\":8}",
+            "destinations": [
+              {
+                "target": "Mqtt",
+                "configuration": {
+                  "topic": "/contoso/testEvent1",
+                  "retain": "Keep",
+                  "qos": "Qos0",
+                  "ttl": 7200
+                }
+              }
+            ],
+            "typeRef": "event1Ref"
           }
         ]
       },
       {
-        "name": "event2",
-        "eventNotifier": "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt8",
-        "eventConfiguration": "{\"publishingInterval\":7,\"samplingInterval\":1,\"queueSize\":8}",
-        "destinations": [
+        "name": "eventGroup2",
+        "events": [
           {
-            "target": "Storage",
-            "configuration": {
-              "path": "/tmp/event2"
-            }
-          }
-        ],
-        "typeRef": "event2Ref",
-        "dataPoints": [
-          {
-            "name": "event2DataPoint1",
-            "dataSource": "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt9",
-            "dataPointConfiguration": "{\"publishingInterval\":8,\"samplingInterval\":8,\"queueSize\":4}"
-          },
-          {
-            "name": "event2DataPoint2",
-            "dataSource": "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt10",
-            "dataPointConfiguration": "{\"publishingInterval\":8,\"samplingInterval\":8,\"queueSize\":4}"
+            "name": "event2",
+            "dataSource": "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt8",
+            "eventConfiguration": "{\"publishingInterval\":7,\"samplingInterval\":1,\"queueSize\":8}",
+            "destinations": [
+              {
+                "target": "Storage",
+                "configuration": {
+                  "path": "/tmp/event2"
+                }
+              }
+            ],
+            "typeRef": "event2Ref"
           }
         ]
       }

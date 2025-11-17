@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.PowerShell;
 
-    /// <summary>Crypto certificate resource</summary>
+    /// <summary>The object representing a firmware analysis crypto certificate resource</summary>
     [System.ComponentModel.TypeConverter(typeof(CryptoCertificateResourceTypeConverter))]
     public partial class CryptoCertificateResource
     {
@@ -124,6 +124,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).PairedKey = (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IPairedKey) content.GetValueForProperty("PairedKey",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).PairedKey, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.PairedKeyTypeConverter.ConvertFrom);
             }
+            if (content.Contains("ProvisioningState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).ProvisioningState, global::System.Convert.ToString);
+            }
             if (content.Contains("Subject"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).Subject = (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateEntity) content.GetValueForProperty("Subject",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).Subject, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.CryptoCertificateEntityTypeConverter.ConvertFrom);
@@ -136,9 +140,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).CryptoCertId = (string) content.GetValueForProperty("CryptoCertId",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).CryptoCertId, global::System.Convert.ToString);
             }
-            if (content.Contains("PropertiesName"))
+            if (content.Contains("CertificateName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).PropertiesName = (string) content.GetValueForProperty("PropertiesName",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).PropertiesName, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).CertificateName = (string) content.GetValueForProperty("CertificateName",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).CertificateName, global::System.Convert.ToString);
             }
             if (content.Contains("IssuedDate"))
             {
@@ -148,21 +152,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).ExpirationDate = (global::System.DateTime?) content.GetValueForProperty("ExpirationDate",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).ExpirationDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             }
-            if (content.Contains("Role"))
+            if (content.Contains("CertificateRole"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).Role = (string) content.GetValueForProperty("Role",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).Role, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).CertificateRole = (string) content.GetValueForProperty("CertificateRole",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).CertificateRole, global::System.Convert.ToString);
             }
             if (content.Contains("SignatureAlgorithm"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).SignatureAlgorithm = (string) content.GetValueForProperty("SignatureAlgorithm",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).SignatureAlgorithm, global::System.Convert.ToString);
             }
-            if (content.Contains("KeySize"))
+            if (content.Contains("CertificateKeySize"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).KeySize = (long?) content.GetValueForProperty("KeySize",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).KeySize, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).CertificateKeySize = (long?) content.GetValueForProperty("CertificateKeySize",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).CertificateKeySize, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             }
-            if (content.Contains("KeyAlgorithm"))
+            if (content.Contains("CertificateKeyAlgorithm"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).KeyAlgorithm = (string) content.GetValueForProperty("KeyAlgorithm",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).KeyAlgorithm, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).CertificateKeyAlgorithm = (string) content.GetValueForProperty("CertificateKeyAlgorithm",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).CertificateKeyAlgorithm, global::System.Convert.ToString);
             }
             if (content.Contains("Encoding"))
             {
@@ -176,9 +180,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).Fingerprint = (string) content.GetValueForProperty("Fingerprint",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).Fingerprint, global::System.Convert.ToString);
             }
-            if (content.Contains("Usage"))
+            if (content.Contains("CertificateUsage"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).Usage = (System.Collections.Generic.List<string>) content.GetValueForProperty("Usage",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).Usage, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).CertificateUsage = (System.Collections.Generic.List<string>) content.GetValueForProperty("CertificateUsage",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).CertificateUsage, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
             if (content.Contains("FilePath"))
             {
@@ -199,10 +203,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
             if (content.Contains("IsShortKeySize"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).IsShortKeySize = (bool?) content.GetValueForProperty("IsShortKeySize",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).IsShortKeySize, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            }
-            if (content.Contains("PairedKeyId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).PairedKeyId = (string) content.GetValueForProperty("PairedKeyId",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).PairedKeyId, global::System.Convert.ToString);
             }
             if (content.Contains("PairedKeyType"))
             {
@@ -247,6 +247,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
             if (content.Contains("IssuerCountry"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).IssuerCountry = (string) content.GetValueForProperty("IssuerCountry",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).IssuerCountry, global::System.Convert.ToString);
+            }
+            if (content.Contains("PairedKeyId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).PairedKeyId = (string) content.GetValueForProperty("PairedKeyId",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).PairedKeyId, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
@@ -313,6 +317,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).PairedKey = (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IPairedKey) content.GetValueForProperty("PairedKey",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).PairedKey, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.PairedKeyTypeConverter.ConvertFrom);
             }
+            if (content.Contains("ProvisioningState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).ProvisioningState, global::System.Convert.ToString);
+            }
             if (content.Contains("Subject"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).Subject = (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateEntity) content.GetValueForProperty("Subject",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).Subject, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.CryptoCertificateEntityTypeConverter.ConvertFrom);
@@ -325,9 +333,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).CryptoCertId = (string) content.GetValueForProperty("CryptoCertId",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).CryptoCertId, global::System.Convert.ToString);
             }
-            if (content.Contains("PropertiesName"))
+            if (content.Contains("CertificateName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).PropertiesName = (string) content.GetValueForProperty("PropertiesName",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).PropertiesName, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).CertificateName = (string) content.GetValueForProperty("CertificateName",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).CertificateName, global::System.Convert.ToString);
             }
             if (content.Contains("IssuedDate"))
             {
@@ -337,21 +345,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).ExpirationDate = (global::System.DateTime?) content.GetValueForProperty("ExpirationDate",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).ExpirationDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             }
-            if (content.Contains("Role"))
+            if (content.Contains("CertificateRole"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).Role = (string) content.GetValueForProperty("Role",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).Role, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).CertificateRole = (string) content.GetValueForProperty("CertificateRole",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).CertificateRole, global::System.Convert.ToString);
             }
             if (content.Contains("SignatureAlgorithm"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).SignatureAlgorithm = (string) content.GetValueForProperty("SignatureAlgorithm",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).SignatureAlgorithm, global::System.Convert.ToString);
             }
-            if (content.Contains("KeySize"))
+            if (content.Contains("CertificateKeySize"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).KeySize = (long?) content.GetValueForProperty("KeySize",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).KeySize, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).CertificateKeySize = (long?) content.GetValueForProperty("CertificateKeySize",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).CertificateKeySize, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             }
-            if (content.Contains("KeyAlgorithm"))
+            if (content.Contains("CertificateKeyAlgorithm"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).KeyAlgorithm = (string) content.GetValueForProperty("KeyAlgorithm",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).KeyAlgorithm, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).CertificateKeyAlgorithm = (string) content.GetValueForProperty("CertificateKeyAlgorithm",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).CertificateKeyAlgorithm, global::System.Convert.ToString);
             }
             if (content.Contains("Encoding"))
             {
@@ -365,9 +373,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).Fingerprint = (string) content.GetValueForProperty("Fingerprint",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).Fingerprint, global::System.Convert.ToString);
             }
-            if (content.Contains("Usage"))
+            if (content.Contains("CertificateUsage"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).Usage = (System.Collections.Generic.List<string>) content.GetValueForProperty("Usage",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).Usage, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).CertificateUsage = (System.Collections.Generic.List<string>) content.GetValueForProperty("CertificateUsage",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).CertificateUsage, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
             if (content.Contains("FilePath"))
             {
@@ -388,10 +396,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
             if (content.Contains("IsShortKeySize"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).IsShortKeySize = (bool?) content.GetValueForProperty("IsShortKeySize",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).IsShortKeySize, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            }
-            if (content.Contains("PairedKeyId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).PairedKeyId = (string) content.GetValueForProperty("PairedKeyId",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).PairedKeyId, global::System.Convert.ToString);
             }
             if (content.Contains("PairedKeyType"))
             {
@@ -436,6 +440,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
             if (content.Contains("IssuerCountry"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).IssuerCountry = (string) content.GetValueForProperty("IssuerCountry",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).IssuerCountry, global::System.Convert.ToString);
+            }
+            if (content.Contains("PairedKeyId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).PairedKeyId = (string) content.GetValueForProperty("PairedKeyId",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ICryptoCertificateResourceInternal)this).PairedKeyId, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }
@@ -490,7 +498,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
             return ToJsonString();
         }
     }
-    /// Crypto certificate resource
+    /// The object representing a firmware analysis crypto certificate resource
     [System.ComponentModel.TypeConverter(typeof(CryptoCertificateResourceTypeConverter))]
     public partial interface ICryptoCertificateResource
 
