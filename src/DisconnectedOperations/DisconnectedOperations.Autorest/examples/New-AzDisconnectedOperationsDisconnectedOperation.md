@@ -1,6 +1,6 @@
 ### Example 1: Create a new DisconnectedOperation with expanded parameters
 ```powershell
-New-AzDisconnectedOperationsDisconnectedOperation -Name "Resource-1" -ResourceGroupName "ResourceGroup-1" -JsonFilePath -Location "westus3" -ConnectionIntent "Disconnected" -Tag @{}
+New-AzDisconnectedOperationsDisconnectedOperation -Name "Resource-1" -ResourceGroupName "ResourceGroup-1" -Location "westus3" -ConnectionIntent "Disconnected" -Tag @{}
 ```
 
 ```output

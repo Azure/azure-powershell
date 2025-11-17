@@ -72,7 +72,7 @@ SystemDataLastModifiedByType :
 Type                         : Microsoft.Edge/disconnectedOperations/images
 ```
 
-This command gets the image `release-v2509` from the DisconnectedOperation `Resource-1` in resource group `ResourceGroup-1` using InputObject for image.
+This command gets the default or latest image from the DisconnectedOperation `Resource-1` in resource group `ResourceGroup-1` using InputObject for image.
 
 ### Example 4: GetViaIdentityDisconnectedOperations for image.
 ```powershell
@@ -81,7 +81,7 @@ $disconnectedOperations = @{
   "ResourceGroupName" = "ResourceGroup-1";
   "SubscriptionId" = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx";
 }
-Get-AzDisconnectedOperationsImage -ImageName -DisconnectedOperationInputObject $disconnectedOperations
+Get-AzDisconnectedOperationsImage -ImageName "default" -DisconnectedOperationInputObject $disconnectedOperations
 ```
 
 ```output
@@ -104,4 +104,4 @@ SystemDataLastModifiedByType :
 Type                         : Microsoft.Edge/disconnectedOperations/images
 ```
 
-This command gets the image `release-v2509` from the DisconnectedOperation `Resource-1` in resource group `ResourceGroup-1` using DisconnectedOperationsObject and ImageName.
+This command gets the default or latest image from the DisconnectedOperation `Resource-1` in resource group `ResourceGroup-1` using DisconnectedOperationsObject and ImageName.
