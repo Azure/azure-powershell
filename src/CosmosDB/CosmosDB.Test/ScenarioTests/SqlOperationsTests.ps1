@@ -73,9 +73,9 @@ function Test-SqlOperationsCmdlets
       $cp1 = New-AzCosmosDBSqlCompositePath -Path "/abc" -Order Ascending
       $cp2 = New-AzCosmosDBSqlCompositePath -Path "/aberc" -Order Descending
       $CompositePaths = (($cp1, $cp2), ($cp2, $cp1))
-      $VectorIndex1 = New-AzCosmosDBSqlVectorIndex -Path "/vector1" -Type "flat"
-      $VectorIndex2 = New-AzCosmosDBSqlVectorIndex -Path "/vector2" -Type "quantizedFlat"
-      $VectorIndex3 = New-AzCosmosDBSqlVectorIndex -Path "/vector3" -Type "diskANN"
+      $VectorIndex1 = New-AzCosmosDBSqlVectorIndex -Path "/vector1" -Type "flat" 
+      $VectorIndex2 = New-AzCosmosDBSqlVectorIndex -Path "/vector2" -Type "quantizedFlat" -QuantizationByteSize 128 
+      $VectorIndex3 = New-AzCosmosDBSqlVectorIndex -Path "/vector3" -Type "diskANN" -QuantizationByteSize 128 -IndexingSearchListSize 50
 
       $IndexingPolicy = New-AzCosmosDBSqlIndexingPolicy -IncludedPath $IncludedPath -SpatialSpec $SpatialSpec -CompositePath $CompositePaths -ExcludedPath "/myPathToNotIndex/*" -Automatic 1 -IndexingMode Consistent -VectorIndex $VectorIndex1,$VectorIndex2,$VectorIndex3
 
