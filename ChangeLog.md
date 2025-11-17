@@ -37,8 +37,6 @@
 #### Az.RecoveryServices 7.10.0
 * Added Cross region restore support for new region - northeastus5.
 * Added support for vault soft delete feature - Get soft deleted vault, Undelete softdeleted vault, Get deleted backup items in a soft deleted vault using ARG.
-* Added Availability Zone support in Update Protection
-* Added Platform Fault Domain support in Enable, Update, and Switch Protection workflows
 
 #### Az.RedisEnterpriseCache 1.6.0
 * Added a new required property: PublicNetworkAccess for Cluster.
