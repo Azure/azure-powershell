@@ -79,10 +79,11 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string RestoreDatabaseNameHelpMessage = "The name of the database to restore";
         public const string RestoreCollectionNamesHelpMessage = "The names of the collections to be restored. (If not provided, all the collections will be restored)";
         public const string RestoreSourceDatabaseAccountNameHelpMessage = "The name of the source database account of the restore.";
-        public const string RestoreLocationNameHelpMessage = "The location of the source account from which restore is triggered. This will also be the write region of the restored account";
+        public const string RestoreLocationNameHelpMessage = "This is the write region of the restored account. This is also the location of the source account where its backups are located if source_backup_location is not provided.";
         public const string RestorableDatabaseAccountObjectHelpMessage = "CosmosDB Restorable Database Account object";
         public const string RestorableSqlDatabaseObjectHelpMessage = "CosmosDB Restorable Sql Database object";
         public const string RestorableMongoDBDatabaseObjectHelpMessage = "CosmosDB Restorable MongoDB Database object";
+        public const string SourceBackupLocationHelpMessage = "This is the location of the source account where backups are located. Provide this value if the source and target are in different locations.";
 
         //Backup specific help messages
         public const string BackupPolicyHelpMessage = "The backup policy to indicate how the backups of the account should be taken";
