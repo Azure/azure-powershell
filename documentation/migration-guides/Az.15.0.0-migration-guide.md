@@ -1,4 +1,4 @@
-# Migration Guide for Az 14.0.0
+# Migration Guide for Az 15.0.0
 
 ## Az.Batch
 
