@@ -115,6 +115,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceObservabilityIdentityInternal)this).MonitorName = (string) content.GetValueForProperty("MonitorName",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceObservabilityIdentityInternal)this).MonitorName, global::System.Convert.ToString);
             }
+            if (content.Contains("DynatraceEnvironmentId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceObservabilityIdentityInternal)this).DynatraceEnvironmentId = (string) content.GetValueForProperty("DynatraceEnvironmentId",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceObservabilityIdentityInternal)this).DynatraceEnvironmentId, global::System.Convert.ToString);
+            }
             if (content.Contains("RuleSetName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceObservabilityIdentityInternal)this).RuleSetName = (string) content.GetValueForProperty("RuleSetName",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceObservabilityIdentityInternal)this).RuleSetName, global::System.Convert.ToString);
@@ -155,6 +159,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models
             if (content.Contains("MonitorName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceObservabilityIdentityInternal)this).MonitorName = (string) content.GetValueForProperty("MonitorName",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceObservabilityIdentityInternal)this).MonitorName, global::System.Convert.ToString);
+            }
+            if (content.Contains("DynatraceEnvironmentId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceObservabilityIdentityInternal)this).DynatraceEnvironmentId = (string) content.GetValueForProperty("DynatraceEnvironmentId",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceObservabilityIdentityInternal)this).DynatraceEnvironmentId, global::System.Convert.ToString);
             }
             if (content.Contains("RuleSetName"))
             {
