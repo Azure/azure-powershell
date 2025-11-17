@@ -23,11 +23,9 @@ Check if a service instance name is available.
 Test-AzHealthcareServiceNameAvailability -Name azpsdicom -Type Microsoft.HealthcareApis/services
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.ICheckNameAvailabilityParameters
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IHealthcareApisIdentity
+Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.ICheckNameAvailabilityParameters
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IServicesNameAvailabilityInfo
+Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IServicesNameAvailabilityInfo
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -36,65 +34,49 @@ To create the parameters described below, construct a hash table containing the 
 CHECKNAMEAVAILABILITYINPUT <ICheckNameAvailabilityParameters>: Input values.
   Name <String>: The name of the service instance to check.
   Type <String>: The fully qualified resource type which includes provider namespace.
-
-INPUTOBJECT <IHealthcareApisIdentity>: Identity Parameter
-  [DicomServiceName <String>]: The name of DICOM Service resource.
-  [FhirDestinationName <String>]: The name of IoT Connector FHIR destination resource.
-  [FhirServiceName <String>]: The name of FHIR Service resource.
-  [GroupName <String>]: The name of the private link resource group.
-  [Id <String>]: Resource identity path
-  [IotConnectorName <String>]: The name of IoT Connector resource.
-  [LocationName <String>]: The location of the operation.
-  [OperationResultId <String>]: The ID of the operation result to get.
-  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
-  [ResourceGroupName <String>]: The name of the resource group that contains the service instance.
-  [ResourceName <String>]: The name of the service instance.
-  [SubscriptionId <String>]: The subscription identifier.
-  [WorkspaceName <String>]: The name of workspace resource.
 .Link
 https://learn.microsoft.com/powershell/module/az.healthcareapis/test-azhealthcareservicenameavailability
 #>
 function Test-AzHealthcareServiceNameAvailability {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IServicesNameAvailabilityInfo])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IServicesNameAvailabilityInfo])]
 [CmdletBinding(DefaultParameterSetName='CheckExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='Check')]
-    [Parameter(ParameterSetName='CheckExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The subscription identifier.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='CheckViaIdentity', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='CheckViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IHealthcareApisIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
     [Parameter(ParameterSetName='Check', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='CheckViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.ICheckNameAvailabilityParameters]
+    [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.ICheckNameAvailabilityParameters]
     # Input values.
-    # To construct, see NOTES section for CHECKNAMEAVAILABILITYINPUT properties and create a hash table.
     ${CheckNameAvailabilityInput},
 
     [Parameter(ParameterSetName='CheckExpanded', Mandatory)]
-    [Parameter(ParameterSetName='CheckViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
     [System.String]
     # The name of the service instance to check.
     ${Name},
 
     [Parameter(ParameterSetName='CheckExpanded', Mandatory)]
-    [Parameter(ParameterSetName='CheckViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
     [System.String]
     # The fully qualified resource type which includes provider namespace.
     ${Type},
+
+    [Parameter(ParameterSetName='CheckViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Check operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CheckViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
+    [System.String]
+    # Json string supplied to the Check operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -152,6 +134,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -173,12 +164,10 @@ begin {
         $mapping = @{
             Check = 'Az.HealthcareApis.private\Test-AzHealthcareServiceNameAvailability_Check';
             CheckExpanded = 'Az.HealthcareApis.private\Test-AzHealthcareServiceNameAvailability_CheckExpanded';
-            CheckViaIdentity = 'Az.HealthcareApis.private\Test-AzHealthcareServiceNameAvailability_CheckViaIdentity';
-            CheckViaIdentityExpanded = 'Az.HealthcareApis.private\Test-AzHealthcareServiceNameAvailability_CheckViaIdentityExpanded';
+            CheckViaJsonFilePath = 'Az.HealthcareApis.private\Test-AzHealthcareServiceNameAvailability_CheckViaJsonFilePath';
+            CheckViaJsonString = 'Az.HealthcareApis.private\Test-AzHealthcareServiceNameAvailability_CheckViaJsonString';
         }
-        if (('Check', 'CheckExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Check', 'CheckExpanded', 'CheckViaJsonFilePath', 'CheckViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -192,6 +181,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

@@ -461,7 +461,9 @@ Function Write-NodeEventLog{
         {
             Write-VerboseLog ("Connecting from management node")
 
-            if (Test-ComputerNameHasDnsSuffix -ComputerName $ComputerName)
+            $computerNameHasDNSSuffix = Test-ComputerNameHasDnsSuffix -ComputerName $ComputerName
+
+            if ($computerNameHasDNSSuffix -eq $true)
             {
                 $ComputerNameWithDNSSuffix = $ComputerName
             }
@@ -5608,7 +5610,9 @@ function Get-SetupLoggingDetails
 
     if($isManagementNode)
     {
-        if (Test-ComputerNameHasDnsSuffix -ComputerName $ComputerName)
+        $computerNameHasDNSSuffix = Test-ComputerNameHasDnsSuffix -ComputerName $ComputerName
+            
+        if ($computerNameHasDNSSuffix -eq $true)
         {
             $ComputerNameWithDNSSuffix = $ComputerName
         }

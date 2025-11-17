@@ -13,6 +13,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupUpdatePropertiesParametersInternal
     {
 
+        /// <summary>Backing field for <see cref="Authentication" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginAuthenticationProperties _authentication;
+
+        /// <summary>Authentication settings for origin in origin group.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginAuthenticationProperties Authentication { get => (this._authentication = this._authentication ?? new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.OriginAuthenticationProperties()); set => this._authentication = value; }
+
+        /// <summary>
+        /// The scope used when requesting token from Microsoft Entra. For example, for Azure Blob Storage, scope could be "https://storage.azure.com/.default".
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inlined)]
+        public string AuthenticationScope { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginAuthenticationPropertiesInternal)Authentication).Scope; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginAuthenticationPropertiesInternal)Authentication).Scope = value ?? null; }
+
+        /// <summary>The type of the authentication for the origin.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inlined)]
+        public string AuthenticationType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginAuthenticationPropertiesInternal)Authentication).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginAuthenticationPropertiesInternal)Authentication).Type = value ?? null; }
+
         /// <summary>Backing field for <see cref="HealthProbeSetting" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IHealthProbeParameters _healthProbeSetting;
 
@@ -28,6 +45,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         /// <summary>Load balancing settings for a backend pool</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
         public Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ILoadBalancingSettingsParameters LoadBalancingSetting { get => (this._loadBalancingSetting = this._loadBalancingSetting ?? new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.LoadBalancingSettingsParameters()); set => this._loadBalancingSetting = value; }
+
+        /// <summary>Internal Acessors for Authentication</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginAuthenticationProperties Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupUpdatePropertiesParametersInternal.Authentication { get => (this._authentication = this._authentication ?? new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.OriginAuthenticationProperties()); set { {_authentication = value;} } }
+
+        /// <summary>Internal Acessors for AuthenticationUserAssignedIdentity</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupUpdatePropertiesParametersInternal.AuthenticationUserAssignedIdentity { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginAuthenticationPropertiesInternal)Authentication).UserAssignedIdentity; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginAuthenticationPropertiesInternal)Authentication).UserAssignedIdentity = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for ProfileName</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupUpdatePropertiesParametersInternal.ProfileName { get => this._profileName; set { {_profileName = value;} } }
@@ -60,6 +83,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
         public int? TrafficRestorationTimeToHealedOrNewEndpointsInMinute { get => this._trafficRestorationTimeToHealedOrNewEndpointsInMinute; set => this._trafficRestorationTimeToHealedOrNewEndpointsInMinute = value; }
 
+        /// <summary>Resource ID.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inlined)]
+        public string UserAssignedIdentityId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginAuthenticationPropertiesInternal)Authentication).UserAssignedIdentityId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginAuthenticationPropertiesInternal)Authentication).UserAssignedIdentityId = value ?? null; }
+
         /// <summary>
         /// Creates an new <see cref="AfdOriginGroupUpdatePropertiesParameters" /> instance.
         /// </summary>
@@ -72,6 +99,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
     public partial interface IAfdOriginGroupUpdatePropertiesParameters :
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IJsonSerializable
     {
+        /// <summary>
+        /// The scope used when requesting token from Microsoft Entra. For example, for Azure Blob Storage, scope could be "https://storage.azure.com/.default".
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The scope used when requesting token from Microsoft Entra. For example, for Azure Blob Storage, scope could be ""https://storage.azure.com/.default"".",
+        SerializedName = @"scope",
+        PossibleTypes = new [] { typeof(string) })]
+        string AuthenticationScope { get; set; }
+        /// <summary>The type of the authentication for the origin.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The type of the authentication for the origin.",
+        SerializedName = @"type",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("SystemAssignedIdentity", "UserAssignedIdentity")]
+        string AuthenticationType { get; set; }
         /// <summary>
         /// Health probe settings to the origin that is used to determine the health of the origin.
         /// </summary>
@@ -135,12 +187,36 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         SerializedName = @"trafficRestorationTimeToHealedOrNewEndpointsInMinutes",
         PossibleTypes = new [] { typeof(int) })]
         int? TrafficRestorationTimeToHealedOrNewEndpointsInMinute { get; set; }
+        /// <summary>Resource ID.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Resource ID.",
+        SerializedName = @"id",
+        PossibleTypes = new [] { typeof(string) })]
+        string UserAssignedIdentityId { get; set; }
 
     }
     /// The JSON object that contains the properties of the origin group.
     internal partial interface IAfdOriginGroupUpdatePropertiesParametersInternal
 
     {
+        /// <summary>Authentication settings for origin in origin group.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginAuthenticationProperties Authentication { get; set; }
+        /// <summary>
+        /// The scope used when requesting token from Microsoft Entra. For example, for Azure Blob Storage, scope could be "https://storage.azure.com/.default".
+        /// </summary>
+        string AuthenticationScope { get; set; }
+        /// <summary>The type of the authentication for the origin.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("SystemAssignedIdentity", "UserAssignedIdentity")]
+        string AuthenticationType { get; set; }
+        /// <summary>
+        /// The user assigned managed identity to use for the origin authentication if type is UserAssignedIdentity.
+        /// </summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference AuthenticationUserAssignedIdentity { get; set; }
         /// <summary>
         /// Health probe settings to the origin that is used to determine the health of the origin.
         /// </summary>
@@ -159,6 +235,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         /// is added. Default is 10 mins. This property is currently not supported.
         /// </summary>
         int? TrafficRestorationTimeToHealedOrNewEndpointsInMinute { get; set; }
+        /// <summary>Resource ID.</summary>
+        string UserAssignedIdentityId { get; set; }
 
     }
 }

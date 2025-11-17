@@ -655,7 +655,11 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
-            <Label>Metrics.Enabled</Label>
+            <Label>Metrics</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>PriorityReplication</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
@@ -691,7 +695,11 @@
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
-                <ScriptBlock>$_.Metrics.Enabled</ScriptBlock>
+                <ScriptBlock>if ($_.Metrics.Enabled -eq $true) {'Enabled'} else {if ($_.Metrics.Enabled -eq $false) {'Disabled'} } </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <ScriptBlock>if ($_.PriorityReplication.Enabled -eq $true) {"Enabled"} else {if ($_.PriorityReplication.Enabled -eq $false) {"Disabled"} } </ScriptBlock>
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>

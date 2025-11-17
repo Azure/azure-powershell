@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafana))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Description(@"Get the properties of a specific workspace for Grafana resource.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}", ApiVersion = "2022-08-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}", ApiVersion = "2025-08-01")]
     public partial class GetAzGrafana_GetViaIdentity : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.IContext

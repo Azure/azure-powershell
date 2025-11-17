@@ -21,12 +21,13 @@ Create an in-memory object for AutoscaleNotification.
 Create an in-memory object for AutoscaleNotification.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.AutoscaleNotification
+Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.AutoscaleNotification
 .Link
-https://learn.microsoft.com/powershell/module/Az.Monitor/new-AzAutoscaleNotificationObject
+https://learn.microsoft.com/powershell/module/Az.Monitor/new-azautoscalenotificationobject
 #>
 function New-AzAutoscaleNotificationObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.AutoscaleNotification')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.AutoscaleNotification')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.ParameterBreakingChange("EmailCustomEmail", "15.0.0", "7.0.0", "2025/11/03", OldParamaterType="Array", NewParameterType="List")]
@@ -41,12 +42,12 @@ function New-AzAutoscaleNotificationObject {
         $EmailSendToSubscriptionCoAdministrator,
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.ParameterBreakingChange("Webhook", "15.0.0", "7.0.0", "2025/11/03", OldParamaterType="Array", NewParameterType="List")]
         [Parameter(HelpMessage="the collection of webhook notifications.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IWebhookNotification[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.IWebhookNotification[]]
         $Webhook
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.AutoscaleNotification]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.AutoscaleNotification]::New()
 
         if ($PSBoundParameters.ContainsKey('EmailCustomEmail')) {
             $Object.EmailCustomEmail = $EmailCustomEmail

@@ -76,7 +76,8 @@ function Test-AzureFSGetJob
 	}
 	finally
 	{
-		Cleanup-Vault $vault $item
+		# no Cleanup for an existing setup
+		#Cleanup-Vault $vault $item
 	}
 }
 

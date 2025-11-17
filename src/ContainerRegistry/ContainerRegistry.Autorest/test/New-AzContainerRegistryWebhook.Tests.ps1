@@ -20,7 +20,9 @@ Describe 'New-AzContainerRegistryWebhook' {
     }
 
     It 'CreateByRegistry' {
-        $obj = Get-AzContainerRegistry -Name $env.rstr1 -ResourceGroupName $env.ResourceGroup 
-        {New-AzContainerRegistryWebhook -Registry $obj -Name $env.rstr3 -ServiceUri http://www.bing.com -Action Delete,Push -Location "east us" -Status Enabled -Scope "foo:*"  } | Should -Not -Throw
+        {
+            $obj = Get-AzContainerRegistry -Name $env.rstr1 -ResourceGroupName $env.ResourceGroup 
+            New-AzContainerRegistryWebhook -Registry $obj -Name $env.rstr3 -ServiceUri http://www.bing.com -Action Delete,Push -Location "east us" -Status Enabled -Scope "foo:*"  
+        } | Should -Not -Throw
     }
 }

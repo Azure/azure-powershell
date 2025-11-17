@@ -482,6 +482,20 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetAddProxyAgentExtension()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetAddProxyAgentExtension");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetGalleryApplicationFlags()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetGalleryApplicationFlags");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineScaleSetAutomaticZonePlacement()
         {
             TestRunner.RunTestScript("Test-VirtualMachineScaleSetAutomaticZonePlacement");

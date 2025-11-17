@@ -11,8 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.ScheduledQueryRule.private.dll'
   FormatsToProcess = './Az.ScheduledQueryRule.format.ps1xml'
-  FunctionsToExport = 'Get-AzScheduledQueryRule', 'New-AzScheduledQueryRule', 'New-AzScheduledQueryRuleConditionObject', 'New-AzScheduledQueryRuleDimensionObject', 'Remove-AzScheduledQueryRule', 'Update-AzScheduledQueryRule', '*'
-  AliasesToExport = '*'
+  FunctionsToExport = 'Get-AzScheduledQueryRule', 'New-AzScheduledQueryRule', 'New-AzScheduledQueryRuleConditionObject', 'New-AzScheduledQueryRuleDimensionObject', 'Remove-AzScheduledQueryRule', 'Update-AzScheduledQueryRule'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'ScheduledQueryRule'

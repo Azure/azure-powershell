@@ -5969,6 +5969,184 @@ function Test-ProxyAgentSetting
 
 <#
 .SYNOPSIS
+Test-VirtualMachineScaleSetAddProxyAgentExtension creates a VMSS with Enabled ProxyAgent and added ProxyAgentExtension
+#>
+function Test-VirtualMachineScaleSetAddProxyAgentExtension
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = "eastus2";
+
+    
+    try
+    {
+        # Common
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        $vmssName = 'vmss' + $rgname;
+        $domainNameLabel1 = "d1" + $rgname;
+        
+        $adminUsername = Get-ComputeTestResourceName;
+        $password = Get-PasswordForVM;
+        $adminPassword = $password | ConvertTo-SecureString -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($adminUsername, $adminPassword);
+        $linuxImage = "Canonical:0001-com-ubuntu-server-jammy:22_04-lts:latest"
+
+        # Case 1: Create using simple parameter set
+        $vmss = New-AzVmss -ResourceGroupName $rgname -Location $loc -Credential $cred -VMScaleSetName $vmssName -DomainNameLabel $domainNameLabel1 -Image $linuxImage -EnableProxyAgent -AddProxyAgentExtension
+
+        # verify
+        Assert-AreEqual $vmss.VirtualMachineProfile.SecurityProfile.ProxyAgentSettings.Enabled $true
+
+
+        # Update vmss to add proxy agent extension 
+        $VMSS = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName
+        $VMSS = Set-AzVmssProxyAgentSetting -VirtualMachineScaleSet $VMSS -EnableProxyAgent $true -AddProxyAgentExtension $false
+        $vmssUpdated = Update-AzVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $VMSS
+
+        
+
+        # Validate 
+        Assert-AreEqual $vmssUpdated.VirtualMachineProfile.SecurityProfile.ProxyAgentSettings.Enabled $true
+        Assert-AreEqual $vmssUpdated.VirtualMachineProfile.SecurityProfile.ProxyAgentSettings.AddProxyAgentExtension $false
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
+
+<#
+.SYNOPSIS
+Test-VirtualMachineScaleSetGalleryApplicationFlags creates a VMSS with Enabled ProxyAgent and added ProxyAgentExtension
+#>
+function Test-VirtualMachineScaleSetGalleryApplicationFlags
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName
+    $loc = "eastus2"
+
+    # Skip in playback (data plane + gallery operations)
+    if ((Get-ComputeTestMode) -eq [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
+    {
+        Write-Verbose "Skipping Test-VirtualMachineScaleSetGalleryApplicationFlags in Playback mode."
+        Assert-True { $true }
+        return
+    }
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force
+
+        # Basic VMSS inputs
+        $vmssName = "vmss" + $rgname
+        $domainNameLabel = "d1" + $rgname
+        $adminUsername = Get-ComputeTestResourceName
+        $adminPassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
+        $cred = New-Object System.Management.Automation.PSCredential ($adminUsername, $adminPassword)
+        $linuxImage = "Canonical:0001-com-ubuntu-server-jammy:22_04-lts:latest"
+
+        # Storage account + page blob package
+        $storageName = ("pkg" + ($rgname.ToLower()))[0..([Math]::Min(23,("pkg" + ($rgname.ToLower())).Length-1))] -join ''
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $storageName -Location $loc -Type Standard_LRS | Out-Null
+        $acctKeys = Get-AzStorageAccountKey -ResourceGroupName $rgname -Name $storageName
+        $ctx = New-AzStorageContext -StorageAccountName $storageName -StorageAccountKey $acctKeys[0].Value
+        $containerName = "packages"
+        $blobName = "apppkg.zip"
+        New-AzStorageContainer -Name $containerName -Context $ctx -Permission Blob | Out-Null
+
+        $localPackage = Join-Path $TestOutputRoot $blobName
+        if (Test-Path $localPackage) { Remove-Item $localPackage -Force }
+        # Create minimal valid zip then pad to 512-byte multiple for page blob
+        $tmpDir = Join-Path $TestOutputRoot "pkgtmp"
+        if (Test-Path $tmpDir) { Remove-Item $tmpDir -Recurse -Force }
+        New-Item -ItemType Directory -Path $tmpDir | Out-Null
+        Add-Type -AssemblyName System.IO.Compression.FileSystem
+        [System.IO.Compression.ZipFile]::CreateFromDirectory($tmpDir, $localPackage)
+        Remove-Item $tmpDir -Force
+        $bytes = [IO.File]::ReadAllBytes($localPackage)
+        $pad = 512 - ($bytes.Length % 512)
+        if ($pad -ne 512) {
+            $bytes += (0..($pad-1) | ForEach-Object { 0 })
+            [IO.File]::WriteAllBytes($localPackage, $bytes)
+        }
+        Set-AzStorageBlobContent -File $localPackage -Container $containerName -Blob $blobName -Context $ctx -BlobType Page | Out-Null
+        $packageUri = (Get-AzStorageBlob -Container $containerName -Blob $blobName -Context $ctx).ICloudBlob.Uri.AbsoluteUri
+
+        # Gallery + two application definitions (distinct names required)
+        $galleryName    = "gal" + $rgname
+        $appName1       = "app"  + $rgname
+        $appName2       = "app2" + $rgname
+        $appVersion     = "1.0.0"
+
+        New-AzGallery -ResourceGroupName $rgname -Name $galleryName -Location $loc | Out-Null
+        New-AzGalleryApplication -ResourceGroupName $rgname -GalleryName $galleryName -Name $appName1 -Location $loc -SupportedOSType Linux | Out-Null
+        New-AzGalleryApplication -ResourceGroupName $rgname -GalleryName $galleryName -Name $appName2 -Location $loc -SupportedOSType Linux | Out-Null
+
+        $installCmd = "echo install"
+        $removeCmd  = "echo remove"
+
+        # Version for app1
+        New-AzGalleryApplicationVersion -ResourceGroupName $rgname -GalleryName $galleryName -GalleryApplicationName $appName1 -Name $appVersion -Location $loc -PackageFileLink $packageUri -Install $installCmd -Remove $removeCmd -TargetRegion @(@{ Name = $loc; ReplicaCount = 1 }) | Out-Null
+        do {
+            Start-Sleep -Seconds 5
+            $ver1 = Get-AzGalleryApplicationVersion -ResourceGroupName $rgname -GalleryName $galleryName -GalleryApplicationName $appName1 -Name $appVersion -ErrorAction SilentlyContinue
+        } while ($ver1.ProvisioningState -ne "Succeeded")
+        $pkgId1 = $ver1.Id
+
+        # Version for app2
+        New-AzGalleryApplicationVersion -ResourceGroupName $rgname -GalleryName $galleryName -GalleryApplicationName $appName2 -Name $appVersion -Location $loc -PackageFileLink $packageUri -Install $installCmd -Remove $removeCmd -TargetRegion @(@{ Name = $loc; ReplicaCount = 1 }) | Out-Null
+        do {
+            Start-Sleep -Seconds 5
+            $ver2 = Get-AzGalleryApplicationVersion -ResourceGroupName $rgname -GalleryName $galleryName -GalleryApplicationName $appName2 -Name $appVersion -ErrorAction SilentlyContinue
+        } while ($ver2.ProvisioningState -ne "Succeeded")
+        $pkgId2 = $ver2.Id
+
+        # Create VMSS (no gallery apps initially)
+        $vmss = New-AzVmss -ResourceGroupName $rgname -Location $loc -Credential $cred -VMScaleSetName $vmssName -DomainNameLabel $domainNameLabel -Image $linuxImage -EnableProxyAgent -AddProxyAgentExtension
+
+        # Case 0: Add first gallery application with both flags false
+        $galApp0 = New-AzVmssGalleryApplication -PackageReferenceId $pkgId1 -EnableAutomaticUpgrade:$false -TreatFailureAsDeploymentFailure:$false
+        $profile = Add-AzVmssGalleryApplication -VirtualMachineScaleSetVM $vmss.VirtualMachineProfile -GalleryApplication $galApp0
+        $vmss.VirtualMachineProfile = $profile
+        $vmss | Update-AzVmss -ResourceGroupName $rgname -Name $vmssName | Out-Null
+        $vmssAfter0 = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName
+        $gal0 = $vmssAfter0.VirtualMachineProfile.ApplicationProfile.GalleryApplications[0]
+        Assert-AreEqual $pkgId1 $gal0.PackageReferenceId
+        Assert-AreEqual $false $gal0.EnableAutomaticUpgrade
+        Assert-AreEqual $false $gal0.TreatFailureAsDeploymentFailure
+
+        # Case 1: Update existing application flags to true (modify in place, no duplicate)
+        $vmssMod = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName
+        $vmssMod.VirtualMachineProfile.ApplicationProfile.GalleryApplications[0].EnableAutomaticUpgrade = $true
+        $vmssMod.VirtualMachineProfile.ApplicationProfile.GalleryApplications[0].TreatFailureAsDeploymentFailure = $true
+        Update-AzVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmssMod | Out-Null
+        $vmssAfter1 = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName
+        $gal1 = $vmssAfter1.VirtualMachineProfile.ApplicationProfile.GalleryApplications[0]
+        Assert-AreEqual $pkgId1 $gal1.PackageReferenceId
+        Assert-AreEqual $true $gal1.EnableAutomaticUpgrade
+        Assert-AreEqual $true $gal1.TreatFailureAsDeploymentFailure
+
+        # Case 2: Add second application (different name) with preset true flags
+        $galApp2 = New-AzVmssGalleryApplication -PackageReferenceId $pkgId2 -EnableAutomaticUpgrade:$true -TreatFailureAsDeploymentFailure:$true
+        $profile2 = Add-AzVmssGalleryApplication -VirtualMachineScaleSetVM $vmssAfter1.VirtualMachineProfile -GalleryApplication $galApp2
+        $vmssAfter1.VirtualMachineProfile = $profile2
+        Update-AzVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmssAfter1 | Out-Null
+        $vmssAfter2 = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName
+        $gal2 = $vmssAfter2.VirtualMachineProfile.ApplicationProfile.GalleryApplications | Where-Object { $_.PackageReferenceId -eq $pkgId2 }
+        Assert-AreEqual $pkgId2 $gal2.PackageReferenceId
+        Assert-AreEqual $true $gal2.EnableAutomaticUpgrade
+        Assert-AreEqual $true $gal2.TreatFailureAsDeploymentFailure
+    }
+    finally
+    {
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
 Test Virtual Machine Scale Set Automatic Zone Placement feature
 #>
 function Test-VirtualMachineScaleSetAutomaticZonePlacement

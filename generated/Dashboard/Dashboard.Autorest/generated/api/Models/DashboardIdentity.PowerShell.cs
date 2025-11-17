@@ -83,9 +83,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IDashboardIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IDashboardIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
             }
+            if (content.Contains("DashboardName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IDashboardIdentityInternal)this).DashboardName = (string) content.GetValueForProperty("DashboardName",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IDashboardIdentityInternal)this).DashboardName, global::System.Convert.ToString);
+            }
             if (content.Contains("WorkspaceName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IDashboardIdentityInternal)this).WorkspaceName = (string) content.GetValueForProperty("WorkspaceName",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IDashboardIdentityInternal)this).WorkspaceName, global::System.Convert.ToString);
+            }
+            if (content.Contains("IntegrationFabricName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IDashboardIdentityInternal)this).IntegrationFabricName = (string) content.GetValueForProperty("IntegrationFabricName",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IDashboardIdentityInternal)this).IntegrationFabricName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ManagedPrivateEndpointName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IDashboardIdentityInternal)this).ManagedPrivateEndpointName = (string) content.GetValueForProperty("ManagedPrivateEndpointName",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IDashboardIdentityInternal)this).ManagedPrivateEndpointName, global::System.Convert.ToString);
             }
             if (content.Contains("PrivateEndpointConnectionName"))
             {
@@ -124,9 +136,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IDashboardIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IDashboardIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
             }
+            if (content.Contains("DashboardName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IDashboardIdentityInternal)this).DashboardName = (string) content.GetValueForProperty("DashboardName",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IDashboardIdentityInternal)this).DashboardName, global::System.Convert.ToString);
+            }
             if (content.Contains("WorkspaceName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IDashboardIdentityInternal)this).WorkspaceName = (string) content.GetValueForProperty("WorkspaceName",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IDashboardIdentityInternal)this).WorkspaceName, global::System.Convert.ToString);
+            }
+            if (content.Contains("IntegrationFabricName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IDashboardIdentityInternal)this).IntegrationFabricName = (string) content.GetValueForProperty("IntegrationFabricName",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IDashboardIdentityInternal)this).IntegrationFabricName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ManagedPrivateEndpointName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IDashboardIdentityInternal)this).ManagedPrivateEndpointName = (string) content.GetValueForProperty("ManagedPrivateEndpointName",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IDashboardIdentityInternal)this).ManagedPrivateEndpointName, global::System.Convert.ToString);
             }
             if (content.Contains("PrivateEndpointConnectionName"))
             {

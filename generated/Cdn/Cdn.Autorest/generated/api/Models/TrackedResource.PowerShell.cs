@@ -7,7 +7,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PowerShell;
 
-    /// <summary>The resource model definition for a ARM tracked top level resource.</summary>
+    /// <summary>
+    /// The resource model definition for an Azure Resource Manager tracked top level resource which has 'tags' and a 'location'
+    /// </summary>
     [System.ComponentModel.TypeConverter(typeof(TrackedResourceTypeConverter))]
     public partial class TrackedResource
     {
@@ -126,13 +128,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
                 return;
             }
             // actually deserialize
-            if (content.Contains("Location"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ITrackedResourceInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ITrackedResourceInternal)this).Location, global::System.Convert.ToString);
-            }
             if (content.Contains("Tag"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ITrackedResourceInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ITrackedResourceTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ITrackedResourceInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.TrackedResourceTagsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Location"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ITrackedResourceInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ITrackedResourceInternal)this).Location, global::System.Convert.ToString);
             }
             if (content.Contains("SystemDataCreatedBy"))
             {
@@ -191,13 +193,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
                 return;
             }
             // actually deserialize
-            if (content.Contains("Location"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ITrackedResourceInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ITrackedResourceInternal)this).Location, global::System.Convert.ToString);
-            }
             if (content.Contains("Tag"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ITrackedResourceInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ITrackedResourceTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ITrackedResourceInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.TrackedResourceTagsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Location"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ITrackedResourceInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ITrackedResourceInternal)this).Location, global::System.Convert.ToString);
             }
             if (content.Contains("SystemDataCreatedBy"))
             {
@@ -242,7 +244,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             AfterDeserializePSObject(content);
         }
     }
-    /// The resource model definition for a ARM tracked top level resource.
+    /// The resource model definition for an Azure Resource Manager tracked top level resource which has 'tags' and a 'location'
     [System.ComponentModel.TypeConverter(typeof(TrackedResourceTypeConverter))]
     public partial interface ITrackedResource
 
