@@ -80,6 +80,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models
             {_marketplaceSaaSResourceId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonString>("marketplaceSaaSResourceId"), out var __jsonMarketplaceSaaSResourceId) ? (string)__jsonMarketplaceSaaSResourceId : (string)_marketplaceSaaSResourceId;}
             {_planId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonString>("planId"), out var __jsonPlanId) ? (string)__jsonPlanId : (string)_planId;}
             {_marketplaceSubscriptionStatus = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonString>("marketplaceSubscriptionStatus"), out var __jsonMarketplaceSubscriptionStatus) ? (string)__jsonMarketplaceSubscriptionStatus : (string)_marketplaceSubscriptionStatus;}
+            {_marketplaceSaaSResourceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonString>("marketplaceSaaSResourceName"), out var __jsonMarketplaceSaaSResourceName) ? (string)__jsonMarketplaceSaaSResourceName : (string)_marketplaceSaaSResourceName;}
             AfterFromJson(json);
         }
 
@@ -106,6 +107,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models
             AddIf( null != (((object)this._marketplaceSaaSResourceId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonString(this._marketplaceSaaSResourceId.ToString()) : null, "marketplaceSaaSResourceId" ,container.Add );
             AddIf( null != (((object)this._planId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonString(this._planId.ToString()) : null, "planId" ,container.Add );
             AddIf( null != (((object)this._marketplaceSubscriptionStatus)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonString(this._marketplaceSubscriptionStatus.ToString()) : null, "marketplaceSubscriptionStatus" ,container.Add );
+            AddIf( null != (((object)this._marketplaceSaaSResourceName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonString(this._marketplaceSaaSResourceName.ToString()) : null, "marketplaceSaaSResourceName" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

@@ -84,6 +84,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IAccountInfoInternal)this).RegionId = (string) content.GetValueForProperty("RegionId",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IAccountInfoInternal)this).RegionId, global::System.Convert.ToString);
             }
+            if (content.Contains("CompanyName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IAccountInfoInternal)this).CompanyName = (string) content.GetValueForProperty("CompanyName",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IAccountInfoInternal)this).CompanyName, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -108,6 +112,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models
             if (content.Contains("RegionId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IAccountInfoInternal)this).RegionId = (string) content.GetValueForProperty("RegionId",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IAccountInfoInternal)this).RegionId, global::System.Convert.ToString);
+            }
+            if (content.Contains("CompanyName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IAccountInfoInternal)this).CompanyName = (string) content.GetValueForProperty("CompanyName",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IAccountInfoInternal)this).CompanyName, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

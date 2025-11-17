@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.PowerShell;
 
-    /// <summary>A managed identity assigned by the user.</summary>
+    /// <summary>User assigned identity properties</summary>
     [System.ComponentModel.TypeConverter(typeof(UserAssignedIdentityTypeConverter))]
     public partial class UserAssignedIdentity
     {
@@ -126,13 +126,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models
                 return;
             }
             // actually deserialize
-            if (content.Contains("ClientId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IUserAssignedIdentityInternal)this).ClientId = (string) content.GetValueForProperty("ClientId",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IUserAssignedIdentityInternal)this).ClientId, global::System.Convert.ToString);
-            }
             if (content.Contains("PrincipalId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IUserAssignedIdentityInternal)this).PrincipalId = (string) content.GetValueForProperty("PrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IUserAssignedIdentityInternal)this).PrincipalId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ClientId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IUserAssignedIdentityInternal)this).ClientId = (string) content.GetValueForProperty("ClientId",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IUserAssignedIdentityInternal)this).ClientId, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
@@ -151,18 +151,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models
                 return;
             }
             // actually deserialize
-            if (content.Contains("ClientId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IUserAssignedIdentityInternal)this).ClientId = (string) content.GetValueForProperty("ClientId",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IUserAssignedIdentityInternal)this).ClientId, global::System.Convert.ToString);
-            }
             if (content.Contains("PrincipalId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IUserAssignedIdentityInternal)this).PrincipalId = (string) content.GetValueForProperty("PrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IUserAssignedIdentityInternal)this).PrincipalId, global::System.Convert.ToString);
             }
+            if (content.Contains("ClientId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IUserAssignedIdentityInternal)this).ClientId = (string) content.GetValueForProperty("ClientId",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IUserAssignedIdentityInternal)this).ClientId, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
     }
-    /// A managed identity assigned by the user.
+    /// User assigned identity properties
     [System.ComponentModel.TypeConverter(typeof(UserAssignedIdentityTypeConverter))]
     public partial interface IUserAssignedIdentity
 
