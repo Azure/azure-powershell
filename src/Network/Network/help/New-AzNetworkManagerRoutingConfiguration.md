@@ -193,6 +193,7 @@ Specifies the route table usage mode for the configuration. Valid values are 'Ma
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+Accepted values: ManagedOnly, UseExisting
 
 Required: False
 Position: Named

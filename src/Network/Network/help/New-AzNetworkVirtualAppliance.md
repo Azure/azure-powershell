@@ -22,7 +22,8 @@ New-AzNetworkVirtualAppliance -Name <String> -ResourceGroupName <String> -Locati
  [-InternetIngressIp <PSVirtualApplianceInternetIngressIpsProperties[]>]
  [-NetworkProfile <PSVirtualApplianceNetworkProfile>]
  [-NvaInterfaceConfiguration <PSNetworkVirtualApplianceInterfaceConfigProperties[]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
@@ -35,7 +36,8 @@ New-AzNetworkVirtualAppliance -ResourceId <String> -Location <String> [-VirtualH
  [-InternetIngressIp <PSVirtualApplianceInternetIngressIpsProperties[]>]
  [-NetworkProfile <PSVirtualApplianceNetworkProfile>]
  [-NvaInterfaceConfiguration <PSNetworkVirtualApplianceInterfaceConfigProperties[]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -297,7 +299,7 @@ Accept wildcard characters: False
 Interface configurations for NVA deployed in VNet.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSNetworkVirtualApplianceInterfaceConfigProperties
+Type: Microsoft.Azure.Commands.Network.Models.PSNetworkVirtualApplianceInterfaceConfigProperties[]
 Parameter Sets: (All)
 Aliases:
 

@@ -14,7 +14,8 @@ Create a NVA Interface configuration
 
 ```
 New-AzNvaInterfaceConfiguration -NicType <String[]> -Name <String> -SubnetId <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,6 +27,7 @@ The **New-AzNvaInterfaceConfiguration** defines an interface configuration for v
 ```powershell
 $config1 = New-AzNvaInterfaceConfiguration -NicType "PrivateNic" -Name "privateInterface" -SubnetId "/subscriptions/{subscriptionid}/resourceGroups/{rgname}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}"
 ```
+
 Create an interface configuration for virtual appliance to be used with New-AzNetworkVirtualAppliance command.
 
 ## PARAMETERS
@@ -34,7 +36,7 @@ Create an interface configuration for virtual appliance to be used with New-AzNe
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -49,7 +51,7 @@ Accept wildcard characters: False
 The name of the interface
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -64,7 +66,7 @@ Accept wildcard characters: False
 The type of the network interface e.g., PublicNic, PrivateNic, AdditionalPrivateNic or AdditionalPublicNic
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -79,7 +81,7 @@ Accept wildcard characters: False
 The subnet resource id
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -94,7 +96,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -110,7 +112,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
