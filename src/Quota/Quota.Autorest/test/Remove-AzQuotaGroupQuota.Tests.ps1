@@ -15,15 +15,44 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzQuotaGroupQuota'))
 }
 
 Describe 'Remove-AzQuotaGroupQuota' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete' {
+        # Create a group quota to delete
+        $managementGroupId = "mg-demo"
+        $groupQuotaName = "testquota$(Get-Random)"
+        
+        # Create the group quota
+        $created = New-AzQuotaGroupQuota -ManagementGroupId $managementGroupId -GroupQuotaName $groupQuotaName -DisplayName "Test Quota for Deletion"
+        $created | Should -Not -BeNull
+        
+        # Verify it was created by getting it
+        $retrieved = Get-AzQuotaGroupQuota -ManagementGroupId $managementGroupId -GroupQuotaName $groupQuotaName
+        $retrieved | Should -Not -BeNull
+        $retrieved.Name | Should -Be $groupQuotaName
+        
+        # Delete the group quota
+        Remove-AzQuotaGroupQuota -ManagementGroupId $managementGroupId -Name $groupQuotaName -PassThru | Should -Be $true
+        
+        # Verify it was deleted - this should fail or return nothing
+        { Get-AzQuotaGroupQuota -ManagementGroupId $managementGroupId -GroupQuotaName $groupQuotaName -ErrorAction Stop } | Should -Throw
     }
 
-    It 'DeleteViaIdentityManagementGroup' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'DeleteViaIdentity' {
+        # Create a group quota to delete
+        $managementGroupId = "mg-demo"
+        $groupQuotaName = "testquota$(Get-Random)"
+        
+        # Create the group quota
+        $created = New-AzQuotaGroupQuota -ManagementGroupId $managementGroupId -GroupQuotaName $groupQuotaName -DisplayName "Test Quota for Identity Deletion"
+        $created | Should -Not -BeNull
+        
+        # Get the group quota to obtain the identity object
+        $groupQuota = Get-AzQuotaGroupQuota -ManagementGroupId $managementGroupId -GroupQuotaName $groupQuotaName
+        $groupQuota | Should -Not -BeNull
+        
+        # Delete using identity
+        Remove-AzQuotaGroupQuota -InputObject $groupQuota -PassThru | Should -Be $true
+        
+        # Verify it was deleted
+        { Get-AzQuotaGroupQuota -ManagementGroupId $managementGroupId -GroupQuotaName $groupQuotaName -ErrorAction Stop } | Should -Throw
     }
 }

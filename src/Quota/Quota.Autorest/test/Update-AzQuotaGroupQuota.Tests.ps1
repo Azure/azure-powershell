@@ -15,23 +15,42 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzQuotaGroupQuota'))
 }
 
 Describe 'Update-AzQuotaGroupQuota' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        # Create a group quota first
+        $managementGroupId = "mg-demo"
+        $groupQuotaName = "testquota$(Get-Random)"
+        $initialDisplayName = "Test Quota Group"
+        $updatedDisplayName = "Updated Test Quota Group"
+        
+        # Create the group quota
+        $created = New-AzQuotaGroupQuota -ManagementGroupId $managementGroupId -GroupQuotaName $groupQuotaName -DisplayName $initialDisplayName
+        $created | Should -Not -BeNull
+        
+        # Update the display name
+        $updated = Update-AzQuotaGroupQuota -ManagementGroupId $managementGroupId -Name $groupQuotaName -DisplayName $updatedDisplayName
+        $updated | Should -Not -BeNull
+        
+        # Verify the update by getting the group quota
+        $retrieved = Get-AzQuotaGroupQuota -ManagementGroupId $managementGroupId -GroupQuotaName $groupQuotaName
+        $retrieved.Name | Should -Be $groupQuotaName
     }
 
-    It 'UpdateViaJsonString' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'UpdateViaJsonFilePath' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'UpdateViaIdentityManagementGroupExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateViaIdentityExpanded' {
+        # Create a group quota first
+        $managementGroupId = "mg-demo"
+        $groupQuotaName = "testquota$(Get-Random)"
+        $initialDisplayName = "Test Quota Via Identity"
+        $updatedDisplayName = "Updated Via Identity"
+        
+        # Create the group quota
+        $created = New-AzQuotaGroupQuota -ManagementGroupId $managementGroupId -GroupQuotaName $groupQuotaName -DisplayName $initialDisplayName
+        $created | Should -Not -BeNull
+        
+        # Get the group quota to obtain the identity object
+        $groupQuota = Get-AzQuotaGroupQuota -ManagementGroupId $managementGroupId -GroupQuotaName $groupQuotaName
+        
+        # Update using identity
+        $updated = Update-AzQuotaGroupQuota -InputObject $groupQuota -DisplayName $updatedDisplayName
+        $updated | Should -Not -BeNull
     }
 }
