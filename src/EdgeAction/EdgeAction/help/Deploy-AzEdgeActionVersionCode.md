@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.EdgeAction-help.xml
 Module Name: Az.EdgeAction
 online version: https://learn.microsoft.com/powershell/module/az.edgeaction/deploy-azedgeactionversioncode
 schema: 2.0.0
@@ -14,63 +14,65 @@ A long-running resource action.
 
 ### DeployFromFile (Default)
 ```
-Deploy-AzEdgeActionVersionCode -EdgeActionName <String> -ResourceGroupName <String> -Version <String>
- -FilePath <String> [-SubscriptionId <String>] [-DeploymentType <String>] [-Name <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Deploy-AzEdgeActionVersionCode -EdgeActionName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -Version <String> [-Name <String>] -FilePath <String> [-DeploymentType <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Deploy
+### DeployViaJsonString
 ```
-Deploy-AzEdgeActionVersionCode -EdgeActionName <String> -ResourceGroupName <String> -Version <String>
- -Body <IVersionCode> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Deploy-AzEdgeActionVersionCode -EdgeActionName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -Version <String> -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### DeployViaJsonFilePath
+```
+Deploy-AzEdgeActionVersionCode -EdgeActionName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -Version <String> -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeployExpanded
 ```
-Deploy-AzEdgeActionVersionCode -EdgeActionName <String> -ResourceGroupName <String> -Version <String>
- -Content <String> -Name <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Deploy-AzEdgeActionVersionCode -EdgeActionName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -Version <String> -Content <String> -Name <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### DeployViaIdentity
+### Deploy
 ```
-Deploy-AzEdgeActionVersionCode -InputObject <IEdgeActionIdentity> -Body <IVersionCode>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### DeployViaIdentityEdgeAction
-```
-Deploy-AzEdgeActionVersionCode -EdgeActionInputObject <IEdgeActionIdentity> -Version <String>
- -Body <IVersionCode> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Deploy-AzEdgeActionVersionCode -EdgeActionName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -Version <String> -Body <IVersionCode> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeployViaIdentityEdgeActionExpanded
 ```
-Deploy-AzEdgeActionVersionCode -EdgeActionInputObject <IEdgeActionIdentity> -Version <String>
- -Content <String> -Name <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Deploy-AzEdgeActionVersionCode -Version <String> -EdgeActionInputObject <IEdgeActionIdentity> -Content <String>
+ -Name <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### DeployViaIdentityEdgeAction
+```
+Deploy-AzEdgeActionVersionCode -Version <String> -EdgeActionInputObject <IEdgeActionIdentity>
+ -Body <IVersionCode> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeployViaIdentityExpanded
 ```
 Deploy-AzEdgeActionVersionCode -InputObject <IEdgeActionIdentity> -Content <String> -Name <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
-### DeployViaJsonFilePath
+### DeployViaIdentity
 ```
-Deploy-AzEdgeActionVersionCode -EdgeActionName <String> -ResourceGroupName <String> -Version <String>
- -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### DeployViaJsonString
-```
-Deploy-AzEdgeActionVersionCode -EdgeActionName <String> -ResourceGroupName <String> -Version <String>
- -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Deploy-AzEdgeActionVersionCode -InputObject <IEdgeActionIdentity> -Body <IVersionCode>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -122,7 +124,7 @@ Version code information for edge action
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IVersionCode
-Parameter Sets: Deploy, DeployViaIdentity, DeployViaIdentityEdgeAction
+Parameter Sets: Deploy, DeployViaIdentityEdgeAction, DeployViaIdentity
 Aliases:
 
 Required: True
@@ -184,7 +186,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionIdentity
-Parameter Sets: DeployViaIdentityEdgeAction, DeployViaIdentityEdgeActionExpanded
+Parameter Sets: DeployViaIdentityEdgeActionExpanded, DeployViaIdentityEdgeAction
 Aliases:
 
 Required: True
@@ -199,7 +201,7 @@ The name of the Edge Action
 
 ```yaml
 Type: System.String
-Parameter Sets: Deploy, DeployExpanded, DeployFromFile, DeployViaJsonFilePath, DeployViaJsonString
+Parameter Sets: DeployFromFile, DeployViaJsonString, DeployViaJsonFilePath, DeployExpanded, Deploy
 Aliases:
 
 Required: True
@@ -229,7 +231,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionIdentity
-Parameter Sets: DeployViaIdentity, DeployViaIdentityExpanded
+Parameter Sets: DeployViaIdentityExpanded, DeployViaIdentity
 Aliases:
 
 Required: True
@@ -274,7 +276,19 @@ The version code name
 
 ```yaml
 Type: System.String
-Parameter Sets: DeployExpanded, DeployFromFile, DeployViaIdentityEdgeActionExpanded, DeployViaIdentityExpanded
+Parameter Sets: DeployFromFile
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: DeployExpanded, DeployViaIdentityEdgeActionExpanded, DeployViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -305,7 +319,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Deploy, DeployExpanded, DeployFromFile, DeployViaJsonFilePath, DeployViaJsonString
+Parameter Sets: DeployFromFile, DeployViaJsonString, DeployViaJsonFilePath, DeployExpanded, Deploy
 Aliases:
 
 Required: True
@@ -321,7 +335,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Deploy, DeployExpanded, DeployFromFile, DeployViaJsonFilePath, DeployViaJsonString
+Parameter Sets: DeployFromFile, DeployViaJsonString, DeployViaJsonFilePath, DeployExpanded, Deploy
 Aliases:
 
 Required: False
@@ -336,7 +350,7 @@ The name of the Edge Action version
 
 ```yaml
 Type: System.String
-Parameter Sets: Deploy, DeployExpanded, DeployFromFile, DeployViaIdentityEdgeAction, DeployViaIdentityEdgeActionExpanded, DeployViaJsonFilePath, DeployViaJsonString
+Parameter Sets: DeployFromFile, DeployViaJsonString, DeployViaJsonFilePath, DeployExpanded, Deploy, DeployViaIdentityEdgeActionExpanded, DeployViaIdentityEdgeAction
 Aliases:
 
 Required: True
@@ -395,4 +409,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
