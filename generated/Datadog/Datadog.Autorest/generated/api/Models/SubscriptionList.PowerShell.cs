@@ -7,9 +7,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.PowerShell;
 
-    /// <summary>Dictionary of <string></summary>
-    [System.ComponentModel.TypeConverter(typeof(DatadogMonitorResourceTagsTypeConverter))]
-    public partial class DatadogMonitorResourceTags
+    /// <summary>
+    /// The request to update subscriptions needed to be monitored by the Datadog monitor resource.
+    /// </summary>
+    [System.ComponentModel.TypeConverter(typeof(SubscriptionListTypeConverter))]
+    public partial class SubscriptionList
     {
 
         /// <summary>
@@ -63,11 +65,44 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
         partial void OverrideToString(ref string stringResult, ref bool returnNow);
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.DatadogMonitorResourceTags"
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.SubscriptionList"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
-        internal DatadogMonitorResourceTags(global::System.Collections.IDictionary content)
+        /// <returns>
+        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISubscriptionList" />.
+        /// </returns>
+        public static Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISubscriptionList DeserializeFromDictionary(global::System.Collections.IDictionary content)
+        {
+            return new SubscriptionList(content);
+        }
+
+        /// <summary>
+        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.SubscriptionList"
+        /// />.
+        /// </summary>
+        /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
+        /// <returns>
+        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISubscriptionList" />.
+        /// </returns>
+        public static Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISubscriptionList DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
+        {
+            return new SubscriptionList(content);
+        }
+
+        /// <summary>
+        /// Creates a new instance of <see cref="SubscriptionList" />, deserializing the content from a json string.
+        /// </summary>
+        /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
+        /// <returns>an instance of the <see cref="SubscriptionList" /> model class.</returns>
+        public static Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISubscriptionList FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonNode.Parse(jsonText));
+
+        /// <summary>
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.SubscriptionList"
+        /// />.
+        /// </summary>
+        /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
+        internal SubscriptionList(global::System.Collections.IDictionary content)
         {
             bool returnNow = false;
             BeforeDeserializeDictionary(content, ref returnNow);
@@ -76,17 +111,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
                 return;
             }
             // actually deserialize
-            // this type is a dictionary; copy elements from source to here.
-            CopyFrom(content);
+            if (content.Contains("Operation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISubscriptionListInternal)this).Operation = (string) content.GetValueForProperty("Operation",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISubscriptionListInternal)this).Operation, global::System.Convert.ToString);
+            }
+            if (content.Contains("MonitoredSubscriptionList"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISubscriptionListInternal)this).MonitoredSubscriptionList = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoredSubscription>) content.GetValueForProperty("MonitoredSubscriptionList",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISubscriptionListInternal)this).MonitoredSubscriptionList, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoredSubscription>(__y, Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.MonitoredSubscriptionTypeConverter.ConvertFrom));
+            }
             AfterDeserializeDictionary(content);
         }
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.DatadogMonitorResourceTags"
+        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.SubscriptionList"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
-        internal DatadogMonitorResourceTags(global::System.Management.Automation.PSObject content)
+        internal SubscriptionList(global::System.Management.Automation.PSObject content)
         {
             bool returnNow = false;
             BeforeDeserializePSObject(content, ref returnNow);
@@ -95,43 +136,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
                 return;
             }
             // actually deserialize
-            // this type is a dictionary; copy elements from source to here.
-            CopyFrom(content);
+            if (content.Contains("Operation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISubscriptionListInternal)this).Operation = (string) content.GetValueForProperty("Operation",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISubscriptionListInternal)this).Operation, global::System.Convert.ToString);
+            }
+            if (content.Contains("MonitoredSubscriptionList"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISubscriptionListInternal)this).MonitoredSubscriptionList = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoredSubscription>) content.GetValueForProperty("MonitoredSubscriptionList",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISubscriptionListInternal)this).MonitoredSubscriptionList, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoredSubscription>(__y, Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.MonitoredSubscriptionTypeConverter.ConvertFrom));
+            }
             AfterDeserializePSObject(content);
         }
-
-        /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.DatadogMonitorResourceTags"
-        /// />.
-        /// </summary>
-        /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
-        /// <returns>
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceTags" />.
-        /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceTags DeserializeFromDictionary(global::System.Collections.IDictionary content)
-        {
-            return new DatadogMonitorResourceTags(content);
-        }
-
-        /// <summary>
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.DatadogMonitorResourceTags"
-        /// />.
-        /// </summary>
-        /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
-        /// <returns>
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceTags" />.
-        /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceTags DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
-        {
-            return new DatadogMonitorResourceTags(content);
-        }
-
-        /// <summary>
-        /// Creates a new instance of <see cref="DatadogMonitorResourceTags" />, deserializing the content from a json string.
-        /// </summary>
-        /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="DatadogMonitorResourceTags" /> model class.</returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceTags FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>Serializes this instance to a json string.</summary>
 
@@ -150,9 +164,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
             return ToJsonString();
         }
     }
-    /// Dictionary of <string>
-    [System.ComponentModel.TypeConverter(typeof(DatadogMonitorResourceTagsTypeConverter))]
-    public partial interface IDatadogMonitorResourceTags
+    /// The request to update subscriptions needed to be monitored by the Datadog monitor resource.
+    [System.ComponentModel.TypeConverter(typeof(SubscriptionListTypeConverter))]
+    public partial interface ISubscriptionList
 
     {
 
