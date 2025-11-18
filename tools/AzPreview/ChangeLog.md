@@ -1742,7 +1742,7 @@
 #### Az.Dns 1.3.1
 * Upgraded nuget package to signed package.
 
-#### Az.DnsResolver 1.1.1
+#### Az.DnsResolver 1.3.0
 * Upgraded nuget package to signed package.
 
 #### Az.DynatraceObservability 0.1.2
