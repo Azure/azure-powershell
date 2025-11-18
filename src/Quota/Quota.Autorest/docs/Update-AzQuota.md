@@ -18,14 +18,14 @@ Please check the URI in location header for the detailed status of the request.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzQuota -ResourceName <String> -Scope <String> [-Limit <ILimitJsonObject>] [-Name <String>]
+Update-AzQuota -ResourceName <String> -Scope <String> [-Limit <ILimitJsonObject>] [-NameValue <String>]
  [-ResourceType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzQuota -InputObject <IQuotaIdentity> [-Limit <ILimitJsonObject>] [-Name <String>]
+Update-AzQuota -InputObject <IQuotaIdentity> [-Limit <ILimitJsonObject>] [-NameValue <String>]
  [-ResourceType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -172,7 +172,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
+### -NameValue
 Resource name.
 
 ```yaml

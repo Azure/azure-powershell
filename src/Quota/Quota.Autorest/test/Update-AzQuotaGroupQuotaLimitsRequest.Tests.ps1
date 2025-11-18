@@ -15,8 +15,32 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzQuotaGroupQuotaLimit
 }
 
 Describe 'Update-AzQuotaGroupQuotaLimitsRequest' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        # NOTE: This test requires a subscription to be added to the group quota first
+        # Currently there is no Set-AzQuotaGroupQuotaSubscription cmdlet to do this setup
+        # Prerequisite: Manually add subscription using Azure Portal or REST API
+        
+        $managementGroupId = "mg-demo"
+        $groupQuotaName = "testlocation"
+        $location = "eastus"
+        $resourceProviderName = "Microsoft.Compute"
+        
+        $jsonBody = @{
+            properties = @{
+                value = @(
+                    @{
+                        properties = @{
+                            comment = "Test quota limit request"
+                            limit = 100
+                            resourceName = "standardDSv3Family"
+                        }
+                    }
+                )
+            }
+        } | ConvertTo-Json -Depth 10
+        
+        $result = Update-AzQuotaGroupQuotaLimitsRequest -ManagementGroupId $managementGroupId -GroupQuotaName $groupQuotaName -ResourceProviderName $resourceProviderName -Location $location -JsonString $jsonBody
+        $result | Should -Not -BeNullOrEmpty
     }
 
     It 'UpdateViaJsonString' -skip {

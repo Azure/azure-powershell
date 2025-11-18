@@ -1,0 +1,46 @@
+{
+  "Get-AzQuotaGroupQuotaLocationSetting+[NoContext]+Get+$GET+https://management.azure.com/providers/Microsoft.Management/managementGroups/mg-demo/providers/Microsoft.Quota/groupQuotas/testlocation/resourceProviders/Microsoft.Compute/locationSettings/eastus?api-version=2025-09-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Management/managementGroups/mg-demo/providers/Microsoft.Quota/groupQuotas/testlocation/resourceProviders/Microsoft.Compute/locationSettings/eastus?api-version=2025-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "71cc806a-6a6a-4f1c-b5f4-fd19a1defef4" ],
+        "CommandName": [ "Get-AzQuotaGroupQuotaLocationSetting" ],
+        "FullCommandName": [ "Get-AzQuotaGroupQuotaLocationSetting_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.12", "Az.Quota/0.1.3" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 404,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-operation-identifier": [ "" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "249" ],
+        "x-ms-request-id": [ "19f0f9b6-cc17-40fa-b68d-a606885530ef" ],
+        "x-ms-correlation-request-id": [ "19f0f9b6-cc17-40fa-b68d-a606885530ef" ],
+        "x-ms-routing-request-id": [ "AUSTRALIAEAST:20251118T044844Z:19f0f9b6-cc17-40fa-b68d-a606885530ef" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: C8B15C26B08043529F69B01D8B8EBCFB Ref B: SYD03EDGE1707 Ref C: 2025-11-18T04:48:43Z" ],
+        "Date": [ "Tue, 18 Nov 2025 04:48:44 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "168" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"EntityNotFound\",\"message\":\"EnforcementStatus is not found for GroupId: testlocation, MgId: mg-demo, TenantId: 213e87ed-8e08-4eb4-a63c-c073058f7b00.\"}}",
+      "isContentBase64": false
+    }
+  }
+}

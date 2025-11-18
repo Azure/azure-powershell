@@ -1,0 +1,41 @@
+{
+  "Update-AzQuotaGroupQuotaLimitsRequest+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/providers/Microsoft.Management/managementGroups/mg-demo/providers/Microsoft.Quota/groupQuotas/testlocation/resourceProviders/Microsoft.Compute/groupQuotaLimits/eastus?api-version=2025-09-01+1": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Management/managementGroups/mg-demo/providers/Microsoft.Quota/groupQuotas/testlocation/resourceProviders/Microsoft.Compute/groupQuotaLimits/eastus?api-version=2025-09-01",
+      "Content": "{\n  \"properties\": {\n    \"value\": [\n      {\n        \"properties\": {\n          \"limit\": 100,\n          \"resourceName\": \"standardDSv3Family\",\n          \"comment\": \"Test quota limit request\"\n        }\n      }\n    ]\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "216" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 400,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-operation-identifier": [ "" ],
+        "x-ms-ratelimit-remaining-tenant-writes": [ "199" ],
+        "x-ms-request-id": [ "b551f067-7409-407d-b1d4-f0e38e7dffa8" ],
+        "x-ms-correlation-request-id": [ "b551f067-7409-407d-b1d4-f0e38e7dffa8" ],
+        "x-ms-routing-request-id": [ "AUSTRALIACENTRAL:20251118T051443Z:b551f067-7409-407d-b1d4-f0e38e7dffa8" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 06CB947BD4804062A17B2E29696CB056 Ref B: SYD03EDGE2113 Ref C: 2025-11-18T05:14:43Z" ],
+        "Date": [ "Tue, 18 Nov 2025 05:14:43 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "167" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"BadRequest\",\"message\":\"No subscriptions found for group quota: testlocation. Please add a subscription before creating a Group Quota Limit Request\"}}",
+      "isContentBase64": false
+    }
+  }
+}

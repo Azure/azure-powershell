@@ -58,9 +58,16 @@ directive:
   - where:
       variant: ^(Create|Update).*(?<!Expanded|JsonFilePath|JsonString)$
     remove: true
+  # Remove Set verb entirely - AutoRest generates New for PUT operations
   - where:
       verb: Set
     remove: true
+  # Rename PUT operations to Set for subscription/allocation management (no POST equivalent)
+  - where:
+      verb: New
+      subject: ^(GroupQuotaSubscription|GroupQuotaSubscriptionAllocation)$
+    set:
+      verb: Set
     
   - where:
       verb: Get
@@ -70,7 +77,7 @@ directive:
 
   # Rename parameter
   - where:
-      werb: New
+      verb: New
       parameter-name: NameValue
     set:
       parameter-name: Name
@@ -82,7 +89,7 @@ directive:
     hide: true
 
   - where:
-      werb: Get
+      verb: Get
       subject: Usage
       parameter-name: ResourceName
     set:
