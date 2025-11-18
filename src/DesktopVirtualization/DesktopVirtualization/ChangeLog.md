@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Upgrade API version to 2025-11-01-preview
+    - Added deployment scope property to HostPool, ApplicationGroup, Workspace, AppAttachPackage.
+
+## Version 5.4.4
 * Upgraded API version to 2025-09-01-preview
     - Added MSI Identity definition in HostPool update command.
     - Supported AllowRDPShortPathWithPrivateLink in HostPool Resource.
