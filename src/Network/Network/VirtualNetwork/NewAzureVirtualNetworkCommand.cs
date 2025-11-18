@@ -147,6 +147,12 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void Execute()
         {
+            // Handle DryRun early: perform DryRun payload post and formatting only, skip real create logic
+            if (DryRun.IsPresent && TryHandleDryRun())
+            {
+                return; // do not proceed to actual creation
+            }
+
             base.Execute();
             var present = IsVirtualNetworkPresent(ResourceGroupName, Name);
             ConfirmAction(

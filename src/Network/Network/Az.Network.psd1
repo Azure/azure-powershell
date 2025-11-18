@@ -814,7 +814,7 @@ PrivateData = @{
 * Bug fix for ''AzureFirewallPolicy'' to ensure ''BasePolicy'' is properly set via ''Set-AzFirewallPolicy'' cmdlet either via pipe or direct value.'
 
         # Prerelease string of this module
-        # Prerelease = ''
+        Prerelease = 'preview'
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update/save
         # RequireLicenseAcceptance = $false

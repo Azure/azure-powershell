@@ -37,6 +37,29 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void Execute()
         {
+            // DryRun support (modeled after UpdateAzureVMCommand): attempt to flatten PSVirtualNetwork into a PS assignment
+            if (DryRun.IsPresent)
+            {
+                try
+                {
+                    var vnetJson = Newtonsoft.Json.JsonConvert.SerializeObject(this.VirtualNetwork, Newtonsoft.Json.Formatting.Indented);
+                    string escapedJson = vnetJson.Replace("`", "``");
+                    string vnetAssign = "$virtualNetwork = ConvertFrom-Json @'\n" + escapedJson + "\n'@";
+                    if (TryHandleDryRun(vnetAssign))
+                    {
+                        return; // DryRun handled, do not execute real operation
+                    }
+                }
+                catch (Exception ex)
+                {
+                    WriteVerbose($"DryRun VirtualNetwork flatten failed: {ex.Message}. Falling back to default invocation capture.");
+                    if (TryHandleDryRun())
+                    {
+                        return;
+                    }
+                }
+            }
+
             base.Execute();
 
             if (!this.IsVirtualNetworkPresent(this.VirtualNetwork.ResourceGroupName, this.VirtualNetwork.Name))
