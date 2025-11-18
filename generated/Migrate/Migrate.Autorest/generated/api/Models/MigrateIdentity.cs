@@ -103,6 +103,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
         public string IntentObjectName { get => this._intentObjectName; set => this._intentObjectName = value; }
 
+        /// <summary>Backing field for <see cref="JobId" /> property.</summary>
+        private string _jobId;
+
+        /// <summary>job id to track.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
+        public string JobId { get => this._jobId; set => this._jobId = value; }
+
         /// <summary>Backing field for <see cref="JobName" /> property.</summary>
         private string _jobName;
 
@@ -270,6 +277,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         /// <summary>The replication extension name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
         public string ReplicationExtensionName { get => this._replicationExtensionName; set => this._replicationExtensionName = value; }
+
+        /// <summary>Backing field for <see cref="ReplicationProtectionClusterName" /> property.</summary>
+        private string _replicationProtectionClusterName;
+
+        /// <summary>Replication protection cluster name.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
+        public string ReplicationProtectionClusterName { get => this._replicationProtectionClusterName; set => this._replicationProtectionClusterName = value; }
 
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
@@ -461,6 +475,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         SerializedName = @"intentObjectName",
         PossibleTypes = new [] { typeof(string) })]
         string IntentObjectName { get; set; }
+        /// <summary>job id to track.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"job id to track.",
+        SerializedName = @"jobId",
+        PossibleTypes = new [] { typeof(string) })]
+        string JobId { get; set; }
         /// <summary>Job ARM name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
@@ -653,6 +675,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         SerializedName = @"replicationExtensionName",
         PossibleTypes = new [] { typeof(string) })]
         string ReplicationExtensionName { get; set; }
+        /// <summary>Replication protection cluster name.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Replication protection cluster name.",
+        SerializedName = @"replicationProtectionClusterName",
+        PossibleTypes = new [] { typeof(string) })]
+        string ReplicationProtectionClusterName { get; set; }
         /// <summary>The name of the resource group. The name is case insensitive.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
@@ -772,6 +802,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         string Id { get; set; }
         /// <summary>Replication protection intent name.</summary>
         string IntentObjectName { get; set; }
+        /// <summary>job id to track.</summary>
+        string JobId { get; set; }
         /// <summary>Job ARM name.</summary>
         string JobName { get; set; }
         /// <summary>The name of the Azure region.</summary>
@@ -820,6 +852,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         string ReplicatedProtectedItemName { get; set; }
         /// <summary>The replication extension name.</summary>
         string ReplicationExtensionName { get; set; }
+        /// <summary>Replication protection cluster name.</summary>
+        string ReplicationProtectionClusterName { get; set; }
         /// <summary>The name of the resource group. The name is case insensitive.</summary>
         string ResourceGroupName { get; set; }
         /// <summary>The name of the recovery services vault.</summary>
