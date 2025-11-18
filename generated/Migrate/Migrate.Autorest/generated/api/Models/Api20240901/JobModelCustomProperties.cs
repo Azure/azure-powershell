@@ -14,11 +14,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901
     {
 
         /// <summary>Backing field for <see cref="AffectedObjectDetail" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IJobModelCustomPropertiesAffectedObjectDetails _affectedObjectDetail;
+        private Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IAffectedObjectDetails _affectedObjectDetail;
 
         /// <summary>Gets or sets any custom properties of the affected object.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
-        public Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IJobModelCustomPropertiesAffectedObjectDetails AffectedObjectDetail { get => (this._affectedObjectDetail = this._affectedObjectDetail ?? new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.JobModelCustomPropertiesAffectedObjectDetails()); }
+        public Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IAffectedObjectDetails AffectedObjectDetail { get => (this._affectedObjectDetail = this._affectedObjectDetail ?? new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.AffectedObjectDetails()); }
 
         /// <summary>Backing field for <see cref="InstanceType" /> property.</summary>
         private string _instanceType;
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901
         public string InstanceType { get => this._instanceType; set => this._instanceType = value; }
 
         /// <summary>Internal Acessors for AffectedObjectDetail</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IJobModelCustomPropertiesAffectedObjectDetails Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IJobModelCustomPropertiesInternal.AffectedObjectDetail { get => (this._affectedObjectDetail = this._affectedObjectDetail ?? new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.JobModelCustomPropertiesAffectedObjectDetails()); set { {_affectedObjectDetail = value;} } }
+        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IAffectedObjectDetails Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IJobModelCustomPropertiesInternal.AffectedObjectDetail { get => (this._affectedObjectDetail = this._affectedObjectDetail ?? new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.AffectedObjectDetails()); set { {_affectedObjectDetail = value;} } }
 
         /// <summary>Creates an new <see cref="JobModelCustomProperties" /> instance.</summary>
         public JobModelCustomProperties()
@@ -46,8 +46,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901
         ReadOnly = true,
         Description = @"Gets or sets any custom properties of the affected object.",
         SerializedName = @"affectedObjectDetails",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IJobModelCustomPropertiesAffectedObjectDetails) })]
-        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IJobModelCustomPropertiesAffectedObjectDetails AffectedObjectDetail { get;  }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IAffectedObjectDetails) })]
+        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IAffectedObjectDetails AffectedObjectDetail { get;  }
         /// <summary>Discriminator property for JobModelCustomProperties.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = true,
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901
 
     {
         /// <summary>Gets or sets any custom properties of the affected object.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IJobModelCustomPropertiesAffectedObjectDetails AffectedObjectDetail { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IAffectedObjectDetails AffectedObjectDetail { get; set; }
         /// <summary>Discriminator property for JobModelCustomProperties.</summary>
         string InstanceType { get; set; }
 
