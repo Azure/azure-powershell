@@ -72,7 +72,7 @@ FormatsToProcess = 'Functions.Autorest/Az.Functions.format.ps1xml',
 NestedModules = @('Functions.Autorest/Az.Functions.psm1')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = 'Get-AzFunctionApp', 'Get-AzFunctionAppAvailableLocation', 
+FunctionsToExport = 'Get-AzFunctionApp', 'Get-AzFunctionAppAvailableLocation', 'Get-AzFunctionAppFlexConsumptionRuntime',
                'Get-AzFunctionAppPlan', 'Get-AzFunctionAppSetting', 
                'New-AzFunctionApp', 'New-AzFunctionAppPlan', 'Remove-AzFunctionApp', 
                'Remove-AzFunctionAppPlan', 'Remove-AzFunctionAppSetting', 
