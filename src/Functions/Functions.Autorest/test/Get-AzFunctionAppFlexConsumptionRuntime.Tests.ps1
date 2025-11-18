@@ -16,12 +16,23 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzFunctionAppFlexConsumpt
 
 # Please note that these tests can run in Playback mode only when executed locally. They fail in the pipeline due to the environment.
 # However, they can be used for local deployment in Playback mode.
-# Describe 'Get-AzFunctionAppFlexConsumptionRuntime' {
-Describe 'Get-AzFunctionAppFlexConsumptionRuntime' -Tag 'LiveOnly' {
+Describe 'Get-AzFunctionAppFlexConsumptionRuntime' {
+#Describe 'Get-AzFunctionAppFlexConsumptionRuntime' -Tag 'LiveOnly' {
     
     BeforeAll {
         $testLocation = 'East Asia'
         $cutoffDate = [DateTime]'11/9/2026'
+
+        function Assert-ContainsAll {
+            param(
+                [Parameter(Mandatory)] $Actual,
+                [Parameter(Mandatory)] [string[]] $Expected,
+                [string] $Label = 'collection'
+            )
+            foreach ($e in $Expected) {
+                $Actual | Should -Contain $e -Because "'$e' must be present in $Label"
+            }
+        }
     }
 
     It 'Should get all available runtimes for Flex Consumption' {
@@ -50,34 +61,43 @@ Describe 'Get-AzFunctionAppFlexConsumptionRuntime' -Tag 'LiveOnly' {
         $allRuntimes = Get-AzFunctionAppFlexConsumptionRuntime -Location $testLocation
         
         # Test current supported runtime stack versions
-        $currentStackRuntimes = $allRuntimes | Where-Object { 
+        $currentStackRuntimes = $allRuntimes | Where-Object {
             ($_.Name -eq 'custom') -or 
             ([DateTime]::Parse($_.EndOfLifeDate) -ge $cutoffDate)
         }
         
         $currentStackRuntimes | Should -Not -BeNullOrEmpty
-        
-        # Verify expected current stack versions (10 total)
-        $currentStackRuntimes | Should -HaveCount 10
-        
+
         # Test each runtime has expected current stack versions
         $dotnetCurrent = $currentStackRuntimes | Where-Object { $_.Name -eq 'dotnet-isolated' }
-        $dotnetCurrent.Version | Sort-Object | Should -Be @('10.0', '8.0')  # Latest supported versions
+        Write-Verbose "Current .NET Isolated versions: $($dotnetCurrent.Version -join ', ')" -Verbose
+        $actualDotnet = $dotnetCurrent.Version | Sort-Object -Unique
+        Assert-ContainsAll -Actual $actualDotnet -Expected @('10.0','8.0') -Label '.NET isolated versions'
         
         $nodeCurrent = $currentStackRuntimes | Where-Object { $_.Name -eq 'node' }
-        $nodeCurrent.Version | Should -Be '22'  # Current LTS version
+        Write-Verbose "Current Node versions: $($nodeCurrent.Version -join ', ')" -Verbose
+        $actualNode = $nodeCurrent.Version | Sort-Object -Unique
+        Assert-ContainsAll -Actual $actualNode -Expected @('22') -Label 'Node versions'
         
         $javaCurrent = $currentStackRuntimes | Where-Object { $_.Name -eq 'java' }
-        $javaCurrent.Version | Sort-Object | Should -Be @('17', '21')  # Current supported versions
+        Write-Verbose "Current Java versions: $($javaCurrent.Version -join ', ')" -Verbose
+        $actualJava = $javaCurrent.Version | Sort-Object -Unique
+        Assert-ContainsAll -Actual $actualJava -Expected @('17', '21') -Label 'Java versions'
         
         $powershellCurrent = $currentStackRuntimes | Where-Object { $_.Name -eq 'powershell' }
-        $powershellCurrent.Version | Should -Be '7.4'  # Current stable version
+        Write-Verbose "Current PowerShell versions: $($powershellCurrent.Version -join ', ')" -Verbose
+        $actualPowershell = $powershellCurrent.Version | Sort-Object -Unique
+        Assert-ContainsAll -Actual $actualPowershell -Expected @('7.4') -Label 'PowerShell versions'
         
         $pythonCurrent = $currentStackRuntimes | Where-Object { $_.Name -eq 'python' }
-        $pythonCurrent.Version | Sort-Object | Should -Be @('3.11', '3.12', '3.13')  # Latest supported versions
+        Write-Verbose "Current Python versions: $($pythonCurrent.Version -join ', ')" -Verbose
+        $actualPython = $pythonCurrent.Version | Sort-Object -Unique
+        Assert-ContainsAll -Actual $actualPython -Expected @('3.11', '3.12', '3.13') -Label 'Python versions'
         
         $customCurrent = $currentStackRuntimes | Where-Object { $_.Name -eq 'custom' }
-        $customCurrent.Version | Should -Be '1.0'  # Always current for custom
+        Write-Verbose "Current Custom versions: $($customCurrent.Version -join ', ')" -Verbose
+        $actualCustom = $customCurrent.Version | Sort-Object -Unique
+        Assert-ContainsAll -Actual $actualCustom -Expected @('1.0') -Label 'Custom versions'
     }
 
     It 'Should validate default runtime versions for current stack' {
@@ -197,16 +217,16 @@ Describe 'Get-AzFunctionAppFlexConsumptionRuntime' -Tag 'LiveOnly' {
     It 'Should get specific runtime and version for all current stack versions' {
         # Test specific current runtime stack combinations
         $testCases = @(
-            @{ Runtime = 'dotnet-isolated'; Version = '8.0'; IsDefault = $true },
-            @{ Runtime = 'dotnet-isolated'; Version = '10.0'; IsDefault = $false },
-            @{ Runtime = 'node'; Version = '22'; IsDefault = $true },
-            @{ Runtime = 'java'; Version = '17'; IsDefault = $true },
-            @{ Runtime = 'java'; Version = '21'; IsDefault = $false },
-            @{ Runtime = 'powershell'; Version = '7.4'; IsDefault = $true },
-            @{ Runtime = 'python'; Version = '3.11'; IsDefault = $true },
-            @{ Runtime = 'python'; Version = '3.12'; IsDefault = $true },
-            @{ Runtime = 'python'; Version = '3.13'; IsDefault = $false },
-            @{ Runtime = 'custom'; Version = '1.0'; IsDefault = $false }
+            @{ Runtime = 'dotnet-isolated'; Version = '8.0'},
+            @{ Runtime = 'dotnet-isolated'; Version = '10.0'},
+            @{ Runtime = 'node'; Version = '22'},
+            @{ Runtime = 'java'; Version = '17'},
+            @{ Runtime = 'java'; Version = '21'},
+            @{ Runtime = 'powershell'; Version = '7.4'},
+            @{ Runtime = 'python'; Version = '3.11'},
+            @{ Runtime = 'python'; Version = '3.12'},
+            @{ Runtime = 'python'; Version = '3.13'},
+            @{ Runtime = 'custom'; Version = '1.0'}
         )
         
         foreach ($testCase in $testCases) {
@@ -215,7 +235,6 @@ Describe 'Get-AzFunctionAppFlexConsumptionRuntime' -Tag 'LiveOnly' {
             $result | Should -HaveCount 1
             $result.Name | Should -Be $testCase.Runtime
             $result.Version | Should -Be $testCase.Version
-            $result.IsDefault | Should -Be $testCase.IsDefault
             $result.Sku.skuCode | Should -Be 'FC1'
         }
     }

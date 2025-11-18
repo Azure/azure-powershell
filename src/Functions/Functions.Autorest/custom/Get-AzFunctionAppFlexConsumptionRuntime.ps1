@@ -1,13 +1,12 @@
 function Get-AzFunctionAppFlexConsumptionRuntime {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.FunctionAppFlexConsumptionRuntime])]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Description('Gets the Flex Consumption function app runtimes supported at the specified location.')]
-    [CmdletBinding(DefaultParameterSetName='AllRuntimes')]
+    [CmdletBinding(DefaultParameterSetName='AllRuntimes', PositionalBinding=$false)]
     param(
         [Parameter(ParameterSetName='AllRuntimes', HelpMessage='The Azure subscription ID.')]
         [Parameter(ParameterSetName='AllVersions')]
         [Parameter(ParameterSetName='ByVersion')]
         [Parameter(ParameterSetName='DefaultOrLatest')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [ValidateNotNullOrEmpty()]
         [System.String]
         ${SubscriptionId},
@@ -40,9 +39,52 @@ function Get-AzFunctionAppFlexConsumptionRuntime {
     
     process {
 
+        # Validate active Azure session (required each invocation for endpoint calls)
+        $context = Get-AzContext -ErrorAction SilentlyContinue
+        if (-not $context) {
+            $errorMessage = "There is no active Azure PowerShell session. Please run 'Connect-AzAccount'."
+            $exception    = [System.InvalidOperationException]::New($errorMessage)
+            ThrowTerminatingError -ErrorId "LoginToAzureViaConnectAzAccount" `
+                                  -ErrorMessage $errorMessage `
+                                  -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                                  -Exception $exception
+        }
+
+        # Switch subscription only if explicitly provided AND different.
+        if ($PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $SubscriptionId = $SubscriptionId.Trim()
+            if ([string]::IsNullOrWhiteSpace($SubscriptionId)) {
+                $errorMessage = "SubscriptionId cannot be null or empty."
+                $exception    = [System.ArgumentException]::New($errorMessage)
+                ThrowTerminatingError -ErrorId "InvalidSubscriptionId" `
+                                    -ErrorMessage $errorMessage `
+                                    -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidArgument) `
+                                    -Exception $exception
+            }
+
+            $sameSubscription = ($context.Subscription.Id -ieq $SubscriptionId) -or ($context.Subscription.Name -ieq $SubscriptionId)
+            if (-not $sameSubscription) {
+                Write-Verbose "Switching context to subscription: $SubscriptionId"
+                Set-AzContext -SubscriptionId $SubscriptionId -ErrorAction Stop | Out-Null
+                $context = Get-AzContext
+            }
+            else {
+                Write-Verbose "Subscription already set to $SubscriptionId; skipping context switch."
+            }
+        }
+
         RegisterFunctionsTabCompleters
 
-        # Validate Flex Consumption location
+        # Normalize location.
+        $Location = $Location.Trim()
+        if ([string]::IsNullOrWhiteSpace($Location)) {
+            $errorMessage = "Location cannot be empty or whitespace."
+            $exception    = [System.ArgumentException]::New($errorMessage)
+            ThrowTerminatingError -ErrorId "InvalidLocation" `
+                                  -ErrorMessage $errorMessage `
+                                  -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidArgument) `
+                                  -Exception $exception
+        }
         Validate-FlexConsumptionLocation -Location $Location
 
         switch ($PSCmdlet.ParameterSetName) {
