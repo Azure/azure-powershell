@@ -8,21 +8,21 @@ namespace Microsoft.Azure.Management.NetApp.Models
     using System.Linq;
 
     /// <summary>
-    /// Information regarding Subscription Quota Item.
+    /// Information regarding Quota Item.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class SubscriptionQuotaItem : ProxyResource
+    public partial class QuotaItem : ProxyResource
     {
         /// <summary>
-        /// Initializes a new instance of the SubscriptionQuotaItem class.
+        /// Initializes a new instance of the QuotaItem class.
         /// </summary>
-        public SubscriptionQuotaItem()
+        public QuotaItem()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the SubscriptionQuotaItem class.
+        /// Initializes a new instance of the QuotaItem class.
         /// </summary>
 
         /// <param name="id">Fully qualified resource ID for the resource. E.g.
@@ -45,12 +45,16 @@ namespace Microsoft.Azure.Management.NetApp.Models
 
         /// <param name="defaultProperty">The default quota value.
         /// </param>
-        public SubscriptionQuotaItem(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), int? current = default(int?), int? defaultProperty = default(int?))
+
+        /// <param name="usage">The usage quota value.
+        /// </param>
+        public QuotaItem(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), int? current = default(int?), int? defaultProperty = default(int?), int? usage = default(int?))
 
         : base(id, name, type, systemData)
         {
             this.Current = current;
             this.DefaultProperty = defaultProperty;
+            this.Usage = usage;
             CustomInit();
         }
 
@@ -71,5 +75,11 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.default")]
         public int? DefaultProperty {get; private set; }
+
+        /// <summary>
+        /// Gets the usage quota value.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.usage")]
+        public int? Usage {get; private set; }
     }
 }

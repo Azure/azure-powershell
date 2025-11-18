@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// be accepted as input only for manual qosType pool with Flexible service
         /// level
         /// </param>
-        public PoolPatchProperties(long? size = default(long?), string qosType = default(string), bool? coolAccess = default(bool?), double? customThroughputMibps = default(double?))
+        public PoolPatchProperties(long? size = default(long?), string qosType = default(string), bool? coolAccess = default(bool?), int? customThroughputMibps = default(int?))
 
         {
             this.Size = size;
@@ -80,6 +80,6 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// Flexible service level
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "customThroughputMibps")]
-        public double? CustomThroughputMibps {get; set; }
+        public int? CustomThroughputMibps {get; set; }
     }
 }
