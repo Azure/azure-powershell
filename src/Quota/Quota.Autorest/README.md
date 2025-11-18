@@ -54,20 +54,25 @@ directive:
     where: $
     transform: $ = $.replace(/global::System.Text.RegularExpressions.Regex\(\"\^\/\(\?\<scope\>\[\^\/\]\+\)/g, 'global::System.Text.RegularExpressions.Regex("^/(?<scope>.+)');
 
-  # Remove the set Workspace cmdlet
+  # Keep only useful parameter set variants (Expanded, JsonFilePath, JsonString)
+  # But preserve all variants for subscription/allocation management operations
   - where:
       variant: ^(Create|Update).*(?<!Expanded|JsonFilePath|JsonString)$
+      subject: ^(?!GroupQuotaSubscription|GroupQuotaLimitsRequest|GroupQuotaSubscriptionAllocation|GroupQuotaSubscriptionRequest).*$
     remove: true
-  # Remove Set verb entirely - AutoRest generates New for PUT operations
+  
+  # Rename Set to New for operations that don't have POST equivalents
+  # These are PUT-only operations where New is more semantically appropriate
   - where:
       verb: Set
-    remove: true
-  # Rename PUT operations to Set for subscription/allocation management (no POST equivalent)
-  - where:
-      verb: New
-      subject: ^(GroupQuotaSubscription|GroupQuotaSubscriptionAllocation)$
+      subject: ^(GroupQuotaSubscription|GroupQuotaLimitsRequest|GroupQuotaSubscriptionAllocation|GroupQuotaSubscriptionRequest)$
     set:
+      verb: New
+  
+  # Remove any remaining Set verbs (for operations that have New equivalents from POST)
+  - where:
       verb: Set
+    remove: true
     
   - where:
       verb: Get

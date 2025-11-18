@@ -79,10 +79,12 @@ FunctionsToExport = 'Get-AzQuota', 'Get-AzQuotaGroupQuota', 'Get-AzQuotaGroupQuo
                'Get-AzQuotaGroupQuotaUsage', 'Get-AzQuotaOperation', 
                'Get-AzQuotaRequestStatus', 'Get-AzQuotaUsage', 'New-AzQuota', 
                'New-AzQuotaGroupQuota', 'New-AzQuotaGroupQuotaLocationSetting', 
-               'New-AzQuotaLimitObject', 'Remove-AzQuotaGroupQuota', 
-               'Remove-AzQuotaGroupQuotaSubscription', 'Update-AzQuota', 
-               'Update-AzQuotaGroupQuota', 'Update-AzQuotaGroupQuotaLimitsRequest', 
+               'New-AzQuotaGroupQuotaSubscription', 'New-AzQuotaLimitObject', 
+               'Remove-AzQuotaGroupQuota', 'Remove-AzQuotaGroupQuotaSubscription', 
+               'Update-AzQuota', 'Update-AzQuotaGroupQuota', 
+               'Update-AzQuotaGroupQuotaLimitsRequest', 
                'Update-AzQuotaGroupQuotaLocationSetting', 
+               'Update-AzQuotaGroupQuotaSubscription', 
                'Update-AzQuotaGroupQuotaSubscriptionAllocationRequest'
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.

@@ -1,0 +1,172 @@
+{
+  "Remove-AzQuotaGroupQuotaSubscription+[NoContext]+Delete+$GET+https://management.azure.com/providers/Microsoft.Management/managementGroups/mg-demo/providers/Microsoft.Quota/groupQuotas/testlocation?api-version=2025-09-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Management/managementGroups/mg-demo/providers/Microsoft.Quota/groupQuotas/testlocation?api-version=2025-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "831a9747-2844-42c0-a7c4-098d7e89c9b1" ],
+        "CommandName": [ "Get-AzQuotaGroupQuota" ],
+        "FullCommandName": [ "Get-AzQuotaGroupQuota_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.12", "Az.Quota/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-store, must-revalidate, no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "MS-RequestId": [ "nEnSiNILTkKC0LbHltCGrQ.0" ],
+        "x-ms-operation-identifier": [ "" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "249" ],
+        "x-ms-request-id": [ "c2f64f2a-a0a7-49c6-97b5-bf8594ea39ef" ],
+        "x-ms-correlation-request-id": [ "c2f64f2a-a0a7-49c6-97b5-bf8594ea39ef" ],
+        "x-ms-routing-request-id": [ "AUSTRALIAEAST:20251118T084539Z:c2f64f2a-a0a7-49c6-97b5-bf8594ea39ef" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 2EBBF418E5A44F9C9A67C8CB57959E15 Ref B: SYD03EDGE1114 Ref C: 2025-11-18T08:45:39Z" ],
+        "Date": [ "Tue, 18 Nov 2025 08:45:39 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "376" ],
+        "Content-Type": [ "application/json" ]
+      },
+      "Content": "{\"properties\":{\"displayName\":\"Test Location Group Quota\",\"groupType\":\"AllocationGroup\",\"provisioningState\":\"Succeeded\",\"additionalAttributes\":{\"groupId\":{\"groupingIdType\":\"None\"},\"environment\":\"None\"}},\"id\":\"/providers/Microsoft.Management/managementGroups/mg-demo/providers/Microsoft.Quota/groupQuotas/testlocation\",\"type\":\"Microsoft.Quota/groupQuotas\",\"name\":\"testlocation\"}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzQuotaGroupQuotaSubscription+[NoContext]+Delete+$GET+https://management.azure.com/providers/Microsoft.Management/managementGroups/mg-demo/providers/Microsoft.Quota/groupQuotas/testlocation/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1?api-version=2025-09-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Management/managementGroups/mg-demo/providers/Microsoft.Quota/groupQuotas/testlocation/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1?api-version=2025-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "a8bee55e-6c5f-4adc-9c99-acf507ab5163" ],
+        "CommandName": [ "Get-AzQuotaGroupQuotaSubscription" ],
+        "FullCommandName": [ "Get-AzQuotaGroupQuotaSubscription_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.12", "Az.Quota/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-store, must-revalidate, no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "MS-RequestId": [ "Jbr2XwgKOUCezYidbYhPxw.0" ],
+        "x-ms-operation-identifier": [ "" ],
+        "x-ms-ratelimit-remaining-tenant-resource-requests": [ "2199" ],
+        "x-ms-request-id": [ "47b55467-e799-4707-b573-ed2b4fe5fb22" ],
+        "x-ms-correlation-request-id": [ "47b55467-e799-4707-b573-ed2b4fe5fb22" ],
+        "x-ms-routing-request-id": [ "AUSTRALIAEAST:20251118T084540Z:47b55467-e799-4707-b573-ed2b4fe5fb22" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 0097443DAB184C5484AA58AACE0A6EF0 Ref B: SYD03EDGE1114 Ref C: 2025-11-18T08:45:40Z" ],
+        "Date": [ "Tue, 18 Nov 2025 08:45:39 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "367" ],
+        "Content-Type": [ "application/json" ]
+      },
+      "Content": "{\"Properties\":{\"subscriptionId\":\"0e745469-49f8-48c9-873b-24ca87143db1\",\"provisioningState\":\"SUCCEEDED\"},\"id\":\"/providers/Microsoft.Management/managementGroups/mg-demo/providers/Microsoft.Quota/groupQuotas/testlocation/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1\",\"type\":\"Microsoft.Quota/groupQuotas/subscriptions\",\"name\":\"0e745469-49f8-48c9-873b-24ca87143db1\"}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzQuotaGroupQuotaSubscription+[NoContext]+Delete+$DELETE+https://management.azure.com/providers/Microsoft.Management/managementGroups/mg-demo/providers/Microsoft.Quota/groupQuotas/testlocation/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1?api-version=2025-09-01+3": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Management/managementGroups/mg-demo/providers/Microsoft.Quota/groupQuotas/testlocation/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1?api-version=2025-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "05ac5c94-7484-448c-9b08-164492a1b8d5" ],
+        "CommandName": [ "Remove-AzQuotaGroupQuotaSubscription" ],
+        "FullCommandName": [ "Remove-AzQuotaGroupQuotaSubscription_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.12", "Az.Quota/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-store, must-revalidate, no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "MS-RequestId": [ "ktgeKvPrZkiIpd0ls6gopQ.0" ],
+        "x-ms-operation-identifier": [ "" ],
+        "x-ms-ratelimit-remaining-tenant-deletes": [ "199" ],
+        "x-ms-request-id": [ "fd4453ac-de24-4115-8b00-2be6044ccd4a" ],
+        "x-ms-correlation-request-id": [ "fd4453ac-de24-4115-8b00-2be6044ccd4a" ],
+        "x-ms-routing-request-id": [ "AUSTRALIAEAST:20251118T084541Z:fd4453ac-de24-4115-8b00-2be6044ccd4a" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 40E177CEA7504D079B0137C40A41A657 Ref B: SYD03EDGE1114 Ref C: 2025-11-18T08:45:40Z" ],
+        "Date": [ "Tue, 18 Nov 2025 08:45:40 GMT" ]
+      },
+      "ContentHeaders": {
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzQuotaGroupQuotaSubscription+[NoContext]+Delete+$GET+https://management.azure.com/providers/Microsoft.Management/managementGroups/mg-demo/providers/Microsoft.Quota/groupQuotas/testlocation/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1?api-version=2025-09-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Management/managementGroups/mg-demo/providers/Microsoft.Quota/groupQuotas/testlocation/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1?api-version=2025-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "6ccb5fa4-cb63-447f-a7e0-6d8193d3cdce" ],
+        "CommandName": [ "Get-AzQuotaGroupQuotaSubscription" ],
+        "FullCommandName": [ "Get-AzQuotaGroupQuotaSubscription_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.12", "Az.Quota/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 404,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-operation-identifier": [ "" ],
+        "x-ms-ratelimit-remaining-tenant-resource-requests": [ "2199" ],
+        "x-ms-request-id": [ "c2159ad1-c5ef-4311-9cde-ed56ffd726e2" ],
+        "x-ms-correlation-request-id": [ "c2159ad1-c5ef-4311-9cde-ed56ffd726e2" ],
+        "x-ms-routing-request-id": [ "AUSTRALIACENTRAL2:20251118T084546Z:c2159ad1-c5ef-4311-9cde-ed56ffd726e2" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: ED728498EFF14A47A997350714CB180E Ref B: SYD03EDGE1114 Ref C: 2025-11-18T08:45:46Z" ],
+        "Date": [ "Tue, 18 Nov 2025 08:45:46 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "149" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"EntityNotFound\",\"message\":\"SubscriptionId : 0e745469-49f8-48c9-873b-24ca87143db1 is not registered with GroupQuota: testlocation\"}}",
+      "isContentBase64": false
+    }
+  }
+}

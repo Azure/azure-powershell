@@ -16,14 +16,23 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzQuotaGroupQuotaLimit
 
 Describe 'Update-AzQuotaGroupQuotaLimitsRequest' {
     It 'UpdateExpanded' {
-        # NOTE: This test requires a subscription to be added to the group quota first
-        # Currently there is no Set-AzQuotaGroupQuotaSubscription cmdlet to do this setup
-        # Prerequisite: Manually add subscription using Azure Portal or REST API
-        
         $managementGroupId = "mg-demo"
         $groupQuotaName = "testlocation"
         $location = "eastus"
         $resourceProviderName = "Microsoft.Compute"
+        
+        # Ensure the GroupQuota exists
+        $groupQuota = Get-AzQuotaGroupQuota -ManagementGroupId $managementGroupId -GroupQuotaName $groupQuotaName -ErrorAction SilentlyContinue
+        if (-not $groupQuota) {
+            $groupQuota = New-AzQuotaGroupQuota -ManagementGroupId $managementGroupId -GroupQuotaName $groupQuotaName -DisplayName "Test Location Group Quota"
+        }
+        
+        # Ensure the subscription is in the GroupQuota
+        $existingSub = Get-AzQuotaGroupQuotaSubscription -ManagementGroupId $managementGroupId -GroupQuotaName $groupQuotaName -SubscriptionId $env.SubscriptionId -ErrorAction SilentlyContinue
+        if (-not $existingSub) {
+            New-AzQuotaGroupQuotaSubscription -ManagementGroupId $managementGroupId -GroupQuotaName $groupQuotaName -SubscriptionId $env.SubscriptionId
+            Start-Sleep -Seconds 5
+        }
         
         $jsonBody = @{
             properties = @{
@@ -41,29 +50,5 @@ Describe 'Update-AzQuotaGroupQuotaLimitsRequest' {
         
         $result = Update-AzQuotaGroupQuotaLimitsRequest -ManagementGroupId $managementGroupId -GroupQuotaName $groupQuotaName -ResourceProviderName $resourceProviderName -Location $location -JsonString $jsonBody
         $result | Should -Not -BeNullOrEmpty
-    }
-
-    It 'UpdateViaJsonString' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'UpdateViaJsonFilePath' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'UpdateViaIdentityManagementGroupExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'UpdateViaIdentityResourceProviderExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'UpdateViaIdentityGroupQuotaExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

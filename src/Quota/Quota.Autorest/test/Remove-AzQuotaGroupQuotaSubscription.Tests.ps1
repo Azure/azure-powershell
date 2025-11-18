@@ -15,19 +15,29 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzQuotaGroupQuotaSubsc
 }
 
 Describe 'Remove-AzQuotaGroupQuotaSubscription' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'DeleteViaIdentityManagementGroup' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'DeleteViaIdentityGroupQuota' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete' {
+        $managementGroupId = "mg-demo"
+        $groupQuotaName = "testlocation"
+        
+        # Ensure the GroupQuota exists
+        $groupQuota = Get-AzQuotaGroupQuota -ManagementGroupId $managementGroupId -GroupQuotaName $groupQuotaName -ErrorAction SilentlyContinue
+        if (-not $groupQuota) {
+            $groupQuota = New-AzQuotaGroupQuota -ManagementGroupId $managementGroupId -GroupQuotaName $groupQuotaName -DisplayName "Test Location Group Quota"
+        }
+        
+        # Ensure the subscription is in the GroupQuota
+        $existingSub = Get-AzQuotaGroupQuotaSubscription -ManagementGroupId $managementGroupId -GroupQuotaName $groupQuotaName -SubscriptionId $env.SubscriptionId -ErrorAction SilentlyContinue
+        if (-not $existingSub) {
+            New-AzQuotaGroupQuotaSubscription -ManagementGroupId $managementGroupId -GroupQuotaName $groupQuotaName -SubscriptionId $env.SubscriptionId
+            Start-Sleep -Seconds 5
+        }
+        
+        # Remove the subscription
+        { Remove-AzQuotaGroupQuotaSubscription -ManagementGroupId $managementGroupId -GroupQuotaName $groupQuotaName -SubscriptionId $env.SubscriptionId } | Should -Not -Throw
+        
+        # Verify it's removed
+        Start-Sleep -Seconds 5
+        $removed = Get-AzQuotaGroupQuotaSubscription -ManagementGroupId $managementGroupId -GroupQuotaName $groupQuotaName -SubscriptionId $env.SubscriptionId -ErrorAction SilentlyContinue
+        $removed | Should -BeNullOrEmpty
     }
 }

@@ -16,22 +16,20 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzQuotaGroupQuotaLimit'))
 
 Describe 'Get-AzQuotaGroupQuotaLimit' {
     It 'List' {
-        if ($script:testGroupQuotaName) {
-            # Test listing group quota limits for Microsoft.Compute in eastus
-            $result = Get-AzQuotaGroupQuotaLimit -ManagementGroupId $script:managementGroupId -GroupQuotaName $script:testGroupQuotaName -ResourceProviderName "Microsoft.Compute" -Location "eastus"
-            
-            # Should execute without error (result can be empty)
-            $? | Should -Be $true
-            
-            # If results exist, validate structure
-            if ($result) {
-                foreach ($limit in $result) {
-                    $limit.Properties | Should -Not -BeNull
-                    $limit.Properties.Name | Should -Not -BeNull
-                }
-            }
-        } else {
-            Set-ItResult -Skipped -Because "No group quotas available for testing"
-        }
+        $managementGroupId = "mg-demo"
+        $groupQuotaName = "testquota$(Get-Random)"
+        
+        # Create a GroupQuota first
+        $groupQuota = New-AzQuotaGroupQuota -ManagementGroupId $managementGroupId -GroupQuotaName $groupQuotaName -DisplayName "Test Quota for Limits"
+        $groupQuota | Should -Not -BeNull
+        
+        # Now list the limits (may be empty initially but should not error)
+        $result = Get-AzQuotaGroupQuotaLimit -ManagementGroupId $managementGroupId -GroupQuotaName $groupQuotaName -ResourceProviderName "Microsoft.Compute" -Location "eastus"
+        
+        # Should execute without error
+        $? | Should -Be $true
+        
+        # Cleanup
+        Remove-AzQuotaGroupQuota -ManagementGroupId $managementGroupId -GroupQuotaName $groupQuotaName
     }
 }

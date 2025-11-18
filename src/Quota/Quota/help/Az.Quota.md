@@ -86,6 +86,12 @@ To disable GroupQuota Enforcement -\n1.
 Remove all the subscriptions from the groupQuota using the delete API for Subscriptions (Check the example - GroupQuotaSubscriptions_Delete).\n2.
 Then delete the GroupQuota (Check the example - GroupQuotas_Delete).
 
+### [New-AzQuotaGroupQuotaSubscription](New-AzQuotaGroupQuotaSubscription.md)
+Adds a subscription to GroupQuotas.
+The subscriptions will be validated based on the additionalAttributes defined in the GroupQuota.
+The additionalAttributes works as filter for the subscriptions, which can be included in the GroupQuotas.
+The request's TenantId is validated against the subscription's TenantId.
+
 ### [New-AzQuotaLimitObject](New-AzQuotaLimitObject.md)
 Create an in-memory object for LimitObject.
 
@@ -127,6 +133,11 @@ If the GroupQuotaLimits is used, then submit a groupQuotaLimit request for the s
 To disable GroupQuota Enforcement -\n1.
 Remove all the subscriptions from the groupQuota using the delete API for Subscriptions (Check the example - GroupQuotaSubscriptions_Delete).\n2.
 Ten delete the GroupQuota (Check the example - GroupQuotas_Delete).
+
+### [Update-AzQuotaGroupQuotaSubscription](Update-AzQuotaGroupQuotaSubscription.md)
+Update the GroupQuotas with the subscription to add to the subscriptions list.
+The subscriptions will be validated if additionalAttributes are defined in the GroupQuota.
+The request's TenantId is validated against the subscription's TenantId.
 
 ### [Update-AzQuotaGroupQuotaSubscriptionAllocationRequest](Update-AzQuotaGroupQuotaSubscriptionAllocationRequest.md)
 Request to assign quota from group quota to a specific Subscription.
