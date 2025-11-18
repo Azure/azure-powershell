@@ -14,7 +14,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzFunctionAppFlexConsumpt
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Get-AzFunctionAppFlexConsumptionRuntime' {
+# Please note that these tests can run in Playback mode only when executed locally. They fail in the pipeline due to the environment.
+# However, they can be used for local deployment in Playback mode.
+# Describe 'Get-AzFunctionAppFlexConsumptionRuntime' {
+Describe 'Get-AzFunctionAppFlexConsumptionRuntime' -Tag 'LiveOnly' {
     
     BeforeAll {
         $testLocation = 'East Asia'
