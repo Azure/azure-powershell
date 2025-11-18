@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support for firewall metrics
+* Added new commands for supportInfo, productSerialNumer, cloudManagerTenants
+* Added support for StrataCloudManager and privateSourceNatRulesDestination properties
 
 ## Version 0.3.1
 * Upgraded nuget package to signed package.
