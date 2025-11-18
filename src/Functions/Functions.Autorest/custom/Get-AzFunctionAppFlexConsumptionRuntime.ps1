@@ -1,4 +1,5 @@
 function Get-AzFunctionAppFlexConsumptionRuntime {
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.FunctionAppFlexConsumptionRuntime])]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Description('Gets the Flex Consumption function app runtimes supported at the specified location.')]
     [CmdletBinding(DefaultParameterSetName='AllRuntimes')]
     param(

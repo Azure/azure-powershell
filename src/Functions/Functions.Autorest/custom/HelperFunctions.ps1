@@ -2987,18 +2987,20 @@ function Get-FlexFunctionAppRuntime
                 $runtimeEndOfLifeDate = if ($linux.endOfLifeDate) {  ParseEndOfLifeDate -Runtime $runtimeName -DateString $linux.endOfLifeDate } else { $null }
 
                 # Create runtime object
-                $result = [pscustomobject]@{
-                    Name               = $runtimeName
-                    Version            = $runtimeVersion
-                    IsDefault          = ([bool]$linux.isDefault)
-                    EndOfLifeDate      = $runtimeEndOfLifeDate
-                    Sku                = $sku
-                    #AppInsightsSupported = [bool]$linux.appInsightsSettings.isSupported
-                    #GitHubActions_IsSupported = [bool]$linux.gitHubActionSettings.isSupported
-                    #GitHubActions_Version     = $linux.gitHubActionSettings.supportedVersion
+                $result = [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.FunctionAppFlexConsumptionRuntime]::new()
+                $result.Name          = $runtimeName
+                $result.Version       = $runtimeVersion
+                $result.IsDefault     = [bool]$linux.isDefault
+                $result.EndOfLifeDate = $runtimeEndOfLifeDate
+                $result.Sku           = [PSCustomObject]$sku
+
+                if (-not $result.PSTypeNames.Contains('Az.Functions.FunctionAppFlexConsumptionRuntime.Display'))
+                {
+                    # Insert synthetic PSTypeName so our custom view (with Sku summary) overrides
+                    # the autorest-generated runtime view which omits Sku.
+                    $result.PSTypeNames.Insert(0,'Az.Functions.FunctionAppFlexConsumptionRuntime.Display') | Out-Null
                 }
 
-                $result.PSTypeNames.Insert(0,'Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.FunctionAppFlexConsumptionRuntime')
                 $stacks.Add($result)
             }
         }

@@ -64,9 +64,9 @@
             </TableControl>
         </View>
         <View>
-            <Name>FunctionAppFlexConsumptionRuntimeTableView</Name>
+            <Name>Az.Functions.FunctionAppFlexConsumptionRuntime.Display</Name>
             <ViewSelectedBy>
-                <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.FunctionAppFlexConsumptionRuntime</TypeName>
+                <TypeName>Az.Functions.FunctionAppFlexConsumptionRuntime.Display</TypeName>
             </ViewSelectedBy>
             <TableControl>
                 <TableHeaders>
