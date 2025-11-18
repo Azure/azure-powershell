@@ -20,6 +20,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Origin(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.PropertyOrigin.Owned)]
         public string AccountId { get => this._accountId; set => this._accountId = value; }
 
+        /// <summary>Backing field for <see cref="CompanyName" /> property.</summary>
+        private string _companyName;
+
+        /// <summary>Name of the customer account / company</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Origin(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.PropertyOrigin.Owned)]
+        public string CompanyName { get => this._companyName; set => this._companyName = value; }
+
         /// <summary>Backing field for <see cref="RegionId" /> property.</summary>
         private string _regionId;
 
@@ -48,6 +55,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models
         SerializedName = @"accountId",
         PossibleTypes = new [] { typeof(string) })]
         string AccountId { get; set; }
+        /// <summary>Name of the customer account / company</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Name of the customer account / company",
+        SerializedName = @"companyName",
+        PossibleTypes = new [] { typeof(string) })]
+        string CompanyName { get; set; }
         /// <summary>Region in which the account is created</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Info(
         Required = false,
@@ -67,6 +85,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models
     {
         /// <summary>Account Id of the account this environment is linked to</summary>
         string AccountId { get; set; }
+        /// <summary>Name of the customer account / company</summary>
+        string CompanyName { get; set; }
         /// <summary>Region in which the account is created</summary>
         string RegionId { get; set; }
 

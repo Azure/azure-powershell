@@ -105,6 +105,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentityInternal)this).TaskName = (string) content.GetValueForProperty("TaskName",((Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentityInternal)this).TaskName, global::System.Convert.ToString);
             }
+            if (content.Contains("ImageBuildLogId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentityInternal)this).ImageBuildLogId = (string) content.GetValueForProperty("ImageBuildLogId",((Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentityInternal)this).ImageBuildLogId, global::System.Convert.ToString);
+            }
             if (content.Contains("PoolName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentityInternal)this).PoolName = (string) content.GetValueForProperty("PoolName",((Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentityInternal)this).PoolName, global::System.Convert.ToString);
@@ -125,6 +129,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentityInternal)this).ActionName = (string) content.GetValueForProperty("ActionName",((Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentityInternal)this).ActionName, global::System.Convert.ToString);
             }
+            if (content.Contains("AddOnName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentityInternal)this).AddOnName = (string) content.GetValueForProperty("AddOnName",((Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentityInternal)this).AddOnName, global::System.Convert.ToString);
+            }
             if (content.Contains("CustomizationGroupName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentityInternal)this).CustomizationGroupName = (string) content.GetValueForProperty("CustomizationGroupName",((Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentityInternal)this).CustomizationGroupName, global::System.Convert.ToString);
@@ -136,6 +144,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models
             if (content.Contains("OperationId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentityInternal)this).OperationId = (string) content.GetValueForProperty("OperationId",((Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentityInternal)this).OperationId, global::System.Convert.ToString);
+            }
+            if (content.Contains("SnapshotId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentityInternal)this).SnapshotId = (string) content.GetValueForProperty("SnapshotId",((Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentityInternal)this).SnapshotId, global::System.Convert.ToString);
             }
             if (content.Contains("DefinitionName"))
             {
@@ -182,6 +194,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentityInternal)this).TaskName = (string) content.GetValueForProperty("TaskName",((Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentityInternal)this).TaskName, global::System.Convert.ToString);
             }
+            if (content.Contains("ImageBuildLogId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentityInternal)this).ImageBuildLogId = (string) content.GetValueForProperty("ImageBuildLogId",((Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentityInternal)this).ImageBuildLogId, global::System.Convert.ToString);
+            }
             if (content.Contains("PoolName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentityInternal)this).PoolName = (string) content.GetValueForProperty("PoolName",((Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentityInternal)this).PoolName, global::System.Convert.ToString);
@@ -202,6 +218,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentityInternal)this).ActionName = (string) content.GetValueForProperty("ActionName",((Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentityInternal)this).ActionName, global::System.Convert.ToString);
             }
+            if (content.Contains("AddOnName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentityInternal)this).AddOnName = (string) content.GetValueForProperty("AddOnName",((Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentityInternal)this).AddOnName, global::System.Convert.ToString);
+            }
             if (content.Contains("CustomizationGroupName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentityInternal)this).CustomizationGroupName = (string) content.GetValueForProperty("CustomizationGroupName",((Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentityInternal)this).CustomizationGroupName, global::System.Convert.ToString);
@@ -213,6 +233,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models
             if (content.Contains("OperationId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentityInternal)this).OperationId = (string) content.GetValueForProperty("OperationId",((Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentityInternal)this).OperationId, global::System.Convert.ToString);
+            }
+            if (content.Contains("SnapshotId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentityInternal)this).SnapshotId = (string) content.GetValueForProperty("SnapshotId",((Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentityInternal)this).SnapshotId, global::System.Convert.ToString);
             }
             if (content.Contains("DefinitionName"))
             {

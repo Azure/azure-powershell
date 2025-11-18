@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.Extensions;
 
-    /// <summary>Any object</summary>
+    /// <summary>Anything</summary>
     public partial class Any
     {
 

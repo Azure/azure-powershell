@@ -76,19 +76,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models
             {
                 return;
             }
-            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)SubscriptionId;}
-            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)ResourceGroupName;}
-            {_resourceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Json.JsonString>("resourceName"), out var __jsonResourceName) ? (string)__jsonResourceName : (string)ResourceName;}
-            {_privateEndpointConnectionName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Json.JsonString>("privateEndpointConnectionName"), out var __jsonPrivateEndpointConnectionName) ? (string)__jsonPrivateEndpointConnectionName : (string)PrivateEndpointConnectionName;}
-            {_groupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Json.JsonString>("groupName"), out var __jsonGroupName) ? (string)__jsonGroupName : (string)GroupName;}
-            {_workspaceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Json.JsonString>("workspaceName"), out var __jsonWorkspaceName) ? (string)__jsonWorkspaceName : (string)WorkspaceName;}
-            {_dicomServiceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Json.JsonString>("dicomServiceName"), out var __jsonDicomServiceName) ? (string)__jsonDicomServiceName : (string)DicomServiceName;}
-            {_iotConnectorName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Json.JsonString>("iotConnectorName"), out var __jsonIotConnectorName) ? (string)__jsonIotConnectorName : (string)IotConnectorName;}
-            {_fhirDestinationName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Json.JsonString>("fhirDestinationName"), out var __jsonFhirDestinationName) ? (string)__jsonFhirDestinationName : (string)FhirDestinationName;}
-            {_fhirServiceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Json.JsonString>("fhirServiceName"), out var __jsonFhirServiceName) ? (string)__jsonFhirServiceName : (string)FhirServiceName;}
-            {_locationName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Json.JsonString>("locationName"), out var __jsonLocationName) ? (string)__jsonLocationName : (string)LocationName;}
-            {_operationResultId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Json.JsonString>("operationResultId"), out var __jsonOperationResultId) ? (string)__jsonOperationResultId : (string)OperationResultId;}
-            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)Id;}
+            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)_subscriptionId;}
+            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)_resourceGroupName;}
+            {_resourceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Json.JsonString>("resourceName"), out var __jsonResourceName) ? (string)__jsonResourceName : (string)_resourceName;}
+            {_privateEndpointConnectionName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Json.JsonString>("privateEndpointConnectionName"), out var __jsonPrivateEndpointConnectionName) ? (string)__jsonPrivateEndpointConnectionName : (string)_privateEndpointConnectionName;}
+            {_groupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Json.JsonString>("groupName"), out var __jsonGroupName) ? (string)__jsonGroupName : (string)_groupName;}
+            {_workspaceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Json.JsonString>("workspaceName"), out var __jsonWorkspaceName) ? (string)__jsonWorkspaceName : (string)_workspaceName;}
+            {_dicomServiceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Json.JsonString>("dicomServiceName"), out var __jsonDicomServiceName) ? (string)__jsonDicomServiceName : (string)_dicomServiceName;}
+            {_iotConnectorName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Json.JsonString>("iotConnectorName"), out var __jsonIotConnectorName) ? (string)__jsonIotConnectorName : (string)_iotConnectorName;}
+            {_fhirDestinationName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Json.JsonString>("fhirDestinationName"), out var __jsonFhirDestinationName) ? (string)__jsonFhirDestinationName : (string)_fhirDestinationName;}
+            {_fhirServiceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Json.JsonString>("fhirServiceName"), out var __jsonFhirServiceName) ? (string)__jsonFhirServiceName : (string)_fhirServiceName;}
+            {_locationName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Json.JsonString>("locationName"), out var __jsonLocationName) ? (string)__jsonLocationName : (string)_locationName;}
+            {_operationResultId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Json.JsonString>("operationResultId"), out var __jsonOperationResultId) ? (string)__jsonOperationResultId : (string)_operationResultId;}
+            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
             AfterFromJson(json);
         }
 
