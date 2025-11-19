@@ -1,14 +1,14 @@
 {
-  "Get-AzMigrateSolution+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.Migrate/migrateProjects/cbtecygqlproj/solutions/Servers-Migration-ServerMigration?api-version=2018-09-01-preview+1": {
+  "Get-AzMigrateServerMigrationStatus+[NoContext]+ListByName+$GET+https://management.azure.com/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.Migrate/migrateProjects/cbtecygqlproj/solutions/Servers-Migration-ServerMigration?api-version=2018-09-01-preview+1": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.Migrate/migrateProjects/cbtecygqlproj/solutions/Servers-Migration-ServerMigration?api-version=2018-09-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "36" ],
-        "x-ms-client-request-id": [ "7ebca3ec-95d3-4adb-9e7f-e549b5eedca0" ],
-        "CommandName": [ "Get-AzMigrateSolution" ],
+        "x-ms-unique-id": [ "23" ],
+        "x-ms-client-request-id": [ "5d20863f-7046-462b-a51f-dc8c1a35fd1d" ],
+        "CommandName": [ "Az.Migrate.private\\Get-AzMigrateSolution_Get" ],
         "FullCommandName": [ "Get-AzMigrateSolution_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
         "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.Migrate/0.1.0" ],
@@ -23,16 +23,16 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "d166f063-3989-4ef6-a0cc-a860b4dc9def" ],
+        "x-ms-request-id": [ "f38f1b75-bc95-4a90-83b2-e81492e11bb1" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=4279be47-f126-4486-ab3e-da5c65842c25/centraluseuap/b156a204-6da0-471c-9089-99048c45bf51" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=4279be47-f126-4486-ab3e-da5c65842c25/centraluseuap/d6d323d1-4d67-4ffe-a030-0f704e4c422e" ],
         "x-ms-throttling-version": [ "v2" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
-        "x-ms-correlation-request-id": [ "d16527b4-0124-4408-abb0-95588c364344" ],
-        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20251118T073957Z:d16527b4-0124-4408-abb0-95588c364344" ],
+        "x-ms-correlation-request-id": [ "36c9da6a-c916-4ac5-b624-b9f4736bf99b" ],
+        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20251119T114428Z:36c9da6a-c916-4ac5-b624-b9f4736bf99b" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: B3AEAFDCA4D0410A835AD3FC771D8A7C Ref B: MAA201060513011 Ref C: 2025-11-18T07:39:55Z" ],
-        "Date": [ "Tue, 18 Nov 2025 07:39:57 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: A2DA4C4BF8F24930BB3A509B425104D1 Ref B: MAA201060514039 Ref C: 2025-11-19T11:44:26Z" ],
+        "Date": [ "Wed, 19 Nov 2025 11:44:27 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "970" ],

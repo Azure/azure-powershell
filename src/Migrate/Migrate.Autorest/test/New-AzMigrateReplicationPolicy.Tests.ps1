@@ -18,7 +18,7 @@ Describe 'New-AzMigrateReplicationPolicy' {
         $providerSpecificPolicy.InstanceType = "VMwareCbt"
         $providerSpecificPolicy.RecoveryPointHistoryInMinute = 4320
         $providerSpecificPolicy.CrashConsistentFrequencyInMinute = 60
-        $output = New-AzMigrateReplicationPolicy -PolicyName $env.srsTestPolicy -ResourceGroupName $env.migResourceGroup -ResourceName $env.srsVaultName -SubscriptionId $env.srsSubscriptionId -ProviderSpecificInput $providerSpecificPolicy
+        $output = New-AzMigrateReplicationPolicy -PolicyName $env.srsTestPolicy -ResourceGroupName $env.migResourceGroup -ResourceName $env.migVaultName -SubscriptionId $env.migSubscriptionId -ProviderSpecificInput $providerSpecificPolicy
         $output.Count | Should -BeGreaterOrEqual 1 
     }
 }

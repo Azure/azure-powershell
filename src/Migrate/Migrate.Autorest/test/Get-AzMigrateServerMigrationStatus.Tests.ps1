@@ -15,23 +15,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzMigrateServerMigrationS
 }
 
 Describe 'Get-AzMigrateServerMigrationStatus' {
-    It 'ListByName' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetByApplianceName' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetByMachineName' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetHealthByMachineName' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetByPrioritiseServer' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'ListByName' {
+        $output = Get-AzMigrateServerMigrationStatus -ProjectName $env.migProjectName -ResourceGroupName $env.migResourceGroup
+        $output.Count | Should -BeGreaterOrEqual 1 
     }
 }

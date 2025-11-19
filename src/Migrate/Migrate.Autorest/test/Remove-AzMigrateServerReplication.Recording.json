@@ -1,16 +1,17 @@
 {
-  "Remove-AzMigrateServerReplication+[NoContext]+ByIDVMwareCbt+$DELETE+https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.RecoveryServices/vaults/signoffccyapp3352vault/replicationFabrics/signoffccyappae52replicationfabric/replicationProtectionContainers/signoffccyappae52replicationcontainer/replicationMigrationItems/idclab-vcen67-fareast-corp-micr-0f144e99-ba36-4649-b92b-8b06854aa539_5015e16e-832e-8632-880f-976ead854980?api-version=2024-01-01+1": {
+  "Remove-AzMigrateServerReplication+[NoContext]+ByIDVMwareCbt+$DELETE+https://management.azure.com/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationFabrics/ecygqlapp2fd6replicationfabric/replicationProtectionContainers/ecygqlapp2fd6replicationcontainer/replicationMigrationItems/idclab-vcen8-fareast-corp-micro-d2408603-48eb-434f-8cd5-f34828328495_5037d276-0d72-7b96-7f6d-2ce50a4c05e5?api-version=2024-01-01+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.RecoveryServices/vaults/signoffccyapp3352vault/replicationFabrics/signoffccyappae52replicationfabric/replicationProtectionContainers/signoffccyappae52replicationcontainer/replicationMigrationItems/idclab-vcen67-fareast-corp-micr-0f144e99-ba36-4649-b92b-8b06854aa539_5015e16e-832e-8632-880f-976ead854980?api-version=2024-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationFabrics/ecygqlapp2fd6replicationfabric/replicationProtectionContainers/ecygqlapp2fd6replicationcontainer/replicationMigrationItems/idclab-vcen8-fareast-corp-micro-d2408603-48eb-434f-8cd5-f34828328495_5037d276-0d72-7b96-7f6d-2ce50a4c05e5?api-version=2024-01-01",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "1" ],
-        "x-ms-client-request-id": [ "3a4f4861-c45d-40ec-bfd6-ae99b954cbfc" ],
+        "x-ms-unique-id": [ "69" ],
+        "x-ms-client-request-id": [ "7d39cdac-c658-443b-98e6-fbf1a93c1c23" ],
         "CommandName": [ "Az.Migrate.internal\\Remove-AzMigrateReplicationMigrationItem" ],
         "FullCommandName": [ "Remove-AzMigrateReplicationMigrationItem_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.Migrate/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -21,38 +22,43 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.RecoveryServices/vaults/signoffccyapp3352vault/replicationFabrics/signoffccyappae52replicationfabric/replicationProtectionContainers/signoffccyappae52replicationcontainer/replicationMigrationItems/idclab-vcen67-fareast-corp-micr-0f144e99-ba36-4649-b92b-8b06854aa539_5015e16e-832e-8632-880f-976ead854980/operationresults/4e0da3b6-19f0-43bc-a357-50ad668b9486?api-version=2024-01-01" ],
+        "Location": [ "https://management.azure.com/Subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationFabrics/ecygqlapp2fd6replicationfabric/replicationProtectionContainers/ecygqlapp2fd6replicationcontainer/replicationMigrationItems/idclab-vcen8-fareast-corp-micro-d2408603-48eb-434f-8cd5-f34828328495_5037d276-0d72-7b96-7f6d-2ce50a4c05e5/operationresults/0e784827-c25c-4028-8907-391398bf7c5d?api-version=2024-01-01\u0026t=638991505001853152\u0026c=MIIHpDCCBoygAwIBAgITfwY2h3uesIdQw1KDqAAEBjaHezANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDIwHhcNMjUxMDIwMTIzMzU5WhcNMjYwMTE4MTIzMzU5WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALu8DPE7Ws81M7KR5zmklE3rq1OkdpTiu0udmNeitUmy-E6DfbNQCHxMKu1fiLZhTcXctpRjZeUV9o-XOOblQzEuXbKOYsWdtr3Qlpy4YPArtWuQG6IIbcgX6J9ENwWNwoFTQIat6yhKU7wTjyJeg0KcfflDR0ShWZHUkdveAtsy66IMZ7x0OgqDhWY_JivNsLxaEwkYh5jGVcL2z0g5fwwwbvU1wgUWQ4vnu7wAbYOi4Ap4lmH1_QCh_gM45XZjfUVsfjsTlXw8gFJF_DLvCzVkV8Xlbu0SeXadvXV6HbBf9M3MALw0cK6wz77SQFiBfoooJtxIbTKDFeI48mMbrLUCAwEAAaOCBJEwggSNMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwIwCgYIKwYBBQUHAwEwPAYJKwYBBAGCNxUHBC8wLQYlKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFgh8fIENbYcQIBZAIBBjCCAdoGCCsGAQUFBwEBBIIBzDCCAcgwZgYIKwYBBQUHMAKGWmh0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS9wa2lpbmZyYS9DZXJ0cy9CTDJQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDAyKDQpLmNydDBWBggrBgEFBQcwAoZKaHR0cDovL2NybDEuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmwyLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MFYGCCsGAQUFBzAChkpodHRwOi8vY3JsMy5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDAyKDQpLmNydDBWBggrBgEFBQcwAoZKaHR0cDovL2NybDQuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwHQYDVR0OBBYEFIqhzGB1CuZswlOaNeS_vGkhBNVVMA4GA1UdDwEB_wQEAwIFoDCCATUGA1UdHwSCASwwggEoMIIBJKCCASCgggEchkJodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ1JML0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcmyGNGh0dHA6Ly9jcmwxLmFtZS5nYmwvY3JsL0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcmyGNGh0dHA6Ly9jcmwyLmFtZS5nYmwvY3JsL0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcmyGNGh0dHA6Ly9jcmwzLmFtZS5nYmwvY3JsL0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcmyGNGh0dHA6Ly9jcmw0LmFtZS5nYmwvY3JsL0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcmwwgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMB8GA1UdIwQYMBaAFK55wmtdJYgTBvYHCcOXfHuXjx1VMB0GA1UdJQQWMBQGCCsGAQUFBwMCBggrBgEFBQcDATANBgkqhkiG9w0BAQsFAAOCAQEAQYJsgThlhWxWe26LT_V856okEdCKXNmilyf6GnJpwdULdykFIaGZKq6uX6ckMcj0iE_yTdQPXD083rQiGUutYWwlGGjS8-KcR8I5zgGMk2AfQa2BiqG9zgLquFVusLvaGPU3DwzRNIfr5DJH2OiPzn0VoNx-NR14Eux1SEpylL_APMCSxQdBFlz3MRaq9VxEk7cbNiQt8-KRLc7KBvgWiFLE8pKVU3aI-LmRn5QGx4kHBT2ud1xnQR_VQ-Plt5uBHqWFH5BeVszvhkv9VuhGMKTtmkqx4xhZnLGhD7sPFN4wkyAO5fg1k5osAhVNgDRB79HqPlB5PRrUdMS1qHQ8HA\u0026s=B_dtGumqdU5La_v7HuySpTXR2xqLedzXtSqap458UY5i-9ew9tm4dYTrer1-jNJm6Db7vRQf5P8-GqK9Q0AawRewzL8V3O8SbaOXF-1YGTZ-MS77Oei797JaXg2yAICbgTbH_53XFnLqUjWpFBXdu2y8DauZnBPn0qX4nzI9pGnXmFvjM5gKVn98N6_uMGUewcL8TasqvgcxLJW88P2uXQh9q8ykUCMrJ-boGyRQFG_uL3nZTdrWm2uIG-LdQvseYTJyyvg3IW1_GPZiuDtukKfeNVl0j0SMB43Ty9Xx-ebAsC5boAUGH9hhkk8tk7I7SNC1A9zZdqw02N9B_6IrbA\u0026h=oqLtsrDjXfr3iQFAFIHZtyakbg9lYGq0fsp95pJ6RR4" ],
         "Retry-After": [ "30" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "3a4f4861-c45d-40ec-bfd6-ae99b954cbfc 9/26/2022 3:48:15 PM" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.RecoveryServices/vaults/signoffccyapp3352vault/replicationOperationStatus/4e0da3b6-19f0-43bc-a357-50ad668b9486?api-version=2024-01-01" ],
+        "x-ms-request-id": [ "7d39cdac-c658-443b-98e6-fbf1a93c1c23 11/19/2025 12:01:40 PM" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/Subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationOperationStatus/0e784827-c25c-4028-8907-391398bf7c5d?api-version=2024-01-01\u0026t=638991505001696887\u0026c=MIIHpDCCBoygAwIBAgITfwY2h3uesIdQw1KDqAAEBjaHezANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDIwHhcNMjUxMDIwMTIzMzU5WhcNMjYwMTE4MTIzMzU5WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALu8DPE7Ws81M7KR5zmklE3rq1OkdpTiu0udmNeitUmy-E6DfbNQCHxMKu1fiLZhTcXctpRjZeUV9o-XOOblQzEuXbKOYsWdtr3Qlpy4YPArtWuQG6IIbcgX6J9ENwWNwoFTQIat6yhKU7wTjyJeg0KcfflDR0ShWZHUkdveAtsy66IMZ7x0OgqDhWY_JivNsLxaEwkYh5jGVcL2z0g5fwwwbvU1wgUWQ4vnu7wAbYOi4Ap4lmH1_QCh_gM45XZjfUVsfjsTlXw8gFJF_DLvCzVkV8Xlbu0SeXadvXV6HbBf9M3MALw0cK6wz77SQFiBfoooJtxIbTKDFeI48mMbrLUCAwEAAaOCBJEwggSNMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwIwCgYIKwYBBQUHAwEwPAYJKwYBBAGCNxUHBC8wLQYlKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFgh8fIENbYcQIBZAIBBjCCAdoGCCsGAQUFBwEBBIIBzDCCAcgwZgYIKwYBBQUHMAKGWmh0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS9wa2lpbmZyYS9DZXJ0cy9CTDJQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDAyKDQpLmNydDBWBggrBgEFBQcwAoZKaHR0cDovL2NybDEuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmwyLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MFYGCCsGAQUFBzAChkpodHRwOi8vY3JsMy5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDAyKDQpLmNydDBWBggrBgEFBQcwAoZKaHR0cDovL2NybDQuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwHQYDVR0OBBYEFIqhzGB1CuZswlOaNeS_vGkhBNVVMA4GA1UdDwEB_wQEAwIFoDCCATUGA1UdHwSCASwwggEoMIIBJKCCASCgggEchkJodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ1JML0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcmyGNGh0dHA6Ly9jcmwxLmFtZS5nYmwvY3JsL0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcmyGNGh0dHA6Ly9jcmwyLmFtZS5nYmwvY3JsL0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcmyGNGh0dHA6Ly9jcmwzLmFtZS5nYmwvY3JsL0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcmyGNGh0dHA6Ly9jcmw0LmFtZS5nYmwvY3JsL0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcmwwgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMB8GA1UdIwQYMBaAFK55wmtdJYgTBvYHCcOXfHuXjx1VMB0GA1UdJQQWMBQGCCsGAQUFBwMCBggrBgEFBQcDATANBgkqhkiG9w0BAQsFAAOCAQEAQYJsgThlhWxWe26LT_V856okEdCKXNmilyf6GnJpwdULdykFIaGZKq6uX6ckMcj0iE_yTdQPXD083rQiGUutYWwlGGjS8-KcR8I5zgGMk2AfQa2BiqG9zgLquFVusLvaGPU3DwzRNIfr5DJH2OiPzn0VoNx-NR14Eux1SEpylL_APMCSxQdBFlz3MRaq9VxEk7cbNiQt8-KRLc7KBvgWiFLE8pKVU3aI-LmRn5QGx4kHBT2ud1xnQR_VQ-Plt5uBHqWFH5BeVszvhkv9VuhGMKTtmkqx4xhZnLGhD7sPFN4wkyAO5fg1k5osAhVNgDRB79HqPlB5PRrUdMS1qHQ8HA\u0026s=EhyPJ__D6UB8ch0qwXs87QNWJd-5kRpdrbVyPzpbHLal1K1J7B4PPGn6R1Y1PRK1-eLUnuzrf3rkllOjvj-jWdS0jNX9o7C3t5Di0RfMI7Ml46VLvxbaHWAZB_n63YpeBuP9NAZOaRfZvyIi3rS5nwrx1wbY7DMuq-MzBs8fQxWqqtH4PaEY_rK8JPez3UM7wQWHQpFYL3-p9YkPDoTTLyi61hcksIi2iN0epnlSc4uI2sqocQUcf25Oe6Lb1O4-6Knzg2k5QFs0nKd1DCom9akOaEdWFHkbRO4HQOLTeVDpRqHvshHc2U5LqjVvwC8KpfET9iZO9t6As0vrImESNQ\u0026h=koVP0lVvW6BQasq5CPZRrKwjnziLNLg_YlDhAWfs96E" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-client-request-id": [ "3a4f4861-c45d-40ec-bfd6-ae99b954cbfc" ],
-        "Server": [ "Kestrel" ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
-        "x-ms-correlation-request-id": [ "7ce28ec4-5f4c-4295-8379-7beddc6c8dba" ],
-        "x-ms-routing-request-id": [ "CENTRALINDIA:20220926T154815Z:7ce28ec4-5f4c-4295-8379-7beddc6c8dba" ],
-        "Date": [ "Mon, 26 Sep 2022 15:48:15 GMT" ]
+        "x-ms-client-request-id": [ "7d39cdac-c658-443b-98e6-fbf1a93c1c23" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=4279be47-f126-4486-ab3e-da5c65842c25/centraluseuap/369d598e-81f0-451e-a033-c2896a65241d" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "799" ],
+        "x-ms-correlation-request-id": [ "b2879de4-7a03-4239-a2d7-f3642b5ca18b" ],
+        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20251119T120140Z:b2879de4-7a03-4239-a2d7-f3642b5ca18b" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: BAEE87B8064D45DA8476EEDC176BEE42 Ref B: MAA201060515039 Ref C: 2025-11-19T12:01:38Z" ],
+        "Date": [ "Wed, 19 Nov 2025 12:01:39 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
         "Content-Length": [ "0" ]
       },
-      "Content": null
+      "Content": null,
+      "isContentBase64": false
     }
   },
-  "Remove-AzMigrateServerReplication+[NoContext]+ByIDVMwareCbt+$GET+https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.RecoveryServices/vaults/signoffccyapp3352vault/replicationJobs/4e0da3b6-19f0-43bc-a357-50ad668b9486?api-version=2024-01-01+2": {
+  "Remove-AzMigrateServerReplication+[NoContext]+ByIDVMwareCbt+$GET+https://management.azure.com/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationJobs/0e784827-c25c-4028-8907-391398bf7c5d?api-version=2024-01-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.RecoveryServices/vaults/signoffccyapp3352vault/replicationJobs/4e0da3b6-19f0-43bc-a357-50ad668b9486?api-version=2024-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationJobs/0e784827-c25c-4028-8907-391398bf7c5d?api-version=2024-01-01",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "2" ],
-        "x-ms-client-request-id": [ "01c786d3-1b95-45e9-aca2-7ce196835389" ],
+        "x-ms-unique-id": [ "70" ],
+        "x-ms-client-request-id": [ "e872565a-e32b-4bbd-b985-51c04c1e707d" ],
         "CommandName": [ "Az.Migrate.internal\\Get-AzMigrateReplicationJob" ],
         "FullCommandName": [ "Get-AzMigrateReplicationJob_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.Migrate/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -64,21 +70,162 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.RecoveryServices/vaults/signoffccyapp3352vault/replicationJobs/4e0da3b6-19f0-43bc-a357-50ad668b9486" ],
+        "x-ms-request-id": [ "/Subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationJobs/0e784827-c25c-4028-8907-391398bf7c5d" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-client-request-id": [ "01c786d3-1b95-45e9-aca2-7ce196835389" ],
-        "Server": [ "Kestrel" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11990" ],
-        "x-ms-correlation-request-id": [ "ee480ccb-30f8-4bf9-85c0-ac0dbffbcb32" ],
-        "x-ms-routing-request-id": [ "CENTRALINDIA:20220926T154816Z:ee480ccb-30f8-4bf9-85c0-ac0dbffbcb32" ],
-        "Date": [ "Mon, 26 Sep 2022 15:48:16 GMT" ]
+        "x-ms-client-request-id": [ "e872565a-e32b-4bbd-b985-51c04c1e707d" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=4279be47-f126-4486-ab3e-da5c65842c25/centraluseuap/873cfd5e-43ec-4502-bc38-ef62fba305f7" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-correlation-request-id": [ "767df6e6-d55d-42b7-a07a-18f0c8b83d74" ],
+        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20251119T120141Z:767df6e6-d55d-42b7-a07a-18f0c8b83d74" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: CC27B616DB674BE6878BD19E25EF8D72 Ref B: MAA201060515039 Ref C: 2025-11-19T12:01:40Z" ],
+        "Date": [ "Wed, 19 Nov 2025 12:01:40 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "2267" ],
+        "Content-Length": [ "2266" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.RecoveryServices/vaults/signoffccyapp3352vault/replicationJobs/4e0da3b6-19f0-43bc-a357-50ad668b9486\",\"name\":\"4e0da3b6-19f0-43bc-a357-50ad668b9486\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationJobs\",\"properties\":{\"activityId\":\"3a4f4861-c45d-40ec-bfd6-ae99b954cbfc ActivityId: 7ce28ec4-5f4c-4295-8379-7beddc6c8dba\",\"scenarioName\":\"DisableMigration\",\"friendlyName\":\"Stop replication\",\"state\":\"InProgress\",\"stateDescription\":\"InProgress\",\"tasks\":[{\"taskId\":\"DisableProtectionOnPrimaryTask\",\"name\":\"DisableProtectionOnPrimary\",\"startTime\":\"0001-01-01T00:00:00\",\"endTime\":\"0001-01-01T00:00:00\",\"allowedActions\":[],\"friendlyName\":\"Disabling migration\",\"state\":\"NotStarted\",\"stateDescription\":\"NotStarted\",\"taskType\":\"TaskDetails\",\"customDetails\":{\"instanceType\":\"TaskDetails\"},\"groupTaskCustomDetails\":null,\"errors\":[]},{\"taskId\":\"UpdateDraStateTask\",\"name\":\"UpdateDraState\",\"startTime\":\"0001-01-01T00:00:00\",\"endTime\":\"0001-01-01T00:00:00\",\"allowedActions\":[],\"friendlyName\":\"Updating the provider states\",\"state\":\"NotStarted\",\"stateDescription\":\"NotStarted\",\"taskType\":\"TaskDetails\",\"customDetails\":{\"instanceType\":\"TaskDetails\"},\"groupTaskCustomDetails\":null,\"errors\":[]}],\"errors\":[],\"startTime\":\"2022-09-26T15:48:15.461309Z\",\"allowedActions\":[\"Cancel\"],\"targetObjectId\":\"96b6c033-7c77-5543-888d-c6fecbb1aacb\",\"targetObjectName\":\"FT-Win10-Cloned\",\"targetInstanceType\":\"ProtectionEntity\",\"customDetails\":{\"instanceType\":\"AsrJobDetails\",\"affectedObjectDetails\":{\"primaryVmId\":\"96b6c033-7c77-5543-888d-c6fecbb1aacb\",\"primaryVmName\":\"FT-Win10-Cloned\",\"recoveryVmId\":\"\",\"recoveryVmName\":\"FT-Win10-Cloned\",\"protectionProfileId\":\"4af409af-0d07-5e52-95dc-1e472a625f17\",\"primaryCloudId\":\"cloud_e87f6b0c-6076-5aa5-9e79-3e73df771c73\",\"primaryCloudName\":\"signoffccyappae52replicationcontainer\",\"recoveryCloudId\":\"d38048d4-b460-4791-8ece-108395ee8478\",\"recoveryCloudName\":\"Microsoft Azure\",\"primaryVmmId\":\"e87f6b0c-6076-5aa5-9e79-3e73df771c73\",\"primaryVmmName\":\"signoffccyappae52replicationfabric\",\"recoveryVmmId\":\"21a9403c-6ec1-44f2-b744-b4e50b792387\",\"recoveryVmmName\":\"Microsoft Azure\",\"primaryFabricProviderId\":\"VMwareV2\",\"recoveryFabricProviderId\":\"Azure\"}}}}"
+      "Content": "{\"id\":\"/Subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationJobs/0e784827-c25c-4028-8907-391398bf7c5d\",\"name\":\"0e784827-c25c-4028-8907-391398bf7c5d\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationJobs\",\"properties\":{\"activityId\":\"7d39cdac-c658-443b-98e6-fbf1a93c1c23 ActivityId: b2879de4-7a03-4239-a2d7-f3642b5ca18b\",\"scenarioName\":\"DisableMigration\",\"friendlyName\":\"Stop replication\",\"state\":\"InProgress\",\"stateDescription\":\"InProgress\",\"tasks\":[{\"taskId\":\"DisableProtectionOnPrimaryTask\",\"name\":\"DisableProtectionOnPrimary\",\"startTime\":\"2025-11-19T12:01:40.6438396Z\",\"endTime\":\"0001-01-01T00:00:00\",\"allowedActions\":[],\"friendlyName\":\"Disabling migration\",\"state\":\"InProgress\",\"stateDescription\":\"InProgress\",\"taskType\":\"TaskDetails\",\"customDetails\":{\"instanceType\":\"TaskDetails\"},\"groupTaskCustomDetails\":null,\"errors\":[]},{\"taskId\":\"UpdateDraStateTask\",\"name\":\"UpdateDraState\",\"startTime\":\"0001-01-01T00:00:00\",\"endTime\":\"0001-01-01T00:00:00\",\"allowedActions\":[],\"friendlyName\":\"Updating the provider states\",\"state\":\"NotStarted\",\"stateDescription\":\"NotStarted\",\"taskType\":\"TaskDetails\",\"customDetails\":{\"instanceType\":\"TaskDetails\"},\"groupTaskCustomDetails\":null,\"errors\":[]}],\"errors\":[],\"startTime\":\"2025-11-19T12:01:40.0605633Z\",\"allowedActions\":[\"Cancel\"],\"targetObjectId\":\"a5a2bb05-ae20-5752-aa6b-fddc292279bb\",\"targetObjectName\":\"GQLVM-DoNotDelete\",\"targetInstanceType\":\"ProtectionEntity\",\"customDetails\":{\"instanceType\":\"AsrJobDetails\",\"affectedObjectDetails\":{\"primaryVmId\":\"a5a2bb05-ae20-5752-aa6b-fddc292279bb\",\"primaryVmName\":\"GQLVM-DoNotDelete\",\"recoveryVmId\":\"\",\"recoveryVmName\":\"GQLVM-DoNotDelete\",\"protectionProfileId\":\"f068e202-ed01-546b-988f-79502ef2e9b0\",\"primaryCloudId\":\"cloud_23ef791e-7862-5ab4-acda-154a9b1e2848\",\"primaryCloudName\":\"ecygqlapp2fd6replicationcontainer\",\"recoveryCloudId\":\"d38048d4-b460-4791-8ece-108395ee8478\",\"recoveryCloudName\":\"Microsoft Azure\",\"primaryVmmId\":\"23ef791e-7862-5ab4-acda-154a9b1e2848\",\"primaryVmmName\":\"ecygqlapp2fd6replicationfabric\",\"recoveryVmmId\":\"21a9403c-6ec1-44f2-b744-b4e50b792387\",\"recoveryVmmName\":\"Microsoft Azure\",\"primaryFabricProviderId\":\"VMwareV2\",\"recoveryFabricProviderId\":\"Azure\"}}}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzMigrateServerReplication+[NoContext]+ByInputObjectVMwareCbt+$GET+https://management.azure.com/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationFabrics/ecygqlapp2fd6replicationfabric/replicationProtectionContainers/ecygqlapp2fd6replicationcontainer/replicationMigrationItems/idclab-vcen8-fareast-corp-micro-d2408603-48eb-434f-8cd5-f34828328495_5037a8fa-3594-21fd-5221-ca92924a7912?api-version=2024-01-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationFabrics/ecygqlapp2fd6replicationfabric/replicationProtectionContainers/ecygqlapp2fd6replicationcontainer/replicationMigrationItems/idclab-vcen8-fareast-corp-micro-d2408603-48eb-434f-8cd5-f34828328495_5037a8fa-3594-21fd-5221-ca92924a7912?api-version=2024-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "71" ],
+        "x-ms-client-request-id": [ "cd755eda-47c9-4beb-b0d6-00e8167796ea" ],
+        "CommandName": [ "Az.Migrate.internal\\Get-AzMigrateReplicationMigrationItem" ],
+        "FullCommandName": [ "Get-AzMigrateReplicationMigrationItem_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.Migrate/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "cd755eda-47c9-4beb-b0d6-00e8167796ea 11/19/2025 12:01:41 PM" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-client-request-id": [ "cd755eda-47c9-4beb-b0d6-00e8167796ea" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=4279be47-f126-4486-ab3e-da5c65842c25/centraluseuap/848a9d5f-ec3d-4028-8b15-24b99a36a3c4" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1098" ],
+        "x-ms-correlation-request-id": [ "e6223c79-71de-480e-b213-17aaa147afde" ],
+        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20251119T120141Z:e6223c79-71de-480e-b213-17aaa147afde" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 8271280E10F04068AD2C61C134E2E1E3 Ref B: MAA201060515039 Ref C: 2025-11-19T12:01:41Z" ],
+        "Date": [ "Wed, 19 Nov 2025 12:01:41 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "8242" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/Subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationFabrics/ecygqlapp2fd6replicationfabric/replicationProtectionContainers/ecygqlapp2fd6replicationcontainer/replicationMigrationItems/idclab-vcen8-fareast-corp-micro-d2408603-48eb-434f-8cd5-f34828328495_5037a8fa-3594-21fd-5221-ca92924a7912\",\"name\":\"idclab-vcen8-fareast-corp-micro-d2408603-48eb-434f-8cd5-f34828328495_5037a8fa-3594-21fd-5221-ca92924a7912\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationMigrationItems\",\"properties\":{\"machineName\":\"CVM-V2ARCM-WIN19-G2\",\"policyId\":\"/Subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationPolicies/migrateecygqlapp4055sitepolicy\",\"policyFriendlyName\":\"migrateecygqlapp4055sitepolicy\",\"recoveryServicesProviderId\":\"/Subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationFabrics/ecygqlapp2fd6replicationfabric/replicationRecoveryServicesProviders/f20ebfe6-2ff1-5c27-a5e3-da1b7502c286\",\"replicationStatus\":\"Paused\",\"migrationState\":\"MigrationSucceeded\",\"migrationStateDescription\":\"Migrated\",\"lastTestMigrationStatus\":null,\"lastMigrationTime\":\"2025-11-19T08:07:49.4386957Z\",\"lastMigrationStatus\":\"Succeeded\",\"testMigrateState\":\"None\",\"testMigrateStateDescription\":\"None\",\"health\":\"None\",\"healthErrors\":[],\"allowedOperations\":[\"DisableMigration\",\"ResumeReplication\"],\"currentJob\":{\"jobName\":\"None\",\"jobId\":\"/Subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationJobs/None\",\"startTime\":\"1753-01-01T01:01:01Z\"},\"criticalJobHistory\":[],\"eventCorrelationId\":\"cda4dd34-15bc-47c0-bb06-81c0bba4fd87\",\"providerSpecificDetails\":{\"instanceType\":\"VMwareCbt\",\"vmwareMachineId\":\"/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.OffAzure/VMwareSites/ecygqlapp4055site/machines/idclab-vcen8-fareast-corp-micro-d2408603-48eb-434f-8cd5-f34828328495_5037a8fa-3594-21fd-5221-ca92924a7912\",\"osType\":\"Windows\",\"osName\":\"Windows Server 2019 (64-bit)\",\"firmwareType\":\"EFI\",\"targetGeneration\":\"V2\",\"licenseType\":\"NoLicenseType\",\"sqlServerLicenseType\":\"NotSpecified\",\"linuxLicenseType\":\"NoLicenseType\",\"dataMoverRunAsAccountId\":\"/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.OffAzure/VMwareSites/ecygqlapp4055site/runasaccounts/9dd70654-9f18-5dcc-993a-c950ac540221\",\"snapshotRunAsAccountId\":\"/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.OffAzure/VMwareSites/ecygqlapp4055site/runasaccounts/9dd70654-9f18-5dcc-993a-c950ac540221\",\"storageAccountId\":null,\"targetVmName\":\"CVM-V2ARCM-WIN19-G2\",\"targetVmSize\":\"Standard_B1ms\",\"targetLocation\":\"eastus2euap\",\"targetResourceGroupId\":\"/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/targetrg-ecy\",\"targetAvailabilitySetId\":\"\",\"targetAvailabilityZone\":\"\",\"targetProximityPlacementGroupId\":\"\",\"confidentialVmKeyVaultId\":null,\"targetVmSecurityProfile\":{\"targetVmSecurityType\":\"None\",\"isTargetVmSecureBootEnabled\":\"false\",\"isTargetVmTpmEnabled\":\"false\",\"isTargetVmIntegrityMonitoringEnabled\":null,\"isTargetVmConfidentialEncryptionEnabled\":\"false\"},\"targetBootDiagnosticsStorageAccountId\":\"/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.Storage/storageAccounts/migratersa1392307129\",\"targetVmTags\":{},\"protectedDisks\":[{\"diskId\":\"6000C294-55ff-2f6d-5bb2-eb20d28637a8\",\"diskName\":\"CVM-V2ARCM-WIN19-G2\",\"diskType\":\"Standard_LRS\",\"diskPath\":\"[IDCLAB-B161-1.2TB] CVM-V2ARCM-WIN19-G2/CVM-V2ARCM-WIN19-G2.vmdk\",\"isOSDisk\":\"true\",\"capacityInBytes\":42949672960,\"logStorageAccountId\":\"/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.Storage/storageAccounts/migratersa1392307129\",\"logStorageAccountSasSecretName\":\"migratersa1392307129-cacheSas\",\"diskEncryptionSetId\":null,\"seedManagedDiskId\":\"/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/targetrg-ecy/providers/Microsoft.Compute/disks/asrseeddisk-CVM_V2AR-CVM_V2AR-5e16bfbd-81bb-4a05-a661-12d58dd8be88\",\"seedBlobUri\":null,\"targetManagedDiskId\":\"/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/targetrg-ecy/providers/Microsoft.Compute/disks/CVM-V2ARCM-WIN19-G2-OSdisk-00\",\"targetBlobUri\":null,\"targetDiskName\":\"CVM-V2ARCM-WIN19-G2-OSdisk-00\",\"gatewayOperationDetails\":{\"state\":\"PlannedFailoverOverDeltaReplication Completed\",\"progressPercentage\":100,\"timeElapsed\":278500,\"timeRemaining\":0,\"uploadSpeed\":0,\"hostName\":null,\"dataStores\":[\"IDCLAB-B161-1.2TB\"],\"vmwareReadThroughput\":null},\"sectorSizeInBytes\":0}],\"targetNetworkId\":\"/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/targetrg-ecy/providers/Microsoft.Network/virtualNetworks/vnet-ecy\",\"testNetworkId\":\"/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/targetrg-ecy/providers/Microsoft.Network/virtualNetworks/vnet-ecy\",\"vmNics\":[{\"nicId\":\"b798d6f7-8e71-4600-b796-f301481d43ef\",\"isPrimaryNic\":\"true\",\"sourceIPAddress\":null,\"sourceIPAddressType\":\"Static\",\"sourceNetworkId\":\"VM Network\",\"targetIPAddress\":\"\",\"targetIPAddressType\":\"Dynamic\",\"targetSubnetName\":\"default\",\"testNetworkId\":\"/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/targetrg-ecy/providers/Microsoft.Network/virtualNetworks/vnet-ecy\",\"testSubnetName\":\"default\",\"testIPAddress\":null,\"testIPAddressType\":\"Dynamic\",\"targetNicName\":\"nic-CVM-V2ARCM-WIN19-G2-00\",\"isSelectedForMigration\":\"true\"}],\"targetNicTags\":{},\"migrationRecoveryPointId\":\"/Subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationFabrics/ecygqlapp2fd6replicationfabric/replicationProtectionContainers/ecygqlapp2fd6replicationcontainer/replicationMigrationItems/idclab-vcen8-fareast-corp-micro-d2408603-48eb-434f-8cd5-f34828328495_5037a8fa-3594-21fd-5221-ca92924a7912/migrationRecoveryPoints/cef24faf-7e00-49f9-8d63-e6c76a8a7d17\",\"lastRecoveryPointReceived\":\"2025-11-19T13:39:08.292Z\",\"lastRecoveryPointId\":\"/Subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationFabrics/ecygqlapp2fd6replicationfabric/replicationProtectionContainers/ecygqlapp2fd6replicationcontainer/replicationMigrationItems/idclab-vcen8-fareast-corp-micro-d2408603-48eb-434f-8cd5-f34828328495_5037a8fa-3594-21fd-5221-ca92924a7912/migrationRecoveryPoints/cef24faf-7e00-49f9-8d63-e6c76a8a7d17\",\"initialSeedingProgressPercentage\":null,\"migrationProgressPercentage\":null,\"resyncProgressPercentage\":null,\"resumeProgressPercentage\":null,\"deltaSyncProgressPercentage\":null,\"isCheckSumResyncCycle\":null,\"initialSeedingRetryCount\":0,\"resyncRetryCount\":0,\"resumeRetryCount\":0,\"deltaSyncRetryCount\":0,\"resyncRequired\":\"false\",\"resyncState\":\"None\",\"performAutoResync\":\"true\",\"seedDiskTags\":null,\"targetDiskTags\":{},\"supportedOSVersions\":[\"Microsoft Windows Server 2022 (64-bit)\"],\"applianceMonitoringDetails\":{\"cpuDetails\":{\"capacity\":4,\"processUtilization\":0.0,\"totalUtilization\":100.0,\"status\":null},\"ramDetails\":{\"capacity\":10240,\"processUtilization\":1379.0,\"totalUtilization\":6279.0,\"status\":null},\"datastoreSnapshot\":[{\"totalSnapshotsSupported\":15,\"totalSnapshotsCreated\":0,\"dataStoreName\":\"IDCLAB-B161-1.2TB\"}],\"disksReplicationDetails\":{\"capacity\":58,\"processUtilization\":2.0,\"totalUtilization\":null,\"status\":null},\"esxiNfcBuffer\":{\"capacity\":32,\"processUtilization\":4.0,\"totalUtilization\":null,\"status\":null},\"networkBandwidth\":{\"capacity\":1192,\"processUtilization\":0.0,\"totalUtilization\":0.0,\"status\":null}},\"gatewayOperationDetails\":{\"state\":\"PlannedFailoverOverDeltaReplication Completed\",\"progressPercentage\":null,\"timeElapsed\":0,\"timeRemaining\":0,\"uploadSpeed\":0,\"hostName\":\"idclab-vcen8.fareast.corp.microsoft.com_10.150.102.181\",\"dataStores\":[\"IDCLAB-B161-1.2TB\"],\"vmwareReadThroughput\":0},\"operationName\":null}}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzMigrateServerReplication+[NoContext]+ByInputObjectVMwareCbt+$DELETE+https://management.azure.com/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationFabrics/ecygqlapp2fd6replicationfabric/replicationProtectionContainers/ecygqlapp2fd6replicationcontainer/replicationMigrationItems/idclab-vcen8-fareast-corp-micro-d2408603-48eb-434f-8cd5-f34828328495_5037a8fa-3594-21fd-5221-ca92924a7912?api-version=2024-01-01+2": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationFabrics/ecygqlapp2fd6replicationfabric/replicationProtectionContainers/ecygqlapp2fd6replicationcontainer/replicationMigrationItems/idclab-vcen8-fareast-corp-micro-d2408603-48eb-434f-8cd5-f34828328495_5037a8fa-3594-21fd-5221-ca92924a7912?api-version=2024-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "72" ],
+        "x-ms-client-request-id": [ "3310ab0f-d082-4ffc-8226-38c86fd47a34" ],
+        "CommandName": [ "Az.Migrate.internal\\Remove-AzMigrateReplicationMigrationItem" ],
+        "FullCommandName": [ "Remove-AzMigrateReplicationMigrationItem_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.Migrate/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/Subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationFabrics/ecygqlapp2fd6replicationfabric/replicationProtectionContainers/ecygqlapp2fd6replicationcontainer/replicationMigrationItems/idclab-vcen8-fareast-corp-micro-d2408603-48eb-434f-8cd5-f34828328495_5037a8fa-3594-21fd-5221-ca92924a7912/operationresults/507e6227-f76b-43bd-bcf2-dc3c94a338a1?api-version=2024-01-01\u0026t=638991505027375593\u0026c=MIIHpDCCBoygAwIBAgITfwY2h3uesIdQw1KDqAAEBjaHezANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDIwHhcNMjUxMDIwMTIzMzU5WhcNMjYwMTE4MTIzMzU5WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALu8DPE7Ws81M7KR5zmklE3rq1OkdpTiu0udmNeitUmy-E6DfbNQCHxMKu1fiLZhTcXctpRjZeUV9o-XOOblQzEuXbKOYsWdtr3Qlpy4YPArtWuQG6IIbcgX6J9ENwWNwoFTQIat6yhKU7wTjyJeg0KcfflDR0ShWZHUkdveAtsy66IMZ7x0OgqDhWY_JivNsLxaEwkYh5jGVcL2z0g5fwwwbvU1wgUWQ4vnu7wAbYOi4Ap4lmH1_QCh_gM45XZjfUVsfjsTlXw8gFJF_DLvCzVkV8Xlbu0SeXadvXV6HbBf9M3MALw0cK6wz77SQFiBfoooJtxIbTKDFeI48mMbrLUCAwEAAaOCBJEwggSNMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwIwCgYIKwYBBQUHAwEwPAYJKwYBBAGCNxUHBC8wLQYlKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFgh8fIENbYcQIBZAIBBjCCAdoGCCsGAQUFBwEBBIIBzDCCAcgwZgYIKwYBBQUHMAKGWmh0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS9wa2lpbmZyYS9DZXJ0cy9CTDJQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDAyKDQpLmNydDBWBggrBgEFBQcwAoZKaHR0cDovL2NybDEuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmwyLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MFYGCCsGAQUFBzAChkpodHRwOi8vY3JsMy5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDAyKDQpLmNydDBWBggrBgEFBQcwAoZKaHR0cDovL2NybDQuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwHQYDVR0OBBYEFIqhzGB1CuZswlOaNeS_vGkhBNVVMA4GA1UdDwEB_wQEAwIFoDCCATUGA1UdHwSCASwwggEoMIIBJKCCASCgggEchkJodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ1JML0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcmyGNGh0dHA6Ly9jcmwxLmFtZS5nYmwvY3JsL0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcmyGNGh0dHA6Ly9jcmwyLmFtZS5nYmwvY3JsL0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcmyGNGh0dHA6Ly9jcmwzLmFtZS5nYmwvY3JsL0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcmyGNGh0dHA6Ly9jcmw0LmFtZS5nYmwvY3JsL0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcmwwgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMB8GA1UdIwQYMBaAFK55wmtdJYgTBvYHCcOXfHuXjx1VMB0GA1UdJQQWMBQGCCsGAQUFBwMCBggrBgEFBQcDATANBgkqhkiG9w0BAQsFAAOCAQEAQYJsgThlhWxWe26LT_V856okEdCKXNmilyf6GnJpwdULdykFIaGZKq6uX6ckMcj0iE_yTdQPXD083rQiGUutYWwlGGjS8-KcR8I5zgGMk2AfQa2BiqG9zgLquFVusLvaGPU3DwzRNIfr5DJH2OiPzn0VoNx-NR14Eux1SEpylL_APMCSxQdBFlz3MRaq9VxEk7cbNiQt8-KRLc7KBvgWiFLE8pKVU3aI-LmRn5QGx4kHBT2ud1xnQR_VQ-Plt5uBHqWFH5BeVszvhkv9VuhGMKTtmkqx4xhZnLGhD7sPFN4wkyAO5fg1k5osAhVNgDRB79HqPlB5PRrUdMS1qHQ8HA\u0026s=LI1JJDkmSlDlvs6XilUyApy7foLCigL4O-W42kiHSBeeLO9M1V6iMAoBkvDqmit4WoTjqdkB04OEun79IA8Ae2cJdgzyf0DQhUFvDIKUKNGdiURhzKKx3mr8ygwq_Jzp13bh9xY_GNL3_Hw437FYxYJIdJvyq3X3XaQ-C9ypCO6wynuZwQaUGbrFA56QqTbiMJFGr48H0bwGUebr0XLJWGw8MzH7rXO2iy_CCz8nhkPVffadFPBjh4myZT3SCpkJ3E58kmF20k65tAkKhHmkmH4SSzmCAiutrUNTzT6QDbCOmtAn_JKzbp6Ef3Jk3H-LBJ2PMp7pnQe5duTbchDNYw\u0026h=q4YyBo2290oRo66yCEX0ExQSRZdME20uGLRa0-hHBzc" ],
+        "Retry-After": [ "30" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "3310ab0f-d082-4ffc-8226-38c86fd47a34 11/19/2025 12:01:42 PM" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/Subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationOperationStatus/507e6227-f76b-43bd-bcf2-dc3c94a338a1?api-version=2024-01-01\u0026t=638991505027375593\u0026c=MIIHpDCCBoygAwIBAgITfwY2h3uesIdQw1KDqAAEBjaHezANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDIwHhcNMjUxMDIwMTIzMzU5WhcNMjYwMTE4MTIzMzU5WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALu8DPE7Ws81M7KR5zmklE3rq1OkdpTiu0udmNeitUmy-E6DfbNQCHxMKu1fiLZhTcXctpRjZeUV9o-XOOblQzEuXbKOYsWdtr3Qlpy4YPArtWuQG6IIbcgX6J9ENwWNwoFTQIat6yhKU7wTjyJeg0KcfflDR0ShWZHUkdveAtsy66IMZ7x0OgqDhWY_JivNsLxaEwkYh5jGVcL2z0g5fwwwbvU1wgUWQ4vnu7wAbYOi4Ap4lmH1_QCh_gM45XZjfUVsfjsTlXw8gFJF_DLvCzVkV8Xlbu0SeXadvXV6HbBf9M3MALw0cK6wz77SQFiBfoooJtxIbTKDFeI48mMbrLUCAwEAAaOCBJEwggSNMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwIwCgYIKwYBBQUHAwEwPAYJKwYBBAGCNxUHBC8wLQYlKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFgh8fIENbYcQIBZAIBBjCCAdoGCCsGAQUFBwEBBIIBzDCCAcgwZgYIKwYBBQUHMAKGWmh0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS9wa2lpbmZyYS9DZXJ0cy9CTDJQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDAyKDQpLmNydDBWBggrBgEFBQcwAoZKaHR0cDovL2NybDEuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmwyLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MFYGCCsGAQUFBzAChkpodHRwOi8vY3JsMy5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDAyKDQpLmNydDBWBggrBgEFBQcwAoZKaHR0cDovL2NybDQuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwHQYDVR0OBBYEFIqhzGB1CuZswlOaNeS_vGkhBNVVMA4GA1UdDwEB_wQEAwIFoDCCATUGA1UdHwSCASwwggEoMIIBJKCCASCgggEchkJodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ1JML0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcmyGNGh0dHA6Ly9jcmwxLmFtZS5nYmwvY3JsL0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcmyGNGh0dHA6Ly9jcmwyLmFtZS5nYmwvY3JsL0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcmyGNGh0dHA6Ly9jcmwzLmFtZS5nYmwvY3JsL0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcmyGNGh0dHA6Ly9jcmw0LmFtZS5nYmwvY3JsL0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcmwwgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMB8GA1UdIwQYMBaAFK55wmtdJYgTBvYHCcOXfHuXjx1VMB0GA1UdJQQWMBQGCCsGAQUFBwMCBggrBgEFBQcDATANBgkqhkiG9w0BAQsFAAOCAQEAQYJsgThlhWxWe26LT_V856okEdCKXNmilyf6GnJpwdULdykFIaGZKq6uX6ckMcj0iE_yTdQPXD083rQiGUutYWwlGGjS8-KcR8I5zgGMk2AfQa2BiqG9zgLquFVusLvaGPU3DwzRNIfr5DJH2OiPzn0VoNx-NR14Eux1SEpylL_APMCSxQdBFlz3MRaq9VxEk7cbNiQt8-KRLc7KBvgWiFLE8pKVU3aI-LmRn5QGx4kHBT2ud1xnQR_VQ-Plt5uBHqWFH5BeVszvhkv9VuhGMKTtmkqx4xhZnLGhD7sPFN4wkyAO5fg1k5osAhVNgDRB79HqPlB5PRrUdMS1qHQ8HA\u0026s=nBBmRHtgRSKHzHNUTtusKH7xhDxeQ3ZFllWaLg9ZVBNn_XcZytW3TJQP_WDrIPHSZtKSMF0V6z6Mw8hDLkfZBrl967cC1uIVrXuHgmdQSuCj4cygeu9AOx_sX6K0Xjo1S67WM9333LmucKoGwoP2v_KF4-lMAcpVRroWqt7-G7eyF7b1sgYRwtOYQSTi8zccStzV5zBtj1WUBT47-8TkrIbfEOAFcOQqAxqaTsui9dIjcmmtSkLAOQmrz7axf87EwmMyUSrgA3A1bwmAytJzYqYSnpmh4XA-pZJ0cVWCOOl5cAW57Zw2nF90CCi8VviTNRDq9IrOiLFADNNmClroGQ\u0026h=xqec9NDLda0Ebuen_ebQf0GuLgNSahEEPx_xXFHGkK8" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-client-request-id": [ "3310ab0f-d082-4ffc-8226-38c86fd47a34" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=4279be47-f126-4486-ab3e-da5c65842c25/centraluseuap/2754cbb2-22a2-4a07-8a2f-0b741281a765" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "799" ],
+        "x-ms-correlation-request-id": [ "e7d95d40-704c-45be-8d7c-f4a0b9a70dfb" ],
+        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20251119T120142Z:e7d95d40-704c-45be-8d7c-f4a0b9a70dfb" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 0D662E63E0E1492EBD1624AE18FC16DF Ref B: MAA201060515039 Ref C: 2025-11-19T12:01:42Z" ],
+        "Date": [ "Wed, 19 Nov 2025 12:01:42 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzMigrateServerReplication+[NoContext]+ByInputObjectVMwareCbt+$GET+https://management.azure.com/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationJobs/507e6227-f76b-43bd-bcf2-dc3c94a338a1?api-version=2024-01-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationJobs/507e6227-f76b-43bd-bcf2-dc3c94a338a1?api-version=2024-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "73" ],
+        "x-ms-client-request-id": [ "ceda9574-4b9d-4f31-b014-9d4a791d8272" ],
+        "CommandName": [ "Az.Migrate.internal\\Get-AzMigrateReplicationJob" ],
+        "FullCommandName": [ "Get-AzMigrateReplicationJob_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.Migrate/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "/Subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationJobs/507e6227-f76b-43bd-bcf2-dc3c94a338a1" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-client-request-id": [ "ceda9574-4b9d-4f31-b014-9d4a791d8272" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=4279be47-f126-4486-ab3e-da5c65842c25/centraluseuap/9f0b9254-727c-4a6c-bf67-b1bfea59fde9" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1097" ],
+        "x-ms-correlation-request-id": [ "8f141045-584c-434e-8e06-e3e26329226b" ],
+        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20251119T120143Z:8f141045-584c-434e-8e06-e3e26329226b" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 3D8AD55F149E4504A3BDC266BC93C093 Ref B: MAA201060515039 Ref C: 2025-11-19T12:01:42Z" ],
+        "Date": [ "Wed, 19 Nov 2025 12:01:42 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2263" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/Subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationJobs/507e6227-f76b-43bd-bcf2-dc3c94a338a1\",\"name\":\"507e6227-f76b-43bd-bcf2-dc3c94a338a1\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationJobs\",\"properties\":{\"activityId\":\"3310ab0f-d082-4ffc-8226-38c86fd47a34 ActivityId: e7d95d40-704c-45be-8d7c-f4a0b9a70dfb\",\"scenarioName\":\"DisableMigration\",\"friendlyName\":\"Stop replication\",\"state\":\"InProgress\",\"stateDescription\":\"InProgress\",\"tasks\":[{\"taskId\":\"DisableProtectionOnPrimaryTask\",\"name\":\"DisableProtectionOnPrimary\",\"startTime\":\"0001-01-01T00:00:00\",\"endTime\":\"0001-01-01T00:00:00\",\"allowedActions\":[],\"friendlyName\":\"Disabling migration\",\"state\":\"NotStarted\",\"stateDescription\":\"NotStarted\",\"taskType\":\"TaskDetails\",\"customDetails\":{\"instanceType\":\"TaskDetails\"},\"groupTaskCustomDetails\":null,\"errors\":[]},{\"taskId\":\"UpdateDraStateTask\",\"name\":\"UpdateDraState\",\"startTime\":\"0001-01-01T00:00:00\",\"endTime\":\"0001-01-01T00:00:00\",\"allowedActions\":[],\"friendlyName\":\"Updating the provider states\",\"state\":\"NotStarted\",\"stateDescription\":\"NotStarted\",\"taskType\":\"TaskDetails\",\"customDetails\":{\"instanceType\":\"TaskDetails\"},\"groupTaskCustomDetails\":null,\"errors\":[]}],\"errors\":[],\"startTime\":\"2025-11-19T12:01:42.5917912Z\",\"allowedActions\":[\"Cancel\"],\"targetObjectId\":\"be6826d0-fd0b-539c-9daf-5e2aa4f99583\",\"targetObjectName\":\"CVM-V2ARCM-WIN19-G2\",\"targetInstanceType\":\"ProtectionEntity\",\"customDetails\":{\"instanceType\":\"AsrJobDetails\",\"affectedObjectDetails\":{\"primaryVmId\":\"be6826d0-fd0b-539c-9daf-5e2aa4f99583\",\"primaryVmName\":\"CVM-V2ARCM-WIN19-G2\",\"recoveryVmId\":\"\",\"recoveryVmName\":\"CVM-V2ARCM-WIN19-G2\",\"protectionProfileId\":\"f068e202-ed01-546b-988f-79502ef2e9b0\",\"primaryCloudId\":\"cloud_23ef791e-7862-5ab4-acda-154a9b1e2848\",\"primaryCloudName\":\"ecygqlapp2fd6replicationcontainer\",\"recoveryCloudId\":\"d38048d4-b460-4791-8ece-108395ee8478\",\"recoveryCloudName\":\"Microsoft Azure\",\"primaryVmmId\":\"23ef791e-7862-5ab4-acda-154a9b1e2848\",\"primaryVmmName\":\"ecygqlapp2fd6replicationfabric\",\"recoveryVmmId\":\"21a9403c-6ec1-44f2-b744-b4e50b792387\",\"recoveryVmmName\":\"Microsoft Azure\",\"primaryFabricProviderId\":\"VMwareV2\",\"recoveryFabricProviderId\":\"Azure\"}}}}",
+      "isContentBase64": false
     }
   }
 }
