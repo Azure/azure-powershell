@@ -299,6 +299,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             HelpMessage = "Specify whether to implicitly install the ProxyAgent Extension. This option is currently applicable only for Linux Os.")]
         public SwitchParameter AddProxyAgentExtension { get; set; }
 
+        [Parameter(
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "Specifies the policy for resource's placement in availability zone. Possible values are: **Any** (used for Virtual Machines), **Auto** (used for Virtual Machine Scale Sets) - An availability zone will be automatically picked by system as part of resource creation.")]
+        [PSArgumentCompleter("Any", "Auto")]
+        public string ZonePlacementPolicy { get; set; }
+
         private void ConfigureSecuritySettings()
         {
             if (SecurityType?.ToLower() == SecurityTypes.TrustedLaunch ||
@@ -560,7 +567,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     securityPostureId: _cmdlet.SecurityPostureId,
                     securityPostureExcludeExtension: _cmdlet.SecurityPostureExcludeExtension,
                     enableProxyAgent: _cmdlet.EnableProxyAgent ? true : (bool?)null,
-                    addProxyAgentExtension: _cmdlet.AddProxyAgentExtension.IsPresent ? true : (bool?)null
+                    addProxyAgentExtension: _cmdlet.AddProxyAgentExtension.IsPresent ? true : (bool?)null,
+                    zonePlacementPolicy: _cmdlet.ZonePlacementPolicy
                     );
             }
 
@@ -701,7 +709,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     securityPostureId: _cmdlet.SecurityPostureId,
                     securityPostureExcludeExtension: _cmdlet.SecurityPostureExcludeExtension,
                     enableProxyAgent: _cmdlet.EnableProxyAgent ? true : (bool?)null,
-                    addProxyAgentExtension: _cmdlet.AddProxyAgentExtension.IsPresent ? true : (bool?)null
+                    addProxyAgentExtension: _cmdlet.AddProxyAgentExtension.IsPresent ? true : (bool?)null,
+                    zonePlacementPolicy: _cmdlet.ZonePlacementPolicy
                 );
             }
         }

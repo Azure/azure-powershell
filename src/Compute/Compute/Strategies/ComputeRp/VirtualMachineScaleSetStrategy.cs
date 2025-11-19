@@ -84,7 +84,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string securityPostureId = null,
             string[] securityPostureExcludeExtension = null,
             bool? enableProxyAgent = null,
-            bool? addProxyAgentExtension = null
+            bool? addProxyAgentExtension = null,
+            string zonePlacementPolicy = null
             )
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
@@ -201,7 +202,11 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             AllocationStrategy = skuProfileAllocationStrategy
                         },
                         DoNotRunExtensionsOnOverprovisionedVMs = doNotRunExtensionsOnOverprovisionedVMs ? true : (bool?)null,
-                        OrchestrationMode = orchestrationMode
+                        OrchestrationMode = orchestrationMode,
+                        Placement = new Placement
+                        {
+                            ZonePlacementPolicy = zonePlacementPolicy
+                        }
                     };
                     if (auxAuthHeader != null)
                     {
@@ -254,7 +259,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string securityPostureId = null,
             string[] securityPostureExcludeExtension = null,
             bool? enableProxyAgent = null,
-            bool? addProxyAgentExtension = null
+            bool? addProxyAgentExtension = null,
+            string zonePlacementPolicy = null
             )
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
@@ -353,7 +359,11 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             AllocationStrategy = skuProfileAllocationStrategy
                         },
                         DoNotRunExtensionsOnOverprovisionedVMs = doNotRunExtensionsOnOverprovisionedVMs ? true : (bool?)null,
-                        OrchestrationMode = orchestrationMode
+                        OrchestrationMode = orchestrationMode,
+                        Placement = new Placement
+                        {
+                            ZonePlacementPolicy = zonePlacementPolicy
+                        }
                     };
                     if (auxAuthHeader != null)
                     {

@@ -17,7 +17,7 @@ Creates a virtual machine scale set.
 ```
 New-AzVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
  [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet> [-AsJob] [-IfMatch <String>] [-IfNoneMatch <String>]
- [-EdgeZone <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-EdgeZone <String>] [-ZonePlacementPolicy <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -40,8 +40,8 @@ New-AzVmss [[-ResourceGroupName] <String>] [-VMScaleSetName] <String> [-AsJob] [
  [-EnableVtpm <Boolean>] [-EnableSecureBoot <Boolean>] [-SecurityPostureId <String>]
  [-SecurityPostureExcludeExtension <String[]>] [-SkuProfileVmSize <String[]>]
  [-SkuProfileAllocationStrategy <String>] [-EnableProxyAgent] [-AddProxyAgentExtension]
- [-DefaultProfile <IAzureContextContainer>] [-SinglePlacementGroup]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ZonePlacementPolicy <String>] [-DefaultProfile <IAzureContextContainer>] [-SinglePlacementGroup] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -1196,6 +1196,21 @@ A list of availability zones denoting the IP allocated for the resource needs to
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: SimpleParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ZonePlacementPolicy
+Specifies the policy for resource's placement in availability zone. Possible values are: **Any** (used for Virtual Machines), **Auto** (used for Virtual Machine Scale Sets) - An availability zone will be automatically picked by system as part of resource creation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: False
