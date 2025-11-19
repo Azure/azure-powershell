@@ -57,27 +57,32 @@ Get the quota allocation request status for the subscriptionId by allocationId.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List GroupQuotasSubscriptionAllocationRequest for a GroupQuota and Subscription
 ```powershell
-{{ Add code here }}
+Get-AzQuotaGroupQuotaSubscriptionAllocationRequest -GroupQuotaName "groupquota1" -ManagementGroupId "mgId" -ResourceProviderName "Microsoft.Compute" -ResourceName "standardav2family" -SubscriptionId "<subscription>"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+RequestId                            ProvisioningState RequestedLimit
+---------                            ----------------- --------------
+00000000-0000-0000-0000-000000000000 Succeeded         75
+11111111-1111-1111-1111-111111111111 InProgress        100
 ```
 
-{{ Add description here }}
+List all GroupQuotasSubscriptionAllocationRequests for a specified GroupQuota, resource provider, resource, and subscription.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a specific GroupQuotasSubscriptionAllocationRequest by RequestId
 ```powershell
-{{ Add code here }}
+Get-AzQuotaGroupQuotaSubscriptionAllocationRequest -GroupQuotaName "groupquota1" -ManagementGroupId "mgId" -ResourceProviderName "Microsoft.Compute" -ResourceName "standardav2family" -SubscriptionId "<subscription>" -RequestId "00000000-0000-0000-0000-000000000000"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+RequestId                            ProvisioningState RequestedLimit
+---------                            ----------------- --------------
+00000000-0000-0000-0000-000000000000 Succeeded         75
 ```
 
-{{ Add description here }}
+Get details of a specific GroupQuotasSubscriptionAllocationRequest by its request ID.
 
 ## PARAMETERS
 

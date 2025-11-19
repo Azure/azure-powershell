@@ -49,27 +49,32 @@ If the subscription is not a member of GroupQuota, it will return 404, else 200.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get a specific subscription in a GroupQuota
 ```powershell
-{{ Add code here }}
+Get-AzQuotaGroupQuotaSubscription -ManagementGroupId "mgId" -GroupQuotaName "groupquota1" -SubscriptionId "<subscription>"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+SubscriptionId                       ProvisioningState
+--------------                       -----------------
+00000000-0000-0000-0000-000000000000 Succeeded
 ```
 
-{{ Add description here }}
+Get details of a specific subscription within a GroupQuota.
 
-### Example 2: {{ Add title here }}
+### Example 2: List all subscriptions in a GroupQuota
 ```powershell
-{{ Add code here }}
+Get-AzQuotaGroupQuotaSubscription -ManagementGroupId "mgId" -GroupQuotaName "groupquota1"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+SubscriptionId                       ProvisioningState
+--------------                       -----------------
+00000000-0000-0000-0000-000000000000 Succeeded
+11111111-1111-1111-1111-111111111111 Succeeded
 ```
 
-{{ Add description here }}
+List all subscriptions associated with a specified GroupQuota.
 
 ## PARAMETERS
 

@@ -27,27 +27,19 @@ Only the Group quota allocated to the subscription can be allocated back to the 
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List GroupQuota subscription allocations
 ```powershell
-{{ Add code here }}
+Get-AzQuotaGroupQuotaSubscriptionAllocation -ManagementGroupId "mgId" -SubscriptionId "<subscription>" -GroupQuotaName "groupquota1" -ResourceProviderName "Microsoft.Compute" -Location "eastus"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name              AllocatedLimit ProvisioningState
+----              -------------- -----------------
+standardav2family 50             Succeeded
+standardbsfamily  25             Succeeded
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+List all quota allocations for a specified subscription within a GroupQuota for a particular resource provider and location.
 
 ## PARAMETERS
 

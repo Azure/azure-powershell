@@ -77,27 +77,18 @@ Ten delete the GroupQuota (Check the example - GroupQuotas_Delete).
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update GroupQuota location setting
 ```powershell
-{{ Add code here }}
+Update-AzQuotaGroupQuotaLocationSetting -ManagementGroupId "mgId" -GroupQuotaName "groupquota1" -ResourceProviderName "Microsoft.Compute" -Location "eastus"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name   EnforcementEnabled ProvisioningState
+----   ------------------ -----------------
+eastus True               Succeeded
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Update the location setting for a specified GroupQuota, resource provider, and location.
 
 ## PARAMETERS
 

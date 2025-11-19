@@ -14,32 +14,16 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzQuotaGroupQuotaSubscrip
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
+##TODO## Address error: Unable to verify that the user that sent this request is the original caller of the asynchronous operation being polled. 
+# Please refer to https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/async-operations for more information.
+
 Describe 'Get-AzQuotaGroupQuotaSubscriptionRequest' {
     It 'List' {
         $managementGroupId = "mg-demo"
-        $groupQuotaName = "testquota$(Get-Random)"
-        $subscriptionId = $env.SubscriptionId
+        $groupQuotaName = "testlocation"
         
-        # Create a GroupQuota
-        $groupQuota = New-AzQuotaGroupQuota -ManagementGroupId $managementGroupId -GroupQuotaName $groupQuotaName -DisplayName "Test Quota for Subscription Request"
-        
-        # Try to add subscription (may already be registered)
-        try {
-            $subscription = New-AzQuotaGroupQuotaSubscription -ManagementGroupId $managementGroupId -GroupQuotaName $groupQuotaName -SubscriptionId $subscriptionId -ErrorAction SilentlyContinue
-        } catch {}
-        
-        # Try to list subscription requests
-        try {
-            $result = Get-AzQuotaGroupQuotaSubscriptionRequest -ManagementGroupId $managementGroupId -GroupQuotaName $groupQuotaName -Filter "requestedState eq 'Active'" -ErrorAction SilentlyContinue
-            $true | Should -Be $true
-        } catch {
-            $true | Should -Be $true
-        }
-        
-        # Cleanup
-        try {
-            Remove-AzQuotaGroupQuotaSubscription -ManagementGroupId $managementGroupId -GroupQuotaName $groupQuotaName -SubscriptionId $subscriptionId -ErrorAction SilentlyContinue
-        } catch {}
-        Remove-AzQuotaGroupQuota -ManagementGroupId $managementGroupId -GroupQuotaName $groupQuotaName
+        # This command fails with async operation verification error
+        $result = Get-AzQuotaGroupQuotaSubscriptionRequest -ManagementGroupId $managementGroupId -GroupQuotaName $groupQuotaName
+        $result | Should -Not -BeNull
     }
 }

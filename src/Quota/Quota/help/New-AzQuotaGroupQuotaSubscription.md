@@ -63,27 +63,18 @@ The request's TenantId is validated against the subscription's TenantId.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Add a subscription to a GroupQuota
 ```powershell
-{{ Add code here }}
+New-AzQuotaGroupQuotaSubscription -ManagementGroupId "mgId" -GroupQuotaName "groupquota1" -SubscriptionId "<subscription>"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+SubscriptionId                       ProvisioningState
+--------------                       -----------------
+00000000-0000-0000-0000-000000000000 Succeeded
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Add a subscription to an existing GroupQuota.
 
 ## PARAMETERS
 

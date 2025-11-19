@@ -4,23 +4,27 @@ Get-AzQuotaGroupQuota -ManagementGroupId "mgId"
 ```
 
 ```output
-Name                  DisplayName              ProvisioningState GroupType
-----                  -----------              ----------------- ---------
-groupquota1          Test Quota Group          Succeeded         AllocationGroup
-groupquota2          Production Quota Group    Succeeded         AllocationGroup
+Name                SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt
+----                ------------------- ------------------- ----------------------- ------------------------
+testquota755776827                                                                                          
+testquota185715322                                                                                          
+test2                                                                                                       
+testquota1340651747                                                                                         
+testlocation                                                                                                
+testquota632715476
 ```
 
 List all GroupQuotas available in the specified management group.
 
 ### Example 2: Get a specific GroupQuota by name
 ```powershell
-Get-AzQuotaGroupQuota -ManagementGroupId "mgId" -GroupQuotaName "groupquota1"
+Get-AzQuotaGroupQuota -ManagementGroupId "mgId" -GroupQuotaName "test2"
 ```
 
 ```output
-Name         DisplayName       ProvisioningState GroupType
-----         -----------       ----------------- ---------
-groupquota1  Test Quota Group  Succeeded         AllocationGroup
+Name  SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy
+----  ------------------- ------------------- ----------------------- ------------------------ ------------------------
+test2
 ```
 
 Get details of a specific GroupQuota by its name.

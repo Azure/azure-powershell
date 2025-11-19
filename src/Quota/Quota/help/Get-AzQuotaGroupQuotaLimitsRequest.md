@@ -49,27 +49,32 @@ Get API to check the status of a GroupQuota request by requestId.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List GroupQuotasLimitsRequests for a GroupQuota
 ```powershell
-{{ Add code here }}
+Get-AzQuotaGroupQuotaLimitsRequest -GroupQuotaName "groupquota1" -ManagementGroupId "mgId" -ResourceProviderName "Microsoft.Compute" -ResourceName "standardav2family"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+RequestId                            ProvisioningState RequestedLimit
+---------                            ----------------- --------------
+00000000-0000-0000-0000-000000000000 Succeeded         150
+11111111-1111-1111-1111-111111111111 Failed            200
 ```
 
-{{ Add description here }}
+List all GroupQuotasLimitsRequests for a specified GroupQuota, resource provider, and resource.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a specific GroupQuotasLimitsRequest by RequestId
 ```powershell
-{{ Add code here }}
+Get-AzQuotaGroupQuotaLimitsRequest -GroupQuotaName "groupquota1" -ManagementGroupId "mgId" -ResourceProviderName "Microsoft.Compute" -ResourceName "standardav2family" -RequestId "00000000-0000-0000-0000-000000000000"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+RequestId                            ProvisioningState RequestedLimit
+---------                            ----------------- --------------
+00000000-0000-0000-0000-000000000000 Succeeded         150
 ```
 
-{{ Add description here }}
+Get details of a specific GroupQuotasLimitsRequest by its request ID.
 
 ## PARAMETERS
 

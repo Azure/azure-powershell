@@ -111,27 +111,19 @@ User can collect unused quotas from multiple subscriptions within the groupQuota
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update GroupQuotasSubscriptionAllocationRequest for a GroupQuota and Subscription
 ```powershell
-{{ Add code here }}
+$limitObject = New-AzQuotaLimitObject -Value 50
+Update-AzQuotaGroupQuotaSubscriptionAllocationRequest -GroupQuotaName "groupquota1" -ManagementGroupId "mgId" -ResourceProviderName "Microsoft.Compute" -ResourceName "standardav2family" -SubscriptionId "<subscription>" -Region "eastus" -Limit $limitObject
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+RequestId                            ProvisioningState RequestedLimit
+---------                            ----------------- --------------
+00000000-0000-0000-0000-000000000000 Accepted          50
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Updates a GroupQuotasSubscriptionAllocationRequest for a specified GroupQuota, resource provider, resource, subscription, and region with new quota allocation limits.
 
 ## PARAMETERS
 

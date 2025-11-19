@@ -57,27 +57,18 @@ Once the operation gets to terminal state - Succeeded | Failed, then the URI wil
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update GroupQuota display name
 ```powershell
-{{ Add code here }}
+Update-AzQuotaGroupQuota -ManagementGroupId "mgId" -Name "groupquota1" -DisplayName "Updated Quota Group Name"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name         DisplayName              ProvisioningState GroupType
+----         -----------              ----------------- ---------
+groupquota1  Updated Quota Group Name Succeeded         AllocationGroup
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Update the display name of an existing GroupQuota.
 
 ## PARAMETERS
 

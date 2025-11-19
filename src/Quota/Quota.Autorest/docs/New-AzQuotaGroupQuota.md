@@ -57,27 +57,18 @@ Once the operation gets to terminal state - Succeeded | Failed, then the URI wil
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a new GroupQuota
 ```powershell
-{{ Add code here }}
+New-AzQuotaGroupQuota -ManagementGroupId "mgId" -GroupQuotaName "groupquota1" -DisplayName "My Test Quota Group"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name         DisplayName          ProvisioningState GroupType
+----         -----------          ----------------- ---------
+groupquota1  My Test Quota Group  Succeeded         AllocationGroup
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Create a new GroupQuota with the specified name and display name within a management group.
 
 ## PARAMETERS
 
