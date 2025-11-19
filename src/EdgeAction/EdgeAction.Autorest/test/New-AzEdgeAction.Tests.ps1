@@ -15,8 +15,20 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzEdgeAction'))
 }
 
 Describe 'New-AzEdgeAction' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateExpanded' {
+        # Test creating edge action with expanded parameters
+        $resourceGroupName = "clitests"
+        $edgeActionName = "ea-test-" + (RandomString $false 8)
+        
+        $result = New-AzEdgeAction -ResourceGroupName $resourceGroupName `
+            -Name $edgeActionName `
+            -SkuName "Standard" `
+            -SkuTier "Standard" `
+            -Location "global"
+        
+        $result.Name | Should -Be $edgeActionName
+        $result.Location | Should -Be "global"
+        $result.ProvisioningState | Should -Be "Succeeded"
     }
 
     It 'CreateViaJsonFilePath' -skip {

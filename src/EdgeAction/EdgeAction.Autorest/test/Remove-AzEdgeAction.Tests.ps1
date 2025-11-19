@@ -15,8 +15,25 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzEdgeAction'))
 }
 
 Describe 'Remove-AzEdgeAction' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete' {
+        # Test deleting edge action
+        $resourceGroupName = "clitests"
+        $edgeActionName = "ea-delete-" + (RandomString $false 8)
+        
+        # Create edge action to delete
+        New-AzEdgeAction -ResourceGroupName $resourceGroupName `
+            -Name $edgeActionName `
+            -SkuName "Standard" `
+            -SkuTier "Standard" `
+            -Location "global"
+        
+        # Delete the edge action
+        { Remove-AzEdgeAction -ResourceGroupName $resourceGroupName `
+            -Name $edgeActionName } | Should -Not -Throw
+        
+        # Verify it's deleted
+        { Get-AzEdgeAction -ResourceGroupName $resourceGroupName `
+            -Name $edgeActionName -ErrorAction Stop } | Should -Throw
     }
 
     It 'DeleteViaIdentity' -skip {

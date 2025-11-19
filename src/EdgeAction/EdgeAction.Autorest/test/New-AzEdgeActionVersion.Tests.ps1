@@ -15,8 +15,39 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzEdgeActionVersion'))
 }
 
 Describe 'New-AzEdgeActionVersion' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    BeforeAll {
+        $script:resourceGroupName = "clitests"
+        $script:edgeActionName = "ea-ver-" + (RandomString $false 8)
+        
+        # Create edge action for version testing
+        New-AzEdgeAction -ResourceGroupName $script:resourceGroupName `
+            -Name $script:edgeActionName `
+            -SkuName "Standard" `
+            -SkuTier "Standard" `
+            -Location "global"
+    }
+
+    AfterAll {
+        # Clean up test edge action (will also delete versions)
+        Remove-AzEdgeAction -ResourceGroupName $script:resourceGroupName `
+            -Name $script:edgeActionName -ErrorAction SilentlyContinue
+    }
+
+    It 'CreateExpanded' {
+        # Test creating edge action version with expanded parameters
+        $version = "v1"
+        
+        $result = New-AzEdgeActionVersion -ResourceGroupName $script:resourceGroupName `
+            -EdgeActionName $script:edgeActionName `
+            -Version $version `
+            -DeploymentType "file" `
+            -IsDefaultVersion $true `
+            -Location "global"
+        
+        $result.Name | Should -Be $version
+        $result.DeploymentType | Should -Be "file"
+        $result.IsDefaultVersion | Should -Be $true
+        $result.ProvisioningState | Should -Be "Succeeded"
     }
 
     It 'CreateViaJsonString' -skip {

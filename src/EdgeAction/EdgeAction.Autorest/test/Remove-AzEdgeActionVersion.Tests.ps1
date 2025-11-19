@@ -15,8 +15,45 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzEdgeActionVersion'))
 }
 
 Describe 'Remove-AzEdgeActionVersion' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    BeforeAll {
+        $script:resourceGroupName = "clitests"
+        $script:edgeActionName = "ea-delver-" + (RandomString $false 8)
+        
+        # Create edge action for testing
+        New-AzEdgeAction -ResourceGroupName $script:resourceGroupName `
+            -Name $script:edgeActionName `
+            -SkuName "Standard" `
+            -SkuTier "Standard" `
+            -Location "global"
+    }
+
+    AfterAll {
+        # Clean up test edge action
+        Remove-AzEdgeAction -ResourceGroupName $script:resourceGroupName `
+            -Name $script:edgeActionName -ErrorAction SilentlyContinue
+    }
+
+    It 'Delete' {
+        # Test deleting version
+        $version = "v-delete"
+        
+        # Create version to delete
+        New-AzEdgeActionVersion -ResourceGroupName $script:resourceGroupName `
+            -EdgeActionName $script:edgeActionName `
+            -Version $version `
+            -DeploymentType "file" `
+            -IsDefaultVersion $false `
+            -Location "global"
+        
+        # Delete the version
+        { Remove-AzEdgeActionVersion -ResourceGroupName $script:resourceGroupName `
+            -EdgeActionName $script:edgeActionName `
+            -Version $version } | Should -Not -Throw
+        
+        # Verify it's deleted
+        { Get-AzEdgeActionVersion -ResourceGroupName $script:resourceGroupName `
+            -EdgeActionName $script:edgeActionName `
+            -Version $version -ErrorAction Stop } | Should -Throw
     }
 
     It 'DeleteViaIdentityEdgeAction' -skip {

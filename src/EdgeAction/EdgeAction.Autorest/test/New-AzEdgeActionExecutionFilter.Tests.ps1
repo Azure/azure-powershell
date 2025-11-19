@@ -15,8 +15,52 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzEdgeActionExecutionFilt
 }
 
 Describe 'New-AzEdgeActionExecutionFilter' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    BeforeAll {
+        $script:resourceGroupName = "clitests"
+        $script:edgeActionName = "ea-filter-" + (RandomString $false 8)
+        $script:version = "v1"
+        $script:testFilePath = Join-Path $PSScriptRoot 'test_handler.js'
+        
+        # Create edge action and version (required for execution filter)
+        New-AzEdgeAction -ResourceGroupName $script:resourceGroupName `
+            -Name $script:edgeActionName `
+            -SkuName "Standard" `
+            -SkuTier "Standard" `
+            -Location "global"
+        
+        New-AzEdgeActionVersion -ResourceGroupName $script:resourceGroupName `
+            -EdgeActionName $script:edgeActionName `
+            -Version $script:version `
+            -DeploymentType "file" `
+            -IsDefaultVersion $true `
+            -Location "global"
+        
+        # Deploy code to version (required for execution filter)
+        Deploy-AzEdgeActionVersionCode -ResourceGroupName $script:resourceGroupName `
+            -EdgeActionName $script:edgeActionName `
+            -Version $script:version `
+            -FilePath $script:testFilePath
+    }
+
+    AfterAll {
+        # Clean up test edge action
+        Remove-AzEdgeAction -ResourceGroupName $script:resourceGroupName `
+            -Name $script:edgeActionName -ErrorAction SilentlyContinue
+    }
+
+    It 'CreateExpanded' {
+        # Test creating execution filter
+        $filterName = "filter-" + (RandomString $false 8)
+        
+        $result = New-AzEdgeActionExecutionFilter -ResourceGroupName $script:resourceGroupName `
+            -EdgeActionName $script:edgeActionName `
+            -ExecutionFilterName $filterName `
+            -Version $script:version `
+            -Location "global"
+        
+        $result.Name | Should -Be $filterName
+        $result.Version | Should -Be $script:version
+        $result.ProvisioningState | Should -Be "Succeeded"
     }
 
     It 'CreateViaJsonString' -skip {
