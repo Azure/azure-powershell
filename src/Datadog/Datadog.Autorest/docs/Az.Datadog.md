@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Datadog
-Module Guid: 936ca4f8-ca75-4cc5-9e9d-78bb6a5f8b16
+Module Guid: 83940cc6-768e-41dc-a20d-8b4dc1df3e46
 Download Help Link: https://learn.microsoft.com/powershell/module/az.datadog
 Help Version: 1.0.0.0
 Locale: en-US

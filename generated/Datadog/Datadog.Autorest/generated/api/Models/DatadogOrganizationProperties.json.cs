@@ -7,7 +7,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Extensions;
 
-    /// <summary>Datadog organization properties</summary>
+    /// <summary>
+    /// Specify the Datadog organization name. In the case of linking to existing organizations, Id, ApiKey, and Applicationkey
+    /// is required as well.
+    /// </summary>
     public partial class DatadogOrganizationProperties
     {
 
@@ -67,6 +70,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
             }
             {_name = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonString>("name"), out var __jsonName) ? (string)__jsonName : (string)_name;}
             {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
+            {_cspm = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonBoolean>("cspm"), out var __jsonCspm) ? (bool?)__jsonCspm : _cspm;}
+            {_resourceCollection = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonBoolean>("resourceCollection"), out var __jsonResourceCollection) ? (bool?)__jsonResourceCollection : _resourceCollection;}
             AfterFromJson(json);
         }
 
@@ -101,21 +106,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
             {
                 return container;
             }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.SerializationMode.IncludeRead))
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.SerializationMode.IncludeRead)||serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.SerializationMode.IncludeCreate))
             {
                 AddIf( null != (((object)this._name)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonString(this._name.ToString()) : null, "name" ,container.Add );
             }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.SerializationMode.IncludeRead))
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.SerializationMode.IncludeRead)||serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.SerializationMode.IncludeCreate))
             {
                 AddIf( null != (((object)this._id)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonString(this._id.ToString()) : null, "id" ,container.Add );
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.SerializationMode.IncludeCreate))
             {
-                AddIf( null != (((object)this._linkingAuthCode)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonString(this._linkingAuthCode.ToString()) : null, "linkingAuthCode" ,container.Add );
+                AddIf( null != (((object)this._linkingAuthCode)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonString(System.Runtime.InteropServices.Marshal.PtrToStringBSTR(System.Runtime.InteropServices.Marshal.SecureStringToBSTR(this._linkingAuthCode))) : null, "linkingAuthCode" ,container.Add );
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.SerializationMode.IncludeCreate))
             {
-                AddIf( null != (((object)this._linkingClientId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonString(this._linkingClientId.ToString()) : null, "linkingClientId" ,container.Add );
+                AddIf( null != (((object)this._linkingClientId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonString(System.Runtime.InteropServices.Marshal.PtrToStringBSTR(System.Runtime.InteropServices.Marshal.SecureStringToBSTR(this._linkingClientId))) : null, "linkingClientId" ,container.Add );
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.SerializationMode.IncludeCreate))
             {
@@ -123,16 +128,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.SerializationMode.IncludeCreate))
             {
-                AddIf( null != (((object)this._apiKey)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonString(this._apiKey.ToString()) : null, "apiKey" ,container.Add );
+                AddIf( null != (((object)this._apiKey)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonString(System.Runtime.InteropServices.Marshal.PtrToStringBSTR(System.Runtime.InteropServices.Marshal.SecureStringToBSTR(this._apiKey))) : null, "apiKey" ,container.Add );
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.SerializationMode.IncludeCreate))
             {
-                AddIf( null != (((object)this._applicationKey)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonString(this._applicationKey.ToString()) : null, "applicationKey" ,container.Add );
+                AddIf( null != (((object)this._applicationKey)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonString(System.Runtime.InteropServices.Marshal.PtrToStringBSTR(System.Runtime.InteropServices.Marshal.SecureStringToBSTR(this._applicationKey))) : null, "applicationKey" ,container.Add );
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.SerializationMode.IncludeCreate))
             {
                 AddIf( null != (((object)this._enterpriseAppId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonString(this._enterpriseAppId.ToString()) : null, "enterpriseAppId" ,container.Add );
             }
+            AddIf( null != this._cspm ? (Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonBoolean((bool)this._cspm) : null, "cspm" ,container.Add );
+            AddIf( null != this._resourceCollection ? (Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonBoolean((bool)this._resourceCollection) : null, "resourceCollection" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

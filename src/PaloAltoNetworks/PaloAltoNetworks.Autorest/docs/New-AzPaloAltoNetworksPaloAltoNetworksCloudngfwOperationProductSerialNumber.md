@@ -1,5 +1,5 @@
 ---
-external help file: Az.PaloAltoNetworks-help.xml
+external help file:
 Module Name: Az.PaloAltoNetworks
 online version: https://learn.microsoft.com/powershell/module/az.paloaltonetworks/new-azpaloaltonetworkspaloaltonetworkscloudngfwoperationproductserialnumber
 schema: 2.0.0
@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzPaloAltoNetworksPaloAltoNetworksCloudngfwOperationProductSerialNumber
 
 ## SYNOPSIS
-Create product serial number
+
 
 ## SYNTAX
 
@@ -18,7 +18,6 @@ New-AzPaloAltoNetworksPaloAltoNetworksCloudngfwOperationProductSerialNumber [-Su
 ```
 
 ## DESCRIPTION
-Create product serial number
 
 
 ## EXAMPLES

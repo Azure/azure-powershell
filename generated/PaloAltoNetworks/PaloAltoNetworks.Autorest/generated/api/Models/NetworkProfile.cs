@@ -31,31 +31,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models
         Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IVnetConfiguration Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.INetworkProfileInternal.VnetConfiguration { get => (this._vnetConfiguration = this._vnetConfiguration ?? new Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.VnetConfiguration()); set { {_vnetConfiguration = value;} } }
 
         /// <summary>Internal Acessors for VnetConfigurationIPOfTrustSubnetForUdr</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IIPAddress Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.INetworkProfileInternal.VnetConfigurationIPOfTrustSubnetForUdr { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IVnetConfigurationInternal)VnetConfiguration).IPOfTrustSubnetForUdr; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IVnetConfigurationInternal)VnetConfiguration).IPOfTrustSubnetForUdr = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IIPAddress Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.INetworkProfileInternal.VnetConfigurationIPOfTrustSubnetForUdr { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IVnetConfigurationInternal)VnetConfiguration).IPOfTrustSubnetForUdr; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IVnetConfigurationInternal)VnetConfiguration).IPOfTrustSubnetForUdr = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for VnetConfigurationTrustSubnet</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IIPAddressSpace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.INetworkProfileInternal.VnetConfigurationTrustSubnet { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IVnetConfigurationInternal)VnetConfiguration).TrustSubnet; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IVnetConfigurationInternal)VnetConfiguration).TrustSubnet = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IIPAddressSpace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.INetworkProfileInternal.VnetConfigurationTrustSubnet { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IVnetConfigurationInternal)VnetConfiguration).TrustSubnet; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IVnetConfigurationInternal)VnetConfiguration).TrustSubnet = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for VnetConfigurationUnTrustSubnet</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IIPAddressSpace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.INetworkProfileInternal.VnetConfigurationUnTrustSubnet { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IVnetConfigurationInternal)VnetConfiguration).UnTrustSubnet; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IVnetConfigurationInternal)VnetConfiguration).UnTrustSubnet = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IIPAddressSpace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.INetworkProfileInternal.VnetConfigurationUnTrustSubnet { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IVnetConfigurationInternal)VnetConfiguration).UnTrustSubnet; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IVnetConfigurationInternal)VnetConfiguration).UnTrustSubnet = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for VnetConfigurationVnet</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IIPAddressSpace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.INetworkProfileInternal.VnetConfigurationVnet { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IVnetConfigurationInternal)VnetConfiguration).Vnet; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IVnetConfigurationInternal)VnetConfiguration).Vnet = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IIPAddressSpace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.INetworkProfileInternal.VnetConfigurationVnet { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IVnetConfigurationInternal)VnetConfiguration).Vnet; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IVnetConfigurationInternal)VnetConfiguration).Vnet = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for VwanConfiguration</summary>
         Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IVwanConfiguration Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.INetworkProfileInternal.VwanConfiguration { get => (this._vwanConfiguration = this._vwanConfiguration ?? new Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.VwanConfiguration()); set { {_vwanConfiguration = value;} } }
 
         /// <summary>Internal Acessors for VwanConfigurationIPOfTrustSubnetForUdr</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IIPAddress Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.INetworkProfileInternal.VwanConfigurationIPOfTrustSubnetForUdr { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IVwanConfigurationInternal)VwanConfiguration).IPOfTrustSubnetForUdr; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IVwanConfigurationInternal)VwanConfiguration).IPOfTrustSubnetForUdr = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IIPAddress Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.INetworkProfileInternal.VwanConfigurationIPOfTrustSubnetForUdr { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IVwanConfigurationInternal)VwanConfiguration).IPOfTrustSubnetForUdr; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IVwanConfigurationInternal)VwanConfiguration).IPOfTrustSubnetForUdr = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for VwanConfigurationTrustSubnet</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IIPAddressSpace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.INetworkProfileInternal.VwanConfigurationTrustSubnet { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IVwanConfigurationInternal)VwanConfiguration).TrustSubnet; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IVwanConfigurationInternal)VwanConfiguration).TrustSubnet = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IIPAddressSpace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.INetworkProfileInternal.VwanConfigurationTrustSubnet { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IVwanConfigurationInternal)VwanConfiguration).TrustSubnet; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IVwanConfigurationInternal)VwanConfiguration).TrustSubnet = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for VwanConfigurationUnTrustSubnet</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IIPAddressSpace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.INetworkProfileInternal.VwanConfigurationUnTrustSubnet { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IVwanConfigurationInternal)VwanConfiguration).UnTrustSubnet; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IVwanConfigurationInternal)VwanConfiguration).UnTrustSubnet = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IIPAddressSpace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.INetworkProfileInternal.VwanConfigurationUnTrustSubnet { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IVwanConfigurationInternal)VwanConfiguration).UnTrustSubnet; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IVwanConfigurationInternal)VwanConfiguration).UnTrustSubnet = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for VwanConfigurationVHub</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IIPAddressSpace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.INetworkProfileInternal.VwanConfigurationVHub { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IVwanConfigurationInternal)VwanConfiguration).VHub; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IVwanConfigurationInternal)VwanConfiguration).VHub = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IIPAddressSpace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.INetworkProfileInternal.VwanConfigurationVHub { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IVwanConfigurationInternal)VwanConfiguration).VHub; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IVwanConfigurationInternal)VwanConfiguration).VHub = value ?? null /* model class */; }
 
         /// <summary>Backing field for <see cref="NetworkType" /> property.</summary>
         private string _networkType;
@@ -63,6 +63,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models
         /// <summary>vnet or vwan, cannot be updated</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Origin(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.PropertyOrigin.Owned)]
         public string NetworkType { get => this._networkType; set => this._networkType = value; }
+
+        /// <summary>Backing field for <see cref="PrivateSourceNatRulesDestination" /> property.</summary>
+        private System.Collections.Generic.List<string> _privateSourceNatRulesDestination;
+
+        /// <summary>Array of ipv4 destination address for which source NAT is to be performed</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Origin(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.PropertyOrigin.Owned)]
+        public System.Collections.Generic.List<string> PrivateSourceNatRulesDestination { get => this._privateSourceNatRulesDestination; set => this._privateSourceNatRulesDestination = value; }
 
         /// <summary>Backing field for <see cref="PublicIP" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IIPAddress> _publicIP;
@@ -205,6 +212,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.PSArgumentCompleterAttribute("VNET", "VWAN")]
         string NetworkType { get; set; }
+        /// <summary>Array of ipv4 destination address for which source NAT is to be performed</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Array of ipv4 destination address for which source NAT is to be performed",
+        SerializedName = @"privateSourceNatRulesDestination",
+        PossibleTypes = new [] { typeof(string) })]
+        System.Collections.Generic.List<string> PrivateSourceNatRulesDestination { get; set; }
         /// <summary>List of IPs associated with the Firewall</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Info(
         Required = true,
@@ -366,7 +384,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Network Virtual Appliance resource ID ",
+        Description = @"Network Virtual Appliance resource ID",
         SerializedName = @"networkVirtualApplianceId",
         PossibleTypes = new [] { typeof(string) })]
         string VwanConfigurationNetworkVirtualApplianceId { get; set; }
@@ -428,6 +446,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models
         /// <summary>vnet or vwan, cannot be updated</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.PSArgumentCompleterAttribute("VNET", "VWAN")]
         string NetworkType { get; set; }
+        /// <summary>Array of ipv4 destination address for which source NAT is to be performed</summary>
+        System.Collections.Generic.List<string> PrivateSourceNatRulesDestination { get; set; }
         /// <summary>List of IPs associated with the Firewall</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IIPAddress> PublicIP { get; set; }
         /// <summary>Non-RFC 1918 address</summary>

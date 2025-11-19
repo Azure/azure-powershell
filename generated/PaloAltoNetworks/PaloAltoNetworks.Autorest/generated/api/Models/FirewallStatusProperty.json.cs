@@ -66,10 +66,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models
                 return;
             }
             {_panoramaStatus = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonObject>("panoramaStatus"), out var __jsonPanoramaStatus) ? Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.PanoramaStatus.FromJson(__jsonPanoramaStatus) : _panoramaStatus;}
+            {_strataCloudManagerInfo = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonObject>("strataCloudManagerInfo"), out var __jsonStrataCloudManagerInfo) ? Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.StrataCloudManagerInfo.FromJson(__jsonStrataCloudManagerInfo) : _strataCloudManagerInfo;}
             {_isPanoramaManaged = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonString>("isPanoramaManaged"), out var __jsonIsPanoramaManaged) ? (string)__jsonIsPanoramaManaged : (string)_isPanoramaManaged;}
             {_healthStatus = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonString>("healthStatus"), out var __jsonHealthStatus) ? (string)__jsonHealthStatus : (string)_healthStatus;}
             {_healthReason = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonString>("healthReason"), out var __jsonHealthReason) ? (string)__jsonHealthReason : (string)_healthReason;}
             {_provisioningState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonString>("provisioningState"), out var __jsonProvisioningState) ? (string)__jsonProvisioningState : (string)_provisioningState;}
+            {_isStrataCloudManaged = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonString>("isStrataCloudManaged"), out var __jsonIsStrataCloudManaged) ? (string)__jsonIsStrataCloudManaged : (string)_isStrataCloudManaged;}
             AfterFromJson(json);
         }
 
@@ -108,6 +110,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models
             {
                 AddIf( null != this._panoramaStatus ? (Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonNode) this._panoramaStatus.ToJson(null,serializationMode) : null, "panoramaStatus" ,container.Add );
             }
+            AddIf( null != this._strataCloudManagerInfo ? (Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonNode) this._strataCloudManagerInfo.ToJson(null,serializationMode) : null, "strataCloudManagerInfo" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeRead))
             {
                 AddIf( null != (((object)this._isPanoramaManaged)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonString(this._isPanoramaManaged.ToString()) : null, "isPanoramaManaged" ,container.Add );
@@ -123,6 +126,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeRead))
             {
                 AddIf( null != (((object)this._provisioningState)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonString(this._provisioningState.ToString()) : null, "provisioningState" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeRead))
+            {
+                AddIf( null != (((object)this._isStrataCloudManaged)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonString(this._isStrataCloudManaged.ToString()) : null, "isStrataCloudManaged" ,container.Add );
             }
             AfterToJson(ref container);
             return container;

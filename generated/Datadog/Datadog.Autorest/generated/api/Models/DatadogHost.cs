@@ -15,7 +15,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
         /// <summary>Backing field for <see cref="Alias" /> property.</summary>
         private System.Collections.Generic.List<string> _alias;
 
-        /// <summary>The aliases for the host.</summary>
+        /// <summary>The aliases for the host installed via the Datadog agent.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<string> Alias { get => this._alias; set => this._alias = value; }
 
@@ -56,10 +56,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
         Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogHostMetadata Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogHostInternal.Meta { get => (this._meta = this._meta ?? new Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.DatadogHostMetadata()); set { {_meta = value;} } }
 
         /// <summary>Internal Acessors for MetaInstallMethod</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogInstallMethod Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogHostInternal.MetaInstallMethod { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogHostMetadataInternal)Meta).InstallMethod; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogHostMetadataInternal)Meta).InstallMethod = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogInstallMethod Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogHostInternal.MetaInstallMethod { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogHostMetadataInternal)Meta).InstallMethod; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogHostMetadataInternal)Meta).InstallMethod = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for MetaLogsAgent</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogLogsAgent Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogHostInternal.MetaLogsAgent { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogHostMetadataInternal)Meta).LogsAgent; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogHostMetadataInternal)Meta).LogsAgent = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogLogsAgent Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogHostInternal.MetaLogsAgent { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogHostMetadataInternal)Meta).LogsAgent; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogHostMetadataInternal)Meta).LogsAgent = value ?? null /* model class */; }
 
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
         private string _name;
@@ -77,14 +77,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
     public partial interface IDatadogHost :
         Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.IJsonSerializable
     {
-        /// <summary>The aliases for the host.</summary>
+        /// <summary>The aliases for the host installed via the Datadog agent.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The aliases for the host.",
+        Description = @"The aliases for the host installed via the Datadog agent.",
         SerializedName = @"aliases",
         PossibleTypes = new [] { typeof(string) })]
         System.Collections.Generic.List<string> Alias { get; set; }
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
     internal partial interface IDatadogHostInternal
 
     {
-        /// <summary>The aliases for the host.</summary>
+        /// <summary>The aliases for the host installed via the Datadog agent.</summary>
         System.Collections.Generic.List<string> Alias { get; set; }
         /// <summary>The Datadog integrations reporting metrics for the host.</summary>
         System.Collections.Generic.List<string> App { get; set; }

@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResource))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.Description(@"update a monitor resource.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}", ApiVersion = "2021-03-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}", ApiVersion = "2025-06-11")]
     public partial class UpdateAzDatadogMonitor_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.IContext
@@ -43,15 +43,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Cmdlets
         /// <summary>A dictionary to carry over additional data for pipeline.</summary>
         private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
 
-        /// <summary>A buffer to record first returned object in response.</summary>
-        private object _firstResponse = null;
-
-        /// <summary>
-        /// A flag to tell whether it is the first returned object in a call. Zero means no response yet. One means 1 returned object.
-        /// Two means multiple returned objects in response.
-        /// </summary>
-        private int _responseSize = 0;
-
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.ParameterCategory.Runtime)]
@@ -67,6 +58,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Cmdlets
 
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.Datadog.Datadog Client => Microsoft.Azure.PowerShell.Cmdlets.Datadog.Module.Instance.ClientAPI;
+
+        /// <summary>
+        /// The new cloud security posture management value of the monitor resource. This collects configuration information for all
+        /// resources in a subscription and track conformance to industry benchmarks.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The new cloud security posture management value of the monitor resource. This collects configuration information for all resources in a subscription and track conformance to industry benchmarks.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The new cloud security posture management value of the monitor resource. This collects configuration information for all resources in a subscription and track conformance to industry benchmarks.",
+        SerializedName = @"cspm",
+        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
+        public global::System.Management.Automation.SwitchParameter Cspm { get => _body.Cspm ?? default(global::System.Management.Automation.SwitchParameter); set => _body.Cspm = value; }
 
         /// <summary>
         /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
@@ -160,6 +165,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter ProxyUseDefaultCredentials { get; set; }
 
+        /// <summary>
+        /// The new resource collection value of the monitor resource. This collects configuration information for all resources in
+        /// a subscription.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The new resource collection value of the monitor resource. This collects configuration information for all resources in a subscription.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The new resource collection value of the monitor resource. This collects configuration information for all resources in a subscription.",
+        SerializedName = @"resourceCollection",
+        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
+        public global::System.Management.Automation.SwitchParameter ResourceCollection { get => _body.ResourceCollection ?? default(global::System.Management.Automation.SwitchParameter); set => _body.ResourceCollection = value; }
+
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
 
@@ -174,13 +193,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.ParameterCategory.Path)]
         public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
 
-        /// <summary>Name of the SKU.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Name of the SKU.")]
+        /// <summary>
+        /// Name of the SKU in {PlanId} format. For Terraform, the only allowed value is 'Linked'.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Name of the SKU in {PlanId} format. For Terraform, the only allowed value is 'Linked'.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Name of the SKU.",
+        Description = @"Name of the SKU in {PlanId} format. For Terraform, the only allowed value is 'Linked'.",
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(string) })]
         public string SkuName { get => _body.SkuName ?? null; set => _body.SkuName = value; }
@@ -285,11 +306,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            if (1 ==_responseSize)
-            {
-                // Flush buffer
-                WriteObject(_firstResponse);
-            }
             var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.Datadog.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
             if (telemetryInfo != null)
             {
@@ -605,24 +621,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Cmdlets
                 // onOk - response for 200 / application/json
                 // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResource
                 var result = (await response);
-                if (null != result)
-                {
-                    if (0 == _responseSize)
-                    {
-                        _firstResponse = result;
-                        _responseSize = 1;
-                    }
-                    else
-                    {
-                        if (1 ==_responseSize)
-                        {
-                            // Flush buffer
-                            WriteObject(_firstResponse.AddMultipleTypeNameIntoPSObject());
-                        }
-                        WriteObject(result.AddMultipleTypeNameIntoPSObject());
-                        _responseSize = 2;
-                    }
-                }
+                WriteObject(result, false);
             }
         }
     }

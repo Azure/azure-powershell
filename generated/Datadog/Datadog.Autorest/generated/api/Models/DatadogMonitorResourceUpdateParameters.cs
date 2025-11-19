@@ -13,6 +13,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
         Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceUpdateParametersInternal
     {
 
+        /// <summary>
+        /// The new cloud security posture management value of the monitor resource. This collects configuration information for all
+        /// resources in a subscription and track conformance to industry benchmarks.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inlined)]
+        public bool? Cspm { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorUpdatePropertiesInternal)Property).Cspm; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorUpdatePropertiesInternal)Property).Cspm = value ?? default(bool); }
+
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorUpdateProperties Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceUpdateParametersInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.MonitorUpdateProperties()); set { {_property = value;} } }
 
@@ -32,13 +39,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorUpdateProperties Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.MonitorUpdateProperties()); set => this._property = value; }
 
+        /// <summary>
+        /// The new resource collection value of the monitor resource. This collects configuration information for all resources in
+        /// a subscription.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inlined)]
+        public bool? ResourceCollection { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorUpdatePropertiesInternal)Property).ResourceCollection; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorUpdatePropertiesInternal)Property).ResourceCollection = value ?? default(bool); }
+
         /// <summary>Backing field for <see cref="Sku" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceSku _sku;
 
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceSku Sku { get => (this._sku = this._sku ?? new Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ResourceSku()); set => this._sku = value; }
 
-        /// <summary>Name of the SKU.</summary>
+        /// <summary>
+        /// Name of the SKU in {PlanId} format. For Terraform, the only allowed value is 'Linked'.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inlined)]
         public string SkuName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceSkuInternal)Sku).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceSkuInternal)Sku).Name = value ?? null; }
 
@@ -59,6 +75,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
     public partial interface IDatadogMonitorResourceUpdateParameters :
         Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.IJsonSerializable
     {
+        /// <summary>
+        /// The new cloud security posture management value of the monitor resource. This collects configuration information for all
+        /// resources in a subscription and track conformance to industry benchmarks.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The new cloud security posture management value of the monitor resource. This collects configuration information for all resources in a subscription and track conformance to industry benchmarks.",
+        SerializedName = @"cspm",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? Cspm { get; set; }
         /// <summary>Flag specifying if the resource monitoring is enabled or disabled.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
         Required = false,
@@ -71,14 +101,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.PSArgumentCompleterAttribute("Enabled", "Disabled")]
         string MonitoringStatus { get; set; }
-        /// <summary>Name of the SKU.</summary>
+        /// <summary>
+        /// The new resource collection value of the monitor resource. This collects configuration information for all resources in
+        /// a subscription.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Name of the SKU.",
+        Description = @"The new resource collection value of the monitor resource. This collects configuration information for all resources in a subscription.",
+        SerializedName = @"resourceCollection",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? ResourceCollection { get; set; }
+        /// <summary>
+        /// Name of the SKU in {PlanId} format. For Terraform, the only allowed value is 'Linked'.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Name of the SKU in {PlanId} format. For Terraform, the only allowed value is 'Linked'.",
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(string) })]
         string SkuName { get; set; }
@@ -99,6 +145,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
     internal partial interface IDatadogMonitorResourceUpdateParametersInternal
 
     {
+        /// <summary>
+        /// The new cloud security posture management value of the monitor resource. This collects configuration information for all
+        /// resources in a subscription and track conformance to industry benchmarks.
+        /// </summary>
+        bool? Cspm { get; set; }
         /// <summary>Flag specifying if the resource monitoring is enabled or disabled.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.PSArgumentCompleterAttribute("Enabled", "Disabled")]
         string MonitoringStatus { get; set; }
@@ -106,9 +157,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
         /// The set of properties that can be update in a PATCH request to a monitor resource.
         /// </summary>
         Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorUpdateProperties Property { get; set; }
+        /// <summary>
+        /// The new resource collection value of the monitor resource. This collects configuration information for all resources in
+        /// a subscription.
+        /// </summary>
+        bool? ResourceCollection { get; set; }
 
         Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceSku Sku { get; set; }
-        /// <summary>Name of the SKU.</summary>
+        /// <summary>
+        /// Name of the SKU in {PlanId} format. For Terraform, the only allowed value is 'Linked'.
+        /// </summary>
         string SkuName { get; set; }
         /// <summary>The new tags of the monitor resource.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceUpdateParametersTags Tag { get; set; }

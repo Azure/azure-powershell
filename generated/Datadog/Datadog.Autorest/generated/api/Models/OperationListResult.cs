@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Extensions;
 
-    /// <summary>Result of GET request to list the Microsoft.Datadog operations.</summary>
+    /// <summary>Represents a paginated list of operation results.</summary>
     public partial class OperationListResult :
         Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IOperationListResult,
         Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IOperationListResultInternal
@@ -16,14 +16,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
         /// <summary>Backing field for <see cref="NextLink" /> property.</summary>
         private string _nextLink;
 
-        /// <summary>URL to get the next set of operation list results if there are any.</summary>
+        /// <summary>The URL to get the next set of results, if any.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Owned)]
         public string NextLink { get => this._nextLink; set => this._nextLink = value; }
 
         /// <summary>Backing field for <see cref="Value" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IOperationResult> _value;
 
-        /// <summary>List of operations supported by the Microsoft.Datadog provider.</summary>
+        /// <summary>The list of operations.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IOperationResult> Value { get => this._value; set => this._value = value; }
 
@@ -33,41 +33,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
 
         }
     }
-    /// Result of GET request to list the Microsoft.Datadog operations.
+    /// Represents a paginated list of operation results.
     public partial interface IOperationListResult :
         Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.IJsonSerializable
     {
-        /// <summary>URL to get the next set of operation list results if there are any.</summary>
+        /// <summary>The URL to get the next set of results, if any.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"URL to get the next set of operation list results if there are any.",
+        Description = @"The URL to get the next set of results, if any.",
         SerializedName = @"nextLink",
         PossibleTypes = new [] { typeof(string) })]
         string NextLink { get; set; }
-        /// <summary>List of operations supported by the Microsoft.Datadog provider.</summary>
+        /// <summary>The list of operations.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
-        Required = false,
+        Required = true,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"List of operations supported by the Microsoft.Datadog provider.",
+        Description = @"The list of operations.",
         SerializedName = @"value",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IOperationResult) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IOperationResult> Value { get; set; }
 
     }
-    /// Result of GET request to list the Microsoft.Datadog operations.
+    /// Represents a paginated list of operation results.
     internal partial interface IOperationListResultInternal
 
     {
-        /// <summary>URL to get the next set of operation list results if there are any.</summary>
+        /// <summary>The URL to get the next set of results, if any.</summary>
         string NextLink { get; set; }
-        /// <summary>List of operations supported by the Microsoft.Datadog provider.</summary>
+        /// <summary>The list of operations.</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IOperationResult> Value { get; set; }
 
     }
