@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-List the operations for the provider
+Gets a list of ElasticSan operations.
 .Description
-List the operations for the provider
+Gets a list of ElasticSan operations.
 .Example
 {{ Add code here }}
 .Example
