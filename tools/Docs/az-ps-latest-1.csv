@@ -51,7 +51,7 @@ pac49,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-relea
 pac50,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DataBox.0.5.0.zip;sourceType=sa]Az.DataBox,0.5.0
 pac51,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DataBoxEdge.1.2.1.zip;sourceType=sa]Az.DataBoxEdge,1.2.1
 pac52,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Databricks.1.10.1.zip;sourceType=sa]Az.Databricks,1.10.1
-pac53,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Datadog.0.2.0.zip;sourceType=sa]Az.Datadog,0.2.0
+pac53,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Datadog.0.3.0.zip;sourceType=sa]Az.Datadog,0.3.0
 pac54,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DataFactory.1.19.6.zip;sourceType=sa]Az.DataFactory,1.19.6
 pac55,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DataLakeAnalytics.1.1.0.zip;sourceType=sa]Az.DataLakeAnalytics,1.1.0
 pac56,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DataLakeStore.1.5.1.zip;sourceType=sa]Az.DataLakeStore,1.5.1
@@ -71,7 +71,7 @@ pac69,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-relea
 pac70,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DiskPool.0.4.0.zip;sourceType=sa]Az.DiskPool,0.4.0
 pac71,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Dns.2.0.0.zip;sourceType=sa]Az.Dns,2.0.0
 pac72,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DnsResolver.1.2.1.zip;sourceType=sa]Az.DnsResolver,1.2.1
-pac73,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DynatraceObservability.0.3.0.zip;sourceType=sa]Az.DynatraceObservability,0.3.0
+pac73,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DynatraceObservability.0.4.0.zip;sourceType=sa]Az.DynatraceObservability,0.4.0
 pac74,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.EdgeOrder.0.2.0.zip;sourceType=sa]Az.EdgeOrder,0.2.0
 pac75,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.EdgeZones.0.1.2.zip;sourceType=sa]Az.EdgeZones,0.1.2
 pac76,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Elastic.0.3.0.zip;sourceType=sa]Az.Elastic,0.3.0

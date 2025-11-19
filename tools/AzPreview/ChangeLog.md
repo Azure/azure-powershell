@@ -1,3 +1,23 @@
+## 15.1.0 - December 2025
+#### Az.Datadog 0.3.0
+* Added support of Monitored subscription and made it compatible with latest OpenAPI spec. Please see details [here](https://github.com/Azure/azure-rest-api-specs/blob/main/specification/datadog/resource-manager/Microsoft.Datadog/stable/2025-06-11/datadog.json).
+
+#### Az.DynatraceObservability 0.4.0
+* Added complete help examples for Dynatrace Observability cmdlets
+    - Documented usage for 'Get-AzDynatraceMonitoredSubscription', 'New-AzDynatraceMonitoredSubscription', 'Remove-AzDynatraceMonitoredSubscription', 'Invoke-AzDynatraceManageMonitorAgentInstallation', and 'Update-AzDynatraceMonitorPlan' to improve discoverability of monitoring, agent lifecycle, and plan upgrade workflows per 2024-04-24 version.
+
+#### Az.ElasticSan 1.6.0
+* Reverted changes for auto scale, pre-backup, and pre-restore 
+    - 'New-AzElasticSan'
+    - 'Update-AzElasticSan'
+    - 'Test-AzElasticSanVolumeBackup'
+    - 'Test-AzElasticSanVolumeRestore'
+
+#### Az.PaloAltoNetworks 0.4.0
+* Added support for firewall metrics
+* Added new commands for supportInfo, productSerialNumer, cloudManagerTenants
+* Added support for StrataCloudManager and privateSourceNatRulesDestination properties
+
 ## 15.0.0 - November 2025
 #### Az.Accounts 5.3.1
 * Updated Azure.Core from 1.45.0 to 1.47.3

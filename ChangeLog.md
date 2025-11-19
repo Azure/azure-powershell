@@ -1,3 +1,11 @@
+## 15.1.0 - December 2025
+#### Az.ElasticSan 1.6.0
+* Reverted changes for auto scale, pre-backup, and pre-restore 
+    - 'New-AzElasticSan'
+    - 'Update-AzElasticSan'
+    - 'Test-AzElasticSanVolumeBackup'
+    - 'Test-AzElasticSanVolumeRestore'
+
 ## 15.0.0 - November 2025
 #### Az.Accounts 5.3.1
 * Updated Azure.Core from 1.45.0 to 1.47.3
