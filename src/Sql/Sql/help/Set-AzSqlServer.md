@@ -19,7 +19,7 @@ Set-AzSqlServer [-ServerName] <String> [-SqlAdministratorPassword <SecureString>
  [-RestrictOutboundNetworkAccess <String>] [-MinimalTlsVersion <String>]
  [-PrimaryUserAssignedIdentityId <String>] [-KeyId <String>] [-FederatedClientId <Guid>]
  [-UserAssignedIdentityId <System.Collections.Generic.List`1[System.String]>] [-IdentityType <String>]
- [-EnableSoftDelete <Boolean>] [-SoftDeleteRetentionDays <Int32>]
+ [-SoftDeleteRetentionDays <Int32>]
  [-Force]
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] 
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -59,9 +59,9 @@ This command resets the administrator password on the AzureSQL Server named serv
 Set-AzSqlServer -AssignIdentity -ResourceGroupName 'ResourceGroup01' -ServerName 'Server01'
 ```
 
-### Example 3: Enable soft-delete retention for the server (default 7 days)
+### Example 3: Enable soft-delete retention for the server (7 days)
 ```powershell
-Set-AzSqlServer -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -EnableSoftDelete $true
+Set-AzSqlServer -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -SoftDeleteRetentionDays 7
 ```
 
 ```output
@@ -84,11 +84,11 @@ FederatedClientId             :
 SoftDeleteRetentionDays       : 7
 ```
 
-This command enables soft-delete retention on the Azure SQL Server named server01, with a default retention period of 7 days. To customize the retention duration, use the SoftDeleteRetentionDays parameter.
+This command enables soft-delete retention on the Azure SQL Server named server01, with a retention period of 7 days.
 
 ### Example 4: Disable soft-delete retention for the server
 ```powershell
-Set-AzSqlServer -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -EnableSoftDelete $false -SoftDeleteRetentionDays 0
+Set-AzSqlServer -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -SoftDeleteRetentionDays 0
 ```
 
 ```output
@@ -137,21 +137,6 @@ The credentials, account, tenant, and subscription used for communication with a
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EnableSoftDelete
-Boolean value for whether or not to enable soft-delete for the server such that the server can be restored for a default of 7 days after dropping. If you want to specify a different retention period, use the SoftDeleteRetentionDays parameter.
-
-```yaml
-Type: System.Boolean
-Parameter Sets: (All)
-Aliases:
 
 Required: False
 Position: Named
@@ -329,7 +314,7 @@ Accept wildcard characters: False
 ```
 
 ### -SoftDeleteRetentionDays
-Value for soft-delete retention days for the server such that the server can be restored for the specified number of days after dropping. Only valid values are from 0-35. If set to 0, soft-delete retention is disabled.
+Specifies the soft-delete retention days for the server. Valid values are 0-7 days. Use 0 to disable soft-delete retention, or 1-7 to enable it with the specified retention period.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]

@@ -16,14 +16,13 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Management.Sql;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Microsoft.Azure.Commands.Sql.Server.Services
 {
     /// <summary>
-    /// This class is responsible for all the REST communication with the audit REST endpoints
+    /// This class is responsible for all the REST communication with the deleted server REST endpoints
     /// </summary>
-    public class AzureSqlServerCommunicator
+    public class AzureSqlDeletedServerCommunicator
     {
         /// <summary>
         /// The Sql client to be used by this end points communicator
@@ -41,10 +40,10 @@ namespace Microsoft.Azure.Commands.Sql.Server.Services
         public IAzureContext Context { get; set; }
 
         /// <summary>
-        /// Creates a communicator for Azure Sql Databases
+        /// Creates a communicator for Azure Sql Deleted Servers
         /// </summary>
         /// <param name="context">The current azure context</param>
-        public AzureSqlServerCommunicator(IAzureContext context)
+        public AzureSqlDeletedServerCommunicator(IAzureContext context)
         {
             Context = context;
             if (context?.Subscription != Subscription)
@@ -55,43 +54,19 @@ namespace Microsoft.Azure.Commands.Sql.Server.Services
         }
 
         /// <summary>
-        /// Gets the Azure Sql Database Server
+        /// Gets the deleted Azure Sql Database Server
         /// </summary>
-        public Management.Sql.Models.Server Get(string resourceGroupName, string serverName, string expand = null, string subscriptionId = null)
+        public Management.Sql.Models.DeletedServer GetDeleted(string location, string serverName, string subscriptionId = null)
         {
-            return GetCurrentSqlClient(subscriptionId).Servers.Get(resourceGroupName, serverName, expand);
+            return GetCurrentSqlClient(subscriptionId).DeletedServers.Get(location, serverName);
         }
 
         /// <summary>
-        /// Lists Azure Sql Servers in a resource group
+        /// Lists all deleted Azure Sql Database Servers in a location
         /// </summary>
-        public IList<Management.Sql.Models.Server> ListByResourceGroup(string resourceGroupName, string expand = null)
+        public IEnumerable<Management.Sql.Models.DeletedServer> ListDeletedServers(string location, string subscriptionId = null)
         {
-            return GetCurrentSqlClient().Servers.ListByResourceGroup(resourceGroupName, expand).ToList();
-        }
-
-        /// <summary>
-        /// Lists Azure Sql Servers
-        /// </summary>
-        public IList<Management.Sql.Models.Server> List(string expand = null)
-        {
-            return GetCurrentSqlClient().Servers.List(expand).ToList();
-        }
-
-        /// <summary>
-        /// Creates or updates a Azure Sql Database Server
-        /// </summary>
-        public Management.Sql.Models.Server CreateOrUpdate(string resourceGroupName, string serverName, Management.Sql.Models.Server parameters)
-        {
-            return GetCurrentSqlClient().Servers.CreateOrUpdate(resourceGroupName, serverName, parameters);
-        }
-
-        /// <summary>
-        /// Deletes a Azure Sql Database Server
-        /// </summary>
-        public void Remove(string resourceGroupName, string serverName)
-        {
-            GetCurrentSqlClient().Servers.Delete(resourceGroupName, serverName);
+            return GetCurrentSqlClient(subscriptionId).DeletedServers.ListByLocation(location);
         }
 
         /// <summary>

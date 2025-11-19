@@ -15,22 +15,27 @@
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
-using Microsoft.Azure.Commands.Sql.Server.Adapter;
+using Microsoft.Azure.Commands.Sql.Server.Services;
 using Microsoft.Azure.Commands.Sql.Server.Model;
 using System.Collections.Generic;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
 {
-    public abstract class AzureSqlServerCmdletBase : AzureSqlCmdletBase<IEnumerable<AzureSqlServerModel>, AzureSqlServerAdapter>
+    public abstract class AzureSqlDeletedServerCmdletBase : AzureSqlCmdletBase<IEnumerable<AzureSqlDeletedServerModel>, AzureSqlDeletedServerAdapter>
     {
+        /// <summary>
+        /// Override ResourceGroupName to hide it from parameters.
+        /// </summary>
+        public override string ResourceGroupName { get; set; }
+
         /// <summary>
         /// Initializes the model adapter
         /// </summary>
-        /// <returns>The server adapter</returns>
-        protected override AzureSqlServerAdapter InitModelAdapter()
+        /// <returns>The deleted server adapter</returns>
+        protected override AzureSqlDeletedServerAdapter InitModelAdapter()
         {
-            return new AzureSqlServerAdapter(DefaultContext);
+            return new AzureSqlDeletedServerAdapter(DefaultContext);
         }
     }
 }

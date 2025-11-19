@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support for deleted Azure SQL servers
+    - Added new cmdlet `Get-AzSqlDeletedServer` to retrieve information about soft-deleted SQL servers
+    - Removed `EnableSoftDelete` paramter from  `New-AzSqlServer` and `Set-AzSqlServer`
+    - Modified the max limit of `-SoftDeleteRetentionDays` parameters to 7 days from 35 days.
 
 ## Version 6.3.0
 * Updated with support for Immutable Long-Term Retention Backups

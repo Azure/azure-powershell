@@ -132,16 +132,9 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestServerCreateWithDefaultSoftRetentionEnabled()
+        public void TestServerCreateWithSoftRetentionEnabled()
         {
-            TestRunner.RunTestScript("Test-CreateServerWithDefaultSoftDeleteRetentionEnabled");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestServerCreateWithCustomSoftRetentionEnabled()
-        {
-            TestRunner.RunTestScript("Test-CreateServerWithCustomSoftDeleteRetentionEnabled");
+            TestRunner.RunTestScript("Test-CreateServerWithSoftDeleteRetentionEnabled");
         }
 
         [Fact]
@@ -156,6 +149,13 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         public void TestServerRestoreDeletedServer()
         {
             TestRunner.RunTestScript("Test-RestoreDeletedServer");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestServerCreateWithoutSoftDeleteArgument()
+        {
+            TestRunner.RunTestScript("Test-CreateServerWithoutSoftDeleteArgument");
         }
     }
 }
