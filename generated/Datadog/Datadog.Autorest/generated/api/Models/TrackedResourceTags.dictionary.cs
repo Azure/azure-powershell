@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Extensions;
 
-    public partial class DatadogMonitorResourceTags :
+    public partial class TrackedResourceTags :
         Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.IAssociativeArray<string>
     {
         protected global::System.Collections.Generic.Dictionary<global::System.String,string> __additionalProperties = new global::System.Collections.Generic.Dictionary<global::System.String,string>();
@@ -70,6 +70,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
 
         /// <param name="source"></param>
 
-        public static implicit operator global::System.Collections.Generic.Dictionary<global::System.String,string>(Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.DatadogMonitorResourceTags source) => source.__additionalProperties;
+        public static implicit operator global::System.Collections.Generic.Dictionary<global::System.String,string>(Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.TrackedResourceTags source) => source.__additionalProperties;
     }
 }
