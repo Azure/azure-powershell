@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.3.0
 * Updated swagger version to 2025-08-01 to include dashboard operations.
 
 ## Version 0.2.0
