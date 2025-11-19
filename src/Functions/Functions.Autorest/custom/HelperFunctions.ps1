@@ -41,7 +41,7 @@ $constants["ReservedFunctionAppSettingNames"] = @(
 $constants["SetDefaultValueParameterWarningMessage"] = "This default value is subject to change over time. Please set this value explicitly to ensure the behavior is not accidentally impacted by future changes."
 $constants["DEBUG_PREFIX"] = '[Stacks API] - '
 $constants["DefaultCentauriImage"] = 'mcr.microsoft.com/azure-functions/dotnet8-quickstart-demo:1.0'
-$constants["FlexConsumptionSupportedRuntimes"] = @('DotNet-Isolated', 'Custom', 'Node', 'Python', 'Java', 'PowerShell')
+$constants["FlexConsumptionSupportedRuntimes"] = @('DotNet-Isolated', 'Node', 'Java', 'PowerShell', 'Python','Custom')
 
 foreach ($variableName in $constants.Keys)
 {

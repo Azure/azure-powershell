@@ -90,9 +90,19 @@ function Get-AzFunctionAppFlexConsumptionRuntime {
         switch ($PSCmdlet.ParameterSetName) {
             'AllRuntimes' {
                 # Return all runtimes
-                foreach ($runtimeName in $FlexConsumptionSupportedRuntimes)
-                {
-                    Get-FlexFunctionAppRuntime -Location $Location -Runtime $runtimeName
+                $activity = "Retrieving Flex Consumption runtimes"
+                try {
+                    $total = $FlexConsumptionSupportedRuntimes.Count
+                    for ($i = 0; $i -lt $total; $i++) {
+                        $runtimeName = $FlexConsumptionSupportedRuntimes[$i]
+                        $pct    = [int](($i + 1) * 100 / $total)
+                        $status = "Fetching $runtimeName ($($i + 1)/$total)"
+                        Write-Progress -Activity "Fetching $runtimeName" -Status $status -PercentComplete $pct -Id 1
+                        Get-FlexFunctionAppRuntime -Location $Location -Runtime $runtimeName
+                    }
+                }
+                finally {
+                    Write-Progress -Activity $activity -Id 1 -Completed -Status "Done"
                 }
             }
             'AllVersions' {
