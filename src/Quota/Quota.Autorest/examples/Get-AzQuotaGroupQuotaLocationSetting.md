@@ -1,22 +1,13 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get GroupQuota location setting
 ```powershell
-{{ Add code here }}
+Get-AzQuotaGroupQuotaLocationSetting -ManagementGroupId "mgId" -GroupQuotaName "groupquota1" -ResourceProviderName "Microsoft.Compute" -Location "eastus"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name   EnforcementEnabled ProvisioningState
+----   ------------------ -----------------
+eastus True               Succeeded
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Get the location setting for a specified GroupQuota, resource provider, and location.
 

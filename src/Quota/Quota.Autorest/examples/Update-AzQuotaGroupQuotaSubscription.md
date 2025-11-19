@@ -1,22 +1,13 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update a subscription in a GroupQuota
 ```powershell
-{{ Add code here }}
+Update-AzQuotaGroupQuotaSubscription -ManagementGroupId "mgId" -GroupQuotaName "groupquota1" -SubscriptionId "<subscription>"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+SubscriptionId                       ProvisioningState
+--------------                       -----------------
+00000000-0000-0000-0000-000000000000 Succeeded
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Update a subscription's association with an existing GroupQuota using PATCH operation.
 
