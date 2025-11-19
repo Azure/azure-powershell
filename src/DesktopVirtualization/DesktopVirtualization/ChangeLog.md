@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 5.4.4
 * Upgraded API version to 2025-09-01-preview
     - Added MSI Identity definition in HostPool update command.
     - Supported AllowRDPShortPathWithPrivateLink in HostPool Resource.
