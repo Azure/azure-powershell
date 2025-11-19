@@ -1,22 +1,16 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a new edge action
+
 ```powershell
-{{ Add code here }}
+New-AzEdgeAction -ResourceGroupName "myResourceGroup" -EdgeActionName "myEdgeAction" -SkuName "Standard" -SkuTier "Standard" -Location "global"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Creates a new edge action with Standard SKU in the global location.
 
-{{ Add description here }}
+### Example 2: Create an edge action with tags
 
-### Example 2: {{ Add title here }}
 ```powershell
-{{ Add code here }}
+New-AzEdgeAction -ResourceGroupName "myResourceGroup" -EdgeActionName "myEdgeAction" -SkuName "Standard" -SkuTier "Standard" -Location "global" -Tag @{Environment="Production"; Team="EdgeTeam"}
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Creates a new edge action with custom tags for organization and tracking.
 
