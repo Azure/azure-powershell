@@ -124,7 +124,7 @@ Restore request object for which to validate
 To construct, see NOTES section for RESTOREREQUEST properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IAzureBackupRestoreRequest
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250701.IAzureBackupRestoreRequest
 Parameter Sets: (All)
 Aliases:
 
@@ -218,7 +218,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IOperationJobExtendedInfo
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250701.IOperationJobExtendedInfo
 
 ## NOTES
 

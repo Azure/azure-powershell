@@ -31,10 +31,10 @@ Update-AzDataProtectionBackupVault -ResourceGroupName <String> -VaultName <Strin
 Update-AzDataProtectionBackupVault -InputObject <IDataProtectionIdentity> [-Token <String>] [-AsJob]
  [-AzureMonitorAlertsForAllJobFailure <AlertsState>] [-CrossRegionRestoreState <CrossRegionRestoreState>]
  [-CrossSubscriptionRestoreState <CrossSubscriptionRestoreState>] [-DefaultProfile <PSObject>]
- [-EncryptionSetting <IEncryptionSettings>] [-IdentityType <String>]
- [-IdentityUserAssignedIdentity <Hashtable>] [-ImmutabilityState <ImmutabilityState>] [-NoWait]
- [-ResourceGuardOperationRequest <String[]>] [-SoftDeleteRetentionDurationInDay <Double>]
- [-SoftDeleteState <SoftDeleteState>] [-Tag <Hashtable>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-EncryptionSetting <IEncryptionSettings>] [-Identity <IDppIdentityDetails>]
+ [-ImmutabilityState <ImmutabilityState>] [-NoWait] [-ResourceGuardOperationRequest <String[]>]
+ [-SoftDeleteRetentionDurationInDay <Double>] [-SoftDeleteState <SoftDeleteState>] [-Tag <Hashtable>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -285,7 +285,23 @@ Customer Managed Key details of the resource.
 To construct, see NOTES section for ENCRYPTIONSETTING properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IEncryptionSettings
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250701.IEncryptionSettings
+Parameter Sets: UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Identity
+Input Managed Identity Details
+To construct, see NOTES section for IDENTITY properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250701.IDppIdentityDetails
 Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
@@ -297,11 +313,11 @@ Accept wildcard characters: False
 ```
 
 ### -IdentityType
-The identityType which can be either SystemAssigned, UserAssigned, 'SystemAssigned,UserAssigned' or None
+The identityType which can take values: "SystemAssigned", "UserAssigned", "SystemAssigned,UserAssigned", "None"
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -316,7 +332,7 @@ Gets or sets the user assigned identities.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases: UserAssignedIdentity, AssignUserIdentity
 
 Required: False
@@ -553,7 +569,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IBackupVaultResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250701.IBackupVaultResource
 
 ## NOTES
 
