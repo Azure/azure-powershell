@@ -1,8 +1,8 @@
 {
-  "Start-AzDevCenterUserDevBox+[NoContext]+Start+$POST+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/k607fd:start?api-version=2024-05-01-preview+1": {
+  "Start-AzDevCenterUserDevBox+[NoContext]+Start+$POST+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/k607fd:start?api-version=2025-04-01-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/k607fd:start?api-version=2024-05-01-preview",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/k607fd:start?api-version=2025-04-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -22,10 +22,10 @@
       "Headers": {
         "Date": [ "Fri, 28 Jul 2023 16:25:16 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/533c0c3f-e602-402f-82ac-5d007aaf6a7a?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/533c0c3f-e602-402f-82ac-5d007aaf6a7a?api-version=2025-04-01-preview\u0026monitor=true" ],
         "x-ms-correlation-request-id": [ "003b80f5-86bc-4eea-a76b-169aa2372800" ],
         "x-ms-client-request-id": [ "c9d14d86-99cd-478e-b100-5a7ae0c31292" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/533c0c3f-e602-402f-82ac-5d007aaf6a7a?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/533c0c3f-e602-402f-82ac-5d007aaf6a7a?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "296" ],
         "X-Rate-Limit-Reset": [ "2023-07-28T16:26:04.5176440Z" ],
@@ -39,10 +39,10 @@
       "isContentBase64": false
     }
   },
-  "Start-AzDevCenterUserDevBox+[NoContext]+Start+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/533c0c3f-e602-402f-82ac-5d007aaf6a7a?api-version=2024-05-01-preview\u0026monitor=true+2": {
+  "Start-AzDevCenterUserDevBox+[NoContext]+Start+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/533c0c3f-e602-402f-82ac-5d007aaf6a7a?api-version=2025-04-01-preview\u0026monitor=true+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/533c0c3f-e602-402f-82ac-5d007aaf6a7a?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/533c0c3f-e602-402f-82ac-5d007aaf6a7a?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -62,11 +62,11 @@
       "Headers": {
         "Date": [ "Fri, 28 Jul 2023 16:25:46 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/533c0c3f-e602-402f-82ac-5d007aaf6a7a?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/533c0c3f-e602-402f-82ac-5d007aaf6a7a?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "537add1b-57df-4f51-9293-2a5e4bec2bb4" ],
         "x-ms-client-request-id": [ "c9d14d86-99cd-478e-b100-5a7ae0c31292" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/533c0c3f-e602-402f-82ac-5d007aaf6a7a?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/533c0c3f-e602-402f-82ac-5d007aaf6a7a?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "297" ],
         "X-Rate-Limit-Reset": [ "2023-07-28T16:26:12.5281379Z" ],
@@ -80,10 +80,10 @@
       "isContentBase64": false
     }
   },
-  "Start-AzDevCenterUserDevBox+[NoContext]+Start+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/533c0c3f-e602-402f-82ac-5d007aaf6a7a?api-version=2024-05-01-preview\u0026monitor=true+3": {
+  "Start-AzDevCenterUserDevBox+[NoContext]+Start+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/533c0c3f-e602-402f-82ac-5d007aaf6a7a?api-version=2025-04-01-preview\u0026monitor=true+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/533c0c3f-e602-402f-82ac-5d007aaf6a7a?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/533c0c3f-e602-402f-82ac-5d007aaf6a7a?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -103,11 +103,11 @@
       "Headers": {
         "Date": [ "Fri, 28 Jul 2023 16:26:17 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/533c0c3f-e602-402f-82ac-5d007aaf6a7a?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/533c0c3f-e602-402f-82ac-5d007aaf6a7a?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "903749bb-6d8a-42b9-b0fc-23d994106b82" ],
         "x-ms-client-request-id": [ "c9d14d86-99cd-478e-b100-5a7ae0c31292" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/533c0c3f-e602-402f-82ac-5d007aaf6a7a?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/533c0c3f-e602-402f-82ac-5d007aaf6a7a?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "299" ],
         "X-Rate-Limit-Reset": [ "2023-07-28T16:27:16.9986692Z" ],
@@ -121,10 +121,10 @@
       "isContentBase64": false
     }
   },
-  "Start-AzDevCenterUserDevBox+[NoContext]+Start+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/533c0c3f-e602-402f-82ac-5d007aaf6a7a?api-version=2024-05-01-preview\u0026monitor=true+4": {
+  "Start-AzDevCenterUserDevBox+[NoContext]+Start+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/533c0c3f-e602-402f-82ac-5d007aaf6a7a?api-version=2025-04-01-preview\u0026monitor=true+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/533c0c3f-e602-402f-82ac-5d007aaf6a7a?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/533c0c3f-e602-402f-82ac-5d007aaf6a7a?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -144,11 +144,11 @@
       "Headers": {
         "Date": [ "Fri, 28 Jul 2023 16:26:47 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/533c0c3f-e602-402f-82ac-5d007aaf6a7a?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/533c0c3f-e602-402f-82ac-5d007aaf6a7a?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "3f524693-35ee-41bb-90d9-41e8c2e85529" ],
         "x-ms-client-request-id": [ "c9d14d86-99cd-478e-b100-5a7ae0c31292" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/533c0c3f-e602-402f-82ac-5d007aaf6a7a?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/533c0c3f-e602-402f-82ac-5d007aaf6a7a?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "297" ],
         "X-Rate-Limit-Reset": [ "2023-07-28T16:27:04.7841607Z" ],
@@ -162,10 +162,10 @@
       "isContentBase64": false
     }
   },
-  "Start-AzDevCenterUserDevBox+[NoContext]+Start+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/533c0c3f-e602-402f-82ac-5d007aaf6a7a?api-version=2024-05-01-preview\u0026monitor=true+5": {
+  "Start-AzDevCenterUserDevBox+[NoContext]+Start+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/533c0c3f-e602-402f-82ac-5d007aaf6a7a?api-version=2025-04-01-preview\u0026monitor=true+5": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/533c0c3f-e602-402f-82ac-5d007aaf6a7a?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/533c0c3f-e602-402f-82ac-5d007aaf6a7a?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -185,11 +185,11 @@
       "Headers": {
         "Date": [ "Fri, 28 Jul 2023 16:26:47 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/533c0c3f-e602-402f-82ac-5d007aaf6a7a?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/533c0c3f-e602-402f-82ac-5d007aaf6a7a?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "46e5e40f-4d05-45fa-8762-d238e8228bdf" ],
         "x-ms-client-request-id": [ "c9d14d86-99cd-478e-b100-5a7ae0c31292" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/533c0c3f-e602-402f-82ac-5d007aaf6a7a?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/533c0c3f-e602-402f-82ac-5d007aaf6a7a?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "298" ],
         "X-Rate-Limit-Reset": [ "2023-07-28T16:27:19.7728048Z" ],
@@ -203,10 +203,10 @@
       "isContentBase64": false
     }
   },
-  "Start-AzDevCenterUserDevBox+[NoContext]+Start+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/k607fd?api-version=2024-05-01-preview+6": {
+  "Start-AzDevCenterUserDevBox+[NoContext]+Start+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/k607fd?api-version=2025-04-01-preview+6": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/k607fd?api-version=2024-05-01-preview",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/k607fd?api-version=2025-04-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -241,10 +241,10 @@
       "isContentBase64": false
     }
   },
-  "Start-AzDevCenterUserDevBox+[NoContext]+Start+$POST+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/k607fd:start?api-version=2024-05-01-preview+7": {
+  "Start-AzDevCenterUserDevBox+[NoContext]+Start+$POST+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/k607fd:start?api-version=2025-04-01-preview+7": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/k607fd:start?api-version=2024-05-01-preview",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/k607fd:start?api-version=2025-04-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -264,10 +264,10 @@
       "Headers": {
         "Date": [ "Fri, 28 Jul 2023 16:26:49 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/f748043f-bbed-48f8-8af0-238ed519dad0?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/f748043f-bbed-48f8-8af0-238ed519dad0?api-version=2025-04-01-preview\u0026monitor=true" ],
         "x-ms-correlation-request-id": [ "9bf24a93-2c84-4e35-a2f3-6c8f8167042e" ],
         "x-ms-client-request-id": [ "863a4c12-f234-453a-8f98-e5a045863355" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/f748043f-bbed-48f8-8af0-238ed519dad0?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/f748043f-bbed-48f8-8af0-238ed519dad0?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "296" ],
         "X-Rate-Limit-Reset": [ "2023-07-28T16:27:04.7841607Z" ],
@@ -281,10 +281,10 @@
       "isContentBase64": false
     }
   },
-  "Start-AzDevCenterUserDevBox+[NoContext]+Start+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/f748043f-bbed-48f8-8af0-238ed519dad0?api-version=2024-05-01-preview\u0026monitor=true+8": {
+  "Start-AzDevCenterUserDevBox+[NoContext]+Start+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/f748043f-bbed-48f8-8af0-238ed519dad0?api-version=2025-04-01-preview\u0026monitor=true+8": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/f748043f-bbed-48f8-8af0-238ed519dad0?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/f748043f-bbed-48f8-8af0-238ed519dad0?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -304,11 +304,11 @@
       "Headers": {
         "Date": [ "Fri, 28 Jul 2023 16:27:19 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/f748043f-bbed-48f8-8af0-238ed519dad0?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/f748043f-bbed-48f8-8af0-238ed519dad0?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "d11dbc39-63d7-41ea-8614-7a060fc9dc93" ],
         "x-ms-client-request-id": [ "863a4c12-f234-453a-8f98-e5a045863355" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/f748043f-bbed-48f8-8af0-238ed519dad0?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/f748043f-bbed-48f8-8af0-238ed519dad0?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "297" ],
         "X-Rate-Limit-Reset": [ "2023-07-28T16:27:19.7728048Z" ],
@@ -322,10 +322,10 @@
       "isContentBase64": false
     }
   },
-  "Start-AzDevCenterUserDevBox+[NoContext]+Start+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/f748043f-bbed-48f8-8af0-238ed519dad0?api-version=2024-05-01-preview\u0026monitor=true+9": {
+  "Start-AzDevCenterUserDevBox+[NoContext]+Start+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/f748043f-bbed-48f8-8af0-238ed519dad0?api-version=2025-04-01-preview\u0026monitor=true+9": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/f748043f-bbed-48f8-8af0-238ed519dad0?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/f748043f-bbed-48f8-8af0-238ed519dad0?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -345,11 +345,11 @@
       "Headers": {
         "Date": [ "Fri, 28 Jul 2023 16:27:49 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/f748043f-bbed-48f8-8af0-238ed519dad0?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/f748043f-bbed-48f8-8af0-238ed519dad0?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "3c11bd90-8545-4ca5-936e-a9c8d5877277" ],
         "x-ms-client-request-id": [ "863a4c12-f234-453a-8f98-e5a045863355" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/f748043f-bbed-48f8-8af0-238ed519dad0?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/f748043f-bbed-48f8-8af0-238ed519dad0?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "299" ],
         "X-Rate-Limit-Reset": [ "2023-07-28T16:28:49.7399907Z" ],
@@ -363,10 +363,10 @@
       "isContentBase64": false
     }
   },
-  "Start-AzDevCenterUserDevBox+[NoContext]+Start+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/f748043f-bbed-48f8-8af0-238ed519dad0?api-version=2024-05-01-preview\u0026monitor=true+10": {
+  "Start-AzDevCenterUserDevBox+[NoContext]+Start+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/f748043f-bbed-48f8-8af0-238ed519dad0?api-version=2025-04-01-preview\u0026monitor=true+10": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/f748043f-bbed-48f8-8af0-238ed519dad0?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/f748043f-bbed-48f8-8af0-238ed519dad0?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -386,11 +386,11 @@
       "Headers": {
         "Date": [ "Fri, 28 Jul 2023 16:28:20 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/f748043f-bbed-48f8-8af0-238ed519dad0?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/f748043f-bbed-48f8-8af0-238ed519dad0?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "ecfe975f-414f-41a1-974a-200ef9e16645" ],
         "x-ms-client-request-id": [ "863a4c12-f234-453a-8f98-e5a045863355" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/f748043f-bbed-48f8-8af0-238ed519dad0?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/f748043f-bbed-48f8-8af0-238ed519dad0?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "297" ],
         "X-Rate-Limit-Reset": [ "2023-07-28T16:28:24.1511196Z" ],
@@ -404,10 +404,10 @@
       "isContentBase64": false
     }
   },
-  "Start-AzDevCenterUserDevBox+[NoContext]+Start+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/f748043f-bbed-48f8-8af0-238ed519dad0?api-version=2024-05-01-preview\u0026monitor=true+11": {
+  "Start-AzDevCenterUserDevBox+[NoContext]+Start+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/f748043f-bbed-48f8-8af0-238ed519dad0?api-version=2025-04-01-preview\u0026monitor=true+11": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/f748043f-bbed-48f8-8af0-238ed519dad0?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/f748043f-bbed-48f8-8af0-238ed519dad0?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -427,11 +427,11 @@
       "Headers": {
         "Date": [ "Fri, 28 Jul 2023 16:28:50 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/f748043f-bbed-48f8-8af0-238ed519dad0?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/f748043f-bbed-48f8-8af0-238ed519dad0?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "791502ce-8d8a-423b-83f7-cff8511cea9c" ],
         "x-ms-client-request-id": [ "863a4c12-f234-453a-8f98-e5a045863355" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/f748043f-bbed-48f8-8af0-238ed519dad0?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/f748043f-bbed-48f8-8af0-238ed519dad0?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "299" ],
         "X-Rate-Limit-Reset": [ "2023-07-28T16:29:50.5950462Z" ],
@@ -445,10 +445,10 @@
       "isContentBase64": false
     }
   },
-  "Start-AzDevCenterUserDevBox+[NoContext]+Start+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/f748043f-bbed-48f8-8af0-238ed519dad0?api-version=2024-05-01-preview\u0026monitor=true+12": {
+  "Start-AzDevCenterUserDevBox+[NoContext]+Start+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/f748043f-bbed-48f8-8af0-238ed519dad0?api-version=2025-04-01-preview\u0026monitor=true+12": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/f748043f-bbed-48f8-8af0-238ed519dad0?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/f748043f-bbed-48f8-8af0-238ed519dad0?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -468,11 +468,11 @@
       "Headers": {
         "Date": [ "Fri, 28 Jul 2023 16:28:51 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/f748043f-bbed-48f8-8af0-238ed519dad0?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/f748043f-bbed-48f8-8af0-238ed519dad0?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "8ce9a54f-5d7d-4ea5-bed1-29d89720ee7c" ],
         "x-ms-client-request-id": [ "863a4c12-f234-453a-8f98-e5a045863355" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/f748043f-bbed-48f8-8af0-238ed519dad0?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/f748043f-bbed-48f8-8af0-238ed519dad0?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "298" ],
         "X-Rate-Limit-Reset": [ "2023-07-28T16:29:49.7934481Z" ],
@@ -486,10 +486,10 @@
       "isContentBase64": false
     }
   },
-  "Start-AzDevCenterUserDevBox+[NoContext]+Start+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/k607fd?api-version=2024-05-01-preview+13": {
+  "Start-AzDevCenterUserDevBox+[NoContext]+Start+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/k607fd?api-version=2025-04-01-preview+13": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/k607fd?api-version=2024-05-01-preview",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/k607fd?api-version=2025-04-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -524,10 +524,10 @@
       "isContentBase64": false
     }
   },
-  "Start-AzDevCenterUserDevBox+[NoContext]+StartViaIdentity+$POST+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/k607fd:start?api-version=2024-05-01-preview+1": {
+  "Start-AzDevCenterUserDevBox+[NoContext]+StartViaIdentity+$POST+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/k607fd:start?api-version=2025-04-01-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/k607fd:start?api-version=2024-05-01-preview",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/k607fd:start?api-version=2025-04-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -547,10 +547,10 @@
       "Headers": {
         "Date": [ "Fri, 28 Jul 2023 16:28:51 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/e2bc01a7-8547-41a7-a1d6-fa579116d6cb?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/e2bc01a7-8547-41a7-a1d6-fa579116d6cb?api-version=2025-04-01-preview\u0026monitor=true" ],
         "x-ms-correlation-request-id": [ "3fe76762-d50e-40a8-b3ce-79c1e16f6bc0" ],
         "x-ms-client-request-id": [ "b55a21f3-e338-481d-afc4-16fba6d95116" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/e2bc01a7-8547-41a7-a1d6-fa579116d6cb?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/e2bc01a7-8547-41a7-a1d6-fa579116d6cb?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "298" ],
         "X-Rate-Limit-Reset": [ "2023-07-28T16:29:50.5950462Z" ],
@@ -564,10 +564,10 @@
       "isContentBase64": false
     }
   },
-  "Start-AzDevCenterUserDevBox+[NoContext]+StartViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/e2bc01a7-8547-41a7-a1d6-fa579116d6cb?api-version=2024-05-01-preview\u0026monitor=true+2": {
+  "Start-AzDevCenterUserDevBox+[NoContext]+StartViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/e2bc01a7-8547-41a7-a1d6-fa579116d6cb?api-version=2025-04-01-preview\u0026monitor=true+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/e2bc01a7-8547-41a7-a1d6-fa579116d6cb?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/e2bc01a7-8547-41a7-a1d6-fa579116d6cb?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -587,11 +587,11 @@
       "Headers": {
         "Date": [ "Fri, 28 Jul 2023 16:29:21 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/e2bc01a7-8547-41a7-a1d6-fa579116d6cb?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/e2bc01a7-8547-41a7-a1d6-fa579116d6cb?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "7a2da7d5-f3a0-4650-bf9b-814c10a8608c" ],
         "x-ms-client-request-id": [ "b55a21f3-e338-481d-afc4-16fba6d95116" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/e2bc01a7-8547-41a7-a1d6-fa579116d6cb?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/e2bc01a7-8547-41a7-a1d6-fa579116d6cb?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "296" ],
         "X-Rate-Limit-Reset": [ "2023-07-28T16:29:51.0892414Z" ],
@@ -605,10 +605,10 @@
       "isContentBase64": false
     }
   },
-  "Start-AzDevCenterUserDevBox+[NoContext]+StartViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/e2bc01a7-8547-41a7-a1d6-fa579116d6cb?api-version=2024-05-01-preview\u0026monitor=true+3": {
+  "Start-AzDevCenterUserDevBox+[NoContext]+StartViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/e2bc01a7-8547-41a7-a1d6-fa579116d6cb?api-version=2025-04-01-preview\u0026monitor=true+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/e2bc01a7-8547-41a7-a1d6-fa579116d6cb?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/e2bc01a7-8547-41a7-a1d6-fa579116d6cb?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -628,11 +628,11 @@
       "Headers": {
         "Date": [ "Fri, 28 Jul 2023 16:29:52 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/e2bc01a7-8547-41a7-a1d6-fa579116d6cb?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/e2bc01a7-8547-41a7-a1d6-fa579116d6cb?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "9ea23e16-f97b-44d7-ae49-a73ba8558978" ],
         "x-ms-client-request-id": [ "b55a21f3-e338-481d-afc4-16fba6d95116" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/e2bc01a7-8547-41a7-a1d6-fa579116d6cb?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/e2bc01a7-8547-41a7-a1d6-fa579116d6cb?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "299" ],
         "X-Rate-Limit-Reset": [ "2023-07-28T16:30:52.0008408Z" ],
@@ -646,10 +646,10 @@
       "isContentBase64": false
     }
   },
-  "Start-AzDevCenterUserDevBox+[NoContext]+StartViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/e2bc01a7-8547-41a7-a1d6-fa579116d6cb?api-version=2024-05-01-preview\u0026monitor=true+4": {
+  "Start-AzDevCenterUserDevBox+[NoContext]+StartViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/e2bc01a7-8547-41a7-a1d6-fa579116d6cb?api-version=2025-04-01-preview\u0026monitor=true+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/e2bc01a7-8547-41a7-a1d6-fa579116d6cb?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/e2bc01a7-8547-41a7-a1d6-fa579116d6cb?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -669,11 +669,11 @@
       "Headers": {
         "Date": [ "Fri, 28 Jul 2023 16:30:22 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/e2bc01a7-8547-41a7-a1d6-fa579116d6cb?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/e2bc01a7-8547-41a7-a1d6-fa579116d6cb?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "9e593954-f05a-4b73-90e5-8cbb10972f05" ],
         "x-ms-client-request-id": [ "b55a21f3-e338-481d-afc4-16fba6d95116" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/e2bc01a7-8547-41a7-a1d6-fa579116d6cb?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/e2bc01a7-8547-41a7-a1d6-fa579116d6cb?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "297" ],
         "X-Rate-Limit-Reset": [ "2023-07-28T16:30:54.1381530Z" ],
@@ -687,10 +687,10 @@
       "isContentBase64": false
     }
   },
-  "Start-AzDevCenterUserDevBox+[NoContext]+StartViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/e2bc01a7-8547-41a7-a1d6-fa579116d6cb?api-version=2024-05-01-preview\u0026monitor=true+5": {
+  "Start-AzDevCenterUserDevBox+[NoContext]+StartViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/e2bc01a7-8547-41a7-a1d6-fa579116d6cb?api-version=2025-04-01-preview\u0026monitor=true+5": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/e2bc01a7-8547-41a7-a1d6-fa579116d6cb?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/e2bc01a7-8547-41a7-a1d6-fa579116d6cb?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -710,11 +710,11 @@
       "Headers": {
         "Date": [ "Fri, 28 Jul 2023 16:30:52 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/e2bc01a7-8547-41a7-a1d6-fa579116d6cb?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/e2bc01a7-8547-41a7-a1d6-fa579116d6cb?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "15e3b23c-fc0f-4da2-899d-0abfcaeb5d37" ],
         "x-ms-client-request-id": [ "b55a21f3-e338-481d-afc4-16fba6d95116" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/e2bc01a7-8547-41a7-a1d6-fa579116d6cb?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/e2bc01a7-8547-41a7-a1d6-fa579116d6cb?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "298" ],
         "X-Rate-Limit-Reset": [ "2023-07-28T16:31:48.1157921Z" ],
@@ -728,10 +728,10 @@
       "isContentBase64": false
     }
   },
-  "Start-AzDevCenterUserDevBox+[NoContext]+StartViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/e2bc01a7-8547-41a7-a1d6-fa579116d6cb?api-version=2024-05-01-preview\u0026monitor=true+6": {
+  "Start-AzDevCenterUserDevBox+[NoContext]+StartViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/e2bc01a7-8547-41a7-a1d6-fa579116d6cb?api-version=2025-04-01-preview\u0026monitor=true+6": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/e2bc01a7-8547-41a7-a1d6-fa579116d6cb?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/e2bc01a7-8547-41a7-a1d6-fa579116d6cb?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -751,11 +751,11 @@
       "Headers": {
         "Date": [ "Fri, 28 Jul 2023 16:31:23 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/e2bc01a7-8547-41a7-a1d6-fa579116d6cb?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/e2bc01a7-8547-41a7-a1d6-fa579116d6cb?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "38229124-bfea-4965-868f-373d539428ad" ],
         "x-ms-client-request-id": [ "b55a21f3-e338-481d-afc4-16fba6d95116" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/e2bc01a7-8547-41a7-a1d6-fa579116d6cb?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/e2bc01a7-8547-41a7-a1d6-fa579116d6cb?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "298" ],
         "X-Rate-Limit-Reset": [ "2023-07-28T16:31:54.1302186Z" ],
@@ -769,10 +769,10 @@
       "isContentBase64": false
     }
   },
-  "Start-AzDevCenterUserDevBox+[NoContext]+StartViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/e2bc01a7-8547-41a7-a1d6-fa579116d6cb?api-version=2024-05-01-preview\u0026monitor=true+7": {
+  "Start-AzDevCenterUserDevBox+[NoContext]+StartViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/e2bc01a7-8547-41a7-a1d6-fa579116d6cb?api-version=2025-04-01-preview\u0026monitor=true+7": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/e2bc01a7-8547-41a7-a1d6-fa579116d6cb?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/e2bc01a7-8547-41a7-a1d6-fa579116d6cb?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -792,11 +792,11 @@
       "Headers": {
         "Date": [ "Fri, 28 Jul 2023 16:31:53 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/e2bc01a7-8547-41a7-a1d6-fa579116d6cb?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/e2bc01a7-8547-41a7-a1d6-fa579116d6cb?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "1b832ea2-d132-46e4-8224-c7b3a161152e" ],
         "x-ms-client-request-id": [ "b55a21f3-e338-481d-afc4-16fba6d95116" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/e2bc01a7-8547-41a7-a1d6-fa579116d6cb?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/e2bc01a7-8547-41a7-a1d6-fa579116d6cb?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "299" ],
         "X-Rate-Limit-Reset": [ "2023-07-28T16:32:53.2301260Z" ],
@@ -810,10 +810,10 @@
       "isContentBase64": false
     }
   },
-  "Start-AzDevCenterUserDevBox+[NoContext]+StartViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/e2bc01a7-8547-41a7-a1d6-fa579116d6cb?api-version=2024-05-01-preview\u0026monitor=true+8": {
+  "Start-AzDevCenterUserDevBox+[NoContext]+StartViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/e2bc01a7-8547-41a7-a1d6-fa579116d6cb?api-version=2025-04-01-preview\u0026monitor=true+8": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/e2bc01a7-8547-41a7-a1d6-fa579116d6cb?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/e2bc01a7-8547-41a7-a1d6-fa579116d6cb?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -833,11 +833,11 @@
       "Headers": {
         "Date": [ "Fri, 28 Jul 2023 16:31:53 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/e2bc01a7-8547-41a7-a1d6-fa579116d6cb?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/e2bc01a7-8547-41a7-a1d6-fa579116d6cb?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "65beea2f-8c4a-40a8-bec8-e5455d13df84" ],
         "x-ms-client-request-id": [ "b55a21f3-e338-481d-afc4-16fba6d95116" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/e2bc01a7-8547-41a7-a1d6-fa579116d6cb?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/e2bc01a7-8547-41a7-a1d6-fa579116d6cb?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "297" ],
         "X-Rate-Limit-Reset": [ "2023-07-28T16:31:54.1302186Z" ],
@@ -851,10 +851,10 @@
       "isContentBase64": false
     }
   },
-  "Start-AzDevCenterUserDevBox+[NoContext]+StartViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/k607fd?api-version=2024-05-01-preview+9": {
+  "Start-AzDevCenterUserDevBox+[NoContext]+StartViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/k607fd?api-version=2025-04-01-preview+9": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/k607fd?api-version=2024-05-01-preview",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/k607fd?api-version=2025-04-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -889,10 +889,10 @@
       "isContentBase64": false
     }
   },
-  "Start-AzDevCenterUserDevBox+[NoContext]+StartViaIdentity+$POST+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/k607fd:start?api-version=2024-05-01-preview+10": {
+  "Start-AzDevCenterUserDevBox+[NoContext]+StartViaIdentity+$POST+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/k607fd:start?api-version=2025-04-01-preview+10": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/k607fd:start?api-version=2024-05-01-preview",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/k607fd:start?api-version=2025-04-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -912,10 +912,10 @@
       "Headers": {
         "Date": [ "Fri, 28 Jul 2023 16:31:55 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/1386e748-5186-45d8-a02c-d59048a5ff4f?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/1386e748-5186-45d8-a02c-d59048a5ff4f?api-version=2025-04-01-preview\u0026monitor=true" ],
         "x-ms-correlation-request-id": [ "b8522cc8-3c5e-4189-80fa-dd74c9d860e8" ],
         "x-ms-client-request-id": [ "5292a2fa-354c-4de0-babc-4eab17d0fcab" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/1386e748-5186-45d8-a02c-d59048a5ff4f?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/1386e748-5186-45d8-a02c-d59048a5ff4f?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "297" ],
         "X-Rate-Limit-Reset": [ "2023-07-28T16:32:53.2301260Z" ],
@@ -929,10 +929,10 @@
       "isContentBase64": false
     }
   },
-  "Start-AzDevCenterUserDevBox+[NoContext]+StartViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/1386e748-5186-45d8-a02c-d59048a5ff4f?api-version=2024-05-01-preview\u0026monitor=true+11": {
+  "Start-AzDevCenterUserDevBox+[NoContext]+StartViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/1386e748-5186-45d8-a02c-d59048a5ff4f?api-version=2025-04-01-preview\u0026monitor=true+11": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/1386e748-5186-45d8-a02c-d59048a5ff4f?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/1386e748-5186-45d8-a02c-d59048a5ff4f?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -952,11 +952,11 @@
       "Headers": {
         "Date": [ "Fri, 28 Jul 2023 16:32:25 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/1386e748-5186-45d8-a02c-d59048a5ff4f?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/1386e748-5186-45d8-a02c-d59048a5ff4f?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "c6c862a7-19f8-406b-9f74-67dd4d6dff46" ],
         "x-ms-client-request-id": [ "5292a2fa-354c-4de0-babc-4eab17d0fcab" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/1386e748-5186-45d8-a02c-d59048a5ff4f?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/1386e748-5186-45d8-a02c-d59048a5ff4f?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "298" ],
         "X-Rate-Limit-Reset": [ "2023-07-28T16:33:01.2786528Z" ],
@@ -970,10 +970,10 @@
       "isContentBase64": false
     }
   },
-  "Start-AzDevCenterUserDevBox+[NoContext]+StartViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/1386e748-5186-45d8-a02c-d59048a5ff4f?api-version=2024-05-01-preview\u0026monitor=true+12": {
+  "Start-AzDevCenterUserDevBox+[NoContext]+StartViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/1386e748-5186-45d8-a02c-d59048a5ff4f?api-version=2025-04-01-preview\u0026monitor=true+12": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/1386e748-5186-45d8-a02c-d59048a5ff4f?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/1386e748-5186-45d8-a02c-d59048a5ff4f?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -993,11 +993,11 @@
       "Headers": {
         "Date": [ "Fri, 28 Jul 2023 16:32:56 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/1386e748-5186-45d8-a02c-d59048a5ff4f?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/1386e748-5186-45d8-a02c-d59048a5ff4f?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "d4bbbc76-74b3-41b0-bbcf-de29c896c432" ],
         "x-ms-client-request-id": [ "5292a2fa-354c-4de0-babc-4eab17d0fcab" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/1386e748-5186-45d8-a02c-d59048a5ff4f?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/1386e748-5186-45d8-a02c-d59048a5ff4f?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "299" ],
         "X-Rate-Limit-Reset": [ "2023-07-28T16:33:55.9042465Z" ],
@@ -1011,10 +1011,10 @@
       "isContentBase64": false
     }
   },
-  "Start-AzDevCenterUserDevBox+[NoContext]+StartViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/1386e748-5186-45d8-a02c-d59048a5ff4f?api-version=2024-05-01-preview\u0026monitor=true+13": {
+  "Start-AzDevCenterUserDevBox+[NoContext]+StartViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/1386e748-5186-45d8-a02c-d59048a5ff4f?api-version=2025-04-01-preview\u0026monitor=true+13": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/1386e748-5186-45d8-a02c-d59048a5ff4f?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/1386e748-5186-45d8-a02c-d59048a5ff4f?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -1034,11 +1034,11 @@
       "Headers": {
         "Date": [ "Fri, 28 Jul 2023 16:33:26 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/1386e748-5186-45d8-a02c-d59048a5ff4f?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/1386e748-5186-45d8-a02c-d59048a5ff4f?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "e51ac04d-b475-4a68-a80c-91516ed95061" ],
         "x-ms-client-request-id": [ "5292a2fa-354c-4de0-babc-4eab17d0fcab" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/1386e748-5186-45d8-a02c-d59048a5ff4f?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/1386e748-5186-45d8-a02c-d59048a5ff4f?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "299" ],
         "X-Rate-Limit-Reset": [ "2023-07-28T16:34:26.3319842Z" ],
@@ -1052,10 +1052,10 @@
       "isContentBase64": false
     }
   },
-  "Start-AzDevCenterUserDevBox+[NoContext]+StartViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/1386e748-5186-45d8-a02c-d59048a5ff4f?api-version=2024-05-01-preview\u0026monitor=true+14": {
+  "Start-AzDevCenterUserDevBox+[NoContext]+StartViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/1386e748-5186-45d8-a02c-d59048a5ff4f?api-version=2025-04-01-preview\u0026monitor=true+14": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/1386e748-5186-45d8-a02c-d59048a5ff4f?api-version=2024-05-01-preview\u0026monitor=true",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/1386e748-5186-45d8-a02c-d59048a5ff4f?api-version=2025-04-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -1075,11 +1075,11 @@
       "Headers": {
         "Date": [ "Fri, 28 Jul 2023 16:33:26 GMT" ],
         "Connection": [ "close" ],
-        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/1386e748-5186-45d8-a02c-d59048a5ff4f?api-version=2024-05-01-preview\u0026monitor=true" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/1386e748-5186-45d8-a02c-d59048a5ff4f?api-version=2025-04-01-preview\u0026monitor=true" ],
         "Retry-After": [ "30" ],
         "x-ms-correlation-request-id": [ "15e7504a-16b9-415f-afe0-6d15e7329fcc" ],
         "x-ms-client-request-id": [ "5292a2fa-354c-4de0-babc-4eab17d0fcab" ],
-        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/1386e748-5186-45d8-a02c-d59048a5ff4f?api-version=2024-05-01-preview" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshproja68gny/operationstatuses/1386e748-5186-45d8-a02c-d59048a5ff4f?api-version=2025-04-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "299" ],
         "X-Rate-Limit-Reset": [ "2023-07-28T16:34:26.6729785Z" ],
@@ -1093,10 +1093,10 @@
       "isContentBase64": false
     }
   },
-  "Start-AzDevCenterUserDevBox+[NoContext]+StartViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/k607fd?api-version=2024-05-01-preview+15": {
+  "Start-AzDevCenterUserDevBox+[NoContext]+StartViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/k607fd?api-version=2025-04-01-preview+15": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/k607fd?api-version=2024-05-01-preview",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/k607fd?api-version=2025-04-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {

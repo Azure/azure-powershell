@@ -2,95 +2,9 @@
 <Configuration>
   <ViewDefinitions>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.AutoscaleIdentity</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.AutoscaleErrorResponseError</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.AutoscaleIdentity</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>AutoscaleSettingName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ResourceGroupName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SubscriptionId</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>AutoscaleSettingName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ResourceGroupName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SubscriptionId</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20.SystemData</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20.SystemData</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>CreatedAt</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>CreatedBy</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>CreatedByType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>LastModifiedAt</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>LastModifiedBy</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>LastModifiedByType</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>CreatedAt</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>CreatedBy</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>CreatedByType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>LastModifiedAt</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>LastModifiedBy</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>LastModifiedByType</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.AutoscaleErrorResponseError</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.AutoscaleErrorResponseError</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.AutoscaleErrorResponseError#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -128,9 +42,43 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.AutoscaleNotification</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.AutoscaleIdentity</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.AutoscaleNotification</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.AutoscaleIdentity#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>AutoscaleSettingName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SubscriptionId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>AutoscaleSettingName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SubscriptionId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.AutoscaleNotification</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.AutoscaleNotification#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -150,9 +98,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.AutoscaleProfile</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.AutoscaleProfile</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.AutoscaleProfile</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.AutoscaleProfile#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -172,9 +120,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.AutoscaleSetting</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.AutoscaleSetting</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.AutoscaleSetting</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.AutoscaleSetting#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -212,9 +160,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.AutoscaleSettingResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.AutoscaleSettingResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.AutoscaleSettingResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.AutoscaleSettingResource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -241,6 +189,9 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -270,15 +221,18 @@
               <TableColumnItem>
                 <PropertyName>SystemDataLastModifiedByType</PropertyName>
               </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.AutoscaleSettingResourceCollection</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.AutoscaleSettingResourceCollection</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.AutoscaleSettingResourceCollection</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.AutoscaleSettingResourceCollection#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -298,9 +252,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.AutoscaleSettingResourcePatchTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.AutoscaleSettingResourcePatchTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.AutoscaleSettingResourcePatchTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.AutoscaleSettingResourcePatchTags#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -320,15 +274,12 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.EmailNotification</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.EmailNotification</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.EmailNotification</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.EmailNotification#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
-          <TableColumnHeader>
-            <Label>CustomEmail</Label>
-          </TableColumnHeader>
           <TableColumnHeader>
             <Label>SendToSubscriptionAdministrator</Label>
           </TableColumnHeader>
@@ -339,9 +290,6 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>CustomEmail</PropertyName>
-              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>SendToSubscriptionAdministrator</PropertyName>
               </TableColumnItem>
@@ -354,9 +302,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.MetricTrigger</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.MetricTrigger</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.MetricTrigger</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.MetricTrigger#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -424,9 +372,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.PredictiveAutoscalePolicy</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.PredictiveAutoscalePolicy</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.PredictiveAutoscalePolicy</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.PredictiveAutoscalePolicy#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -446,9 +394,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.PredictiveResponse</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.PredictiveResponse</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.PredictiveResponse</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.PredictiveResponse#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -480,9 +428,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.PredictiveValue</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.PredictiveValue</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.PredictiveValue</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.PredictiveValue#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -508,9 +456,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.Recurrence</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Recurrence</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.Recurrence</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Recurrence#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -530,21 +478,12 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.RecurrentSchedule</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.RecurrentSchedule</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.RecurrentSchedule</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.RecurrentSchedule#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
-          <TableColumnHeader>
-            <Label>Day</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Hour</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Minute</Label>
-          </TableColumnHeader>
           <TableColumnHeader>
             <Label>TimeZone</Label>
           </TableColumnHeader>
@@ -552,15 +491,6 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Day</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Hour</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Minute</PropertyName>
-              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>TimeZone</PropertyName>
               </TableColumnItem>
@@ -570,9 +500,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.Resource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Resource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.Resource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Resource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -598,9 +528,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.ResourceTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.ResourceTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.ResourceTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.ResourceTags#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -620,9 +550,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.ScaleAction</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.ScaleAction</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.ScaleAction</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.ScaleAction#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -648,9 +578,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.ScaleCapacity</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.ScaleCapacity</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.ScaleCapacity</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.ScaleCapacity#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -682,9 +612,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.ScaleRuleMetricDimension</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.ScaleRuleMetricDimension</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.ScaleRuleMetricDimension</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.ScaleRuleMetricDimension#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -693,9 +623,6 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Operator</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Value</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -707,8 +634,57 @@
               <TableColumnItem>
                 <PropertyName>Operator</PropertyName>
               </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.SystemData</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.SystemData#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>CreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LastModifiedByType</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>Value</PropertyName>
+                <PropertyName>CreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LastModifiedByType</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -716,9 +692,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.TimeWindow</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.TimeWindow</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.TimeWindow</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.TimeWindow#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -750,9 +726,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.WebhookNotification</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.WebhookNotification</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.WebhookNotification</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.WebhookNotification#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -772,9 +748,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.WebhookNotificationProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.WebhookNotificationProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.WebhookNotificationProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.WebhookNotificationProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>

@@ -1,3 +1,148 @@
+## 15.0.0 - November 2025
+#### Az.Accounts 5.3.1
+* Updated Azure.Core from 1.45.0 to 1.47.3
+
+#### Az.Advisor 3.0.0
+* Improved user experience and consistency. This may introduce breaking changes. Please refer to [here](https://go.microsoft.com/fwlink/?linkid=2340249).
+
+#### Az.ApplicationInsights 3.0.0
+* Improved user experience and consistency. This may introduce breaking changes. Please refer to [here](https://go.microsoft.com/fwlink/?linkid=2340249).
+
+#### Az.ArcResourceBridge 2.0.0
+* Improved user experience and consistency. This may introduce breaking changes. Please refer to [here](https://go.microsoft.com/fwlink/?linkid=2340249).
+
+#### Az.Attestation 3.0.0
+* Improved user experience and consistency. This may introduce breaking changes. Please refer to [here](https://go.microsoft.com/fwlink/?linkid=2340249).
+
+#### Az.Automanage 2.0.0
+* Improved user experience and consistency. This may introduce breaking changes. Please refer to [here](https://go.microsoft.com/fwlink/?linkid=2340249).
+
+#### Az.Batch 4.0.0
+* Upgraded API version from 2022-10-01 to 2024-07-01.
+
+#### Az.Cdn 6.0.0
+* Added support for edge action
+* Upgraded Api version to 2025-06-01
+
+#### Az.Compute 11.0.0
+* Improved user experience and consistency. This may introduce breaking changes. Please refer to [here](https://go.microsoft.com/fwlink/?linkid=2340249).
+* Updated Azure.Core from 1.45.0 to 1.47.3
+* Added '-EnableAutomaticUpgrade' and '-TreatFailureAsDeploymentFailure' parameters (Bool) to 'New-AzVmGalleryApplication' and 'New-AzVmssGalleryApplication' cmdlets.
+* Added '-EnableAutomaticUpgrade' and '-TreatFailureAsDeploymentFailure' parameters (Switch) to 'Add-AzVmGalleryApplication' and 'Add-AzVmssGalleryApplication' cmdlets.
+
+#### Az.ConfidentialLedger 2.0.0
+* Improved user experience and consistency. This may introduce breaking changes. Please refer to [here](https://go.microsoft.com/fwlink/?linkid=2340249).
+
+#### Az.ContainerRegistry 5.0.0
+* Improved user experience and consistency. This may introduce breaking changes. Please refer to [here](https://go.microsoft.com/fwlink/?linkid=2340249).
+* Updated Azure.Core from 1.45.0 to 1.47.3
+
+#### Az.CosmosDB 1.18.3
+* Updated Azure.Core from 1.45.0 to 1.47.3
+
+#### Az.DataFactory 1.19.6
+* Added support for clusterResourceGroupAuthType property in HDInsightOnDemand linked services properties.
+
+#### Az.DataLakeStore 1.5.1
+* Updated Azure.Core from 1.45.0 to 1.47.3
+
+#### Az.DevCenter 3.0.0
+* Updated control plane to 2025-04-01-preview
+* Updated data plane to 2025-04-01-preview
+
+#### Az.Dns 2.0.0
+* Improved user experience and consistency. This may introduce breaking changes. Please refer to [here](https://go.microsoft.com/fwlink/?linkid=2340249).
+
+#### Az.DnsResolver 1.2.1
+* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
+
+#### Az.ElasticSan 1.5.0
+* Supported auto scale when creating and updating an Elastic SAN.
+    - 'New-AzElasticSan'
+    - 'Update-AzElasticSan'
+* Supported checking whether disk snapshot backup can be taken for volumes.
+    - 'Test-AzElasticSanVolumeBackup'
+    - 'Test-AzElasticSanVolumeRestore'
+
+#### Az.FrontDoor 2.0.0
+* Bumped swagger version to 2025-10-01
+* Added support for DDos RuleSet
+* Migrated to AutoRest PowerShell V4
+
+#### Az.HealthcareApis 3.0.0
+* Improved user experience and consistency. This may introduce breaking changes. Please refer to [here](https://go.microsoft.com/fwlink/?linkid=2340249).
+
+#### Az.IotHub 2.8.1
+* Aligned dependency versions with other modules
+
+#### Az.KeyVault 6.4.1
+* Updated Azure.Core from 1.45.0 to 1.47.3
+
+#### Az.Monitor 7.0.0
+* Parameters EmailSendToSubscriptionAdministrator and EmailSendToSubscriptionCoAdministrator of cmdlet 'New-AzAutoscaleNotificationObject' was unavailable after April 3, 2024 due to Azure classic administrator retirement.
+* Improved user experience and consistency. This may introduce breaking changes. Please refer to [here](https://go.microsoft.com/fwlink/?linkid=2340249).
+
+#### Az.MySql 1.5.1
+* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
+* The single server cmdlets are deprecated and will be removed by May 2026.
+
+#### Az.Network 7.23.1
+* Onboarded 'Microsoft.Security/privateLinks' to Private Link Common Cmdlets
+
+#### Az.NetworkCloud 2.0.0
+* Below commands to support for new Managed Identity setting.
+  * Cmdlet 'New-AzNetworkCloudCluster'
+  * Cmdlet 'New-AzNetworkCloudClusterManager'
+  * Cmdlet 'Update-AzNetworkCloudCluster'
+  * Cmdlet 'Update-AzNetworkCloudClusterManager'
+* Improved user experience and consistency. This may introduce breaking changes. Please refer to [here](https://go.microsoft.com/fwlink/?linkid=2340249).).
+
+#### Az.Nginx 2.0.0
+* Improved user experience and consistency. This may introduce breaking changes. Please refer to [here](https://go.microsoft.com/fwlink/?linkid=2340249).
+* The parameters of the 'New-AzNginxDeployment' and 'Update-AzNginxDeployment' cmdlets will be changed by new Managed Identity settings.
+
+#### Az.Oracle 2.0.0
+* New anchor resource types and their corresponding cmdlets for resource and network anchors
+* Addition of DbSystem resource management cmdlets and documentation
+* API version updates across all resource types from 2025-03-01 to 2025-09-01
+* Parameter changes in existing cmdlets, particularly around scheduled operations handling
+
+#### Az.PolicyInsights 1.7.2
+* Updated Azure.Core from 1.45.0 to 1.47.3
+
+#### Az.Relay 3.0.0
+* Introduced various new features by upgrading code generator. Please see details [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).
+
+#### Az.Resources 9.0.0
+* Removed unavailable variant Get-AzRoleEligibleChildResource cmdlet for InputObject parameter.
+* Introduced various new features by upgrading code generator. Please see details [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).
+* Aligned dependency versions with other modules
+
+#### Az.ServiceFabric 5.0.0
+* Removed 'ReimageByName', 'ReimageById', and 'ReimageByObj' parameter sets from 'Set-AzServiceFabricManagedNodeType'.
+
+#### Az.SignalR 2.3.1
+* Updated Azure.Core from 1.45.0 to 1.47.3
+
+#### Az.Storage 9.4.0
+* Updated Azure.Core from 1.45.0 to 1.47.3
+* Supported Storage account planned failover: 'Invoke-AzStorageAccountFailover', 'Get-AzStorageAccount'
+
+#### Az.StorageMover 2.0.0
+* Improved user experience and consistency. This may introduce breaking changes. Please refer to [here](https://go.microsoft.com/fwlink/?linkid=2340249).
+* Remove parameter sets Create for cmdlet 'New-AzStorageMover', 'New-AzStorageMoverProject', 'New-AzStorageMoverJobDefinition'
+* Remove parameter sets Update and UpdateViaIdentity for Cmdlet 'Update-AzStorageMover', 'Update-AzStorageMoverAgent', 'Update-AzStorageMoverJobDefinition',  'Update-AzStorageMoverProject'
+
+#### Az.StreamAnalytics 3.0.0
+* Improved user experience and consistency. This may introduce breaking changes. Please refer to [here](https://go.microsoft.com/fwlink/?linkid=2340249).
+
+#### Az.Synapse 3.2.3
+* Updated Azure.Core from 1.45.0 to 1.47.3
+* Updated Azure.Analytics.Synapse.Artifacts to 1.0.0-preview.22
+
+#### Az.Workloads 2.0.0
+* Improved user experience and consistency. This may introduce breaking changes. Please refer to [here](https://go.microsoft.com/fwlink/?linkid=2340249).
+
 ## 14.6.0 - November 2025
 #### Az.Compute 10.5.0
 * Added '-Redeploy' switch parameter for 'Update-AzHost' cmdlet to enable dedicated host redeployment.

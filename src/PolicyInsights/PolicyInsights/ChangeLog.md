@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.7.2
 * Updated Azure.Core from 1.45.0 to 1.47.3
 
 ## Version 1.7.1

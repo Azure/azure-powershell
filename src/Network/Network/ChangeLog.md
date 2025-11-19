@@ -20,6 +20,9 @@
 
 ## Upcoming Release
 
+## Version 7.23.1
+* Onboarded `Microsoft.Security/privateLinks` to Private Link Common Cmdlets
+
 ## Version 7.23.0
 * Added 'GeoLocationXFFHeader' and 'ClientAddrXFFHeader' as valid VariableNames in `NewAzureApplicationGatewayFirewallCustomRuleGroupByVariable`.
 * Bug fix for `AzureFirewallPolicy` to ensure `BasePolicy` is properly set via `Set-AzFirewallPolicy` cmdlet either via pipe or direct value.
