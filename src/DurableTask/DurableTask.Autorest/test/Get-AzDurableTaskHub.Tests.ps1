@@ -15,19 +15,27 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDurableTaskHub'))
 }
 
 Describe 'Get-AzDurableTaskHub' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    BeforeAll {
+        New-AzDurableTaskHub -Name $env.taskHubName -SchedulerName $env.schedulerName -ResourceGroupName $env.resourceGroup
     }
 
-    It 'GetViaIdentityScheduler' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    AfterAll {
+        Remove-AzDurableTaskHub -Name $env.taskHubName -SchedulerName $env.schedulerName -ResourceGroupName $env.resourceGroup
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $taskHubs = Get-AzDurableTaskHub -SchedulerName $env.schedulerName -ResourceGroupName $env.resourceGroup
+        $taskHubs.Name | Should -Contain $env.taskHubName
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $taskHub = Get-AzDurableTaskHub -Name $env.taskHubName -SchedulerName $env.schedulerName -ResourceGroupName $env.resourceGroup
+        $taskHub.Name | Should -Be $env.taskHubName
+    }
+
+    It 'GetViaIdentity' {
+        $taskHub = Get-AzDurableTaskHub -Name $env.taskHubName -SchedulerName $env.schedulerName -ResourceGroupName $env.resourceGroup
+        $taskHubById = Get-AzDurableTaskHub -InputObject $taskHub
+        $taskHubById.Name | Should -Be $env.taskHubName
     }
 }

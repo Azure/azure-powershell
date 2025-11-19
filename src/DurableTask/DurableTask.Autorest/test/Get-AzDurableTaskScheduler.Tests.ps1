@@ -15,19 +15,19 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDurableTaskScheduler'))
 }
 
 Describe 'Get-AzDurableTaskScheduler' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $schedulers = Get-AzDurableTaskScheduler -ResourceGroupName $env.resourceGroup
+        $schedulers.Name | Should -Contain $env.schedulerName
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $scheduler = Get-AzDurableTaskScheduler -Name $env.schedulerName -ResourceGroupName $env.resourceGroup
+        $scheduler.Name | Should -Be $env.schedulerName
     }
 
-    It 'List1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        $scheduler = Get-AzDurableTaskScheduler -Name $env.schedulerName -ResourceGroupName $env.resourceGroup
+        $schedulerById = Get-AzDurableTaskScheduler -InputObject $scheduler
+        $schedulerById.Name | Should -Be $env.schedulerName
     }
 }
