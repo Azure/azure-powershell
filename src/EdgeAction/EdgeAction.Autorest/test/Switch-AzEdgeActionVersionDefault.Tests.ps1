@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Switch-AzEdgeActionVersionDef
 
 Describe 'Switch-AzEdgeActionVersionDefault' {
     BeforeAll {
-        $script:resourceGroupName = "clitests"
+        $script:resourceGroupName = "powershelltests"
         $script:edgeActionName = "ea-swap-" + (RandomString $false 8)
         $script:version1 = "v1"
         $script:version2 = "v2"

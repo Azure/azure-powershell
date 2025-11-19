@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzEdgeActionVersion'))
 
 Describe 'Get-AzEdgeActionVersion' {
     BeforeAll {
-        $script:resourceGroupName = "clitests"
+        $script:resourceGroupName = "powershelltests"
         $script:edgeActionName = "ea-getver-" + (RandomString $false 8)
         $script:version = "v1"
         

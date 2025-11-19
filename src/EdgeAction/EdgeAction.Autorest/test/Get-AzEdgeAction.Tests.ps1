@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzEdgeAction'))
 
 Describe 'Get-AzEdgeAction' {
     BeforeAll {
-        $script:resourceGroupName = "clitests"
+        $script:resourceGroupName = "powershelltests"
         $script:edgeActionName = "ea-get-" + (RandomString $false 8)
         
         # Create edge action for testing

@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzEdgeAction'))
 Describe 'Remove-AzEdgeAction' {
     It 'Delete' {
         # Test deleting edge action
-        $resourceGroupName = "clitests"
+        $resourceGroupName = "powershelltests"
         $edgeActionName = "ea-delete-" + (RandomString $false 8)
         
         # Create edge action to delete

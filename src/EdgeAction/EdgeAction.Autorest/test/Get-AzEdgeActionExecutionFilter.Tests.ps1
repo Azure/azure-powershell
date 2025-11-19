@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzEdgeActionExecutionFilt
 
 Describe 'Get-AzEdgeActionExecutionFilter' {
     BeforeAll {
-        $script:resourceGroupName = "clitests"
+        $script:resourceGroupName = "powershelltests"
         $script:edgeActionName = "ea-getfilter-" + (RandomString $false 8)
         $script:version = "v1"
         $script:filterName = "filter-get"
