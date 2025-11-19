@@ -8,22 +8,23 @@ schema: 2.0.0
 # New-AzDynatraceMonitor
 
 ## SYNOPSIS
-create a MonitorResource
+Create a MonitorResource
 
 ## SYNTAX
 
 ### CreateExpanded (Default)
 ```
 New-AzDynatraceMonitor -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-AccountId <String>] [-AccountRegionId <String>] [-EnableSystemAssignedIdentity]
- [-EnvironmentId <String>] [-EnvironmentIngestionKey <String>] [-EnvironmentLandingUrl <String>]
- [-EnvironmentLogsIngestionEndpoint <String>] [-EnvironmentUserId <String>]
- [-MarketplaceSubscriptionStatus <String>] [-MonitoringStatus <String>] [-PlanBillingCycle <String>]
- [-PlanDetail <String>] [-PlanEffectiveDate <DateTime>] [-PlanUsageType <String>]
- [-SingleSignOnAadDomain <String[]>] [-SingleSignOnEnterpriseAppId <String>] [-SingleSignOnState <String>]
- [-SingleSignOnUrl <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-UserCountry <String>]
- [-UserEmailAddress <String>] [-UserFirstName <String>] [-UserLastName <String>] [-UserPhoneNumber <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-AccountId <String>] [-AccountInfoCompanyName <String>]
+ [-AccountRegionId <String>] [-EnvironmentId <String>] [-EnvironmentIngestionKey <String>]
+ [-EnvironmentLandingUrl <String>] [-EnvironmentLogsIngestionEndpoint <String>] [-EnvironmentUserId <String>]
+ [-IdentityType <String>] [-MarketplaceSaasAutoRenew <String>] [-MarketplaceSubscriptionStatus <String>]
+ [-MonitoringStatus <String>] [-PlanBillingCycle <String>] [-PlanDetail <String>]
+ [-PlanEffectiveDate <DateTime>] [-PlanUsageType <String>] [-SingleSignOnAadDomain <String[]>]
+ [-SingleSignOnEnterpriseAppId <String>] [-SingleSignOnState <String>] [-SingleSignOnUrl <String>]
+ [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-UserCountry <String>] [-UserEmailAddress <String>]
+ [-UserFirstName <String>] [-UserLastName <String>] [-UserPhoneNumber <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -41,7 +42,7 @@ New-AzDynatraceMonitor -Name <String> -ResourceGroupName <String> -JsonString <S
 ```
 
 ## DESCRIPTION
-create a MonitorResource
+Create a MonitorResource
 
 ## EXAMPLES
 
@@ -62,6 +63,21 @@ This command creates a dynatrace monitor.
 
 ### -AccountId
 Account Id of the account this environment is linked to
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AccountInfoCompanyName
+Name of the customer account / company
 
 ```yaml
 Type: System.String
@@ -113,21 +129,6 @@ Use the SubscriptionId parameter when available if executing the cmdlet against 
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EnableSystemAssignedIdentity
-Determines whether to enable a system-assigned identity for the resource.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded
-Aliases:
 
 Required: False
 Position: Named
@@ -211,6 +212,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -IdentityType
+The type of managed identity assigned to this resource.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -JsonFilePath
 Path of Json file supplied to the Create operation
 
@@ -250,6 +266,21 @@ Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MarketplaceSaasAutoRenew
+Marketplace resource autorenew flag
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -456,6 +487,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String

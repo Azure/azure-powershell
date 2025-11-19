@@ -13,6 +13,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
         Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesPropertiesInternal
     {
 
+        /// <summary>Backing field for <see cref="AgentRule" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IAgentRules _agentRule;
+
+        /// <summary>Set of rules for managing agents for the Monitor resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IAgentRules AgentRule { get => (this._agentRule = this._agentRule ?? new Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.AgentRules()); set => this._agentRule = value; }
+
+        /// <summary>Flag specifying if agent monitoring should be enabled for the Monitor resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inlined)]
+        public bool? AgentRuleEnableAgentMonitoring { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IAgentRulesInternal)AgentRule).EnableAgentMonitoring; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IAgentRulesInternal)AgentRule).EnableAgentMonitoring = value ?? default(bool); }
+
+        /// <summary>
+        /// List of filtering tags to be used for capturing metrics. If empty, all resources will be captured. If only Exclude action
+        /// is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules
+        /// will only include resources with the associated tags.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IFilteringTag> AgentRuleFilteringTag { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IAgentRulesInternal)AgentRule).FilteringTag; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IAgentRulesInternal)AgentRule).FilteringTag = value ?? null /* arrayOf */; }
+
+        /// <summary>Backing field for <see cref="Automuting" /> property.</summary>
+        private bool? _automuting;
+
+        /// <summary>Configuration to enable/disable auto-muting flag</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Owned)]
+        public bool? Automuting { get => this._automuting; set => this._automuting = value; }
+
+        /// <summary>Backing field for <see cref="CustomMetric" /> property.</summary>
+        private bool? _customMetric;
+
+        /// <summary>
+        /// Configuration to enable/disable custom metrics. If enabled, custom metrics from app insights will be sent.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Owned)]
+        public bool? CustomMetric { get => this._customMetric; set => this._customMetric = value; }
+
         /// <summary>Backing field for <see cref="LogRule" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ILogRules _logRule;
 
@@ -57,6 +92,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inlined)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IFilteringTag> MetricRuleFilteringTag { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMetricRulesInternal)MetricRule).FilteringTag; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMetricRulesInternal)MetricRule).FilteringTag = value ?? null /* arrayOf */; }
 
+        /// <summary>Internal Acessors for AgentRule</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IAgentRules Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesPropertiesInternal.AgentRule { get => (this._agentRule = this._agentRule ?? new Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.AgentRules()); set { {_agentRule = value;} } }
+
         /// <summary>Internal Acessors for LogRule</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ILogRules Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesPropertiesInternal.LogRule { get => (this._logRule = this._logRule ?? new Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.LogRules()); set { {_logRule = value;} } }
 
@@ -82,6 +120,56 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
     public partial interface IMonitoringTagRulesProperties :
         Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.IJsonSerializable
     {
+        /// <summary>Flag specifying if agent monitoring should be enabled for the Monitor resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Flag specifying if agent monitoring should be enabled for the Monitor resource.",
+        SerializedName = @"enableAgentMonitoring",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? AgentRuleEnableAgentMonitoring { get; set; }
+        /// <summary>
+        /// List of filtering tags to be used for capturing metrics. If empty, all resources will be captured. If only Exclude action
+        /// is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules
+        /// will only include resources with the associated tags.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"List of filtering tags to be used for capturing metrics. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags.",
+        SerializedName = @"filteringTags",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IFilteringTag) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IFilteringTag> AgentRuleFilteringTag { get; set; }
+        /// <summary>Configuration to enable/disable auto-muting flag</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Configuration to enable/disable auto-muting flag",
+        SerializedName = @"automuting",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? Automuting { get; set; }
+        /// <summary>
+        /// Configuration to enable/disable custom metrics. If enabled, custom metrics from app insights will be sent.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Configuration to enable/disable custom metrics. If enabled, custom metrics from app insights will be sent.",
+        SerializedName = @"customMetrics",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? CustomMetric { get; set; }
         /// <summary>
         /// List of filtering tags to be used for capturing logs. This only takes effect if SendResourceLogs flag is enabled. If empty,
         /// all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available
@@ -165,6 +253,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
     internal partial interface IMonitoringTagRulesPropertiesInternal
 
     {
+        /// <summary>Set of rules for managing agents for the Monitor resource.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IAgentRules AgentRule { get; set; }
+        /// <summary>Flag specifying if agent monitoring should be enabled for the Monitor resource.</summary>
+        bool? AgentRuleEnableAgentMonitoring { get; set; }
+        /// <summary>
+        /// List of filtering tags to be used for capturing metrics. If empty, all resources will be captured. If only Exclude action
+        /// is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules
+        /// will only include resources with the associated tags.
+        /// </summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IFilteringTag> AgentRuleFilteringTag { get; set; }
+        /// <summary>Configuration to enable/disable auto-muting flag</summary>
+        bool? Automuting { get; set; }
+        /// <summary>
+        /// Configuration to enable/disable custom metrics. If enabled, custom metrics from app insights will be sent.
+        /// </summary>
+        bool? CustomMetric { get; set; }
         /// <summary>Set of rules for sending logs for the Monitor resource.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ILogRules LogRule { get; set; }
         /// <summary>
