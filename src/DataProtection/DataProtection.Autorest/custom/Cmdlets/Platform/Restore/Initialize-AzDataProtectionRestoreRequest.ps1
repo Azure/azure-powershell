@@ -107,6 +107,10 @@
         [Hashtable]
         ${PrefixMatch},
 
+        [Parameter(ParameterSetName="AlternateLocationILR", Mandatory=$false, HelpMessage='Use this parameter to rename container(s) for alternate location ILR. Input for this parameter is a hashtable where each key is the original container name and each value is the new name for the corresponding container.')]
+        [Hashtable]
+        ${RenameTo},
+
         [Parameter(ParameterSetName="OriginalLocationILR", Mandatory=$false, HelpMessage='Specify the blob restore start range for PITR. You can use this option to specify the starting range for a subset of blobs in each container to restore. use a forward slash (/) to separate the container name from the blob prefix pattern.')]
         # [Parameter(ParameterSetName="AlternateLocationILR", Mandatory=$false, HelpMessage='Minimum matching value for Item Level Recovery.')]
         [System.String[]]
@@ -296,6 +300,7 @@
                 
                 if(($RecoveryPoint -ne $null) -and ($RecoveryPoint -ne "") -and $ContainersList.length -gt 0){
                     $hasPrefixMatch = $PSBoundParameters.Remove("PrefixMatch")
+                    $hasRenameTo = $PSBoundParameters.Remove("RenameTo")
                     for($i = 0; $i -lt $ContainersList.length; $i++){
                                 
                         $restoreCriteria = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250701.ItemPathBasedRestoreCriteria]::new()
@@ -311,7 +316,18 @@
                             }
                             $restoreCriteria.SubItemPathPrefix = $pathPrefix
                         }
-
+                        
+                        if($manifest.renameContainersEnabled -eq $true -and $hasRenameTo){
+                            $renameToValue = $RenameTo[$ContainersList[$i]]
+                            if($renameToValue -ne $null -and ($renameToValue -is [Array])){
+                                throw "value for RenameTo must be a string for each container"
+                            }
+                            $restoreCriteria.RenameTo = $renameToValue
+                        } 
+                        elseif( ($manifest.renameContainersEnabled -ne $true) -and ($hasRenameTo)){
+                            throw "DatasourceType $DatasourceType does not support renaming containers"
+                        }
+                        
                         # adding a criteria for each container given
                         $restoreCriteriaList += ($restoreCriteria)
                     }
