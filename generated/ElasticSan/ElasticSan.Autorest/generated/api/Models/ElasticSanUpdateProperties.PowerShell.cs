@@ -102,10 +102,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
                 return;
             }
             // actually deserialize
-            if (content.Contains("AutoScaleProperty"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdatePropertiesInternal)this).AutoScaleProperty = (Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IAutoScaleProperties) content.GetValueForProperty("AutoScaleProperty",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdatePropertiesInternal)this).AutoScaleProperty, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.AutoScalePropertiesTypeConverter.ConvertFrom);
-            }
             if (content.Contains("BaseSizeTiB"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdatePropertiesInternal)this).BaseSizeTiB = (long?) content.GetValueForProperty("BaseSizeTiB",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdatePropertiesInternal)this).BaseSizeTiB, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
@@ -117,26 +113,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
             if (content.Contains("PublicNetworkAccess"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdatePropertiesInternal)this).PublicNetworkAccess = (string) content.GetValueForProperty("PublicNetworkAccess",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdatePropertiesInternal)this).PublicNetworkAccess, global::System.Convert.ToString);
-            }
-            if (content.Contains("AutoScalePropertyScaleUpProperty"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdatePropertiesInternal)this).AutoScalePropertyScaleUpProperty = (Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IScaleUpProperties) content.GetValueForProperty("AutoScalePropertyScaleUpProperty",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdatePropertiesInternal)this).AutoScalePropertyScaleUpProperty, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ScaleUpPropertiesTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("UnusedSizeTiB"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdatePropertiesInternal)this).UnusedSizeTiB = (long?) content.GetValueForProperty("UnusedSizeTiB",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdatePropertiesInternal)this).UnusedSizeTiB, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            }
-            if (content.Contains("IncreaseCapacityUnitByTiB"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdatePropertiesInternal)this).IncreaseCapacityUnitByTiB = (long?) content.GetValueForProperty("IncreaseCapacityUnitByTiB",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdatePropertiesInternal)this).IncreaseCapacityUnitByTiB, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            }
-            if (content.Contains("CapacityUnitScaleUpLimitTiB"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdatePropertiesInternal)this).CapacityUnitScaleUpLimitTiB = (long?) content.GetValueForProperty("CapacityUnitScaleUpLimitTiB",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdatePropertiesInternal)this).CapacityUnitScaleUpLimitTiB, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            }
-            if (content.Contains("AutoScalePolicyEnforcement"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdatePropertiesInternal)this).AutoScalePolicyEnforcement = (string) content.GetValueForProperty("AutoScalePolicyEnforcement",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdatePropertiesInternal)this).AutoScalePolicyEnforcement, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
@@ -155,10 +131,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
                 return;
             }
             // actually deserialize
-            if (content.Contains("AutoScaleProperty"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdatePropertiesInternal)this).AutoScaleProperty = (Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IAutoScaleProperties) content.GetValueForProperty("AutoScaleProperty",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdatePropertiesInternal)this).AutoScaleProperty, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.AutoScalePropertiesTypeConverter.ConvertFrom);
-            }
             if (content.Contains("BaseSizeTiB"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdatePropertiesInternal)this).BaseSizeTiB = (long?) content.GetValueForProperty("BaseSizeTiB",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdatePropertiesInternal)this).BaseSizeTiB, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
@@ -170,26 +142,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
             if (content.Contains("PublicNetworkAccess"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdatePropertiesInternal)this).PublicNetworkAccess = (string) content.GetValueForProperty("PublicNetworkAccess",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdatePropertiesInternal)this).PublicNetworkAccess, global::System.Convert.ToString);
-            }
-            if (content.Contains("AutoScalePropertyScaleUpProperty"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdatePropertiesInternal)this).AutoScalePropertyScaleUpProperty = (Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IScaleUpProperties) content.GetValueForProperty("AutoScalePropertyScaleUpProperty",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdatePropertiesInternal)this).AutoScalePropertyScaleUpProperty, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ScaleUpPropertiesTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("UnusedSizeTiB"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdatePropertiesInternal)this).UnusedSizeTiB = (long?) content.GetValueForProperty("UnusedSizeTiB",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdatePropertiesInternal)this).UnusedSizeTiB, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            }
-            if (content.Contains("IncreaseCapacityUnitByTiB"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdatePropertiesInternal)this).IncreaseCapacityUnitByTiB = (long?) content.GetValueForProperty("IncreaseCapacityUnitByTiB",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdatePropertiesInternal)this).IncreaseCapacityUnitByTiB, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            }
-            if (content.Contains("CapacityUnitScaleUpLimitTiB"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdatePropertiesInternal)this).CapacityUnitScaleUpLimitTiB = (long?) content.GetValueForProperty("CapacityUnitScaleUpLimitTiB",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdatePropertiesInternal)this).CapacityUnitScaleUpLimitTiB, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            }
-            if (content.Contains("AutoScalePolicyEnforcement"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdatePropertiesInternal)this).AutoScalePolicyEnforcement = (string) content.GetValueForProperty("AutoScalePolicyEnforcement",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdatePropertiesInternal)this).AutoScalePolicyEnforcement, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }
