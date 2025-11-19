@@ -18,7 +18,6 @@ $env:FunctionsTestMode = $true
 # Describe 'New-AzFunctionApp - Flex Consumption' {
 Describe 'New-AzFunctionApp - Flex Consumption' -Tag 'LiveOnly' {
 
-
     BeforeAll {
 
         # Save current environment variable
