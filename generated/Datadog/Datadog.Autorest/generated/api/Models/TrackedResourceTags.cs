@@ -7,27 +7,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Extensions;
 
-    /// <summary>Dictionary of <string></summary>
-    public partial class DatadogMonitorResourceTags :
-        Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceTags,
-        Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceTagsInternal
+    /// <summary>Resource tags.</summary>
+    public partial class TrackedResourceTags :
+        Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ITrackedResourceTags,
+        Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ITrackedResourceTagsInternal
     {
 
-        /// <summary>Creates an new <see cref="DatadogMonitorResourceTags" /> instance.</summary>
-        public DatadogMonitorResourceTags()
+        /// <summary>Creates an new <see cref="TrackedResourceTags" /> instance.</summary>
+        public TrackedResourceTags()
         {
 
         }
     }
-    /// Dictionary of <string>
-    public partial interface IDatadogMonitorResourceTags :
+    /// Resource tags.
+    public partial interface ITrackedResourceTags :
         Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.IJsonSerializable,
         Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.IAssociativeArray<string>
     {
 
     }
-    /// Dictionary of <string>
-    internal partial interface IDatadogMonitorResourceTagsInternal
+    /// Resource tags.
+    internal partial interface ITrackedResourceTagsInternal
 
     {
 
