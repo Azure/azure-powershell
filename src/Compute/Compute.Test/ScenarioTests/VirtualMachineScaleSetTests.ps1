@@ -6170,6 +6170,13 @@ function Test-VirtualMachineScaleSetAutomaticZonePlacement
         # Create resource group
         New-AzResourceGroup -Name $rgname -Location $loc -Force
 
+                
+        # Create using simple parameter and New-AzVmss
+        $vmss = New-AzVmss -ResourceGroupName $rgname -Location $loc -Credential $cred -VMScaleSetName 'testvmss2' -DomainNameLabel $domainNameLabel1 -Image $linuxImage -ZonePlacementPolicy 'Auto'
+
+        # Verify ZonePlacementPolicy successfully set
+        Assert-AreEqual $vmss.Placement.ZonePlacementPolicy 'Auto'
+
         # Create VNet and Subnet
         $vnetAddressPrefix = "10.0.0.0/16";
         $subnetAddressPrefix = "10.0.0.0/24";
