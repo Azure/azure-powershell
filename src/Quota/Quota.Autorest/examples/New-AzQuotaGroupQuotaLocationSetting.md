@@ -1,15 +1,19 @@
-##TODO##: cmdlet requires -JsonString parameter with properties.enforcementEnabled, example doesn't match implementation
-
 ### Example 1: Create a new GroupQuota location setting
 ```powershell
-New-AzQuotaGroupQuotaLocationSetting -ManagementGroupId "mgId" -GroupQuotaName "groupquota1" -ResourceProviderName "Microsoft.Compute" -Location "eastus"
+$jsonBody = @{
+    properties = @{
+        enforcementEnabled = "Enabled"
+    }
+} | ConvertTo-Json
+
+New-AzQuotaGroupQuotaLocationSetting -ManagementGroupId "mgId" -GroupQuotaName "groupquota1" -ResourceProviderName "Microsoft.Compute" -Location "eastus" -JsonString $jsonBody -NoWait
 ```
 
 ```output
 Name   EnforcementEnabled ProvisioningState
 ----   ------------------ -----------------
-eastus True               Succeeded
+eastus Enabled            Succeeded
 ```
 
-Create or configure a location setting for a specified GroupQuota, resource provider, and location.
+Create or configure a location setting for a specified GroupQuota, resource provider, and location. The JsonString parameter specifies whether enforcement is enabled for this location.
 
