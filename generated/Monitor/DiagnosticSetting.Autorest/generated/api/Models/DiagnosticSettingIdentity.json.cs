@@ -64,10 +64,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models
             {
                 return;
             }
-            {_resourceUri = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Json.JsonString>("resourceUri"), out var __jsonResourceUri) ? (string)__jsonResourceUri : (string)ResourceUri;}
-            {_name = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Json.JsonString>("name"), out var __jsonName) ? (string)__jsonName : (string)Name;}
-            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)SubscriptionId;}
-            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)Id;}
+            {_resourceUri = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Json.JsonString>("resourceUri"), out var __jsonResourceUri) ? (string)__jsonResourceUri : (string)_resourceUri;}
+            {_name = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Json.JsonString>("name"), out var __jsonName) ? (string)__jsonName : (string)_name;}
+            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)_subscriptionId;}
+            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
             AfterFromJson(json);
         }
 

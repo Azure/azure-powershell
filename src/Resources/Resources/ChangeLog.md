@@ -23,6 +23,11 @@
 * Introduced various new features by upgrading code generator. Please see details [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).
 * Aligned dependency versions with other modules
 
+## Version 9.0.0
+* Removed unavailable variant Get-AzRoleEligibleChildResource cmdlet for InputObject parameter.
+* Introduced various new features by upgrading code generator. Please see details [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).
+* Aligned dependency versions with other modules
+
 ## Version 8.1.1
 * Fixed issue where RoleAssignment cmdlets did not properly handle insufficient MSGraph permissions [#28583]
 * Fixed bug for objectID filtering in `Get-AzRoleAssignment`. [#28640]

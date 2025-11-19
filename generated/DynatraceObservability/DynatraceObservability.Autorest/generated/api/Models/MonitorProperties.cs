@@ -17,6 +17,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Origin(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.PropertyOrigin.Inlined)]
         public string AccountInfoAccountId { get => ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceEnvironmentPropertiesInternal)DynatraceEnvironmentProperty).AccountInfoAccountId; set => ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceEnvironmentPropertiesInternal)DynatraceEnvironmentProperty).AccountInfoAccountId = value ?? null; }
 
+        /// <summary>Name of the customer account / company</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Origin(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.PropertyOrigin.Inlined)]
+        public string AccountInfoCompanyName { get => ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceEnvironmentPropertiesInternal)DynatraceEnvironmentProperty).AccountInfoCompanyName; set => ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceEnvironmentPropertiesInternal)DynatraceEnvironmentProperty).AccountInfoCompanyName = value ?? null; }
+
         /// <summary>Region in which the account is created</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Origin(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.PropertyOrigin.Inlined)]
         public string AccountInfoRegionId { get => ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceEnvironmentPropertiesInternal)DynatraceEnvironmentProperty).AccountInfoRegionId; set => ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceEnvironmentPropertiesInternal)DynatraceEnvironmentProperty).AccountInfoRegionId = value ?? null; }
@@ -62,6 +66,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Origin(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.PropertyOrigin.Owned)]
         public int? LiftrResourcePreference { get => this._liftrResourcePreference; }
 
+        /// <summary>Backing field for <see cref="MarketplaceSaasAutoRenew" /> property.</summary>
+        private string _marketplaceSaasAutoRenew;
+
+        /// <summary>Marketplace resource autorenew flag</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Origin(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.PropertyOrigin.Owned)]
+        public string MarketplaceSaasAutoRenew { get => this._marketplaceSaasAutoRenew; set => this._marketplaceSaasAutoRenew = value; }
+
         /// <summary>Backing field for <see cref="MarketplaceSubscriptionStatus" /> property.</summary>
         private string _marketplaceSubscriptionStatus;
 
@@ -73,13 +84,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models
         Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceEnvironmentProperties Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorPropertiesInternal.DynatraceEnvironmentProperty { get => (this._dynatraceEnvironmentProperty = this._dynatraceEnvironmentProperty ?? new Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.DynatraceEnvironmentProperties()); set { {_dynatraceEnvironmentProperty = value;} } }
 
         /// <summary>Internal Acessors for DynatraceEnvironmentPropertyAccountInfo</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IAccountInfo Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorPropertiesInternal.DynatraceEnvironmentPropertyAccountInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceEnvironmentPropertiesInternal)DynatraceEnvironmentProperty).AccountInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceEnvironmentPropertiesInternal)DynatraceEnvironmentProperty).AccountInfo = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IAccountInfo Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorPropertiesInternal.DynatraceEnvironmentPropertyAccountInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceEnvironmentPropertiesInternal)DynatraceEnvironmentProperty).AccountInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceEnvironmentPropertiesInternal)DynatraceEnvironmentProperty).AccountInfo = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for DynatraceEnvironmentPropertyEnvironmentInfo</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IEnvironmentInfo Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorPropertiesInternal.DynatraceEnvironmentPropertyEnvironmentInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceEnvironmentPropertiesInternal)DynatraceEnvironmentProperty).EnvironmentInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceEnvironmentPropertiesInternal)DynatraceEnvironmentProperty).EnvironmentInfo = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IEnvironmentInfo Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorPropertiesInternal.DynatraceEnvironmentPropertyEnvironmentInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceEnvironmentPropertiesInternal)DynatraceEnvironmentProperty).EnvironmentInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceEnvironmentPropertiesInternal)DynatraceEnvironmentProperty).EnvironmentInfo = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for DynatraceEnvironmentPropertySingleSignOnProperty</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceSingleSignOnProperties Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorPropertiesInternal.DynatraceEnvironmentPropertySingleSignOnProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceEnvironmentPropertiesInternal)DynatraceEnvironmentProperty).SingleSignOnProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceEnvironmentPropertiesInternal)DynatraceEnvironmentProperty).SingleSignOnProperty = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceSingleSignOnProperties Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorPropertiesInternal.DynatraceEnvironmentPropertySingleSignOnProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceEnvironmentPropertiesInternal)DynatraceEnvironmentProperty).SingleSignOnProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceEnvironmentPropertiesInternal)DynatraceEnvironmentProperty).SingleSignOnProperty = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for LiftrResourceCategory</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorPropertiesInternal.LiftrResourceCategory { get => this._liftrResourceCategory; set { {_liftrResourceCategory = value;} } }
@@ -94,7 +105,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models
         string Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorPropertiesInternal.ProvisioningState { get => this._provisioningState; set { {_provisioningState = value;} } }
 
         /// <summary>Internal Acessors for SingleSignOnPropertyProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorPropertiesInternal.SingleSignOnPropertyProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceEnvironmentPropertiesInternal)DynatraceEnvironmentProperty).SingleSignOnPropertyProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceEnvironmentPropertiesInternal)DynatraceEnvironmentProperty).SingleSignOnPropertyProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorPropertiesInternal.SingleSignOnPropertyProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceEnvironmentPropertiesInternal)DynatraceEnvironmentProperty).SingleSignOnPropertyProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceEnvironmentPropertiesInternal)DynatraceEnvironmentProperty).SingleSignOnPropertyProvisioningState = value ?? null; }
 
         /// <summary>Internal Acessors for UserInfo</summary>
         Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IUserInfo Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorPropertiesInternal.UserInfo { get => (this._userInfo = this._userInfo ?? new Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.UserInfo()); set { {_userInfo = value;} } }
@@ -204,6 +215,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models
         SerializedName = @"accountId",
         PossibleTypes = new [] { typeof(string) })]
         string AccountInfoAccountId { get; set; }
+        /// <summary>Name of the customer account / company</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Name of the customer account / company",
+        SerializedName = @"companyName",
+        PossibleTypes = new [] { typeof(string) })]
+        string AccountInfoCompanyName { get; set; }
         /// <summary>Region in which the account is created</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Info(
         Required = false,
@@ -293,6 +315,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models
         SerializedName = @"liftrResourcePreference",
         PossibleTypes = new [] { typeof(int) })]
         int? LiftrResourcePreference { get;  }
+        /// <summary>Marketplace resource autorenew flag</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Marketplace resource autorenew flag",
+        SerializedName = @"marketplaceSaasAutoRenew",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.PSArgumentCompleterAttribute("On", "Off")]
+        string MarketplaceSaasAutoRenew { get; set; }
         /// <summary>Marketplace subscription status.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Info(
         Required = false,
@@ -303,7 +337,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models
         Description = @"Marketplace subscription status.",
         SerializedName = @"marketplaceSubscriptionStatus",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.PSArgumentCompleterAttribute("Active", "Suspended")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.PSArgumentCompleterAttribute("Active", "Suspended", "Unsubscribed")]
         string MarketplaceSubscriptionStatus { get; set; }
         /// <summary>Status of the monitor.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Info(
@@ -493,6 +527,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models
     {
         /// <summary>Account Id of the account this environment is linked to</summary>
         string AccountInfoAccountId { get; set; }
+        /// <summary>Name of the customer account / company</summary>
+        string AccountInfoCompanyName { get; set; }
         /// <summary>Region in which the account is created</summary>
         string AccountInfoRegionId { get; set; }
         /// <summary>Properties of the Dynatrace environment.</summary>
@@ -518,8 +554,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models
         string LiftrResourceCategory { get; set; }
         /// <summary>The priority of the resource.</summary>
         int? LiftrResourcePreference { get; set; }
+        /// <summary>Marketplace resource autorenew flag</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.PSArgumentCompleterAttribute("On", "Off")]
+        string MarketplaceSaasAutoRenew { get; set; }
         /// <summary>Marketplace subscription status.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.PSArgumentCompleterAttribute("Active", "Suspended")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.PSArgumentCompleterAttribute("Active", "Suspended", "Unsubscribed")]
         string MarketplaceSubscriptionStatus { get; set; }
         /// <summary>Status of the monitor.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.PSArgumentCompleterAttribute("Enabled", "Disabled")]

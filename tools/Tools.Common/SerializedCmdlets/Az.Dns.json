@@ -1,6 +1,6 @@
 {
   "ModuleName": "Az.Dns",
-  "ModuleVersion": "1.3.2",
+  "ModuleVersion": "2.0.0",
   "Cmdlets": [
     {
       "VerbName": "Add",
@@ -16,7 +16,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Dns",
             "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
               "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
@@ -75,7 +75,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Dns",
             "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
               "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
@@ -387,7 +387,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
                     "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
@@ -479,7 +479,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
                     "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
@@ -571,7 +571,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
                     "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
@@ -663,7 +663,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
                     "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
@@ -770,7 +770,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
                     "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
@@ -937,7 +937,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
                     "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
@@ -1029,7 +1029,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
                     "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
@@ -1121,7 +1121,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
                     "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
@@ -1258,7 +1258,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
                     "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
@@ -1350,7 +1350,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
                     "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
@@ -1472,7 +1472,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
                     "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
@@ -1609,7 +1609,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
                     "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
@@ -1746,7 +1746,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
                     "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
@@ -1830,7 +1830,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Dns",
             "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
               "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
@@ -1916,7 +1916,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Dns",
             "Name": "Microsoft.Azure.Commands.Dns.DnsZone",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "SigningKeys": "System.Collections.Generic.List`1[Microsoft.Azure.Management.Dns.Models.SigningKey]",
               "NameServers": "System.Collections.Generic.List`1[System.String]",
@@ -1938,7 +1938,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.Nullable`1[Microsoft.Azure.Management.Dns.Models.RecordType]",
-            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Dns.Models.RecordType, Microsoft.Azure.PowerShell.Dns.Management.Sdk, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Dns.Models.RecordType, Microsoft.Azure.PowerShell.Dns.Management.Sdk, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "GenericTypeArguments": [
               "Microsoft.Azure.Management.Dns.Models.RecordType"
             ]
@@ -2033,7 +2033,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Management.Dns.Models.RecordType]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Dns.Models.RecordType, Microsoft.Azure.PowerShell.Dns.Management.Sdk, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Dns.Models.RecordType, Microsoft.Azure.PowerShell.Dns.Management.Sdk, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "GenericTypeArguments": [
                     "Microsoft.Azure.Management.Dns.Models.RecordType"
                   ]
@@ -2115,7 +2115,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "Microsoft.Azure.Commands.Dns.DnsZone",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "SigningKeys": "System.Collections.Generic.List`1[Microsoft.Azure.Management.Dns.Models.SigningKey]",
                     "NameServers": "System.Collections.Generic.List`1[System.String]",
@@ -2143,7 +2143,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Management.Dns.Models.RecordType]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Dns.Models.RecordType, Microsoft.Azure.PowerShell.Dns.Management.Sdk, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Dns.Models.RecordType, Microsoft.Azure.PowerShell.Dns.Management.Sdk, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "GenericTypeArguments": [
                     "Microsoft.Azure.Management.Dns.Models.RecordType"
                   ]
@@ -2210,7 +2210,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Management.Dns.Models.RecordType]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Dns.Models.RecordType, Microsoft.Azure.PowerShell.Dns.Management.Sdk, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Dns.Models.RecordType, Microsoft.Azure.PowerShell.Dns.Management.Sdk, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "GenericTypeArguments": [
                     "Microsoft.Azure.Management.Dns.Models.RecordType"
                   ]
@@ -2284,7 +2284,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Dns",
             "Name": "Microsoft.Azure.Commands.Dns.DnsZone",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "SigningKeys": "System.Collections.Generic.List`1[Microsoft.Azure.Management.Dns.Models.SigningKey]",
               "NameServers": "System.Collections.Generic.List`1[System.String]",
@@ -2530,7 +2530,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Dns",
             "Name": "Microsoft.Azure.Commands.Dns.DnsRecordBase",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordBase, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordBase, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Methods": [
               {
                 "Name": "Clone",
@@ -3940,7 +3940,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Dns",
             "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
               "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
@@ -4026,7 +4026,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Dns",
             "Name": "Microsoft.Azure.Commands.Dns.DnsZone",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "SigningKeys": "System.Collections.Generic.List`1[Microsoft.Azure.Management.Dns.Models.SigningKey]",
               "NameServers": "System.Collections.Generic.List`1[System.String]",
@@ -4057,7 +4057,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Management.Dns.Models",
             "Name": "Microsoft.Azure.Management.Dns.Models.RecordType",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.Dns.Models.RecordType, Microsoft.Azure.PowerShell.Dns.Management.Sdk, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.Dns.Models.RecordType, Microsoft.Azure.PowerShell.Dns.Management.Sdk, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": true
         },
@@ -4084,7 +4084,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Dns",
             "Name": "Microsoft.Azure.Commands.Dns.DnsRecordBase[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordBase[], Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordBase[], Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.Commands.Dns.DnsRecordBase"
           },
           "ValidateNotNullOrEmpty": false
@@ -4156,7 +4156,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.Dns.Models",
                   "Name": "Microsoft.Azure.Management.Dns.Models.RecordType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.Dns.Models.RecordType, Microsoft.Azure.PowerShell.Dns.Management.Sdk, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.Dns.Models.RecordType, Microsoft.Azure.PowerShell.Dns.Management.Sdk, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": true
               },
@@ -4186,7 +4186,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "Microsoft.Azure.Commands.Dns.DnsRecordBase[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordBase[], Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordBase[], Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.Commands.Dns.DnsRecordBase"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -4326,7 +4326,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.Dns.Models",
                   "Name": "Microsoft.Azure.Management.Dns.Models.RecordType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.Dns.Models.RecordType, Microsoft.Azure.PowerShell.Dns.Management.Sdk, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.Dns.Models.RecordType, Microsoft.Azure.PowerShell.Dns.Management.Sdk, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": true
               },
@@ -4356,7 +4356,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "Microsoft.Azure.Commands.Dns.DnsRecordBase[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordBase[], Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordBase[], Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.Commands.Dns.DnsRecordBase"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -4511,7 +4511,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.Dns.Models",
                   "Name": "Microsoft.Azure.Management.Dns.Models.RecordType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.Dns.Models.RecordType, Microsoft.Azure.PowerShell.Dns.Management.Sdk, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.Dns.Models.RecordType, Microsoft.Azure.PowerShell.Dns.Management.Sdk, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": true
               },
@@ -4541,7 +4541,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "Microsoft.Azure.Commands.Dns.DnsRecordBase[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordBase[], Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordBase[], Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.Commands.Dns.DnsRecordBase"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -4621,7 +4621,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "Microsoft.Azure.Commands.Dns.DnsZone",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "SigningKeys": "System.Collections.Generic.List`1[Microsoft.Azure.Management.Dns.Models.SigningKey]",
                     "NameServers": "System.Collections.Generic.List`1[System.String]",
@@ -4679,7 +4679,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.Dns.Models",
                   "Name": "Microsoft.Azure.Management.Dns.Models.RecordType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.Dns.Models.RecordType, Microsoft.Azure.PowerShell.Dns.Management.Sdk, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.Dns.Models.RecordType, Microsoft.Azure.PowerShell.Dns.Management.Sdk, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": true
               },
@@ -4709,7 +4709,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "Microsoft.Azure.Commands.Dns.DnsRecordBase[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordBase[], Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordBase[], Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.Commands.Dns.DnsRecordBase"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -4789,7 +4789,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "Microsoft.Azure.Commands.Dns.DnsZone",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "SigningKeys": "System.Collections.Generic.List`1[Microsoft.Azure.Management.Dns.Models.SigningKey]",
                     "NameServers": "System.Collections.Generic.List`1[System.String]",
@@ -4862,7 +4862,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.Dns.Models",
                   "Name": "Microsoft.Azure.Management.Dns.Models.RecordType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.Dns.Models.RecordType, Microsoft.Azure.PowerShell.Dns.Management.Sdk, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.Dns.Models.RecordType, Microsoft.Azure.PowerShell.Dns.Management.Sdk, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": true
               },
@@ -4892,7 +4892,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "Microsoft.Azure.Commands.Dns.DnsRecordBase[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordBase[], Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordBase[], Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.Commands.Dns.DnsRecordBase"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -4979,7 +4979,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Dns",
             "Name": "Microsoft.Azure.Commands.Dns.DnsZone",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "SigningKeys": "System.Collections.Generic.List`1[Microsoft.Azure.Management.Dns.Models.SigningKey]",
               "NameServers": "System.Collections.Generic.List`1[System.String]",
@@ -5052,7 +5052,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.Nullable`1[Microsoft.Azure.Management.Dns.Models.ZoneType]",
-            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Dns.Models.ZoneType, Microsoft.Azure.PowerShell.Dns.Management.Sdk, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Dns.Models.ZoneType, Microsoft.Azure.PowerShell.Dns.Management.Sdk, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "GenericTypeArguments": [
               "Microsoft.Azure.Management.Dns.Models.ZoneType"
             ]
@@ -5086,7 +5086,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Dns",
             "Name": "Microsoft.Azure.Commands.Dns.DnsZone",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "SigningKeys": "System.Collections.Generic.List`1[Microsoft.Azure.Management.Dns.Models.SigningKey]",
               "NameServers": "System.Collections.Generic.List`1[System.String]",
@@ -5236,7 +5236,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Management.Dns.Models.ZoneType]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Dns.Models.ZoneType, Microsoft.Azure.PowerShell.Dns.Management.Sdk, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Dns.Models.ZoneType, Microsoft.Azure.PowerShell.Dns.Management.Sdk, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "GenericTypeArguments": [
                     "Microsoft.Azure.Management.Dns.Models.ZoneType"
                   ]
@@ -5370,7 +5370,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Management.Dns.Models.ZoneType]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Dns.Models.ZoneType, Microsoft.Azure.PowerShell.Dns.Management.Sdk, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Dns.Models.ZoneType, Microsoft.Azure.PowerShell.Dns.Management.Sdk, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "GenericTypeArguments": [
                     "Microsoft.Azure.Management.Dns.Models.ZoneType"
                   ]
@@ -5540,7 +5540,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Management.Dns.Models.ZoneType]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Dns.Models.ZoneType, Microsoft.Azure.PowerShell.Dns.Management.Sdk, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Dns.Models.ZoneType, Microsoft.Azure.PowerShell.Dns.Management.Sdk, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "GenericTypeArguments": [
                     "Microsoft.Azure.Management.Dns.Models.ZoneType"
                   ]
@@ -5629,7 +5629,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "Microsoft.Azure.Commands.Dns.DnsZone",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "SigningKeys": "System.Collections.Generic.List`1[Microsoft.Azure.Management.Dns.Models.SigningKey]",
                     "NameServers": "System.Collections.Generic.List`1[System.String]",
@@ -5723,7 +5723,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Management.Dns.Models.ZoneType]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Dns.Models.ZoneType, Microsoft.Azure.PowerShell.Dns.Management.Sdk, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Dns.Models.ZoneType, Microsoft.Azure.PowerShell.Dns.Management.Sdk, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "GenericTypeArguments": [
                     "Microsoft.Azure.Management.Dns.Models.ZoneType"
                   ]
@@ -5819,7 +5819,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Dns",
             "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
               "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
@@ -5878,7 +5878,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Dns",
             "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
               "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
@@ -6190,7 +6190,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
                     "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
@@ -6282,7 +6282,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
                     "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
@@ -6374,7 +6374,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
                     "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
@@ -6466,7 +6466,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
                     "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
@@ -6573,7 +6573,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
                     "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
@@ -6740,7 +6740,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
                     "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
@@ -6832,7 +6832,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
                     "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
@@ -6924,7 +6924,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
                     "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
@@ -7061,7 +7061,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
                     "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
@@ -7153,7 +7153,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
                     "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
@@ -7275,7 +7275,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
                     "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
@@ -7412,7 +7412,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
                     "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
@@ -7549,7 +7549,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
                     "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
@@ -7655,7 +7655,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Management.Dns.Models",
             "Name": "Microsoft.Azure.Management.Dns.Models.RecordType",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.Dns.Models.RecordType, Microsoft.Azure.PowerShell.Dns.Management.Sdk, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.Dns.Models.RecordType, Microsoft.Azure.PowerShell.Dns.Management.Sdk, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": true
         },
@@ -7682,7 +7682,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Dns",
             "Name": "Microsoft.Azure.Commands.Dns.DnsZone",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "SigningKeys": "System.Collections.Generic.List`1[Microsoft.Azure.Management.Dns.Models.SigningKey]",
               "NameServers": "System.Collections.Generic.List`1[System.String]",
@@ -7704,7 +7704,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Dns",
             "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
               "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
@@ -7797,7 +7797,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.Dns.Models",
                   "Name": "Microsoft.Azure.Management.Dns.Models.RecordType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.Dns.Models.RecordType, Microsoft.Azure.PowerShell.Dns.Management.Sdk, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.Dns.Models.RecordType, Microsoft.Azure.PowerShell.Dns.Management.Sdk, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": true
               },
@@ -7921,7 +7921,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.Dns.Models",
                   "Name": "Microsoft.Azure.Management.Dns.Models.RecordType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.Dns.Models.RecordType, Microsoft.Azure.PowerShell.Dns.Management.Sdk, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.Dns.Models.RecordType, Microsoft.Azure.PowerShell.Dns.Management.Sdk, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": true
               },
@@ -7936,7 +7936,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "Microsoft.Azure.Commands.Dns.DnsZone",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "SigningKeys": "System.Collections.Generic.List`1[Microsoft.Azure.Management.Dns.Models.SigningKey]",
                     "NameServers": "System.Collections.Generic.List`1[System.String]",
@@ -8028,7 +8028,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
                     "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
@@ -8237,7 +8237,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Dns",
             "Name": "Microsoft.Azure.Commands.Dns.DnsZone",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "SigningKeys": "System.Collections.Generic.List`1[Microsoft.Azure.Management.Dns.Models.SigningKey]",
               "NameServers": "System.Collections.Generic.List`1[System.String]",
@@ -8409,7 +8409,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "Microsoft.Azure.Commands.Dns.DnsZone",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "SigningKeys": "System.Collections.Generic.List`1[Microsoft.Azure.Management.Dns.Models.SigningKey]",
                     "NameServers": "System.Collections.Generic.List`1[System.String]",
@@ -8587,7 +8587,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Dns",
             "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
               "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
@@ -8646,7 +8646,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Dns",
             "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
               "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
@@ -8715,7 +8715,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
                     "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
@@ -8807,7 +8807,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
                     "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
@@ -8891,7 +8891,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Dns",
             "Name": "Microsoft.Azure.Commands.Dns.DnsZone",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "SigningKeys": "System.Collections.Generic.List`1[Microsoft.Azure.Management.Dns.Models.SigningKey]",
               "NameServers": "System.Collections.Generic.List`1[System.String]",
@@ -9024,7 +9024,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Dns",
             "Name": "Microsoft.Azure.Commands.Dns.DnsZone",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "SigningKeys": "System.Collections.Generic.List`1[Microsoft.Azure.Management.Dns.Models.SigningKey]",
               "NameServers": "System.Collections.Generic.List`1[System.String]",
@@ -9359,7 +9359,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
                   "Name": "Microsoft.Azure.Commands.Dns.DnsZone",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "SigningKeys": "System.Collections.Generic.List`1[Microsoft.Azure.Management.Dns.Models.SigningKey]",
                     "NameServers": "System.Collections.Generic.List`1[System.String]",
@@ -9505,13 +9505,11 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IDnssecConfig",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IDnssecConfig, Az.Dns.private, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Models",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnssecConfig",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnssecConfig, Az.Dns.private, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "SigningKey": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.ISigningKey[]",
-              "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Dns.Support.CreatedByType]",
-              "SystemDataLastModifiedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Dns.Support.CreatedByType]",
+              "SigningKey": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ISigningKey]",
               "SystemDataCreatedAt": "System.Nullable`1[System.DateTime]",
               "SystemDataLastModifiedAt": "System.Nullable`1[System.DateTime]",
               "Etag": "System.String",
@@ -9519,7 +9517,9 @@
               "Name": "System.String",
               "ProvisioningState": "System.String",
               "SystemDataCreatedBy": "System.String",
+              "SystemDataCreatedByType": "System.String",
               "SystemDataLastModifiedBy": "System.String",
+              "SystemDataLastModifiedByType": "System.String",
               "Type": "System.String"
             }
           },
@@ -9562,10 +9562,10 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnsIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnsIdentity, Az.Dns.private, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnsIdentity, Az.Dns.private, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "RecordType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Dns.Support.RecordType]",
               "Id": "System.String",
+              "RecordType": "System.String",
               "RelativeRecordSetName": "System.String",
               "ResourceGroupName": "System.String",
               "SubscriptionId": "System.String",
@@ -9601,7 +9601,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep[], Az.Dns.private, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep[], Az.Dns.private, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -9611,7 +9611,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep[], Az.Dns.private, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep[], Az.Dns.private, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -9746,7 +9746,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep[], Az.Dns.private, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep[], Az.Dns.private, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -9762,7 +9762,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep[], Az.Dns.private, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep[], Az.Dns.private, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -9926,7 +9926,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep[], Az.Dns.private, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep[], Az.Dns.private, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -9942,7 +9942,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep[], Az.Dns.private, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep[], Az.Dns.private, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -10026,10 +10026,10 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnsIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnsIdentity, Az.Dns.private, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnsIdentity, Az.Dns.private, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
-                    "RecordType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Dns.Support.RecordType]",
                     "Id": "System.String",
+                    "RecordType": "System.String",
                     "RelativeRecordSetName": "System.String",
                     "ResourceGroupName": "System.String",
                     "SubscriptionId": "System.String",
@@ -10083,7 +10083,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep[], Az.Dns.private, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep[], Az.Dns.private, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -10099,7 +10099,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep[], Az.Dns.private, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep[], Az.Dns.private, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -10217,7 +10217,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep[], Az.Dns.private, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep[], Az.Dns.private, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -10233,7 +10233,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep[], Az.Dns.private, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep[], Az.Dns.private, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -10322,13 +10322,11 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IDnssecConfig",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IDnssecConfig, Az.Dns.private, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Models",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnssecConfig",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnssecConfig, Az.Dns.private, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "SigningKey": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.ISigningKey[]",
-              "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Dns.Support.CreatedByType]",
-              "SystemDataLastModifiedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Dns.Support.CreatedByType]",
+              "SigningKey": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ISigningKey]",
               "SystemDataCreatedAt": "System.Nullable`1[System.DateTime]",
               "SystemDataLastModifiedAt": "System.Nullable`1[System.DateTime]",
               "Etag": "System.String",
@@ -10336,7 +10334,9 @@
               "Name": "System.String",
               "ProvisioningState": "System.String",
               "SystemDataCreatedBy": "System.String",
+              "SystemDataCreatedByType": "System.String",
               "SystemDataLastModifiedBy": "System.String",
+              "SystemDataLastModifiedByType": "System.String",
               "Type": "System.String"
             }
           },
@@ -10378,10 +10378,10 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnsIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnsIdentity, Az.Dns.private, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnsIdentity, Az.Dns.private, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "RecordType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Dns.Support.RecordType]",
               "Id": "System.String",
+              "RecordType": "System.String",
               "RelativeRecordSetName": "System.String",
               "ResourceGroupName": "System.String",
               "SubscriptionId": "System.String",
@@ -10444,7 +10444,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep[], Az.Dns.private, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep[], Az.Dns.private, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -10454,7 +10454,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep[], Az.Dns.private, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep[], Az.Dns.private, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -10642,7 +10642,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep[], Az.Dns.private, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep[], Az.Dns.private, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -10658,7 +10658,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep[], Az.Dns.private, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep[], Az.Dns.private, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -10757,10 +10757,10 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnsIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnsIdentity, Az.Dns.private, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnsIdentity, Az.Dns.private, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
-                    "RecordType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Dns.Support.RecordType]",
                     "Id": "System.String",
+                    "RecordType": "System.String",
                     "RelativeRecordSetName": "System.String",
                     "ResourceGroupName": "System.String",
                     "SubscriptionId": "System.String",
@@ -10859,7 +10859,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep[], Az.Dns.private, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep[], Az.Dns.private, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -10875,7 +10875,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep[], Az.Dns.private, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep[], Az.Dns.private, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -11053,7 +11053,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep[], Az.Dns.private, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep[], Az.Dns.private, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -11069,7 +11069,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep[], Az.Dns.private, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep[], Az.Dns.private, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -11215,10 +11215,10 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnsIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnsIdentity, Az.Dns.private, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnsIdentity, Az.Dns.private, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "RecordType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Dns.Support.RecordType]",
               "Id": "System.String",
+              "RecordType": "System.String",
               "RelativeRecordSetName": "System.String",
               "ResourceGroupName": "System.String",
               "SubscriptionId": "System.String",
@@ -11272,7 +11272,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep[], Az.Dns.private, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep[], Az.Dns.private, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -11282,7 +11282,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep[], Az.Dns.private, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep[], Az.Dns.private, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -11464,7 +11464,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep[], Az.Dns.private, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep[], Az.Dns.private, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -11480,7 +11480,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep[], Az.Dns.private, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep[], Az.Dns.private, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -11594,10 +11594,10 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnsIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnsIdentity, Az.Dns.private, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnsIdentity, Az.Dns.private, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
-                    "RecordType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Dns.Support.RecordType]",
                     "Id": "System.String",
+                    "RecordType": "System.String",
                     "RelativeRecordSetName": "System.String",
                     "ResourceGroupName": "System.String",
                     "SubscriptionId": "System.String",
@@ -11681,7 +11681,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep[], Az.Dns.private, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep[], Az.Dns.private, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -11697,7 +11697,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep[], Az.Dns.private, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep[], Az.Dns.private, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -11875,7 +11875,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep[], Az.Dns.private, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep[], Az.Dns.private, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -11891,7 +11891,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep[], Az.Dns.private, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep[], Az.Dns.private, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -12045,7 +12045,7 @@
     "Microsoft.Azure.Management.Dns.Models.RecordType": {
       "Namespace": "Microsoft.Azure.Management.Dns.Models",
       "Name": "Microsoft.Azure.Management.Dns.Models.RecordType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Dns.Models.RecordType, Microsoft.Azure.PowerShell.Dns.Management.Sdk, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.Dns.Models.RecordType, Microsoft.Azure.PowerShell.Dns.Management.Sdk, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "HasFlag",
@@ -12142,7 +12142,7 @@
     "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
-      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Dns.DnsRecordBase, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Dns.DnsRecordBase, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.Dns.DnsRecordBase"
       ]
@@ -12150,7 +12150,7 @@
     "Microsoft.Azure.Commands.Dns.DnsRecordBase": {
       "Namespace": "Microsoft.Azure.Commands.Dns",
       "Name": "Microsoft.Azure.Commands.Dns.DnsRecordBase",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordBase, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordBase, Microsoft.Azure.PowerShell.Cmdlets.Dns, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "Clone",
@@ -12331,7 +12331,7 @@
     "System.Collections.Generic.List`1[Microsoft.Azure.Management.Dns.Models.SigningKey]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Management.Dns.Models.SigningKey]",
-      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Management.Dns.Models.SigningKey, Microsoft.Azure.PowerShell.Dns.Management.Sdk, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Management.Dns.Models.SigningKey, Microsoft.Azure.PowerShell.Dns.Management.Sdk, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Management.Dns.Models.SigningKey"
       ]
@@ -12339,7 +12339,7 @@
     "Microsoft.Azure.Management.Dns.Models.SigningKey": {
       "Namespace": "Microsoft.Azure.Management.Dns.Models",
       "Name": "Microsoft.Azure.Management.Dns.Models.SigningKey",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Dns.Models.SigningKey, Microsoft.Azure.PowerShell.Dns.Management.Sdk, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.Dns.Models.SigningKey, Microsoft.Azure.PowerShell.Dns.Management.Sdk, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "DelegationSignerInfo": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Dns.Models.DelegationSignerInfo]",
         "Flags": "System.Nullable`1[System.Int32]",
@@ -12410,7 +12410,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Dns.Models.DelegationSignerInfo]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Dns.Models.DelegationSignerInfo]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.Dns.Models.DelegationSignerInfo, Microsoft.Azure.PowerShell.Dns.Management.Sdk, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.Dns.Models.DelegationSignerInfo, Microsoft.Azure.PowerShell.Dns.Management.Sdk, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Management.Dns.Models.DelegationSignerInfo"
       ]
@@ -12418,7 +12418,7 @@
     "Microsoft.Azure.Management.Dns.Models.DelegationSignerInfo": {
       "Namespace": "Microsoft.Azure.Management.Dns.Models",
       "Name": "Microsoft.Azure.Management.Dns.Models.DelegationSignerInfo",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Dns.Models.DelegationSignerInfo, Microsoft.Azure.PowerShell.Dns.Management.Sdk, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.Dns.Models.DelegationSignerInfo, Microsoft.Azure.PowerShell.Dns.Management.Sdk, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "DigestAlgorithmType": "System.Nullable`1[System.Int32]",
         "DigestValue": "System.String",
@@ -12490,7 +12490,7 @@
     "System.Nullable`1[Microsoft.Azure.Management.Dns.Models.ZoneType]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.Management.Dns.Models.ZoneType]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Dns.Models.ZoneType, Microsoft.Azure.PowerShell.Dns.Management.Sdk, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Dns.Models.ZoneType, Microsoft.Azure.PowerShell.Dns.Management.Sdk, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Management.Dns.Models.ZoneType"
       ]
@@ -12498,7 +12498,7 @@
     "Microsoft.Azure.Management.Dns.Models.ZoneType": {
       "Namespace": "Microsoft.Azure.Management.Dns.Models",
       "Name": "Microsoft.Azure.Management.Dns.Models.ZoneType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Dns.Models.ZoneType, Microsoft.Azure.PowerShell.Dns.Management.Sdk, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.Dns.Models.ZoneType, Microsoft.Azure.PowerShell.Dns.Management.Sdk, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "HasFlag",
@@ -12598,18 +12598,20 @@
         "Id": "System.String"
       }
     },
-    "Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.ISigningKey[]": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.ISigningKey[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.ISigningKey[], Az.Dns.private, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.ISigningKey"
+    "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ISigningKey]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ISigningKey]",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ISigningKey, Az.Dns.private, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "GenericTypeArguments": [
+        "Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ISigningKey"
+      ]
     },
-    "Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.ISigningKey": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.ISigningKey",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.ISigningKey, Az.Dns.private, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+    "Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ISigningKey": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Models",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ISigningKey",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ISigningKey, Az.Dns.private, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "DelegationSignerInfo": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IDelegationSignerInfo[]",
+        "DelegationSignerInfo": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDelegationSignerInfo]",
         "Flag": "System.Nullable`1[System.Int32]",
         "KeyTag": "System.Nullable`1[System.Int32]",
         "Protocol": "System.Nullable`1[System.Int32]",
@@ -12617,107 +12619,23 @@
         "PublicKey": "System.String"
       }
     },
-    "Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IDelegationSignerInfo[]": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IDelegationSignerInfo[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IDelegationSignerInfo[], Az.Dns.private, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IDelegationSignerInfo"
+    "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDelegationSignerInfo]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDelegationSignerInfo]",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDelegationSignerInfo, Az.Dns.private, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "GenericTypeArguments": [
+        "Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDelegationSignerInfo"
+      ]
     },
-    "Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IDelegationSignerInfo": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IDelegationSignerInfo",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IDelegationSignerInfo, Az.Dns.private, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+    "Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDelegationSignerInfo": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Models",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDelegationSignerInfo",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDelegationSignerInfo, Az.Dns.private, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "DigestAlgorithmType": "System.Nullable`1[System.Int32]",
         "DigestValue": "System.String",
         "Record": "System.String"
       }
-    },
-    "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Dns.Support.CreatedByType]": {
-      "Namespace": "System",
-      "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Dns.Support.CreatedByType]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Dns.Support.CreatedByType, Az.Dns.private, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-      "GenericTypeArguments": [
-        "Microsoft.Azure.PowerShell.Cmdlets.Dns.Support.CreatedByType"
-      ]
-    },
-    "Microsoft.Azure.PowerShell.Cmdlets.Dns.Support.CreatedByType": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Support",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Support.CreatedByType",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Support.CreatedByType, Az.Dns.private, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Methods": [
-        {
-          "Name": "CompleteArgument",
-          "Parameters": [
-            {
-              "Name": "commandName",
-              "Type": "System.String"
-            },
-            {
-              "Name": "parameterName",
-              "Type": "System.String"
-            },
-            {
-              "Name": "wordToComplete",
-              "Type": "System.String"
-            },
-            {
-              "Name": "commandAst",
-              "Type": "System.Management.Automation.Language.CommandAst"
-            },
-            {
-              "Name": "fakeBoundParameters",
-              "Type": "System.Collections.IDictionary"
-            }
-          ],
-          "ReturnType": "System.Collections.Generic.IEnumerable`1[System.Management.Automation.CompletionResult]"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "e",
-              "Type": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Support.CreatedByType"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Object"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "ToString",
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "GetType",
-          "ReturnType": "System.Type"
-        }
-      ]
-    },
-    "System.Collections.Generic.IEnumerable`1[System.Management.Automation.CompletionResult]": {
-      "Namespace": "System.Collections.Generic",
-      "Name": "System.Collections.Generic.IEnumerable`1[System.Management.Automation.CompletionResult]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[System.Management.Automation.CompletionResult, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-      "GenericTypeArguments": [
-        "System.Management.Automation.CompletionResult"
-      ]
-    },
-    "System.Management.Automation.CompletionResult": {
-      "Namespace": "System.Management.Automation",
-      "Name": "System.Management.Automation.CompletionResult",
-      "AssemblyQualifiedName": "System.Management.Automation.CompletionResult, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
     },
     "System.Nullable`1[System.DateTime]": {
       "Namespace": "System",
@@ -12732,83 +12650,10 @@
       "Name": "System.DateTime",
       "AssemblyQualifiedName": "System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
     },
-    "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Dns.Support.RecordType]": {
-      "Namespace": "System",
-      "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Dns.Support.RecordType]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Dns.Support.RecordType, Az.Dns.private, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-      "GenericTypeArguments": [
-        "Microsoft.Azure.PowerShell.Cmdlets.Dns.Support.RecordType"
-      ]
-    },
-    "Microsoft.Azure.PowerShell.Cmdlets.Dns.Support.RecordType": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Support",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Support.RecordType",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Support.RecordType, Az.Dns.private, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Methods": [
-        {
-          "Name": "CompleteArgument",
-          "Parameters": [
-            {
-              "Name": "commandName",
-              "Type": "System.String"
-            },
-            {
-              "Name": "parameterName",
-              "Type": "System.String"
-            },
-            {
-              "Name": "wordToComplete",
-              "Type": "System.String"
-            },
-            {
-              "Name": "commandAst",
-              "Type": "System.Management.Automation.Language.CommandAst"
-            },
-            {
-              "Name": "fakeBoundParameters",
-              "Type": "System.Collections.IDictionary"
-            }
-          ],
-          "ReturnType": "System.Collections.Generic.IEnumerable`1[System.Management.Automation.CompletionResult]"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "e",
-              "Type": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Support.RecordType"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Object"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "ToString",
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "GetType",
-          "ReturnType": "System.Type"
-        }
-      ]
-    },
     "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep, Az.Dns.private, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SendAsyncStep, Az.Dns.private, Version=1.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Target": "System.Object",
         "Method": "System.Reflection.MethodInfo"
