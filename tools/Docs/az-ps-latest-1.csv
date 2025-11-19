@@ -70,6 +70,7 @@ pac68,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-relea
 pac69,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DigitalTwins.0.3.0.zip;sourceType=sa]Az.DigitalTwins,0.3.0
 pac70,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DiskPool.0.4.0.zip;sourceType=sa]Az.DiskPool,0.4.0
 pac71,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Dns.2.0.0.zip;sourceType=sa]Az.Dns,2.0.0
+pac72,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DnsResolver.1.2.2.zip;sourceType=sa]Az.DnsResolver,1.2.2
 pac73,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DynatraceObservability.0.3.0.zip;sourceType=sa]Az.DynatraceObservability,0.3.0
 pac74,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.EdgeOrder.0.2.0.zip;sourceType=sa]Az.EdgeOrder,0.2.0
 pac75,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.EdgeZones.0.1.2.zip;sourceType=sa]Az.EdgeZones,0.1.2
@@ -120,5 +121,4 @@ pac119,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-rele
 pac120,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Migrate.2.10.1.zip;sourceType=sa]Az.Migrate,2.10.1
 pac121,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.MixedReality.0.3.0.zip;sourceType=sa]Az.MixedReality,0.3.0
 pac122,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.MobileNetwork.0.5.0.zip;sourceType=sa]Az.MobileNetwork,0.5.0
-pac72,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DnsResolver.1.1.1.zip;sourceType=sa]Az.DnsResolver,1.1.1
 
