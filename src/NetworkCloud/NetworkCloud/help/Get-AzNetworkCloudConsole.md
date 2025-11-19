@@ -15,19 +15,15 @@ Get properties of the provided virtual machine console.
 ### List (Default)
 ```
 Get-AzNetworkCloudConsole -ResourceGroupName <String> [-SubscriptionId <String[]>] -VirtualMachineName <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentityVirtualMachine
-```
-Get-AzNetworkCloudConsole -Name <String> -VirtualMachineInputObject <INetworkCloudIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SkipToken <String>] [-Top <Int32>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzNetworkCloudConsole -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- -VirtualMachineName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+ -VirtualMachineName <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -87,6 +83,7 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
@@ -105,7 +102,7 @@ The name of the virtual machine console.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetViaIdentityVirtualMachine, Get
+Parameter Sets: Get
 Aliases: ConsoleName
 
 Required: True
@@ -131,6 +128,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SkipToken
+The opaque token that the server returns to indicate where to continue listing resources from.
+This is used for paging through large result sets.
+
+```yaml
+Type: System.String
+Parameter Sets: List
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 The ID of the target subscription.
 The value must be an UUID.
@@ -147,18 +160,19 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -VirtualMachineInputObject
-Identity Parameter
+### -Top
+The maximum number of resources to return from the operation.
+Example: '$top=10'.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
-Parameter Sets: GetViaIdentityVirtualMachine
+Type: System.Int32
+Parameter Sets: List
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -186,7 +200,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IConsole
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250901.IConsole
 
 ## NOTES
 

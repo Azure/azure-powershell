@@ -8,42 +8,32 @@ schema: 2.0.0
 # Invoke-AzNetworkCloudClusterContinueVersionUpdate
 
 ## SYNOPSIS
-Trigger the continuation of an continue for a cluster with a matching continue strategy that has paused after completing a segment of the continue
+Trigger the continuation of an update for a cluster with a matching update strategy that has paused after completing a segment of the update.
 
 ## SYNTAX
 
 ### ContinueExpanded (Default)
 ```
 Invoke-AzNetworkCloudClusterContinueVersionUpdate -ClusterName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-MachineGroupTargetingMode <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ContinueViaJsonString
-```
-Invoke-AzNetworkCloudClusterContinueVersionUpdate -ClusterName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ContinueViaJsonFilePath
-```
-Invoke-AzNetworkCloudClusterContinueVersionUpdate -ClusterName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SubscriptionId <String>]
+ [-MachineGroupTargetingMode <ClusterContinueUpdateVersionMachineGroupTargetingMode>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### Continue
 ```
 Invoke-AzNetworkCloudClusterContinueVersionUpdate -ClusterName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -ClusterContinueUpdateVersionParameter <IClusterContinueUpdateVersionParameters>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ContinueViaIdentityExpanded
 ```
 Invoke-AzNetworkCloudClusterContinueVersionUpdate -InputObject <INetworkCloudIdentity>
- [-MachineGroupTargetingMode <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-MachineGroupTargetingMode <ClusterContinueUpdateVersionMachineGroupTargetingMode>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -55,7 +45,7 @@ Invoke-AzNetworkCloudClusterContinueVersionUpdate -InputObject <INetworkCloudIde
 ```
 
 ## DESCRIPTION
-Trigger the continuation of an continue for a cluster with a matching continue strategy that has paused after completing a segment of the continue
+Trigger the continuation of an update for a cluster with a matching update strategy that has paused after completing a segment of the update.
 
 ## EXAMPLES
 
@@ -85,9 +75,10 @@ Accept wildcard characters: False
 
 ### -ClusterContinueUpdateVersionParameter
 ClusterContinueUpdateVersionParameters represents the body of the request to continue the update of a cluster version.
+To construct, see NOTES section for CLUSTERCONTINUEUPDATEVERSIONPARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterContinueUpdateVersionParameters
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250901.IClusterContinueUpdateVersionParameters
 Parameter Sets: Continue, ContinueViaIdentity
 Aliases:
 
@@ -103,7 +94,7 @@ The name of the cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: ContinueExpanded, ContinueViaJsonString, ContinueViaJsonFilePath, Continue
+Parameter Sets: ContinueExpanded, Continue
 Aliases:
 
 Required: True
@@ -131,6 +122,7 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
@@ -144,41 +136,11 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -JsonFilePath
-Path of Json file supplied to the Continue operation
-
-```yaml
-Type: System.String
-Parameter Sets: ContinueViaJsonFilePath
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonString
-Json string supplied to the Continue operation
-
-```yaml
-Type: System.String
-Parameter Sets: ContinueViaJsonString
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -MachineGroupTargetingMode
 The mode by which the cluster will target the next grouping of servers to continue the update.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ClusterContinueUpdateVersionMachineGroupTargetingMode
 Parameter Sets: ContinueExpanded, ContinueViaIdentityExpanded
 Aliases:
 
@@ -225,7 +187,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: ContinueExpanded, ContinueViaJsonString, ContinueViaJsonFilePath, Continue
+Parameter Sets: ContinueExpanded, Continue
 Aliases:
 
 Required: True
@@ -241,7 +203,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: ContinueExpanded, ContinueViaJsonString, ContinueViaJsonFilePath, Continue
+Parameter Sets: ContinueExpanded, Continue
 Aliases:
 
 Required: False
@@ -287,7 +249,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterContinueUpdateVersionParameters
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250901.IClusterContinueUpdateVersionParameters
 
 ### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
 

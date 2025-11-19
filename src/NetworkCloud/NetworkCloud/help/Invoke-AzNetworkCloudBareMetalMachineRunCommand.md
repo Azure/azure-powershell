@@ -17,28 +17,15 @@ The URL to storage account with the command execution results and the command ex
 ```
 Invoke-AzNetworkCloudBareMetalMachineRunCommand -BareMetalMachineName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -LimitTimeSecond <Int64> -Script <String> [-Argument <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### RunViaJsonString
-```
-Invoke-AzNetworkCloudBareMetalMachineRunCommand -BareMetalMachineName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### RunViaJsonFilePath
-```
-Invoke-AzNetworkCloudBareMetalMachineRunCommand -BareMetalMachineName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### RunViaIdentityExpanded
 ```
 Invoke-AzNetworkCloudBareMetalMachineRunCommand -InputObject <INetworkCloudIdentity> -LimitTimeSecond <Int64>
- -Script <String> [-Argument <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ -Script <String> [-Argument <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -63,7 +50,7 @@ The list of string arguments that will be passed to the script in order as separ
 
 ```yaml
 Type: System.String[]
-Parameter Sets: RunExpanded, RunViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -93,7 +80,7 @@ The name of the bare metal machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: RunExpanded, RunViaJsonString, RunViaJsonFilePath
+Parameter Sets: RunExpanded
 Aliases:
 
 Required: True
@@ -121,6 +108,7 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
@@ -134,42 +122,13 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -JsonFilePath
-Path of Json file supplied to the Run operation
-
-```yaml
-Type: System.String
-Parameter Sets: RunViaJsonFilePath
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonString
-Json string supplied to the Run operation
-
-```yaml
-Type: System.String
-Parameter Sets: RunViaJsonString
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -LimitTimeSecond
-The maximum time the script is allowed to run.If the execution time exceeds the maximum, the script will be stopped, any output produced until then will be captured, and the exit code matching a timeout will be returned (252).
+The maximum time the script is allowed to run.
+If the execution time exceeds the maximum, the script will be stopped, any output produced until then will be captured, and the exit code matching a timeout will be returned (252).
 
 ```yaml
 Type: System.Int64
-Parameter Sets: RunExpanded, RunViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -215,7 +174,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: RunExpanded, RunViaJsonString, RunViaJsonFilePath
+Parameter Sets: RunExpanded
 Aliases:
 
 Required: True
@@ -230,7 +189,7 @@ The base64 encoded script to execute on the bare metal machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: RunExpanded, RunViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -246,7 +205,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: RunExpanded, RunViaJsonString, RunViaJsonFilePath
+Parameter Sets: RunExpanded
 Aliases:
 
 Required: False

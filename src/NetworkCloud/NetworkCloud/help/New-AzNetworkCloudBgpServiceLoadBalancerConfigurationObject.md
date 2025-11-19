@@ -1,7 +1,7 @@
 ---
 external help file: Az.NetworkCloud-help.xml
 Module Name: Az.NetworkCloud
-online version: https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-aznetworkcloudbgpserviceloadbalancerconfigurationobject
+online version: https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-AzNetworkCloudBgpServiceLoadBalancerConfigurationObject
 schema: 2.0.0
 ---
 
@@ -14,7 +14,7 @@ Create an in-memory object for BgpServiceLoadBalancerConfiguration.
 
 ```
 New-AzNetworkCloudBgpServiceLoadBalancerConfigurationObject [-BgpAdvertisement <IBgpAdvertisement[]>]
- [-BgpPeer <IServiceLoadBalancerBgpPeer[]>] [-FabricPeeringEnabled <String>]
+ [-BgpPeer <IServiceLoadBalancerBgpPeer[]>] [-FabricPeeringEnabled <FabricPeeringEnabled>]
  [-IPAddressPool <IIPAddressPool[]>] [<CommonParameters>]
 ```
 
@@ -27,7 +27,7 @@ Create an in-memory object for BgpServiceLoadBalancerConfiguration.
 ```powershell
 $ipAddressPools=New-AzNetworkCloudIpAddressPoolObject -Address @("198.51.102.0/24") -Name "pool1" -AutoAssign True -OnlyUseHostIP True 
 
-$serviceLoadBalancerBgpPeer=New-AzNetworkCloudServiceLoadBalancerBgpPeerObject -Name name -PeerAddress "203.0.113.254" -PeerAsn "64497" -BfdEnabled False -BgpMultiHop False -HoldTime "P300s" -KeepAliveTime "P300s" -MyAsn 64512 -Password REDACTED -PeerPort 1234
+$serviceLoadBalancerBgpPeer=New-AzNetworkCloudServiceLoadBalancerBgpPeerObject -Name name -PeerAddress "203.0.113.254" -PeerAsn "64497" -BfdEnabled False -BgpMultiHop False -HoldTime "P300s" -KeepAliveTime "P300s" -MyAsn 64512 -Password passsword -PeerPort 1234
 
 $bgpAdvertisement=New-AzNetworkCloudBgpAdvertisementObject -IPAddressPool  @("pool1","pool2") -AdvertiseToFabric "True" -Community  @("communityString") -Peer @("peer1") 
 
@@ -50,9 +50,10 @@ Create an in-memory object for BgpServiceLoadBalancerConfiguration.
 
 ### -BgpAdvertisement
 The association of IP address pools to the communities and peers, allowing for announcement of IPs.
+To construct, see NOTES section for BGPADVERTISEMENT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBgpAdvertisement[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250901.IBgpAdvertisement[]
 Parameter Sets: (All)
 Aliases:
 
@@ -66,9 +67,10 @@ Accept wildcard characters: False
 ### -BgpPeer
 The list of additional BgpPeer entities that the Kubernetes cluster will peer with.
 All peering must be explicitly defined.
+To construct, see NOTES section for BGPPEER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IServiceLoadBalancerBgpPeer[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250901.IServiceLoadBalancerBgpPeer[]
 Parameter Sets: (All)
 Aliases:
 
@@ -83,7 +85,7 @@ Accept wildcard characters: False
 The indicator to specify if the load balancer peers with the network fabric.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.FabricPeeringEnabled
 Parameter Sets: (All)
 Aliases:
 
@@ -96,9 +98,10 @@ Accept wildcard characters: False
 
 ### -IPAddressPool
 The list of pools of IP addresses that can be allocated to load balancer services.
+To construct, see NOTES section for IPADDRESSPOOL properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IIPAddressPool[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250901.IIPAddressPool[]
 Parameter Sets: (All)
 Aliases:
 
@@ -116,7 +119,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.BgpServiceLoadBalancerConfiguration
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250901.BgpServiceLoadBalancerConfiguration
 
 ## NOTES
 

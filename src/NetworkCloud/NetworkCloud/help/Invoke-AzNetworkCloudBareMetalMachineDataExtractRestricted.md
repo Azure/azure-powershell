@@ -1,42 +1,60 @@
 ---
 external help file: Az.NetworkCloud-help.xml
 Module Name: Az.NetworkCloud
-online version: https://learn.microsoft.com/powershell/module/az.networkcloud/remove-aznetworkcloudagentpool
+online version: https://learn.microsoft.com/powershell/module/az.networkcloud/invoke-aznetworkcloudbaremetalmachinedataextractrestricted
 schema: 2.0.0
 ---
 
-# Remove-AzNetworkCloudAgentPool
+# Invoke-AzNetworkCloudBareMetalMachineDataExtractRestricted
 
 ## SYNOPSIS
-Delete the provided Kubernetes cluster agent pool.
+Run one or more restricted data extractions on the provided bare metal machine.
+The URL to storage account with the command execution results and the command exit code can be retrieved from the operation status API once available.
 
 ## SYNTAX
 
-### Delete (Default)
+### RunViaIdentityExpanded (Default)
 ```
-Remove-AzNetworkCloudAgentPool -KubernetesClusterName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+Invoke-AzNetworkCloudBareMetalMachineDataExtractRestricted -InputObject <INetworkCloudIdentity>
+ -Command <IBareMetalMachineCommandSpecification[]> -LimitTimeSecond <Int64> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### DeleteViaIdentity
+### RunExpanded
 ```
-Remove-AzNetworkCloudAgentPool -InputObject <INetworkCloudIdentity> [-IfMatch <String>] [-IfNoneMatch <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Invoke-AzNetworkCloudBareMetalMachineDataExtractRestricted -BareMetalMachineName <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] -Command <IBareMetalMachineCommandSpecification[]>
+ -LimitTimeSecond <Int64> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Delete the provided Kubernetes cluster agent pool.
+Run one or more restricted data extractions on the provided bare metal machine.
+The URL to storage account with the command execution results and the command exit code can be retrieved from the operation status API once available.
 
 ## EXAMPLES
 
-### Example 1: Delete Kubernetes cluster's agent pool
+### Example 1: {{ Add title here }}
 ```powershell
-Remove-AzNetworkCloudAgentPool -Name agentPoolName -KubernetesClusterName clusterName -ResourceGroupName resourceGroup
+{{ Add code here }}
 ```
 
-This command deletes an agent pool for the given Kubernetes cluster.
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -49,6 +67,37 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -BareMetalMachineName
+The name of the bare metal machine.
+
+```yaml
+Type: System.String
+Parameter Sets: RunExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Command
+The list of curated data extraction commands to be executed directly against the target machine.
+To construct, see NOTES section for COMMAND properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250901.IBareMetalMachineCommandSpecification[]
+Parameter Sets: (All)
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -71,46 +120,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IfMatch
-The ETag of the transformation.
-Omit this value to always overwrite the current resource.
-Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IfNoneMatch
-Set to '*' to allow a new record set to be created, but to prevent updating an existing resource.
-Other values will result in error from server as they are not supported.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
-Parameter Sets: DeleteViaIdentity
+Parameter Sets: RunViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -120,28 +136,14 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -KubernetesClusterName
-The name of the Kubernetes cluster.
+### -LimitTimeSecond
+The maximum time the commands are allowed to run.
+If the execution time exceeds the maximum, the script will be stopped, any output produced until then will be captured, and the exit code matching a timeout will be returned (252).
 
 ```yaml
-Type: System.String
-Parameter Sets: Delete
+Type: System.Int64
+Parameter Sets: (All)
 Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-The name of the Kubernetes cluster agent pool.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases: AgentPoolName
 
 Required: True
 Position: Named
@@ -186,7 +188,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: RunExpanded
 Aliases:
 
 Required: True
@@ -202,7 +204,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: RunExpanded
 Aliases:
 
 Required: False

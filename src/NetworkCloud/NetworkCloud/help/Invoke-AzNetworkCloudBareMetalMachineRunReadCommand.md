@@ -20,25 +20,12 @@ Invoke-AzNetworkCloudBareMetalMachineRunReadCommand -InputObject <INetworkCloudI
  [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### RunViaJsonString
-```
-Invoke-AzNetworkCloudBareMetalMachineRunReadCommand -BareMetalMachineName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### RunViaJsonFilePath
-```
-Invoke-AzNetworkCloudBareMetalMachineRunReadCommand -BareMetalMachineName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ### RunExpanded
 ```
 Invoke-AzNetworkCloudBareMetalMachineRunReadCommand -BareMetalMachineName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -Command <IBareMetalMachineCommandSpecification[]> -LimitTimeSecond <Int64>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -83,7 +70,7 @@ The name of the bare metal machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: RunViaJsonString, RunViaJsonFilePath, RunExpanded
+Parameter Sets: RunExpanded
 Aliases:
 
 Required: True
@@ -95,10 +82,11 @@ Accept wildcard characters: False
 
 ### -Command
 The list of read-only commands to be executed directly against the target machine.
+To construct, see NOTES section for COMMAND properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineCommandSpecification[]
-Parameter Sets: RunViaIdentityExpanded, RunExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250901.IBareMetalMachineCommandSpecification[]
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -126,6 +114,7 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
@@ -139,42 +128,13 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -JsonFilePath
-Path of Json file supplied to the Run operation
-
-```yaml
-Type: System.String
-Parameter Sets: RunViaJsonFilePath
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonString
-Json string supplied to the Run operation
-
-```yaml
-Type: System.String
-Parameter Sets: RunViaJsonString
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -LimitTimeSecond
-The maximum time the commands are allowed to run.If the execution time exceeds the maximum, the script will be stopped, any output produced until then will be captured, and the exit code matching a timeout will be returned (252).
+The maximum time the commands are allowed to run.
+If the execution time exceeds the maximum, the script will be stopped, any output produced until then will be captured, and the exit code matching a timeout will be returned (252).
 
 ```yaml
 Type: System.Int64
-Parameter Sets: RunViaIdentityExpanded, RunExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -220,7 +180,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: RunViaJsonString, RunViaJsonFilePath, RunExpanded
+Parameter Sets: RunExpanded
 Aliases:
 
 Required: True
@@ -236,7 +196,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: RunViaJsonString, RunViaJsonFilePath, RunExpanded
+Parameter Sets: RunExpanded
 Aliases:
 
 Required: False

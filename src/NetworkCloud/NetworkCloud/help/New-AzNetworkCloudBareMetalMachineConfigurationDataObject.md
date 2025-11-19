@@ -1,7 +1,7 @@
 ---
 external help file: Az.NetworkCloud-help.xml
 Module Name: Az.NetworkCloud
-online version: https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-aznetworkcloudbaremetalmachineconfigurationdataobject
+online version: https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-AzNetworkCloudBareMetalMachineConfigurationDataObject
 schema: 2.0.0
 ---
 
@@ -15,7 +15,8 @@ Create an in-memory object for BareMetalMachineConfigurationData.
 ```
 New-AzNetworkCloudBareMetalMachineConfigurationDataObject -BmcCredentialsPassword <SecureString>
  -BmcCredentialsUsername <String> -BmcMacAddress <String> -BootMacAddress <String> -RackSlot <Int64>
- -SerialNumber <String> [-MachineDetail <String>] [-MachineName <String>] [<CommonParameters>]
+ -SerialNumber <String> [-MachineDetail <String>] [-MachineName <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -118,7 +119,7 @@ Accept wildcard characters: False
 
 ### -MachineName
 The user-provided name for the bare metal machine created from this specification.
-        If not provided, the machine name will be generated programmatically.
+If not provided, the machine name will be generated programmatically.
 
 ```yaml
 Type: System.String
@@ -171,7 +172,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.BareMetalMachineConfigurationData
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250901.BareMetalMachineConfigurationData
 
 ## NOTES
 
