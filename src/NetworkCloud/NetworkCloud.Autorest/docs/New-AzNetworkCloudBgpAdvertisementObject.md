@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.NetworkCloud
-online version: https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-aznetworkcloudbgpadvertisementobject
+online version: https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-AzNetworkCloudBgpAdvertisementObject
 schema: 2.0.0
 ---
 
@@ -13,7 +13,7 @@ Create an in-memory object for BgpAdvertisement.
 ## SYNTAX
 
 ```
-New-AzNetworkCloudBgpAdvertisementObject -IPAddressPool <String[]> [-AdvertiseToFabric <String>]
+New-AzNetworkCloudBgpAdvertisementObject -IPAddressPool <String[]> [-AdvertiseToFabric <AdvertiseToFabric>]
  [-Community <String[]>] [-Peer <String[]>] [<CommonParameters>]
 ```
 
@@ -42,7 +42,7 @@ The indicator of if this advertisement is also made to the network fabric associ
 This field is ignored if fabricPeeringEnabled is set to False.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.AdvertiseToFabric
 Parameter Sets: (All)
 Aliases:
 
@@ -106,7 +106,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.BgpAdvertisement
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250901.BgpAdvertisement
 
 ## NOTES
 

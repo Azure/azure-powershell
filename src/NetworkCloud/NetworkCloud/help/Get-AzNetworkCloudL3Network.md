@@ -14,8 +14,7 @@ Get properties of the provided layer 3 (L3) network.
 
 ### List (Default)
 ```
-Get-AzNetworkCloudL3Network [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzNetworkCloudL3Network [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get

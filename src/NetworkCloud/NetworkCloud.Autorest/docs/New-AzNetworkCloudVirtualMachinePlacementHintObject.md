@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.NetworkCloud
-online version: https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-aznetworkcloudvirtualmachineplacementhintobject
+online version: https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-AzNetworkCloudVirtualMachinePlacementHintObject
 schema: 2.0.0
 ---
 
@@ -13,8 +13,9 @@ Create an in-memory object for VirtualMachinePlacementHint.
 ## SYNTAX
 
 ```
-New-AzNetworkCloudVirtualMachinePlacementHintObject -HintType <String> -ResourceId <String>
- -SchedulingExecution <String> -Scope <String> [<CommonParameters>]
+New-AzNetworkCloudVirtualMachinePlacementHintObject -HintType <VirtualMachinePlacementHintType>
+ -ResourceId <String> -SchedulingExecution <VirtualMachineSchedulingExecution>
+ -Scope <VirtualMachinePlacementHintPodAffinityScope> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,7 +42,7 @@ Creates an in-memory object for VirtualMachinePlacementHint.
 The specification of whether this hint supports affinity or anti-affinity with the referenced resources.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.VirtualMachinePlacementHintType
 Parameter Sets: (All)
 Aliases:
 
@@ -71,7 +72,7 @@ Accept wildcard characters: False
 The indicator of whether the hint is a hard or soft requirement during scheduling.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.VirtualMachineSchedulingExecution
 Parameter Sets: (All)
 Aliases:
 
@@ -87,7 +88,7 @@ The scope for the virtual machine affinity or anti-affinity placement hint.
 It should always be "Machine" in the case of node affinity.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.VirtualMachinePlacementHintPodAffinityScope
 Parameter Sets: (All)
 Aliases:
 
@@ -105,7 +106,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.VirtualMachinePlacementHint
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250901.VirtualMachinePlacementHint
 
 ## NOTES
 

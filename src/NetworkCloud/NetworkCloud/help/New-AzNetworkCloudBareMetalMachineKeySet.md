@@ -18,24 +18,21 @@ New-AzNetworkCloudBareMetalMachineKeySet -Name <String> -ClusterInputObject <INe
  [-IfMatch <String>] [-IfNoneMatch <String>] -AzureGroupId <String> -Expiration <DateTime>
  -ExtendedLocationName <String> -ExtendedLocationType <String> -JumpHostsAllowed <String[]> -Location <String>
  -PrivilegeLevel <String> -UserList <IKeySetUser[]> [-OSGroupName <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzNetworkCloudBareMetalMachineKeySet -Name <String> -ClusterName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] -JsonString <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
 New-AzNetworkCloudBareMetalMachineKeySet -Name <String> -ClusterName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] -JsonFilePath <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateExpanded
@@ -44,8 +41,8 @@ New-AzNetworkCloudBareMetalMachineKeySet -Name <String> -ClusterName <String> -R
  [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] -AzureGroupId <String>
  -Expiration <DateTime> -ExtendedLocationName <String> -ExtendedLocationType <String>
  -JumpHostsAllowed <String[]> -Location <String> -PrivilegeLevel <String> -UserList <IKeySetUser[]>
- [-OSGroupName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-OSGroupName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

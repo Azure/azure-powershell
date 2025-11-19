@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.NetworkCloud
-online version: https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-aznetworkcloudendpointdependencyobject
+online version: https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-AzNetworkCloudEndpointDependencyObject
 schema: 2.0.0
 ---
 
@@ -73,7 +73,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.EndpointDependency
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250901.EndpointDependency
 
 ## NOTES
 

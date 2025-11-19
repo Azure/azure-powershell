@@ -27,8 +27,7 @@ Get-AzNetworkCloudConsole -Name <String> -VirtualMachineInputObject <INetworkClo
 ### Get
 ```
 Get-AzNetworkCloudConsole -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- -VirtualMachineName <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ -VirtualMachineName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity

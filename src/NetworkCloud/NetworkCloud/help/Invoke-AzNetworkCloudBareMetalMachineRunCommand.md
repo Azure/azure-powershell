@@ -17,8 +17,7 @@ The URL to storage account with the command execution results and the command ex
 ```
 Invoke-AzNetworkCloudBareMetalMachineRunCommand -BareMetalMachineName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -LimitTimeSecond <Int64> -Script <String> [-Argument <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RunViaJsonString
@@ -38,8 +37,8 @@ Invoke-AzNetworkCloudBareMetalMachineRunCommand -BareMetalMachineName <String> -
 ### RunViaIdentityExpanded
 ```
 Invoke-AzNetworkCloudBareMetalMachineRunCommand -InputObject <INetworkCloudIdentity> -LimitTimeSecond <Int64>
- -Script <String> [-Argument <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ -Script <String> [-Argument <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

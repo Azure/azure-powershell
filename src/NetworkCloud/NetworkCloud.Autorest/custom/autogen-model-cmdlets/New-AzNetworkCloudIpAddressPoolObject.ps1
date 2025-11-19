@@ -21,34 +21,33 @@ Create an in-memory object for IpAddressPool.
 Create an in-memory object for IpAddressPool.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IpAddressPool
+Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250901.IpAddressPool
 .Link
-https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-aznetworkcloudipaddresspoolobject
+https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-AzNetworkCloudIpAddressPoolObject
 #>
 function New-AzNetworkCloudIpAddressPoolObject {
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.ModelCmdletAttribute()]
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IpAddressPool')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250901.IpAddressPool')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
-        [Parameter(HelpMessage="The list of IP address ranges. Each range can be a either a subnet in CIDR format or an explicit start-end range of IP addresses. For a BGP service load balancer configuration, only CIDR format is supported and excludes /32 (IPv4) and /128 (IPv6) prefixes.")]
+        [Parameter(Mandatory, HelpMessage="The list of IP address ranges. Each range can be a either a subnet in CIDR format or an explicit start-end range of IP addresses. For a BGP service load balancer configuration, only CIDR format is supported and excludes /32 (IPv4) and /128 (IPv6) prefixes.")]
         [string[]]
         $Address,
         [Parameter(HelpMessage="The indicator to determine if automatic allocation from the pool should occur.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("True", "False")]
-        [string]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.BfdEnabled])]
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.BfdEnabled]
         $AutoAssign,
         [Parameter(Mandatory, HelpMessage="The name used to identify this IP address pool for association with a BGP advertisement.")]
         [string]
         $Name,
         [Parameter(HelpMessage="The indicator to prevent the use of IP addresses ending with .0 and .255 for this pool. Enabling this option will only use IP addresses between .1 and .254 inclusive.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("True", "False")]
-        [string]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.BfdEnabled])]
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.BfdEnabled]
         $OnlyUseHostIP
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IpAddressPool]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250901.IpAddressPool]::New()
 
         if ($PSBoundParameters.ContainsKey('Address')) {
             $Object.Address = $Address

@@ -14,8 +14,7 @@ Get properties of the provided layer 2 (L2) network.
 
 ### List (Default)
 ```
-Get-AzNetworkCloudL2Network [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzNetworkCloudL2Network [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get

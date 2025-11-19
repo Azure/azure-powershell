@@ -15,28 +15,14 @@ Power off the provided virtual machine.
 ### PowerOffExpanded (Default)
 ```
 Stop-AzNetworkCloudVirtualMachine -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-SkipShutdown <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-SkipShutdown <SkipShutdown>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### PowerOffViaIdentityExpanded
 ```
-Stop-AzNetworkCloudVirtualMachine -InputObject <INetworkCloudIdentity> [-SkipShutdown <String>]
+Stop-AzNetworkCloudVirtualMachine -InputObject <INetworkCloudIdentity> [-SkipShutdown <SkipShutdown>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### PowerOffViaJsonFilePath
-```
-Stop-AzNetworkCloudVirtualMachine -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### PowerOffViaJsonString
-```
-Stop-AzNetworkCloudVirtualMachine -Name <String> -ResourceGroupName <String> -JsonString <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -86,6 +72,7 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
@@ -99,42 +86,12 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -JsonFilePath
-Path of Json file supplied to the PowerOff operation
-
-```yaml
-Type: System.String
-Parameter Sets: PowerOffViaJsonFilePath
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonString
-Json string supplied to the PowerOff operation
-
-```yaml
-Type: System.String
-Parameter Sets: PowerOffViaJsonString
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
 The name of the virtual machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: PowerOffExpanded, PowerOffViaJsonFilePath, PowerOffViaJsonString
+Parameter Sets: PowerOffExpanded
 Aliases: VirtualMachineName
 
 Required: True
@@ -180,7 +137,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: PowerOffExpanded, PowerOffViaJsonFilePath, PowerOffViaJsonString
+Parameter Sets: PowerOffExpanded
 Aliases:
 
 Required: True
@@ -194,8 +151,8 @@ Accept wildcard characters: False
 The indicator of whether to skip the graceful OS shutdown and power off the virtual machine immediately.
 
 ```yaml
-Type: System.String
-Parameter Sets: PowerOffExpanded, PowerOffViaIdentityExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.SkipShutdown
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -211,7 +168,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: PowerOffExpanded, PowerOffViaJsonFilePath, PowerOffViaJsonString
+Parameter Sets: PowerOffExpanded
 Aliases:
 
 Required: False

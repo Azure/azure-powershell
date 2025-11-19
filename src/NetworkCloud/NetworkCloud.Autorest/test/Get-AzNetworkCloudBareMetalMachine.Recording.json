@@ -1,8 +1,8 @@
 {
-  "Get-AzNetworkCloudBareMetalMachine+[NoContext]+ListBySubscription+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/bareMetalMachines?api-version=2025-02-01+1": {
+  "Get-AzNetworkCloudBareMetalMachine+[NoContext]+ListBySubscription+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/bareMetalMachines?api-version=2025-09-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/bareMetalMachines?api-version=2025-02-01",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/bareMetalMachines?api-version=2025-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -43,10 +43,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzNetworkCloudBareMetalMachine+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/simdev-3362437-cluster-1-HostedResources-643B6F61/providers/Microsoft.NetworkCloud/bareMetalMachines/rack1compute02?api-version=2025-02-01+1": {
+  "Get-AzNetworkCloudBareMetalMachine+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/simdev-3362437-cluster-1-HostedResources-643B6F61/providers/Microsoft.NetworkCloud/bareMetalMachines/rack1compute02?api-version=2025-09-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/simdev-3362437-cluster-1-HostedResources-643B6F61/providers/Microsoft.NetworkCloud/bareMetalMachines/rack1compute02?api-version=2025-02-01",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/simdev-3362437-cluster-1-HostedResources-643B6F61/providers/Microsoft.NetworkCloud/bareMetalMachines/rack1compute02?api-version=2025-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -88,10 +88,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzNetworkCloudBareMetalMachine+[NoContext]+ListByResourceGroup+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/simdev-3362437-cluster-1-HostedResources-643B6F61/providers/Microsoft.NetworkCloud/bareMetalMachines?api-version=2025-02-01+1": {
+  "Get-AzNetworkCloudBareMetalMachine+[NoContext]+ListByResourceGroup+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/simdev-3362437-cluster-1-HostedResources-643B6F61/providers/Microsoft.NetworkCloud/bareMetalMachines?api-version=2025-09-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/simdev-3362437-cluster-1-HostedResources-643B6F61/providers/Microsoft.NetworkCloud/bareMetalMachines?api-version=2025-02-01",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/simdev-3362437-cluster-1-HostedResources-643B6F61/providers/Microsoft.NetworkCloud/bareMetalMachines?api-version=2025-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {

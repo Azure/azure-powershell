@@ -14,8 +14,7 @@ Get properties of the provided rack.
 
 ### List (Default)
 ```
-Get-AzNetworkCloudRack [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzNetworkCloudRack [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
@@ -32,8 +31,7 @@ Get-AzNetworkCloudRack -ResourceGroupName <String> [-SubscriptionId <String[]>] 
 
 ### GetViaIdentity
 ```
-Get-AzNetworkCloudRack -InputObject <INetworkCloudIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzNetworkCloudRack -InputObject <INetworkCloudIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

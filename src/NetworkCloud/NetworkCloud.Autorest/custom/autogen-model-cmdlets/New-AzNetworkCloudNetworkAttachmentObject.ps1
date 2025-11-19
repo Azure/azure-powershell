@@ -21,61 +21,39 @@ Create an in-memory object for NetworkAttachment.
 Create an in-memory object for NetworkAttachment.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.NetworkAttachment
+Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250901.NetworkAttachment
 .Link
-https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-aznetworkcloudnetworkattachmentobject
+https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-AzNetworkCloudNetworkAttachmentObject
 #>
 function New-AzNetworkCloudNetworkAttachmentObject {
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.ModelCmdletAttribute()]
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.NetworkAttachment')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250901.NetworkAttachment')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
-        [Parameter(Mandatory, HelpMessage="The resource ID of the associated network attached to the virtual machine.
-        It can be one of cloudServicesNetwork, l3Network, l2Network or trunkedNetwork resources.")]
+        [Parameter(Mandatory, HelpMessage="The resource ID of the associated network attached to the virtual machine. It can be one of cloudServicesNetwork, l3Network, l2Network or trunkedNetwork resources.")]
         [string]
         $AttachedNetworkId,
-        [Parameter(HelpMessage="The indicator of whether this is the default gateway.
-        Only one of the attached networks (including the CloudServicesNetwork attachment) for a single machine may be specified as True.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("True", "False")]
-        [string]
+        [Parameter(HelpMessage="The indicator of whether this is the default gateway. Only one of the attached networks (including the CloudServicesNetwork attachment) for a single machine may be specified as True.")]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.DefaultGateway])]
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.DefaultGateway]
         $DefaultGateway,
-        [Parameter(Mandatory, HelpMessage="The IP allocation mechanism for the virtual machine.
-        Dynamic and Static are only valid for l3Network which may also specify Disabled.
-        Otherwise, Disabled is the only permitted value.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("Dynamic", "Static", "Disabled")]
-        [string]
+        [Parameter(Mandatory, HelpMessage="The IP allocation mechanism for the virtual machine. Dynamic and Static are only valid for l3Network which may also specify Disabled. Otherwise, Disabled is the only permitted value.")]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.VirtualMachineIPAllocationMethod])]
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.VirtualMachineIPAllocationMethod]
         $IPAllocationMethod,
-        [Parameter(HelpMessage="The IPv4 address of the virtual machine.
-
-        This field is used only if the attached network has IPAllocationType of IPV4 or DualStack.
-
-        If IPAllocationMethod is:
-        Static - this field must contain a user specified IPv4 address from within the subnet specified in the attached network.
-        Dynamic - this field is read-only, but will be populated with an address from within the subnet specified in the attached network.
-        Disabled - this field will be empty.")]
+        [Parameter(HelpMessage="The IPv4 address of the virtual machine.  This field is used only if the attached network has IPAllocationType of IPV4 or DualStack.  If IPAllocationMethod is: Static - this field must contain a user specified IPv4 address from within the subnet specified in the attached network. Dynamic - this field is read-only, but will be populated with an address from within the subnet specified in the attached network. Disabled - this field will be empty.")]
         [string]
         $Ipv4Address,
-        [Parameter(HelpMessage="The IPv6 address of the virtual machine.
-
-        This field is used only if the attached network has IPAllocationType of IPV6 or DualStack.
-
-        If IPAllocationMethod is:
-        Static - this field must contain an IPv6 address range from within the range specified in the attached network.
-        Dynamic - this field is read-only, but will be populated with an range from within the subnet specified in the attached network.
-        Disabled - this field will be empty.")]
+        [Parameter(HelpMessage="The IPv6 address of the virtual machine.  This field is used only if the attached network has IPAllocationType of IPV6 or DualStack.  If IPAllocationMethod is: Static - this field must contain an IPv6 address range from within the range specified in the attached network. Dynamic - this field is read-only, but will be populated with an range from within the subnet specified in the attached network. Disabled - this field will be empty.")]
         [string]
         $Ipv6Address,
-        [Parameter(HelpMessage="The associated network's interface name.
-        If specified, the network attachment name has a maximum length of 15 characters and must be unique to this virtual machine.
-        If the user doesn’t specify this value, the default interface name of the network resource will be used.
-        For a CloudServicesNetwork resource, this name will be ignored.")]
+        [Parameter(HelpMessage="The associated network's interface name. If specified, the network attachment name has a maximum length of 15 characters and must be unique to this virtual machine. If the user doesn’t specify this value, the default interface name of the network resource will be used. For a CloudServicesNetwork resource, this name will be ignored.")]
         [string]
         $Name
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.NetworkAttachment]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250901.NetworkAttachment]::New()
 
         if ($PSBoundParameters.ContainsKey('AttachedNetworkId')) {
             $Object.AttachedNetworkId = $AttachedNetworkId

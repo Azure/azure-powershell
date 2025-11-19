@@ -15,7 +15,8 @@ Get properties of the provided Kubernetes cluster agent pool.
 ### List (Default)
 ```
 Get-AzNetworkCloudAgentPool -KubernetesClusterName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-SkipToken <String>] [-Top <Int32>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
@@ -28,12 +29,6 @@ Get-AzNetworkCloudAgentPool -KubernetesClusterName <String> -Name <String> -Reso
 ```
 Get-AzNetworkCloudAgentPool -InputObject <INetworkCloudIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
-```
-
-### GetViaIdentityKubernetesCluster
-```
-Get-AzNetworkCloudAgentPool -KubernetesClusterInputObject <INetworkCloudIdentity> -Name <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -88,25 +83,11 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
 Parameter Sets: GetViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -KubernetesClusterInputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
-Parameter Sets: GetViaIdentityKubernetesCluster
 Aliases:
 
 Required: True
@@ -136,7 +117,7 @@ The name of the Kubernetes cluster agent pool.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentityKubernetesCluster
+Parameter Sets: Get
 Aliases: AgentPoolName
 
 Required: True
@@ -162,6 +143,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SkipToken
+The opaque token that the server returns to indicate where to continue listing resources from.
+This is used for paging through large result sets.
+
+```yaml
+Type: System.String
+Parameter Sets: List
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 The ID of the target subscription.
 The value must be an UUID.
@@ -178,6 +175,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Top
+The maximum number of resources to return from the operation.
+Example: '$top=10'.
+
+```yaml
+Type: System.Int32
+Parameter Sets: List
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -187,7 +200,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IAgentPool
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250901.IAgentPool
 
 ## NOTES
 

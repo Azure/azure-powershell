@@ -16,23 +16,21 @@ Delete the provided Kubernetes cluster feature.
 ```
 Remove-AzNetworkCloudKubernetesClusterFeature -FeatureName <String> -KubernetesClusterName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentityKubernetesCluster
 ```
 Remove-AzNetworkCloudKubernetesClusterFeature -FeatureName <String>
  -KubernetesClusterInputObject <INetworkCloudIdentity> [-IfMatch <String>] [-IfNoneMatch <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzNetworkCloudKubernetesClusterFeature -InputObject <INetworkCloudIdentity> [-IfMatch <String>]
- [-IfNoneMatch <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-IfNoneMatch <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

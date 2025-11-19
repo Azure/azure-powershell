@@ -21,19 +21,18 @@ Create an in-memory object for BgpAdvertisement.
 Create an in-memory object for BgpAdvertisement.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.BgpAdvertisement
+Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250901.BgpAdvertisement
 .Link
-https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-aznetworkcloudbgpadvertisementobject
+https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-AzNetworkCloudBgpAdvertisementObject
 #>
 function New-AzNetworkCloudBgpAdvertisementObject {
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.ModelCmdletAttribute()]
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.BgpAdvertisement')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250901.BgpAdvertisement')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
         [Parameter(HelpMessage="The indicator of if this advertisement is also made to the network fabric associated with the Network Cloud Cluster. This field is ignored if fabricPeeringEnabled is set to False.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("True", "False")]
-        [string]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.AdvertiseToFabric])]
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.AdvertiseToFabric]
         $AdvertiseToFabric,
         [Parameter(HelpMessage="The names of the BGP communities to be associated with the announcement, utilizing a BGP community string in 1234:1234 format.")]
         [string[]]
@@ -47,7 +46,7 @@ function New-AzNetworkCloudBgpAdvertisementObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.BgpAdvertisement]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250901.BgpAdvertisement]::New()
 
         if ($PSBoundParameters.ContainsKey('AdvertiseToFabric')) {
             $Object.AdvertiseToFabric = $AdvertiseToFabric

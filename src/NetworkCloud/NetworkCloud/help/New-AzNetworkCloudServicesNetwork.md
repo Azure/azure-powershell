@@ -17,8 +17,7 @@ Create a new cloud services network or create the properties of the existing clo
 New-AzNetworkCloudServicesNetwork -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-IfMatch <String>] [-IfNoneMatch <String>] -ExtendedLocationName <String> -ExtendedLocationType <String>
  -Location <String> [-AdditionalEgressEndpoint <IEgressEndpoint[]>] [-EnableDefaultEgressEndpoint <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath

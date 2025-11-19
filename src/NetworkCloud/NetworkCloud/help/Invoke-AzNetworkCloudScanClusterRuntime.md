@@ -37,15 +37,13 @@ Invoke-AzNetworkCloudScanClusterRuntime -ClusterName <String> -ResourceGroupName
 ```
 Invoke-AzNetworkCloudScanClusterRuntime -ClusterName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -ClusterScanRuntimeParameter <IClusterScanRuntimeParameters>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ScanViaIdentityExpanded
 ```
 Invoke-AzNetworkCloudScanClusterRuntime -InputObject <INetworkCloudIdentity> [-ScanActivity <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ScanViaIdentity

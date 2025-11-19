@@ -15,8 +15,7 @@ Restart the provided bare metal machine.
 ### Restart (Default)
 ```
 Restart-AzNetworkCloudBareMetalMachine -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RestartViaIdentity

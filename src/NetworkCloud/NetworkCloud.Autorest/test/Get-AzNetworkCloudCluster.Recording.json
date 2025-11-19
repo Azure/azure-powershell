@@ -1,8 +1,8 @@
 {
-  "Get-AzNetworkCloudCluster+[NoContext]+ListBySubscription+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/clusters?api-version=2025-02-01+1": {
+  "Get-AzNetworkCloudCluster+[NoContext]+ListBySubscription+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/clusters?api-version=2025-09-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/clusters?api-version=2025-02-01",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/clusters?api-version=2025-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -43,10 +43,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzNetworkCloudCluster+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_id-simdev-3333902/providers/Microsoft.NetworkCloud/clusters/test-cluster?api-version=2025-02-01+1": {
+  "Get-AzNetworkCloudCluster+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_id-simdev-3333902/providers/Microsoft.NetworkCloud/clusters/test-cluster?api-version=2025-09-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_id-simdev-3333902/providers/Microsoft.NetworkCloud/clusters/test-cluster?api-version=2025-02-01",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_id-simdev-3333902/providers/Microsoft.NetworkCloud/clusters/test-cluster?api-version=2025-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -88,10 +88,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzNetworkCloudCluster+[NoContext]+ListByResourceGroup+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_id-simdev-3333902/providers/Microsoft.NetworkCloud/clusters?api-version=2025-02-01+1": {
+  "Get-AzNetworkCloudCluster+[NoContext]+ListByResourceGroup+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_id-simdev-3333902/providers/Microsoft.NetworkCloud/clusters?api-version=2025-09-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_id-simdev-3333902/providers/Microsoft.NetworkCloud/clusters?api-version=2025-02-01",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_id-simdev-3333902/providers/Microsoft.NetworkCloud/clusters?api-version=2025-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -133,10 +133,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzNetworkCloudCluster+[NoContext]+GetViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/powershell_test_id-simdev-3362437/providers/Microsoft.NetworkCloud/clusters/test-micluster?api-version=2025-02-01+1": {
+  "Get-AzNetworkCloudCluster+[NoContext]+GetViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/powershell_test_id-simdev-3362437/providers/Microsoft.NetworkCloud/clusters/test-micluster?api-version=2025-09-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/powershell_test_id-simdev-3362437/providers/Microsoft.NetworkCloud/clusters/test-micluster?api-version=2025-02-01",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/powershell_test_id-simdev-3362437/providers/Microsoft.NetworkCloud/clusters/test-micluster?api-version=2025-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {

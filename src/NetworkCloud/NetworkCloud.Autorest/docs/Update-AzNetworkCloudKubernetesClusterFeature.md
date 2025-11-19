@@ -27,30 +27,6 @@ Update-AzNetworkCloudKubernetesClusterFeature -InputObject <INetworkCloudIdentit
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### UpdateViaIdentityKubernetesClusterExpanded
-```
-Update-AzNetworkCloudKubernetesClusterFeature -FeatureName <String>
- -KubernetesClusterInputObject <INetworkCloudIdentity> [-IfMatch <String>] [-IfNoneMatch <String>]
- [-Option <IStringKeyValuePair[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaJsonFilePath
-```
-Update-AzNetworkCloudKubernetesClusterFeature -FeatureName <String> -KubernetesClusterName <String>
- -ResourceGroupName <String> -JsonFilePath <String> [-SubscriptionId <String>] [-IfMatch <String>]
- [-IfNoneMatch <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpdateViaJsonString
-```
-Update-AzNetworkCloudKubernetesClusterFeature -FeatureName <String> -KubernetesClusterName <String>
- -ResourceGroupName <String> -JsonString <String> [-SubscriptionId <String>] [-IfMatch <String>]
- [-IfNoneMatch <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Patch properties of the provided Kubernetes cluster feature.
 
@@ -58,10 +34,6 @@ Patch properties of the provided Kubernetes cluster feature.
 
 ### Example 1: Update Kubernetes cluster's feature
 ```powershell
-$tagUpdatedHash = @{
-    tag = "tag"
-}
-
 Update-AzNetworkCloudKubernetesClusterFeature -FeatureName featureName -KubernetesClusterName kubernetesClusterName -ResourceGroupName resourceGroup -SubscriptionId subscriptionId -Tag $tagUpdatedHash
 ```
 
@@ -111,7 +83,7 @@ The name of the feature.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityKubernetesClusterExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -156,55 +128,11 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
 Parameter Sets: UpdateViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -JsonFilePath
-Path of Json file supplied to the Update operation
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateViaJsonFilePath
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonString
-Json string supplied to the Update operation
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateViaJsonString
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -KubernetesClusterInputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
-Parameter Sets: UpdateViaIdentityKubernetesClusterExpanded
 Aliases:
 
 Required: True
@@ -219,7 +147,7 @@ The name of the Kubernetes cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -246,10 +174,11 @@ Accept wildcard characters: False
 
 ### -Option
 The configured options for the feature.
+To construct, see NOTES section for OPTION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IStringKeyValuePair[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityKubernetesClusterExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250901.IStringKeyValuePair[]
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -265,7 +194,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -281,7 +210,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -296,7 +225,7 @@ The Azure resource tags that will replace the existing ones.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityKubernetesClusterExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -346,7 +275,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IKubernetesClusterFeature
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250901.IKubernetesClusterFeature
 
 ## NOTES
 

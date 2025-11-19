@@ -28,8 +28,8 @@ New-AzNetworkCloudVirtualMachine -Name <String> -ResourceGroupName <String> [-Su
  [-SshPublicKey <ISshPublicKey[]>] [-StorageProfileVolumeAttachment <String[]>] [-Tag <Hashtable>]
  [-UserData <String>] [-VMDeviceModel <String>] [-VMImageRepositoryCredentialsPassword <SecureString>]
  [-VMImageRepositoryCredentialsRegistryUrl <String>] [-VMImageRepositoryCredentialsUsername <String>]
- [-VirtioInterface <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-VirtioInterface <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath

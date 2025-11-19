@@ -14,8 +14,7 @@ Get the properties of the provided cluster manager.
 
 ### List (Default)
 ```
-Get-AzNetworkCloudClusterManager [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzNetworkCloudClusterManager [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get

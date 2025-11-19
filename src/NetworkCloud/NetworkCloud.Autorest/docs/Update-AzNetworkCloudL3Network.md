@@ -26,20 +26,6 @@ Update-AzNetworkCloudL3Network -InputObject <INetworkCloudIdentity> [-IfMatch <S
  [<CommonParameters>]
 ```
 
-### UpdateViaJsonFilePath
-```
-Update-AzNetworkCloudL3Network -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
- [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaJsonString
-```
-Update-AzNetworkCloudL3Network -Name <String> -ResourceGroupName <String> -JsonString <String>
- [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Update tags associated with the provided layer 3 (L3) network.
 
@@ -105,6 +91,7 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
@@ -118,42 +105,12 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -JsonFilePath
-Path of Json file supplied to the Update operation
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateViaJsonFilePath
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonString
-Json string supplied to the Update operation
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateViaJsonString
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
 The name of the L3 network.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded
 Aliases: L3NetworkName
 
 Required: True
@@ -169,7 +126,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -185,7 +142,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -200,7 +157,7 @@ The Azure resource tags that will replace the existing ones.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -250,7 +207,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IL3Network
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250901.IL3Network
 
 ## NOTES
 

@@ -17,8 +17,8 @@ Create a new trunked network or create the properties of the existing trunked ne
 New-AzNetworkCloudTrunkedNetwork -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-IfMatch <String>] [-IfNoneMatch <String>] -ExtendedLocationName <String> -ExtendedLocationType <String>
  -IsolationDomainId <String[]> -Location <String> -Vlan <Int64[]> [-HybridAksPluginType <String>]
- [-InterfaceName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-InterfaceName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath

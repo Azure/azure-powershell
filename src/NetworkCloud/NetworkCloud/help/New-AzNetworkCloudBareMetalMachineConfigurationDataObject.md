@@ -15,8 +15,7 @@ Create an in-memory object for BareMetalMachineConfigurationData.
 ```
 New-AzNetworkCloudBareMetalMachineConfigurationDataObject -BmcCredentialsPassword <SecureString>
  -BmcCredentialsUsername <String> -BmcMacAddress <String> -BootMacAddress <String> -RackSlot <Int64>
- -SerialNumber <String> [-MachineDetail <String>] [-MachineName <String>]
- [<CommonParameters>]
+ -SerialNumber <String> [-MachineDetail <String>] [-MachineName <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

@@ -8,35 +8,22 @@ schema: 2.0.0
 # New-AzNetworkCloudServicesNetwork
 
 ## SYNOPSIS
-Create a new cloud services network or create the properties of the existing cloud services network.
+Create a new cloud services network or update the properties of the existing cloud services network.
 
 ## SYNTAX
 
-### CreateExpanded (Default)
 ```
-New-AzNetworkCloudServicesNetwork -Name <String> -ResourceGroupName <String> -ExtendedLocationName <String>
- -ExtendedLocationType <String> -Location <String> [-SubscriptionId <String>] [-IfMatch <String>]
- [-IfNoneMatch <String>] [-AdditionalEgressEndpoint <IEgressEndpoint[]>]
- [-EnableDefaultEgressEndpoint <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaJsonFilePath
-```
-New-AzNetworkCloudServicesNetwork -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
- [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaJsonString
-```
-New-AzNetworkCloudServicesNetwork -Name <String> -ResourceGroupName <String> -JsonString <String>
- [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] [-DefaultProfile <PSObject>] [-AsJob]
+New-AzNetworkCloudServicesNetwork -CloudServicesNetworkName <String> -ResourceGroupName <String>
+ -ExtendedLocationName <String> -ExtendedLocationType <String> -Location <String> [-SubscriptionId <String>]
+ [-IfMatch <String>] [-IfNoneMatch <String>] [-AdditionalEgressEndpoint <IEgressEndpoint[]>]
+ [-EnableDefaultEgressEndpoint <CloudServicesNetworkEnableDefaultEgressEndpoints>]
+ [-StorageOptionMode <CloudServicesNetworkStorageMode>] [-StorageOptionSizeMiB <Int64>]
+ [-StorageOptionStorageApplianceId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a new cloud services network or create the properties of the existing cloud services network.
+Create a new cloud services network or update the properties of the existing cloud services network.
 
 ## EXAMPLES
 
@@ -63,10 +50,11 @@ This command creates a cloud services network.
 ### -AdditionalEgressEndpoint
 The list of egress endpoints.
 This allows for connection from a Hybrid AKS cluster to the specified endpoint.
+To construct, see NOTES section for ADDITIONALEGRESSENDPOINT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IEgressEndpoint[]
-Parameter Sets: CreateExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250901.IEgressEndpoint[]
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -85,6 +73,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CloudServicesNetworkName
+The name of the cloud services network.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -111,8 +114,8 @@ Accept wildcard characters: False
 The indicator of whether the platform default endpoints are allowed for the egress traffic.
 
 ```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.CloudServicesNetworkEnableDefaultEgressEndpoints
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -127,7 +130,7 @@ The resource ID of the extended location on which the resource will be created.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -142,7 +145,7 @@ The extended location type, for example, CustomLocation.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -185,58 +188,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -JsonFilePath
-Path of Json file supplied to the Create operation
-
-```yaml
-Type: System.String
-Parameter Sets: CreateViaJsonFilePath
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonString
-Json string supplied to the Create operation
-
-```yaml
-Type: System.String
-Parameter Sets: CreateViaJsonString
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Location
 The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-The name of the cloud services network.
-
-```yaml
-Type: System.String
 Parameter Sets: (All)
-Aliases: CloudServicesNetworkName
+Aliases:
 
 Required: True
 Position: Named
@@ -276,6 +234,52 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -StorageOptionMode
+The indicator to enable shared storage on the cloud services network.
+If not specified, the allocation will align with the standard storage enablement.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.CloudServicesNetworkStorageMode
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StorageOptionSizeMiB
+The requested storage allocation for the volume in Mebibytes.
+
+```yaml
+Type: System.Int64
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StorageOptionStorageApplianceId
+The resource ID of the storage appliance that hosts the storage.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 The ID of the target subscription.
 The value must be an UUID.
@@ -297,7 +301,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -345,7 +349,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetwork
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250901.ICloudServicesNetwork
 
 ## NOTES
 

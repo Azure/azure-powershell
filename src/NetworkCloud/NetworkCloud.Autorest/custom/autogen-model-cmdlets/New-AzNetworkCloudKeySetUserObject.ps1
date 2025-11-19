@@ -21,13 +21,12 @@ Create an in-memory object for KeySetUser.
 Create an in-memory object for KeySetUser.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.KeySetUser
+Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250901.KeySetUser
 .Link
-https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-aznetworkcloudkeysetuserobject
+https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-AzNetworkCloudKeySetUserObject
 #>
 function New-AzNetworkCloudKeySetUserObject {
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.ModelCmdletAttribute()]
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.KeySetUser')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250901.KeySetUser')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -46,7 +45,7 @@ function New-AzNetworkCloudKeySetUserObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.KeySetUser]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250901.KeySetUser]::New()
 
         if ($PSBoundParameters.ContainsKey('AzureUserName')) {
             $Object.AzureUserName = $AzureUserName

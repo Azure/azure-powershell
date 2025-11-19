@@ -21,31 +21,30 @@ Create an in-memory object for L3NetworkAttachmentConfiguration.
 Create an in-memory object for L3NetworkAttachmentConfiguration.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.L3NetworkAttachmentConfiguration
+Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250901.L3NetworkAttachmentConfiguration
 .Link
-https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-aznetworkcloudl3networkattachmentconfigurationobject
+https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-AzNetworkCloudL3NetworkAttachmentConfigurationObject
 #>
 function New-AzNetworkCloudL3NetworkAttachmentConfigurationObject {
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.ModelCmdletAttribute()]
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.L3NetworkAttachmentConfiguration')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250901.L3NetworkAttachmentConfiguration')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
         [Parameter(HelpMessage="The indication of whether this network will or will not perform IP address management and allocate IP addresses when attached.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("True", "False")]
-        [string]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.L3NetworkConfigurationIpamEnabled])]
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.L3NetworkConfigurationIpamEnabled]
         $IpamEnabled,
         [Parameter(Mandatory, HelpMessage="The resource ID of the network that is being configured for attachment.")]
         [string]
         $NetworkId,
         [Parameter(HelpMessage="The indicator of how this network will be utilized by the Kubernetes cluster.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("DPDK", "SRIOV", "OSDevice", "MACVLAN", "IPVLAN")]
-        [string]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.KubernetesPluginType])]
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.KubernetesPluginType]
         $PluginType
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.L3NetworkAttachmentConfiguration]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250901.L3NetworkAttachmentConfiguration]::New()
 
         if ($PSBoundParameters.ContainsKey('IpamEnabled')) {
             $Object.IpamEnabled = $IpamEnabled

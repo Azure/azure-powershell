@@ -17,14 +17,15 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzNetworkCloudBareMeta
 Describe 'Invoke-AzNetworkCloudBareMetalMachineReplace' {
     # NOTE: A bug has been opened for this action - please see #868274.
     It 'ReplaceExpanded' -skip {
-        {
-            $bmmConfig = $global:config.AzNetworkCloudBareMetalMachine
-            Invoke-AzNetworkCloudBareMetalMachineReplace -Name $bmmConfig.replaceBmmName -ResourceGroupName $bmmConfig.bmmRg -SubscriptionId $bmmConfig.subscriptionId -BmcCredentialsPassword $bmmConfig.bmcCredsPassword -BmcCredentialsUsername $bmmConfig.bmcCredsUsername -BmcMacAddress $bmmConfig.bmcMacAddress -BootMacAddress $bmmConfig.bootMacAddress -MachineName $bmmConfig.newMachineName -SerialNumber $bmmConfig.serialNumber
-        } | Should -Not -Throw
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Replace' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Replace' {
+        {
+            $bmmConfig = $global:config.AzNetworkCloudBareMetalMachine
+            $securePassword = ConvertTo-SecureString $bmmConfig.bmcCredsPassword -AsPlainText -Force
+            Invoke-AzNetworkCloudBareMetalMachineReplace -Name $bmmConfig.replaceBmmName -ResourceGroupName $bmmConfig.bmmRg -SubscriptionId $bmmConfig.subscriptionId -BmcCredentialsPassword $securePassword -BmcCredentialsUsername $bmmConfig.bmcCredsUsername -BmcMacAddress $bmmConfig.bmcMacAddress -BootMacAddress $bmmConfig.bootMacAddress -MachineName $bmmConfig.newMachineName -SerialNumber $bmmConfig.serialNumber -SafeguardMode $bmmConfig.safeguardMode -StoragePolicy $bmmConfig.storagePolicy
+        } | Should -Not -Throw
     }
 
     It 'ReplaceViaIdentityExpanded' -skip {

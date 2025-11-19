@@ -14,8 +14,7 @@ Get properties of the provided cluster.
 
 ### List (Default)
 ```
-Get-AzNetworkCloudCluster [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzNetworkCloudCluster [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get

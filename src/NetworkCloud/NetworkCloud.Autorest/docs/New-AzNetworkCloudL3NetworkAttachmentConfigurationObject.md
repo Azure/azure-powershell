@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.NetworkCloud
-online version: https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-aznetworkcloudl3networkattachmentconfigurationobject
+online version: https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-AzNetworkCloudL3NetworkAttachmentConfigurationObject
 schema: 2.0.0
 ---
 
@@ -13,8 +13,8 @@ Create an in-memory object for L3NetworkAttachmentConfiguration.
 ## SYNTAX
 
 ```
-New-AzNetworkCloudL3NetworkAttachmentConfigurationObject -NetworkId <String> [-IpamEnabled <String>]
- [-PluginType <String>] [<CommonParameters>]
+New-AzNetworkCloudL3NetworkAttachmentConfigurationObject -NetworkId <String>
+ [-IpamEnabled <L3NetworkConfigurationIpamEnabled>] [-PluginType <KubernetesPluginType>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,7 +41,7 @@ Create an in-memory object for L3NetworkAttachmentConfiguration.
 The indication of whether this network will or will not perform IP address management and allocate IP addresses when attached.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.L3NetworkConfigurationIpamEnabled
 Parameter Sets: (All)
 Aliases:
 
@@ -71,7 +71,7 @@ Accept wildcard characters: False
 The indicator of how this network will be utilized by the Kubernetes cluster.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.KubernetesPluginType
 Parameter Sets: (All)
 Aliases:
 
@@ -89,7 +89,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.L3NetworkAttachmentConfiguration
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250901.L3NetworkAttachmentConfiguration
 
 ## NOTES
 
