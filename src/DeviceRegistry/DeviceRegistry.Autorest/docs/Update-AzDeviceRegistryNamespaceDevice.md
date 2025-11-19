@@ -17,24 +17,24 @@ Update a NamespaceDevice
 Update-AzDeviceRegistryNamespaceDevice -DeviceName <String> -NamespaceName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-Attribute <Hashtable>] [-Enabled]
  [-EndpointInbound <Hashtable>] [-OperatingSystemVersion <String>] [-OutboundAssigned <Hashtable>]
- [-OutboundUnassigned <Hashtable>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-OutboundUnassigned <Hashtable>] [-PolicyResourceId <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzDeviceRegistryNamespaceDevice -InputObject <IDeviceRegistryIdentity> [-Attribute <Hashtable>]
  [-Enabled] [-EndpointInbound <Hashtable>] [-OperatingSystemVersion <String>] [-OutboundAssigned <Hashtable>]
- [-OutboundUnassigned <Hashtable>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-OutboundUnassigned <Hashtable>] [-PolicyResourceId <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityNamespaceExpanded
 ```
 Update-AzDeviceRegistryNamespaceDevice -DeviceName <String> -NamespaceInputObject <IDeviceRegistryIdentity>
  [-Attribute <Hashtable>] [-Enabled] [-EndpointInbound <Hashtable>] [-OperatingSystemVersion <String>]
- [-OutboundAssigned <Hashtable>] [-OutboundUnassigned <Hashtable>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-OutboundAssigned <Hashtable>] [-OutboundUnassigned <Hashtable>] [-PolicyResourceId <String>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
@@ -773,6 +773,21 @@ Set of most recently removed endpoints.
 
 ```yaml
 Type: System.Collections.Hashtable
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityNamespaceExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PolicyResourceId
+Resource Id of the Policy.
+
+```yaml
+Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityNamespaceExpanded
 Aliases:
 
