@@ -20,6 +20,7 @@ Describe 'Switch-AzEdgeActionVersionDefault' {
         $script:edgeActionName = "ea-swap-" + (RandomString $false 8)
         $script:version1 = "v1"
         $script:version2 = "v2"
+        $script:testFilePath = Join-Path $PSScriptRoot 'test_handler.js'
         
         # Create edge action and versions for testing
         New-AzEdgeAction -ResourceGroupName $script:resourceGroupName `
@@ -41,6 +42,17 @@ Describe 'Switch-AzEdgeActionVersionDefault' {
             -DeploymentType "file" `
             -IsDefaultVersion $false `
             -Location "global"
+        
+        # Deploy code to both versions (required for switching default)
+        Deploy-AzEdgeActionVersionCode -ResourceGroupName $script:resourceGroupName `
+            -EdgeActionName $script:edgeActionName `
+            -Version $script:version1 `
+            -FilePath $script:testFilePath
+        
+        Deploy-AzEdgeActionVersionCode -ResourceGroupName $script:resourceGroupName `
+            -EdgeActionName $script:edgeActionName `
+            -Version $script:version2 `
+            -FilePath $script:testFilePath
     }
 
     AfterAll {
