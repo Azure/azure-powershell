@@ -1,0 +1,242 @@
+{
+  "Get-AzDisconnectedOperationsArtifact+[NoContext]+List+$GET+https://management.azure.com/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/test-automation/images/default/artifacts?api-version=2025-06-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/test-automation/images/default/artifacts?api-version=2025-06-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "314da84c-002f-4e39-b326-6c44995d417f" ],
+        "CommandName": [ "Get-AzDisconnectedOperationsArtifact" ],
+        "FullCommandName": [ "Get-AzDisconnectedOperationsArtifact_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.6.0", "PSVersion/v7.4.11", "Az.DisconnectedOperations/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Accept-Ranges": [ "bytes" ],
+        "Set-Cookie": [ "ASLBSA=0003812caa2667c538e5323e8b2f3769a37a67d1b5dc2c9f4b22e202f400018c0a9a; Path=/; Secure; HttpOnly;", "ASLBSACORS=0003812caa2667c538e5323e8b2f3769a37a67d1b5dc2c9f4b22e202f400018c0a9a; SameSite=none; Path=/; Secure; HttpOnly;" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=a2330d2c-ed16-4601-a8ce-6c9d0d999bf4/southeastasia/1f5207e0-e3a2-4a04-97a1-796310eca980" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-azure-ref": [ "20251114T085535Z-r15bc86d757jb4r9hC1PHXfqag0000000xeg00000000bspp" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "x-ms-request-id": [ "bf1c0606-8a4c-4d0f-9267-3cacb7ac6480" ],
+        "x-ms-correlation-request-id": [ "fda08754-8e19-4f84-9f6f-9da724564758" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20251114T085536Z:fda08754-8e19-4f84-9f6f-9da724564758" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-MSEdge-Ref": [ "Ref A: E18F98AC05E94D1F8EE38C2563B6508D Ref B: SIN221080712007 Ref C: 2025-11-14T08:55:34Z" ],
+        "Date": [ "Fri, 14 Nov 2025 08:55:36 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2279" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/test-automation/images/default/artifacts/OSAndDocker-A\",\"name\":\"OSAndDocker-A\",\"type\":\"Microsoft.Edge/disconnectedOperations/images/artifacts\",\"properties\":{\"provisioningState\":\"Succeeded\",\"artifactOrder\":1,\"title\":\"OSAndDocker_A.vhdx\",\"description\":\"OS and docker disk\",\"size\":118857}},{\"id\":\"/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/test-automation/images/default/artifacts/ArcA-LocalData-A\",\"name\":\"ArcA-LocalData-A\",\"type\":\"Microsoft.Edge/disconnectedOperations/images/artifacts\",\"properties\":{\"provisioningState\":\"Succeeded\",\"artifactOrder\":2,\"title\":\"ArcA_LocalData_A.vhdx\",\"description\":\"Local data disk\",\"size\":35068}},{\"id\":\"/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/test-automation/images/default/artifacts/ArcA-SharedData-A\",\"name\":\"ArcA-SharedData-A\",\"type\":\"Microsoft.Edge/disconnectedOperations/images/artifacts\",\"properties\":{\"provisioningState\":\"Succeeded\",\"artifactOrder\":3,\"title\":\"ArcA_SharedData_A.vhdx\",\"description\":\"Shared data disk\",\"size\":82178}},{\"id\":\"/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/test-automation/images/default/artifacts/disconnectedoperations\",\"name\":\"disconnectedoperations\",\"type\":\"Microsoft.Edge/disconnectedOperations/images/artifacts\",\"properties\":{\"provisioningState\":\"Succeeded\",\"artifactOrder\":4,\"title\":\"AzureLocal.disconnectedoperations.zip\",\"description\":\"Disconnected operations - VM configuration, operations module and supporting files.\",\"size\":1064}},{\"id\":\"/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/test-automation/images/default/artifacts/thirdpartynotices\",\"name\":\"thirdpartynotices\",\"type\":\"Microsoft.Edge/disconnectedOperations/images/artifacts\",\"properties\":{\"provisioningState\":\"Succeeded\",\"artifactOrder\":5,\"title\":\"ThirdPartyNotices.txt\",\"description\":\"Third party notices.\",\"size\":20}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzDisconnectedOperationsArtifact+[NoContext]+GetViaIdentityImage+$GET+https://management.azure.com/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/test-automation/images/default/artifacts/thirdpartynotices?api-version=2025-06-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/test-automation/images/default/artifacts/thirdpartynotices?api-version=2025-06-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "61fa8014-e57f-41f4-bf5a-8e1349710a71" ],
+        "CommandName": [ "Get-AzDisconnectedOperationsArtifact" ],
+        "FullCommandName": [ "Get-AzDisconnectedOperationsArtifact_GetViaIdentityImage" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.6.0", "PSVersion/v7.4.11", "Az.DisconnectedOperations/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Accept-Ranges": [ "bytes" ],
+        "Set-Cookie": [ "ASLBSA=0003812caa2667c538e5323e8b2f3769a37a67d1b5dc2c9f4b22e202f400018c0a9a; Path=/; Secure; HttpOnly;", "ASLBSACORS=0003812caa2667c538e5323e8b2f3769a37a67d1b5dc2c9f4b22e202f400018c0a9a; SameSite=none; Path=/; Secure; HttpOnly;" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=a2330d2c-ed16-4601-a8ce-6c9d0d999bf4/westus3/fc05458c-ed90-4931-a3e8-246d68b69f59" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-azure-ref": [ "20251114T085538Z-r15bc86d757gq2gbhC1PHXg3xs0000001vc00000000044va" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "x-ms-request-id": [ "acf60239-0939-470c-974d-3e61068801cd" ],
+        "x-ms-correlation-request-id": [ "0897b625-113d-4a89-9bc9-346ee6e5631a" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "WESTUS3:20251114T085538Z:0897b625-113d-4a89-9bc9-346ee6e5631a" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-MSEdge-Ref": [ "Ref A: A5D41F029A2243259A3568D9A33BCE67 Ref B: SIN221080712007 Ref C: 2025-11-14T08:55:37Z" ],
+        "Date": [ "Fri, 14 Nov 2025 08:55:38 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "437" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/test-automation/images/default/artifacts/thirdpartynotices\",\"name\":\"thirdpartynotices\",\"type\":\"Microsoft.Edge/disconnectedOperations/images/artifacts\",\"properties\":{\"provisioningState\":\"Succeeded\",\"artifactOrder\":5,\"title\":\"ThirdPartyNotices.txt\",\"description\":\"Third party notices.\",\"size\":20}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzDisconnectedOperationsArtifact+[NoContext]+GetViaIdentityDisconnectedOperation+$GET+https://management.azure.com/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/test-automation/images/default/artifacts/thirdpartynotices?api-version=2025-06-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/test-automation/images/default/artifacts/thirdpartynotices?api-version=2025-06-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "68ea51f6-851c-4c5f-a2ea-3a8433a60b26" ],
+        "CommandName": [ "Get-AzDisconnectedOperationsArtifact" ],
+        "FullCommandName": [ "Get-AzDisconnectedOperationsArtifact_GetViaIdentityDisconnectedOperation" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.6.0", "PSVersion/v7.4.11", "Az.DisconnectedOperations/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Accept-Ranges": [ "bytes" ],
+        "Set-Cookie": [ "ASLBSA=0003812caa2667c538e5323e8b2f3769a37a67d1b5dc2c9f4b22e202f400018c0a9a; Path=/; Secure; HttpOnly;", "ASLBSACORS=0003812caa2667c538e5323e8b2f3769a37a67d1b5dc2c9f4b22e202f400018c0a9a; SameSite=none; Path=/; Secure; HttpOnly;" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=a2330d2c-ed16-4601-a8ce-6c9d0d999bf4/westus3/b516fbae-2e62-4fce-941a-51a9ce3ab5a7" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-azure-ref": [ "20251114T085539Z-r15bc86d757gq2gbhC1PHXg3xs0000001vc00000000044wn" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "x-ms-request-id": [ "d008e659-375c-4599-9284-84780e201385" ],
+        "x-ms-correlation-request-id": [ "08840518-7baf-40fe-bb5f-47bb57854ec5" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1098" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16498" ],
+        "x-ms-routing-request-id": [ "WESTUS3:20251114T085539Z:08840518-7baf-40fe-bb5f-47bb57854ec5" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-MSEdge-Ref": [ "Ref A: D9FE6ADBEC6B49F783343585C363064D Ref B: SIN221080712007 Ref C: 2025-11-14T08:55:38Z" ],
+        "Date": [ "Fri, 14 Nov 2025 08:55:38 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "437" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/test-automation/images/default/artifacts/thirdpartynotices\",\"name\":\"thirdpartynotices\",\"type\":\"Microsoft.Edge/disconnectedOperations/images/artifacts\",\"properties\":{\"provisioningState\":\"Succeeded\",\"artifactOrder\":5,\"title\":\"ThirdPartyNotices.txt\",\"description\":\"Third party notices.\",\"size\":20}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzDisconnectedOperationsArtifact+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/test-automation/images/default/artifacts/thirdpartynotices?api-version=2025-06-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/test-automation/images/default/artifacts/thirdpartynotices?api-version=2025-06-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "fe04bca6-b04d-4107-ad6c-df1e8035394f" ],
+        "CommandName": [ "Get-AzDisconnectedOperationsArtifact" ],
+        "FullCommandName": [ "Get-AzDisconnectedOperationsArtifact_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.6.0", "PSVersion/v7.4.11", "Az.DisconnectedOperations/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Accept-Ranges": [ "bytes" ],
+        "Set-Cookie": [ "ASLBSA=0003812caa2667c538e5323e8b2f3769a37a67d1b5dc2c9f4b22e202f400018c0a9a; Path=/; Secure; HttpOnly;", "ASLBSACORS=0003812caa2667c538e5323e8b2f3769a37a67d1b5dc2c9f4b22e202f400018c0a9a; SameSite=none; Path=/; Secure; HttpOnly;" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=a2330d2c-ed16-4601-a8ce-6c9d0d999bf4/westus3/4be1371d-27f4-4f86-9ab6-a2264d3a8e29" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-azure-ref": [ "20251114T085539Z-r15bc86d757gq2gbhC1PHXg3xs0000001vc00000000044yc" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "x-ms-request-id": [ "9d473647-51f7-4d1c-b7c2-8d3fece68ea2" ],
+        "x-ms-correlation-request-id": [ "6f961a65-9029-444e-ac20-ff94b3f4069c" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1097" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16497" ],
+        "x-ms-routing-request-id": [ "WESTUS3:20251114T085540Z:6f961a65-9029-444e-ac20-ff94b3f4069c" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-MSEdge-Ref": [ "Ref A: 1E8F4DE519634B01A3F7B791B3498707 Ref B: SIN221080712007 Ref C: 2025-11-14T08:55:39Z" ],
+        "Date": [ "Fri, 14 Nov 2025 08:55:39 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "437" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/test-automation/images/default/artifacts/thirdpartynotices\",\"name\":\"thirdpartynotices\",\"type\":\"Microsoft.Edge/disconnectedOperations/images/artifacts\",\"properties\":{\"provisioningState\":\"Succeeded\",\"artifactOrder\":5,\"title\":\"ThirdPartyNotices.txt\",\"description\":\"Third party notices.\",\"size\":20}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzDisconnectedOperationsArtifact+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/test-automation/images/default/artifacts/thirdpartynotices?api-version=2025-06-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/test-automation/images/default/artifacts/thirdpartynotices?api-version=2025-06-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "15dba643-30bc-40f7-ae5d-ef4d4a8aee0d" ],
+        "CommandName": [ "Get-AzDisconnectedOperationsArtifact" ],
+        "FullCommandName": [ "Get-AzDisconnectedOperationsArtifact_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.6.0", "PSVersion/v7.4.11", "Az.DisconnectedOperations/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Accept-Ranges": [ "bytes" ],
+        "Set-Cookie": [ "ASLBSA=0003812caa2667c538e5323e8b2f3769a37a67d1b5dc2c9f4b22e202f400018c0a9a; Path=/; Secure; HttpOnly;", "ASLBSACORS=0003812caa2667c538e5323e8b2f3769a37a67d1b5dc2c9f4b22e202f400018c0a9a; SameSite=none; Path=/; Secure; HttpOnly;" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=a2330d2c-ed16-4601-a8ce-6c9d0d999bf4/westus3/a3652a9e-4070-47f1-938d-78ed0f708555" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-azure-ref": [ "20251114T085542Z-r15bc86d757gq2gbhC1PHXg3xs0000001vc0000000004535" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "x-ms-request-id": [ "6ddefba9-04f7-4973-8706-ced74e23e43b" ],
+        "x-ms-correlation-request-id": [ "51142f84-8b7d-40df-93d4-e6a263e6364d" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1096" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16496" ],
+        "x-ms-routing-request-id": [ "WESTUS3:20251114T085542Z:51142f84-8b7d-40df-93d4-e6a263e6364d" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-MSEdge-Ref": [ "Ref A: 5417DD0DCC564BED9EF5675CBAD001F3 Ref B: SIN221080712007 Ref C: 2025-11-14T08:55:42Z" ],
+        "Date": [ "Fri, 14 Nov 2025 08:55:41 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "437" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/test-automation/images/default/artifacts/thirdpartynotices\",\"name\":\"thirdpartynotices\",\"type\":\"Microsoft.Edge/disconnectedOperations/images/artifacts\",\"properties\":{\"provisioningState\":\"Succeeded\",\"artifactOrder\":5,\"title\":\"ThirdPartyNotices.txt\",\"description\":\"Third party notices.\",\"size\":20}}",
+      "isContentBase64": false
+    }
+  }
+}

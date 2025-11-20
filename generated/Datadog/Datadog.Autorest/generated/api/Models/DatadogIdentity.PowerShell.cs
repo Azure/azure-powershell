@@ -87,13 +87,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogIdentityInternal)this).MonitorName = (string) content.GetValueForProperty("MonitorName",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogIdentityInternal)this).MonitorName, global::System.Convert.ToString);
             }
-            if (content.Contains("RuleSetName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogIdentityInternal)this).RuleSetName = (string) content.GetValueForProperty("RuleSetName",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogIdentityInternal)this).RuleSetName, global::System.Convert.ToString);
-            }
             if (content.Contains("ConfigurationName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogIdentityInternal)this).ConfigurationName = (string) content.GetValueForProperty("ConfigurationName",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogIdentityInternal)this).ConfigurationName, global::System.Convert.ToString);
+            }
+            if (content.Contains("RuleSetName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogIdentityInternal)this).RuleSetName = (string) content.GetValueForProperty("RuleSetName",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogIdentityInternal)this).RuleSetName, global::System.Convert.ToString);
             }
             if (content.Contains("Id"))
             {
@@ -128,13 +128,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogIdentityInternal)this).MonitorName = (string) content.GetValueForProperty("MonitorName",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogIdentityInternal)this).MonitorName, global::System.Convert.ToString);
             }
-            if (content.Contains("RuleSetName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogIdentityInternal)this).RuleSetName = (string) content.GetValueForProperty("RuleSetName",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogIdentityInternal)this).RuleSetName, global::System.Convert.ToString);
-            }
             if (content.Contains("ConfigurationName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogIdentityInternal)this).ConfigurationName = (string) content.GetValueForProperty("ConfigurationName",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogIdentityInternal)this).ConfigurationName, global::System.Convert.ToString);
+            }
+            if (content.Contains("RuleSetName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogIdentityInternal)this).RuleSetName = (string) content.GetValueForProperty("RuleSetName",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogIdentityInternal)this).RuleSetName, global::System.Convert.ToString);
             }
             if (content.Contains("Id"))
             {
