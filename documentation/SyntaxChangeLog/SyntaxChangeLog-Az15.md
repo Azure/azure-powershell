@@ -1,3 +1,18 @@
+## 15.1.0 - December 2025
+#### Az.Functions 4.3.0 
+* Modified cmdlet `Get-AzFunctionAppAvailableLocation`
+   - Added parameter `-ZoneRedundancy`
+* Modified cmdlet `New-AzFunctionApp`
+   - Added parameters `-FlexConsumptionLocation`, `-DeploymentStorageName`, `-DeploymentStorageContainerName`, `-DeploymentStorageAuthType`, `-DeploymentStorageAuthValue`, `-AlwaysReady`, `-MaximumInstanceCount`, `-InstanceMemoryMB`, `-HttpPerInstanceConcurrency`, `-EnableZoneRedundancy`
+* Added cmdlet `Get-AzFunctionAppFlexConsumptionRuntime`
+#### Az.Migrate 2.10.1 
+* Modified cmdlet `New-AzMigrateServerReplication`
+   - Added parameter `-TargetCapacityReservationGroupId`
+* Modified cmdlet `Set-AzMigrateServerReplication`
+   - Added parameter `-TargetCapacityReservationGroupId`
+* Modified cmdlet `Start-AzMigrateServerMigration`
+   - Added parameter `-TargetCapacityReservationGroupId`
+
 ## 15.0.0 - November 2025
 #### Az.Advisor 3.0.0 
 * Modified cmdlet `Set-AzAdvisorConfiguration`
@@ -1128,5 +1143,6 @@
    - Changed the type of parameter `-ManagedResourcesNetworkAccessType` from `ManagedResourcesNetworkAccessType` to `String`
    - Changed the type of parameter `-UserAssignedIdentity` from `Hashtable` to `String[]`
 * Added cmdlet `Update-AzWorkloadsProviderInstance`
+
 
 

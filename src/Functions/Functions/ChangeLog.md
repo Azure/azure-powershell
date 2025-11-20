@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 4.3.0
 * Added FlexConsumption support to Get-AzFunctionAppAvailableLocation, which returns a list of regions that supported Flex Consumption, including locations supporting zone redundancy (currently applied only to Flex Consumption)
 * Added a new cmdlet Get-AzFunctionAppFlexConsumptionRuntime to retrieve Flex Consumption runtimes for a specified location
 * Added a new parameter set to New-AzFunctionApp to support Flex Consumption function apps [#24349]

@@ -1,3 +1,21 @@
+## 15.1.0 - December 2025
+#### Az.AppConfiguration 2.0.1
+* Fixed GitHub issue #23731 'Problem with Get-AzAppConfigurationKeyValue when more that 100 records are present'
+    - Fixed 'NextLink' property to give absolute URI, allowing subsequent pages of results to be retrieved.
+
+#### Az.ElasticSan 1.6.0
+* Reverted changes for auto scale, pre-backup, and pre-restore 
+    - 'New-AzElasticSan'
+    - 'Update-AzElasticSan'
+    - 'Test-AzElasticSanVolumeBackup'
+    - 'Test-AzElasticSanVolumeRestore'
+
+#### Az.Functions 4.3.0
+* Added FlexConsumption support to Get-AzFunctionAppAvailableLocation, which returns a list of regions that supported Flex Consumption, including locations supporting zone redundancy (currently applied only to Flex Consumption)
+* Added a new cmdlet Get-AzFunctionAppFlexConsumptionRuntime to retrieve Flex Consumption runtimes for a specified location
+* Added a new parameter set to New-AzFunctionApp to support Flex Consumption function apps [#24349]
+* Refreshed stack definitions
+
 ## 15.0.0 - November 2025
 #### Az.Accounts 5.3.1
 * Updated Azure.Core from 1.45.0 to 1.47.3
