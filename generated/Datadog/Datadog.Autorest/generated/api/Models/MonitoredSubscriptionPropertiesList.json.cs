@@ -7,8 +7,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Extensions;
 
-    /// <summary>Dictionary of <string></summary>
-    public partial class DatadogMonitorResourceTags
+    /// <summary>Paged collection of MonitoredSubscriptionProperties items</summary>
+    public partial class MonitoredSubscriptionPropertiesList
     {
 
         /// <summary>
@@ -54,11 +54,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
         partial void BeforeToJson(ref Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonObject container, ref bool returnNow);
 
         /// <summary>
-        /// Deserializes a Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonObject into a new instance of <see cref="DatadogMonitorResourceTags" />.
+        /// Deserializes a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonNode"/> into an instance of Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoredSubscriptionPropertiesList.
+        /// </summary>
+        /// <param name="node">a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonNode" /> to deserialize from.</param>
+        /// <returns>
+        /// an instance of Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoredSubscriptionPropertiesList.
+        /// </returns>
+        public static Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoredSubscriptionPropertiesList FromJson(Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonNode node)
+        {
+            return node is Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonObject json ? new MonitoredSubscriptionPropertiesList(json) : null;
+        }
+
+        /// <summary>
+        /// Deserializes a Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonObject into a new instance of <see cref="MonitoredSubscriptionPropertiesList" />.
         /// </summary>
         /// <param name="json">A Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonObject instance to deserialize from.</param>
-        /// <param name="exclusions"></param>
-        internal DatadogMonitorResourceTags(Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonObject json, global::System.Collections.Generic.HashSet<string> exclusions = null)
+        internal MonitoredSubscriptionPropertiesList(Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonObject json)
         {
             bool returnNow = false;
             BeforeFromJson(json, ref returnNow);
@@ -66,30 +77,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
             {
                 return;
             }
-            Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.JsonSerializable.FromJson( json, ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.IAssociativeArray<string>)this).AdditionalProperties, null ,exclusions );
+            {_value = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonArray>("value"), out var __jsonValue) ? If( __jsonValue as Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoredSubscriptionProperties>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoredSubscriptionProperties) (Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.MonitoredSubscriptionProperties.FromJson(__u) )) ))() : null : _value;}
+            {_nextLink = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonString>("nextLink"), out var __jsonNextLink) ? (string)__jsonNextLink : (string)_nextLink;}
             AfterFromJson(json);
         }
 
         /// <summary>
-        /// Deserializes a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonNode"/> into an instance of Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceTags.
-        /// </summary>
-        /// <param name="node">a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonNode" /> to deserialize from.</param>
-        /// <returns>
-        /// an instance of Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceTags.
-        /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceTags FromJson(Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonNode node)
-        {
-            return node is Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonObject json ? new DatadogMonitorResourceTags(json) : null;
-        }
-
-        /// <summary>
-        /// Serializes this instance of <see cref="DatadogMonitorResourceTags" /> into a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonNode" />.
+        /// Serializes this instance of <see cref="MonitoredSubscriptionPropertiesList" /> into a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonNode"
+        /// />.
         /// </summary>
         /// <param name="container">The <see cref="Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonObject"/> container to serialize this object into. If the caller
         /// passes in <c>null</c>, a new instance will be created and returned to the caller.</param>
         /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.SerializationMode"/>.</param>
         /// <returns>
-        /// a serialized instance of <see cref="DatadogMonitorResourceTags" /> as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonNode" />.
+        /// a serialized instance of <see cref="MonitoredSubscriptionPropertiesList" /> as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonNode" />.
         /// </returns>
         public Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonNode ToJson(Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonObject container, Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.SerializationMode serializationMode)
         {
@@ -101,7 +102,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
             {
                 return container;
             }
-            Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.JsonSerializable.ToJson( ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.IAssociativeArray<string>)this).AdditionalProperties, container);
+            if (null != this._value)
+            {
+                var __w = new Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.XNodeArray();
+                foreach( var __x in this._value )
+                {
+                    AddIf(__x?.ToJson(null, serializationMode) ,__w.Add);
+                }
+                container.Add("value",__w);
+            }
+            AddIf( null != (((object)this._nextLink)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonString(this._nextLink.ToString()) : null, "nextLink" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

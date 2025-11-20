@@ -54,6 +54,7 @@ NETWORKPROFILE <INetworkProfile>: Network settings
   [EgressNatIP <List<IIPAddress>>]: Egress nat IP to use
     [Address <String>]: Address value
     [ResourceId <String>]: Resource Id
+  [PrivateSourceNatRulesDestination <List<String>>]: Array of ipv4 destination address for which source NAT is to be performed
   [TrustedRange <List<String>>]: Non-RFC 1918 address
   [VHubAddressSpace <String>]: Address Space
   [VHubResourceId <String>]: Resource Id
@@ -67,7 +68,7 @@ NETWORKPROFILE <INetworkProfile>: Network settings
   [VnetResourceId <String>]: Resource Id
   [VwanConfigurationIPOfTrustSubnetForUdrAddress <String>]: Address value
   [VwanConfigurationIPOfTrustSubnetForUdrResourceId <String>]: Resource Id
-  [VwanConfigurationNetworkVirtualApplianceId <String>]: Network Virtual Appliance resource ID 
+  [VwanConfigurationNetworkVirtualApplianceId <String>]: Network Virtual Appliance resource ID
   [VwanConfigurationTrustSubnetAddressSpace <String>]: Address Space
   [VwanConfigurationTrustSubnetResourceId <String>]: Resource Id
   [VwanConfigurationUnTrustSubnetAddressSpace <String>]: Address Space
@@ -179,7 +180,7 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Category('Body')]
     [System.Management.Automation.SwitchParameter]
-    # Decides if enable a system assigned identity for the resource.
+    # Determines whether to enable a system-assigned identity for the resource.
     ${EnableSystemAssignedIdentity},
 
     [Parameter()]
@@ -196,6 +197,14 @@ param(
     # Panorama Managed: Default is False.
     # Default will be CloudSec managed
     ${IsPanoramaManaged},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.PSArgumentCompleterAttribute("TRUE", "FALSE")]
+    [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Category('Body')]
+    [System.String]
+    # Strata Cloud Managed: Default is False.
+    # Default will be CloudSec managed
+    ${IsStrataCloudManaged},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.PSArgumentCompleterAttribute("PendingFulfillmentStart", "Subscribed", "Suspended", "Unsubscribed", "NotStarted", "FulfillmentRequested")]
@@ -223,6 +232,12 @@ param(
     [System.String]
     # different usage type like PAYG/COMMITTED
     ${PlanDataUsageType},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Category('Body')]
+    [System.String]
+    # Strata Cloud Manager name which is intended to manage the policy for this firewall.
+    ${StratumCloudManagerConfigCloudManagerName},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Category('Body')]
@@ -307,6 +322,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -329,8 +353,6 @@ begin {
             CreateExpanded = 'Az.PaloAltoNetworks.private\New-AzPaloAltoNetworksFirewall_CreateExpanded';
         }
         if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -344,6 +366,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
