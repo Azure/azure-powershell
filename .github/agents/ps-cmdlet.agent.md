@@ -1,5 +1,5 @@
 ﻿---
-name: PowerShell PR Agent
+name: PowerShell Pull Request Agent
 description: Specialized agent for creating PowerShell pull requests based on a design request
 ---
 
