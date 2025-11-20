@@ -59,14 +59,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         ComputeAutomationAutoMapperProfile.Mapper.Map<VirtualMachineScaleSetVMInstanceView, PSVirtualMachineScaleSetVMInstanceView>(result, psObject);
                         WriteObject(psObject);
                     }
-                    else if (this.ResiliencyView == true)
+                    else if (this.ResiliencyView.IsPresent)
                     {
                         var result = VirtualMachineScaleSetVMsClient.Get(resourceGroupName, vmScaleSetName, instanceId, ResiliencyViewExpand);
                         var psObject = new PSVirtualMachineScaleSetVM();
                         ComputeAutomationAutoMapperProfile.Mapper.Map<VirtualMachineScaleSetVM, PSVirtualMachineScaleSetVM>(result, psObject);
                         WriteObject(psObject);
                     }
-                    else if (this.UserData == true)
+                    else if (this.UserData.IsPresent)
                     {
                         var result = VirtualMachineScaleSetVMsClient.Get(resourceGroupName, vmScaleSetName, instanceId, UserDataExpand);
                         var psObject = new PSVirtualMachineScaleSetVM();
