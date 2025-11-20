@@ -15,20 +15,21 @@ Update an HCI cluster.
 ### UpdateExpanded (Default)
 ```
 Update-AzStackHciCluster -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-AadTenantId <String>] [-CloudManagementEndpoint <String>]
- [-DesiredPropertyDiagnosticLevel <DiagnosticLevel>]
- [-DesiredPropertyWindowsServerSubscription <WindowsServerSubscription>]
- [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AadApplicationObjectId <String>] [-AadServicePrincipalObjectId <String>] [-AadTenantId <String>]
+ [-CloudManagementEndpoint <String>] [-DesiredPropertyDiagnosticLevel <String>]
+ [-DesiredPropertyWindowsServerSubscription <String>] [-EnableSystemAssignedIdentity <Boolean?>]
+ [-SoftwareAssurancePropertySoftwareAssuranceIntent <String>] [-Tag <Hashtable>]
+ [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzStackHciCluster -InputObject <IStackHciIdentity> [-AadTenantId <String>]
- [-CloudManagementEndpoint <String>] [-DesiredPropertyDiagnosticLevel <DiagnosticLevel>]
- [-DesiredPropertyWindowsServerSubscription <WindowsServerSubscription>]
- [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzStackHciCluster -InputObject <IStackHciIdentity> [-AadApplicationObjectId <String>]
+ [-AadServicePrincipalObjectId <String>] [-AadTenantId <String>] [-CloudManagementEndpoint <String>]
+ [-DesiredPropertyDiagnosticLevel <String>] [-DesiredPropertyWindowsServerSubscription <String>]
+ [-EnableSystemAssignedIdentity <Boolean?>] [-SoftwareAssurancePropertySoftwareAssuranceIntent <String>]
+ [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -51,6 +52,36 @@ Updating DiagnosticLevel and WindowsServerSubscription values for a cluster.
 
 ## PARAMETERS
 
+### -AadApplicationObjectId
+Object id of cluster AAD identity.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AadServicePrincipalObjectId
+Id of cluster identity service principal.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AadTenantId
 Tenant id of cluster AAD identity.
 
@@ -67,7 +98,7 @@ Accept wildcard characters: False
 ```
 
 ### -CloudManagementEndpoint
-Endpoint configured for management from the Azure portal
+Endpoint configured for management from the Azure portal.
 
 ```yaml
 Type: System.String
@@ -101,7 +132,7 @@ Accept wildcard characters: False
 Desired level of diagnostic data emitted by the cluster.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.DiagnosticLevel
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -116,7 +147,7 @@ Accept wildcard characters: False
 Desired state of Windows Server Subscription.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.WindowsServerSubscription
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -127,28 +158,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityType
-Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+### -EnableSystemAssignedIdentity
+Determines whether to enable a system-assigned identity for the resource.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ManagedServiceIdentityType
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IdentityUserAssignedIdentity
-The set of user assigned identities associated with the resource.
-The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-The dictionary values can be empty objects ({}) in requests.
-
-```yaml
-Type: System.Collections.Hashtable
+Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
 Parameter Sets: (All)
 Aliases:
 
@@ -161,7 +175,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity
@@ -206,6 +219,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SoftwareAssurancePropertySoftwareAssuranceIntent
+Customer Intent for Software Assurance Benefit.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 The ID of the target subscription.
 The value must be an UUID.
@@ -227,6 +255,22 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentity
+The array of user assigned identities associated with the resource.
+The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+
+```yaml
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -277,7 +321,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ICluster
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ICluster
 
 ## NOTES
 
