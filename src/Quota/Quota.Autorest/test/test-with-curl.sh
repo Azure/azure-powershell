@@ -13,23 +13,19 @@ fi
 
 echo "Token retrieved (length: ${#TOKEN})"
 
-URL="https://management.azure.com/providers/Microsoft.Management/managementGroups/mg-demo/providers/Microsoft.Quota/groupQuotas/testlocation/resourceProviders/Microsoft.Compute/locationSettings/eastus?api-version=2025-09-01"
+URL="https://management.azure.com/providers/Microsoft.Management/managementGroups/mg-demo/providers/Microsoft.Quota/groupQuotas/testlocation/subscriptionRequests?api-version=2025-09-01"
 
 echo ""
-echo "Test 1: enforcementEnabled = 'Enabled'"
-echo "========================================"
-curl -X PUT "$URL" \
+echo "Test: Get-AzQuotaGroupQuotaSubscriptionRequest"
+echo "==============================================="
+echo "URL: $URL"
+echo ""
+curl -X GET "$URL" \
   -H "Authorization: Bearer $TOKEN" \
   -H "Content-Type: application/json" \
-  -d '{"properties":{"enforcementEnabled":"Enabled"}}' \
-  -s -w "\nHTTP Code: %{http_code}\n"
+  -s -w "\nHTTP Code: %{http_code}\n" | jq -C '.'
 
 echo ""
-echo ""
-echo "Test 2: enforcementEnabled = 'Disabled'"
-echo "========================================"
-curl -X PUT "$URL" \
-  -H "Authorization: Bearer $TOKEN" \
-  -H "Content-Type: application/json" \
-  -d '{"properties":{"enforcementEnabled":"Disabled"}}' \
-  -s -w "\nHTTP Code: %{http_code}\n"
+echo "Note: This API may return 401 if there are no active subscription requests"
+echo "      or if async operation tokens have expired."
+

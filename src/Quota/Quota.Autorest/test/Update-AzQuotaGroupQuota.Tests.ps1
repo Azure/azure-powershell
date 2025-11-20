@@ -1,5 +1,3 @@
-##TODO##: Cannot update GroupQuota if subscriptions are added. Error: "GroupQuota properties cannot be changed, if subscriptions are added or Quotais allocated."
-
 if(($null -eq $TestName) -or ($TestName -contains 'Update-AzQuotaGroupQuota'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
