@@ -146,7 +146,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResiliencyView
-Gets the resilient VM deletion status for the VM, which indicates whether retries are in progress, failed, or not started.
+Gets the resilient VM deletion status for the VM, which indicates whether retries are in progress, failed, or not started. This parameter is only supported when retrieving a specific VM instance (when InstanceId is provided).
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -161,7 +161,7 @@ Accept wildcard characters: False
 ```
 
 ### -VMScaleSetName
-Species the name of the VMSS.
+Specifies the name of the VMSS.
 
 ```yaml
 Type: System.String
