@@ -999,5 +999,9 @@
   {
     "alias": "DnsResolver",
     "module": "DnsResolver"
+  },
+  {
+    "alias": "DisconnectedOperations",
+    "module": "DisconnectedOperations"
   }
 ]
