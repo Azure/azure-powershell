@@ -23,6 +23,8 @@ Restart a targeted node of a Kubernetes cluster.
 Restart-AzNetworkCloudKubernetesClusterNode -KubernetesClusterName kubernetesClusterName -ResourceGroupName resourceGroup -NodeName nodeName -SubscriptionId subscriptionId 
 
 .Inputs
+Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IKubernetesClusterRestartNodeParameters
+.Inputs
 Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
 .Outputs
 System.Boolean
@@ -54,6 +56,9 @@ INPUTOBJECT <INetworkCloudIdentity>: Identity Parameter
   [TrunkedNetworkName <String>]: The name of the trunked network.
   [VirtualMachineName <String>]: The name of the virtual machine.
   [VolumeName <String>]: The name of the volume.
+
+KUBERNETESCLUSTERRESTARTNODEPARAMETER <IKubernetesClusterRestartNodeParameters>: KubernetesClusterRestartNodeParameters represents the body of the request to restart the node of a Kubernetes cluster.
+  NodeName <String>: The name of the node to restart.
 .Link
 https://learn.microsoft.com/powershell/module/az.networkcloud/restart-aznetworkcloudkubernetesclusternode
 #>
@@ -61,20 +66,29 @@ function Restart-AzNetworkCloudKubernetesClusterNode {
 [OutputType([System.Boolean])]
 [CmdletBinding(DefaultParameterSetName='RestartExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
+    [Parameter(ParameterSetName='Restart', Mandatory)]
     [Parameter(ParameterSetName='RestartExpanded', Mandatory)]
+    [Parameter(ParameterSetName='RestartViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='RestartViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Path')]
     [System.String]
     # The name of the Kubernetes cluster.
     ${KubernetesClusterName},
 
+    [Parameter(ParameterSetName='Restart', Mandatory)]
     [Parameter(ParameterSetName='RestartExpanded', Mandatory)]
+    [Parameter(ParameterSetName='RestartViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='RestartViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
+    [Parameter(ParameterSetName='Restart')]
     [Parameter(ParameterSetName='RestartExpanded')]
+    [Parameter(ParameterSetName='RestartViaJsonFilePath')]
+    [Parameter(ParameterSetName='RestartViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -82,18 +96,38 @@ param(
     # The value must be an UUID.
     ${SubscriptionId},
 
+    [Parameter(ParameterSetName='RestartViaIdentity', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='RestartViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='Restart', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='RestartViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IKubernetesClusterRestartNodeParameters]
+    # KubernetesClusterRestartNodeParameters represents the body of the request to restart the node of a Kubernetes cluster.
+    ${KubernetesClusterRestartNodeParameter},
+
+    [Parameter(ParameterSetName='RestartExpanded', Mandatory)]
+    [Parameter(ParameterSetName='RestartViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.String]
     # The name of the node to restart.
     ${NodeName},
+
+    [Parameter(ParameterSetName='RestartViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Restart operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='RestartViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
+    [System.String]
+    # Json string supplied to the Restart operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -169,6 +203,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -188,12 +231,14 @@ begin {
         }
 
         $mapping = @{
+            Restart = 'Az.NetworkCloud.private\Restart-AzNetworkCloudKubernetesClusterNode_Restart';
             RestartExpanded = 'Az.NetworkCloud.private\Restart-AzNetworkCloudKubernetesClusterNode_RestartExpanded';
+            RestartViaIdentity = 'Az.NetworkCloud.private\Restart-AzNetworkCloudKubernetesClusterNode_RestartViaIdentity';
             RestartViaIdentityExpanded = 'Az.NetworkCloud.private\Restart-AzNetworkCloudKubernetesClusterNode_RestartViaIdentityExpanded';
+            RestartViaJsonFilePath = 'Az.NetworkCloud.private\Restart-AzNetworkCloudKubernetesClusterNode_RestartViaJsonFilePath';
+            RestartViaJsonString = 'Az.NetworkCloud.private\Restart-AzNetworkCloudKubernetesClusterNode_RestartViaJsonString';
         }
-        if (('RestartExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Restart', 'RestartExpanded', 'RestartViaJsonFilePath', 'RestartViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -207,6 +252,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

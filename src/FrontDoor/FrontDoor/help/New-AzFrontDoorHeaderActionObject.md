@@ -1,63 +1,49 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-Help.xml
+external help file: Az.FrontDoor-help.xml
 Module Name: Az.FrontDoor
-online version: https://learn.microsoft.com/powershell/module/az.frontdoor/new-azfrontdoorheaderactionobject
+online version: https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-azfrontdoorheaderactionobject
 schema: 2.0.0
 ---
 
 # New-AzFrontDoorHeaderActionObject
 
 ## SYNOPSIS
-Create PSHeaderAction object.
+Create an in-memory object for HeaderAction.
 
 ## SYNTAX
 
 ```
-New-AzFrontDoorHeaderActionObject -HeaderName <String> -HeaderActionType <PSHeaderActionType> [-Value <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzFrontDoorHeaderActionObject -HeaderActionType <String> -HeaderName <String> [-Value <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates PSHeaderAction object for the creation of PSRulesEngineAction object.
+Create an in-memory object for HeaderAction.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1 :Creates PSHeaderAction object for the creation of PSRulesEngineAction object.
 ```powershell
 New-AzFrontDoorHeaderActionObject -HeaderName headername -HeaderActionType Append
 ```
 
 ```output
-HeaderName HeaderActionType Value
----------- ---------------- -----
-headername           Append
+HeaderActionType HeaderName Value
+---------------- ---------- -----
+Append           headername
 ```
+
+Creates PSHeaderAction object for the creation of PSRulesEngineAction object.
 
 ## PARAMETERS
-
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
-
-```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
-Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -HeaderActionType
 Which type of manipulation to apply to the header.
 
 ```yaml
-Type: Microsoft.Azure.Commands.FrontDoor.Models.PSHeaderActionType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Append, Delete, Overwrite
 
 Required: True
 Position: Named
@@ -102,11 +88,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.FrontDoor.Models.PSHeaderAction
+### Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.HeaderAction
 
 ## NOTES
 

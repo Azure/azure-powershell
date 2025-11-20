@@ -24,7 +24,9 @@ namespace Microsoft.Azure.Management.Compute.Models
         [EnumMember(Value = "instanceView")]
         InstanceView,
         [EnumMember(Value = "userData")]
-        UserData
+        UserData,
+        [EnumMember(Value = "resiliencyView")]
+        ResiliencyView
     }
     internal static class InstanceViewTypesEnumExtension
     {
@@ -41,6 +43,8 @@ namespace Microsoft.Azure.Management.Compute.Models
                     return "instanceView";
                 case InstanceViewTypes.UserData:
                     return "userData";
+                case InstanceViewTypes.ResiliencyView:
+                    return "resiliencyView";
             }
             return null;
         }
@@ -53,6 +57,8 @@ namespace Microsoft.Azure.Management.Compute.Models
                     return InstanceViewTypes.InstanceView;
                 case "userData":
                     return InstanceViewTypes.UserData;
+                case "resiliencyView":
+                    return InstanceViewTypes.ResiliencyView;
             }
             return null;
         }

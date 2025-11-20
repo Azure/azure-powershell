@@ -16,13 +16,13 @@ Gets the specified version of a gallery inVMAccessControlProfile or a list of ve
 ```
 Get-AzGalleryInVMAccessControlProfileVersion -ResourceGroupName <String> -GalleryName <String>
  -GalleryInVMAccessControlProfileName <String> [-GalleryInVMAccessControlProfileVersionName <String>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceIdParameter
 ```
 Get-AzGalleryInVMAccessControlProfileVersion [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -50,7 +50,7 @@ Gets the list of all versions of the gallery inVMAccessControlProfile from the g
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -65,7 +65,7 @@ Accept wildcard characters: False
 The name of the Gallery In VM Access Control Profile.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DefaultParameter
 Aliases:
 
@@ -80,7 +80,7 @@ Accept wildcard characters: False
 The name of the Gallery In VM Access Control Profile Version.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DefaultParameter
 Aliases: Name
 
@@ -95,7 +95,7 @@ Accept wildcard characters: False
 The name of the gallery.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DefaultParameter
 Aliases:
 
@@ -106,26 +106,11 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DefaultParameter
 Aliases:
 
@@ -140,7 +125,7 @@ Accept wildcard characters: False
 {{ Fill ResourceId Description }}
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdParameter
 Aliases:
 

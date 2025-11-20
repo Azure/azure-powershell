@@ -23,7 +23,7 @@ Create an in-memory object for BgpServiceLoadBalancerConfiguration.
 
 $ipAddressPools=New-AzNetworkCloudIpAddressPoolObject -Address @("198.51.102.0/24") -Name "pool1" -AutoAssign True -OnlyUseHostIP True 
 
-$serviceLoadBalancerBgpPeer=New-AzNetworkCloudServiceLoadBalancerBgpPeerObject -Name name -PeerAddress "203.0.113.254" -PeerAsn "64497" -BfdEnabled False -BgpMultiHop False -HoldTime "P300s" -KeepAliveTime "P300s" -MyAsn 64512 -Password passsword -PeerPort 1234
+$serviceLoadBalancerBgpPeer=New-AzNetworkCloudServiceLoadBalancerBgpPeerObject -Name name -PeerAddress "203.0.113.254" -PeerAsn "64497" -BfdEnabled False -BgpMultiHop False -HoldTime "P300s" -KeepAliveTime "P300s" -MyAsn 64512 -Password REDACTED -PeerPort 1234
 
 $bgpAdvertisement=New-AzNetworkCloudBgpAdvertisementObject -IPAddressPool  @("pool1","pool2") -AdvertiseToFabric "True" -Community  @("communityString") -Peer @("peer1") 
 
@@ -32,24 +32,24 @@ $object=New-AzNetworkCloudBgpServiceLoadBalancerConfigurationObject -BgpAdvertis
 Write-Host ($object | Format-List | Out-String)
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.BgpServiceLoadBalancerConfiguration
+Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.BgpServiceLoadBalancerConfiguration
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 BGPADVERTISEMENT <IBgpAdvertisement[]>: The association of IP address pools to the communities and peers, allowing for announcement of IPs.
-  IPAddressPool <String[]>: The names of the IP address pools associated with this announcement.
-  [AdvertiseToFabric <AdvertiseToFabric?>]: The indicator of if this advertisement is also made to the network fabric associated with the Network Cloud Cluster. This field is ignored if fabricPeeringEnabled is set to False.
-  [Community <String[]>]: The names of the BGP communities to be associated with the announcement, utilizing a BGP community string in 1234:1234 format.
-  [Peer <String[]>]: The names of the BGP peers to limit this advertisement to. If no values are specified, all BGP peers will receive this advertisement.
+  IPAddressPool <List<String>>: The names of the IP address pools associated with this announcement.
+  [AdvertiseToFabric <String>]: The indicator of if this advertisement is also made to the network fabric associated with the Network Cloud Cluster. This field is ignored if fabricPeeringEnabled is set to False.
+  [Community <List<String>>]: The names of the BGP communities to be associated with the announcement, utilizing a BGP community string in 1234:1234 format.
+  [Peer <List<String>>]: The names of the BGP peers to limit this advertisement to. If no values are specified, all BGP peers will receive this advertisement.
 
 BGPPEER <IServiceLoadBalancerBgpPeer[]>: The list of additional BgpPeer entities that the Kubernetes cluster will peer with. All peering must be explicitly defined.
   Name <String>: The name used to identify this BGP peer for association with a BGP advertisement.
   PeerAddress <String>: The IPv4 or IPv6 address used to connect this BGP session.
   PeerAsn <Int64>: The autonomous system number expected from the remote end of the BGP session.
-  [BfdEnabled <BfdEnabled?>]: The indicator of BFD enablement for this BgpPeer.
-  [BgpMultiHop <BgpMultiHop?>]: The indicator to enable multi-hop peering support.
+  [BfdEnabled <String>]: The indicator of BFD enablement for this BgpPeer.
+  [BgpMultiHop <String>]: The indicator to enable multi-hop peering support.
   [HoldTime <String>]: Field Deprecated. The field was previously optional, now it will have no defined behavior and will be ignored. The requested BGP hold time value. This field uses ISO 8601 duration format, for example P1H.
   [KeepAliveTime <String>]: Field Deprecated. The field was previously optional, now it will have no defined behavior and will be ignored. The requested BGP keepalive time value. This field uses ISO 8601 duration format, for example P1H.
   [MyAsn <Int64?>]: The autonomous system number used for the local end of the BGP session.
@@ -57,44 +57,41 @@ BGPPEER <IServiceLoadBalancerBgpPeer[]>: The list of additional BgpPeer entities
   [PeerPort <Int64?>]: The port used to connect this BGP session.
 
 IPADDRESSPOOL <IIPAddressPool[]>: The list of pools of IP addresses that can be allocated to load balancer services.
-  Address <String[]>: The list of IP address ranges. Each range can be a either a subnet in CIDR format or an explicit start-end range of IP addresses. For a BGP service load balancer configuration, only CIDR format is supported and excludes /32 (IPv4) and /128 (IPv6) prefixes.
   Name <String>: The name used to identify this IP address pool for association with a BGP advertisement.
-  [AutoAssign <BfdEnabled?>]: The indicator to determine if automatic allocation from the pool should occur.
-  [OnlyUseHostIP <BfdEnabled?>]: The indicator to prevent the use of IP addresses ending with .0 and .255 for this pool. Enabling this option will only use IP addresses between .1 and .254 inclusive.
+  [Address <List<String>>]: The list of IP address ranges. Each range can be a either a subnet in CIDR format or an explicit start-end range of IP addresses. For a BGP service load balancer configuration, only CIDR format is supported and excludes /32 (IPv4) and /128 (IPv6) prefixes.
+  [AutoAssign <String>]: The indicator to determine if automatic allocation from the pool should occur.
+  [OnlyUseHostIP <String>]: The indicator to prevent the use of IP addresses ending with .0 and .255 for this pool. Enabling this option will only use IP addresses between .1 and .254 inclusive.
 .Link
-https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-AzNetworkCloudBgpServiceLoadBalancerConfigurationObject
+https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-aznetworkcloudbgpserviceloadbalancerconfigurationobject
 #>
 function New-AzNetworkCloudBgpServiceLoadBalancerConfigurationObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.BgpServiceLoadBalancerConfiguration])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.BgpServiceLoadBalancerConfiguration])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IBgpAdvertisement[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBgpAdvertisement[]]
     # The association of IP address pools to the communities and peers, allowing for announcement of IPs.
-    # To construct, see NOTES section for BGPADVERTISEMENT properties and create a hash table.
     ${BgpAdvertisement},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IServiceLoadBalancerBgpPeer[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IServiceLoadBalancerBgpPeer[]]
     # The list of additional BgpPeer entities that the Kubernetes cluster will peer with.
     # All peering must be explicitly defined.
-    # To construct, see NOTES section for BGPPEER properties and create a hash table.
     ${BgpPeer},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.FabricPeeringEnabled])]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("True", "False")]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.FabricPeeringEnabled]
+    [System.String]
     # The indicator to specify if the load balancer peers with the network fabric.
     ${FabricPeeringEnabled},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IIPAddressPool[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IIPAddressPool[]]
     # The list of pools of IP addresses that can be allocated to load balancer services.
-    # To construct, see NOTES section for IPADDRESSPOOL properties and create a hash table.
     ${IPAddressPool}
 )
 
@@ -105,6 +102,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -133,6 +133,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

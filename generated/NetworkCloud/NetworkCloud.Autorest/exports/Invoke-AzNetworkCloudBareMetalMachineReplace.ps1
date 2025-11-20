@@ -64,6 +64,8 @@ function Invoke-AzNetworkCloudBareMetalMachineReplace {
 [CmdletBinding(DefaultParameterSetName='ReplaceExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='ReplaceExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ReplaceViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='ReplaceViaJsonString', Mandatory)]
     [Alias('BareMetalMachineName')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Path')]
     [System.String]
@@ -71,6 +73,8 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='ReplaceExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ReplaceViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='ReplaceViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -78,6 +82,8 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='ReplaceExpanded')]
+    [Parameter(ParameterSetName='ReplaceViaJsonFilePath')]
+    [Parameter(ParameterSetName='ReplaceViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -89,44 +95,61 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='ReplaceExpanded')]
+    [Parameter(ParameterSetName='ReplaceViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.Security.SecureString]
     # The password of the administrator of the device used during initialization.
     ${BmcCredentialsPassword},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='ReplaceExpanded')]
+    [Parameter(ParameterSetName='ReplaceViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.String]
     # The username of the administrator of the device used during initialization.
     ${BmcCredentialsUsername},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='ReplaceExpanded')]
+    [Parameter(ParameterSetName='ReplaceViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.String]
     # The MAC address of the BMC device.
     ${BmcMacAddress},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='ReplaceExpanded')]
+    [Parameter(ParameterSetName='ReplaceViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.String]
     # The MAC address of a NIC connected to the PXE network.
     ${BootMacAddress},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='ReplaceExpanded')]
+    [Parameter(ParameterSetName='ReplaceViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.String]
     # The OS-level hostname assigned to this machine.
     ${MachineName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='ReplaceExpanded')]
+    [Parameter(ParameterSetName='ReplaceViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.String]
     # The serial number of the bare metal machine.
     ${SerialNumber},
+
+    [Parameter(ParameterSetName='ReplaceViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Replace operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='ReplaceViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
+    [System.String]
+    # Json string supplied to the Replace operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -202,6 +225,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -223,10 +255,10 @@ begin {
         $mapping = @{
             ReplaceExpanded = 'Az.NetworkCloud.private\Invoke-AzNetworkCloudBareMetalMachineReplace_ReplaceExpanded';
             ReplaceViaIdentityExpanded = 'Az.NetworkCloud.private\Invoke-AzNetworkCloudBareMetalMachineReplace_ReplaceViaIdentityExpanded';
+            ReplaceViaJsonFilePath = 'Az.NetworkCloud.private\Invoke-AzNetworkCloudBareMetalMachineReplace_ReplaceViaJsonFilePath';
+            ReplaceViaJsonString = 'Az.NetworkCloud.private\Invoke-AzNetworkCloudBareMetalMachineReplace_ReplaceViaJsonString';
         }
-        if (('ReplaceExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('ReplaceExpanded', 'ReplaceViaJsonFilePath', 'ReplaceViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -240,6 +272,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

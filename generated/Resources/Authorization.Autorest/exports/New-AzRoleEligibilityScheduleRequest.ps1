@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Creates a role eligibility schedule request.
+Create a role eligibility schedule request.
 .Description
-Creates a role eligibility schedule request.
+Create a role eligibility schedule request.
 .Example
 $guid = "12f8978c-5d8d-4fbf-b4b6-2f43eeb43eca"
 $startTime = Get-Date -Format o 
@@ -31,12 +31,12 @@ $scope = "/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/"
 New-AzRoleEligibilityScheduleRequest -Name $guid -Scope $scope -ExpirationDuration PT1H -ExpirationType AfterDuration -PrincipalId 5a4bdd72-ab3e-4d8e-ab0f-8dd8917481a2 -RequestType AdminRemove -RoleDefinitionId subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7 -ScheduleInfoStartDateTime $startTime
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IRoleEligibilityScheduleRequest
+Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IRoleEligibilityScheduleRequest
 .Link
 https://learn.microsoft.com/powershell/module/az.resources/new-azroleeligibilityschedulerequest
 #>
 function New-AzRoleEligibilityScheduleRequest {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IRoleEligibilityScheduleRequest])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IRoleEligibilityScheduleRequest])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -55,7 +55,7 @@ param(
     # For example, use '/providers/Microsoft.Subscription/subscriptions/{subscription-id}/' for a subscription, '/providers/Microsoft.Subscription/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}' for a resource group, and '/providers/Microsoft.Subscription/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider}/{resource-type}/{resource-name}' for a resource.
     ${Scope},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
     [System.String]
     # The conditions on the role assignment.
@@ -63,87 +63,99 @@ param(
     # e.g.: @Resource[Microsoft.Storage/storageAccounts/blobServices/containers:ContainerName] StringEqualsIgnoreCase 'foo_storage_container'
     ${Condition},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
     [System.String]
     # Version of the condition.
     # Currently accepted value is '2.0'
     ${ConditionVersion},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
     [System.String]
     # Duration of the role eligibility schedule in TimeSpan.
     ${ExpirationDuration},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
     [System.DateTime]
     # End DateTime of the role eligibility schedule.
     ${ExpirationEndDateTime},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Support.Type])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.PSArgumentCompleterAttribute("AfterDuration", "AfterDateTime", "NoExpiration")]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Support.Type]
+    [System.String]
     # Type of the role eligibility schedule expiration
     ${ExpirationType},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
     [System.String]
     # Justification for the role eligibility
     ${Justification},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
     [System.String]
     # The principal ID.
     ${PrincipalId},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Support.RequestType])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.PSArgumentCompleterAttribute("AdminAssign", "AdminRemove", "AdminUpdate", "AdminExtend", "AdminRenew", "SelfActivate", "SelfDeactivate", "SelfExtend", "SelfRenew")]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Support.RequestType]
+    [System.String]
     # The type of the role assignment schedule request.
     # Eg: SelfActivate, AdminAssign etc
     ${RequestType},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
     [System.String]
     # The role definition ID.
     ${RoleDefinitionId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
     [System.DateTime]
     # Start DateTime of the role eligibility schedule.
     ${ScheduleInfoStartDateTime},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
     [System.String]
     # The resultant role eligibility schedule id or the role eligibility schedule id being updated
     ${TargetRoleEligibilityScheduleId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
     [System.String]
     # The role eligibility schedule instance id being updated
     ${TargetRoleEligibilityScheduleInstanceId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
     [System.String]
     # Ticket number for the role eligibility
     ${TicketNumber},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
     [System.String]
     # Ticket system name for the role eligibility
     ${TicketSystem},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -201,6 +213,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -221,6 +242,8 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.Authorization.private\New-AzRoleEligibilityScheduleRequest_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.Authorization.private\New-AzRoleEligibilityScheduleRequest_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.Authorization.private\New-AzRoleEligibilityScheduleRequest_CreateViaJsonString';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -229,6 +252,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

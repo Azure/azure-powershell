@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.Search
     using Models;
 
     /// <summary>
-    /// Client that can be used to manage Azure Cognitive Search services and API keys.
+    /// Client that can be used to manage Azure AI Search services and API keys.
     /// </summary>
     public partial interface ISearchManagementClient :  System.IDisposable
     {
@@ -42,7 +42,8 @@ namespace Microsoft.Azure.Management.Search
 
 
         /// <summary>
-        /// The unique identifier for a Microsoft Azure subscription. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The unique identifier for a Microsoft Azure subscription. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </summary>
         string SubscriptionId { get; set;}
 
@@ -55,15 +56,15 @@ namespace Microsoft.Azure.Management.Search
 
         /// <summary>
         /// The retry timeout in seconds for Long Running Operations. Default
-        /// value is 30.
+        /// /// value is 30.
         /// </summary>
         int? LongRunningOperationRetryTimeout { get; set;}
 
 
         /// <summary>
-        /// Whether a unique x-ms-client-request-id should be generated. When 
-        /// set to true a unique x-ms-client-request-id value is generated and 
-        /// included in each request. Default is true.
+        /// Whether a unique x-ms-client-request-id should be generated. When
+        /// /// set to true a unique x-ms-client-request-id value is generated and
+        /// /// included in each request. Default is true.
         /// </summary>
         bool? GenerateClientRequestId { get; set;}
 
@@ -109,10 +110,15 @@ namespace Microsoft.Azure.Management.Search
         IUsagesOperations Usages { get; }
 
         /// <summary>
-        /// Gets the quota usage for a search sku in the given subscription.
+        /// Gets the INetworkSecurityPerimeterConfigurationsOperations
+        /// </summary>
+        INetworkSecurityPerimeterConfigurationsOperations NetworkSecurityPerimeterConfigurations { get; }
+
+        /// <summary>
+        /// Gets the quota usage for a search SKU in the given subscription.
         /// </summary>
         /// <remarks>
-        /// Gets the quota usage for a search sku in the given subscription.
+        /// Gets the quota usage for a search SKU in the given subscription.
         /// </remarks>
         /// <param name='searchManagementRequestOptions'>
         /// 
@@ -121,7 +127,7 @@ namespace Microsoft.Azure.Management.Search
         /// The unique location name for a Microsoft Azure geographic region.
         /// </param>
         /// <param name='skuName'>
-        /// The unique search service sku name supported by Azure Cognitive Search.
+        /// The unique SKU name that identifies a billable tier.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.

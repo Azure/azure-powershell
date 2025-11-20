@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Storage
-Module Guid: ee24c2a2-449f-444c-a75e-6b97e12aeb82
+Module Guid: 4deee175-f94f-4dfd-80d5-fd7c43018494
 Download Help Link: https://learn.microsoft.com/powershell/module/az.storage
 Help Version: 1.0.0.0
 Locale: en-US
@@ -17,11 +17,20 @@ Gets the status of the ongoing migration for the specified storage account.
 ### [Get-AzStorageFileServiceUsage](Get-AzStorageFileServiceUsage.md)
 Gets the usage of file service in storage account including account limits, file share limits and constants used in recommendations and bursting formula.
 
+### [Get-AzStorageNetworkSecurityPerimeterConfiguration](Get-AzStorageNetworkSecurityPerimeterConfiguration.md)
+Gets effective NetworkSecurityPerimeterConfiguration for association
+
+### [Get-AzStorageSku](Get-AzStorageSku.md)
+Lists the available SKUs supported by Microsoft.Storage for given subscription.
+
 ### [Get-AzStorageTaskAssignment](Get-AzStorageTaskAssignment.md)
 Get the storage task assignment properties
 
 ### [Get-AzStorageTaskAssignmentInstancesReport](Get-AzStorageTaskAssignmentInstancesReport.md)
 Fetch the report summary of a single storage task assignment's instances
+
+### [Invoke-AzStorageReconcileNetworkSecurityPerimeterConfiguration](Invoke-AzStorageReconcileNetworkSecurityPerimeterConfiguration.md)
+Refreshes any information about the association.
 
 ### [New-AzStorageTaskAssignment](New-AzStorageTaskAssignment.md)
 Asynchronously create a new storage task assignment sub-resource with the specified parameters.
@@ -37,5 +46,5 @@ The migration updates the non-zonal redundant storage account to a zonal redunda
 Zone-redundant storage (ZRS) replicates your storage account synchronously across three Azure availability zones in the primary region.
 
 ### [Update-AzStorageTaskAssignment](Update-AzStorageTaskAssignment.md)
-update storage task assignment properties
+Update storage task assignment properties
 

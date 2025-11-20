@@ -15,15 +15,25 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzAksArcNodepool'))
 }
 
 Describe 'Get-AzAksArcNodepool' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $nodepool = Get-AzAksArcNodepool `
+            -ClusterName $env.clusterName `
+            -ResourceGroupName $env.resourceGroupName `
+            -SubscriptionId $env.subscriptionID
+        $nodepool | Should -Not -BeNullOrEmpty
+        $nodepool.Count | Should -be 1
+        $nodepool[0].StatusCurrentState | Should -be "Succeeded"
+        $nodepool[0].Type | Should -be "microsoft.hybridcontainerservice/provisionedclusterinstances/agentpools"
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $nodepool = Get-AzAksArcNodepool `
+            -ClusterName $env.clusterName `
+            -ResourceGroupName $env.resourceGroupName `
+            -SubscriptionId $env.subscriptionID `
+            -Name "nodepool1" # Default name of node pool for New-AzAksArcCluster.
+        $nodepool | Should -Not -BeNullOrEmpty
+        $nodepool[0].StatusCurrentState | Should -be "Succeeded"
+        $nodepool[0].Type | Should -be "microsoft.hybridcontainerservice/provisionedclusterinstances/agentpools"
     }
 }

@@ -51,7 +51,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.PowerShell
                     throw new ArgumentException($"Custom folder '{CustomFolder}' does not exist");
                 }
 
-                string version = Convert.ToString(@"1.2.0");
+                string version = Convert.ToString(@"1.6.0");
                 // Validate the module version should be semantic version
                 // Following regex is official from https://semver.org/
                 Regex rx = new Regex(@"^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$", RegexOptions.Compiled);
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.PowerShell
                 }
                 else
                 {
-                    var cmdletsList = functionInfos.Select(fi => fi.Name).Distinct().Append("*").ToPsList();
+                    var cmdletsList = functionInfos.Select(fi => fi.Name).Distinct().ToPsList();
                     sb.AppendLine($@"{Indent}FunctionsToExport = {cmdletsList}");
                 }
 
@@ -148,8 +148,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.PowerShell
                 }
                 else
                 {
-                    var aliasesList = functionInfos.SelectMany(fi => fi.ScriptBlock.Attributes).ToAliasNames().Append("*").ToPsList();
-                    sb.AppendLine($@"{Indent}AliasesToExport = {aliasesList}");
+                    var aliasesList = functionInfos.SelectMany(fi => fi.ScriptBlock.Attributes).ToAliasNames().ToPsList();
+                    if (!String.IsNullOrEmpty(aliasesList)) {
+                        sb.AppendLine($@"{Indent}AliasesToExport = {aliasesList}");
+                    }
                 }
 
                 // CmdletsToExport

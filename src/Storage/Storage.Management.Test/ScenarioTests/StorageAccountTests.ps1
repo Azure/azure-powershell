@@ -794,52 +794,6 @@ function Test-FailoverAzureStorageAccount
 
 <#
 .SYNOPSIS
-Test Invoke-AzStorageAccountFailoverPlanned
-.DESCRIPTION
-Smoke[Broken]Test
-#>
-function Test-FailoverAzureStorageAccountPlanned
-{
-    $rgname = Get-StorageManagementTestResourceName;
-    try {
-        $stoname = 'stofailover' + $rgname
-        $stotype = 'Standard_RAGRS'
-        $kind = 'StorageV2'
-
-        $loc = Get-ProviderLocation_Canary ResourceManagement;
-        New-AzResourceGroup -Name $rgname -Location $loc;
-        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind;
-
-        $account = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -IncludeGeoReplicationStats
-        Assert-AreEqual $stoname $account.StorageAccountName;
-        Assert-AreEqual $stotype $account.Sku.Name;
-        Assert-AreEqual $loc.ToLower().Replace(" ", "") $account.Location;
-        Assert-AreEqual $kind $account.Kind; 
-        $primaryLocation = $account.PrimaryLocation
-        $seconcaryLocation = $account.SecondaryLocation
-
-        while ($account.GeoReplicationStats.CanFailover -ne $true) {
-            # sleep is needed for recording mode but commented out for playback mode to speed up the test 
-            # sleep 60 
-            $account = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -IncludeGeoReplicationStats
-        }
-        Assert-AreEqual $account.GeoReplicationStats.CanFailover $true
-        $job = Invoke-AzStorageAccountFailover -ResourceGroupName $rgname -Name $stoname -FailoverType "Planned" -Force -AsJob
-        $job | Wait-Job
-
-        $sto = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname
-        Assert-AreEqual $seconcaryLocation $sto.PrimaryLocation
-        Assert-AreEqual $primaryLocation $sto.SecondaryLocation
-        Assert-AreEqual $stotype $sto.Sku.Name
-    }
-    finally {
-        # Cleanup
-        Clean-ResourceGroup $rgname
-    }
-}
-
-<#
-.SYNOPSIS
 Test New-AzStorageAccountFileStorage
 .DESCRIPTION
 Smoke[Broken]Test
@@ -2393,13 +2347,13 @@ function Test-AzureStorageLocalUserSftp
         Assert-AreEqual $true $sto.EnableLocalUser;
         
         # create local user
-		$userName1 = "testuser1"
-		$userName2 = "testuser2"
-		$sshkey1 = New-AzStorageLocalUserSshPublicKey -Key "ssh-rsa keykeykeykeykey=" -Description "sshpulickey name1"
-		$sshkey2 = New-AzStorageLocalUserSshPublicKey -Key "ssh-rsa keykeykeykeykew=" -Description "sshpulickey name2"
-		$permissionScope1 = New-AzStorageLocalUserPermissionScope -Permission rwd -Service blob -ResourceName container1 
-		$permissionScope2 = New-AzStorageLocalUserPermissionScope -Permission rw -Service file -ResourceName share2
-		$localuser1 = Set-AzStorageLocalUser -ResourceGroupName $rgname -StorageAccountName $stoname -UserName $userName1 -HomeDirectory "/" -SshAuthorizedKey $sshkey1,$sshkey2 -PermissionScope $permissionScope1,$permissionScope2 -HasSharedKey $true -HasSshKey $true -HasSshPassword $true
+        $userName1 = "testuser1"
+        $userName2 = "testuser2"
+        $sshkey1 = New-AzStorageLocalUserSshPublicKey -Key "ssh-rsa keykeykeykeykey=" -Description "sshpulickey name1"
+        $sshkey2 = New-AzStorageLocalUserSshPublicKey -Key "ssh-rsa keykeykeykeykew=" -Description "sshpulickey name2"
+        $permissionScope1 = New-AzStorageLocalUserPermissionScope -Permission rwd -Service blob -ResourceName container1 
+        $permissionScope2 = New-AzStorageLocalUserPermissionScope -Permission rw -Service file -ResourceName share2
+        $localuser1 = Set-AzStorageLocalUser -ResourceGroupName $rgname -StorageAccountName $stoname -UserName $userName1 -HomeDirectory "/" -SshAuthorizedKey $sshkey1,$sshkey2 -PermissionScope $permissionScope1,$permissionScope2 -HasSharedKey $true -HasSshKey $true -HasSshPassword $true
         Assert-AreEqual $userName1 $localuser1.Name;
         Assert-AreEqual $true $localuser1.HasSharedKey;
         Assert-AreEqual $true $localuser1.HasSshKey;
@@ -2427,7 +2381,7 @@ function Test-AzureStorageLocalUserSftp
         Assert-Null $localuser2.SshAuthorizedKeys;
 
         # update local user
-		$localuser2 = Set-AzStorageLocalUser -ResourceGroupName $rgname -StorageAccountName $stoname -UserName $userName2 -HomeDirectory "/dir2" -HasSharedKey $true -HasSshKey $true -HasSshPassword $true `
+        $localuser2 = Set-AzStorageLocalUser -ResourceGroupName $rgname -StorageAccountName $stoname -UserName $userName2 -HomeDirectory "/dir2" -HasSharedKey $true -HasSshKey $true -HasSshPassword $true `
             -SshAuthorizedKey (@{
                 Description="sshpulickey name3";
                 Key="ssh-rsa keykeykeykeykew=";                
@@ -2465,7 +2419,7 @@ function Test-AzureStorageLocalUserSftp
         Assert-AreEqual "sshpulickey name4"  $localuser2.SshAuthorizedKeys[1].Description;
 
         # get single local user
-		$localuser1 = Get-AzStorageLocalUser -ResourceGroupName $rgname -StorageAccountName $stoname -UserName $userName1
+        $localuser1 = Get-AzStorageLocalUser -ResourceGroupName $rgname -StorageAccountName $stoname -UserName $userName1
         Assert-AreEqual $userName1 $localuser1.Name;
         Assert-AreEqual $true $localuser1.HasSharedKey;
         Assert-AreEqual $true $localuser1.HasSshKey;
@@ -2481,13 +2435,13 @@ function Test-AzureStorageLocalUserSftp
         Assert-Null $localuser1.SshAuthorizedKeys;
 
         #list all local users
-		$localusers = Get-AzStorageLocalUser -ResourceGroupName $rgname -StorageAccountName $stoname 
+        $localusers = Get-AzStorageLocalUser -ResourceGroupName $rgname -StorageAccountName $stoname 
         Assert-AreEqual 2 $localusers.Count;
         Assert-AreEqual $userName1 $localusers[0].Name;
         Assert-AreEqual $userName2 $localusers[1].Name;
 
         # get public key
-		$key = Get-AzStorageLocalUserKey -ResourceGroupName $rgname -StorageAccountName $stoname -UserName $userName1
+        $key = Get-AzStorageLocalUserKey -ResourceGroupName $rgname -StorageAccountName $stoname -UserName $userName1
         Assert-NotNull $key.SharedKey
         Assert-AreEqual 2 $key.SshAuthorizedKeys.Count;
         #Assert-AreEqual "ssh-rsa keykeykeykeykey="  $key.SshAuthorizedKeys[0].Key;
@@ -2496,12 +2450,12 @@ function Test-AzureStorageLocalUserSftp
         Assert-AreEqual "sshpulickey name2"  $key.SshAuthorizedKeys[1].Description;
 
         # regenerate ssh password
-		$password = New-AzStorageLocalUserSshPassword -ResourceGroupName $rgname -StorageAccountName $stoname -UserName $userName1
+        $password = New-AzStorageLocalUserSshPassword -ResourceGroupName $rgname -StorageAccountName $stoname -UserName $userName1
         Assert-NotNull $password.SshPassword
 
         # remove local user
-		Remove-AzStorageLocalUser -ResourceGroupName $rgname -StorageAccountName $stoname -UserName $userName1
-		$localusers = Get-AzStorageLocalUser -ResourceGroupName $rgname -StorageAccountName $stoname 
+        Remove-AzStorageLocalUser -ResourceGroupName $rgname -StorageAccountName $stoname -UserName $userName1
+        $localusers = Get-AzStorageLocalUser -ResourceGroupName $rgname -StorageAccountName $stoname 
         Assert-AreEqual 1 $localusers.Count;
         Assert-AreEqual $userName2 $localusers[0].Name;
 
@@ -3063,6 +3017,174 @@ function Test-StorageAccountDNSEndpointType
         $account2 = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname2
         Assert-AreEqual $account2.StorageAccountName $stoname2
         Assert-AreEqual $account2.DnsEndpointType Standard
+
+        Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test StorageAccountEnableSmbOauth
+.DESCRIPTION
+SmokeTest
+#>
+function Test-StorageAccountEnableSmbOauth
+{
+    # Setup
+    $rgname = Get-StorageManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $stoname = 'sto' + $rgname
+        $stoname2 = 'sto2' + $rgname
+        $stotype = 'Standard_LRS'
+        $loc = 'centraluseuap';
+        $kind = 'StorageV2' 
+        New-AzResourceGroup -Name $rgname -Location $loc;
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -SkuName $stotype -EnableSmbOAuth $true
+        $account = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname
+        Assert-AreEqual $account.StorageAccountName $stoname 
+        Assert-AreEqual $account.AzureFilesIdentityBasedAuth.SmbOAuthSettings.IsSmbOAuthEnabled $true
+
+        Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -EnableSmbOAuth $false
+        $account = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname
+        Assert-AreEqual $account.StorageAccountName $stoname
+        Assert-AreEqual $account.AzureFilesIdentityBasedAuth.SmbOAuthSettings.IsSmbOAuthEnabled $false
+
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname2 -Location $loc -SkuName $stotype
+        $account2 = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname2
+        Assert-AreEqual $account2.StorageAccountName $stoname2
+        Assert-AreEqual $account2.AzureFilesIdentityBasedAuth $null 
+
+        Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname2 -EnableSmbOAuth $true
+        $account2 = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname2
+        Assert-AreEqual $account2.StorageAccountName $stoname2
+        Assert-AreEqual $account2.AzureFilesIdentityBasedAuth.SmbOAuthSettings.IsSmbOAuthEnabled $true
+
+        Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname
+        Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname2
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test StorageAccountZonePlacement
+.DESCRIPTION
+SmokeTest
+#>
+function Test-StorageAccountZonePlacement
+{
+    # Setup
+    $rgname = Get-StorageManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $stoname = 'sto' + $rgname
+        $stoname2 = 'sto2' + $rgname
+        $stoname3 = 'sto3' + $rgname
+        $stotype = 'Premium_LRS'
+        $loc = 'centraluseuap';
+        $kind = 'FileStorage' 
+        New-AzResourceGroup -Name $rgname -Location $loc;
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -SkuName $stotype -Kind $kind -Zone 1 
+        $account = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname
+        Assert-AreEqual $account.StorageAccountName $stoname 
+        Assert-AreEqual $account.Zone[0] "1"
+
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname2 -Location $loc -SkuName $stotype -Kind $kind
+        $account2 = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname2
+        Assert-AreEqual $account2.StorageAccountName $stoname2
+
+        Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname2 -Zone 1 -ZonePlacementPolicy "Any"
+        $account2 = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname2
+        Assert-AreEqual $account2.StorageAccountName $stoname2
+        Assert-AreEqual $account2.Zone[0] "1"
+        Assert-AreEqual $account2.ZonePlacementPolicy "Any"
+
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname3 -Location $loc -SkuName $stotype -Kind $kind -ZonePlacementPolicy "None"
+        $account3 = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname3
+        Assert-AreEqual $account3.StorageAccountName $stoname3
+        Assert-AreEqual $account3.ZonePlacementPolicy "None"
+
+        Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname3 -ZonePlacementPolicy "Any"
+        $account3 = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname3
+        Assert-AreEqual $account3.StorageAccountName $stoname3
+        Assert-AreEqual $account3.ZonePlacementPolicy "Any"
+
+        Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname
+        Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname2
+        Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname3
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test StorageAccountGeoPriorityReplication
+.DESCRIPTION
+SmokeTest
+#>
+function Test-StorageAccountGeoPriorityReplication
+{
+    # Setup
+    $rgname = Get-StorageManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Standard_GRS';  # Use geo-redundant storage for priority replication
+        $loc = 'centraluseuap';
+        $kind = 'StorageV2'
+
+        New-AzResourceGroup -Name $rgname -Location $loc;
+        Write-Output ("Resource Group created")
+        
+        # Create new account with EnableBlobGeoPriorityReplication enabled
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -SkuName $stotype -EnableBlobGeoPriorityReplication $true;
+
+        Retry-IfException { $global:sto = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname; }
+        Assert-AreEqual $stoname $sto.StorageAccountName;
+        Assert-AreEqual $stotype $sto.Sku.Name;
+        Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
+        Assert-AreEqual $kind $sto.Kind;
+        Assert-AreEqual $true $sto.GeoPriorityReplicationStatus.IsBlobEnabled;
+        
+        # Test updating account to disable EnableBlobGeoPriorityReplication
+        Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -EnableBlobGeoPriorityReplication $false;
+        
+        Retry-IfException { $global:sto = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname; }
+        Assert-AreEqual $stoname $sto.StorageAccountName;
+        Assert-AreEqual $stotype $sto.Sku.Name;
+        Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
+        Assert-AreEqual $kind $sto.Kind;
+        Assert-AreEqual $false $sto.GeoPriorityReplicationStatus.IsBlobEnabled;
+        
+        # Test updating account to re-enable EnableBlobGeoPriorityReplication
+        Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -EnableBlobGeoPriorityReplication $true;
+        
+        Retry-IfException { $global:sto = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname; }
+        Assert-AreEqual $stoname $sto.StorageAccountName;
+        Assert-AreEqual $stotype $sto.Sku.Name;
+        Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
+        Assert-AreEqual $kind $sto.Kind;
+        Assert-AreEqual $true $sto.GeoPriorityReplicationStatus.IsBlobEnabled;
 
         Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
     }

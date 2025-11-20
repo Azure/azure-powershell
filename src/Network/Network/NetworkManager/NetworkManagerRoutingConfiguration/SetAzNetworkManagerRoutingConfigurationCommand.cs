@@ -85,6 +85,24 @@ namespace Microsoft.Azure.Commands.Network
              ParameterSetName = SetByResourceIdParameterSet)]
         public string Description { get; set; }
 
+        [Parameter(
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
+             HelpMessage = "Specifies the route table usage mode for the configuration.",
+             ParameterSetName = SetByNameParameterSet)]
+        [Parameter(
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
+             HelpMessage = "Specifies the route table usage mode for the configuration.",
+             ParameterSetName = SetByResourceIdParameterSet)]
+        [Parameter(
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
+             HelpMessage = "Specifies the route table usage mode for the configuration.",
+             ParameterSetName = SetByInputObjectParameterSet)]
+        [PSArgumentCompleter(MNM.RouteTableUsageMode.ManagedOnly, MNM.RouteTableUsageMode.UseExisting)]
+        public string RouteTableUsageMode { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -105,6 +123,12 @@ namespace Microsoft.Azure.Commands.Network
                 if (!string.IsNullOrEmpty(this.Description))
                 {
                     routingConfiguration.Description = this.Description;
+                }
+
+                // Update the RouteTableUsageMode only if explicitly provided
+                if (!string.IsNullOrEmpty(this.RouteTableUsageMode))
+                {
+                    routingConfiguration.RouteTableUsageMode = this.RouteTableUsageMode;
                 }
 
                 // Map to the SDK object
