@@ -16,13 +16,13 @@ Gets the properties of a VMSS virtual machine.
 ### DefaultParameter (Default)
 ```
 Get-AzVmssVM [[-ResourceGroupName] <String>] [[-VMScaleSetName] <String>] [[-InstanceId] <String>] [-UserData]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-ResiliencyView] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### FriendMethod
 ```
 Get-AzVmssVM [[-ResourceGroupName] <String>] [[-VMScaleSetName] <String>] [[-InstanceId] <String>]
- [-InstanceView] [-UserData] [-DefaultProfile <IAzureContextContainer>]
+ [-InstanceView] [-UserData] [-ResiliencyView] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -58,6 +58,15 @@ Get-AzVmssVM -InstanceView  -ResourceGroupName $rgname  -VMScaleSetName $vmssNam
 This command gets the properties of the VMSS virtual machine named VMSS004 that belongs to the resource group named Group002.
 Since the command specifies the *InstanceView* switch parameter, the cmdlet gets the instance view of the virtual machine.
 The command gets the instance ID stored in the variable $ID for which to get the instance view.
+
+### Example 4: Get the resilient VM deletion status of a VMSS virtual machine
+```powershell
+Get-AzVmssVM -ResiliencyView -ResourceGroupName "Group001" -VMScaleSetName "VMSS001" -InstanceId "0"
+```
+
+This command gets the resilient VM deletion status for the VMSS virtual machine with instance ID 0 in the scale set VMSS001.
+The ResiliencyView parameter retrieves the ResilientVMDeletionStatus property, which indicates whether automatic delete retries are in progress, failed, or not started.
+This is useful for monitoring the Resilient Delete feature status.
 
 ## PARAMETERS
 
@@ -123,6 +132,21 @@ Accept wildcard characters: False
 
 ### -UserData
 UserData for the Vmss, which will be base-64 encoded. Customer should not pass any secrets in here.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResiliencyView
+Gets the resilient VM deletion status for the VM, which indicates whether retries are in progress, failed, or not started.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

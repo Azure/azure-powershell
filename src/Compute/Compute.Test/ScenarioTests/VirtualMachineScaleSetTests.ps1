@@ -303,6 +303,13 @@ function Test-VirtualMachineScaleSet-Common($IsManaged)
 
             Write-Verbose($output);
             Assert-True { $output.Contains("PlatformUpdateDomain") };
+
+            Write-Verbose ('Running Command : ' + 'Get-AzVmssVM -ResiliencyView');
+            $vmResiliency = Get-AzVmssVM -ResiliencyView -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId $i;
+            Assert-NotNull $vmResiliency;
+            $output = $vmResiliency | Out-String;
+            Write-Verbose($output);
+            # ResilientVMDeletionStatus property should be present in the output when ResiliencyView is used
         }
 
         $st = $vmssResult | Stop-AzVmss -StayProvision -Force;
