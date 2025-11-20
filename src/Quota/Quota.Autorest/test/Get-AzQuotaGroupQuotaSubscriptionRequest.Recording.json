@@ -6,8 +6,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "1" ],
-        "x-ms-client-request-id": [ "c4ed086d-c97d-42b2-a97e-8b1baf22365d" ],
+        "x-ms-unique-id": [ "41" ],
+        "x-ms-client-request-id": [ "d3886a58-2dce-4900-97a9-3703874b8a88" ],
         "CommandName": [ "Get-AzQuotaGroupQuotaSubscriptionRequest" ],
         "FullCommandName": [ "Get-AzQuotaGroupQuotaSubscriptionRequest_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -24,14 +24,14 @@
         "Pragma": [ "no-cache" ],
         "x-ms-failure-cause": [ "gateway" ],
         "x-ms-ratelimit-remaining-tenant-resource-requests": [ "2199" ],
-        "x-ms-request-id": [ "740c942d-3cf5-41e4-a788-aa9fe07c3e12" ],
-        "x-ms-correlation-request-id": [ "740c942d-3cf5-41e4-a788-aa9fe07c3e12" ],
-        "x-ms-routing-request-id": [ "AUSTRALIAEAST:20251120T044252Z:740c942d-3cf5-41e4-a788-aa9fe07c3e12" ],
+        "x-ms-request-id": [ "1690f40e-a89b-4bed-badc-ca9d3382a7b9" ],
+        "x-ms-correlation-request-id": [ "1690f40e-a89b-4bed-badc-ca9d3382a7b9" ],
+        "x-ms-routing-request-id": [ "AUSTRALIAEAST:20251120T053816Z:1690f40e-a89b-4bed-badc-ca9d3382a7b9" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: A3922478DF0E4380BA063D7E0E598C28 Ref B: SYD03EDGE2112 Ref C: 2025-11-20T04:42:52Z" ],
-        "Date": [ "Thu, 20 Nov 2025 04:42:51 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 28A4D60C90F946BD8A543C74CBE354F7 Ref B: SYD03EDGE1008 Ref C: 2025-11-20T05:38:16Z" ],
+        "Date": [ "Thu, 20 Nov 2025 05:38:15 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "302" ],
