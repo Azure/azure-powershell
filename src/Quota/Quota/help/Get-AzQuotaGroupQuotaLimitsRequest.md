@@ -51,27 +51,29 @@ Get API to check the status of a GroupQuota request by requestId.
 
 ### Example 1: List GroupQuotasLimitsRequests for a GroupQuota
 ```powershell
-Get-AzQuotaGroupQuotaLimitsRequest -GroupQuotaName "groupquota1" -ManagementGroupId "mgId" -ResourceProviderName "Microsoft.Compute" -ResourceName "standardav2family"
+Get-AzQuotaGroupQuotaLimitsRequest -GroupQuotaName "testlocation" -ManagementGroupId "mgId" -ResourceProviderName "Microsoft.Compute" -Filter "location eq 'eastus'"
 ```
 
 ```output
-RequestId                            ProvisioningState RequestedLimit
----------                            ----------------- --------------
-00000000-0000-0000-0000-000000000000 Succeeded         150
-11111111-1111-1111-1111-111111111111 Failed            200
+Name                                 SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt
+----                                 ------------------- ------------------- ----------------------- ------------------------
+a56329ce-785c-4d38-8554-ab3cca466705
+6ab338d4-69ed-42a4-8402-cde6edebc3af
+c58a2ef0-8606-4dc1-999a-8c18c2be9f4c
+a7e67697-3b38-4c32-a491-cc8ad20c471e
 ```
 
-List all GroupQuotasLimitsRequests for a specified GroupQuota, resource provider, and resource.
+List all GroupQuotasLimitsRequests for a specified GroupQuota and resource provider filtered by location.
 
 ### Example 2: Get a specific GroupQuotasLimitsRequest by RequestId
 ```powershell
-Get-AzQuotaGroupQuotaLimitsRequest -GroupQuotaName "groupquota1" -ManagementGroupId "mgId" -ResourceProviderName "Microsoft.Compute" -ResourceName "standardav2family" -RequestId "00000000-0000-0000-0000-000000000000"
+Get-AzQuotaGroupQuotaLimitsRequest -GroupQuotaName "testlocation" -ManagementGroupId "mgId" -RequestId "a56329ce-785c-4d38-8554-ab3cca466705"
 ```
 
 ```output
-RequestId                            ProvisioningState RequestedLimit
----------                            ----------------- --------------
-00000000-0000-0000-0000-000000000000 Succeeded         150
+Name                                 SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt
+----                                 ------------------- ------------------- ----------------------- ------------------------
+a56329ce-785c-4d38-8554-ab3cca466705
 ```
 
 Get details of a specific GroupQuotasLimitsRequest by its request ID.

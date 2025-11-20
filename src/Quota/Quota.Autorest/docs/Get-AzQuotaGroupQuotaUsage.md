@@ -24,20 +24,27 @@ Location is required paramter.
 
 ## EXAMPLES
 
-### Example 1: List GroupQuota usage for a resource provider and location
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzQuotaGroupQuotaUsage -ManagementGroupId "mgId" -GroupQuotaName "groupquota1" -ResourceProviderName "Microsoft.Compute" -Location "eastus"
+{{ Add code here }}
 ```
 
 ```output
-Name              UsageValue Limit ProvisioningState
-----              ---------- ----- -----------------
-standardav2family 45         100   Succeeded
-standardbsfamily  20         50    Succeeded
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-List quota usage for a specified GroupQuota, resource provider, and location.
-Note: This API is supported for enforced GroupQuotas only.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 

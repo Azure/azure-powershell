@@ -60,10 +60,13 @@ Get-AzQuotaGroupQuotaLocationSetting -ManagementGroupId "mgId" -GroupQuotaName "
 ```output
 Name   EnforcementEnabled ProvisioningState
 ----   ------------------ -----------------
-eastus True               Succeeded
+eastus Enabled            Succeeded
 ```
 
 Get the location setting for a specified GroupQuota, resource provider, and location.
+
+
+Note: If enforcement has not been configured for this GroupQuota/location, this command will return a "not found" message, which is expected behavior.
 
 ## PARAMETERS
 

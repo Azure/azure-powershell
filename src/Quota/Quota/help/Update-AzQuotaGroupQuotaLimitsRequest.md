@@ -114,13 +114,13 @@ This API provides the finals status with the request details and status.
 ### Example 1: Update GroupQuotasLimitsRequest for a GroupQuota
 ```powershell
 $limitObject = New-AzQuotaLimitObject -Value 100
-Update-AzQuotaGroupQuotaLimitsRequest -GroupQuotaName "groupquota1" -ManagementGroupId "mgId" -ResourceProviderName "Microsoft.Compute" -ResourceName "standardav2family" -Region "eastus" -Limit $limitObject
+Update-AzQuotaGroupQuotaLimitsRequest -GroupQuotaName "groupquota1" -ManagementGroupId "mg-demo" -ResourceProviderName "Microsoft.Compute" -ResourceName "standardav2family" -Region "eastus" -Limit $limitObject
 ```
 
 ```output
-RequestId                            ProvisioningState RequestedLimit
----------                            ----------------- --------------
-00000000-0000-0000-0000-000000000000 Accepted          100
+Name                                 SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType
+----                                 ------------------- ------------------- -----------------------
+{guid}
 ```
 
 Updates a GroupQuotasLimitsRequest for a specified GroupQuota, resource provider, resource, and region with new quota limits.
