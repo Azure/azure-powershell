@@ -29,8 +29,8 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
         /// be configured with aka.ms/apimmsi
         /// </param>
 
-        /// <param name="identityClientId">SystemAssignedIdentity or UserAssignedIdentity Client Id which will be used
-        /// to access key vault secret.
+        /// <param name="identityClientId">Null for SystemAssignedIdentity or Client Id for UserAssignedIdentity ,
+        /// which will be used to access key vault secret.
         /// </param>
 
         /// <param name="lastStatus">Last time sync and refresh status of secret from key vault.

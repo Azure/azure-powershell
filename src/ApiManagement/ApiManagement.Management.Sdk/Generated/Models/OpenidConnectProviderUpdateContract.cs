@@ -39,7 +39,15 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
 
         /// <param name="clientSecret">Client Secret of developer console which is the client application.
         /// </param>
-        public OpenidConnectProviderUpdateContract(string displayName = default(string), string description = default(string), string metadataEndpoint = default(string), string clientId = default(string), string clientSecret = default(string))
+
+        /// <param name="useInTestConsole">If true, the Open ID Connect provider may be used in the developer portal
+        /// test console. True by default if no value is provided.
+        /// </param>
+
+        /// <param name="useInApiDocumentation">If true, the Open ID Connect provider will be used in the API documentation
+        /// in the developer portal. False by default if no value is provided.
+        /// </param>
+        public OpenidConnectProviderUpdateContract(string displayName = default(string), string description = default(string), string metadataEndpoint = default(string), string clientId = default(string), string clientSecret = default(string), bool? useInTestConsole = default(bool?), bool? useInApiDocumentation = default(bool?))
 
         {
             this.DisplayName = displayName;
@@ -47,6 +55,8 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
             this.MetadataEndpoint = metadataEndpoint;
             this.ClientId = clientId;
             this.ClientSecret = clientSecret;
+            this.UseInTestConsole = useInTestConsole;
+            this.UseInApiDocumentation = useInApiDocumentation;
             CustomInit();
         }
 
@@ -87,6 +97,21 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.clientSecret")]
         public string ClientSecret {get; set; }
+
+        /// <summary>
+        /// Gets or sets if true, the Open ID Connect provider may be used in the
+        /// developer portal test console. True by default if no value is provided.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.useInTestConsole")]
+        public bool? UseInTestConsole {get; set; }
+
+        /// <summary>
+        /// Gets or sets if true, the Open ID Connect provider will be used in the API
+        /// documentation in the developer portal. False by default if no value is
+        /// provided.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.useInApiDocumentation")]
+        public bool? UseInApiDocumentation {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>

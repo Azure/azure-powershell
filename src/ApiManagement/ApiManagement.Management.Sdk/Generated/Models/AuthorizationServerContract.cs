@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
     /// External OAuth authorization server settings.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class AuthorizationServerContract : Resource
+    public partial class AuthorizationServerContract : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the AuthorizationServerContract class.
@@ -81,6 +81,14 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
         /// <param name="displayName">User-friendly authorization server name.
         /// </param>
 
+        /// <param name="useInTestConsole">If true, the authorization server may be used in the developer portal test
+        /// console. True by default if no value is provided.
+        /// </param>
+
+        /// <param name="useInApiDocumentation">If true, the authorization server will be used in the API documentation in
+        /// the developer portal. False by default if no value is provided.
+        /// </param>
+
         /// <param name="clientRegistrationEndpoint">Optional reference to a page where client or app registration for this
         /// authorization server is performed. Contains absolute URL to entity being
         /// referenced.
@@ -101,7 +109,7 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
         /// property will not be filled on &#39;GET&#39; operations! Use &#39;/listSecrets&#39; POST
         /// request to get the value.
         /// </param>
-        public AuthorizationServerContract(string id = default(string), string name = default(string), string type = default(string), string description = default(string), System.Collections.Generic.IList<AuthorizationMethod?> authorizationMethods = default(System.Collections.Generic.IList<AuthorizationMethod?>), System.Collections.Generic.IList<string> clientAuthenticationMethod = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<TokenBodyParameterContract> tokenBodyParameters = default(System.Collections.Generic.IList<TokenBodyParameterContract>), string tokenEndpoint = default(string), bool? supportState = default(bool?), string defaultScope = default(string), System.Collections.Generic.IList<string> bearerTokenSendingMethods = default(System.Collections.Generic.IList<string>), string resourceOwnerUsername = default(string), string resourceOwnerPassword = default(string), string displayName = default(string), string clientRegistrationEndpoint = default(string), string authorizationEndpoint = default(string), System.Collections.Generic.IList<string> grantTypes = default(System.Collections.Generic.IList<string>), string clientId = default(string), string clientSecret = default(string))
+        public AuthorizationServerContract(string id = default(string), string name = default(string), string type = default(string), string description = default(string), System.Collections.Generic.IList<AuthorizationMethod?> authorizationMethods = default(System.Collections.Generic.IList<AuthorizationMethod?>), System.Collections.Generic.IList<string> clientAuthenticationMethod = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<TokenBodyParameterContract> tokenBodyParameters = default(System.Collections.Generic.IList<TokenBodyParameterContract>), string tokenEndpoint = default(string), bool? supportState = default(bool?), string defaultScope = default(string), System.Collections.Generic.IList<string> bearerTokenSendingMethods = default(System.Collections.Generic.IList<string>), string resourceOwnerUsername = default(string), string resourceOwnerPassword = default(string), string displayName = default(string), bool? useInTestConsole = default(bool?), bool? useInApiDocumentation = default(bool?), string clientRegistrationEndpoint = default(string), string authorizationEndpoint = default(string), System.Collections.Generic.IList<string> grantTypes = default(System.Collections.Generic.IList<string>), string clientId = default(string), string clientSecret = default(string))
 
         : base(id, name, type)
         {
@@ -116,6 +124,8 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
             this.ResourceOwnerUsername = resourceOwnerUsername;
             this.ResourceOwnerPassword = resourceOwnerPassword;
             this.DisplayName = displayName;
+            this.UseInTestConsole = useInTestConsole;
+            this.UseInApiDocumentation = useInApiDocumentation;
             this.ClientRegistrationEndpoint = clientRegistrationEndpoint;
             this.AuthorizationEndpoint = authorizationEndpoint;
             this.GrantTypes = grantTypes;
@@ -212,6 +222,21 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.displayName")]
         public string DisplayName {get; set; }
+
+        /// <summary>
+        /// Gets or sets if true, the authorization server may be used in the developer
+        /// portal test console. True by default if no value is provided.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.useInTestConsole")]
+        public bool? UseInTestConsole {get; set; }
+
+        /// <summary>
+        /// Gets or sets if true, the authorization server will be used in the API
+        /// documentation in the developer portal. False by default if no value is
+        /// provided.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.useInApiDocumentation")]
+        public bool? UseInApiDocumentation {get; set; }
 
         /// <summary>
         /// Gets or sets optional reference to a page where client or app registration

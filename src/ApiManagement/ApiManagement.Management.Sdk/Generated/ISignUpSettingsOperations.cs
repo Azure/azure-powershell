@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// Gets the entity state (Etag) version of the SignUpSettings.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// Get Sign Up Settings for the Portal
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// Update Sign-Up settings.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// Create or Update Sign-Up settings.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.

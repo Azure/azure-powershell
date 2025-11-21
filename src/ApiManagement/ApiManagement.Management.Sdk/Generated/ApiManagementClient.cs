@@ -40,9 +40,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         public string ApiVersion { get; private set; }
 
         /// <summary>
-        /// Subscription credentials which uniquely identify Microsoft Azure
-        /// subscription. The subscription ID forms part of the URI for every service
-        /// call.
+        /// The ID of the target subscription.
         /// </summary>
         public string SubscriptionId { get; set;}
 
@@ -89,6 +87,14 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// </summary>
         public virtual ITagOperations Tag { get; private set; }
         /// <summary>
+        /// Gets the IGraphQlApiResolverOperations
+        /// </summary>
+        public virtual IGraphQlApiResolverOperations GraphQlApiResolver { get; private set; }
+        /// <summary>
+        /// Gets the IGraphQlApiResolverPolicyOperations
+        /// </summary>
+        public virtual IGraphQlApiResolverPolicyOperations GraphQlApiResolverPolicy { get; private set; }
+        /// <summary>
         /// Gets the IApiProductOperations
         /// </summary>
         public virtual IApiProductOperations ApiProduct { get; private set; }
@@ -124,6 +130,14 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// Gets the IOperationOperations
         /// </summary>
         public virtual IOperationOperations Operation { get; private set; }
+        /// <summary>
+        /// Gets the IApiWikiOperations
+        /// </summary>
+        public virtual IApiWikiOperations ApiWiki { get; private set; }
+        /// <summary>
+        /// Gets the IApiWikisOperations
+        /// </summary>
+        public virtual IApiWikisOperations ApiWikis { get; private set; }
         /// <summary>
         /// Gets the IApiExportOperations
         /// </summary>
@@ -296,6 +310,14 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// Gets the IProductPolicyOperations
         /// </summary>
         public virtual IProductPolicyOperations ProductPolicy { get; private set; }
+        /// <summary>
+        /// Gets the IProductWikiOperations
+        /// </summary>
+        public virtual IProductWikiOperations ProductWiki { get; private set; }
+        /// <summary>
+        /// Gets the IProductWikisOperations
+        /// </summary>
+        public virtual IProductWikisOperations ProductWikis { get; private set; }
         /// <summary>
         /// Gets the IQuotaByCounterKeysOperations
         /// </summary>
@@ -568,6 +590,9 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// <param name='rootHandler'>
         /// Optional. The http client handler used to handle http transport.
         /// </param>
+        /// <param name='handlers'>
+        /// Optional. The delegating handlers to add to the http client pipeline.
+        /// </param>
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
@@ -605,6 +630,8 @@ namespace Microsoft.Azure.Management.ApiManagement
             this.ApiOperation = new ApiOperationOperations(this);
             this.ApiOperationPolicy = new ApiOperationPolicyOperations(this);
             this.Tag = new TagOperations(this);
+            this.GraphQlApiResolver = new GraphQlApiResolverOperations(this);
+            this.GraphQlApiResolverPolicy = new GraphQlApiResolverPolicyOperations(this);
             this.ApiProduct = new ApiProductOperations(this);
             this.ApiPolicy = new ApiPolicyOperations(this);
             this.ApiSchema = new ApiSchemaOperations(this);
@@ -614,6 +641,8 @@ namespace Microsoft.Azure.Management.ApiManagement
             this.ApiIssueAttachment = new ApiIssueAttachmentOperations(this);
             this.ApiTagDescription = new ApiTagDescriptionOperations(this);
             this.Operation = new OperationOperations(this);
+            this.ApiWiki = new ApiWikiOperations(this);
+            this.ApiWikis = new ApiWikisOperations(this);
             this.ApiExport = new ApiExportOperations(this);
             this.ApiVersionSet = new ApiVersionSetOperations(this);
             this.AuthorizationServer = new AuthorizationServerOperations(this);
@@ -657,6 +686,8 @@ namespace Microsoft.Azure.Management.ApiManagement
             this.ProductGroup = new ProductGroupOperations(this);
             this.ProductSubscriptions = new ProductSubscriptionsOperations(this);
             this.ProductPolicy = new ProductPolicyOperations(this);
+            this.ProductWiki = new ProductWikiOperations(this);
+            this.ProductWikis = new ProductWikisOperations(this);
             this.QuotaByCounterKeys = new QuotaByCounterKeysOperations(this);
             this.QuotaByPeriodKeys = new QuotaByPeriodKeysOperations(this);
             this.Region = new RegionOperations(this);
@@ -675,7 +706,7 @@ namespace Microsoft.Azure.Management.ApiManagement
             this.UserIdentities = new UserIdentitiesOperations(this);
             this.UserConfirmationPassword = new UserConfirmationPasswordOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
-            this.ApiVersion = "2021-08-01";
+            this.ApiVersion = "2022-08-01";
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;
             this.GenerateClientRequestId = true;
@@ -715,7 +746,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// errors encountered while trying to establish it.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.
@@ -742,7 +773,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// errors encountered while trying to establish it.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.
@@ -789,7 +820,17 @@ namespace Microsoft.Azure.Management.ApiManagement
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
             }
-
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+            }
             if (serviceName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "serviceName");
@@ -818,7 +859,13 @@ namespace Microsoft.Azure.Management.ApiManagement
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.SubscriptionId");
             }
-
+            if (this.SubscriptionId != null)
+            {
+                if (this.SubscriptionId.Length < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "SubscriptionId", 1);
+                }
+            }
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;

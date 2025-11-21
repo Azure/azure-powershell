@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// Regenerate primary access key for GIT.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// Regenerate secondary access key for GIT.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.

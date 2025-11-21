@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
     /// Portal Settings for the Developer Portal.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class PortalSettingsContract : Resource
+    public partial class PortalSettingsContract : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the PortalSettingsContract class.

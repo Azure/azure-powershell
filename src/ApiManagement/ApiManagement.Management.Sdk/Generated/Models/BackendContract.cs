@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
     /// Backend details.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class BackendContract : Resource
+    public partial class BackendContract : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the BackendContract class.
@@ -45,14 +45,14 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
         /// <param name="description">Backend Description.
         /// </param>
 
-        /// <param name="resourceId">Management Uri of the Resource in External System. This url can be the Arm
+        /// <param name="resourceId">Management Uri of the Resource in External System. This URL can be the Arm
         /// Resource Id of Logic Apps, Function Apps or API Apps.
         /// </param>
 
         /// <param name="credentials">Backend Credentials Contract Properties
         /// </param>
 
-        /// <param name="proxy">Backend Proxy Contract Properties
+        /// <param name="proxy">Backend gateway Contract Properties
         /// </param>
 
         /// <param name="tls">Backend TLS Properties
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
         public string Description {get; set; }
 
         /// <summary>
-        /// Gets or sets management Uri of the Resource in External System. This url
+        /// Gets or sets management Uri of the Resource in External System. This URL
         /// can be the Arm Resource Id of Logic Apps, Function Apps or API Apps.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.resourceId")]
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
         public BackendCredentialsContract Credentials {get; set; }
 
         /// <summary>
-        /// Gets or sets backend Proxy Contract Properties
+        /// Gets or sets backend gateway Contract Properties
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.proxy")]
         public BackendProxyContract Proxy {get; set; }

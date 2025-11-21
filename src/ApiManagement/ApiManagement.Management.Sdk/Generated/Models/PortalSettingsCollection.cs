@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
     using System.Linq;
 
     /// <summary>
-    /// Descriptions of APIM policies.
+    /// Descriptions of API Management policies.
     /// </summary>
     public partial class PortalSettingsCollection
     {
@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
         /// Initializes a new instance of the PortalSettingsCollection class.
         /// </summary>
 
-        /// <param name="value">Descriptions of APIM policies.
+        /// <param name="value">Descriptions of API Management policies.
         /// </param>
 
         /// <param name="count">Total record count number.
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
 
 
         /// <summary>
-        /// Gets or sets descriptions of APIM policies.
+        /// Gets or sets descriptions of API Management policies.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "value")]
         public System.Collections.Generic.IList<PortalSettingsContract> Value {get; set; }

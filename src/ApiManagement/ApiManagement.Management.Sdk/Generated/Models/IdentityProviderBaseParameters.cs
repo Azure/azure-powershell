@@ -48,7 +48,11 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
 
         /// <param name="passwordResetPolicyName">Password Reset Policy Name. Only applies to AAD B2C Identity Provider.
         /// </param>
-        public IdentityProviderBaseParameters(string type = default(string), string signinTenant = default(string), System.Collections.Generic.IList<string> allowedTenants = default(System.Collections.Generic.IList<string>), string authority = default(string), string signupPolicyName = default(string), string signinPolicyName = default(string), string profileEditingPolicyName = default(string), string passwordResetPolicyName = default(string))
+
+        /// <param name="clientLibrary">The client library to be used in the developer portal. Only applies to AAD
+        /// and AAD B2C Identity Provider.
+        /// </param>
+        public IdentityProviderBaseParameters(string type = default(string), string signinTenant = default(string), System.Collections.Generic.IList<string> allowedTenants = default(System.Collections.Generic.IList<string>), string authority = default(string), string signupPolicyName = default(string), string signinPolicyName = default(string), string profileEditingPolicyName = default(string), string passwordResetPolicyName = default(string), string clientLibrary = default(string))
 
         {
             this.Type = type;
@@ -59,6 +63,7 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
             this.SigninPolicyName = signinPolicyName;
             this.ProfileEditingPolicyName = profileEditingPolicyName;
             this.PasswordResetPolicyName = passwordResetPolicyName;
+            this.ClientLibrary = clientLibrary;
             CustomInit();
         }
 
@@ -119,6 +124,13 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "passwordResetPolicyName")]
         public string PasswordResetPolicyName {get; set; }
+
+        /// <summary>
+        /// Gets or sets the client library to be used in the developer portal. Only
+        /// applies to AAD and AAD B2C Identity Provider.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "clientLibrary")]
+        public string ClientLibrary {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -163,6 +175,13 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
                 if (this.PasswordResetPolicyName.Length < 1)
                 {
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "PasswordResetPolicyName", 1);
+                }
+            }
+            if (this.ClientLibrary != null)
+            {
+                if (this.ClientLibrary.Length > 16)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "ClientLibrary", 16);
                 }
             }
         }

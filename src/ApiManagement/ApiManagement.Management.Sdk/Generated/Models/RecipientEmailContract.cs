@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
     /// Recipient Email details.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class RecipientEmailContract : Resource
+    public partial class RecipientEmailContract : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the RecipientEmailContract class.

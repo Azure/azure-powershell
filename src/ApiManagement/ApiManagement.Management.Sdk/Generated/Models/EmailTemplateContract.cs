@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
     /// Email Template details.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class EmailTemplateContract : Resource
+    public partial class EmailTemplateContract : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the EmailTemplateContract class.

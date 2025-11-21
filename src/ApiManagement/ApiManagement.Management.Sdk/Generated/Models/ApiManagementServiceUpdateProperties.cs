@@ -107,9 +107,10 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
         /// be used to enable HTTP2 protocol on an API Management service.&lt;/br&gt;Not
         /// specifying any of these properties on PATCH operation will reset omitted
         /// properties&#39; values to their defaults. For all the settings except Http2 the
-        /// default value is `True` if the service was created on or before April 1st
+        /// default value is `True` if the service was created on or before April 1,
         /// 2018 and `False` otherwise. Http2 setting&#39;s default value is
-        /// `False`.&lt;/br&gt;&lt;/br&gt;You can disable any of next ciphers by using settings
+        /// `False`.&lt;/br&gt;&lt;/br&gt;You can disable any of the following ciphers by using
+        /// settings
         /// `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.[cipher_name]`:
         /// TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA,
         /// TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA,
@@ -117,9 +118,9 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
         /// TLS_RSA_WITH_AES_128_CBC_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA,
         /// TLS_RSA_WITH_AES_128_CBC_SHA. For example,
         /// `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_128_CBC_SHA256`:`false`.
-        /// The default value is `true` for them.  Note: next ciphers can&#39;t be disabled
-        /// since they are required by Azure CloudService internal components:
-        /// TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_RSA_WITH_AES_256_GCM_SHA384
+        /// The default value is `true` for them.&lt;/br&gt; Note: The following ciphers
+        /// can&#39;t be disabled since they are required by internal platform components:
+        /// TLS_AES_256_GCM_SHA384,TLS_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
         /// </param>
 
         /// <param name="certificates">List of Certificates that need to be installed in the API Management
@@ -130,6 +131,13 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
         /// client certificate to be presented on each request to the gateway. This
         /// also enables the ability to authenticate the certificate in the policy on
         /// the gateway.
+        /// </param>
+
+        /// <param name="natGatewayState">Property can be used to enable NAT Gateway for this API Management service.
+        /// Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;</param>
+
+        /// <param name="outboundPublicIPAddresses">Outbound public IPV4 address prefixes associated with NAT Gateway deployed
+        /// service. Available only for Premium SKU on stv2 platform.
         /// </param>
 
         /// <param name="disableGateway">Property only valid for an Api Management service deployed in multiple
@@ -162,9 +170,9 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
 
         /// <param name="publisherName">Publisher name.
         /// </param>
-        public ApiManagementServiceUpdateProperties(string notificationSenderEmail = default(string), string provisioningState = default(string), string targetProvisioningState = default(string), System.DateTime? createdAtUtc = default(System.DateTime?), string gatewayUrl = default(string), string gatewayRegionalUrl = default(string), string portalUrl = default(string), string managementApiUrl = default(string), string scmUrl = default(string), string developerPortalUrl = default(string), System.Collections.Generic.IList<HostnameConfiguration> hostnameConfigurations = default(System.Collections.Generic.IList<HostnameConfiguration>), System.Collections.Generic.IList<string> publicIPAddresses = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> privateIPAddresses = default(System.Collections.Generic.IList<string>), string publicIPAddressId = default(string), string publicNetworkAccess = default(string), VirtualNetworkConfiguration virtualNetworkConfiguration = default(VirtualNetworkConfiguration), System.Collections.Generic.IList<AdditionalLocation> additionalLocations = default(System.Collections.Generic.IList<AdditionalLocation>), System.Collections.Generic.IDictionary<string, string> customProperties = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IList<CertificateConfiguration> certificates = default(System.Collections.Generic.IList<CertificateConfiguration>), bool? enableClientCertificate = default(bool?), bool? disableGateway = default(bool?), string virtualNetworkType = default(string), ApiVersionConstraint apiVersionConstraint = default(ApiVersionConstraint), bool? restore = default(bool?), System.Collections.Generic.IList<RemotePrivateEndpointConnectionWrapper> privateEndpointConnections = default(System.Collections.Generic.IList<RemotePrivateEndpointConnectionWrapper>), string platformVersion = default(string), string publisherEmail = default(string), string publisherName = default(string))
+        public ApiManagementServiceUpdateProperties(string notificationSenderEmail = default(string), string provisioningState = default(string), string targetProvisioningState = default(string), System.DateTime? createdAtUtc = default(System.DateTime?), string gatewayUrl = default(string), string gatewayRegionalUrl = default(string), string portalUrl = default(string), string managementApiUrl = default(string), string scmUrl = default(string), string developerPortalUrl = default(string), System.Collections.Generic.IList<HostnameConfiguration> hostnameConfigurations = default(System.Collections.Generic.IList<HostnameConfiguration>), System.Collections.Generic.IList<string> publicIPAddresses = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> privateIPAddresses = default(System.Collections.Generic.IList<string>), string publicIPAddressId = default(string), string publicNetworkAccess = default(string), VirtualNetworkConfiguration virtualNetworkConfiguration = default(VirtualNetworkConfiguration), System.Collections.Generic.IList<AdditionalLocation> additionalLocations = default(System.Collections.Generic.IList<AdditionalLocation>), System.Collections.Generic.IDictionary<string, string> customProperties = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IList<CertificateConfiguration> certificates = default(System.Collections.Generic.IList<CertificateConfiguration>), bool? enableClientCertificate = default(bool?), string natGatewayState = default(string), System.Collections.Generic.IList<string> outboundPublicIPAddresses = default(System.Collections.Generic.IList<string>), bool? disableGateway = default(bool?), string virtualNetworkType = default(string), ApiVersionConstraint apiVersionConstraint = default(ApiVersionConstraint), bool? restore = default(bool?), System.Collections.Generic.IList<RemotePrivateEndpointConnectionWrapper> privateEndpointConnections = default(System.Collections.Generic.IList<RemotePrivateEndpointConnectionWrapper>), string platformVersion = default(string), string publisherEmail = default(string), string publisherName = default(string))
 
-        : base(notificationSenderEmail, provisioningState, targetProvisioningState, createdAtUtc, gatewayUrl, gatewayRegionalUrl, portalUrl, managementApiUrl, scmUrl, developerPortalUrl, hostnameConfigurations, publicIPAddresses, privateIPAddresses, publicIPAddressId, publicNetworkAccess, virtualNetworkConfiguration, additionalLocations, customProperties, certificates, enableClientCertificate, disableGateway, virtualNetworkType, apiVersionConstraint, restore, privateEndpointConnections, platformVersion)
+        : base(notificationSenderEmail, provisioningState, targetProvisioningState, createdAtUtc, gatewayUrl, gatewayRegionalUrl, portalUrl, managementApiUrl, scmUrl, developerPortalUrl, hostnameConfigurations, publicIPAddresses, privateIPAddresses, publicIPAddressId, publicNetworkAccess, virtualNetworkConfiguration, additionalLocations, customProperties, certificates, enableClientCertificate, natGatewayState, outboundPublicIPAddresses, disableGateway, virtualNetworkType, apiVersionConstraint, restore, privateEndpointConnections, platformVersion)
         {
             this.PublisherEmail = publisherEmail;
             this.PublisherName = publisherName;

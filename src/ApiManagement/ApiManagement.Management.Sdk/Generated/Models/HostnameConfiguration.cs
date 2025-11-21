@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
         /// Default SSL Certificate. If a client does not send the SNI header, then
         /// this will be the certificate that will be challenged. The property is
         /// useful if a service has multiple custom hostname enabled and it needs to
-        /// decide on the default ssl certificate. The setting only applied to Proxy
+        /// decide on the default ssl certificate. The setting only applied to gateway
         /// Hostname Type.
         /// </param>
 
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
         /// header, then this will be the certificate that will be challenged. The
         /// property is useful if a service has multiple custom hostname enabled and it
         /// needs to decide on the default ssl certificate. The setting only applied to
-        /// Proxy Hostname Type.
+        /// gateway Hostname Type.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "defaultSslBinding")]
         public bool? DefaultSslBinding {get; set; }
