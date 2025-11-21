@@ -12,7 +12,7 @@
     # RootModule = ''
 
     # Version number of this module.
-    ModuleVersion          = '4.1.0'
+    ModuleVersion          = '4.2.0'
 
     # Supported PSEditions
     CompatiblePSEditions   = 'Core', 'Desktop'
@@ -53,7 +53,7 @@ For more information Api Management, please visit the following: https://learn.m
     # ProcessorArchitecture = ''
 
     # Modules that must be imported into the global environment prior to importing this module
-    # RequiredModules        = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '4.0.2'; })
+    RequiredModules        = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '4.0.2'; })
 
     # Assemblies that must be loaded prior to importing this module
     RequiredAssemblies     = 'Microsoft.Azure.PowerShell.ApiManagement.Management.Sdk.dll', 
