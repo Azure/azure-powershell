@@ -1,6 +1,6 @@
 ---
 Module Name: Az.DurableTask
-Module Guid: c49fc661-832c-47ee-9e91-711bc24911c5
+Module Guid: 8e1c3931-d141-45b2-9398-9e3731d5fe7a
 Download Help Link: https://learn.microsoft.com/powershell/module/az.durabletask
 Help Version: 1.0.0.0
 Locale: en-US
