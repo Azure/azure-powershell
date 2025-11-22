@@ -8,28 +8,43 @@ schema: 2.0.0
 # New-AzQumuloFileSystem
 
 ## SYNOPSIS
-Create a file system resource
+create a file system resource
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzQumuloFileSystem -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  -AdminPassword <SecureString> -DelegatedSubnetId <String> -InitialCapacity <Int32> -Location <String>
- -MarketplaceOfferId <String> -MarketplacePlanId <String> -MarketplacePublisherId <String>
- -StorageSku <StorageSku> -UserEmail <String> [-AvailabilityZone <String>] [-ClusterLoginUrl <String>]
- [-IdentityType <ManagedServiceIdentityType>] [-MarketplaceSubscriptionId <String>] [-PrivateIP <String[]>]
- [-Tag <Hashtable>] [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ -MarketplaceOfferId <String> -MarketplacePlanId <String> -MarketplacePublisherId <String> -StorageSku <String>
+ -UserEmail <String> [-AvailabilityZone <String>] [-ClusterLoginUrl <String>] [-EnableSystemAssignedIdentity]
+ [-MarketplaceSubscriptionId <String>] [-PrivateIP <String[]>] [-Tag <Hashtable>]
+ [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzQumuloFileSystem -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzQumuloFileSystem -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a file system resource
+create a file system resource
 
 ## EXAMPLES
 
 ### Example 1: Create a minimum set file system resource
 ```powershell
-$password = ConvertTo-SecureString -String "****" -AsPlainText -Force
+$password = ConvertTo-SecureString -String $password -AsPlainText -Force
 
 New-AzQumuloFileSystem -Name qumulo01 -ResourceGroupName ps-joyer-test -DelegatedSubnetId /subscriptions/fc35d936-3b89-41f8-8110-a24b56826c37/resourceGroups/ps-joyer-test/providers/Microsoft.Network/virtualNetworks/eastus-ps-virtualnetwork/subnets/qumulo-vn -InitialCapacity 50 -Location eastus -MarketplaceOfferId "qumulo-saas-mpp" -MarketplacePlanId "qumulo-on-azure-v1%%gmz7xq9ge3py%%P1M" -MarketplacePublisherId qumulo1584033880660 -StorageSku Standard -UserEmail user@organization.com -AdminPassword $password
 ```
@@ -45,7 +60,7 @@ The password must contain at least 8 characters and have at least 1 letter, 1 nu
 
 ### Example 2: Create a file system resource with other settings
 ```powershell
-$password = ConvertTo-SecureString -String "****" -AsPlainText -Force
+$password = ConvertTo-SecureString -String $password -AsPlainText -Force
 
 New-AzQumuloFileSystem -Name qumulo02 -ResourceGroupName ps-joyer-test -AdminPassword $password -DelegatedSubnetId /subscriptions/fc35d936-3b89-41f8-8110-a24b56826c37/resourceGroups/ps-joyer-test/providers/Microsoft.Network/virtualNetworks/eastus-ps-virtualnetwork/subnets/qumulo-vn -InitialCapacity 50 -Location eastus -MarketplaceOfferId "qumulo-saas-mpp" -MarketplacePlanId "qumulo-on-azure-v1%%gmz7xq9ge3py%%P1M" -MarketplacePublisherId qumulo1584033880660 -StorageSku Standard -UserEmail user@organization.com -AvailabilityZone 1 -Tag @{"123"="abc"}
 ```
@@ -65,7 +80,7 @@ Initial administrator password of the resource
 
 ```yaml
 Type: System.Security.SecureString
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -95,7 +110,7 @@ Availability zone
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -110,7 +125,7 @@ File system Id of the resource
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -141,7 +156,7 @@ Delegated subnet id for Vnet injection
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -151,12 +166,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityType
-Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+### -EnableSystemAssignedIdentity
+Determines whether to enable a system-assigned identity for the resource.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Support.ManagedServiceIdentityType
-Parameter Sets: (All)
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -171,7 +186,37 @@ Storage capacity in TB
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
 Aliases:
 
 Required: True
@@ -186,7 +231,7 @@ The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -201,7 +246,7 @@ Offer Id
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -216,7 +261,7 @@ Plan Id
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -231,7 +276,7 @@ Publisher Id
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -246,7 +291,7 @@ Marketplace Subscription Id
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -291,7 +336,7 @@ Private IPs of the resource
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -321,8 +366,8 @@ Accept wildcard characters: False
 Storage Sku
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Support.StorageSku
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -352,7 +397,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -363,13 +408,12 @@ Accept wildcard characters: False
 ```
 
 ### -UserAssignedIdentity
-The set of user assigned identities associated with the resource.
-The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-The dictionary values can be empty objects ({}) in requests.
+The array of user assigned identities associated with the resource.
+The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
 
 ```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Type: System.String[]
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -384,7 +428,7 @@ User Email
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -432,7 +476,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Models.Api20221012Preview.IFileSystemResource
+### Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Models.IFileSystemResource
 
 ## NOTES
 
