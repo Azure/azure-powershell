@@ -1,5 +1,5 @@
 ---
-external help file: Az.EdgeAction-help.xml
+external help file:
 Module Name: Az.EdgeAction
 online version: https://learn.microsoft.com/powershell/module/az.edgeaction/get-azedgeactionversioncode
 schema: 2.0.0
@@ -14,22 +14,21 @@ A long-running resource action.
 
 ### Get (Default)
 ```
-Get-AzEdgeActionVersionCode -EdgeActionName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- -Version <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### GetViaIdentityEdgeAction
-```
-Get-AzEdgeActionVersionCode -Version <String> -EdgeActionInputObject <IEdgeActionIdentity>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+Get-AzEdgeActionVersionCode -EdgeActionName <String> -ResourceGroupName <String> -Version <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzEdgeActionVersionCode -InputObject <IEdgeActionIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### GetViaIdentityEdgeAction
+```
+Get-AzEdgeActionVersionCode -EdgeActionInputObject <IEdgeActionIdentity> -Version <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -244,3 +243,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

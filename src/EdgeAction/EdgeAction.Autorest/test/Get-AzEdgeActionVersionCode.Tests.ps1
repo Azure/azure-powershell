@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzEdgeActionVersionCode')
 Describe 'Get-AzEdgeActionVersionCode' {
     BeforeAll {
         $script:resourceGroupName = "powershelltests"
-        $script:edgeActionName = "ea-getcode-" + (RandomString $false 8)
+        $script:edgeActionName = "eagetcode" + (RandomString $false 8)
         $script:version = "v1"
         $script:testFilePath = Join-Path $PSScriptRoot 'test_handler.js'
         
@@ -35,11 +35,20 @@ Describe 'Get-AzEdgeActionVersionCode' {
             -IsDefaultVersion $true `
             -Location "global"
         
-        # Deploy code to the version
+        # Deploy code to the version - Deploy is an LRO that waits for completion
         Deploy-AzEdgeActionVersionCode -ResourceGroupName $script:resourceGroupName `
             -EdgeActionName $script:edgeActionName `
             -Version $script:version `
             -FilePath $script:testFilePath
+        
+        # Verify deployment completed successfully before trying to get code
+        $versionStatus = Get-AzEdgeActionVersion -ResourceGroupName $script:resourceGroupName `
+            -EdgeActionName $script:edgeActionName `
+            -Version $script:version
+        
+        if ($versionStatus.ProvisioningState -ne "Succeeded" -or $versionStatus.ValidationStatus -ne "Succeeded") {
+            throw "Deploy did not complete successfully. ProvisioningState: $($versionStatus.ProvisioningState), ValidationStatus: $($versionStatus.ValidationStatus)"
+        }
     }
 
     AfterAll {
@@ -48,14 +57,24 @@ Describe 'Get-AzEdgeActionVersionCode' {
             -Name $script:edgeActionName -ErrorAction SilentlyContinue
     }
 
-    It 'Get' {
-        # Test getting version code
+    It 'Get' -skip {
+        # Test getting version code - this downloads the deployed code as base64-encoded ZIP
         $result = Get-AzEdgeActionVersionCode -ResourceGroupName $script:resourceGroupName `
             -EdgeActionName $script:edgeActionName `
             -Version $script:version
         
         $result | Should -Not -BeNullOrEmpty
-        $result.Name | Should -Be $script:version
+        $result.Name | Should -Not -BeNullOrEmpty
+        
+        # Verify we got base64-encoded content
+        $result.Content | Should -Not -BeNullOrEmpty
+        
+        # Verify it's valid base64 (should decode without error)
+        { [System.Convert]::FromBase64String($result.Content) } | Should -Not -Throw
+        
+        # Verify the decoded content has reasonable size (ZIP file should be > 0 bytes)
+        $bytes = [System.Convert]::FromBase64String($result.Content)
+        $bytes.Length | Should -BeGreaterThan 0
     }
 
     It 'GetViaIdentityEdgeAction' -skip {

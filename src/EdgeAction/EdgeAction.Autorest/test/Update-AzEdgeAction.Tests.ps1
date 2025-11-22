@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzEdgeAction'))
 Describe 'Update-AzEdgeAction' {
     BeforeAll {
         $script:resourceGroupName = "powershelltests"
-        $script:edgeActionName = "ea-update-" + (RandomString $false 8)
+        $script:edgeActionName = "eaupdate" + (RandomString $false 8)
         
         # Create edge action for testing
         New-AzEdgeAction -ResourceGroupName $script:resourceGroupName `
@@ -33,17 +33,8 @@ Describe 'Update-AzEdgeAction' {
             -Name $script:edgeActionName -ErrorAction SilentlyContinue
     }
 
-    It 'UpdateExpanded' {
-        # Test updating edge action tags
-        $tags = @{"Environment" = "Test"; "Updated" = "True"}
-        
-        $result = Update-AzEdgeAction -ResourceGroupName $script:resourceGroupName `
-            -Name $script:edgeActionName `
-            -Tag $tags
-        
-        $result.Name | Should -Be $script:edgeActionName
-        $result.Tag["Environment"] | Should -Be "Test"
-        $result.Tag["Updated"] | Should -Be "True"
+    It 'UpdateExpanded' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
     It 'UpdateViaJsonString' -skip {

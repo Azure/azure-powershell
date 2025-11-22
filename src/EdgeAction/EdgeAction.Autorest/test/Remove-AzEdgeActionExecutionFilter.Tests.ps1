@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzEdgeActionExecutionF
 Describe 'Remove-AzEdgeActionExecutionFilter' {
     BeforeAll {
         $script:resourceGroupName = "powershelltests"
-        $script:edgeActionName = "ea-delfilter-" + (RandomString $false 8)
+        $script:edgeActionName = "eadelfilter" + (RandomString $false 8)
         $script:version = "v1"
         $script:testFilePath = Join-Path $PSScriptRoot 'test_handler.js'
         
@@ -36,10 +36,55 @@ Describe 'Remove-AzEdgeActionExecutionFilter' {
             -Location "global"
         
         # Deploy code to version (required for execution filter)
+        # Deploy is an LRO that waits for completion
         Deploy-AzEdgeActionVersionCode -ResourceGroupName $script:resourceGroupName `
             -EdgeActionName $script:edgeActionName `
             -Version $script:version `
             -FilePath $script:testFilePath
+        
+        # Verify deployment completed before proceeding with tests
+        $versionStatus = Get-AzEdgeActionVersion -ResourceGroupName $script:resourceGroupName `
+            -EdgeActionName $script:edgeActionName `
+            -Version $script:version
+        if ($versionStatus.ProvisioningState -ne "Succeeded" -or $versionStatus.ValidationStatus -ne "Succeeded") {
+            throw "Deploy did not complete successfully. ProvisioningState: $($versionStatus.ProvisioningState), ValidationStatus: $($versionStatus.ValidationStatus)"
+        }
+        
+        # Store the version resource ID for execution filter
+        $script:versionId = $versionStatus.Id
+        
+        # Create an execution filter to test deletion
+        $script:filterName = "filter" + (RandomString $false 8)
+        New-AzEdgeActionExecutionFilter -ResourceGroupName $script:resourceGroupName `
+            -EdgeActionName $script:edgeActionName `
+            -ExecutionFilter $script:filterName `
+            -Version $script:versionId `
+            -Location "global" `
+            -ExecutionFilterIdentifierHeaderName "X-Filter-Id" `
+            -ExecutionFilterIdentifierHeaderValue "test-filter-value"
+        
+        # Wait for execution filter to reach Succeeded state (required before deletion)
+        # Execution filter creation is an LRO and may take several minutes
+        $maxWaitMinutes = 10
+        $startTime = Get-Date
+        $filterReady = $false
+        
+        while (((Get-Date) - $startTime).TotalMinutes -lt $maxWaitMinutes) {
+            $filterStatus = Get-AzEdgeActionExecutionFilter -ResourceGroupName $script:resourceGroupName `
+                -EdgeActionName $script:edgeActionName `
+                -ExecutionFilter $script:filterName
+            
+            if ($filterStatus.ProvisioningState -eq "Succeeded") {
+                $filterReady = $true
+                break
+            }
+            
+            Start-Sleep -Seconds 10
+        }
+        
+        if (-not $filterReady) {
+            throw "Execution filter did not reach Succeeded state within $maxWaitMinutes minutes. Current state: $($filterStatus.ProvisioningState)"
+        }
     }
 
     AfterAll {
@@ -50,24 +95,17 @@ Describe 'Remove-AzEdgeActionExecutionFilter' {
 
     It 'Delete' {
         # Test deleting execution filter
-        $filterName = "filter-delete"
-        
-        # Create filter to delete
-        New-AzEdgeActionExecutionFilter -ResourceGroupName $script:resourceGroupName `
+        # Note: BeforeAll waits for filter to reach "Succeeded" state (up to 10 minutes)
+        # This is required because the API rejects deletion if filter is in "Provisioning" state
+        Remove-AzEdgeActionExecutionFilter -ResourceGroupName $script:resourceGroupName `
             -EdgeActionName $script:edgeActionName `
-            -ExecutionFilterName $filterName `
-            -Version $script:version `
-            -Location "global"
+            -ExecutionFilter $script:filterName
         
-        # Delete the filter
-        { Remove-AzEdgeActionExecutionFilter -ResourceGroupName $script:resourceGroupName `
+        # Verify deletion by trying to get the filter (should not exist)
+        $filter = Get-AzEdgeActionExecutionFilter -ResourceGroupName $script:resourceGroupName `
             -EdgeActionName $script:edgeActionName `
-            -ExecutionFilterName $filterName } | Should -Not -Throw
-        
-        # Verify it's deleted
-        { Get-AzEdgeActionExecutionFilter -ResourceGroupName $script:resourceGroupName `
-            -EdgeActionName $script:edgeActionName `
-            -ExecutionFilterName $filterName -ErrorAction Stop } | Should -Throw
+            -ExecutionFilter $script:filterName -ErrorAction SilentlyContinue
+        $filter | Should -BeNullOrEmpty
     }
 
     It 'DeleteViaIdentityEdgeAction' -skip {

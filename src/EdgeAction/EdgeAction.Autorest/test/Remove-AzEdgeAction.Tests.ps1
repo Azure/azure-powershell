@@ -18,7 +18,7 @@ Describe 'Remove-AzEdgeAction' {
     It 'Delete' {
         # Test deleting edge action
         $resourceGroupName = "powershelltests"
-        $edgeActionName = "ea-delete-" + (RandomString $false 8)
+        $edgeActionName = "eadelete" + (RandomString $false 8)
         
         # Create edge action to delete
         New-AzEdgeAction -ResourceGroupName $resourceGroupName `

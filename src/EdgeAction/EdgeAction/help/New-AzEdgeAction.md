@@ -1,5 +1,5 @@
 ---
-external help file: Az.EdgeAction-help.xml
+external help file:
 Module Name: Az.EdgeAction
 online version: https://learn.microsoft.com/powershell/module/az.edgeaction/new-azedgeaction
 schema: 2.0.0
@@ -14,23 +14,21 @@ Create a EdgeAction
 
 ### CreateExpanded (Default)
 ```
-New-AzEdgeAction -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
- -SkuName <String> -SkuTier <String> [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzEdgeAction -Name <String> -ResourceGroupName <String> -Location <String> -SkuName <String>
+ -SkuTier <String> [-SubscriptionId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
-New-AzEdgeAction -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -JsonFilePath <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+New-AzEdgeAction -Name <String> -ResourceGroupName <String> -JsonFilePath <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
-New-AzEdgeAction -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -JsonString <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+New-AzEdgeAction -Name <String> -ResourceGroupName <String> -JsonString <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,27 +36,19 @@ Create a EdgeAction
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a new edge action
 ```powershell
-{{ Add code here }}
+New-AzEdgeAction -ResourceGroupName "myResourceGroup" -EdgeActionName "myEdgeAction" -SkuName "Standard" -SkuTier "Standard" -Location "global"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Creates a new edge action with Standard SKU in the global location.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Create an edge action with tags
 ```powershell
-{{ Add code here }}
+New-AzEdgeAction -ResourceGroupName "myResourceGroup" -EdgeActionName "myEdgeAction" -SkuName "Standard" -SkuTier "Standard" -Location "global" -Tag @{Environment="Production"; Team="EdgeTeam"}
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Creates a new edge action with custom tags for organization and tracking.
 
 ## PARAMETERS
 
@@ -288,3 +278,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

@@ -17,9 +17,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzEdgeActionExecutionFilt
 Describe 'Get-AzEdgeActionExecutionFilter' {
     BeforeAll {
         $script:resourceGroupName = "powershelltests"
-        $script:edgeActionName = "ea-getfilter-" + (RandomString $false 8)
+        $script:edgeActionName = "eagetfilter" + (RandomString $false 8)
         $script:version = "v1"
-        $script:filterName = "filter-get"
+        $script:filterName = "filterget"
         $script:testFilePath = Join-Path $PSScriptRoot 'test_handler.js'
         
         # Create edge action, version, and filter for testing
@@ -37,16 +37,30 @@ Describe 'Get-AzEdgeActionExecutionFilter' {
             -Location "global"
         
         # Deploy code to version (required for execution filter)
+        # Deploy is an LRO that waits for completion
         Deploy-AzEdgeActionVersionCode -ResourceGroupName $script:resourceGroupName `
             -EdgeActionName $script:edgeActionName `
             -Version $script:version `
             -FilePath $script:testFilePath
         
+        # Verify deployment completed before creating filter
+        $versionStatus = Get-AzEdgeActionVersion -ResourceGroupName $script:resourceGroupName `
+            -EdgeActionName $script:edgeActionName `
+            -Version $script:version
+        if ($versionStatus.ProvisioningState -ne "Succeeded" -or $versionStatus.ValidationStatus -ne "Succeeded") {
+            throw "Deploy did not complete successfully. ProvisioningState: $($versionStatus.ProvisioningState), ValidationStatus: $($versionStatus.ValidationStatus)"
+        }
+        
+        # Store the version resource ID for execution filter
+        $script:versionId = $versionStatus.Id
+        
         New-AzEdgeActionExecutionFilter -ResourceGroupName $script:resourceGroupName `
             -EdgeActionName $script:edgeActionName `
-            -ExecutionFilterName $script:filterName `
-            -Version $script:version `
-            -Location "global"
+            -ExecutionFilter $script:filterName `
+            -Version $script:versionId `
+            -Location "global" `
+            -ExecutionFilterIdentifierHeaderName "X-Filter-Id" `
+            -ExecutionFilterIdentifierHeaderValue "test-filter-value"
     }
 
     AfterAll {
@@ -68,11 +82,14 @@ Describe 'Get-AzEdgeActionExecutionFilter' {
         # Test getting specific execution filter
         $result = Get-AzEdgeActionExecutionFilter -ResourceGroupName $script:resourceGroupName `
             -EdgeActionName $script:edgeActionName `
-            -ExecutionFilterName $script:filterName
+            -ExecutionFilter $script:filterName
         
         $result.Name | Should -Be $script:filterName
-        $result.Version | Should -Be $script:version
-        $result.ProvisioningState | Should -Be "Succeeded"
+        # Note: Execution filter may still be in "Provisioning" state even after creation completes
+        # The LRO cmdlet returns when the PUT is accepted, but background provisioning continues
+        # Only validate the immutable properties (name and header configuration)
+        $result.ExecutionFilterIdentifierHeaderName | Should -Be "X-Filter-Id"
+        $result.ExecutionFilterIdentifierHeaderValue | Should -Be "test-filter-value"
     }
 
     It 'GetViaIdentityEdgeAction' -skip {

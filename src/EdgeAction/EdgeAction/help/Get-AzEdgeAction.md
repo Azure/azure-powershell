@@ -1,5 +1,5 @@
 ---
-external help file: Az.EdgeAction-help.xml
+external help file:
 Module Name: Az.EdgeAction
 online version: https://learn.microsoft.com/powershell/module/az.edgeaction/get-azedgeaction
 schema: 2.0.0
@@ -14,8 +14,7 @@ Get a EdgeAction
 
 ### List (Default)
 ```
-Get-AzEdgeAction [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzEdgeAction [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
@@ -24,15 +23,14 @@ Get-AzEdgeAction -Name <String> -ResourceGroupName <String> [-SubscriptionId <St
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentity
+```
+Get-AzEdgeAction -InputObject <IEdgeActionIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### List1
 ```
 Get-AzEdgeAction -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
-### GetViaIdentity
-```
-Get-AzEdgeAction -InputObject <IEdgeActionIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -41,27 +39,19 @@ Get a EdgeAction
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get a specific edge action
 ```powershell
-{{ Add code here }}
+Get-AzEdgeAction -ResourceGroupName "myResourceGroup" -EdgeActionName "myEdgeAction"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Retrieves details of a specific edge action.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: List all edge actions in a resource group
 ```powershell
-{{ Add code here }}
+Get-AzEdgeAction -ResourceGroupName "myResourceGroup"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Lists all edge actions in the specified resource group.
 
 ## PARAMETERS
 
@@ -133,7 +123,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List, Get, List1
+Parameter Sets: Get, List, List1
 Aliases:
 
 Required: False
@@ -157,3 +147,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

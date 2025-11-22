@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzEdgeActionVersion'))
 Describe 'Remove-AzEdgeActionVersion' {
     BeforeAll {
         $script:resourceGroupName = "powershelltests"
-        $script:edgeActionName = "ea-delver-" + (RandomString $false 8)
+        $script:edgeActionName = "eadelver" + (RandomString $false 8)
         
         # Create edge action for testing
         New-AzEdgeAction -ResourceGroupName $script:resourceGroupName `
@@ -35,7 +35,7 @@ Describe 'Remove-AzEdgeActionVersion' {
 
     It 'Delete' {
         # Test deleting version
-        $version = "v-delete"
+        $version = "vdelete"
         
         # Create version to delete
         New-AzEdgeActionVersion -ResourceGroupName $script:resourceGroupName `

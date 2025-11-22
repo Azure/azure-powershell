@@ -40,27 +40,19 @@ Get a EdgeActionVersion
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get a specific edge action version
 ```powershell
-{{ Add code here }}
+Get-AzEdgeActionVersion -ResourceGroupName "myResourceGroup" -EdgeActionName "myEdgeAction" -Version "v1"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Retrieves details of a specific version of an edge action.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: List all versions of an edge action
 ```powershell
-{{ Add code here }}
+Get-AzEdgeActionVersion -ResourceGroupName "myResourceGroup" -EdgeActionName "myEdgeAction"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Lists all versions for the specified edge action.
 
 ## PARAMETERS
 

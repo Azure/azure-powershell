@@ -1,5 +1,5 @@
 ---
-external help file: Az.EdgeAction-help.xml
+external help file:
 Module Name: Az.EdgeAction
 online version: https://learn.microsoft.com/powershell/module/az.edgeaction/get-azedgeactionversion
 schema: 2.0.0
@@ -20,20 +20,19 @@ Get-AzEdgeActionVersion -EdgeActionName <String> -ResourceGroupName <String> [-S
 
 ### Get
 ```
-Get-AzEdgeActionVersion -EdgeActionName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- -Version <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentityEdgeAction
-```
-Get-AzEdgeActionVersion -Version <String> -EdgeActionInputObject <IEdgeActionIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzEdgeActionVersion -EdgeActionName <String> -ResourceGroupName <String> -Version <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzEdgeActionVersion -InputObject <IEdgeActionIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzEdgeActionVersion -InputObject <IEdgeActionIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentityEdgeAction
+```
+Get-AzEdgeActionVersion -EdgeActionInputObject <IEdgeActionIdentity> -Version <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,27 +40,19 @@ Get a EdgeActionVersion
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get a specific edge action version
 ```powershell
-{{ Add code here }}
+Get-AzEdgeActionVersion -ResourceGroupName "myResourceGroup" -EdgeActionName "myEdgeAction" -Version "v1"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Retrieves details of a specific version of an edge action.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: List all versions of an edge action
 ```powershell
-{{ Add code here }}
+Get-AzEdgeActionVersion -ResourceGroupName "myResourceGroup" -EdgeActionName "myEdgeAction"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Lists all versions for the specified edge action.
 
 ## PARAMETERS
 
@@ -101,7 +92,7 @@ The name of the Edge Action
 
 ```yaml
 Type: System.String
-Parameter Sets: List, Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -132,7 +123,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: List, Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -148,7 +139,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List, Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: False
@@ -187,3 +178,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

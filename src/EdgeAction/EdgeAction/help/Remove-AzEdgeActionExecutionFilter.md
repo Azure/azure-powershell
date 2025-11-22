@@ -1,5 +1,5 @@
 ---
-external help file: Az.EdgeAction-help.xml
+external help file:
 Module Name: Az.EdgeAction
 online version: https://learn.microsoft.com/powershell/module/az.edgeaction/remove-azedgeactionexecutionfilter
 schema: 2.0.0
@@ -16,20 +16,19 @@ Delete a EdgeActionExecutionFilter
 ```
 Remove-AzEdgeActionExecutionFilter -EdgeActionName <String> -ExecutionFilter <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### DeleteViaIdentityEdgeAction
-```
-Remove-AzEdgeActionExecutionFilter -ExecutionFilter <String> -EdgeActionInputObject <IEdgeActionIdentity>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzEdgeActionExecutionFilter -InputObject <IEdgeActionIdentity> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### DeleteViaIdentityEdgeAction
+```
+Remove-AzEdgeActionExecutionFilter -EdgeActionInputObject <IEdgeActionIdentity> -ExecutionFilter <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -259,3 +258,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

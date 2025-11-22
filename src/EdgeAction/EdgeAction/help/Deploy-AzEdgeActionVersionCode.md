@@ -1,5 +1,5 @@
 ---
-external help file: Az.EdgeAction-help.xml
+external help file:
 Module Name: Az.EdgeAction
 online version: https://learn.microsoft.com/powershell/module/az.edgeaction/deploy-azedgeactionversioncode
 schema: 2.0.0
@@ -8,99 +8,52 @@ schema: 2.0.0
 # Deploy-AzEdgeActionVersionCode
 
 ## SYNOPSIS
-A long-running resource action.
+Deploy Edge Action version code from a file.
 
 ## SYNTAX
 
-### DeployFromFile (Default)
 ```
-Deploy-AzEdgeActionVersionCode -EdgeActionName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -Version <String> [-Name <String>] -FilePath <String> [-DeploymentType <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### DeployViaJsonString
-```
-Deploy-AzEdgeActionVersionCode -EdgeActionName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -Version <String> -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### DeployViaJsonFilePath
-```
-Deploy-AzEdgeActionVersionCode -EdgeActionName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -Version <String> -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### DeployExpanded
-```
-Deploy-AzEdgeActionVersionCode -EdgeActionName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -Version <String> -Content <String> -Name <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### Deploy
-```
-Deploy-AzEdgeActionVersionCode -EdgeActionName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -Version <String> -Body <IVersionCode> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### DeployViaIdentityEdgeActionExpanded
-```
-Deploy-AzEdgeActionVersionCode -Version <String> -EdgeActionInputObject <IEdgeActionIdentity> -Content <String>
- -Name <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf]
- [-Confirm] [<CommonParameters>]
-```
-
-### DeployViaIdentityEdgeAction
-```
-Deploy-AzEdgeActionVersionCode -Version <String> -EdgeActionInputObject <IEdgeActionIdentity>
- -Body <IVersionCode> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### DeployViaIdentityExpanded
-```
-Deploy-AzEdgeActionVersionCode -InputObject <IEdgeActionIdentity> -Content <String> -Name <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### DeployViaIdentity
-```
-Deploy-AzEdgeActionVersionCode -InputObject <IEdgeActionIdentity> -Body <IVersionCode>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Deploy-AzEdgeActionVersionCode -EdgeActionName <String> -ResourceGroupName <String> -Version <String>
+ -FilePath <String> [-SubscriptionId <String>] [-DeploymentType <String>] [-Name <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-A long-running resource action.
+Deploy Edge Action version code from a JavaScript or zip file.
+This command handles file reading, 
+automatic zipping (for JavaScript files when using zip deployment), and base64 encoding.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Deploy a JavaScript file to an edge action version
 ```powershell
-{{ Add code here }}
+Deploy-AzEdgeActionVersionCode -ResourceGroupName "myResourceGroup" -EdgeActionName "myEdgeAction" -Version "v1" -FilePath "C:\code\handler.js"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Deploys a JavaScript file to the specified edge action version.
+The deployment type is automatically detected based on the file extension (.js → file type).
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Deploy a JavaScript file as a zip package
 ```powershell
-{{ Add code here }}
+Deploy-AzEdgeActionVersionCode -ResourceGroupName "myResourceGroup" -EdgeActionName "myEdgeAction" -Version "v1" -FilePath "C:\code\handler.js" -DeploymentType "zip"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Deploys a JavaScript file by automatically creating a zip archive, encoding it in base64, and uploading it to the edge action version.
+
+### Example 3: Deploy a pre-packaged zip file
+```powershell
+Deploy-AzEdgeActionVersionCode -ResourceGroupName "myResourceGroup" -EdgeActionName "myEdgeAction" -Version "v1" -FilePath "C:\code\package.zip"
 ```
 
-{{ Add description here }}
+Deploys an existing zip file containing the edge action code.
+The zip file is encoded in base64 and uploaded.
+
+### Example 4: Deploy with a custom deployment name
+```powershell
+Deploy-AzEdgeActionVersionCode -ResourceGroupName "myResourceGroup" -EdgeActionName "myEdgeAction" -Version "v1" -FilePath "C:\code\handler.js" -DeploymentName "production-deploy-001"
+```
+
+Deploys code with a custom deployment name for tracking purposes.
 
 ## PARAMETERS
 
@@ -119,39 +72,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Body
-Version code information for edge action
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IVersionCode
-Parameter Sets: Deploy, DeployViaIdentityEdgeAction, DeployViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Content
-The version code deployment content
-
-```yaml
-Type: System.String
-Parameter Sets: DeployExpanded, DeployViaIdentityEdgeActionExpanded, DeployViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
-The DefaultProfile parameter is not functional.
-Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -171,7 +93,7 @@ Auto-detected if not specified.
 
 ```yaml
 Type: System.String
-Parameter Sets: DeployFromFile
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -181,27 +103,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EdgeActionInputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionIdentity
-Parameter Sets: DeployViaIdentityEdgeActionExpanded, DeployViaIdentityEdgeAction
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -EdgeActionName
 The name of the Edge Action
 
 ```yaml
 Type: System.String
-Parameter Sets: DeployFromFile, DeployViaJsonString, DeployViaJsonFilePath, DeployExpanded, Deploy
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -216,52 +123,7 @@ Path to JavaScript (.js) or zip (.zip) file
 
 ```yaml
 Type: System.String
-Parameter Sets: DeployFromFile
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionIdentity
-Parameter Sets: DeployViaIdentityExpanded, DeployViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -JsonFilePath
-Path of Json file supplied to the Deploy operation
-
-```yaml
-Type: System.String
-Parameter Sets: DeployViaJsonFilePath
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonString
-Json string supplied to the Deploy operation
-
-```yaml
-Type: System.String
-Parameter Sets: DeployViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -272,26 +134,15 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The version code name
+The version code deployment name.
+Defaults to the version name if not specified.
 
 ```yaml
 Type: System.String
-Parameter Sets: DeployFromFile
+Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: DeployExpanded, DeployViaIdentityEdgeActionExpanded, DeployViaIdentityExpanded
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -319,7 +170,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: DeployFromFile, DeployViaJsonString, DeployViaJsonFilePath, DeployExpanded, Deploy
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -331,11 +182,10 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
-The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: DeployFromFile, DeployViaJsonString, DeployViaJsonFilePath, DeployExpanded, Deploy
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -346,11 +196,11 @@ Accept wildcard characters: False
 ```
 
 ### -Version
-The name of the Edge Action version
+The version name
 
 ```yaml
 Type: System.String
-Parameter Sets: DeployFromFile, DeployViaJsonString, DeployViaJsonFilePath, DeployExpanded, Deploy, DeployViaIdentityEdgeActionExpanded, DeployViaIdentityEdgeAction
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -396,16 +246,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionIdentity
-
-### Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IVersionCode
-
 ## OUTPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersionProperties
 
 ### System.Object
 
 ## NOTES
 
 ## RELATED LINKS
+

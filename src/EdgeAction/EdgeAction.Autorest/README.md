@@ -55,7 +55,7 @@ require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
-  - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/EdgeActions/preview/2025-09-01-preview/openapi.json
+  - c:/swagger/azure-rest-api-specs/specification/cdn/resource-manager/Microsoft.Cdn/EdgeActions/preview/2025-09-01-preview/openapi.json
 
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 # - (this-folder)/relative-path-to-your-swagger 
@@ -84,6 +84,12 @@ directive:
   - where:
       verb: Set
     remove: true
+  
+  # Fix SubscriptionId parameter type conflict - keep only single string variant
+  - where:
+      parameter-name: SubscriptionId
+    set:
+      parameter-name: SubscriptionId
 
   # Format table to exclude system metadata
   - where:
@@ -104,4 +110,9 @@ directive:
       verb: Deploy
       subject: EdgeActionVersionCode
     hide: true
+  
+  # Remove array variant of SubscriptionId to fix parameter type conflict
+  - where:
+      parameter-name: SubscriptionId
+    clear-alias: true
 ```

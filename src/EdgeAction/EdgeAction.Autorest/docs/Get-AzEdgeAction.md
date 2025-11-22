@@ -39,27 +39,19 @@ Get a EdgeAction
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get a specific edge action
 ```powershell
-{{ Add code here }}
+Get-AzEdgeAction -ResourceGroupName "myResourceGroup" -EdgeActionName "myEdgeAction"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Retrieves details of a specific edge action.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: List all edge actions in a resource group
 ```powershell
-{{ Add code here }}
+Get-AzEdgeAction -ResourceGroupName "myResourceGroup"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Lists all edge actions in the specified resource group.
 
 ## PARAMETERS
 

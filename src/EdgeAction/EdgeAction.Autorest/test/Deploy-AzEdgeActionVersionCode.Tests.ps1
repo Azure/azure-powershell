@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Deploy-AzEdgeActionVersionCod
 
 Describe 'Deploy-AzEdgeActionVersionCode' {
     BeforeAll {
-        $script:EdgeActionName = "eapt-" + (New-Guid).ToString().Substring(0, 8)
+        $script:EdgeActionName = "eapt" + (New-Guid).ToString().Substring(0, 8)
         $script:TestResourceGroup = $env.ResourceGroupName
         $script:TestFilePath = Join-Path $PSScriptRoot 'test_handler.js'
     }
@@ -35,14 +35,16 @@ Describe 'Deploy-AzEdgeActionVersionCode' {
         New-AzEdgeActionVersion -ResourceGroupName $script:TestResourceGroup -EdgeActionName $script:EdgeActionName -Version $version -DeploymentType "file" -IsDefaultVersion $false -Location "global"
         
         # Test deploy with JavaScript file using 'file' deployment type
+        # Deploy is an LRO - the cmdlet automatically waits for completion
         $result = Deploy-AzEdgeActionVersionCode -ResourceGroupName $script:TestResourceGroup -EdgeActionName $script:EdgeActionName -Version $version -FilePath $script:TestFilePath -DeploymentType "file"
         
         $result | Should -Not -BeNullOrEmpty
         $result.Name | Should -Be $version
         
-        # Verify deployment by getting version code
-        $versionCode = Get-AzEdgeActionVersionCode -ResourceGroupName $script:TestResourceGroup -EdgeActionName $script:EdgeActionName -Version $version
-        $versionCode | Should -Not -BeNullOrEmpty
+        # Verify deployment completed successfully  
+        $versionStatus = Get-AzEdgeActionVersion -ResourceGroupName $script:TestResourceGroup -EdgeActionName $script:EdgeActionName -Version $version
+        $versionStatus.ProvisioningState | Should -Be "Succeeded"
+        $versionStatus.ValidationStatus | Should -Be "Succeeded"
         
         # Clean up version
         Remove-AzEdgeActionVersion -ResourceGroupName $script:TestResourceGroup -EdgeActionName $script:EdgeActionName -Version $version
@@ -54,14 +56,16 @@ Describe 'Deploy-AzEdgeActionVersionCode' {
         New-AzEdgeActionVersion -ResourceGroupName $script:TestResourceGroup -EdgeActionName $script:EdgeActionName -Version $version -DeploymentType "zip" -IsDefaultVersion $false -Location "global"
         
         # Test deploy with JavaScript file using 'zip' deployment type (auto-zips)
+        # Deploy is an LRO - AutoRest SDK automatically waits for completion
         $result = Deploy-AzEdgeActionVersionCode -ResourceGroupName $script:TestResourceGroup -EdgeActionName $script:EdgeActionName -Version $version -FilePath $script:TestFilePath -DeploymentType "zip"
         
         $result | Should -Not -BeNullOrEmpty
         $result.Name | Should -Be $version
         
-        # Verify deployment by getting version code
-        $versionCode = Get-AzEdgeActionVersionCode -ResourceGroupName $script:TestResourceGroup -EdgeActionName $script:EdgeActionName -Version $version
-        $versionCode | Should -Not -BeNullOrEmpty
+        # Verify deployment completed successfully
+        $versionStatus = Get-AzEdgeActionVersion -ResourceGroupName $script:TestResourceGroup -EdgeActionName $script:EdgeActionName -Version $version
+        $versionStatus.ProvisioningState | Should -Be "Succeeded"
+        $versionStatus.ValidationStatus | Should -Be "Succeeded"
         
         # Clean up version
         Remove-AzEdgeActionVersion -ResourceGroupName $script:TestResourceGroup -EdgeActionName $script:EdgeActionName -Version $version
@@ -73,10 +77,16 @@ Describe 'Deploy-AzEdgeActionVersionCode' {
         New-AzEdgeActionVersion -ResourceGroupName $script:TestResourceGroup -EdgeActionName $script:EdgeActionName -Version $version -DeploymentType "file" -IsDefaultVersion $false -Location "global"
         
         # Test deploy without specifying deployment type (should auto-detect as 'file' for .js)
+        # Deploy is an LRO - AutoRest SDK automatically waits for completion
         $result = Deploy-AzEdgeActionVersionCode -ResourceGroupName $script:TestResourceGroup -EdgeActionName $script:EdgeActionName -Version $version -FilePath $script:TestFilePath
         
         $result | Should -Not -BeNullOrEmpty
         $result.Name | Should -Be $version
+        
+        # Verify deployment completed successfully
+        $versionStatus = Get-AzEdgeActionVersion -ResourceGroupName $script:TestResourceGroup -EdgeActionName $script:EdgeActionName -Version $version
+        $versionStatus.ProvisioningState | Should -Be "Succeeded"
+        $versionStatus.ValidationStatus | Should -Be "Succeeded"
         
         # Clean up version
         Remove-AzEdgeActionVersion -ResourceGroupName $script:TestResourceGroup -EdgeActionName $script:EdgeActionName -Version $version
@@ -93,14 +103,16 @@ Describe 'Deploy-AzEdgeActionVersionCode' {
         
         try {
             # Test deploy with zip file (auto-detects)
+            # Deploy is an LRO - AutoRest SDK automatically waits for completion
             $result = Deploy-AzEdgeActionVersionCode -ResourceGroupName $script:TestResourceGroup -EdgeActionName $script:EdgeActionName -Version $version -FilePath $tempZip
             
             $result | Should -Not -BeNullOrEmpty
             $result.Name | Should -Be $version
             
-            # Verify deployment by getting version code
-            $versionCode = Get-AzEdgeActionVersionCode -ResourceGroupName $script:TestResourceGroup -EdgeActionName $script:EdgeActionName -Version $version
-            $versionCode | Should -Not -BeNullOrEmpty
+            # Verify deployment completed successfully
+            $versionStatus = Get-AzEdgeActionVersion -ResourceGroupName $script:TestResourceGroup -EdgeActionName $script:EdgeActionName -Version $version
+            $versionStatus.ProvisioningState | Should -Be "Succeeded"
+            $versionStatus.ValidationStatus | Should -Be "Succeeded"
         }
         finally {
             # Clean up temp file
@@ -113,13 +125,19 @@ Describe 'Deploy-AzEdgeActionVersionCode' {
     It 'DeployWithCustomName' {
         # Test deployment with custom deployment name
         $version = "v5"
-        $customName = "custom-deployment-name"
+        $customName = "customdeploymentname"  # Must be alphanumeric only
         New-AzEdgeActionVersion -ResourceGroupName $script:TestResourceGroup -EdgeActionName $script:EdgeActionName -Version $version -DeploymentType "file" -IsDefaultVersion $false -Location "global"
         
         # Test deploy with custom name
+        # Deploy is an LRO - AutoRest SDK automatically waits for completion
         $result = Deploy-AzEdgeActionVersionCode -ResourceGroupName $script:TestResourceGroup -EdgeActionName $script:EdgeActionName -Version $version -FilePath $script:TestFilePath -Name $customName
         
         $result | Should -Not -BeNullOrEmpty
+        
+        # Verify deployment completed successfully
+        $versionStatus = Get-AzEdgeActionVersion -ResourceGroupName $script:TestResourceGroup -EdgeActionName $script:EdgeActionName -Version $version
+        $versionStatus.ProvisioningState | Should -Be "Succeeded"
+        $versionStatus.ValidationStatus | Should -Be "Succeeded"
         
         # Clean up version
         Remove-AzEdgeActionVersion -ResourceGroupName $script:TestResourceGroup -EdgeActionName $script:EdgeActionName -Version $version

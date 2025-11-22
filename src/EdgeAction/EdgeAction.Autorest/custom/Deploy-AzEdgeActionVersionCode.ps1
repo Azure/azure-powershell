@@ -230,10 +230,20 @@ function Deploy-AzEdgeActionVersionCode {
             if ($PSBoundParameters.ContainsKey('ProxyCredential')) { $params['ProxyCredential'] = $ProxyCredential }
             if ($PSBoundParameters.ContainsKey('ProxyUseDefaultCredentials')) { $params['ProxyUseDefaultCredentials'] = $ProxyUseDefaultCredentials }
 
-            Write-Verbose "Calling Invoke-AzEdgeActionVersionDeployVersionCode with processed content"
+            Write-Verbose "Calling internal deployment implementation with Content and Name parameters"
             
-            # Call the generated cmdlet
-            Invoke-AzEdgeActionVersionDeployVersionCode @params
+            # Call the generated private cmdlet with the DeployExpanded parameter set
+            # This is the same cmdlet that would be called for the DeployExpanded parameter set
+            $result = Az.EdgeAction.private\Deploy-AzEdgeActionVersionCode_DeployExpanded @params
+            
+            # The API returns EdgeActionVersionProperties which doesn't include the version name
+            # Add the version name to the result object for consistency with other cmdlets
+            if ($result -and -not $result.PSObject.Properties['Name']) {
+                $result | Add-Member -MemberType NoteProperty -Name 'Name' -Value $Version -Force
+            }
+            
+            # Return the enhanced result to the caller
+            return $result
         } catch {
             throw
         }
