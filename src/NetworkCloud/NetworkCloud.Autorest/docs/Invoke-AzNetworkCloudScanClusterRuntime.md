@@ -15,8 +15,8 @@ Triggers the execution of a runtime protection scan to detect and remediate dete
 ### ScanExpanded (Default)
 ```
 Invoke-AzNetworkCloudScanClusterRuntime -ClusterName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-ScanActivity <ClusterScanRuntimeParametersScanActivity>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-ScanActivity <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Scan
@@ -35,9 +35,22 @@ Invoke-AzNetworkCloudScanClusterRuntime -InputObject <INetworkCloudIdentity>
 
 ### ScanViaIdentityExpanded
 ```
-Invoke-AzNetworkCloudScanClusterRuntime -InputObject <INetworkCloudIdentity>
- [-ScanActivity <ClusterScanRuntimeParametersScanActivity>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzNetworkCloudScanClusterRuntime -InputObject <INetworkCloudIdentity> [-ScanActivity <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ScanViaJsonFilePath
+```
+Invoke-AzNetworkCloudScanClusterRuntime -ClusterName <String> -ResourceGroupName <String>
+ -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ScanViaJsonString
+```
+Invoke-AzNetworkCloudScanClusterRuntime -ClusterName <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -74,7 +87,7 @@ The name of the cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: Scan, ScanExpanded
+Parameter Sets: Scan, ScanExpanded, ScanViaJsonFilePath, ScanViaJsonString
 Aliases:
 
 Required: True
@@ -86,10 +99,9 @@ Accept wildcard characters: False
 
 ### -ClusterScanRuntimeParameter
 ClusterScanRuntimeParameters defines the parameters for the cluster scan runtime operation.
-To construct, see NOTES section for CLUSTERSCANRUNTIMEPARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250901.IClusterScanRuntimeParameters
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterScanRuntimeParameters
 Parameter Sets: Scan, ScanViaIdentity
 Aliases:
 
@@ -118,7 +130,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
@@ -129,6 +140,36 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Scan operation
+
+```yaml
+Type: System.String
+Parameter Sets: ScanViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Scan operation
+
+```yaml
+Type: System.String
+Parameter Sets: ScanViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -168,7 +209,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Scan, ScanExpanded
+Parameter Sets: Scan, ScanExpanded, ScanViaJsonFilePath, ScanViaJsonString
 Aliases:
 
 Required: True
@@ -182,7 +223,7 @@ Accept wildcard characters: False
 The choice of if the scan operation should run the scan.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ClusterScanRuntimeParametersScanActivity
+Type: System.String
 Parameter Sets: ScanExpanded, ScanViaIdentityExpanded
 Aliases:
 
@@ -199,7 +240,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Scan, ScanExpanded
+Parameter Sets: Scan, ScanExpanded, ScanViaJsonFilePath, ScanViaJsonString
 Aliases:
 
 Required: False
@@ -245,7 +286,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250901.IClusterScanRuntimeParameters
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterScanRuntimeParameters
 
 ### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
 

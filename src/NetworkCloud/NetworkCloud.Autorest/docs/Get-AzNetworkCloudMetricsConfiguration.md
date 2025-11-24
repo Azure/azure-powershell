@@ -31,6 +31,12 @@ Get-AzNetworkCloudMetricsConfiguration -InputObject <INetworkCloudIdentity> [-De
  [<CommonParameters>]
 ```
 
+### GetViaIdentityCluster
+```
+Get-AzNetworkCloudMetricsConfiguration -ClusterInputObject <INetworkCloudIdentity> -Name <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Get metrics configuration of the provided cluster.
 
@@ -63,6 +69,21 @@ eastus   default 07/14/2023 17:09:29    user1                    User           
 This command gets details of a specific metrics configuration for the provided Cluster.
 
 ## PARAMETERS
+
+### -ClusterInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
+Parameter Sets: GetViaIdentityCluster
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
 
 ### -ClusterName
 The name of the cluster.
@@ -97,7 +118,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
@@ -116,7 +136,7 @@ The name of the metrics configuration for the cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityCluster
 Aliases: MetricsConfigurationName
 
 Required: True
@@ -199,7 +219,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250901.IClusterMetricsConfiguration
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterMetricsConfiguration
 
 ## NOTES
 

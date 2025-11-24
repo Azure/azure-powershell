@@ -8,20 +8,54 @@ schema: 2.0.0
 # New-AzNetworkCloudMetricsConfiguration
 
 ## SYNOPSIS
-Create new or update the existing metrics configuration of the provided cluster.
+Create new or create the existing metrics configuration of the provided cluster.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
-New-AzNetworkCloudMetricsConfiguration -ClusterName <String> -MetricsConfigurationName <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>]
- -CollectionInterval <Int64> -ExtendedLocationName <String> -ExtendedLocationType <String> -Location <String>
- [-EnabledMetric <String[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+New-AzNetworkCloudMetricsConfiguration -Name <String> -ClusterName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] -CollectionInterval <Int64>
+ -ExtendedLocationName <String> -ExtendedLocationType <String> -Location <String> [-EnabledMetric <String[]>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### CreateViaJsonString
+```
+New-AzNetworkCloudMetricsConfiguration -Name <String> -ClusterName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] -JsonString <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzNetworkCloudMetricsConfiguration -Name <String> -ClusterName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] -JsonFilePath <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### CreateViaIdentityClusterExpanded
+```
+New-AzNetworkCloudMetricsConfiguration -Name <String> -ClusterInputObject <INetworkCloudIdentity>
+ [-IfMatch <String>] [-IfNoneMatch <String>] -CollectionInterval <Int64> -ExtendedLocationName <String>
+ -ExtendedLocationType <String> -Location <String> [-EnabledMetric <String[]>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### CreateViaIdentityCluster
+```
+New-AzNetworkCloudMetricsConfiguration -Name <String> -ClusterInputObject <INetworkCloudIdentity>
+ [-IfMatch <String>] [-IfNoneMatch <String>] -MetricsConfigurationParameter <IClusterMetricsConfiguration>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Create new or update the existing metrics configuration of the provided cluster.
+Create new or create the existing metrics configuration of the provided cluster.
 
 ## EXAMPLES
 
@@ -55,12 +89,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ClusterInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
+Parameter Sets: CreateViaIdentityClusterExpanded, CreateViaIdentityCluster
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ClusterName
 The name of the cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -75,7 +124,7 @@ The interval in minutes by which metrics will be collected.
 
 ```yaml
 Type: System.Int64
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityClusterExpanded
 Aliases:
 
 Required: True
@@ -106,7 +155,7 @@ The list of metric names that have been chosen to be enabled in addition to the 
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityClusterExpanded
 Aliases:
 
 Required: False
@@ -121,7 +170,7 @@ The resource ID of the extended location on which the resource will be created.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityClusterExpanded
 Aliases:
 
 Required: True
@@ -136,7 +185,7 @@ The extended location type, for example, CustomLocation.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityClusterExpanded
 Aliases:
 
 Required: True
@@ -179,12 +228,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Location
-The geo-location where the resource lives
+### -JsonFilePath
+Path of Json file supplied to the Create operation
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -194,13 +243,58 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MetricsConfigurationName
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Location
+The geo-location where the resource lives
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityClusterExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MetricsConfigurationParameter
+ClusterMetricsConfiguration represents the metrics configuration of an on-premises Network Cloud cluster.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterMetricsConfiguration
+Parameter Sets: CreateViaIdentityCluster
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
 The name of the metrics configuration for the cluster.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: MetricsConfigurationName
 
 Required: True
 Position: Named
@@ -230,7 +324,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -246,7 +340,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -261,7 +355,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityClusterExpanded
 Aliases:
 
 Required: False
@@ -307,9 +401,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterMetricsConfiguration
+
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250901.IClusterMetricsConfiguration
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterMetricsConfiguration
 
 ## NOTES
 

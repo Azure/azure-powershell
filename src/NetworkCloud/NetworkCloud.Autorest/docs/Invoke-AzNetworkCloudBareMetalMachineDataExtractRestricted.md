@@ -28,6 +28,20 @@ Invoke-AzNetworkCloudBareMetalMachineDataExtractRestricted -BareMetalMachineName
  [<CommonParameters>]
 ```
 
+### RunViaJsonFilePath
+```
+Invoke-AzNetworkCloudBareMetalMachineDataExtractRestricted -BareMetalMachineName <String>
+ -ResourceGroupName <String> -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### RunViaJsonString
+```
+Invoke-AzNetworkCloudBareMetalMachineDataExtractRestricted -BareMetalMachineName <String>
+ -ResourceGroupName <String> -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Run one or more restricted data extractions on the provided bare metal machine.
 The URL to storage account with the command execution results and the command exit code can be retrieved from the operation status API once available.
@@ -78,7 +92,7 @@ The name of the bare metal machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: RunExpanded
+Parameter Sets: RunExpanded, RunViaJsonFilePath, RunViaJsonString
 Aliases:
 
 Required: True
@@ -90,11 +104,10 @@ Accept wildcard characters: False
 
 ### -Command
 The list of curated data extraction commands to be executed directly against the target machine.
-To construct, see NOTES section for COMMAND properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250901.IBareMetalMachineCommandSpecification[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineCommandSpecification[]
+Parameter Sets: RunExpanded, RunViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -122,7 +135,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
@@ -136,13 +148,43 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Run operation
+
+```yaml
+Type: System.String
+Parameter Sets: RunViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Run operation
+
+```yaml
+Type: System.String
+Parameter Sets: RunViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -LimitTimeSecond
 The maximum time the commands are allowed to run.
 If the execution time exceeds the maximum, the script will be stopped, any output produced until then will be captured, and the exit code matching a timeout will be returned (252).
 
 ```yaml
 Type: System.Int64
-Parameter Sets: (All)
+Parameter Sets: RunExpanded, RunViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -188,7 +230,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: RunExpanded
+Parameter Sets: RunExpanded, RunViaJsonFilePath, RunViaJsonString
 Aliases:
 
 Required: True
@@ -204,7 +246,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: RunExpanded
+Parameter Sets: RunExpanded, RunViaJsonFilePath, RunViaJsonString
 Aliases:
 
 Required: False

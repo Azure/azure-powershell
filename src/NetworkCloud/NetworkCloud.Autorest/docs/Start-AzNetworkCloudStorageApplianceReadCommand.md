@@ -26,6 +26,20 @@ Start-AzNetworkCloudStorageApplianceReadCommand -ResourceGroupName <String> -Sto
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### RunViaJsonFilePath
+```
+Start-AzNetworkCloudStorageApplianceReadCommand -ResourceGroupName <String> -StorageApplianceName <String>
+ -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### RunViaJsonString
+```
+Start-AzNetworkCloudStorageApplianceReadCommand -ResourceGroupName <String> -StorageApplianceName <String>
+ -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Run one or more read-only commands on the provided storage appliance.
 
@@ -72,11 +86,10 @@ Accept wildcard characters: False
 
 ### -Command
 The list of read-only commands to be executed directly against the target storage appliance.
-To construct, see NOTES section for COMMAND properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250901.IStorageApplianceCommandSpecification[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IStorageApplianceCommandSpecification[]
+Parameter Sets: RunExpanded, RunViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -104,7 +117,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
@@ -118,12 +130,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Run operation
+
+```yaml
+Type: System.String
+Parameter Sets: RunViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Run operation
+
+```yaml
+Type: System.String
+Parameter Sets: RunViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -LimitTimeSecond
 The maximum time the commands are allowed to run.
 
 ```yaml
 Type: System.Int64
-Parameter Sets: (All)
+Parameter Sets: RunExpanded, RunViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -169,7 +211,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: RunExpanded
+Parameter Sets: RunExpanded, RunViaJsonFilePath, RunViaJsonString
 Aliases:
 
 Required: True
@@ -184,7 +226,7 @@ The name of the storage appliance.
 
 ```yaml
 Type: System.String
-Parameter Sets: RunExpanded
+Parameter Sets: RunExpanded, RunViaJsonFilePath, RunViaJsonString
 Aliases:
 
 Required: True
@@ -200,7 +242,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: RunExpanded
+Parameter Sets: RunExpanded, RunViaJsonFilePath, RunViaJsonString
 Aliases:
 
 Required: False

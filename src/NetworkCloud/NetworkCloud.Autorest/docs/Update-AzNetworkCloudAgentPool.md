@@ -9,7 +9,7 @@ schema: 2.0.0
 
 ## SYNOPSIS
 Patch the properties of the provided Kubernetes cluster agent pool, or update the tags associated with the Kubernetes cluster agent pool.
-Properties and tag updates can be done independently.
+Properties and tag update can be done independently.
 
 ## SYNTAX
 
@@ -32,9 +32,39 @@ Update-AzNetworkCloudAgentPool -InputObject <INetworkCloudIdentity> [-IfMatch <S
  [<CommonParameters>]
 ```
 
+### UpdateViaIdentityKubernetesCluster
+```
+Update-AzNetworkCloudAgentPool -KubernetesClusterInputObject <INetworkCloudIdentity> -Name <String>
+ -AgentPoolUpdateParameter <IAgentPoolPatchParameters> [-IfMatch <String>] [-IfNoneMatch <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaIdentityKubernetesClusterExpanded
+```
+Update-AzNetworkCloudAgentPool -KubernetesClusterInputObject <INetworkCloudIdentity> -Name <String>
+ [-IfMatch <String>] [-IfNoneMatch <String>] [-AdministratorConfigurationSshPublicKey <ISshPublicKey[]>]
+ [-Count <Int64>] [-Tag <Hashtable>] [-UpgradeSettingDrainTimeout <Int64>] [-UpgradeSettingMaxSurge <String>]
+ [-UpgradeSettingMaxUnavailable <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Update-AzNetworkCloudAgentPool -KubernetesClusterName <String> -Name <String> -ResourceGroupName <String>
+ -JsonFilePath <String> [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaJsonString
+```
+Update-AzNetworkCloudAgentPool -KubernetesClusterName <String> -Name <String> -ResourceGroupName <String>
+ -JsonString <String> [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Patch the properties of the provided Kubernetes cluster agent pool, or update the tags associated with the Kubernetes cluster agent pool.
-Properties and tag updates can be done independently.
+Properties and tag update can be done independently.
 
 ## EXAMPLES
 
@@ -55,17 +85,31 @@ This command updates a Kubernetes cluster agent pool's properties.
 
 ### -AdministratorConfigurationSshPublicKey
 SshPublicKey represents the public key used to authenticate with a resource through SSH.
-To construct, see NOTES section for ADMINISTRATORCONFIGURATIONSSHPUBLICKEY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250901.ISshPublicKey[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ISshPublicKey[]
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityKubernetesClusterExpanded
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AgentPoolUpdateParameter
+AgentPoolPatchParameters represents the body of the request to patch the Kubernetes cluster agent pool.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IAgentPoolPatchParameters
+Parameter Sets: UpdateViaIdentityKubernetesCluster
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -89,7 +133,7 @@ The number of virtual machines that use this configuration.
 
 ```yaml
 Type: System.Int64
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityKubernetesClusterExpanded
 Aliases:
 
 Required: False
@@ -150,11 +194,55 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
 Parameter Sets: UpdateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KubernetesClusterInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
+Parameter Sets: UpdateViaIdentityKubernetesCluster, UpdateViaIdentityKubernetesClusterExpanded
 Aliases:
 
 Required: True
@@ -169,7 +257,7 @@ The name of the Kubernetes cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -184,7 +272,7 @@ The name of the Kubernetes cluster agent pool.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityKubernetesCluster, UpdateViaIdentityKubernetesClusterExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases: AgentPoolName
 
 Required: True
@@ -215,7 +303,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -231,7 +319,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: False
@@ -246,7 +334,7 @@ The Azure resource tags that will replace the existing ones.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityKubernetesClusterExpanded
 Aliases:
 
 Required: False
@@ -262,7 +350,7 @@ If not specified during creation, a value of 1800 seconds is used.
 
 ```yaml
 Type: System.Int64
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityKubernetesClusterExpanded
 Aliases:
 
 Required: False
@@ -284,7 +372,7 @@ One of MaxSurge and MaxUnavailable must be greater than 0.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityKubernetesClusterExpanded
 Aliases:
 
 Required: False
@@ -306,7 +394,7 @@ One of MaxSurge and MaxUnavailable must be greater than 0.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityKubernetesClusterExpanded
 Aliases:
 
 Required: False
@@ -352,11 +440,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IAgentPoolPatchParameters
+
 ### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250901.IAgentPool
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IAgentPool
 
 ## NOTES
 

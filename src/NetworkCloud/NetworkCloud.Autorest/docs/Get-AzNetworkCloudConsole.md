@@ -31,6 +31,12 @@ Get-AzNetworkCloudConsole -InputObject <INetworkCloudIdentity> [-DefaultProfile 
  [<CommonParameters>]
 ```
 
+### GetViaIdentityVirtualMachine
+```
+Get-AzNetworkCloudConsole -Name <String> -VirtualMachineInputObject <INetworkCloudIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Get properties of the provided virtual machine console.
 
@@ -82,7 +88,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
@@ -101,7 +106,7 @@ The name of the virtual machine console.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityVirtualMachine
 Aliases: ConsoleName
 
 Required: True
@@ -175,6 +180,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -VirtualMachineInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
+Parameter Sets: GetViaIdentityVirtualMachine
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -VirtualMachineName
 The name of the virtual machine.
 
@@ -199,7 +219,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250901.IConsole
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IConsole
 
 ## NOTES
 

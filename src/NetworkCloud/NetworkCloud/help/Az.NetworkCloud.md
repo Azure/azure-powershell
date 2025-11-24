@@ -106,7 +106,7 @@ The URL to storage account with the command execution results and the command ex
 Uncordon the provided bare metal machine's Kubernetes node.
 
 ### [Invoke-AzNetworkCloudClusterContinueVersionUpdate](Invoke-AzNetworkCloudClusterContinueVersionUpdate.md)
-Trigger the continuation of an update for a cluster with a matching update strategy that has paused after completing a segment of the update.
+Trigger the continuation of an continue for a cluster with a matching continue strategy that has paused after completing a segment of the continue
 
 ### [Invoke-AzNetworkCloudClusterVersionUpdate](Invoke-AzNetworkCloudClusterVersionUpdate.md)
 Update the version of the provided cluster to one of the available supported versions.
@@ -118,94 +118,49 @@ Triggers the execution of a runtime protection scan to detect and remediate dete
 Reimage the provided virtual machine.
 
 ### [New-AzNetworkCloudAgentPool](New-AzNetworkCloudAgentPool.md)
-Create a new Kubernetes cluster agent pool or update the properties of the existing one.
-
-### [New-AzNetworkCloudBareMetalMachineConfigurationDataObject](New-AzNetworkCloudBareMetalMachineConfigurationDataObject.md)
-Create an in-memory object for BareMetalMachineConfigurationData.
+Create a new Kubernetes cluster agent pool or create the properties of the existing one.
 
 ### [New-AzNetworkCloudBareMetalMachineKeySet](New-AzNetworkCloudBareMetalMachineKeySet.md)
-Create a new bare metal machine key set or update the existing one for the provided cluster.
-
-### [New-AzNetworkCloudBgpAdvertisementObject](New-AzNetworkCloudBgpAdvertisementObject.md)
-Create an in-memory object for BgpAdvertisement.
-
-### [New-AzNetworkCloudBgpServiceLoadBalancerConfigurationObject](New-AzNetworkCloudBgpServiceLoadBalancerConfigurationObject.md)
-Create an in-memory object for BgpServiceLoadBalancerConfiguration.
+Create a new bare metal machine key set or create the existing one for the provided cluster.
 
 ### [New-AzNetworkCloudBmcKeySet](New-AzNetworkCloudBmcKeySet.md)
-Create a new baseboard management controller key set or update the existing one for the provided cluster.
+Create a new baseboard management controller key set or create the existing one for the provided cluster.
 
 ### [New-AzNetworkCloudCluster](New-AzNetworkCloudCluster.md)
-Create a new cluster or update the properties of the cluster if it exists.
+Create a new cluster or create the properties of the cluster if it exists.
 
 ### [New-AzNetworkCloudClusterManager](New-AzNetworkCloudClusterManager.md)
-Create a new cluster manager or update properties of the cluster manager if it exists.
+Create a new cluster manager or create properties of the cluster manager if it exists.
 
 ### [New-AzNetworkCloudConsole](New-AzNetworkCloudConsole.md)
-Create a new virtual machine console or update the properties of the existing virtual machine console.
-
-### [New-AzNetworkCloudControlPlaneNodeConfigurationObject](New-AzNetworkCloudControlPlaneNodeConfigurationObject.md)
-Create an in-memory object for ControlPlaneNodeConfiguration.
-
-### [New-AzNetworkCloudEgressEndpointObject](New-AzNetworkCloudEgressEndpointObject.md)
-Create an in-memory object for EgressEndpoint.
-
-### [New-AzNetworkCloudEndpointDependencyObject](New-AzNetworkCloudEndpointDependencyObject.md)
-Create an in-memory object for EndpointDependency.
-
-### [New-AzNetworkCloudInitialAgentPoolConfigurationObject](New-AzNetworkCloudInitialAgentPoolConfigurationObject.md)
-Create an in-memory object for InitialAgentPoolConfiguration.
-
-### [New-AzNetworkCloudIpAddressPoolObject](New-AzNetworkCloudIpAddressPoolObject.md)
-Create an in-memory object for IpAddressPool.
-
-### [New-AzNetworkCloudKeySetUserObject](New-AzNetworkCloudKeySetUserObject.md)
-Create an in-memory object for KeySetUser.
+Create a new virtual machine console or create the properties of the existing virtual machine console.
 
 ### [New-AzNetworkCloudKubernetesCluster](New-AzNetworkCloudKubernetesCluster.md)
-Create a new Kubernetes cluster or update the properties of the existing one.
+Create a new Kubernetes cluster or create the properties of the existing one.
 
 ### [New-AzNetworkCloudKubernetesClusterFeature](New-AzNetworkCloudKubernetesClusterFeature.md)
-Create a new Kubernetes cluster feature or update properties of the Kubernetes cluster feature if it exists.
+Create a new Kubernetes cluster feature or create properties of the Kubernetes cluster feature if it exists.
 
 ### [New-AzNetworkCloudL2Network](New-AzNetworkCloudL2Network.md)
-Create a new layer 2 (L2) network or update the properties of the existing network.
+Create a new layer 2 (L2) network or create the properties of the existing network.
 
 ### [New-AzNetworkCloudL3Network](New-AzNetworkCloudL3Network.md)
-Create a new layer 3 (L3) network or update the properties of the existing network.
-
-### [New-AzNetworkCloudL3NetworkAttachmentConfigurationObject](New-AzNetworkCloudL3NetworkAttachmentConfigurationObject.md)
-Create an in-memory object for L3NetworkAttachmentConfiguration.
+Create a new layer 3 (L3) network or create the properties of the existing network.
 
 ### [New-AzNetworkCloudMetricsConfiguration](New-AzNetworkCloudMetricsConfiguration.md)
-Create new or update the existing metrics configuration of the provided cluster.
-
-### [New-AzNetworkCloudNetworkAttachmentObject](New-AzNetworkCloudNetworkAttachmentObject.md)
-Create an in-memory object for NetworkAttachment.
-
-### [New-AzNetworkCloudRackDefinitionObject](New-AzNetworkCloudRackDefinitionObject.md)
-Create an in-memory object for RackDefinition.
-
-### [New-AzNetworkCloudServiceLoadBalancerBgpPeerObject](New-AzNetworkCloudServiceLoadBalancerBgpPeerObject.md)
-Create an in-memory object for ServiceLoadBalancerBgpPeer.
+Create new or create the existing metrics configuration of the provided cluster.
 
 ### [New-AzNetworkCloudServicesNetwork](New-AzNetworkCloudServicesNetwork.md)
-Create a new cloud services network or update the properties of the existing cloud services network.
-
-### [New-AzNetworkCloudStorageApplianceConfigurationDataObject](New-AzNetworkCloudStorageApplianceConfigurationDataObject.md)
-Create an in-memory object for StorageApplianceConfigurationData.
+Create a new cloud services network or create the properties of the existing cloud services network.
 
 ### [New-AzNetworkCloudTrunkedNetwork](New-AzNetworkCloudTrunkedNetwork.md)
-Create a new trunked network or update the properties of the existing trunked network.
+Create a new trunked network or create the properties of the existing trunked network.
 
 ### [New-AzNetworkCloudVirtualMachine](New-AzNetworkCloudVirtualMachine.md)
-Create a new virtual machine or update the properties of the existing virtual machine.
-
-### [New-AzNetworkCloudVirtualMachinePlacementHintObject](New-AzNetworkCloudVirtualMachinePlacementHintObject.md)
-Create an in-memory object for VirtualMachinePlacementHint.
+Create a new virtual machine or create the properties of the existing virtual machine.
 
 ### [New-AzNetworkCloudVolume](New-AzNetworkCloudVolume.md)
-Create a new volume or update the properties of the existing one.
+Create a new volume or create the properties of the existing one.
 
 ### [Remove-AzNetworkCloudAgentPool](Remove-AzNetworkCloudAgentPool.md)
 Delete the provided Kubernetes cluster agent pool.
@@ -278,35 +233,33 @@ Power off the provided virtual machine.
 
 ### [Update-AzNetworkCloudAgentPool](Update-AzNetworkCloudAgentPool.md)
 Patch the properties of the provided Kubernetes cluster agent pool, or update the tags associated with the Kubernetes cluster agent pool.
-Properties and tag updates can be done independently.
+Properties and tag update can be done independently.
 
 ### [Update-AzNetworkCloudBareMetalMachine](Update-AzNetworkCloudBareMetalMachine.md)
 Patch properties of the provided bare metal machine, or update tags associated with the bare metal machine.
-Properties and tag updates can be done independently.
+Properties and tag update can be done independently.
 
 ### [Update-AzNetworkCloudBareMetalMachineKeySet](Update-AzNetworkCloudBareMetalMachineKeySet.md)
 Patch properties of bare metal machine key set for the provided cluster, or update the tags associated with it.
-Properties and tag updates can be done independently.
+Properties and tag update can be done independently.
 
 ### [Update-AzNetworkCloudBmcKeySet](Update-AzNetworkCloudBmcKeySet.md)
 Patch properties of baseboard management controller key set for the provided cluster, or update the tags associated with it.
-Properties and tag updates can be done independently.
+Properties and tag update can be done independently.
 
 ### [Update-AzNetworkCloudCluster](Update-AzNetworkCloudCluster.md)
-Patch the properties of the provided cluster, or update the tags associated with the cluster.
-Properties and tag updates can be done independently.
+Update a new cluster or update the properties of the cluster if it exists.
 
 ### [Update-AzNetworkCloudClusterManager](Update-AzNetworkCloudClusterManager.md)
-Patch properties of the provided cluster manager, or update the tags assigned to the cluster manager.
-Properties and tag updates can be done independently.
+Update a new cluster manager or update properties of the cluster manager if it exists.
 
 ### [Update-AzNetworkCloudConsole](Update-AzNetworkCloudConsole.md)
 Patch the properties of the provided virtual machine console, or update the tags associated with the virtual machine console.
-Properties and tag updates can be done independently.
+Properties and tag update can be done independently.
 
 ### [Update-AzNetworkCloudKubernetesCluster](Update-AzNetworkCloudKubernetesCluster.md)
 Patch the properties of the provided Kubernetes cluster, or update the tags associated with the Kubernetes cluster.
-Properties and tag updates can be done independently.
+Properties and tag update can be done independently.
 
 ### [Update-AzNetworkCloudKubernetesClusterFeature](Update-AzNetworkCloudKubernetesClusterFeature.md)
 Patch properties of the provided Kubernetes cluster feature.
@@ -319,25 +272,24 @@ Update tags associated with the provided layer 3 (L3) network.
 
 ### [Update-AzNetworkCloudMetricsConfiguration](Update-AzNetworkCloudMetricsConfiguration.md)
 Patch properties of metrics configuration for the provided cluster, or update the tags associated with it.
-Properties and tag updates can be done independently.
+Properties and tag update can be done independently.
 
 ### [Update-AzNetworkCloudRack](Update-AzNetworkCloudRack.md)
 Patch properties of the provided rack, or update the tags associated with the rack.
-Properties and tag updates can be done independently.
+Properties and tag update can be done independently.
 
 ### [Update-AzNetworkCloudServicesNetwork](Update-AzNetworkCloudServicesNetwork.md)
 Update properties of the provided cloud services network, or update the tags associated with it.
-Properties and tag updates can be done independently.
+Properties and tag update can be done independently.
 
 ### [Update-AzNetworkCloudStorageAppliance](Update-AzNetworkCloudStorageAppliance.md)
-Update properties of the provided storage appliance, or update tags associated with the storage appliance Properties and tag updates can be done independently.
+Update properties of the provided storage appliance, or update tags associated with the storage appliance Properties and tag update can be done independently.
 
 ### [Update-AzNetworkCloudTrunkedNetwork](Update-AzNetworkCloudTrunkedNetwork.md)
 Update tags associated with the provided trunked network.
 
 ### [Update-AzNetworkCloudVirtualMachine](Update-AzNetworkCloudVirtualMachine.md)
-Patch the properties of the provided virtual machine, or update the tags associated with the virtual machine.
-Properties and tag updates can be done independently.
+Update a new virtual machine or update the properties of the existing virtual machine.
 
 ### [Update-AzNetworkCloudVolume](Update-AzNetworkCloudVolume.md)
 Update tags associated with the provided volume.

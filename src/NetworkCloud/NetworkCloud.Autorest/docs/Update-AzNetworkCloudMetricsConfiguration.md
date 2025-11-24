@@ -9,7 +9,7 @@ schema: 2.0.0
 
 ## SYNOPSIS
 Patch properties of metrics configuration for the provided cluster, or update the tags associated with it.
-Properties and tag updates can be done independently.
+Properties and tag update can be done independently.
 
 ## SYNTAX
 
@@ -21,6 +21,21 @@ Update-AzNetworkCloudMetricsConfiguration -ClusterName <String> -Name <String> -
  [-WhatIf] [<CommonParameters>]
 ```
 
+### UpdateViaIdentityCluster
+```
+Update-AzNetworkCloudMetricsConfiguration -ClusterInputObject <INetworkCloudIdentity> -Name <String>
+ -MetricsConfigurationUpdateParameter <IClusterMetricsConfigurationPatchParameters> [-IfMatch <String>]
+ [-IfNoneMatch <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### UpdateViaIdentityClusterExpanded
+```
+Update-AzNetworkCloudMetricsConfiguration -ClusterInputObject <INetworkCloudIdentity> -Name <String>
+ [-IfMatch <String>] [-IfNoneMatch <String>] [-CollectionInterval <Int64>] [-EnabledMetric <String[]>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### UpdateViaIdentityExpanded
 ```
 Update-AzNetworkCloudMetricsConfiguration -InputObject <INetworkCloudIdentity> [-IfMatch <String>]
@@ -28,9 +43,23 @@ Update-AzNetworkCloudMetricsConfiguration -InputObject <INetworkCloudIdentity> [
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### UpdateViaJsonFilePath
+```
+Update-AzNetworkCloudMetricsConfiguration -ClusterName <String> -Name <String> -ResourceGroupName <String>
+ -JsonFilePath <String> [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaJsonString
+```
+Update-AzNetworkCloudMetricsConfiguration -ClusterName <String> -Name <String> -ResourceGroupName <String>
+ -JsonString <String> [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Patch properties of metrics configuration for the provided cluster, or update the tags associated with it.
-Properties and tag updates can be done independently.
+Properties and tag update can be done independently.
 
 ## EXAMPLES
 
@@ -64,12 +93,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ClusterInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
+Parameter Sets: UpdateViaIdentityCluster, UpdateViaIdentityClusterExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ClusterName
 The name of the cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -84,7 +128,7 @@ The interval in minutes by which metrics will be collected.
 
 ```yaml
 Type: System.Int64
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityClusterExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -115,7 +159,7 @@ The list of metric names that have been chosen to be enabled in addition to the 
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityClusterExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -160,11 +204,55 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
 Parameter Sets: UpdateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MetricsConfigurationUpdateParameter
+ClusterMetricsConfigurationPatchParameters represents the body of the request to patch the metrics configuration of cluster.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterMetricsConfigurationPatchParameters
+Parameter Sets: UpdateViaIdentityCluster
 Aliases:
 
 Required: True
@@ -179,7 +267,7 @@ The name of the metrics configuration for the cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityCluster, UpdateViaIdentityClusterExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases: MetricsConfigurationName
 
 Required: True
@@ -210,7 +298,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -226,7 +314,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: False
@@ -241,7 +329,7 @@ The Azure resource tags that will replace the existing ones.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityClusterExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -287,11 +375,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterMetricsConfigurationPatchParameters
+
 ### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250901.IClusterMetricsConfiguration
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterMetricsConfiguration
 
 ## NOTES
 
