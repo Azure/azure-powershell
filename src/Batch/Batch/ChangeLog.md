@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated Azure.Core from 1.47.3 to 1.50.0
 
 ## Version 4.0.0
 * Upgraded API version from 2022-10-01 to 2024-07-01.
@@ -27,7 +28,7 @@
 
 ## Version 3.7.0
 * Upgraded nuget package to signed package.
-* Fixed 'Object reference not set to an instance of an object' error when setting null values inside job `CommonEnvironmentSettings` property. 
+* Fixed 'Object reference not set to an instance of an object' error when setting null values inside job `CommonEnvironmentSettings` property.
 
 ## Version 3.6.4
 * Migrate Batch SDK to generated SDK

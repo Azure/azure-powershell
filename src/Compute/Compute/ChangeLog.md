@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Updated Azure.Core from 1.47.3 to 1.50.0
 
 ## Version 11.0.0
 * Improved user experience and consistency. This may introduce breaking changes. Please refer to [here](https://go.microsoft.com/fwlink/?linkid=2340249).
@@ -40,7 +41,7 @@
 * Updated SDK to use 2025-04-01 version of the ComputeRP API for Compute related cmdlets.
 
 ## Version 10.3.0
-* Fixed typo 'DeyAll' to 'DenyAll' in NetworkAccessPolicy description. 
+* Fixed typo 'DeyAll' to 'DenyAll' in NetworkAccessPolicy description.
 * Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
 * Updated New-AzDiskConfig to include `SecurityMetadataUri` and `SecurityDataUri` parameters.
 * Updated Grant-AzDisk to return `SecurityMetadataAccessSAS` property.
