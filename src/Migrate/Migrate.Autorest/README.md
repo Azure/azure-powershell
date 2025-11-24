@@ -166,18 +166,6 @@ directive:
       subject: ^ResyncReplicationMigrationItem
       variant: ^(?!ResyncExpanded$).*
     remove: true
-  - from: Microsoft.RecoveryServices/stable/2024-01-01/service.json
-    where:
-      verb: New$
-      subject: ^ReplicationMigrationItem|ReplicationProtectionContainerMapping$|ReplicationPolicy$
-      variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Create$
-    remove: true
-  - from: Microsoft.RecoveryServices/stable/2024-01-01/service.json
-    where:
-      verb: Update$
-      subject: ^ReplicationMigrationItem
-      variant: ^UpdateViaIdentityExpanded$|^UpdateViaIdentity$|^Update$
-    remove: true
   - from: Microsoft.OffAzure/stable/2020-01-01/migrate.json
     where:
       verb: Get$
@@ -490,13 +478,8 @@ directive:
       subject: ^HyperV(Cluster|Host)$
     hide: true
   - where:
-      verb: New$|Update$
-      variant: ^(Update|Create)(?!.*?Expanded)
-    hide: true
-  - where:
-      verb: New$
-      variant: ^CreateViaIdentity
-    hide: true
+      variant: ^(Update|Create)(?!.*?(Expanded|JsonFilePath|JsonString))|^CreateViaIdentityExpanded$
+    remove: true
   - from: Microsoft.DataReplication/stable/2024-09-01/recoveryservicesdatareplication.json
     where:
       verb: Get$|Invoke$|New$|Remove$|Test$|Update$
