@@ -287,7 +287,7 @@ function Test-SqlOperationsCmdlets
 
 function Test-SqlInAccountRestoreOperationsCmdlets
 {
-  $AccountName = "dbaccount60-5"
+  $AccountName = "dbaccount60-5v2"
   $rgName = "CosmosDBResourceGroup65"
   $DatabaseName = "sqldbName5"
   $ContainerName = "container1"
@@ -489,7 +489,7 @@ function Test-SqlInAccountRestoreOperationsCmdlets
 #>
 function Test-SqlInAccountCoreFunctionalityNoTimestampBasedRestoreCmdletsV2
 {
-    $AccountName = "dbaccount49-sql-ntbr"
+    $AccountName = "dbaccount49-sql-ntbrv2"
     $rgName = "CosmosDBResourceGroup63"
     $DatabaseName = "sqldbName6"
     $ContainerName = "container1"
@@ -636,7 +636,7 @@ function Test-SqlInAccountCoreFunctionalityNoTimestampBasedRestoreCmdletsV2
 
 function Test-SqlInAccountRestoreOperationsNoTimestampCmdlets
 {
-  $AccountName = "dbaccount60-14"
+  $AccountName = "dbaccount60-14v2"
   $rgName = "CosmosDBResourceGroup63"
   $DatabaseName = "sqldbName6"
   $ContainerName = "container1"
@@ -794,7 +794,7 @@ function Test-SqlInAccountRestoreOperationsNoTimestampCmdlets
 
 function Test-SqlInAccountRestoreOperationsSharedResourcesCmdlets
 {
-  $AccountName = "dbaccount60-4"
+  $AccountName = "dbaccount60-4v2"
   $rgName = "CosmosDBResourceGroup62"
   $DatabaseName = "sqldbName"
   $ContainerName = "container1"
@@ -2072,10 +2072,15 @@ Tests SQL throughput buckets cmdlets (manual/dedicated throughput)
 #>
 function Test-SqlThroughputBucketsCmdlets-ManualContainer
 {
-  $AccountName = "throughput-bucketing-rp-test"
+  $AccountName = "throughput-bucketing-rp-test1"
   $rgName = "throughput-bucketing-rg"
   $DatabaseName = "dbName3"
   $ContainerName = "containerName"
+  $location = "East US"
+  $apiKind = "Sql"
+  $consistencyLevel = "BoundedStaleness"
+  $locations = @()
+  $locations += New-AzCosmosDBLocationObject -LocationName "East Us" -FailoverPriority 0 -IsZoneRedundant 0
 
   $PartitionKeyPathValue = "/foo/bar"
   $PartitionKeyKindValue = "Hash"
@@ -2100,6 +2105,8 @@ function Test-SqlThroughputBucketsCmdlets-ManualContainer
   Assert-AreEqual $ThroughputBucket3.IsDefaultBucket $true
 
   Try{
+      $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
+      $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel
       # Create a database (no shared throughput) and a container with dedicated throughput
       $NewDatabase =  New-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
       $NewContainer =  New-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Throughput  $ContainerThroughputValue -Name $ContainerName -PartitionKeyPath $PartitionKeyPathValue -PartitionKeyKind $PartitionKeyKindValue
@@ -2168,10 +2175,15 @@ Tests SQL throughput buckets cmdlets (autoscale throughput)
 #>
 function Test-SqlThroughputBucketsCmdlets-AutoscaleContainer
 {
-    $AccountName = "throughput-bucketing-rp-test"
+    $AccountName = "throughput-bucketing-rp-test2"
     $rgName = "throughput-bucketing-rg"
     $DatabaseName = "dbNameAuto"
     $ContainerName = "containerNameAuto"
+    $location = "East US"
+    $apiKind = "Sql"
+    $consistencyLevel = "BoundedStaleness"
+    $locations = @()
+    $locations += New-AzCosmosDBLocationObject -LocationName "East Us" -FailoverPriority 0 -IsZoneRedundant 0
 
     $PartitionKeyPathValue = "/foo/bar"
     $PartitionKeyKindValue = "Hash"
@@ -2182,6 +2194,9 @@ function Test-SqlThroughputBucketsCmdlets-AutoscaleContainer
     $ThroughputBucket2 = New-AzCosmosDBThroughputBucketObject -Id 2 -MaxThroughputPercentage 30
 
     Try{
+        $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
+        $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel
+        
         # Create a database (no shared throughput) and a container with autoscale throughput
         $NewDatabase =  New-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
         $NewContainer =  New-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -AutoscaleMaxThroughput $AutoscaleContainerThroughput -Name $ContainerName -PartitionKeyPath $PartitionKeyPathValue -PartitionKeyKind $PartitionKeyKindValue
@@ -2225,7 +2240,12 @@ Validates throughput buckets are preserved during manual and autoscale throughpu
 function Test-SqlThroughputBucketsCmdlets-Migration
 {
     $rgName = "throughput-bucketing-rg"
-    $AccountName = "throughput-bucketing-rp-test"
+    $AccountName = "throughput-bucketing-rp-test3"
+    $location = "East US"
+    $apiKind = "Sql"
+    $consistencyLevel = "BoundedStaleness"
+    $locations = @()
+    $locations += New-AzCosmosDBLocationObject -LocationName "East Us" -FailoverPriority 0 -IsZoneRedundant 0
 
     $PartitionKeyPathValue = "/foo/bar"
     $PartitionKeyKindValue = "Hash"
@@ -2243,6 +2263,8 @@ function Test-SqlThroughputBucketsCmdlets-Migration
     $ContainerNameAuto = "containerMigrateAuto"
 
     Try {
+        $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
+        $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel
         # Scenario 1: Start Manual -> Migrate to Autoscale -> Back to Manual (buckets preserved)
         $NewDatabaseManual =  New-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseNameManual
         $NewContainerManual =  New-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseNameManual -Throughput $ManualThroughput -Name $ContainerNameManual -PartitionKeyPath $PartitionKeyPathValue -PartitionKeyKind $PartitionKeyKindValue

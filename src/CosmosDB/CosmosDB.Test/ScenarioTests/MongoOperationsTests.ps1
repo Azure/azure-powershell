@@ -18,7 +18,7 @@ Test MongoDB CRUD cmdlets using Name parameter set
 #>
 function Test-MongoOperationsCmdlets
 {
-  $AccountName = "mongo-db00044"
+  $AccountName = "mongo-db00044v2"
   $rgName = "CosmosDBResourceGroup44"
   $DatabaseName = "dbName"
   $CollectionName = "collection1"
@@ -280,8 +280,8 @@ Try {
 
 function Test-MongoInAccountRestoreOperationsCmdlets
 {
-  $AccountName = "mongo-db00048"
-  $rgName = "CosmosDBResourceGroup48"
+  $AccountName = "mongo-db00048v2"
+  $rgName = "CosmosDBResourceGroup48v2"
   $DatabaseName = "dbName"
   $CollectionName = "collection1"
   $location = "West US"
@@ -442,7 +442,7 @@ Try {
 #>
 function Test-MongoDBInAccountCoreFunctionalityNoTimestampBasedRestoreCmdletsV2
 {
-    $AccountName = "mongodb-iar25"
+    $AccountName = "mongodb-iar25v2"
     $rgName = "CosmosDBResourceGroup49"
     $DatabaseName = "mongodbName6"
     $ContainerName = "container1"
@@ -586,20 +586,20 @@ function Test-MongoDBInAccountCoreFunctionalityNoTimestampBasedRestoreCmdletsV2
 
 function Test-MongoInAccountRestoreOperationsNoTimestampCmdlets
 {
-  $AccountName = "mongo-db00049"
-  $rgName = "CosmosDBResourceGroup49"
+  $AccountName = "mongo-db00049v2"
+  $rgName = "CosmosDBResourceGroup49v2"
   $DatabaseName = "dbName"
   $CollectionName = "collection1"
   $location = "West US"
   $apiKind = "MongoDB"
   $consistencyLevel = "Session"
   $locations = @()
-  $locations += New-AzCosmosDBLocationObject -LocationName "West US" -FailoverPriority 0 -IsZoneRedundant 0
+  $locations += New-AzCosmosDBLocationObject -LocationName "West Central US" -FailoverPriority 0 -IsZoneRedundant 0
 Try {
 
       $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
       New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel -BackupPolicyType Continuous
-
+      Start-TestSleep -Seconds 30
 
       # create a new database
       $NewDatabase =  New-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
