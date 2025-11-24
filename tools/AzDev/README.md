@@ -10,6 +10,7 @@ Like many other tools, this module targets `net8.0` so always run it in PowerShe
 - [Features](#features)
   - [Repo inventory](#repo-inventory)
   - [Update Assemblies in `src/lib`](#update-assemblies-in-srclib)
+  - [Compare NuGet package dependencies](#compare-nuget-package-dependencies)
   - [Connect azure-powershell and azure-powershell-common](#connect-azure-powershell-and-azure-powershell-common)
   - [Autorest helper](#autorest-helper)
     - [Open swagger online](#open-swagger-online)
@@ -82,6 +83,41 @@ Count Name                      Group
 Update-DevAssembly
 # Check in all the changes
 ```
+
+### Compare NuGet package dependencies
+
+`Compare-DevPackageDep` compares dependencies between two versions of a NuGet package and reports the differences. This is particularly useful when upgrading package versions to understand the impact on the dependency tree.
+
+The cmdlet not only reports direct dependency changes (added/removed/updated), but also recursively compares changed dependencies to show all transitive dependency changes.
+
+```powershell
+# Compare two versions of Azure.Core (TargetFramework defaults to netstandard2.0)
+PS /> Compare-DevPackageDep -PackageName "Azure.Core" -OldVersion "1.47.3" -NewVersion "1.50.0"
+
+DepName                                OldVersion NewVersion ParentDep
+-------                                ---------- ---------- ---------
+System.ClientModel                     1.6.1      1.8.0      Azure.Core
+System.Threading.Tasks.Extensions      4.5.4      4.6.0      Azure.Core
+System.Runtime.CompilerServices.Unsafe 4.5.3      6.1.0      System.Threading.Tasks.Extensions
+
+# Specify a different target framework
+PS /> Compare-DevPackageDep -PackageName "Newtonsoft.Json" -OldVersion "13.0.1" -NewVersion "13.0.3" -TargetFramework "net462"
+
+# Use -Debug to see all dependencies for both versions
+PS /> Compare-DevPackageDep -PackageName "Azure.Core" -OldVersion "1.47.3" -NewVersion "1.50.0" -Debug
+DEBUG: Comparing Azure.Core from 1.47.3 to 1.50.0 for netstandard2.0
+DEBUG: [DefaultPackageComparisonService] Old version 1.47.3 dependencies:
+DEBUG:   - Microsoft.Bcl.AsyncInterfaces 8.0.0
+DEBUG:   - System.ClientModel 1.6.1
+DEBUG:   - System.Diagnostics.DiagnosticSource 8.0.1
+...
+```
+
+**Parameters:**
+- `PackageName` (required): The NuGet package name to compare
+- `OldVersion` (required): The old/baseline version
+- `NewVersion` (required): The new version to compare against
+- `TargetFramework` (optional): Target framework (default: `netstandard2.0`). Supports tab completion for common values: `netstandard2.0`, `net45`, `net46`, `net47`, `net461`, `net462`
 
 ### Connect azure-powershell and azure-powershell-common
 

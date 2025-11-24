@@ -10,6 +10,9 @@
 - Quick start templates
 - Versioning and publishing AzDev module
 
+## 2025/11/24
+- Feature: new cmdlet `Compare-DevPackageDep` to compare dependencies between two versions of a nuget package.
+
 ## 2025/8/26
 - Feature: Recognize AutoRest.PowerShell version (v3/v4) for AutoRest-based projects and show as `SubType` in `Get-DevProject` output.
 
