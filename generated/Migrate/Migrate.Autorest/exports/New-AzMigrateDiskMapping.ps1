@@ -25,12 +25,12 @@ New-AzMigrateDiskMapping -DiskID a -DiskType Standard_LRS -IsOSDisk 'true'
 New-AzMigrateDiskMapping -DiskID b -DiskType PremiumV2_LRS -IsOSDisk 'false'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IVMwareCbtDiskInput
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IVMwareCbtDiskInput
 .Link
 https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratediskmapping
 #>
 function New-AzMigrateDiskMapping {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IVMwareCbtDiskInput])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IVMwareCbtDiskInput])]
 [CmdletBinding(DefaultParameterSetName='VMwareCbt', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
