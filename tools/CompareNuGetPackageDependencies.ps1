@@ -1,3 +1,16 @@
+# ----------------------------------------------------------------------------------
+# Copyright Microsoft Corporation
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+# http://www.apache.org/licenses/LICENSE-2.0
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+# ----------------------------------------------------------------------------------
+
 <#
 .SYNOPSIS
     Compare dependencies of two NuGet package versions recursively
@@ -80,7 +93,8 @@ function Get-PackageDependencies {
     $csprojPath = Join-Path $projectDir "temp.csproj"
     Set-Content -Path $csprojPath -Value $csprojContent -Encoding UTF8
     
-    # Restore packages
+    # Restore packages with --no-cache to ensure fresh package data is retrieved
+    # This prevents cache-related issues during dependency analysis
     $restoreOutput = dotnet restore $csprojPath --no-cache 2>&1 | Out-String
     
     if ($LASTEXITCODE -ne 0) {
@@ -194,17 +208,18 @@ function Show-ComparisonResults {
         [string]$OutputFile
     )
     
-    $output = New-Object System.Text.StringBuilder
+    # Build output for file if requested
+    $fileOutputBuffer = New-Object System.Text.StringBuilder
     
-    $null = $output.AppendLine("")
-    $null = $output.AppendLine("========================================")
-    $null = $output.AppendLine("NuGet Package Dependency Comparison")
-    $null = $output.AppendLine("========================================")
-    $null = $output.AppendLine("Package: $PackageName")
-    $null = $output.AppendLine("Version 1: $Version1")
-    $null = $output.AppendLine("Version 2: $Version2")
-    $null = $output.AppendLine("========================================")
-    $null = $output.AppendLine("")
+    $null = $fileOutputBuffer.AppendLine("")
+    $null = $fileOutputBuffer.AppendLine("========================================")
+    $null = $fileOutputBuffer.AppendLine("NuGet Package Dependency Comparison")
+    $null = $fileOutputBuffer.AppendLine("========================================")
+    $null = $fileOutputBuffer.AppendLine("Package: $PackageName")
+    $null = $fileOutputBuffer.AppendLine("Version 1: $Version1")
+    $null = $fileOutputBuffer.AppendLine("Version 2: $Version2")
+    $null = $fileOutputBuffer.AppendLine("========================================")
+    $null = $fileOutputBuffer.AppendLine("")
     
     Write-Host "`n========================================" -ForegroundColor White
     Write-Host "NuGet Package Dependency Comparison" -ForegroundColor White
@@ -215,63 +230,63 @@ function Show-ComparisonResults {
     Write-Host "========================================`n" -ForegroundColor White
     
     if ($Comparison.AddedPackages.Count -gt 0) {
-        $null = $output.AppendLine("ADDED DEPENDENCIES ($($Comparison.AddedPackages.Count)):")
+        $null = $fileOutputBuffer.AppendLine("ADDED DEPENDENCIES ($($Comparison.AddedPackages.Count)):")
         Write-Host "ADDED DEPENDENCIES ($($Comparison.AddedPackages.Count)):" -ForegroundColor Green
         foreach ($pkg in ($Comparison.AddedPackages.Keys | Sort-Object)) {
             $version = $Comparison.AddedPackages[$pkg].Version
-            $null = $output.AppendLine("  + $pkg : $version")
+            $null = $fileOutputBuffer.AppendLine("  + $pkg : $version")
             Write-Host "  + $pkg : $version" -ForegroundColor Green
         }
-        $null = $output.AppendLine("")
+        $null = $fileOutputBuffer.AppendLine("")
         Write-Host ""
     }
     
     if ($Comparison.RemovedPackages.Count -gt 0) {
-        $null = $output.AppendLine("REMOVED DEPENDENCIES ($($Comparison.RemovedPackages.Count)):")
+        $null = $fileOutputBuffer.AppendLine("REMOVED DEPENDENCIES ($($Comparison.RemovedPackages.Count)):")
         Write-Host "REMOVED DEPENDENCIES ($($Comparison.RemovedPackages.Count)):" -ForegroundColor Red
         foreach ($pkg in ($Comparison.RemovedPackages.Keys | Sort-Object)) {
             $version = $Comparison.RemovedPackages[$pkg].Version
-            $null = $output.AppendLine("  - $pkg : $version")
+            $null = $fileOutputBuffer.AppendLine("  - $pkg : $version")
             Write-Host "  - $pkg : $version" -ForegroundColor Red
         }
-        $null = $output.AppendLine("")
+        $null = $fileOutputBuffer.AppendLine("")
         Write-Host ""
     }
     
     if ($Comparison.ChangedVersions.Count -gt 0) {
-        $null = $output.AppendLine("CHANGED DEPENDENCY VERSIONS ($($Comparison.ChangedVersions.Count)):")
+        $null = $fileOutputBuffer.AppendLine("CHANGED DEPENDENCY VERSIONS ($($Comparison.ChangedVersions.Count)):")
         Write-Host "CHANGED DEPENDENCY VERSIONS ($($Comparison.ChangedVersions.Count)):" -ForegroundColor Yellow
         foreach ($pkg in ($Comparison.ChangedVersions.Keys | Sort-Object)) {
             $oldVer = $Comparison.ChangedVersions[$pkg].OldVersion
             $newVer = $Comparison.ChangedVersions[$pkg].NewVersion
-            $null = $output.AppendLine("  ~ $pkg : $oldVer -> $newVer")
+            $null = $fileOutputBuffer.AppendLine("  ~ $pkg : $oldVer -> $newVer")
             Write-Host "  ~ $pkg : $oldVer -> $newVer" -ForegroundColor Yellow
         }
-        $null = $output.AppendLine("")
+        $null = $fileOutputBuffer.AppendLine("")
         Write-Host ""
     }
     
     if ($Comparison.UnchangedPackages.Count -gt 0) {
-        $null = $output.AppendLine("UNCHANGED DEPENDENCIES ($($Comparison.UnchangedPackages.Count)):")
+        $null = $fileOutputBuffer.AppendLine("UNCHANGED DEPENDENCIES ($($Comparison.UnchangedPackages.Count)):")
         Write-Host "UNCHANGED DEPENDENCIES ($($Comparison.UnchangedPackages.Count)):" -ForegroundColor Gray
         foreach ($pkg in ($Comparison.UnchangedPackages.Keys | Sort-Object)) {
             $version = $Comparison.UnchangedPackages[$pkg].Version
-            $null = $output.AppendLine("  = $pkg : $version")
+            $null = $fileOutputBuffer.AppendLine("  = $pkg : $version")
             Write-Host "  = $pkg : $version" -ForegroundColor Gray
         }
-        $null = $output.AppendLine("")
+        $null = $fileOutputBuffer.AppendLine("")
         Write-Host ""
     }
     
     # Summary
-    $null = $output.AppendLine("========================================")
-    $null = $output.AppendLine("SUMMARY:")
-    $null = $output.AppendLine("  Added: $($Comparison.AddedPackages.Count)")
-    $null = $output.AppendLine("  Removed: $($Comparison.RemovedPackages.Count)")
-    $null = $output.AppendLine("  Changed: $($Comparison.ChangedVersions.Count)")
-    $null = $output.AppendLine("  Unchanged: $($Comparison.UnchangedPackages.Count)")
-    $null = $output.AppendLine("========================================")
-    $null = $output.AppendLine("")
+    $null = $fileOutputBuffer.AppendLine("========================================")
+    $null = $fileOutputBuffer.AppendLine("SUMMARY:")
+    $null = $fileOutputBuffer.AppendLine("  Added: $($Comparison.AddedPackages.Count)")
+    $null = $fileOutputBuffer.AppendLine("  Removed: $($Comparison.RemovedPackages.Count)")
+    $null = $fileOutputBuffer.AppendLine("  Changed: $($Comparison.ChangedVersions.Count)")
+    $null = $fileOutputBuffer.AppendLine("  Unchanged: $($Comparison.UnchangedPackages.Count)")
+    $null = $fileOutputBuffer.AppendLine("========================================")
+    $null = $fileOutputBuffer.AppendLine("")
     
     Write-Host "========================================" -ForegroundColor White
     Write-Host "SUMMARY:" -ForegroundColor White
@@ -283,7 +298,7 @@ function Show-ComparisonResults {
     
     # Save to file if requested
     if ($OutputFile) {
-        Set-Content -Path $OutputFile -Value $output.ToString() -Encoding UTF8
+        Set-Content -Path $OutputFile -Value $fileOutputBuffer.ToString() -Encoding UTF8
         Write-Host "Results saved to: $OutputFile" -ForegroundColor Cyan
     }
 }
