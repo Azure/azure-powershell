@@ -32,6 +32,7 @@ The `CompareNuGetPackageDependencies.ps1` script allows you to compare the depen
 | `Version1` | Yes | The first version to compare (e.g., "1.47.3") |
 | `Version2` | Yes | The second version to compare (e.g., "1.50.0") |
 | `OutputFile` | No | Optional path to save the comparison results to a text file |
+| `TargetFramework` | No | Target framework to use for package restore (default: "net6.0" for broader compatibility) |
 
 ## Output
 

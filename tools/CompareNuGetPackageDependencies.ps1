@@ -1,4 +1,3 @@
-#!/usr/bin/env pwsh
 <#
 .SYNOPSIS
     Compare dependencies of two NuGet package versions recursively
@@ -13,6 +12,8 @@
     The second version to compare
 .PARAMETER OutputFile
     Optional path to save the comparison results to a file
+.PARAMETER TargetFramework
+    Target framework to use for package restore (default: net6.0 for broader compatibility)
 .EXAMPLE
     .\CompareNuGetPackageDependencies.ps1 -PackageName "Azure.Core" -Version1 "1.47.3" -Version2 "1.50.0"
     
@@ -34,10 +35,12 @@ param(
     [string]$Version2,
     
     [Parameter(Mandatory = $false)]
-    [string]$OutputFile
+    [string]$OutputFile,
+    
+    [Parameter(Mandatory = $false)]
+    [string]$TargetFramework = "net6.0"
 )
 
-Set-StrictMode -Version 2.0
 $ErrorActionPreference = "Stop"
 
 # Function to get package dependencies recursively
@@ -46,6 +49,7 @@ function Get-PackageDependencies {
         [string]$PackageName,
         [string]$Version,
         [string]$TempDir,
+        [string]$TargetFramework,
         [hashtable]$VisitedPackages = @{}
     )
     
@@ -65,7 +69,7 @@ function Get-PackageDependencies {
     $csprojContent = @"
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>$TargetFramework</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="$PackageName" Version="$Version" />
@@ -80,13 +84,21 @@ function Get-PackageDependencies {
     $restoreOutput = dotnet restore $csprojPath --no-cache 2>&1 | Out-String
     
     if ($LASTEXITCODE -ne 0) {
-        Write-Warning "Failed to restore $PackageName $Version"
+        Write-Warning "Failed to restore $PackageName $Version. Error details:"
+        Write-Warning $restoreOutput
         Remove-Item -Recurse -Force $projectDir -ErrorAction SilentlyContinue
         return @{}
     }
     
     # Get project dependencies
     $depsOutput = dotnet list $csprojPath package --include-transitive 2>&1 | Out-String
+    
+    if ($LASTEXITCODE -ne 0) {
+        Write-Warning "Failed to list packages for $PackageName $Version. Error details:"
+        Write-Warning $depsOutput
+        Remove-Item -Recurse -Force $projectDir -ErrorAction SilentlyContinue
+        return @{}
+    }
     
     # Parse dependencies
     $dependencies = @{}
@@ -288,10 +300,10 @@ try {
     New-Item -ItemType Directory -Path $tempDir -Force | Out-Null
     
     Write-Host "Analyzing version $Version1..." -ForegroundColor Cyan
-    $deps1 = Get-PackageDependencies -PackageName $PackageName -Version $Version1 -TempDir $tempDir
+    $deps1 = Get-PackageDependencies -PackageName $PackageName -Version $Version1 -TempDir $tempDir -TargetFramework $TargetFramework
     
     Write-Host "`nAnalyzing version $Version2..." -ForegroundColor Cyan
-    $deps2 = Get-PackageDependencies -PackageName $PackageName -Version $Version2 -TempDir $tempDir
+    $deps2 = Get-PackageDependencies -PackageName $PackageName -Version $Version2 -TempDir $tempDir -TargetFramework $TargetFramework
     
     Write-Host "`nComparing dependency trees..." -ForegroundColor Cyan
     $comparison = Compare-DependencyTrees -Tree1 $deps1 -Tree2 $deps2
