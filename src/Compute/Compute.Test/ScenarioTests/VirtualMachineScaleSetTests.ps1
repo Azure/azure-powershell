@@ -303,13 +303,6 @@ function Test-VirtualMachineScaleSet-Common($IsManaged)
 
             Write-Verbose($output);
             Assert-True { $output.Contains("PlatformUpdateDomain") };
-
-            Write-Verbose ('Running Command : ' + 'Get-AzVmssVM -ResiliencyView');
-            $vmResiliency = Get-AzVmssVM -ResiliencyView -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId $i;
-            Assert-NotNull $vmResiliency;
-            $output = $vmResiliency | Out-String;
-            Write-Verbose($output);
-            # ResilientVMDeletionStatus property should be present in the output when ResiliencyView is used
         }
 
         $st = $vmssResult | Stop-AzVmss -StayProvision -Force;
@@ -6149,5 +6142,47 @@ function Test-VirtualMachineScaleSetGalleryApplicationFlags
     finally
     {
         Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test Virtual Machine Scale Set with ResiliencyView 
+#>
+function Test-VirtualMachineScaleSetResiliencyView
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = "eastus2euap";
+
+    
+    try
+    {
+        # Common
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        $vmssName = 'vmss' + $rgname;
+        $domainNameLabel1 = "d1" + $rgname;
+        
+        $adminUsername = Get-ComputeTestResourceName;
+        $password = Get-PasswordForVM;
+        $adminPassword = $password | ConvertTo-SecureString -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($adminUsername, $adminPassword);
+        $linuxImage = "Canonical:0001-com-ubuntu-server-jammy:22_04-lts:latest"
+
+        # Create VMSS using ResiliencyView
+        $vmss = New-AzVmss -ResourceGroupName $rgname -Location $loc -Credential $cred -VMScaleSetName $vmssName -DomainNameLabel $domainNameLabel1 -Image $linuxImage
+        $vmssvm = Get-AzVmssVM -ResourceGroupName $rgname -VMScaleSetName $vmssName
+        $id = $vmssvm[0].InstanceId
+
+        $vmResiliencyView = Get-AzVmssVM -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId $id -ResiliencyView
+
+        # Verify that ResilientVMDeletionStatus is present
+        Assert-AreEqual "Disabled" $vmResiliencyView.ResilientVMDeletionStatus
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
     }
 }

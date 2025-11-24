@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         ComputeAutomationAutoMapperProfile.Mapper.Map<VirtualMachineScaleSetVM, PSVirtualMachineScaleSetVM>(result, psObject);
                         WriteObject(psObject);
                     }
-                    else if (this.UserData.IsPresent)
+                    else if (this.UserData == true)
                     {
                         var result = VirtualMachineScaleSetVMsClient.Get(resourceGroupName, vmScaleSetName, instanceId, UserDataExpand);
                         var psObject = new PSVirtualMachineScaleSetVM();
