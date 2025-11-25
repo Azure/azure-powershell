@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Prevention of DoubleHopOn Authentication issue.
+* Resolved double hop authentication issue.
 
 ## Version 2.6.2
 * Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
