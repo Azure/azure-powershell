@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.Network
         string NamedContextParameterSet = "ByResource";
         public new object GetDynamicParameters()
         {
-            var parameters = new RuntimeDefinedParameterDictionary();
+            var parameters = base.GetDynamicParameters() as RuntimeDefinedParameterDictionary;
             RuntimeDefinedParameter namedParameter;
             if (ProviderConfiguration.TryGetEndpointConnectionServiceParameter(privateEndpointTypeName, NamedContextParameterSet, out namedParameter))
             {
