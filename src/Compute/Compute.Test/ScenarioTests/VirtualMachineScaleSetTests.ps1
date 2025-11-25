@@ -6170,7 +6170,7 @@ function Test-VirtualMachineScaleSetResiliencyView
         $cred = New-Object System.Management.Automation.PSCredential ($adminUsername, $adminPassword);
         $linuxImage = "Canonical:0001-com-ubuntu-server-jammy:22_04-lts:latest"
 
-        # Create VMSS using ResiliencyView
+        # Create VMSS for testing ResiliencyView
         $vmss = New-AzVmss -ResourceGroupName $rgname -Location $loc -Credential $cred -VMScaleSetName $vmssName -DomainNameLabel $domainNameLabel1 -Image $linuxImage
         $vmssvm = Get-AzVmssVM -ResourceGroupName $rgname -VMScaleSetName $vmssName
         $id = $vmssvm[0].InstanceId
