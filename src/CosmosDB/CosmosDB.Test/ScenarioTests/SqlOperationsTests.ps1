@@ -489,13 +489,13 @@ function Test-SqlInAccountRestoreOperationsCmdlets
 #>
 function Test-SqlInAccountCoreFunctionalityNoTimestampBasedRestoreCmdletsV2
 {
-    $AccountName = "dbaccount49-sql-ntbr"
-    $rgName = "CosmosDBResourceGroup63"
-    $DatabaseName = "sqldbName6"
-    $ContainerName = "container1"
+    $AccountName = "dbaccount49-sql-ntbr-st"
+    $rgName = "CosmosDBResourceGroup63-st"
+    $DatabaseName = "sqldbName6-st"
+    $ContainerName = "container1-st"
     $location = "West US"
-    $DatabaseName2 = "dbName2"
-    $ContainerName2 = "container2"
+    $DatabaseName2 = "dbName2-st"
+    $ContainerName2 = "container2-st"
     $apiKind = "Sql"
     $PartitionKeyPathValue = "/foo/bar"
     $PartitionKeyKindValue = "Hash"
