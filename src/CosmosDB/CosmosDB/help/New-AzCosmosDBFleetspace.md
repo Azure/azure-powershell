@@ -36,7 +36,7 @@ The **New-AzCosmosDBFleetspace** cmdlet creates a new Fleetspace within an Azure
 ### Example 1: Create a NoSQL Fleetspace with General Purpose tier
 ```powershell
 New-AzCosmosDBFleetspace -ResourceGroupName "myResourceGroup" -FleetName "myFleet" -Name "myFleetspace" `
-    -FleetspaceApiKind "NoSQL" -ServiceTier "GeneralPurpose" -DataRegions @("eastus", "westus")
+    -FleetspaceApiKind "NoSQL" -ServiceTier "GeneralPurpose" -DataRegion @("eastus", "westus")
 ```
 
 ```output
@@ -54,7 +54,7 @@ Creates a new Fleetspace for NoSQL API with General Purpose service tier in two 
 ### Example 2: Create a Fleetspace with throughput pool configuration
 ```powershell
 New-AzCosmosDBFleetspace -ResourceGroupName "myResourceGroup" -FleetName "myFleet" -Name "myFleetspace" `
-    -FleetspaceApiKind "NoSQL" -ServiceTier "BusinessCritical" -DataRegions @("eastus") `
+    -FleetspaceApiKind "NoSQL" -ServiceTier "BusinessCritical" -DataRegion @("eastus") `
     -ThroughputPoolMinThroughput 1000 -ThroughputPoolMaxThroughput 10000
 ```
 
@@ -76,7 +76,7 @@ Creates a Fleetspace with Business Critical tier and configured throughput pool 
 ```powershell
 $fleet = Get-AzCosmosDBFleet -ResourceGroupName "myResourceGroup" -Name "myFleet"
 $fleet | New-AzCosmosDBFleetspace -Name "myFleetspace" -FleetspaceApiKind "NoSQL" `
-    -ServiceTier "GeneralPurpose" -DataRegions @("eastus")
+    -ServiceTier "GeneralPurpose" -DataRegion @("eastus")
 ```
 
 ```output
@@ -93,7 +93,7 @@ Creates a Fleetspace using a Fleet object from the pipeline.
 
 ## PARAMETERS
 
-### -DataRegions
+### -DataRegion
 Array of Azure regions where the Fleetspace data will be replicated.
 
 ```yaml

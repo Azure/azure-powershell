@@ -30,7 +30,7 @@ function Test-FleetspaceCreateUpdateGetCmdlets
       Start-TestSleep -Seconds 30
 
       # Create a new fleetspace
-      $NewFleetspace = New-AzCosmosDBFleetspace -ResourceGroupName $rgName -FleetName $FleetName -Name $FleetspaceName -FleetspaceApiKind "NoSQL" -ServiceTier "GeneralPurpose" -DataRegions @("westcentralus") -ThroughputPoolMinThroughput 100000 -ThroughputPoolMaxThroughput 1000000
+      $NewFleetspace = New-AzCosmosDBFleetspace -ResourceGroupName $rgName -FleetName $FleetName -Name $FleetspaceName -FleetspaceApiKind "NoSQL" -ServiceTier "GeneralPurpose" -DataRegion @("westcentralus") -ThroughputPoolMinThroughput 100000 -ThroughputPoolMaxThroughput 1000000
       Start-TestSleep -Seconds 30
       Assert-AreEqual $NewFleetspace.Name $FleetspaceName
       Assert-AreEqual $NewFleetspace.FleetspaceApiKind "NoSQL"
@@ -87,7 +87,7 @@ function Test-FleetspaceAccountCmdlets
       $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName -Location $location
       $NewFleet = New-AzCosmosDBFleet -ResourceGroupName $rgName -Name $FleetName -Location $location
       Start-TestSleep -Seconds 30
-      $NewFleetspace = New-AzCosmosDBFleetspace -ResourceGroupName $rgName -FleetName $FleetName -Name $FleetspaceName -FleetspaceApiKind "NoSQL" -ServiceTier "GeneralPurpose" -DataRegions @("eastus")
+      $NewFleetspace = New-AzCosmosDBFleetspace -ResourceGroupName $rgName -FleetName $FleetName -Name $FleetspaceName -FleetspaceApiKind "NoSQL" -ServiceTier "GeneralPurpose" -DataRegion @("eastus")
       Start-TestSleep -Seconds 30
 
       # Create a CosmosDB account to associate
