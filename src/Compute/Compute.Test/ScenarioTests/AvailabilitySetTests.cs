@@ -37,5 +37,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-AvailabilitySetVM");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        public void TestAvailabilitySetMigration()
+        {
+            TestRunner.RunTestScript("Test-AvailabilitySetMigration");
+        }
     }
 }

@@ -231,3 +231,50 @@ function Test-AvailabilitySetVM
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Test Availability Set Migration to VMSS Flex
+Note: This test requires the subscription to be enabled for the feature flag Microsoft.Compute/MigrateToVmssFlex
+#>
+function Test-AvailabilitySetMigration
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName
+
+    try
+    {
+        # Common
+        $loc = Get-ComputeVMLocation;
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # Create Availability Set
+        $asetName = 'aset' + $rgname;
+        New-AzAvailabilitySet -ResourceGroupName $rgname -Name $asetName -Location $loc -Sku 'Aligned' -PlatformFaultDomainCount 2 -PlatformUpdateDomainCount 5;
+        $aset = Get-AzAvailabilitySet -ResourceGroupName $rgname -Name $asetName;
+        Assert-NotNull $aset;
+
+        # Create a Flexible VMSS for migration target
+        $vmssName = 'vmss' + $rgname;
+        $vmssConfig = New-AzVmssConfig -Location $loc -OrchestrationMode 'Flexible' -PlatformFaultDomainCount 2;
+        $vmss = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -VirtualMachineScaleSet $vmssConfig;
+        Assert-NotNull $vmss;
+        $vmssId = $vmss.Id;
+
+        # Test Validate Migration cmdlet
+        $validateResult = Test-AzAvailabilitySetMigration -ResourceGroupName $rgname -Name $asetName -VirtualMachineScaleSetFlexibleId $vmssId;
+        Assert-NotNull $validateResult;
+
+        # Test Convert cmdlet (creates a new VMSS)
+        $newVmssName = 'vmss2' + $rgname;
+        $convertResult = Convert-AzAvailabilitySet -ResourceGroupName $rgname -Name $asetName -VirtualMachineScaleSetName $newVmssName;
+        Assert-NotNull $convertResult;
+
+        Write-Host "Availability Set Migration cmdlets test completed successfully";
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
