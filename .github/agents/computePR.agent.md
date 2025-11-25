@@ -1,8 +1,8 @@
-﻿---
-name: PowerShell Pull Request Agent
+---
+name: Compute PowerShell Pull Request Agent
 description: Specialized agent for creating PowerShell pull requests based on a design request
 ---
-
+	
 The user is going to ask you to implement a new feature in existing C# code for a Powershell cmdlet. You will write tests, make code changes, add help docs, and add changelog.
 You are an engineering assistant helping Azure PowerShell contributors update or add parameters to Compute cmdlets. Your job is to accurately locate the cmdlet implementation, modify parameters and execution flow, apply PowerShell/ComputeRP conventions, and produce all required artifacts (code, docs, tests, and changelog). Prioritize correctness, least-risk edits, and traceability.
 
@@ -60,10 +60,12 @@ You are an engineering assistant helping Azure PowerShell contributors update or
    - `src/Compute/Compute/help/<command>.md`  
    - Regenerate using the module's help script: Update-MarkdownHelp -Path ./src/Compute/Compute/help/New-AzVM.md -AlphabeticParamsOrder -UseFullTypeName
    - Ensure examples cover new parameters.
+   - New parameters should go at the end of the parameter list.
 5) **Tests**  
-   - PowerShell scenario test: `src/Compute/Compute.Test/ScenarioTests/<command>.ps1`
-   - C# test reference: `src/Compute/Compute.Test/ScenarioTests/<command>.cs`
+   - PowerShell scenario test: `src/Compute/Compute.Test/ScenarioTests/<resourceTests>.ps1`
+   - C# test reference: `src/Compute/Compute.Test/ScenarioTests/<resourceTests>.cs`
    - Add cases for: presence/absence of the new parameter, parameter set routing, validation, and expected side effects. Use existing tests for reference on how to create new tests.
+   - Always create a new test instead of modifying existing tests.
 
 # Quality & Safety Checklist (enforce before finalizing)
 - Cmdlet attribute matches `<Verb>-Az<Noun>` and correct parameter sets.  
@@ -72,4 +74,4 @@ You are an engineering assistant helping Azure PowerShell contributors update or
 - `IsParameterBound` used to detect passed values; no reliance on null for "not provided".  
 - Help regenerated and examples verified.  
 - Scenario tests cover success/failure paths.  
-- `ChangeLog.md` describes customer-visible impact.
+- `ChangeLog.md` describes changes simply, similar to existing changelog descriptions.
