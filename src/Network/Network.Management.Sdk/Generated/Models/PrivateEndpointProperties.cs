@@ -35,6 +35,10 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
         /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
 
+        /// <param name="ipVersionType">Specifies the IP version type for the private IPs of the private endpoint.
+        /// If not defined, this defaults to IPv4.
+        /// Possible values include: &#39;IPv4&#39;, &#39;IPv6&#39;, &#39;DualStack&#39;</param>
+
         /// <param name="privateLinkServiceConnections">A grouping of information about the connection to the remote resource.
         /// </param>
 
@@ -56,12 +60,13 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="customNetworkInterfaceName">The custom name of the network interface attached to the private endpoint.
         /// </param>
-        public PrivateEndpointProperties(Subnet subnet = default(Subnet), System.Collections.Generic.IList<NetworkInterface> networkInterfaces = default(System.Collections.Generic.IList<NetworkInterface>), string provisioningState = default(string), System.Collections.Generic.IList<PrivateLinkServiceConnection> privateLinkServiceConnections = default(System.Collections.Generic.IList<PrivateLinkServiceConnection>), System.Collections.Generic.IList<PrivateLinkServiceConnection> manualPrivateLinkServiceConnections = default(System.Collections.Generic.IList<PrivateLinkServiceConnection>), System.Collections.Generic.IList<CustomDnsConfigPropertiesFormat> customDnsConfigs = default(System.Collections.Generic.IList<CustomDnsConfigPropertiesFormat>), System.Collections.Generic.IList<ApplicationSecurityGroup> applicationSecurityGroups = default(System.Collections.Generic.IList<ApplicationSecurityGroup>), System.Collections.Generic.IList<PrivateEndpointIPConfiguration> ipConfigurations = default(System.Collections.Generic.IList<PrivateEndpointIPConfiguration>), string customNetworkInterfaceName = default(string))
+        public PrivateEndpointProperties(Subnet subnet = default(Subnet), System.Collections.Generic.IList<NetworkInterface> networkInterfaces = default(System.Collections.Generic.IList<NetworkInterface>), string provisioningState = default(string), string ipVersionType = default(string), System.Collections.Generic.IList<PrivateLinkServiceConnection> privateLinkServiceConnections = default(System.Collections.Generic.IList<PrivateLinkServiceConnection>), System.Collections.Generic.IList<PrivateLinkServiceConnection> manualPrivateLinkServiceConnections = default(System.Collections.Generic.IList<PrivateLinkServiceConnection>), System.Collections.Generic.IList<CustomDnsConfigPropertiesFormat> customDnsConfigs = default(System.Collections.Generic.IList<CustomDnsConfigPropertiesFormat>), System.Collections.Generic.IList<ApplicationSecurityGroup> applicationSecurityGroups = default(System.Collections.Generic.IList<ApplicationSecurityGroup>), System.Collections.Generic.IList<PrivateEndpointIPConfiguration> ipConfigurations = default(System.Collections.Generic.IList<PrivateEndpointIPConfiguration>), string customNetworkInterfaceName = default(string))
 
         {
             this.Subnet = subnet;
             this.NetworkInterfaces = networkInterfaces;
             this.ProvisioningState = provisioningState;
+            this.IPVersionType = ipVersionType;
             this.PrivateLinkServiceConnections = privateLinkServiceConnections;
             this.ManualPrivateLinkServiceConnections = manualPrivateLinkServiceConnections;
             this.CustomDnsConfigs = customDnsConfigs;
@@ -96,6 +101,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "provisioningState")]
         public string ProvisioningState {get; private set; }
+
+        /// <summary>
+        /// Gets or sets specifies the IP version type for the private IPs of the
+        /// private endpoint. If not defined, this defaults to IPv4. Possible values include: &#39;IPv4&#39;, &#39;IPv6&#39;, &#39;DualStack&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "ipVersionType")]
+        public string IPVersionType {get; set; }
 
         /// <summary>
         /// Gets or sets a grouping of information about the connection to the remote
