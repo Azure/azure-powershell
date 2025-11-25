@@ -55,13 +55,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models
         Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IEndpointConfiguration Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFrontendSettingInternal.BackendConfiguration { get => (this._backendConfiguration = this._backendConfiguration ?? new Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.EndpointConfiguration()); set { {_backendConfiguration = value;} } }
 
         /// <summary>Internal Acessors for BackendConfigurationAddress</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IIPAddress Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFrontendSettingInternal.BackendConfigurationAddress { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IEndpointConfigurationInternal)BackendConfiguration).Address; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IEndpointConfigurationInternal)BackendConfiguration).Address = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IIPAddress Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFrontendSettingInternal.BackendConfigurationAddress { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IEndpointConfigurationInternal)BackendConfiguration).Address; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IEndpointConfigurationInternal)BackendConfiguration).Address = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for FrontendConfiguration</summary>
         Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IEndpointConfiguration Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFrontendSettingInternal.FrontendConfiguration { get => (this._frontendConfiguration = this._frontendConfiguration ?? new Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.EndpointConfiguration()); set { {_frontendConfiguration = value;} } }
 
         /// <summary>Internal Acessors for FrontendConfigurationAddress</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IIPAddress Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFrontendSettingInternal.FrontendConfigurationAddress { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IEndpointConfigurationInternal)FrontendConfiguration).Address; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IEndpointConfigurationInternal)FrontendConfiguration).Address = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IIPAddress Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFrontendSettingInternal.FrontendConfigurationAddress { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IEndpointConfigurationInternal)FrontendConfiguration).Address; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IEndpointConfigurationInternal)FrontendConfiguration).Address = value ?? null /* model class */; }
 
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
         private string _name;

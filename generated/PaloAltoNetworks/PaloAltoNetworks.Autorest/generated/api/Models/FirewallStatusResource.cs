@@ -41,41 +41,70 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models
         [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.FormatTable(Index = 0)]
         public string IsPanoramaManaged { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal)Property).IsPanoramaManaged; }
 
+        /// <summary>Strata Cloud Manager</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Origin(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.PropertyOrigin.Inlined)]
+        [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.DoNotFormat]
+        public string IsStrataCloudManaged { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal)Property).IsStrataCloudManaged; }
+
         /// <summary>Internal Acessors for HealthReason</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusResourceInternal.HealthReason { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal)Property).HealthReason; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal)Property).HealthReason = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusResourceInternal.HealthReason { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal)Property).HealthReason; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal)Property).HealthReason = value ?? null; }
 
         /// <summary>Internal Acessors for HealthStatus</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusResourceInternal.HealthStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal)Property).HealthStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal)Property).HealthStatus = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusResourceInternal.HealthStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal)Property).HealthStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal)Property).HealthStatus = value ?? null; }
 
         /// <summary>Internal Acessors for IsPanoramaManaged</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusResourceInternal.IsPanoramaManaged { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal)Property).IsPanoramaManaged; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal)Property).IsPanoramaManaged = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusResourceInternal.IsPanoramaManaged { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal)Property).IsPanoramaManaged; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal)Property).IsPanoramaManaged = value ?? null; }
+
+        /// <summary>Internal Acessors for IsStrataCloudManaged</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusResourceInternal.IsStrataCloudManaged { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal)Property).IsStrataCloudManaged; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal)Property).IsStrataCloudManaged = value ?? null; }
 
         /// <summary>Internal Acessors for PanoramaStatus</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPanoramaStatus Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusResourceInternal.PanoramaStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal)Property).PanoramaStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal)Property).PanoramaStatus = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPanoramaStatus Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusResourceInternal.PanoramaStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal)Property).PanoramaStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal)Property).PanoramaStatus = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for PanoramaStatusPanoramaServer2Status</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusResourceInternal.PanoramaStatusPanoramaServer2Status { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal)Property).PanoramaStatusPanoramaServer2Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal)Property).PanoramaStatusPanoramaServer2Status = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusResourceInternal.PanoramaStatusPanoramaServer2Status { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal)Property).PanoramaStatusPanoramaServer2Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal)Property).PanoramaStatusPanoramaServer2Status = value ?? null; }
 
         /// <summary>Internal Acessors for PanoramaStatusPanoramaServerStatus</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusResourceInternal.PanoramaStatusPanoramaServerStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal)Property).PanoramaStatusPanoramaServerStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal)Property).PanoramaStatusPanoramaServerStatus = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusResourceInternal.PanoramaStatusPanoramaServerStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal)Property).PanoramaStatusPanoramaServerStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal)Property).PanoramaStatusPanoramaServerStatus = value ?? null; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusProperty Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusResourceInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.FirewallStatusProperty()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusResourceInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal)Property).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusResourceInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal)Property).ProvisioningState = value ?? null; }
+
+        /// <summary>Internal Acessors for StrataCloudManagerInfo</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IStrataCloudManagerInfo Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusResourceInternal.StrataCloudManagerInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal)Property).StrataCloudManagerInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal)Property).StrataCloudManagerInfo = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IResourceInternal)__proxyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IResourceInternal)__proxyResource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IResourceInternal)__proxyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IResourceInternal)__proxyResource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IResourceInternal)__proxyResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IResourceInternal)__proxyResource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IResourceInternal)__proxyResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IResourceInternal)__proxyResource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for SystemData</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IResourceInternal)__proxyResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IResourceInternal)__proxyResource).SystemData = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IResourceInternal)__proxyResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IResourceInternal)__proxyResource).SystemData = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IResourceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IResourceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IResourceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IResourceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IResourceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IResourceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IResourceInternal)__proxyResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IResourceInternal)__proxyResource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IResourceInternal)__proxyResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IResourceInternal)__proxyResource).Type = value ?? null; }
 
         /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Origin(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.PropertyOrigin.Inherited)]
@@ -110,42 +139,52 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models
         [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.FormatTable(Index = 3)]
         public string ResourceGroupName { get => (new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(this.Id).Success ? new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(this.Id).Groups["resourceGroupName"].Value : null); }
 
+        /// <summary>Strata Cloud Manager folder in which this firewall has been placed</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Origin(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.PropertyOrigin.Inlined)]
+        [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.DoNotFormat]
+        public string StratumCloudManagerInfoFolderName { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal)Property).StratumCloudManagerInfoFolderName; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal)Property).StratumCloudManagerInfoFolderName = value ?? null; }
+
+        /// <summary>URL for Strata Cloud Manager</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Origin(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.PropertyOrigin.Inlined)]
+        [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.DoNotFormat]
+        public string StratumCloudManagerInfoHubUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal)Property).StratumCloudManagerInfoHubUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal)Property).StratumCloudManagerInfoHubUrl = value ?? null; }
+
         /// <summary>
         /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Origin(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.PropertyOrigin.Inherited)]
         [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.DoNotFormat]
-        internal Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IResourceInternal)__proxyResource).SystemData; }
+        internal Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IResourceInternal)__proxyResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IResourceInternal)__proxyResource).SystemData = value ?? null /* model class */; }
 
         /// <summary>The timestamp of resource creation (UTC).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Origin(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.PropertyOrigin.Inherited)]
         [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.DoNotFormat]
-        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt; }
 
         /// <summary>The identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Origin(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.PropertyOrigin.Inherited)]
         [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.DoNotFormat]
-        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy = value ?? null; }
+        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy; }
 
         /// <summary>The type of identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Origin(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.PropertyOrigin.Inherited)]
         [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.DoNotFormat]
-        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType = value ?? null; }
+        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType; }
 
         /// <summary>The timestamp of resource last modification (UTC)</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Origin(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.PropertyOrigin.Inherited)]
         [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.DoNotFormat]
-        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt; }
 
         /// <summary>The identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Origin(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.PropertyOrigin.Inherited)]
         [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.DoNotFormat]
-        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy = value ?? null; }
+        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy; }
 
         /// <summary>The type of identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Origin(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.PropertyOrigin.Inherited)]
         [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.DoNotFormat]
-        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType = value ?? null; }
+        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType; }
 
         /// <summary>
         /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -212,6 +251,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.PSArgumentCompleterAttribute("TRUE", "FALSE")]
         string IsPanoramaManaged { get;  }
+        /// <summary>Strata Cloud Manager</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Strata Cloud Manager",
+        SerializedName = @"isStrataCloudManaged",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.PSArgumentCompleterAttribute("TRUE", "FALSE")]
+        string IsStrataCloudManaged { get;  }
         /// <summary>Secondary Panorama connection status</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Info(
         Required = false,
@@ -248,6 +299,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.PSArgumentCompleterAttribute("Succeeded", "Failed", "Deleted")]
         string ProvisioningState { get;  }
+        /// <summary>Strata Cloud Manager folder in which this firewall has been placed</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = false,
+        Description = @"Strata Cloud Manager folder in which this firewall has been placed",
+        SerializedName = @"folderName",
+        PossibleTypes = new [] { typeof(string) })]
+        string StratumCloudManagerInfoFolderName { get; set; }
+        /// <summary>URL for Strata Cloud Manager</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = false,
+        Description = @"URL for Strata Cloud Manager",
+        SerializedName = @"hubUrl",
+        PossibleTypes = new [] { typeof(string) })]
+        string StratumCloudManagerInfoHubUrl { get; set; }
 
     }
     /// Firewall Status
@@ -262,6 +335,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models
         /// <summary>Panorama Managed: Default is False. Default will be CloudSec managed</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.PSArgumentCompleterAttribute("TRUE", "FALSE")]
         string IsPanoramaManaged { get; set; }
+        /// <summary>Strata Cloud Manager</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.PSArgumentCompleterAttribute("TRUE", "FALSE")]
+        string IsStrataCloudManaged { get; set; }
         /// <summary>Panorama Status</summary>
         Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPanoramaStatus PanoramaStatus { get; set; }
         /// <summary>Secondary Panorama connection status</summary>
@@ -275,6 +351,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models
         /// <summary>Provisioning state of the resource.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.PSArgumentCompleterAttribute("Succeeded", "Failed", "Deleted")]
         string ProvisioningState { get; set; }
+        /// <summary>
+        /// This field is only present if Strata Cloud Manager is managing the policy for this firewall
+        /// </summary>
+        Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IStrataCloudManagerInfo StrataCloudManagerInfo { get; set; }
+        /// <summary>Strata Cloud Manager folder in which this firewall has been placed</summary>
+        string StratumCloudManagerInfoFolderName { get; set; }
+        /// <summary>URL for Strata Cloud Manager</summary>
+        string StratumCloudManagerInfoHubUrl { get; set; }
 
     }
 }

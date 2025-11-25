@@ -7,7 +7,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.PowerShell;
 
-    /// <summary>User info</summary>
+    /// <summary>
+    /// Includes name, email and optionally, phone number. User Information can't be null.
+    /// </summary>
     [System.ComponentModel.TypeConverter(typeof(UserInfoTypeConverter))]
     public partial class UserInfo
     {
@@ -170,7 +172,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
             AfterDeserializePSObject(content);
         }
     }
-    /// User info
+    /// Includes name, email and optionally, phone number. User Information can't be null.
     [System.ComponentModel.TypeConverter(typeof(UserInfoTypeConverter))]
     public partial interface IUserInfo
 

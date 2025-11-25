@@ -1,0 +1,57 @@
+{
+  "resourceType": "disconnectedOperations/images/artifacts",
+  "apiVersion": "2025-06-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.disconnectedoperations"
+  },
+  "commands": [
+    {
+      "name": "Get-AzDisconnectedOperationsArtifact",
+      "description": "Get the resource",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/disconnectedOperations/{name}/images/{imageName}/artifacts/{artifactName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.disconnectedoperations/get-azdisconnectedoperationsartifact"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ArtifactName <String>",
+              "-ImageName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get the resource",
+          "parameters": [
+            {
+              "name": "-ArtifactName",
+              "value": "[Path.artifactName]"
+            },
+            {
+              "name": "-ImageName",
+              "value": "[Path.imageName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.name]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
