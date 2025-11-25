@@ -26,7 +26,7 @@ title: CosmosDBManagementClient
 
 ### 
 ``` yaml 
-commit: main
+commit: b99dfe6606f232f454660bf361bc32c0dfade9fb
 apiversion: "2025-10-15"
 previewapiversion: "2024-12-01-preview"
 input-file:
