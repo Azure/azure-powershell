@@ -50,8 +50,8 @@ namespace Microsoft.Azure.Commands.CosmosDB
         public string ServiceTier { get; set; }
 
         [ValidateNotNullOrEmpty]
-        [Parameter(Mandatory = true, HelpMessage = Constants.DataRegionsHelpMessage)]
-        public string[] DataRegions { get; set; }
+        [Parameter(Mandatory = true, HelpMessage = Constants.DataRegionHelpMessage)]
+        public string[] DataRegion { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.ThroughputPoolMinThroughputHelpMessage)]
         public int? ThroughputPoolMinThroughput { get; set; }
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 FleetspaceApiKind = FleetspaceApiKind,
                 ServiceTier = ServiceTier,
-                DataRegions = DataRegions
+                DataRegions = DataRegion
             };
 
             if (ThroughputPoolMinThroughput.HasValue || ThroughputPoolMaxThroughput.HasValue)

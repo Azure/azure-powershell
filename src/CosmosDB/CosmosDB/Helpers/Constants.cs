@@ -328,7 +328,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string FleetspaceObjectHelpMessage = "Fleetspace Object.";
         public const string FleetspaceApiKindHelpMessage = "The kind of API this fleetspace belongs to. Acceptable values: 'NoSQL'";
         public const string ServiceTierHelpMessage = "Service Tier for the fleetspace. GeneralPurpose refers to single write region accounts, BusinessCritical refers to multi write region. Possible values: 'GeneralPurpose', 'BusinessCritical'";
-        public const string DataRegionsHelpMessage = "List of data regions assigned to the fleetspace. Example: westus2, eastus";
+        public const string DataRegionHelpMessage = "List of data regions assigned to the fleetspace. Example: westus2, eastus";
         public const string ThroughputPoolMinThroughputHelpMessage = "Minimum throughput for the throughput pool in the fleetspace.";
         public const string ThroughputPoolMaxThroughputHelpMessage = "Maximum throughput for the throughput pool in the fleetspace.";
 
