@@ -258,7 +258,13 @@ CmdletsToExport = 'Get-AzCosmosDBSqlContainer',
                'Remove-AzCosmosDBTableRoleDefinition', 
                'Update-AzCosmosDBTableRoleAssignment', 
                'Update-AzCosmosDBTableRoleDefinition', 
-               'New-AzCosmosDBThroughputBucketObject'
+               'New-AzCosmosDBThroughputBucketObject', 'New-AzCosmosDBFleet', 
+               'Get-AzCosmosDBFleet', 'Update-AzCosmosDBFleet', 
+               'Remove-AzCosmosDBFleet', 'New-AzCosmosDBFleetspace', 
+               'Get-AzCosmosDBFleetspace', 'Update-AzCosmosDBFleetspace', 
+               'Remove-AzCosmosDBFleetspace', 'Add-AzCosmosDBFleetspaceAccount', 
+               'Get-AzCosmosDBFleetspaceAccount', 
+               'Remove-AzCosmosDBFleetspaceAccount'
 
 # Variables to export from this module
 # VariablesToExport = @()

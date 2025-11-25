@@ -7,11 +7,11 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
 {
 
     /// <summary>
-    /// Defines values for FleetspacePropertiesThroughputPoolConfigurationServiceTier.
+    /// Defines values for FleetspacePropertiesServiceTier.
     /// </summary>
 
 
-    public static class FleetspacePropertiesThroughputPoolConfigurationServiceTier
+    public static class FleetspacePropertiesServiceTier
     {
         public const string GeneralPurpose = "GeneralPurpose";
         public const string BusinessCritical = "BusinessCritical";

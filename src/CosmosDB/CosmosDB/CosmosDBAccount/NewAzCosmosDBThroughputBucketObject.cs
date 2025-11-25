@@ -29,9 +29,12 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [ValidateNotNullOrEmpty]
         public int MaxThroughputPercentage { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = Constants.ThroughputBucketIsDefaultBucketHelpMessage)]
+        public bool? IsDefaultBucket { get; set; }
+
         public override void ExecuteCmdlet()
         {
-            PSThroughputBucket throughputBucket = new PSThroughputBucket(Id, MaxThroughputPercentage);
+            PSThroughputBucket throughputBucket = new PSThroughputBucket(Id, MaxThroughputPercentage, IsDefaultBucket);
             WriteObject(throughputBucket);
 
             return;

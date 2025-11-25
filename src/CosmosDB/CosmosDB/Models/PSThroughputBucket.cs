@@ -20,11 +20,13 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
     {
         public int Id { get; set; }
         public int MaxThroughputPercentage { get; set; }
+        public bool? IsDefaultBucket { get; set; }
 
-        public PSThroughputBucket(int id, int maxThroughputPercentage)
+        public PSThroughputBucket(int id, int maxThroughputPercentage, bool? isDefaultBucket = null)
         {
             Id = id;
             MaxThroughputPercentage = maxThroughputPercentage;
+            IsDefaultBucket = isDefaultBucket;
         }
 
         public PSThroughputBucket(ThroughputBucketResource throughputBucketResource)
@@ -33,6 +35,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
                 return;
             Id = throughputBucketResource.Id;
             MaxThroughputPercentage = throughputBucketResource.MaxThroughputPercentage;
+            IsDefaultBucket = throughputBucketResource.IsDefaultBucket;
         }
     }
 }

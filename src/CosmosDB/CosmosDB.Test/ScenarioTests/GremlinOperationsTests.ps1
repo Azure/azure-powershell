@@ -807,7 +807,7 @@ function Test-GremlinInAccountRestoreOperationsCmdlets
 #>
 function Test-GremlinInAccountCoreFunctionalityNoTimestampBasedRestoreCmdletsV2
 {
-    $AccountName = "iar-gremlingraph-ntbr"
+    $AccountName = "iar-gremlingraph-ntbrv2"
     $rgName = "CosmosDBResourceGroup50"
     $DatabaseName = "dbName"
     $ContainerName = "collection1"

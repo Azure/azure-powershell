@@ -16,8 +16,8 @@ function Test-SqlRestoreFromNewAccountCmdlets {
   #use an existing account with the following information
   $rgName = "CosmosDBResourceGroup13"
   $location = "West US"
-  $cosmosDBAccountName = "restored-cosmosdb-1214"
-  $sourceCosmosDBAccountName = "cosmosdb-1214"
+  $cosmosDBAccountName = "restored-cosmosdb-1214v2"
+  $sourceCosmosDBAccountName = "cosmosdb-1214v2"
   $databaseName = "TestDB1";
   $collectionName = "TestCollectionInDB1";
   $PartitionKeyPathValue = "/foo/bar"
@@ -71,10 +71,10 @@ function Test-SqlRestoreFromNewAccountCmdlets {
 }
 
 function Test-SqlRestoreAccountCmdlets {
-  #use an existing account with the following information
-  $rgName = "CosmosDBResourceGroup64"
-  $cosmosDBAccountName = "restored2-cosmosdb-12103-3"
-  $sourceCosmosDBAccountName = "cosmosdb-12103"
+  #use a new existing account with the following information
+  $rgName = "CosmosDBResourceGroup64v2"
+  $cosmosDBAccountName = "restored2-cosmosdb-12103-3v2"
+  $sourceCosmosDBAccountName = "cosmosdb-12103-restv2"
   $databaseName = "TestDB1";
   $collectionName1 = "TestCollectionInDB1";
   $collectionName2 = "TestCollectionInDB2";
@@ -84,7 +84,7 @@ function Test-SqlRestoreAccountCmdlets {
   $PartitionKeyPathValue = "/foo/bar"
   $PartitionKeyKindValue = "Hash"
   $locations = @()
-  $locations += New-AzCosmosDBLocationObject -Location "West Us" -FailoverPriority 0 -IsZoneRedundant 0
+  $locations += New-AzCosmosDBLocationObject -Location "West Central Us" -FailoverPriority 0 -IsZoneRedundant 0
 
   $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
   New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $sourceCosmosDBAccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel -BackupPolicyType Continuous
@@ -894,8 +894,8 @@ function Test-CrossRegionRestoreSingleRegionAccountCmdlets {
 function Test-SqlRestoreAccountPublicNetworkAccessCmdlets {
   #use an existing account with the following information
   $rgName = "CosmosDBResourceGroup64"
-  $cosmosDBAccountName = "restored2-cosmosdb-12103-3"
-  $sourceCosmosDBAccountName = "cosmosdb-12103"
+  $cosmosDBAccountName = "restored2-cosmosdb-12103-3v2"
+  $sourceCosmosDBAccountName = "cosmosdb-12103-restv2"
   $databaseName = "TestDB1";
   $collectionName1 = "TestCollectionInDB1";
   $collectionName2 = "TestCollectionInDB2";

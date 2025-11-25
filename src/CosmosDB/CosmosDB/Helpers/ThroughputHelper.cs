@@ -100,7 +100,8 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
             return new List<ThroughputBucketResource>(throughputBucketsObject.Select(t => new ThroughputBucketResource
             {
                 Id = t.Id,
-                MaxThroughputPercentage = t.MaxThroughputPercentage
+                MaxThroughputPercentage = t.MaxThroughputPercentage,
+                IsDefaultBucket = t.IsDefaultBucket
             }));
         }
 
