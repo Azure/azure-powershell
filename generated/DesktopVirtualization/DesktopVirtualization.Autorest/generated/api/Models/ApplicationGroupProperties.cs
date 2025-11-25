@@ -27,6 +27,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
         public bool? CloudPcResource { get => this._cloudPcResource; }
 
+        /// <summary>Backing field for <see cref="DeploymentScope" /> property.</summary>
+        private string _deploymentScope;
+
+        /// <summary>DeploymentScope type for ApplicationGroup.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
+        public string DeploymentScope { get => this._deploymentScope; }
+
         /// <summary>Backing field for <see cref="Description" /> property.</summary>
         private string _description;
 
@@ -50,6 +57,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
 
         /// <summary>Internal Acessors for CloudPcResource</summary>
         bool? Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationGroupPropertiesInternal.CloudPcResource { get => this._cloudPcResource; set { {_cloudPcResource = value;} } }
+
+        /// <summary>Internal Acessors for DeploymentScope</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationGroupPropertiesInternal.DeploymentScope { get => this._deploymentScope; set { {_deploymentScope = value;} } }
 
         /// <summary>Internal Acessors for ObjectId</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationGroupPropertiesInternal.ObjectId { get => this._objectId; set { {_objectId = value;} } }
@@ -118,6 +128,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         SerializedName = @"cloudPcResource",
         PossibleTypes = new [] { typeof(bool) })]
         bool? CloudPcResource { get;  }
+        /// <summary>DeploymentScope type for ApplicationGroup.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"DeploymentScope type for ApplicationGroup.",
+        SerializedName = @"deploymentScope",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Geographical", "Regional")]
+        string DeploymentScope { get;  }
         /// <summary>Description of ApplicationGroup.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
@@ -206,6 +228,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         string ApplicationGroupType { get; set; }
         /// <summary>Is cloud pc resource.</summary>
         bool? CloudPcResource { get; set; }
+        /// <summary>DeploymentScope type for ApplicationGroup.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Geographical", "Regional")]
+        string DeploymentScope { get; set; }
         /// <summary>Description of ApplicationGroup.</summary>
         string Description { get; set; }
         /// <summary>Friendly name of ApplicationGroup.</summary>

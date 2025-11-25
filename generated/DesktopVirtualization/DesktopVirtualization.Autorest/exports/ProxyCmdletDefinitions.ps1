@@ -7194,6 +7194,7 @@ To create the parameters described below, construct a hash table containing the 
 
 APPATTACHPACKAGE <AppAttachPackage>: 
   [CustomData <String>]: Field that can be populated with custom data and filtered on in list GET calls
+  [DeploymentScope <String>]: DeploymentScope type for AppAttachPackage.
   [FailHealthCheckOnStagingFailure <String>]: Parameter indicating how the health check should behave if this package fails staging
   [HostPoolReference <List<String>>]: List of Hostpool resource Ids.
   [ImageCertificateExpiry <DateTime?>]: Date certificate expires, found in the appxmanifest.xml.
@@ -7283,6 +7284,13 @@ param(
     [System.String]
     # Field that can be populated with custom data and filtered on in list GET calls
     ${CustomData},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Geographical", "Regional")]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # DeploymentScope type for AppAttachPackage.
+    ${DeploymentScope},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='ImageObject')]
@@ -11245,6 +11253,13 @@ param(
     ${ApplicationGroupReference},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Geographical", "Regional")]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # DeploymentScope type for Workspace.
+    ${DeploymentScope},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
     # Description of Workspace.
@@ -14905,6 +14920,7 @@ To create the parameters described below, construct a hash table containing the 
 
 APPATTACHPACKAGE <AppAttachPackage>: 
   [CustomData <String>]: Field that can be populated with custom data and filtered on in list GET calls
+  [DeploymentScope <String>]: DeploymentScope type for AppAttachPackage.
   [FailHealthCheckOnStagingFailure <String>]: Parameter indicating how the health check should behave if this package fails staging
   [HostPoolReference <List<String>>]: List of Hostpool resource Ids.
   [ImageCertificateExpiry <DateTime?>]: Date certificate expires, found in the appxmanifest.xml.
