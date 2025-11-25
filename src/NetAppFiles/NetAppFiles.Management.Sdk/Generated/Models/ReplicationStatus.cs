@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </param>
 
         /// <param name="relationshipStatus">Status of the mirror relationship
-        /// Possible values include: &#39;Idle&#39;, &#39;Transferring&#39;, &#39;Failed&#39;, &#39;Unknown&#39;</param>
+        /// Possible values include: &#39;Idle&#39;, &#39;Transferring&#39;</param>
 
         /// <param name="mirrorState">The status of the replication
         /// Possible values include: &#39;Uninitialized&#39;, &#39;Mirrored&#39;, &#39;Broken&#39;</param>
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
         public bool? Healthy {get; set; }
 
         /// <summary>
-        /// Gets or sets status of the mirror relationship Possible values include: &#39;Idle&#39;, &#39;Transferring&#39;, &#39;Failed&#39;, &#39;Unknown&#39;
+        /// Gets or sets status of the mirror relationship Possible values include: &#39;Idle&#39;, &#39;Transferring&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "relationshipStatus")]
         public string RelationshipStatus {get; set; }

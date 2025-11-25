@@ -8,20 +8,20 @@ namespace Microsoft.Azure.Management.NetApp.Models
     using System.Linq;
 
     /// <summary>
-    /// SubscriptionQuotaItem Properties
+    /// QuotaItem Properties
     /// </summary>
-    public partial class SubscriptionQuotaItemProperties
+    public partial class QuotaItemProperties
     {
         /// <summary>
-        /// Initializes a new instance of the SubscriptionQuotaItemProperties class.
+        /// Initializes a new instance of the QuotaItemProperties class.
         /// </summary>
-        public SubscriptionQuotaItemProperties()
+        public QuotaItemProperties()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the SubscriptionQuotaItemProperties class.
+        /// Initializes a new instance of the QuotaItemProperties class.
         /// </summary>
 
         /// <param name="current">The current quota value.
@@ -29,11 +29,15 @@ namespace Microsoft.Azure.Management.NetApp.Models
 
         /// <param name="defaultProperty">The default quota value.
         /// </param>
-        public SubscriptionQuotaItemProperties(int? current = default(int?), int? defaultProperty = default(int?))
+
+        /// <param name="usage">The usage quota value.
+        /// </param>
+        public QuotaItemProperties(int? current = default(int?), int? defaultProperty = default(int?), int? usage = default(int?))
 
         {
             this.Current = current;
             this.DefaultProperty = defaultProperty;
+            this.Usage = usage;
             CustomInit();
         }
 
@@ -54,5 +58,11 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "default")]
         public int? DefaultProperty {get; private set; }
+
+        /// <summary>
+        /// Gets the usage quota value.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "usage")]
+        public int? Usage {get; private set; }
     }
 }

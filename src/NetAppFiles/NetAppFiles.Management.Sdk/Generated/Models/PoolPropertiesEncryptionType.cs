@@ -7,11 +7,11 @@ namespace Microsoft.Azure.Management.NetApp.Models
 {
 
     /// <summary>
-    /// Defines values for EncryptionType.
+    /// Defines values for PoolPropertiesEncryptionType.
     /// </summary>
 
 
-    public static class EncryptionType
+    public static class PoolPropertiesEncryptionType
     {
         /// <summary>
         /// EncryptionType Single, volumes will use single encryption at rest
