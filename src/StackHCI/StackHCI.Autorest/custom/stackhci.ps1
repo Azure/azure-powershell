@@ -500,13 +500,22 @@ function Confirm-UserAcknowledgmentToUpgradeOS {
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
     [CmdletBinding(SupportsShouldProcess = $true, ConfirmImpact = 'High')]
     param(
-        [Parameter(Mandatory=$true)]
+        [Parameter(Mandatory=$false)]
         [System.Management.Automation.Runspaces.PSSession]
         $ClusterNodeSession
     )
 
     $osVersionDetectoid = { $displayVersion = (Get-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").DisplayVersion; $buildNumber = (Get-CimInstance -ClassName CIM_OperatingSystem).BuildNumber; New-Object -TypeName PSObject -Property @{'DisplayVersion'=$displayVersion; 'BuildNumber'=$buildNumber} }
-    $osVersionInfo = Invoke-Command -Session $clusterNodeSession -ScriptBlock $osVersionDetectoid
+    
+    if ($ClusterNodeSession)
+    {
+        $osVersionInfo = Invoke-Command -Session $ClusterNodeSession -ScriptBlock $osVersionDetectoid
+    } 
+    else 
+    {
+        $osVersionInfo = & $osVersionDetectoid
+    }
+
     $isOSVersion22H2 =  ([Int]::Parse($osVersionInfo.BuildNumber) -le $22H2BuildNumber)
 
     $doNotAbort = $true
@@ -6042,7 +6051,7 @@ param(
         try
         {
 
-            $_, $_, $clusterNodeSession, $_ = Get-SetupLoggingDetails
+            $_, $_, $clusterNodeSession, $_ = Get-SetupLoggingDetails -newSession $false
             Confirm-UserAcknowledgmentToUpgradeOS -ClusterNodeSession $clusterNodeSession
 
             $LogFilePrefix = "AddAzStackHCIVMAttestation"
@@ -6238,7 +6247,7 @@ param(
 
         try
         {
-            $_, $_, $clusterNodeSession, $_ = Get-SetupLoggingDetails
+            $_, $_, $clusterNodeSession, $_ = Get-SetupLoggingDetails -newSession $false
             Confirm-UserAcknowledgmentToUpgradeOS -ClusterNodeSession $clusterNodeSession
 
             $LogFilePrefix = "RemoveAzStackHCIVMAttestation"
@@ -6366,7 +6375,7 @@ param(
     {
         try
         {
-            $_, $_, $clusterNodeSession, $_ = Get-SetupLoggingDetails
+            $_, $_, $clusterNodeSession, $_ = Get-SetupLoggingDetails -newSession $false
             Confirm-UserAcknowledgmentToUpgradeOS -ClusterNodeSession $clusterNodeSession
 
             $getImdsOutputList = [System.Collections.ArrayList]::new()
@@ -6533,7 +6542,7 @@ function Invoke-DeploymentModuleDownload{
     $retryCount = 3
     try
     {
-        $_, $IsClusterRegistered, $clusterNodeSession, $_ = Get-SetupLoggingDetails
+        $_, $IsClusterRegistered, $clusterNodeSession, $_ = Get-SetupLoggingDetails -newSession $false
         Setup-Logging -LogFilePrefix "AzStackHCIRemoteSupport" -DebugEnabled ($DebugPreference -ne "SilentlyContinue") -ClusterNodeSession $clusterNodeSession -IsClusterRegistered $IsClusterRegistered | Out-Null
 
         if ($Null -ne $clusterNodeSession)
@@ -6572,7 +6581,7 @@ function Install-DeployModule {
         $ModuleName
     )
 
-    $_, $IsClusterRegistered, $clusterNodeSession, $_ = Get-SetupLoggingDetails
+    $_, $IsClusterRegistered, $clusterNodeSession, $_ = Get-SetupLoggingDetails -newSession $false
     Setup-Logging -LogFilePrefix "AzStackHCIRemoteSupportInstallModule" -DebugEnabled ($DebugPreference -ne "SilentlyContinue") -ClusterNodeSession $clusterNodeSession -IsClusterRegistered $IsClusterRegistered | Out-Null
     
     if ($Null -ne $clusterNodeSession)
@@ -6612,7 +6621,7 @@ function Install-AzStackHCIRemoteSupport{
     [OutputType([Boolean])]
     param()
 
-    $_, $IsClusterRegistered, $clusterNodeSession, $_ = Get-SetupLoggingDetails
+    $_, $IsClusterRegistered, $clusterNodeSession, $_ = Get-SetupLoggingDetails -newSession $false
 
     Confirm-UserAcknowledgmentToUpgradeOS -ClusterNodeSession $clusterNodeSession
 
@@ -6652,7 +6661,7 @@ function Remove-AzStackHCIRemoteSupport{
     [OutputType([Boolean])]
     param()
 
-    $_, $IsClusterRegistered, $clusterNodeSession, $_ = Get-SetupLoggingDetails
+    $_, $IsClusterRegistered, $clusterNodeSession, $_ = Get-SetupLoggingDetails -newSession $false
     Confirm-UserAcknowledgmentToUpgradeOS -ClusterNodeSession $clusterNodeSession
     Setup-Logging -LogFilePrefix "AzStackHCIRemoteSupportRemove" -DebugEnabled ($DebugPreference -ne "SilentlyContinue") -ClusterNodeSession $clusterNodeSession -IsClusterRegistered $IsClusterRegistered | Out-Null
     if ($Null -ne $clusterNodeSession)
@@ -6720,7 +6729,7 @@ function Enable-AzStackHCIRemoteSupport{
         $AgreeToRemoteSupportConsent
     )
 
-    $_, $_, $clusterNodeSession, $_ = Get-SetupLoggingDetails
+    $_, $_, $clusterNodeSession, $_ = Get-SetupLoggingDetails -newSession $false
     Confirm-UserAcknowledgmentToUpgradeOS -ClusterNodeSession $clusterNodeSession
 
     if ($AgreeToRemoteSupportConsent -ne $true)
@@ -6767,7 +6776,7 @@ function Disable-AzStackHCIRemoteSupport{
     [OutputType([Boolean])]
     param()
 
-    $_, $_, $clusterNodeSession, $_ = Get-SetupLoggingDetails
+    $_, $_, $clusterNodeSession, $_ = Get-SetupLoggingDetails -newSession $false
     Confirm-UserAcknowledgmentToUpgradeOS -ClusterNodeSession $clusterNodeSession
 
     $agentInstallType = (Get-ItemProperty -Path "HKLM:\SYSTEM\Software\Microsoft\AzureStack\Observability\RemoteSupport" -ErrorAction SilentlyContinue).InstallType
@@ -6815,7 +6824,7 @@ function Get-AzStackHCIRemoteSupportAccess{
         $IncludeExpired
     )
 
-    $_, $_, $clusterNodeSession, $_ = Get-SetupLoggingDetails
+    $_, $_, $clusterNodeSession, $_ = Get-SetupLoggingDetails -newSession $false
     Confirm-UserAcknowledgmentToUpgradeOS -ClusterNodeSession $clusterNodeSession
 
     $agentInstallType = (Get-ItemProperty -Path "HKLM:\SYSTEM\Software\Microsoft\AzureStack\Observability\RemoteSupport" -ErrorAction SilentlyContinue).InstallType
@@ -6917,7 +6926,7 @@ function Get-AzStackHCIRemoteSupportSessionHistory{
         $FromDate = (Get-Date).AddDays(-7)
     )
 
-    $_, $_, $clusterNodeSession, $_ = Get-SetupLoggingDetails
+    $_, $_, $clusterNodeSession, $_ = Get-SetupLoggingDetails -newSession $false
     Confirm-UserAcknowledgmentToUpgradeOS -ClusterNodeSession $clusterNodeSession
 
     $agentInstallType = (Get-ItemProperty -Path "HKLM:\SYSTEM\Software\Microsoft\AzureStack\Observability\RemoteSupport" -ErrorAction SilentlyContinue).InstallType
