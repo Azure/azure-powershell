@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 5.4.5
 * Upgrade API version to 2025-11-01-preview
     - Added deployment scope property to HostPool, ApplicationGroup, Workspace, AppAttachPackage.
 
