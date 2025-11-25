@@ -317,5 +317,25 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string ServiceName = "Name of the service";
         public const string ServiceInstanceSize = "Instance count of the service";
         public const string ServiceInstanceCount = "Instance size of the service";
+
+        // Fleet constants
+        public const string FleetNameHelpMessage = "Name of the Fleet.";
+        public const string FleetObjectHelpMessage = "Fleet Object.";
+        public const string TagsHelpMessage = "Hashtable of tags as key-value pairs.";
+
+        // Fleetspace constants
+        public const string FleetspaceNameHelpMessage = "Name of the Fleetspace.";
+        public const string FleetspaceObjectHelpMessage = "Fleetspace Object.";
+        public const string FleetspaceApiKindHelpMessage = "The kind of API this fleetspace belongs to. Acceptable values: 'NoSQL'";
+        public const string ServiceTierHelpMessage = "Service Tier for the fleetspace. GeneralPurpose refers to single write region accounts, BusinessCritical refers to multi write region. Possible values: 'GeneralPurpose', 'BusinessCritical'";
+        public const string DataRegionsHelpMessage = "List of data regions assigned to the fleetspace. Example: westus2, eastus";
+        public const string ThroughputPoolMinThroughputHelpMessage = "Minimum throughput for the throughput pool in the fleetspace.";
+        public const string ThroughputPoolMaxThroughputHelpMessage = "Maximum throughput for the throughput pool in the fleetspace.";
+
+        // FleetspaceAccount constants
+        public const string FleetspaceAccountNameHelpMessage = "Name of the Fleetspace Account.";
+        public const string FleetspaceAccountObjectHelpMessage = "Fleetspace Account Object.";
+        public const string GlobalDatabaseAccountResourceIdHelpMessage = "Resource ID of the global database account to associate with the fleetspace account.";
+        public const string GlobalDatabaseAccountLocationHelpMessage = "Location of the global database account to associate with the fleetspace account.";
     }
 }
