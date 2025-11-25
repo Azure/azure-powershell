@@ -29,12 +29,13 @@ New-AzFrontDoorRedirectConfigurationObject -RedirectType "PermanentRedirect" -Re
 ```
 
 ```output
-CustomFragment   : section1
-CustomHost       : www.example.com
-CustomPath       : /newpath
+CustomFragment    : section1
+CustomHost        : www.example.com
+CustomPath        : /newpath
 CustomQueryString : source=frontdoor&campaign=redirect
-RedirectProtocol : HttpsOnly
-RedirectType     : PermanentRedirect
+OdataType         : #Microsoft.Azure.FrontDoor.Models.FrontdoorRedirectConfiguration
+RedirectProtocol  : HttpsOnly
+RedirectType      : PermanentRedirect
 ```
 
 Create a comprehensive redirect configuration object that permanently redirects requests to HTTPS protocol with custom host, path, query string, and fragment.

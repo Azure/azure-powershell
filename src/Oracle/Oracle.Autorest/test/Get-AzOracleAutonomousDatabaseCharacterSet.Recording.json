@@ -1,17 +1,17 @@
 {
-  "Get-AzOracleAutonomousDatabaseCharacterSet+[NoContext]+List+$GET+https://management.azure.com/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/providers/Oracle.Database/locations/eastus/autonomousDatabaseCharacterSets?api-version=2025-03-01+1": {
+  "Get-AzOracleAutonomousDatabaseCharacterSet+[NoContext]+List+$GET+https://management.azure.com/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/providers/Oracle.Database/locations/eastus/autonomousDatabaseCharacterSets?api-version=2025-09-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/providers/Oracle.Database/locations/eastus/autonomousDatabaseCharacterSets?api-version=2025-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/providers/Oracle.Database/locations/eastus/autonomousDatabaseCharacterSets?api-version=2025-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "96" ],
-        "x-ms-client-request-id": [ "7969ea4a-84c4-4cca-bc0e-9ad461a0cb05" ],
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "1ea8e589-bd95-4a50-b683-900bb13a2eb1" ],
         "CommandName": [ "Get-AzOracleAutonomousDatabaseCharacterSet" ],
         "FullCommandName": [ "Get-AzOracleAutonomousDatabaseCharacterSet_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.2", "Az.Oracle/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.3", "Az.Oracle/1.2.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -23,19 +23,19 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Vary": [ "Origin", "Accept-Encoding" ],
-        "x-ms-operation-identifier": [ "tenantId=9ef05df2-ad7c-4737-aba9-a5e1b3fa5ae1,objectId=ed0404db-6d52-44c6-a09d-182ac122b912/northcentralus/e81537ab-12c0-40f7-b0b9-59a2d79d3a99" ],
+        "x-ms-operation-identifier": [ "tenantId=9ef05df2-ad7c-4737-aba9-a5e1b3fa5ae1,objectId=ed0404db-6d52-44c6-a09d-182ac122b912/southcentralus/4990cab2-eef7-42e5-a3f9-fc71097a2f03" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "opc-request-id": [ "/7B0D500B0518FFD30DADB7352BA05A98/A45D2A4CE4195D59DB375FF7C352C8EB" ],
+        "opc-request-id": [ "oci-79BB7AFDF77A974-202510131747/18532D14437BB40E4B3BED684941440B/F725E9C1AE7F3D64B8E663995AA8563D" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "db23c794-b6f9-42f1-839d-6869a14eca53" ],
-        "x-ms-correlation-request-id": [ "98b419ca-68ad-4d02-91cb-ca62cacfd324" ],
+        "x-ms-request-id": [ "7f9a7db5-bc57-4b73-bf14-b9fe81231c02" ],
+        "x-ms-correlation-request-id": [ "d68aa7e2-0ee5-439b-9637-7de83e598346" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
         "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
-        "x-ms-routing-request-id": [ "NORTHCENTRALUS:20250625T180709Z:98b419ca-68ad-4d02-91cb-ca62cacfd324" ],
+        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20251013T174756Z:d68aa7e2-0ee5-439b-9637-7de83e598346" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 1A4A6BFE1CFB49DC97F515BDD47ADB54 Ref B: DM2AA1091213021 Ref C: 2025-06-25T18:07:07Z" ],
-        "Date": [ "Wed, 25 Jun 2025 18:07:08 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 7B087558C23A407592515E8179FF503F Ref B: SN4AA2022305019 Ref C: 2025-10-13T17:47:54Z" ],
+        "Date": [ "Mon, 13 Oct 2025 17:47:55 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "22493" ],

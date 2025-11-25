@@ -22,9 +22,6 @@ Enables a frontendEndpoint for HTTPS traffic
 .Example
 Enable-AzFrontDoorCustomDomainHttps -ResourceGroupName "resourcegroup1" -FrontDoorName "frontdoor1" -FrontendEndpointName "frontendpointname1-custom-xyz" -MinimumTlsVersion "1.2"
 .Example
-$vaultId = (Get-AzKeyVault -VaultName $vaultName).ResourceId
-Enable-AzFrontDoorCustomDomainHttps -ResourceGroupName "resourcegroup1" -FrontDoorName "frontdoor1" -FrontendEndpointName "frontendpointname1-custom-xyz" -VaultId $vaultId -secretName $secretName -SecretVersion $secretVersion -MinimumTlsVersion "1.0"
-.Example
 Get-AzFrontDoorFrontendEndpoint -ResourceGroupName "resourcegroup1" -FrontDoorName "frontdoor1" -Name "frontendpointname1-custom-xyz" | Enable-AzFrontDoorCustomDomainHttps 
 
 .Inputs
@@ -317,8 +314,6 @@ Gets a Frontend endpoint with the specified name within the specified Front Door
 .Description
 Gets a Frontend endpoint with the specified name within the specified Front Door.
 .Example
-Get-AzFrontDoorFrontendEndpoint -ResourceGroupName "myResourceGroup" -FrontDoorName "myFrontDoor"
-.Example
 Get-AzFrontDoorFrontendEndpoint -ResourceGroupName "myResourceGroup" -FrontDoorName "myFrontDoor" -Name "myFrontDoor-azurefd-net"
 
 .Inputs
@@ -552,6 +547,7 @@ MANAGEDRULESET <IManagedRuleSet[]>: List of rule sets.
       [Action <String>]: Describes the override action to be applied when rule matches.
       [EnabledState <String>]: Describes if the managed rule is in enabled or disabled state. Defaults to Disabled if not specified.
       [Exclusion <List<IManagedRuleExclusion>>]: Describes the exclusions that are applied to this specific rule.
+      [Sensitivity <String>]: Describes the override sensitivity to be applied when rule matches.
   [RuleSetAction <String>]: Defines the rule set action.
 
 POLICYSETTING <IPolicySettings>: Describes settings for the policy.
@@ -1341,6 +1337,7 @@ MANAGEDRULESET <IManagedRuleSet[]>: List of rule sets.
       [Action <String>]: Describes the override action to be applied when rule matches.
       [EnabledState <String>]: Describes if the managed rule is in enabled or disabled state. Defaults to Disabled if not specified.
       [Exclusion <List<IManagedRuleExclusion>>]: Describes the exclusions that are applied to this specific rule.
+      [Sensitivity <String>]: Describes the override sensitivity to be applied when rule matches.
   [RuleSetAction <String>]: Defines the rule set action.
 
 POLICYSETTING <IPolicySettings>: Describes settings for the policy.
@@ -2473,6 +2470,7 @@ MANAGEDRULESET <IManagedRuleSet[]>: List of rule sets.
       [Action <String>]: Describes the override action to be applied when rule matches.
       [EnabledState <String>]: Describes if the managed rule is in enabled or disabled state. Defaults to Disabled if not specified.
       [Exclusion <List<IManagedRuleExclusion>>]: Describes the exclusions that are applied to this specific rule.
+      [Sensitivity <String>]: Describes the override sensitivity to be applied when rule matches.
   [RuleSetAction <String>]: Defines the rule set action.
 
 POLICYSETTING <IPolicySettings>: Describes settings for the policy.

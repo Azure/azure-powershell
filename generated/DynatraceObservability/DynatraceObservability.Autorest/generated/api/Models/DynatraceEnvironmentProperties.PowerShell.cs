@@ -128,6 +128,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceEnvironmentPropertiesInternal)this).AccountInfoRegionId = (string) content.GetValueForProperty("AccountInfoRegionId",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceEnvironmentPropertiesInternal)this).AccountInfoRegionId, global::System.Convert.ToString);
             }
+            if (content.Contains("AccountInfoCompanyName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceEnvironmentPropertiesInternal)this).AccountInfoCompanyName = (string) content.GetValueForProperty("AccountInfoCompanyName",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceEnvironmentPropertiesInternal)this).AccountInfoCompanyName, global::System.Convert.ToString);
+            }
             if (content.Contains("EnvironmentInfoEnvironmentId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceEnvironmentPropertiesInternal)this).EnvironmentInfoEnvironmentId = (string) content.GetValueForProperty("EnvironmentInfoEnvironmentId",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceEnvironmentPropertiesInternal)this).EnvironmentInfoEnvironmentId, global::System.Convert.ToString);
@@ -204,6 +208,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models
             if (content.Contains("AccountInfoRegionId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceEnvironmentPropertiesInternal)this).AccountInfoRegionId = (string) content.GetValueForProperty("AccountInfoRegionId",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceEnvironmentPropertiesInternal)this).AccountInfoRegionId, global::System.Convert.ToString);
+            }
+            if (content.Contains("AccountInfoCompanyName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceEnvironmentPropertiesInternal)this).AccountInfoCompanyName = (string) content.GetValueForProperty("AccountInfoCompanyName",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceEnvironmentPropertiesInternal)this).AccountInfoCompanyName, global::System.Convert.ToString);
             }
             if (content.Contains("EnvironmentInfoEnvironmentId"))
             {

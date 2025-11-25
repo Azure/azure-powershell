@@ -1,18 +1,4 @@
-### Example 1: Get all frontend endpoints from a Front Door
-```powershell
-Get-AzFrontDoorFrontendEndpoint -ResourceGroupName "myResourceGroup" -FrontDoorName "myFrontDoor"
-```
-
-```output
-HostName                            SessionAffinityEnabledState SessionAffinityTtlSecond WebApplicationFirewallPolicyLinkId   CustomHttpsProvisioningState ResourceState
---------                            --------------------------- ------------------------ ----------------------------------   ---------------------------- -------------
-myFrontDoor-azurefd.net            Disabled                    0                                                              Enabled                      Enabled
-www.contoso.com                    Disabled                    0                        /subscriptions/.../myWafPolicy      Enabled                      Enabled
-```
-
-Get all frontend endpoints configured in the specified Front Door resource.
-
-### Example 2: Get a specific frontend endpoint by name
+### Example 1: Get a specific frontend endpoint by name
 ```powershell
 Get-AzFrontDoorFrontendEndpoint -ResourceGroupName "myResourceGroup" -FrontDoorName "myFrontDoor" -Name "myFrontDoor-azurefd-net"
 ```

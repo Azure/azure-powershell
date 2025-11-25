@@ -4,9 +4,9 @@ New-AzFrontDoorWafManagedRuleExclusionObject -Variable QueryStringArgNames -Oper
 ```
 
 ```output
-MatchVariable       SelectorMatchOperator Selector
--------------       --------------------- --------
-QueryStringArgNames Equals                ParameterName
+Operator Selector      Variable
+-------- --------      --------
+Equals   ParameterName QueryStringArgNames
 ```
 
 Create managed rule exclusion object for WAF managed rule sets, groups, or rules.

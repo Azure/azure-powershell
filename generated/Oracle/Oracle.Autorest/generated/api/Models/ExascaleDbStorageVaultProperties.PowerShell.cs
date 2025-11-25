@@ -150,6 +150,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExascaleDbStorageVaultPropertiesInternal)this).OciUrl = (string) content.GetValueForProperty("OciUrl",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExascaleDbStorageVaultPropertiesInternal)this).OciUrl, global::System.Convert.ToString);
             }
+            if (content.Contains("ExadataInfrastructureId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExascaleDbStorageVaultPropertiesInternal)this).ExadataInfrastructureId = (string) content.GetValueForProperty("ExadataInfrastructureId",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExascaleDbStorageVaultPropertiesInternal)this).ExadataInfrastructureId, global::System.Convert.ToString);
+            }
+            if (content.Contains("AttachedShapeAttribute"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExascaleDbStorageVaultPropertiesInternal)this).AttachedShapeAttribute = (System.Collections.Generic.List<string>) content.GetValueForProperty("AttachedShapeAttribute",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExascaleDbStorageVaultPropertiesInternal)this).AttachedShapeAttribute, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
             if (content.Contains("HighCapacityDatabaseStorageInputTotalSizeInGb"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExascaleDbStorageVaultPropertiesInternal)this).HighCapacityDatabaseStorageInputTotalSizeInGb = (int?) content.GetValueForProperty("HighCapacityDatabaseStorageInputTotalSizeInGb",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExascaleDbStorageVaultPropertiesInternal)this).HighCapacityDatabaseStorageInputTotalSizeInGb, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
@@ -226,6 +234,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             if (content.Contains("OciUrl"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExascaleDbStorageVaultPropertiesInternal)this).OciUrl = (string) content.GetValueForProperty("OciUrl",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExascaleDbStorageVaultPropertiesInternal)this).OciUrl, global::System.Convert.ToString);
+            }
+            if (content.Contains("ExadataInfrastructureId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExascaleDbStorageVaultPropertiesInternal)this).ExadataInfrastructureId = (string) content.GetValueForProperty("ExadataInfrastructureId",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExascaleDbStorageVaultPropertiesInternal)this).ExadataInfrastructureId, global::System.Convert.ToString);
+            }
+            if (content.Contains("AttachedShapeAttribute"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExascaleDbStorageVaultPropertiesInternal)this).AttachedShapeAttribute = (System.Collections.Generic.List<string>) content.GetValueForProperty("AttachedShapeAttribute",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExascaleDbStorageVaultPropertiesInternal)this).AttachedShapeAttribute, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
             if (content.Contains("HighCapacityDatabaseStorageInputTotalSizeInGb"))
             {

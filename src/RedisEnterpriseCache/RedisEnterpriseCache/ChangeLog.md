@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.6.0
 * Added a new required property: PublicNetworkAccess for Cluster.
 * Updated the default value of AccessKeysAuthentication property for Database to 'Disabled'.
 

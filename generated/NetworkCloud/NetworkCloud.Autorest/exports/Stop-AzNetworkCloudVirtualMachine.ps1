@@ -62,6 +62,8 @@ function Stop-AzNetworkCloudVirtualMachine {
 [CmdletBinding(DefaultParameterSetName='PowerOffExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='PowerOffExpanded', Mandatory)]
+    [Parameter(ParameterSetName='PowerOffViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='PowerOffViaJsonString', Mandatory)]
     [Alias('VirtualMachineName')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Path')]
     [System.String]
@@ -69,6 +71,8 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='PowerOffExpanded', Mandatory)]
+    [Parameter(ParameterSetName='PowerOffViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='PowerOffViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -76,6 +80,8 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='PowerOffExpanded')]
+    [Parameter(ParameterSetName='PowerOffViaJsonFilePath')]
+    [Parameter(ParameterSetName='PowerOffViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -87,15 +93,27 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.SkipShutdown])]
+    [Parameter(ParameterSetName='PowerOffExpanded')]
+    [Parameter(ParameterSetName='PowerOffViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("True", "False")]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.SkipShutdown]
+    [System.String]
     # The indicator of whether to skip the graceful OS shutdown and power off the virtual machine immediately.
     ${SkipShutdown},
+
+    [Parameter(ParameterSetName='PowerOffViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the PowerOff operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='PowerOffViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
+    [System.String]
+    # Json string supplied to the PowerOff operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -171,6 +189,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -192,10 +219,10 @@ begin {
         $mapping = @{
             PowerOffExpanded = 'Az.NetworkCloud.private\Stop-AzNetworkCloudVirtualMachine_PowerOffExpanded';
             PowerOffViaIdentityExpanded = 'Az.NetworkCloud.private\Stop-AzNetworkCloudVirtualMachine_PowerOffViaIdentityExpanded';
+            PowerOffViaJsonFilePath = 'Az.NetworkCloud.private\Stop-AzNetworkCloudVirtualMachine_PowerOffViaJsonFilePath';
+            PowerOffViaJsonString = 'Az.NetworkCloud.private\Stop-AzNetworkCloudVirtualMachine_PowerOffViaJsonString';
         }
-        if (('PowerOffExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('PowerOffExpanded', 'PowerOffViaJsonFilePath', 'PowerOffViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -209,6 +236,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

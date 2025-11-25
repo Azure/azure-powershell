@@ -6,9 +6,9 @@ New-AzFrontDoorWafManagedRuleOverrideObject -RuleId "942250" -Action Log
 ```
 
 ```output
-RuleId EnabledState Action
------- ------------ ------
-942250      Enabled    Log
+Action EnabledState Exclusion RuleId
+------ ------------ --------- ------
+Log                           942250
 ```
 
 Create PSAzureManagedRuleOverride Object for managed WAF rule group override object creation.

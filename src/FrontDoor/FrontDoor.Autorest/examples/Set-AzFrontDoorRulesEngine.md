@@ -8,9 +8,35 @@ Set-AzFrontDoorRulesEngine -ResourceGroupName "myResourceGroup" -FrontDoorName "
 ```
 
 ```output
-Name          RulesEngineRules
-----          ----------------
-myRulesEngine {SecurityHeaderRule}
+Id                : /subscriptions/{subId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Network/frontdoors/{frontDoorName}/rulesengines/rulesengine3
+Name              : rulesengine3
+ResourceGroupName : {resourceGroupName}
+ResourceState     : Enabled
+Rule              : {{
+                      "name": "rule111",
+                      "priority": 0,
+                      "action": {
+                        "requestHeaderActions": [ ],
+                        "responseHeaderActions": [
+                          {
+                            "headerActionType": "Overwrite",
+                            "headerName": "ff",
+                            "value": "ff"
+                          }
+                        ]
+                      },
+                      "matchConditions": [
+                        {
+                          "rulesEngineMatchVariable": "QueryString",
+                          "rulesEngineOperator": "Contains",
+                          "negateCondition": false,
+                          "rulesEngineMatchValue": [ "fdfd" ],
+                          "transforms": [ ]
+                        }
+                      ],
+                      "matchProcessingBehavior": "Continue"
+                    }}
+Type              : Microsoft.Network/frontdoors/rulesengines
 ```
 
 Update an existing rules engine configuration to add a new rule that applies security headers to requests matching a specific path pattern.
@@ -24,9 +50,35 @@ Set-AzFrontDoorRulesEngine -ResourceGroupName "myResourceGroup" -FrontDoorName "
 ```
 
 ```output
-Name          RulesEngineRules
-----          ----------------
-myRulesEngine {RedirectOldPath}
+Id                : /subscriptions/{subId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Network/frontdoors/{frontDoorName}/rulesengines/rulesengine3
+Name              : rulesengine3
+ResourceGroupName : {resourceGroupName}
+ResourceState     : Enabled
+Rule              : {{
+                      "name": "rule111",
+                      "priority": 0,
+                      "action": {
+                        "requestHeaderActions": [ ],
+                        "responseHeaderActions": [
+                          {
+                            "headerActionType": "Overwrite",
+                            "headerName": "ff",
+                            "value": "ff"
+                          }
+                        ]
+                      },
+                      "matchConditions": [
+                        {
+                          "rulesEngineMatchVariable": "QueryString",
+                          "rulesEngineOperator": "Contains",
+                          "negateCondition": false,
+                          "rulesEngineMatchValue": [ "fdfd" ],
+                          "transforms": [ ]
+                        }
+                      ],
+                      "matchProcessingBehavior": "Continue"
+                    }}
+Type              : Microsoft.Network/frontdoors/rulesengines
 ```
 
 Update the rules engine configuration to redirect requests from an old path to a new location with a 301 Moved redirect.

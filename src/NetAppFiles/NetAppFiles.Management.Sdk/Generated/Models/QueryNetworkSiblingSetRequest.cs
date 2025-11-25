@@ -10,9 +10,6 @@ namespace Microsoft.Azure.Management.NetApp.Models
     /// <summary>
     /// Network sibling set query.
     /// </summary>
-    /// <remarks>
-    /// Network sibling set query.
-    /// </remarks>
     public partial class QueryNetworkSiblingSetRequest
     {
         /// <summary>

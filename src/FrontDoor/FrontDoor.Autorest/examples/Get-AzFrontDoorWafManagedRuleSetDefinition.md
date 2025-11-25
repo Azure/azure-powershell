@@ -4,12 +4,19 @@ Get-AzFrontDoorWafManagedRuleSetDefinition
 ```
 
 ```output
-ProvisioningState RuleSetType                 RuleSetVersion RuleGroups
------------------ -----------                 -------------- ----------
-Succeeded         DefaultRuleSet              1.0            {PROTOCOL-ATTACK, LFI, RFI, RCE...}
-Succeeded         Microsoft_BotManagerRuleSet 1.0            {BadBots, GoodBots, UnknownBots}
-Succeeded         DefaultRuleSet              preview-0.1    {LFI, RFI, RCE, PHP...}
-Succeeded         BotProtection               preview-0.1    {KnownBadBots}
+Location Name
+-------- ----
+         Microsoft_DefaultRuleSet_2.0
+         Microsoft_DefaultRuleSet_2.1
+         Microsoft_DefaultRuleSet_2.2
+         Microsoft_BotManagerRuleSet_1.1
+         Microsoft_HTTPDDoSRuleSet_1.0
+         Microsoft_DefaultRuleSet_1.2
+         Microsoft_DefaultRuleSet_1.1
+         Microsoft_BotManagerRuleSet_1.0
+         DefaultRuleSet_1.0
+         DefaultRuleSet_preview-0.1
+         BotProtection_preview-0.1
 ```
 
 Get WAF managed rule set definitions.

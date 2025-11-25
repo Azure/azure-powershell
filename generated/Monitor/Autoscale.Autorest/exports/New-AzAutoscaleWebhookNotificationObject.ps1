@@ -23,7 +23,7 @@ Create an in-memory object for WebhookNotification.
 New-AzAutoscaleWebhookNotificationObject -Property @{} -ServiceUri "http://myservice.com"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.WebhookNotification
+Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.WebhookNotification
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -32,18 +32,17 @@ To create the parameters described below, construct a hash table containing the 
 PROPERTY <IWebhookNotificationProperties>: a property bag of settings. This value can be empty.
   [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://learn.microsoft.com/powershell/module/Az.Monitor/new-AzAutoscaleWebhookNotificationObject
+https://learn.microsoft.com/powershell/module/Az.Monitor/new-azautoscalewebhooknotificationobject
 #>
 function New-AzAutoscaleWebhookNotificationObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.WebhookNotification])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.WebhookNotification])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IWebhookNotificationProperties]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.IWebhookNotificationProperties]
     # a property bag of settings.
     # This value can be empty.
-    # To construct, see NOTES section for PROPERTY properties and create a hash table.
     ${Property},
 
     [Parameter()]
@@ -60,6 +59,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -88,6 +90,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

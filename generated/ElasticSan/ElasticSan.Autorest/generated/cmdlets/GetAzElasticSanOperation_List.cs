@@ -10,16 +10,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Cmdlets;
     using System;
 
-    /// <summary>List the operations for the provider</summary>
+    /// <summary>Gets a list of ElasticSan operations.</summary>
     /// <remarks>
     /// [OpenAPI] List=>GET:"/providers/Microsoft.ElasticSan/operations"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzElasticSanOperation_List")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IOperation))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Description(@"List the operations for the provider")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Description(@"Gets a list of ElasticSan operations.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.HttpPath(Path = "/providers/Microsoft.ElasticSan/operations", ApiVersion = "2025-09-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.HttpPath(Path = "/providers/Microsoft.ElasticSan/operations", ApiVersion = "2024-05-01")]
     public partial class GetAzElasticSanOperation_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IContext
@@ -43,12 +43,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Cmdlets
 
         /// <summary>A buffer to record first returned object in response.</summary>
         private object _firstResponse = null;
-
-        /// <summary>A flag to tell whether it is the first onOK call.</summary>
-        private bool _isFirst = true;
-
-        /// <summary>Link to retrieve next page.</summary>
-        private string _nextLink;
 
         /// <summary>
         /// A flag to tell whether it is the first returned object in a call. Zero means no response yet. One means 1 returned object.
@@ -441,7 +435,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Cmdlets
                 // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IOperationListResult
                 var result = (await response);
                 // response should be returning an array of some kind. +Pageable
-                // pageable / value / nextLink
+                // pageable / value / <none>
                 if (null != result.Value)
                 {
                     if (0 == _responseSize && 1 == result.Value.Count)
@@ -463,20 +457,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Cmdlets
                         }
                         WriteObject(values, true);
                         _responseSize = 2;
-                    }
-                }
-                _nextLink = result.NextLink;
-                if (_isFirst)
-                {
-                    _isFirst = false;
-                    while (!String.IsNullOrEmpty(_nextLink))
-                    {
-                        if (responseMessage.RequestMessage is System.Net.Http.HttpRequestMessage requestMessage )
-                        {
-                            requestMessage = requestMessage.Clone(new global::System.Uri( _nextLink ),Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Method.Get );
-                            await ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.FollowingNextLink); if( ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                            await this.Client.OperationsList_Call(requestMessage, onOk, onDefault, this, Pipeline);
-                        }
                     }
                 }
             }

@@ -4,9 +4,9 @@ New-AzFrontDoorHeaderActionObject -HeaderName headername -HeaderActionType Appen
 ```
 
 ```output
-HeaderName HeaderActionType Value
----------- ---------------- -----
-headername           Append
+HeaderActionType HeaderName Value
+---------------- ---------- -----
+Append           headername
 ```
 
 Creates PSHeaderAction object for the creation of PSRulesEngineAction object.

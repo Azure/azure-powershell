@@ -1,7 +1,7 @@
 ---
 external help file: Az.FrontDoor-help.xml
 Module Name: Az.FrontDoor
-online version: https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-azfrontdoorfrontendbackendpoolssettingsobject
+online version: https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-azfrontdoorbackendpoolssettingobject
 schema: 2.0.0
 ---
 
@@ -28,11 +28,9 @@ New-AzFrontDoorBackendPoolsSettingObject
 ```
 
 ```output
-EnforceCertificateNameCheck : Enabled
-SendRecvTimeoutInSeconds      : 30
-Id                          :
-Name                        :
-Type                        :
+EnforceCertificateNameCheck SendRecvTimeoutInSeconds
+--------------------------- ------------------------
+Enabled                                           30
 ```
 
 Create BackendPoolsSettings object using defaults
@@ -43,11 +41,9 @@ New-AzFrontDoorBackendPoolsSettingObject -SendRecvTimeoutInSeconds 60 -EnforceCe
 ```
 
 ```output
-EnforceCertificateNameCheck : Enabled
-SendRecvTimeoutInSeconds      : 60
-Id                          :
-Name                        :
-Type                        :
+EnforceCertificateNameCheck SendRecvTimeoutInSeconds
+--------------------------- ------------------------
+Enabled                                           60
 ```
 
 Create BackendPoolsSettings object with user specified values

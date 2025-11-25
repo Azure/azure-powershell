@@ -89,6 +89,7 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
             RegisterConfiguration("Microsoft.VideoIndexer/accounts", "2024-06-01-preview", true, true, true);
             RegisterConfiguration("Microsoft.FluidRelay/fluidRelayServers", "2025-03-10-preview", true, true, true);
             RegisterConfiguration("Microsoft.FileShares/fileShares", "2025-06-01-preview", true, true);
+            RegisterConfiguration("Microsoft.Security/privateLinks", "2025-09-01-preview", true, true);
         }
         /// <summary>
         /// Register private endpoint connection and private link resource configuration

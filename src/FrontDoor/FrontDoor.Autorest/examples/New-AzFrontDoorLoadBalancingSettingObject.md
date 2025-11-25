@@ -4,13 +4,13 @@ New-AzFrontDoorLoadBalancingSettingObject -Name "loadbalancingsetting1"
 ```
 
 ```output
-SampleSize                    : 4
-AdditionalLatencyMilliseconds : 0
-SuccessfulSamplesRequired     : 2
-ResourceState                 :
-Id                            :
-Name                          : loadbalancingsetting1
-Type                          :
+AdditionalLatencyInMilliseconds : 0
+Id                              :
+Name                            : loadbalancingsetting1
+ResourceState                   :
+SampleSize                      : 4
+SuccessfulSamplesRequired       : 2
+Type                            :
 ```
 
 Create a PSLoadBalancingSetting object for Front Door creation

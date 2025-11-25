@@ -80,6 +80,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
             {_ruleId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Json.JsonString>("ruleId"), out var __jsonRuleId) ? (string)__jsonRuleId : (string)_ruleId;}
             {_defaultState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Json.JsonString>("defaultState"), out var __jsonDefaultState) ? (string)__jsonDefaultState : (string)_defaultState;}
             {_defaultAction = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Json.JsonString>("defaultAction"), out var __jsonDefaultAction) ? (string)__jsonDefaultAction : (string)_defaultAction;}
+            {_defaultSensitivity = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Json.JsonString>("defaultSensitivity"), out var __jsonDefaultSensitivity) ? (string)__jsonDefaultSensitivity : (string)_defaultSensitivity;}
             {_description = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Json.JsonString>("description"), out var __jsonDescription) ? (string)__jsonDescription : (string)_description;}
             AfterFromJson(json);
         }
@@ -114,6 +115,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode.IncludeRead))
             {
                 AddIf( null != (((object)this._defaultAction)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Json.JsonString(this._defaultAction.ToString()) : null, "defaultAction" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode.IncludeRead))
+            {
+                AddIf( null != (((object)this._defaultSensitivity)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Json.JsonString(this._defaultSensitivity.ToString()) : null, "defaultSensitivity" ,container.Add );
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode.IncludeRead))
             {

@@ -4,14 +4,14 @@ New-AzFrontDoorHealthProbeSettingObject -Name "healthProbeSetting1"
 ```
 
 ```output
+EnabledState      : Enabled
+HealthProbeMethod : HEAD
+Id                :
+IntervalInSeconds : 30
+Name              : healthProbeSetting1
 Path              : /
 Protocol          : Http
-IntervalInSeconds : 30
 ResourceState     :
-HealthProbeMethod : Head
-EnabledState      : Enabled
-Id                :
-Name              : healthProbeSetting1
 Type              :
 ```
 

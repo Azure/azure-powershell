@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-List all operations provided by Microsoft.Datadog for the 2021-03-01 api version.
+List all operations provided by Microsoft.Datadog for the 2025-06-11 api version.
 .Description
-List all operations provided by Microsoft.Datadog for the 2021-03-01 api version.
+List all operations provided by Microsoft.Datadog for the 2025-06-11 api version.
 .Example
 {{ Add code here }}
 .Example

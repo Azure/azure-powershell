@@ -12,11 +12,24 @@ Create a new Activity Log Alert rule or update an existing one.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzActivityLogAlert -Name <String> -ResourceGroupName <String> -Action <IActionGroup[]>
  -Condition <IAlertRuleAnyOfOrLeafCondition[]> -Location <String> -Scope <String[]> [-SubscriptionId <String>]
  [-Description <String>] [-Enabled <Boolean>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzActivityLogAlert -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzActivityLogAlert -Name <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,11 +56,10 @@ Create activity log alert for subscription, when `$condition1` and `$condition2`
 ### -Action
 The list of the Action Groups.
 To construct, see NOTES section for ACTIONGROUP properties and create a hash table.
-To construct, see NOTES section for ACTION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.IActionGroup[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.IActionGroup[]
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -60,11 +72,10 @@ Accept wildcard characters: False
 ### -Condition
 The list of Activity Log Alert rule conditions.
 To construct, see NOTES section for CONDITIONALLOF properties and create a hash table.
-To construct, see NOTES section for CONDITION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.IAlertRuleAnyOfOrLeafCondition[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.IAlertRuleAnyOfOrLeafCondition[]
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -75,7 +86,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -94,7 +106,7 @@ A description of this Activity Log Alert rule.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -110,10 +122,40 @@ If an Activity Log Alert rule is not enabled, then none of its actions will be a
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -126,7 +168,7 @@ Since Azure Activity Log Alerts is a global service, the location of the rules s
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -174,7 +216,7 @@ This list must include at least one item.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -204,7 +246,7 @@ The tags of the resource.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -252,7 +294,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.IActivityLogAlertResource
+### Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.IActivityLogAlertResource
 
 ## NOTES
 
