@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.Network
         public new object GetDynamicParameters()
         {
             InvocationInfo invocationInfo = MyInvocation;
-            var parameters = new RuntimeDefinedParameterDictionary();
+            var parameters = base.GetDynamicParameters() as RuntimeDefinedParameterDictionary;
             RuntimeDefinedParameter namedParameter;
             if (ProviderConfiguration.TryGetLinkResourceServiceParameter(privateEndpointTypeName, NamedContextParameterSet, out namedParameter))
             {
