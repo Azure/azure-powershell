@@ -2,7 +2,6 @@ using Azure.Security.KeyVault.Keys;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.KeyVault.Models;
-using Org.BouncyCastle.X509;
 
 using System;
 using System.Collections;
