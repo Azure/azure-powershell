@@ -23,6 +23,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
         public string CustomData { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackagePropertiesInternal)Property).CustomData; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackagePropertiesInternal)Property).CustomData = value ?? null; }
 
+        /// <summary>DeploymentScope type for AppAttachPackage.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
+        public string DeploymentScope { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackagePropertiesInternal)Property).DeploymentScope; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackagePropertiesInternal)Property).DeploymentScope = value ?? null; }
+
         /// <summary>
         /// Parameter indicating how the health check should behave if this package fails staging
         /// </summary>
@@ -255,6 +259,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         SerializedName = @"customData",
         PossibleTypes = new [] { typeof(string) })]
         string CustomData { get; set; }
+        /// <summary>DeploymentScope type for AppAttachPackage.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"DeploymentScope type for AppAttachPackage.",
+        SerializedName = @"deploymentScope",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Geographical", "Regional")]
+        string DeploymentScope { get; set; }
         /// <summary>
         /// Parameter indicating how the health check should behave if this package fails staging
         /// </summary>
@@ -514,6 +530,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
     {
         /// <summary>Field that can be populated with custom data and filtered on in list GET calls</summary>
         string CustomData { get; set; }
+        /// <summary>DeploymentScope type for AppAttachPackage.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Geographical", "Regional")]
+        string DeploymentScope { get; set; }
         /// <summary>
         /// Parameter indicating how the health check should behave if this package fails staging
         /// </summary>

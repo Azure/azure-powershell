@@ -574,6 +574,9 @@
             <Label>CustomData</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>DeploymentScope</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>FailHealthCheckOnStagingFailure</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -594,6 +597,9 @@
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>CustomData</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DeploymentScope</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>FailHealthCheckOnStagingFailure</PropertyName>
@@ -917,6 +923,9 @@
             <Label>CloudPcResource</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>DeploymentScope</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>Description</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -946,6 +955,9 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>CloudPcResource</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DeploymentScope</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Description</PropertyName>
@@ -6826,6 +6838,9 @@
             <Label>CloudPcResource</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>DeploymentScope</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>Description</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -6846,6 +6861,9 @@
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>CloudPcResource</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DeploymentScope</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Description</PropertyName>
