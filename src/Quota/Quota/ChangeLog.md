@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.1.4
+* API Version Upgrade: Migrated from 2023-02-01 to 2025-09-01 stable
+
 ## Version 0.1.3
 * Upgraded nuget package to signed package.
 
