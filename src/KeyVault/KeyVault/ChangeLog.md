@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated security domain PEM key handling to use built-in .NET cryptography instead of Portable.BouncyCastle
+    - Maintains support for standard PKCS#1 and PKCS#8 keys while resolving the CodeQL cs/use-approved-crypto-library finding
 
 ## Version 6.4.1
 * Updated Azure.Core from 1.45.0 to 1.47.3
