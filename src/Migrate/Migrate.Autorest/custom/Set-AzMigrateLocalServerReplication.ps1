@@ -135,6 +135,7 @@ function Set-AzMigrateLocalServerReplication {
 
         CheckResourcesModuleDependency
         
+        $HasTargetObjectId = $PSBoundParameters.ContainsKey('TargetObjectID')
         $HasTargetVMCPUCore = $PSBoundParameters.ContainsKey('TargetVMCPUCore')
         $HasTargetVMRam = $PSBoundParameters.ContainsKey('TargetVMRam')
         $HasDynamicMemoryConfig = $PSBoundParameters.ContainsKey('DynamicMemoryConfig')
@@ -155,9 +156,17 @@ function Set-AzMigrateLocalServerReplication {
         $null = $PSBoundParameters.Remove('WhatIf')
         $null = $PSBoundParameters.Remove('Confirm')
 
+        # Set common ErrorVariable and ErrorAction for get behaviors
+        $null = $PSBoundParameters.Add('ErrorVariable', 'notPresent')
+        $null = $PSBoundParameters.Add('ErrorAction', 'SilentlyContinue')
+
         # Validate ARM ID format from inputs
-        if (!(Test-AzureResourceIdFormat -Data $TargetObjectID -Format $IdFormats.ProtectedItemArmIdTemplate)) {
-            throw "Invalid -TargetObjectID '$TargetObjectID'. A valid protected item ARM ID should follow the format '$($IdFormats.ProtectedItemArmIdTemplate)'."
+        if ($hasTargetObjectId -and !(Test-AzureResourceIdFormat -Data $TargetObjectID -Format $IdFormats.ProtectedItemArmIdTemplate))
+        {
+            throw New-InvalidResourceIdProvidedException `
+                -ResourceId $TargetObjectID `
+                -ResourceType "ProtectedItem" `
+                -Format $IdFormats.ProtectedItemArmIdTemplate
         }
         
         # $TargetObjectID is in the format of
@@ -167,31 +176,28 @@ function Set-AzMigrateLocalServerReplication {
         $VaultName = $ProtectedItemIdArray[8] # {2}
         $MachineName = $ProtectedItemIdArray[10] # {3}
 
-        # Get existing Protected Item
+        # Get existing Protected Item with ResourceGroupName, VaultName, Name
         $null = $PSBoundParameters.Add("ResourceGroupName", $ResourceGroupName)
         $null = $PSBoundParameters.Add("VaultName", $VaultName)
         $null = $PSBoundParameters.Add("Name", $MachineName)
-      
-        $ProtectedItem = InvokeAzMigrateGetCommandWithRetries `
-            -CommandName 'Az.Migrate.Internal\Get-AzMigrateProtectedItem' `
-            -Parameters $PSBoundParameters `
-            -ErrorMessage "Replication item is not found with Id '$TargetObjectID'."
-      
-        $null = $PSBoundParameters.Remove("ResourceGroupName")
-        $null = $PSBoundParameters.Remove("VaultName")
+        $ProtectedItem = Az.Migrate.Internal\Get-AzMigrateProtectedItem @PSBoundParameters
+        if ($null -eq $ProtectedItem)
+        {
+            throw New-AzMigrateProtectedItemNotFoundException -Id $TargetObjectID
+        }
         $null = $PSBoundParameters.Remove("Name")
+        $null = $PSBoundParameters.Remove("VaultName")
         
-        $protectedItemProperties = $ProtectedItem.Property
-        $customProperties = $protectedItemProperties.CustomProperty
+        $customProperties = $ProtectedItem.Property.CustomProperty
         $MachineIdArray = $customProperties.FabricDiscoveryMachineId.Split("/")
         $SiteType = $MachineIdArray[7]
         $SiteName = $MachineIdArray[8]
        
         # No "DisableProtection" means IR has not been initiated
         # "CommitFailover" means migration has been completed
-        if (!$protectedItemProperties.AllowedJob.Contains('DisableProtection') -or
-            $protectedItemProperties.AllowedJob.Contains('CommitFailover')) {
-            throw "Set server replication is not allowed for this item '$TargetObjectID' at the moment. Please check its status and try again later."
+        if ('DisableProtection' -notin $ProtectedItem.Property.AllowedJob -or
+            'CommitFailover' -in $ProtectedItem.Property.AllowedJob) {
+            throw "Set server replication is not allowed for this item '$TargetObjectID' at the moment. Please check its status and try again later. Allowed jobs are: $($ProtectedItem.Property.AllowedJob -join ', ')."
         }
 
         if ($SiteType -eq $SiteTypes.HyperVSites) {     
@@ -276,27 +282,25 @@ function Set-AzMigrateLocalServerReplication {
         
         # Update Nics
         if ($HasNicToInclude -and $NicToInclude.length -gt 0) {
-            # Get discovered machine
-            $null = $PSBoundParameters.Add("ResourceGroupName", $ResourceGroupName)
+            # Get discovered machine with ResourceGroupName, SiteName, MachineName
             $null = $PSBoundParameters.Add("SiteName", $SiteName)
             $null = $PSBoundParameters.Add("MachineName", $MachineName)
-            
-            if ($SiteType -eq $SiteTypes.HyperVSites) {
-                $machine = InvokeAzMigrateGetCommandWithRetries `
-                    -CommandName 'Az.Migrate.Internal\Get-AzMigrateHyperVMachine' `
-                    -Parameters $PSBoundParameters `
-                    -ErrorMessage "Machine '$MachineName' not found in resource group '$ResourceGroupName' and site '$SiteName'."
+            if ($SiteType -eq $SiteTypes.HyperVSites)
+            {
+                $machine = Az.Migrate.Internal\Get-AzMigrateHyperVMachine @PSBoundParameters
             }
-            elseif ($SiteType -eq $SiteTypes.VMwareSites) {
-                $machine = InvokeAzMigrateGetCommandWithRetries `
-                    -CommandName 'Az.Migrate.Internal\Get-AzMigrateMachine' `
-                    -Parameters $PSBoundParameters `
-                    -ErrorMessage "Machine '$MachineName' not found in resource group '$ResourceGroupName' and site '$SiteName'."
+            elseif ($SiteType -eq $SiteTypes.VMwareSites)
+            {
+                $machine = Az.Migrate.Internal\Get-AzMigrateMachine @PSBoundParameters
             }
-
-            $null = $PSBoundParameters.Remove("ResourceGroupName")
-            $null = $PSBoundParameters.Remove("SiteName")
+            if ($null -eq $machine) {
+                throw New-AzMigrateDiscoveredMachineNotFoundException `
+                    -Name $MachineName `
+                    -ResourceGroupName $ResourceGroupName `
+                    -SiteName $SiteName
+            }
             $null = $PSBoundParameters.Remove("MachineName")
+            $null = $PSBoundParameters.Remove("SiteName")
             
             # Nics
             [PSCustomObject[]]$nics = @()
@@ -340,20 +344,23 @@ function Set-AzMigrateLocalServerReplication {
         $protectedItemPropertiesUpdate = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.ProtectedItemModelPropertiesUpdate]::new()
         $protectedItemPropertiesUpdate.CustomProperty = $customPropertiesUpdate
 
-        $null = $PSBoundParameters.Add('ResourceGroupName', $ResourceGroupName)
-        $null = $PSBoundParameters.Add('VaultName', $vaultName)
-        $null = $PSBoundParameters.Add('Name', $MachineName)
-        $null = $PSBoundParameters.Add('Property', $protectedItemPropertiesUpdate)
-        $null = $PSBoundParameters.Add('NoWait', $true)
+        # Remove common ErrorVariable and ErrorAction for get behaviors
+        $null = $PSBoundParameters.Remove('ErrorVariable')
+        $null = $PSBoundParameters.Remove('ErrorAction')
         
         if ($PSCmdlet.ShouldProcess($TargetObjectID, "Updates VM replication.")) {
+            # Update protected item with ResourceGroupName, VaultName, Name, Property
+            $null = $PSBoundParameters.Add('VaultName', $vaultName)
+            $null = $PSBoundParameters.Add('Name', $MachineName)
+            $null = $PSBoundParameters.Add('Property', $protectedItemPropertiesUpdate)
+            $null = $PSBoundParameters.Add('NoWait', $true)
             $operation = Az.Migrate.Internal\Update-AzMigrateProtectedItem @PSBoundParameters
-            $jobName = $operation.Target.Split("/")[-1].Split("?")[0].Split("_")[0]
-            
-            $null = $PSBoundParameters.Remove('Name')  
-            $null = $PSBoundParameters.Remove('Property')
             $null = $PSBoundParameters.Remove('NoWait')
+            $null = $PSBoundParameters.Remove('Property')
+            $null = $PSBoundParameters.Remove('Name')  
 
+            # Get job with ResourceGroupName, VaultName, JobName
+            $jobName = $operation.Target.Split("/")[-1].Split("?")[0].Split("_")[0]
             $null = $PSBoundParameters.Add('JobName', $jobName)
             return Az.Migrate.Internal\Get-AzMigrateLocalReplicationJob @PSBoundParameters
         }
