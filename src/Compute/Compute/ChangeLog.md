@@ -20,6 +20,10 @@
 
 -->
 ## Upcoming Release
+* Added `-ResiliencyView` parameter to `Get-AzVmssVM` cmdlet
+    - Retrieves the resilient VM deletion status for Virtual Machine Scale Set (VMSS) VMs
+    - Indicates whether automatic delete retries are in progress, failed, or not started
+    - Supports monitoring the real-time status of the Resilient Delete feature
 
 ## Version 11.0.0
 * Improved user experience and consistency. This may introduce breaking changes. Please refer to [here](https://go.microsoft.com/fwlink/?linkid=2340249).
