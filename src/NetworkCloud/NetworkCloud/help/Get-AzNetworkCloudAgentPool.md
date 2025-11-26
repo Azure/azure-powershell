@@ -134,7 +134,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the Kubernetes cluster agent pool.
+The name.
 
 ```yaml
 Type: System.String
