@@ -1,0 +1,2 @@
+"Module","ClassName","Target","Severity","ProblemId","Description","Remediation"
+"Az.Network","Microsoft.Azure.Commands.Network.NewAzureApplicationGatewayFirewallPolicyManagedRuleOverrideCommand","New-AzApplicationGatewayFirewallPolicyManagedRuleOverride","0","2040","The validation set for parameter 'Sensitivity' for cmdlet 'New-AzApplicationGatewayFirewallPolicyManagedRuleOverride' no longer contains the value 'None'.","Add 'None' back to the validation set for 'Sensitivity'."
