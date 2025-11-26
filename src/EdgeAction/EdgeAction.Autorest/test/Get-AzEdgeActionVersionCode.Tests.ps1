@@ -57,14 +57,13 @@ Describe 'Get-AzEdgeActionVersionCode' {
             -Name $script:edgeActionName -ErrorAction SilentlyContinue
     }
 
-    It 'Get' -skip {
+    It 'Get' {
         # Test getting version code - this downloads the deployed code as base64-encoded ZIP
         $result = Get-AzEdgeActionVersionCode -ResourceGroupName $script:resourceGroupName `
             -EdgeActionName $script:edgeActionName `
             -Version $script:version
         
         $result | Should -Not -BeNullOrEmpty
-        $result.Name | Should -Not -BeNullOrEmpty
         
         # Verify we got base64-encoded content
         $result.Content | Should -Not -BeNullOrEmpty

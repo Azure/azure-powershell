@@ -55,7 +55,7 @@ require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
-  - c:/swagger/azure-rest-api-specs/specification/cdn/resource-manager/Microsoft.Cdn/EdgeActions/preview/2025-09-01-preview/openapi.json
+  - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/EdgeActions/preview/2025-09-01-preview/openapi.json
 
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 # - (this-folder)/relative-path-to-your-swagger 

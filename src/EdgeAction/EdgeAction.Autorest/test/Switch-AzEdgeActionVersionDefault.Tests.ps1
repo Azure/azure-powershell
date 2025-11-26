@@ -62,20 +62,7 @@ Describe 'Switch-AzEdgeActionVersionDefault' {
             -Name $script:edgeActionName -ErrorAction SilentlyContinue
     }
 
-    It 'Swap' -skip {
-        # Skipping: API/Swagger specification mismatch - 415 Unsupported Media Type
-        # 
-        # The API returns 415 when the generated cmdlet sends a POST with no body.
-        # Root cause:
-        #   - TypeSpec defines: ArmResourceActionNoContentAsync<EdgeActionVersion, void> (no body)
-        #   - Swagger example shows: "body": {} (empty JSON object required)
-        #   - Generated cmdlet sends: Content = null, no Content-Type header
-        #   - API requires: {} with Content-Type: application/json
-        # 
-        # Per HTTP standards, POST should be valid without a body, but this API incorrectly
-        # requires an empty JSON object. This is a specification bug that needs to be fixed
-        # in the TypeSpec/OpenAPI definition or the API implementation.
-        
+    It 'Swap' {
         # Verify initial state: v1 is default, v2 is not
         $v1Before = Get-AzEdgeActionVersion -ResourceGroupName $script:resourceGroupName `
             -EdgeActionName $script:edgeActionName `
@@ -89,11 +76,9 @@ Describe 'Switch-AzEdgeActionVersionDefault' {
         
         # Switch default version from v1 to v2
         # Switch is an LRO that waits for completion
-        $result = Switch-AzEdgeActionVersionDefault -ResourceGroupName $script:resourceGroupName `
+        Switch-AzEdgeActionVersionDefault -ResourceGroupName $script:resourceGroupName `
             -EdgeActionName $script:edgeActionName `
             -Version $script:version2
-        
-        $result | Should -Not -BeNullOrEmpty
         
         # Verify final state: v1 is not default, v2 is default
         $v1After = Get-AzEdgeActionVersion -ResourceGroupName $script:resourceGroupName `
