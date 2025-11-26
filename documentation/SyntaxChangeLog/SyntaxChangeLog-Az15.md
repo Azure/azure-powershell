@@ -1,3 +1,20 @@
+## 15.1.0 - December 2025
+#### Az.Migrate 2.10.1 
+* Modified cmdlet `New-AzMigrateServerReplication`
+   - Added parameter `-TargetCapacityReservationGroupId`
+* Modified cmdlet `Set-AzMigrateServerReplication`
+   - Added parameter `-TargetCapacityReservationGroupId`
+* Modified cmdlet `Start-AzMigrateServerMigration`
+   - Added parameter `-TargetCapacityReservationGroupId`
+#### Az.Network 7.24.0 
+* Modified cmdlet `New-AzNetworkVirtualAppliance`
+   - Added parameter `-NvaInterfaceConfiguration`
+* Modified cmdlet `New-AzNetworkWatcherFlowLog`
+   - Added parameter `-RecordType`
+* Modified cmdlet `Set-AzNetworkWatcherFlowLog`
+   - Added parameter `-RecordType`
+* Added cmdlet `New-AzNvaInterfaceConfiguration`
+
 ## 15.0.0 - November 2025
 #### Az.Advisor 3.0.0 
 * Modified cmdlet `Set-AzAdvisorConfiguration`
@@ -1128,5 +1145,6 @@
    - Changed the type of parameter `-ManagedResourcesNetworkAccessType` from `ManagedResourcesNetworkAccessType` to `String`
    - Changed the type of parameter `-UserAssignedIdentity` from `Hashtable` to `String[]`
 * Added cmdlet `Update-AzWorkloadsProviderInstance`
+
 
 
