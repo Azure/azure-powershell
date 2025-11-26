@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 1.19.0
 * Added fleet management support for Cosmos DB accounts.
 * Added support for priority based execution.
 
