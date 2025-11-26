@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// policy for the specific period in service instance.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// Updates an existing quota counter value in the specified service instance.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.

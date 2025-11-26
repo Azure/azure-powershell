@@ -29,11 +29,20 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
 
         /// <param name="openid">OpenID Connect Authentication Settings
         /// </param>
-        public AuthenticationSettingsContract(OAuth2AuthenticationSettingsContract oAuth2 = default(OAuth2AuthenticationSettingsContract), OpenIdAuthenticationSettingsContract openid = default(OpenIdAuthenticationSettingsContract))
+
+        /// <param name="oAuth2AuthenticationSettings">Collection of OAuth2 authentication settings included into this API.
+        /// </param>
+
+        /// <param name="openidAuthenticationSettings">Collection of Open ID Connect authentication settings included into this
+        /// API.
+        /// </param>
+        public AuthenticationSettingsContract(OAuth2AuthenticationSettingsContract oAuth2 = default(OAuth2AuthenticationSettingsContract), OpenIdAuthenticationSettingsContract openid = default(OpenIdAuthenticationSettingsContract), System.Collections.Generic.IList<OAuth2AuthenticationSettingsContract> oAuth2AuthenticationSettings = default(System.Collections.Generic.IList<OAuth2AuthenticationSettingsContract>), System.Collections.Generic.IList<OpenIdAuthenticationSettingsContract> openidAuthenticationSettings = default(System.Collections.Generic.IList<OpenIdAuthenticationSettingsContract>))
 
         {
             this.OAuth2 = oAuth2;
             this.Openid = openid;
+            this.OAuth2AuthenticationSettings = oAuth2AuthenticationSettings;
+            this.OpenidAuthenticationSettings = openidAuthenticationSettings;
             CustomInit();
         }
 
@@ -54,5 +63,19 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "openid")]
         public OpenIdAuthenticationSettingsContract Openid {get; set; }
+
+        /// <summary>
+        /// Gets or sets collection of OAuth2 authentication settings included into
+        /// this API.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "oAuth2AuthenticationSettings")]
+        public System.Collections.Generic.IList<OAuth2AuthenticationSettingsContract> OAuth2AuthenticationSettings {get; set; }
+
+        /// <summary>
+        /// Gets or sets collection of Open ID Connect authentication settings included
+        /// into this API.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "openidAuthenticationSettings")]
+        public System.Collections.Generic.IList<OpenIdAuthenticationSettingsContract> OpenidAuthenticationSettings {get; set; }
     }
 }

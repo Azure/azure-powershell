@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
         /// <param name="description">Backend Description.
         /// </param>
 
-        /// <param name="resourceId">Management Uri of the Resource in External System. This url can be the Arm
+        /// <param name="resourceId">Management Uri of the Resource in External System. This URL can be the Arm
         /// Resource Id of Logic Apps, Function Apps or API Apps.
         /// </param>
 
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
         /// <param name="credentials">Backend Credentials Contract Properties
         /// </param>
 
-        /// <param name="proxy">Backend Proxy Contract Properties
+        /// <param name="proxy">Backend gateway Contract Properties
         /// </param>
 
         /// <param name="tls">Backend TLS Properties

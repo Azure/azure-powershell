@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
         /// </summary>
         public const string Xml = "xml";
         /// <summary>
-        /// The policy XML document is hosted on a http endpoint accessible from the
+        /// The policy XML document is hosted on a HTTP endpoint accessible from the
         /// API Management service.
         /// </summary>
         public const string XmlLink = "xml-link";
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
         /// </summary>
         public const string Rawxml = "rawxml";
         /// <summary>
-        /// The policy document is not Xml encoded and is hosted on a http endpoint
+        /// The policy document is not XML encoded and is hosted on a HTTP endpoint
         /// accessible from the API Management service.
         /// </summary>
         public const string RawxmlLink = "rawxml-link";

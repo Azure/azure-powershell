@@ -1,4 +1,8 @@
 ## 15.0.0 - November 2025
+
+#### Az.ApiManagement 4.0.0
+* Upgraded API version from 2021-08-01 to 2022-08-01
+  
 #### Az.Accounts 5.3.1
 * Updated Azure.Core from 1.45.0 to 1.47.3
 
