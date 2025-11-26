@@ -12,3 +12,9 @@ pwsh -c "Install-Module -Name platyPS -Force -Scope CurrentUser"
 
 echo "🔐 Installing Az.Accounts for authentication..."
 pwsh -c "Install-Module -Name Az.Accounts -Force -Scope CurrentUser"
+
+echo "🧪 Installing PSScriptAnalyzer for static analysis..."
+pwsh -c "Install-Module -Name PSScriptAnalyzer -Force -Scope CurrentUser"
+
+echo "🔓 Setting PowerShell execution policy to Unrestricted..."
+pwsh -c "Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser"
