@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Functions
-Module Guid: eafced71-8742-4a2c-5afd-13117428dd90
+Module Guid: af5162ec-985f-432d-920d-720dcf1d7be1
 Download Help Link: https://learn.microsoft.com/powershell/module/az.functions
 Help Version: 1.0.0.0
 Locale: en-US
@@ -16,6 +16,9 @@ Gets function apps in a subscription.
 
 ### [Get-AzFunctionAppAvailableLocation](Get-AzFunctionAppAvailableLocation.md)
 Gets the location where a function app for the given os and plan type is available.
+
+### [Get-AzFunctionAppFlexConsumptionRuntime](Get-AzFunctionAppFlexConsumptionRuntime.md)
+Gets the Flex Consumption function app runtimes supported at the specified location.
 
 ### [Get-AzFunctionAppPlan](Get-AzFunctionAppPlan.md)
 Get function apps plans in a subscription.

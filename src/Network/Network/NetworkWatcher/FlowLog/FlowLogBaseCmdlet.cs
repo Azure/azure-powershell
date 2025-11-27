@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.Network
             return true;
         }
 
-        public void ValidateFlowLogParameters(string targetResourceId, string storageId, string enabledFilteringCriteria, int? formatVersion, string formatType,
+        public void ValidateFlowLogParameters(string targetResourceId, string storageId, string enabledFilteringCriteria, string recordType, int? formatVersion, string formatType,
             bool enableTrafficAnalytics, string trafficAnalyticsWorkspaceId, int? trafficAnalyticsInterval, int? retentionPolicyDays, string userAssignedIdentityId)
         {
             ResourceIdentifier targetResourceInfo = new ResourceIdentifier(targetResourceId);
@@ -124,6 +124,14 @@ namespace Microsoft.Azure.Commands.Network
                 if (enabledFilteringCriteria.Length > 1000)
                 {
                     throw new PSArgumentException(Properties.Resources.FlowLogFilteringCriteriaExceedsLimit);
+                }
+            }
+
+            if (!string.IsNullOrEmpty(recordType))
+            {
+                if (recordType.Length > 20)
+                {
+                    throw new PSArgumentException(Properties.Resources.FlowLogRecordTypeExceedsLimit);
                 }
             }
 

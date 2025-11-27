@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 1.18.3
 * Updated Azure.Core from 1.45.0 to 1.47.3
 
 ## Version 1.18.2

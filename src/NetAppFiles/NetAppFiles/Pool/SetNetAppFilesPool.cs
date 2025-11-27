@@ -176,7 +176,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
                 Tags = tagPairs,
                 QosType = QosType,
                 CoolAccess = CoolAccess,
-                CustomThroughputMibps = CustomThroughput
+                CustomThroughputMibps = CustomThroughput.HasValue ? (int)CustomThroughput : (int?)null,
             };
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.UpdateResourceMessage, ResourceGroupName)))
