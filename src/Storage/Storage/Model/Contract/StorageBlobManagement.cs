@@ -66,6 +66,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
                 return this.blobClient;
             }
         }
+        public bool IsSasWithOAuthCredential()
+        {
+            return this.BlobClient.Credentials.IsSAS && this.StorageContext.Track2OauthToken != null;
+        }
 
         /// <summary>
         /// The azure storage context associated with this IStorageBlobManagement
