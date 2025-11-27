@@ -91,6 +91,17 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "Delegation object id",
+            ParameterSetName = NameSasPermissionParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Delegation object id",
+            ParameterSetName = FileClientSasPermissionParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string DelegationObjectID { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Permissions for a file. Permissions can be any subset of \"rwd\".",
             ParameterSetName = NameSasPermissionParameterSet)]
         [Parameter(
@@ -152,10 +163,40 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                 fileClient = shareClient.GetRootDirectoryClient().GetFileClient(this.Path);
             }
 
-
-            if (this.Context != null && this.Context is AzureStorageContext && ((AzureStorageContext)this.Context).StorageAccount != null && !((AzureStorageContext)this.Context).StorageAccount.Credentials.IsSharedKey)
+            if (this.Context != null && this.Context is AzureStorageContext)
             {
-                throw new InvalidOperationException("Create File service SAS only supported with SharedKey credential.");
+                var currentContext = this.Context as AzureStorageContext;
+                if (currentContext.StorageAccount != null)
+                {
+                    if ((!currentContext.StorageAccount.Credentials.IsSharedKey)
+                        && !(currentContext.Track2OauthToken != null && currentContext.StorageAccount.Credentials.IsAnonymous))
+                    {
+                        throw new InvalidOperationException("Create File service SAS supported key or oauth token credential.");
+                    }
+                    
+                }
+                else if (currentContext.Track2OauthToken == null)
+                {
+                    throw new InvalidOperationException("Create File service SAS supported key or oauth token credential.");
+                }
+            }
+
+            // When the input context is Oauth bases, can't generate normal SAS, but UserDelegationSas
+            bool generateUserDelegationSas = false;
+            if (Channel != null && Channel.StorageContext != null && Channel.StorageContext.StorageAccount.Credentials != null && Channel.StorageContext.StorageAccount.Credentials.IsToken)
+            {
+                if (ShouldProcess(Path, "Generate User Delegation SAS, since input Storage Context is OAuth based."))
+                {
+                    generateUserDelegationSas = true;
+                    if (!string.IsNullOrEmpty(this.Policy))
+                    {
+                        throw new ArgumentException("When input Storage Context is OAuth based, Saved Policy is not supported.", "Policy");
+                    }
+                }
+                else
+                {
+                    return;
+                }
             }
 
             // Get share saved policy if any
@@ -166,10 +207,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             }
 
             //Create SAS builder
-            ShareSasBuilder sasBuilder = SasTokenHelper.SetShareSasBuilder_FromFile(fileClient, identifier, this.Permission, this.StartTime, this.ExpiryTime, this.IPAddressOrRange, this.Protocol);
+            ShareSasBuilder sasBuilder = SasTokenHelper.SetShareSasBuilder_FromFile(fileClient, identifier, this.Permission, this.StartTime, this.ExpiryTime, this.IPAddressOrRange, this.Protocol, this.DelegationObjectID);
 
             //Create SAS and output it
-            string sasToken = SasTokenHelper.GetFileSharedAccessSignature((AzureStorageContext)this.Context, sasBuilder, CmdletCancellationToken);
+            string sasToken = SasTokenHelper.GetFileSharedAccessSignature((AzureStorageContext)this.Context, sasBuilder, generateUserDelegationSas, CmdletCancellationToken);
 
             // remove prefix "?" of SAS if any
             sasToken = Util.GetSASStringWithoutQuestionMark(sasToken);

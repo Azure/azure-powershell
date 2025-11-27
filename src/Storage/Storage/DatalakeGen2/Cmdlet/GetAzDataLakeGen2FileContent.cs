@@ -12,20 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
-using Microsoft.WindowsAzure.Commands.Storage.Common;
-using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Storage;
-using Microsoft.Azure.Storage.Blob;
-using Microsoft.Azure.Storage.DataMovement;
 using System;
 using System.IO;
 using System.Management.Automation;
 using System.Security.Permissions;
 using System.Threading.Tasks;
+using Azure.Storage;
+using Azure.Storage.Blobs.Specialized;
 using Azure.Storage.Files.DataLake;
+using Microsoft.Azure.Storage;
+using Microsoft.Azure.Storage.Blob;
+using Microsoft.Azure.Storage.DataMovement;
+using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
+using Microsoft.WindowsAzure.Commands.Storage.Common;
+using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 {
@@ -147,6 +149,35 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         }
 
         /// <summary>
+        /// Download blob to local file
+        /// </summary>
+        /// <param name="taskId">Task id</param>
+        /// <param name="localChannel">IStorageBlobManagement channel object</param>
+        /// <param name="blob">Source blob object</param>
+        /// <param name="filePath">Destination file path</param>
+        internal virtual async Task DownloadBlob(long taskId, IStorageBlobManagement localChannel, BlobBaseClient blob, string filePath)
+        {
+            string activity = String.Format(Resources.ReceiveAzureBlobActivity, blob.Name, filePath);
+            string status = Resources.PrepareDownloadingBlob;
+            var blobProperties = await blob.GetPropertiesAsync(cancellationToken: CmdletCancellationToken).ConfigureAwait(false);
+
+            if (this.Force.IsPresent
+                || !System.IO.File.Exists(filePath)
+                || ShouldContinue(string.Format(Resources.OverwriteConfirmation, filePath), null))
+            {
+                StorageTransferOptions trasnferOption = new StorageTransferOptions()
+                {
+                    MaximumConcurrency = this.GetCmdletConcurrency(),
+                    MaximumTransferSize = size4MB,
+                    InitialTransferSize = size4MB
+                };
+                await blob.DownloadToAsync(filePath, BlobRequestConditions, trasnferOption, CmdletCancellationToken).ConfigureAwait(false);
+            }
+            
+            WriteDataLakeGen2Item(localChannel, fileClient, taskId);
+        }
+
+        /// <summary>
         /// get blob content
         /// </summary>
         /// <param name="blob">source CloudBlob object</param>
@@ -167,6 +198,41 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             if (!isValidBlob)
             {
                 ValidatePipelineCloudBlob(blob);
+            }
+
+            //create the destination directory if not exists.
+            String dirPath = System.IO.Path.GetDirectoryName(filePath);
+
+            if (!Directory.Exists(dirPath))
+            {
+                Directory.CreateDirectory(dirPath);
+            }
+
+            IStorageBlobManagement localChannel = Channel;
+
+            Func<long, Task> taskGenerator = (taskId) => DownloadBlob(taskId, localChannel, blob, filePath);
+            RunTask(taskGenerator);
+        }
+
+        /// <summary>
+        /// get blob content
+        /// </summary>
+        /// <param name="blob">source CloudBlob object</param>
+        /// <param name="fileName">destination file path</param>
+        /// <param name="isValidBlob">whether the source FileSystem validated</param>
+        /// <returns>the downloaded blob object</returns>
+        internal void GetBlobContent(BlobBaseClient blob, string fileName, bool isValidBlob = false)
+        {
+            if (null == blob)
+            {
+                throw new ArgumentNullException(typeof(BlobBaseClient).Name, String.Format(Resources.ObjectCannotBeNull, typeof(BlobBaseClient).Name));
+            }
+
+            string filePath = GetFullReceiveFilePath(fileName, blob.Name);
+
+            if (!isValidBlob)
+            {
+                ValidatePipelineCloudBlobTrack2(blob);
             }
 
             //create the destination directory if not exists.
@@ -214,7 +280,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             }
 
             //there is no need to check the read/write permission on the specified file path, the data movement library will do that
-
             return filePath;
         }
 
@@ -247,7 +312,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 DoBeginProcessing();
             }
 
-            CloudBlockBlob blob = null;
+            CloudBlockBlob tr1blob = null;
+            BlockBlobClient tr2blob = null;
             if (ParameterSetName == ManualParameterSet)
             {
                 DataLakeFileSystemClient fileSystem = GetFileSystemClientByName(localChannel, this.FileSystem);
@@ -257,8 +323,16 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                     throw new ArgumentException(String.Format("The input FileSystem '{0}', path '{1}' point to a Directory, can't download it.", this.FileSystem, this.Path));
                 }
 
-                CloudBlobContainer container = GetCloudBlobContainerByName(Channel, this.FileSystem).ConfigureAwait(false).GetAwaiter().GetResult();
-                blob = container.GetBlockBlobReference(this.Path);
+                if (Channel.StorageContext.Track2OauthToken != null)
+                {
+                    var blobServiceClient = Channel.GetBlobServiceClient();
+                    tr2blob = blobServiceClient.GetBlobContainerClient(this.FileSystem).GetBlockBlobClient(this.Path);
+                }
+                else
+                {
+                    CloudBlobContainer container = GetCloudBlobContainerByName(Channel, this.FileSystem).ConfigureAwait(false).GetAwaiter().GetResult();
+                    tr1blob = container.GetBlockBlobReference(this.Path);
+                }
             }
             else //BlobParameterSet
             {
@@ -268,11 +342,18 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                         Channel.StorageContext.StorageAccount.Credentials != null && Channel.StorageContext.StorageAccount.Credentials.IsSAS)
                     {
                         // For SAS, the Uri already contains the sas token, so can't repeatedly inout the credential
-                        blob = new CloudBlockBlob(InputObject.File.Uri);
+                        if (Channel.StorageContext.Track2OauthToken != null)
+                        {
+                            tr2blob = new BlockBlobClient(InputObject.File.Uri, Channel.StorageContext.Track2OauthToken);
+                        }
+                        else
+                        {
+                            tr1blob = new CloudBlockBlob(InputObject.File.Uri);
+                        }
                     }
                     else
                     {
-                        blob = new CloudBlockBlob(InputObject.File.Uri, Channel.StorageContext.StorageAccount.Credentials);
+                        tr1blob = new CloudBlockBlob(InputObject.File.Uri, Channel.StorageContext.StorageAccount.Credentials);
                     }
                     fileClient = InputObject.File;
                 }
@@ -282,7 +363,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 }
             }
 
-            GetBlobContent(blob, FileName, true);
+            if (tr1blob != null)
+            {
+                GetBlobContent(tr1blob, FileName, true);
+            }
+            else
+            {
+                GetBlobContent(tr2blob, FileName, true);
+            }
 
             if (AsJob.IsPresent)
             {
