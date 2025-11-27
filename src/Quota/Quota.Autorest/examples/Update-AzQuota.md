@@ -1,27 +1,29 @@
 ### Example 1: Update the quota limit for a specific resource to the specified value
 ```powershell
-$limit = New-AzQuotaLimitObject -Value 1001
-Update-AzQuota -Scope "subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Network/locations/eastus2" -ResourceName "PublicIPAddresses" -Name "PublicIPAddresses" -Limit $limit
+$quota = Get-AzQuota -Scope "subscriptions/{subId}/providers/Microsoft.Compute/locations/eastus" -ResourceName "standardFSv2Family"
+$limit = New-AzQuotaLimitObject -Value ($quota.Limit.Value + 1)
+Update-AzQuota -Scope "subscriptions/{subId}/providers/Microsoft.Compute/locations/eastus" -ResourceName "standardFSv2Family" -Name "standardFSv2Family" -Limit $limit
 ```
 
 ```output
-Name              NameLocalizedValue  Unit  ETag
-----              ------------------  ----  ----
-PublicIPAddresses Public IP Addresses Count
+Name               NameLocalizedValue         Unit  ETag
+----               ------------------         ----  ----
+standardFSv2Family Standard FSv2 Family vCPUs Count
 ```
 
 This command update the quota limit for a specific resource to the specified value.
 
 ### Example 2: Update the quota limit for a specific resource to the specified value by pipeline
 ```powershell
-$limit = New-AzQuotaLimitObject -Value 1007
-Get-AzQuota -Scope "subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Network/locations/eastus2" -ResourceName "PublicIPAddresses" | Update-AzQuota -Name "PublicIPAddresses" -Limit $limit
+$quota = Get-AzQuota -Scope "subscriptions/{subId}/providers/Microsoft.Compute/locations/eastus" -ResourceName "standardFSv2Family"
+$limit = New-AzQuotaLimitObject -Value ($quota.Limit.Value + 1)
+Get-AzQuota -Scope "subscriptions/{subId}/providers/Microsoft.Compute/locations/eastus" -ResourceName "standardFSv2Family" | Update-AzQuota -Name "standardFSv2Family" -Limit $limit
 ```
 
 ```output
-Name              NameLocalizedValue  Unit  ETag
-----              ------------------  ----  ----
-PublicIPAddresses Public IP Addresses Count
+Name               NameLocalizedValue         Unit  ETag
+----               ------------------         ----  ----
+standardFSv2Family Standard FSv2 Family vCPUs Count
 ```
 
 This command update the quota limit for a specific resource to the specified value by pipeline.
