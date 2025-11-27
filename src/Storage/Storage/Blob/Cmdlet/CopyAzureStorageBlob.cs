@@ -15,8 +15,15 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Management.Automation;
+    using System.Security.Permissions;
+    using System.Threading.Tasks;
     using Azure.Commands.Common.Authentication.Abstractions;
     using Commands.Common.Storage.ResourceModel;
+    using global::Azure;
+    using global::Azure.Core;
     using global::Azure.Storage.Blobs;
     using global::Azure.Storage.Blobs.Models;
     using global::Azure.Storage.Blobs.Specialized;
@@ -24,11 +31,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     using Microsoft.Azure.Storage.Blob;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-    using System;
-    using System.Collections.Generic;
-    using System.Management.Automation;
-    using System.Security.Permissions;
-    using System.Threading.Tasks;
     using Track2Models = global::Azure.Storage.Blobs.Models;
 
     [Cmdlet("Copy", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageBlob", SupportsShouldProcess = true, DefaultParameterSetName = ContainerNameParameterSet),OutputType(typeof(AzureStorageBlob))]
@@ -324,7 +326,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 destCloudBlob = Util.GetTrack2BlobClientWithType(destCloudBlob, destChannel.StorageContext, srcBlobType, ClientOptions);
             }
 
-            Func<long, Task> taskGenerator = (taskId) => CopyFromUri(taskId, destChannel, srcCloudBlob.GenerateUriWithCredentials(Channel.StorageContext), destCloudBlob);
+            Func<long, Task> taskGenerator = (taskId) => CopyFromUri(taskId, destChannel, srcCloudBlob.GenerateUriWithCredentials(Channel.StorageContext), Channel, destCloudBlob);
             RunTask(taskGenerator);
         }
 
@@ -333,15 +335,24 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             Track2Models.BlobType srcBlobType = Util.GetBlobType(new BlobBaseClient(new Uri(srcUri), ClientOptions), true).Value;
 
             BlobBaseClient destBlob = this.GetDestBlob(destChannel, destContainer, destBlobName, srcBlobType);
-            Func<long, Task> taskGenerator = (taskId) => CopyFromUri(taskId, destChannel, new Uri(srcUri), destBlob);
+            Func<long, Task> taskGenerator = (taskId) => CopyFromUri(taskId, destChannel, new Uri(srcUri), Channel, destBlob);
             RunTask(taskGenerator);
         }
 
-        private async Task CopyFromUri(long taskId, IStorageBlobManagement destChannel, Uri srcUri, BlobBaseClient destBlob)
+        private async Task CopyFromUri(long taskId, IStorageBlobManagement destChannel, Uri srcUri, IStorageBlobManagement sourceChannel, BlobBaseClient destBlob)
         {
             bool destExist = true;
-            Track2Models.BlobType? srcBlobType = Util.GetBlobType(new BlobBaseClient(srcUri, ClientOptions), true).Value;
-            Track2Models.BlobType? destBlobType = Util.GetBlobType(new BlobBaseClient(srcUri, ClientOptions), true).Value;
+            BlobBaseClient srcBlobClient;
+            if (sourceChannel.StorageContext != null && sourceChannel.StorageContext.Track2OauthToken != null)
+            {
+                srcBlobClient = new BlobBaseClient(srcUri, sourceChannel.StorageContext.Track2OauthToken, ClientOptions);
+            }
+            else
+            {
+                srcBlobClient = new BlobBaseClient(srcUri, ClientOptions);
+            }
+            Track2Models.BlobType? srcBlobType = Util.GetBlobType(srcBlobClient, true).Value;
+            Track2Models.BlobType? destBlobType = srcBlobType;
             Track2Models.BlobProperties properties = null;
 
             try
@@ -399,8 +410,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
             if (!destExist || this.ConfirmOverwrite(srcUri.AbsoluteUri.ToString(), destBlob.Uri.ToString()))
             {
-
-                BlobBaseClient srcBlobClient= new BlobBaseClient(srcUri, ClientOptions);
                 Track2Models.BlobProperties srcProperties = srcBlobClient.GetProperties(cancellationToken: this.CmdletCancellationToken).Value;
 
                 Track2Models.BlobHttpHeaders httpHeaders = new Track2Models.BlobHttpHeaders
@@ -454,6 +463,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                         destPageBlob.Create(srcProperties.ContentLength, pageBlobCreateOptions, this.CmdletCancellationToken);
           
                         Track2Models.PageBlobUploadPagesFromUriOptions pageBlobUploadPagesFromUriOptions = new Track2Models.PageBlobUploadPagesFromUriOptions();
+                        if (sourceChannel.StorageContext != null && sourceChannel.StorageContext.Track2OauthToken != null)
+                        {
+                            string oauthToken = sourceChannel.StorageContext.Track2OauthToken.GetToken(null, this.CmdletCancellationToken).TokenValue;
+                            pageBlobUploadPagesFromUriOptions.SourceAuthentication = new HttpAuthorization("Bearer", oauthToken);
+                        }
+
                         long pageCopyOffset = 0;
                         progressHandler.Report(pageCopyOffset);
                         long contentLenLeft = srcProperties.ContentLength;
@@ -490,6 +505,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                                 SourceRange = new global::Azure.HttpRange(appendCopyOffset, appendContentSize)
                             };
 
+                            if (sourceChannel.StorageContext != null && sourceChannel.StorageContext.Track2OauthToken != null)
+                            {
+                                string oauthToken = sourceChannel.StorageContext.Track2OauthToken.GetToken(null, this.CmdletCancellationToken).TokenValue;
+                                appendBlobAppendBlockFromUriOptions.SourceAuthentication = new HttpAuthorization("Bearer", oauthToken);
+                            }
+
                             destAppendBlob.AppendBlockFromUri(srcUri, appendBlobAppendBlockFromUriOptions, this.CmdletCancellationToken);
                             appendCopyOffset += appendContentSize;
                             progressHandler.Report(appendContentSize);
@@ -514,6 +535,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                             options.SourceConditions = this.BlobRequestConditions;
                             options.Metadata = srcProperties.Metadata;
                             options.Tags = blobTags ?? null;
+
+                            if (sourceChannel.StorageContext != null && sourceChannel.StorageContext.Track2OauthToken != null)
+                            {
+                                string oauthToken = sourceChannel.StorageContext.Track2OauthToken.GetToken(new TokenRequestContext(), this.CmdletCancellationToken).Token;
+                                options.SourceAuthentication = new HttpAuthorization("Bearer", oauthToken);
+                            }
 
                             destBlobClient.SyncCopyFromUri(srcUri, options, this.CmdletCancellationToken);
 
@@ -544,12 +571,19 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                         progressHandler.Report(copyoffset);
                         foreach (string id in blockIDs)
                         {
+                            Track2Models.StageBlockFromUriOptions stageBlockOptions = new Track2Models.StageBlockFromUriOptions();
                             long blocksize = blockLength;
                             if (copyoffset + blocksize > srcProperties.ContentLength)
                             {
                                 blocksize = srcProperties.ContentLength - copyoffset;
                             }
-                            destBlockBlob.StageBlockFromUri(srcUri, id, new global::Azure.HttpRange(copyoffset, blocksize), null, null, null, cancellationToken: this.CmdletCancellationToken);
+                            stageBlockOptions.SourceRange = new global::Azure.HttpRange(copyoffset, blocksize);
+                            if (sourceChannel.StorageContext != null && sourceChannel.StorageContext.Track2OauthToken != null)
+                            {
+                                string oauthToken = sourceChannel.StorageContext.Track2OauthToken.GetToken(null, this.CmdletCancellationToken).TokenValue;
+                                stageBlockOptions.SourceAuthentication = new HttpAuthorization("Bearer", oauthToken);
+                            }
+                            destBlockBlob.StageBlockFromUri(srcUri, id, stageBlockOptions, cancellationToken: this.CmdletCancellationToken);
                             copyoffset += blocksize;
                             progressHandler.Report(copyoffset);
 
