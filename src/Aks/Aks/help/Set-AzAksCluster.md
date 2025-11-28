@@ -1317,7 +1317,7 @@ The upgrade channel for auto upgrade. For more information see https://learn.mic
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: AutoUpgradeChannel
 
 Required: False
 Position: Named

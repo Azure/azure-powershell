@@ -147,6 +147,7 @@ namespace Microsoft.Azure.Commands.Aks
 
         [Parameter(Mandatory = false, HelpMessage = "The upgrade channel for auto upgrade. For more information see https://learn.microsoft.com/azure/aks/upgrade-cluster#set-auto-upgrade-channel.")]
         [PSArgumentCompleter("rapid", "stable", "patch", "node-image", "none")]
+        [Alias("AutoUpgradeChannel")]
         public string NodeAutoUpgradeChannel { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Whether to enable or disable the Azure Managed Prometheus addon for Prometheus monitoring. See aka.ms/AzureManagedPrometheus-aks-enable for details on enabling and disabling.")]
