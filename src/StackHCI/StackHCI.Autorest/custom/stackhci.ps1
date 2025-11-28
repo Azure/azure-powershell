@@ -2896,7 +2896,11 @@ function Enable-ArcOnNodes {
         [Parameter(Mandatory=$true)]
         [string]$AccessToken,
         [Parameter(Mandatory=$false)]
-        [bool]$UseStableAgent = $false
+        [bool]$UseStableAgent = $false,
+        [Parameter(Mandatory=$false)]
+        [bool]$IsManagementNode = $false,
+        [Parameter(Mandatory=$false)]
+        [string]$ComputerName = [Environment]::MachineName
     )
 
     Write-VerboseLog "[Arc Enablement] Starting manual Arc enablement on nodes for environment: $EnvironmentName"
@@ -2987,14 +2991,18 @@ function Enable-ArcOnNodes {
             } -ArgumentList $SubscriptionId, $ResourceGroupName, $Location, $TenantId, $AccessToken, $cloudArgument, $UseStableAgent
         }
         catch {
-            Write-ErrorLog "Failed to enable Arc on node ${nodeName}: $($_.Exception.Message)"
+            $errorMsg = "Failed to enable Arc on node ${nodeName}: $($_.Exception.Message)"
+            Write-ErrorLog $errorMsg
+            Write-NodeEventLog -Message $errorMsg -EventID 9150 -IsManagementNode $IsManagementNode  -Credentials $Credential -ComputerName $ComputerName  -Level Error
             throw
         }
         finally {
             if ($session) { Remove-PSSession $session }
         }
     }
-    Write-VerboseLog "[Arc Enablement] Completed successfully on all nodes."
+    $successMsg = "[Arc Enablement] Completed successfully on all nodes."
+    Write-VerboseLog $successMsg
+    Write-NodeEventLog -Message $successMsg  -EventID 9151 -IsManagementNode $IsManagementNode -Credentials $Credential -ComputerName $ComputerName -Level Information
 }
 
 <#
@@ -3213,7 +3221,9 @@ function Invoke-MSIFlow {
                                     -Location $Region `
                                     -EnvironmentName $EnvironmentName `
                                     -AccessToken $tokenString `
-                                    -UseStableAgent $UseStableAgent
+                                    -UseStableAgent $UseStableAgent `
+                                    -IsManagementNode $IsManagementNode `
+                                    -ComputerName $ComputerName
             
             # Re-verify enablement
             $allArcEnabled = Test-ClusterArcEnabled -ClusterNodes $ClusterNodes -Credential $Credential -ClusterDNSSuffix $ClusterDNSSuffix -SubscriptionId $SubscriptionId -ArcResourceGroupName $ArcServerResourceGroupName
