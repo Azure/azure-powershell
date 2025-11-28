@@ -16,43 +16,76 @@ Update or create a managed Kubernetes cluster.
 ```
 Set-AzAksCluster [-NodePoolMode <String>] [-AcrNameToDetach <String>] [-NodeImageOnly] [-ControlPlaneOnly]
  [-AutoScalerProfile <ManagedClusterPropertiesAutoScalerProfile>] [-EnableUptimeSLA] [-EnableOidcIssuer]
- [-ResourceGroupName] <String> [-Name] <String> [[-ServicePrincipalIdAndSecret] <PSCredential>]
- [-Location <String>] [-LinuxProfileAdminUserName <String>] [-DnsNamePrefix <String>]
- [-KubernetesVersion <String>] [-NodeName <String>] [-NodeMinCount <Int32>] [-NodeMaxCount <Int32>]
- [-EnableNodeAutoScaling] [-NodeCount <Int32>] [-NodeOsDiskSize <Int32>] [-NodeVmSize <String>]
- [-NodePoolLabel <Hashtable>] [-NodePoolTag <Hashtable>] [-SshKeyValue <String>] [-AcrNameToAttach <String>]
- [-AsJob] [-Tag <Hashtable>] [-LoadBalancerAllocatedOutboundPort <Int32>]
- [-LoadBalancerManagedOutboundIpCount <Int32>] [-LoadBalancerOutboundIp <String[]>]
- [-LoadBalancerOutboundIpPrefix <String[]>] [-LoadBalancerIdleTimeoutInMinute <Int32>]
- [-ApiServerAccessAuthorizedIpRange <String[]>] [-EnableApiServerAccessPrivateCluster]
- [-ApiServerAccessPrivateDnsZone <String>] [-EnableApiServerAccessPrivateClusterPublicFQDN]
- [-FqdnSubdomain <String>] [-EnableManagedIdentity] [-AssignIdentity <String>] [-AutoUpgradeChannel <String>]
- [-DiskEncryptionSetID <String>] [-DisableLocalAccount] [-HttpProxy <String>] [-HttpsProxy <String>]
- [-HttpProxyConfigNoProxyEndpoint <String[]>] [-HttpProxyConfigTrustedCa <String>]
- [-AksCustomHeader <Hashtable>] [-AadProfile <ManagedClusterAADProfile>]
- [-WindowsProfileAdminUserPassword <SecureString>] [-EnableAHUB] [-IfMatch <String>] [-ifNoneMatch <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [-SubscriptionId <String>] [<CommonParameters>]
+ [-ResourceGroupName] <String> [-Name] <String> [-Location <String>] [-EnableManagedIdentity]
+ [-AssignIdentity <String>] [-AadProfile <ManagedClusterAADProfile>] [-NodeCount <Int32>]
+ [-EnableNodeAutoScaling] [-NodeMaxCount <Int32>] [-NodeMinCount <Int32>] [-NodeName <String>]
+ [-NodePoolLabel <Hashtable>] [-NodeTaint <String[]>] [-NodeOsDiskSize <Int32>] [-NodePoolTag <Hashtable>]
+ [-NodeVmSize <String>] [-NodeWorkloadRuntime <String>] [-EnableAIToolchainOperator]
+ [-ApiServerAccessAuthorizedIpRange <String[]>] [-DisableApiServerRunCommand]
+ [-EnableApiServerAccessPrivateCluster] [-EnableApiServerAccessPrivateClusterPublicFQDN]
+ [-EnableApiServerVnetIntegration] [-ApiServerAccessPrivateDnsZone <String>] [-ApiServerSubnetId <String>]
+ [-NodeOSAutoUpgradeChannel <String>] [-NodeAutoUpgradeChannel <String>] [-EnabledMonitorMetric]
+ [-BootstrapArtifactSource <String>] [-BootstrapContainerRegistryId <String>] [-DisableLocalAccount]
+ [-DiskEncryptionSetID <String>] [-DnsNamePrefix <String>] [-FqdnSubdomain <String>] [-HttpProxy <String>]
+ [-HttpsProxy <String>] [-HttpProxyConfigNoProxyEndpoint <String[]>] [-HttpProxyConfigTrustedCa <String>]
+ [-AssignKubeletIdentity <String>] [-KubernetesVersion <String>] [-LinuxProfileAdminUserName <String>]
+ [-SshKeyValue <String>] [-EnableCostAnalysis] [-EnableAdvancedNetworking]
+ [-EnableAdvancedNetworkingObservability] [-EnableAdvancedNetworkingSecurity]
+ [-AdvancedNetworkingSecurityPolicy <String>] [-IPFamily <String[]>]
+ [-LoadBalancerAllocatedOutboundPort <Int32>] [-LoadBalancerBackendPoolType <String>]
+ [-EnableMultipleStandardLoadBalancer] [-LoadBalancerIdleTimeoutInMinute <Int32>]
+ [-LoadBalancerManagedOutboundIpCount <Int32>] [-LoadBalancerManagedOutboundIpCountIPv6 <Int32>]
+ [-LoadBalancerOutboundIpPrefix <String[]>] [-LoadBalancerOutboundIp <String[]>]
+ [-NATGatewayIdleTimeoutInMinute <Int32>] [-NATGatewayManagedOutboundIpCount <Int32>]
+ [-NetworkDataplane <String>] [-NetworkPluginMode <String>] [-EnabledStaticEgressGateway]
+ [-NodeProvisioningMode <String>] [-NodeProvisioningDefaultPool <String>]
+ [-NodeResourceGroupRestrictionLevel <String>] [-EnabledPodIdentity] [-EnablePodIdentityWithKubenet]
+ [-EnablePublicNetworkAccess] [-EnableAzureKeyVaultKms] [-AzureKeyVaultKmsKeyId <String>]
+ [-AzureKeyVaultKmsNetworkAccess <String>] [-AzureKeyVaultKmsResourceId <String>]
+ [-CustomCaTrustCertificate <String[]>] [-DefenderLogAnalyticsWorkspaceResourceId <String>]
+ [-EnableDefenderSecurityMonitoring] [-EnableImageCleaner] [-ImageCleanerIntervalHour <Int32>]
+ [-EnableWorkloadIdentity] [[-ServicePrincipalIdAndSecret] <PSCredential>] [-SupportPlan <String>]
+ [-WindowsProfileAdminUserPassword <SecureString>] [-EnableAHUB] [-EnableKEDA] [-EnableVerticalPodAutoscaler]
+ [-Tag <Hashtable>] [-AksCustomHeader <Hashtable>] [-IfMatch <String>] [-IfNoneMatch <String>]
+ [-AcrNameToAttach <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
 Set-AzAksCluster -InputObject <PSKubernetesCluster> [-NodePoolMode <String>] [-AcrNameToDetach <String>]
  [-NodeImageOnly] [-ControlPlaneOnly] [-AutoScalerProfile <ManagedClusterPropertiesAutoScalerProfile>]
- [-EnableUptimeSLA] [-EnableOidcIssuer] [-Location <String>] [-LinuxProfileAdminUserName <String>]
- [-DnsNamePrefix <String>] [-KubernetesVersion <String>] [-NodeName <String>] [-NodeMinCount <Int32>]
- [-NodeMaxCount <Int32>] [-EnableNodeAutoScaling] [-NodeCount <Int32>] [-NodeOsDiskSize <Int32>]
- [-NodeVmSize <String>] [-NodePoolLabel <Hashtable>] [-NodePoolTag <Hashtable>] [-SshKeyValue <String>]
- [-AcrNameToAttach <String>] [-AsJob] [-Tag <Hashtable>] [-LoadBalancerAllocatedOutboundPort <Int32>]
- [-LoadBalancerManagedOutboundIpCount <Int32>] [-LoadBalancerOutboundIp <String[]>]
- [-LoadBalancerOutboundIpPrefix <String[]>] [-LoadBalancerIdleTimeoutInMinute <Int32>]
- [-ApiServerAccessAuthorizedIpRange <String[]>] [-EnableApiServerAccessPrivateCluster]
- [-ApiServerAccessPrivateDnsZone <String>] [-EnableApiServerAccessPrivateClusterPublicFQDN]
- [-FqdnSubdomain <String>] [-EnableManagedIdentity] [-AssignIdentity <String>] [-AutoUpgradeChannel <String>]
- [-DiskEncryptionSetID <String>] [-DisableLocalAccount] [-HttpProxy <String>] [-HttpsProxy <String>]
- [-HttpProxyConfigNoProxyEndpoint <String[]>] [-HttpProxyConfigTrustedCa <String>]
- [-AksCustomHeader <Hashtable>] [-AadProfile <ManagedClusterAADProfile>]
- [-WindowsProfileAdminUserPassword <SecureString>] [-EnableAHUB] [-IfMatch <String>] [-ifNoneMatch <String>]
+ [-EnableUptimeSLA] [-EnableOidcIssuer] [-Location <String>] [-EnableManagedIdentity]
+ [-AssignIdentity <String>] [-AadProfile <ManagedClusterAADProfile>] [-NodeCount <Int32>]
+ [-EnableNodeAutoScaling] [-NodeMaxCount <Int32>] [-NodeMinCount <Int32>] [-NodeName <String>]
+ [-NodePoolLabel <Hashtable>] [-NodeTaint <String[]>] [-NodeOsDiskSize <Int32>] [-NodePoolTag <Hashtable>]
+ [-NodeVmSize <String>] [-NodeWorkloadRuntime <String>] [-EnableAIToolchainOperator]
+ [-ApiServerAccessAuthorizedIpRange <String[]>] [-DisableApiServerRunCommand]
+ [-EnableApiServerAccessPrivateCluster] [-EnableApiServerAccessPrivateClusterPublicFQDN]
+ [-EnableApiServerVnetIntegration] [-ApiServerAccessPrivateDnsZone <String>] [-ApiServerSubnetId <String>]
+ [-NodeOSAutoUpgradeChannel <String>] [-NodeAutoUpgradeChannel <String>] [-EnabledMonitorMetric]
+ [-BootstrapArtifactSource <String>] [-BootstrapContainerRegistryId <String>] [-DisableLocalAccount]
+ [-DiskEncryptionSetID <String>] [-DnsNamePrefix <String>] [-FqdnSubdomain <String>] [-HttpProxy <String>]
+ [-HttpsProxy <String>] [-HttpProxyConfigNoProxyEndpoint <String[]>] [-HttpProxyConfigTrustedCa <String>]
+ [-AssignKubeletIdentity <String>] [-KubernetesVersion <String>] [-LinuxProfileAdminUserName <String>]
+ [-SshKeyValue <String>] [-EnableCostAnalysis] [-EnableAdvancedNetworking]
+ [-EnableAdvancedNetworkingObservability] [-EnableAdvancedNetworkingSecurity]
+ [-AdvancedNetworkingSecurityPolicy <String>] [-IPFamily <String[]>]
+ [-LoadBalancerAllocatedOutboundPort <Int32>] [-LoadBalancerBackendPoolType <String>]
+ [-EnableMultipleStandardLoadBalancer] [-LoadBalancerIdleTimeoutInMinute <Int32>]
+ [-LoadBalancerManagedOutboundIpCount <Int32>] [-LoadBalancerManagedOutboundIpCountIPv6 <Int32>]
+ [-LoadBalancerOutboundIpPrefix <String[]>] [-LoadBalancerOutboundIp <String[]>]
+ [-NATGatewayIdleTimeoutInMinute <Int32>] [-NATGatewayManagedOutboundIpCount <Int32>]
+ [-NetworkDataplane <String>] [-NetworkPluginMode <String>] [-EnabledStaticEgressGateway]
+ [-NodeProvisioningMode <String>] [-NodeProvisioningDefaultPool <String>]
+ [-NodeResourceGroupRestrictionLevel <String>] [-EnabledPodIdentity] [-EnablePodIdentityWithKubenet]
+ [-EnablePublicNetworkAccess] [-EnableAzureKeyVaultKms] [-AzureKeyVaultKmsKeyId <String>]
+ [-AzureKeyVaultKmsNetworkAccess <String>] [-AzureKeyVaultKmsResourceId <String>]
+ [-CustomCaTrustCertificate <String[]>] [-DefenderLogAnalyticsWorkspaceResourceId <String>]
+ [-EnableDefenderSecurityMonitoring] [-EnableImageCleaner] [-ImageCleanerIntervalHour <Int32>]
+ [-EnableWorkloadIdentity] [-SupportPlan <String>] [-WindowsProfileAdminUserPassword <SecureString>]
+ [-EnableAHUB] [-EnableKEDA] [-EnableVerticalPodAutoscaler] [-Tag <Hashtable>] [-AksCustomHeader <Hashtable>]
+ [-IfMatch <String>] [-IfNoneMatch <String>] [-AcrNameToAttach <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [-SubscriptionId <String>] [<CommonParameters>]
 ```
@@ -61,20 +94,36 @@ Set-AzAksCluster -InputObject <PSKubernetesCluster> [-NodePoolMode <String>] [-A
 ```
 Set-AzAksCluster [-NodePoolMode <String>] [-AcrNameToDetach <String>] [-NodeImageOnly] [-ControlPlaneOnly]
  [-Id] <String> [-AutoScalerProfile <ManagedClusterPropertiesAutoScalerProfile>] [-EnableUptimeSLA]
- [-EnableOidcIssuer] [-Location <String>] [-LinuxProfileAdminUserName <String>] [-DnsNamePrefix <String>]
- [-KubernetesVersion <String>] [-NodeName <String>] [-NodeMinCount <Int32>] [-NodeMaxCount <Int32>]
- [-EnableNodeAutoScaling] [-NodeCount <Int32>] [-NodeOsDiskSize <Int32>] [-NodeVmSize <String>]
- [-NodePoolLabel <Hashtable>] [-NodePoolTag <Hashtable>] [-SshKeyValue <String>] [-AcrNameToAttach <String>]
- [-AsJob] [-Tag <Hashtable>] [-LoadBalancerAllocatedOutboundPort <Int32>]
- [-LoadBalancerManagedOutboundIpCount <Int32>] [-LoadBalancerOutboundIp <String[]>]
- [-LoadBalancerOutboundIpPrefix <String[]>] [-LoadBalancerIdleTimeoutInMinute <Int32>]
- [-ApiServerAccessAuthorizedIpRange <String[]>] [-EnableApiServerAccessPrivateCluster]
- [-ApiServerAccessPrivateDnsZone <String>] [-EnableApiServerAccessPrivateClusterPublicFQDN]
- [-FqdnSubdomain <String>] [-EnableManagedIdentity] [-AssignIdentity <String>] [-AutoUpgradeChannel <String>]
- [-DiskEncryptionSetID <String>] [-DisableLocalAccount] [-HttpProxy <String>] [-HttpsProxy <String>]
- [-HttpProxyConfigNoProxyEndpoint <String[]>] [-HttpProxyConfigTrustedCa <String>]
- [-AksCustomHeader <Hashtable>] [-AadProfile <ManagedClusterAADProfile>]
- [-WindowsProfileAdminUserPassword <SecureString>] [-EnableAHUB] [-IfMatch <String>] [-ifNoneMatch <String>]
+ [-EnableOidcIssuer] [-Location <String>] [-EnableManagedIdentity] [-AssignIdentity <String>]
+ [-AadProfile <ManagedClusterAADProfile>] [-NodeCount <Int32>] [-EnableNodeAutoScaling] [-NodeMaxCount <Int32>]
+ [-NodeMinCount <Int32>] [-NodeName <String>] [-NodePoolLabel <Hashtable>] [-NodeTaint <String[]>]
+ [-NodeOsDiskSize <Int32>] [-NodePoolTag <Hashtable>] [-NodeVmSize <String>] [-NodeWorkloadRuntime <String>]
+ [-EnableAIToolchainOperator] [-ApiServerAccessAuthorizedIpRange <String[]>] [-DisableApiServerRunCommand]
+ [-EnableApiServerAccessPrivateCluster] [-EnableApiServerAccessPrivateClusterPublicFQDN]
+ [-EnableApiServerVnetIntegration] [-ApiServerAccessPrivateDnsZone <String>] [-ApiServerSubnetId <String>]
+ [-NodeOSAutoUpgradeChannel <String>] [-NodeAutoUpgradeChannel <String>] [-EnabledMonitorMetric]
+ [-BootstrapArtifactSource <String>] [-BootstrapContainerRegistryId <String>] [-DisableLocalAccount]
+ [-DiskEncryptionSetID <String>] [-DnsNamePrefix <String>] [-FqdnSubdomain <String>] [-HttpProxy <String>]
+ [-HttpsProxy <String>] [-HttpProxyConfigNoProxyEndpoint <String[]>] [-HttpProxyConfigTrustedCa <String>]
+ [-AssignKubeletIdentity <String>] [-KubernetesVersion <String>] [-LinuxProfileAdminUserName <String>]
+ [-SshKeyValue <String>] [-EnableCostAnalysis] [-EnableAdvancedNetworking]
+ [-EnableAdvancedNetworkingObservability] [-EnableAdvancedNetworkingSecurity]
+ [-AdvancedNetworkingSecurityPolicy <String>] [-IPFamily <String[]>]
+ [-LoadBalancerAllocatedOutboundPort <Int32>] [-LoadBalancerBackendPoolType <String>]
+ [-EnableMultipleStandardLoadBalancer] [-LoadBalancerIdleTimeoutInMinute <Int32>]
+ [-LoadBalancerManagedOutboundIpCount <Int32>] [-LoadBalancerManagedOutboundIpCountIPv6 <Int32>]
+ [-LoadBalancerOutboundIpPrefix <String[]>] [-LoadBalancerOutboundIp <String[]>]
+ [-NATGatewayIdleTimeoutInMinute <Int32>] [-NATGatewayManagedOutboundIpCount <Int32>]
+ [-NetworkDataplane <String>] [-NetworkPluginMode <String>] [-EnabledStaticEgressGateway]
+ [-NodeProvisioningMode <String>] [-NodeProvisioningDefaultPool <String>]
+ [-NodeResourceGroupRestrictionLevel <String>] [-EnabledPodIdentity] [-EnablePodIdentityWithKubenet]
+ [-EnablePublicNetworkAccess] [-EnableAzureKeyVaultKms] [-AzureKeyVaultKmsKeyId <String>]
+ [-AzureKeyVaultKmsNetworkAccess <String>] [-AzureKeyVaultKmsResourceId <String>]
+ [-CustomCaTrustCertificate <String[]>] [-DefenderLogAnalyticsWorkspaceResourceId <String>]
+ [-EnableDefenderSecurityMonitoring] [-EnableImageCleaner] [-ImageCleanerIntervalHour <Int32>]
+ [-EnableWorkloadIdentity] [-SupportPlan <String>] [-WindowsProfileAdminUserPassword <SecureString>]
+ [-EnableAHUB] [-EnableKEDA] [-EnableVerticalPodAutoscaler] [-Tag <Hashtable>] [-AksCustomHeader <Hashtable>]
+ [-IfMatch <String>] [-IfNoneMatch <String>] [-AcrNameToAttach <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [-SubscriptionId <String>] [<CommonParameters>]
 ```
@@ -166,6 +215,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -AdvancedNetworkingSecurityPolicy
+The advanced network policies. This allows users to configure Layer 7 network policies (FQDN, HTTP, Kafka). Policies themselves must be configured via the Cilium Network Policy resources, see https://docs.cilium.io/en/latest/security/policy/index.html. This can be enabled only on cilium-based clusters. If not specified, the default value is FQDN if EnableAdvancedNetworkingSecurity is set to true.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AksCustomHeader
 Aks custom headers used for building Kubernetes network.
 
@@ -211,6 +275,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ApiServerSubnetId
+The subnet to be used when apiserver vnet integration is enabled. It is required when creating a new cluster with BYO Vnet, or when updating an existing cluster to enable apiserver vnet integration.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AsJob
 Run cmdlet in the background
 
@@ -241,6 +320,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -AssignKubeletIdentity
+ResourceId of user assign managed identity used by the kubelet.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AutoScalerProfile
 The parameters to be applied to the cluster-autoscaler.
 
@@ -256,8 +350,68 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AutoUpgradeChannel
-The upgrade channel for auto upgrade. For more information see https://learn.microsoft.com/azure/aks/upgrade-cluster#set-auto-upgrade-channel.
+### -AzureKeyVaultKmsKeyId
+The identifier of Azure Key Vault key. See [key identifier format](https://docs.microsoft.com/en-us/azure/key-vault/general/about-keys-secrets-certificates#vault-name-and-object-name) for more details. When EnableAzureKeyVaultKms is set, this field is required and must be a valid key identifier.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AzureKeyVaultKmsNetworkAccess
+The network access of the key vault. Network access of key vault. The possible values are `Public` and `Private`. `Public` means the key vault allows public access from all networks. `Private` means the key vault disables public access and enables private link.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AzureKeyVaultKmsResourceId
+The resource ID of key vault. When AzureKeyVaultKmsNetworkAccess is `Private`, this field is required and must be a valid resource ID. When AzureKeyVaultKmsNetworkAccess is `Public`, leave the field empty.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -BootstrapArtifactSource
+The artifact source. The source where the artifacts are downloaded from.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -BootstrapContainerRegistryId
+The resource Id of Azure Container Registry. The registry must have private network access, premium SKU and zone redundancy.
 
 ```yaml
 Type: System.String
@@ -286,6 +440,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -CustomCaTrustCertificate
+The list of up to 10 base64 encoded CAs that will be added to the trust store on all nodes in the cluster. For more information see [Custom CA Trust Certificates](https://learn.microsoft.com/en-us/azure/aks/custom-certificate-authority).
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -293,6 +462,36 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefenderLogAnalyticsWorkspaceResourceId
+The resource ID of the Log Analytics workspace to be associated with Microsoft Defender. When Microsoft Defender is enabled, this field is required and must be a valid workspace resource ID. When Microsoft Defender is disabled, leave the field empty.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisableApiServerRunCommand
+Whether to disable run command for the cluster or not.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -346,8 +545,68 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnableAdvancedNetworking
+Enable Advanced Networking functionalities of observability and security on AKS clusters. When this is set to true, all observability and security features will be set to enabled unless explicitly disabled. If not specified, the default is false.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableAdvancedNetworkingObservability
+Enable Advanced Networking observability functionalities on clusters.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableAdvancedNetworkingSecurity
+Whether to allow user to configure network policy based on DNS (FQDN) names. It can be enabled only on cilium based clusters. If not specified, the default is false.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EnableAHUB
 Whether to enable Azure Hybrid User Benefits (AHUB) for Windows VMs.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableAIToolchainOperator
+Whether to enable AI toolchain operator to the cluster. Indicates if AI toolchain operator enabled or not.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -391,8 +650,158 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnableApiServerVnetIntegration
+Whether to enable apiserver vnet integration for the cluster or not. See aka.ms/AksVnetIntegration for more details.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableAzureKeyVaultKms
+Whether to enable Azure Key Vault key management service.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableCostAnalysis
+Whether to enable cost analysis. The Managed Cluster sku.tier must be set to &#39;Standard&#39; or &#39;Premium&#39; to enable this feature. Enabling this will add Kubernetes Namespace and Deployment details to the Cost Analysis views in the Azure portal. If not specified, the default is false. For more information see aka.ms/aks/docs/cost-analysis.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableDefenderSecurityMonitoring
+Whether to enable Defender threat detection
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnabledMonitorMetric
+Whether to enable or disable the Azure Managed Prometheus addon for Prometheus monitoring. See aka.ms/AzureManagedPrometheus-aks-enable for details on enabling and disabling.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnabledPodIdentity
+Whether the pod identity addon is enabled.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnabledStaticEgressGateway
+Whether to enable Static Egress Gateway addon.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableImageCleaner
+Whether to enable Image Cleaner on AKS cluster.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableKEDA
+Whether to enable KEDA.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EnableManagedIdentity
 Using a managed identity to manage cluster resource group.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableMultipleStandardLoadBalancer
+Whether to enable multiple standard load balancers per AKS cluster.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -436,8 +845,68 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnablePodIdentityWithKubenet
+Whether pod identity is allowed to run on clusters with  Kubenet networking. Running in Kubenet is disabled by default due to the  security related nature of AAD Pod Identity and the risks of IP spoofing.  See [using Kubenet network plugin with AAD Pod  Identity](https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity#using-kubenet-network-plugin-with-azure-active-directory-pod-managed-identities)  for more information.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnablePublicNetworkAccess
+If enable publicNetworkAccess of the managedCluster
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EnableUptimeSLA
 Whether to use use Uptime SLA.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableVerticalPodAutoscaler
+Whether to enable Vertical Pod Autoscaler.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableWorkloadIdentity
+Whether to enable workload identity.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -556,11 +1025,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ifNoneMatch
+### -IfNoneMatch
 The request should only proceed if no entity matches this string.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ImageCleanerIntervalHour
+The image Cleaner scanning interval in hours.
+
+```yaml
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -583,6 +1067,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -IPFamily
+the IP families used to specify IP versions available to the cluster. IP families are used to determine single-stack or dual-stack clusters. For single-stack, the expected value is IPv4. For dual-stack, the expected values are IPv4 and IPv6.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -631,6 +1130,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -LoadBalancerBackendPoolType
+The type of the managed inbound Load Balancer BackendPool.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -LoadBalancerIdleTimeoutInMinute
 Desired outbound flow idle timeout in minutes.
 
@@ -648,6 +1162,21 @@ Accept wildcard characters: False
 
 ### -LoadBalancerManagedOutboundIpCount
 Desired managed outbound IPs count for the cluster load balancer.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LoadBalancerManagedOutboundIpCountIPv6
+Desired number of IPv6 outbound IPs created/managed by Azure for the cluster load balancer.
 
 ```yaml
 Type: System.Int32
@@ -717,6 +1246,81 @@ Aliases:
 
 Required: True
 Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NATGatewayIdleTimeoutInMinute
+Desired outbound flow idle timeout in minutes for NAT Gateway.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NATGatewayManagedOutboundIpCount
+The desired number of outbound IPs created/managed by Azure.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NetworkDataplane
+The network dataplane used in the Kubernetes cluster.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NetworkPluginMode
+The mode the network plugin should use.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NodeAutoUpgradeChannel
+The upgrade channel for auto upgrade. For more information see https://learn.microsoft.com/azure/aks/upgrade-cluster#set-auto-upgrade-channel.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -797,6 +1401,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -NodeOSAutoUpgradeChannel
+The node OS Upgrade Channel. Manner in which the OS on your nodes is updated.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NodeOsDiskSize
 Specifies the size, in GB, of the operating system disk.
 
@@ -857,8 +1476,83 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -NodeProvisioningDefaultPool
+The set of default Karpenter NodePools (CRDs) configured for node provisioning. This field has no effect unless mode is &#39;Auto&#39;. Warning: Changing this from Auto to None on an existing cluster will cause the default Karpenter NodePools to be deleted, which will drain and delete the nodes associated with those pools. It is strongly recommended to not do this unless there are idle nodes ready to take the pods evicted by that action. If not specified, the default is Auto. For more information see aka.ms/aks/nap#node-pools.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NodeProvisioningMode
+The node provisioning mode.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NodeResourceGroupRestrictionLevel
+The restriction level applied to the cluster node resource group.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NodeTaint
+The taints added to new nodes during node pool create and scale. For example, key=value:NoSchedule.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NodeVmSize
 The size of the Virtual Machine.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NodeWorkloadRuntime
+The type of workload a node can run.
 
 ```yaml
 Type: System.String
@@ -932,6 +1626,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SupportPlan
+The support plan for the Managed Cluster.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

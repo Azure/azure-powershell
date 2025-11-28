@@ -15,14 +15,19 @@ Create a new node pool in specified cluster.
 ### defaultParameterSet
 ```
 New-AzAksNodePool -ResourceGroupName <String> -ClusterName <String> -Name <String> [-Count <Int32>]
- [-OsDiskSize <Int32>] [-VmSize <String>] [-VnetSubnetID <String>] [-MaxPodCount <Int32>] [-OsType <String>]
- [-OsSKU <String>] [-EnableNodePublicIp] [-NodePublicIPPrefixID <String>] [-ScaleSetPriority <String>]
- [-ScaleSetEvictionPolicy <String>] [-VmSetType <String>] [-AvailabilityZone <String[]>] [-Force]
- [-EnableEncryptionAtHost] [-EnableUltraSSD] [-LinuxOSConfig <LinuxOSConfig>] [-KubeletConfig <KubeletConfig>]
- [-MaxSurge <String>] [-PPG <String>] [-SpotMaxPrice <Double>] [-EnableFIPS] [-GpuInstanceProfile <String>]
- [-HostGroupID <String>] [-PodSubnetID <String>] [-KubernetesVersion <String>] [-MinCount <Int32>]
- [-MaxCount <Int32>] [-EnableAutoScaling] [-Mode <String>] [-NodeLabel <Hashtable>] [-Tag <Hashtable>]
- [-NodeTaint <String[]>] [-AksCustomHeader <Hashtable>] [-IfMatch <String>] [-ifNoneMatch <String>]
+ [-OsDiskSize <Int32>] [-OSDiskType <String>] [-VmSize <String>] [-VnetSubnetID <String>]
+ [-WorkloadRuntime <String>] [-MaxPodCount <Int32>] [-MessageOfTheDay <String>] [-OsType <String>]
+ [-PodIPAllocationMode <String>] [-OsSKU <String>] [-EnableNodePublicIp] [-NodePublicIPPrefixID <String>]
+ [-ScaleSetPriority <String>] [-ScaleSetEvictionPolicy <String>] [-VmSetType <String>]
+ [-AvailabilityZone <String[]>] [-Force] [-EnableEncryptionAtHost] [-EnableUltraSSD]
+ [-GatewayPublicIPPrefixSize <Int32>] [-GPUDriver <String>] [-LinuxOSConfig <LinuxOSConfig>]
+ [-KubeletConfig <KubeletConfig>] [-PPG <String>] [-SpotMaxPrice <Double>] [-EnableFIPS]
+ [-GpuInstanceProfile <String>] [-HostGroupID <String>] [-PodSubnetID <String>] [-KubernetesVersion <String>]
+ [-MinCount <Int32>] [-MaxCount <Int32>] [-EnableAutoScaling] [-Mode <String>] [-NodeLabel <Hashtable>]
+ [-Tag <Hashtable>] [-NodeTaint <String[]>] [-AksCustomHeader <Hashtable>] [-IfMatch <String>]
+ [-IfNoneMatch <String>] [-NetworkProfile <AgentPoolNetworkProfile>] [-ScaleDownMode <String>]
+ [-EnableSecureBoot] [-EnableVtpm] [-SshAccess <String>] [-MaxSurge <String>] [-MaxUnavailable <String>]
+ [-DrainTimeoutInMinute <Int32>] [-NodeSoakDurationInMinute <Int32>] [-UndrainableNodeBehavior <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [-SubscriptionId <String>] [<CommonParameters>]
 ```
@@ -30,16 +35,20 @@ New-AzAksNodePool -ResourceGroupName <String> -ClusterName <String> -Name <Strin
 ### ParentObjectParameterSet
 ```
 New-AzAksNodePool -Name <String> -ClusterObject <PSKubernetesCluster> [-Count <Int32>] [-OsDiskSize <Int32>]
- [-VmSize <String>] [-VnetSubnetID <String>] [-MaxPodCount <Int32>] [-OsType <String>] [-OsSKU <String>]
- [-EnableNodePublicIp] [-NodePublicIPPrefixID <String>] [-ScaleSetPriority <String>]
+ [-OSDiskType <String>] [-VmSize <String>] [-VnetSubnetID <String>] [-WorkloadRuntime <String>]
+ [-MaxPodCount <Int32>] [-MessageOfTheDay <String>] [-OsType <String>] [-PodIPAllocationMode <String>]
+ [-OsSKU <String>] [-EnableNodePublicIp] [-NodePublicIPPrefixID <String>] [-ScaleSetPriority <String>]
  [-ScaleSetEvictionPolicy <String>] [-VmSetType <String>] [-AvailabilityZone <String[]>] [-Force]
- [-EnableEncryptionAtHost] [-EnableUltraSSD] [-LinuxOSConfig <LinuxOSConfig>] [-KubeletConfig <KubeletConfig>]
- [-MaxSurge <String>] [-PPG <String>] [-SpotMaxPrice <Double>] [-EnableFIPS] [-GpuInstanceProfile <String>]
- [-HostGroupID <String>] [-PodSubnetID <String>] [-KubernetesVersion <String>] [-MinCount <Int32>]
- [-MaxCount <Int32>] [-EnableAutoScaling] [-Mode <String>] [-NodeLabel <Hashtable>] [-Tag <Hashtable>]
- [-NodeTaint <String[]>] [-AksCustomHeader <Hashtable>] [-IfMatch <String>] [-ifNoneMatch <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [-SubscriptionId <String>] [<CommonParameters>]
+ [-EnableEncryptionAtHost] [-EnableUltraSSD] [-GatewayPublicIPPrefixSize <Int32>] [-GPUDriver <String>]
+ [-LinuxOSConfig <LinuxOSConfig>] [-KubeletConfig <KubeletConfig>] [-PPG <String>] [-SpotMaxPrice <Double>]
+ [-EnableFIPS] [-GpuInstanceProfile <String>] [-HostGroupID <String>] [-PodSubnetID <String>]
+ [-KubernetesVersion <String>] [-MinCount <Int32>] [-MaxCount <Int32>] [-EnableAutoScaling] [-Mode <String>]
+ [-NodeLabel <Hashtable>] [-Tag <Hashtable>] [-NodeTaint <String[]>] [-AksCustomHeader <Hashtable>]
+ [-IfMatch <String>] [-IfNoneMatch <String>] [-NetworkProfile <AgentPoolNetworkProfile>]
+ [-ScaleDownMode <String>] [-EnableSecureBoot] [-EnableVtpm] [-SshAccess <String>] [-MaxSurge <String>]
+ [-MaxUnavailable <String>] [-DrainTimeoutInMinute <Int32>] [-NodeSoakDurationInMinute <Int32>]
+ [-UndrainableNodeBehavior <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -179,6 +188,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DrainTimeoutInMinute
+The drain timeout for a node. The amount of time (in minutes) to wait on eviction of pods and graceful termination per node. This eviction wait time honors waiting on pod disruption budgets. If this time is exceeded, the upgrade fails. If not specified, the default is 30 minutes.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EnableAutoScaling
 Whether to enable auto-scaler
 
@@ -239,8 +263,38 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnableSecureBoot
+The secure Boot is a feature of Trusted Launch which ensures that only signed operating systems and drivers can boot. For more details, see aka.ms/aks/trustedlaunch.  If not specified, the default is false.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EnableUltraSSD
 whether to enable UltraSSD
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableVtpm
+The vTPM is a Trusted Launch feature for configuring a dedicated secure vault for keys and measurements held locally on the node. For more details, see aka.ms/aks/trustedlaunch. If not specified, the default is false.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -259,6 +313,36 @@ Create node pool even if it already exists
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -GatewayPublicIPPrefixSize
+The Gateway agent pool associates one public IPPrefix for each static egress gateway to provide public egress. The size of Public IPPrefix should be selected by the user. Each node in the agent pool is assigned with one IP from the IPPrefix. The IPPrefix size thus serves as a cap on the size of the Gateway agent pool. Due to Azure public IPPrefix size limitation, the valid value range is [28, 31] (/31 = 2 nodes/IPs, /30 = 4 nodes/IPs, /29 = 8 nodes/IPs, /28 = 16 nodes/IPs). The default value is 31.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -GPUDriver
+Whether to install GPU drivers. When it's not specified, default is Install.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -314,7 +398,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ifNoneMatch
+### -IfNoneMatch
 The request should only proceed if no entity matches this string.
 
 ```yaml
@@ -419,6 +503,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -MaxUnavailable
+The maximum number or percentage of nodes that can be simultaneously unavailable during upgrade. This can either be set to an integer (e.g. &#39;1&#39;) or a percentage (e.g. &#39;5%&#39;). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified, the default is 0. For more information, including best practices, see: https://learn.microsoft.com/en-us/azure/aks/upgrade-cluster
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MessageOfTheDay
+The message of the day for Linux nodes, base64-encoded. A base64-encoded string which will be written to /etc/motd after decoding. This allows customization of the message of the day for Linux nodes. It must not be specified for Windows nodes. It must be a static string (i.e., will be printed raw and not be executed as a script).
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -MinCount
 Minimum number of nodes for auto-scaling.
 
@@ -464,6 +578,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -NetworkProfile
+The network-related settings of an agent pool.
+
+```yaml
+Type: Microsoft.Azure.Management.ContainerService.Models.AgentPoolNetworkProfile
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NodeLabel
 Node pool labels used for building Kubernetes network.
 
@@ -484,6 +613,21 @@ The resource Id of public IP prefix for node pool.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NodeSoakDurationInMinute
+The the soak duration for a node. The amount of time (in minutes) to wait after draining a node and before reimaging it and moving on to next node. If not specified, the default is 0 minutes.
+
+```yaml
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -524,6 +668,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -OSDiskType
+The default is 'Ephemeral' if the VM supports it and has a cache disk larger than the requested OSDiskSizeGB. Otherwise, defaults to 'Managed'. May not be changed after creation. For more information see [Ephemeral OS](https://docs.microsoft.com/azure/aks/cluster-configuration#ephemeral-os).
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -OsSKU
 OsSKU to be used to specify OS SKU. The default is Ubuntu if OSType is Linux. The default is Windows2019 when Kubernetes <= 1.24 or Windows2022 when Kubernetes >= 1.25 if OSType is Windows.
 
@@ -543,6 +702,21 @@ Accept wildcard characters: False
 OsType to be used to specify os type.
 Choose from Linux and Windows.
 Default to Linux.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PodIPAllocationMode
+The Pod IP Allocation Mode. The IP allocation mode for pods in the agent pool. Must be used with podSubnetId. The default is 'DynamicIndividual'.
 
 ```yaml
 Type: System.String
@@ -601,6 +775,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ScaleDownMode
+The scale down mode to use when scaling the Agent Pool. This also effects the cluster autoscaler behavior. If not specified, it defaults to Delete.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ScaleSetEvictionPolicy
 ScaleSetEvictionPolicy to be used to specify eviction policy for low priority virtual machine scale set.
 Default to Delete.
@@ -648,6 +837,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SshAccess
+The sSH access method of an agent pool.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 The ID of the subscription.
 By default, cmdlets are executed in the subscription that is set in the current context. If the user specifies another subscription, the current cmdlet is executed in the subscription specified by the user.
@@ -670,6 +874,21 @@ The tags to be persisted on the agent pool virtual machine scale set.
 
 ```yaml
 Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UndrainableNodeBehavior
+The behavior for undrainable nodes during upgrade. The most common cause of undrainable nodes is Pod Disruption Budgets (PDBs), but other issues, such as pod termination grace period is exceeding the remaining per-node drain timeout or pod is still being in a running state, can also cause undrainable nodes.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -713,6 +932,21 @@ Accept wildcard characters: False
 
 ### -VnetSubnetID
 VNet SubnetID specifies the VNet's subnet identifier.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WorkloadRuntime
+The type of workload a node can run.
 
 ```yaml
 Type: System.String

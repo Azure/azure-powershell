@@ -15,26 +15,18 @@ Update a maintenance configuration in the specified managed cluster.
 ### UpdateExpanded (Default)
 ```
 Update-AzAksMaintenanceConfiguration -ConfigName <String> -ResourceGroupName <String> -ResourceName <String>
- [-SubscriptionId <String>] [-AbsoluteMonthlyDayOfMonth <Int32>] [-AbsoluteMonthlyIntervalMonth <Int32>]
- [-DailyIntervalDay <Int32>] [-MaintenanceWindowDurationHour <Int32>]
- [-MaintenanceWindowNotAllowedDate <IDateSpan[]>] [-MaintenanceWindowStartDate <DateTime>]
- [-MaintenanceWindowStartTime <String>] [-MaintenanceWindowUtcOffset <String>] [-NotAllowedTime <ITimeSpan[]>]
- [-RelativeMonthlyDayOfWeek <String>] [-RelativeMonthlyIntervalMonth <Int32>]
- [-RelativeMonthlyWeekIndex <String>] [-TimeInWeek <ITimeInWeek[]>] [-WeeklyDayOfWeek <String>]
- [-WeeklyIntervalWeek <Int32>] [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-SubscriptionId <String>] [-NotAllowedTime <ITimeSpan[]>] [-TimeInWeek <ITimeInWeek[]>]
+ [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
+ [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
+ [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzAksMaintenanceConfiguration -InputObject <IAksIdentity> [-AbsoluteMonthlyDayOfMonth <Int32>]
- [-AbsoluteMonthlyIntervalMonth <Int32>] [-DailyIntervalDay <Int32>] [-MaintenanceWindowDurationHour <Int32>]
- [-MaintenanceWindowNotAllowedDate <IDateSpan[]>] [-MaintenanceWindowStartDate <DateTime>]
- [-MaintenanceWindowStartTime <String>] [-MaintenanceWindowUtcOffset <String>] [-NotAllowedTime <ITimeSpan[]>]
- [-RelativeMonthlyDayOfWeek <String>] [-RelativeMonthlyIntervalMonth <Int32>]
- [-RelativeMonthlyWeekIndex <String>] [-TimeInWeek <ITimeInWeek[]>] [-WeeklyDayOfWeek <String>]
- [-WeeklyIntervalWeek <Int32>] [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Update-AzAksMaintenanceConfiguration -InputObject <IAksIdentity> [-NotAllowedTime <ITimeSpan[]>]
+ [-TimeInWeek <ITimeInWeek[]>] [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
+ [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
+ [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -75,32 +67,17 @@ Update a maintenance configuration "aks_maintenance_config" in a managed cluster
 
 ## PARAMETERS
 
-### -AbsoluteMonthlyDayOfMonth
-The date of the month.
+### -Break
+Wait for .NET debugger to attach
 
 ```yaml
-Type: System.Int32
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AbsoluteMonthlyIntervalMonth
-Specifies the number of months between each set of occurrences.
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -120,11 +97,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DailyIntervalDay
-Specifies the number of days between each set of occurrences.
+### -DefaultProfile
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: System.Int32
+Type: System.Management.Automation.PSObject
+Parameter Sets: (All)
+Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HttpPipelineAppend
+SendAsync Pipeline Steps to be appended to the front of the pipeline
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[]
 Parameter Sets: (All)
 Aliases:
 
@@ -135,14 +128,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DefaultProfile
-The DefaultProfile parameter is not functional.
-Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+### -HttpPipelinePrepend
+SendAsync Pipeline Steps to be prepended to the front of the pipeline
 
 ```yaml
-Type: System.Management.Automation.PSObject
+Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[]
 Parameter Sets: (All)
-Aliases: AzureRMContext, AzureCredential
+Aliases:
 
 Required: False
 Position: Named
@@ -166,90 +158,6 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -MaintenanceWindowDurationHour
-Length of maintenance window range from 4 to 24 hours.
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MaintenanceWindowNotAllowedDate
-Date ranges on which upgrade is not allowed.
-'utcOffset' applies to this field.
-For example, with 'utcOffset: +02:00' and 'dateSpan' being '2022-12-23' to '2023-01-03', maintenance will be blocked from '2022-12-22 22:00' to '2023-01-03 22:00' in UTC time.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IDateSpan[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MaintenanceWindowStartDate
-The date the maintenance window activates.
-If the current date is before this date, the maintenance window is inactive and will not be used for upgrades.
-If not specified, the maintenance window will be active right away.
-
-```yaml
-Type: System.DateTime
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MaintenanceWindowStartTime
-The start time of the maintenance window.
-Accepted values are from '00:00' to '23:59'.
-'utcOffset' applies to this field.
-For example: '02:00' with 'utcOffset: +02:00' means UTC time '00:00'.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MaintenanceWindowUtcOffset
-The UTC offset in format +/-HH:mm.
-For example, '+05:30' for IST and '-07:00' for PST.
-If not specified, the default is '+00:00'.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -NotAllowedTime
 Time slots on which upgrade is not allowed.
 
@@ -265,11 +173,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RelativeMonthlyDayOfWeek
-Specifies on which day of the week the maintenance occurs.
+### -Proxy
+The URI for the proxy server to use
 
 ```yaml
-Type: System.String
+Type: System.Uri
 Parameter Sets: (All)
 Aliases:
 
@@ -280,11 +188,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RelativeMonthlyIntervalMonth
-Specifies the number of months between each set of occurrences.
+### -ProxyCredential
+Credentials for a proxy server to use for the remote call
 
 ```yaml
-Type: System.Int32
+Type: System.Management.Automation.PSCredential
 Parameter Sets: (All)
 Aliases:
 
@@ -295,18 +203,17 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RelativeMonthlyWeekIndex
-The week index.
-Specifies on which week of the month the dayOfWeek applies.
+### -ProxyUseDefaultCredentials
+Use the default credentials for the proxy
 
 ```yaml
-Type: System.String
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -364,36 +271,6 @@ If two array entries specify the same day of the week, the applied configuration
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ITimeInWeek[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WeeklyDayOfWeek
-Specifies on which day of the week the maintenance occurs.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WeeklyIntervalWeek
-Specifies the number of weeks between each set of occurrences.
-
-```yaml
-Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
