@@ -3182,7 +3182,9 @@ function Invoke-MSIFlow {
         [Parameter(Mandatory=$false)]
         [string]$ArcServerResourceGroupName,
         [Parameter(Mandatory=$false)]
-        [string]$EnvironmentName = $AzureCloud
+        [string]$EnvironmentName = $AzureCloud,
+        [Parameter(Mandatory=$false)]
+        [bool]$UseStableAgent = $false
     )
 
     try {
