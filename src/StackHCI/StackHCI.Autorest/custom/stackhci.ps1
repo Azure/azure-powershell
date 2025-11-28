@@ -2875,6 +2875,128 @@ function Test-ClusterMsiSupport {
     return $result -eq $true
 }
 
+function Enable-ArcOnNodes {
+    param(
+        [Parameter(Mandatory=$true)]
+        [array]$ClusterNodes,
+        [Parameter(Mandatory=$false)]
+        [System.Management.Automation.PSCredential]$Credential,
+        [Parameter(Mandatory=$true)]
+        [string]$ClusterDNSSuffix,
+        [Parameter(Mandatory=$true)]
+        [string]$SubscriptionId,
+        [Parameter(Mandatory=$true)]
+        [string]$ResourceGroupName,
+        [Parameter(Mandatory=$true)]
+        [string]$TenantId,
+        [Parameter(Mandatory=$true)]
+        [string]$Location,
+        [Parameter(Mandatory=$true)]
+        [string]$EnvironmentName,
+        [Parameter(Mandatory=$true)]
+        [string]$AccessToken,
+        [Parameter(Mandatory=$false)]
+        [bool]$UseStableAgent = $false
+    )
+
+    Write-VerboseLog "[Arc Enablement] Starting manual Arc enablement on nodes for environment: $EnvironmentName"
+    
+    $cloudArgument = $EnvironmentName
+    if (($EnvironmentName -eq $AzureCanary) -or ($EnvironmentName -eq $AzurePPE)) {
+        $cloudArgument = $AzureCloud
+    }
+
+    foreach ($node in $ClusterNodes) {
+        $nodeName = $node.Name
+        $nodeFQDN = "$nodeName.$ClusterDNSSuffix"
+        
+        Write-VerboseLog "[Arc Enablement] Processing node: $nodeName"
+
+        $session = $null
+        try {
+            if ($Credential) {
+                $session = New-PSSession -ComputerName $nodeFQDN -Credential $Credential
+            } else {
+                $session = New-PSSession -ComputerName $nodeFQDN
+            }
+            
+            Invoke-Command -Session $session -ScriptBlock {
+                param($subId, $rg, $loc, $tenant, $token, $cloud, $UseStableAgent)
+                
+                $agentPath = "${env:ProgramFiles}\AzureConnectedMachineAgent\azcmagent.exe"
+                
+                # 1. Install Agent if missing
+                if (-not (Test-Path $agentPath)) {
+                    Write-Verbose "Arc agent not found. Downloading and Installing..."
+                    $installerPath = "$env:TEMP\AzureConnectedMachineAgent.msi"
+
+                    $url = 'https://aka.ms/AzureConnectedMachineAgent'
+                    if ($UseStableAgent) {
+                        $url = 'https://aka.ms/hciarcagent'
+                    }
+                    
+                    try {
+                        Invoke-WebRequest -Uri $url -OutFile $installerPath -ErrorAction Stop
+                    }
+                    catch {
+                        throw "Failed to download Azure Connected Machine Agent from $url. Error: $($_.Exception.Message)"
+                    }
+
+                    $installArgs = "/i `"$installerPath`" /qn /l*v `"$env:TEMP\install.log`""
+                    $process = Start-Process msiexec.exe -ArgumentList $installArgs -Wait -PassThru
+                    
+                    if ($process.ExitCode -ne 0) {
+                         throw "Agent installation failed with exit code $($process.ExitCode). Check $env:TEMP\install.log"
+                    }
+                }
+                
+                # 2. Check status
+                if (Test-Path $agentPath) {
+                     $statusJson = & $agentPath show -j | ConvertFrom-Json
+                     $isConnected = $statusJson.status -eq "Connected"
+                
+                     if ($isConnected -and 
+                         ($statusJson.subscriptionId -eq $subId) -and 
+                         ($statusJson.resourceGroup -eq $rg) -and 
+                         ($statusJson.tenantId -eq $tenant)) {
+                         Write-Verbose "Node is already connected to correct Subscription/RG."
+                         return
+                     }
+                }
+                
+                # 3. Connect using the passed token
+                $connectArgs = @("connect", 
+                          "--subscription-id", $subId,
+                          "--resource-group", $rg,
+                          "--tenant-id", $tenant,
+                          "--location", $loc,
+                          "--access-token", $token,
+                          "--cloud", $cloud,
+                          "--correlation-id", $(New-Guid).ToString())
+                
+                Write-Verbose "Executing azcmagent connect..."
+                
+                # Use call operator & to run command and capture stdout/stderr combined
+                $output = & $agentPath $connectArgs 2>&1 | Out-String
+                
+                if ($LASTEXITCODE -ne 0) {
+                    # Now we throw the ACTUAL error message from azcmagent
+                    throw "azcmagent connect failed with exit code $LASTEXITCODE. Details: $output"
+                }
+                
+            } -ArgumentList $SubscriptionId, $ResourceGroupName, $Location, $TenantId, $AccessToken, $cloudArgument, $UseStableAgent
+        }
+        catch {
+            Write-ErrorLog "Failed to enable Arc on node ${nodeName}: $($_.Exception.Message)"
+            throw
+        }
+        finally {
+            if ($session) { Remove-PSSession $session }
+        }
+    }
+    Write-VerboseLog "[Arc Enablement] Completed successfully on all nodes."
+}
+
 <#
 Checks whether all nodes in the given cluster are Arc-enabled.
 [bool] Returns $true if all nodes are Arc-enabled, $false otherwise.
@@ -3060,10 +3182,45 @@ function Invoke-MSIFlow {
         Write-NodeEventLog -Message "[MSI Flow] Starting MSI-based cluster registration." -EventID 9133 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName
         $resource = Get-AzResource -ResourceId $ResourceId -ApiVersion $RPAPIVersion -ErrorAction Ignore
 
-        #Confirm Arc is enabled on all nodes
+        # Check if nodes are already Arc enabled
         $allArcEnabled = Test-ClusterArcEnabled -ClusterNodes $ClusterNodes -Credential $Credential -ClusterDNSSuffix $ClusterDNSSuffix -SubscriptionId $SubscriptionId -ArcResourceGroupName $ArcServerResourceGroupName
+        
         if (-not $allArcEnabled) {
-            throw [System.InvalidOperationException]::new("Not all cluster nodes are Arc-enabled. Aborting MSI registration.")
+            Write-VerboseLog "[MSI Flow] Not all nodes are Arc-enabled. Attempting to enable Arc on nodes manually..."
+            
+            # 2. Retrieve Token Locally
+            try {
+                Write-VerboseLog "[MSI Flow] Requesting Access Token for Tenant '$TenantId'"
+                
+                $azToken = Get-AzAccessToken -TenantId $TenantId -ErrorAction Stop
+                $tokenString = $azToken.Token
+
+                if ($tokenString -is [System.Security.SecureString]) {
+                    $tokenString = [System.Net.NetworkCredential]::new("", $tokenString).Password
+                }
+            }
+            catch {
+                throw "Failed to retrieve Azure Access Token for Arc enablement. Error: $($_.Exception.Message)"
+            }
+
+            # 3. Call the manual enablement function with the PlainText token
+            Enable-ArcOnNodes -ClusterNodes $ClusterNodes `
+                                    -Credential $Credential `
+                                    -ClusterDNSSuffix $ClusterDNSSuffix `
+                                    -SubscriptionId $SubscriptionId `
+                                    -ResourceGroupName $ArcServerResourceGroupName `
+                                    -TenantId $TenantId `
+                                    -Location $Region `
+                                    -EnvironmentName $EnvironmentName `
+                                    -AccessToken $tokenString `
+                                    -UseStableAgent $UseStableAgent
+            
+            # Re-verify enablement
+            $allArcEnabled = Test-ClusterArcEnabled -ClusterNodes $ClusterNodes -Credential $Credential -ClusterDNSSuffix $ClusterDNSSuffix -SubscriptionId $SubscriptionId -ArcResourceGroupName $ArcServerResourceGroupName
+            
+            if (-not $allArcEnabled) {
+                throw [System.InvalidOperationException]::new("Failed to enable Arc on all cluster nodes. Aborting registration.")
+            }
         }
 
         if($Null -eq $resource.Properties.ResourceProviderObjectId)
