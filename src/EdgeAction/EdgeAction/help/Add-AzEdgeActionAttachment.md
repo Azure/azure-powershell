@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.EdgeAction-help.xml
 Module Name: Az.EdgeAction
 online version: https://learn.microsoft.com/powershell/module/az.edgeaction/add-azedgeactionattachment
 schema: 2.0.0
@@ -14,41 +14,43 @@ A long-running resource action.
 
 ### AddExpanded (Default)
 ```
-Add-AzEdgeActionAttachment -EdgeActionName <String> -ResourceGroupName <String> -AttachedResourceId <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Add-AzEdgeActionAttachment -EdgeActionName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -AttachedResourceId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### AddViaJsonString
+```
+Add-AzEdgeActionAttachment -EdgeActionName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### AddViaJsonFilePath
+```
+Add-AzEdgeActionAttachment -EdgeActionName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Add
 ```
-Add-AzEdgeActionAttachment -EdgeActionName <String> -ResourceGroupName <String> -Body <IEdgeActionAttachment>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+Add-AzEdgeActionAttachment -EdgeActionName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -Body <IEdgeActionAttachment> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### AddViaIdentityExpanded
+```
+Add-AzEdgeActionAttachment -InputObject <IEdgeActionIdentity> -AttachedResourceId <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### AddViaIdentity
 ```
 Add-AzEdgeActionAttachment -InputObject <IEdgeActionIdentity> -Body <IEdgeActionAttachment>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### AddViaIdentityExpanded
-```
-Add-AzEdgeActionAttachment -InputObject <IEdgeActionIdentity> -AttachedResourceId <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### AddViaJsonFilePath
-```
-Add-AzEdgeActionAttachment -EdgeActionName <String> -ResourceGroupName <String> -JsonFilePath <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### AddViaJsonString
-```
-Add-AzEdgeActionAttachment -EdgeActionName <String> -ResourceGroupName <String> -JsonString <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -147,7 +149,7 @@ The name of the Edge Action
 
 ```yaml
 Type: System.String
-Parameter Sets: Add, AddExpanded, AddViaJsonFilePath, AddViaJsonString
+Parameter Sets: AddExpanded, AddViaJsonString, AddViaJsonFilePath, Add
 Aliases:
 
 Required: True
@@ -162,7 +164,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionIdentity
-Parameter Sets: AddViaIdentity, AddViaIdentityExpanded
+Parameter Sets: AddViaIdentityExpanded, AddViaIdentity
 Aliases:
 
 Required: True
@@ -223,7 +225,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Add, AddExpanded, AddViaJsonFilePath, AddViaJsonString
+Parameter Sets: AddExpanded, AddViaJsonString, AddViaJsonFilePath, Add
 Aliases:
 
 Required: True
@@ -239,7 +241,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Add, AddExpanded, AddViaJsonFilePath, AddViaJsonString
+Parameter Sets: AddExpanded, AddViaJsonString, AddViaJsonFilePath, Add
 Aliases:
 
 Required: False
@@ -296,4 +298,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

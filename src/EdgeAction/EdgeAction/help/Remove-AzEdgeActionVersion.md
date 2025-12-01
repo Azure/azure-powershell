@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.EdgeAction-help.xml
 Module Name: Az.EdgeAction
 online version: https://learn.microsoft.com/powershell/module/az.edgeaction/remove-azedgeactionversion
 schema: 2.0.0
@@ -14,21 +14,22 @@ Delete a EdgeActionVersion
 
 ### Delete (Default)
 ```
-Remove-AzEdgeActionVersion -EdgeActionName <String> -ResourceGroupName <String> -Version <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Remove-AzEdgeActionVersion -EdgeActionName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -Version <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### DeleteViaIdentityEdgeAction
+```
+Remove-AzEdgeActionVersion -Version <String> -EdgeActionInputObject <IEdgeActionIdentity>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzEdgeActionVersion -InputObject <IEdgeActionIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### DeleteViaIdentityEdgeAction
-```
-Remove-AzEdgeActionVersion -EdgeActionInputObject <IEdgeActionIdentity> -Version <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -258,4 +259,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

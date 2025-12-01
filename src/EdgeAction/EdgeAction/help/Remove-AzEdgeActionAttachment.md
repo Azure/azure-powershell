@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.EdgeAction-help.xml
 Module Name: Az.EdgeAction
 online version: https://learn.microsoft.com/powershell/module/az.edgeaction/remove-azedgeactionattachment
 schema: 2.0.0
@@ -14,42 +14,44 @@ A long-running resource action.
 
 ### DeleteExpanded (Default)
 ```
-Remove-AzEdgeActionAttachment -EdgeActionName <String> -ResourceGroupName <String>
- -AttachedResourceId <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzEdgeActionAttachment -EdgeActionName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -AttachedResourceId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### DeleteViaJsonString
+```
+Remove-AzEdgeActionAttachment -EdgeActionName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### DeleteViaJsonFilePath
+```
+Remove-AzEdgeActionAttachment -EdgeActionName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Delete
 ```
-Remove-AzEdgeActionAttachment -EdgeActionName <String> -ResourceGroupName <String>
- -Body <IEdgeActionAttachment> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### DeleteViaIdentity
-```
-Remove-AzEdgeActionAttachment -InputObject <IEdgeActionIdentity> -Body <IEdgeActionAttachment>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzEdgeActionAttachment -EdgeActionName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -Body <IEdgeActionAttachment> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentityExpanded
 ```
 Remove-AzEdgeActionAttachment -InputObject <IEdgeActionIdentity> -AttachedResourceId <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
-### DeleteViaJsonFilePath
+### DeleteViaIdentity
 ```
-Remove-AzEdgeActionAttachment -EdgeActionName <String> -ResourceGroupName <String> -JsonFilePath <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### DeleteViaJsonString
-```
-Remove-AzEdgeActionAttachment -EdgeActionName <String> -ResourceGroupName <String> -JsonString <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Remove-AzEdgeActionAttachment -InputObject <IEdgeActionIdentity> -Body <IEdgeActionAttachment>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -147,7 +149,7 @@ The name of the Edge Action
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete, DeleteExpanded, DeleteViaJsonFilePath, DeleteViaJsonString
+Parameter Sets: DeleteExpanded, DeleteViaJsonString, DeleteViaJsonFilePath, Delete
 Aliases:
 
 Required: True
@@ -162,7 +164,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionIdentity
-Parameter Sets: DeleteViaIdentity, DeleteViaIdentityExpanded
+Parameter Sets: DeleteViaIdentityExpanded, DeleteViaIdentity
 Aliases:
 
 Required: True
@@ -238,7 +240,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete, DeleteExpanded, DeleteViaJsonFilePath, DeleteViaJsonString
+Parameter Sets: DeleteExpanded, DeleteViaJsonString, DeleteViaJsonFilePath, Delete
 Aliases:
 
 Required: True
@@ -254,7 +256,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete, DeleteExpanded, DeleteViaJsonFilePath, DeleteViaJsonString
+Parameter Sets: DeleteExpanded, DeleteViaJsonString, DeleteViaJsonFilePath, Delete
 Aliases:
 
 Required: False
@@ -311,4 +313,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzEdgeActionVersionCode')
 Describe 'Get-AzEdgeActionVersionCode' {
     BeforeAll {
         $script:resourceGroupName = "powershelltests"
-        $script:edgeActionName = "eagetcode" + (RandomString $false 8)
+        $script:edgeActionName = "eagetcode02"
         $script:version = "v1"
         $script:testFilePath = Join-Path $PSScriptRoot 'test_handler.js'
         
@@ -74,6 +74,37 @@ Describe 'Get-AzEdgeActionVersionCode' {
         # Verify the decoded content has reasonable size (ZIP file should be > 0 bytes)
         $bytes = [System.Convert]::FromBase64String($result.Content)
         $bytes.Length | Should -BeGreaterThan 0
+    }
+
+    It 'GetAndSave' {
+        # Test getting version code and saving to file
+        $outputDir = Join-Path $PSScriptRoot 'output'
+        
+        # Clean up output directory if it exists
+        if (Test-Path $outputDir) {
+            Remove-Item -Path $outputDir -Recurse -Force
+        }
+        
+        $result = Get-AzEdgeActionVersionCode -ResourceGroupName $script:resourceGroupName `
+            -EdgeActionName $script:edgeActionName `
+            -Version $script:version `
+            -OutputPath $outputDir
+        
+        $result | Should -Not -BeNullOrEmpty
+        $result.Message | Should -Be "Version code saved successfully"
+        $result.FilePath | Should -Not -BeNullOrEmpty
+        
+        # Verify file was created
+        Test-Path $result.FilePath | Should -Be $true
+        
+        # Verify the file has content (should be a ZIP file)
+        $fileInfo = Get-Item $result.FilePath
+        $fileInfo.Length | Should -BeGreaterThan 0
+        
+        # Clean up
+        if (Test-Path $outputDir) {
+            Remove-Item -Path $outputDir -Recurse -Force
+        }
     }
 
     It 'GetViaIdentityEdgeAction' -skip {

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.EdgeAction-help.xml
 Module Name: Az.EdgeAction
 online version: https://learn.microsoft.com/powershell/module/az.edgeaction/remove-azedgeaction
 schema: 2.0.0
@@ -15,13 +15,14 @@ Delete a EdgeAction
 ### Delete (Default)
 ```
 Remove-AzEdgeAction -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzEdgeAction -InputObject <IEdgeActionIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -221,4 +222,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

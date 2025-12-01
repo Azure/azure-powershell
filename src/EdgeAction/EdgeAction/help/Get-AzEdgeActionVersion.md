@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.EdgeAction-help.xml
 Module Name: Az.EdgeAction
 online version: https://learn.microsoft.com/powershell/module/az.edgeaction/get-azedgeactionversion
 schema: 2.0.0
@@ -20,19 +20,20 @@ Get-AzEdgeActionVersion -EdgeActionName <String> -ResourceGroupName <String> [-S
 
 ### Get
 ```
-Get-AzEdgeActionVersion -EdgeActionName <String> -ResourceGroupName <String> -Version <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentity
-```
-Get-AzEdgeActionVersion -InputObject <IEdgeActionIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzEdgeActionVersion -EdgeActionName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ -Version <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentityEdgeAction
 ```
-Get-AzEdgeActionVersion -EdgeActionInputObject <IEdgeActionIdentity> -Version <String>
+Get-AzEdgeActionVersion -Version <String> -EdgeActionInputObject <IEdgeActionIdentity>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzEdgeActionVersion -InputObject <IEdgeActionIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -92,7 +93,7 @@ The name of the Edge Action
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -123,7 +124,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -139,7 +140,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: False
@@ -178,4 +179,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

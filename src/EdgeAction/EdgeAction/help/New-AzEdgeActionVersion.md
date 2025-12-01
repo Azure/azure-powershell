@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.EdgeAction-help.xml
 Module Name: Az.EdgeAction
 online version: https://learn.microsoft.com/powershell/module/az.edgeaction/new-azedgeactionversion
 schema: 2.0.0
@@ -14,37 +14,38 @@ Create a EdgeActionVersion
 
 ### CreateExpanded (Default)
 ```
-New-AzEdgeActionVersion -EdgeActionName <String> -ResourceGroupName <String> -Version <String>
- -Location <String> [-SubscriptionId <String>] [-DeploymentType <String>] [-IsDefaultVersion <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityEdgeAction
-```
-New-AzEdgeActionVersion -EdgeActionInputObject <IEdgeActionIdentity> -Version <String>
- -Resource <IEdgeActionVersion> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CreateViaIdentityEdgeActionExpanded
-```
-New-AzEdgeActionVersion -EdgeActionInputObject <IEdgeActionIdentity> -Version <String> -Location <String>
- [-DeploymentType <String>] [-IsDefaultVersion <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaJsonFilePath
-```
-New-AzEdgeActionVersion -EdgeActionName <String> -ResourceGroupName <String> -Version <String>
- -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+New-AzEdgeActionVersion -Version <String> -EdgeActionName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -Location <String> [-DeploymentType <String>] [-IsDefaultVersion <String>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
-New-AzEdgeActionVersion -EdgeActionName <String> -ResourceGroupName <String> -Version <String>
- -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+New-AzEdgeActionVersion -Version <String> -EdgeActionName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzEdgeActionVersion -Version <String> -EdgeActionName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityEdgeActionExpanded
+```
+New-AzEdgeActionVersion -Version <String> -EdgeActionInputObject <IEdgeActionIdentity> -Location <String>
+ [-DeploymentType <String>] [-IsDefaultVersion <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityEdgeAction
+```
+New-AzEdgeActionVersion -Version <String> -EdgeActionInputObject <IEdgeActionIdentity>
+ -Resource <IEdgeActionVersion> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -119,7 +120,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionIdentity
-Parameter Sets: CreateViaIdentityEdgeAction, CreateViaIdentityEdgeActionExpanded
+Parameter Sets: CreateViaIdentityEdgeActionExpanded, CreateViaIdentityEdgeAction
 Aliases:
 
 Required: True
@@ -134,7 +135,7 @@ The name of the Edge Action
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -240,7 +241,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -256,7 +257,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -343,4 +344,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

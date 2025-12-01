@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzEdgeActionVersion'))
 Describe 'New-AzEdgeActionVersion' {
     BeforeAll {
         $script:resourceGroupName = "powershelltests"
-        $script:edgeActionName = "eaver" + (RandomString $false 8)
+        $script:edgeActionName = "eaverfixed01"
         
         # Create edge action for version testing
         New-AzEdgeAction -ResourceGroupName $script:resourceGroupName `

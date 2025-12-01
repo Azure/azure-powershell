@@ -15,7 +15,7 @@ Locale: {{ Update Locale }}
 A long-running resource action.
 
 ### [Deploy-AzEdgeActionVersionCode](Deploy-AzEdgeActionVersionCode.md)
-A long-running resource action.
+Deploy Edge Action version code from a file.
 
 ### [Get-AzEdgeAction](Get-AzEdgeAction.md)
 Get a EdgeAction

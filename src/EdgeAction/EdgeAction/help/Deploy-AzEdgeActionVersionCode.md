@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.EdgeAction-help.xml
 Module Name: Az.EdgeAction
 online version: https://learn.microsoft.com/powershell/module/az.edgeaction/deploy-azedgeactionversioncode
 schema: 2.0.0
@@ -13,9 +13,10 @@ Deploy Edge Action version code from a file.
 ## SYNTAX
 
 ```
-Deploy-AzEdgeActionVersionCode -EdgeActionName <String> -ResourceGroupName <String> -Version <String>
- -FilePath <String> [-SubscriptionId <String>] [-DeploymentType <String>] [-Name <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Deploy-AzEdgeActionVersionCode -ResourceGroupName <String> -EdgeActionName <String> -Version <String>
+ [-SubscriptionId <String>] -FilePath <String> [-DeploymentType <String>] [-Name <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -253,4 +254,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
