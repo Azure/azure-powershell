@@ -85,7 +85,9 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string[] securityPostureExcludeExtension = null,
             bool? enableProxyAgent = null,
             bool? addProxyAgentExtension = null,
-            string zonePlacementPolicy = null
+            string zonePlacementPolicy = null,
+            string[] includeZone = null,
+            string[] excludeZone = null
             )
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
@@ -205,7 +207,9 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         OrchestrationMode = orchestrationMode,
                         Placement = new Placement
                         {
-                            ZonePlacementPolicy = zonePlacementPolicy
+                            ZonePlacementPolicy = zonePlacementPolicy,
+                            IncludeZones = includeZone,
+                            ExcludeZones = excludeZone
                         }
                     };
                     if (auxAuthHeader != null)
@@ -260,7 +264,9 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string[] securityPostureExcludeExtension = null,
             bool? enableProxyAgent = null,
             bool? addProxyAgentExtension = null,
-            string zonePlacementPolicy = null
+            string zonePlacementPolicy = null,
+            string[] includeZone = null,
+            string[] excludeZone = null
             )
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
@@ -362,7 +368,9 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         OrchestrationMode = orchestrationMode,
                         Placement = new Placement
                         {
-                            ZonePlacementPolicy = zonePlacementPolicy
+                            ZonePlacementPolicy = zonePlacementPolicy,
+                            IncludeZones = includeZone,
+                            ExcludeZones = excludeZone
                         }
                     };
                     if (auxAuthHeader != null)

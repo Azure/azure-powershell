@@ -431,6 +431,18 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             HelpMessage = "The configuration parameters used to limit the number of virtual machines per availability zone in the virtual machine scale set.")]
         public int MaxInstancePercentPerZoneValue { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "This property supplements the 'zonePlacementPolicy' property. If 'zonePlacementPolicy' is set to 'Any', availability zone selected by the system must be present in the list of availability zones passed with 'includeZones'. If 'includeZones' is not provided, all availability zones in region will be considered for selection.")]
+        [ValidateNotNullOrEmpty]
+        public string[] IncludeZone { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "This property supplements the 'zonePlacementPolicy' property. If 'zonePlacementPolicy' is set to 'Any', availability zone selected by the system must not be present in the list of availability zones passed with 'excludeZones'. If 'excludeZones' is not provided, all availability zones in region will be considered for selection.")]
+        [ValidateNotNullOrEmpty]
+        public string[] ExcludeZone { get; set; }
+
         protected override void ProcessRecord()
         {
             if (ShouldProcess("VirtualMachineScaleSet", "New"))
@@ -1166,6 +1178,24 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     this.Overprovision = false;
                 }
+            }
+
+            if (this.IsParameterBound(c => c.IncludeZone))
+            {
+                if (vPlacement == null)
+                {
+                    vPlacement = new Placement();
+                }
+                vPlacement.IncludeZones = this.IncludeZone;
+            }
+
+            if (this.IsParameterBound(c => c.ExcludeZone))
+            {
+                if (vPlacement == null)
+                {
+                    vPlacement = new Placement();
+                }
+                vPlacement.ExcludeZones = this.ExcludeZone;
             }
 
             if (this.IsParameterBound(c => c.MaxZoneCount))

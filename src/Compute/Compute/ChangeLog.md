@@ -20,6 +20,8 @@
 
 -->
 ## Upcoming Release
+* Added new parameters `ZonePlacementPolicy`, `maxZoneCount`, `enableMaxInstancePercentPerZone`, and `maxInstancePercentPerZoneValue` to `New-AzVmssConfig` and `Update-AzVmss` cmdlets.
+* Added new parameters `IncludeZone` and `ExcludeZone` to cmdlets `New-AzVmss` and `New-AzVmssConfig` cmdlets.
 
 ## Version 11.0.0
 * Improved user experience and consistency. This may introduce breaking changes. Please refer to [here](https://go.microsoft.com/fwlink/?linkid=2340249).
