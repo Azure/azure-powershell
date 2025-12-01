@@ -61,10 +61,10 @@ RequiredAssemblies = 'Microsoft.Azure.PowerShell.AutoMapper.dll',
                'NetworkSecurityPerimeter.Autorest/bin/Az.NetworkSecurityPerimeter.private.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
-# ScriptsToProcess = @()
+ScriptsToProcess = @()
 
 # Type files (.ps1xml) to be loaded when importing this module
-# TypesToProcess = @()
+TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
 FormatsToProcess = 'Network.generated.format.ps1xml', 
@@ -482,9 +482,9 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
                'New-AzNetworkWatcherPacketCapture', 
                'New-AzNetworkWatcherPacketCaptureV2', 
                'New-AzNetworkWatcherProtocolConfiguration', 
-               'New-AzO365PolicyProperty', 'New-AzOffice365PolicyProperty', 
-               'New-AzP2sVpnGateway', 'New-AzPacketCaptureFilterConfig', 
-               'New-AzPacketCaptureScopeConfig', 
+               'New-AzNvaInterfaceConfiguration', 'New-AzO365PolicyProperty', 
+               'New-AzOffice365PolicyProperty', 'New-AzP2sVpnGateway', 
+               'New-AzPacketCaptureFilterConfig', 'New-AzPacketCaptureScopeConfig', 
                'New-AzPacketCaptureSettingsConfig', 'New-AzPrivateDnsZoneConfig', 
                'New-AzPrivateDnsZoneGroup', 'New-AzPrivateEndpoint', 
                'New-AzPrivateEndpointIpConfiguration', 'New-AzPrivateLinkService', 
@@ -798,7 +798,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = 'Azure','ResourceManager','ARM','Network','VirtualNetwork'
+        Tags = 'Azure', 'ResourceManager', 'ARM', 'Network', 'VirtualNetwork'
 
         # A URL to the license for this module.
         LicenseUri = 'https://aka.ms/azps-license'
@@ -823,7 +823,7 @@ PrivateData = @{
 
     } # End of PSData hashtable
 
- } # End of PrivateData hashtable
+} # End of PrivateData hashtable
 
 # HelpInfo URI of this module
 # HelpInfoURI = ''
