@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
     /// Backup policy Details for create and update
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class BackupPolicyPatch : Microsoft.Rest.Azure.IResource
+    public partial class BackupPolicyPatch
     {
         /// <summary>
         /// Initializes a new instance of the BackupPolicyPatch class.

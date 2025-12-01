@@ -53,7 +53,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         string NextLink { get;  }
         /// <summary>Array of private link resources</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
