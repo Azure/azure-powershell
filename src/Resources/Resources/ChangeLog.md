@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Removed unused libraries
 
 ## Version 9.0.0
 * Removed unavailable variant Get-AzRoleEligibleChildResource cmdlet for InputObject parameter.
