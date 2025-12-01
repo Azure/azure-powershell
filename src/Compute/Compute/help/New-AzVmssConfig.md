@@ -36,7 +36,7 @@ New-AzVmssConfig [[-Overprovision] <Boolean>] [[-Location] <String>] [-EdgeZone 
  [-SkuProfileVmSize <String[]>] [-SkuProfileAllocationStrategy <String>] [-EnableResilientVMCreate]
  [-EnableResilientVMDelete] [-EnableAutomaticZoneRebalance] [-AutomaticZoneRebalanceStrategy <String>]
  [-AutomaticZoneRebalanceBehavior <String>] [-ZonePlacementPolicy <String>] [-MaxZoneCount <Int32>]
- [-EnableMaxInstancePercentPerZone] [-ValueMaxInstancePercentPerZone <Int32>]
+ [-EnableMaxInstancePercentPerZone] [-MaxInstancePercentPerZoneValue <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -64,7 +64,7 @@ New-AzVmssConfig [[-Overprovision] <Boolean>] [[-Location] <String>] [-EdgeZone 
  [-SkuProfileVmSize <String[]>] [-SkuProfileAllocationStrategy <String>] [-EnableResilientVMCreate]
  [-EnableResilientVMDelete] [-EnableAutomaticZoneRebalance] [-AutomaticZoneRebalanceStrategy <String>]
  [-AutomaticZoneRebalanceBehavior <String>] [-ZonePlacementPolicy <String>] [-MaxZoneCount <Int32>]
- [-EnableMaxInstancePercentPerZone] [-ValueMaxInstancePercentPerZone <Int32>]
+ [-EnableMaxInstancePercentPerZone] [-MaxInstancePercentPerZoneValue <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -1242,7 +1242,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ValueMaxInstancePercentPerZone
+### -MaxInstancePercentPerZoneValue
 The configuration parameters used to limit the number of virtual machines per availability zone in the virtual machine scale set.
 
 ```yaml

@@ -429,7 +429,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The configuration parameters used to limit the number of virtual machines per availability zone in the virtual machine scale set.")]
-        public int ValueMaxInstancePercentPerZone { get; set; }
+        public int MaxInstancePercentPerZoneValue { get; set; }
 
         protected override void ProcessRecord()
         {
@@ -1197,9 +1197,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 }
                 vResiliencyPolicy.ZoneAllocationPolicy.MaxInstancePercentPerZonePolicy.Enabled = this.EnableMaxInstancePercentPerZone.IsPresent;
 
-                if (this.IsParameterBound(c => c.ValueMaxInstancePercentPerZone))
+                if (this.IsParameterBound(c => c.MaxInstancePercentPerZoneValue))
                 {
-                    vResiliencyPolicy.ZoneAllocationPolicy.MaxInstancePercentPerZonePolicy.Value = this.ValueMaxInstancePercentPerZone;
+                    vResiliencyPolicy.ZoneAllocationPolicy.MaxInstancePercentPerZonePolicy.Value = this.MaxInstancePercentPerZoneValue;
                 }
             }
 

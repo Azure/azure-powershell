@@ -40,7 +40,7 @@ Update-AzVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
  [-EnableResilientVMDelete <Boolean>] [-EnableAutomaticZoneRebalance <Boolean>]
  [-AutomaticZoneRebalanceStrategy <String>] [-AutomaticZoneRebalanceBehavior <String>]
  [-ZonePlacementPolicy <String>] [-MaxZoneCount <Int32>] [-EnableMaxInstancePercentPerZone]
- [-ValueMaxInstancePercentPerZone <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-MaxInstancePercentPerZoneValue <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -72,7 +72,7 @@ Update-AzVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
  [-EnableResilientVMDelete <Boolean>] [-EnableAutomaticZoneRebalance <Boolean>]
  [-AutomaticZoneRebalanceStrategy <String>] [-AutomaticZoneRebalanceBehavior <String>]
  [-ZonePlacementPolicy <String>] [-MaxZoneCount <Int32>] [-EnableMaxInstancePercentPerZone]
- [-ValueMaxInstancePercentPerZone <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-MaxInstancePercentPerZoneValue <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -1232,7 +1232,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ValueMaxInstancePercentPerZone
+### -MaxInstancePercentPerZoneValue
 The configuration parameters used to limit the number of virtual machines per availability zone in the virtual machine scale set.
 
 ```yaml

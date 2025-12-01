@@ -38,7 +38,7 @@
 * Added `-InstantAccessDurationMinutes` parameter to New-AzSnapshotConfig.
 * Added `SecureVMGuestStateSAS` parameter to `Grant-AzSnapshotAccess`.
 * Updated SDK to use 2025-04-01 version of the ComputeRP API for Compute related cmdlets.
-* Added new parameters `ZonePlacementPolicy`, `maxZoneCount`, `enableMaxInstancePercentPerZone`, and `valueMaxInstancePercentPerZone` to `New-AzVmssConfig` and `Update-AzVmss` cmdlets for VMSS Automatic Zone Placement. 
+* Added new parameters `ZonePlacementPolicy`, `maxZoneCount`, `enableMaxInstancePercentPerZone`, and `maxInstancePercentPerZoneValue` to `New-AzVmssConfig` and `Update-AzVmss` cmdlets for VMSS Automatic Zone Placement. 
 
 ## Version 10.3.0
 * Fixed typo 'DeyAll' to 'DenyAll' in NetworkAccessPolicy description. 

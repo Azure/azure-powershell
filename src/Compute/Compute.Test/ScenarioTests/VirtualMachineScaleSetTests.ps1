@@ -6187,7 +6187,7 @@ function Test-VirtualMachineScaleSetAutomaticZonePlacement
         $subnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Get-AzVirtualNetworkSubnetConfig -Name $subnetName
 
         # VMSS Config
-        $vmssConfig = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName "Standard_D2s_v3" -ZonePlacementPolicy 'Auto' -MaxZoneCount 2 -EnableMaxInstancePercentPerZone -ValueMaxInstancePercentPerZone 50;
+        $vmssConfig = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName "Standard_D2s_v3" -ZonePlacementPolicy 'Auto' -MaxZoneCount 2 -EnableMaxInstancePercentPerZone -MaxInstancePercentPerZoneValue 50;
 
         # Configure IP and NIC
         $ipCfg = New-AzVmssIpConfig -Name "ipconfig1" -SubnetId $subnet.Id
