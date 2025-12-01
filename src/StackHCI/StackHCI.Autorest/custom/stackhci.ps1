@@ -4287,7 +4287,7 @@ Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacErrorCode  -
             if ($isRegistrationWithArcMsiCapable -eq $true)
             {
                 Write-VerboseLog "[Registration] Entered MSI registration path"
-                Invoke-MSIFlow -ClusterNodes $clusterNodes -Credential $Credential -ClusterDNSSuffix $clusterDNSSuffix -ResourceId $resourceId -RPAPIVersion $RPAPIVersion -TenantId $TenantId -Region $Region -ResourceGroupName $ResourceGroupName -Tag $Tag -ResourceName $ResourceName -SubscriptionId $SubscriptionId -registrationOutput $registrationOutput -ClusterNodeSession $clusterNodeSession -IsManagementNode $IsManagementNode -ComputerName $ComputerName -IsWAC:$IsWAC -ArcServerResourceGroupName $ArcServerResourceGroupName -EnvironmentName $EnvironmentName
+                Invoke-MSIFlow -ClusterNodes $clusterNodes -Credential $Credential -ClusterDNSSuffix $clusterDNSSuffix -ResourceId $resourceId -RPAPIVersion $RPAPIVersion -TenantId $TenantId -Region $Region -ResourceGroupName $ResourceGroupName -Tag $Tag -ResourceName $ResourceName -SubscriptionId $SubscriptionId -registrationOutput $registrationOutput -ClusterNodeSession $clusterNodeSession -IsManagementNode $IsManagementNode -ComputerName $ComputerName -IsWAC:$IsWAC -ArcServerResourceGroupName $ArcServerResourceGroupName -EnvironmentName $EnvironmentName -UseStableAgent $useStableAgentVersion
                 $operationStatus = [OperationStatus]::Success
             }
             else
