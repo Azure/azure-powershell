@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '9.3.0'
+ModuleVersion = '9.4.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -53,7 +53,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '5.3.0'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '5.3.1'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'Azure.Data.Tables.dll', 'Azure.Storage.Blobs.dll', 
@@ -250,14 +250,8 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Supported Blob Geo Replication SLA on Storage accounts
-    - ''New-AzStorageAccount''
-    - ''Set-AzStorageAccount''
-* Supported enable Priority Replication when set object replication policy
-    - ''Set-AzStorageObjectReplicationPolicy''
-* Supported get and reconcile NSP Configuration on a Storage account: 
-    - ''Get-AzStorageNetworkSecurityPerimeterConfiguration''
-    - ''Invoke-AzStorageReconcileNetworkSecurityPerimeterConfiguration'''
+        ReleaseNotes = '* Updated Azure.Core from 1.45.0 to 1.47.3
+* Supported Storage account planned failover: ''Invoke-AzStorageAccountFailover'', ''Get-AzStorageAccount'''
 
         # Prerelease string of this module
         Prerelease = 'preview'

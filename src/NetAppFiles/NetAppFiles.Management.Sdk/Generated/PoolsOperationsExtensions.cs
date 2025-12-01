@@ -201,9 +201,9 @@ namespace Microsoft.Azure.Management.NetApp
         /// <param name='poolName'>
         /// The name of the capacity pool
         /// </param>
-        public static void Delete(this IPoolsOperations operations, string resourceGroupName, string accountName, string poolName)
+        public static PoolsDeleteHeaders Delete(this IPoolsOperations operations, string resourceGroupName, string accountName, string poolName)
         {
-                ((IPoolsOperations)operations).DeleteAsync(resourceGroupName, accountName, poolName).GetAwaiter().GetResult();
+                return ((IPoolsOperations)operations).DeleteAsync(resourceGroupName, accountName, poolName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -224,9 +224,12 @@ namespace Microsoft.Azure.Management.NetApp
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IPoolsOperations operations, string resourceGroupName, string accountName, string poolName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<PoolsDeleteHeaders> DeleteAsync(this IPoolsOperations operations, string resourceGroupName, string accountName, string poolName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, accountName, poolName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, accountName, poolName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Create or Update a capacity pool
@@ -333,9 +336,9 @@ namespace Microsoft.Azure.Management.NetApp
         /// <param name='poolName'>
         /// The name of the capacity pool
         /// </param>
-        public static void BeginDelete(this IPoolsOperations operations, string resourceGroupName, string accountName, string poolName)
+        public static PoolsDeleteHeaders BeginDelete(this IPoolsOperations operations, string resourceGroupName, string accountName, string poolName)
         {
-                ((IPoolsOperations)operations).BeginDeleteAsync(resourceGroupName, accountName, poolName).GetAwaiter().GetResult();
+                return ((IPoolsOperations)operations).BeginDeleteAsync(resourceGroupName, accountName, poolName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -356,9 +359,12 @@ namespace Microsoft.Azure.Management.NetApp
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IPoolsOperations operations, string resourceGroupName, string accountName, string poolName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<PoolsDeleteHeaders> BeginDeleteAsync(this IPoolsOperations operations, string resourceGroupName, string accountName, string poolName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, accountName, poolName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, accountName, poolName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// List all capacity pools in the NetApp Account

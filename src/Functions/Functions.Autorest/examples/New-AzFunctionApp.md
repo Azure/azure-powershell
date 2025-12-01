@@ -23,7 +23,7 @@ New-AzFunctionApp -Name MyUniqueFunctionAppName `
 
 This command creates a PowerShell function app which will be hosted in a service plan.
 
-### Example 3: Create a function app using a using a private ACR image.
+### Example 3: Create a function app using a private ACR image.
 
 Note that the service plan and storage account must exist before this operation.
 
@@ -35,9 +35,9 @@ New-AzFunctionApp -Name MyUniqueFunctionAppName `
                   -DockerImageName myacr.azurecr.io/myimage:tag
 ```
 
-This command creates a function app using a using a private ACR image.
+This command creates a function app using a private ACR image.
 
-### Example 4: Create a function app on container app.
+### Example 4: Create a function app on a container app.
 
 ```powershell
 New-AzFunctionApp -Name MyUniqueFunctionAppName `
@@ -47,4 +47,16 @@ New-AzFunctionApp -Name MyUniqueFunctionAppName `
                   -WorkloadProfileName MyWorkloadProfileName
 ```
 
-This command create a function app on container app using the default .Net image.
+This command creates a function app on a container app using the default .NET image.
+
+### Example 5: Create a PowerShell function app hosted in a Flex Consumption plan.
+
+```powershell
+New-AzFunctionApp -Name MyUniqueFunctionAppName `
+                  -ResourceGroupName MyResourceGroupName `
+                  -FlexConsumptionLocation LocationWhereFlexConsumptionIsSupported `
+                  -StorageAccountName MyStorageAccountName `
+                  -Runtime PowerShell
+```
+
+This command creates a PowerShell function app hosted in a Flex Consumption plan.

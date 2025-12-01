@@ -14,22 +14,16 @@ namespace Microsoft.Azure.Management.NetApp
     public partial interface INetAppResourceOperations
     {
         /// <summary>
-        /// Check if a resource name is available.
+        /// Check if a file path is available.
         /// </summary>
         /// <remarks>
-        /// Check if a resource name is available.
+        /// Check if a file path is available.
         /// </remarks>
         /// <param name='location'>
         /// The name of the Azure region.
         /// </param>
-        /// <param name='name'>
-        /// Resource name to verify.
-        /// </param>
-        /// <param name='type'>
-        /// Resource type used for verification.
-        /// </param>
-        /// <param name='resourceGroup'>
-        /// Resource group name.
+        /// <param name='body'>
+        /// The request body
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -43,28 +37,19 @@ namespace Microsoft.Azure.Management.NetApp
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<CheckAvailabilityResponse>> CheckNameAvailabilityWithHttpMessagesAsync(string location, string name, string type, string resourceGroup, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<CheckAvailabilityResponse>> CheckFilePathAvailabilityWithHttpMessagesAsync(string location, FilePathAvailabilityRequest body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Check if a file path is available.
+        /// Check if a resource name is available.
         /// </summary>
         /// <remarks>
-        /// Check if a file path is available.
+        /// Check if a resource name is available.
         /// </remarks>
         /// <param name='location'>
         /// The name of the Azure region.
         /// </param>
-        /// <param name='name'>
-        /// File path to verify.
-        /// </param>
-        /// <param name='subnetId'>
-        /// The Azure Resource URI for a delegated subnet. Must have the delegation
-        /// Microsoft.NetApp/volumes
-        /// </param>
-        /// <param name='availabilityZone'>
-        /// The Azure Resource logical availability zone which is used within zone
-        /// mapping lookup for the subscription and region. The lookup will retrieve
-        /// the physical zone where volume is placed.
+        /// <param name='body'>
+        /// The request body
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -78,7 +63,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<CheckAvailabilityResponse>> CheckFilePathAvailabilityWithHttpMessagesAsync(string location, string name, string subnetId, string availabilityZone = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<CheckAvailabilityResponse>> CheckNameAvailabilityWithHttpMessagesAsync(string location, ResourceNameAvailabilityRequest body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Check if a quota is available.
@@ -89,14 +74,8 @@ namespace Microsoft.Azure.Management.NetApp
         /// <param name='location'>
         /// The name of the Azure region.
         /// </param>
-        /// <param name='name'>
-        /// Name of the resource to verify.
-        /// </param>
-        /// <param name='type'>
-        /// Resource type used for verification.
-        /// </param>
-        /// <param name='resourceGroup'>
-        /// Resource group name.
+        /// <param name='body'>
+        /// The request body
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -110,7 +89,33 @@ namespace Microsoft.Azure.Management.NetApp
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<CheckAvailabilityResponse>> CheckQuotaAvailabilityWithHttpMessagesAsync(string location, string name, string type, string resourceGroup, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<CheckAvailabilityResponse>> CheckQuotaAvailabilityWithHttpMessagesAsync(string location, QuotaAvailabilityRequest body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Get details of the specified network sibling set.
+        /// </summary>
+        /// <remarks>
+        /// Get details of the specified network sibling set.
+        /// </remarks>
+        /// <param name='location'>
+        /// The name of the Azure region.
+        /// </param>
+        /// <param name='body'>
+        /// The request body
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<NetworkSiblingSet>> QueryNetworkSiblingSetWithHttpMessagesAsync(string location, QueryNetworkSiblingSetRequest body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Provides storage to network proximity and logical zone mapping information.
@@ -136,22 +141,16 @@ namespace Microsoft.Azure.Management.NetApp
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RegionInfo>> QueryRegionInfoWithHttpMessagesAsync(string location, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Get details of the specified network sibling set.
+        /// Update the network features of the specified network sibling set.
         /// </summary>
         /// <remarks>
-        /// Get details of the specified network sibling set.
+        /// Update the network features of the specified network sibling set.
         /// </remarks>
         /// <param name='location'>
         /// The name of the Azure region.
         /// </param>
-        /// <param name='networkSiblingSetId'>
-        /// Network Sibling Set ID for a group of volumes sharing networking resources
-        /// in a subnet.
-        /// </param>
-        /// <param name='subnetId'>
-        /// The Azure Resource URI for a delegated subnet. Must have the delegation
-        /// Microsoft.NetApp/volumes. Example
-        /// /subscriptions/subscriptionId/resourceGroups/resourceGroup/providers/Microsoft.Network/virtualNetworks/testVnet/subnets/{mySubnet}
+        /// <param name='body'>
+        /// The request body
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -165,7 +164,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<NetworkSiblingSet>> QueryNetworkSiblingSetWithHttpMessagesAsync(string location, string networkSiblingSetId, string subnetId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<NetworkSiblingSet,NetAppResourceUpdateNetworkSiblingSetHeaders>> UpdateNetworkSiblingSetWithHttpMessagesAsync(string location, UpdateNetworkSiblingSetRequest body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Update the network features of the specified network sibling set.
@@ -176,21 +175,8 @@ namespace Microsoft.Azure.Management.NetApp
         /// <param name='location'>
         /// The name of the Azure region.
         /// </param>
-        /// <param name='networkSiblingSetId'>
-        /// Network Sibling Set ID for a group of volumes sharing networking resources
-        /// in a subnet.
-        /// </param>
-        /// <param name='subnetId'>
-        /// The Azure Resource URI for a delegated subnet. Must have the delegation
-        /// Microsoft.NetApp/volumes. Example
-        /// /subscriptions/subscriptionId/resourceGroups/resourceGroup/providers/Microsoft.Network/virtualNetworks/testVnet/subnets/{mySubnet}
-        /// </param>
-        /// <param name='networkSiblingSetStateId'>
-        /// Network sibling set state Id identifying the current state of the sibling
-        /// set.
-        /// </param>
-        /// <param name='networkFeatures'>
-        /// Network features available to the volume.
+        /// <param name='body'>
+        /// The request body
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -204,46 +190,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<NetworkSiblingSet,NetAppResourceUpdateNetworkSiblingSetHeaders>> UpdateNetworkSiblingSetWithHttpMessagesAsync(string location, string networkSiblingSetId, string subnetId, string networkSiblingSetStateId, string networkFeatures, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Update the network features of the specified network sibling set.
-        /// </summary>
-        /// <remarks>
-        /// Update the network features of the specified network sibling set.
-        /// </remarks>
-        /// <param name='location'>
-        /// The name of the Azure region.
-        /// </param>
-        /// <param name='networkSiblingSetId'>
-        /// Network Sibling Set ID for a group of volumes sharing networking resources
-        /// in a subnet.
-        /// </param>
-        /// <param name='subnetId'>
-        /// The Azure Resource URI for a delegated subnet. Must have the delegation
-        /// Microsoft.NetApp/volumes. Example
-        /// /subscriptions/subscriptionId/resourceGroups/resourceGroup/providers/Microsoft.Network/virtualNetworks/testVnet/subnets/{mySubnet}
-        /// </param>
-        /// <param name='networkSiblingSetStateId'>
-        /// Network sibling set state Id identifying the current state of the sibling
-        /// set.
-        /// </param>
-        /// <param name='networkFeatures'>
-        /// Network features available to the volume.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<NetworkSiblingSet,NetAppResourceUpdateNetworkSiblingSetHeaders>> BeginUpdateNetworkSiblingSetWithHttpMessagesAsync(string location, string networkSiblingSetId, string subnetId, string networkSiblingSetStateId, string networkFeatures, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<NetworkSiblingSet,NetAppResourceUpdateNetworkSiblingSetHeaders>> BeginUpdateNetworkSiblingSetWithHttpMessagesAsync(string location, UpdateNetworkSiblingSetRequest body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
     }
 }
