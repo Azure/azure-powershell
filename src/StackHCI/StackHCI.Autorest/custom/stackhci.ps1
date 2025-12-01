@@ -2984,7 +2984,15 @@ function Enable-ArcOnNodes {
                 $output = & $agentPath $connectArgs 2>&1 | Out-String
                 
                 if ($LASTEXITCODE -ne 0) {
-                    # Now we throw the ACTUAL error message from azcmagent
+                    if ($output -match "Forbidden" -or $output -match "AuthorizationFailed" -or $output -match "access is denied") {
+                        $errorMsg = "PERMISSIONS ERROR: Failed to onboard node '$env:COMPUTERNAME' to Azure Arc.`n" +
+                                    "REASON: Your account lacks the required permissions on Resource Group '$rg'.`n" +
+                                    "ACTION: Ensure your account has ONE of the following roles:`n" +
+                                    "  - 'Owner'`n" +
+                                    "  - 'Contributor'`n" +
+                                    "  - 'Azure Connected Machine Resource Administrator' "
+                        throw $errorMsg
+                    }
                     throw "azcmagent connect failed with exit code $LASTEXITCODE. Details: $output"
                 }
                 
