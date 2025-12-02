@@ -25,7 +25,7 @@ Deploys an existing zip file containing the edge action code. The zip file is en
 ### Example 4: Deploy with a custom deployment name
 
 ```powershell
-Deploy-AzEdgeActionVersionCode -ResourceGroupName "myResourceGroup" -EdgeActionName "myEdgeAction" -Version "v1" -FilePath "C:\code\handler.js" -DeploymentName "production-deploy-001"
+Deploy-AzEdgeActionVersionCode -ResourceGroupName "myResourceGroup" -EdgeActionName "myEdgeAction" -Version "v1" -FilePath "C:\code\handler.js" -Name "production-deploy-001"
 ```
 
 Deploys code with a custom deployment name for tracking purposes.

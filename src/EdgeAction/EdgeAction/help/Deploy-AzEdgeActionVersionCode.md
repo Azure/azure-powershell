@@ -51,7 +51,7 @@ The zip file is encoded in base64 and uploaded.
 
 ### Example 4: Deploy with a custom deployment name
 ```powershell
-Deploy-AzEdgeActionVersionCode -ResourceGroupName "myResourceGroup" -EdgeActionName "myEdgeAction" -Version "v1" -FilePath "C:\code\handler.js" -DeploymentName "production-deploy-001"
+Deploy-AzEdgeActionVersionCode -ResourceGroupName "myResourceGroup" -EdgeActionName "myEdgeAction" -Version "v1" -FilePath "C:\code\handler.js" -Name "production-deploy-001"
 ```
 
 Deploys code with a custom deployment name for tracking purposes.
