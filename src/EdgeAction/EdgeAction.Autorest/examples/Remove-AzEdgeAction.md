@@ -1,22 +1,8 @@
-### Example 1: {{ Add title here }}
+### Example 1: Delete an edge action
+
 ```powershell
-{{ Add code here }}
+Remove-AzEdgeAction -ResourceGroupName "myResourceGroup" -Name "myEdgeAction"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Deletes the specified edge action and all its associated versions and filters.
 

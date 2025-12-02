@@ -1,22 +1,14 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update an edge action with tags
+
 ```powershell
-{{ Add code here }}
+Update-AzEdgeAction -ResourceGroupName "myResourceGroup" -Name "myEdgeAction" -Tag @{ Environment = "Production"; Team = "Platform" }
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name         Location ProvisioningState SkuName  SkuTier
+----         -------- ----------------- -------  -------
+myEdgeAction global   Succeeded         Standard Standard
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Updates the specified edge action with the provided tags.
 

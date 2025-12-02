@@ -1,22 +1,14 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update an edge action version with tags
+
 ```powershell
-{{ Add code here }}
+Update-AzEdgeActionVersion -ResourceGroupName "myResourceGroup" -EdgeActionName "myEdgeAction" -Version "v1" -Tag @{ Environment = "Production"; Team = "Platform" }
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name Location ProvisioningState
+---- -------- -----------------
+v1   global   Succeeded
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Updates the specified edge action version with the provided tags.
 

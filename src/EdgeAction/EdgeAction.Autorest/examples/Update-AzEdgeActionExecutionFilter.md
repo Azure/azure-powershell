@@ -1,22 +1,14 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update an execution filter with tags
+
 ```powershell
-{{ Add code here }}
+Update-AzEdgeActionExecutionFilter -ResourceGroupName "myResourceGroup" -EdgeActionName "myEdgeAction" -Name "myFilter" -Tag @{ Environment = "Production" }
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name     Location ProvisioningState
+----     -------- -----------------
+myFilter global   Succeeded
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Updates the specified execution filter with the provided tags.
 

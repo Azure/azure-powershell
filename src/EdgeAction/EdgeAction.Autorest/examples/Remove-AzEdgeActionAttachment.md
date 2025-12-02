@@ -1,22 +1,8 @@
-### Example 1: {{ Add title here }}
+### Example 1: Remove an attachment from an edge action
+
 ```powershell
-{{ Add code here }}
+Remove-AzEdgeActionAttachment -ResourceGroupName "myResourceGroup" -EdgeActionName "myEdgeAction" -ProfileName "myProfile" -EndpointName "myEndpoint"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Removes the attachment between the edge action and the specified CDN endpoint.
 

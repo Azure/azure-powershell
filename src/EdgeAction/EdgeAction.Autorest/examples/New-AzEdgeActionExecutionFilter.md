@@ -1,22 +1,14 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create an execution filter for an edge action
+
 ```powershell
-{{ Add code here }}
+New-AzEdgeActionExecutionFilter -ResourceGroupName "myResourceGroup" -EdgeActionName "myEdgeAction" -Name "myFilter" -Location "global" -Order 1
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name     Location ProvisioningState Order
+----     -------- ----------------- -----
+myFilter global   Succeeded         1
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Creates a new execution filter that controls when the edge action is executed.
 

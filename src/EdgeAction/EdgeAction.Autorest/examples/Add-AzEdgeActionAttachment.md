@@ -1,22 +1,8 @@
-### Example 1: {{ Add title here }}
+### Example 1: Attach an edge action to a CDN endpoint
+
 ```powershell
-{{ Add code here }}
+Add-AzEdgeActionAttachment -ResourceGroupName "myResourceGroup" -EdgeActionName "myEdgeAction" -ProfileName "myProfile" -EndpointName "myEndpoint"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Attaches the edge action to the specified CDN endpoint, enabling the edge action to process requests for that endpoint.
 
