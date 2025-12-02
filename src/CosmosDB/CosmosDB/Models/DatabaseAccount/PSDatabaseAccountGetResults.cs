@@ -70,6 +70,8 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
             EnablePartitionMerge = databaseAccountGetResults.EnablePartitionMerge;
             MinimalTlsVersion = databaseAccountGetResults.MinimalTlsVersion;
             EnablePerRegionPerPartitionAutoscale = databaseAccountGetResults.EnablePerRegionPerPartitionAutoscale;
+            EnablePriorityBasedExecution = databaseAccountGetResults.EnablePriorityBasedExecution;
+            DefaultPriorityLevel = databaseAccountGetResults.DefaultPriorityLevel;
         }
 
         //
@@ -245,5 +247,13 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         // Summary:
         //     Gets or sets flag to indicate whether Dynamic Scaling (Per Region Per Partition Autoscale) is enabled.
         public bool? EnablePerRegionPerPartitionAutoscale { get; set; }
+        //
+        // Summary:
+        //     Gets or sets flag to indicate whether Priority Based Execution is enabled.
+        public bool? EnablePriorityBasedExecution { get; set; }
+        //
+        // Summary:
+        //     Gets or sets the DefaultPriorityLevel of the CosmosDB Account.
+        public string DefaultPriorityLevel { get; set; }
     }
 }

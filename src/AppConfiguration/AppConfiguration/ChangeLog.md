@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.0.1
 * Fixed GitHub issue #23731 'Problem with Get-AzAppConfigurationKeyValue when more that 100 records are present'
     - Fixed `NextLink` property to give absolute URI, allowing subsequent pages of results to be retrieved.
 
