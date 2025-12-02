@@ -6,17 +6,46 @@ $componentHash = @{
       "display_name"= "train_data";
       "is_deterministic"= "True";
       "type"= "command";
-      "code"= "azureml:/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/codes/e08a4be4-66c4-477b-acd7-9579fdd0a3f1/versions/1";
-      "environment"= "azureml:/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/environments/AzureML-sklearn-0.24-ubuntu18.04-py37-cpu/versions/1";
+      "code"= "/subscriptions/11111111-2222-3333-4444-123456789101/resourceGroups/ml-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test2/codes/cli-hello-example/versions/1";
+      "environment"= "azureml:/subscriptions/11111111-2222-3333-4444-123456789101/resourceGroups/ml-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test2/environments/openmpi4_1_0-ubuntu22_04/versions/1";
       "command"= "python train.py"
     }
-New-AzMLWorkspaceComponentVersion -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-cli01 -Name componentpwsh01 -Version 1 -ComponentSpec $componentHash
+New-AzMLWorkspaceComponentVersion -ResourceGroupName ml-test -WorkspaceName mlworkspace-test2 -Name componentpwsh01 -Version 1 -ComponentSpec $componentHash
 ```
 
 ```output
-Name SystemDataCreatedAt SystemDataCreatedBy                 SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy            SystemDataLastModifiedByType ResourceGroupName
----- ------------------- -------------------                 ----------------------- ------------------------ ------------------------            ---------------------------- -----------------
-1    6/5/2022 2:06:37 PM UserName (Example)         User                    6/5/2022 2:06:37 PM      UserName (Example)         User                         ml-rg-test
+ComponentSpec                : {
+                                 "name": "componentpwsh01",
+                                 "version": "1",
+                                 "display_name": "train_data",
+                                 "is_deterministic": "True",
+                                 "type": "command",
+                                 "code": "azureml:/subscriptions/11111111-2222-3333-4444-123456789101/resourceGroups/ml-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test2/codes/cli-hello-example/versions/1",
+                                 "environment": "azureml:/subscriptions/11111111-2222-3333-4444-123456789101/resourceGroups/ml-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test2/environments/openmpi4_1_0-ubuntu22_04/versions/1",       
+                                 "resources": {
+                                   "instance_count": "1"
+                                 },
+                                 "command": "python train.py"
+                               }
+Description                  : 
+Id                           : /subscriptions/11111111-2222-3333-4444-123456789101/resourceGroups/ml-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test2/components/componentpwsh01/versions/1
+IsAnonymou                   : False
+IsArchived                   : False
+Name                         : 1
+ProvisioningState            : Succeeded
+ResourceBaseProperty         : {
+                               }
+ResourceGroupName            : ml-test
+SystemDataCreatedAt          : 11/5/2025 7:48:02 AM
+SystemDataCreatedBy          : User Name (Example)
+SystemDataCreatedByType      : User
+SystemDataLastModifiedAt     : 11/5/2025 7:48:02 AM
+SystemDataLastModifiedBy     : User Name (Example)
+SystemDataLastModifiedByType : User
+Tag                          : {
+                               }
+Type                         : Microsoft.MachineLearningServices/workspaces/components/versions
+XmsAsyncOperationTimeout     : 
 ```
 
 Create or update component version
