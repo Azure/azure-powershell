@@ -66,7 +66,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-The location in which to create the server
+Location where the deleted server was originally located
 
 ```yaml
 Type: System.String

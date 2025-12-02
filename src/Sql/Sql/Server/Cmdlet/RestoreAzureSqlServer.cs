@@ -13,12 +13,11 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Sql.Common;
+using Microsoft.Azure.Commands.Sql.Server.Services;
 using Microsoft.Azure.Commands.Sql.Server.Model;
-using Microsoft.Rest.Azure;
+using Microsoft.Azure.Management.Sql.Models;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
@@ -31,6 +30,31 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
     [Cmdlet("Restore", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServer", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true), OutputType(typeof(Model.AzureSqlServerModel))]
     public class RestoreAzureSqlServer : AzureSqlServerCmdletBase
     {
+        /// <summary>
+        /// Gets the deleted server adapter for accessing deleted server information
+        /// </summary>
+        private AzureSqlDeletedServerAdapter DeletedServerAdapter
+        {
+            get
+            {
+                return _deletedServerAdapter ?? (_deletedServerAdapter = new AzureSqlDeletedServerAdapter(DefaultContext));
+            }
+        }
+
+        private AzureSqlDeletedServerAdapter _deletedServerAdapter;
+        
+        /// <summary>
+        /// Stores the deleted server information to use in ApplyUserInputToModel
+        /// </summary>
+        private AzureSqlDeletedServerModel _deletedServerModel;
+
+        /// <summary>
+        /// Gets or sets the name of the resource group to use.
+        /// This is not a parameter for Restore-AzSqlServer - it's retrieved from deleted server metadata.
+        /// Hiding the base class parameter by not applying [Parameter] attribute.
+        /// </summary>
+        public override string ResourceGroupName { get; set; }
+
         /// <summary>
         /// Gets or sets the name of the database server to use.
         /// </summary>
@@ -52,67 +76,71 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         /// <summary>
         /// Check to see if the server already exists as a live server or if there's a deleted server to restore.
         /// </summary>
-        /// <returns>Null if ready to restore. Otherwise throws exception</returns>
+        /// <returns>Null - the deleted server info is stored in _deletedServerModel field</returns>
         protected override IEnumerable<Model.AzureSqlServerModel> GetEntity()
         {
-            // First check if a live server already exists
+            // First retrieve the deleted server to get metadata (including ResourceGroupName)
             try
             {
-                bool serverExists = ModelAdapter.ListServersByResourceGroup(this.ResourceGroupName).Any(s =>
-                    string.Equals(s.ServerName, this.ServerName, StringComparison.OrdinalIgnoreCase));
+                DeletedServer deletedServer = DeletedServerAdapter.GetDeletedServer(this.Location, this.ServerName);
+                _deletedServerModel = DeletedServerAdapter.CreateDeletedServerModelFromResponse(deletedServer);
 
-                if (serverExists)
+                if (_deletedServerModel == null)
                 {
-                    // If we get here, a live server exists - cannot restore
+                    // No deleted server found
                     throw new PSArgumentException(
-                        string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.ServerNameExists, this.ServerName),
-                        "ServerName");
-                }
-            }
-            catch (CloudException ex)
-            {
-                if (ex.Response?.StatusCode != System.Net.HttpStatusCode.NotFound)
-                {
-                    // Unexpected exception encountered
-                    throw;
-                }
-                //Continue - no live server exists, which is what we want
-            }
-
-            // Now check if there's a deleted server to restore
-            try
-            {
-                if (ModelAdapter.GetDeletedServer(this.Location, this.ServerName) == null)
-                {
-                   throw new PSArgumentException(
-                       string.Format(Properties.Resources.DeletedServerNotFound,
-                       this.ServerName, this.Location),
-                       "ServerName");
-                }
-
-                // Deleted server exists and can be restored
-                return null;
-            }
-            catch (CloudException ex)
-            {
-                if (ex.Response?.StatusCode == System.Net.HttpStatusCode.NotFound)
-                {
-                    throw new PSArgumentException(
-                        string.Format(Properties.Resources.DeletedServerNotFound, 
+                        string.Format(Properties.Resources.DeletedServerNotFound,
                         this.ServerName, this.Location),
                         "ServerName");
                 }
 
-                // Unexpected exception encountered
+                // Set ResourceGroupName from deleted server metadata (not user input)
+                this.ResourceGroupName = _deletedServerModel.ResourceGroupName;
+            }
+            catch (PSArgumentException)
+            {
+                // Re-throw PSArgumentException as-is
                 throw;
             }
+            catch (ErrorResponseException errEx) when (errEx.Response?.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                // Handle NotFound exceptions (DeletedServerNotFound)
+                HandleNotFoundException(errEx, throwDeletedServerNotFound: true);
+                
+                // If HandleNotFoundException didn't throw, it's an unexpected scenario
+                throw;
+            }
+
+            // Now check if a live server already exists with this name
+            try
+            {
+                // If GetServer succeeds, a live server exists - cannot restore
+                ModelAdapter.GetServer(this.ResourceGroupName, this.ServerName);
+                
+                throw new PSArgumentException(
+                    string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.ServerNameExists, this.ServerName),
+                    "ServerName");
+            }
+            catch (PSArgumentException)
+            {
+                // Re-throw PSArgumentException as-is
+                throw;
+            }
+            catch (ErrorResponseException errEx) when (errEx.Response?.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                // Handle NotFound exceptions (ResourceGroupNotFound will throw, server NotFound is expected)
+                HandleNotFoundException(errEx, throwDeletedServerNotFound: false);
+            }
+
+            // Deleted server exists and can be restored
+            return null;
         }
 
         /// <summary>
-        /// Generates the model from user input.
+        /// Generates the model from the user input and deleted server metadata
         /// </summary>
         /// <param name="model">This is null since the server doesn't exist yet</param>
-        /// <returns>The generated model from user input</returns>
+        /// <returns>The server model configured for restore operation with properties from deleted server and user input</returns>
         protected override IEnumerable<Model.AzureSqlServerModel> ApplyUserInputToModel(IEnumerable<Model.AzureSqlServerModel> model)
         {
             return new List<Model.AzureSqlServerModel>
@@ -134,9 +162,52 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         /// <returns>The created server</returns>
         protected override IEnumerable<Model.AzureSqlServerModel> PersistChanges(IEnumerable<Model.AzureSqlServerModel> entity)
         {
-            return new List<Model.AzureSqlServerModel>() {
-                ModelAdapter.UpsertServer(entity.First())
-            };
+            try
+            {
+                return new List<Model.AzureSqlServerModel>() {
+                    ModelAdapter.UpsertServer(entity.First())
+                };
+            }
+            catch (ErrorResponseException errEx) when (errEx.Response?.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                // Handle NotFound exceptions (ResourceGroupNotFound will throw)
+                HandleNotFoundException(errEx, throwDeletedServerNotFound: false);
+                
+                // If HandleNotFoundException didn't throw, it's an unexpected scenario
+                throw;
+            }
+        }
+        
+        /// <summary>
+        /// Helper method to handle NotFound exceptions and throw appropriate user-friendly errors
+        /// </summary>
+        /// <param name="errEx">The ErrorResponseException with NotFound status to handle</param>
+        /// <param name="throwDeletedServerNotFound">If true, throws DeletedServerNotFound error for ResourceNotFound. If false, ignores it.</param>
+        private void HandleNotFoundException(ErrorResponseException errEx, bool throwDeletedServerNotFound = false)
+        {
+            string errorCode = errEx.Body?.Error?.Code;
+            string errorMessage = errEx.Body?.Error?.Message ?? errEx.Message;
+            
+            // Check error type and throw appropriate exception
+            if (errorCode == "ResourceGroupNotFound" || 
+                (errorMessage.Contains("Resource group") && errorMessage.Contains("could not be found")))
+            {
+                // Resource group not found
+                throw new PSArgumentException(
+                    string.Format(Properties.Resources.ResourceGroupNotFoundForRestore,
+                        this.ServerName, this.ResourceGroupName, this.Location),
+                    "ResourceGroupName");
+            }
+            else if (throwDeletedServerNotFound && 
+                     (errorCode == "ResourceNotFound" || 
+                      (errorMessage.Contains("Resource") && errorMessage.Contains("was not found"))))
+            {
+                // Deleted server not found
+                throw new PSArgumentException(
+                    string.Format(Properties.Resources.DeletedServerNotFound, 
+                        this.ServerName, this.Location),
+                    "ServerName");
+            }
         }
     }
 }

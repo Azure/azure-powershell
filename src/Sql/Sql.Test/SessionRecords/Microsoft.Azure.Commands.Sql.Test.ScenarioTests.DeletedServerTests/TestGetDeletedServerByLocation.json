@@ -1,0 +1,80 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/5271601b-4442-462e-8ae1-c9b5564d486f/providers/Microsoft.Sql/locations/centralus/deletedServers?api-version=2024-11-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTI3MTYwMWItNDQ0Mi00NjJlLThhZTEtYzliNTU2NGQ0ODZmL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL2xvY2F0aW9ucy9jZW50cmFsdXMvZGVsZXRlZFNlcnZlcnM/YXBpLXZlcnNpb249MjAyNC0xMS0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "acda9e40-4f36-4f3e-bef3-e4fc35e1ac25"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.2225.52707",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26200",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/6.3.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "53133267-8010-4948-95bc-e5fabe94ad13"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=291664dd-5ef7-4989-bcf5-c04f0d1b370d,objectId=23054630-f9c0-4e69-bec2-276da4339e9b/southeastasia/30db23c5-c404-44fa-b13f-adc1dff01535"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "249"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "3749"
+        ],
+        "x-ms-correlation-request-id": [
+          "01758522-aef1-4d9a-80d6-0ec54aa201a5"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHEASTASIA:20251118T132714Z:01758522-aef1-4d9a-80d6-0ec54aa201a5"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: EA70750BAD4E4BE4A601713BDD059DEF Ref B: SG2AA1070305042 Ref C: 2025-11-18T13:27:13Z"
+        ],
+        "Date": [
+          "Tue, 18 Nov 2025 13:27:13 GMT"
+        ],
+        "Content-Length": [
+          "5983"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"version\": \"12.0\",\r\n        \"deletionTime\": \"2025-11-06T16:49:27.863Z\",\r\n        \"originalId\": \"/subscriptions/5271601b-4442-462e-8ae1-c9b5564d486f/resourceGroups/MyResourceGroup/providers/Microsoft.Sql/servers/ramyaltestserver3\",\r\n        \"fullyQualifiedDomainName\": \"ramyaltestserver3.database.windows.net\"\r\n      },\r\n      \"id\": \"/subscriptions/5271601b-4442-462e-8ae1-c9b5564d486f/providers/Microsoft.Sql/locations/centralus/deletedServers/ramyaltestserver3\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"version\": \"12.0\",\r\n        \"deletionTime\": \"2025-11-11T13:02:39.62Z\",\r\n        \"originalId\": \"/subscriptions/5271601b-4442-462e-8ae1-c9b5564d486f/resourceGroups/ps94/providers/Microsoft.Sql/servers/ps8640\",\r\n        \"fullyQualifiedDomainName\": \"ps8640.database.windows.net\"\r\n      },\r\n      \"id\": \"/subscriptions/5271601b-4442-462e-8ae1-c9b5564d486f/providers/Microsoft.Sql/locations/centralus/deletedServers/ps8640\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"version\": \"12.0\",\r\n        \"deletionTime\": \"2025-11-11T14:19:42.16Z\",\r\n        \"originalId\": \"/subscriptions/5271601b-4442-462e-8ae1-c9b5564d486f/resourceGroups/ps3904/providers/Microsoft.Sql/servers/ps9192\",\r\n        \"fullyQualifiedDomainName\": \"ps9192.database.windows.net\"\r\n      },\r\n      \"id\": \"/subscriptions/5271601b-4442-462e-8ae1-c9b5564d486f/providers/Microsoft.Sql/locations/centralus/deletedServers/ps9192\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"version\": \"12.0\",\r\n        \"deletionTime\": \"2025-11-11T14:08:24.02Z\",\r\n        \"originalId\": \"/subscriptions/5271601b-4442-462e-8ae1-c9b5564d486f/resourceGroups/ps6122/providers/Microsoft.Sql/servers/ps6705\",\r\n        \"fullyQualifiedDomainName\": \"ps6705.database.windows.net\"\r\n      },\r\n      \"id\": \"/subscriptions/5271601b-4442-462e-8ae1-c9b5564d486f/providers/Microsoft.Sql/locations/centralus/deletedServers/ps6705\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"version\": \"12.0\",\r\n        \"deletionTime\": \"2025-11-06T16:49:27.753Z\",\r\n        \"originalId\": \"/subscriptions/5271601b-4442-462e-8ae1-c9b5564d486f/resourceGroups/MyResourceGroup/providers/Microsoft.Sql/servers/ramyaltestserver5\",\r\n        \"fullyQualifiedDomainName\": \"ramyaltestserver5.database.windows.net\"\r\n      },\r\n      \"id\": \"/subscriptions/5271601b-4442-462e-8ae1-c9b5564d486f/providers/Microsoft.Sql/locations/centralus/deletedServers/ramyaltestserver5\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"version\": \"12.0\",\r\n        \"deletionTime\": \"2025-11-11T12:02:27.963Z\",\r\n        \"originalId\": \"/subscriptions/5271601b-4442-462e-8ae1-c9b5564d486f/resourceGroups/ps5817/providers/Microsoft.Sql/servers/ps5130\",\r\n        \"fullyQualifiedDomainName\": \"ps5130.database.windows.net\"\r\n      },\r\n      \"id\": \"/subscriptions/5271601b-4442-462e-8ae1-c9b5564d486f/providers/Microsoft.Sql/locations/centralus/deletedServers/ps5130\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"version\": \"12.0\",\r\n        \"deletionTime\": \"2025-11-11T14:12:29.997Z\",\r\n        \"originalId\": \"/subscriptions/5271601b-4442-462e-8ae1-c9b5564d486f/resourceGroups/ps6/providers/Microsoft.Sql/servers/ps5854\",\r\n        \"fullyQualifiedDomainName\": \"ps5854.database.windows.net\"\r\n      },\r\n      \"id\": \"/subscriptions/5271601b-4442-462e-8ae1-c9b5564d486f/providers/Microsoft.Sql/locations/centralus/deletedServers/ps5854\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"version\": \"12.0\",\r\n        \"deletionTime\": \"2025-11-11T14:17:30.497Z\",\r\n        \"originalId\": \"/subscriptions/5271601b-4442-462e-8ae1-c9b5564d486f/resourceGroups/ps151/providers/Microsoft.Sql/servers/ps6667\",\r\n        \"fullyQualifiedDomainName\": \"ps6667.database.windows.net\"\r\n      },\r\n      \"id\": \"/subscriptions/5271601b-4442-462e-8ae1-c9b5564d486f/providers/Microsoft.Sql/locations/centralus/deletedServers/ps6667\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"version\": \"12.0\",\r\n        \"deletionTime\": \"2025-11-11T12:01:28.38Z\",\r\n        \"originalId\": \"/subscriptions/5271601b-4442-462e-8ae1-c9b5564d486f/resourceGroups/ps3762/providers/Microsoft.Sql/servers/ps5208\",\r\n        \"fullyQualifiedDomainName\": \"ps5208.database.windows.net\"\r\n      },\r\n      \"id\": \"/subscriptions/5271601b-4442-462e-8ae1-c9b5564d486f/providers/Microsoft.Sql/locations/centralus/deletedServers/ps5208\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"version\": \"12.0\",\r\n        \"deletionTime\": \"2025-11-11T13:33:39.98Z\",\r\n        \"originalId\": \"/subscriptions/5271601b-4442-462e-8ae1-c9b5564d486f/resourceGroups/ps4681/providers/Microsoft.Sql/servers/ps5235\",\r\n        \"fullyQualifiedDomainName\": \"ps5235.database.windows.net\"\r\n      },\r\n      \"id\": \"/subscriptions/5271601b-4442-462e-8ae1-c9b5564d486f/providers/Microsoft.Sql/locations/centralus/deletedServers/ps5235\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"version\": \"12.0\",\r\n        \"deletionTime\": \"2025-11-06T16:49:27.733Z\",\r\n        \"originalId\": \"/subscriptions/5271601b-4442-462e-8ae1-c9b5564d486f/resourceGroups/MyResourceGroup/providers/Microsoft.Sql/servers/ramyaltest301\",\r\n        \"fullyQualifiedDomainName\": \"ramyaltest301.database.windows.net\"\r\n      },\r\n      \"id\": \"/subscriptions/5271601b-4442-462e-8ae1-c9b5564d486f/providers/Microsoft.Sql/locations/centralus/deletedServers/ramyaltest301\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"version\": \"12.0\",\r\n        \"deletionTime\": \"2025-11-06T16:49:27.797Z\",\r\n        \"originalId\": \"/subscriptions/5271601b-4442-462e-8ae1-c9b5564d486f/resourceGroups/MyResourceGroup/providers/Microsoft.Sql/servers/ramyaltestserver2\",\r\n        \"fullyQualifiedDomainName\": \"ramyaltestserver2.database.windows.net\"\r\n      },\r\n      \"id\": \"/subscriptions/5271601b-4442-462e-8ae1-c9b5564d486f/providers/Microsoft.Sql/locations/centralus/deletedServers/ramyaltestserver2\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"version\": \"12.0\",\r\n        \"deletionTime\": \"2025-11-11T13:14:24Z\",\r\n        \"originalId\": \"/subscriptions/5271601b-4442-462e-8ae1-c9b5564d486f/resourceGroups/ps9552/providers/Microsoft.Sql/servers/ps8408\",\r\n        \"fullyQualifiedDomainName\": \"ps8408.database.windows.net\"\r\n      },\r\n      \"id\": \"/subscriptions/5271601b-4442-462e-8ae1-c9b5564d486f/providers/Microsoft.Sql/locations/centralus/deletedServers/ps8408\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"version\": \"12.0\",\r\n        \"deletionTime\": \"2025-11-06T16:49:27.78Z\",\r\n        \"originalId\": \"/subscriptions/5271601b-4442-462e-8ae1-c9b5564d486f/resourceGroups/MyResourceGroup/providers/Microsoft.Sql/servers/ramyaltestserver4\",\r\n        \"fullyQualifiedDomainName\": \"ramyaltestserver4.database.windows.net\"\r\n      },\r\n      \"id\": \"/subscriptions/5271601b-4442-462e-8ae1-c9b5564d486f/providers/Microsoft.Sql/locations/centralus/deletedServers/ramyaltestserver4\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"version\": \"12.0\",\r\n        \"deletionTime\": \"2025-11-11T14:15:40.113Z\",\r\n        \"originalId\": \"/subscriptions/5271601b-4442-462e-8ae1-c9b5564d486f/resourceGroups/ps1385/providers/Microsoft.Sql/servers/ps2663\",\r\n        \"fullyQualifiedDomainName\": \"ps2663.database.windows.net\"\r\n      },\r\n      \"id\": \"/subscriptions/5271601b-4442-462e-8ae1-c9b5564d486f/providers/Microsoft.Sql/locations/centralus/deletedServers/ps2663\"\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "5271601b-4442-462e-8ae1-c9b5564d486f"
+  }
+}
