@@ -43,27 +43,19 @@ Update a EdgeAction
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update edge action tags
 ```powershell
-{{ Add code here }}
+Update-AzEdgeAction -Name "myEdgeAction" -ResourceGroupName "myResourceGroup" -Tag @{Environment="production"; Team="platform"}
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+This command updates the tags on the specified edge action.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Update edge action SKU
 ```powershell
-{{ Add code here }}
+Update-AzEdgeAction -Name "myEdgeAction" -ResourceGroupName "myResourceGroup" -SkuName "Standard" -SkuTier "Standard"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command updates the SKU configuration of the specified edge action.
 
 ## PARAMETERS
 

@@ -1,14 +1,14 @@
 ---
 Module Name: Az.EdgeAction
-Module Guid: {{ Update Module Guid }}
-Download Help Link: {{ Update Download Link }}
-Help Version: {{ Update Help Version }}
-Locale: {{ Update Locale }}
+Module Guid: accceef6-8113-453a-a31c-4f2ce57893d6
+Download Help Link: https://learn.microsoft.com/powershell/module/az.edgeaction
+Help Version: 1.0.0.0
+Locale: en-US
 ---
 
 # Az.EdgeAction Module
 ## Description
-{{ Fill in the Description }}
+Microsoft Azure PowerShell: EdgeAction cmdlets. This module provides cmdlets for managing Azure Edge Actions, which enable serverless JavaScript execution at the edge for Azure Front Door profiles.
 
 ## Az.EdgeAction Cmdlets
 ### [Add-AzEdgeActionAttachment](Add-AzEdgeActionAttachment.md)

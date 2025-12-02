@@ -59,27 +59,19 @@ A long-running resource action.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove an AFD rule attachment from an edge action
 ```powershell
-{{ Add code here }}
+Remove-AzEdgeActionAttachment -EdgeActionName "myEdgeAction" -ResourceGroupName "myResourceGroup" -AttachedResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Cdn/profiles/myAfdProfile/rulesets/myRuleSet/rules/myRule"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+This command removes the specified AFD rule attachment from the edge action.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Remove an attachment using pipeline input
 ```powershell
-{{ Add code here }}
+Get-AzEdgeAction -Name "myEdgeAction" -ResourceGroupName "myResourceGroup" | Remove-AzEdgeActionAttachment -AttachedResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Cdn/profiles/myAfdProfile/rulesets/myRuleSet/rules/myRule"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command retrieves an edge action and pipes it to remove the specified AFD rule attachment.
 
 ## PARAMETERS
 

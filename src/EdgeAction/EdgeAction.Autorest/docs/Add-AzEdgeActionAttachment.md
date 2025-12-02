@@ -57,27 +57,19 @@ A long-running resource action.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Attach an AFD rule to an edge action
 ```powershell
-{{ Add code here }}
+Add-AzEdgeActionAttachment -EdgeActionName "myEdgeAction" -ResourceGroupName "myResourceGroup" -AttachedResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Cdn/profiles/myAfdProfile/rulesets/myRuleSet/rules/myRule"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+This command attaches an Azure Front Door rule to the specified edge action, enabling the edge action to process requests for that rule.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Attach an AFD rule using pipeline input
 ```powershell
-{{ Add code here }}
+Get-AzEdgeAction -Name "myEdgeAction" -ResourceGroupName "myResourceGroup" | Add-AzEdgeActionAttachment -AttachedResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Cdn/profiles/myAfdProfile/rulesets/myRuleSet/rules/myRule"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command retrieves an edge action and pipes it to attach an AFD rule.
 
 ## PARAMETERS
 

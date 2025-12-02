@@ -54,27 +54,19 @@ Create a EdgeActionExecutionFilter
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an execution filter with header-based routing
 ```powershell
-{{ Add code here }}
+New-AzEdgeActionExecutionFilter -EdgeActionName "myEdgeAction" -ResourceGroupName "myResourceGroup" -ExecutionFilter "myFilter" -Location "eastus" -ExecutionFilterIdentifierHeaderName "X-Custom-Header" -ExecutionFilterIdentifierHeaderValue "production"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+This command creates a new execution filter with custom header-based routing for the specified edge action.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Create an execution filter targeting a specific version
 ```powershell
-{{ Add code here }}
+New-AzEdgeActionExecutionFilter -EdgeActionName "myEdgeAction" -ResourceGroupName "myResourceGroup" -ExecutionFilter "v2Filter" -Location "eastus" -VersionId "v2" -Tag @{Environment="staging"}
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command creates an execution filter that routes traffic to a specific edge action version with tags.
 
 ## PARAMETERS
 

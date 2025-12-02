@@ -37,27 +37,19 @@ A long-running resource action.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Switch the default version of an edge action
 ```powershell
-{{ Add code here }}
+Switch-AzEdgeActionVersionDefault -ResourceGroupName "myResourceGroup" -EdgeActionName "myEdgeAction" -Version "v2"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Switches the default version of the edge action to v2. All traffic will now be routed to this version.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Switch default version using pipeline input
 ```powershell
-{{ Add code here }}
+Get-AzEdgeAction -Name "myEdgeAction" -ResourceGroupName "myResourceGroup" | Switch-AzEdgeActionVersionDefault -Version "v2"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Retrieves an edge action and pipes it to switch the default version.
 
 ## PARAMETERS
 
