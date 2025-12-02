@@ -18,6 +18,12 @@ Get-AzSentinelAlertRuleAction -ResourceGroupName <String> -RuleId <String> [-Sub
  -WorkspaceName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentityAlertRule
+```
+Get-AzSentinelAlertRuleAction -Id <String> -AlertRuleInputObject <ISecurityInsightsIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### Get
 ```
 Get-AzSentinelAlertRuleAction -Id <String> -ResourceGroupName <String> -RuleId <String>
@@ -55,6 +61,21 @@ This command lists all Actions for a given Alert Rule.
 
 ## PARAMETERS
 
+### -AlertRuleInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity
+Parameter Sets: GetViaIdentityAlertRule
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -76,7 +97,7 @@ Action ID
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: GetViaIdentityAlertRule, Get
 Aliases: ActionId
 
 Required: True
@@ -88,7 +109,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity
@@ -172,7 +192,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IActionResponse
+### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IActionResponse
 
 ## NOTES
 
