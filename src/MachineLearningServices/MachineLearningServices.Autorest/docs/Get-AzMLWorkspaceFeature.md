@@ -30,7 +30,7 @@ Get-AzMLWorkspaceFeature  -ResourceGroupName ml-rg-test -Name mlworkspace-portal
 ```output
 Description                                                                            DisplayName
 -----------                                                                            -----------
-Raw feature explanation for AutoML models                                              Model Explanability
+Raw feature explanation for AutoML models                                              Model Explainability
 Create, edit or delete AutoML experiments in the SDK                                   Create edit experiments SDK
 Create, edit or delete HyperDrive experiments in the SDK                               Create edit hyperdrive SDK
 Select or upload a dataset to train on from datasets in the SDK                        Dataset integration from SDK

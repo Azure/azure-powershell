@@ -16,26 +16,31 @@
 
 <#
 .Synopsis
-Create an in-memory object for LiteralJobInput.
+Create an in-memory object for TritonModelJobInput.
 .Description
-Create an in-memory object for LiteralJobInput.
+Create an in-memory object for TritonModelJobInput.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.LiteralJobInput
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.TritonModelJobInput
 .Link
-https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-AzMLWorkspaceLiteralJobInputObject
+https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-AzMLWorkspaceTritonModelJobInputObject
 #>
-function New-AzMLWorkspaceLiteralJobInputObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.LiteralJobInput')]
+function New-AzMLWorkspaceTritonModelJobInputObject {
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.TritonModelJobInput')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
-        [Parameter(Mandatory, HelpMessage="[Required] Literal value for the input.")]
+        [Parameter(HelpMessage="Input Asset Delivery Mode.")]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.InputDeliveryMode])]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.InputDeliveryMode]
+        $Mode,
+        [Parameter(Mandatory, HelpMessage="[Required] Input Asset URI.")]
         [string]
-        $Value,
+        $Uri,
         [Parameter(HelpMessage="Description for the input.")]
         [string]
         $Description,
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.ParameterBreakingChangeAttribute("Type", "16.0.0", "1.3.0", "2026/05")]
         [Parameter(Mandatory, HelpMessage="[Required] Specifies the type of job.")]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.JobInputType])]
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.JobInputType]
@@ -43,10 +48,13 @@ function New-AzMLWorkspaceLiteralJobInputObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.LiteralJobInput]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.TritonModelJobInput]::New()
 
-        if ($PSBoundParameters.ContainsKey('Value')) {
-            $Object.Value = $Value
+        if ($PSBoundParameters.ContainsKey('Mode')) {
+            $Object.Mode = $Mode
+        }
+        if ($PSBoundParameters.ContainsKey('Uri')) {
+            $Object.Uri = $Uri
         }
         if ($PSBoundParameters.ContainsKey('Description')) {
             $Object.Description = $Description
