@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Resolved double hop authentication issue.
 
 ## Version 2.6.4
 * Fixed bug: Buse boolean in comparision
