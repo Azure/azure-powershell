@@ -97,8 +97,9 @@ Describe 'Deploy-AzEdgeActionVersionCode' {
         $version = "v4"
         New-AzEdgeActionVersion -ResourceGroupName $script:TestResourceGroup -EdgeActionName $script:EdgeActionName -Version $version -DeploymentType "zip" -IsDefaultVersion $false -Location "global"
         
-        # Create a temporary zip file
-        $tempZip = Join-Path $env:TEMP "test_edge_action_$(New-Guid).zip"
+        # Create a temporary zip file (use cross-platform temp path)
+        $tempDir = if ($env:TEMP) { $env:TEMP } elseif ($env:TMPDIR) { $env:TMPDIR } else { "/tmp" }
+        $tempZip = Join-Path $tempDir "test_edge_action_$(New-Guid).zip"
         Compress-Archive -Path $script:TestFilePath -DestinationPath $tempZip -Force
         
         try {
