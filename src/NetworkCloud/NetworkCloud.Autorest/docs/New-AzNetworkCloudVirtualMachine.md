@@ -22,12 +22,12 @@ New-AzNetworkCloudVirtualMachine -Name <String> -ResourceGroupName <String> -Adm
  [-BootMethod <String>] [-CloudServiceNetworkAttachmentDefaultGateway <String>]
  [-CloudServiceNetworkAttachmentIpv4Address <String>] [-CloudServiceNetworkAttachmentIpv6Address <String>]
  [-CloudServiceNetworkAttachmentName <String>] [-ConsoleExtendedLocationName <String>]
- [-ConsoleExtendedLocationType <String>] [-EnableSystemAssignedIdentity] [-IsolateEmulatorThread <String>]
- [-NetworkAttachment <INetworkAttachment[]>] [-NetworkData <String>] [-NetworkDataContent <String>]
- [-OSDiskCreateOption <String>] [-OSDiskDeleteOption <String>]
+ [-ConsoleExtendedLocationType <String>] [-IdentityType <String>] [-IdentityUserAssignedIdentity <Hashtable>]
+ [-IsolateEmulatorThread <String>] [-NetworkAttachment <INetworkAttachment[]>] [-NetworkData <String>]
+ [-NetworkDataContent <String>] [-OSDiskCreateOption <String>] [-OSDiskDeleteOption <String>]
  [-PlacementHint <IVirtualMachinePlacementHint[]>] [-SshPublicKey <ISshPublicKey[]>]
- [-StorageProfileVolumeAttachment <String[]>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
- [-UserData <String>] [-UserDataContent <String>] [-VirtioInterface <String>] [-VMDeviceModel <String>]
+ [-StorageProfileVolumeAttachment <String[]>] [-Tag <Hashtable>] [-UserData <String>]
+ [-UserDataContent <String>] [-VirtioInterface <String>] [-VMDeviceModel <String>]
  [-VMImageRepositoryCredentialsPassword <SecureString>] [-VMImageRepositoryCredentialsRegistryUrl <String>]
  [-VMImageRepositoryCredentialsUsername <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
@@ -296,21 +296,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnableSystemAssignedIdentity
-Determines whether to enable a system-assigned identity for the resource.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ExtendedLocationName
 The resource ID of the extended location on which the resource will be created.
 
@@ -335,6 +320,38 @@ Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityType
+Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityUserAssignedIdentity
+The set of user assigned identities associated with the resource.
+The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
+The dictionary values can be empty objects ({}) in requests.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -657,22 +674,6 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -UserAssignedIdentity
-The array of user assigned identities associated with the resource.
-The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
-
-```yaml
-Type: System.String[]
 Parameter Sets: CreateExpanded
 Aliases:
 

@@ -50,10 +50,8 @@ subject-prefix: NetworkCloud
 identity-correction-for-post: true
 resourcegroup-append: true
 nested-object-to-string: true
-
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "4.x"
+flatten-userassignedidentity: false
+disable-transform-identity-type: true
 
 directive:
   # Following is two common directive which are normally required in all the RPs
@@ -290,19 +288,19 @@ directive:
 
   # Add model-cmdlet for any properties/sub-properties of complex type
   - model-cmdlet:
-    - BareMetalMachineConfigurationData
-    - BgpAdvertisement
-    - BgpServiceLoadBalancerConfiguration
-    - ControlPlaneNodeConfiguration
-    - EgressEndpoint
-    - EndpointDependency
-    - InitialAgentPoolConfiguration
-    - IpAddressPool
-    - KeySetUser
-    - L3NetworkAttachmentConfiguration
-    - NetworkAttachment
-    - RackDefinition
-    - ServiceLoadBalancerBgpPeer
-    - StorageApplianceConfigurationData
-    - VirtualMachinePlacementHint
+    - model-name: BareMetalMachineConfigurationData
+    - model-name: BgpAdvertisement
+    - model-name: BgpServiceLoadBalancerConfiguration
+    - model-name: ControlPlaneNodeConfiguration
+    - model-name: EgressEndpoint
+    - model-name: EndpointDependency
+    - model-name: InitialAgentPoolConfiguration
+    - model-name: IpAddressPool
+    - model-name: KeySetUser
+    - model-name: L3NetworkAttachmentConfiguration
+    - model-name: NetworkAttachment
+    - model-name: RackDefinition
+    - model-name: ServiceLoadBalancerBgpPeer
+    - model-name: StorageApplianceConfigurationData
+    - model-name: VirtualMachinePlacementHint
 ```

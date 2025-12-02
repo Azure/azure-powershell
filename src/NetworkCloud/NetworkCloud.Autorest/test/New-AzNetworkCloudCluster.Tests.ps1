@@ -79,7 +79,7 @@ Describe 'New-AzNetworkCloudCluster' {
                 -AggregatorOrSingleRackDefinitionAvailabilityZone $clusterconfig.aggregatorRack.availabilityZone `
                 -AggregatorOrSingleRackDefinitionRackLocation "Foo Datacenter, Floor 3, Aisle 9, Rack 2" `
                 -IdentityType $clusterconfig.identityType `
-                -IdentityUserAssignedIdentity $identityUserAssignedIdentity `
+                -IdentityUserAssigned $identityUserAssignedIdentity `
                 -RuntimeProtectionConfigurationEnforcementLevel $clusterconfig.runtimeProtectionConfigEnforcementLevel `
                 -AnalyticOutputSettingAnalyticsWorkspaceId $clusterconfig.miAnalyticsWorkspaceId `
                 -AnalyticsOutputSettingsAssociatedIdentityType $clusterconfig.identityType `

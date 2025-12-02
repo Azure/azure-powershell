@@ -120,8 +120,17 @@ Reimage the provided virtual machine.
 ### [New-AzNetworkCloudAgentPool](New-AzNetworkCloudAgentPool.md)
 Create a new Kubernetes cluster agent pool or create the properties of the existing one.
 
+### [New-AzNetworkCloudBareMetalMachineConfigurationDataObject](New-AzNetworkCloudBareMetalMachineConfigurationDataObject.md)
+Create an in-memory object for BareMetalMachineConfigurationData.
+
 ### [New-AzNetworkCloudBareMetalMachineKeySet](New-AzNetworkCloudBareMetalMachineKeySet.md)
 Create a new bare metal machine key set or create the existing one for the provided cluster.
+
+### [New-AzNetworkCloudBgpAdvertisementObject](New-AzNetworkCloudBgpAdvertisementObject.md)
+Create an in-memory object for BgpAdvertisement.
+
+### [New-AzNetworkCloudBgpServiceLoadBalancerConfigurationObject](New-AzNetworkCloudBgpServiceLoadBalancerConfigurationObject.md)
+Create an in-memory object for BgpServiceLoadBalancerConfiguration.
 
 ### [New-AzNetworkCloudBmcKeySet](New-AzNetworkCloudBmcKeySet.md)
 Create a new baseboard management controller key set or create the existing one for the provided cluster.
@@ -135,6 +144,24 @@ Create a new cluster manager or create properties of the cluster manager if it e
 ### [New-AzNetworkCloudConsole](New-AzNetworkCloudConsole.md)
 Create a new virtual machine console or create the properties of the existing virtual machine console.
 
+### [New-AzNetworkCloudControlPlaneNodeConfigurationObject](New-AzNetworkCloudControlPlaneNodeConfigurationObject.md)
+Create an in-memory object for ControlPlaneNodeConfiguration.
+
+### [New-AzNetworkCloudEgressEndpointObject](New-AzNetworkCloudEgressEndpointObject.md)
+Create an in-memory object for EgressEndpoint.
+
+### [New-AzNetworkCloudEndpointDependencyObject](New-AzNetworkCloudEndpointDependencyObject.md)
+Create an in-memory object for EndpointDependency.
+
+### [New-AzNetworkCloudInitialAgentPoolConfigurationObject](New-AzNetworkCloudInitialAgentPoolConfigurationObject.md)
+Create an in-memory object for InitialAgentPoolConfiguration.
+
+### [New-AzNetworkCloudIpAddressPoolObject](New-AzNetworkCloudIpAddressPoolObject.md)
+Create an in-memory object for IpAddressPool.
+
+### [New-AzNetworkCloudKeySetUserObject](New-AzNetworkCloudKeySetUserObject.md)
+Create an in-memory object for KeySetUser.
+
 ### [New-AzNetworkCloudKubernetesCluster](New-AzNetworkCloudKubernetesCluster.md)
 Create a new Kubernetes cluster or create the properties of the existing one.
 
@@ -147,17 +174,35 @@ Create a new layer 2 (L2) network or create the properties of the existing netwo
 ### [New-AzNetworkCloudL3Network](New-AzNetworkCloudL3Network.md)
 Create a new layer 3 (L3) network or create the properties of the existing network.
 
+### [New-AzNetworkCloudL3NetworkAttachmentConfigurationObject](New-AzNetworkCloudL3NetworkAttachmentConfigurationObject.md)
+Create an in-memory object for L3NetworkAttachmentConfiguration.
+
 ### [New-AzNetworkCloudMetricsConfiguration](New-AzNetworkCloudMetricsConfiguration.md)
 Create new or create the existing metrics configuration of the provided cluster.
 
+### [New-AzNetworkCloudNetworkAttachmentObject](New-AzNetworkCloudNetworkAttachmentObject.md)
+Create an in-memory object for NetworkAttachment.
+
+### [New-AzNetworkCloudRackDefinitionObject](New-AzNetworkCloudRackDefinitionObject.md)
+Create an in-memory object for RackDefinition.
+
+### [New-AzNetworkCloudServiceLoadBalancerBgpPeerObject](New-AzNetworkCloudServiceLoadBalancerBgpPeerObject.md)
+Create an in-memory object for ServiceLoadBalancerBgpPeer.
+
 ### [New-AzNetworkCloudServicesNetwork](New-AzNetworkCloudServicesNetwork.md)
 Create a new cloud services network or create the properties of the existing cloud services network.
+
+### [New-AzNetworkCloudStorageApplianceConfigurationDataObject](New-AzNetworkCloudStorageApplianceConfigurationDataObject.md)
+Create an in-memory object for StorageApplianceConfigurationData.
 
 ### [New-AzNetworkCloudTrunkedNetwork](New-AzNetworkCloudTrunkedNetwork.md)
 Create a new trunked network or create the properties of the existing trunked network.
 
 ### [New-AzNetworkCloudVirtualMachine](New-AzNetworkCloudVirtualMachine.md)
 Create a new virtual machine or create the properties of the existing virtual machine.
+
+### [New-AzNetworkCloudVirtualMachinePlacementHintObject](New-AzNetworkCloudVirtualMachinePlacementHintObject.md)
+Create an in-memory object for VirtualMachinePlacementHint.
 
 ### [New-AzNetworkCloudVolume](New-AzNetworkCloudVolume.md)
 Create a new volume or create the properties of the existing one.
@@ -248,10 +293,12 @@ Patch properties of baseboard management controller key set for the provided clu
 Properties and tag update can be done independently.
 
 ### [Update-AzNetworkCloudCluster](Update-AzNetworkCloudCluster.md)
-Update a new cluster or update the properties of the cluster if it exists.
+Patch the properties of the provided cluster, or update the tags associated with the cluster.
+Properties and tag update can be done independently.
 
 ### [Update-AzNetworkCloudClusterManager](Update-AzNetworkCloudClusterManager.md)
-Update a new cluster manager or update properties of the cluster manager if it exists.
+Patch properties of the provided cluster manager, or update the tags assigned to the cluster manager.
+Properties and tag update can be done independently.
 
 ### [Update-AzNetworkCloudConsole](Update-AzNetworkCloudConsole.md)
 Patch the properties of the provided virtual machine console, or update the tags associated with the virtual machine console.
@@ -289,7 +336,8 @@ Update properties of the provided storage appliance, or update tags associated w
 Update tags associated with the provided trunked network.
 
 ### [Update-AzNetworkCloudVirtualMachine](Update-AzNetworkCloudVirtualMachine.md)
-Update a new virtual machine or update the properties of the existing virtual machine.
+Patch the properties of the provided virtual machine, or update the tags associated with the virtual machine.
+Properties and tag update can be done independently.
 
 ### [Update-AzNetworkCloudVolume](Update-AzNetworkCloudVolume.md)
 Update tags associated with the provided volume.
