@@ -355,7 +355,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IVirtualNetworkPeering
+### Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20251001Preview.IVirtualNetworkPeering
 
 ## NOTES
 

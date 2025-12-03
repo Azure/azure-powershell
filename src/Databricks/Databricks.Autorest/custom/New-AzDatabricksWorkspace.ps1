@@ -20,7 +20,7 @@ Creates a new workspace.
 .Description
 Creates a new workspace.
 .Example
-New-AzDatabricksWorkspace -Name azps-databricks-workspace-t1 -ResourceGroupName azps_test_gp_db -Location eastus -ManagedResourceGroupName azps_test_gp_kv_t1 -Sku Premium
+New-AzDatabricksWorkspace -Name azps-databricks-workspace-t1 -ResourceGroupName azps_test_gp_db -Location eastus -ComputeMode Hybrid -ManagedResourceGroupName azps_test_gp_kv_t1 -Sku Premium
 .Example
 $dlg = New-AzDelegation -Name dbrdl -ServiceName "Microsoft.Databricks/workspaces"
 $rdpRule = New-AzNetworkSecurityRuleConfig -Name azps-network-security-rule -Description "Allow RDP" -Access Allow -Protocol Tcp -Direction Inbound -Priority 100 -SourceAddressPrefix Internet -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389
@@ -32,13 +32,13 @@ $testVN = New-AzVirtualNetwork -Name azps-virtual-network -ResourceGroupName azp
 $vNetResId = (Get-AzVirtualNetwork -Name azps-virtual-network -ResourceGroupName azps_test_gp_db).Subnets[0].Id
 $ruleSet = New-AzKeyVaultNetworkRuleSetObject -DefaultAction Allow -Bypass AzureServices -IpAddressRange "110.0.1.0/24" -VirtualNetworkResourceId $vNetResId
 New-AzKeyVault -ResourceGroupName azps_test_gp_db -VaultName azps-keyvault -NetworkRuleSet $ruleSet -Location eastus -Sku 'Premium' -EnablePurgeProtection
-New-AzDatabricksWorkspace -Name azps-databricks-workspace-t2 -ResourceGroupName azps_test_gp_db -Location eastus -ManagedResourceGroupName azps_test_gp_kv_t2 -VirtualNetworkId $testVN.Id -PrivateSubnetName $priSubnet.Name -PublicSubnetName $pubSubnet.Name -Sku Premium
+New-AzDatabricksWorkspace -Name azps-databricks-workspace-t2 -ResourceGroupName azps_test_gp_db -Location eastus -ComputeMode Hybrid -ManagedResourceGroupName azps_test_gp_kv_t2 -VirtualNetworkId $testVN.Id -PrivateSubnetName $priSubnet.Name -PublicSubnetName $pubSubnet.Name -Sku Premium
 .Example
-New-AzDatabricksWorkspace -Name azps-databricks-workspace-t3 -ResourceGroupName azps_test_gp_db -Location eastus -PrepareEncryption -ManagedResourceGroupName azps_test_gp_kv_t3 -Sku premium
+New-AzDatabricksWorkspace -Name azps-databricks-workspace-t3 -ResourceGroupName azps_test_gp_db -Location eastus -ComputeMode Hybrid -PrepareEncryption -ManagedResourceGroupName azps_test_gp_kv_t3 -Sku premium
 
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspace
+Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20251001Preview.IWorkspace
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -51,8 +51,8 @@ AUTHORIZATION <IWorkspaceProviderAuthorization[]>: The workspace provider author
 https://learn.microsoft.com/powershell/module/az.databricks/new-azdatabricksworkspace
 #>
 function New-AzDatabricksWorkspace {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspace])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.OutputBreakingChangeAttribute("Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspace", "15.0.0", "2.0.0", "2025/11/03", ReplacementCmdletOutputType = "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IWorkspace", DeprecatedOutputProperties = ("PrivateEndpointConnection, ComplianceSecurityProfileComplianceStandard, Authorization"), NewOutputProperties = ("PrivateEndpointConnection, ComplianceSecurityProfileComplianceStandard, Authorization The types of the properties will be changed from object to 'List'"))]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20251001Preview.IWorkspace])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.OutputBreakingChangeAttribute("Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20251001Preview.IWorkspace", "15.0.0", "2.0.0", "2025/11/03", ReplacementCmdletOutputType = "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IWorkspace", DeprecatedOutputProperties = ("PrivateEndpointConnection, ComplianceSecurityProfileComplianceStandard, Authorization"), NewOutputProperties = ("PrivateEndpointConnection, ComplianceSecurityProfileComplianceStandard, Authorization The types of the properties will be changed from object to 'List'"))]
     [CmdletBinding(DefaultParameterSetName = 'CreateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter(Mandatory)]
@@ -84,6 +84,14 @@ function New-AzDatabricksWorkspace {
         ${Location},
 
         [Parameter()]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComputeMode])]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+        [System.String]
+        # The compute mode of the workspace.
+        # Possible values (case-insensitive): Hybrid, Serverless
+        ${ComputeMode},
+
+        [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
         [System.String]
         # The managed resource group Id.
@@ -98,7 +106,7 @@ function New-AzDatabricksWorkspace {
         [Parameter()]
         [AllowEmptyCollection()]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspaceProviderAuthorization[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20251001Preview.IWorkspaceProviderAuthorization[]]
         # The workspace provider authorizations.
         # To construct, see NOTES section for AUTHORIZATION properties and create a hash table.
         ${Authorization},
@@ -453,16 +461,27 @@ function New-AzDatabricksWorkspace {
             {
                 $PSBoundParameters.Add('ComplianceSecurityProfileValue', $EnhancedSecurityCompliance)
             }
-            if (-not $PSBoundParameters.ContainsKey('ManagedResourceGroupName')) {
-                $randomStr = -join ((48..57) + (97..122) | Get-Random -Count 13 | % { [char]$_ })
-                $manageResourceGroupName = "databricks-rg-{0}-{1}" -f $PSBoundParameters["Name"], $randomStr
+            # Set default ComputeMode to Hybrid if not specified
+            if (-not $PSBoundParameters.ContainsKey('ComputeMode')) {
+                $PSBoundParameters.Add('ComputeMode', 'Hybrid')
             }
-            else {
-                $manageResourceGroupName = $PSBoundParameters["ManagedResourceGroupName"]
-                $null = $PSBoundParameters.Remove("ManagedResourceGroupName")
+            
+            if (-not $PSBoundParameters.ContainsKey('ComputeMode') -or $PSBoundParameters["ComputeMode"].ToString() -ne "Serverless") {
+                if (-not $PSBoundParameters.ContainsKey('ManagedResourceGroupName')) {
+                    $randomStr = -join ((48..57) + (97..122) | Get-Random -Count 13 | % { [char]$_ })
+                    $manageResourceGroupName = "databricks-rg-{0}-{1}" -f $PSBoundParameters["Name"], $randomStr
+                }
+                else {
+                    $manageResourceGroupName = $PSBoundParameters["ManagedResourceGroupName"]
+                    $null = $PSBoundParameters.Remove("ManagedResourceGroupName")
+                }
+                $ManagedResourceGroupId = "/subscriptions/{0}/resourceGroups/{1}" -f (Get-AzContext).Subscription.Id, $manageResourceGroupName
+                $null = $PSBoundParameters.Add("ManagedResourceGroupId", $ManagedResourceGroupId)
+            } else {
+                if ($PSBoundParameters.ContainsKey('ManagedResourceGroupName')) {
+                    $null = $PSBoundParameters.Remove("ManagedResourceGroupName")
+                }
             }
-            $ManagedResourceGroupId = "/subscriptions/{0}/resourceGroups/{1}" -f (Get-AzContext).Subscription.Id, $manageResourceGroupName
-            $null = $PSBoundParameters.Add("ManagedResourceGroupId", $ManagedResourceGroupId)
             Az.Databricks.internal\New-AzDatabricksWorkspace @PSBoundParameters
         }
         catch {
