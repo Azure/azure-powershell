@@ -117,7 +117,7 @@ Describe 'BlobHardeningScenario' -Tag 'LiveOnly'{
         }
 
         # Initialize Restore
-        $restoreReq = Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureDataLakeStorage -SourceDataStore VaultStore -RestoreLocation $vault.Location -RecoveryPoint $rp[0].Name -ItemLevelRecovery -RestoreType AlternateLocation -TargetResourceId $targetStorageAccId -ContainersList $backedUpContainers[0,1] -PrefixMatch $prefMatch -RenameTo $renameTo
+        $restoreReq = Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureBlob -SourceDataStore VaultStore -RestoreLocation $vault.Location -RecoveryPoint $rp[0].Name -ItemLevelRecovery -RestoreType AlternateLocation -TargetResourceId $targetStorageAccId -ContainersList $backedUpContainers[0,1] -PrefixMatch $prefMatch -RenameTo $renameTo
         $validateRestore = Test-AzDataProtectionBackupInstanceRestore -Name $instance.Name -ResourceGroupName $resourceGroupName -SubscriptionId $subId -VaultName $vaultName -RestoreRequest $restoreReq
         $validateRestore.ObjectType | Should be "OperationJobExtendedInfo"
 
