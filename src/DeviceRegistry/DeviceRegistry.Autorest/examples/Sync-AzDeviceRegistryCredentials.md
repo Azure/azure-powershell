@@ -1,22 +1,42 @@
-### Example 1: {{ Add title here }}
+### Example 1: Sync credentials to connected services
 ```powershell
-{{ Add code here }}
+Sync-AzDeviceRegistryCredentials -NamespaceName my-namespace -ResourceGroupName my-resource-group
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Status    : Succeeded
+Message   : Credentials successfully synchronized to IoT Hub and DPS
+Timestamp : 12/2/2024 11:40:15 AM
 ```
 
-{{ Add description here }}
+Synchronizes the namespace credentials with connected IoT Hub and Device Provisioning Service (DPS) instances. This operation ensures that the credential certificates are propagated to all connected services for device authentication.
 
-### Example 2: {{ Add title here }}
+### Example 2: Sync credentials with verbose output
 ```powershell
-{{ Add code here }}
+Sync-AzDeviceRegistryCredentials -NamespaceName my-namespace -ResourceGroupName my-resource-group -Verbose
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+VERBOSE: Initiating credential synchronization...
+VERBOSE: Syncing to IoT Hub: my-hub.azure-devices.net
+VERBOSE: Syncing to DPS: my-dps.azure-devices-provisioning.net
+VERBOSE: Synchronization completed successfully
+Status    : Succeeded
+Message   : Credentials successfully synchronized to IoT Hub and DPS
+Timestamp : 12/2/2024 11:42:33 AM
 ```
 
-{{ Add description here }}
+Synchronizes credentials with verbose logging to track the synchronization process across connected services.
 
+### Example 3: Sync credentials using pipeline input
+```powershell
+Get-AzDeviceRegistryCredentials -NamespaceName my-namespace -ResourceGroupName my-resource-group | Sync-AzDeviceRegistryCredentials
+```
+
+```output
+Status    : Succeeded
+Message   : Credentials successfully synchronized to IoT Hub and DPS
+Timestamp : 12/2/2024 11:45:08 AM
+```
+
+Retrieves credentials and pipes them to the sync operation, synchronizing the credentials to all connected IoT services.
