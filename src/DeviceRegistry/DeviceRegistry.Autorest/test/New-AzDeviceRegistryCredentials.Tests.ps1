@@ -15,15 +15,15 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzDeviceRegistryCredentia
 }
 
 Describe 'New-AzDeviceRegistryCredentials' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CreateViaJsonFilePath' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CreateViaJsonString' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateExpanded' {
+        $credentialsTestParams = $env.credentialsTests.createTests.CreateExpanded
+        
+        $credentials = New-AzDeviceRegistryCredentials `
+            -NamespaceName $env.credentialsTests.namespaceName `
+            -ResourceGroupName $env.credentialsTests.resourceGroup `
+            -Location $env.credentialsTests.location
+        
+        $credentials.Name | Should -Be "default"
+        $credentials.ResourceGroupName | Should -Be $env.credentialsTests.resourceGroup
     }
 }

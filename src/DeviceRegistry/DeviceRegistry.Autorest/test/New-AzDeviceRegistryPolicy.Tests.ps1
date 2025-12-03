@@ -15,15 +15,45 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzDeviceRegistryPolicy'))
 }
 
 Describe 'New-AzDeviceRegistryPolicy' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateExpanded' {
+        $policyTestParams = $env.policyTests.createTests.CreateExpanded
+        
+        $policy = New-AzDeviceRegistryPolicy `
+            -Name $policyTestParams.policyName `
+            -NamespaceName $env.policyTests.namespaceName `
+            -ResourceGroupName $env.policyTests.resourceGroup `
+            -Location $env.policyTests.location
+        
+        $policy.Name | Should -Be $policyTestParams.policyName
+        $policy.ResourceGroupName | Should -Be $env.policyTests.resourceGroup
     }
 
     It 'CreateViaJsonFilePath' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $policyTestParams = $env.policyTests.createTests.CreateViaJsonFilePath
+        $jsonFilePath = (Join-Path $PSScriptRoot $policyTestParams.jsonFilePath)
+        
+        $policy = New-AzDeviceRegistryPolicy `
+            -Name $policyTestParams.policyName `
+            -NamespaceName $env.policyTests.namespaceName `
+            -ResourceGroupName $env.policyTests.resourceGroup `
+            -JsonFilePath $jsonFilePath
+        
+        $policy.Name | Should -Be $policyTestParams.policyName
+        $policy.ResourceGroupName | Should -Be $env.policyTests.resourceGroup
     }
 
     It 'CreateViaJsonString' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $policyTestParams = $env.policyTests.createTests.CreateViaJsonString
+        $jsonFilePath = (Join-Path $PSScriptRoot $policyTestParams.jsonFilePath)
+        $jsonString = Get-Content -Path $jsonFilePath -Raw
+        
+        $policy = New-AzDeviceRegistryPolicy `
+            -Name $policyTestParams.policyName `
+            -NamespaceName $env.policyTests.namespaceName `
+            -ResourceGroupName $env.policyTests.resourceGroup `
+            -JsonString $jsonString
+        
+        $policy.Name | Should -Be $policyTestParams.policyName
+        $policy.ResourceGroupName | Should -Be $env.policyTests.resourceGroup
     }
 }

@@ -15,19 +15,26 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzDeviceRegistryCreden
 }
 
 Describe 'Update-AzDeviceRegistryCredentials' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        $credentials = Update-AzDeviceRegistryCredentials `
+            -NamespaceName $env.credentialsTests.namespaceName `
+            -ResourceGroupName $env.credentialsTests.resourceGroup `
+            -Tag @{"environment" = "test"; "purpose" = "validation"; "updated" = "true"}
+        
+        $credentials.Name | Should -Be "default"
+        $credentials.ResourceGroupName | Should -Be $env.credentialsTests.resourceGroup
     }
 
-    It 'UpdateViaJsonString' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'UpdateViaJsonFilePath' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateViaIdentity' {
+        $credentials = Get-AzDeviceRegistryCredentials `
+            -NamespaceName $env.credentialsTests.namespaceName `
+            -ResourceGroupName $env.credentialsTests.resourceGroup
+        
+        $updatedCredentials = Update-AzDeviceRegistryCredentials `
+            -InputObject $credentials `
+            -Tag @{"environment" = "test"; "purpose" = "validation"; "updated" = "true"}
+        
+        $updatedCredentials.Name | Should -Be "default"
+        $updatedCredentials.ResourceGroupName | Should -Be $env.credentialsTests.resourceGroup
     }
 }

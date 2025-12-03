@@ -15,15 +15,41 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzDeviceRegistryPolicy
 }
 
 Describe 'Remove-AzDeviceRegistryPolicy' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+    It 'Delete' {
+        $policyTestParams = $env.policyTests.deleteTests.Delete
+        $policy = Get-AzDeviceRegistryPolicy `
+            -Name $policyTestParams.policyName `
+            -NamespaceName $env.policyTests.namespaceName `
+            -ResourceGroupName $env.policyTests.resourceGroup
+        
+        $policy.Name | Should -Be $policyTestParams.policyName
 
-    It 'DeleteViaIdentityNamespace' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        Remove-AzDeviceRegistryPolicy `
+            -Name $policyTestParams.policyName `
+            -NamespaceName $env.policyTests.namespaceName `
+            -ResourceGroupName $env.policyTests.resourceGroup
+        
+        { Get-AzDeviceRegistryPolicy `
+            -Name $policyTestParams.policyName `
+            -NamespaceName $env.policyTests.namespaceName `
+            -ResourceGroupName $env.policyTests.resourceGroup `
+            -ErrorAction Stop } | Should -Throw
     }
 
     It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $policyTestParams = $env.policyTests.deleteTests.DeleteViaIdentity
+        
+        $policy = Get-AzDeviceRegistryPolicy `
+            -Name $policyTestParams.policyName `
+            -NamespaceName $env.policyTests.namespaceName `
+            -ResourceGroupName $env.policyTests.resourceGroup
+        
+        Remove-AzDeviceRegistryPolicy -InputObject $policy
+        
+        { Get-AzDeviceRegistryPolicy `
+            -Name $policyTestParams.policyName `
+            -NamespaceName $env.policyTests.namespaceName `
+            -ResourceGroupName $env.policyTests.resourceGroup `
+            -ErrorAction Stop } | Should -Throw
     }
 }

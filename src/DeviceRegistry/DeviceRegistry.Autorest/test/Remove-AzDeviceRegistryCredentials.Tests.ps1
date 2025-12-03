@@ -15,11 +15,33 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzDeviceRegistryCreden
 }
 
 Describe 'Remove-AzDeviceRegistryCredentials' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete' {
+        $credentials = Get-AzDeviceRegistryCredentials `
+            -NamespaceName $env.credentialsTests.namespaceName `
+            -ResourceGroupName $env.credentialsTests.resourceGroup
+        
+        $credentials.Name | Should -Be "default"
+
+        Remove-AzDeviceRegistryCredentials `
+            -NamespaceName $env.credentialsTests.namespaceName `
+            -ResourceGroupName $env.credentialsTests.resourceGroup
+        
+        { Get-AzDeviceRegistryCredentials `
+            -NamespaceName $env.credentialsTests.namespaceName `
+            -ResourceGroupName $env.credentialsTests.resourceGroup `
+            -ErrorAction Stop } | Should -Throw
     }
 
     It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $credentials = Get-AzDeviceRegistryCredentials `
+            -NamespaceName $env.credentialsTests.namespaceName `
+            -ResourceGroupName $env.credentialsTests.resourceGroup
+        
+        Remove-AzDeviceRegistryCredentials -InputObject $credentials
+        
+        { Get-AzDeviceRegistryCredentials `
+            -NamespaceName $env.credentialsTests.namespaceName `
+            -ResourceGroupName $env.credentialsTests.resourceGroup `
+            -ErrorAction Stop } | Should -Throw
     }
 }

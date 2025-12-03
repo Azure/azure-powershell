@@ -15,15 +15,31 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDeviceRegistryCredentia
 }
 
 Describe 'Get-AzDeviceRegistryCredentials' {
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $credentials = Get-AzDeviceRegistryCredentials `
+            -NamespaceName $env.credentialsTests.namespaceName `
+            -ResourceGroupName $env.credentialsTests.resourceGroup
+        
+        $credentials.Name | Should -Be "default"
+        $credentials.ResourceGroupName | Should -Be $env.credentialsTests.resourceGroup
     }
 
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $credentialsList = Get-AzDeviceRegistryCredentials `
+            -NamespaceName $env.credentialsTests.namespaceName `
+            -ResourceGroupName $env.credentialsTests.resourceGroup
+        
+        $credentialsList.Count | Should -BeGreaterThan 0
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        $credentials = Get-AzDeviceRegistryCredentials `
+            -NamespaceName $env.credentialsTests.namespaceName `
+            -ResourceGroupName $env.credentialsTests.resourceGroup
+        
+        $credentialsViaIdentity = Get-AzDeviceRegistryCredentials -InputObject $credentials
+        
+        $credentialsViaIdentity.Name | Should -Be "default"
+        $credentialsViaIdentity.ResourceGroupName | Should -Be $env.credentialsTests.resourceGroup
     }
 }
