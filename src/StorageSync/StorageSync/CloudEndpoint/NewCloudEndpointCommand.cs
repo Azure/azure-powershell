@@ -159,6 +159,16 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
         public string StorageAccountTenantId { get; set; }
 
         /// <summary>
+        /// Gets or sets the change enumeration interval days.
+        /// </summary>
+        /// <value>The change enumeration interval days.</value>
+        [Parameter(Mandatory = false,
+                   ValueFromPipelineByPropertyName = false,
+                   HelpMessage = HelpMessages.ChangeEnumerationIntervalDaysParameter)]
+        [ValidateRange(1, 20)]
+        public int? ChangeEnumerationIntervalDays { get; set; }
+
+        /// <summary>
         /// Gets or sets as job.
         /// </summary>
         /// <value>As job.</value>
@@ -236,7 +246,8 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
                 {
                     StorageAccountResourceId = StorageAccountResourceId,
                     AzureFileShareName = AzureFileShareName,
-                    StorageAccountTenantId = (StorageAccountTenantId ?? AzureContext.Tenant.Id)
+                    StorageAccountTenantId = (StorageAccountTenantId ?? AzureContext.Tenant.Id),
+                    ChangeEnumerationIntervalDays = ChangeEnumerationIntervalDays
                 };
 
                 string resourceGroupName = ResourceGroupName ?? ParentObject?.ResourceGroupName ?? parentResourceIdentifier.ResourceGroupName;
