@@ -19,6 +19,18 @@
 -->
 ## Upcoming Release
 
+## Version 0.25.1
+* Updated Azure.Core from 1.45.0 to 1.47.3
+* Updated to api-version 2025-09-01
+* Added argument `ExcludeFilter` to `Get-AzNetAppFilesVolumeReplication` to exclude deleted replications
+
+## Version 0.25.0
+* Updated to api-version 2025-06-01
+* Added `Flexible` to `ServiceLevel` for `New-AzNetAppFilesPool`
+* Added `CustomThroughput` to `New-AzNetAppFilesPool` and `Update-AzNetAppFilesPool`
+* Added `AcceptGrowCapacityPoolForShortTermCloneSplit` to `New-AzNetAppFilesVolume`
+* Added `Split-AZNetAppFilesCloneFromParent` cmdlet to split a clone from its parent volume
+
 ## Version 0.24.1
 * Updated to api-version 2025-03-01
 

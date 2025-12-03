@@ -19,6 +19,27 @@
 -->
 ## Upcoming Release
 
+## Version 9.4.0
+* Updated Azure.Core from 1.45.0 to 1.47.3
+* Supported Storage account planned failover: `Invoke-AzStorageAccountFailover`, `Get-AzStorageAccount`
+
+## Version 9.3.0
+* Supported Blob Geo Replication SLA on Storage accounts
+    - `New-AzStorageAccount`
+    - `Set-AzStorageAccount`
+* Supported enable Priority Replication when set object replication policy
+    - `Set-AzStorageObjectReplicationPolicy`
+* Supported get and reconcile NSP Configuration on a Storage account: 
+    - `Get-AzStorageNetworkSecurityPerimeterConfiguration`
+    - `Invoke-AzStorageReconcileNetworkSecurityPerimeterConfiguration`
+
+## Version 9.2.0
+* Supported Zone and ZonePlacementPolicy on Storage accounts: `New-AzStorageAccount`, `Set-AzStorageAccount`
+* Supported listing Storage SKU: `Get-AzStorageSku`
+* Supported enabling SMB Oauth on Storage accounts: `New-AzStorageAccount`, `Set-AzStorageAccount`
+* Supported Enable Metrics when set object replication policy: `Set-AzStorageObjectReplicationPolicy`
+* Supported create and get symbolic link in NFS File Share: `New-AzStorageFileSymbolicLink`, `Get-AzStorageFileSymbolicLink`
+
 ## Version 9.1.0
 * Supported set SasExpirationAction as Log or Block, together with SasExpirationPeriod
     - `New-AzStorageAccount`
@@ -984,10 +1005,10 @@
 * Fixed miscellaneous typos across module
 * Update help for Get/Close-AzStorageFileHandle, by add more scenarios to cmdlet examples and update parameter descriptions
 * Support StandardBlobTier in upload blob and copy blob
-    -  Set-AzStorageBlobContent
-    -  Start-AzStorageBlobCopy
+    -  `Set-AzStorageBlobContent`
+    -  `Start-AzStorageBlobCopy`
 * Support Rehydrate Priority in copy blob
-    -  Start-AzStorageBlobCopy
+    -  `Start-AzStorageBlobCopy`
 
 ## Version 1.5.1
 * Update example in reference documentation for `Get-AzStorageAccount` to use correct parameter name

@@ -13,6 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Cmdlets
     /// [OpenAPI] List=>GET:"/subscriptions/{subscriptionId}/providers/Microsoft.DBforMySQL/servers"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzMySqlServer_List1")]
+    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.CmdletBreakingChange("16.0.0", "2.0.0", "2026/05")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServer))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.MySql.Description(@"List all the servers in a given subscription.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.MySql.Generated]

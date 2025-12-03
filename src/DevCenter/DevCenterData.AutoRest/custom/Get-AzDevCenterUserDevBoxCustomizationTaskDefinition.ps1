@@ -20,18 +20,24 @@ Gets a customization task.
 .Description
 Gets a customization task.
 .Example
+Get-AzDevCenterUserDevBoxCustomizationTaskDefinition -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -ProjectName DevProject
+.Example
+Get-AzDevCenterUserDevBoxCustomizationTaskDefinition -DevCenterName Contoso -ProjectName DevProject
+.Example
+Get-AzDevCenterUserDevBoxCustomizationTaskDefinition -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -ProjectName DevProject -TaskName choco -CatalogName MyCatalog
+.Example
 Get-AzDevCenterUserDevBoxCustomizationTaskDefinition -DevCenterName Contoso -ProjectName DevProject -TaskName choco -CatalogName MyCatalog
 .Example
 $customizationTaskInput = @{"TaskName" = "choco"; "ProjectName" ="DevProject"; "CatalogName" = "MyCatalog" }
 Get-AzDevCenterUserDevBoxCustomizationTaskDefinition -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -InputObject $customizationTaskInput
 .Example
 $customizationTaskInput = @{"TaskName" = "choco"; "ProjectName" = "DevProject"; "CatalogName" = "MyCatalog" }
-Get-AzDevCenterUserDevBoxCustomizationTaskDefinition -DevCenterName Contoso -InputObject $customizationTaskInput
+Get-AzDevCenterUserDevBoxCustomizationTaskDefinition -DevCenterName Contoso -InputObject $customizationTaskInput 
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.ICustomizationTaskDefinition
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.ICustomizationTaskDefinition
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -39,6 +45,7 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [ActionName <String>]: The name of the action.
+  [AddOnName <String>]: Name of the dev box addon.
   [CatalogName <String>]: Name of the catalog.
   [CustomizationGroupName <String>]: Name of the customization group.
   [CustomizationTaskId <String>]: A customization task ID.
@@ -47,61 +54,63 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [EnvironmentName <String>]: Environment name.
   [EnvironmentTypeName <String>]: Name of the environment type.
   [Id <String>]: Resource identity path
+  [ImageBuildLogId <String>]: An imaging build log id.
   [OperationId <String>]: Unique identifier for the Dev Box operation.
   [PoolName <String>]: Pool name.
   [ProjectName <String>]: Name of the project.
   [ScheduleName <String>]: Display name for the Schedule.
+  [SnapshotId <String>]: The id of the snapshot. Should be treated as opaque string.
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
 https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserdevboxcustomizationtaskdefinition
 #>
 function Get-AzDevCenterUserDevBoxCustomizationTaskDefinition {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.ICustomizationTaskDefinition])]
-[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
-param(
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Parameter(ParameterSetName='GetViaIdentity', Mandatory)]
-    [Parameter(ParameterSetName='List', Mandatory)]
+  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.ICustomizationTaskDefinition])]
+  [CmdletBinding(DefaultParameterSetName = 'List', PositionalBinding = $false)]
+  param(
+    [Parameter(ParameterSetName = 'Get', Mandatory)]
+    [Parameter(ParameterSetName = 'GetViaIdentity', Mandatory)]
+    [Parameter(ParameterSetName = 'List', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Uri')]
     [System.String]
     # The DevCenter-specific URI to operate on.
     ${Endpoint},
 
-    [Parameter(ParameterSetName='GetViaIdentityByDevCenter', Mandatory)]
-    [Parameter(ParameterSetName='ListByDevCenter', Mandatory)]
-    [Parameter(ParameterSetName='GetByDevCenter', Mandatory)]
+    [Parameter(ParameterSetName = 'GetViaIdentityByDevCenter', Mandatory)]
+    [Parameter(ParameterSetName = 'ListByDevCenter', Mandatory)]
+    [Parameter(ParameterSetName = 'GetByDevCenter', Mandatory)]
     [Alias('DevCenter')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Uri')]
     [System.String]
     # The DevCenter upon which to execute operations.
     ${DevCenterName},
 
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Parameter(ParameterSetName='GetByDevCenter', Mandatory)]
+    [Parameter(ParameterSetName = 'Get', Mandatory)]
+    [Parameter(ParameterSetName = 'GetByDevCenter', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
     [System.String]
     # Name of the catalog.
     ${CatalogName},
 
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Parameter(ParameterSetName='List', Mandatory)]
-    [Parameter(ParameterSetName='ListByDevCenter', Mandatory)]
-    [Parameter(ParameterSetName='GetByDevCenter', Mandatory)]
+    [Parameter(ParameterSetName = 'Get', Mandatory)]
+    [Parameter(ParameterSetName = 'List', Mandatory)]
+    [Parameter(ParameterSetName = 'ListByDevCenter', Mandatory)]
+    [Parameter(ParameterSetName = 'GetByDevCenter', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
     [System.String]
     # Name of the project.
     ${ProjectName},
 
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Parameter(ParameterSetName='GetByDevCenter', Mandatory)]
+    [Parameter(ParameterSetName = 'Get', Mandatory)]
+    [Parameter(ParameterSetName = 'GetByDevCenter', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
     [System.String]
     # Full name of the task: {catalogName}/{taskName}.
     ${TaskName},
 
-    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='GetViaIdentityByDevCenter', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName = 'GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName = 'GetViaIdentityByDevCenter', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity]
     # Identity Parameter
@@ -155,21 +164,21 @@ param(
     [System.Management.Automation.SwitchParameter]
     # Use the default credentials for the proxy
     ${ProxyUseDefaultCredentials}
-)
+  )
 
-process {
+  process {
     if (-not $PSBoundParameters.ContainsKey('Endpoint')) {
-        $Endpoint = GetEndpointFromResourceGraph -DevCenterName $DevCenterName -Project $ProjectName
-        $null = $PSBoundParameters.Add("Endpoint", $Endpoint)
-        $null = $PSBoundParameters.Remove("DevCenterName")
+      $Endpoint = GetEndpointFromResourceGraph -DevCenterName $DevCenterName -Project $ProjectName
+      $null = $PSBoundParameters.Add("Endpoint", $Endpoint)
+      $null = $PSBoundParameters.Remove("DevCenterName")
   
-      }
-      else {
-        $Endpoint = ValidateAndProcessEndpoint -Endpoint $Endpoint
-        $PSBoundParameters["Endpoint"] = $Endpoint
-      }
+    }
+    else {
+      $Endpoint = ValidateAndProcessEndpoint -Endpoint $Endpoint
+      $PSBoundParameters["Endpoint"] = $Endpoint
+    }
   
-      Az.DevCenterdata.internal\Get-AzDevCenterUserDevBoxCustomizationTaskDefinition @PSBoundParameters
+    Az.DevCenterdata.internal\Get-AzDevCenterUserDevBoxCustomizationTaskDefinition @PSBoundParameters
 
-}
+  }
 }

@@ -1,20 +1,20 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/0661b131-4a11-479b-96bf-2f95acca2f73/providers/Microsoft.NetApp/locations/eastus/regionInfos/default?api-version=2025-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDY2MWIxMzEtNGExMS00NzliLTk2YmYtMmY5NWFjY2EyZjczL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0QXBwL2xvY2F0aW9ucy9lYXN0dXMvcmVnaW9uSW5mb3MvZGVmYXVsdD9hcGktdmVyc2lvbj0yMDI1LTAzLTAx",
+      "RequestUri": "/subscriptions/0661b131-4a11-479b-96bf-2f95acca2f73/providers/Microsoft.NetApp/locations/eastus/regionInfos/default?api-version=2025-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDY2MWIxMzEtNGExMS00NzliLTk2YmYtMmY5NWFjY2EyZjczL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0QXBwL2xvY2F0aW9ucy9lYXN0dXMvcmVnaW9uSW5mb3MvZGVmYXVsdD9hcGktdmVyc2lvbj0yMDI1LTA5LTAx",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Accept-Language": [
           "en-US"
         ],
         "x-ms-client-request-id": [
-          "4d59b735-a6d1-4f53-a342-b8da3b476c0f"
+          "37329906-4e2d-4ef0-b399-5778ec7bde5c"
         ],
         "User-Agent": [
-          "FxVersion/8.0.1725.26602",
+          "FxVersion/8.0.2225.52707",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22631",
+          "OSVersion/Microsoft.Windows.10.0.26200",
           "Microsoft.Azure.Management.NetApp.NetAppManagementClient/0.0.0.0"
         ]
       },
@@ -27,16 +27,10 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "d302b7a5-e56d-4c07-8ea8-707078457bff"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
+          "3970acfd-f1f1-4f38-8804-e8bf89ba0de0"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=29ee0da0-a37f-4d77-8704-0c32607c900f/uksouth/5122a8c9-511c-4359-bbaf-bff951c03bb6"
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=29ee0da0-a37f-4d77-8704-0c32607c900f/eastus/e6ddeb65-17f3-4d45-8543-f8ec55eef958"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "1099"
@@ -45,10 +39,13 @@
           "16499"
         ],
         "x-ms-correlation-request-id": [
-          "1ed5032b-eef2-4abb-ac43-f98e79659df0"
+          "772aba83-5236-489f-8589-97c2d7f6c888"
         ],
         "x-ms-routing-request-id": [
-          "UKSOUTH:20250627T222213Z:1ed5032b-eef2-4abb-ac43-f98e79659df0"
+          "EASTUS:20251118T102133Z:772aba83-5236-489f-8589-97c2d7f6c888"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -57,10 +54,10 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: FB7EB11C2D7F4BA2BE4674B8C155CCFF Ref B: AMS231032609021 Ref C: 2025-06-27T22:22:13Z"
+          "Ref A: A855E881EB64437693104FC41903F39F Ref B: MNZ221060619011 Ref C: 2025-11-18T10:21:33Z"
         ],
         "Date": [
-          "Fri, 27 Jun 2025 22:22:12 GMT"
+          "Tue, 18 Nov 2025 10:21:32 GMT"
         ],
         "Content-Length": [
           "421"

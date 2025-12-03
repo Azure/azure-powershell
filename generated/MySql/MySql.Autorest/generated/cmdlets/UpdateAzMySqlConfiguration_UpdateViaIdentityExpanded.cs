@@ -14,6 +14,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Cmdlets
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.MySql.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzMySqlConfiguration_UpdateViaIdentityExpanded", SupportsShouldProcess = true)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.CmdletBreakingChange("16.0.0", "2.0.0", "2026/05")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IConfiguration))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.MySql.Description(@"Updates a configuration of a server.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.MySql.Generated]

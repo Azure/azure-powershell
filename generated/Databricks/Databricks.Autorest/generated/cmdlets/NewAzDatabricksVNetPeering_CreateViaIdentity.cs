@@ -14,6 +14,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzDatabricksVNetPeering_CreateViaIdentity", SupportsShouldProcess = true)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IVirtualNetworkPeering", "15.0.0", "2.0.0", "2025/11/03", DeprecatedOutputProperties=new string[] {"DatabrickAddressSpaceAddressPrefix","RemoteAddressSpaceAddressPrefix"}, NewOutputProperties=new string[] {"DatabrickAddressSpaceAddressPrefix","RemoteAddressSpaceAddressPrefix"}, ChangeDescription="The types of the properties 'DatabrickAddressSpaceAddressPrefix' and 'RemoteAddressSpaceAddressPrefix' will be changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IVirtualNetworkPeering))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Description(@"Creates vNet Peering for workspace.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Generated]

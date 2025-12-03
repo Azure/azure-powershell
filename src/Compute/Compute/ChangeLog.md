@@ -21,6 +21,36 @@
 -->
 ## Upcoming Release
 
+## Version 11.1.0
+* Added `-ResiliencyView` parameter to `Get-AzVmssVM` cmdlet
+    - Retrieves the resilient VM deletion status for Virtual Machine Scale Set (VMSS) VMs
+    - Indicates whether automatic delete retries are in progress, failed, or not started
+    - Supports monitoring the real-time status of the Resilient Delete feature
+
+## Version 11.0.0
+* Improved user experience and consistency. This may introduce breaking changes. Please refer to [here](https://go.microsoft.com/fwlink/?linkid=2340249).
+* Updated Azure.Core from 1.45.0 to 1.47.3
+* Added `-EnableAutomaticUpgrade` and `-TreatFailureAsDeploymentFailure` parameters (Bool) to `New-AzVmGalleryApplication` and `New-AzVmssGalleryApplication` cmdlets.
+* Added `-EnableAutomaticUpgrade` and `-TreatFailureAsDeploymentFailure` parameters (Switch) to `Add-AzVmGalleryApplication` and `Add-AzVmssGalleryApplication` cmdlets.
+
+## Version 10.5.0
+* Added `-Redeploy` switch parameter for `Update-AzHost` cmdlet to enable dedicated host redeployment.
+* Added `-SupportedSecurityOption` parameter to `New-AzDiskConfig` cmdlet.
+* ComputeRP related cmdlets will now use 2025-04-01 version of the ComputeRP API.
+* Added `-AddProxyAgentExtension` parameter (Switch) to `New-AzVmss` and `New-AzVM`
+* Added `-AddProxyAgentExtension` parameter (Bool) to `Set-AzVMProxyAgentSetting` and  `Set-AzVmssProxyAgentSetting`
+
+## Version 10.4.0
+* Added `-InstantAccessDurationMinutes` parameter to New-AzSnapshotConfig.
+* Added `SecureVMGuestStateSAS` parameter to `Grant-AzSnapshotAccess`.
+* Updated SDK to use 2025-04-01 version of the ComputeRP API for Compute related cmdlets.
+
+## Version 10.3.0
+* Fixed typo 'DeyAll' to 'DenyAll' in NetworkAccessPolicy description. 
+* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
+* Updated New-AzDiskConfig to include `SecurityMetadataUri` and `SecurityDataUri` parameters.
+* Updated Grant-AzDisk to return `SecurityMetadataAccessSAS` property.
+
 ## Version 10.2.0
 * Compute DiskRP related cmdlets will now use 2025-01-02 version of the DiskRP API.
 * Upgraded SpotPlacementScore cmdlets to api version 2025-06-05

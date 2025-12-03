@@ -20,7 +20,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IRequiredAmlFilesystemSubnetsSize))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Description(@"Get the number of available IP addresses needed for the AML file system information provided.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.StorageCache.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.StorageCache/getRequiredAmlFSSubnetsSize", ApiVersion = "2023-05-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.StorageCache.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.StorageCache/getRequiredAmlFSSubnetsSize", ApiVersion = "2025-07-01")]
     public partial class GetAzStorageCacheAmlFileSystemSubnetRequiredSize_GetExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IContext

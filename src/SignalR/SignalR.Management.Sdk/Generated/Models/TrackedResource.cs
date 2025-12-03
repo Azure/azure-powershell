@@ -8,8 +8,13 @@ namespace Microsoft.Azure.Management.SignalR.Models
     using System.Linq;
 
     /// <summary>
-    /// The resource model definition for a ARM tracked top level resource.
+    /// The resource model definition for an Azure Resource Manager tracked top
+    /// level resource which has &#39;tags&#39; and a &#39;location&#39;
     /// </summary>
+    /// <remarks>
+    /// The resource model definition for an Azure Resource Manager tracked top
+    /// level resource which has &#39;tags&#39; and a &#39;location&#39;
+    /// </remarks>
     public partial class TrackedResource : Resource
     {
         /// <summary>
@@ -24,28 +29,32 @@ namespace Microsoft.Azure.Management.SignalR.Models
         /// Initializes a new instance of the TrackedResource class.
         /// </summary>
 
-        /// <param name="id">Fully qualified resource Id for the resource.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">The name of the resource.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">The type of the resource - e.g. &#34;Microsoft.SignalRService/SignalR&#34;
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
         /// </param>
 
-        /// <param name="location">The GEO location of the resource. e.g. West US | East US | North Central US
-        /// | South Central US.
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
-        /// <param name="tags">Tags of the service which is a list of key value pairs that describe the
-        /// resource.
+        /// <param name="tags">Resource tags.
         /// </param>
-        public TrackedResource(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>))
 
-        : base(id, name, type)
+        /// <param name="location">The geo-location where the resource lives
+        /// </param>
+        public TrackedResource(string location, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>))
+
+        : base(id, name, type, systemData)
         {
-            this.Location = location;
             this.Tags = tags;
+            this.Location = location;
             CustomInit();
         }
 
@@ -56,17 +65,30 @@ namespace Microsoft.Azure.Management.SignalR.Models
 
 
         /// <summary>
-        /// Gets or sets the GEO location of the resource. e.g. West US | East US |
-        /// North Central US | South Central US.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "location")]
-        public string Location {get; set; }
-
-        /// <summary>
-        /// Gets or sets tags of the service which is a list of key value pairs that
-        /// describe the resource.
+        /// Gets or sets resource tags.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "tags")]
         public System.Collections.Generic.IDictionary<string, string> Tags {get; set; }
+
+        /// <summary>
+        /// Gets or sets the geo-location where the resource lives
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "location")]
+        public string Location {get; set; }
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+            if (this.Location == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "Location");
+            }
+
+
+        }
     }
 }

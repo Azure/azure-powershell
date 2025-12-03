@@ -17,6 +17,9 @@
                                 <PropertyName>Type</PropertyName>
                             </TableColumnItem>
                             <TableColumnItem>
+                                <PropertyName>SubType</PropertyName>
+                            </TableColumnItem>
+                            <TableColumnItem>
                                 <PropertyName>Path</PropertyName>
                             </TableColumnItem>
                         </TableColumnItems>

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Migrate-help.xml
 Module Name: Az.Migrate
 online version: https://learn.microsoft.com/powershell/module/az.migrate/new-azmigrateproject
 schema: 2.0.0
@@ -13,8 +13,9 @@ Creates a new Migrate project.
 ## SYNTAX
 
 ```
-New-AzMigrateProject -Location <String> -Name <String> -ResourceGroupName <String> [-ETag <String>]
- [-Property <IMigrateProjectProperties>] [-SubscriptionId <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzMigrateProject -Name <String> -ResourceGroupName <String> -Location <String> [-ETag <String>]
+ [-Property <IMigrateProjectProperties>] [-SubscriptionId <String>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,7 +32,6 @@ New-AzMigrateProject -SubscriptionId xxx-xxx-xxx -ResourceGroupName kuchaturimpk
 ETag Location  Name                     Type
 ---- --------  ----                     ----
      centralus kuchaturimpkocrg1pwshp14 Microsoft.Migrate/MigrateProjects
-
 ```
 
 Method to create a new migrate project.
@@ -170,4 +170,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

@@ -24,6 +24,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         /// </summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStateProperties __afdStateProperties = new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdStateProperties();
 
+        /// <summary>Authentication settings for origin in origin group.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginAuthenticationProperties Authentication { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupUpdatePropertiesParametersInternal)__afdOriginGroupUpdatePropertiesParameters).Authentication; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupUpdatePropertiesParametersInternal)__afdOriginGroupUpdatePropertiesParameters).Authentication = value ?? null /* model class */; }
+
+        /// <summary>
+        /// The scope used when requesting token from Microsoft Entra. For example, for Azure Blob Storage, scope could be "https://storage.azure.com/.default".
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
+        public string AuthenticationScope { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupUpdatePropertiesParametersInternal)__afdOriginGroupUpdatePropertiesParameters).AuthenticationScope; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupUpdatePropertiesParametersInternal)__afdOriginGroupUpdatePropertiesParameters).AuthenticationScope = value ?? null; }
+
+        /// <summary>The type of the authentication for the origin.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
+        public string AuthenticationType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupUpdatePropertiesParametersInternal)__afdOriginGroupUpdatePropertiesParameters).AuthenticationType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupUpdatePropertiesParametersInternal)__afdOriginGroupUpdatePropertiesParameters).AuthenticationType = value ?? null; }
+
+        /// <summary>
+        /// The user assigned managed identity to use for the origin authentication if type is UserAssignedIdentity.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference AuthenticationUserAssignedIdentity { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupUpdatePropertiesParametersInternal)__afdOriginGroupUpdatePropertiesParameters).AuthenticationUserAssignedIdentity; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupUpdatePropertiesParametersInternal)__afdOriginGroupUpdatePropertiesParameters).AuthenticationUserAssignedIdentity = value ?? null /* model class */; }
+
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
         public string DeploymentStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal)__afdStateProperties).DeploymentStatus; }
 
@@ -37,14 +57,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
         public Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ILoadBalancingSettingsParameters LoadBalancingSetting { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupUpdatePropertiesParametersInternal)__afdOriginGroupUpdatePropertiesParameters).LoadBalancingSetting; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupUpdatePropertiesParametersInternal)__afdOriginGroupUpdatePropertiesParameters).LoadBalancingSetting = value ?? null /* model class */; }
 
+        /// <summary>Internal Acessors for Authentication</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginAuthenticationProperties Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupUpdatePropertiesParametersInternal.Authentication { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupUpdatePropertiesParametersInternal)__afdOriginGroupUpdatePropertiesParameters).Authentication; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupUpdatePropertiesParametersInternal)__afdOriginGroupUpdatePropertiesParameters).Authentication = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for AuthenticationUserAssignedIdentity</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupUpdatePropertiesParametersInternal.AuthenticationUserAssignedIdentity { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupUpdatePropertiesParametersInternal)__afdOriginGroupUpdatePropertiesParameters).AuthenticationUserAssignedIdentity; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupUpdatePropertiesParametersInternal)__afdOriginGroupUpdatePropertiesParameters).AuthenticationUserAssignedIdentity = value ?? null /* model class */; }
+
         /// <summary>Internal Acessors for ProfileName</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupUpdatePropertiesParametersInternal.ProfileName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupUpdatePropertiesParametersInternal)__afdOriginGroupUpdatePropertiesParameters).ProfileName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupUpdatePropertiesParametersInternal)__afdOriginGroupUpdatePropertiesParameters).ProfileName = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupUpdatePropertiesParametersInternal.ProfileName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupUpdatePropertiesParametersInternal)__afdOriginGroupUpdatePropertiesParameters).ProfileName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupUpdatePropertiesParametersInternal)__afdOriginGroupUpdatePropertiesParameters).ProfileName = value ?? null; }
 
         /// <summary>Internal Acessors for DeploymentStatus</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal.DeploymentStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal)__afdStateProperties).DeploymentStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal)__afdStateProperties).DeploymentStatus = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal.DeploymentStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal)__afdStateProperties).DeploymentStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal)__afdStateProperties).DeploymentStatus = value ?? null; }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal)__afdStateProperties).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal)__afdStateProperties).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal)__afdStateProperties).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal)__afdStateProperties).ProvisioningState = value ?? null; }
 
         /// <summary>The name of the profile which holds the origin group.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
@@ -66,6 +92,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
         public int? TrafficRestorationTimeToHealedOrNewEndpointsInMinute { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupUpdatePropertiesParametersInternal)__afdOriginGroupUpdatePropertiesParameters).TrafficRestorationTimeToHealedOrNewEndpointsInMinute; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupUpdatePropertiesParametersInternal)__afdOriginGroupUpdatePropertiesParameters).TrafficRestorationTimeToHealedOrNewEndpointsInMinute = value ?? default(int); }
+
+        /// <summary>Resource ID.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
+        public string UserAssignedIdentityId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupUpdatePropertiesParametersInternal)__afdOriginGroupUpdatePropertiesParameters).UserAssignedIdentityId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupUpdatePropertiesParametersInternal)__afdOriginGroupUpdatePropertiesParameters).UserAssignedIdentityId = value ?? null; }
 
         /// <summary>Creates an new <see cref="AfdOriginGroupProperties" /> instance.</summary>
         public AfdOriginGroupProperties()

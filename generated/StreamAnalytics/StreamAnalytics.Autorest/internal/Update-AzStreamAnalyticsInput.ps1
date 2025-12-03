@@ -16,11 +16,11 @@
 
 <#
 .Synopsis
-Updates an existing input under an existing streaming job.
+Update an existing input under an existing streaming job.
 This can be used to partially update (ie.
 update one or two properties) an input without affecting the rest the job or input definition.
 .Description
-Updates an existing input under an existing streaming job.
+Update an existing input under an existing streaming job.
 This can be used to partially update (ie.
 update one or two properties) an input without affecting the rest the job or input definition.
 .Example
@@ -29,11 +29,11 @@ Update-AzStreamAnalyticsInput -ResourceGroupName azure-rg-test -JobName sajob-01
 Get-AzStreamAnalyticsInput -ResourceGroupName azure-rg-test -JobName sajob-01-pwsh -Name input-01 | Update-AzStreamAnalyticsInput -File .\test\template-json\IotHub.json
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IInput
+Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IInput
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IStreamAnalyticsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IInput
+Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IInput
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -47,7 +47,7 @@ INPUT <IInput>: An input object, containing all information associated with the 
       Type <String>: 
     [PartitionKey <String>]: partitionKey Describes a key in the input data which is used for partitioning the input data
     [Serialization <ISerialization>]: Describes how data from an input is serialized or how data is serialized when written to an output. Required on PUT (CreateOrReplace) requests.
-      Type <EventSerializationType>: Indicates the type of serialization that the input or output uses. Required on PUT (CreateOrReplace) requests.
+      Type <String>: Indicates the type of serialization that the input or output uses. Required on PUT (CreateOrReplace) requests.
 
 INPUTOBJECT <IStreamAnalyticsIdentity>: Identity Parameter
   [ClusterName <String>]: The name of the cluster.
@@ -67,16 +67,30 @@ PROPERTY <IInputProperties>: The properties that are associated with an input. R
     Type <String>: 
   [PartitionKey <String>]: partitionKey Describes a key in the input data which is used for partitioning the input data
   [Serialization <ISerialization>]: Describes how data from an input is serialized or how data is serialized when written to an output. Required on PUT (CreateOrReplace) requests.
-    Type <EventSerializationType>: Indicates the type of serialization that the input or output uses. Required on PUT (CreateOrReplace) requests.
+    Type <String>: Indicates the type of serialization that the input or output uses. Required on PUT (CreateOrReplace) requests.
+
+STREAMINGJOBINPUTOBJECT <IStreamAnalyticsIdentity>: Identity Parameter
+  [ClusterName <String>]: The name of the cluster.
+  [FunctionName <String>]: The name of the function.
+  [Id <String>]: Resource identity path
+  [InputName <String>]: The name of the input.
+  [JobName <String>]: The name of the streaming job.
+  [Location <String>]: The region in which to retrieve the subscription's quota information. You can find out which regions Azure Stream Analytics is supported in here: https://azure.microsoft.com/en-us/regions/
+  [OutputName <String>]: The name of the output.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [TransformationName <String>]: The name of the transformation.
 .Link
 https://learn.microsoft.com/powershell/module/az.streamanalytics/update-azstreamanalyticsinput
 #>
 function Update-AzStreamAnalyticsInput {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IInput])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IInput])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Update', Mandatory)]
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category('Path')]
     [System.String]
     # The name of the streaming job.
@@ -84,6 +98,10 @@ param(
 
     [Parameter(ParameterSetName='Update', Mandatory)]
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityStreamingjob', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityStreamingjobExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Alias('InputName')]
     [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category('Path')]
     [System.String]
@@ -92,6 +110,8 @@ param(
 
     [Parameter(ParameterSetName='Update', Mandatory)]
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -100,6 +120,8 @@ param(
 
     [Parameter(ParameterSetName='Update')]
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -111,8 +133,14 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IStreamAnalyticsIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityStreamingjob', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpdateViaIdentityStreamingjobExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IStreamAnalyticsIdentity]
+    # Identity Parameter
+    ${StreamingjobInputObject},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category('Header')]
@@ -124,21 +152,33 @@ param(
 
     [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpdateViaIdentityStreamingjob', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IInput]
+    [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IInput]
     # An input object, containing all information associated with the named input.
     # All inputs are contained under a streaming job.
-    # To construct, see NOTES section for INPUT properties and create a hash table.
     ${Input},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityStreamingjobExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IInputProperties]
+    [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IInputProperties]
     # The properties that are associated with an input.
     # Required on PUT (CreateOrReplace) requests.
-    # To construct, see NOTES section for PROPERTY properties and create a hash table.
     ${Property},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -196,16 +236,21 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Update = 'Az.StreamAnalytics.private\Update-AzStreamAnalyticsInput_Update';
             UpdateExpanded = 'Az.StreamAnalytics.private\Update-AzStreamAnalyticsInput_UpdateExpanded';
             UpdateViaIdentity = 'Az.StreamAnalytics.private\Update-AzStreamAnalyticsInput_UpdateViaIdentity';
             UpdateViaIdentityExpanded = 'Az.StreamAnalytics.private\Update-AzStreamAnalyticsInput_UpdateViaIdentityExpanded';
+            UpdateViaIdentityStreamingjob = 'Az.StreamAnalytics.private\Update-AzStreamAnalyticsInput_UpdateViaIdentityStreamingjob';
+            UpdateViaIdentityStreamingjobExpanded = 'Az.StreamAnalytics.private\Update-AzStreamAnalyticsInput_UpdateViaIdentityStreamingjobExpanded';
+            UpdateViaJsonFilePath = 'Az.StreamAnalytics.private\Update-AzStreamAnalyticsInput_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.StreamAnalytics.private\Update-AzStreamAnalyticsInput_UpdateViaJsonString';
         }
-        if (('Update', 'UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Update', 'UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -214,6 +259,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

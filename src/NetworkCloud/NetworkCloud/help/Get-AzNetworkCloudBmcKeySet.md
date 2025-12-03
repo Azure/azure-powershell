@@ -25,6 +25,12 @@ Get-AzNetworkCloudBmcKeySet -ClusterName <String> -Name <String> -ResourceGroupN
  [<CommonParameters>]
 ```
 
+### GetViaIdentityCluster
+```
+Get-AzNetworkCloudBmcKeySet -Name <String> -ClusterInputObject <INetworkCloudIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### GetViaIdentity
 ```
 Get-AzNetworkCloudBmcKeySet -InputObject <INetworkCloudIdentity> [-DefaultProfile <PSObject>]
@@ -67,6 +73,21 @@ This command lists all baseboard management controller key sets of the provided 
 
 ## PARAMETERS
 
+### -ClusterInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
+Parameter Sets: GetViaIdentityCluster
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ClusterName
 The name of the cluster.
 
@@ -100,7 +121,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
@@ -119,7 +139,7 @@ The name of the baseboard management controller key set.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityCluster
 Aliases: BmcKeySetName
 
 Required: True
@@ -170,7 +190,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IBmcKeySet
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBmcKeySet
 
 ## NOTES
 

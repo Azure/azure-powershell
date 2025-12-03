@@ -71,7 +71,11 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <param name="pageSize">Page size for each http request, too large pageSize will caused timeout,
         /// default 300,000. Type: integer (or Expression with resultType integer).
         /// </param>
-        public SalesforceV2Source(System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), object sourceRetryCount = default(object), object sourceRetryWait = default(object), object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object), object queryTimeout = default(object), object additionalColumns = default(object), object soqlQuery = default(object), object query = default(object), object includeDeletedObjects = default(object), object pageSize = default(object))
+
+        /// <param name="partitionOption">Partition option for the SalesforceV2 connector in copy activity,
+        /// AutoDetect or None. Type: string (or Expression with resultType string).
+        /// </param>
+        public SalesforceV2Source(System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), object sourceRetryCount = default(object), object sourceRetryWait = default(object), object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object), object queryTimeout = default(object), object additionalColumns = default(object), object soqlQuery = default(object), object query = default(object), object includeDeletedObjects = default(object), object pageSize = default(object), object partitionOption = default(object))
 
         : base(additionalProperties, sourceRetryCount, sourceRetryWait, maxConcurrentConnections, disableMetricsCollection, queryTimeout, additionalColumns)
         {
@@ -79,6 +83,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
             this.Query = query;
             this.IncludeDeletedObjects = includeDeletedObjects;
             this.PageSize = pageSize;
+            this.PartitionOption = partitionOption;
             CustomInit();
         }
 
@@ -121,5 +126,13 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "pageSize")]
         public object PageSize {get; set; }
+
+        /// <summary>
+        /// Gets or sets partition option for the SalesforceV2 connector in copy
+        /// activity, AutoDetect or None. Type: string (or Expression with resultType
+        /// string).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "partitionOption")]
+        public object PartitionOption {get; set; }
     }
 }

@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.5.1
+* Updated Azure.Core from 1.45.0 to 1.47.3
+
 ## Version 1.5.0
 * Added a new cmdlet GetAzureDataLakeStoreDeletedItemWithtoken to support pagination in  GetAzureDataLakeStoreDeletedItem
 

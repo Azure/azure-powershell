@@ -12,6 +12,40 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+function Test-AzureVMRedoProtection
+{
+    $resourceGroupName = "hiagarg"
+    $vaultName = "hiagaVault"
+    $targetVaultName = "hiagaVault2"
+    $vmContainerSuffix = "hiaga-adhoc-vm"
+    $policyName = "DefaultPolicy"
+
+    try
+    {
+        # Step 1: Move protection from hiagaVault to hiagaVault2
+        $vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+        $items = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -WorkloadType AzureVM -VaultId $vault.ID | Where-Object { $_.ContainerName.EndsWith($vmContainerSuffix) }
+        $targetVault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $targetVaultName
+        $policy = Get-AzRecoveryServicesBackupProtectionPolicy -Name $policyName -VaultId $targetVault.ID
+        
+	$redoJob = Redo-AzRecoveryServicesBackupProtection -Item $items[-1] -TargetVaultId $targetVault.ID -TargetPolicy $policy -VaultId $vault.ID -Force -Confirm:$false
+	Assert-True { $redoJob.Status -eq "Completed" }
+
+	# Step 2: Reverse - move protection back to hiagaVault
+	$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $targetVaultName
+	$targetVault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+	$policy = Get-AzRecoveryServicesBackupProtectionPolicy -Name $policyName -VaultId $targetVault.ID
+	$items = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -WorkloadType AzureVM -VaultId $vault.ID | Where-Object { $_.ContainerName.EndsWith($vmContainerSuffix) }
+
+	$redoJob = Redo-AzRecoveryServicesBackupProtection -Item $items[-1] -TargetVaultId $targetVault.ID -TargetPolicy $policy -VaultId $vault.ID -Force -Confirm:$false
+	Assert-True { $redoJob.Status -eq "Completed" }
+    }
+    finally
+    {
+        # Optional cleanup if needed
+    }
+}
+
 function Test-AzurePERestore
 {
 	$subId = "f2edfd5d-5496-4683-b94f-b3588c579009"
@@ -61,25 +95,9 @@ function Test-AzureVaultSoftDelete
 		$vault = Get-AzRecoveryServicesVault -Name $vaultName -ResourceGroupName $resourceGroupName
 		Assert-True {  $vault -ne $null }
 		
-		# Disable soft delete 
-		Set-AzRecoveryServicesVaultProperty -VaultId $vault.ID -SoftDeleteFeatureState Disable
-		$vaultProperty = Get-AzRecoveryServicesVaultProperty -VaultId $vault.ID
-		Assert-True { $vaultProperty.SoftDeleteFeatureState -eq "Disabled" }
-
-		# Enable soft delete 
-		Set-AzRecoveryServicesVaultProperty -VaultId $vault.ID -SoftDeleteFeatureState Enable
-		$vaultProperty = Get-AzRecoveryServicesVaultProperty -VaultId $vault.ID
-		Assert-True { $vaultProperty.SoftDeleteFeatureState -eq "Enabled" }
-
-		# Enable disable hybrid security setting 
-		Set-AzRecoveryServicesVaultProperty   -VaultId  $vault.ID -DisableHybridBackupSecurityFeature $false
-		$vaultProperty = Get-AzRecoveryServicesVaultProperty -VaultId $vault.ID
-		Assert-True { $vaultProperty.EnhancedSecurityState -eq "Enabled" }
-
-		# Disable hybrid security setting
-		Set-AzRecoveryServicesVaultProperty   -VaultId  $vault.ID -DisableHybridBackupSecurityFeature $true
-		$vaultProperty = Get-AzRecoveryServicesVaultProperty -VaultId $vault.ID
-		Assert-True { $vaultProperty.EnhancedSecurityState -eq "Disabled" }		
+		# Disable soft delete - should throw exception as it's no longer allowed
+		Assert-ThrowsContains { Set-AzRecoveryServicesVaultProperty -VaultId $vault.ID -SoftDeleteFeatureState Disable } `
+		"Operation returned an invalid status code 'BadRequest'"
 	}
 	finally
 	{
@@ -416,7 +434,7 @@ function Test-AzureVMMUA
 	finally
 	{		
 		# disable softDelete 
-		Set-AzRecoveryServicesVaultProperty -SoftDeleteFeatureState Disable -VaultId $vault.ID
+		# Set-AzRecoveryServicesVaultProperty -SoftDeleteFeatureState Disable -VaultId $vault.ID
 
 		#disable protection with RemoveRecoveryPoints
 		Disable-AzRecoveryServicesBackupProtection -Item $item -RemoveRecoveryPoints -VaultId $vault.ID -Force
@@ -425,7 +443,7 @@ function Test-AzureVMMUA
 		Remove-AzRecoveryServicesResourceGuardMapping -VaultId $vault.ID
 
 		# enable soft delete 
-		Set-AzRecoveryServicesVaultProperty -SoftDeleteFeatureState Enable -VaultId $vault.ID
+		# Set-AzRecoveryServicesVaultProperty -SoftDeleteFeatureState Enable -VaultId $vault.ID
 	}
 }
 
@@ -1346,7 +1364,7 @@ function Test-AzureRestoreWithCVMOsDiskEncryptionSetId()
 	$targetSubnetName = "default"
 	$owner = "sgholap"
 	$subscriptionId = "5288acd1-ba79-4377-9205-9f220331a44a"
-	$recoveryPointId = "807152782396876"
+	$recoveryPointId = "808254335380202" #"807152782396876"
 	$cVMOSDiskEncryptionSetId = "/subscriptions/5288acd1-ba79-4377-9205-9f220331a44a/resourceGroups/sgholap-rg/providers/Microsoft.Compute/diskEncryptionSets/CVMPSRestoreDES"
 	try
 	{	

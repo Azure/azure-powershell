@@ -20,8 +20,8 @@ New-AzRedisEnterpriseCache -ClusterName <String> -ResourceGroupName <String> [-S
  [-EvictionPolicy <EvictionPolicy>] [-GroupNickname <String>] [-LinkedDatabase <ILinkedDatabase[]>]
  [-ClusteringPolicy <ClusteringPolicy>] [-AccessKeysAuthentication <AccessKeysAuthentication>]
  [-CustomerManagedKeyEncryptionKeyUrl <String>] [-HighAvailability <HighAvailability>]
- [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
- [-KeyEncryptionKeyIdentityType <CmkIdentityType>]
+ [-PublicNetworkAccess <PublicNetworkAccess>] [-IdentityType <ManagedServiceIdentityType>]
+ [-IdentityUserAssignedIdentity <Hashtable>] [-KeyEncryptionKeyIdentityType <CmkIdentityType>]
  [-KeyEncryptionKeyIdentityUserAssignedIdentityResourceId <String>] [-AofPersistenceEnabled]
  [-AofPersistenceFrequency <AofFrequency>] [-RdbPersistenceEnabled] [-RdbPersistenceFrequency <RdbFrequency>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
@@ -33,8 +33,8 @@ New-AzRedisEnterpriseCache -ClusterName <String> -ResourceGroupName <String> [-S
 New-AzRedisEnterpriseCache -ClusterName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  -Location <String> -Sku <SkuName> [-Capacity <Int32>] [-MinimumTlsVersion <TlsVersion>] [-Zone <String[]>]
  [-Tag <Hashtable>] [-CustomerManagedKeyEncryptionKeyUrl <String>] [-HighAvailability <HighAvailability>]
- [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
- [-KeyEncryptionKeyIdentityType <CmkIdentityType>]
+ [-PublicNetworkAccess <PublicNetworkAccess>] [-IdentityType <ManagedServiceIdentityType>]
+ [-IdentityUserAssignedIdentity <Hashtable>] [-KeyEncryptionKeyIdentityType <CmkIdentityType>]
  [-KeyEncryptionKeyIdentityUserAssignedIdentityResourceId <String>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-NoDatabase] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -376,7 +376,7 @@ To construct, see NOTES section for GEOREPLICATIONLINKEDDATABASE properties and 
 To construct, see NOTES section for LINKEDDATABASE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ILinkedDatabase[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.ILinkedDatabase[]
 Parameter Sets: CreateClusterWithDatabase
 Aliases:
 
@@ -423,7 +423,7 @@ Optional set of redis modules to enable in this database - modules can only be a
 To construct, see NOTES section for MODULE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IModule[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IModule[]
 Parameter Sets: CreateClusterWithDatabase
 Aliases:
 
@@ -472,6 +472,22 @@ Specified at create time.
 ```yaml
 Type: System.Int32
 Parameter Sets: CreateClusterWithDatabase
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PublicNetworkAccess
+Whether or not public network traffic can access the Redis cluster.
+Only 'Enabled' or 'Disabled' can be set.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.PublicNetworkAccess
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -629,7 +645,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ICluster
+### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.ICluster
 
 ## NOTES
 

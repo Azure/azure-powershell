@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzNewRelicMonitoredHost
 
 ## SYNOPSIS
-List the compute vm resources currently being monitored by the NewRelic resource.
+Lists all VM resources currently being monitored by the New Relic monitor resource, helping you manage observability
 
 ## SYNTAX
 
@@ -34,7 +34,7 @@ Get-AzNewRelicMonitoredHost -MonitorName <String> -ResourceGroupName <String> [-
 ```
 
 ## DESCRIPTION
-List the compute vm resources currently being monitored by the NewRelic resource.
+Lists all VM resources currently being monitored by the New Relic monitor resource, helping you manage observability
 
 ## EXAMPLES
 

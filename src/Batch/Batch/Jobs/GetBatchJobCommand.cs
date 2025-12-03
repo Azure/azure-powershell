@@ -16,10 +16,11 @@ using Microsoft.Azure.Batch;
 using Microsoft.Azure.Commands.Batch.Models;
 using System.Management.Automation;
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "BatchJob", DefaultParameterSetName = Constants.ODataFilterParameterSet),OutputType(typeof(PSCloudJob))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "BatchJob", DefaultParameterSetName = Constants.ODataFilterParameterSet), OutputType(typeof(PSCloudJob))]
     public class GetBatchJobCommand : BatchObjectModelCmdletBase
     {
         private int maxCount = Constants.DefaultMaxCount;

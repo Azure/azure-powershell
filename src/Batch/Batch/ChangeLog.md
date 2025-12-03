@@ -19,6 +19,12 @@
 -->
 ## Upcoming Release
 
+## Version 4.0.0
+* Upgraded API version from 2022-10-01 to 2024-07-01.
+
+## Version 3.7.1
+* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
+
 ## Version 3.7.0
 * Upgraded nuget package to signed package.
 * Fixed 'Object reference not set to an instance of an object' error when setting null values inside job `CommonEnvironmentSettings` property. 
