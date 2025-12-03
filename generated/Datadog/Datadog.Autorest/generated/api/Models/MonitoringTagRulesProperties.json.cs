@@ -79,7 +79,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
             }
             {_logRule = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonObject>("logRules"), out var __jsonLogRules) ? Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.LogRules.FromJson(__jsonLogRules) : _logRule;}
             {_metricRule = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonObject>("metricRules"), out var __jsonMetricRules) ? Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.MetricRules.FromJson(__jsonMetricRules) : _metricRule;}
+            {_agentRule = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonObject>("agentRules"), out var __jsonAgentRules) ? Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.AgentRules.FromJson(__jsonAgentRules) : _agentRule;}
             {_provisioningState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonString>("provisioningState"), out var __jsonProvisioningState) ? (string)__jsonProvisioningState : (string)_provisioningState;}
+            {_automuting = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonBoolean>("automuting"), out var __jsonAutomuting) ? (bool?)__jsonAutomuting : _automuting;}
+            {_customMetric = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonBoolean>("customMetrics"), out var __jsonCustomMetrics) ? (bool?)__jsonCustomMetrics : _customMetric;}
             AfterFromJson(json);
         }
 
@@ -104,10 +107,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
             }
             AddIf( null != this._logRule ? (Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonNode) this._logRule.ToJson(null,serializationMode) : null, "logRules" ,container.Add );
             AddIf( null != this._metricRule ? (Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonNode) this._metricRule.ToJson(null,serializationMode) : null, "metricRules" ,container.Add );
+            AddIf( null != this._agentRule ? (Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonNode) this._agentRule.ToJson(null,serializationMode) : null, "agentRules" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.SerializationMode.IncludeRead))
             {
                 AddIf( null != (((object)this._provisioningState)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonString(this._provisioningState.ToString()) : null, "provisioningState" ,container.Add );
             }
+            AddIf( null != this._automuting ? (Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonBoolean((bool)this._automuting) : null, "automuting" ,container.Add );
+            AddIf( null != this._customMetric ? (Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonBoolean((bool)this._customMetric) : null, "customMetrics" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

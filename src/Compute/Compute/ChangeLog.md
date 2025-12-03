@@ -20,6 +20,14 @@
 
 -->
 ## Upcoming Release
+
+## Version 11.1.0
+* Added `-ResiliencyView` parameter to `Get-AzVmssVM` cmdlet
+    - Retrieves the resilient VM deletion status for Virtual Machine Scale Set (VMSS) VMs
+    - Indicates whether automatic delete retries are in progress, failed, or not started
+    - Supports monitoring the real-time status of the Resilient Delete feature
+
+## Version 11.0.0
 * Improved user experience and consistency. This may introduce breaking changes. Please refer to [here](https://go.microsoft.com/fwlink/?linkid=2340249).
 * Updated Azure.Core from 1.45.0 to 1.47.3
 * Added `-EnableAutomaticUpgrade` and `-TreatFailureAsDeploymentFailure` parameters (Bool) to `New-AzVmGalleryApplication` and `New-AzVmssGalleryApplication` cmdlets.

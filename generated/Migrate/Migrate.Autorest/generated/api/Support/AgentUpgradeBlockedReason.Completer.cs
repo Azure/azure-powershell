@@ -78,6 +78,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("'InvalidDriverVersion'", "InvalidDriverVersion", global::System.Management.Automation.CompletionResultType.ParameterValue, "InvalidDriverVersion");
             }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "ReInstallRequired".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'ReInstallRequired'", "ReInstallRequired", global::System.Management.Automation.CompletionResultType.ParameterValue, "ReInstallRequired");
+            }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Unknown".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
                 yield return new global::System.Management.Automation.CompletionResult("'Unknown'", "Unknown", global::System.Management.Automation.CompletionResultType.ParameterValue, "Unknown");
