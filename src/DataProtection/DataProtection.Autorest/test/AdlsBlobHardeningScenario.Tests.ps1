@@ -22,9 +22,8 @@ Describe 'AdlsBlobHardeningScenario' -Tag 'LiveOnly' {
         $storageAccId = $env.TestAdlsBlobHardeningScenario.StorageAccId
 
         $vault = Get-AzDataProtectionBackupVault -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName
-        $pol = Get-AzDataProtectionBackupPolicy -SubscriptionId $subId -VaultName $vaultName -ResourceGroupName $resourceGroupName | Where-Object { $_.Name -match $policyName }
-
-        $instance = Get-AzDataProtectionBackupInstance -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName | Where-Object { $_.Name -match $storageAcountName }
+        $pol = Get-AzDataProtectionBackupPolicy -SubscriptionId $subId -VaultName $vaultName -ResourceGroupName $resourceGroupName | Where-Object { $_.Name -eq $policyName }
+        $instance = Get-AzDataProtectionBackupInstance -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName | Where-Object { $_.Name -match $storageAccountName }
 
         # Remove-BI
         if($instance -ne $null){
@@ -44,39 +43,64 @@ Describe 'AdlsBlobHardeningScenario' -Tag 'LiveOnly' {
         $backupInstanceClientObject = Initialize-AzDataProtectionBackupInstance -DatasourceType AzureDataLakeStorage -DatasourceLocation $vault.Location -PolicyId $pol[0].Id -DatasourceId $storageAccId -BackupConfiguration $backupConfig
 
         # assign permissions and validate
+        Write-Host "Calling Set-AzDataProtectionMSIPermission..."
         Set-AzDataProtectionMSIPermission -VaultResourceGroup $resourceGroupName -VaultName $vaultName -BackupInstance $backupInstanceClientObject -PermissionsScope ResourceGroup
+        Write-Host "Set-AzDataProtectionMSIPermission completed."
 
         $operationResponse = Test-AzDataProtectionBackupInstanceReadiness -ResourceGroupName $resourceGroupName -VaultName $vaultName -SubscriptionId $subId -BackupInstance $backupInstanceClientObject.Property -NoWait
         $operationId = $operationResponse.Target.Split("/")[-1].Split("?")[0]
+        Write-Host "Operation ID: $operationId"
 
         While((Get-AzDataProtectionOperationStatus -OperationId $operationId -Location $vault.Location -SubscriptionId $subId).Status -eq "Inprogress"){
+            Write-Host "Waiting for operation $operationId to complete..."
 	        Start-TestSleep -Seconds 10
+        }
+        Write-Host "Operation completed."
+
+        $opStatus = Get-AzDataProtectionOperationStatus -OperationId $operationId -Location $vault.Location -SubscriptionId $subId
+        Write-Host "Final Operation Status: $($opStatus.Status)"
+        if ($opStatus.Status -ne "Succeeded") {
+             Write-Error "Operation failed with status $($opStatus.Status). Error: $($opStatus.Error)"
         }
 
         # backup
+        Write-Host "Creating Backup Instance..."
         $backupnstanceCreate = New-AzDataProtectionBackupInstance -ResourceGroupName $resourceGroupName -VaultName $vaultName -SubscriptionId $subId -BackupInstance $backupInstanceClientObject
+        Write-Host "Backup Instance creation command completed."
 
-        $instance = Get-AzDataProtectionBackupInstance -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName | Where-Object { $_.Name -match $storageAcountName }
+        $instance = Get-AzDataProtectionBackupInstance -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName | Where-Object { $_.Name -match $storageAccountName }
 
+        Write-Host "Waiting for ProtectionConfigured state..."
+        $startTime = Get-Date
         while($instance.Property.CurrentProtectionState -ne "ProtectionConfigured"){
+            if ((Get-Date) - $startTime -gt (New-TimeSpan -Minutes 10)) {
+                Write-Error "Timeout waiting for ProtectionConfigured state."
+                break
+            }
+            Write-Host "Current Protection State: $($instance.Property.CurrentProtectionState)"
             Start-TestSleep -Seconds 10
-            $instance = Get-AzDataProtectionBackupInstance -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName | Where-Object { $_.Name -match $storageAcountName }
+            $instance = Get-AzDataProtectionBackupInstance -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName | Where-Object { $_.Name -match $storageAccountName }
         }
+        Write-Host "Protection Configured."
 
-        $instance[0].Name -match $storageAcountName | Should be $true
+        $instance[0].Name -match $storageAccountName | Should be $true
 
         # Trigger Backup
+        Write-Host "Triggering Adhoc Backup..."
         $backupJob = Backup-AzDataProtectionBackupInstanceAdhoc -BackupInstanceName $instance.Name -ResourceGroupName $resourceGroupName -SubscriptionId $subId -VaultName $vaultName -BackupRuleOptionRuleName $pol[0].Property.PolicyRule[-1].Name -TriggerOptionRetentionTagOverride $pol[0].Property.PolicyRule[-1].Trigger.TaggingCriterion[0].TagInfoTagName
+        Write-Host "Adhoc Backup Triggered. Job ID: $($backupJob.JobId)"
 
         $jobid = $backupJob.JobId.Split("/")[-1]
         $jobid -ne $null | Should be $true
 
         $jobstatus = "InProgress"
+        $startTime = Get-Date
         while($jobstatus -eq "InProgress")
         {
-            Start-TestSleep -Seconds 10
+            Start-TestSleep -Seconds 30
             $currentjob = Get-AzDataProtectionJob -Id $jobid -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName
             $jobstatus = $currentjob.Status
+            Write-Host "Backup Job Status: $jobstatus"
         }
         $jobstatus | Should be "Completed"
     }
@@ -246,7 +270,7 @@ Describe 'AdlsBlobHardeningScenario' -Tag 'LiveOnly' {
         $targetCrossSubStorageAccountRGName = $env.TestAdlsBlobHardeningScenario.TargetCrossSubStorageAccountRGName
 
         $vault = Get-AzDataProtectionBackupVault -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName
-        $instance = Get-AzDataProtectionBackupInstance -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName | Where-Object { $_.Name -match $storageAcountName }
+        $instance = Get-AzDataProtectionBackupInstance -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName | Where-Object { $_.Name -match $storageAccountName }
         $rp = Get-AzDataProtectionRecoveryPoint -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName -BackupInstanceName $instance.Name
 
         $backedUpContainers = $instance.Property.PolicyInfo.PolicyParameter.BackupDatasourceParametersList[0].ContainersList

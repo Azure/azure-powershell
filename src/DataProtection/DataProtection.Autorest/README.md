@@ -31,26 +31,17 @@ This file contains the configuration for generating My API from the OpenAPI spec
 
 ``` yaml
 # it's the same options as command line options, just drop the double-dash!
-commit: ebdacd9571bc8a5faad5b8d418c70c3b6b7c2965
+commit: 8626bcfaf4b2a816117f76dadf6a9a4575f59796
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/dataprotection/resource-manager/Microsoft.DataProtection/DataProtection/stable/2025-07-01/dataprotection.json
+  - $(repo)/specification/dataprotection/resource-manager/Microsoft.DataProtection/stable/2025-07-01/dataprotection.json
 title: DataProtection
 # For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
 use-extension:
   "@autorest/powershell": "3.x"
 
 directive:
-  - from: swagger-document
-    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}"].put
-    transform: delete $["x-ms-long-running-operation-options"]
-  - from: swagger-document
-    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}"].patch
-    transform: delete $["x-ms-long-running-operation-options"]
-  - from: swagger-document
-    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}"].put
-    transform: delete $["x-ms-long-running-operation-options"]
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}"].delete
     transform: $["description"] = "Delete a backupInstances"
@@ -331,35 +322,35 @@ directive:
   - where:
       verb: Test
       subject: BackupInstance
-      variant: ^Validate1$|^ValidateExpanded1$|^ValidateViaIdentity1$|^ValidateViaIdentityExpanded1$
-    set:
-      subject: BackupInstanceRestore
-  - where:
-      verb: Test
-      subject: BackupInstance
       variant: ^Validate2$|^ValidateExpanded2$|^ValidateViaIdentity2$|^ValidateViaIdentityExpanded2$
     set:
-      subject: BackupInstanceReadiness
+      subject: BackupInstanceRestore
   - where:
       verb: Test
       subject: BackupInstance
       variant: ^Validate$|^ValidateExpanded$|^ValidateViaIdentity$|^ValidateViaIdentityExpanded$
     set:
+      subject: BackupInstanceReadiness
+  - where:
+      verb: Test
+      subject: BackupInstance
+      variant: ^Validate1$|^ValidateExpanded1$|^ValidateViaIdentity1$|^ValidateViaIdentityExpanded1$
+    set:
       subject: BackupInstanceUpdate
   - where:
       verb: Test
       subject: BackupInstanceUpdate
-      variant: ^Validate$|^ValidateViaIdentity$|^ValidateViaIdentityExpanded$
+      variant: ^Validate1$|^ValidateViaIdentity1$|^ValidateViaIdentityExpanded1$
     hide: true
   - where:
       verb: Test
       subject: BackupInstanceReadiness
-      variant: ^Validate2$|^ValidateViaIdentity2$|^ValidateViaIdentityExpanded2$
+      variant: ^Validate$|^ValidateViaIdentity$|^ValidateViaIdentityExpanded$
     hide: true
   - where:
       verb: Test
       subject: BackupInstanceRestore
-      variant: ^Validate1$|^ValidateExpanded1$|^ValidateViaIdentity1$|^ValidateViaIdentityExpanded1$
+      variant: ^Validate2$|^ValidateExpanded2$|^ValidateViaIdentity2$|^ValidateViaIdentityExpanded$
     hide: true
   - where:
       verb: Test
@@ -458,7 +449,6 @@ directive:
           - IdentityType
   - no-inline:
     - BackupInstance
-    - DppIdentityDetails
     - CrossRegionRestoreDetails
     - CrossRegionRestoreRequestObject
     - DeletionInfo

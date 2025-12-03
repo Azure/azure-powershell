@@ -16,9 +16,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'Search-AzDataProtectionBackup
 
 Describe 'Search-AzDataProtectionBackupVaultInAzGraph' -Tag 'LiveOnly' {
     It '__AllParameterSets' {
-        $resourceGroupName  = $env.TestCrossRegionRestoreScenario.ResourceGroupName
-        $vaultName = $env.TestCrossRegionRestoreScenario.VaultName
-        $subscriptionId = $env.TestCrossRegionRestoreScenario.SubscriptionId
+        $resourceGroupName  = $env.TestBlobHardeningScenario.ResourceGroupName
+        $vaultName = $env.TestBlobHardeningScenario.VaultName
+        $subscriptionId = $env.TestBlobHardeningScenario.SubscriptionId
 
         $vault = Search-AzDataProtectionBackupVaultInAzGraph -ResourceGroup $resourceGroupName -Subscription $subscriptionId -Vault $vaultName
 

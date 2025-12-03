@@ -144,27 +144,10 @@
 
     process
     {
-        $identityTypeValue = "SystemAssigned"
-        if ($PSBoundParameters.ContainsKey("IdentityType"))
+        if($PSBoundParameters.ContainsKey("IdentityType") -eq $false)
         {
-            $identityTypeValue = $PSBoundParameters["IdentityType"]
-            $null = $PSBoundParameters.Remove("IdentityType")
+            $null = $PSBoundParameters.Add("IdentityType", "SystemAssigned")
         }
-        else
-        {
-            Write-Host "[Ianna] - we have added the identity type"
-        }
-
-        $identityDetails = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250701.DppIdentityDetails]::new()
-        $identityDetails.Type = $identityTypeValue
-
-        if ($PSBoundParameters.ContainsKey("IdentityUserAssignedIdentity"))
-        {
-            $identityDetails.UserAssignedIdentity = $IdentityUserAssignedIdentity
-            $null = $PSBoundParameters.Remove("IdentityUserAssignedIdentity")
-        }
-
-        $PSBoundParameters["Identity"] = $identityDetails
 
         $hasCmkEncryptionState = $PSBoundParameters.Remove("CmkEncryptionState")
         $hasCmkIdentityType = $PSBoundParameters.Remove("CmkIdentityType")
@@ -173,7 +156,6 @@
         $hasCmkInfrastructureEncryption = $PSBoundParameters.Remove("CmkInfrastructureEncryption")
 
         if (-not $hasCmkEncryptionState -and -not $hasCmkIdentityType -and -not $hasCmkUserAssignedIdentityId -and -not $hasCmkEncryptionKeyUri) {
-            Write-Host "Entering Az.DataProtection.Internal\New-AzDataProtectionBackupVault line 160"
             Az.DataProtection.Internal\New-AzDataProtectionBackupVault @PSBoundParameters
             return
         }
@@ -188,7 +170,7 @@
         $encryptionSettings.CmkKeyVaultProperty.KeyUri = $CmkEncryptionKeyUri
 
         $PSBoundParameters.Add("EncryptionSetting", $encryptionSettings)
-        Write-Host "Entering Az.DataProtection.Internal\New-AzDataProtectionBackupVault line 175"
+
         Az.DataProtection.Internal\New-AzDataProtectionBackupVault @PSBoundParameters
     }
 }

@@ -22,9 +22,9 @@ Describe 'BlobHardeningScenario' -Tag 'LiveOnly'{
         $storageAccId = $env.TestBlobHardeningScenario.StorageAccId
 
         $vault = Get-AzDataProtectionBackupVault -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName
-        $pol = Get-AzDataProtectionBackupPolicy -SubscriptionId $subId -VaultName $vaultName -ResourceGroupName $resourceGroupName | Where-Object { $_.Name -match $policyName }
+        $pol = Get-AzDataProtectionBackupPolicy -SubscriptionId $subId -VaultName $vaultName -ResourceGroupName $resourceGroupName | Where-Object { $_.Name -eq $policyName }
 
-        $instance = Get-AzDataProtectionBackupInstance -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName | Where-Object { $_.Name -match $storageAcountName }
+        $instance = Get-AzDataProtectionBackupInstance -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName | Where-Object { $_.Name -match $storageAccountName }
 
         # Remove-BI
         if($instance -ne $null){
@@ -56,14 +56,14 @@ Describe 'BlobHardeningScenario' -Tag 'LiveOnly'{
         # backup
         $backupnstanceCreate = New-AzDataProtectionBackupInstance -ResourceGroupName $resourceGroupName -VaultName $vaultName -SubscriptionId $subId -BackupInstance $backupInstanceClientObject
 
-        $instance = Get-AzDataProtectionBackupInstance -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName | Where-Object { $_.Name -match $storageAcountName }
+        $instance = Get-AzDataProtectionBackupInstance -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName | Where-Object { $_.Name -match $storageAccountName }
 
         while($instance.Property.CurrentProtectionState -ne "ProtectionConfigured"){
             Start-TestSleep -Seconds 10
-            $instance = Get-AzDataProtectionBackupInstance -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName | Where-Object { $_.Name -match $storageAcountName }
+            $instance = Get-AzDataProtectionBackupInstance -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName | Where-Object { $_.Name -match $storageAccountName }
         }
 
-        $instance[0].Name -match $storageAcountName | Should be $true
+        $instance[0].Name -match $storageAccountName | Should be $true
 
         # Trigger Backup
         $backupJob = Backup-AzDataProtectionBackupInstanceAdhoc -BackupInstanceName $instance.Name -ResourceGroupName $resourceGroupName -SubscriptionId $subId -VaultName $vaultName -BackupRuleOptionRuleName $pol[0].Property.PolicyRule[-1].Name -TriggerOptionRetentionTagOverride $pol[0].Property.PolicyRule[-1].Trigger.TaggingCriterion[0].TagInfoTagName
@@ -245,7 +245,7 @@ Describe 'BlobHardeningScenario' -Tag 'LiveOnly'{
         $targetCrossSubStorageAccountRGName = $env.TestBlobHardeningScenario.TargetCrossSubStorageAccountRGName
 
         $vault = Get-AzDataProtectionBackupVault -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName
-        $instance = Get-AzDataProtectionBackupInstance -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName | Where-Object { $_.Name -match $storageAcountName }
+        $instance = Get-AzDataProtectionBackupInstance -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName | Where-Object { $_.Name -match $storageAccountName }
        
         $rp = Get-AzDataProtectionRecoveryPoint -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName -BackupInstanceName $instance.Name
 

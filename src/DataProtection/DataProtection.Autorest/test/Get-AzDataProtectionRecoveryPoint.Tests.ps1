@@ -12,7 +12,8 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-AzDataProtectionRecoveryPoint' -Tag 'LiveOnly' {
-    It 'ListCRRRecoveryPoints' {
+    # Postgres has been deprecated, so skipping the test for now.
+    It 'ListCRRRecoveryPoints' -skip {
         $resourceGroupName  = $env.TestCrossRegionRestoreScenario.ResourceGroupName
         $vaultName = $env.TestCrossRegionRestoreScenario.VaultName
         $subscriptionId = $env.TestCrossRegionRestoreScenario.SubscriptionId
