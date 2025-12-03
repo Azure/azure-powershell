@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Management.StorageSync
     public static partial class CloudEndpointsOperationsExtensions
     {
         /// <summary>
-        /// Create a new CloudEndpoint.
+        /// Get a CloudEndpoint List.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -27,16 +27,13 @@ namespace Microsoft.Azure.Management.StorageSync
         /// <param name='syncGroupName'>
         /// Name of Sync Group resource.
         /// </param>
-        /// <param name='cloudEndpointName'>
-        /// Name of Cloud Endpoint object.
-        /// </param>
-        public static CloudEndpoint Create(this ICloudEndpointsOperations operations, string resourceGroupName, string storageSyncServiceName, string syncGroupName, string cloudEndpointName, CloudEndpointCreateParameters parameters)
+        public static Microsoft.Rest.Azure.IPage<CloudEndpoint> ListBySyncGroup(this ICloudEndpointsOperations operations, string resourceGroupName, string storageSyncServiceName, string syncGroupName)
         {
-                return ((ICloudEndpointsOperations)operations).CreateAsync(resourceGroupName, storageSyncServiceName, syncGroupName, cloudEndpointName, parameters).GetAwaiter().GetResult();
+                return ((ICloudEndpointsOperations)operations).ListBySyncGroupAsync(resourceGroupName, storageSyncServiceName, syncGroupName).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Create a new CloudEndpoint.
+        /// Get a CloudEndpoint List.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -49,16 +46,13 @@ namespace Microsoft.Azure.Management.StorageSync
         /// </param>
         /// <param name='syncGroupName'>
         /// Name of Sync Group resource.
-        /// </param>
-        /// <param name='cloudEndpointName'>
-        /// Name of Cloud Endpoint object.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<CloudEndpoint> CreateAsync(this ICloudEndpointsOperations operations, string resourceGroupName, string storageSyncServiceName, string syncGroupName, string cloudEndpointName, CloudEndpointCreateParameters parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CloudEndpoint>> ListBySyncGroupAsync(this ICloudEndpointsOperations operations, string resourceGroupName, string storageSyncServiceName, string syncGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.CreateWithHttpMessagesAsync(resourceGroupName, storageSyncServiceName, syncGroupName, cloudEndpointName, parameters, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListBySyncGroupWithHttpMessagesAsync(resourceGroupName, storageSyncServiceName, syncGroupName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -115,6 +109,108 @@ namespace Microsoft.Azure.Management.StorageSync
             }
         }
         /// <summary>
+        /// Create a new CloudEndpoint.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='storageSyncServiceName'>
+        /// Name of Storage Sync Service resource.
+        /// </param>
+        /// <param name='syncGroupName'>
+        /// Name of Sync Group resource.
+        /// </param>
+        /// <param name='cloudEndpointName'>
+        /// Name of Cloud Endpoint object.
+        /// </param>
+        public static CloudEndpoint Create(this ICloudEndpointsOperations operations, string resourceGroupName, string storageSyncServiceName, string syncGroupName, string cloudEndpointName, CloudEndpointCreateParameters parameters)
+        {
+                return ((ICloudEndpointsOperations)operations).CreateAsync(resourceGroupName, storageSyncServiceName, syncGroupName, cloudEndpointName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Create a new CloudEndpoint.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='storageSyncServiceName'>
+        /// Name of Storage Sync Service resource.
+        /// </param>
+        /// <param name='syncGroupName'>
+        /// Name of Sync Group resource.
+        /// </param>
+        /// <param name='cloudEndpointName'>
+        /// Name of Cloud Endpoint object.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<CloudEndpoint> CreateAsync(this ICloudEndpointsOperations operations, string resourceGroupName, string storageSyncServiceName, string syncGroupName, string cloudEndpointName, CloudEndpointCreateParameters parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.CreateWithHttpMessagesAsync(resourceGroupName, storageSyncServiceName, syncGroupName, cloudEndpointName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Patch a given CloudEndpoint.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='storageSyncServiceName'>
+        /// Name of Storage Sync Service resource.
+        /// </param>
+        /// <param name='syncGroupName'>
+        /// Name of Sync Group resource.
+        /// </param>
+        /// <param name='cloudEndpointName'>
+        /// Name of Cloud Endpoint object.
+        /// </param>
+        public static CloudEndpoint Update(this ICloudEndpointsOperations operations, string resourceGroupName, string storageSyncServiceName, string syncGroupName, string cloudEndpointName, CloudEndpointUpdateProperties properties = default(CloudEndpointUpdateProperties))
+        {
+                return ((ICloudEndpointsOperations)operations).UpdateAsync(resourceGroupName, storageSyncServiceName, syncGroupName, cloudEndpointName, properties).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Patch a given CloudEndpoint.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='storageSyncServiceName'>
+        /// Name of Storage Sync Service resource.
+        /// </param>
+        /// <param name='syncGroupName'>
+        /// Name of Sync Group resource.
+        /// </param>
+        /// <param name='cloudEndpointName'>
+        /// Name of Cloud Endpoint object.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<CloudEndpoint> UpdateAsync(this ICloudEndpointsOperations operations, string resourceGroupName, string storageSyncServiceName, string syncGroupName, string cloudEndpointName, CloudEndpointUpdateProperties properties = default(CloudEndpointUpdateProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, storageSyncServiceName, syncGroupName, cloudEndpointName, properties, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Delete a given CloudEndpoint.
         /// </summary>
         /// <param name='operations'>
@@ -166,7 +262,7 @@ namespace Microsoft.Azure.Management.StorageSync
             }
         }
         /// <summary>
-        /// Get a CloudEndpoint List.
+        /// Get the AFS file share metadata signing certificate public keys.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -180,13 +276,16 @@ namespace Microsoft.Azure.Management.StorageSync
         /// <param name='syncGroupName'>
         /// Name of Sync Group resource.
         /// </param>
-        public static System.Collections.Generic.IEnumerable<CloudEndpoint> ListBySyncGroup(this ICloudEndpointsOperations operations, string resourceGroupName, string storageSyncServiceName, string syncGroupName)
+        /// <param name='cloudEndpointName'>
+        /// Name of Cloud Endpoint object.
+        /// </param>
+        public static CloudEndpointAfsShareMetadataCertificatePublicKeys AfsShareMetadataCertificatePublicKeys(this ICloudEndpointsOperations operations, string resourceGroupName, string storageSyncServiceName, string syncGroupName, string cloudEndpointName)
         {
-                return ((ICloudEndpointsOperations)operations).ListBySyncGroupAsync(resourceGroupName, storageSyncServiceName, syncGroupName).GetAwaiter().GetResult();
+                return ((ICloudEndpointsOperations)operations).AfsShareMetadataCertificatePublicKeysAsync(resourceGroupName, storageSyncServiceName, syncGroupName, cloudEndpointName).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Get a CloudEndpoint List.
+        /// Get the AFS file share metadata signing certificate public keys.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -199,66 +298,18 @@ namespace Microsoft.Azure.Management.StorageSync
         /// </param>
         /// <param name='syncGroupName'>
         /// Name of Sync Group resource.
+        /// </param>
+        /// <param name='cloudEndpointName'>
+        /// Name of Cloud Endpoint object.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<CloudEndpoint>> ListBySyncGroupAsync(this ICloudEndpointsOperations operations, string resourceGroupName, string storageSyncServiceName, string syncGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<CloudEndpointAfsShareMetadataCertificatePublicKeys> AfsShareMetadataCertificatePublicKeysAsync(this ICloudEndpointsOperations operations, string resourceGroupName, string storageSyncServiceName, string syncGroupName, string cloudEndpointName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListBySyncGroupWithHttpMessagesAsync(resourceGroupName, storageSyncServiceName, syncGroupName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.AfsShareMetadataCertificatePublicKeysWithHttpMessagesAsync(resourceGroupName, storageSyncServiceName, syncGroupName, cloudEndpointName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Pre Backup a given CloudEndpoint.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='storageSyncServiceName'>
-        /// Name of Storage Sync Service resource.
-        /// </param>
-        /// <param name='syncGroupName'>
-        /// Name of Sync Group resource.
-        /// </param>
-        /// <param name='cloudEndpointName'>
-        /// Name of Cloud Endpoint object.
-        /// </param>
-        public static CloudEndpointsPreBackupHeaders PreBackup(this ICloudEndpointsOperations operations, string resourceGroupName, string storageSyncServiceName, string syncGroupName, string cloudEndpointName, string azureFileShare = default(string))
-        {
-                return ((ICloudEndpointsOperations)operations).PreBackupAsync(resourceGroupName, storageSyncServiceName, syncGroupName, cloudEndpointName, azureFileShare).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Pre Backup a given CloudEndpoint.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='storageSyncServiceName'>
-        /// Name of Storage Sync Service resource.
-        /// </param>
-        /// <param name='syncGroupName'>
-        /// Name of Sync Group resource.
-        /// </param>
-        /// <param name='cloudEndpointName'>
-        /// Name of Cloud Endpoint object.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<CloudEndpointsPreBackupHeaders> PreBackupAsync(this ICloudEndpointsOperations operations, string resourceGroupName, string storageSyncServiceName, string syncGroupName, string cloudEndpointName, string azureFileShare = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.PreBackupWithHttpMessagesAsync(resourceGroupName, storageSyncServiceName, syncGroupName, cloudEndpointName, azureFileShare, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
             }
         }
         /// <summary>
@@ -310,6 +361,108 @@ namespace Microsoft.Azure.Management.StorageSync
             using (var _result = await operations.PostBackupWithHttpMessagesAsync(resourceGroupName, storageSyncServiceName, syncGroupName, cloudEndpointName, azureFileShare, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Post Restore a given CloudEndpoint.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='storageSyncServiceName'>
+        /// Name of Storage Sync Service resource.
+        /// </param>
+        /// <param name='syncGroupName'>
+        /// Name of Sync Group resource.
+        /// </param>
+        /// <param name='cloudEndpointName'>
+        /// Name of Cloud Endpoint object.
+        /// </param>
+        public static CloudEndpointsPostRestoreHeaders PostRestore(this ICloudEndpointsOperations operations, string resourceGroupName, string storageSyncServiceName, string syncGroupName, string cloudEndpointName, PostRestoreRequest parameters)
+        {
+                return ((ICloudEndpointsOperations)operations).PostRestoreAsync(resourceGroupName, storageSyncServiceName, syncGroupName, cloudEndpointName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Post Restore a given CloudEndpoint.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='storageSyncServiceName'>
+        /// Name of Storage Sync Service resource.
+        /// </param>
+        /// <param name='syncGroupName'>
+        /// Name of Sync Group resource.
+        /// </param>
+        /// <param name='cloudEndpointName'>
+        /// Name of Cloud Endpoint object.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<CloudEndpointsPostRestoreHeaders> PostRestoreAsync(this ICloudEndpointsOperations operations, string resourceGroupName, string storageSyncServiceName, string syncGroupName, string cloudEndpointName, PostRestoreRequest parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.PostRestoreWithHttpMessagesAsync(resourceGroupName, storageSyncServiceName, syncGroupName, cloudEndpointName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// Pre Backup a given CloudEndpoint.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='storageSyncServiceName'>
+        /// Name of Storage Sync Service resource.
+        /// </param>
+        /// <param name='syncGroupName'>
+        /// Name of Sync Group resource.
+        /// </param>
+        /// <param name='cloudEndpointName'>
+        /// Name of Cloud Endpoint object.
+        /// </param>
+        public static CloudEndpointsPreBackupHeaders PreBackup(this ICloudEndpointsOperations operations, string resourceGroupName, string storageSyncServiceName, string syncGroupName, string cloudEndpointName, string azureFileShare = default(string))
+        {
+                return ((ICloudEndpointsOperations)operations).PreBackupAsync(resourceGroupName, storageSyncServiceName, syncGroupName, cloudEndpointName, azureFileShare).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Pre Backup a given CloudEndpoint.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='storageSyncServiceName'>
+        /// Name of Storage Sync Service resource.
+        /// </param>
+        /// <param name='syncGroupName'>
+        /// Name of Sync Group resource.
+        /// </param>
+        /// <param name='cloudEndpointName'>
+        /// Name of Cloud Endpoint object.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<CloudEndpointsPreBackupHeaders> PreBackupAsync(this ICloudEndpointsOperations operations, string resourceGroupName, string storageSyncServiceName, string syncGroupName, string cloudEndpointName, string azureFileShare = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.PreBackupWithHttpMessagesAsync(resourceGroupName, storageSyncServiceName, syncGroupName, cloudEndpointName, azureFileShare, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
             }
         }
         /// <summary>
@@ -415,57 +568,6 @@ namespace Microsoft.Azure.Management.StorageSync
             }
         }
         /// <summary>
-        /// Post Restore a given CloudEndpoint.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='storageSyncServiceName'>
-        /// Name of Storage Sync Service resource.
-        /// </param>
-        /// <param name='syncGroupName'>
-        /// Name of Sync Group resource.
-        /// </param>
-        /// <param name='cloudEndpointName'>
-        /// Name of Cloud Endpoint object.
-        /// </param>
-        public static CloudEndpointsPostRestoreHeaders PostRestore(this ICloudEndpointsOperations operations, string resourceGroupName, string storageSyncServiceName, string syncGroupName, string cloudEndpointName, PostRestoreRequest parameters)
-        {
-                return ((ICloudEndpointsOperations)operations).PostRestoreAsync(resourceGroupName, storageSyncServiceName, syncGroupName, cloudEndpointName, parameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Post Restore a given CloudEndpoint.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='storageSyncServiceName'>
-        /// Name of Storage Sync Service resource.
-        /// </param>
-        /// <param name='syncGroupName'>
-        /// Name of Sync Group resource.
-        /// </param>
-        /// <param name='cloudEndpointName'>
-        /// Name of Cloud Endpoint object.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<CloudEndpointsPostRestoreHeaders> PostRestoreAsync(this ICloudEndpointsOperations operations, string resourceGroupName, string storageSyncServiceName, string syncGroupName, string cloudEndpointName, PostRestoreRequest parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.PostRestoreWithHttpMessagesAsync(resourceGroupName, storageSyncServiceName, syncGroupName, cloudEndpointName, parameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
-        }
-        /// <summary>
         /// Triggers detection of changes performed on Azure File share connected to
         /// the specified Azure File Sync Cloud Endpoint.
         /// </summary>
@@ -519,57 +621,6 @@ namespace Microsoft.Azure.Management.StorageSync
             }
         }
         /// <summary>
-        /// Get the AFS file share metadata signing certificate public keys.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='storageSyncServiceName'>
-        /// Name of Storage Sync Service resource.
-        /// </param>
-        /// <param name='syncGroupName'>
-        /// Name of Sync Group resource.
-        /// </param>
-        /// <param name='cloudEndpointName'>
-        /// Name of Cloud Endpoint object.
-        /// </param>
-        public static CloudEndpointAfsShareMetadataCertificatePublicKeys AfsShareMetadataCertificatePublicKeys(this ICloudEndpointsOperations operations, string resourceGroupName, string storageSyncServiceName, string syncGroupName, string cloudEndpointName)
-        {
-                return ((ICloudEndpointsOperations)operations).AfsShareMetadataCertificatePublicKeysAsync(resourceGroupName, storageSyncServiceName, syncGroupName, cloudEndpointName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Get the AFS file share metadata signing certificate public keys.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='storageSyncServiceName'>
-        /// Name of Storage Sync Service resource.
-        /// </param>
-        /// <param name='syncGroupName'>
-        /// Name of Sync Group resource.
-        /// </param>
-        /// <param name='cloudEndpointName'>
-        /// Name of Cloud Endpoint object.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<CloudEndpointAfsShareMetadataCertificatePublicKeys> AfsShareMetadataCertificatePublicKeysAsync(this ICloudEndpointsOperations operations, string resourceGroupName, string storageSyncServiceName, string syncGroupName, string cloudEndpointName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.AfsShareMetadataCertificatePublicKeysWithHttpMessagesAsync(resourceGroupName, storageSyncServiceName, syncGroupName, cloudEndpointName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
         /// Create a new CloudEndpoint.
         /// </summary>
         /// <param name='operations'>
@@ -616,6 +667,57 @@ namespace Microsoft.Azure.Management.StorageSync
         public static async System.Threading.Tasks.Task<CloudEndpoint> BeginCreateAsync(this ICloudEndpointsOperations operations, string resourceGroupName, string storageSyncServiceName, string syncGroupName, string cloudEndpointName, CloudEndpointCreateParameters parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.BeginCreateWithHttpMessagesAsync(resourceGroupName, storageSyncServiceName, syncGroupName, cloudEndpointName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Patch a given CloudEndpoint.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='storageSyncServiceName'>
+        /// Name of Storage Sync Service resource.
+        /// </param>
+        /// <param name='syncGroupName'>
+        /// Name of Sync Group resource.
+        /// </param>
+        /// <param name='cloudEndpointName'>
+        /// Name of Cloud Endpoint object.
+        /// </param>
+        public static CloudEndpoint BeginUpdate(this ICloudEndpointsOperations operations, string resourceGroupName, string storageSyncServiceName, string syncGroupName, string cloudEndpointName, CloudEndpointUpdateProperties properties = default(CloudEndpointUpdateProperties))
+        {
+                return ((ICloudEndpointsOperations)operations).BeginUpdateAsync(resourceGroupName, storageSyncServiceName, syncGroupName, cloudEndpointName, properties).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Patch a given CloudEndpoint.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='storageSyncServiceName'>
+        /// Name of Storage Sync Service resource.
+        /// </param>
+        /// <param name='syncGroupName'>
+        /// Name of Sync Group resource.
+        /// </param>
+        /// <param name='cloudEndpointName'>
+        /// Name of Cloud Endpoint object.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<CloudEndpoint> BeginUpdateAsync(this ICloudEndpointsOperations operations, string resourceGroupName, string storageSyncServiceName, string syncGroupName, string cloudEndpointName, CloudEndpointUpdateProperties properties = default(CloudEndpointUpdateProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginUpdateWithHttpMessagesAsync(resourceGroupName, storageSyncServiceName, syncGroupName, cloudEndpointName, properties, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -672,57 +774,6 @@ namespace Microsoft.Azure.Management.StorageSync
             }
         }
         /// <summary>
-        /// Pre Backup a given CloudEndpoint.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='storageSyncServiceName'>
-        /// Name of Storage Sync Service resource.
-        /// </param>
-        /// <param name='syncGroupName'>
-        /// Name of Sync Group resource.
-        /// </param>
-        /// <param name='cloudEndpointName'>
-        /// Name of Cloud Endpoint object.
-        /// </param>
-        public static CloudEndpointsPreBackupHeaders BeginPreBackup(this ICloudEndpointsOperations operations, string resourceGroupName, string storageSyncServiceName, string syncGroupName, string cloudEndpointName, string azureFileShare = default(string))
-        {
-                return ((ICloudEndpointsOperations)operations).BeginPreBackupAsync(resourceGroupName, storageSyncServiceName, syncGroupName, cloudEndpointName, azureFileShare).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Pre Backup a given CloudEndpoint.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='storageSyncServiceName'>
-        /// Name of Storage Sync Service resource.
-        /// </param>
-        /// <param name='syncGroupName'>
-        /// Name of Sync Group resource.
-        /// </param>
-        /// <param name='cloudEndpointName'>
-        /// Name of Cloud Endpoint object.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<CloudEndpointsPreBackupHeaders> BeginPreBackupAsync(this ICloudEndpointsOperations operations, string resourceGroupName, string storageSyncServiceName, string syncGroupName, string cloudEndpointName, string azureFileShare = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.BeginPreBackupWithHttpMessagesAsync(resourceGroupName, storageSyncServiceName, syncGroupName, cloudEndpointName, azureFileShare, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
-        }
-        /// <summary>
         /// Post Backup a given CloudEndpoint.
         /// </summary>
         /// <param name='operations'>
@@ -774,57 +825,6 @@ namespace Microsoft.Azure.Management.StorageSync
             }
         }
         /// <summary>
-        /// Pre Restore a given CloudEndpoint.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='storageSyncServiceName'>
-        /// Name of Storage Sync Service resource.
-        /// </param>
-        /// <param name='syncGroupName'>
-        /// Name of Sync Group resource.
-        /// </param>
-        /// <param name='cloudEndpointName'>
-        /// Name of Cloud Endpoint object.
-        /// </param>
-        public static CloudEndpointsPreRestoreHeaders BeginPreRestore(this ICloudEndpointsOperations operations, string resourceGroupName, string storageSyncServiceName, string syncGroupName, string cloudEndpointName, PreRestoreRequest parameters)
-        {
-                return ((ICloudEndpointsOperations)operations).BeginPreRestoreAsync(resourceGroupName, storageSyncServiceName, syncGroupName, cloudEndpointName, parameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Pre Restore a given CloudEndpoint.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='storageSyncServiceName'>
-        /// Name of Storage Sync Service resource.
-        /// </param>
-        /// <param name='syncGroupName'>
-        /// Name of Sync Group resource.
-        /// </param>
-        /// <param name='cloudEndpointName'>
-        /// Name of Cloud Endpoint object.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<CloudEndpointsPreRestoreHeaders> BeginPreRestoreAsync(this ICloudEndpointsOperations operations, string resourceGroupName, string storageSyncServiceName, string syncGroupName, string cloudEndpointName, PreRestoreRequest parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.BeginPreRestoreWithHttpMessagesAsync(resourceGroupName, storageSyncServiceName, syncGroupName, cloudEndpointName, parameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
-        }
-        /// <summary>
         /// Post Restore a given CloudEndpoint.
         /// </summary>
         /// <param name='operations'>
@@ -871,6 +871,108 @@ namespace Microsoft.Azure.Management.StorageSync
         public static async System.Threading.Tasks.Task<CloudEndpointsPostRestoreHeaders> BeginPostRestoreAsync(this ICloudEndpointsOperations operations, string resourceGroupName, string storageSyncServiceName, string syncGroupName, string cloudEndpointName, PostRestoreRequest parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.BeginPostRestoreWithHttpMessagesAsync(resourceGroupName, storageSyncServiceName, syncGroupName, cloudEndpointName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// Pre Backup a given CloudEndpoint.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='storageSyncServiceName'>
+        /// Name of Storage Sync Service resource.
+        /// </param>
+        /// <param name='syncGroupName'>
+        /// Name of Sync Group resource.
+        /// </param>
+        /// <param name='cloudEndpointName'>
+        /// Name of Cloud Endpoint object.
+        /// </param>
+        public static CloudEndpointsPreBackupHeaders BeginPreBackup(this ICloudEndpointsOperations operations, string resourceGroupName, string storageSyncServiceName, string syncGroupName, string cloudEndpointName, string azureFileShare = default(string))
+        {
+                return ((ICloudEndpointsOperations)operations).BeginPreBackupAsync(resourceGroupName, storageSyncServiceName, syncGroupName, cloudEndpointName, azureFileShare).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Pre Backup a given CloudEndpoint.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='storageSyncServiceName'>
+        /// Name of Storage Sync Service resource.
+        /// </param>
+        /// <param name='syncGroupName'>
+        /// Name of Sync Group resource.
+        /// </param>
+        /// <param name='cloudEndpointName'>
+        /// Name of Cloud Endpoint object.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<CloudEndpointsPreBackupHeaders> BeginPreBackupAsync(this ICloudEndpointsOperations operations, string resourceGroupName, string storageSyncServiceName, string syncGroupName, string cloudEndpointName, string azureFileShare = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginPreBackupWithHttpMessagesAsync(resourceGroupName, storageSyncServiceName, syncGroupName, cloudEndpointName, azureFileShare, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// Pre Restore a given CloudEndpoint.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='storageSyncServiceName'>
+        /// Name of Storage Sync Service resource.
+        /// </param>
+        /// <param name='syncGroupName'>
+        /// Name of Sync Group resource.
+        /// </param>
+        /// <param name='cloudEndpointName'>
+        /// Name of Cloud Endpoint object.
+        /// </param>
+        public static CloudEndpointsPreRestoreHeaders BeginPreRestore(this ICloudEndpointsOperations operations, string resourceGroupName, string storageSyncServiceName, string syncGroupName, string cloudEndpointName, PreRestoreRequest parameters)
+        {
+                return ((ICloudEndpointsOperations)operations).BeginPreRestoreAsync(resourceGroupName, storageSyncServiceName, syncGroupName, cloudEndpointName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Pre Restore a given CloudEndpoint.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='storageSyncServiceName'>
+        /// Name of Storage Sync Service resource.
+        /// </param>
+        /// <param name='syncGroupName'>
+        /// Name of Sync Group resource.
+        /// </param>
+        /// <param name='cloudEndpointName'>
+        /// Name of Cloud Endpoint object.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<CloudEndpointsPreRestoreHeaders> BeginPreRestoreAsync(this ICloudEndpointsOperations operations, string resourceGroupName, string storageSyncServiceName, string syncGroupName, string cloudEndpointName, PreRestoreRequest parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginPreRestoreWithHttpMessagesAsync(resourceGroupName, storageSyncServiceName, syncGroupName, cloudEndpointName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Headers;
             }
@@ -926,6 +1028,39 @@ namespace Microsoft.Azure.Management.StorageSync
             using (var _result = await operations.BeginTriggerChangeDetectionWithHttpMessagesAsync(resourceGroupName, storageSyncServiceName, syncGroupName, cloudEndpointName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// Get a CloudEndpoint List.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<CloudEndpoint> ListBySyncGroupNext(this ICloudEndpointsOperations operations, string nextPageLink)
+        {
+                return ((ICloudEndpointsOperations)operations).ListBySyncGroupNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Get a CloudEndpoint List.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CloudEndpoint>> ListBySyncGroupNextAsync(this ICloudEndpointsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListBySyncGroupNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
             }
         }
     }
