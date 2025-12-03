@@ -43,6 +43,12 @@ New-AzFunctionApp -Name MyUniqueFunctionAppName `
                   -StorageAccountName MyStorageAccountName `
                   -Environment MyEnvironment `
                   -WorkloadProfileName MyWorkloadProfileName
+.Example
+New-AzFunctionApp -Name MyUniqueFunctionAppName `
+                  -ResourceGroupName MyResourceGroupName `
+                  -FlexConsumptionLocation LocationWhereFlexConsumptionIsSupported `
+                  -StorageAccountName MyStorageAccountName `
+                  -Runtime PowerShell
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISite
@@ -78,6 +84,7 @@ param(
     ${Location},
 
     [Parameter(ParameterSetName='Consumption', Mandatory)]
+    [Parameter(ParameterSetName='FlexConsumption', Mandatory)]
     [Parameter(ParameterSetName='ByAppServicePlan', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
@@ -114,6 +121,7 @@ param(
     ${OSType},
 
     [Parameter(ParameterSetName='Consumption')]
+    [Parameter(ParameterSetName='FlexConsumption')]
     [Parameter(ParameterSetName='ByAppServicePlan')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
@@ -173,6 +181,74 @@ param(
     #             The user identity references will be ARM resource ids in the form:
     #             '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/identities/{identityName}'
     ${IdentityID},
+
+    [Parameter(ParameterSetName='FlexConsumption', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Location to create Flex Consumption function app.
+    ${FlexConsumptionLocation},
+
+    [Parameter(ParameterSetName='FlexConsumption')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Name of deployment storage account to be used for function app artifacts.
+    ${DeploymentStorageName},
+
+    [Parameter(ParameterSetName='FlexConsumption')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Deployment storage container name.
+    ${DeploymentStorageContainerName},
+
+    [Parameter(ParameterSetName='FlexConsumption')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Deployment storage authentication type.
+    # Allowed values: StorageAccountConnectionString, SystemAssignedIdentity, UserAssignedIdentity
+    ${DeploymentStorageAuthType},
+
+    [Parameter(ParameterSetName='FlexConsumption')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Deployment storage authentication value used for the chosen auth type (eg: connection string, or user-assigned identity resource id).
+    ${DeploymentStorageAuthValue},
+
+    [Parameter(ParameterSetName='FlexConsumption')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.Collections.Hashtable[]]
+    # Array of hashtables describing the AlwaysReady configuration.
+    # Each hashtable must include:
+    # - name: The function name or route name.
+    # - instanceCount: The number of pre-warmed instances for that function.
+    # 
+    # Example:
+    # @(@{ name = "http"; instanceCount = 2 }).
+    ${AlwaysReady},
+
+    [Parameter(ParameterSetName='FlexConsumption')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.Int32]
+    # Maximum instance count for Flex Consumption.
+    ${MaximumInstanceCount},
+
+    [Parameter(ParameterSetName='FlexConsumption')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.Int32]
+    # Per-instance memory in MB for Flex Consumption instances.
+    ${InstanceMemoryMB},
+
+    [Parameter(ParameterSetName='FlexConsumption')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.Int32]
+    # The maximum number of concurrent HTTP trigger invocations per instance.
+    ${HttpPerInstanceConcurrency},
+
+    [Parameter(ParameterSetName='FlexConsumption')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Enable zone redundancy for high availability.
+    # Applies to Flex Consumption SKU only.
+    ${EnableZoneRedundancy},
 
     [Parameter(ParameterSetName='EnvironmentForContainerApp', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
@@ -324,11 +400,12 @@ begin {
 
         $mapping = @{
             Consumption = 'Az.Functions.custom\New-AzFunctionApp';
+            FlexConsumption = 'Az.Functions.custom\New-AzFunctionApp';
             EnvironmentForContainerApp = 'Az.Functions.custom\New-AzFunctionApp';
             CustomDockerImage = 'Az.Functions.custom\New-AzFunctionApp';
             ByAppServicePlan = 'Az.Functions.custom\New-AzFunctionApp';
         }
-        if (('Consumption', 'EnvironmentForContainerApp', 'CustomDockerImage', 'ByAppServicePlan') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Consumption', 'FlexConsumption', 'EnvironmentForContainerApp', 'CustomDockerImage', 'ByAppServicePlan') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {

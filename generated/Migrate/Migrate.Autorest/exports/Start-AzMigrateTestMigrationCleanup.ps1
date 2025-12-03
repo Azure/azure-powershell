@@ -26,7 +26,7 @@ $obj = Get-AzMigrateServerReplication -TargetObjectID $env.srsMachineId -Subscri
 Start-AzMigrateTestMigrationCleanup -InputObject $ob
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IJob
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IJob
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -40,7 +40,7 @@ INPUTOBJECT <IMigrationItem>: Specifies the replicating server for which the tes
 https://learn.microsoft.com/powershell/module/az.migrate/start-azmigratetestmigrationcleanup
 #>
 function Start-AzMigrateTestMigrationCleanup {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IJob])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IJob])]
 [CmdletBinding(DefaultParameterSetName='ByIDVMwareCbt', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='ByIDVMwareCbt', Mandatory)]
@@ -59,7 +59,7 @@ param(
 
     [Parameter(ParameterSetName='ByInputObjectVMwareCbt', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IMigrationItem]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IMigrationItem]
     # Specifies the replicating server for which the test migration cleanup needs to be initiated.
     # The server object can be retrieved using the Get-AzMigrateServerReplication cmdlet
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.

@@ -999,5 +999,13 @@
   {
     "alias": "DnsResolver",
     "module": "DnsResolver"
+  },
+  {
+    "module": "DurableTask",
+    "alias": "DurableTask"
+  },
+  {
+    "alias": "DisconnectedOperations",
+    "module": "DisconnectedOperations"
   }
 ]

@@ -25,6 +25,10 @@ Get-AzFunctionAppAvailableLocation
 Get-AzFunctionAppAvailableLocation -PlanType Premium -OSType Linux
 .Example
 Get-AzFunctionAppAvailableLocation -PlanType Consumption -OSType Windows
+.Example
+Get-AzFunctionAppAvailableLocation -PlanType FlexConsumption
+.Example
+Get-AzFunctionAppAvailableLocation -PlanType FlexConsumption -ZoneRedundancy
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IGeoRegion
