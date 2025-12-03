@@ -27,11 +27,17 @@ Removes the policy without prompting for confirmation. Useful for automation sce
 
 ### Example 4: Remove a policy via identity object
 ```powershell
-$policy = Get-AzDeviceRegistryPolicy -Name my-policy -NamespaceName my-namespace -ResourceGroupName my-resource-group
-Remove-AzDeviceRegistryPolicy -InputObject $policy -Confirm:$false
+$policyIdentity = @{
+    SubscriptionId = "xxxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx"
+    ResourceGroupName = "my-resource-group"
+    NamespaceName = "my-namespace"
+    CredentialName = "default"
+    PolicyName = "my-policy-name"
+}
+Remove-AzDeviceRegistryPolicy -InputObject $policyIdentity -Confirm:$false
 ```
 
-Retrieves a policy object and removes it using the identity object parameter.
+Removes a policy object using an identity object parameter.
 
 ### Example 5: Remove multiple policies using pipeline
 ```powershell

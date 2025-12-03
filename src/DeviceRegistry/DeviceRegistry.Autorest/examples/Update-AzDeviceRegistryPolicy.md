@@ -124,7 +124,13 @@ Updates a policy from a JSON file containing the update payload.
 
 ### Example 4: Update policy via identity object
 ```powershell
-$policy = Get-AzDeviceRegistryPolicy -Name my-policy -NamespaceName my-namespace -ResourceGroupName my-resource-group
+$policyIdentity = @{
+    SubscriptionId = "xxxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx"
+    ResourceGroupName = "my-resource-group"
+    NamespaceName = "my-namespace"
+    CredentialName = "default"
+    PolicyName = "my-policy-name"
+}
 
 $jsonString = @"
 {
@@ -141,7 +147,7 @@ $jsonString = @"
 }
 "@
 
-Update-AzDeviceRegistryPolicy -InputObject $policy -JsonString $jsonString
+Update-AzDeviceRegistryPolicy -InputObject $policyIdentity -JsonString $jsonString
 ```
 
 ```output
@@ -170,4 +176,4 @@ Tag                          : {
 Type                         : Microsoft.DeviceRegistry/namespaces/credentials/policies
 ```
 
-Updates a policy using an identity object from a previous Get operation combined with a JSON string update payload.
+Updates a policy object using an identity object parameter.
