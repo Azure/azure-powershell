@@ -428,7 +428,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The configuration parameters used to limit the number of virtual machines per availability zone in the virtual machine scale set.")]
+            HelpMessage = "Limit on the number of instances in each availability zone as a percentage of the total capacity of the virtual machine scale set. For example: if set to 50, this means that at any time, no more than 50% of the VMs in your scale set can be allocated to a single zone.")]
         public int MaxInstancePercentPerZoneValue { get; set; }
 
         [Parameter(
