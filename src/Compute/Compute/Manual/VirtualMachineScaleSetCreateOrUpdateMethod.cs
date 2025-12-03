@@ -301,6 +301,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
            Mandatory = false,
+           ParameterSetName = SimpleParameterSet,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "Specifies the policy for resource's placement in availability zone. Possible values are: **Any** (used for Virtual Machines), **Auto** (used for Virtual Machine Scale Sets) - An availability zone will be automatically picked by system as part of resource creation.")]
         [PSArgumentCompleter("Any", "Auto")]

@@ -36,8 +36,9 @@ New-AzVmssConfig [[-Overprovision] <Boolean>] [[-Location] <String>] [-EdgeZone 
  [-SkuProfileVmSize <String[]>] [-SkuProfileAllocationStrategy <String>] [-EnableResilientVMCreate]
  [-EnableResilientVMDelete] [-EnableAutomaticZoneRebalance] [-AutomaticZoneRebalanceStrategy <String>]
  [-AutomaticZoneRebalanceBehavior <String>] [-ZonePlacementPolicy <String>] [-MaxZoneCount <Int32>]
- [-EnableMaxInstancePercentPerZone] [-MaxInstancePercentPerZoneValue <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EnableMaxInstancePercentPerZone] [-MaxInstancePercentPerZoneValue <Int32>] [-IncludeZone <String[]>]
+ [-ExcludeZone <String[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] 
+ [<CommonParameters>]
 ```
 
 ### ExplicitIdentityParameterSet
@@ -64,8 +65,9 @@ New-AzVmssConfig [[-Overprovision] <Boolean>] [[-Location] <String>] [-EdgeZone 
  [-SkuProfileVmSize <String[]>] [-SkuProfileAllocationStrategy <String>] [-EnableResilientVMCreate]
  [-EnableResilientVMDelete] [-EnableAutomaticZoneRebalance] [-AutomaticZoneRebalanceStrategy <String>]
  [-AutomaticZoneRebalanceBehavior <String>] [-ZonePlacementPolicy <String>] [-MaxZoneCount <Int32>]
- [-EnableMaxInstancePercentPerZone] [-MaxInstancePercentPerZoneValue <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EnableMaxInstancePercentPerZone] [-MaxInstancePercentPerZoneValue <Int32>] [-IncludeZone <String[]>]
+ [-ExcludeZone <String[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] 
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -572,6 +574,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -ExcludeZone
+This property supplements the 'zonePlacementPolicy' property. If 'zonePlacementPolicy' is set to 'Any', availability zone selected by the system must not be present in the list of availability zones passed with 'excludeZones'. If 'excludeZones' is not provided, all availability zones in region will be considered for selection.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Extension
 Specifies the extension information object for the VMSS. You can use the
 **Add-AzVmssExtension** cmdlet to add this object.
@@ -658,6 +675,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -IncludeZone
+This property supplements the 'zonePlacementPolicy' property. If 'zonePlacementPolicy' is set to 'Any', availability zone selected by the system must be present in the list of availability zones passed with 'includeZones'. If 'includeZones' is not provided, all availability zones in region will be considered for selection.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -LicenseType
 Specify the license type, which is for bringing your own license scenario.
 
@@ -683,6 +715,21 @@ Aliases:
 
 Required: False
 Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -MaxInstancePercentPerZoneValue
+The configuration parameters used to limit the number of virtual machines per availability zone in the virtual machine scale set.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -1232,21 +1279,6 @@ UserData for the VM, which will be base-64 encoded. Customer should not pass any
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -MaxInstancePercentPerZoneValue
-The configuration parameters used to limit the number of virtual machines per availability zone in the virtual machine scale set.
-
-```yaml
-Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 

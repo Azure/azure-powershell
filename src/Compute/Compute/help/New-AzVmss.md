@@ -17,7 +17,7 @@ Creates a virtual machine scale set.
 ```
 New-AzVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
  [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet> [-AsJob] [-IfMatch <String>] [-IfNoneMatch <String>]
- [-EdgeZone <String>] [-ZonePlacementPolicy <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-EdgeZone <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -40,7 +40,8 @@ New-AzVmss [[-ResourceGroupName] <String>] [-VMScaleSetName] <String> [-AsJob] [
  [-EnableVtpm <Boolean>] [-EnableSecureBoot <Boolean>] [-SecurityPostureId <String>]
  [-SecurityPostureExcludeExtension <String[]>] [-SkuProfileVmSize <String[]>]
  [-SkuProfileAllocationStrategy <String>] [-EnableProxyAgent] [-AddProxyAgentExtension]
- [-ZonePlacementPolicy <String>] [-DefaultProfile <IAzureContextContainer>] [-SinglePlacementGroup] [-WhatIf]
+ [-ZonePlacementPolicy <String>] [-IncludeZone <String[]>] [-ExcludeZone <String[]>]
+ [-DefaultProfile <IAzureContextContainer>] [-SinglePlacementGroup] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -588,6 +589,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ExcludeZone
+This property supplements the 'zonePlacementPolicy' property. If 'zonePlacementPolicy' is set to 'Any', availability zone selected by the system must not be present in the list of availability zones passed with 'excludeZones'. If 'excludeZones' is not provided, all availability zones in region will be considered for selection.
+
+```yaml
+Type: System.String[]
+Parameter Sets: SimpleParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -FrontendPoolName
 The name of the frontend address pool to use in the Scale Set load balancer.  If no value is supplied, a new Frontend Address Pool will be created, with the same name as the scale set.
 
@@ -668,6 +684,21 @@ Specified the shared gallery image unique id for vmss deployment. This can be fe
 
 ```yaml
 Type: System.String
+Parameter Sets: SimpleParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IncludeZone
+This property supplements the 'zonePlacementPolicy' property. If 'zonePlacementPolicy' is set to 'Any', availability zone selected by the system must be present in the list of availability zones passed with 'includeZones'. If 'includeZones' is not provided, all availability zones in region will be considered for selection.
+
+```yaml
+Type: System.String[]
 Parameter Sets: SimpleParameterSet
 Aliases:
 
