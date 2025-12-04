@@ -20,23 +20,11 @@ Enable the addons for aks.
 ### [Get-AzAksCluster](Get-AzAksCluster.md)
 List Kubernetes managed clusters.
 
-### [Get-AzAksMachine](Get-AzAksMachine.md)
-Get a specific machine in the specified agent pool.
-
 ### [Get-AzAksMaintenanceConfiguration](Get-AzAksMaintenanceConfiguration.md)
 Gets the specified maintenance configuration of a managed cluster.
 
 ### [Get-AzAksManagedClusterCommandResult](Get-AzAksManagedClusterCommandResult.md)
 Gets the results of a command which has been run on the Managed Cluster.
-
-### [Get-AzAksManagedClusterKuberneteVersion](Get-AzAksManagedClusterKuberneteVersion.md)
-Contains extra metadata on the version, including supported patch versions, capabilities, available upgrades, and details on preview status of the version
-
-### [Get-AzAksManagedClusterMeshRevisionProfile](Get-AzAksManagedClusterMeshRevisionProfile.md)
-Contains extra metadata on the revision, including supported revisions, cluster compatibility and available upgrades
-
-### [Get-AzAksManagedClusterMeshUpgradeProfile](Get-AzAksManagedClusterMeshUpgradeProfile.md)
-Gets available upgrades for a service mesh in a cluster.
 
 ### [Get-AzAksManagedClusterOutboundNetworkDependencyEndpoint](Get-AzAksManagedClusterOutboundNetworkDependencyEndpoint.md)
 Gets a list of egress endpoints (network endpoints of all outbound dependencies) in the specified managed cluster.
@@ -50,12 +38,6 @@ Gets the upgrade profile for an agent pool.
 
 ### [Get-AzAksSnapshot](Get-AzAksSnapshot.md)
 Gets a snapshot.
-
-### [Get-AzAksTrustedAccessRole](Get-AzAksTrustedAccessRole.md)
-List supported trusted access roles.
-
-### [Get-AzAksTrustedAccessRoleBinding](Get-AzAksTrustedAccessRoleBinding.md)
-Get a trusted access role binding.
 
 ### [Get-AzAksUpgradeProfile](Get-AzAksUpgradeProfile.md)
 Gets the upgrade profile of a managed cluster.
@@ -108,12 +90,6 @@ Create an in-memory object for TimeInWeek.
 ### [New-AzAksTimeSpanObject](New-AzAksTimeSpanObject.md)
 Create an in-memory object for TimeSpan.
 
-### [New-AzAksTrustedAccessRoleBinding](New-AzAksTrustedAccessRoleBinding.md)
-Create a trusted access role binding
-
-### [Remove-AzAksAgentPoolMachine](Remove-AzAksAgentPoolMachine.md)
-Deletes specific machines in an agent pool.
-
 ### [Remove-AzAksCluster](Remove-AzAksCluster.md)
 Delete a managed Kubernetes cluster.
 
@@ -125,9 +101,6 @@ Delete node pool from managed cluster.
 
 ### [Remove-AzAksSnapshot](Remove-AzAksSnapshot.md)
 Deletes a snapshot.
-
-### [Remove-AzAksTrustedAccessRoleBinding](Remove-AzAksTrustedAccessRoleBinding.md)
-Delete a trusted access role binding.
 
 ### [Set-AzAksCluster](Set-AzAksCluster.md)
 Update or create a managed Kubernetes cluster.
@@ -160,7 +133,4 @@ Update a maintenance configuration in the specified managed cluster.
 
 ### [Update-AzAksNodePool](Update-AzAksNodePool.md)
 Update node pool in a managed cluster.
-
-### [Update-AzAksTrustedAccessRoleBinding](Update-AzAksTrustedAccessRoleBinding.md)
-Update a trusted access role binding
 

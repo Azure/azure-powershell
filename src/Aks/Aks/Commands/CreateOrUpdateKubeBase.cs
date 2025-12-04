@@ -226,9 +226,6 @@ namespace Microsoft.Azure.Commands.Aks
         [PSArgumentCompleter("NodeIPConfiguration", "NodeIP")]
         public string LoadBalancerBackendPoolType { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Whether to enable multiple standard load balancers per AKS cluster.")]
-        public SwitchParameter EnableMultipleStandardLoadBalancer { get; set; }
-
         [Parameter(Mandatory = false, HelpMessage = "Desired outbound flow idle timeout in minutes for the load balancer.")]
         [ValidateRange(4, 120)]
         public int LoadBalancerIdleTimeoutInMinute { get; set; }
@@ -712,7 +709,6 @@ namespace Microsoft.Azure.Commands.Aks
         {
             if (this.IsParameterBound(c => c.LoadBalancerAllocatedOutboundPort) ||
                 this.IsParameterBound(c => c.LoadBalancerBackendPoolType) ||
-                this.IsParameterBound(c => c.EnableMultipleStandardLoadBalancer) ||
                 this.IsParameterBound(c => c.LoadBalancerIdleTimeoutInMinute) ||
                 this.IsParameterBound(c => c.LoadBalancerManagedOutboundIpCount) ||
                 this.IsParameterBound(c => c.LoadBalancerManagedOutboundIpCountIPv6) ||
@@ -729,10 +725,6 @@ namespace Microsoft.Azure.Commands.Aks
                 if (this.IsParameterBound(c => c.LoadBalancerBackendPoolType))
                 {
                     loadBalancerProfile.BackendPoolType = LoadBalancerBackendPoolType;
-                }
-                if (this.IsParameterBound(c => c.EnableMultipleStandardLoadBalancer))
-                {
-                    loadBalancerProfile.EnableMultipleStandardLoadBalancers = EnableMultipleStandardLoadBalancer.ToBool();
                 }
                 if (this.IsParameterBound(c => c.LoadBalancerIdleTimeoutInMinute))
                 {

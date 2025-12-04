@@ -33,12 +33,11 @@ Set-AzAksCluster [-NodePoolMode <String>] [-AcrNameToDetach <String>] [-NodeImag
  [-EnableAdvancedNetworkingObservability] [-EnableAdvancedNetworkingSecurity]
  [-AdvancedNetworkingSecurityPolicy <String>] [-IPFamily <String[]>]
  [-LoadBalancerAllocatedOutboundPort <Int32>] [-LoadBalancerBackendPoolType <String>]
- [-EnableMultipleStandardLoadBalancer] [-LoadBalancerIdleTimeoutInMinute <Int32>]
- [-LoadBalancerManagedOutboundIpCount <Int32>] [-LoadBalancerManagedOutboundIpCountIPv6 <Int32>]
- [-LoadBalancerOutboundIpPrefix <String[]>] [-LoadBalancerOutboundIp <String[]>]
- [-NATGatewayIdleTimeoutInMinute <Int32>] [-NATGatewayManagedOutboundIpCount <Int32>]
- [-NetworkDataplane <String>] [-NetworkPluginMode <String>] [-EnabledStaticEgressGateway]
- [-NodeProvisioningMode <String>] [-NodeProvisioningDefaultPool <String>]
+ [-LoadBalancerIdleTimeoutInMinute <Int32>] [-LoadBalancerManagedOutboundIpCount <Int32>]
+ [-LoadBalancerManagedOutboundIpCountIPv6 <Int32>] [-LoadBalancerOutboundIpPrefix <String[]>]
+ [-LoadBalancerOutboundIp <String[]>] [-NATGatewayIdleTimeoutInMinute <Int32>]
+ [-NATGatewayManagedOutboundIpCount <Int32>] [-NetworkDataplane <String>] [-NetworkPluginMode <String>]
+ [-EnabledStaticEgressGateway] [-NodeProvisioningMode <String>] [-NodeProvisioningDefaultPool <String>]
  [-NodeResourceGroupRestrictionLevel <String>] [-EnabledPodIdentity] [-EnablePodIdentityWithKubenet]
  [-EnablePublicNetworkAccess] [-EnableAzureKeyVaultKms] [-AzureKeyVaultKmsKeyId <String>]
  [-AzureKeyVaultKmsNetworkAccess <String>] [-AzureKeyVaultKmsResourceId <String>]
@@ -72,12 +71,11 @@ Set-AzAksCluster -InputObject <PSKubernetesCluster> [-NodePoolMode <String>] [-A
  [-EnableAdvancedNetworkingObservability] [-EnableAdvancedNetworkingSecurity]
  [-AdvancedNetworkingSecurityPolicy <String>] [-IPFamily <String[]>]
  [-LoadBalancerAllocatedOutboundPort <Int32>] [-LoadBalancerBackendPoolType <String>]
- [-EnableMultipleStandardLoadBalancer] [-LoadBalancerIdleTimeoutInMinute <Int32>]
- [-LoadBalancerManagedOutboundIpCount <Int32>] [-LoadBalancerManagedOutboundIpCountIPv6 <Int32>]
- [-LoadBalancerOutboundIpPrefix <String[]>] [-LoadBalancerOutboundIp <String[]>]
- [-NATGatewayIdleTimeoutInMinute <Int32>] [-NATGatewayManagedOutboundIpCount <Int32>]
- [-NetworkDataplane <String>] [-NetworkPluginMode <String>] [-EnabledStaticEgressGateway]
- [-NodeProvisioningMode <String>] [-NodeProvisioningDefaultPool <String>]
+ [-LoadBalancerIdleTimeoutInMinute <Int32>] [-LoadBalancerManagedOutboundIpCount <Int32>]
+ [-LoadBalancerManagedOutboundIpCountIPv6 <Int32>] [-LoadBalancerOutboundIpPrefix <String[]>]
+ [-LoadBalancerOutboundIp <String[]>] [-NATGatewayIdleTimeoutInMinute <Int32>]
+ [-NATGatewayManagedOutboundIpCount <Int32>] [-NetworkDataplane <String>] [-NetworkPluginMode <String>]
+ [-EnabledStaticEgressGateway] [-NodeProvisioningMode <String>] [-NodeProvisioningDefaultPool <String>]
  [-NodeResourceGroupRestrictionLevel <String>] [-EnabledPodIdentity] [-EnablePodIdentityWithKubenet]
  [-EnablePublicNetworkAccess] [-EnableAzureKeyVaultKms] [-AzureKeyVaultKmsKeyId <String>]
  [-AzureKeyVaultKmsNetworkAccess <String>] [-AzureKeyVaultKmsResourceId <String>]
@@ -110,12 +108,11 @@ Set-AzAksCluster [-NodePoolMode <String>] [-AcrNameToDetach <String>] [-NodeImag
  [-EnableAdvancedNetworkingObservability] [-EnableAdvancedNetworkingSecurity]
  [-AdvancedNetworkingSecurityPolicy <String>] [-IPFamily <String[]>]
  [-LoadBalancerAllocatedOutboundPort <Int32>] [-LoadBalancerBackendPoolType <String>]
- [-EnableMultipleStandardLoadBalancer] [-LoadBalancerIdleTimeoutInMinute <Int32>]
- [-LoadBalancerManagedOutboundIpCount <Int32>] [-LoadBalancerManagedOutboundIpCountIPv6 <Int32>]
- [-LoadBalancerOutboundIpPrefix <String[]>] [-LoadBalancerOutboundIp <String[]>]
- [-NATGatewayIdleTimeoutInMinute <Int32>] [-NATGatewayManagedOutboundIpCount <Int32>]
- [-NetworkDataplane <String>] [-NetworkPluginMode <String>] [-EnabledStaticEgressGateway]
- [-NodeProvisioningMode <String>] [-NodeProvisioningDefaultPool <String>]
+ [-LoadBalancerIdleTimeoutInMinute <Int32>] [-LoadBalancerManagedOutboundIpCount <Int32>]
+ [-LoadBalancerManagedOutboundIpCountIPv6 <Int32>] [-LoadBalancerOutboundIpPrefix <String[]>]
+ [-LoadBalancerOutboundIp <String[]>] [-NATGatewayIdleTimeoutInMinute <Int32>]
+ [-NATGatewayManagedOutboundIpCount <Int32>] [-NetworkDataplane <String>] [-NetworkPluginMode <String>]
+ [-EnabledStaticEgressGateway] [-NodeProvisioningMode <String>] [-NodeProvisioningDefaultPool <String>]
  [-NodeResourceGroupRestrictionLevel <String>] [-EnabledPodIdentity] [-EnablePodIdentityWithKubenet]
  [-EnablePublicNetworkAccess] [-EnableAzureKeyVaultKms] [-AzureKeyVaultKmsKeyId <String>]
  [-AzureKeyVaultKmsNetworkAccess <String>] [-AzureKeyVaultKmsResourceId <String>]
@@ -787,21 +784,6 @@ Accept wildcard characters: False
 
 ### -EnableManagedIdentity
 Using a managed identity to manage cluster resource group.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EnableMultipleStandardLoadBalancer
-Whether to enable multiple standard load balancers per AKS cluster.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
