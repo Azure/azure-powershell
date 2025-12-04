@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
             azureFileShareName: source.AzureFileShareName,
             storageAccountTenantId: source.StorageAccountTenantId,
             friendlyName: source.FriendlyName,
-            changeEnumerationIntervalDays: source.ChangeEnumerationIntervalDays);
+            changeEnumerationIntervalDays: source.ChangeEnumerationIntervalDay);
 
         /// <summary>
         /// Transforms the specified source.
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
                 PartnershipId = source.PartnershipId,
                 ProvisioningState = source.ProvisioningState,
                 ChangeEnumerationStatus = changeEnumerationStatus,
-                ChangeEnumerationIntervalDays = source.ChangeEnumerationIntervalDays
+                ChangeEnumerationIntervalDay = source.ChangeEnumerationIntervalDays
             };
         }
     }

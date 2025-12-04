@@ -119,15 +119,15 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
         public PSCloudEndpoint InputObject { get; set; }
 
         /// <summary>
-        /// Gets or sets the change enumeration interval days.
+        /// Gets or sets the change enumeration interval day.
         /// </summary>
-        /// <value>The change enumeration interval days.</value>
+        /// <value>The change enumeration interval day.</value>
         [Parameter(
           Mandatory = false,
           ValueFromPipelineByPropertyName = false,
-          HelpMessage = HelpMessages.ChangeEnumerationIntervalDaysParameter)]
+          HelpMessage = HelpMessages.ChangeEnumerationIntervalDayParameter)]
         [ValidateRange(1, 20)]
-        public int? ChangeEnumerationIntervalDays { get; set; }
+        public int? ChangeEnumerationIntervalDay { get; set; }
 
         /// <summary>
         /// Gets or sets as job.
@@ -210,9 +210,9 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
                 };
 
                 // Apply the update if parameter is provided
-                if (this.IsParameterBound(c => c.ChangeEnumerationIntervalDays))
+                if (this.IsParameterBound(c => c.ChangeEnumerationIntervalDay))
                 {
-                    updateParameters.ChangeEnumerationIntervalDays = ChangeEnumerationIntervalDays;
+                    updateParameters.ChangeEnumerationIntervalDays = ChangeEnumerationIntervalDay;
                 }
                 else if (existingCloudEndpoint.ChangeEnumerationIntervalDays.HasValue)
                 {
