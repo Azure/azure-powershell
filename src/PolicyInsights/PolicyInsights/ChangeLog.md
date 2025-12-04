@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated Azure.Core from 1.47.3 to 1.50.0
 
 ## Version 1.7.2
 * Updated Azure.Core from 1.45.0 to 1.47.3
@@ -48,7 +49,7 @@
 * Added support for policy attestations.
 
 ## Version 1.5.1
-* Updated parameter documentation for Get-AzPolicyState 
+* Updated parameter documentation for Get-AzPolicyState
 
 ## Version 1.5.0
 * Added support for new remediation properties allowing the remediation of more resources with better control over the remediation rate and error handling

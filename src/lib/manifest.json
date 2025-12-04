@@ -1,7 +1,7 @@
 [
     {
         "PackageName": "Azure.Core",
-        "PackageVersion": "1.47.3",
+        "PackageVersion": "1.50.0",
         "TargetFramework": "netstandard2.0",
         "WindowsPowerShell": true,
         "PowerShell7Plus": true
@@ -72,7 +72,7 @@
     },
     {
         "PackageName": "System.ClientModel",
-        "PackageVersion": "1.6.1",
+        "PackageVersion": "1.8.0",
         "TargetFramework": "netstandard2.0",
         "WindowsPowerShell": true,
         "PowerShell7Plus": true
@@ -142,7 +142,7 @@
     },
     {
         "PackageName": "System.Threading.Tasks.Extensions",
-        "PackageVersion": "4.5.4",
+        "PackageVersion": "4.6.0",
         "TargetFramework": "netstandard2.0",
         "WindowsPowerShell": true,
         "PowerShell7Plus": false

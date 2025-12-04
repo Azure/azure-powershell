@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Updated Azure.Core from 1.47.3 to 1.50.0
 
 ## Version 1.19.0
 * Added fleet management support for Cosmos DB accounts.
