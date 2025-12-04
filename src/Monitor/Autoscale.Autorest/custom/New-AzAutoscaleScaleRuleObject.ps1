@@ -38,6 +38,7 @@ function New-AzAutoscaleScaleRuleObject {
         [bool]
         $MetricTriggerDividePerInstance,
         [Parameter(Mandatory, HelpMessage="the name of the metric that defines what the rule monitors.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.PSArgumentCompleterAttribute("CpuPercentage", "MemoryPercentage", "DiskQueueLength", "HttpQueueLength", "BytesReceived", "BytesSent", "TcpSynSent", "TcpSynReceived", "TcpEstablished", "SocketInboundAll", "SocketOutboundAll")]
         [string]
         $MetricTriggerMetricName,
         [Parameter(HelpMessage="the namespace of the metric that defines what the rule monitors.")]
@@ -87,14 +88,6 @@ function New-AzAutoscaleScaleRuleObject {
     )
 
     process {
-        # Add client-side validation for common metric name issues
-        if ($PSBoundParameters.ContainsKey('MetricTriggerMetricResourceUri') -and $PSBoundParameters.ContainsKey('MetricTriggerMetricName')) {
-            # Check for App Service Plan with incorrect metric name
-            if ($MetricTriggerMetricResourceUri -match "/providers/Microsoft\.Web/serverfarms/" -and $MetricTriggerMetricName -eq "Percentage CPU") {
-                Write-Warning "For App Service Plans (Microsoft.Web/serverfarms), use 'CpuPercentage' instead of 'Percentage CPU' as the metric name."
-            }
-        }
-
         $Object = [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.ScaleRule]::New()
 
         if ($PSBoundParameters.ContainsKey('MetricTriggerDimension')) {
