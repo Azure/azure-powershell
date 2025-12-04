@@ -13,6 +13,45 @@ namespace Microsoft.Azure.Management.StorageSync
     public static partial class PrivateEndpointConnectionsOperationsExtensions
     {
         /// <summary>
+        /// Get a PrivateEndpointConnection List.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='storageSyncServiceName'>
+        /// Name of Storage Sync Service resource.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<PrivateEndpointConnection> ListByStorageSyncService(this IPrivateEndpointConnectionsOperations operations, string resourceGroupName, string storageSyncServiceName)
+        {
+                return ((IPrivateEndpointConnectionsOperations)operations).ListByStorageSyncServiceAsync(resourceGroupName, storageSyncServiceName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Get a PrivateEndpointConnection List.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='storageSyncServiceName'>
+        /// Name of Storage Sync Service resource.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<PrivateEndpointConnection>> ListByStorageSyncServiceAsync(this IPrivateEndpointConnectionsOperations operations, string resourceGroupName, string storageSyncServiceName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListByStorageSyncServiceWithHttpMessagesAsync(resourceGroupName, storageSyncServiceName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Gets the specified private endpoint connection associated with the storage
         /// sync service.
         /// </summary>
@@ -23,8 +62,7 @@ namespace Microsoft.Azure.Management.StorageSync
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='storageSyncServiceName'>
-        /// The name of the storage sync service name within the specified resource
-        /// group.
+        /// Name of Storage Sync Service resource.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
         /// The name of the private endpoint connection associated with the Azure
@@ -46,8 +84,7 @@ namespace Microsoft.Azure.Management.StorageSync
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='storageSyncServiceName'>
-        /// The name of the storage sync service name within the specified resource
-        /// group.
+        /// Name of Storage Sync Service resource.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
         /// The name of the private endpoint connection associated with the Azure
@@ -74,8 +111,7 @@ namespace Microsoft.Azure.Management.StorageSync
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='storageSyncServiceName'>
-        /// The name of the storage sync service name within the specified resource
-        /// group.
+        /// Name of Storage Sync Service resource.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
         /// The name of the private endpoint connection associated with the Azure
@@ -97,8 +133,7 @@ namespace Microsoft.Azure.Management.StorageSync
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='storageSyncServiceName'>
-        /// The name of the storage sync service name within the specified resource
-        /// group.
+        /// Name of Storage Sync Service resource.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
         /// The name of the private endpoint connection associated with the Azure
@@ -125,8 +160,7 @@ namespace Microsoft.Azure.Management.StorageSync
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='storageSyncServiceName'>
-        /// The name of the storage sync service name within the specified resource
-        /// group.
+        /// Name of Storage Sync Service resource.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
         /// The name of the private endpoint connection associated with the Azure
@@ -148,8 +182,7 @@ namespace Microsoft.Azure.Management.StorageSync
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='storageSyncServiceName'>
-        /// The name of the storage sync service name within the specified resource
-        /// group.
+        /// Name of Storage Sync Service resource.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
         /// The name of the private endpoint connection associated with the Azure
@@ -166,45 +199,6 @@ namespace Microsoft.Azure.Management.StorageSync
             }
         }
         /// <summary>
-        /// Get a PrivateEndpointConnection List.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='storageSyncServiceName'>
-        /// Name of Storage Sync Service resource.
-        /// </param>
-        public static System.Collections.Generic.IEnumerable<PrivateEndpointConnection> ListByStorageSyncService(this IPrivateEndpointConnectionsOperations operations, string resourceGroupName, string storageSyncServiceName)
-        {
-                return ((IPrivateEndpointConnectionsOperations)operations).ListByStorageSyncServiceAsync(resourceGroupName, storageSyncServiceName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Get a PrivateEndpointConnection List.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='storageSyncServiceName'>
-        /// Name of Storage Sync Service resource.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<PrivateEndpointConnection>> ListByStorageSyncServiceAsync(this IPrivateEndpointConnectionsOperations operations, string resourceGroupName, string storageSyncServiceName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListByStorageSyncServiceWithHttpMessagesAsync(resourceGroupName, storageSyncServiceName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
         /// Update the state of specified private endpoint connection associated with
         /// the storage sync service.
         /// </summary>
@@ -215,8 +209,7 @@ namespace Microsoft.Azure.Management.StorageSync
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='storageSyncServiceName'>
-        /// The name of the storage sync service name within the specified resource
-        /// group.
+        /// Name of Storage Sync Service resource.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
         /// The name of the private endpoint connection associated with the Azure
@@ -238,8 +231,7 @@ namespace Microsoft.Azure.Management.StorageSync
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='storageSyncServiceName'>
-        /// The name of the storage sync service name within the specified resource
-        /// group.
+        /// Name of Storage Sync Service resource.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
         /// The name of the private endpoint connection associated with the Azure
@@ -266,8 +258,7 @@ namespace Microsoft.Azure.Management.StorageSync
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='storageSyncServiceName'>
-        /// The name of the storage sync service name within the specified resource
-        /// group.
+        /// Name of Storage Sync Service resource.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
         /// The name of the private endpoint connection associated with the Azure
@@ -289,8 +280,7 @@ namespace Microsoft.Azure.Management.StorageSync
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='storageSyncServiceName'>
-        /// The name of the storage sync service name within the specified resource
-        /// group.
+        /// Name of Storage Sync Service resource.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
         /// The name of the private endpoint connection associated with the Azure
@@ -304,6 +294,39 @@ namespace Microsoft.Azure.Management.StorageSync
             using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, storageSyncServiceName, privateEndpointConnectionName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// Get a PrivateEndpointConnection List.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<PrivateEndpointConnection> ListByStorageSyncServiceNext(this IPrivateEndpointConnectionsOperations operations, string nextPageLink)
+        {
+                return ((IPrivateEndpointConnectionsOperations)operations).ListByStorageSyncServiceNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Get a PrivateEndpointConnection List.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<PrivateEndpointConnection>> ListByStorageSyncServiceNextAsync(this IPrivateEndpointConnectionsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListByStorageSyncServiceNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
             }
         }
     }

@@ -496,6 +496,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetResiliencyView()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetResiliencyView");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineScaleSetAutomaticZonePlacement()
         {
             TestRunner.RunTestScript("Test-VirtualMachineScaleSetAutomaticZonePlacement");
