@@ -12,16 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using AzDev.Models;
+using NuGet.Protocol.Plugins;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Management.Automation;
 using System.Net.Http;
-using System.Threading.Tasks;
-using System.Text.RegularExpressions;
-using AzDev.Models;
 using System.Text;
-using System.Diagnostics;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 
 namespace AzDev.Cmdlets.Typespec
 {
@@ -43,8 +45,8 @@ namespace AzDev.Cmdlets.Typespec
         3. no -tsplocation and there is a tsp-location.yaml, use tsp-location.yaml as -tsplocation
         4. if -tspconfig provided, merge it with -tsplocation
     */
-    [Cmdlet("Update", "DevTSPConfig")]
-    public class UpdateTSPConfigCmdlet : DevCmdletBase
+    [Cmdlet("Update", "DevTSPModule")]
+    public class UpdateTSPModuleCmdlet : DevCmdletBase
     {
         private static readonly HttpClient httpClient = new HttpClient();
 
@@ -53,6 +55,8 @@ namespace AzDev.Cmdlets.Typespec
         private const string emitterName = "@azure-tools/typespec-powershell";
 
         private const string tempDirName = "TempTypeSpecFiles";
+
+        private string _npmPath = "";
         
         [Parameter(HelpMessage = "The location of the TSP config file (can be a URL or local path). Will look for `tsp-location.yaml` in current directory if not provided.")]
         public string TSPLocation { get; set; }
@@ -79,7 +83,7 @@ namespace AzDev.Cmdlets.Typespec
         public SwitchParameter SkipCleanTemp { get; set; }
 
         [Parameter(HelpMessage = "The path of local emitter")]
-        public string emitterPath { get; set; }
+        public string EmitterPath { get; set; }
 
         protected override void ProcessRecord()
         {
@@ -108,12 +112,15 @@ namespace AzDev.Cmdlets.Typespec
                 {
                     RemoteRepositoryName = $"{RemoteForkName}/azure-rest-api-specs";
                 }
-                TSPLocation = new UriBuilder
+                if (!string.IsNullOrEmpty(RemoteRepositoryName) && !string.IsNullOrEmpty(RemoteCommit) && !string.IsNullOrEmpty(RemoteDirectory))
                 {
-                    Scheme = "https",
-                    Host = "raw.githubusercontent.com",
-                    Path = $"{RemoteRepositoryName ?? "Azure/azure-rest-api-specs"}/{RemoteCommit ?? "main"}/{RemoteDirectory ?? ""}/tspconfig.yaml"
-                }.ToString();
+                    TSPLocation = new UriBuilder
+                    {
+                        Scheme = "https",
+                        Host = "raw.githubusercontent.com",
+                        Path = $"{RemoteRepositoryName ?? "Azure/azure-rest-api-specs"}/{RemoteCommit ?? "main"}/{RemoteDirectory ?? ""}/tspconfig.yaml"
+                    }.ToString();
+                }
             }
             //use tsp-location.yaml in current directory if no -tsplocation provided
             if (string.IsNullOrEmpty(TSPLocation))
@@ -134,6 +141,7 @@ namespace AzDev.Cmdlets.Typespec
             else if (isRemote)
             {
                 (TSPLocation, RemoteCommit, RemoteRepositoryName, RemoteDirectory) = ResolveTSPConfigUri(TSPLocation);
+                RemoteDirectory = NormalizePath(RemoteDirectory);
             }
 
             /*
@@ -146,16 +154,20 @@ namespace AzDev.Cmdlets.Typespec
                 string azpsConfigPathPWD = Path.Combine(currentPath, "tspconfig.yaml");
                 if (!File.Exists(azpsConfigPathPWD))
                 {
-                    throw new ArgumentException("Please provide `-AzPSConfig` or have `tspconfig.yaml` in current directory.");
-                }
-                AzPSConfig = azpsConfigPathPWD;
+                    WriteWarning($"No `-AzPSConfig` provided or `tspconfig.yaml` detected in `{azpsConfigPathPWD}`.");
+                    AzPSConfig = null;
+                } 
+                else
+                {
+                    AzPSConfig = azpsConfigPathPWD;
+                }  
             }
             // resolve local path of AzPSConfig as absolute if it's relative
-            if (!IsRemoteUri(AzPSConfig) && !Path.IsPathRooted(AzPSConfig))
+            if (!string.IsNullOrEmpty(AzPSConfig) && !IsRemoteUri(AzPSConfig) && !Path.IsPathRooted(AzPSConfig))
             {
                 AzPSConfig = Path.GetFullPath(AzPSConfig, currentPath);
             }
-            else if (IsRemoteUri(AzPSConfig))
+            else if (!string.IsNullOrEmpty(AzPSConfig) && IsRemoteUri(AzPSConfig))
             {
                 (AzPSConfig, _, _, _) = ResolveTSPConfigUri(AzPSConfig);
             }
@@ -164,20 +176,42 @@ namespace AzDev.Cmdlets.Typespec
             /*
                 Calculate RepoRoot
             */
-            RepoRoot = GetRepoRoot((ContextProvider.LoadContext(), RepoRoot, currentPath));
+            DevContext context;
+            try
+            {
+                context = ContextProvider.LoadContext();
+            }
+            catch
+            {
+                context = null;
+            }
+            RepoRoot = GetRepoRoot((context, RepoRoot, currentPath));
 
             /*
                 merge AzPSConfig to tspconfig if provided
             */
-            Dictionary<string, object> mergedTspConfig = (Dictionary<string, object>)MergeTSPConfig(TSPLocation, AzPSConfig);
-            string emitterOutDir = (string)mergedTspConfig["emitter-output-dir"];
-            Dictionary<string, object> options = (Dictionary<string, object>)mergedTspConfig["options"];
-            Dictionary<string, object> option = (Dictionary<string, object>)options[emitterName];
-            emitterOutDir = TryResolveDirFromTSPConfig(option, emitterOutDir);
-            // if emitter-out-dir is not absolute, assume it's relative to RepoRoot
-            if (!Path.IsPathRooted(emitterOutDir))
+            Dictionary<object, object> mergedTspConfig = (Dictionary<object, object>)MergeTSPConfig(TSPLocation, AzPSConfig);
+            Dictionary<object, object> options = (Dictionary<object, object>)mergedTspConfig["options"];
+            Dictionary<object, object> option = (Dictionary<object, object>)options[emitterName];
+            string emitterOutputDir;
+            if (option.ContainsKey("emitter-output-dir"))
             {
-                emitterOutDir = Path.GetFullPath(emitterOutDir, RepoRoot);
+                emitterOutputDir = (string)option["emitter-output-dir"];
+                emitterOutputDir = TryResolveDirFromTSPConfig(option, emitterOutputDir);
+            }
+            else if (AzPSConfig != null && !IsRemoteUri(AzPSConfig))
+            {
+                //If there is a child tspconfig, use its directory to emit
+                emitterOutputDir = Path.GetDirectoryName(AzPSConfig);
+            }
+            else 
+            {
+                throw new ArgumentException($"No emitter-output-dir configured in {TSPLocation}");
+            }
+            // if emitter-outout-dir is not absolute, assume it's relative to RepoRoot
+            if (!Path.IsPathRooted(emitterOutputDir))
+            {
+                emitterOutputDir = Path.GetFullPath(emitterOutputDir, RepoRoot);
             }
 
             /*
@@ -193,8 +227,8 @@ namespace AzDev.Cmdlets.Typespec
                         
             */
             string tempTSPLocation = isRemote ?
-                PrepareTSPFromRemote(RemoteRepositoryName, RemoteCommit, RemoteDirectory, emitterOutDir).GetAwaiter().GetResult() :
-                PrepareTSPFromLocal(TSPLocation, emitterOutDir);
+                PrepareTSPFromRemote(RemoteRepositoryName, RemoteCommit, RemoteDirectory, emitterOutputDir).GetAwaiter().GetResult() :
+                PrepareTSPFromLocal(TSPLocation, emitterOutputDir);
             if (!File.Exists(tempTSPLocation))
             {
                 throw new InvalidOperationException($"The specified TSP config file [{tempTSPLocation}] does not exist.");
@@ -214,7 +248,7 @@ namespace AzDev.Cmdlets.Typespec
                 commit = RemoteCommit,
                 repo = RemoteRepositoryName
             };
-            File.WriteAllText(Path.Combine(emitterOutDir, "tsp-location.yaml"), YamlHelper.Serialize(tspLocationData));
+            File.WriteAllText(Path.Combine(emitterOutputDir, "tsp-location.yaml"), YamlHelper.Serialize(tspLocationData));
 
             string emitterPackageJsonPath = Path.Combine(RepoRoot, "eng", "emitter-package.json");
             File.Copy(emitterPackageJsonPath, Path.Combine(Path.GetDirectoryName(tempTSPLocation), "package.json"), true);
@@ -224,8 +258,8 @@ namespace AzDev.Cmdlets.Typespec
             */
             try
             {
-                installDependencies(Path.GetDirectoryName(tempTSPLocation));
-                RunCommand("tsp", $"compile ./ --emit {emitterPath ?? emitterName} --out-dir {emitterOutDir}", Path.GetDirectoryName(tempTSPLocation));
+                installDependencies(Path.GetDirectoryName(tempTSPLocation)).Wait();
+                RunCommand(FindNPMCommandFromPath("tsp.cmd"), $"compile ./ --emit {EmitterPath ?? emitterName} --output-dir {emitterOutputDir}", Path.GetDirectoryName(tempTSPLocation)).Wait();
             }
             catch (Exception ex)
             {
@@ -237,11 +271,8 @@ namespace AzDev.Cmdlets.Typespec
                 {
                     try
                     {
-                        string tempDirPath = Path.Combine(emitterOutDir, tempDirName);
-                        if (Directory.Exists(tempDirPath))
-                        {
-                            Directory.Delete(tempDirPath, true);
-                        }
+                        string tempDirPath = Path.Combine(emitterOutputDir, tempDirName);
+                        ForceDeleteDir(tempDirPath);
                     }
                     catch (Exception ex)
                     {
@@ -251,14 +282,47 @@ namespace AzDev.Cmdlets.Typespec
             }
         }
 
-        private void installDependencies(string workingDirectory)
+        private string FindNPMCommandFromPath(string command)
+        {
+            if (_npmPath == "" || !File.Exists(_npmPath))
+            {
+                string pathEnv = Environment.GetEnvironmentVariable("PATH") ?? string.Empty;
+                string npmPath = pathEnv.Split(Path.PathSeparator).FirstOrDefault(path => path.EndsWith("npm"));
+                _npmPath = npmPath;
+            }
+            string commandPath = Path.Combine(_npmPath, command);
+            if (!File.Exists(commandPath))
+            {
+                
+                throw new FileNotFoundException($"Command '{command}' not found in system PATH.");
+            }
+            return commandPath;
+        }
+
+        private string NormalizePath(string path) => path.Replace('/', Path.DirectorySeparatorChar).Replace('\\', Path.DirectorySeparatorChar);
+
+        private void ForceDeleteDir(string path)
+        {
+            if (!Directory.Exists(path))
+            {
+                return;
+            }
+            foreach (var file in Directory.GetFiles(path, "*", SearchOption.AllDirectories))
+            {
+                File.SetAttributes(file, FileAttributes.Normal);
+            }
+
+            Directory.Delete(path, true);
+        }
+
+        private async Task installDependencies(string workingDirectory)
         {
             if (!File.Exists(Path.Combine(workingDirectory, "package.json")))
             {
                 throw new FileNotFoundException($"package.json not found in {workingDirectory}");
             }
             string args = File.Exists(Path.Combine(workingDirectory, "package-lock.json")) ? "ci" : "install";
-            RunCommand("npm", args, workingDirectory);
+            await RunCommand(FindNPMCommandFromPath("npm.cmd"), args, workingDirectory);
         }
 
         private (string, string, string, string) ResolveTSPConfigUri(string uri)
@@ -285,7 +349,7 @@ namespace AzDev.Cmdlets.Typespec
             {
                 if (Directory.Exists(tempDirPath))
                 {
-                    Directory.Delete(tempDirPath, true);
+                    ForceDeleteDir(tempDirPath);
                 }
                 Directory.CreateDirectory(tempDirPath);
             }
@@ -294,10 +358,10 @@ namespace AzDev.Cmdlets.Typespec
                 throw new InvalidOperationException($"Failed to prepare temporary directory [{tempDirPath}]: {ex.Message}", ex);
             }
             string cloneRepo = $"https://github.com/{repo}.git";
-            RunCommand("git", $"clone {cloneRepo} {tempDirPath} --no-checkout --filter=tree:0", outDir);
-            RunCommand("git", $"sparse-checkout set {path}", tempDirPath);
-            RunCommand("git", $"sparse-checkout add {path}", tempDirPath);
-            RunCommand("git", $"checkout {commit}", tempDirPath);
+            await RunCommand("git", $"clone {cloneRepo} {tempDirPath} --no-checkout --filter=tree:0", outDir);
+            await RunCommand("git", $"sparse-checkout set {path}", tempDirPath);
+            await RunCommand("git", $"sparse-checkout add {path}", tempDirPath);
+            await RunCommand("git", $"checkout {commit}", tempDirPath);
             string tempTspLocation = Path.Combine(tempDirPath, path, "tspconfig.yaml");
             return tempTspLocation;
         }
@@ -310,7 +374,7 @@ namespace AzDev.Cmdlets.Typespec
             {
                 if (Directory.Exists(tempDirPath))
                 {
-                    Directory.Delete(tempDirPath, true);
+                    ForceDeleteDir(tempDirPath);
                 }
                 Directory.CreateDirectory(tempDirPath);
             }
@@ -350,60 +414,43 @@ namespace AzDev.Cmdlets.Typespec
             }
         }
 
-        private void RunCommand(string command, string arguments, string workingDirectory)
+        private async Task RunCommand(string command, string arguments, string workingDirectory)
         {
             ProcessStartInfo startInfo = new ProcessStartInfo
             {
                 FileName = command,
                 Arguments = arguments,
                 WorkingDirectory = workingDirectory,
-                RedirectStandardOutput = false,     // Capture output
+                RedirectStandardOutput = true,     // Capture output
                 RedirectStandardError = true,      // Capture errors
                 UseShellExecute = false,
                 CreateNoWindow = true
             };
-            using (Process process = Process.Start(startInfo))
+
+            using (Process process = new Process())
             {
-                process.WaitForExit();
-                //string output = process.StandardOutput.ReadToEnd();
-                string error = process.StandardError.ReadToEnd();
-                if (process.ExitCode != 0)
+                process.StartInfo = startInfo;
+
+                // Attach real-time output event handlers
+                process.OutputDataReceived += (sender, e) =>
                 {
-                    throw new Exception($"{command} command failed: {error}");
-                }
-            }
-        }
+                    if (!string.IsNullOrEmpty(e.Data))
+                        Console.WriteLine(e.Data);
+                };
+                process.ErrorDataReceived += (sender, e) =>
+                {
+                    if (!string.IsNullOrEmpty(e.Data))
+                        Console.Error.WriteLine(e.Data);
+                };
 
-        private async Task<string> RunNpmCommand(string arguments, string workingDirectory)
-        {
-            ProcessStartInfo startInfo = new ProcessStartInfo
-            {
-                FileName = "npm",
-                Arguments = arguments,
-                WorkingDirectory = workingDirectory,
-                RedirectStandardOutput = true,      // Capture output
-                RedirectStandardError = true,       // Capture errors
-                UseShellExecute = false,
-                CreateNoWindow = true
-            };
-
-            using (Process process = Process.Start(startInfo))
-            {
+                process.Start();
+                process.BeginOutputReadLine();
+                process.BeginErrorReadLine();
                 await process.WaitForExitAsync();
-                string output = await process.StandardOutput.ReadToEndAsync();
-                string error = await process.StandardError.ReadToEndAsync();
-
-                if (process.ExitCode != 0)
-                {
-                    throw new Exception($"NPM command '{arguments}' failed: {error}");
-                }
-
-                WriteVerbose($"NPM command '{arguments}' completed successfully");
-                return output.Trim();
             }
         }
 
-        private string TryResolveDirFromTSPConfig(Dictionary<string, object> option, string dir)
+        private string TryResolveDirFromTSPConfig(Dictionary<object, object> option, string dir)
         {
             if (string.IsNullOrEmpty(dir))
             {
@@ -467,11 +514,6 @@ namespace AzDev.Cmdlets.Typespec
 
         private string ConstructTSPConfigUriFromTSPLocation(string tspLocationPath, (string, string, string, string) remoteInfo)
         {
-            (string RemoteDirectory, string RemoteCommit, string RemoteRepositoryName, string RemoteForkName) = remoteInfo;
-            if (string.IsNullOrEmpty(RemoteRepositoryName) && string.IsNullOrEmpty(RemoteForkName))
-            {
-                throw new ArgumentException("Please provide either `-RemoteRepository` or `-RemoteForkName`.");
-            }
             Dictionary<string, object> tspLocationPWDContent = YamlHelper.Deserialize<Dictionary<string, object>>(File.ReadAllText(tspLocationPath));
             //if tspconfig emitted previously was from local, only record the absolute directory name
             if (File.Exists((string)tspLocationPWDContent["directory"]) && string.IsNullOrEmpty((string)tspLocationPWDContent["repo"]) && string.IsNullOrEmpty((string)tspLocationPWDContent["commit"]))
@@ -482,6 +524,7 @@ namespace AzDev.Cmdlets.Typespec
                 }
                 return (string)tspLocationPWDContent["directory"];
             }
+            (string RemoteDirectory, string RemoteCommit, string RemoteRepositoryName, string RemoteForkName) = remoteInfo;
             //otherwise it was from remote, construct its url
             string repo = !string.IsNullOrEmpty(RemoteForkName) ? $"{RemoteForkName}/azure-rest-api-specs" : (!string.IsNullOrEmpty(RemoteRepositoryName) ? RemoteRepositoryName : (string)tspLocationPWDContent["repo"]);
             string commit = !string.IsNullOrEmpty(RemoteCommit) ? RemoteCommit : (string)tspLocationPWDContent["commit"];
@@ -518,7 +561,7 @@ namespace AzDev.Cmdlets.Typespec
                 throw new ArgumentException($"Only HTTP and HTTPS URIs are supported: {uri}", nameof(uri));
             }
 
-            WriteVerbose($"Downloading TSP config from: {uri}");
+            Console.WriteLine($"Downloading TSP config from: {uri}");
 
             // Prepare request and timeout
             using var request = new HttpRequestMessage(HttpMethod.Get, uri);
@@ -545,7 +588,7 @@ namespace AzDev.Cmdlets.Typespec
                     throw new InvalidOperationException("Downloaded TSP config content is empty");
                 }
 
-                WriteVerbose($"Successfully downloaded TSP config ({content.Length} characters)");
+                Console.WriteLine($"Successfully downloaded TSP config ({content.Length} characters)");
                 return content;
             }
             catch (TaskCanceledException ex) when (ex.InnerException is TimeoutException || ex.CancellationToken.IsCancellationRequested)
@@ -558,8 +601,7 @@ namespace AzDev.Cmdlets.Typespec
             }
             catch (Exception ex)
             {
-                WriteError(new ErrorRecord(ex, "TSPConfigDownloadFailed", ErrorCategory.InvalidOperation, uri));
-                throw;
+                throw new Exception($"Failed to download tspconfig from {uri}, {ex.Message}", ex);
             }
         }
 
@@ -588,7 +630,7 @@ namespace AzDev.Cmdlets.Typespec
                 throw new FileNotFoundException($"TSP config file not found: {normalizedPath}", normalizedPath);
             }
 
-            WriteVerbose($"Reading TSP config from local file: {normalizedPath}");
+            Console.WriteLine($"Reading TSP config from local file: {normalizedPath}");
 
             try
             {
@@ -600,7 +642,7 @@ namespace AzDev.Cmdlets.Typespec
                     throw new InvalidOperationException($"TSP config file is empty: {normalizedPath}");
                 }
 
-                WriteVerbose($"Successfully read TSP config from local file ({content.Length} characters)");
+                Console.WriteLine($"Successfully read TSP config from local file ({content.Length} characters)");
                 return content;
             }
             catch (UnauthorizedAccessException ex)
@@ -613,39 +655,36 @@ namespace AzDev.Cmdlets.Typespec
             }
             catch (Exception ex)
             {
-                WriteError(new ErrorRecord(ex, "TSPConfigReadFailed", ErrorCategory.ReadError, normalizedPath));
-                throw;
+                throw new Exception($"Failed to read tspconfig from {normalizedPath}, {ex.Message}", ex);
             }
         }
         
         private object MergeTSPConfig(string parentConfigPath, string childConfigPath)
         {
             string parentConfig = GetTSPConfig(parentConfigPath);
-            string childConfig = GetTSPConfig(childConfigPath);
 
             // Validate and deserialize parent config
             if (string.IsNullOrWhiteSpace(parentConfig) || !YamlHelper.TryDeserialize<IDictionary<object, object>>(parentConfig, out IDictionary<object, object> parent))
             {
                 throw new ArgumentException("Invalid parent TSP config: " + parentConfig, nameof(parentConfig));
             }
-            
+
+            // return parent if no child config provided
+            if (string.IsNullOrEmpty(childConfigPath))
+            {
+                Console.WriteLine($"No ChildConfig provided, use {parentConfigPath}");
+                return parent;
+            }
+            string childConfig = GetTSPConfig(childConfigPath);
             // Validate and deserialize child config
             if (string.IsNullOrWhiteSpace(childConfig) || !YamlHelper.TryDeserialize<IDictionary<object, object>>(childConfig, out IDictionary<object, object> child))
             {
                 throw new ArgumentException("Invalid child TSP config: " + childConfig, nameof(childConfig));
             }
 
-            WriteVerbose("Performing deep merge for parent: " + parentConfigPath + " and child: " + childConfigPath);
+            Console.WriteLine("Performing deep merge for parent: " + parentConfigPath + " and child: " + childConfigPath);
             var mergedConfig = MergeNestedObjectIteratively(parent, child);
-            WriteVerbose("TSP config merge completed successfully");
-
-            //If there is a child tspconfig, use its directory to emit
-            if (child != null && !IsRemoteUri(childConfigPath))
-            {
-                string emitterOutputDir = Path.GetDirectoryName(childConfigPath);
-                mergedConfig["emitter-output-dir"] = emitterOutputDir;
-            }
-
+            Console.WriteLine("TSP config merge completed successfully");
             return mergedConfig;
         }
 
