@@ -1569,26 +1569,23 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             if (this.IsParameterBound(c => c.ZonePlacementPolicy))
             {
+                if (this.VirtualMachineScaleSetUpdate == null)
+                {
+                    this.VirtualMachineScaleSetUpdate = new VirtualMachineScaleSetUpdate();
+                }
                 if (this.VirtualMachineScaleSetUpdate.Placement == null)
                 {
                     this.VirtualMachineScaleSetUpdate.Placement = new Placement();
                 }
                 this.VirtualMachineScaleSetUpdate.Placement.ZonePlacementPolicy = this.ZonePlacementPolicy;
-
-                // Apply overprovision validation similar to the config command
-                if (this.IsParameterBound(c => c.Overprovision) && this.Overprovision == true)
-                {
-                    throw new ArgumentException("Overprovision must be false when ZonePlacementPolicy is specified.");
-                }
-
-                if (!this.IsParameterBound(c => c.Overprovision))
-                {
-                    this.Overprovision = false;
-                }
             }
 
             if (this.IsParameterBound(c => c.IncludeZone))
             {
+                if (this.VirtualMachineScaleSetUpdate == null)
+                {
+                    this.VirtualMachineScaleSetUpdate = new VirtualMachineScaleSetUpdate();
+                }
                 if (this.VirtualMachineScaleSetUpdate.Placement == null)
                 {
                     this.VirtualMachineScaleSetUpdate.Placement = new Placement();
@@ -1598,11 +1595,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             if (this.IsParameterBound(c => c.ExcludeZone))
             {
+                if (this.VirtualMachineScaleSetUpdate == null)
+                {
+                    this.VirtualMachineScaleSetUpdate = new VirtualMachineScaleSetUpdate();
+                }
                 if (this.VirtualMachineScaleSetUpdate.Placement == null)
                 {
                     this.VirtualMachineScaleSetUpdate.Placement = new Placement();
                 }
-                this.VirtualMachineScaleSetUpdate.Placement.ExcludeZones = this.IncludeZone;
+                this.VirtualMachineScaleSetUpdate.Placement.ExcludeZones = this.ExcludeZone;
             }
 
             if (this.IsParameterBound(c => c.MaxZoneCount))
@@ -2503,17 +2504,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     this.VirtualMachineScaleSet.Placement = new Placement();
                 }
                 this.VirtualMachineScaleSet.Placement.ZonePlacementPolicy = this.ZonePlacementPolicy;
-
-                // Apply overprovision validation similar to the config command
-                if (this.IsParameterBound(c => c.Overprovision) && this.Overprovision == true)
-                {
-                    throw new ArgumentException("Overprovision must be false when ZonePlacementPolicy is specified.");
-                }
-
-                if (!this.IsParameterBound(c => c.Overprovision))
-                {
-                    this.Overprovision = false;
-                }
             }
 
             if (this.IsParameterBound(c => c.IncludeZone))
@@ -2531,7 +2521,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     this.VirtualMachineScaleSet.Placement = new Placement();
                 }
-                this.VirtualMachineScaleSet.Placement.ExcludeZones = this.IncludeZone;
+                this.VirtualMachineScaleSet.Placement.ExcludeZones = this.ExcludeZone;
             }
 
             if (this.IsParameterBound(c => c.MaxZoneCount))

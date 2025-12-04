@@ -6159,6 +6159,7 @@ function Test-VirtualMachineScaleSetAutomaticZonePlacement
         # Common
         $loc = "eastus2euap";
         $vmssName = "vmssAutoZonePlacement" + $rgname;
+        $vmssName2 = "vmssAutoZonePlacement2" + $rgname;
         $vnetName = "vnetAutoZonePlacement" + $rgname;
         $subnetName = "subnetAutoZonePlacement" + $rgname;
         $adminUsername = Get-ComputeTestResourceName;
@@ -6172,10 +6173,12 @@ function Test-VirtualMachineScaleSetAutomaticZonePlacement
 
                 
         # Create using simple parameter and New-AzVmss
-        $vmss = New-AzVmss -ResourceGroupName $rgname -Location $loc -Credential $cred -VMScaleSetName 'testvmss2' -DomainNameLabel $domainNameLabel1 -Image $linuxImage -ZonePlacementPolicy 'Auto'
+        New-AzVmss -ResourceGroupName $rgname -Location $loc -Credential $cred -VMScaleSetName $vmssName -DomainNameLabel $domainNameLabel1 -Image $linuxImage -ZonePlacementPolicy 'Auto' -IncludeZone "1","2"
 
         # Verify ZonePlacementPolicy successfully set
+        $vmss = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName
         Assert-AreEqual $vmss.Placement.ZonePlacementPolicy 'Auto'
+        Assert-AreEqual $vmss.Placement.IncludeZones.Count 2
 
         # Create VNet and Subnet
         $vnetAddressPrefix = "10.0.0.0/16";
@@ -6187,7 +6190,7 @@ function Test-VirtualMachineScaleSetAutomaticZonePlacement
         $subnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Get-AzVirtualNetworkSubnetConfig -Name $subnetName
 
         # VMSS Config
-        $vmssConfig = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName "Standard_D2s_v3" -ZonePlacementPolicy 'Auto' -MaxZoneCount 2 -EnableMaxInstancePercentPerZone -MaxInstancePercentPerZoneValue 50;
+        $vmssConfig = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName "Standard_D2s_v3" -ZonePlacementPolicy 'Auto' -MaxZoneCount 2 -EnableMaxInstancePercentPerZone -MaxInstancePercentPerZoneValue 50 -IncludeZone "1","2";
 
         # Configure IP and NIC
         $ipCfg = New-AzVmssIpConfig -Name "ipconfig1" -SubnetId $subnet.Id
@@ -6204,19 +6207,23 @@ function Test-VirtualMachineScaleSetAutomaticZonePlacement
         Assert-AreEqual $vmssConfig.Placement.ZonePlacementPolicy 'Auto';
         Assert-AreEqual $vmssConfig.ResiliencyPolicy.ZoneAllocationPolicy.MaxZoneCount 2;
         Assert-True { $vmssConfig.ResiliencyPolicy.ZoneAllocationPolicy.MaxInstancePercentPerZonePolicy.Enabled }
+        Assert-AreEqual $vmssConfig.ResiliencyPolicy.ZoneAllocationPolicy.MaxInstancePercentPerZonePolicy.Value 50
 
         # Create the vmss using the config
-        $vmssResult = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -VirtualMachineScaleSet $vmssConfig;
+        $vmssResult = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName2 -VirtualMachineScaleSet $vmssConfig;
 
         # Assert the Automatic Zone Placement from the vmssResult
         Assert-AreEqual $vmssResult.Placement.ZonePlacementPolicy 'Auto';
         Assert-AreEqual $vmssResult.ResiliencyPolicy.ZoneAllocationPolicy.MaxZoneCount 2;
         Assert-True { $vmssResult.ResiliencyPolicy.ZoneAllocationPolicy.MaxInstancePercentPerZonePolicy.Enabled }
+        Assert-AreEqual $vmssResult.ResiliencyPolicy.ZoneAllocationPolicy.MaxInstancePercentPerZonePolicy.Value 50
 
         # Update vmss
-        $vmssUpdate = Update-AzVmss -ResourceGroupName $rgname -Name $vmssName -MaxZoneCount 3
+        $vmssUpdate = Update-AzVmss -ResourceGroupName $rgname -Name $vmssName2 -ZonePlacementPolicy 'Auto' -MaxZoneCount 3 -IncludeZone "1","2","3";
 
         Assert-AreEqual $vmssUpdate.ResiliencyPolicy.ZoneAllocationPolicy.MaxZoneCount 3;
+        Assert-AreEqual $vmssUpdate.Placement.IncludeZones.Count 3;
+        #>
     }
     finally
     {

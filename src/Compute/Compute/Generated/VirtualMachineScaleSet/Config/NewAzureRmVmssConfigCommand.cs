@@ -1168,16 +1168,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     vPlacement = new Placement();
                 }
                 vPlacement.ZonePlacementPolicy = this.ZonePlacementPolicy;
-
-                if (this.IsParameterBound(c => c.Overprovision) && this.Overprovision == true)
-                {
-                    throw new ArgumentException("Overprovision must be false when ZonePlacementPolicy is specified.");
-                }
-
-                if (!this.IsParameterBound(c => c.Overprovision))
-                {
-                    this.Overprovision = false;
-                }
             }
 
             if (this.IsParameterBound(c => c.IncludeZone))
