@@ -114,10 +114,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Common.Cmdlet
             string endpoint = "http://storageaccountname.blob.core.windows.net";
             string connectionString = String.Format("BlobEndpoint={0};QueueEndpoint={0};TableEndpoint={0};SharedAccessSignature={1}", endpoint, sasToken);
             CloudStorageAccount account = command.GetStorageAccountByConnectionString(connectionString);
-            AzureStorageContext context = new AzureStorageContext(account);
+            AzureStorageContext context = new AzureStorageContext(account, null, null, null);
             connectionString = String.Format("BlobEndpoint={0};SharedAccessSignature={1}", endpoint, sasToken);
             account = command.GetStorageAccountByConnectionString(connectionString);
-            context = new AzureStorageContext(account);
+            context = new AzureStorageContext(account, null, null, null);
         }
     }
 }

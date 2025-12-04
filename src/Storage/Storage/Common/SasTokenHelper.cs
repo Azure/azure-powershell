@@ -14,23 +14,24 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Common
 {
-    using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-    using Microsoft.Azure.Storage;
-    using Microsoft.Azure.Storage.Blob;
-    using XTable = Microsoft.Azure.Cosmos.Table;
     using System;
     using System.Collections.Generic;
-    using global::Azure.Storage.Sas;
-    using global::Azure.Storage.Blobs.Specialized;
-    using global::Azure.Storage.Blobs.Models;
     using System.Threading;
-    using global::Azure.Storage.Blobs;
+    using global::Azure.Core;
     using global::Azure.Storage;
+    using global::Azure.Storage.Blobs;
+    using global::Azure.Storage.Blobs.Models;
+    using global::Azure.Storage.Blobs.Specialized;
     using global::Azure.Storage.Files.DataLake;
     using global::Azure.Storage.Files.Shares;
     using global::Azure.Storage.Files.Shares.Models;
-    using global::Azure.Storage.Queues.Models;
     using global::Azure.Storage.Queues;
+    using global::Azure.Storage.Queues.Models;
+    using global::Azure.Storage.Sas;
+    using Microsoft.Azure.Storage;
+    using Microsoft.Azure.Storage.Blob;
+    using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
+    using XTable = Microsoft.Azure.Cosmos.Table;
 
     internal class SasTokenHelper
     {
@@ -275,7 +276,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             DateTime? startTime = null,
             DateTime? expiryTime = null,
             string iPAddressOrRange = null,
-            string protocol = null)
+            string protocol = null,
+            string delegatedUserObjectId = null)
         {
             QueueSasBuilder sasBuilder = new QueueSasBuilder
             {
@@ -370,6 +372,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                 {
                     sasBuilder.Protocol = SasProtocol.Https;
                 }
+            }
+            if (delegatedUserObjectId != null)
+            {
+                sasBuilder.DelegatedUserObjectId = delegatedUserObjectId; 
             }
             return sasBuilder;
         }
@@ -508,11 +514,30 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// <summary>
         /// Get Queue SAS string
         /// </summary>
-        public static string GetQueueSharedAccessSignature(AzureStorageContext context, QueueSasBuilder sasBuilder, CancellationToken cancellationToken)
+        public static string GetQueueSharedAccessSignature(AzureStorageContext context, QueueSasBuilder sasBuilder, bool generateUserDelegationSas, CancellationToken cancellationToken)
         {
             if (context != null && context.StorageAccount != null && context.StorageAccount.Credentials != null && context.StorageAccount.Credentials.IsSharedKey)
             {
                 return sasBuilder.ToSasQueryParameters(new StorageSharedKeyCredential(context.StorageAccountName, context.StorageAccount.Credentials.ExportBase64EncodedKey())).ToString();
+            }
+
+            if (generateUserDelegationSas)
+            {
+                if (context.StorageAccountName.StartsWith("["))
+                {
+                    throw new InvalidOperationException("Please provide '-Context' as a storage context created by cmdlet `New-AzStorageContext` with parameters include '-StorageAccountName'.");
+                }
+                global::Azure.Storage.Queues.Models.UserDelegationKey userDelegationKey = null;
+                QueueServiceClient oauthService = new QueueServiceClient(context.StorageAccount.QueueEndpoint, context.Track2OauthToken);
+
+                Util.ValidateUserDelegationKeyStartEndTime(sasBuilder.StartsOn, sasBuilder.ExpiresOn);
+
+                userDelegationKey = oauthService.GetUserDelegationKey(
+                    startsOn: sasBuilder.StartsOn == DateTimeOffset.MinValue || sasBuilder.StartsOn == null ? DateTimeOffset.UtcNow : sasBuilder.StartsOn.ToUniversalTime(),
+                    expiresOn: sasBuilder.ExpiresOn.ToUniversalTime(),
+                    cancellationToken: cancellationToken);
+
+                return sasBuilder.ToSasQueryParameters(userDelegationKey, context.StorageAccountName).ToString();
             }
             else
             {
@@ -531,7 +556,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             DateTime? ExpiryTime = null,
             string iPAddressOrRange = null,
             SharedAccessProtocol? Protocol = null,
-            string EncryptionScope = null)
+            string EncryptionScope = null,
+            string DelegatedUserObjectId = null)
         {
             BlobSasBuilder sasBuilder = SetBlobSasBuilder(blobClient.BlobContainerName,
                 blobClient.Name,
@@ -541,7 +567,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                 ExpiryTime,
                 iPAddressOrRange,
                 Protocol,
-                EncryptionScope);
+                EncryptionScope,
+                DelegatedUserObjectId);
             if (Util.GetVersionIdFromBlobUri(blobClient.Uri) != null)
             {
                 sasBuilder.BlobVersionId = Util.GetVersionIdFromBlobUri(blobClient.Uri);
@@ -563,7 +590,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             DateTime? ExpiryTime = null,
             string iPAddressOrRange = null,
             SharedAccessProtocol? Protocol = null,
-            string EncryptionScope = null)
+            string EncryptionScope = null,
+            string DelegatedUserObjectId = null)
         {
             BlobSasBuilder sasBuilder = SetBlobSasBuilder(container.Name,
                 null,
@@ -573,7 +601,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                 ExpiryTime,
                 iPAddressOrRange,
                 Protocol,
-                EncryptionScope);
+                EncryptionScope,
+                DelegatedUserObjectId);
             return sasBuilder;
         }
 
@@ -588,7 +617,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             DateTime? ExpiryTime = null,
             string iPAddressOrRange = null,
             SharedAccessProtocol? Protocol = null,
-            string EncryptionScope = null)
+            string EncryptionScope = null,
+            string DelegatedUserObjectId = null)
         {
             BlobSasBuilder sasBuilder;
             if (signedIdentifier != null) // Use save access policy
@@ -693,6 +723,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             if (EncryptionScope != null)
             {
                 sasBuilder.EncryptionScope = EncryptionScope;
+            }
+            if(DelegatedUserObjectId != null)
+            {
+                sasBuilder.DelegatedUserObjectId = DelegatedUserObjectId;
             }
             return sasBuilder;
         }
