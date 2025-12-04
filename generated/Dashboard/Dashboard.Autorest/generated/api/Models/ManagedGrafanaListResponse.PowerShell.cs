@@ -7,6 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.PowerShell;
 
+    /// <summary>Paged collection of ManagedGrafana items</summary>
     [System.ComponentModel.TypeConverter(typeof(ManagedGrafanaListResponseTypeConverter))]
     public partial class ManagedGrafanaListResponse
     {
@@ -161,6 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models
             return ToJsonString();
         }
     }
+    /// Paged collection of ManagedGrafana items
     [System.ComponentModel.TypeConverter(typeof(ManagedGrafanaListResponseTypeConverter))]
     public partial interface IManagedGrafanaListResponse
 

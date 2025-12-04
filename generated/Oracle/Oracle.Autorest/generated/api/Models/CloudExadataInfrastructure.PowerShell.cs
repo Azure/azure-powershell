@@ -148,6 +148,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal)this).EstimatedPatchingTime = (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IEstimatedPatchingTime) content.GetValueForProperty("EstimatedPatchingTime",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal)this).EstimatedPatchingTime, Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.EstimatedPatchingTimeTypeConverter.ConvertFrom);
             }
+            if (content.Contains("ExascaleConfig"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal)this).ExascaleConfig = (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExascaleConfigDetails) content.GetValueForProperty("ExascaleConfig",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal)this).ExascaleConfig, Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ExascaleConfigDetailsTypeConverter.ConvertFrom);
+            }
             if (content.Contains("DefinedFileSystemConfiguration"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal)this).DefinedFileSystemConfiguration = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDefinedFileSystemConfiguration>) content.GetValueForProperty("DefinedFileSystemConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal)this).DefinedFileSystemConfiguration, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDefinedFileSystemConfiguration>(__y, Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.DefinedFileSystemConfigurationTypeConverter.ConvertFrom));
@@ -327,6 +331,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             if (content.Contains("EstimatedPatchingTimeTotalEstimatedPatchingTime"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal)this).EstimatedPatchingTimeTotalEstimatedPatchingTime = (int?) content.GetValueForProperty("EstimatedPatchingTimeTotalEstimatedPatchingTime",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal)this).EstimatedPatchingTimeTotalEstimatedPatchingTime, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("ExascaleConfigTotalStorageInGb"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal)this).ExascaleConfigTotalStorageInGb = (int?) content.GetValueForProperty("ExascaleConfigTotalStorageInGb",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal)this).ExascaleConfigTotalStorageInGb, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("ExascaleConfigAvailableStorageInGb"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal)this).ExascaleConfigAvailableStorageInGb = (int?) content.GetValueForProperty("ExascaleConfigAvailableStorageInGb",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal)this).ExascaleConfigAvailableStorageInGb, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             AfterDeserializeDictionary(content);
         }
@@ -417,6 +429,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal)this).EstimatedPatchingTime = (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IEstimatedPatchingTime) content.GetValueForProperty("EstimatedPatchingTime",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal)this).EstimatedPatchingTime, Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.EstimatedPatchingTimeTypeConverter.ConvertFrom);
             }
+            if (content.Contains("ExascaleConfig"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal)this).ExascaleConfig = (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExascaleConfigDetails) content.GetValueForProperty("ExascaleConfig",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal)this).ExascaleConfig, Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ExascaleConfigDetailsTypeConverter.ConvertFrom);
+            }
             if (content.Contains("DefinedFileSystemConfiguration"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal)this).DefinedFileSystemConfiguration = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDefinedFileSystemConfiguration>) content.GetValueForProperty("DefinedFileSystemConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal)this).DefinedFileSystemConfiguration, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDefinedFileSystemConfiguration>(__y, Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.DefinedFileSystemConfigurationTypeConverter.ConvertFrom));
@@ -596,6 +612,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             if (content.Contains("EstimatedPatchingTimeTotalEstimatedPatchingTime"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal)this).EstimatedPatchingTimeTotalEstimatedPatchingTime = (int?) content.GetValueForProperty("EstimatedPatchingTimeTotalEstimatedPatchingTime",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal)this).EstimatedPatchingTimeTotalEstimatedPatchingTime, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("ExascaleConfigTotalStorageInGb"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal)this).ExascaleConfigTotalStorageInGb = (int?) content.GetValueForProperty("ExascaleConfigTotalStorageInGb",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal)this).ExascaleConfigTotalStorageInGb, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("ExascaleConfigAvailableStorageInGb"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal)this).ExascaleConfigAvailableStorageInGb = (int?) content.GetValueForProperty("ExascaleConfigAvailableStorageInGb",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructureInternal)this).ExascaleConfigAvailableStorageInGb, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             AfterDeserializePSObject(content);
         }

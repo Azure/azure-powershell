@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Creates a  Confidential Ledger with the specified ledger parameters.
+Create a  Confidential Ledger with the specified ledger parameters.
 .Description
-Creates a  Confidential Ledger with the specified ledger parameters.
+Create a  Confidential Ledger with the specified ledger parameters.
 .Example
 New-AzConfidentialLedger `
   -Name test-ledger `
@@ -59,25 +59,25 @@ New-AzConfidentialLedger `
   -Tag @{Location="additional properties 0"}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.IConfidentialLedger
+Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.IConfidentialLedger
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 AADBASEDSECURITYPRINCIPAL <IAadBasedSecurityPrincipal[]>: Array of all AAD based Security Principals.
-  [LedgerRoleName <LedgerRoleName?>]: LedgerRole associated with the Security Principal of Ledger
+  [LedgerRoleName <String>]: LedgerRole associated with the Security Principal of Ledger
   [PrincipalId <String>]: UUID/GUID based Principal Id of the Security Principal
   [TenantId <String>]: UUID/GUID based Tenant Id of the Security Principal
 
 CERTBASEDSECURITYPRINCIPAL <ICertBasedSecurityPrincipal[]>: Array of all cert based Security Principals.
   [Cert <String>]: Public key of the user cert (.pem or .cer)
-  [LedgerRoleName <LedgerRoleName?>]: LedgerRole associated with the Security Principal of Ledger
+  [LedgerRoleName <String>]: LedgerRole associated with the Security Principal of Ledger
 .Link
 https://learn.microsoft.com/powershell/module/az.confidentialledger/new-azconfidentialledger
 #>
 function New-AzConfidentialLedger {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.IConfidentialLedger])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.IConfidentialLedger])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -105,23 +105,21 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.IAadBasedSecurityPrincipal[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.IAadBasedSecurityPrincipal[]]
     # Array of all AAD based Security Principals.
-    # To construct, see NOTES section for AADBASEDSECURITYPRINCIPAL properties and create a hash table.
     ${AadBasedSecurityPrincipal},
 
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.ICertBasedSecurityPrincipal[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.ICertBasedSecurityPrincipal[]]
     # Array of all cert based Security Principals.
-    # To construct, see NOTES section for CERTBASEDSECURITYPRINCIPAL properties and create a hash table.
     ${CertBasedSecurityPrincipal},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Support.LedgerType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.PSArgumentCompleterAttribute("Unknown", "Public", "Private")]
     [Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Support.LedgerType]
+    [System.String]
     # Type of Confidential Ledger
     ${LedgerType},
 
@@ -133,7 +131,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.ITags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.ITags]))]
     [System.Collections.Hashtable]
     # Additional tags for Confidential Ledger
     ${Tag},
@@ -206,6 +204,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -227,9 +234,7 @@ begin {
         $mapping = @{
             CreateExpanded = 'Az.ConfidentialLedger.private\New-AzConfidentialLedger_CreateExpanded';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -243,6 +248,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

@@ -36,7 +36,7 @@ function setupEnv() {
     # as default. You could change them if needed.
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
-    $env.RecordDate = (Get-Date -Year 2025 -Month 03 -Day 31 -Hour 15 -Minute 11 -Second 11).ToString('dd-MM-yyyy-h-m-s')
+    $env.RecordDate = (Get-Date -Year 2025 -Month 10 -Day 25 -Hour 17 -Minute 31 -Second 02).ToString('dd-MM-yyyy-h-m-s')
     # For any resources you created for test, you should add it to $env here.
 
     $BackupInstanceTestVariables = @{
@@ -108,7 +108,7 @@ function setupEnv() {
         VaultName = "oss-pstest-vault"
         OssServerName = "oss-pstest-server"
         OssDbName = "oss-pstest-db"
-        OssDbId = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DBforPostgreSQL/servers/oss-pstest-server/databases/postgres"
+        OssDbId = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DBforPostgreSQL/flexibleServers/hiagaoss1"
         PolicyName = "oss-pstest-policy"
         NewPolicyName = "oss-pstest-policy-archive"
         KeyVault = "oss-pstest-keyvault"
@@ -182,24 +182,44 @@ function setupEnv() {
 
     $BlobHardeningVariables = @{
         SubscriptionId = "38304e13-357e-405e-9e9a-220351dcce8c"
-        CrossSubscriptionId = "62b829ee-7936-40c9-a1c9-47a93f9f3965"
+        CrossSubscriptionId = "349ea464-dc60-42e9-8c5d-46fa013b9546"
         Location = "eastus"
-        ResourceGroupName = "blob-eus-pstest-rg"
-        VaultName = "blob-eus-pstest-vault"
-        PolicyName = "operational-vaulted-policy"
-        UpdatePolicyName = "op-vault-pstest-policy"
-        UpdatedContainersList = @( "conaaa", "conabb", "coneee", "conwxy", "conzzz" )
-        StorageAccountName = "blobeuspstestsa"
-        OperationalPolicyName = "op-pstest-policy"
-        VaultPolicyName = "vaulted-pstest-policy"
-        OperationalVaultedPolicyName = "op-vault-pstest-policy"
-        StorageAccId = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/blob-eus-pstest-rg/providers/Microsoft.Storage/storageAccounts/blobeuspstestsa"
-        TargetStorageAccId = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Storage/storageAccounts/hiagaeussa"
-        TargetStorageAccountName = "hiagaeussa"
-        TargetStorageAccountRGName = "hiagarg"
-        TargetCrossSubStorageAccId = "/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/hiagaTestRG/providers/Microsoft.Storage/storageAccounts/hiagatestsa"
-        TargetCrossSubStorageAccountName = "hiagatestsa"
-        TargetCrossSubStorageAccountRGName = "hiagaTestRG"
+        ResourceGroupName = "dataprotectionpstest-rg"
+        VaultName = "dataprotectionpstest-bv"
+        PolicyName = "opvaultpolicy"
+        UpdatePolicyName = "opvaultpolicy2"
+        UpdatedContainersList = @( "con1", "con2", "con3", "con4", "con5" )
+        StorageAccountName = "blobsourcesa1"
+        OperationalPolicyName = "operationalpol2"
+        VaultPolicyName = "vaultpolicy"
+        OperationalVaultedPolicyName = "opvaultpolicy3"
+        StorageAccId = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/dataprotectionpstest-rg/providers/Microsoft.Storage/storageAccounts/blobsourcesa1"
+        TargetStorageAccId = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/dataprotectionpstest-rg/providers/Microsoft.Storage/storageAccounts/blobtargetsa"
+        TargetStorageAccountName = "blobtargetsa"
+        TargetStorageAccountRGName = "dataprotectionpstest-rg"
+        TargetCrossSubStorageAccId = "/subscriptions/349ea464-dc60-42e9-8c5d-46fa013b9546/resourceGroups/dataprotectionpstest2-rg/providers/Microsoft.Storage/storageAccounts/crrblobtargetsa"
+        TargetCrossSubStorageAccountName = "crrblobtargetsa"
+        TargetCrossSubStorageAccountRGName = "dataprotectionpstest2-rg"
+    }
+
+    $AdlsBlobHardeningVariables = @{
+        SubscriptionId = "38304e13-357e-405e-9e9a-220351dcce8c"
+        CrossSubscriptionId = "349ea464-dc60-42e9-8c5d-46fa013b9546"
+        Location = "eastus"
+        ResourceGroupName = "dataprotectionpstest-rg"
+        VaultName = "dataprotectionpstest-bv"
+        PolicyName = "adlsvaultpolicy"
+        UpdatePolicyName = "adlsvaultpolicy2"
+        UpdatedContainersList = @( "con1", "con2", "con3", "con4", "con5" )
+        StorageAccountName = "adlsblobsourcesa"
+        VaultPolicyName = "adlsvaultpolicy"
+        StorageAccId = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/dataprotectionpstest-rg/providers/Microsoft.Storage/storageAccounts/adlsblobsourcesa"
+        TargetStorageAccId = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/dataprotectionpstest-rg/providers/Microsoft.Storage/storageAccounts/adlsblobtargetsa"
+        TargetStorageAccountName = "adlsblobtargetsa"
+        TargetStorageAccountRGName = "dataprotectionpstest-rg"
+        TargetCrossSubStorageAccId = "/subscriptions/349ea464-dc60-42e9-8c5d-46fa013b9546/resourceGroups/dataprotectionpstest2-rg/providers/Microsoft.Storage/storageAccounts/crradlsblobtargetsa"
+        TargetCrossSubStorageAccountName = "crradlsblobtargetsa"
+        TargetCrossSubStorageAccountRGName = "dataprotectionpstest2-rg"
     }
 
     $UpdateBIWithUAMIVariables = @{
@@ -286,13 +306,13 @@ function setupEnv() {
     }
 
     $CmkEncryptionVariables = @{
-        SubscriptionId = "191973cd-9c54-41e0-ac19-25dd9a92d5a8"
-        ResourceGroupName = "jeevan-wrk-vms"
-        VaultName = "pstestvault-automated"
+        SubscriptionId = "38304e13-357e-405e-9e9a-220351dcce8c"
+        ResourceGroupName = "dataprotectionpstest-rg"
+        VaultName = "testcmkvault7"
         Location = "eastasia"
-        CmkUserAssignedIdentityId = "/subscriptions/191973cd-9c54-41e0-ac19-25dd9a92d5a8/resourcegroups/jeevan-wrk-vms/providers/Microsoft.ManagedIdentity/userAssignedIdentities/userMSIpstest"
-        CmkEncryptionKeyUri = "https://jeevantestkeyvaultcmk.vault.azure.net/keys/pstest/3cd5235ad6ac4c11b40a6f35444bcbe1"
-        CmkEncryptionKeyUriUpdated = "https://jeevantestkeyvaultcmk.vault.azure.net/keys/pstest/3cd5235ad6ac4c11b40a6f35444bcbe1"
+        CmkUserAssignedIdentityId = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourcegroups/dataprotectionpstest-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/userMSIpstest"
+        CmkEncryptionKeyUri = "https://iannakeyvault.vault.azure.net/keys/pskey/acabb3f41e4e4266abf44100b81e7872"
+        CmkEncryptionKeyUriUpdated = "https://iannakeyvault.vault.azure.net/keys/pskey2/759c6ee414554dd7a6225bc22a90871d"
     }
 
     $env.add("TestBackupInstance", $BackupInstanceTestVariables) | Out-Null
@@ -309,6 +329,7 @@ function setupEnv() {
     $env.add("TestAksPolicyScenario", $AksPolicyVariables) | Out-Null
     $env.add("TestAksRestoreScenario", $AksRestoreVariables) | Out-Null
     $env.add("TestBlobHardeningScenario", $BlobHardeningVariables) | Out-Null
+    $env.add("TestAdlsBlobHardeningScenario", $AdlsBlobHardeningVariables) | Out-Null
     $env.add("TestCrossSubscriptionRestoreScenario", $CrossSubscriptionRestoreVariables) | Out-Null
     $env.add("TestCrossRegionRestoreScenario", $CrossRegionRestoreVariables) | Out-Null
     $env.add("TestSoftDelete", $SoftDeleteVariables) | Out-Null

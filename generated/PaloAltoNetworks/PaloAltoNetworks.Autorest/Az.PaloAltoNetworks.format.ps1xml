@@ -594,6 +594,9 @@
             <Label>IsPanoramaManaged</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>IsStrataCloudManaged</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>PanEtag</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -605,6 +608,9 @@
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>IsPanoramaManaged</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IsStrataCloudManaged</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>PanEtag</PropertyName>
@@ -696,6 +702,9 @@
             <Label>IsPanoramaManaged</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>IsStrataCloudManaged</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>PanEtag</Label>
           </TableColumnHeader>
         </TableHeaders>
@@ -704,6 +713,9 @@
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>IsPanoramaManaged</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IsStrataCloudManaged</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>PanEtag</PropertyName>
@@ -752,6 +764,9 @@
             <Label>IsPanoramaManaged</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>IsStrataCloudManaged</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>ProvisioningState</Label>
           </TableColumnHeader>
         </TableHeaders>
@@ -766,6 +781,9 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>IsPanoramaManaged</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IsStrataCloudManaged</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ProvisioningState</PropertyName>
@@ -1602,6 +1620,132 @@
       </TableControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.MetricsObject</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.MetricsObject#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ApplicationInsightsConnectionString</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ApplicationInsightsResourceId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PanEtag</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ApplicationInsightsConnectionString</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ApplicationInsightsResourceId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PanEtag</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.MetricsObjectFirewallResource</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.MetricsObjectFirewallResource#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.MetricsObjectFirewallResourceListResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.MetricsObjectFirewallResourceListResult#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.MonitorLog</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.MonitorLog#Multiple</TypeName>
@@ -2394,6 +2538,56 @@
       </TableControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ProductSerialNumberRequestStatus</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ProductSerialNumberRequestStatus#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Status</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Status</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ProductSerialNumberStatus</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ProductSerialNumberStatus#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>SerialNumber</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Status</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>SerialNumber</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Status</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ProxyResource</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ProxyResource#Multiple</TypeName>
@@ -2896,6 +3090,56 @@
       </TableControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.StrataCloudManagerConfig</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.StrataCloudManagerConfig#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>CloudManagerName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>CloudManagerName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.StrataCloudManagerInfo</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.StrataCloudManagerInfo#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>FolderName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>HubUrl</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>FolderName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>HubUrl</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.SupportInfo</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.SupportInfo#Multiple</TypeName>
@@ -2977,6 +3221,112 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>UserRegistered</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.SupportInfoModel</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.SupportInfoModel#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>AccountId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>AccountRegistrationStatus</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Credit</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>EndDateForCredit</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>FreeTrial</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>FreeTrialCreditLeft</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>FreeTrialDaysLeft</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>HelpUrl</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>HubUrl</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MonthlyCreditLeft</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProductSerial</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProductSku</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RegisterUrl</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>StartDateForCredit</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SupportUrl</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>AccountId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>AccountRegistrationStatus</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Credit</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>EndDateForCredit</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>FreeTrial</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>FreeTrialCreditLeft</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>FreeTrialDaysLeft</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>HelpUrl</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>HubUrl</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>MonthlyCreditLeft</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProductSerial</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProductSku</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RegisterUrl</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>StartDateForCredit</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SupportUrl</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

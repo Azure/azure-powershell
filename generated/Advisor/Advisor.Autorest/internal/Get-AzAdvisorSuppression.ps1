@@ -27,14 +27,24 @@ Obtains the details of a suppression.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IAdvisorIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.ISuppressionContract
+Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.ISuppressionContract
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IAdvisorIdentity>: Identity Parameter
-  [ConfigurationName <ConfigurationName?>]: Advisor configuration name. Value must be 'default'
+  [ConfigurationName <String>]: Advisor configuration name. Value must be 'default'
+  [Id <String>]: Resource identity path
+  [Name <String>]: Name of metadata entity.
+  [OperationId <String>]: The operation ID, which can be found from the Location field in the generate recommendation response header.
+  [RecommendationId <String>]: The recommendation ID.
+  [ResourceGroup <String>]: The name of the Azure resource group.
+  [ResourceUri <String>]: The fully qualified Azure Resource Manager identifier of the resource to which the recommendation applies.
+  [SubscriptionId <String>]: The Azure subscription ID.
+
+RECOMMENDATIONINPUTOBJECT <IAdvisorIdentity>: Identity Parameter
+  [ConfigurationName <String>]: Advisor configuration name. Value must be 'default'
   [Id <String>]: Resource identity path
   [Name <String>]: Name of metadata entity.
   [OperationId <String>]: The operation ID, which can be found from the Location field in the generate recommendation response header.
@@ -46,10 +56,11 @@ INPUTOBJECT <IAdvisorIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.advisor/get-azadvisorsuppression
 #>
 function Get-AzAdvisorSuppression {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.ISuppressionContract])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.ISuppressionContract])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityRecommendation', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Category('Path')]
     [System.String]
     # The name of the suppression.
@@ -71,8 +82,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IAdvisorIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityRecommendation', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IAdvisorIdentity]
+    # Identity Parameter
+    ${RecommendationInputObject},
 
     [Parameter(ParameterSetName='List')]
     [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Category('Path')]
@@ -149,15 +165,17 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Get = 'Az.Advisor.private\Get-AzAdvisorSuppression_Get';
             GetViaIdentity = 'Az.Advisor.private\Get-AzAdvisorSuppression_GetViaIdentity';
+            GetViaIdentityRecommendation = 'Az.Advisor.private\Get-AzAdvisorSuppression_GetViaIdentityRecommendation';
             List = 'Az.Advisor.private\Get-AzAdvisorSuppression_List';
         }
-        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -166,6 +184,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

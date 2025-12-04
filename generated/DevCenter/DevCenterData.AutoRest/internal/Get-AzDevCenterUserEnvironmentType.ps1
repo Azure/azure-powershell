@@ -27,7 +27,7 @@ Get-AzDevCenterUserEnvironmentType -DevCenterName Contoso -ProjectName DevProjec
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironmentType
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IEnvironmentType
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -35,6 +35,7 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [ActionName <String>]: The name of the action.
+  [AddOnName <String>]: Name of the dev box addon.
   [CatalogName <String>]: Name of the catalog.
   [CustomizationGroupName <String>]: Name of the customization group.
   [CustomizationTaskId <String>]: A customization task ID.
@@ -43,17 +44,19 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [EnvironmentName <String>]: Environment name.
   [EnvironmentTypeName <String>]: Name of the environment type.
   [Id <String>]: Resource identity path
+  [ImageBuildLogId <String>]: An imaging build log id.
   [OperationId <String>]: Unique identifier for the Dev Box operation.
   [PoolName <String>]: Pool name.
   [ProjectName <String>]: Name of the project.
   [ScheduleName <String>]: Display name for the Schedule.
+  [SnapshotId <String>]: The id of the snapshot. Should be treated as opaque string.
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
 https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserenvironmenttype
 #>
 function Get-AzDevCenterUserEnvironmentType {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironmentType])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IEnvironmentType])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]

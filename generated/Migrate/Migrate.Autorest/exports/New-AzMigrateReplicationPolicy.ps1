@@ -28,7 +28,7 @@ $providerSpecificPolicy.CrashConsistentFrequencyInMinute = 60
 New-AzMigrateReplicationPolicy -PolicyName TestPolicy -ResourceGroupName ResourceGroup -ResourceName VaultName -SubscriptionId SubscriptionId -ProviderSpecificInput $providerSpecificPolicy
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IPolicy
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IPolicy
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -40,7 +40,7 @@ PROVIDERSPECIFICINPUT <IPolicyProviderSpecificInput>: The ReplicationProviderSet
 https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratereplicationpolicy
 #>
 function New-AzMigrateReplicationPolicy {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IPolicy])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IPolicy])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -70,7 +70,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IPolicyProviderSpecificInput]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IPolicyProviderSpecificInput]
     # The ReplicationProviderSettings.
     # To construct, see NOTES section for PROVIDERSPECIFICINPUT properties and create a hash table.
     ${ProviderSpecificInput},

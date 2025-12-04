@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Get OpenAI integration status for a given integration.
+Get the status of OpenAI integration for a given Elastic monitor resource, ensuring optimal observability and performance.
 .Description
-Get OpenAI integration status for a given integration.
+Get the status of OpenAI integration for a given Elastic monitor resource, ensuring optimal observability and performance.
 .Example
 Get-AzElasticOpenAiStatus -IntegrationName default -ResourceGroupName azure-elastic-test -MonitorName elastic-pwsh02
 
@@ -32,6 +32,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IElasticIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The configuration name. Only 'default' value is supported.
   [Id <String>]: Resource identity path
   [IntegrationName <String>]: OpenAI Integration name
   [MonitorName <String>]: Monitor resource name
@@ -40,6 +41,7 @@ INPUTOBJECT <IElasticIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 
 MONITORINPUTOBJECT <IElasticIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The configuration name. Only 'default' value is supported.
   [Id <String>]: Resource identity path
   [IntegrationName <String>]: OpenAI Integration name
   [MonitorName <String>]: Monitor resource name

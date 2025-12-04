@@ -39,7 +39,16 @@ namespace Microsoft.Azure.Management.NetApp.Models
 
         /// <param name="remoteVolumeRegion">The remote region for the other end of the Volume Replication.
         /// </param>
-        public Replication(string remoteVolumeResourceId, string replicationId = default(string), string endpointType = default(string), string replicationSchedule = default(string), string remoteVolumeRegion = default(string))
+
+        /// <param name="mirrorState">The status of the replication
+        /// Possible values include: &#39;Uninitialized&#39;, &#39;Mirrored&#39;, &#39;Broken&#39;</param>
+
+        /// <param name="replicationCreationTime">Replication creation time
+        /// </param>
+
+        /// <param name="replicationDeletionTime">Replication deletion time
+        /// </param>
+        public Replication(string remoteVolumeResourceId, string replicationId = default(string), string endpointType = default(string), string replicationSchedule = default(string), string remoteVolumeRegion = default(string), string mirrorState = default(string), System.DateTime? replicationCreationTime = default(System.DateTime?), System.DateTime? replicationDeletionTime = default(System.DateTime?))
 
         {
             this.ReplicationId = replicationId;
@@ -47,6 +56,9 @@ namespace Microsoft.Azure.Management.NetApp.Models
             this.ReplicationSchedule = replicationSchedule;
             this.RemoteVolumeResourceId = remoteVolumeResourceId;
             this.RemoteVolumeRegion = remoteVolumeRegion;
+            this.MirrorState = mirrorState;
+            this.ReplicationCreationTime = replicationCreationTime;
+            this.ReplicationDeletionTime = replicationDeletionTime;
             CustomInit();
         }
 
@@ -86,6 +98,24 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "remoteVolumeRegion")]
         public string RemoteVolumeRegion {get; set; }
+
+        /// <summary>
+        /// Gets the status of the replication Possible values include: &#39;Uninitialized&#39;, &#39;Mirrored&#39;, &#39;Broken&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "mirrorState")]
+        public string MirrorState {get; private set; }
+
+        /// <summary>
+        /// Gets replication creation time
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "replicationCreationTime")]
+        public System.DateTime? ReplicationCreationTime {get; private set; }
+
+        /// <summary>
+        /// Gets replication deletion time
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "replicationDeletionTime")]
+        public System.DateTime? ReplicationDeletionTime {get; private set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -113,6 +143,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "ReplicationId", "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$");
                 }
             }
+
 
 
 

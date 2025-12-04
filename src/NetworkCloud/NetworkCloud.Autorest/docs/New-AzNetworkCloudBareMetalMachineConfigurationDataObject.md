@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.NetworkCloud
-online version: https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-AzNetworkCloudBareMetalMachineConfigurationDataObject
+online version: https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-aznetworkcloudbaremetalmachineconfigurationdataobject
 schema: 2.0.0
 ---
 
@@ -171,7 +171,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.BareMetalMachineConfigurationData
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.BareMetalMachineConfigurationData
 
 ## NOTES
 

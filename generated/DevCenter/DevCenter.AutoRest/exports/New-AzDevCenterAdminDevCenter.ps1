@@ -34,7 +34,7 @@ New-AzDevCenterAdminDevCenter -InputObject $devCenter -Location eastus -Identity
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IDevCenter
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.IDevCenter
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -42,6 +42,7 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [AttachedNetworkConnectionName <String>]: The name of the attached NetworkConnection.
+  [BuildName <String>]: The ID of the Image Definition Build.
   [CatalogName <String>]: The name of the Catalog.
   [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
   [DevCenterName <String>]: The name of the devcenter.
@@ -50,14 +51,14 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [EnvironmentTypeName <String>]: The name of the environment type.
   [GalleryName <String>]: The name of the gallery.
   [Id <String>]: Resource identity path
+  [ImageDefinitionName <String>]: The name of the Image Definition.
   [ImageName <String>]: The name of the image.
   [Location <String>]: The Azure region
-  [MemberName <String>]: The name of a devcenter plan member.
   [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
   [OperationId <String>]: The ID of an ongoing async operation
-  [PlanName <String>]: The name of the devcenter plan.
   [PoolName <String>]: Name of the pool.
   [ProjectName <String>]: The name of the project.
+  [ProjectPolicyName <String>]: The name of the project policy.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScheduleName <String>]: The name of the schedule that uniquely identifies it.
   [SubscriptionId <String>]: The ID of the target subscription.
@@ -67,7 +68,7 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.devcenter/new-azdevcenteradmindevcenter
 #>
 function New-AzDevCenterAdminDevCenter {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IDevCenter])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.IDevCenter])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
@@ -142,12 +143,6 @@ param(
     ${NetworkSettingMicrosoftHostedNetworkEnableStatus},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-    [System.String]
-    # Resource Id of an associated Plan
-    ${PlanId},
-
-    [Parameter()]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.CatalogItemSyncEnableStatus])]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.CatalogItemSyncEnableStatus]
@@ -156,7 +151,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api40.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api50.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},

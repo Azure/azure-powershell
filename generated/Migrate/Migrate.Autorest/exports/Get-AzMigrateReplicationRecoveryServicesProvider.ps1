@@ -23,12 +23,12 @@ Gets the details of registered recovery services provider.
 Get-AzMigrateReplicationRecoveryServicesProvider -ResourceGroupName azmigratepwshtestasr13072020 -ResourceName AzMigrateTestProjectPWSH02aarsvault
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IRecoveryServicesProvider
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IRecoveryServicesProvider
 .Link
 https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratereplicationrecoveryservicesprovider
 #>
 function Get-AzMigrateReplicationRecoveryServicesProvider {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IRecoveryServicesProvider])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IRecoveryServicesProvider])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]

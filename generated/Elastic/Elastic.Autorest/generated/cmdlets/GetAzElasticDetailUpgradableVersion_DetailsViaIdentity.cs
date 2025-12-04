@@ -10,15 +10,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Cmdlets;
     using System;
 
-    /// <summary>List of upgradable versions for a given monitor resource.</summary>
+    /// <summary>
+    /// List all upgradable versions for your Elastic monitor resource, helping you plan and execute upgrades.
+    /// </summary>
     /// <remarks>
     /// [OpenAPI] Details=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/listUpgradableVersions"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzElasticDetailUpgradableVersion_DetailsViaIdentity", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IUpgradableVersionsList))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.Description(@"List of upgradable versions for a given monitor resource.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.Description(@"List all upgradable versions for your Elastic monitor resource, helping you plan and execute upgrades.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/listUpgradableVersions", ApiVersion = "2024-03-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/listUpgradableVersions", ApiVersion = "2025-06-01")]
     public partial class GetAzElasticDetailUpgradableVersion_DetailsViaIdentity : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IContext

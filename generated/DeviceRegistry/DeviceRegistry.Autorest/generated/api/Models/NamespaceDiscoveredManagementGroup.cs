@@ -22,6 +22,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Origin(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredManagementAction> Action { get => this._action; set => this._action = value; }
 
+        /// <summary>Backing field for <see cref="DataSource" /> property.</summary>
+        private string _dataSource;
+
+        /// <summary>Reference to a data source for a given management group.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Origin(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.PropertyOrigin.Owned)]
+        public string DataSource { get => this._dataSource; set => this._dataSource = value; }
+
         /// <summary>Backing field for <see cref="DefaultTimeoutInSecond" /> property.</summary>
         private int? _defaultTimeoutInSecond;
 
@@ -91,6 +98,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         SerializedName = @"actions",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredManagementAction) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredManagementAction> Action { get; set; }
+        /// <summary>Reference to a data source for a given management group.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Reference to a data source for a given management group.",
+        SerializedName = @"dataSource",
+        PossibleTypes = new [] { typeof(string) })]
+        string DataSource { get; set; }
         /// <summary>Default response timeout for all actions that are part of the management group.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Info(
         Required = false,
@@ -171,6 +189,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         /// Array of actions that are part of the management group. Each action can have an individual configuration.
         /// </summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredManagementAction> Action { get; set; }
+        /// <summary>Reference to a data source for a given management group.</summary>
+        string DataSource { get; set; }
         /// <summary>Default response timeout for all actions that are part of the management group.</summary>
         int? DefaultTimeoutInSecond { get; set; }
         /// <summary>

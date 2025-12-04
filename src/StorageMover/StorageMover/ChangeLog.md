@@ -19,6 +19,11 @@
 -->
 ## Upcoming Release
 
+## Version 2.0.0
+* Improved user experience and consistency. This may introduce breaking changes. Please refer to [here](https://go.microsoft.com/fwlink/?linkid=2340249).
+* Remove parameter sets Create for cmdlet `New-AzStorageMover`, `New-AzStorageMoverProject`, `New-AzStorageMoverJobDefinition`
+* Remove parameter sets Update and UpdateViaIdentity for Cmdlet `Update-AzStorageMover`, `Update-AzStorageMoverAgent`, `Update-AzStorageMoverJobDefinition`,  `Update-AzStorageMoverProject`
+
 ## Version 1.6.0
 * Added  support for new api version 2025-07-01
 * Included new endpoint types supported in the api version: `MultiCloudConnector`, `NFSFileShare`

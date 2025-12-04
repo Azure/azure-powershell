@@ -61,8 +61,8 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The SignalR service unit count, value only from {1, 2, 5, 10, 20, 50, 100}. Default to 1.")]
-        [PSArgumentCompleter("1", "2", "5", "10", "20", "50", "100")]
+            HelpMessage = "The SignalR service unit count. Free_F1: 1; Standard_S1: 1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100; Premium_P1: 1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100; Premium_P2: 100,200,300,400,500,600,700,800,900,1000. Default to 1.")]
+        [PSArgumentCompleter("1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "20", "30", "40", "50", "60", "70", "80", "90", "100", "200", "300", "400", "500", "600", "700", "800", "900", "1000")]
         public int UnitCount { get; set; } = DefaultUnitCount;
 
         [Parameter(

@@ -36,7 +36,7 @@ Get-AzRoleAssignmentScheduleInstance -Scope $scope -Name "4cd7e26b-8eca-425c-969
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IAuthorizationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IRoleAssignmentScheduleInstance
+Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IRoleAssignmentScheduleInstance
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -57,7 +57,7 @@ INPUTOBJECT <IAuthorizationIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.resources/get-azroleassignmentscheduleinstance
 #>
 function Get-AzRoleAssignmentScheduleInstance {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IRoleAssignmentScheduleInstance])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IRoleAssignmentScheduleInstance])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -78,7 +78,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IAuthorizationIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='List')]
@@ -147,6 +146,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -177,6 +185,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -241,7 +252,7 @@ Get-AzRoleAssignmentScheduleRequest -Scope $scope -Name "2cc018c2-27f8-4730-a0bc
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IAuthorizationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IRoleAssignmentScheduleRequest
+Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IRoleAssignmentScheduleRequest
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -262,7 +273,7 @@ INPUTOBJECT <IAuthorizationIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.resources/get-azroleassignmentschedulerequest
 #>
 function Get-AzRoleAssignmentScheduleRequest {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IRoleAssignmentScheduleRequest])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IRoleAssignmentScheduleRequest])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -283,7 +294,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IAuthorizationIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='List')]
@@ -353,6 +363,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -383,6 +402,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -448,7 +470,7 @@ Get-AzRoleAssignmentSchedule -Scope $scope -Name "4cd7e26b-8eca-425c-969d-ec708c
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IAuthorizationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IRoleAssignmentSchedule
+Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IRoleAssignmentSchedule
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -469,7 +491,7 @@ INPUTOBJECT <IAuthorizationIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.resources/get-azroleassignmentschedule
 #>
 function Get-AzRoleAssignmentSchedule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IRoleAssignmentSchedule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IRoleAssignmentSchedule])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -490,7 +512,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IAuthorizationIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='List')]
@@ -559,6 +580,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -589,6 +619,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -654,7 +687,7 @@ Get-AzRoleEligibilityScheduleInstance -Scope $scope -Name "4cd7e26b-8eca-425c-96
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IAuthorizationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IRoleEligibilityScheduleInstance
+Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IRoleEligibilityScheduleInstance
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -675,7 +708,7 @@ INPUTOBJECT <IAuthorizationIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.resources/get-azroleeligibilityscheduleinstance
 #>
 function Get-AzRoleEligibilityScheduleInstance {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IRoleEligibilityScheduleInstance])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IRoleEligibilityScheduleInstance])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -696,7 +729,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IAuthorizationIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='List')]
@@ -765,6 +797,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -795,6 +836,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -859,7 +903,7 @@ Get-AzRoleEligibilityScheduleRequest -Scope $scope -Name "2cc018c2-27f8-4730-a0b
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IAuthorizationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IRoleEligibilityScheduleRequest
+Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IRoleEligibilityScheduleRequest
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -880,7 +924,7 @@ INPUTOBJECT <IAuthorizationIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.resources/get-azroleeligibilityschedulerequest
 #>
 function Get-AzRoleEligibilityScheduleRequest {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IRoleEligibilityScheduleRequest])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IRoleEligibilityScheduleRequest])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -901,7 +945,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IAuthorizationIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='List')]
@@ -971,6 +1014,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1001,6 +1053,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1066,7 +1121,7 @@ Get-AzRoleEligibilitySchedule -Scope $scope -Name "4cd7e26b-8eca-425c-969d-ec708
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IAuthorizationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IRoleEligibilitySchedule
+Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IRoleEligibilitySchedule
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1087,7 +1142,7 @@ INPUTOBJECT <IAuthorizationIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.resources/get-azroleeligibilityschedule
 #>
 function Get-AzRoleEligibilitySchedule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IRoleEligibilitySchedule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IRoleEligibilitySchedule])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -1108,7 +1163,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IAuthorizationIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='List')]
@@ -1177,6 +1231,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1207,6 +1270,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1260,48 +1326,23 @@ $scope = "/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/"
 Get-AzRoleEligibleChildResource -Scope $scope                              
 .Example
 $scope = "/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/"
-$filter = "resoureType eq 'resourcegroup'"
+$filter = "resourceType eq 'resourcegroup'"
 Get-AzRoleEligibleChildResource -Scope $scope -Filter $filter
 
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IAuthorizationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IEligibleChildResource
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IAuthorizationIdentity>: Identity Parameter
-  [Id <String>]: Resource identity path
-  [RoleAssignmentScheduleInstanceName <String>]: The name (hash of schedule name + time) of the role assignment schedule to get.
-  [RoleAssignmentScheduleName <String>]: The name (guid) of the role assignment schedule to get.
-  [RoleAssignmentScheduleRequestName <String>]: The name of the role assignment to create. It can be any valid GUID.
-  [RoleEligibilityScheduleInstanceName <String>]: The name (hash of schedule name + time) of the role eligibility schedule to get.
-  [RoleEligibilityScheduleName <String>]: The name (guid) of the role eligibility schedule to get.
-  [RoleEligibilityScheduleRequestName <String>]: The name of the role eligibility to create. It can be any valid GUID.
-  [RoleManagementPolicyAssignmentName <String>]: The name of format {guid_guid} the role management policy assignment to get.
-  [RoleManagementPolicyName <String>]: The name (guid) of the role management policy to get.
-  [Scope <String>]: The scope of the role management policy.
+Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IEligibleChildResource
 .Link
 https://learn.microsoft.com/powershell/module/az.resources/get-azroleeligiblechildresource
 #>
 function Get-AzRoleEligibleChildResource {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IEligibleChildResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IEligibleChildResource])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
 param(
-    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Path')]
     [System.String]
     # The scope of the role management policy.
     ${Scope},
-
-    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IAuthorizationIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Query')]
@@ -1367,6 +1408,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1387,7 +1437,6 @@ begin {
 
         $mapping = @{
             Get = 'Az.Authorization.private\Get-AzRoleEligibleChildResource_Get';
-            GetViaIdentity = 'Az.Authorization.private\Get-AzRoleEligibleChildResource_GetViaIdentity';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -1396,6 +1445,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1455,7 +1507,7 @@ Get-AzRoleManagementPolicyAssignment -Scope $scope -Name $name
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IAuthorizationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IRoleManagementPolicyAssignment
+Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IRoleManagementPolicyAssignment
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1476,7 +1528,7 @@ INPUTOBJECT <IAuthorizationIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.resources/get-azrolemanagementpolicyassignment
 #>
 function Get-AzRoleManagementPolicyAssignment {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IRoleManagementPolicyAssignment])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IRoleManagementPolicyAssignment])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -1497,7 +1549,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IAuthorizationIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -1556,6 +1607,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1586,6 +1646,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1645,7 +1708,7 @@ Get-AzRoleManagementPolicy -Scope $scope -Name $name
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IAuthorizationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IRoleManagementPolicy
+Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IRoleManagementPolicy
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1666,7 +1729,7 @@ INPUTOBJECT <IAuthorizationIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.resources/get-azrolemanagementpolicy
 #>
 function Get-AzRoleManagementPolicy {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IRoleManagementPolicy])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IRoleManagementPolicy])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -1687,7 +1750,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IAuthorizationIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -1746,6 +1808,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1776,6 +1847,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1821,9 +1895,9 @@ end {
 
 <#
 .Synopsis
-Creates a role assignment schedule request.
+Create a role assignment schedule request.
 .Description
-Creates a role assignment schedule request.
+Create a role assignment schedule request.
 .Example
 $guid = "12f8978c-5d8d-4fbf-b4b6-2f43eeb43eca"
 $startTime = Get-Date -Format o 
@@ -1846,12 +1920,12 @@ $scope = "/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/"
 New-AzRoleAssignmentScheduleRequest -Name $guid -Scope $scope -ExpirationDuration PT1H -ExpirationType AfterDuration -PrincipalId 5a4bdd72-ab3e-4d8e-ab0f-8dd8917481a2 -RequestType SelfDeactivate -RoleDefinitionId subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7 -ScheduleInfoStartDateTime $startTime
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IRoleAssignmentScheduleRequest
+Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IRoleAssignmentScheduleRequest
 .Link
 https://learn.microsoft.com/powershell/module/az.resources/new-azroleassignmentschedulerequest
 #>
 function New-AzRoleAssignmentScheduleRequest {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IRoleAssignmentScheduleRequest])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IRoleAssignmentScheduleRequest])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -1870,7 +1944,7 @@ param(
     # For example, use '/providers/Microsoft.Subscription/subscriptions/{subscription-id}/' for a subscription, '/providers/Microsoft.Subscription/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}' for a resource group, and '/providers/Microsoft.Subscription/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider}/{resource-type}/{resource-name}' for a resource.
     ${Scope},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
     [System.String]
     # The conditions on the role assignment.
@@ -1878,93 +1952,105 @@ param(
     # e.g.: @Resource[Microsoft.Storage/storageAccounts/blobServices/containers:ContainerName] StringEqualsIgnoreCase 'foo_storage_container'
     ${Condition},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
     [System.String]
     # Version of the condition.
     # Currently accepted value is '2.0'
     ${ConditionVersion},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
     [System.String]
     # Duration of the role assignment schedule in TimeSpan.
     ${ExpirationDuration},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
     [System.DateTime]
     # End DateTime of the role assignment schedule.
     ${ExpirationEndDateTime},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Support.Type])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.PSArgumentCompleterAttribute("AfterDuration", "AfterDateTime", "NoExpiration")]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Support.Type]
+    [System.String]
     # Type of the role assignment schedule expiration
     ${ExpirationType},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
     [System.String]
     # Justification for the role assignment
     ${Justification},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
     [System.String]
     # The linked role eligibility schedule id - to activate an eligibility.
     ${LinkedRoleEligibilityScheduleId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
     [System.String]
     # The principal ID.
     ${PrincipalId},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Support.RequestType])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.PSArgumentCompleterAttribute("AdminAssign", "AdminRemove", "AdminUpdate", "AdminExtend", "AdminRenew", "SelfActivate", "SelfDeactivate", "SelfExtend", "SelfRenew")]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Support.RequestType]
+    [System.String]
     # The type of the role assignment schedule request.
     # Eg: SelfActivate, AdminAssign etc
     ${RequestType},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
     [System.String]
     # The role definition ID.
     ${RoleDefinitionId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
     [System.DateTime]
     # Start DateTime of the role assignment schedule.
     ${ScheduleInfoStartDateTime},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
     [System.String]
     # The resultant role assignment schedule id or the role assignment schedule id being updated
     ${TargetRoleAssignmentScheduleId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
     [System.String]
     # The role assignment schedule instance id being updated
     ${TargetRoleAssignmentScheduleInstanceId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
     [System.String]
     # Ticket number for the role assignment
     ${TicketNumber},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
     [System.String]
     # Ticket system name for the role assignment
     ${TicketSystem},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -2022,6 +2108,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -2042,6 +2137,8 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.Authorization.private\New-AzRoleAssignmentScheduleRequest_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.Authorization.private\New-AzRoleAssignmentScheduleRequest_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.Authorization.private\New-AzRoleAssignmentScheduleRequest_CreateViaJsonString';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -2050,6 +2147,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2095,9 +2195,9 @@ end {
 
 <#
 .Synopsis
-Creates a role eligibility schedule request.
+Create a role eligibility schedule request.
 .Description
-Creates a role eligibility schedule request.
+Create a role eligibility schedule request.
 .Example
 $guid = "12f8978c-5d8d-4fbf-b4b6-2f43eeb43eca"
 $startTime = Get-Date -Format o 
@@ -2110,12 +2210,12 @@ $scope = "/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/"
 New-AzRoleEligibilityScheduleRequest -Name $guid -Scope $scope -ExpirationDuration PT1H -ExpirationType AfterDuration -PrincipalId 5a4bdd72-ab3e-4d8e-ab0f-8dd8917481a2 -RequestType AdminRemove -RoleDefinitionId subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7 -ScheduleInfoStartDateTime $startTime
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IRoleEligibilityScheduleRequest
+Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IRoleEligibilityScheduleRequest
 .Link
 https://learn.microsoft.com/powershell/module/az.resources/new-azroleeligibilityschedulerequest
 #>
 function New-AzRoleEligibilityScheduleRequest {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IRoleEligibilityScheduleRequest])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IRoleEligibilityScheduleRequest])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -2134,7 +2234,7 @@ param(
     # For example, use '/providers/Microsoft.Subscription/subscriptions/{subscription-id}/' for a subscription, '/providers/Microsoft.Subscription/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}' for a resource group, and '/providers/Microsoft.Subscription/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider}/{resource-type}/{resource-name}' for a resource.
     ${Scope},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
     [System.String]
     # The conditions on the role assignment.
@@ -2142,87 +2242,99 @@ param(
     # e.g.: @Resource[Microsoft.Storage/storageAccounts/blobServices/containers:ContainerName] StringEqualsIgnoreCase 'foo_storage_container'
     ${Condition},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
     [System.String]
     # Version of the condition.
     # Currently accepted value is '2.0'
     ${ConditionVersion},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
     [System.String]
     # Duration of the role eligibility schedule in TimeSpan.
     ${ExpirationDuration},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
     [System.DateTime]
     # End DateTime of the role eligibility schedule.
     ${ExpirationEndDateTime},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Support.Type])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.PSArgumentCompleterAttribute("AfterDuration", "AfterDateTime", "NoExpiration")]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Support.Type]
+    [System.String]
     # Type of the role eligibility schedule expiration
     ${ExpirationType},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
     [System.String]
     # Justification for the role eligibility
     ${Justification},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
     [System.String]
     # The principal ID.
     ${PrincipalId},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Support.RequestType])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.PSArgumentCompleterAttribute("AdminAssign", "AdminRemove", "AdminUpdate", "AdminExtend", "AdminRenew", "SelfActivate", "SelfDeactivate", "SelfExtend", "SelfRenew")]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Support.RequestType]
+    [System.String]
     # The type of the role assignment schedule request.
     # Eg: SelfActivate, AdminAssign etc
     ${RequestType},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
     [System.String]
     # The role definition ID.
     ${RoleDefinitionId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
     [System.DateTime]
     # Start DateTime of the role eligibility schedule.
     ${ScheduleInfoStartDateTime},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
     [System.String]
     # The resultant role eligibility schedule id or the role eligibility schedule id being updated
     ${TargetRoleEligibilityScheduleId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
     [System.String]
     # The role eligibility schedule instance id being updated
     ${TargetRoleEligibilityScheduleInstanceId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
     [System.String]
     # Ticket number for the role eligibility
     ${TicketNumber},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
     [System.String]
     # Ticket system name for the role eligibility
     ${TicketSystem},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -2280,6 +2392,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -2300,6 +2421,8 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.Authorization.private\New-AzRoleEligibilityScheduleRequest_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.Authorization.private\New-AzRoleEligibilityScheduleRequest_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.Authorization.private\New-AzRoleEligibilityScheduleRequest_CreateViaJsonString';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -2308,6 +2431,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2361,12 +2487,12 @@ $scope = "/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/"
 New-AzRoleManagementPolicyAssignment -Scope $scope -Name "0a4d3ef7-147b-4777-a958-ae9dfab3c331"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IRoleManagementPolicyAssignment
+Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IRoleManagementPolicyAssignment
 .Link
 https://learn.microsoft.com/powershell/module/az.resources/new-azrolemanagementpolicyassignment
 #>
 function New-AzRoleManagementPolicyAssignment {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IRoleManagementPolicyAssignment])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IRoleManagementPolicyAssignment])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -2382,17 +2508,29 @@ param(
     # The scope of the role management policy assignment to upsert.
     ${Scope},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
     [System.String]
     # The policy id role management policy assignment.
     ${PolicyId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
     [System.String]
     # The role definition of management policy assignment.
     ${RoleDefinitionId},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -2450,6 +2588,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -2470,6 +2617,8 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.Authorization.private\New-AzRoleManagementPolicyAssignment_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.Authorization.private\New-AzRoleManagementPolicyAssignment_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.Authorization.private\New-AzRoleManagementPolicyAssignment_CreateViaJsonString';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -2478,6 +2627,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2574,7 +2726,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IAuthorizationIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -2639,6 +2790,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -2668,6 +2828,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2764,7 +2927,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IAuthorizationIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -2829,6 +2991,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -2858,6 +3029,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2955,7 +3129,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IAuthorizationIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -3020,6 +3193,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -3049,6 +3231,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -3146,7 +3331,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IAuthorizationIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -3211,6 +3395,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -3240,6 +3433,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -3285,61 +3481,19 @@ end {
 
 <#
 .Synopsis
-Update a role management policy
+Update a role assignment schedule request.
 .Description
-Update a role management policy
+Update a role assignment schedule request.
 .Example
-$scope = "/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/"
-$expirationRule = [RoleManagementPolicyExpirationRule]@{
-            isExpirationRequired = "false";
-            maximumDuration = "P180D";
-            id = "Expiration_Admin_Eligibility";
-            ruleType = [RoleManagementPolicyRuleType]("RoleManagementPolicyExpirationRule");
-            targetCaller = "Admin";
-            targetOperation = @('All');
-            targetLevel = "Eligibility";
-            targetObject = $null;
-            targetInheritableSetting = $null;
-            targetEnforcedSetting = $null;
-        }
-$rules = [IRoleManagementPolicyRule[]]@($expirationRule)
-Update-AzRoleManagementPolicy -Scope $scope -Name "33b520ea-3544-4abc-8565-3588deb8e68e" -Rule $rules
-.Example
-$scope = "/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/"
-$expirationRule = [RoleManagementPolicyExpirationRule]@{
-            isExpirationRequired = "false";
-            maximumDuration = "P180D";
-            id = "Expiration_Admin_Eligibility";
-            ruleType = [RoleManagementPolicyRuleType]("RoleManagementPolicyExpirationRule");
-            targetCaller = "Admin";
-            targetOperation = @('All');
-            targetLevel = "Eligibility";
-            targetObject = $null;
-            targetInheritableSetting = $null;
-            targetEnforcedSetting = $null;
-        }
-$notificationRule = [RoleManagementPolicyNotificationRule]@{
-            notificationType = "Email";
-            recipientType = "Approver";
-            isDefaultRecipientsEnabled = "false";
-            notificationLevel = "Critical";
-            notificationRecipient = $null;                
-            id = "Notification_Approver_Admin_Eligibility";
-            ruleType = [RoleManagementPolicyRuleType]("RoleManagementPolicyNotificationRule");
-            targetCaller = "Admin";
-            targetOperation = @('All');
-            targetLevel = "Eligibility";
-            targetObject = $null;
-            targetInheritableSetting = $null;
-            targetEnforcedSetting = $null;
-        }
-$rules = [IRoleManagementPolicyRule[]]@($expirationRule, $notificationRule)
-Update-AzRoleManagementPolicy -Scope $scope -Name "33b520ea-3544-4abc-8565-3588deb8e68e" -Rule $rules
+$guid = "12f8978c-5d8d-4fbf-b4b6-2f43eeb43eca"
+$startTime = Get-Date -Format o 
+$scope = "/subscriptions/11111111-2222-3333-4444-123456789101/"
+Update-AzRoleAssignmentScheduleRequest -Name $guid -Scope $scope -ExpirationDuration PT1H -ExpirationType AfterDuration -PrincipalId 5a4bdd72-ab3e-4d8e-ab0f-8dd8917481a2 -RequestType AdminAssign -RoleDefinitionId subscriptions/11111111-2222-3333-4444-123456789101/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7 -ScheduleInfoStartDateTime $startTime
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IAuthorizationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IRoleManagementPolicy
+Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IRoleAssignmentScheduleRequest
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -3356,68 +3510,130 @@ INPUTOBJECT <IAuthorizationIdentity>: Identity Parameter
   [RoleManagementPolicyAssignmentName <String>]: The name of format {guid_guid} the role management policy assignment to get.
   [RoleManagementPolicyName <String>]: The name (guid) of the role management policy to get.
   [Scope <String>]: The scope of the role management policy.
-
-RULE <IRoleManagementPolicyRule[]>: The rule applied to the policy.
-  RuleType <RoleManagementPolicyRuleType>: The type of rule
-  [Id <String>]: The id of the rule.
-  [TargetCaller <String>]: The caller of the setting.
-  [TargetEnforcedSetting <String[]>]: The list of enforced settings.
-  [TargetInheritableSetting <String[]>]: The list of inheritable settings.
-  [TargetLevel <String>]: The assignment level to which it is applied.
-  [TargetObject <String[]>]: The list of target objects.
-  [TargetOperation <String[]>]: The type of operation.
 .Link
-https://learn.microsoft.com/powershell/module/az.resources/update-azrolemanagementpolicy
+https://learn.microsoft.com/powershell/module/az.resources/update-azroleassignmentschedulerequest
 #>
-function Update-AzRoleManagementPolicy {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IRoleManagementPolicy])]
+function Update-AzRoleAssignmentScheduleRequest {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IRoleAssignmentScheduleRequest])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Alias('RoleManagementPolicyName')]
+    [Alias('RoleAssignmentScheduleRequestName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Path')]
     [System.String]
-    # The name (guid) of the role management policy to upsert.
+    # The name of the role assignment to create.
+    # It can be any valid GUID.
     ${Name},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Path')]
     [System.String]
-    # The scope of the role management policy to upsert.
+    # The scope of the role assignment schedule request to create.
+    # The scope can be any REST resource instance.
+    # For example, use '/providers/Microsoft.Subscription/subscriptions/{subscription-id}/' for a subscription, '/providers/Microsoft.Subscription/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}' for a resource group, and '/providers/Microsoft.Subscription/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider}/{resource-type}/{resource-name}' for a resource.
     ${Scope},
 
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IAuthorizationIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
     [System.String]
-    # The role management policy description.
-    ${Description},
+    # The conditions on the role assignment.
+    # This limits the resources it can be assigned to.
+    # e.g.: @Resource[Microsoft.Storage/storageAccounts/blobServices/containers:ContainerName] StringEqualsIgnoreCase 'foo_storage_container'
+    ${Condition},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
     [System.String]
-    # The role management policy display name.
-    ${DisplayName},
+    # Version of the condition.
+    # Currently accepted value is '2.0'
+    ${ConditionVersion},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    # The role management policy is default policy.
-    ${IsOrganizationDefault},
+    [System.String]
+    # Duration of the role assignment schedule in TimeSpan.
+    ${ExpirationDuration},
 
     [Parameter()]
-    [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IRoleManagementPolicyRule[]]
-    # The rule applied to the policy.
-    # To construct, see NOTES section for RULE properties and create a hash table.
-    ${Rule},
+    [System.DateTime]
+    # End DateTime of the role assignment schedule.
+    ${ExpirationEndDateTime},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.PSArgumentCompleterAttribute("AfterDuration", "AfterDateTime", "NoExpiration")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
+    [System.String]
+    # Type of the role assignment schedule expiration
+    ${ExpirationType},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
+    [System.String]
+    # Justification for the role assignment
+    ${Justification},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
+    [System.String]
+    # The linked role eligibility schedule id - to activate an eligibility.
+    ${LinkedRoleEligibilityScheduleId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
+    [System.String]
+    # The principal ID.
+    ${PrincipalId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.PSArgumentCompleterAttribute("AdminAssign", "AdminRemove", "AdminUpdate", "AdminExtend", "AdminRenew", "SelfActivate", "SelfDeactivate", "SelfExtend", "SelfRenew")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
+    [System.String]
+    # The type of the role assignment schedule request.
+    # Eg: SelfActivate, AdminAssign etc
+    ${RequestType},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
+    [System.String]
+    # The role definition ID.
+    ${RoleDefinitionId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
+    [System.DateTime]
+    # Start DateTime of the role assignment schedule.
+    ${ScheduleInfoStartDateTime},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
+    [System.String]
+    # The resultant role assignment schedule id or the role assignment schedule id being updated
+    ${TargetRoleAssignmentScheduleId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
+    [System.String]
+    # The role assignment schedule instance id being updated
+    ${TargetRoleAssignmentScheduleInstanceId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
+    [System.String]
+    # Ticket number for the role assignment
+    ${TicketNumber},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
+    [System.String]
+    # Ticket system name for the role assignment
+    ${TicketSystem},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -3475,6 +3691,806 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            UpdateExpanded = 'Az.Authorization.private\Update-AzRoleAssignmentScheduleRequest_UpdateExpanded';
+            UpdateViaIdentityExpanded = 'Az.Authorization.private\Update-AzRoleAssignmentScheduleRequest_UpdateViaIdentityExpanded';
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Update a role eligibility schedule request.
+.Description
+Update a role eligibility schedule request.
+.Example
+$guid = "12f8978c-5d8d-4fbf-b4b6-2f43eeb43eca"
+$startTime = Get-Date -Format o 
+$scope = "/subscriptions/11111111-2222-3333-4444-123456789101/"
+Update-AzRoleEligibilityScheduleRequest -Name $guid -Scope $scope -ExpirationDuration PT1H -ExpirationType AfterDuration -PrincipalId 5a4bdd72-ab3e-4d8e-ab0f-8dd8917481a2 -RequestType AdminAssign -RoleDefinitionId subscriptions/11111111-2222-3333-4444-123456789101/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7 -ScheduleInfoStartDateTime $startTime
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IAuthorizationIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IRoleEligibilityScheduleRequest
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IAuthorizationIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [RoleAssignmentScheduleInstanceName <String>]: The name (hash of schedule name + time) of the role assignment schedule to get.
+  [RoleAssignmentScheduleName <String>]: The name (guid) of the role assignment schedule to get.
+  [RoleAssignmentScheduleRequestName <String>]: The name of the role assignment to create. It can be any valid GUID.
+  [RoleEligibilityScheduleInstanceName <String>]: The name (hash of schedule name + time) of the role eligibility schedule to get.
+  [RoleEligibilityScheduleName <String>]: The name (guid) of the role eligibility schedule to get.
+  [RoleEligibilityScheduleRequestName <String>]: The name of the role eligibility to create. It can be any valid GUID.
+  [RoleManagementPolicyAssignmentName <String>]: The name of format {guid_guid} the role management policy assignment to get.
+  [RoleManagementPolicyName <String>]: The name (guid) of the role management policy to get.
+  [Scope <String>]: The scope of the role management policy.
+.Link
+https://learn.microsoft.com/powershell/module/az.resources/update-azroleeligibilityschedulerequest
+#>
+function Update-AzRoleEligibilityScheduleRequest {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IRoleEligibilityScheduleRequest])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Alias('RoleEligibilityScheduleRequestName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Path')]
+    [System.String]
+    # The name of the role eligibility to create.
+    # It can be any valid GUID.
+    ${Name},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Path')]
+    [System.String]
+    # The scope of the role eligibility schedule request to create.
+    # The scope can be any REST resource instance.
+    # For example, use '/providers/Microsoft.Subscription/subscriptions/{subscription-id}/' for a subscription, '/providers/Microsoft.Subscription/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}' for a resource group, and '/providers/Microsoft.Subscription/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider}/{resource-type}/{resource-name}' for a resource.
+    ${Scope},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IAuthorizationIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
+    [System.String]
+    # The conditions on the role assignment.
+    # This limits the resources it can be assigned to.
+    # e.g.: @Resource[Microsoft.Storage/storageAccounts/blobServices/containers:ContainerName] StringEqualsIgnoreCase 'foo_storage_container'
+    ${Condition},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
+    [System.String]
+    # Version of the condition.
+    # Currently accepted value is '2.0'
+    ${ConditionVersion},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
+    [System.String]
+    # Duration of the role eligibility schedule in TimeSpan.
+    ${ExpirationDuration},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
+    [System.DateTime]
+    # End DateTime of the role eligibility schedule.
+    ${ExpirationEndDateTime},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.PSArgumentCompleterAttribute("AfterDuration", "AfterDateTime", "NoExpiration")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
+    [System.String]
+    # Type of the role eligibility schedule expiration
+    ${ExpirationType},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
+    [System.String]
+    # Justification for the role eligibility
+    ${Justification},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
+    [System.String]
+    # The principal ID.
+    ${PrincipalId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.PSArgumentCompleterAttribute("AdminAssign", "AdminRemove", "AdminUpdate", "AdminExtend", "AdminRenew", "SelfActivate", "SelfDeactivate", "SelfExtend", "SelfRenew")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
+    [System.String]
+    # The type of the role assignment schedule request.
+    # Eg: SelfActivate, AdminAssign etc
+    ${RequestType},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
+    [System.String]
+    # The role definition ID.
+    ${RoleDefinitionId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
+    [System.DateTime]
+    # Start DateTime of the role eligibility schedule.
+    ${ScheduleInfoStartDateTime},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
+    [System.String]
+    # The resultant role eligibility schedule id or the role eligibility schedule id being updated
+    ${TargetRoleEligibilityScheduleId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
+    [System.String]
+    # The role eligibility schedule instance id being updated
+    ${TargetRoleEligibilityScheduleInstanceId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
+    [System.String]
+    # Ticket number for the role eligibility
+    ${TicketNumber},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
+    [System.String]
+    # Ticket system name for the role eligibility
+    ${TicketSystem},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            UpdateExpanded = 'Az.Authorization.private\Update-AzRoleEligibilityScheduleRequest_UpdateExpanded';
+            UpdateViaIdentityExpanded = 'Az.Authorization.private\Update-AzRoleEligibilityScheduleRequest_UpdateViaIdentityExpanded';
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Update a role management policy assignment
+.Description
+Update a role management policy assignment
+.Example
+$scope = "/subscriptions/11111111-2222-3333-4444-123456789101/"
+Update-AzRoleManagementPolicyAssignment -Scope $scope -Name "11111111-2222-3333-4444-123456789102"
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IAuthorizationIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IRoleManagementPolicyAssignment
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IAuthorizationIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [RoleAssignmentScheduleInstanceName <String>]: The name (hash of schedule name + time) of the role assignment schedule to get.
+  [RoleAssignmentScheduleName <String>]: The name (guid) of the role assignment schedule to get.
+  [RoleAssignmentScheduleRequestName <String>]: The name of the role assignment to create. It can be any valid GUID.
+  [RoleEligibilityScheduleInstanceName <String>]: The name (hash of schedule name + time) of the role eligibility schedule to get.
+  [RoleEligibilityScheduleName <String>]: The name (guid) of the role eligibility schedule to get.
+  [RoleEligibilityScheduleRequestName <String>]: The name of the role eligibility to create. It can be any valid GUID.
+  [RoleManagementPolicyAssignmentName <String>]: The name of format {guid_guid} the role management policy assignment to get.
+  [RoleManagementPolicyName <String>]: The name (guid) of the role management policy to get.
+  [Scope <String>]: The scope of the role management policy.
+.Link
+https://learn.microsoft.com/powershell/module/az.resources/update-azrolemanagementpolicyassignment
+#>
+function Update-AzRoleManagementPolicyAssignment {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IRoleManagementPolicyAssignment])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Alias('RoleManagementPolicyAssignmentName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Path')]
+    [System.String]
+    # The name of format {guid_guid} the role management policy assignment to upsert.
+    ${Name},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Path')]
+    [System.String]
+    # The scope of the role management policy assignment to upsert.
+    ${Scope},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IAuthorizationIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
+    [System.String]
+    # The policy id role management policy assignment.
+    ${PolicyId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
+    [System.String]
+    # The role definition of management policy assignment.
+    ${RoleDefinitionId},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            UpdateExpanded = 'Az.Authorization.private\Update-AzRoleManagementPolicyAssignment_UpdateExpanded';
+            UpdateViaIdentityExpanded = 'Az.Authorization.private\Update-AzRoleManagementPolicyAssignment_UpdateViaIdentityExpanded';
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Update a role management policy
+.Description
+Update a role management policy
+.Example
+$scope = "/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/"
+$expirationRule = [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.RoleManagementPolicyExpirationRule]@{
+            isExpirationRequired = "false";
+            maximumDuration = "P180D";
+            id = "Expiration_Admin_Eligibility";
+            ruleType = [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Support.RoleManagementPolicyRuleType]("RoleManagementPolicyExpirationRule");
+            targetCaller = "Admin";
+            targetOperation = @('All');
+            targetLevel = "Eligibility";
+            targetObject = $null;
+            targetInheritableSetting = $null;
+            targetEnforcedSetting = $null;
+        }
+$rules = [IRoleManagementPolicyRule[]]@($expirationRule)
+Update-AzRoleManagementPolicy -Scope $scope -Name "33b520ea-3544-4abc-8565-3588deb8e68e" -Rule $rules
+.Example
+$scope = "/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/"
+$expirationRule = [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.RoleManagementPolicyExpirationRule]@{
+            isExpirationRequired = "false";
+            maximumDuration = "P180D";
+            id = "Expiration_Admin_Eligibility";
+            ruleType = [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Support.RoleManagementPolicyRuleType]("RoleManagementPolicyExpirationRule");
+            targetCaller = "Admin";
+            targetOperation = @('All');
+            targetLevel = "Eligibility";
+            targetObject = $null;
+            targetInheritableSetting = $null;
+            targetEnforcedSetting = $null;
+        }
+$notificationRule = [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.RoleManagementPolicyNotificationRule]@{
+            notificationType = "Email";
+            recipientType = "Approver";
+            isDefaultRecipientsEnabled = "false";
+            notificationLevel = "Critical";
+            notificationRecipient = $null;                
+            id = "Notification_Approver_Admin_Eligibility";
+            ruleType = [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Support.RoleManagementPolicyRuleType]("RoleManagementPolicyNotificationRule");
+            targetCaller = "Admin";
+            targetOperation = @('All');
+            targetLevel = "Eligibility";
+            targetObject = $null;
+            targetInheritableSetting = $null;
+            targetEnforcedSetting = $null;
+        }
+$rules = [IRoleManagementPolicyRule[]]@($expirationRule, $notificationRule)
+Update-AzRoleManagementPolicy -Scope $scope -Name "33b520ea-3544-4abc-8565-3588deb8e68e" -Rule $rules
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IAuthorizationIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IRoleManagementPolicy
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IAuthorizationIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [RoleAssignmentScheduleInstanceName <String>]: The name (hash of schedule name + time) of the role assignment schedule to get.
+  [RoleAssignmentScheduleName <String>]: The name (guid) of the role assignment schedule to get.
+  [RoleAssignmentScheduleRequestName <String>]: The name of the role assignment to create. It can be any valid GUID.
+  [RoleEligibilityScheduleInstanceName <String>]: The name (hash of schedule name + time) of the role eligibility schedule to get.
+  [RoleEligibilityScheduleName <String>]: The name (guid) of the role eligibility schedule to get.
+  [RoleEligibilityScheduleRequestName <String>]: The name of the role eligibility to create. It can be any valid GUID.
+  [RoleManagementPolicyAssignmentName <String>]: The name of format {guid_guid} the role management policy assignment to get.
+  [RoleManagementPolicyName <String>]: The name (guid) of the role management policy to get.
+  [Scope <String>]: The scope of the role management policy.
+
+RULE <IRoleManagementPolicyRule[]>: The rule applied to the policy.
+  RuleType <String>: The type of rule
+  [Id <String>]: The id of the rule.
+  [TargetCaller <String>]: The caller of the setting.
+  [TargetEnforcedSetting <List<String>>]: The list of enforced settings.
+  [TargetInheritableSetting <List<String>>]: The list of inheritable settings.
+  [TargetLevel <String>]: The assignment level to which it is applied.
+  [TargetObject <List<String>>]: The list of target objects.
+  [TargetOperation <List<String>>]: The type of operation.
+.Link
+https://learn.microsoft.com/powershell/module/az.resources/update-azrolemanagementpolicy
+#>
+function Update-AzRoleManagementPolicy {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IRoleManagementPolicy])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Alias('RoleManagementPolicyName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Path')]
+    [System.String]
+    # The name (guid) of the role management policy to upsert.
+    ${Name},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Path')]
+    [System.String]
+    # The scope of the role management policy to upsert.
+    ${Scope},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IAuthorizationIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
+    [System.String]
+    # The role management policy description.
+    ${Description},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
+    [System.String]
+    # The role management policy display name.
+    ${DisplayName},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # The role management policy is default policy.
+    ${IsOrganizationDefault},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IRoleManagementPolicyRule[]]
+    # The rule applied to the policy.
+    ${Rule},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -3496,6 +4512,8 @@ begin {
         $mapping = @{
             UpdateExpanded = 'Az.Authorization.private\Update-AzRoleManagementPolicy_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.Authorization.private\Update-AzRoleManagementPolicy_UpdateViaIdentityExpanded';
+            UpdateViaJsonFilePath = 'Az.Authorization.private\Update-AzRoleManagementPolicy_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.Authorization.private\Update-AzRoleManagementPolicy_UpdateViaJsonString';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -3504,6 +4522,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

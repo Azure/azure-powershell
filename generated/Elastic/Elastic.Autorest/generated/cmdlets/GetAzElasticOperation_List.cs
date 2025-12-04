@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IOperationResult))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.Description(@"List all operations provided by Microsoft.Elastic.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.HttpPath(Path = "/providers/Microsoft.Elastic/operations", ApiVersion = "2024-03-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.HttpPath(Path = "/providers/Microsoft.Elastic/operations", ApiVersion = "2025-06-01")]
     public partial class GetAzElasticOperation_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IContext

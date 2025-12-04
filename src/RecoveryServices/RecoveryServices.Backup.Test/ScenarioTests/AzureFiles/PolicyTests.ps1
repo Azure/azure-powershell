@@ -41,7 +41,7 @@ function Test-AzureFSVaultPolicy
 	$resourceGroupName = "iannea-rg"
 	$vaultName = "iannea-rsv"
 	$policyName = "newFilePolicy"
-
+	$subscriptionId = "59e574f1-e278-4b66-875b-e3e4fe74ad88"
     $vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
 
     # Get default policy objects

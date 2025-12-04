@@ -13,14 +13,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredEventInternal
     {
 
-        /// <summary>Backing field for <see cref="DataPoint" /> property.</summary>
-        private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredEventDataPoint> _dataPoint;
+        /// <summary>Backing field for <see cref="DataSource" /> property.</summary>
+        private string _dataSource;
 
-        /// <summary>
-        /// Array of data points that are part of the event. Each data point can have a per-data point configuration.
-        /// </summary>
+        /// <summary>Reference to a data source for a given event.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Origin(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.PropertyOrigin.Owned)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredEventDataPoint> DataPoint { get => this._dataPoint; set => this._dataPoint = value; }
+        public string DataSource { get => this._dataSource; set => this._dataSource = value; }
 
         /// <summary>Backing field for <see cref="Destination" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IEventDestination> _destination;
@@ -38,15 +36,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Origin(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.PropertyOrigin.Owned)]
         public string EventConfiguration { get => this._eventConfiguration; set => this._eventConfiguration = value; }
-
-        /// <summary>Backing field for <see cref="EventNotifier" /> property.</summary>
-        private string _eventNotifier;
-
-        /// <summary>
-        /// The address of the notifier of the event in the asset (e.g. URL) so that a client can access the event on the asset.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Origin(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.PropertyOrigin.Owned)]
-        public string EventNotifier { get => this._eventNotifier; set => this._eventNotifier = value; }
 
         /// <summary>Backing field for <see cref="LastUpdatedOn" /> property.</summary>
         private global::System.DateTime? _lastUpdatedOn;
@@ -79,19 +68,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
     public partial interface INamespaceDiscoveredEvent :
         Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IJsonSerializable
     {
-        /// <summary>
-        /// Array of data points that are part of the event. Each data point can have a per-data point configuration.
-        /// </summary>
+        /// <summary>Reference to a data source for a given event.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Array of data points that are part of the event. Each data point can have a per-data point configuration.",
-        SerializedName = @"dataPoints",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredEventDataPoint) })]
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredEventDataPoint> DataPoint { get; set; }
+        Description = @"Reference to a data source for a given event.",
+        SerializedName = @"dataSource",
+        PossibleTypes = new [] { typeof(string) })]
+        string DataSource { get; set; }
         /// <summary>Destinations for an event.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Info(
         Required = false,
@@ -117,19 +104,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         SerializedName = @"eventConfiguration",
         PossibleTypes = new [] { typeof(string) })]
         string EventConfiguration { get; set; }
-        /// <summary>
-        /// The address of the notifier of the event in the asset (e.g. URL) so that a client can access the event on the asset.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Info(
-        Required = true,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"The address of the notifier of the event in the asset (e.g. URL) so that a client can access the event on the asset.",
-        SerializedName = @"eventNotifier",
-        PossibleTypes = new [] { typeof(string) })]
-        string EventNotifier { get; set; }
         /// <summary>UTC timestamp indicating when the event was added or modified.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Info(
         Required = false,
@@ -169,10 +143,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
     internal partial interface INamespaceDiscoveredEventInternal
 
     {
-        /// <summary>
-        /// Array of data points that are part of the event. Each data point can have a per-data point configuration.
-        /// </summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredEventDataPoint> DataPoint { get; set; }
+        /// <summary>Reference to a data source for a given event.</summary>
+        string DataSource { get; set; }
         /// <summary>Destinations for an event.</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IEventDestination> Destination { get; set; }
         /// <summary>
@@ -180,10 +152,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         /// like, publishingInterval, samplingInterval, and queueSize.
         /// </summary>
         string EventConfiguration { get; set; }
-        /// <summary>
-        /// The address of the notifier of the event in the asset (e.g. URL) so that a client can access the event on the asset.
-        /// </summary>
-        string EventNotifier { get; set; }
         /// <summary>UTC timestamp indicating when the event was added or modified.</summary>
         global::System.DateTime? LastUpdatedOn { get; set; }
         /// <summary>The name of the event.</summary>

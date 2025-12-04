@@ -1,8 +1,8 @@
 {
-  "Get-AzStreamAnalyticsDefaultFunctionDefinition+[NoContext]+RetrieveExpanded+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-qrine6/providers/Microsoft.StreamAnalytics/streamingjobs/job7nzqx6/functions/mlsfunction/RetrieveDefaultDefinition?api-version=2017-04-01-preview+1": {
+  "Get-AzStreamAnalyticsDefaultFunctionDefinition+[NoContext]+RetrieveExpanded+$POST+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/streamanalytics-rg-y9u3hp/providers/Microsoft.StreamAnalytics/streamingjobs/jobl1t7aq/functions/mlsfunction/RetrieveDefaultDefinition?api-version=2017-04-01-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-qrine6/providers/Microsoft.StreamAnalytics/streamingjobs/job7nzqx6/functions/mlsfunction/RetrieveDefaultDefinition?api-version=2017-04-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/streamanalytics-rg-y9u3hp/providers/Microsoft.StreamAnalytics/streamingjobs/jobl1t7aq/functions/mlsfunction/RetrieveDefaultDefinition?api-version=2017-04-01-preview",
       "Content": "{\r\n  \"bindingType\": \"Microsoft.MachineLearningServices\",\r\n  \"bindingRetrievalProperties\": {\r\n    \"endpoint\": \"http://875da830-4d5f-44f1-b221-718a5f26a21d.eastus.azurecontainer.io/score\",\r\n    \"udfType\": \"Scalar\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -17,21 +17,21 @@
       "Headers": {
         "Cache-Control": [ "no-store, no-cache" ],
         "Pragma": [ "no-cache" ],
-        "X-AspNetMvc-Version": [ "5.0" ],
-        "x-ms-request-id": [ "f78212ed-54ee-4701-8e36-9016172f8c94" ],
-        "Server": [ "Microsoft-IIS/10.0" ],
-        "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
-        "x-ms-correlation-request-id": [ "d09b71bd-7935-42d4-b5bd-7e5daa70c52a" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210316T031958Z:d09b71bd-7935-42d4-b5bd-7e5daa70c52a" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "704e9f0a-9ba8-4774-b0e4-29a309012071" ],
+        "x-ms-operation-identifier": [ "tenantId=213e87ed-8e08-4eb4-a63c-c073058f7b00,objectId=5dce0ce9-f0a7-437f-aea2-760d05c62ca9/southeastasia/cad1297c-16c7-45e3-b5e9-deb232df25b8" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-correlation-request-id": [ "109b5e17-3390-4da0-90b7-f6ff884c835f" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20250821T090115Z:109b5e17-3390-4da0-90b7-f6ff884c835f" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 16 Mar 2021 03:19:57 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 3A5EC384C844485E946B64C015065D49 Ref B: MAA201060513019 Ref C: 2025-08-21T09:01:14Z" ],
+        "Date": [ "Thu, 21 Aug 2025 09:01:15 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "498" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
+        "Content-Type": [ "application/json; charset=utf-8" ]
       },
       "Content": "{\"name\":\"mlsfunction\",\"properties\":{\"type\":\"Scalar\",\"properties\":{\"inputs\":[{\"dataType\":\"record\",\"isConfigurationParameter\":null}],\"output\":{\"dataType\":\"bigint\"},\"binding\":{\"type\":\"Microsoft.MachineLearningServices\",\"properties\":{\"endpoint\":\"http://875da830-4d5f-44f1-b221-718a5f26a21d.eastus.azurecontainer.io/score\",\"apiKey\":null,\"inputs\":[{\"name\":\"data\",\"dataType\":\"object\",\"mapTo\":0}],\"outputs\":[{\"name\":\"output\",\"dataType\":\"int64\",\"mapTo\":0}],\"batchSize\":1000,\"numberOfParallelRequests\":1}}}}}",
       "isContentBase64": false

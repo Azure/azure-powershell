@@ -238,6 +238,17 @@ namespace VersionController.Models
                 string warningMsg = $"The GA version of {moduleName} in gallery ({maxGAedVersionInGallery}) is greater or equal to the bumped version({bumpedVersion}). Continue bumping version for {moduleName}.";
                 _logger.LogWarning(warningMsg);
                 bumpedVersion = GetBumpedVersionByType(bumpedVersion, versionBump);
+                // Normalize version numbers if they exceed or equal 1000. Add this to avoid infinite loop when patch version is bumped but actually the minor version is less than maxGAedVersionInGallery.minor.
+                if (bumpedVersion.Patch >= 1000)
+                {
+                    bumpedVersion = new AzurePSVersion(bumpedVersion.Major, bumpedVersion.Minor + 1, bumpedVersion.Patch - 1000, bumpedVersion.Label);
+                    _logger.LogWarning($"Patch version exceeded 999. Normalized version to {bumpedVersion}");
+                }
+                if (bumpedVersion.Minor >= 1000)
+                {
+                    bumpedVersion = new AzurePSVersion(bumpedVersion.Major + 1, bumpedVersion.Minor - 1000, bumpedVersion.Patch, bumpedVersion.Label);
+                    _logger.LogWarning($"Minor version exceeded 999. Normalized version to {bumpedVersion}");
+                }
             }
 
             // Continue bumping version until bumpedVersion is higher than maxPreGAedVersionInGallery in same major version

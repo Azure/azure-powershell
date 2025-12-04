@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Extensions;
 
-    /// <summary>Result of GET request to list the Microsoft.Datadog operations.</summary>
+    /// <summary>Represents a paginated list of operation results.</summary>
     public partial class OperationListResult
     {
 

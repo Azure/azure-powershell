@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMetricsStatusResponse))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Description(@"Get metric status")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Dynatrace.Observability/monitors/{monitorName}/getMetricStatus", ApiVersion = "2023-04-27")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Dynatrace.Observability/monitors/{monitorName}/getMetricStatus", ApiVersion = "2024-04-24")]
     public partial class GetAzDynatraceMonitorMetricStatus_GetViaIdentity : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IContext
@@ -124,6 +124,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Cmdlets
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Use the default credentials for the proxy")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter ProxyUseDefaultCredentials { get; set; }
+
+        /// <summary>Backing field for <see cref="Request" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMetricStatusRequest _request;
+
+        /// <summary>Request for getting metric status for given monitored resource Ids</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Request for getting metric status for given monitored resource Ids", ValueFromPipeline = true)]
+        [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Info(
+        Required = true,
+        ReadOnly = false,
+        Description = @"Request for getting metric status for given monitored resource Ids",
+        SerializedName = @"request",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMetricStatusRequest) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.ParameterCategory.Body)]
+        public Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMetricStatusRequest Request { get => this._request; set => this._request = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
@@ -344,7 +358,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Cmdlets
                     await ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     if (InputObject?.Id != null)
                     {
-                        await this.Client.MonitorsGetMetricStatusViaIdentity(InputObject.Id, onOk, onDefault, this, Pipeline);
+                        await this.Client.MonitorsGetMetricStatusViaIdentity(InputObject.Id, Request, onOk, onDefault, this, Pipeline);
                     }
                     else
                     {
@@ -361,7 +375,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Cmdlets
                         {
                             ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.MonitorName"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
                         }
-                        await this.Client.MonitorsGetMetricStatus(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.MonitorName ?? null, onOk, onDefault, this, Pipeline);
+                        await this.Client.MonitorsGetMetricStatus(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.MonitorName ?? null, Request, onOk, onDefault, this, Pipeline);
                     }
                     await ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }

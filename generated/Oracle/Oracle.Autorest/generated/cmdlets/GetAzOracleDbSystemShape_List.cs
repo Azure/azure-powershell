@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShape))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.Description(@"List DbSystemShape resources by SubscriptionLocationResource")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Oracle.Database/locations/{location}/dbSystemShapes", ApiVersion = "2025-03-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Oracle.Database/locations/{location}/dbSystemShapes", ApiVersion = "2025-09-01")]
     public partial class GetAzOracleDbSystemShape_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.IContext
@@ -136,6 +136,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Cmdlets
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Use the default credentials for the proxy")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter ProxyUseDefaultCredentials { get; set; }
+
+        /// <summary>Backing field for <see cref="ShapeAttribute" /> property.</summary>
+        private string _shapeAttribute;
+
+        /// <summary>
+        /// Filters the result for the given Shape Attribute, such as BLOCK_STORAGE or SMART_STORAGE.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Filters the result for the given Shape Attribute, such as BLOCK_STORAGE or SMART_STORAGE.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Filters the result for the given Shape Attribute, such as BLOCK_STORAGE or SMART_STORAGE.",
+        SerializedName = @"shapeAttribute",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.ParameterCategory.Query)]
+        public string ShapeAttribute { get => this._shapeAttribute; set => this._shapeAttribute = value; }
 
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string[] _subscriptionId;
@@ -386,13 +402,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Cmdlets
                     foreach( var SubscriptionId in this.SubscriptionId )
                     {
                         await ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                        await this.Client.DbSystemShapesListByLocation(SubscriptionId, Location, this.InvocationInformation.BoundParameters.ContainsKey("Zone") ? Zone : null, onOk, onDefault, this, Pipeline);
+                        await this.Client.DbSystemShapesListByLocation(SubscriptionId, Location, this.InvocationInformation.BoundParameters.ContainsKey("Zone") ? Zone : null, this.InvocationInformation.BoundParameters.ContainsKey("ShapeAttribute") ? ShapeAttribute : null, onOk, onDefault, this, Pipeline);
                         await ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId,Location=Location,Zone=this.InvocationInformation.BoundParameters.ContainsKey("Zone") ? Zone : null})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId,Location=Location,Zone=this.InvocationInformation.BoundParameters.ContainsKey("Zone") ? Zone : null,ShapeAttribute=this.InvocationInformation.BoundParameters.ContainsKey("ShapeAttribute") ? ShapeAttribute : null})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });

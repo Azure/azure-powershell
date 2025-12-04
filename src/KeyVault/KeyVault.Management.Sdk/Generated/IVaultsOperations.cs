@@ -153,10 +153,12 @@ namespace Microsoft.Azure.Management.KeyVault
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<VaultAccessPolicyParameters>> UpdateAccessPolicyWithHttpMessagesAsync(string resourceGroupName, string vaultName, AccessPolicyUpdateKind operationKind, VaultAccessPolicyParameters parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// The List operation gets information about the vaults associated with the subscription and within the specified resource group.
+        /// The List operation gets information about the vaults associated with the
+        /// subscription and within the specified resource group.
         /// </summary>
         /// <remarks>
-        /// The List operation gets information about the vaults associated with the subscription and within the specified resource group.
+        /// The List operation gets information about the vaults associated with the
+        /// subscription and within the specified resource group.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the Resource Group to which the vault belongs.
@@ -179,10 +181,12 @@ namespace Microsoft.Azure.Management.KeyVault
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<Vault>>> ListByResourceGroupWithHttpMessagesAsync(string resourceGroupName, int? top = default(int?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// The List operation gets information about the vaults associated with the subscription.
+        /// The List operation gets information about the vaults associated with the
+        /// subscription.
         /// </summary>
         /// <remarks>
-        /// The List operation gets information about the vaults associated with the subscription.
+        /// The List operation gets information about the vaults associated with the
+        /// subscription.
         /// </remarks>
         /// <param name='top'>
         /// Maximum number of results to return.
@@ -248,10 +252,12 @@ namespace Microsoft.Azure.Management.KeyVault
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DeletedVault>> GetDeletedWithHttpMessagesAsync(string vaultName, string location, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Permanently deletes the specified vault. aka Purges the deleted Azure key vault.
+        /// Permanently deletes the specified vault. aka Purges the deleted Azure key
+        /// vault.
         /// </summary>
         /// <remarks>
-        /// Permanently deletes the specified vault. aka Purges the deleted Azure key vault.
+        /// Permanently deletes the specified vault. aka Purges the deleted Azure key
+        /// vault.
         /// </remarks>
         /// <param name='vaultName'>
         /// The name of the soft-deleted vault.
@@ -271,10 +277,12 @@ namespace Microsoft.Azure.Management.KeyVault
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> PurgeDeletedWithHttpMessagesAsync(string vaultName, string location, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// The List operation gets information about the vaults associated with the subscription.
+        /// The List operation gets information about the vaults associated with the
+        /// subscription.
         /// </summary>
         /// <remarks>
-        /// The List operation gets information about the vaults associated with the subscription.
+        /// The List operation gets information about the vaults associated with the
+        /// subscription.
         /// </remarks>
         /// <param name='top'>
         /// Maximum number of results to return.
@@ -346,10 +354,12 @@ namespace Microsoft.Azure.Management.KeyVault
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Vault>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string vaultName, VaultCreateOrUpdateParameters parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Permanently deletes the specified vault. aka Purges the deleted Azure key vault.
+        /// Permanently deletes the specified vault. aka Purges the deleted Azure key
+        /// vault.
         /// </summary>
         /// <remarks>
-        /// Permanently deletes the specified vault. aka Purges the deleted Azure key vault.
+        /// Permanently deletes the specified vault. aka Purges the deleted Azure key
+        /// vault.
         /// </remarks>
         /// <param name='vaultName'>
         /// The name of the soft-deleted vault.
@@ -369,10 +379,12 @@ namespace Microsoft.Azure.Management.KeyVault
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginPurgeDeletedWithHttpMessagesAsync(string vaultName, string location, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// The List operation gets information about the vaults associated with the subscription and within the specified resource group.
+        /// The List operation gets information about the vaults associated with the
+        /// subscription and within the specified resource group.
         /// </summary>
         /// <remarks>
-        /// The List operation gets information about the vaults associated with the subscription and within the specified resource group.
+        /// The List operation gets information about the vaults associated with the
+        /// subscription and within the specified resource group.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -392,10 +404,12 @@ namespace Microsoft.Azure.Management.KeyVault
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<Vault>>> ListByResourceGroupNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// The List operation gets information about the vaults associated with the subscription.
+        /// The List operation gets information about the vaults associated with the
+        /// subscription.
         /// </summary>
         /// <remarks>
-        /// The List operation gets information about the vaults associated with the subscription.
+        /// The List operation gets information about the vaults associated with the
+        /// subscription.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -438,10 +452,12 @@ namespace Microsoft.Azure.Management.KeyVault
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<DeletedVault>>> ListDeletedNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// The List operation gets information about the vaults associated with the subscription.
+        /// The List operation gets information about the vaults associated with the
+        /// subscription.
         /// </summary>
         /// <remarks>
-        /// The List operation gets information about the vaults associated with the subscription.
+        /// The List operation gets information about the vaults associated with the
+        /// subscription.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

@@ -173,7 +173,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
                 Location = Location,
                 Tags = tagPairs,
                 QosType = QosType,
-                CustomThroughputMibps = CustomThroughput
+                CustomThroughputMibps = CustomThroughput.HasValue ? (int)CustomThroughput : (int?)null,
             };
             if (CoolAccess.IsPresent)
             {

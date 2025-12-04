@@ -79,6 +79,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models
             {
                 return;
             }
+            {_systemData = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonObject>("systemData"), out var __jsonSystemData) ? Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.SystemData.FromJson(__jsonSystemData) : _systemData;}
             {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
             {_name = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonString>("name"), out var __jsonName) ? (string)__jsonName : (string)_name;}
             {_type = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonString>("type"), out var __jsonType) ? (string)__jsonType : (string)_type;}
@@ -103,6 +104,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models
             if (returnNow)
             {
                 return container;
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeRead))
+            {
+                AddIf( null != this._systemData ? (Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonNode) this._systemData.ToJson(null,serializationMode) : null, "systemData" ,container.Add );
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeRead))
             {

@@ -10,14 +10,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Cmdlets;
     using System;
 
-    /// <summary>update a tag rule set for a given monitor resource.</summary>
+    /// <summary>
+    /// update a tag rule set for a given Elastic monitor resource, enabling fine-grained control over observability based on
+    /// resource tags.
+    /// </summary>
     /// <remarks>
     /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/tagRules/{ruleSetName}"
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/tagRules/{ruleSetName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzElasticTagRule_UpdateViaIdentityMonitorExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoringTagRules))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.Description(@"update a tag rule set for a given monitor resource.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.Description(@"update a tag rule set for a given Elastic monitor resource, enabling fine-grained control over observability based on resource tags.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.Generated]
     public partial class UpdateAzElasticTagRule_UpdateViaIdentityMonitorExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener,

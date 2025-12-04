@@ -6,21 +6,24 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Extensions;
+    using Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.PowerShell;
+    using Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Cmdlets;
     using System;
 
     /// <summary>
-    /// Creates or updates a Job Definition resource, which contains configuration for a single unit of managed data transfer.
+    /// create a Job Definition resource, which contains configuration for a single unit of managed data transfer.
     /// </summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/projects/{projectName}/jobDefinitions/{jobDefinitionName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzStorageMoverJobDefinition_CreateExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IJobDefinition))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Description(@"Creates or updates a Job Definition resource, which contains configuration for a single unit of managed data transfer.")]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinition))]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Description(@"create a Job Definition resource, which contains configuration for a single unit of managed data transfer.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/projects/{projectName}/jobDefinitions/{jobDefinitionName}", ApiVersion = "2025-07-01")]
     public partial class NewAzStorageMoverJobDefinition_CreateExpanded : global::System.Management.Automation.PSCmdlet,
-        Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener
+        Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener,
+        Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IContext
     {
         /// <summary>A unique id generatd for the this cmdlet when it is instantiated.</summary>
         private string __correlationId = System.Guid.NewGuid().ToString();
@@ -36,8 +39,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Cmdlets
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
+        /// <summary>A dictionary to carry over additional data for pipeline.</summary>
+        private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
+
+        /// <summary>A buffer to record first returned object in response.</summary>
+        private object _firstResponse = null;
+
         /// <summary>The Job Definition resource.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IJobDefinition _jobDefinitionBody = new Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.JobDefinition();
+        private Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinition _jobDefinitionBody = new Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.JobDefinition();
+
+        /// <summary>
+        /// A flag to tell whether it is the first returned object in a call. Zero means no response yet. One means 1 returned object.
+        /// Two means multiple returned objects in response.
+        /// </summary>
+        private int _responseSize = 0;
 
         /// <summary>Name of the Agent to assign for new Job Runs of this Job Definition.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Name of the Agent to assign for new Job Runs of this Job Definition.")]
@@ -55,6 +70,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter Break { get; set; }
 
+        /// <summary>Accessor for cancellationTokenSource.</summary>
+        public global::System.Threading.CancellationTokenSource CancellationTokenSource { get => _cancellationTokenSource ; set { _cancellationTokenSource = value; } }
+
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.StorageMover.StorageMover Client => Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Module.Instance.ClientAPI;
 
@@ -66,9 +84,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Cmdlets
         ReadOnly = false,
         Description = @"Strategy to use for copy.",
         SerializedName = @"copyMode",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.CopyMode) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.CopyMode))]
-        public Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.CopyMode CopyMode { get => _jobDefinitionBody.CopyMode; set => _jobDefinitionBody.CopyMode = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("Additive", "Mirror")]
+        public string CopyMode { get => _jobDefinitionBody.CopyMode ?? null; set => _jobDefinitionBody.CopyMode = value; }
 
         /// <summary>
         /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
@@ -94,6 +112,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         public string Description { get => _jobDefinitionBody.Description ?? null; set => _jobDefinitionBody.Description = value; }
 
+        /// <summary>Accessor for extensibleParameters.</summary>
+        public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
+
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
         [global::System.Management.Automation.ValidateNotNull]
@@ -117,9 +138,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Cmdlets
         ReadOnly = false,
         Description = @"The type of the Job.",
         SerializedName = @"jobType",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.JobType) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.JobType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.JobType JobType { get => _jobDefinitionBody.JobType ?? ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.JobType)""); set => _jobDefinitionBody.JobType = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("OnPremToCloud", "CloudToCloud")]
+        public string JobType { get => _jobDefinitionBody.JobType ?? null; set => _jobDefinitionBody.JobType = value; }
 
         /// <summary>
         /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
@@ -147,7 +168,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Cmdlets
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.HttpPipeline Pipeline { get; set; }
+        public Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.HttpPipeline Pipeline { get; set; }
 
         /// <summary>Backing field for <see cref="ProjectName" /> property.</summary>
         private string _projectName;
@@ -243,7 +264,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Cmdlets
         [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.DefaultInfo(
         Name = @"",
         Description =@"",
-        Script = @"(Get-AzContext).Subscription.Id")]
+        Script = @"(Get-AzContext).Subscription.Id",
+        SetCondition = @"")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.ParameterCategory.Path)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
@@ -274,24 +296,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Cmdlets
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IErrorResponse</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IJobDefinition">Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IJobDefinition</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinition">Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinition</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IJobDefinition> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinition> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -314,6 +336,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
+            if (1 ==_responseSize)
+            {
+                // Flush buffer
+                WriteObject(_firstResponse);
+            }
             var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
             if (telemetryInfo != null)
             {
@@ -378,8 +405,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Cmdlets
                         WriteError(new global::System.Management.Automation.ErrorRecord( new global::System.Exception(messageData().Message), string.Empty, global::System.Management.Automation.ErrorCategory.NotSpecified, null ) );
                         return ;
                     }
+                    case Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Events.Progress:
+                    {
+                        var data = messageData();
+                        int progress = (int)data.Value;
+                        string activityMessage, statusDescription;
+                        global::System.Management.Automation.ProgressRecordType recordType;
+                        if (progress < 100)
+                        {
+                            activityMessage = "In progress";
+                            statusDescription = "Checking operation status";
+                            recordType = System.Management.Automation.ProgressRecordType.Processing;
+                        }
+                        else
+                        {
+                            activityMessage = "Completed";
+                            statusDescription = "Completed";
+                            recordType = System.Management.Automation.ProgressRecordType.Completed;
+                        }
+                        WriteProgress(new global::System.Management.Automation.ProgressRecord(1, activityMessage, statusDescription)
+                        {
+                            PercentComplete = progress,
+                        RecordType = recordType
+                        });
+                        return ;
+                    }
                 }
-                await Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Module.Instance.Signal(id, token, messageData, (i,t,m) => ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener)this).Signal(i,t,()=> Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.EventDataConverter.ConvertFrom( m() ) as Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.EventData ), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
+                await Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Module.Instance.Signal(id, token, messageData, (i, t, m) => ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener)this).Signal(i, t, () => Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.EventDataConverter.ConvertFrom(m()) as Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.EventData), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
                 if (token.IsCancellationRequested)
                 {
                     return ;
@@ -389,7 +441,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Cmdlets
         }
 
         /// <summary>
-        /// Intializes a new instance of the <see cref="NewAzStorageMoverJobDefinition_CreateExpanded" /> cmdlet class.
+        /// Initializes a new instance of the <see cref="NewAzStorageMoverJobDefinition_CreateExpanded" /> cmdlet class.
         /// </summary>
         public NewAzStorageMoverJobDefinition_CreateExpanded()
         {
@@ -443,7 +495,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Cmdlets
             using( NoSynchronizationContext )
             {
                 await ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
+                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName, this.ExtensibleParameters);
                 if (null != HttpPipelinePrepend)
                 {
                     Pipeline.Prepend((this.CommandRuntime as Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.PowerShell.IAsyncCommandRuntimeExtensions)?.Wrap(HttpPipelinePrepend) ?? HttpPipelinePrepend);
@@ -456,12 +508,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.JobDefinitionsCreateOrUpdate(SubscriptionId, ResourceGroupName, StorageMoverName, ProjectName, Name, _jobDefinitionBody, onOk, onDefault, this, Pipeline);
+                    await this.Client.JobDefinitionsCreateOrUpdate(SubscriptionId, ResourceGroupName, StorageMoverName, ProjectName, Name, _jobDefinitionBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SerializationMode.IncludeCreate);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,StorageMoverName=StorageMoverName,ProjectName=ProjectName,Name=Name,body=_jobDefinitionBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,StorageMoverName=StorageMoverName,ProjectName=ProjectName,Name=Name})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -499,12 +551,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IErrorResponse</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IErrorResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -521,15 +573,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, StorageMoverName=StorageMoverName, ProjectName=ProjectName, Name=Name, body=_jobDefinitionBody })
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IErrorResponse>(responseMessage, await response);
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, StorageMoverName=StorageMoverName, ProjectName=ProjectName, Name=Name, body=_jobDefinitionBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -539,12 +591,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IJobDefinition">Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IJobDefinition</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinition">Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinition</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IJobDefinition> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinition> response)
         {
             using( NoSynchronizationContext )
             {
@@ -556,8 +608,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IJobDefinition
-                WriteObject((await response));
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinition
+                var result = (await response);
+                if (null != result)
+                {
+                    if (0 == _responseSize)
+                    {
+                        _firstResponse = result;
+                        _responseSize = 1;
+                    }
+                    else
+                    {
+                        if (1 ==_responseSize)
+                        {
+                            // Flush buffer
+                            WriteObject(_firstResponse.AddMultipleTypeNameIntoPSObject());
+                        }
+                        WriteObject(result.AddMultipleTypeNameIntoPSObject());
+                        _responseSize = 2;
+                    }
+                }
             }
         }
     }

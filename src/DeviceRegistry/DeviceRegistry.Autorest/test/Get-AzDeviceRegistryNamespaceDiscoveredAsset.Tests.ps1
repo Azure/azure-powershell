@@ -58,7 +58,7 @@ Describe 'Get-AzDeviceRegistryNamespaceDiscoveredAsset' {
         $result.SerialNumber | Should -Be "64-103816-519918-8"
         $result.DocumentationUri | Should -Be "https://www.example.com/manual/"
         $result.Dataset | Should -HaveCount 2
-        $result.Event | Should -HaveCount 2
+        $result.EventGroup | Should -HaveCount 2
         $result.Stream | Should -HaveCount 2
         $result.ManagementGroup | Should -HaveCount 1
     }
@@ -85,7 +85,7 @@ Describe 'Get-AzDeviceRegistryNamespaceDiscoveredAsset' {
         $result.SerialNumber | Should -Be "64-103816-519918-8"
         $result.DocumentationUri | Should -Be "https://www.example.com/manual/"
         $result.Dataset | Should -HaveCount 2
-        $result.Event | Should -HaveCount 2
+        $result.EventGroup | Should -HaveCount 2
         $result.Stream | Should -HaveCount 2
         $result.ManagementGroup | Should -HaveCount 1
     }
@@ -118,7 +118,7 @@ Describe 'Get-AzDeviceRegistryNamespaceDiscoveredAsset' {
         $result.SerialNumber | Should -Be "64-103816-519918-8"
         $result.DocumentationUri | Should -Be "https://www.example.com/manual/"
         $result.Dataset | Should -HaveCount 2
-        $result.Event | Should -HaveCount 2
+        $result.EventGroup | Should -HaveCount 2
         $result.Stream | Should -HaveCount 2
         $result.ManagementGroup | Should -HaveCount 1
     }

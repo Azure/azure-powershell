@@ -14,15 +14,20 @@ namespace Microsoft.Azure.Management.Search.Models
     public static class SearchSemanticSearch
     {
         /// <summary>
-        /// Indicates that semantic search is disabled for the search service.
+        /// Indicates that semantic reranker is disabled for the search service. This
+        /// is the default.
         /// </summary>
         public const string Disabled = "disabled";
         /// <summary>
-        /// Enables semantic search on a search service and indicates that it is to be used within the limits of the free tier. This would cap the volume of semantic search requests and is offered at no extra charge. This is the default for newly provisioned search services.
+        /// Enables semantic reranker on a search service and indicates that it is to
+        /// be used within the limits of the free plan. The free plan would cap the
+        /// volume of semantic ranking requests and is offered at no extra charge. This
+        /// is the default for newly provisioned search services.
         /// </summary>
         public const string Free = "free";
         /// <summary>
-        /// Enables semantic search on a search service as a billable feature, with higher throughput and volume of semantic search queries.
+        /// Enables semantic reranker on a search service as a billable feature, with
+        /// higher throughput and volume of semantically reranked queries.
         /// </summary>
         public const string Standard = "standard";
     }

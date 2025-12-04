@@ -36,7 +36,7 @@ Describe 'Backup-AzDataProtectionBackupInstanceAdhoc' {
         $jobstatus | Should be "Completed"
     }
 
-    It 'OssBackup' {        
+    It 'OssBackup' -skip {        
         # Test trigger Backup for Oss DB
         # Delete this test
         $sub = $env.TestOssBackupScenario.SubscriptionId

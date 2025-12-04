@@ -31,7 +31,7 @@ Get-AzWorkloadsMonitor -ResourceGroupName ad-ams-rg -Name ad-ams
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IMonitorsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.IMonitor
+Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IMonitor
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -47,7 +47,7 @@ INPUTOBJECT <IMonitorsIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.workloads/get-azworkloadsmonitor
 #>
 function Get-AzWorkloadsMonitor {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.IMonitor])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IMonitor])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -78,7 +78,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IMonitorsIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -137,6 +136,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -161,9 +169,7 @@ begin {
             List = 'Az.Monitors.private\Get-AzWorkloadsMonitor_List';
             List1 = 'Az.Monitors.private\Get-AzWorkloadsMonitor_List1';
         }
-        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -177,6 +183,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -235,7 +244,7 @@ Get-AzWorkloadsProviderInstance -InputObject "/subscriptions/49d64d54-e966-4c46-
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IMonitorsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.IProviderInstance
+Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IProviderInstance
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -247,11 +256,18 @@ INPUTOBJECT <IMonitorsIdentity>: Identity Parameter
   [ProviderInstanceName <String>]: Name of the provider instance.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
+
+MONITORINPUTOBJECT <IMonitorsIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [MonitorName <String>]: Name of the SAP monitor resource.
+  [ProviderInstanceName <String>]: Name of the provider instance.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
 .Link
 https://learn.microsoft.com/powershell/module/az.workloads/get-azworkloadsproviderinstance
 #>
 function Get-AzWorkloadsProviderInstance {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.IProviderInstance])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IProviderInstance])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -262,6 +278,7 @@ param(
     ${MonitorName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityMonitor', Mandatory)]
     [Alias('ProviderInstanceName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Path')]
     [System.String]
@@ -288,8 +305,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IMonitorsIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityMonitor', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IMonitorsIdentity]
+    # Identity Parameter
+    ${MonitorInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -347,6 +369,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -368,11 +399,10 @@ begin {
         $mapping = @{
             Get = 'Az.Monitors.private\Get-AzWorkloadsProviderInstance_Get';
             GetViaIdentity = 'Az.Monitors.private\Get-AzWorkloadsProviderInstance_GetViaIdentity';
+            GetViaIdentityMonitor = 'Az.Monitors.private\Get-AzWorkloadsProviderInstance_GetViaIdentityMonitor';
             List = 'Az.Monitors.private\Get-AzWorkloadsProviderInstance_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -386,6 +416,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -442,7 +475,7 @@ Get-AzWorkloadsSapLandscapeMonitor -InputObject "/subscriptions/49d64d54-e966-4c
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IMonitorsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.ISapLandscapeMonitor
+Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.ISapLandscapeMonitor
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -458,7 +491,7 @@ INPUTOBJECT <IMonitorsIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.workloads/get-azworkloadssaplandscapemonitor
 #>
 function Get-AzWorkloadsSapLandscapeMonitor {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.ISapLandscapeMonitor])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.ISapLandscapeMonitor])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -485,7 +518,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IMonitorsIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -544,6 +576,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -566,9 +607,7 @@ begin {
             Get = 'Az.Monitors.private\Get-AzWorkloadsSapLandscapeMonitor_Get';
             GetViaIdentity = 'Az.Monitors.private\Get-AzWorkloadsSapLandscapeMonitor_GetViaIdentity';
         }
-        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -582,6 +621,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -627,19 +669,19 @@ end {
 
 <#
 .Synopsis
-Creates a SAP monitor for the specified subscription, resource group, and resource name.
+Create a SAP monitor for the specified subscription, resource group, and resource name.
 .Description
-Creates a SAP monitor for the specified subscription, resource group, and resource name.
+Create a SAP monitor for the specified subscription, resource group, and resource name.
 .Example
 New-AzWorkloadsMonitor -Name suha-160323-ams4 -ResourceGroupName suha-0802-rg1 -SubscriptionId 49d64d54-e966-4c46-a868-1999802b762c -Location eastus2euap -AppLocation eastus -ManagedResourceGroupName mrg-1603234 -MonitorSubnet /subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/e2e-portal-wlmonitor-do-not-delete/providers/Microsoft.Network/virtualNetworks/vnetpeeringtest/subnets/snet-1603-3 -RoutingPreference RouteAll -ZoneRedundancyPreference Disabled
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.IMonitor
+Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IMonitor
 .Link
 https://learn.microsoft.com/powershell/module/az.workloads/new-azworkloadsmonitor
 #>
 function New-AzWorkloadsMonitor {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.IMonitor])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IMonitor])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -663,72 +705,84 @@ param(
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Body')]
     [System.String]
     # The geo-location where the resource lives
     ${Location},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Body')]
     [System.String]
     # The SAP monitor resources will be deployed in the SAP monitoring region.
     # The subnet region should be same as the SAP monitoring region.
     ${AppLocation},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Support.ManagedServiceIdentityType])]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Support.ManagedServiceIdentityType]
-    # Type of manage identity
-    ${IdentityType},
+    [System.Management.Automation.SwitchParameter]
+    # Determines whether to enable a system-assigned identity for the resource.
+    ${EnableSystemAssignedIdentity},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Body')]
     [System.String]
     # The ARM ID of the Log Analytics Workspace that is used for SAP monitoring.
     ${LogAnalyticsWorkspaceArmId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Body')]
     [System.String]
     # Managed resource group name
     ${ManagedResourceGroupName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Body')]
     [System.String]
     # The subnet which the SAP monitor will be deployed in
     ${MonitorSubnet},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Support.RoutingPreference])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.PSArgumentCompleterAttribute("Default", "RouteAll")]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Support.RoutingPreference]
+    [System.String]
     # Sets the routing preference of the SAP monitor.
     # By default only RFC1918 traffic is routed to the customer VNET.
     ${RoutingPreference},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api30.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api30.IUserAssignedIdentities]))]
-    [System.Collections.Hashtable]
-    # User assigned identities dictionary
+    [System.String[]]
+    # The array of user assigned identities associated with the resource.
+    # The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
     ${UserAssignedIdentity},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Body')]
     [System.String]
     # Sets the preference for zone redundancy on resources created for the SAP monitor.
     # By default resources will be created which do not support zone redundancy.
     ${ZoneRedundancyPreference},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -798,6 +852,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -818,10 +881,10 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.Monitors.private\New-AzWorkloadsMonitor_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.Monitors.private\New-AzWorkloadsMonitor_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.Monitors.private\New-AzWorkloadsMonitor_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -835,6 +898,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -880,39 +946,41 @@ end {
 
 <#
 .Synopsis
-Creates a provider instance for the specified subscription, resource group, SAP monitor name, and resource name.
+Create a provider instance for the specified subscription, resource group, SAP monitor name, and resource name.
 .Description
-Creates a provider instance for the specified subscription, resource group, SAP monitor name, and resource name.
+Create a provider instance for the specified subscription, resource group, SAP monitor name, and resource name.
 .Example
 $providerSetting = New-AzWorkloadsProviderSqlServerInstanceObject -Password '<password>' -Port 1433 -Username '<username>' -Hostname 10.1.14.5 -SapSid X00 -SslPreference Disabled
-        $providerSetting.ProviderType | Should -Be "MsSqlServer"
-        
+
 New-AzWorkloadsProviderInstance -MonitorName suha-0202-ams9 -Name sql-prov-1 -ResourceGroupName suha-0802-rg1 -SubscriptionId 49d64d54-e966-4c46-a868-1999802b762c -ProviderSetting $providerSetting
 .Example
 New-AzWorkloadsProviderInstance -MonitorName suha-160323-ams4 -Name suha-sql-3 -ResourceGroupName suha-0802-rg1 -SubscriptionId 49d64d54-e966-4c46-a868-1999802b762c -ProviderSetting '{"sslPreference":"Disabled","providerType":"MsSqlServer","hostname":"10.1.14.5","sapSid":"X00","dbPort":"1433","dbUsername":"","dbPassword":""}'
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IMonitorsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.IProviderInstance
+Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IProviderInstance
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+MONITORINPUTOBJECT <IMonitorsIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [MonitorName <String>]: Name of the SAP monitor resource.
+  [ProviderInstanceName <String>]: Name of the provider instance.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
 PROVIDERSETTING <IProviderSpecificProperties>: Defines the provider specific properties.
-  ProviderType <String>: The provider type. For example, the value can be SapHana.
+  [ProviderType <String>]: The provider type. For example, the value can be SapHana.
 .Link
 https://learn.microsoft.com/powershell/module/az.workloads/new-azworkloadsproviderinstance
 #>
 function New-AzWorkloadsProviderInstance {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.IProviderInstance])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IProviderInstance])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Path')]
-    [System.String]
-    # Name of the SAP monitor resource.
-    ${MonitorName},
-
     [Parameter(Mandatory)]
     [Alias('ProviderInstanceName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Path')]
@@ -920,40 +988,72 @@ param(
     # Name of the provider instance.
     ${Name},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Path')]
+    [System.String]
+    # Name of the SAP monitor resource.
+    ${MonitorName},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Support.ManagedServiceIdentityType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Support.ManagedServiceIdentityType]
-    # Type of manage identity
-    ${IdentityType},
+    [Parameter(ParameterSetName='CreateViaIdentityMonitorExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IMonitorsIdentity]
+    # Identity Parameter
+    ${MonitorInputObject},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityMonitorExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api30.IUserAssignedIdentities]))]
-    [System.Collections.Hashtable]
-    # User assigned identities dictionary
-    ${IdentityUserAssignedIdentity},
+    [System.Management.Automation.SwitchParameter]
+    # Determines whether to enable a system-assigned identity for the resource.
+    ${EnableSystemAssignedIdentity},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityMonitorExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.IProviderSpecificProperties]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IProviderSpecificProperties]
     # Defines the provider specific properties.
-    # To construct, see NOTES section for PROVIDERSETTING properties and create a hash table.
     ${ProviderSetting},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityMonitorExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Body')]
+    [System.String[]]
+    # The array of user assigned identities associated with the resource.
+    # The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+    ${UserAssignedIdentity},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -1023,6 +1123,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1043,10 +1152,11 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.Monitors.private\New-AzWorkloadsProviderInstance_CreateExpanded';
+            CreateViaIdentityMonitorExpanded = 'Az.Monitors.private\New-AzWorkloadsProviderInstance_CreateViaIdentityMonitorExpanded';
+            CreateViaJsonFilePath = 'Az.Monitors.private\New-AzWorkloadsProviderInstance_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.Monitors.private\New-AzWorkloadsProviderInstance_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1060,6 +1170,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1105,14 +1218,14 @@ end {
 
 <#
 .Synopsis
-Creates a SAP Landscape Monitor Dashboard for the specified subscription, resource group, and resource name.
+Create a SAP Landscape Monitor Dashboard for the specified subscription, resource group, and resource name.
 .Description
-Creates a SAP Landscape Monitor Dashboard for the specified subscription, resource group, and resource name.
+Create a SAP Landscape Monitor Dashboard for the specified subscription, resource group, and resource name.
 .Example
 New-AzWorkloadsSapLandscapeMonitor -MonitorName suha-0202-ams9 -ResourceGroupName suha-0802-rg1 -SubscriptionId 49d64d54-e966-4c46-a868-1999802b762c -GroupingLandscape '{"name":"Prod","topSid":["SID1","SID2"]}' -GroupingSapApplication '{"name":"ERP1","topSid":["SID1","SID2"]}' -TopMetricsThreshold '{"name":"Instance Availability","green":90,"yellow":75,"red":50}'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.ISapLandscapeMonitor
+Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.ISapLandscapeMonitor
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1120,11 +1233,11 @@ To create the parameters described below, construct a hash table containing the 
 
 GROUPINGLANDSCAPE <ISapLandscapeMonitorSidMapping[]>: Gets or sets the list of landscape to SID mappings.
   [Name <String>]: Gets or sets the name of the grouping.
-  [TopSid <String[]>]: Gets or sets the list of SID's.
+  [TopSid <List<String>>]: Gets or sets the list of SID's.
 
 GROUPINGSAPAPPLICATION <ISapLandscapeMonitorSidMapping[]>: Gets or sets the list of Sap Applications to SID mappings.
   [Name <String>]: Gets or sets the name of the grouping.
-  [TopSid <String[]>]: Gets or sets the list of SID's.
+  [TopSid <List<String>>]: Gets or sets the list of SID's.
 
 TOPMETRICSTHRESHOLD <ISapLandscapeMonitorMetricThresholds[]>: Gets or sets the list Top Metric Thresholds for SAP Landscape Monitor Dashboard
   [Green <Single?>]: Gets or sets the threshold value for Green.
@@ -1135,7 +1248,7 @@ TOPMETRICSTHRESHOLD <ISapLandscapeMonitorMetricThresholds[]>: Gets or sets the l
 https://learn.microsoft.com/powershell/module/az.workloads/new-azworkloadssaplandscapemonitor
 #>
 function New-AzWorkloadsSapLandscapeMonitor {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.ISapLandscapeMonitor])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.ISapLandscapeMonitor])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -1158,29 +1271,38 @@ param(
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.ISapLandscapeMonitorSidMapping[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.ISapLandscapeMonitorSidMapping[]]
     # Gets or sets the list of landscape to SID mappings.
-    # To construct, see NOTES section for GROUPINGLANDSCAPE properties and create a hash table.
     ${GroupingLandscape},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.ISapLandscapeMonitorSidMapping[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.ISapLandscapeMonitorSidMapping[]]
     # Gets or sets the list of Sap Applications to SID mappings.
-    # To construct, see NOTES section for GROUPINGSAPAPPLICATION properties and create a hash table.
     ${GroupingSapApplication},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.ISapLandscapeMonitorMetricThresholds[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.ISapLandscapeMonitorMetricThresholds[]]
     # Gets or sets the list Top Metric Thresholds for SAP Landscape Monitor Dashboard
-    # To construct, see NOTES section for TOPMETRICSTHRESHOLD properties and create a hash table.
     ${TopMetricsThreshold},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -1238,6 +1360,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1258,10 +1389,10 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.Monitors.private\New-AzWorkloadsSapLandscapeMonitor_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.Monitors.private\New-AzWorkloadsSapLandscapeMonitor_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.Monitors.private\New-AzWorkloadsSapLandscapeMonitor_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1275,6 +1406,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1331,7 +1465,7 @@ Remove-AzWorkloadsMonitor -InputObject "/subscriptions/49d64d54-e966-4c46-a868-1
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IMonitorsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api30.IOperationStatusResult
+Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IOperationStatusResult
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1347,7 +1481,7 @@ INPUTOBJECT <IMonitorsIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.workloads/remove-azworkloadsmonitor
 #>
 function Remove-AzWorkloadsMonitor {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api30.IOperationStatusResult])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IOperationStatusResult])]
 [CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Delete', Mandatory)]
@@ -1375,7 +1509,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IMonitorsIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -1452,6 +1585,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1474,9 +1616,7 @@ begin {
             Delete = 'Az.Monitors.private\Remove-AzWorkloadsMonitor_Delete';
             DeleteViaIdentity = 'Az.Monitors.private\Remove-AzWorkloadsMonitor_DeleteViaIdentity';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1490,6 +1630,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1546,7 +1689,7 @@ Remove-AzWorkloadsProviderInstance -InputObject "/subscriptions/49d64d54-e966-4c
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IMonitorsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api30.IOperationStatusResult
+Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IOperationStatusResult
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1558,11 +1701,18 @@ INPUTOBJECT <IMonitorsIdentity>: Identity Parameter
   [ProviderInstanceName <String>]: Name of the provider instance.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
+
+MONITORINPUTOBJECT <IMonitorsIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [MonitorName <String>]: Name of the SAP monitor resource.
+  [ProviderInstanceName <String>]: Name of the provider instance.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
 .Link
 https://learn.microsoft.com/powershell/module/az.workloads/remove-azworkloadsproviderinstance
 #>
 function Remove-AzWorkloadsProviderInstance {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api30.IOperationStatusResult])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IOperationStatusResult])]
 [CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Delete', Mandatory)]
@@ -1572,6 +1722,7 @@ param(
     ${MonitorName},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityMonitor', Mandatory)]
     [Alias('ProviderInstanceName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Path')]
     [System.String]
@@ -1596,8 +1747,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IMonitorsIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityMonitor', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IMonitorsIdentity]
+    # Identity Parameter
+    ${MonitorInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -1673,6 +1829,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1694,10 +1859,9 @@ begin {
         $mapping = @{
             Delete = 'Az.Monitors.private\Remove-AzWorkloadsProviderInstance_Delete';
             DeleteViaIdentity = 'Az.Monitors.private\Remove-AzWorkloadsProviderInstance_DeleteViaIdentity';
+            DeleteViaIdentityMonitor = 'Az.Monitors.private\Remove-AzWorkloadsProviderInstance_DeleteViaIdentityMonitor';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1711,6 +1875,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1810,7 +1977,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IMonitorsIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -1875,6 +2041,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1897,9 +2072,7 @@ begin {
             Delete = 'Az.Monitors.private\Remove-AzWorkloadsSapLandscapeMonitor_Delete';
             DeleteViaIdentity = 'Az.Monitors.private\Remove-AzWorkloadsSapLandscapeMonitor_DeleteViaIdentity';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1913,6 +2086,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1958,9 +2134,9 @@ end {
 
 <#
 .Synopsis
-Patches the Tags field of a SAP monitor for the specified subscription, resource group, and SAP monitor name.
+Update a SAP monitor for the specified subscription, resource group, and resource name.
 .Description
-Patches the Tags field of a SAP monitor for the specified subscription, resource group, and SAP monitor name.
+Update a SAP monitor for the specified subscription, resource group, and resource name.
 .Example
 Update-AzWorkloadsMonitor -MonitorName suha-160323-ams7 -ResourceGroupName suha-0802-rg1 -SubscriptionId 49d64d54-e966-4c46-a868-1999802b762c -Tag @{name="tagValue"}
 .Example
@@ -1969,7 +2145,7 @@ Update-AzWorkloadsMonitor -InputObject "/subscriptions/49d64d54-e966-4c46-a868-1
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IMonitorsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.IMonitor
+Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IMonitor
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1985,7 +2161,7 @@ INPUTOBJECT <IMonitorsIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.workloads/update-azworkloadsmonitor
 #>
 function Update-AzWorkloadsMonitor {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.IMonitor])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IMonitor])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -2013,29 +2189,68 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IMonitorsIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Support.ManagedServiceIdentityType])]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Support.ManagedServiceIdentityType]
-    # Type of manage identity
-    ${IdentityType},
+    [System.String]
+    # The SAP monitor resources will be deployed in the SAP monitoring region.
+    # The subnet region should be same as the SAP monitoring region.
+    ${AppLocation},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.IUpdateMonitorRequestTags]))]
+    [System.Nullable[System.Boolean]]
+    # Determines whether to enable a system-assigned identity for the resource.
+    ${EnableSystemAssignedIdentity},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Body')]
+    [System.String]
+    # The ARM ID of the Log Analytics Workspace that is used for SAP monitoring.
+    ${LogAnalyticsWorkspaceArmId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Body')]
+    [System.String]
+    # Managed resource group name
+    ${ManagedResourceGroupName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Body')]
+    [System.String]
+    # The subnet which the SAP monitor will be deployed in
+    ${MonitorSubnet},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.PSArgumentCompleterAttribute("Default", "RouteAll")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Body')]
+    [System.String]
+    # Sets the routing preference of the SAP monitor.
+    # By default only RFC1918 traffic is routed to the customer VNET.
+    ${RoutingPreference},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
-    # Gets or sets the Resource tags.
+    # Resource tags.
     ${Tag},
 
     [Parameter()]
+    [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api30.IUserAssignedIdentities]))]
-    [System.Collections.Hashtable]
-    # User assigned identities dictionary
+    [System.String[]]
+    # The array of user assigned identities associated with the resource.
+    # The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
     ${UserAssignedIdentity},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Body')]
+    [System.String]
+    # Sets the preference for zone redundancy on resources created for the SAP monitor.
+    # By default resources will be created which do not support zone redundancy.
+    ${ZoneRedundancyPreference},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -2045,6 +2260,12 @@ param(
     # The DefaultProfile parameter is not functional.
     # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Runtime')]
@@ -2065,6 +2286,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Runtime')]
@@ -2093,6 +2320,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -2115,9 +2351,7 @@ begin {
             UpdateExpanded = 'Az.Monitors.private\Update-AzWorkloadsMonitor_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.Monitors.private\Update-AzWorkloadsMonitor_UpdateViaIdentityExpanded';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -2131,6 +2365,273 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Update a provider instance for the specified subscription, resource group, SAP monitor name, and resource name.
+.Description
+Update a provider instance for the specified subscription, resource group, SAP monitor name, and resource name.
+.Example
+$providerSetting = New-AzWorkloadsProviderSqlServerInstanceObject -Password '<password>' -Port 1433 -Username '<username>' -Hostname 10.1.14.5 -SapSid X00 -SslPreference Disabled
+
+Update-AzWorkloadsProviderInstance -MonitorName sap-0202-ams9 -Name sql-prov-1 -ResourceGroupName sap-0802-rg1 -SubscriptionId 49d64d54-e966-4c46-a868-1999802b762c -ProviderSetting $providerSetting
+.Example
+Update-AzWorkloadsProviderInstance -MonitorName sap-160323-ams4 -Name sap-sql-3 -ResourceGroupName sap-0802-rg1 -SubscriptionId 49d64d54-e966-4c46-a868-1999802b762c -ProviderSetting '{"sslPreference":"Disabled","providerType":"MsSqlServer","hostname":"10.1.14.5","sapSid":"X00","dbPort":"1433","dbUsername":"","dbPassword":""}'
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IMonitorsIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IProviderInstance
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMonitorsIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [MonitorName <String>]: Name of the SAP monitor resource.
+  [ProviderInstanceName <String>]: Name of the provider instance.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+MONITORINPUTOBJECT <IMonitorsIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [MonitorName <String>]: Name of the SAP monitor resource.
+  [ProviderInstanceName <String>]: Name of the provider instance.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+PROVIDERSETTING <IProviderSpecificProperties>: Defines the provider specific properties.
+  [ProviderType <String>]: The provider type. For example, the value can be SapHana.
+.Link
+https://learn.microsoft.com/powershell/module/az.workloads/update-azworkloadsproviderinstance
+#>
+function Update-AzWorkloadsProviderInstance {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IProviderInstance])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Path')]
+    [System.String]
+    # Name of the SAP monitor resource.
+    ${MonitorName},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityMonitorExpanded', Mandatory)]
+    [Alias('ProviderInstanceName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Path')]
+    [System.String]
+    # Name of the provider instance.
+    ${Name},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IMonitorsIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityMonitorExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IMonitorsIdentity]
+    # Identity Parameter
+    ${MonitorInputObject},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Body')]
+    [System.Nullable[System.Boolean]]
+    # Determines whether to enable a system-assigned identity for the resource.
+    ${EnableSystemAssignedIdentity},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IProviderSpecificProperties]
+    # Defines the provider specific properties.
+    ${ProviderSetting},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Body')]
+    [System.String[]]
+    # The array of user assigned identities associated with the resource.
+    # The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+    ${UserAssignedIdentity},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            UpdateExpanded = 'Az.Monitors.private\Update-AzWorkloadsProviderInstance_UpdateExpanded';
+            UpdateViaIdentityExpanded = 'Az.Monitors.private\Update-AzWorkloadsProviderInstance_UpdateViaIdentityExpanded';
+            UpdateViaIdentityMonitorExpanded = 'Az.Monitors.private\Update-AzWorkloadsProviderInstance_UpdateViaIdentityMonitorExpanded';
+        }
+        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2185,7 +2686,7 @@ New-AzWorkloadsSapLandscapeMonitor -MonitorName suha-0202-ams9 -ResourceGroupNam
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IMonitorsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.ISapLandscapeMonitor
+Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.ISapLandscapeMonitor
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -2193,11 +2694,11 @@ To create the parameters described below, construct a hash table containing the 
 
 GROUPINGLANDSCAPE <ISapLandscapeMonitorSidMapping[]>: Gets or sets the list of landscape to SID mappings.
   [Name <String>]: Gets or sets the name of the grouping.
-  [TopSid <String[]>]: Gets or sets the list of SID's.
+  [TopSid <List<String>>]: Gets or sets the list of SID's.
 
 GROUPINGSAPAPPLICATION <ISapLandscapeMonitorSidMapping[]>: Gets or sets the list of Sap Applications to SID mappings.
   [Name <String>]: Gets or sets the name of the grouping.
-  [TopSid <String[]>]: Gets or sets the list of SID's.
+  [TopSid <List<String>>]: Gets or sets the list of SID's.
 
 INPUTOBJECT <IMonitorsIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
@@ -2215,16 +2716,20 @@ TOPMETRICSTHRESHOLD <ISapLandscapeMonitorMetricThresholds[]>: Gets or sets the l
 https://learn.microsoft.com/powershell/module/az.workloads/update-azworkloadssaplandscapemonitor
 #>
 function Update-AzWorkloadsSapLandscapeMonitor {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.ISapLandscapeMonitor])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.ISapLandscapeMonitor])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Path')]
     [System.String]
     # Name of the SAP monitor resource.
     ${MonitorName},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -2232,6 +2737,8 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -2242,32 +2749,43 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IMonitorsIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.ISapLandscapeMonitorSidMapping[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.ISapLandscapeMonitorSidMapping[]]
     # Gets or sets the list of landscape to SID mappings.
-    # To construct, see NOTES section for GROUPINGLANDSCAPE properties and create a hash table.
     ${GroupingLandscape},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.ISapLandscapeMonitorSidMapping[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.ISapLandscapeMonitorSidMapping[]]
     # Gets or sets the list of Sap Applications to SID mappings.
-    # To construct, see NOTES section for GROUPINGSAPAPPLICATION properties and create a hash table.
     ${GroupingSapApplication},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.ISapLandscapeMonitorMetricThresholds[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.ISapLandscapeMonitorMetricThresholds[]]
     # Gets or sets the list Top Metric Thresholds for SAP Landscape Monitor Dashboard
-    # To construct, see NOTES section for TOPMETRICSTHRESHOLD properties and create a hash table.
     ${TopMetricsThreshold},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -2325,6 +2843,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -2346,10 +2873,10 @@ begin {
         $mapping = @{
             UpdateExpanded = 'Az.Monitors.private\Update-AzWorkloadsSapLandscapeMonitor_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.Monitors.private\Update-AzWorkloadsSapLandscapeMonitor_UpdateViaIdentityExpanded';
+            UpdateViaJsonFilePath = 'Az.Monitors.private\Update-AzWorkloadsSapLandscapeMonitor_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.Monitors.private\Update-AzWorkloadsSapLandscapeMonitor_UpdateViaJsonString';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -2363,6 +2890,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2415,12 +2945,12 @@ Create an in-memory object for DB2ProviderInstanceProperties.
 New-AzWorkloadsProviderDB2InstanceObject -Name Sample -Password '' -Port 25000 -Username db2admin -Hostname 10.1.21.4 -SapSid OPA -SslPreference Disabled
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.Db2ProviderInstanceProperties
+Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Db2ProviderInstanceProperties
 .Link
 https://learn.microsoft.com/powershell/module/az.workloads/new-azworkloadsproviderdb2instanceobject
 #>
 function New-AzWorkloadsProviderDB2InstanceObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.DB2ProviderInstanceProperties])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.DB2ProviderInstanceProperties])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -2472,9 +3002,9 @@ param(
     ${SslCertificateUri},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Support.SslPreference])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.PSArgumentCompleterAttribute("Disabled", "RootCertificate", "ServerCertificate")]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Support.SslPreference]
+    [System.String]
     # Gets or sets certificate preference if secure communication is enabled.
     ${SslPreference}
 )
@@ -2486,6 +3016,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -2514,6 +3047,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2566,12 +3102,12 @@ Create an in-memory object for HanaDbProviderInstanceProperties.
 New-AzWorkloadsProviderHanaDbInstanceObject -Name SYSTEMDB -Password ''  -Username SYSTEM -Hostname 10.0.81.4 -InstanceNumber 00 -SapSid X00 -SqlPort 1433 -SslPreference Disabled
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.HanaDbProviderInstanceProperties
+Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.HanaDbProviderInstanceProperties
 .Link
 https://learn.microsoft.com/powershell/module/az.workloads/new-azworkloadsproviderhanadbinstanceobject
 #>
 function New-AzWorkloadsProviderHanaDbInstanceObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.HanaDbProviderInstanceProperties])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.HanaDbProviderInstanceProperties])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -2635,9 +3171,9 @@ param(
     ${SslHostNameInCertificate},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Support.SslPreference])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.PSArgumentCompleterAttribute("Disabled", "RootCertificate", "ServerCertificate")]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Support.SslPreference]
+    [System.String]
     # Gets or sets certificate preference if secure communication is enabled.
     ${SslPreference}
 )
@@ -2649,6 +3185,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -2677,6 +3216,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2729,12 +3271,12 @@ Create an in-memory object for PrometheusHaClusterProviderInstanceProperties.
 New-AzWorkloadsProviderPrometheusHaClusterInstanceObject -ClusterName hacluster -Hostname h20dbvm0 -PrometheusUrl "http://10.0.92.5:964/metrics" -Sid X00 -SslPreference Disabled
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.PrometheusHaClusterProviderInstanceProperties
+Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.PrometheusHaClusterProviderInstanceProperties
 .Link
-https://learn.microsoft.com/powershell/module/az.workloads/new-azworkloadsproviderprometheushaclusterinstanceobject
+https://learn.microsoft.com/powershell/module/Az.Workloads/new-azworkloadsproviderprometheushaclusterinstanceobject
 #>
 function New-AzWorkloadsProviderPrometheusHaClusterInstanceObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.PrometheusHaClusterProviderInstanceProperties])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.PrometheusHaClusterProviderInstanceProperties])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -2768,9 +3310,9 @@ param(
     ${SslCertificateUri},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Support.SslPreference])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.PSArgumentCompleterAttribute("Disabled", "RootCertificate", "ServerCertificate")]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Support.SslPreference]
+    [System.String]
     # Gets or sets certificate preference if secure communication is enabled.
     ${SslPreference}
 )
@@ -2782,6 +3324,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -2810,6 +3355,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2862,12 +3410,12 @@ Create an in-memory object for PrometheusOSProviderInstanceProperties.
 New-AzWorkloadsProviderPrometheusOSInstanceObject -PrometheusUrl "http://10.1.0.4:9100/metrics" -SapSid X00 -SslPreference Disabled
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.PrometheusOSProviderInstanceProperties
+Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.PrometheusOSProviderInstanceProperties
 .Link
-https://learn.microsoft.com/powershell/module/az.workloads/new-azworkloadsproviderprometheusosinstanceobject
+https://learn.microsoft.com/powershell/module/Az.Workloads/new-azworkloadsproviderprometheusosinstanceobject
 #>
 function New-AzWorkloadsProviderPrometheusOSInstanceObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.PrometheusOSProviderInstanceProperties])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.PrometheusOSProviderInstanceProperties])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -2889,9 +3437,9 @@ param(
     ${SslCertificateUri},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Support.SslPreference])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.PSArgumentCompleterAttribute("Disabled", "RootCertificate", "ServerCertificate")]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Support.SslPreference]
+    [System.String]
     # Gets or sets certificate preference if secure communication is enabled.
     ${SslPreference}
 )
@@ -2903,6 +3451,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -2931,6 +3482,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2983,12 +3537,12 @@ Create an in-memory object for SapNetWeaverProviderInstanceProperties.
 New-AzWorkloadsProviderSapNetWeaverInstanceObject -SapClientId 000 -SapHostFileEntry '["10.0.82.4 l13appvm0.ams.azure.com l13appvm0","10.0.82.5 l13ascsvm.ams.azure.com l13ascsvm"]' -SapHostname 10.0.82.4 -SapInstanceNr 00 -SapPassword $password -SapSid L13 -SapUsername AMSUSER -SslPreference Disabled
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.SapNetWeaverProviderInstanceProperties
+Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.SapNetWeaverProviderInstanceProperties
 .Link
-https://learn.microsoft.com/powershell/module/az.workloads/new-azworkloadsprovidersapnetweaverinstanceobject
+https://learn.microsoft.com/powershell/module/Az.Workloads/new-azworkloadsprovidersapnetweaverinstanceobject
 #>
 function New-AzWorkloadsProviderSapNetWeaverInstanceObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.SapNetWeaverProviderInstanceProperties])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.SapNetWeaverProviderInstanceProperties])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -3052,9 +3606,9 @@ param(
     ${SslCertificateUri},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Support.SslPreference])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.PSArgumentCompleterAttribute("Disabled", "RootCertificate", "ServerCertificate")]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Support.SslPreference]
+    [System.String]
     # Gets or sets certificate preference if secure communication is enabled.
     ${SslPreference}
 )
@@ -3066,6 +3620,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -3094,6 +3651,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -3146,12 +3706,12 @@ Create an in-memory object for MsSqlServerProviderInstanceProperties.
 New-AzWorkloadsProviderSqlServerInstanceObject -Password $password -Port 1433 -Username ams -Hostname 10.1.14.5 -SapSid X00 -SslPreference Disabled
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.MSSqlServerProviderInstanceProperties
+Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.MSSqlServerProviderInstanceProperties
 .Link
 https://learn.microsoft.com/powershell/module/az.workloads/new-azworkloadsprovidersqlserverinstanceobject
 #>
 function New-AzWorkloadsProviderSqlServerInstanceObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.MsSqlServerProviderInstanceProperties])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.MsSqlServerProviderInstanceProperties])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -3197,9 +3757,9 @@ param(
     ${SslCertificateUri},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Support.SslPreference])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.PSArgumentCompleterAttribute("Disabled", "RootCertificate", "ServerCertificate")]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Support.SslPreference]
+    [System.String]
     # Gets or sets certificate preference if secure communication is enabled.
     ${SslPreference}
 )
@@ -3211,6 +3771,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -3239,6 +3802,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -3291,12 +3857,12 @@ Create an in-memory object for SapLandscapeMonitorMetricThresholds.
 New-AzWorkloadsSapLandscapeMonitorMetricThresholdsObject -Green 90 -Name X00 -Red 50 -Yellow 80
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.SapLandscapeMonitorMetricThresholds
+Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.SapLandscapeMonitorMetricThresholds
 .Link
-https://learn.microsoft.com/powershell/module/Az.Workloads/new-AzWorkloadsSapLandscapeMonitorMetricThresholdsObject
+https://learn.microsoft.com/powershell/module/Az.Workloads/new-azworkloadssaplandscapemonitormetricthresholdsobject
 #>
 function New-AzWorkloadsSapLandscapeMonitorMetricThresholdsObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.SapLandscapeMonitorMetricThresholds])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.SapLandscapeMonitorMetricThresholds])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -3331,6 +3897,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -3359,6 +3928,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -3411,12 +3983,12 @@ Create an in-memory object for SapLandscapeMonitorSidMapping.
 New-AzWorkloadsSapLandscapeMonitorSidMappingObject -Name Prod -TopSid "{SID2,SID1}"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.SapLandscapeMonitorSidMapping
+Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.SapLandscapeMonitorSidMapping
 .Link
-https://learn.microsoft.com/powershell/module/Az.Workloads/new-AzWorkloadsSapLandscapeMonitorSidMappingObject
+https://learn.microsoft.com/powershell/module/Az.Workloads/new-azworkloadssaplandscapemonitorsidmappingobject
 #>
 function New-AzWorkloadsSapLandscapeMonitorSidMappingObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.SapLandscapeMonitorSidMapping])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.SapLandscapeMonitorSidMapping])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -3439,6 +4011,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -3467,6 +4042,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

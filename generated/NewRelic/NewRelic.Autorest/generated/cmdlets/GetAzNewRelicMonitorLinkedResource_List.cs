@@ -11,7 +11,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Cmdlets
     using System;
 
     /// <summary>
-    /// List all Azure resources associated to the same NewRelic organization and account as the target resource.
+    /// Lists all Azure resources that are linked to the same New Relic organization as the specified monitor resource, helping
+    /// you understand the scope of integration
     /// </summary>
     /// <remarks>
     /// [OpenAPI] ListLinkedResources=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/NewRelic.Observability/monitors/{monitorName}/listLinkedResources"
@@ -19,9 +20,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Cmdlets
     [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzNewRelicMonitorLinkedResource_List", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ILinkedResource))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Description(@"List all Azure resources associated to the same NewRelic organization and account as the target resource.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Description(@"Lists all Azure resources that are linked to the same New Relic organization as the specified monitor resource, helping you understand the scope of integration")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/NewRelic.Observability/monitors/{monitorName}/listLinkedResources", ApiVersion = "2024-01-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/NewRelic.Observability/monitors/{monitorName}/listLinkedResources", ApiVersion = "2025-05-01-preview")]
     public partial class GetAzNewRelicMonitorLinkedResource_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IContext

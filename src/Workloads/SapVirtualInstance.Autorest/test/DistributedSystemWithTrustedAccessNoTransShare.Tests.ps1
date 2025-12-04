@@ -16,9 +16,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'DistributedSystemWithTrustedA
 
 Describe 'DistributedSystemWithTrustedAccessNoTransShare' {
     It 'CreateDistributedSystemWithTrustedAccessNoTransShare' {
-        $MsiIdentityName = @{ $env.IdentityName = @{}}
         $CreateDistributedSystemWithTrustedAccessNoTransShareConfig = Join-Path $PSScriptRoot $env.CreateDistributedSystemWithTrustedAccessNoTransShareConfigPath
-        $CreateDistributedSystemWithTrustedAccessNoTransShareResponse = New-AzWorkloadsSapVirtualInstance -SubscriptionId $env.WaaSSubscriptionId -Name $env.CreateDistributedSystemWithTrustedAccessNoTransShareSID -ResourceGroupName $env.ResourceGroupCreateSVI -Environment $env.EnviornmentNonProd -Location $env.Location -SapProduct $env.SapProduct -Configuration $CreateDistributedSystemWithTrustedAccessNoTransShareConfig -ManagedResourcesNetworkAccessType $env.MrgNetAccTypPrvt -IdentityType $env.IdentityType -UserAssignedIdentity $MsiIdentityName
+        $CreateDistributedSystemWithTrustedAccessNoTransShareResponse = New-AzWorkloadsSapVirtualInstance -SubscriptionId $env.WaaSSubscriptionId -Name $env.CreateDistributedSystemWithTrustedAccessNoTransShareSID -ResourceGroupName $env.ResourceGroupCreateSVI -Environment $env.EnviornmentNonProd -Location $env.Location -SapProduct $env.SapProduct -Configuration $CreateDistributedSystemWithTrustedAccessNoTransShareConfig -ManagedResourcesNetworkAccessType $env.MrgNetAccTypPrvt -UserAssignedIdentity @($env.IdentityName)
         $CreateDistributedSystemWithTrustedAccessNoTransShareResponse.provisioningState | Should -Be $env.ProvisioningStateSucceeded
         $CreateDistributedSystemWithTrustedAccessNoTransShareResponse.managedResourcesNetworkAccessType | Should -Be $env.MrgNetAccTypPrvt
         ($CreateDistributedSystemWithTrustedAccessNoTransShareResponse.Configuration | ConvertFrom-Json).configuration.infrastructureConfiguration.storageConfiguration.transportFileShareConfiguration.configurationType | Should -Be $null
@@ -29,9 +28,8 @@ Describe 'DistributedSystemWithTrustedAccessNoTransShare' {
     }
 
     It 'CreateDistributedSystemWithTrustedAccessNoTransShareAlias' {
-        $MsiIdentityName = @{ $env.IdentityName = @{}}
         $CreateDistributedSystemWithTrustedAccessNoTransShareAliasConfig = Join-Path $PSScriptRoot $env.CreateDistributedSystemWithTrustedAccessNoTransShareConfigPath
-        $CreateDistributedSystemWithTrustedAccessNoTransShareAliasResponse = New-AzVIS -SubscriptionId $env.WaaSSubscriptionId -Name $env.CreateDistributedSystemWithTrustedAccessNoTransShareSID -ResourceGroupName $env.ResourceGroupCreateSVI -Environment $env.EnviornmentNonProd -Location $env.Location -SapProduct $env.SapProduct -Configuration $CreateDistributedSystemWithTrustedAccessNoTransShareAliasConfig -ManagedResourcesNetworkAccessType $env.MrgNetAccTypPrvt -IdentityType $env.IdentityType -UserAssignedIdentity $MsiIdentityName
+        $CreateDistributedSystemWithTrustedAccessNoTransShareAliasResponse = New-AzVIS -SubscriptionId $env.WaaSSubscriptionId -Name $env.CreateDistributedSystemWithTrustedAccessNoTransShareSIDAlias -ResourceGroupName $env.ResourceGroupCreateSVI -Environment $env.EnviornmentNonProd -Location $env.Location -SapProduct $env.SapProduct -Configuration $CreateDistributedSystemWithTrustedAccessNoTransShareAliasConfig -ManagedResourcesNetworkAccessType $env.MrgNetAccTypPrvt -UserAssignedIdentity @($env.IdentityName)
         $CreateDistributedSystemWithTrustedAccessNoTransShareAliasResponse.provisioningState | Should -Be $env.ProvisioningStateSucceeded
         $CreateDistributedSystemWithTrustedAccessNoTransShareAliasResponse.managedResourcesNetworkAccessType | Should -Be $env.MrgNetAccTypPrvt
         ($CreateDistributedSystemWithTrustedAccessNoTransShareAliasResponse.Configuration | ConvertFrom-Json).configuration.infrastructureConfiguration.storageConfiguration.transportFileShareConfiguration.configurationType | Should -Be $null

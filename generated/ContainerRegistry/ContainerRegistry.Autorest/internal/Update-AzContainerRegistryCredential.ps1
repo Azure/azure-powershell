@@ -23,11 +23,11 @@ Regenerates one of the login credentials for the specified container registry.
 Update-AzContainerRegistryCredential -ResourceGroupName "MyResourceGroup" -RegistryName "RegistryExample" -PasswordName Password
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IRegenerateCredentialParameters
-.Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IRegenerateCredentialParameters
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IRegistryListCredentialsResult
+Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IRegistryListCredentialsResult
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -56,16 +56,18 @@ INPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
   [WebhookName <String>]: The name of the webhook.
 
 REGENERATECREDENTIALPARAMETER <IRegenerateCredentialParameters>: The parameters used to regenerate the login credential.
-  Name <PasswordName>: Specifies name of the password which should be regenerated -- password or password2.
+  Name <String>: Specifies name of the password which should be regenerated -- password or password2.
 .Link
 https://learn.microsoft.com/powershell/module/az.containerregistry/update-azcontainerregistrycredential
 #>
 function Update-AzContainerRegistryCredential {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IRegistryListCredentialsResult])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IRegistryListCredentialsResult])]
 [CmdletBinding(DefaultParameterSetName='RegenerateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Regenerate', Mandatory)]
     [Parameter(ParameterSetName='RegenerateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='RegenerateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='RegenerateViaJsonString', Mandatory)]
     [Alias('ContainerRegistryName', 'Name', 'ResourceName')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [System.String]
@@ -74,6 +76,8 @@ param(
 
     [Parameter(ParameterSetName='Regenerate', Mandatory)]
     [Parameter(ParameterSetName='RegenerateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='RegenerateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='RegenerateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -82,6 +86,8 @@ param(
 
     [Parameter(ParameterSetName='Regenerate')]
     [Parameter(ParameterSetName='RegenerateExpanded')]
+    [Parameter(ParameterSetName='RegenerateViaJsonFilePath')]
+    [Parameter(ParameterSetName='RegenerateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -89,27 +95,39 @@ param(
     # The value must be an UUID.
     ${SubscriptionId},
 
+    [Parameter(ParameterSetName='RegenerateViaIdentity', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='RegenerateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='Regenerate', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='RegenerateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IRegenerateCredentialParameters]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IRegenerateCredentialParameters]
     # The parameters used to regenerate the login credential.
-    # To construct, see NOTES section for REGENERATECREDENTIALPARAMETER properties and create a hash table.
     ${RegenerateCredentialParameter},
 
     [Parameter(ParameterSetName='RegenerateExpanded', Mandatory)]
     [Parameter(ParameterSetName='RegenerateViaIdentityExpanded', Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.PasswordName])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.PSArgumentCompleterAttribute("password", "password2")]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.PasswordName]
+    [System.String]
     # Specifies name of the password which should be regenerated -- password or password2.
     ${PasswordName},
+
+    [Parameter(ParameterSetName='RegenerateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Regenerate operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='RegenerateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # Json string supplied to the Regenerate operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -167,15 +185,19 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Regenerate = 'Az.ContainerRegistry.private\Update-AzContainerRegistryCredential_Regenerate';
             RegenerateExpanded = 'Az.ContainerRegistry.private\Update-AzContainerRegistryCredential_RegenerateExpanded';
+            RegenerateViaIdentity = 'Az.ContainerRegistry.private\Update-AzContainerRegistryCredential_RegenerateViaIdentity';
             RegenerateViaIdentityExpanded = 'Az.ContainerRegistry.private\Update-AzContainerRegistryCredential_RegenerateViaIdentityExpanded';
+            RegenerateViaJsonFilePath = 'Az.ContainerRegistry.private\Update-AzContainerRegistryCredential_RegenerateViaJsonFilePath';
+            RegenerateViaJsonString = 'Az.ContainerRegistry.private\Update-AzContainerRegistryCredential_RegenerateViaJsonString';
         }
-        if (('Regenerate', 'RegenerateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Regenerate', 'RegenerateExpanded', 'RegenerateViaJsonFilePath', 'RegenerateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -184,6 +206,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

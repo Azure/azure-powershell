@@ -42,15 +42,6 @@ title: DiagnosticSetting
 module-version: 0.1.0
 subject-prefix: DiagnosticSetting
 namespace: Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
-nested-object-to-string: true
-
-# If there are post APIs for some kinds of actions in the RP, you may need to 
-# uncomment following line to support viaIdentity for these post APIs
-# identity-correction-for-post: true
-
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
 
 directive:
   - where:
@@ -107,7 +98,7 @@ directive:
   # 1. Remove the unexpanded parameter set
   # 2. For New-* cmdlets, ViaIdentity is not required, so CreateViaIdentityExpanded is removed as well
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))|^CreateViaIdentityExpanded$
     remove: true
   # Remove Set cmdlet
   - where:
@@ -129,7 +120,7 @@ directive:
       subject-prefix: ""
 
   - model-cmdlet:
-    - MetricSettings
-    - LogSettings
-    - SubscriptionLogSettings
+    - model-name: MetricSettings
+    - model-name: LogSettings
+    - model-name: SubscriptionLogSettings
 ```

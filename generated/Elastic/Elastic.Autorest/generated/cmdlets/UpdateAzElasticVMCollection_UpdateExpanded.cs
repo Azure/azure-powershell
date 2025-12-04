@@ -10,15 +10,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Cmdlets;
     using System;
 
-    /// <summary>update the vm details that will be monitored by the Elastic monitor resource.</summary>
+    /// <summary>
+    /// update the VM details that will be monitored by the Elastic monitor resource, ensuring optimal observability and performance.
+    /// </summary>
     /// <remarks>
     /// [OpenAPI] Update=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/vmCollectionUpdate"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzElasticVMCollection_UpdateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(bool))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.Description(@"update the vm details that will be monitored by the Elastic monitor resource.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.Description(@"update the VM details that will be monitored by the Elastic monitor resource, ensuring optimal observability and performance.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/vmCollectionUpdate", ApiVersion = "2024-03-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/vmCollectionUpdate", ApiVersion = "2025-06-01")]
     public partial class UpdateAzElasticVMCollection_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IContext
@@ -510,7 +512,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 /
-                if (true == MyInvocation?.BoundParameters?.ContainsKey("PassThru"))
+                if (true == InvocationInformation?.BoundParameters?.ContainsKey("PassThru"))
                 {
                     WriteObject(true);
                 }

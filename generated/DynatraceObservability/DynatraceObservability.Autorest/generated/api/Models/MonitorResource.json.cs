@@ -79,7 +79,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models
             }
             __trackedResource = new Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.TrackedResource(json);
             {_property = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonObject>("properties"), out var __jsonProperties) ? Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.MonitorProperties.FromJson(__jsonProperties) : _property;}
-            {_systemData = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonObject>("systemData"), out var __jsonSystemData) ? Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.SystemData.FromJson(__jsonSystemData) : _systemData;}
             {_identity = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonObject>("identity"), out var __jsonIdentity) ? Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IdentityProperties.FromJson(__jsonIdentity) : _identity;}
             AfterFromJson(json);
         }
@@ -105,10 +104,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models
             }
             __trackedResource?.ToJson(container, serializationMode);
             AddIf( null != this._property ? (Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonNode) this._property.ToJson(null,serializationMode) : null, "properties" ,container.Add );
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeRead))
-            {
-                AddIf( null != this._systemData ? (Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonNode) this._systemData.ToJson(null,serializationMode) : null, "systemData" ,container.Add );
-            }
             AddIf( null != this._identity ? (Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonNode) this._identity.ToJson(null,serializationMode) : null, "identity" ,container.Add );
             AfterToJson(ref container);
             return container;

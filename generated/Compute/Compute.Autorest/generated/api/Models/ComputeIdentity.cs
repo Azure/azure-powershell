@@ -143,6 +143,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The command id.",
         SerializedName = @"commandId",
         PossibleTypes = new [] { typeof(string) })]
@@ -154,6 +157,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the gallery Application Definition to be created or updated. The allowed characters are alphabets and numbers with dots, dashes, and periods allowed in the middle. The maximum length is 80 characters.",
         SerializedName = @"galleryApplicationName",
         PossibleTypes = new [] { typeof(string) })]
@@ -165,6 +171,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the gallery Application Version to be created. Needs to follow semantic version name pattern: The allowed characters are digit and period. Digits must be within the range of a 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>",
         SerializedName = @"galleryApplicationVersionName",
         PossibleTypes = new [] { typeof(string) })]
@@ -176,6 +185,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the gallery image definition to be created or updated. The allowed characters are alphabets and numbers with dots, dashes, and periods allowed in the middle. The maximum length is 80 characters.",
         SerializedName = @"galleryImageName",
         PossibleTypes = new [] { typeof(string) })]
@@ -187,6 +199,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the gallery image version to be created. Needs to follow semantic version name pattern: The allowed characters are digit and period. Digits must be within the range of a 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>",
         SerializedName = @"galleryImageVersionName",
         PossibleTypes = new [] { typeof(string) })]
@@ -198,6 +213,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the Shared Image Gallery. The allowed characters are alphabets and numbers with dots and periods allowed in the middle. The maximum length is 80 characters.",
         SerializedName = @"galleryName",
         PossibleTypes = new [] { typeof(string) })]
@@ -206,6 +224,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource identity path",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -214,6 +235,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The instance ID of the virtual machine.",
         SerializedName = @"instanceId",
         PossibleTypes = new [] { typeof(string) })]
@@ -222,6 +246,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The location upon which run commands is queried.",
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
@@ -230,6 +257,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the resource group.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
@@ -238,6 +268,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the virtual machine run command.",
         SerializedName = @"runCommandName",
         PossibleTypes = new [] { typeof(string) })]
@@ -249,6 +282,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
@@ -259,6 +295,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the virtual machine where the run command should be created or updated.",
         SerializedName = @"vmName",
         PossibleTypes = new [] { typeof(string) })]
@@ -267,6 +306,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the VM scale set.",
         SerializedName = @"vmScaleSetName",
         PossibleTypes = new [] { typeof(string) })]

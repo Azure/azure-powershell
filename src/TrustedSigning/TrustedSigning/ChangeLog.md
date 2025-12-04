@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.1.3
+* Updated Azure.Core from 1.45.0 to 1.47.3
+
 ## Version 0.1.2
 * Updated InvokeCIPolicySigning to support signing files with the .cip extension
 

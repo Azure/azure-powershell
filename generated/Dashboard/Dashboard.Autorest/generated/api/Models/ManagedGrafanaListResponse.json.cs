@@ -7,6 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Extensions;
 
+    /// <summary>Paged collection of ManagedGrafana items</summary>
     public partial class ManagedGrafanaListResponse
     {
 

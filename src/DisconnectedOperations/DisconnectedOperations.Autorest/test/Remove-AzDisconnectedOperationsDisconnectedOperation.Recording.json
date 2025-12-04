@@ -1,0 +1,442 @@
+{
+  "Remove-AzDisconnectedOperationsDisconnectedOperation+[NoContext]+Delete+$PUT+https://management.azure.com/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/ps-test-automation?api-version=2025-06-01-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/ps-test-automation?api-version=2025-06-01-preview",
+      "Content": "{\n  \"location\": \"westus3\",\n  \"properties\": {\n    \"connectionIntent\": \"Disconnected\"\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "89" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Accept-Ranges": [ "bytes" ],
+        "ETag": [ "\"0900b00a-0000-4d00-0000-6916ef800000\"" ],
+        "Set-Cookie": [ "ASLBSA=0003812caa2667c538e5323e8b2f3769a37a67d1b5dc2c9f4b22e202f400018c0a9a; Path=/; Secure; HttpOnly;", "ASLBSACORS=0003812caa2667c538e5323e8b2f3769a37a67d1b5dc2c9f4b22e202f400018c0a9a; SameSite=none; Path=/; Secure; HttpOnly;" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=a2330d2c-ed16-4601-a8ce-6c9d0d999bf4/westus3/317b906e-e4b1-41e5-8c18-b4637abefdbd" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-azure-ref": [ "20251114T085944Z-r15bc86d757hw4lshC1PHXb3bn0000001v90000000007ndf" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "x-ms-request-id": [ "afc9770a-eee3-4f1c-b8b9-5fa3fd7b66a1" ],
+        "x-ms-correlation-request-id": [ "f969da1f-05ea-4836-aa7f-cad8f3cf3b80" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-routing-request-id": [ "WESTUS3:20251114T085944Z:f969da1f-05ea-4836-aa7f-cad8f3cf3b80" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-MSEdge-Ref": [ "Ref A: A38DCB9616F34578B2B7FC2167AF9487 Ref B: SIN221080712007 Ref C: 2025-11-14T08:59:43Z" ],
+        "Date": [ "Fri, 14 Nov 2025 08:59:44 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "730" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/ps-test-automation\",\"name\":\"ps-test-automation\",\"type\":\"microsoft.edge/disconnectedoperations\",\"location\":\"westus3\",\"tags\":{},\"systemData\":{\"createdBy\":\"aviranjan@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-11-14T08:59:44.166584Z\",\"lastModifiedBy\":\"aviranjan@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-11-14T08:59:44.166584Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"stampId\":\"984e8528-89f3-473f-97af-932a418dd051\",\"billingModel\":\"Capacity\",\"connectionIntent\":\"Disconnected\",\"connectionStatus\":\"Disconnected\",\"registrationStatus\":\"Unregistered\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzDisconnectedOperationsDisconnectedOperation+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/ps-test-automation?api-version=2025-06-01-preview+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/ps-test-automation?api-version=2025-06-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "30" ],
+        "x-ms-client-request-id": [ "055e9012-1bf8-4321-8aad-1bb293dd2747" ],
+        "CommandName": [ "New-AzDisconnectedOperationsDisconnectedOperation" ],
+        "FullCommandName": [ "New-AzDisconnectedOperationsDisconnectedOperation_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.6.0", "PSVersion/v7.4.11", "Az.DisconnectedOperations/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0900b00a-0000-4d00-0000-6916ef800000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "679b0b68-4794-4176-9909-846345d62bf8" ],
+        "x-ms-correlation-request-id": [ "14b01b1b-044d-4e4c-9176-04250fa8ace1" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "WESTUS3:20251114T090015Z:14b01b1b-044d-4e4c-9176-04250fa8ace1" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 5E1D724A06414E558830BC15464F05E1 Ref B: SIN221080712007 Ref C: 2025-11-14T09:00:15Z" ],
+        "Date": [ "Fri, 14 Nov 2025 09:00:14 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "730" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/ps-test-automation\",\"name\":\"ps-test-automation\",\"type\":\"microsoft.edge/disconnectedoperations\",\"location\":\"westus3\",\"tags\":{},\"systemData\":{\"createdBy\":\"aviranjan@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-11-14T08:59:44.166584Z\",\"lastModifiedBy\":\"aviranjan@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-11-14T08:59:44.166584Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"stampId\":\"984e8528-89f3-473f-97af-932a418dd051\",\"billingModel\":\"Capacity\",\"connectionIntent\":\"Disconnected\",\"connectionStatus\":\"Disconnected\",\"registrationStatus\":\"Unregistered\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzDisconnectedOperationsDisconnectedOperation+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/ps-test-automation?api-version=2025-06-01-preview+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/ps-test-automation?api-version=2025-06-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "31" ],
+        "x-ms-client-request-id": [ "055e9012-1bf8-4321-8aad-1bb293dd2747" ],
+        "CommandName": [ "New-AzDisconnectedOperationsDisconnectedOperation" ],
+        "FullCommandName": [ "New-AzDisconnectedOperationsDisconnectedOperation_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.6.0", "PSVersion/v7.4.11", "Az.DisconnectedOperations/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0900b00a-0000-4d00-0000-6916ef800000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1098" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "33582a6b-3ffb-481b-baa3-849327261811" ],
+        "x-ms-correlation-request-id": [ "f94a268c-0cda-4073-b68d-2a073a1cea8a" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16498" ],
+        "x-ms-routing-request-id": [ "WESTUS3:20251114T090015Z:f94a268c-0cda-4073-b68d-2a073a1cea8a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: F5DFD763597944B6A0E2037E2A375AAC Ref B: SIN221080712007 Ref C: 2025-11-14T09:00:15Z" ],
+        "Date": [ "Fri, 14 Nov 2025 09:00:15 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "730" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/ps-test-automation\",\"name\":\"ps-test-automation\",\"type\":\"microsoft.edge/disconnectedoperations\",\"location\":\"westus3\",\"tags\":{},\"systemData\":{\"createdBy\":\"aviranjan@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-11-14T08:59:44.166584Z\",\"lastModifiedBy\":\"aviranjan@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-11-14T08:59:44.166584Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"stampId\":\"984e8528-89f3-473f-97af-932a418dd051\",\"billingModel\":\"Capacity\",\"connectionIntent\":\"Disconnected\",\"connectionStatus\":\"Disconnected\",\"registrationStatus\":\"Unregistered\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzDisconnectedOperationsDisconnectedOperation+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/ps-test-automation?api-version=2025-06-01-preview+4": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/ps-test-automation?api-version=2025-06-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "32" ],
+        "x-ms-client-request-id": [ "bf216e9d-d701-423a-8365-2bb75a0ca6ce" ],
+        "CommandName": [ "Remove-AzDisconnectedOperationsDisconnectedOperation" ],
+        "FullCommandName": [ "Remove-AzDisconnectedOperationsDisconnectedOperation_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.6.0", "PSVersion/v7.4.11", "Az.DisconnectedOperations/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "00000000-0000-0000-0000-000000000000" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=a2330d2c-ed16-4601-a8ce-6c9d0d999bf4/westus3/d61035c2-37e6-48a3-9fcf-ea4bbb674fdb" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "11999" ],
+        "x-ms-correlation-request-id": [ "1f24d6ed-4e32-4252-b395-a5efd1bc4482" ],
+        "x-ms-routing-request-id": [ "WESTUS3:20251114T090017Z:1f24d6ed-4e32-4252-b395-a5efd1bc4482" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 48828BB5035C4812A0E2C50C3CDE79BC Ref B: SIN221080712007 Ref C: 2025-11-14T09:00:16Z" ],
+        "Date": [ "Fri, 14 Nov 2025 09:00:16 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzDisconnectedOperationsDisconnectedOperation+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/ps-test-automation?api-version=2025-06-01-preview+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/ps-test-automation?api-version=2025-06-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "33" ],
+        "x-ms-client-request-id": [ "c52fa28b-666c-4bf2-bfe8-e4df8cd15e65" ],
+        "CommandName": [ "Get-AzDisconnectedOperationsDisconnectedOperation" ],
+        "FullCommandName": [ "Get-AzDisconnectedOperationsDisconnectedOperation_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.6.0", "PSVersion/v7.4.11", "Az.DisconnectedOperations/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 404,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-failure-cause": [ "gateway" ],
+        "x-ms-request-id": [ "2c117570-bb55-4ce2-96bf-19faaec95f7b" ],
+        "x-ms-correlation-request-id": [ "2c117570-bb55-4ce2-96bf-19faaec95f7b" ],
+        "x-ms-routing-request-id": [ "WESTUS3:20251114T090017Z:2c117570-bb55-4ce2-96bf-19faaec95f7b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 6DE478C8EA204B378C2AED505CC45C5C Ref B: SIN221080712007 Ref C: 2025-11-14T09:00:17Z" ],
+        "Date": [ "Fri, 14 Nov 2025 09:00:16 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "247" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource \u0027Microsoft.Edge/disconnectedOperations/ps-test-automation\u0027 under resource group \u0027bvt-test-automation\u0027 was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzDisconnectedOperationsDisconnectedOperation+[NoContext]+DeleteViaIdentity+$PUT+https://management.azure.com/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/ps-test-automation?api-version=2025-06-01-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/ps-test-automation?api-version=2025-06-01-preview",
+      "Content": "{\n  \"location\": \"westus3\",\n  \"properties\": {\n    \"connectionIntent\": \"Disconnected\"\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "89" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Accept-Ranges": [ "bytes" ],
+        "ETag": [ "\"0900d10b-0000-4d00-0000-6916efa30000\"" ],
+        "Set-Cookie": [ "ASLBSA=0003812caa2667c538e5323e8b2f3769a37a67d1b5dc2c9f4b22e202f400018c0a9a; Path=/; Secure; HttpOnly;", "ASLBSACORS=0003812caa2667c538e5323e8b2f3769a37a67d1b5dc2c9f4b22e202f400018c0a9a; SameSite=none; Path=/; Secure; HttpOnly;" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=a2330d2c-ed16-4601-a8ce-6c9d0d999bf4/westus3/f622cbe3-185e-405c-9556-47324ce4dba9" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-azure-ref": [ "20251114T090019Z-r15bc86d757gq2gbhC1PHXg3xs0000001vf0000000000vep" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "x-ms-request-id": [ "5c3e66ac-ca7a-442f-9140-6b0792d6f94d" ],
+        "x-ms-correlation-request-id": [ "d5de29a9-1635-4807-ac91-4aa3f3115dd0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-routing-request-id": [ "WESTUS3:20251114T090019Z:d5de29a9-1635-4807-ac91-4aa3f3115dd0" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-MSEdge-Ref": [ "Ref A: ADFC456E153F4B7AA3A1E18CC60574B9 Ref B: SIN221080712007 Ref C: 2025-11-14T09:00:18Z" ],
+        "Date": [ "Fri, 14 Nov 2025 09:00:19 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "732" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/ps-test-automation\",\"name\":\"ps-test-automation\",\"type\":\"microsoft.edge/disconnectedoperations\",\"location\":\"westus3\",\"tags\":{},\"systemData\":{\"createdBy\":\"aviranjan@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-11-14T09:00:18.9481008Z\",\"lastModifiedBy\":\"aviranjan@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-11-14T09:00:18.9481008Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"stampId\":\"8cbfa615-1b63-455a-b2b5-e4bba4fea881\",\"billingModel\":\"Capacity\",\"connectionIntent\":\"Disconnected\",\"connectionStatus\":\"Disconnected\",\"registrationStatus\":\"Unregistered\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzDisconnectedOperationsDisconnectedOperation+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/ps-test-automation?api-version=2025-06-01-preview+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/ps-test-automation?api-version=2025-06-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "35" ],
+        "x-ms-client-request-id": [ "9e5cc8fe-48ff-42fb-a992-126f335449f2" ],
+        "CommandName": [ "New-AzDisconnectedOperationsDisconnectedOperation" ],
+        "FullCommandName": [ "New-AzDisconnectedOperationsDisconnectedOperation_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.6.0", "PSVersion/v7.4.11", "Az.DisconnectedOperations/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0900d10b-0000-4d00-0000-6916efa30000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "0fd7f06e-1612-4776-9d3f-3b30ff7f3fea" ],
+        "x-ms-correlation-request-id": [ "75d31d16-d47e-4cc3-9e3a-48d300b20654" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "WESTUS3:20251114T090050Z:75d31d16-d47e-4cc3-9e3a-48d300b20654" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 1116CAE89490404F96880F2E37721EFE Ref B: SIN221080712007 Ref C: 2025-11-14T09:00:50Z" ],
+        "Date": [ "Fri, 14 Nov 2025 09:00:50 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "732" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/ps-test-automation\",\"name\":\"ps-test-automation\",\"type\":\"microsoft.edge/disconnectedoperations\",\"location\":\"westus3\",\"tags\":{},\"systemData\":{\"createdBy\":\"aviranjan@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-11-14T09:00:18.9481008Z\",\"lastModifiedBy\":\"aviranjan@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-11-14T09:00:18.9481008Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"stampId\":\"8cbfa615-1b63-455a-b2b5-e4bba4fea881\",\"billingModel\":\"Capacity\",\"connectionIntent\":\"Disconnected\",\"connectionStatus\":\"Disconnected\",\"registrationStatus\":\"Unregistered\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzDisconnectedOperationsDisconnectedOperation+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/ps-test-automation?api-version=2025-06-01-preview+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/ps-test-automation?api-version=2025-06-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "36" ],
+        "x-ms-client-request-id": [ "9e5cc8fe-48ff-42fb-a992-126f335449f2" ],
+        "CommandName": [ "New-AzDisconnectedOperationsDisconnectedOperation" ],
+        "FullCommandName": [ "New-AzDisconnectedOperationsDisconnectedOperation_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.6.0", "PSVersion/v7.4.11", "Az.DisconnectedOperations/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0900d10b-0000-4d00-0000-6916efa30000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1098" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "75f1fb62-767d-45e6-8ec9-adf2eba4c172" ],
+        "x-ms-correlation-request-id": [ "955b6270-f782-4155-8599-a11b8b8411f2" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16498" ],
+        "x-ms-routing-request-id": [ "WESTUS3:20251114T090052Z:955b6270-f782-4155-8599-a11b8b8411f2" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 1B0F9EABBCAE412782A01F965EB2859F Ref B: SIN221080712007 Ref C: 2025-11-14T09:00:52Z" ],
+        "Date": [ "Fri, 14 Nov 2025 09:00:51 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "732" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/ps-test-automation\",\"name\":\"ps-test-automation\",\"type\":\"microsoft.edge/disconnectedoperations\",\"location\":\"westus3\",\"tags\":{},\"systemData\":{\"createdBy\":\"aviranjan@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-11-14T09:00:18.9481008Z\",\"lastModifiedBy\":\"aviranjan@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-11-14T09:00:18.9481008Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"stampId\":\"8cbfa615-1b63-455a-b2b5-e4bba4fea881\",\"billingModel\":\"Capacity\",\"connectionIntent\":\"Disconnected\",\"connectionStatus\":\"Disconnected\",\"registrationStatus\":\"Unregistered\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzDisconnectedOperationsDisconnectedOperation+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/ps-test-automation?api-version=2025-06-01-preview+4": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/ps-test-automation?api-version=2025-06-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "37" ],
+        "x-ms-client-request-id": [ "9173bfe1-07cd-4429-b147-0e9e02c39cab" ],
+        "CommandName": [ "Remove-AzDisconnectedOperationsDisconnectedOperation" ],
+        "FullCommandName": [ "Remove-AzDisconnectedOperationsDisconnectedOperation_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.6.0", "PSVersion/v7.4.11", "Az.DisconnectedOperations/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "00000000-0000-0000-0000-000000000000" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=a2330d2c-ed16-4601-a8ce-6c9d0d999bf4/westus3/eb498e2f-1cea-4e2c-a372-fcfe79e9e24f" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "11999" ],
+        "x-ms-correlation-request-id": [ "437c4dde-7ff1-444c-bf5f-c4e003b0df80" ],
+        "x-ms-routing-request-id": [ "WESTUS3:20251114T090053Z:437c4dde-7ff1-444c-bf5f-c4e003b0df80" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 3484FC4C97C54884B8A67AFB5027379D Ref B: SIN221080712007 Ref C: 2025-11-14T09:00:52Z" ],
+        "Date": [ "Fri, 14 Nov 2025 09:00:52 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzDisconnectedOperationsDisconnectedOperation+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/ps-test-automation?api-version=2025-06-01-preview+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/ps-test-automation?api-version=2025-06-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "38" ],
+        "x-ms-client-request-id": [ "38e2692e-148b-46ef-905c-444171241263" ],
+        "CommandName": [ "Get-AzDisconnectedOperationsDisconnectedOperation" ],
+        "FullCommandName": [ "Get-AzDisconnectedOperationsDisconnectedOperation_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.6.0", "PSVersion/v7.4.11", "Az.DisconnectedOperations/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 404,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-failure-cause": [ "gateway" ],
+        "x-ms-request-id": [ "7dbe6fa8-6989-44fd-b4e1-eec287294726" ],
+        "x-ms-correlation-request-id": [ "7dbe6fa8-6989-44fd-b4e1-eec287294726" ],
+        "x-ms-routing-request-id": [ "WESTUS3:20251114T090053Z:7dbe6fa8-6989-44fd-b4e1-eec287294726" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: E9133FF3CA8B4825A3C47CA1F09046C8 Ref B: SIN221080712007 Ref C: 2025-11-14T09:00:53Z" ],
+        "Date": [ "Fri, 14 Nov 2025 09:00:53 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "247" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource \u0027Microsoft.Edge/disconnectedOperations/ps-test-automation\u0027 under resource group \u0027bvt-test-automation\u0027 was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"}}",
+      "isContentBase64": false
+    }
+  }
+}

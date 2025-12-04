@@ -74,7 +74,14 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
             {
                 try
                 {
-                    var anfNetworkSiblingSet = AzureNetAppFilesManagementClient.NetAppResource.UpdateNetworkSiblingSet(Location, NetworkSiblingSetId, SubnetId, NetworkSiblingSetStateId, NetworkFeature).ConvertToPs();
+                    UpdateNetworkSiblingSetRequest updateNetworkSiblingSetRequest = new UpdateNetworkSiblingSetRequest
+                    {
+                        NetworkSiblingSetId = this.NetworkSiblingSetId,
+                        SubnetId = this.SubnetId,
+                        NetworkSiblingSetStateId = this.NetworkSiblingSetStateId,
+                        NetworkFeatures = this.NetworkFeature
+                    };
+                    var anfNetworkSiblingSet = AzureNetAppFilesManagementClient.NetAppResource.UpdateNetworkSiblingSet(Location, updateNetworkSiblingSetRequest).ConvertToPs();
                     WriteObject(anfNetworkSiblingSet);
                 }
                 catch (ErrorResponseException ex)

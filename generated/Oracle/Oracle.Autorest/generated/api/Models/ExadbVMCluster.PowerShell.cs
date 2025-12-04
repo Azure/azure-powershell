@@ -174,6 +174,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExadbVMClusterInternal)this).LicenseModel = (string) content.GetValueForProperty("LicenseModel",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExadbVMClusterInternal)this).LicenseModel, global::System.Convert.ToString);
             }
+            if (content.Contains("ShapeAttribute"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExadbVMClusterInternal)this).ShapeAttribute = (string) content.GetValueForProperty("ShapeAttribute",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExadbVMClusterInternal)this).ShapeAttribute, global::System.Convert.ToString);
+            }
             if (content.Contains("DataCollectionOption"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExadbVMClusterInternal)this).DataCollectionOption = (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDataCollectionOptions) content.GetValueForProperty("DataCollectionOption",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExadbVMClusterInternal)this).DataCollectionOption, Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.DataCollectionOptionsTypeConverter.ConvertFrom);
@@ -458,6 +462,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             if (content.Contains("LicenseModel"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExadbVMClusterInternal)this).LicenseModel = (string) content.GetValueForProperty("LicenseModel",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExadbVMClusterInternal)this).LicenseModel, global::System.Convert.ToString);
+            }
+            if (content.Contains("ShapeAttribute"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExadbVMClusterInternal)this).ShapeAttribute = (string) content.GetValueForProperty("ShapeAttribute",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExadbVMClusterInternal)this).ShapeAttribute, global::System.Convert.ToString);
             }
             if (content.Contains("DataCollectionOption"))
             {

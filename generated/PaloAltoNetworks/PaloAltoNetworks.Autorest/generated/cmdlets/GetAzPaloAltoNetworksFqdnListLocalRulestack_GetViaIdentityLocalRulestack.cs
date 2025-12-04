@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFqdnListLocalRulestackResource))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Description(@"Get a FqdnListLocalRulestackResource")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/{localRulestackName}/fqdnlists/{name}", ApiVersion = "2023-09-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/{localRulestackName}/fqdnlists/{name}", ApiVersion = "2025-10-08")]
     public partial class GetAzPaloAltoNetworksFqdnListLocalRulestack_GetViaIdentityLocalRulestack : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IContext

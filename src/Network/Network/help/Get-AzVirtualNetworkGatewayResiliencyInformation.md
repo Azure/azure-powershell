@@ -19,12 +19,11 @@ Get-AzVirtualNetworkGatewayResiliencyInformation -ResourceGroupName <String>
 ```
 
 ## DESCRIPTION
-The `Get-AzVirtualNetworkGatewayResiliencyInformation` cmdlet retrieves the resiliency information for a specific virtual network gateway, including the gateway's current resiliency score. This score indicates the gateway's performance in terms of availability, redundancy, and failover capabilities. Additionally, the cmdlet provides recommendations for improving the gateway’s resiliency score, ensuring better business continuity.
+The `Get-AzVirtualNetworkGatewayResiliencyInformation` cmdlet retrieves the resiliency information for a specific virtual network gateway, including the gateway's current resiliency score. This score indicates the gateway's performance in terms of availability, redundancy, and failover capabilities. Additionally, the cmdlet provides recommendations for improving the gateway's resiliency score, ensuring better business continuity.
 
 By default, the cmdlet retrieves the existing resiliency information. If you want to refresh and recalculate the resiliency metrics to get the most up-to-date data, you can use the `-AttemptRefresh` parameter, which triggers a recalculation of the resiliency information.
 
 This cmdlet is essential for evaluating the robustness of your virtual network gateway, helping you identify areas where improvements can be made to enhance its availability and overall performance.
-
 
 ## EXAMPLES
 

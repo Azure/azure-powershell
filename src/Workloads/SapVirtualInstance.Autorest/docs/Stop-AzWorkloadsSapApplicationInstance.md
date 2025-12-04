@@ -26,6 +26,27 @@ Stop-AzWorkloadsSapApplicationInstance -InputObject <ISapVirtualInstanceIdentity
  [<CommonParameters>]
 ```
 
+### StopViaIdentitySapVirtualInstanceExpanded
+```
+Stop-AzWorkloadsSapApplicationInstance -Name <String>
+ -SapVirtualInstanceInputObject <ISapVirtualInstanceIdentity> [-DeallocateVM] [-SoftStopTimeoutSecond <Int64>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### StopViaJsonFilePath
+```
+Stop-AzWorkloadsSapApplicationInstance -Name <String> -ResourceGroupName <String>
+ -SapVirtualInstanceName <String> -JsonFilePath <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### StopViaJsonString
+```
+Stop-AzWorkloadsSapApplicationInstance -Name <String> -ResourceGroupName <String>
+ -SapVirtualInstanceName <String> -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Stops the SAP Application Server Instance.
 
@@ -157,7 +178,7 @@ The boolean value indicates whether to Stop and deallocate the virtual machines 
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: StopExpanded, StopViaIdentityExpanded, StopViaIdentitySapVirtualInstanceExpanded
 Aliases:
 
 Required: False
@@ -185,7 +206,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentity
@@ -199,12 +219,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Stop operation
+
+```yaml
+Type: System.String
+Parameter Sets: StopViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Stop operation
+
+```yaml
+Type: System.String
+Parameter Sets: StopViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of SAP Application Server instance resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: StopExpanded
+Parameter Sets: StopExpanded, StopViaIdentitySapVirtualInstanceExpanded, StopViaJsonFilePath, StopViaJsonString
 Aliases:
 
 Required: True
@@ -235,7 +285,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: StopExpanded
+Parameter Sets: StopExpanded, StopViaJsonFilePath, StopViaJsonString
 Aliases:
 
 Required: True
@@ -245,12 +295,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SapVirtualInstanceInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentity
+Parameter Sets: StopViaIdentitySapVirtualInstanceExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -SapVirtualInstanceName
 The name of the Virtual Instances for SAP solutions resource
 
 ```yaml
 Type: System.String
-Parameter Sets: StopExpanded
+Parameter Sets: StopExpanded, StopViaJsonFilePath, StopViaJsonString
 Aliases:
 
 Required: True
@@ -267,7 +332,7 @@ hard stop.
 
 ```yaml
 Type: System.Int64
-Parameter Sets: (All)
+Parameter Sets: StopExpanded, StopViaIdentityExpanded, StopViaIdentitySapVirtualInstanceExpanded
 Aliases:
 
 Required: False
@@ -283,7 +348,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: StopExpanded
+Parameter Sets: StopExpanded, StopViaJsonFilePath, StopViaJsonString
 Aliases:
 
 Required: False
@@ -333,7 +398,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api50.IOperationStatusResult
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.IOperationStatusResult
 
 ## NOTES
 

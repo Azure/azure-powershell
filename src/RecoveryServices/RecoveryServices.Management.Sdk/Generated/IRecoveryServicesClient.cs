@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.RecoveryServices
     using Models;
 
     /// <summary>
-    /// 
+    /// Recovery Services Client
     /// </summary>
     public partial interface IRecoveryServicesClient :  System.IDisposable
     {
@@ -69,9 +69,39 @@ namespace Microsoft.Azure.Management.RecoveryServices
 
 
         /// <summary>
+        /// Gets the IOperations
+        /// </summary>
+        IOperations Operations { get; }
+
+        /// <summary>
+        /// Gets the IRecoveryServicesOperations
+        /// </summary>
+        IRecoveryServicesOperations RecoveryServices { get; }
+
+        /// <summary>
+        /// Gets the IDeletedVaultsOperations
+        /// </summary>
+        IDeletedVaultsOperations DeletedVaults { get; }
+
+        /// <summary>
+        /// Gets the IVaultsOperations
+        /// </summary>
+        IVaultsOperations Vaults { get; }
+
+        /// <summary>
         /// Gets the IVaultCertificatesOperations
         /// </summary>
         IVaultCertificatesOperations VaultCertificates { get; }
+
+        /// <summary>
+        /// Gets the IVaultExtendedInfoOperations
+        /// </summary>
+        IVaultExtendedInfoOperations VaultExtendedInfo { get; }
+
+        /// <summary>
+        /// Gets the IPrivateLinkResourcesOperations
+        /// </summary>
+        IPrivateLinkResourcesOperations PrivateLinkResources { get; }
 
         /// <summary>
         /// Gets the IRegisteredIdentitiesOperations
@@ -84,34 +114,38 @@ namespace Microsoft.Azure.Management.RecoveryServices
         IReplicationUsagesOperations ReplicationUsages { get; }
 
         /// <summary>
-        /// Gets the IPrivateLinkResourcesOperations
-        /// </summary>
-        IPrivateLinkResourcesOperations PrivateLinkResources { get; }
-
-        /// <summary>
-        /// Gets the IRecoveryServicesOperations
-        /// </summary>
-        IRecoveryServicesOperations RecoveryServices { get; }
-
-        /// <summary>
-        /// Gets the IVaultsOperations
-        /// </summary>
-        IVaultsOperations Vaults { get; }
-
-        /// <summary>
-        /// Gets the IOperations
-        /// </summary>
-        IOperations Operations { get; }
-
-        /// <summary>
-        /// Gets the IVaultExtendedInfoOperations
-        /// </summary>
-        IVaultExtendedInfoOperations VaultExtendedInfo { get; }
-
-        /// <summary>
         /// Gets the IUsagesOperations
         /// </summary>
         IUsagesOperations Usages { get; }
+
+        /// <summary>
+        /// Gets the operation result for a resource.
+        /// </summary>
+        /// <remarks>
+        /// Gets the operation result for a resource.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the Vault
+        /// </param>
+        /// <param name='operationId'>
+        /// The name of the Vault
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Vault>> GetOperationResultWithHttpMessagesAsync(string resourceGroupName, string vaultName, string operationId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Gets the operation status for a resource.
@@ -141,35 +175,6 @@ namespace Microsoft.Azure.Management.RecoveryServices
         /// Thrown when unable to deserialize the response
         /// </exception>
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<OperationResource>> GetOperationStatusWithHttpMessagesAsync(string resourceGroupName, string vaultName, string operationId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Gets the operation result for a resource.
-        /// </summary>
-        /// <remarks>
-        /// Gets the operation result for a resource.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
-        /// <param name='operationId'>
-        /// 
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Vault>> GetOperationResultWithHttpMessagesAsync(string resourceGroupName, string vaultName, string operationId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
     }
 }

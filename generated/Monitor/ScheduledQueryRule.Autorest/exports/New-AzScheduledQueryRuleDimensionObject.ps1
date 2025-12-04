@@ -23,12 +23,12 @@ Create an in-memory object for Dimension.
 New-AzScheduledQueryRuleDimensionObject -Name Computer -Operator Include -Value *
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.Api20210801.Dimension
+Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.Dimension
 .Link
-https://learn.microsoft.com/powershell/module/Az.Monitor/new-AzScheduledQueryRuleDimensionObject
+https://learn.microsoft.com/powershell/module/Az.Monitor/new-azscheduledqueryruledimensionobject
 #>
 function New-AzScheduledQueryRuleDimensionObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.Api20210801.Dimension])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.Dimension])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -38,9 +38,9 @@ param(
     ${Name},
 
     [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Support.DimensionOperator])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.PSArgumentCompleterAttribute("Include", "Exclude")]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Support.DimensionOperator]
+    [System.String]
     # Operator for dimension values.
     ${Operator},
 
@@ -58,6 +58,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -86,6 +89,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

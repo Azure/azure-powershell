@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Account
     public class GetAzureRmNetAppFilesAccount : AzureNetAppFilesCmdletBase
     {
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The resource group of the ANF account",
             ParameterSetName = FieldsParameterSet)]
         [ValidateNotNullOrEmpty]

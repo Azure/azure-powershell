@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Commands.TestFx.Recorder
             return content;
         }
 
-        public static RecordEntryContentType GetContetTypeFromHeaders(Dictionary<string, List<string>> responseHeaders)
+        public static RecordEntryContentType GetContentTypeFromHeaders(Dictionary<string, List<string>> responseHeaders)
         {
             string mimeType = string.Empty;
             RecordEntryContentType contentType = RecordEntryContentType.Null;
@@ -232,6 +232,10 @@ namespace Microsoft.Azure.Commands.TestFx.Recorder
                         }
                     }
                 }
+
+                var sanitizer = new RecordSanitizer(SanitizeValue);
+                sanitizer.ProcessJsonToken(parsedJson);
+
                 return JsonConvert.SerializeObject(parsedJson, Formatting.Indented);
             }
             catch

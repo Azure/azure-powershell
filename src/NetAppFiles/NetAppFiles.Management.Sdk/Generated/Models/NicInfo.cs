@@ -11,10 +11,6 @@ namespace Microsoft.Azure.Management.NetApp.Models
     /// NIC information and list of volumes for which the NIC has the primary mount
     /// ip address.
     /// </summary>
-    /// <remarks>
-    /// NIC information and list of volumes for which the NIC has the primary mount
-    /// ip address.
-    /// </remarks>
     public partial class NicInfo
     {
         /// <summary>

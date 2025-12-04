@@ -15,18 +15,39 @@ Creates a webhook for a container registry with the specified parameters.
 ### CreateExpanded (Default)
 ```
 New-AzContainerRegistryWebhook -Name <String> -RegistryName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -Action <WebhookAction[]> [-Location <String>] [-CustomHeader <Hashtable>]
- [-Scope <String>] [-ServiceUri <String>] [-Status <WebhookStatus>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-SubscriptionId <String>] -Action <String[]> [-Location <String>] [-CustomHeader <Hashtable>]
+ [-Scope <String>] [-ServiceUri <String>] [-Status <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzContainerRegistryWebhook -Name <String> -RegistryName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzContainerRegistryWebhook -Name <String> -RegistryName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateByRegistry
 ```
 New-AzContainerRegistryWebhook -Name <String> [-SubscriptionId <String>] -Registry <IRegistry>
- -Action <WebhookAction[]> [-Location <String>] [-CustomHeader <Hashtable>] [-Scope <String>]
- [-ServiceUri <String>] [-Status <WebhookStatus>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -Action <String[]> [-Location <String>] [-CustomHeader <Hashtable>] [-Scope <String>] [-ServiceUri <String>]
+ [-Status <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityRegistryExpanded
+```
+New-AzContainerRegistryWebhook -Name <String> -RegistryInputObject <IContainerRegistryIdentity>
+ -Action <String[]> [-Location <String>] [-CustomHeader <Hashtable>] [-Scope <String>] [-ServiceUri <String>]
+ [-Status <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -54,8 +75,8 @@ Please notice that some parameters are required in this cmdlets but not marked a
 The list of actions that trigger the webhook to post notifications.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.WebhookAction[]
-Parameter Sets: (All)
+Type: System.String[]
+Parameter Sets: CreateExpanded, CreateByRegistry, CreateViaIdentityRegistryExpanded
 Aliases:
 
 Required: True
@@ -85,7 +106,7 @@ Custom headers that will be added to the webhook notifications.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateByRegistry, CreateViaIdentityRegistryExpanded
 Aliases: Header
 
 Required: False
@@ -96,7 +117,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -110,13 +132,43 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Location
 The location of the webhook.
 This cannot be changed after the resource is created.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateByRegistry, CreateViaIdentityRegistryExpanded
 Aliases:
 
 Required: False
@@ -158,10 +210,9 @@ Accept wildcard characters: False
 
 ### -Registry
 The Registry Object.
-To construct, see NOTES section for REGISTRY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IRegistry
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IRegistry
 Parameter Sets: CreateByRegistry
 Aliases:
 
@@ -172,12 +223,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -RegistryInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
+Parameter Sets: CreateViaIdentityRegistryExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -RegistryName
 The name of the container registry.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases: ContainerRegistryName
 
 Required: True
@@ -193,7 +259,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -212,7 +278,7 @@ Empty means all events.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateByRegistry, CreateViaIdentityRegistryExpanded
 Aliases:
 
 Required: False
@@ -227,7 +293,7 @@ The service URI for the webhook to post notifications.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateByRegistry, CreateViaIdentityRegistryExpanded
 Aliases: Uri
 
 Required: False
@@ -241,8 +307,8 @@ Accept wildcard characters: False
 The status of the webhook at the time the operation was called.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.WebhookStatus
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded, CreateByRegistry, CreateViaIdentityRegistryExpanded
 Aliases:
 
 Required: False
@@ -258,7 +324,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString, CreateByRegistry
 Aliases:
 
 Required: False
@@ -273,7 +339,7 @@ The tags for the webhook.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateByRegistry, CreateViaIdentityRegistryExpanded
 Aliases: Tags
 
 Required: False
@@ -319,9 +385,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IWebhook
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IWebhook
 
 ## NOTES
 

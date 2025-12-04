@@ -24,44 +24,46 @@ namespace Microsoft.Azure.Management.RecoveryServices.Models
         /// Initializes a new instance of the Vault class.
         /// </summary>
 
-        /// <param name="id">Resource Id represents the complete path to the resource.
+        /// <param name="id">Fully qualified resource ID for the resource. Ex -
+        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
         /// </param>
 
-        /// <param name="name">Resource name associated with the resource.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">Resource type represents the complete path of the form
-        /// Namespace/ResourceType/ResourceType/...
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
         /// </param>
 
-        /// <param name="etag">Optional ETag.
-        /// </param>
-
-        /// <param name="location">Resource location.
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="tags">Resource tags.
         /// </param>
 
-        /// <param name="identity">Identity for the resource.
+        /// <param name="location">The geo-location where the resource lives
         /// </param>
 
         /// <param name="properties">Properties of the vault.
         /// </param>
 
+        /// <param name="identity">Identity for the resource.
+        /// </param>
+
         /// <param name="sku">Identifies the unique system identifier for each Azure resource.
         /// </param>
 
-        /// <param name="systemData">Metadata pertaining to creation and last modification of the resource.
+        /// <param name="etag">etag for the resource.
         /// </param>
-        public Vault(string location, string id = default(string), string name = default(string), string type = default(string), string etag = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), IdentityData identity = default(IdentityData), VaultProperties properties = default(VaultProperties), Sku sku = default(Sku), SystemData systemData = default(SystemData))
+        public Vault(string location, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), VaultProperties properties = default(VaultProperties), IdentityData identity = default(IdentityData), Sku sku = default(Sku), string etag = default(string))
 
-        : base(location, id, name, type, etag, tags)
+        : base(location, id, name, type, systemData, tags)
         {
-            this.Identity = identity;
             this.Properties = properties;
+            this.Identity = identity;
             this.Sku = sku;
-            this.SystemData = systemData;
+            this.Etag = etag;
             CustomInit();
         }
 
@@ -72,16 +74,16 @@ namespace Microsoft.Azure.Management.RecoveryServices.Models
 
 
         /// <summary>
-        /// Gets or sets identity for the resource.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "identity")]
-        public IdentityData Identity {get; set; }
-
-        /// <summary>
         /// Gets or sets properties of the vault.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties")]
         public VaultProperties Properties {get; set; }
+
+        /// <summary>
+        /// Gets or sets identity for the resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "identity")]
+        public IdentityData Identity {get; set; }
 
         /// <summary>
         /// Gets or sets identifies the unique system identifier for each Azure
@@ -91,10 +93,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.Models
         public Sku Sku {get; set; }
 
         /// <summary>
-        /// Gets metadata pertaining to creation and last modification of the resource.
+        /// Gets or sets etag for the resource.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "systemData")]
-        public SystemData SystemData {get; private set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "etag")]
+        public string Etag {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -104,11 +106,11 @@ namespace Microsoft.Azure.Management.RecoveryServices.Models
         public override void Validate()
         {
             base.Validate();
+
             if (this.Identity != null)
             {
                 this.Identity.Validate();
             }
-
             if (this.Sku != null)
             {
                 this.Sku.Validate();

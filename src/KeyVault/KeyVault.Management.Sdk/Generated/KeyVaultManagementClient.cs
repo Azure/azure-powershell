@@ -11,7 +11,8 @@ namespace Microsoft.Azure.Management.KeyVault
     using Models;
 
     /// <summary>
-    /// The Azure management API provides a RESTful set of web services that interact with Azure Key Vault.
+    /// The Azure management API provides a RESTful set of web services that
+    /// interact with Azure Key Vault.
     /// </summary>
     public partial class KeyVaultManagementClient : Microsoft.Rest.ServiceClient<KeyVaultManagementClient>, IKeyVaultManagementClient, IAzureClient
     {
@@ -38,7 +39,9 @@ namespace Microsoft.Azure.Management.KeyVault
         public string ApiVersion { get; private set; }
 
         /// <summary>
-        /// Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+        /// Subscription credentials which uniquely identify Microsoft Azure
+        /// subscription. The subscription ID forms part of the URI for every service
+        /// call.
         /// </summary>
         public string SubscriptionId { get; set;}
 
@@ -49,14 +52,14 @@ namespace Microsoft.Azure.Management.KeyVault
 
         /// <summary>
         /// The retry timeout in seconds for Long Running Operations. Default
-        /// value is 30.
+        /// /// value is 30.
         /// </summary>
         public int? LongRunningOperationRetryTimeout { get; set;}
 
         /// <summary>
-        /// Whether a unique x-ms-client-request-id should be generated. When 
-        /// set to true a unique x-ms-client-request-id value is generated and 
-        /// included in each request. Default is true.
+        /// Whether a unique x-ms-client-request-id should be generated. When
+        /// /// set to true a unique x-ms-client-request-id value is generated and
+        /// /// included in each request. Default is true.
         /// </summary>
         public bool? GenerateClientRequestId { get; set;}
 

@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Management.NetApp
         public NetAppManagementClient Client { get; private set; }
 
         /// <summary>
-        /// Lists all of the available Microsoft.NetApp Rest API operations
+        /// List the operations for the provider
         /// </summary>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -221,7 +221,7 @@ namespace Microsoft.Azure.Management.NetApp
 
         }
         /// <summary>
-        /// Lists all of the available Microsoft.NetApp Rest API operations
+        /// List the operations for the provider
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

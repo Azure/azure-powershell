@@ -34,15 +34,9 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         internal Microsoft.Azure.Batch.CloudPool omObject;
         
-        private IList<System.String> applicationLicenses;
-        
         private IList<PSApplicationPackageReference> applicationPackageReferences;
         
         private PSAutoScaleRun autoScaleRun;
-        
-        private IList<PSCertificateReference> certificateReferences;
-        
-        private PSCloudServiceConfiguration cloudServiceConfiguration;
         
         private PSBatchPoolIdentity identity;
         
@@ -53,8 +47,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
         private PSNetworkConfiguration networkConfiguration;
         
         private IReadOnlyList<PSResizeError> resizeErrors;
-        
-        private IDictionary resourceTags;
         
         private PSStartTask startTask;
         
@@ -90,41 +82,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
             get
             {
                 return this.omObject.AllocationStateTransitionTime;
-            }
-        }
-        
-        public IList<System.String> ApplicationLicenses
-        {
-            get
-            {
-                if (((this.applicationLicenses == null) 
-                            && (this.omObject.ApplicationLicenses != null)))
-                {
-                    List<System.String> list;
-                    list = new List<System.String>();
-                    IEnumerator<System.String> enumerator;
-                    enumerator = this.omObject.ApplicationLicenses.GetEnumerator();
-                    for (
-                    ; enumerator.MoveNext(); 
-                    )
-                    {
-                        list.Add(enumerator.Current);
-                    }
-                    this.applicationLicenses = list;
-                }
-                return this.applicationLicenses;
-            }
-            set
-            {
-                if ((value == null))
-                {
-                    this.omObject.ApplicationLicenses = null;
-                }
-                else
-                {
-                    this.omObject.ApplicationLicenses = new List<System.String>();
-                }
-                this.applicationLicenses = value;
             }
         }
         
@@ -212,66 +169,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
-        public IList<PSCertificateReference> CertificateReferences
-        {
-            get
-            {
-                if (((this.certificateReferences == null) 
-                            && (this.omObject.CertificateReferences != null)))
-                {
-                    List<PSCertificateReference> list;
-                    list = new List<PSCertificateReference>();
-                    IEnumerator<Microsoft.Azure.Batch.CertificateReference> enumerator;
-                    enumerator = this.omObject.CertificateReferences.GetEnumerator();
-                    for (
-                    ; enumerator.MoveNext(); 
-                    )
-                    {
-                        list.Add(new PSCertificateReference(enumerator.Current));
-                    }
-                    this.certificateReferences = list;
-                }
-                return this.certificateReferences;
-            }
-            set
-            {
-                if ((value == null))
-                {
-                    this.omObject.CertificateReferences = null;
-                }
-                else
-                {
-                    this.omObject.CertificateReferences = new List<Microsoft.Azure.Batch.CertificateReference>();
-                }
-                this.certificateReferences = value;
-            }
-        }
-        
-        public PSCloudServiceConfiguration CloudServiceConfiguration
-        {
-            get
-            {
-                if (((this.cloudServiceConfiguration == null) 
-                            && (this.omObject.CloudServiceConfiguration != null)))
-                {
-                    this.cloudServiceConfiguration = new PSCloudServiceConfiguration(this.omObject.CloudServiceConfiguration);
-                }
-                return this.cloudServiceConfiguration;
-            }
-            set
-            {
-                if ((value == null))
-                {
-                    this.omObject.CloudServiceConfiguration = null;
-                }
-                else
-                {
-                    this.omObject.CloudServiceConfiguration = value.omObject;
-                }
-                this.cloudServiceConfiguration = value;
-            }
-        }
-        
         public System.DateTime? CreationTime
         {
             get
@@ -293,14 +190,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
             get
             {
                 return this.omObject.CurrentLowPriorityComputeNodes;
-            }
-        }
-        
-        public Microsoft.Azure.Batch.Common.NodeCommunicationMode? CurrentNodeCommunicationMode
-        {
-            get
-            {
-                return this.omObject.CurrentNodeCommunicationMode;
             }
         }
         
@@ -346,18 +235,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     this.identity = new PSBatchPoolIdentity(this.omObject.Identity);
                 }
                 return this.identity;
-            }
-            set
-            {
-                if ((value == null))
-                {
-                    this.omObject.Identity = null;
-                }
-                else
-                {
-                    this.omObject.Identity = value.omObject;
-                }
-                this.identity = value;
             }
         }
         
@@ -511,41 +388,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
-        public IDictionary ResourceTags
-        {
-            get
-            {
-                if (((this.resourceTags == null) 
-                            && (this.omObject.ResourceTags != null)))
-                {
-                    Dictionary<string, string> dict;
-                    dict = new Dictionary<string, string>();
-                    IEnumerator<KeyValuePair<System.String, System.String>> enumerator;
-                    enumerator = this.omObject.ResourceTags.GetEnumerator();
-                    for (
-                    ; enumerator.MoveNext(); 
-                    )
-                    {
-                        dict.Add(enumerator.Current.Key, enumerator.Current.Value);
-                    }
-                    this.resourceTags = dict;
-                }
-                return this.resourceTags;
-            }
-            set
-            {
-                if ((value == null))
-                {
-                    this.omObject.ResourceTags = null;
-                }
-                else
-                {
-                    this.omObject.ResourceTags = new Dictionary<System.String, System.String>();
-                }
-                this.resourceTags = value;
-            }
-        }
-        
         public PSStartTask StartTask
         {
             get
@@ -621,18 +463,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
             set
             {
                 this.omObject.TargetLowPriorityComputeNodes = value;
-            }
-        }
-        
-        public Microsoft.Azure.Batch.Common.NodeCommunicationMode? TargetNodeCommunicationMode
-        {
-            get
-            {
-                return this.omObject.TargetNodeCommunicationMode;
-            }
-            set
-            {
-                this.omObject.TargetNodeCommunicationMode = value;
             }
         }
         

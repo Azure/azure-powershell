@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// <param name='accountName'>
         /// The name of the NetApp account
         /// </param>
-        public static System.Collections.Generic.IEnumerable<SnapshotPolicy> List(this ISnapshotPoliciesOperations operations, string resourceGroupName, string accountName)
+        public static Microsoft.Rest.Azure.IPage<SnapshotPolicy> List(this ISnapshotPoliciesOperations operations, string resourceGroupName, string accountName)
         {
                 return ((ISnapshotPoliciesOperations)operations).ListAsync(resourceGroupName, accountName).GetAwaiter().GetResult();
         }
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<SnapshotPolicy>> ListAsync(this ISnapshotPoliciesOperations operations, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<SnapshotPolicy>> ListAsync(this ISnapshotPoliciesOperations operations, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false))
             {
@@ -201,9 +201,9 @@ namespace Microsoft.Azure.Management.NetApp
         /// <param name='snapshotPolicyName'>
         /// The name of the snapshot policy
         /// </param>
-        public static void Delete(this ISnapshotPoliciesOperations operations, string resourceGroupName, string accountName, string snapshotPolicyName)
+        public static SnapshotPoliciesDeleteHeaders Delete(this ISnapshotPoliciesOperations operations, string resourceGroupName, string accountName, string snapshotPolicyName)
         {
-                ((ISnapshotPoliciesOperations)operations).DeleteAsync(resourceGroupName, accountName, snapshotPolicyName).GetAwaiter().GetResult();
+                return ((ISnapshotPoliciesOperations)operations).DeleteAsync(resourceGroupName, accountName, snapshotPolicyName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -224,9 +224,12 @@ namespace Microsoft.Azure.Management.NetApp
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this ISnapshotPoliciesOperations operations, string resourceGroupName, string accountName, string snapshotPolicyName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<SnapshotPoliciesDeleteHeaders> DeleteAsync(this ISnapshotPoliciesOperations operations, string resourceGroupName, string accountName, string snapshotPolicyName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, accountName, snapshotPolicyName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, accountName, snapshotPolicyName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Get volumes associated with snapshot policy
@@ -333,9 +336,9 @@ namespace Microsoft.Azure.Management.NetApp
         /// <param name='snapshotPolicyName'>
         /// The name of the snapshot policy
         /// </param>
-        public static void BeginDelete(this ISnapshotPoliciesOperations operations, string resourceGroupName, string accountName, string snapshotPolicyName)
+        public static SnapshotPoliciesDeleteHeaders BeginDelete(this ISnapshotPoliciesOperations operations, string resourceGroupName, string accountName, string snapshotPolicyName)
         {
-                ((ISnapshotPoliciesOperations)operations).BeginDeleteAsync(resourceGroupName, accountName, snapshotPolicyName).GetAwaiter().GetResult();
+                return ((ISnapshotPoliciesOperations)operations).BeginDeleteAsync(resourceGroupName, accountName, snapshotPolicyName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -356,9 +359,45 @@ namespace Microsoft.Azure.Management.NetApp
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this ISnapshotPoliciesOperations operations, string resourceGroupName, string accountName, string snapshotPolicyName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<SnapshotPoliciesDeleteHeaders> BeginDeleteAsync(this ISnapshotPoliciesOperations operations, string resourceGroupName, string accountName, string snapshotPolicyName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, accountName, snapshotPolicyName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, accountName, snapshotPolicyName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// List snapshot policy
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<SnapshotPolicy> ListNext(this ISnapshotPoliciesOperations operations, string nextPageLink)
+        {
+                return ((ISnapshotPoliciesOperations)operations).ListNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// List snapshot policy
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<SnapshotPolicy>> ListNextAsync(this ISnapshotPoliciesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
         }
     }
 }

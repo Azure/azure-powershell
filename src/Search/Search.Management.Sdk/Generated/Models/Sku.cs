@@ -8,8 +8,8 @@ namespace Microsoft.Azure.Management.Search.Models
     using System.Linq;
 
     /// <summary>
-    /// Defines the SKU of an Azure Cognitive Search Service, which determines
-    /// price tier and capacity limits.
+    /// Defines the SKU of a search service, which determines billing rate and
+    /// capacity limits.
     /// </summary>
     public partial class Sku
     {
@@ -34,9 +34,9 @@ namespace Microsoft.Azure.Management.Search.Models
         /// property to &#39;highDensity&#39;). &#39;storage_optimized_l1&#39;: Supports 1TB per
         /// partition, up to 12 partitions. &#39;storage_optimized_l2&#39;: Supports 2TB per
         /// partition, up to 12 partitions.&#39;
-        /// Possible values include: 'free', 'basic', 'standard', 'standard2',
-        /// 'standard3', 'storage_optimized_l1', 'storage_optimized_l2'</param>
-        public Sku(SkuName? name = default(SkuName?))
+        /// Possible values include: &#39;free&#39;, &#39;basic&#39;, &#39;standard&#39;, &#39;standard2&#39;,
+        /// &#39;standard3&#39;, &#39;storage_optimized_l1&#39;, &#39;storage_optimized_l2&#39;</param>
+        public Sku(string name = default(string))
 
         {
             this.Name = name;
@@ -61,6 +61,6 @@ namespace Microsoft.Azure.Management.Search.Models
         /// 2TB per partition, up to 12 partitions.&#39; Possible values include: &#39;free&#39;, &#39;basic&#39;, &#39;standard&#39;, &#39;standard2&#39;, &#39;standard3&#39;, &#39;storage_optimized_l1&#39;, &#39;storage_optimized_l2&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
-        public SkuName? Name {get; set; }
+        public string Name {get; set; }
     }
 }

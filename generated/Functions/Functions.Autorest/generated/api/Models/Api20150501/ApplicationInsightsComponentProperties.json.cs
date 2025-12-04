@@ -77,6 +77,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501
             {_hockeyAppToken = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("HockeyAppToken"), out var __jsonHockeyAppToken) ? (string)__jsonHockeyAppToken : (string)HockeyAppToken;}
             {_provisioningState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("provisioningState"), out var __jsonProvisioningState) ? (string)__jsonProvisioningState : (string)ProvisioningState;}
             {_samplingPercentage = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("SamplingPercentage"), out var __jsonSamplingPercentage) ? (double?)__jsonSamplingPercentage : SamplingPercentage;}
+            {_connectionString = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("ConnectionString"), out var __jsonConnectionString) ? (string)__jsonConnectionString : (string)ConnectionString;}
+            {_retentionInDay = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("RetentionInDays"), out var __jsonRetentionInDays) ? (int?)__jsonRetentionInDays : RetentionInDay;}
+            {_disableIPMasking = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean>("DisableIpMasking"), out var __jsonDisableIPMasking) ? (bool?)__jsonDisableIPMasking : DisableIPMasking;}
+            {_immediatePurgeDataOn30Day = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean>("ImmediatePurgeDataOn30Days"), out var __jsonImmediatePurgeDataOn30Days) ? (bool?)__jsonImmediatePurgeDataOn30Days : ImmediatePurgeDataOn30Day;}
+            {_privateLinkScopedResource = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray>("PrivateLinkScopedResources"), out var __jsonPrivateLinkScopedResources) ? If( __jsonPrivateLinkScopedResources as Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IPrivateLinkScopedResource[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IPrivateLinkScopedResource) (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.PrivateLinkScopedResource.FromJson(__u) )) ))() : null : PrivateLinkScopedResource;}
+            {_ingestionMode = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("IngestionMode"), out var __jsonIngestionMode) ? (string)__jsonIngestionMode : (string)IngestionMode;}
             AfterFromJson(json);
         }
 
@@ -145,6 +151,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501
                 AddIf( null != (((object)this._provisioningState)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._provisioningState.ToString()) : null, "provisioningState" ,container.Add );
             }
             AddIf( null != this._samplingPercentage ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber((double)this._samplingPercentage) : null, "SamplingPercentage" ,container.Add );
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
+            {
+                AddIf( null != (((object)this._connectionString)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._connectionString.ToString()) : null, "ConnectionString" ,container.Add );
+            }
+            AddIf( null != this._retentionInDay ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber((int)this._retentionInDay) : null, "RetentionInDays" ,container.Add );
+            AddIf( null != this._disableIPMasking ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean((bool)this._disableIPMasking) : null, "DisableIpMasking" ,container.Add );
+            AddIf( null != this._immediatePurgeDataOn30Day ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean((bool)this._immediatePurgeDataOn30Day) : null, "ImmediatePurgeDataOn30Days" ,container.Add );
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeReadOnly))
+            {
+                if (null != this._privateLinkScopedResource)
+                {
+                    var __w = new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.XNodeArray();
+                    foreach( var __x in this._privateLinkScopedResource )
+                    {
+                        AddIf(__x?.ToJson(null, serializationMode) ,__w.Add);
+                    }
+                    container.Add("PrivateLinkScopedResources",__w);
+                }
+            }
+            AddIf( null != (((object)this._ingestionMode)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._ingestionMode.ToString()) : null, "IngestionMode" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

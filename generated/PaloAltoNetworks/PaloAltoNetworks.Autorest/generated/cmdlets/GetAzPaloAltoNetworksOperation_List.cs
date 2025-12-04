@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IOperation))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Description(@"List the operations for the provider")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.HttpPath(Path = "/providers/PaloAltoNetworks.Cloudngfw/operations", ApiVersion = "2023-09-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.HttpPath(Path = "/providers/PaloAltoNetworks.Cloudngfw/operations", ApiVersion = "2025-10-08")]
     public partial class GetAzPaloAltoNetworksOperation_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IContext

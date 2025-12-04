@@ -154,7 +154,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models
         Description = @"The monitoring mode of OneAgent",
         SerializedName = @"monitoringType",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.PSArgumentCompleterAttribute("CLOUD_INFRASTRUCTURE", "FULL_STACK")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.PSArgumentCompleterAttribute("CLOUD_INFRASTRUCTURE", "FULL_STACK", "DISCOVERY")]
         string MonitoringType { get; set; }
         /// <summary>Azure VM resource ID</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Info(
@@ -210,7 +210,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models
         [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.PSArgumentCompleterAttribute("ENABLED", "DISABLED")]
         string LogModule { get; set; }
         /// <summary>The monitoring mode of OneAgent</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.PSArgumentCompleterAttribute("CLOUD_INFRASTRUCTURE", "FULL_STACK")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.PSArgumentCompleterAttribute("CLOUD_INFRASTRUCTURE", "FULL_STACK", "DISCOVERY")]
         string MonitoringType { get; set; }
         /// <summary>Azure VM resource ID</summary>
         string ResourceId { get; set; }

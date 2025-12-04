@@ -113,6 +113,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentityInternal)this).MonitorName = (string) content.GetValueForProperty("MonitorName",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentityInternal)this).MonitorName, global::System.Convert.ToString);
             }
+            if (content.Contains("ConfigurationName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentityInternal)this).ConfigurationName = (string) content.GetValueForProperty("ConfigurationName",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentityInternal)this).ConfigurationName, global::System.Convert.ToString);
+            }
             if (content.Contains("IntegrationName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentityInternal)this).IntegrationName = (string) content.GetValueForProperty("IntegrationName",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentityInternal)this).IntegrationName, global::System.Convert.ToString);
@@ -153,6 +157,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
             if (content.Contains("MonitorName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentityInternal)this).MonitorName = (string) content.GetValueForProperty("MonitorName",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentityInternal)this).MonitorName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ConfigurationName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentityInternal)this).ConfigurationName = (string) content.GetValueForProperty("ConfigurationName",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentityInternal)this).ConfigurationName, global::System.Convert.ToString);
             }
             if (content.Contains("IntegrationName"))
             {

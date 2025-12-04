@@ -67,6 +67,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models
             }
             {_accountId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonString>("accountId"), out var __jsonAccountId) ? (string)__jsonAccountId : (string)_accountId;}
             {_regionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonString>("regionId"), out var __jsonRegionId) ? (string)__jsonRegionId : (string)_regionId;}
+            {_companyName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonString>("companyName"), out var __jsonCompanyName) ? (string)__jsonCompanyName : (string)_companyName;}
             AfterFromJson(json);
         }
 
@@ -103,6 +104,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models
             }
             AddIf( null != (((object)this._accountId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonString(this._accountId.ToString()) : null, "accountId" ,container.Add );
             AddIf( null != (((object)this._regionId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonString(this._regionId.ToString()) : null, "regionId" ,container.Add );
+            AddIf( null != (((object)this._companyName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonString(this._companyName.ToString()) : null, "companyName" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

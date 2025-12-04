@@ -1,0 +1,95 @@
+{
+  "resourceType": "monitors/monitoredSubscriptions",
+  "apiVersion": "2025-06-11",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.datadog"
+  },
+  "commands": [
+    {
+      "name": "Get-AzDatadogMonitoredSubscription",
+      "description": "List the subscriptions currently being monitored by the Datadog monitor resource.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}/monitoredSubscriptions/{configurationName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.datadog/get-azdatadogmonitoredsubscription"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ConfigurationName <String>",
+              "-MonitorName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "List the subscriptions currently being monitored by the Datadog monitor resource.",
+          "parameters": [
+            {
+              "name": "-ConfigurationName",
+              "value": "[Path.configurationName]"
+            },
+            {
+              "name": "-MonitorName",
+              "value": "[Path.monitorName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzDatadogMonitoredSubscription",
+      "description": "Delete the subscriptions that are being monitored by the Datadog monitor resource",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}/monitoredSubscriptions/{configurationName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.datadog/remove-azdatadogmonitoredsubscription"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ConfigurationName <String>",
+              "-MonitorName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "delete the subscriptions that are being monitored by the Datadog monitor resource",
+          "parameters": [
+            {
+              "name": "-ConfigurationName",
+              "value": "[Path.configurationName]"
+            },
+            {
+              "name": "-MonitorName",
+              "value": "[Path.monitorName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

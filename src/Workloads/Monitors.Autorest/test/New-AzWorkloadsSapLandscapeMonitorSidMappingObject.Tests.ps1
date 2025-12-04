@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzWorkloadsSapLandscapeMo
 
 Describe 'New-AzWorkloadsSapLandscapeMonitorSidMappingObject' {
     It '__AllParameterSets' {
-        $response = New-AzWorkloadsSapLandscapeMonitorSidMappingObject -Name Prod -TopSid "{SID2,SID1}"
-        $response.Name | Should -Be "Prod"
+        $response = New-AzWorkloadsSapLandscapeMonitorSidMappingObject -Name NonProd -TopSid "{CHA}"
+        $response.Name | Should -Be "NonProd"
     }
 }

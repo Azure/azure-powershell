@@ -78,6 +78,9 @@ namespace Microsoft.Azure.Management.Batch
         /// <param name='versionName'>
         /// The version of the application.
         /// </param>
+        /// <param name='tags'>
+        /// The tags of the resource.
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -90,7 +93,7 @@ namespace Microsoft.Azure.Management.Batch
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ApplicationPackage>> CreateWithHttpMessagesAsync(string resourceGroupName, string accountName, string applicationName, string versionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ApplicationPackage>> CreateWithHttpMessagesAsync(string resourceGroupName, string accountName, string applicationName, string versionName, System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Deletes an application package record and its associated binary file.

@@ -14,23 +14,31 @@ Update a gallery Application Version.
 #>
 
 function Update-AzGalleryApplicationVersion {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersion])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.OutputBreakingChangeAttribute("Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersion", "15.0.0", "9.0.0", "2025/11/03", ReplacementCmdletOutputType = "Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IGalleryApplicationVersion", DeprecatedOutputProperties = ("PublishingProfileTargetExtendedLocation Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IGalleryTargetExtendedLocation", "ReplicationStatusSummary Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IRegionalReplicationStatus", "TargetRegion Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.ITargetRegion"), NewOutputProperties = ("PublishingProfileTargetExtendedLocation System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IGalleryTargetExtendedLocation]", "ReplicationStatusSummary System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IRegionalReplicationStatus]", "TargetRegion System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.ITargetRegion]"))]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IGalleryApplicationVersion])]
     [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+        [Parameter(ParameterSetName='UpdateViaIdentityGalleryExpanded', Mandatory)]
+        [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+        [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
         [System.String]
         # The name of the gallery Application Definition in which the Application Version is to be updated.
         ${GalleryApplicationName},
-    
+
         [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+        [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+        [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
         [System.String]
         # The name of the Shared Application Gallery in which the Application Definition resides.
         ${GalleryName},
-    
+
         [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+        [Parameter(ParameterSetName='UpdateViaIdentityApplicationExpanded', Mandatory)]
+        [Parameter(ParameterSetName='UpdateViaIdentityGalleryExpanded', Mandatory)]
+        [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+        [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
         [Alias('GalleryApplicationVersionName')]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
         [System.String]
@@ -39,133 +47,181 @@ function Update-AzGalleryApplicationVersion {
         # Digits must be within the range of a 32-bit integer.
         # Format: <MajorVersion>.<MinorVersion>.<Patch>
         ${Name},
-    
+
         [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+        [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+        [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
         [System.String]
         # The name of the resource group.
         ${ResourceGroupName},
-    
+
         [Parameter(ParameterSetName='UpdateExpanded')]
+        [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+        [Parameter(ParameterSetName='UpdateViaJsonString')]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String]
         # Subscription credentials which uniquely identify Microsoft Azure subscription.
         # The subscription ID forms part of the URI for every service call.
         ${SubscriptionId},
-    
+
+        [Parameter(ParameterSetName='UpdateViaIdentityApplicationExpanded', Mandatory, ValueFromPipeline)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity]
+        # Identity Parameter
+        ${ApplicationInputObject},
+
         [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity]
         # Identity Parameter
-        # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
         ${InputObject},
-    
-        [Parameter()]
+
+        [Parameter(ParameterSetName='UpdateViaIdentityGalleryExpanded', Mandatory, ValueFromPipeline)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity]
+        # Identity Parameter
+        ${GalleryInputObject},
+
+        [Parameter(ParameterSetName='UpdateExpanded')]
+        [Parameter(ParameterSetName='UpdateViaIdentityApplicationExpanded')]
+        [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+        [Parameter(ParameterSetName='UpdateViaIdentityGalleryExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
         [System.String]
         # Optional.
         # The defaultConfigurationLink of the artifact, must be a readable storage page blob.
         ${DefaultConfigFileLink},
-    
-        [Parameter(Mandatory)]
+
+        [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+        [Parameter(ParameterSetName='UpdateViaIdentityApplicationExpanded', Mandatory)]
+        [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory)]
+        [Parameter(ParameterSetName='UpdateViaIdentityGalleryExpanded', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
         [System.String]
         # Required.
         # The mediaLink of the artifact, must be a readable storage page blob.
         ${PackageFileLink},
-    
-        [Parameter()]
+
+        [Parameter(ParameterSetName='UpdateExpanded')]
+        [Parameter(ParameterSetName='UpdateViaIdentityApplicationExpanded')]
+        [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+        [Parameter(ParameterSetName='UpdateViaIdentityGalleryExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
         [System.DateTime]
         # The end of life date of the gallery image version.
         # This property can be used for decommissioning purposes.
         # This property is updatable.
         ${PublishingProfileEndOfLifeDate},
-    
-        [Parameter()]
+
+        [Parameter(ParameterSetName='UpdateExpanded')]
+        [Parameter(ParameterSetName='UpdateViaIdentityApplicationExpanded')]
+        [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+        [Parameter(ParameterSetName='UpdateViaIdentityGalleryExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
         [System.Management.Automation.SwitchParameter]
         # If set to true, Virtual Machines deployed from the latest version of the Image Definition won't use this Image Version.
         ${PublishingProfileExcludeFromLatest},
-    
-        [Parameter()]
+
+        [Parameter(ParameterSetName='UpdateExpanded')]
+        [Parameter(ParameterSetName='UpdateViaIdentityApplicationExpanded')]
+        [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+        [Parameter(ParameterSetName='UpdateViaIdentityGalleryExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
         [System.Int32]
         # The number of replicas of the Image Version to be created per region.
         # This property would take effect for a region when regionalReplicaCount is not specified.
         # This property is updatable.
         ${ReplicaCount},
-    
-        [Parameter()]
+
+        [Parameter(ParameterSetName='UpdateExpanded')]
+        [Parameter(ParameterSetName='UpdateViaIdentityApplicationExpanded')]
+        [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+        [Parameter(ParameterSetName='UpdateViaIdentityGalleryExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IUpdateResourceDefinitionTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IUpdateResourceDefinitionTags]))]
         [System.Collections.Hashtable]
         # Resource tags
         ${Tag},
-    
-        [Parameter()]
+
+        [Parameter(ParameterSetName='UpdateExpanded')]
+        [Parameter(ParameterSetName='UpdateViaIdentityApplicationExpanded')]
+        [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+        [Parameter(ParameterSetName='UpdateViaIdentityGalleryExpanded')]
         [AllowEmptyCollection()]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ITargetRegion[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.ITargetRegion[]]
         # The target regions where the Image Version is going to be replicated to.
         # This property is updatable.
-        # To construct, see NOTES section for TARGETREGION properties and create a hash table.
         ${TargetRegion},
-    
+
+        [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
+        [System.String]
+        # Path of Json file supplied to the Update operation
+        ${JsonFilePath},
+
+        [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
+        [System.String]
+        # Json string supplied to the Update operation
+        ${JsonString},
+
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Azure')]
         [System.Management.Automation.PSObject]
-        # The credentials, account, tenant, and subscription used for communication with Azure.
+        # The DefaultProfile parameter is not functional.
+        # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
         ${DefaultProfile},
-    
+
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
         # Run the command as a job
         ${AsJob},
-    
+
         [Parameter(DontShow)]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
         # Wait for .NET debugger to attach
         ${Break},
-    
+
         [Parameter(DontShow)]
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Runtime')]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.SendAsyncStep[]]
         # SendAsync Pipeline Steps to be appended to the front of the pipeline
         ${HttpPipelineAppend},
-    
+
         [Parameter(DontShow)]
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Runtime')]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.SendAsyncStep[]]
         # SendAsync Pipeline Steps to be prepended to the front of the pipeline
         ${HttpPipelinePrepend},
-    
+
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
         # Run the command asynchronously
         ${NoWait},
-    
+
         [Parameter(DontShow)]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Runtime')]
         [System.Uri]
         # The URI for the proxy server to use
         ${Proxy},
-    
+
         [Parameter(DontShow)]
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Runtime')]
         [System.Management.Automation.PSCredential]
         # Credentials for a proxy server to use for the remote call
         ${ProxyCredential},
-    
+
         [Parameter(DontShow)]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]

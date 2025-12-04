@@ -38,6 +38,7 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [AttachedNetworkConnectionName <String>]: The name of the attached NetworkConnection.
+  [BuildName <String>]: The ID of the Image Definition Build.
   [CatalogName <String>]: The name of the Catalog.
   [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
   [DevCenterName <String>]: The name of the devcenter.
@@ -46,14 +47,14 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [EnvironmentTypeName <String>]: The name of the environment type.
   [GalleryName <String>]: The name of the gallery.
   [Id <String>]: Resource identity path
+  [ImageDefinitionName <String>]: The name of the Image Definition.
   [ImageName <String>]: The name of the image.
   [Location <String>]: The Azure region
-  [MemberName <String>]: The name of a devcenter plan member.
   [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
   [OperationId <String>]: The ID of an ongoing async operation
-  [PlanName <String>]: The name of the devcenter plan.
   [PoolName <String>]: Name of the pool.
   [ProjectName <String>]: The name of the project.
+  [ProjectPolicyName <String>]: The name of the project policy.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScheduleName <String>]: The name of the schedule that uniquely identifies it.
   [SubscriptionId <String>]: The ID of the target subscription.

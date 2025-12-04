@@ -116,6 +116,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponentPropertiesInternal)this).SamplingPercentage = (double?) content.GetValueForProperty("SamplingPercentage",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponentPropertiesInternal)this).SamplingPercentage, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
             }
+            if (content.Contains("ConnectionString"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponentPropertiesInternal)this).ConnectionString = (string) content.GetValueForProperty("ConnectionString",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponentPropertiesInternal)this).ConnectionString, global::System.Convert.ToString);
+            }
+            if (content.Contains("RetentionInDay"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponentPropertiesInternal)this).RetentionInDay = (int?) content.GetValueForProperty("RetentionInDay",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponentPropertiesInternal)this).RetentionInDay, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("DisableIPMasking"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponentPropertiesInternal)this).DisableIPMasking = (bool?) content.GetValueForProperty("DisableIPMasking",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponentPropertiesInternal)this).DisableIPMasking, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("ImmediatePurgeDataOn30Day"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponentPropertiesInternal)this).ImmediatePurgeDataOn30Day = (bool?) content.GetValueForProperty("ImmediatePurgeDataOn30Day",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponentPropertiesInternal)this).ImmediatePurgeDataOn30Day, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("PrivateLinkScopedResource"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponentPropertiesInternal)this).PrivateLinkScopedResource = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IPrivateLinkScopedResource[]) content.GetValueForProperty("PrivateLinkScopedResource",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponentPropertiesInternal)this).PrivateLinkScopedResource, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IPrivateLinkScopedResource>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.PrivateLinkScopedResourceTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("IngestionMode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponentPropertiesInternal)this).IngestionMode = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.IngestionMode?) content.GetValueForProperty("IngestionMode",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponentPropertiesInternal)this).IngestionMode, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.IngestionMode.CreateFrom);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -180,6 +204,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501
             if (content.Contains("SamplingPercentage"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponentPropertiesInternal)this).SamplingPercentage = (double?) content.GetValueForProperty("SamplingPercentage",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponentPropertiesInternal)this).SamplingPercentage, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
+            }
+            if (content.Contains("ConnectionString"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponentPropertiesInternal)this).ConnectionString = (string) content.GetValueForProperty("ConnectionString",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponentPropertiesInternal)this).ConnectionString, global::System.Convert.ToString);
+            }
+            if (content.Contains("RetentionInDay"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponentPropertiesInternal)this).RetentionInDay = (int?) content.GetValueForProperty("RetentionInDay",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponentPropertiesInternal)this).RetentionInDay, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("DisableIPMasking"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponentPropertiesInternal)this).DisableIPMasking = (bool?) content.GetValueForProperty("DisableIPMasking",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponentPropertiesInternal)this).DisableIPMasking, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("ImmediatePurgeDataOn30Day"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponentPropertiesInternal)this).ImmediatePurgeDataOn30Day = (bool?) content.GetValueForProperty("ImmediatePurgeDataOn30Day",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponentPropertiesInternal)this).ImmediatePurgeDataOn30Day, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("PrivateLinkScopedResource"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponentPropertiesInternal)this).PrivateLinkScopedResource = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IPrivateLinkScopedResource[]) content.GetValueForProperty("PrivateLinkScopedResource",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponentPropertiesInternal)this).PrivateLinkScopedResource, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IPrivateLinkScopedResource>(__y, Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.PrivateLinkScopedResourceTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("IngestionMode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponentPropertiesInternal)this).IngestionMode = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.IngestionMode?) content.GetValueForProperty("IngestionMode",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponentPropertiesInternal)this).IngestionMode, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.IngestionMode.CreateFrom);
             }
             AfterDeserializePSObject(content);
         }

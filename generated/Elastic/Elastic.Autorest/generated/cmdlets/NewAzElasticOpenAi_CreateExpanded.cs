@@ -10,15 +10,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Cmdlets;
     using System;
 
-    /// <summary>create a OpenAI integration rule for a given monitor resource.</summary>
+    /// <summary>
+    /// create an OpenAI integration rule for a given Elastic monitor resource, enabling advanced AI-driven observability and
+    /// monitoring.
+    /// </summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/openAIIntegrations/{integrationName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzElasticOpenAi_CreateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IOpenAiIntegrationRpmodel))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.Description(@"create a OpenAI integration rule for a given monitor resource.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.Description(@"create an OpenAI integration rule for a given Elastic monitor resource, enabling advanced AI-driven observability and monitoring.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/openAIIntegrations/{integrationName}", ApiVersion = "2024-03-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/openAIIntegrations/{integrationName}", ApiVersion = "2025-06-01")]
     public partial class NewAzElasticOpenAi_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IContext
@@ -137,6 +140,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.ParameterCategory.Path)]
         public string MonitorName { get => this._monitorName; set => this._monitorName = value; }
+
+        /// <summary>The connector id of Open AI resource</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The connector id of Open AI resource")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The connector id of Open AI resource",
+        SerializedName = @"openAIConnectorId",
+        PossibleTypes = new [] { typeof(string) })]
+        public string OpenAiConnectorId { get => _body.OpenAiConnectorId ?? null; set => _body.OpenAiConnectorId = value; }
 
         /// <summary>The API endpoint for Open AI resource</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The API endpoint for Open AI resource")]

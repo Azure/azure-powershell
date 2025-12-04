@@ -1,0 +1,96 @@
+{
+    "tools": [
+        {
+            "name": "generate-autorest",
+            "description": "Generate code using autorest",
+            "parameters": [
+                {
+                    "name": "workingDirectory",
+                    "description": "absolute path of the README.md where the code will be generated",
+                    "type": "string"
+                }
+            ],
+            "callbackName": "generateByAutorest"
+        },
+        {
+            "name": "no-inline",
+            "description": "Response of this tool instruct LLM to convert flattened models to no-inline models in parameter. Autorest flatten nested models by default as parameters, no-inline indicates that the model should not be flattened and should be used as a parameter. Group new no-inline directives under existing no-inline directives if they exist, otherwise create a new no-inline directive group. Example directive: '  - no-inline:\n      - Account'",
+            "parameters": [
+                {
+                    "name": "modelNames",
+                    "description": "model names need to be no-inline",
+                    "type": "array"
+                }
+            ],
+            "callbackName": "handleNoInline"
+        },
+        {
+            "name": "model-cmdlet",
+            "description": "Create a 'New-' cmdlet to create given models by adding model-cmdlet directives, use 'New-Az(subject-prefix)(ModelName)Object as cmdlet-name'. Group new model-cmdlet directives under existing model-cmdlet directives if they exist, otherwise create a new model-cmdlet directive group. Example directive: '  - model-cmdlet:\n      - model-name: Account\n        cmdlet-name: New-AzStorageAccount'",
+            "parameters": [
+                {
+                    "name": "modelNames",
+                    "description": "model names need to be created cmdlet",
+                    "type": "array"
+                }
+            ],
+            "callbackName": "handleModelCmdlet"
+        },
+        {
+            "name": "polymorphism",
+            "description": "this tool can handle polymorphism: when a parent type has multiple children types, and the children types can be inferred by an enum value discriminator, this tool can make parameter of parent type polymorphic which take one of the children types",
+            "parameters": [
+                {
+                    "name": "workingDirectory",
+                    "description": "absolute path of the README.md where the code will be generated",
+                    "type": "string"
+                }
+            ],
+            "callbackName": "handlePolymorphism"
+        },
+        {
+            "name": "create-example",
+            "description": "Fulfill examples for empty example files under '{workingDirectory}/examples' directory.",
+            "parameters": [
+                {
+                    "name": "workingDirectory",
+                    "description": "absolute path of the generated module, there should be an 'examples' directory under this path",
+                    "type": "string"
+                }
+            ],
+            "callbackName": "createExamplesFromSpecs"
+        },
+        {
+            "name": "create-test",
+            "description": "Implement test cases for empty test stubs under '{workingDirectory}/test' directory.",
+            "parameters": [
+                {
+                    "name": "workingDirectory",
+                    "description": "absolute path of the generated module, there should be an 'test' directory under this path",
+                    "type": "string"
+                }
+            ],
+            "callbackName": "createTestsFromSpecs"
+        },
+        {
+            "name": "setup-module-structure",
+            "description": "Setup Azure PowerShell module structure by selecting service, provider, and API version through interactive dropdowns",
+            "parameters": [],
+            "callbackName": "setupModuleStructure"
+        },
+        {
+            "name": "run-partner-module-workflow",
+            "description": "This tools generates an autorest powershell module. This can be used to automatically generate a powershell module. Use this when a user asks about: partner module steps, autorest workflow, generating an Azure PowerShell module, order of tools, examples/tests guidance, working directory invariants, or stop-on-failure logic. Includes: exact tool invocation order, workingDirectory derivation rule (never recompute), STOP conditions (no retries), and completion summary expectations. Keywords: partner module, autorest, azure powershell onboarding, create-example, create-test, setup-module-structure, generate-autorest, workflow steps, module generation, examples, tests, regeneration.",
+            "parameters": [],
+            "callbackName": "runPartnerModuleWorkflow"
+        }
+    ],
+    "prompts": [
+        {
+            "name": "partner-module-workflow",
+            "description": "Full autonomous workflow instructions to generate a partner Azure PowerShell module via Autorest.",
+            "parameters": [],
+            "callbackName": "createPartnerModuleWorkflow"
+        }
+    ]
+}

@@ -17,9 +17,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models
         Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ISwitchBillingRequest Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ISwitchBillingParameterInternal.Request { get => (this._request = this._request ?? new Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.SwitchBillingRequest()); set { {_request = value;} } }
 
         /// <summary>Internal Acessors for RequestPlanData</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IPlanData Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ISwitchBillingParameterInternal.RequestPlanData { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ISwitchBillingRequestInternal)Request).PlanData; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ISwitchBillingRequestInternal)Request).PlanData = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IPlanData Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ISwitchBillingParameterInternal.RequestPlanData { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ISwitchBillingRequestInternal)Request).PlanData; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ISwitchBillingRequestInternal)Request).PlanData = value ?? null /* model class */; }
 
-        /// <summary>Different billing cycles like MONTHLY/WEEKLY. this could be enum</summary>
+        /// <summary>Different billing cycles like Monthly/Weekly.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Origin(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.PropertyOrigin.Inlined)]
         public string PlanDataBillingCycle { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ISwitchBillingRequestInternal)Request).PlanDataBillingCycle; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ISwitchBillingRequestInternal)Request).PlanDataBillingCycle = value ?? null; }
 
@@ -64,17 +64,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models
     public partial interface ISwitchBillingParameter :
         Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IJsonSerializable
     {
-        /// <summary>Different billing cycles like MONTHLY/WEEKLY. this could be enum</summary>
+        /// <summary>Different billing cycles like Monthly/Weekly.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Different billing cycles like MONTHLY/WEEKLY. this could be enum",
+        Description = @"Different billing cycles like Monthly/Weekly.",
         SerializedName = @"billingCycle",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.PSArgumentCompleterAttribute("YEARLY", "MONTHLY", "WEEKLY")]
         string PlanDataBillingCycle { get; set; }
         /// <summary>date when plan was applied</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Info(
@@ -149,8 +148,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models
     internal partial interface ISwitchBillingParameterInternal
 
     {
-        /// <summary>Different billing cycles like MONTHLY/WEEKLY. this could be enum</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.PSArgumentCompleterAttribute("YEARLY", "MONTHLY", "WEEKLY")]
+        /// <summary>Different billing cycles like Monthly/Weekly.</summary>
         string PlanDataBillingCycle { get; set; }
         /// <summary>date when plan was applied</summary>
         global::System.DateTime? PlanDataEffectiveDate { get; set; }

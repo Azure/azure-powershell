@@ -59,6 +59,13 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Specify the failover type. Possible values are: Unplanned, Planned. If not specified, the default failover type is Unplanned.")]
+        [PSArgumentCompleter(AccountFailoverType.Planned,
+            AccountFailoverType.Unplanned)]
+        public string FailoverType { get; set; }
+
         [Parameter(Mandatory = true,
             HelpMessage = "Storage account object",
             ValueFromPipeline = true,
@@ -83,30 +90,53 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
             if (ShouldProcess(this.Name, "Invoke Failover of Storage Account"))
             {
-                StringBuilder shouldContinuePrompt = new StringBuilder();
-                shouldContinuePrompt.AppendLine("Failover the storage account, the secondary cluster will become primary after failover. Please understand the following impact to your storage account before you initiate the failover:");
-                shouldContinuePrompt.AppendLine("  1. Please check the Last Sync Time using Get-"+ ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "StorageAccount cmdlet with -IncludeGeoReplicationStats parameter, and check GeoReplicationStats property of your account. This is the data you may lose if you initiate the failover.");
-                shouldContinuePrompt.AppendLine("  2. After the failover, your storage account type will be converted to locally redundant storage (LRS). You can convert your account to use geo-redundant storage (GRS).");
-                shouldContinuePrompt.AppendLine("  3. Once you re-enable GRS for your storage account, Microsoft will replicate data to your new secondary region. Replication time is dependent on the amount of data to replicate. Please note that there are bandwidth charges for the bootstrap. Please refer to doc: https://azure.microsoft.com/en-us/pricing/details/bandwidth/");
-
-
-                if (this.force || ShouldContinue(shouldContinuePrompt.ToString(), ""))
+                if (ParameterSetName == AccountObjectParameterSet)
                 {
-                    if (ParameterSetName == AccountObjectParameterSet)
+                    this.ResourceGroupName = InputObject.ResourceGroupName;
+                    this.Name = InputObject.StorageAccountName;
+                }
+
+                StorageModels.FailoverType? type = null;
+                if (!String.IsNullOrEmpty(this.FailoverType)) { 
+                    if (this.FailoverType.ToLower() == AccountFailoverType.Planned.ToLower())
                     {
-                        this.ResourceGroupName = InputObject.ResourceGroupName;
-                        this.Name = InputObject.StorageAccountName;
+                        type = StorageModels.FailoverType.Planned;
+                    } 
+                    else if (this.FailoverType.ToLower() != AccountFailoverType.Unplanned.ToLower())
+                    {
+                        throw new ArgumentException(string.Format("The Failover Type {0} is invalid.", this.FailoverType), "FailoverType");
+                    }
+                } 
+
+                if (type == null) {
+                    StringBuilder shouldContinuePrompt = new StringBuilder();
+                    shouldContinuePrompt.AppendLine("Failover the storage account, the secondary cluster will become primary after failover. Please understand the following impact to your storage account before you initiate the failover:");
+                    shouldContinuePrompt.AppendLine("  1. Please check the Last Sync Time using Get-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "StorageAccount cmdlet with -IncludeGeoReplicationStats parameter, and check GeoReplicationStats property of your account. This is the data you may lose if you initiate the failover.");
+                    shouldContinuePrompt.AppendLine("  2. After the failover, your storage account type will be converted to locally redundant storage (LRS). You can convert your account to use geo-redundant storage (GRS).");
+                    shouldContinuePrompt.AppendLine("  3. Once you re-enable GRS for your storage account, Microsoft will replicate data to your new secondary region. Replication time is dependent on the amount of data to replicate. Please note that there are bandwidth charges for the bootstrap. Please refer to doc: https://azure.microsoft.com/en-us/pricing/details/bandwidth/");
+                    
+                    if (this.force || ShouldContinue(shouldContinuePrompt.ToString(), ""))
+                    {
+                        ExecuteFailover(type);
                     }
 
-                    this.StorageClient.StorageAccounts.Failover(
-                        this.ResourceGroupName,
-                        this.Name);
-
-                    var storageAccount = this.StorageClient.StorageAccounts.GetProperties(this.ResourceGroupName, this.Name);
-
-                    WriteStorageAccount(storageAccount, DefaultContext);
+                } else
+                {
+                    ExecuteFailover(type);
                 }
             }
+        }
+
+        private void ExecuteFailover(StorageModels.FailoverType? type = null)
+        {
+            this.StorageClient.StorageAccounts.Failover(
+                this.ResourceGroupName,
+                this.Name,
+                type);
+
+            var storageAccount = this.StorageClient.StorageAccounts.GetProperties(this.ResourceGroupName, this.Name);
+
+            WriteStorageAccount(storageAccount, DefaultContext);
         }
     }
 }

@@ -77,7 +77,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201
             {
                 return;
             }
-            {_perInstanceConcurrency = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("perInstanceConcurrency"), out var __jsonPerInstanceConcurrency) ? (float?)__jsonPerInstanceConcurrency : PerInstanceConcurrency;}
+            {_perInstanceConcurrency = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("perInstanceConcurrency"), out var __jsonPerInstanceConcurrency) ? (int?)__jsonPerInstanceConcurrency : PerInstanceConcurrency;}
             AfterFromJson(json);
         }
 
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201
             {
                 return container;
             }
-            AddIf( null != this._perInstanceConcurrency ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber((float)this._perInstanceConcurrency) : null, "perInstanceConcurrency" ,container.Add );
+            AddIf( null != this._perInstanceConcurrency ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber((int)this._perInstanceConcurrency) : null, "perInstanceConcurrency" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

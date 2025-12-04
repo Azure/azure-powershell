@@ -47,7 +47,10 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
 
         /// <param name="tablesToRestore">List of specific tables available for restore.
         /// </param>
-        public RestoreParameters(string restoreSource = default(string), System.DateTime? restoreTimestampInUtc = default(System.DateTime?), bool? restoreWithTtlDisabled = default(bool?), string restoreMode = default(string), System.Collections.Generic.IList<DatabaseRestoreResource> databasesToRestore = default(System.Collections.Generic.IList<DatabaseRestoreResource>), System.Collections.Generic.IList<GremlinDatabaseRestoreResource> gremlinDatabasesToRestore = default(System.Collections.Generic.IList<GremlinDatabaseRestoreResource>), System.Collections.Generic.IList<string> tablesToRestore = default(System.Collections.Generic.IList<string>))
+
+        /// <param name="sourceBackupLocation">The source backup location for restore.
+        /// </param>
+        public RestoreParameters(string restoreSource = default(string), System.DateTime? restoreTimestampInUtc = default(System.DateTime?), bool? restoreWithTtlDisabled = default(bool?), string restoreMode = default(string), System.Collections.Generic.IList<DatabaseRestoreResource> databasesToRestore = default(System.Collections.Generic.IList<DatabaseRestoreResource>), System.Collections.Generic.IList<GremlinDatabaseRestoreResource> gremlinDatabasesToRestore = default(System.Collections.Generic.IList<GremlinDatabaseRestoreResource>), System.Collections.Generic.IList<string> tablesToRestore = default(System.Collections.Generic.IList<string>), string sourceBackupLocation = default(string))
 
         : base(restoreSource, restoreTimestampInUtc, restoreWithTtlDisabled)
         {
@@ -55,6 +58,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
             this.DatabasesToRestore = databasesToRestore;
             this.GremlinDatabasesToRestore = gremlinDatabasesToRestore;
             this.TablesToRestore = tablesToRestore;
+            this.SourceBackupLocation = sourceBackupLocation;
             CustomInit();
         }
 
@@ -87,5 +91,11 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "tablesToRestore")]
         public System.Collections.Generic.IList<string> TablesToRestore {get; set; }
+
+        /// <summary>
+        /// Gets or sets the source backup location for restore.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "sourceBackupLocation")]
+        public string SourceBackupLocation {get; set; }
     }
 }

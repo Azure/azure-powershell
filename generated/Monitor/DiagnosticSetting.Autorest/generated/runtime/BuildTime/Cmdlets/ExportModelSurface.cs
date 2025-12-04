@@ -24,7 +24,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.P
     public bool UseExpandedFormat { get; set; }
 
     private const string ModelNamespace = @"Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models";
-    private const string SupportNamespace = @"Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Support";
+    private const string SupportNamespace = @"${$project.supportNamespace.fullName}";
 
     protected override void ProcessRecord()
     {

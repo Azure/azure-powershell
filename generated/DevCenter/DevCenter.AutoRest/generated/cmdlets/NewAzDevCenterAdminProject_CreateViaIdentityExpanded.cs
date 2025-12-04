@@ -14,11 +14,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Cmdlets
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenter.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzDevCenterAdminProject_CreateViaIdentityExpanded", SupportsShouldProcess = true)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.CmdletBreakingChange("15.0.0", "3.0.0", "2025/11/18", ReplacementCmdletName="New-AzDevCenterAdminProject", ChangeDescription="PlanName and MemberName will be removed from the InputObject parameter.")]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IProject))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.IProject))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Description(@"Creates or updates a project.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenter.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}", ApiVersion = "2024-05-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenter.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}", ApiVersion = "2025-04-01-preview")]
     public partial class NewAzDevCenterAdminProject_CreateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.IEventListener
     {
@@ -32,7 +31,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Cmdlets
         private string __processRecordId;
 
         /// <summary>Represents a project resource.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IProject _body = new Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.Project();
+        private Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.IProject _body = new Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.Project();
 
         /// <summary>
         /// The <see cref="global::System.Threading.CancellationTokenSource" /> for this operation.
@@ -43,6 +42,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Cmdlets
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DevCenter.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter AsJob { get; set; }
+
+        /// <summary>The property indicates whether Azure AI services is enabled.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The property indicates whether Azure AI services is enabled.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DevCenter.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The property indicates whether Azure AI services is enabled.",
+        SerializedName = @"azureAiServicesMode",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.AzureAiServicesMode) })]
+        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.AzureAiServicesMode))]
+        public Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.AzureAiServicesMode AzureAiServiceSettingAzureAiServicesMode { get => _body.AzureAiServiceSettingAzureAiServicesMode ?? ((Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.AzureAiServicesMode)""); set => _body.AzureAiServiceSettingAzureAiServicesMode = value; }
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
@@ -66,6 +77,32 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Cmdlets
         public Microsoft.Azure.PowerShell.Cmdlets.DevCenter.DevCenter Client => Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Module.Instance.ClientAPI;
 
         /// <summary>
+        /// The identities that can to be used in customization scenarios; e.g., to clone a repository.
+        /// </summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The identities that can to be used in customization scenarios; e.g., to clone a repository.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DevCenter.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The identities that can to be used in customization scenarios; e.g., to clone a repository.",
+        SerializedName = @"identities",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.IProjectCustomizationManagedIdentity) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.IProjectCustomizationManagedIdentity[] CustomizationSettingIdentity { get => _body.CustomizationSettingIdentity ?? null /* arrayOf */; set => _body.CustomizationSettingIdentity = value; }
+
+        /// <summary>Indicates whether user customizations are enabled.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Indicates whether user customizations are enabled.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DevCenter.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Indicates whether user customizations are enabled.",
+        SerializedName = @"userCustomizationsEnableStatus",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.UserCustomizationsEnableStatus) })]
+        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.UserCustomizationsEnableStatus))]
+        public Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.UserCustomizationsEnableStatus CustomizationSettingUserCustomizationsEnableStatus { get => _body.CustomizationSettingUserCustomizationsEnableStatus ?? ((Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.UserCustomizationsEnableStatus)""); set => _body.CustomizationSettingUserCustomizationsEnableStatus = value; }
+
+        /// <summary>
         /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
         /// against a different subscription
         /// </summary>
@@ -85,6 +122,45 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Cmdlets
         SerializedName = @"description",
         PossibleTypes = new [] { typeof(string) })]
         public string Description { get => _body.Description ?? null; set => _body.Description = value; }
+
+        /// <summary>Indicates the delete mode for Dev Boxes within this project.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Indicates the delete mode for Dev Boxes within this project.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DevCenter.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Indicates the delete mode for Dev Boxes within this project.",
+        SerializedName = @"deleteMode",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.DevBoxDeleteMode) })]
+        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.DevBoxDeleteMode))]
+        public Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.DevBoxDeleteMode DevBoxAutoDeleteSettingDeleteMode { get => _body.DevBoxAutoDeleteSettingDeleteMode ?? ((Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.DevBoxDeleteMode)""); set => _body.DevBoxAutoDeleteSettingDeleteMode = value; }
+
+        /// <summary>
+        /// ISO8601 duration required for the dev box to be marked for deletion prior to it being deleted. ISO8601 format PT[n]H[n]M[n]S.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "ISO8601 duration required for the dev box to be marked for deletion prior to it being deleted. ISO8601 format PT[n]H[n]M[n]S.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DevCenter.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"ISO8601 duration required for the dev box to be marked for deletion prior to it being deleted. ISO8601 format PT[n]H[n]M[n]S.",
+        SerializedName = @"gracePeriod",
+        PossibleTypes = new [] { typeof(string) })]
+        public string DevBoxAutoDeleteSettingGracePeriod { get => _body.DevBoxAutoDeleteSettingGracePeriod ?? null; set => _body.DevBoxAutoDeleteSettingGracePeriod = value; }
+
+        /// <summary>
+        /// ISO8601 duration required for the dev box to not be inactive prior to it being scheduled for deletion. ISO8601 format
+        /// PT[n]H[n]M[n]S.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "ISO8601 duration required for the dev box to not be inactive prior to it being scheduled for deletion. ISO8601 format PT[n]H[n]M[n]S.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DevCenter.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"ISO8601 duration required for the dev box to not be inactive prior to it being scheduled for deletion. ISO8601 format PT[n]H[n]M[n]S.",
+        SerializedName = @"inactiveThreshold",
+        PossibleTypes = new [] { typeof(string) })]
+        public string DevBoxAutoDeleteSettingInactiveThreshold { get => _body.DevBoxAutoDeleteSettingInactiveThreshold ?? null; set => _body.DevBoxAutoDeleteSettingInactiveThreshold = value; }
 
         /// <summary>Resource Id of an associated DevCenter</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Resource Id of an associated DevCenter")]
@@ -223,6 +299,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DevCenter.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter ProxyUseDefaultCredentials { get; set; }
 
+        /// <summary>
+        /// When specified, limits the maximum number of concurrent sessions across all pools in the project.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "When specified, limits the maximum number of concurrent sessions across all pools in the project.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DevCenter.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"When specified, limits the maximum number of concurrent sessions across all pools in the project.",
+        SerializedName = @"maxConcurrentSessionsPerProject",
+        PossibleTypes = new [] { typeof(int) })]
+        public int ServerlessGpuSessionSettingMaxConcurrentSessionsPerProject { get => _body.ServerlessGpuSessionSettingMaxConcurrentSessionsPerProject ?? default(int); set => _body.ServerlessGpuSessionSettingMaxConcurrentSessionsPerProject = value; }
+
+        /// <summary>The property indicates whether serverless GPU access is enabled on the project.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The property indicates whether serverless GPU access is enabled on the project.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DevCenter.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The property indicates whether serverless GPU access is enabled on the project.",
+        SerializedName = @"serverlessGpuSessionsMode",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.ServerlessGpuSessionsMode) })]
+        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.ServerlessGpuSessionsMode))]
+        public Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.ServerlessGpuSessionsMode ServerlessGpuSessionSettingServerlessGpuSessionsMode { get => _body.ServerlessGpuSessionSettingServerlessGpuSessionsMode ?? ((Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.ServerlessGpuSessionsMode)""); set => _body.ServerlessGpuSessionSettingServerlessGpuSessionsMode = value; }
+
         /// <summary>Resource tags.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenter.ExportAs(typeof(global::System.Collections.Hashtable))]
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Resource tags.")]
@@ -232,32 +333,44 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Cmdlets
         ReadOnly = false,
         Description = @"Resource tags.",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api40.ITrackedResourceTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api40.ITrackedResourceTags Tag { get => _body.Tag ?? null /* object */; set => _body.Tag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api50.ITrackedResourceTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api50.ITrackedResourceTags Tag { get => _body.Tag ?? null /* object */; set => _body.Tag = value; }
+
+        /// <summary>Indicates whether workspace storage is enabled.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Indicates whether workspace storage is enabled.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DevCenter.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Indicates whether workspace storage is enabled.",
+        SerializedName = @"workspaceStorageMode",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.WorkspaceStorageMode) })]
+        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.WorkspaceStorageMode))]
+        public Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.WorkspaceStorageMode WorkspaceStorageSettingWorkspaceStorageMode { get => _body.WorkspaceStorageSettingWorkspaceStorageMode ?? ((Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.WorkspaceStorageMode)""); set => _body.WorkspaceStorageSettingWorkspaceStorageMode = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api40.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api40.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api50.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api50.IErrorResponse</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api40.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api50.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IProject">Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IProject</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.IProject">Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.IProject</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IProject> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.IProject> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -536,12 +649,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api40.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api40.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api50.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api50.IErrorResponse</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api40.IErrorResponse> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api50.IErrorResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -558,7 +671,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api40.IErrorResponse>(responseMessage, await response);
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api50.IErrorResponse>(responseMessage, await response);
                     WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=_body })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
@@ -576,12 +689,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IProject">Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IProject</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.IProject">Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.IProject</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IProject> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.IProject> response)
         {
             using( NoSynchronizationContext )
             {
@@ -593,7 +706,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IProject
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.IProject
                 WriteObject((await response));
             }
         }

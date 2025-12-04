@@ -20,7 +20,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspServiceTagsResource))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Description(@"Gets the list of service tags supported by NSP. These service tags can be used to list access rules in NSP.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/nspServiceTags", ApiVersion = "2024-07-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/nspServiceTags", ApiVersion = "2025-03-01")]
     public partial class GetAzNetworkSecurityPerimeterServiceTag_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IContext

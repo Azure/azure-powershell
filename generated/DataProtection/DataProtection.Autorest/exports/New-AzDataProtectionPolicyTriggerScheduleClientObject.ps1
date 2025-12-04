@@ -44,7 +44,7 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.BackupFrequency]
-    # Freuquency of the backup.
+    # Frequency of the backup.
     ${IntervalType},
 
     [Parameter(Mandatory)]

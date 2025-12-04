@@ -55,6 +55,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource identity path",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -63,6 +66,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the Confidential Ledger",
         SerializedName = @"ledgerName",
         PossibleTypes = new [] { typeof(string) })]
@@ -71,6 +77,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the resource group.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
@@ -81,6 +90,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]

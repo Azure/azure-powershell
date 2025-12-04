@@ -209,7 +209,7 @@ Accept wildcard characters: True
 ```
 
 ### -DatabaseName
-The name of the Azure SQL Database the backup is from.
+The name of the Azure SQL database the backups are under.
 
 ```yaml
 Type: System.String

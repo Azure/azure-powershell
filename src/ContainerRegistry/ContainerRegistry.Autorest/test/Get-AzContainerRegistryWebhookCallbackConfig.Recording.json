@@ -1,17 +1,17 @@
 {
-  "Get-AzContainerRegistryWebhookCallbackConfig+[NoContext]+Get+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ContainerTest/providers/Microsoft.ContainerRegistry/registries/rfkqmj/webhooks/rfkqmj/getCallbackConfig?api-version=2023-01-01-preview+1": {
+  "Get-AzContainerRegistryWebhookCallbackConfig+[NoContext]+Get+$POST+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/ContainerTest/providers/Microsoft.ContainerRegistry/registries/beauxq/webhooks/beauxq/getCallbackConfig?api-version=2023-01-01-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ContainerTest/providers/Microsoft.ContainerRegistry/registries/rfkqmj/webhooks/rfkqmj/getCallbackConfig?api-version=2023-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/ContainerTest/providers/Microsoft.ContainerRegistry/registries/beauxq/webhooks/beauxq/getCallbackConfig?api-version=2023-01-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "111" ],
-        "x-ms-client-request-id": [ "1c2745ed-3230-4838-82a9-2c8f3d46414d" ],
+        "x-ms-unique-id": [ "95" ],
+        "x-ms-client-request-id": [ "5f0afe90-6afd-46d1-a76c-584c2bc0fd2e" ],
         "CommandName": [ "Get-AzContainerRegistryWebhookCallbackConfig" ],
         "FullCommandName": [ "Get-AzContainerRegistryWebhookCallbackConfig_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.10", "Az.ContainerRegistry/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.2", "Az.ContainerRegistry/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -22,15 +22,18 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "api-supported-versions": [ "2019-12-01-preview, 2020-11-01-preview, 2021-06-01-preview, 2021-08-01-preview, 2021-09-01, 2021-12-01-preview, 2022-02-01-preview, 2022-12-01, 2023-01-01-preview" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
-        "x-ms-request-id": [ "c267dcad-ab65-4e88-b2a0-dd201476f047" ],
-        "x-ms-correlation-request-id": [ "c267dcad-ab65-4e88-b2a0-dd201476f047" ],
-        "x-ms-routing-request-id": [ "JAPANEAST:20230416T210026Z:c267dcad-ab65-4e88-b2a0-dd201476f047" ],
+        "api-supported-versions": [ "2019-12-01-preview, 2020-11-01-preview, 2021-06-01-preview, 2021-08-01-preview, 2021-09-01, 2021-12-01-preview, 2022-02-01-preview, 2022-12-01, 2023-01-01-preview, 2023-06-01-preview, 2023-07-01, 2023-08-01-preview, 2023-11-01-preview, 2024-01-01-preview, 2024-11-01-preview, 2025-03-01-preview, 2025-04-01, 2025-05-01-preview, 2025-09-01-preview" ],
+        "x-ms-operation-identifier": [ "tenantId=213e87ed-8e08-4eb4-a63c-c073058f7b00,objectId=6f20525e-bd2b-4c30-bd2a-c1b766142389/eastus/7a340a0f-0108-4862-b59b-cf57ef57b0e7" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-request-id": [ "055febd6-dfaf-4f6f-acdd-e48ca6a3bada" ],
+        "x-ms-correlation-request-id": [ "055febd6-dfaf-4f6f-acdd-e48ca6a3bada" ],
+        "x-ms-routing-request-id": [ "EASTUS:20250909T081442Z:055febd6-dfaf-4f6f-acdd-e48ca6a3bada" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Sun, 16 Apr 2023 21:00:26 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: BC88C39E228342B59B2060603CAEA8AF Ref B: TYO201100113027 Ref C: 2025-09-09T08:14:42Z" ],
+        "Date": [ "Tue, 09 Sep 2025 08:14:42 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "36" ],

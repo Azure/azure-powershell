@@ -1,13 +1,13 @@
 {
   "resourceType": "monitors/tagRules",
-  "apiVersion": "2024-01-01",
+  "apiVersion": "2025-05-01-preview",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.newrelic"
   },
   "commands": [
     {
       "name": "Get-AzNewRelicMonitorTagRule",
-      "description": "Get a TagRule",
+      "description": "Retrieves the details of the tag rules for a specific New Relic monitor resource, providing insight into its setup and status",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/NewRelic.Observability/monitors/{monitorName}/tagRules/{ruleSetName}",
       "help": {
         "learnMore": {
@@ -26,7 +26,7 @@
       },
       "examples": [
         {
-          "description": "Get a TagRule",
+          "description": "Retrieves the details of the tag rules for a specific New Relic monitor resource, providing insight into its setup and status",
           "parameters": [
             {
               "name": "-MonitorName",
@@ -50,7 +50,7 @@
     },
     {
       "name": "Remove-AzNewRelicMonitorTagRule",
-      "description": "Delete a TagRule",
+      "description": "Deletes a tag rule set for a given New Relic monitor resource, removing fine-grained control over observability based on resource tags",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/NewRelic.Observability/monitors/{monitorName}/tagRules/{ruleSetName}",
       "help": {
         "learnMore": {
@@ -69,7 +69,7 @@
       },
       "examples": [
         {
-          "description": "Delete a TagRule",
+          "description": "Deletes a tag rule set for a given New Relic monitor resource, removing fine-grained control over observability based on resource tags",
           "parameters": [
             {
               "name": "-MonitorName",

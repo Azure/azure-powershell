@@ -120,6 +120,13 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = false, HelpMessage = Constants.EnablePerRegionPerPartitionAutoscaleHelpMessage)]
         public bool? EnablePerRegionPerPartitionAutoscale { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = Constants.EnablePriorityBasedExecutionHelpMessage)]
+        public bool? EnablePriorityBasedExecution { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = Constants.DefaultPriorityLevelHelpMessage)]
+        [PSArgumentCompleter("High", "Low")]
+        public string DefaultPriorityLevel { get; set; }
+
         public ConsistencyPolicy PopoulateConsistencyPolicy(string DefaultConsistencyLevel, int? MaxStalenessIntervalInSeconds, int? MaxStalenessPrefix)
         {
             ConsistencyPolicy consistencyPolicy = new ConsistencyPolicy();

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzElasticVersion
 
 ## SYNOPSIS
-Get a list of available versions for a region.
+Retrieve a list of all available Elastic versions for a specified region, helping you choose the best version for your deployment.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Get-AzElasticVersion [-SubscriptionId <String[]>] -Region <String> [-DefaultProf
 ```
 
 ## DESCRIPTION
-Get a list of available versions for a region.
+Retrieve a list of all available Elastic versions for a specified region, helping you choose the best version for your deployment.
 
 ## EXAMPLES
 

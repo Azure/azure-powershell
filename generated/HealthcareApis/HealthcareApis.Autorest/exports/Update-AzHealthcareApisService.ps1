@@ -27,7 +27,7 @@ Get-AzHealthcareApisService -ResourceGroupName azps_test_group -Name azpsapiserv
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IHealthcareApisIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IServicesDescription
+Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IServicesDescription
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -51,22 +51,28 @@ INPUTOBJECT <IHealthcareApisIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.healthcareapis/update-azhealthcareapisservice
 #>
 function Update-AzHealthcareApisService {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IServicesDescription])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IServicesDescription])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Path')]
     [System.String]
     # The name of the service instance.
     ${Name},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Path')]
     [System.String]
     # The name of the resource group that contains the service instance.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -77,22 +83,35 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IHealthcareApisIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.PublicNetworkAccess])]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.PublicNetworkAccess]
+    [System.String]
     # Control permission for data plane traffic coming from public networks while private endpoint is enabled.
     ${PublicNetworkAccess},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IServicesPatchDescriptionTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IServicesPatchDescriptionTags]))]
     [System.Collections.Hashtable]
     # Instance tags
     ${Tag},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -162,6 +181,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -183,10 +211,10 @@ begin {
         $mapping = @{
             UpdateExpanded = 'Az.HealthcareApis.private\Update-AzHealthcareApisService_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.HealthcareApis.private\Update-AzHealthcareApisService_UpdateViaIdentityExpanded';
+            UpdateViaJsonFilePath = 'Az.HealthcareApis.private\Update-AzHealthcareApisService_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.HealthcareApis.private\Update-AzHealthcareApisService_UpdateViaJsonString';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -200,6 +228,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

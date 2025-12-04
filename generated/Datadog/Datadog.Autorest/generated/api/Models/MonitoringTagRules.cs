@@ -10,15 +10,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
     /// <summary>Capture logs and metrics of Azure resources based on ARM tags.</summary>
     public partial class MonitoringTagRules :
         Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRules,
-        Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesInternal
+        Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesInternal,
+        Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.IValidates
     {
+        /// <summary>
+        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IProxyResource" />
+        /// </summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IProxyResource __proxyResource = new Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ProxyResource();
 
-        /// <summary>Backing field for <see cref="Id" /> property.</summary>
-        private string _id;
+        /// <summary>Flag specifying if agent monitoring should be enabled for the Monitor resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inlined)]
+        public bool? AgentRuleEnableAgentMonitoring { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesPropertiesInternal)Property).AgentRuleEnableAgentMonitoring; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesPropertiesInternal)Property).AgentRuleEnableAgentMonitoring = value ?? default(bool); }
 
-        /// <summary>The id of the rule set.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Owned)]
-        public string Id { get => this._id; }
+        /// <summary>
+        /// List of filtering tags to be used for capturing metrics. If empty, all resources will be captured. If only Exclude action
+        /// is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules
+        /// will only include resources with the associated tags.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IFilteringTag> AgentRuleFilteringTag { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesPropertiesInternal)Property).AgentRuleFilteringTag; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesPropertiesInternal)Property).AgentRuleFilteringTag = value ?? null /* arrayOf */; }
+
+        /// <summary>Configuration to enable/disable auto-muting flag</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inlined)]
+        public bool? Automuting { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesPropertiesInternal)Property).Automuting; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesPropertiesInternal)Property).Automuting = value ?? default(bool); }
+
+        /// <summary>
+        /// Configuration to enable/disable custom metrics. If enabled, custom metrics from app insights will be sent.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inlined)]
+        public bool? CustomMetric { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesPropertiesInternal)Property).CustomMetric; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesPropertiesInternal)Property).CustomMetric = value ?? default(bool); }
+
+        /// <summary>
+        /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inherited)]
+        public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__proxyResource).Id; }
 
         /// <summary>
         /// List of filtering tags to be used for capturing logs. This only takes effect if SendResourceLogs flag is enabled. If empty,
@@ -50,54 +76,54 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inlined)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IFilteringTag> MetricRuleFilteringTag { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesPropertiesInternal)Property).MetricRuleFilteringTag; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesPropertiesInternal)Property).MetricRuleFilteringTag = value ?? null /* arrayOf */; }
 
-        /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesInternal.Id { get => this._id; set { {_id = value;} } }
+        /// <summary>Internal Acessors for AgentRule</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IAgentRules Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesInternal.AgentRule { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesPropertiesInternal)Property).AgentRule; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesPropertiesInternal)Property).AgentRule = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for LogRule</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ILogRules Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesInternal.LogRule { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesPropertiesInternal)Property).LogRule; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesPropertiesInternal)Property).LogRule = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ILogRules Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesInternal.LogRule { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesPropertiesInternal)Property).LogRule; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesPropertiesInternal)Property).LogRule = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for MetricRule</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMetricRules Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesInternal.MetricRule { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesPropertiesInternal)Property).MetricRule; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesPropertiesInternal)Property).MetricRule = value; }
-
-        /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesInternal.Name { get => this._name; set { {_name = value;} } }
+        Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMetricRules Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesInternal.MetricRule { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesPropertiesInternal)Property).MetricRule; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesPropertiesInternal)Property).MetricRule = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesProperties Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.MonitoringTagRulesProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesPropertiesInternal)Property).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesPropertiesInternal)Property).ProvisioningState = value ?? null; }
+
+        /// <summary>Internal Acessors for Id</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__proxyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__proxyResource).Id = value ?? null; }
+
+        /// <summary>Internal Acessors for Name</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__proxyResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__proxyResource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for SystemData</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesInternal.SystemData { get => (this._systemData = this._systemData ?? new Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.SystemData()); set { {_systemData = value;} } }
+        Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__proxyResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__proxyResource).SystemData = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).CreatedAt = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).CreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).CreatedBy = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy = value ?? null; }
 
         /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).CreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).CreatedByType = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType = value ?? null; }
 
         /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).LastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).LastModifiedAt = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).LastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).LastModifiedBy = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy = value ?? null; }
 
         /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).LastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).LastModifiedByType = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesInternal.Type { get => this._type; set { {_type = value;} } }
+        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__proxyResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__proxyResource).Type = value ?? null; }
 
-        /// <summary>Backing field for <see cref="Name" /> property.</summary>
-        private string _name;
-
-        /// <summary>Name of the rule set.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Owned)]
-        public string Name { get => this._name; }
+        /// <summary>The name of the resource</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inherited)]
+        public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__proxyResource).Name; }
 
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesProperties _property;
@@ -113,65 +139,115 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Owned)]
         public string ResourceGroupName { get => (new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(this.Id).Success ? new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(this.Id).Groups["resourceGroupName"].Value : null); }
 
-        /// <summary>Backing field for <see cref="SystemData" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemData _systemData;
-
-        /// <summary>Metadata pertaining to creation and last modification of the resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Owned)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemData SystemData { get => (this._systemData = this._systemData ?? new Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.SystemData()); }
+        /// <summary>
+        /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inherited)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__proxyResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__proxyResource).SystemData = value ?? null /* model class */; }
 
         /// <summary>The timestamp of resource creation (UTC).</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inlined)]
-        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).CreatedAt; }
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inherited)]
+        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt; }
 
         /// <summary>The identity that created the resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inlined)]
-        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).CreatedBy; }
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inherited)]
+        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy; }
 
         /// <summary>The type of identity that created the resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inlined)]
-        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).CreatedByType; }
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inherited)]
+        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType; }
 
         /// <summary>The timestamp of resource last modification (UTC)</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inlined)]
-        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).LastModifiedAt; }
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inherited)]
+        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt; }
 
         /// <summary>The identity that last modified the resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inlined)]
-        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).LastModifiedBy; }
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inherited)]
+        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy; }
 
         /// <summary>The type of identity that last modified the resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inlined)]
-        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).LastModifiedByType; }
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inherited)]
+        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType; }
 
-        /// <summary>Backing field for <see cref="Type" /> property.</summary>
-        private string _type;
-
-        /// <summary>The type of the rule set.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Owned)]
-        public string Type { get => this._type; }
+        /// <summary>
+        /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inherited)]
+        public string Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__proxyResource).Type; }
 
         /// <summary>Creates an new <see cref="MonitoringTagRules" /> instance.</summary>
         public MonitoringTagRules()
         {
 
         }
+
+        /// <summary>Validates that this object meets the validation criteria.</summary>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.IEventListener" /> instance that will receive validation
+        /// events.</param>
+        /// <returns>
+        /// A <see cref = "global::System.Threading.Tasks.Task" /> that will be complete when validation is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task Validate(Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.IEventListener eventListener)
+        {
+            await eventListener.AssertNotNull(nameof(__proxyResource), __proxyResource);
+            await eventListener.AssertObjectIsValid(nameof(__proxyResource), __proxyResource);
+        }
     }
     /// Capture logs and metrics of Azure resources based on ARM tags.
     public partial interface IMonitoringTagRules :
-        Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.IJsonSerializable
+        Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.IJsonSerializable,
+        Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IProxyResource
     {
-        /// <summary>The id of the rule set.</summary>
+        /// <summary>Flag specifying if agent monitoring should be enabled for the Monitor resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
         Required = false,
-        ReadOnly = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
-        Description = @"The id of the rule set.",
-        SerializedName = @"id",
-        PossibleTypes = new [] { typeof(string) })]
-        string Id { get;  }
+        Create = true,
+        Update = true,
+        Description = @"Flag specifying if agent monitoring should be enabled for the Monitor resource.",
+        SerializedName = @"enableAgentMonitoring",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? AgentRuleEnableAgentMonitoring { get; set; }
+        /// <summary>
+        /// List of filtering tags to be used for capturing metrics. If empty, all resources will be captured. If only Exclude action
+        /// is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules
+        /// will only include resources with the associated tags.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"List of filtering tags to be used for capturing metrics. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags.",
+        SerializedName = @"filteringTags",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IFilteringTag) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IFilteringTag> AgentRuleFilteringTag { get; set; }
+        /// <summary>Configuration to enable/disable auto-muting flag</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Configuration to enable/disable auto-muting flag",
+        SerializedName = @"automuting",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? Automuting { get; set; }
+        /// <summary>
+        /// Configuration to enable/disable custom metrics. If enabled, custom metrics from app insights will be sent.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Configuration to enable/disable custom metrics. If enabled, custom metrics from app insights will be sent.",
+        SerializedName = @"customMetrics",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? CustomMetric { get; set; }
         /// <summary>
         /// List of filtering tags to be used for capturing logs. This only takes effect if SendResourceLogs flag is enabled. If empty,
         /// all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available
@@ -237,17 +313,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
         SerializedName = @"filteringTags",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IFilteringTag) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IFilteringTag> MetricRuleFilteringTag { get; set; }
-        /// <summary>Name of the rule set.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"Name of the rule set.",
-        SerializedName = @"name",
-        PossibleTypes = new [] { typeof(string) })]
-        string Name { get;  }
 
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
         Required = false,
@@ -260,93 +325,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.PSArgumentCompleterAttribute("Accepted", "Creating", "Updating", "Deleting", "Succeeded", "Failed", "Canceled", "Deleted", "NotSpecified")]
         string ProvisioningState { get;  }
-        /// <summary>The timestamp of resource creation (UTC).</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"The timestamp of resource creation (UTC).",
-        SerializedName = @"createdAt",
-        PossibleTypes = new [] { typeof(global::System.DateTime) })]
-        global::System.DateTime? SystemDataCreatedAt { get;  }
-        /// <summary>The identity that created the resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"The identity that created the resource.",
-        SerializedName = @"createdBy",
-        PossibleTypes = new [] { typeof(string) })]
-        string SystemDataCreatedBy { get;  }
-        /// <summary>The type of identity that created the resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"The type of identity that created the resource.",
-        SerializedName = @"createdByType",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.PSArgumentCompleterAttribute("User", "Application", "ManagedIdentity", "Key")]
-        string SystemDataCreatedByType { get;  }
-        /// <summary>The timestamp of resource last modification (UTC)</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"The timestamp of resource last modification (UTC)",
-        SerializedName = @"lastModifiedAt",
-        PossibleTypes = new [] { typeof(global::System.DateTime) })]
-        global::System.DateTime? SystemDataLastModifiedAt { get;  }
-        /// <summary>The identity that last modified the resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"The identity that last modified the resource.",
-        SerializedName = @"lastModifiedBy",
-        PossibleTypes = new [] { typeof(string) })]
-        string SystemDataLastModifiedBy { get;  }
-        /// <summary>The type of identity that last modified the resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"The type of identity that last modified the resource.",
-        SerializedName = @"lastModifiedByType",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.PSArgumentCompleterAttribute("User", "Application", "ManagedIdentity", "Key")]
-        string SystemDataLastModifiedByType { get;  }
-        /// <summary>The type of the rule set.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"The type of the rule set.",
-        SerializedName = @"type",
-        PossibleTypes = new [] { typeof(string) })]
-        string Type { get;  }
 
     }
     /// Capture logs and metrics of Azure resources based on ARM tags.
-    internal partial interface IMonitoringTagRulesInternal
-
+    internal partial interface IMonitoringTagRulesInternal :
+        Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IProxyResourceInternal
     {
-        /// <summary>The id of the rule set.</summary>
-        string Id { get; set; }
+        /// <summary>Set of rules for managing agents for the Monitor resource.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IAgentRules AgentRule { get; set; }
+        /// <summary>Flag specifying if agent monitoring should be enabled for the Monitor resource.</summary>
+        bool? AgentRuleEnableAgentMonitoring { get; set; }
+        /// <summary>
+        /// List of filtering tags to be used for capturing metrics. If empty, all resources will be captured. If only Exclude action
+        /// is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules
+        /// will only include resources with the associated tags.
+        /// </summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IFilteringTag> AgentRuleFilteringTag { get; set; }
+        /// <summary>Configuration to enable/disable auto-muting flag</summary>
+        bool? Automuting { get; set; }
+        /// <summary>
+        /// Configuration to enable/disable custom metrics. If enabled, custom metrics from app insights will be sent.
+        /// </summary>
+        bool? CustomMetric { get; set; }
         /// <summary>Set of rules for sending logs for the Monitor resource.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ILogRules LogRule { get; set; }
         /// <summary>
@@ -371,31 +371,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
         /// will only include resources with the associated tags.
         /// </summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IFilteringTag> MetricRuleFilteringTag { get; set; }
-        /// <summary>Name of the rule set.</summary>
-        string Name { get; set; }
         /// <summary>Definition of the properties for a TagRules resource.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesProperties Property { get; set; }
 
         [global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.PSArgumentCompleterAttribute("Accepted", "Creating", "Updating", "Deleting", "Succeeded", "Failed", "Canceled", "Deleted", "NotSpecified")]
         string ProvisioningState { get; set; }
-        /// <summary>Metadata pertaining to creation and last modification of the resource.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemData SystemData { get; set; }
-        /// <summary>The timestamp of resource creation (UTC).</summary>
-        global::System.DateTime? SystemDataCreatedAt { get; set; }
-        /// <summary>The identity that created the resource.</summary>
-        string SystemDataCreatedBy { get; set; }
-        /// <summary>The type of identity that created the resource.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.PSArgumentCompleterAttribute("User", "Application", "ManagedIdentity", "Key")]
-        string SystemDataCreatedByType { get; set; }
-        /// <summary>The timestamp of resource last modification (UTC)</summary>
-        global::System.DateTime? SystemDataLastModifiedAt { get; set; }
-        /// <summary>The identity that last modified the resource.</summary>
-        string SystemDataLastModifiedBy { get; set; }
-        /// <summary>The type of identity that last modified the resource.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.PSArgumentCompleterAttribute("User", "Application", "ManagedIdentity", "Key")]
-        string SystemDataLastModifiedByType { get; set; }
-        /// <summary>The type of the rule set.</summary>
-        string Type { get; set; }
 
     }
 }

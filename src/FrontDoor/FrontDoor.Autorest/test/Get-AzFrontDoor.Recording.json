@@ -1,0 +1,46 @@
+{
+  "Get-AzFrontDoor+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-7xgy/providers/Microsoft.Network/frontDoors/testps-fd-p4uw?api-version=2025-10-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-7xgy/providers/Microsoft.Network/frontDoors/testps-fd-p4uw?api-version=2025-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "12" ],
+        "x-ms-client-request-id": [ "2b384010-273d-470e-8637-8bfe5d55131e" ],
+        "CommandName": [ "Get-AzFrontDoor" ],
+        "FullCommandName": [ "Get-AzFrontDoor_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.2.0", "PSVersion/v7.5.4", "Az.FrontDoor/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "065aadbb-c030-48af-b055-219f2de68ecd" ],
+        "x-ms-client-request-id": [ "2b384010-273d-470e-8637-8bfe5d55131e" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-correlation-request-id": [ "a9869b67-82b7-44af-af5e-228bc51fd24e" ],
+        "x-ms-routing-request-id": [ "WESTUS:20251104T075608Z:a9869b67-82b7-44af-af5e-228bc51fd24e" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 4C879961468B479BB9178962ECD68095 Ref B: SYD03EDGE2109 Ref C: 2025-11-04T07:56:08Z" ],
+        "Date": [ "Tue, 04 Nov 2025 07:56:08 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "6398" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-7xgy/providers/Microsoft.Network/frontdoors/testps-fd-p4uw\",\"type\":\"Microsoft.Network/frontdoors\",\"name\":\"testps-fd-p4uw\",\"location\":\"Global\",\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"routingRules\":[{\"id\":\"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-7xgy/providers/Microsoft.Network/Frontdoors/testps-fd-p4uw/RoutingRules/routingrule1\",\"name\":\"routingrule1\",\"type\":\"Microsoft.Network/Frontdoors/RoutingRules\",\"properties\":{\"routeConfiguration\":{\"customForwardingPath\":null,\"forwardingProtocol\":\"MatchRequest\",\"cacheConfiguration\":null,\"backendPool\":{\"id\":\"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-7xgy/providers/Microsoft.Network/frontDoors/testps-fd-p4uw/BackendPools/backendPool1\"},\"@odata.type\":\"#Microsoft.Azure.FrontDoor.Models.FrontdoorForwardingConfiguration\"},\"rulesEngine\":null,\"resourceState\":\"Enabled\",\"frontendEndpoints\":[{\"id\":\"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-7xgy/providers/Microsoft.Network/frontDoors/testps-fd-p4uw/FrontendEndpoints/frontendEndpoint1\"}],\"acceptedProtocols\":[\"Http\",\"Https\"],\"patternsToMatch\":[\"/*\"],\"enabledState\":\"Enabled\",\"webApplicationFirewallPolicyLink\":null}}],\"rulesEngines\":[{\"id\":\"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-7xgy/providers/Microsoft.Network/Frontdoors/testps-fd-p4uw/RulesEngines/engine101\",\"name\":\"engine101\",\"type\":\"Microsoft.Network/Frontdoors/RulesEngines\",\"properties\":{\"resourceState\":\"Enabled\",\"rules\":[{\"name\":\"rule101\",\"priority\":1,\"action\":{\"name\":null,\"routeConfigurationOverride\":null,\"requestHeaderActions\":[],\"responseHeaderActions\":[{\"headerActionType\":\"Append\",\"headerName\":\"X-Content-Type-Options\",\"value\":\"nosniff\"}]},\"matchConditions\":[{\"selector\":\"Rules-Engine-Route-Forward\",\"rulesEngineMatchValue\":[\"forward\"],\"negateCondition\":false,\"rulesEngineMatchVariable\":\"RequestHeader\",\"rulesEngineOperator\":\"Equal\",\"transforms\":[\"Lowercase\"]}],\"matchProcessingBehavior\":null},{\"name\":\"rule102\",\"priority\":2,\"action\":{\"name\":null,\"routeConfigurationOverride\":{\"customForwardingPath\":null,\"forwardingProtocol\":\"HttpsOnly\",\"cacheConfiguration\":{\"queryParameterStripDirective\":\"StripNone\",\"queryParameters\":null,\"dynamicCompression\":\"Disabled\",\"cacheDuration\":null},\"backendPool\":{\"id\":\"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-7xgy/providers/Microsoft.Network/frontDoors/testps-fd-p4uw/BackendPools/backendpool1\"},\"@odata.type\":\"#Microsoft.Azure.FrontDoor.Models.FrontdoorForwardingConfiguration\"},\"requestHeaderActions\":[],\"responseHeaderActions\":[]},\"matchConditions\":[{\"selector\":\"Rules-Engine-Route-Forward\",\"rulesEngineMatchValue\":[\"forward\"],\"negateCondition\":false,\"rulesEngineMatchVariable\":\"RequestHeader\",\"rulesEngineOperator\":\"Equal\",\"transforms\":[\"Lowercase\"]}],\"matchProcessingBehavior\":null},{\"name\":\"rule103\",\"priority\":3,\"action\":{\"name\":null,\"routeConfigurationOverride\":{\"redirectType\":\"Moved\",\"redirectProtocol\":\"MatchRequest\",\"customHost\":\"www.contoso.com\",\"customPath\":\"\",\"customFragment\":null,\"customQueryString\":null,\"@odata.type\":\"#Microsoft.Azure.FrontDoor.Models.FrontdoorRedirectConfiguration\"},\"requestHeaderActions\":[],\"responseHeaderActions\":[]},\"matchConditions\":[{\"selector\":\"Rules-Engine-Route-Forward\",\"rulesEngineMatchValue\":[\"redirect\"],\"negateCondition\":false,\"rulesEngineMatchVariable\":\"RequestHeader\",\"rulesEngineOperator\":\"Equal\",\"transforms\":[\"Lowercase\"]}],\"matchProcessingBehavior\":null}]}}],\"frontdoorId\":\"9501f382-ce1a-411d-83a2-e80efcea805d\",\"extendedProperties\":{},\"resourceState\":\"Enabled\",\"loadBalancingSettings\":[{\"id\":\"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-7xgy/providers/Microsoft.Network/Frontdoors/testps-fd-p4uw/LoadBalancingSettings/loadbalancingsetting1\",\"name\":\"loadbalancingsetting1\",\"type\":\"Microsoft.Network/Frontdoors/LoadBalancingSettings\",\"properties\":{\"resourceState\":\"Enabled\",\"sampleSize\":4,\"successfulSamplesRequired\":2,\"additionalLatencyMilliseconds\":0}}],\"healthProbeSettings\":[{\"id\":\"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-7xgy/providers/Microsoft.Network/Frontdoors/testps-fd-p4uw/HealthProbeSettings/healthProbeSetting1\",\"name\":\"healthProbeSetting1\",\"type\":\"Microsoft.Network/Frontdoors/HealthProbeSettings\",\"properties\":{\"resourceState\":\"Enabled\",\"path\":\"/\",\"protocol\":\"Http\",\"intervalInSeconds\":30,\"enabledState\":\"Disabled\",\"healthProbeMethod\":\"Head\"}}],\"backendPools\":[{\"id\":\"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-7xgy/providers/Microsoft.Network/Frontdoors/testps-fd-p4uw/BackendPools/backendpool1\",\"name\":\"backendpool1\",\"type\":\"Microsoft.Network/Frontdoors/BackendPools\",\"properties\":{\"backends\":[{\"address\":\"contoso1.azurewebsites.net\",\"httpPort\":80,\"httpsPort\":443,\"priority\":1,\"weight\":50,\"backendHostHeader\":\"contoso1.azurewebsites.net\",\"enabledState\":\"Enabled\",\"privateLinkAlias\":null,\"privateLinkResourceId\":null,\"privateLinkLocation\":null,\"privateEndpointStatus\":null,\"privateLinkApprovalMessage\":null}],\"resourceState\":\"Enabled\",\"loadBalancingSettings\":{\"id\":\"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-7xgy/providers/Microsoft.Network/frontDoors/testps-fd-p4uw/LoadBalancingSettings/loadBalancingSetting1\"},\"healthProbeSettings\":{\"id\":\"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-7xgy/providers/Microsoft.Network/frontDoors/testps-fd-p4uw/HealthProbeSettings/healthProbeSetting1\"}}}],\"frontendEndpoints\":[{\"id\":\"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-7xgy/providers/Microsoft.Network/Frontdoors/testps-fd-p4uw/FrontendEndpoints/frontendendpoint1\",\"name\":\"frontendendpoint1\",\"type\":\"Microsoft.Network/Frontdoors/FrontendEndpoints\",\"properties\":{\"resourceState\":\"Enabled\",\"hostName\":\"testps-fd-p4uw.azurefd.net\",\"sessionAffinityEnabledState\":\"Enabled\",\"sessionAffinityTtlSeconds\":0,\"webApplicationFirewallPolicyLink\":null,\"customHttpsProvisioningState\":null,\"customHttpsProvisioningSubstate\":null,\"customHttpsConfiguration\":null}}],\"backendPoolsSettings\":{\"enforceCertificateNameCheck\":\"Enabled\",\"sendRecvTimeoutSeconds\":33},\"enabledState\":\"Enabled\",\"cName\":\"testps-fd-p4uw.azurefd.net\",\"friendlyName\":null,\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  }
+}

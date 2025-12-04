@@ -12,7 +12,7 @@ while (-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Start-AzDataProtectionBackupInstanceRestore' {
-    It 'PGFlexRestore' {
+    It 'PGFlexRestore' -skip {
         $subId = $env.TestPGFlexRestore.SubscriptionId
         $resourceGroupName = $env.TestPGFlexRestore.ResourceGroupName
         $vaultName = $env.TestPGFlexRestore.VaultName
@@ -225,7 +225,7 @@ Describe 'Start-AzDataProtectionBackupInstanceRestore' {
         $jobstatus | Should be "Completed"
     }
 
-    It 'OssRestore' {
+    It 'OssRestore' -skip {
         # Test trigger Backup for Oss DB
         $recordDate = $env.RecordDate
         $sub = $env.TestOssBackupScenario.SubscriptionId

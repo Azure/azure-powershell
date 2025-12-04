@@ -11,16 +11,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Cmdlets
     using System;
 
     /// <summary>
-    /// List the vm ingestion details that will be monitored by the Elastic monitor resource.
+    /// List detailed information about VM ingestion that will be monitored by the Elastic monitor resource, ensuring optimal
+    /// observability and performance.
     /// </summary>
     /// <remarks>
     /// [OpenAPI] Details=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/vmIngestionDetails"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzElasticDetailVMIngestion_DetailsViaIdentity", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IVMIngestionDetailsResponse))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.Description(@"List the vm ingestion details that will be monitored by the Elastic monitor resource.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.Description(@"List detailed information about VM ingestion that will be monitored by the Elastic monitor resource, ensuring optimal observability and performance.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/vmIngestionDetails", ApiVersion = "2024-03-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/vmIngestionDetails", ApiVersion = "2025-06-01")]
     public partial class GetAzElasticDetailVMIngestion_DetailsViaIdentity : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IContext

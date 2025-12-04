@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.Search.Models
     using System.Linq;
 
     /// <summary>
-    /// Describes a supported private link resource for the Azure Cognitive Search
+    /// Describes a supported private link resource for the Azure AI Search
     /// service.
     /// </summary>
     public partial class PrivateLinkResource : Resource
@@ -25,8 +25,8 @@ namespace Microsoft.Azure.Management.Search.Models
         /// Initializes a new instance of the PrivateLinkResource class.
         /// </summary>
 
-        /// <param name="id">Fully qualified resource ID for the resource. Ex -
-        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
         /// <param name="name">The name of the resource
@@ -36,12 +36,16 @@ namespace Microsoft.Azure.Management.Search.Models
         /// &#34;Microsoft.Storage/storageAccounts&#34;
         /// </param>
 
-        /// <param name="properties">Describes the properties of a supported private link resource for the Azure
-        /// Cognitive Search service.
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
-        public PrivateLinkResource(string id = default(string), string name = default(string), string type = default(string), PrivateLinkResourceProperties properties = default(PrivateLinkResourceProperties))
 
-        : base(id, name, type)
+        /// <param name="properties">Describes the properties of a supported private link resource for the Azure
+        /// AI Search service.
+        /// </param>
+        public PrivateLinkResource(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), PrivateLinkResourceProperties properties = default(PrivateLinkResourceProperties))
+
+        : base(id, name, type, systemData)
         {
             this.Properties = properties;
             CustomInit();
@@ -55,7 +59,7 @@ namespace Microsoft.Azure.Management.Search.Models
 
         /// <summary>
         /// Gets describes the properties of a supported private link resource for the
-        /// Azure Cognitive Search service.
+        /// Azure AI Search service.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties")]
         public PrivateLinkResourceProperties Properties {get; private set; }

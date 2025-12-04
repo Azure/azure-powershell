@@ -20,7 +20,6 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [CmdletOutputBreakingChangeWithVersion(typeof(PSCloudPool), "15.0.0", "4.0.0", DeprecatedOutputProperties = new string[] {"CurrentNodeCommunicationMode", "TargetNodeCommunicationMode", "ResourceTags", "CertificateReferences", "ApplicationLicenses", "CloudServiceConfiguration"})]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "BatchPool", DefaultParameterSetName = Constants.ODataFilterParameterSet), OutputType(typeof(PSCloudPool))]
     public class GetBatchPoolCommand : BatchObjectModelCmdletBase
     {

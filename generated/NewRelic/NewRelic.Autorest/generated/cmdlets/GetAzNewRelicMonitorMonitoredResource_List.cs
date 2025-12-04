@@ -10,15 +10,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Cmdlets;
     using System;
 
-    /// <summary>List the resources currently being monitored by the NewRelic monitor resource.</summary>
+    /// <summary>
+    /// Lists all Azure resources that are currently being monitored by the specified New Relic monitor resource, providing insight
+    /// into the coverage of your observability setup
+    /// </summary>
     /// <remarks>
     /// [OpenAPI] ListMonitoredResources=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/NewRelic.Observability/monitors/{monitorName}/monitoredResources"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzNewRelicMonitorMonitoredResource_List", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitoredResource))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Description(@"List the resources currently being monitored by the NewRelic monitor resource.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Description(@"Lists all Azure resources that are currently being monitored by the specified New Relic monitor resource, providing insight into the coverage of your observability setup")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/NewRelic.Observability/monitors/{monitorName}/monitoredResources", ApiVersion = "2024-01-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/NewRelic.Observability/monitors/{monitorName}/monitoredResources", ApiVersion = "2025-05-01-preview")]
     public partial class GetAzNewRelicMonitorMonitoredResource_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IContext

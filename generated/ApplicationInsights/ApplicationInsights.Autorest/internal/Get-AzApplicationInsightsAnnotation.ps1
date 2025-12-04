@@ -27,11 +27,25 @@ Get the annotation for given id.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20150501.IAnnotation
+Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IAnnotation
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+COMPONENTINPUTOBJECT <IApplicationInsightsIdentity>: Identity Parameter
+  [AnnotationId <String>]: The unique annotation ID. This is unique within a Application Insights component.
+  [ComponentName <String>]: The name of the Application Insights component resource.
+  [ExportId <String>]: The Continuous Export configuration ID. This is unique within a Application Insights component.
+  [Id <String>]: Resource identity path
+  [KeyId <String>]: The API Key ID. This is unique within a Application Insights component.
+  [PurgeId <String>]: In a purge status request, this is the Id of the operation the status of which is returned.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ResourceName <String>]: The name of the Application Insights component resource.
+  [RevisionId <String>]: The id of the workbook's revision.
+  [StorageType <String>]: The type of the Application Insights component data source for the linked storage account.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [WebTestName <String>]: The name of the Application Insights WebTest resource.
 
 INPUTOBJECT <IApplicationInsightsIdentity>: Identity Parameter
   [AnnotationId <String>]: The unique annotation ID. This is unique within a Application Insights component.
@@ -43,17 +57,18 @@ INPUTOBJECT <IApplicationInsightsIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ResourceName <String>]: The name of the Application Insights component resource.
   [RevisionId <String>]: The id of the workbook's revision.
-  [StorageType <StorageType?>]: The type of the Application Insights component data source for the linked storage account.
+  [StorageType <String>]: The type of the Application Insights component data source for the linked storage account.
   [SubscriptionId <String>]: The ID of the target subscription.
   [WebTestName <String>]: The name of the Application Insights WebTest resource.
 .Link
 https://learn.microsoft.com/powershell/module/az.applicationinsights/get-azapplicationinsightsannotation
 #>
 function Get-AzApplicationInsightsAnnotation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20150501.IAnnotation])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IAnnotation])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityComponent', Mandatory)]
     [Alias('AnnotationId')]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Path')]
     [System.String]
@@ -88,8 +103,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityComponent', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsIdentity]
+    # Identity Parameter
+    ${ComponentInputObject},
 
     [Parameter(ParameterSetName='List', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Query')]
@@ -159,15 +179,17 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Get = 'Az.ApplicationInsights.private\Get-AzApplicationInsightsAnnotation_Get';
             GetViaIdentity = 'Az.ApplicationInsights.private\Get-AzApplicationInsightsAnnotation_GetViaIdentity';
+            GetViaIdentityComponent = 'Az.ApplicationInsights.private\Get-AzApplicationInsightsAnnotation_GetViaIdentityComponent';
             List = 'Az.ApplicationInsights.private\Get-AzApplicationInsightsAnnotation_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -176,6 +198,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzNewRelicMonitorTagRule
 
 ## SYNOPSIS
-Delete a TagRule
+Deletes a tag rule set for a given New Relic monitor resource, removing fine-grained control over observability based on resource tags
 
 ## SYNTAX
 
@@ -32,7 +32,7 @@ Remove-AzNewRelicMonitorTagRule -MonitorInputObject <INewRelicIdentity> -RuleSet
 ```
 
 ## DESCRIPTION
-Delete a TagRule
+Deletes a tag rule set for a given New Relic monitor resource, removing fine-grained control over observability based on resource tags
 
 ## EXAMPLES
 

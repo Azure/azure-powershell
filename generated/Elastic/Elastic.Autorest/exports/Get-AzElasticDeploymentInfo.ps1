@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Fetch information regarding Elastic cloud deployment corresponding to the Elastic monitor resource.
+Fetch detailed information about Elastic cloud deployments corresponding to the Elastic monitor resource.
 .Description
-Fetch information regarding Elastic cloud deployment corresponding to the Elastic monitor resource.
+Fetch detailed information about Elastic cloud deployments corresponding to the Elastic monitor resource.
 .Example
 Get-AzElasticDeploymentInfo -ResourceGroupName elastic-rg-3eytki -Name elastic-rhqz1v
 

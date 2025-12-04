@@ -135,11 +135,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201
             }
             if (content.Contains("ScaleAndConcurrencyMaximumInstanceCount"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionAppConfigInternal)this).ScaleAndConcurrencyMaximumInstanceCount = (float?) content.GetValueForProperty("ScaleAndConcurrencyMaximumInstanceCount",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionAppConfigInternal)this).ScaleAndConcurrencyMaximumInstanceCount, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionAppConfigInternal)this).ScaleAndConcurrencyMaximumInstanceCount = (int?) content.GetValueForProperty("ScaleAndConcurrencyMaximumInstanceCount",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionAppConfigInternal)this).ScaleAndConcurrencyMaximumInstanceCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("ScaleAndConcurrencyInstanceMemoryMb"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionAppConfigInternal)this).ScaleAndConcurrencyInstanceMemoryMb = (float?) content.GetValueForProperty("ScaleAndConcurrencyInstanceMemoryMb",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionAppConfigInternal)this).ScaleAndConcurrencyInstanceMemoryMb, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionAppConfigInternal)this).ScaleAndConcurrencyInstanceMemoryMb = (int?) content.GetValueForProperty("ScaleAndConcurrencyInstanceMemoryMb",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionAppConfigInternal)this).ScaleAndConcurrencyInstanceMemoryMb, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("StorageAuthentication"))
             {
@@ -171,7 +171,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201
             }
             if (content.Contains("HttpPerInstanceConcurrency"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionAppConfigInternal)this).HttpPerInstanceConcurrency = (float?) content.GetValueForProperty("HttpPerInstanceConcurrency",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionAppConfigInternal)this).HttpPerInstanceConcurrency, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionAppConfigInternal)this).HttpPerInstanceConcurrency = (int?) content.GetValueForProperty("HttpPerInstanceConcurrency",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionAppConfigInternal)this).HttpPerInstanceConcurrency, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             AfterDeserializeDictionary(content);
         }
@@ -224,11 +224,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201
             }
             if (content.Contains("ScaleAndConcurrencyMaximumInstanceCount"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionAppConfigInternal)this).ScaleAndConcurrencyMaximumInstanceCount = (float?) content.GetValueForProperty("ScaleAndConcurrencyMaximumInstanceCount",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionAppConfigInternal)this).ScaleAndConcurrencyMaximumInstanceCount, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionAppConfigInternal)this).ScaleAndConcurrencyMaximumInstanceCount = (int?) content.GetValueForProperty("ScaleAndConcurrencyMaximumInstanceCount",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionAppConfigInternal)this).ScaleAndConcurrencyMaximumInstanceCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("ScaleAndConcurrencyInstanceMemoryMb"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionAppConfigInternal)this).ScaleAndConcurrencyInstanceMemoryMb = (float?) content.GetValueForProperty("ScaleAndConcurrencyInstanceMemoryMb",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionAppConfigInternal)this).ScaleAndConcurrencyInstanceMemoryMb, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionAppConfigInternal)this).ScaleAndConcurrencyInstanceMemoryMb = (int?) content.GetValueForProperty("ScaleAndConcurrencyInstanceMemoryMb",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionAppConfigInternal)this).ScaleAndConcurrencyInstanceMemoryMb, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("StorageAuthentication"))
             {
@@ -260,7 +260,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201
             }
             if (content.Contains("HttpPerInstanceConcurrency"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionAppConfigInternal)this).HttpPerInstanceConcurrency = (float?) content.GetValueForProperty("HttpPerInstanceConcurrency",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionAppConfigInternal)this).HttpPerInstanceConcurrency, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionAppConfigInternal)this).HttpPerInstanceConcurrency = (int?) content.GetValueForProperty("HttpPerInstanceConcurrency",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionAppConfigInternal)this).HttpPerInstanceConcurrency, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             AfterDeserializePSObject(content);
         }

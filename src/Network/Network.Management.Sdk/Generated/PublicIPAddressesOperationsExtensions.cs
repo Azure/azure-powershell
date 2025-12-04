@@ -441,6 +441,90 @@ namespace Microsoft.Azure.Management.Network
             }
         }
         /// <summary>
+        /// Reserves the specified Cloud Service Public IP by switching its allocation
+        /// method to Static. If rollback is requested, reverts the allocation method
+        /// to Dynamic.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='publicIpAddressName'>
+        /// The name of the public IP address.
+        /// </param>
+        public static PublicIPAddress ReserveCloudServicePublicIpAddress(this IPublicIPAddressesOperations operations, string resourceGroupName, string publicIpAddressName, ReserveCloudServicePublicIpAddressRequest parameters)
+        {
+                return ((IPublicIPAddressesOperations)operations).ReserveCloudServicePublicIpAddressAsync(resourceGroupName, publicIpAddressName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Reserves the specified Cloud Service Public IP by switching its allocation
+        /// method to Static. If rollback is requested, reverts the allocation method
+        /// to Dynamic.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='publicIpAddressName'>
+        /// The name of the public IP address.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<PublicIPAddress> ReserveCloudServicePublicIpAddressAsync(this IPublicIPAddressesOperations operations, string resourceGroupName, string publicIpAddressName, ReserveCloudServicePublicIpAddressRequest parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ReserveCloudServicePublicIpAddressWithHttpMessagesAsync(resourceGroupName, publicIpAddressName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Disassociates the Cloud Service reserved Public IP and associates the
+        /// specified Standalone Public IP to the same Cloud Service frontend.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='publicIpAddressName'>
+        /// The name of the public IP address.
+        /// </param>
+        public static PublicIPAddress DisassociateCloudServiceReservedPublicIp(this IPublicIPAddressesOperations operations, string resourceGroupName, string publicIpAddressName, DisassociateCloudServicePublicIpRequest parameters)
+        {
+                return ((IPublicIPAddressesOperations)operations).DisassociateCloudServiceReservedPublicIpAsync(resourceGroupName, publicIpAddressName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Disassociates the Cloud Service reserved Public IP and associates the
+        /// specified Standalone Public IP to the same Cloud Service frontend.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='publicIpAddressName'>
+        /// The name of the public IP address.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<PublicIPAddress> DisassociateCloudServiceReservedPublicIpAsync(this IPublicIPAddressesOperations operations, string resourceGroupName, string publicIpAddressName, DisassociateCloudServicePublicIpRequest parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.DisassociateCloudServiceReservedPublicIpWithHttpMessagesAsync(resourceGroupName, publicIpAddressName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Gets information about all public IP addresses on a virtual machine scale
         /// set level.
         /// </summary>
@@ -722,6 +806,90 @@ namespace Microsoft.Azure.Management.Network
         public static async System.Threading.Tasks.Task<PublicIpDdosProtectionStatusResult> BeginDdosProtectionStatusAsync(this IPublicIPAddressesOperations operations, string resourceGroupName, string publicIpAddressName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.BeginDdosProtectionStatusWithHttpMessagesAsync(resourceGroupName, publicIpAddressName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Reserves the specified Cloud Service Public IP by switching its allocation
+        /// method to Static. If rollback is requested, reverts the allocation method
+        /// to Dynamic.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='publicIpAddressName'>
+        /// The name of the public IP address.
+        /// </param>
+        public static PublicIPAddress BeginReserveCloudServicePublicIpAddress(this IPublicIPAddressesOperations operations, string resourceGroupName, string publicIpAddressName, ReserveCloudServicePublicIpAddressRequest parameters)
+        {
+                return ((IPublicIPAddressesOperations)operations).BeginReserveCloudServicePublicIpAddressAsync(resourceGroupName, publicIpAddressName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Reserves the specified Cloud Service Public IP by switching its allocation
+        /// method to Static. If rollback is requested, reverts the allocation method
+        /// to Dynamic.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='publicIpAddressName'>
+        /// The name of the public IP address.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<PublicIPAddress> BeginReserveCloudServicePublicIpAddressAsync(this IPublicIPAddressesOperations operations, string resourceGroupName, string publicIpAddressName, ReserveCloudServicePublicIpAddressRequest parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginReserveCloudServicePublicIpAddressWithHttpMessagesAsync(resourceGroupName, publicIpAddressName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Disassociates the Cloud Service reserved Public IP and associates the
+        /// specified Standalone Public IP to the same Cloud Service frontend.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='publicIpAddressName'>
+        /// The name of the public IP address.
+        /// </param>
+        public static PublicIPAddress BeginDisassociateCloudServiceReservedPublicIp(this IPublicIPAddressesOperations operations, string resourceGroupName, string publicIpAddressName, DisassociateCloudServicePublicIpRequest parameters)
+        {
+                return ((IPublicIPAddressesOperations)operations).BeginDisassociateCloudServiceReservedPublicIpAsync(resourceGroupName, publicIpAddressName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Disassociates the Cloud Service reserved Public IP and associates the
+        /// specified Standalone Public IP to the same Cloud Service frontend.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='publicIpAddressName'>
+        /// The name of the public IP address.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<PublicIPAddress> BeginDisassociateCloudServiceReservedPublicIpAsync(this IPublicIPAddressesOperations operations, string resourceGroupName, string publicIpAddressName, DisassociateCloudServicePublicIpRequest parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginDisassociateCloudServiceReservedPublicIpWithHttpMessagesAsync(resourceGroupName, publicIpAddressName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

@@ -11,7 +11,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Cmdlets
     using System;
 
     /// <summary>
-    /// List all operations provided by Microsoft.Datadog for the 2021-03-01 api version.
+    /// List all operations provided by Microsoft.Datadog for the 2025-06-11 api version.
     /// </summary>
     /// <remarks>
     /// [OpenAPI] List=>GET:"/providers/Microsoft.Datadog/operations"
@@ -19,9 +19,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Cmdlets
     [global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzDatadogOperation_List")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IOperationResult))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.Description(@"List all operations provided by Microsoft.Datadog for the 2021-03-01 api version.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.Description(@"List all operations provided by Microsoft.Datadog for the 2025-06-11 api version.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.HttpPath(Path = "/providers/Microsoft.Datadog/operations", ApiVersion = "2021-03-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.HttpPath(Path = "/providers/Microsoft.Datadog/operations", ApiVersion = "2025-06-11")]
     public partial class GetAzDatadogOperation_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.IContext

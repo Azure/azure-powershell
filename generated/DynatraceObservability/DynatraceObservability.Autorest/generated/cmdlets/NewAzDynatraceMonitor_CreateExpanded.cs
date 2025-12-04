@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResource))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Description(@"create a MonitorResource")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Dynatrace.Observability/monitors/{monitorName}", ApiVersion = "2023-04-27")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Dynatrace.Observability/monitors/{monitorName}", ApiVersion = "2024-04-24")]
     public partial class NewAzDynatraceMonitor_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IContext
@@ -40,17 +40,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Cmdlets
         /// <summary>A dictionary to carry over additional data for pipeline.</summary>
         private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
 
-        /// <summary>A buffer to record first returned object in response.</summary>
-        private object _firstResponse = null;
-
         /// <summary>Dynatrace Monitor Resource</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResource _resourceBody = new Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.MonitorResource();
-
-        /// <summary>
-        /// A flag to tell whether it is the first returned object in a call. Zero means no response yet. One means 1 returned object.
-        /// Two means multiple returned objects in response.
-        /// </summary>
-        private int _responseSize = 0;
 
         /// <summary>Account Id of the account this environment is linked to</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Account Id of the account this environment is linked to")]
@@ -62,6 +53,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Cmdlets
         SerializedName = @"accountId",
         PossibleTypes = new [] { typeof(string) })]
         public string AccountId { get => _resourceBody.AccountInfoAccountId ?? null; set => _resourceBody.AccountInfoAccountId = value; }
+
+        /// <summary>Name of the customer account / company</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Name of the customer account / company")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Name of the customer account / company",
+        SerializedName = @"companyName",
+        PossibleTypes = new [] { typeof(string) })]
+        public string AccountInfoCompanyName { get => _resourceBody.AccountInfoCompanyName ?? null; set => _resourceBody.AccountInfoCompanyName = value; }
 
         /// <summary>Region in which the account is created</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Region in which the account is created")]
@@ -99,10 +101,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Cmdlets
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
-
-        /// <summary>Determines whether to enable a system-assigned identity for the resource.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Determines whether to enable a system-assigned identity for the resource.")]
-        public global::System.Management.Automation.SwitchParameter EnableSystemAssignedIdentity { set => _resourceBody.IdentityType = value.IsPresent ? "SystemAssigned": null ; }
 
         /// <summary>Id of the environment created</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Id of the environment created")]
@@ -174,6 +172,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.ParameterCategory.Runtime)]
         public Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SendAsyncStep[] HttpPipelinePrepend { get; set; }
 
+        /// <summary>The type of managed identity assigned to this resource.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The type of managed identity assigned to this resource.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The type of managed identity assigned to this resource.",
+        SerializedName = @"type",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.PSArgumentCompleterAttribute("SystemAssigned", "UserAssigned", "SystemAndUserAssigned")]
+        public string IdentityType { get => _resourceBody.IdentityType ?? null; set => _resourceBody.IdentityType = value; }
+
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
 
@@ -188,6 +198,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         public string Location { get => _resourceBody.Location ?? null; set => _resourceBody.Location = value; }
 
+        /// <summary>Marketplace resource autorenew flag</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Marketplace resource autorenew flag")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Marketplace resource autorenew flag",
+        SerializedName = @"marketplaceSaasAutoRenew",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.PSArgumentCompleterAttribute("On", "Off")]
+        public string MarketplaceSaasAutoRenew { get => _resourceBody.MarketplaceSaasAutoRenew ?? null; set => _resourceBody.MarketplaceSaasAutoRenew = value; }
+
         /// <summary>Marketplace subscription status.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Marketplace subscription status.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.ParameterCategory.Body)]
@@ -197,7 +219,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Cmdlets
         Description = @"Marketplace subscription status.",
         SerializedName = @"marketplaceSubscriptionStatus",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.PSArgumentCompleterAttribute("Active", "Suspended")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.PSArgumentCompleterAttribute("Active", "Suspended", "Unsubscribed")]
         public string MarketplaceSubscriptionStatus { get => _resourceBody.MarketplaceSubscriptionStatus ?? null; set => _resourceBody.MarketplaceSubscriptionStatus = value; }
 
         /// <summary>
@@ -371,12 +393,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Cmdlets
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
 
-        /// <summary>The ID of the target subscription.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The ID of the target subscription.")]
+        /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The ID of the target subscription. The value must be an UUID.")]
         [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"The ID of the target subscription.",
+        Description = @"The ID of the target subscription. The value must be an UUID.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
         [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.DefaultInfo(
@@ -531,11 +553,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            if (1 ==_responseSize)
-            {
-                // Flush buffer
-                WriteObject(_firstResponse);
-            }
             var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
             if (telemetryInfo != null)
             {
@@ -677,31 +694,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Cmdlets
 
         }
 
-        private void PreProcessManagedIdentityParameters()
-        {
-            if (this.UserAssignedIdentity?.Length > 0)
-            {
-                // calculate UserAssignedIdentity
-                _resourceBody.IdentityUserAssignedIdentity.Clear();
-                foreach( var id in this.UserAssignedIdentity )
-                {
-                    _resourceBody.IdentityUserAssignedIdentity.Add(id, new Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.UserAssignedIdentity());
-                }
-            }
-            // calculate IdentityType
-            if (this.UserAssignedIdentity?.Length > 0)
-            {
-                if ("SystemAssigned".Equals(_resourceBody.IdentityType, StringComparison.InvariantCultureIgnoreCase))
-                {
-                    _resourceBody.IdentityType = "SystemAssigned,UserAssigned";
-                }
-                else
-                {
-                    _resourceBody.IdentityType = "UserAssigned";
-                }
-            }
-        }
-
         /// <summary>Performs execution of the command.</summary>
         protected override void ProcessRecord()
         {
@@ -774,7 +766,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    this.PreProcessManagedIdentityParameters();
+                    if (this.UserAssignedIdentity?.Length > 0)
+                    {
+                        // calculate UserAssignedIdentity
+                        _resourceBody.IdentityUserAssignedIdentity.Clear();
+                        foreach( var id in this.UserAssignedIdentity )
+                        {
+                            _resourceBody.IdentityUserAssignedIdentity.Add(id, new Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.UserAssignedIdentity());
+                        }
+                    }
                     await this.Client.MonitorsCreateOrUpdate(SubscriptionId, ResourceGroupName, Name, _resourceBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeCreate);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
@@ -877,24 +877,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Cmdlets
                 // onOk - response for 200 / application/json
                 // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResource
                 var result = (await response);
-                if (null != result)
-                {
-                    if (0 == _responseSize)
-                    {
-                        _firstResponse = result;
-                        _responseSize = 1;
-                    }
-                    else
-                    {
-                        if (1 ==_responseSize)
-                        {
-                            // Flush buffer
-                            WriteObject(_firstResponse.AddMultipleTypeNameIntoPSObject());
-                        }
-                        WriteObject(result.AddMultipleTypeNameIntoPSObject());
-                        _responseSize = 2;
-                    }
-                }
+                WriteObject(result, false);
             }
         }
     }

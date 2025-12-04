@@ -13,7 +13,7 @@ while(-not $mockingPath) {
 
 Describe 'New-AzStreamAnalyticsInput' {
   It 'CreateExpanded' {
-    New-AzStreamAnalyticsInput -ResourceGroupName $env.resourceGroup -JobName $env.job02 -Name $env.input01 -File (Join-Path $PSScriptRoot 'template-json\IotHub.json')
+    New-AzStreamAnalyticsInput -ResourceGroupName $env.resourceGroup -JobName $env.job02 -Name $env.input01 -File (Join-Path $PSScriptRoot 'template-json' 'IotHub.json')
     $result = Get-AzStreamAnalyticsInput -ResourceGroupName $env.resourceGroup -JobName $env.job02 -Name $env.input01
     $result.Name | Should -Be $env.input01
   }

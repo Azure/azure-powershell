@@ -20,6 +20,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Origin(Microsoft.Azure.PowerShell.Cmdlets.Elastic.PropertyOrigin.Owned)]
         public string Id { get => this._id; set => this._id = value; }
 
+        /// <summary>Backing field for <see cref="OfferId" /> property.</summary>
+        private string _offerId;
+
+        /// <summary>Offer Id of the Marketplace offer,</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Origin(Microsoft.Azure.PowerShell.Cmdlets.Elastic.PropertyOrigin.Owned)]
+        public string OfferId { get => this._offerId; set => this._offerId = value; }
+
+        /// <summary>Backing field for <see cref="PublisherId" /> property.</summary>
+        private string _publisherId;
+
+        /// <summary>Publisher Id of the Marketplace offer.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Origin(Microsoft.Azure.PowerShell.Cmdlets.Elastic.PropertyOrigin.Owned)]
+        public string PublisherId { get => this._publisherId; set => this._publisherId = value; }
+
         /// <summary>
         /// Creates an new <see cref="MarketplaceSaaSInfoMarketplaceSubscription" /> instance.
         /// </summary>
@@ -43,6 +57,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
         string Id { get; set; }
+        /// <summary>Offer Id of the Marketplace offer,</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Offer Id of the Marketplace offer,",
+        SerializedName = @"offerId",
+        PossibleTypes = new [] { typeof(string) })]
+        string OfferId { get; set; }
+        /// <summary>Publisher Id of the Marketplace offer.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Publisher Id of the Marketplace offer.",
+        SerializedName = @"publisherId",
+        PossibleTypes = new [] { typeof(string) })]
+        string PublisherId { get; set; }
 
     }
     /// Marketplace Subscription
@@ -51,6 +87,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
     {
         /// <summary>Marketplace Subscription Id. This is a GUID-formatted string.</summary>
         string Id { get; set; }
+        /// <summary>Offer Id of the Marketplace offer,</summary>
+        string OfferId { get; set; }
+        /// <summary>Publisher Id of the Marketplace offer.</summary>
+        string PublisherId { get; set; }
 
     }
 }

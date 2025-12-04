@@ -29,11 +29,15 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="verifyClientRevocation">Verify client certificate revocation status.
         /// Possible values include: &#39;None&#39;, &#39;OCSP&#39;</param>
-        public ApplicationGatewayClientAuthConfiguration(bool? verifyClientCertIssuerDn = default(bool?), string verifyClientRevocation = default(string))
+
+        /// <param name="verifyClientAuthMode">Verify client Authentication mode.
+        /// Possible values include: &#39;Strict&#39;, &#39;Passthrough&#39;</param>
+        public ApplicationGatewayClientAuthConfiguration(bool? verifyClientCertIssuerDn = default(bool?), string verifyClientRevocation = default(string), string verifyClientAuthMode = default(string))
 
         {
             this.VerifyClientCertIssuerDn = verifyClientCertIssuerDn;
             this.VerifyClientRevocation = verifyClientRevocation;
+            this.VerifyClientAuthMode = verifyClientAuthMode;
             CustomInit();
         }
 
@@ -55,5 +59,11 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "verifyClientRevocation")]
         public string VerifyClientRevocation {get; set; }
+
+        /// <summary>
+        /// Gets or sets verify client Authentication mode. Possible values include: &#39;Strict&#39;, &#39;Passthrough&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "verifyClientAuthMode")]
+        public string VerifyClientAuthMode {get; set; }
     }
 }

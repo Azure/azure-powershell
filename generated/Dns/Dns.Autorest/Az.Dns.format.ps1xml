@@ -2,9 +2,9 @@
 <Configuration>
   <ViewDefinitions>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.RecordSetPropertiesMetadata</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.RecordSetPropertiesMetadata</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.RecordSetPropertiesMetadata</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.RecordSetPropertiesMetadata#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -24,9 +24,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.ResourceTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ResourceTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.ResourceTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ResourceTags#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -46,9 +46,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.ZoneUpdateTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ZoneUpdateTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.ZoneUpdateTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ZoneUpdateTags#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>

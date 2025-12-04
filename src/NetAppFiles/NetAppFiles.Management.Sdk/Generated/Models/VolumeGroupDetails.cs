@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
     /// Volume group resource for create
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class VolumeGroupDetails
+    public partial class VolumeGroupDetails : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the VolumeGroupDetails class.
@@ -25,16 +25,22 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// Initializes a new instance of the VolumeGroupDetails class.
         /// </summary>
 
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
+        /// </param>
+
+        /// <param name="name">The name of the resource
+        /// </param>
+
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
+        /// </param>
+
         /// <param name="location">Resource location
-        /// </param>
-
-        /// <param name="id">Resource Id
-        /// </param>
-
-        /// <param name="name">Resource name
-        /// </param>
-
-        /// <param name="type">Resource type
         /// </param>
 
         /// <param name="provisioningState">Azure lifecycle management
@@ -45,13 +51,11 @@ namespace Microsoft.Azure.Management.NetApp.Models
 
         /// <param name="volumes">List of volumes from group
         /// </param>
-        public VolumeGroupDetails(string location = default(string), string id = default(string), string name = default(string), string type = default(string), string provisioningState = default(string), VolumeGroupMetaData groupMetaData = default(VolumeGroupMetaData), System.Collections.Generic.IList<VolumeGroupVolumeProperties> volumes = default(System.Collections.Generic.IList<VolumeGroupVolumeProperties>))
+        public VolumeGroupDetails(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string location = default(string), string provisioningState = default(string), VolumeGroupMetaData groupMetaData = default(VolumeGroupMetaData), System.Collections.Generic.IList<VolumeGroupVolumeProperties> volumes = default(System.Collections.Generic.IList<VolumeGroupVolumeProperties>))
 
+        : base(id, name, type, systemData)
         {
             this.Location = location;
-            this.Id = id;
-            this.Name = name;
-            this.Type = type;
             this.ProvisioningState = provisioningState;
             this.GroupMetaData = groupMetaData;
             this.Volumes = volumes;
@@ -69,24 +73,6 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "location")]
         public string Location {get; set; }
-
-        /// <summary>
-        /// Gets resource Id
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "id")]
-        public string Id {get; private set; }
-
-        /// <summary>
-        /// Gets resource name
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
-        public string Name {get; private set; }
-
-        /// <summary>
-        /// Gets resource type
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
-        public string Type {get; private set; }
 
         /// <summary>
         /// Gets azure lifecycle management

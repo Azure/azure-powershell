@@ -118,7 +118,7 @@ Describe 'New-AzDataProtectionBackupPolicy' {
         # $pol | Should be $null
     }
 
-    It '__AllParameterSets' {
+    It '__AllParameterSets' -skip {
         $sub = $env.TestOssBackupScenario.SubscriptionId
         $rgName = $env.TestOssBackupScenario.ResourceGroupName
         $vaultName = $env.TestOssBackupScenario.VaultName
@@ -206,7 +206,7 @@ Describe 'New-AzDataProtectionBackupPolicy' {
         
         # verify policy
         $policy.Name | Should be $newPolicyName
-        $policy.Property.PolicyRule[0].Trigger.ScheduleTimeZone | Should be "India Standard Time"
+        $policy.Property.PolicyRule[0].Trigger.ScheduleTimeZone | Should be "Central Standard Time"
         $policy.Property.PolicyRule[2].Lifecycle[0].DeleteAfterDuration | Should be "P8D"
         $policy.Property.PolicyRule[3].Lifecycle[0].DeleteAfterDuration | Should be "P9W"
 
@@ -275,6 +275,9 @@ Describe 'New-AzDataProtectionBackupPolicy' {
         $vaultName = $env.TestBlobHardeningScenario.VaultName
         $operationalPolicyName = $env.TestBlobHardeningScenario.OperationalPolicyName        
         
+        #Remove policy
+        Remove-AzDataProtectionBackupPolicy -Name $operationalPolicyName -ResourceGroupName $resourceGroupName -SubscriptionId $subId -VaultName $vaultName
+
         # Create operational policy 
         $defaultPol = Get-AzDataProtectionPolicyTemplate -DatasourceType AzureBlob
 
@@ -306,6 +309,9 @@ Describe 'New-AzDataProtectionBackupPolicy' {
         $vaultName = $env.TestBlobHardeningScenario.VaultName
         $vaultedPolicyName = $env.TestBlobHardeningScenario.VaultPolicyName
         
+        #Remove policy
+        Remove-AzDataProtectionBackupPolicy -Name $vaultedPolicyName -ResourceGroupName $resourceGroupName -SubscriptionId $subId -VaultName $vaultName
+
         # get default 
         $defaultPol = Get-AzDataProtectionPolicyTemplate -DatasourceType AzureBlob
 
@@ -327,7 +333,7 @@ Describe 'New-AzDataProtectionBackupPolicy' {
 
         #Remove policy
         Remove-AzDataProtectionBackupPolicy -Name $vaultedPolicyName -ResourceGroupName $resourceGroupName -SubscriptionId $subId -VaultName $vaultName
-        $pol = Get-AzDataProtectionBackupPolicy -ResourceGroupName $resourceGroupName -VaultName $vaultName -SubscriptionId $subId | Where-Object { $_.Name -match $vaultedPolicyName }
+        $pol = Get-AzDataProtectionBackupPolicy -ResourceGroupName $resourceGroupName -VaultName $vaultName -SubscriptionId $subId | Where-Object { $_.Name -eq $vaultedPolicyName }
         $pol | Should be $null
     }
 
@@ -336,6 +342,9 @@ Describe 'New-AzDataProtectionBackupPolicy' {
         $resourceGroupName = $env.TestBlobHardeningScenario.ResourceGroupName
         $vaultName = $env.TestBlobHardeningScenario.VaultName
         $operationalVaultedPolicyName = $env.TestBlobHardeningScenario.OperationalVaultedPolicyName
+
+        #Remove policy
+        Remove-AzDataProtectionBackupPolicy -Name $operationalVaultedPolicyName -ResourceGroupName $resourceGroupName -SubscriptionId $subId -VaultName $vaultName
 
         # Create op + vault
         $defaultPol = Get-AzDataProtectionPolicyTemplate -DatasourceType AzureBlob

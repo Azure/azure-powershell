@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update the vm details that will be monitored by the Elastic monitor resource.
+Update the VM details that will be monitored by the Elastic monitor resource, ensuring optimal observability and performance.
 .Description
-update the vm details that will be monitored by the Elastic monitor resource.
+Update the VM details that will be monitored by the Elastic monitor resource, ensuring optimal observability and performance.
 .Example
 Update-AzElasticVMCollection -ResourceGroupName lucas-elastic-test -Name elastic-pwsh02 -OperationName Add -VMResourceId '/subscriptions/xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxx/resourceGroups/VIDHI-RG/providers/Microsoft.Compute/virtualMachines/vidhi-linuxOS'
 .Example
@@ -34,6 +34,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IElasticIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The configuration name. Only 'default' value is supported.
   [Id <String>]: Resource identity path
   [IntegrationName <String>]: OpenAI Integration name
   [MonitorName <String>]: Monitor resource name

@@ -118,9 +118,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetUpdatePropertiesInternal)this).DeviceRef = (Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceRefUpdate) content.GetValueForProperty("DeviceRef",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetUpdatePropertiesInternal)this).DeviceRef, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.DeviceRefUpdateTypeConverter.ConvertFrom);
             }
+            if (content.Contains("DisplayName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetUpdatePropertiesInternal)this).DisplayName = (string) content.GetValueForProperty("DisplayName",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetUpdatePropertiesInternal)this).DisplayName, global::System.Convert.ToString);
+            }
             if (content.Contains("AssetTypeRef"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetUpdatePropertiesInternal)this).AssetTypeRef = (System.Collections.Generic.List<string>) content.GetValueForProperty("AssetTypeRef",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetUpdatePropertiesInternal)this).AssetTypeRef, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("Description"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetUpdatePropertiesInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetUpdatePropertiesInternal)this).Description, global::System.Convert.ToString);
             }
             if (content.Contains("DiscoveryId"))
             {
@@ -198,9 +206,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetUpdatePropertiesInternal)this).Dataset = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredDataset>) content.GetValueForProperty("Dataset",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetUpdatePropertiesInternal)this).Dataset, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredDataset>(__y, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.NamespaceDiscoveredDatasetTypeConverter.ConvertFrom));
             }
-            if (content.Contains("Event"))
+            if (content.Contains("EventGroup"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetUpdatePropertiesInternal)this).Event = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredEvent>) content.GetValueForProperty("Event",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetUpdatePropertiesInternal)this).Event, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredEvent>(__y, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.NamespaceDiscoveredEventTypeConverter.ConvertFrom));
+                ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetUpdatePropertiesInternal)this).EventGroup = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredEventGroup>) content.GetValueForProperty("EventGroup",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetUpdatePropertiesInternal)this).EventGroup, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredEventGroup>(__y, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.NamespaceDiscoveredEventGroupTypeConverter.ConvertFrom));
             }
             if (content.Contains("Stream"))
             {
@@ -239,9 +247,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetUpdatePropertiesInternal)this).DeviceRef = (Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceRefUpdate) content.GetValueForProperty("DeviceRef",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetUpdatePropertiesInternal)this).DeviceRef, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.DeviceRefUpdateTypeConverter.ConvertFrom);
             }
+            if (content.Contains("DisplayName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetUpdatePropertiesInternal)this).DisplayName = (string) content.GetValueForProperty("DisplayName",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetUpdatePropertiesInternal)this).DisplayName, global::System.Convert.ToString);
+            }
             if (content.Contains("AssetTypeRef"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetUpdatePropertiesInternal)this).AssetTypeRef = (System.Collections.Generic.List<string>) content.GetValueForProperty("AssetTypeRef",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetUpdatePropertiesInternal)this).AssetTypeRef, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("Description"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetUpdatePropertiesInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetUpdatePropertiesInternal)this).Description, global::System.Convert.ToString);
             }
             if (content.Contains("DiscoveryId"))
             {
@@ -319,9 +335,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetUpdatePropertiesInternal)this).Dataset = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredDataset>) content.GetValueForProperty("Dataset",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetUpdatePropertiesInternal)this).Dataset, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredDataset>(__y, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.NamespaceDiscoveredDatasetTypeConverter.ConvertFrom));
             }
-            if (content.Contains("Event"))
+            if (content.Contains("EventGroup"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetUpdatePropertiesInternal)this).Event = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredEvent>) content.GetValueForProperty("Event",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetUpdatePropertiesInternal)this).Event, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredEvent>(__y, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.NamespaceDiscoveredEventTypeConverter.ConvertFrom));
+                ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetUpdatePropertiesInternal)this).EventGroup = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredEventGroup>) content.GetValueForProperty("EventGroup",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetUpdatePropertiesInternal)this).EventGroup, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredEventGroup>(__y, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.NamespaceDiscoveredEventGroupTypeConverter.ConvertFrom));
             }
             if (content.Contains("Stream"))
             {

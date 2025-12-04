@@ -7,9 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.PowerShell;
 
-    /// <summary>
-    /// List of private endpoint connection associated with the specified storage account
-    /// </summary>
+    /// <summary>The response of a PrivateEndpointConnection list operation.</summary>
     [System.ComponentModel.TypeConverter(typeof(PrivateEndpointConnectionListResultTypeConverter))]
     public partial class PrivateEndpointConnectionListResult
     {
@@ -166,7 +164,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models
             return ToJsonString();
         }
     }
-    /// List of private endpoint connection associated with the specified storage account
+    /// The response of a PrivateEndpointConnection list operation.
     [System.ComponentModel.TypeConverter(typeof(PrivateEndpointConnectionListResultTypeConverter))]
     public partial interface IPrivateEndpointConnectionListResult
 

@@ -23,11 +23,11 @@ Creates a Nfs file share endpoint resource, which represents a data transfer sou
 New-AzStorageMoverAzNfsFileShareEndpoint -Name $endpointName -ResourceGroupName $rgname -StorageMoverName $storagemovername -StorageAccountResourceId $accountresourceid -FileShareName $fileshareName -Description "Description"
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IEndpoint
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpoint
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IEndpoint
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpoint
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -37,7 +37,7 @@ To create the parameters described below, construct a hash table containing the 
 https://learn.microsoft.com/powershell/module/az.storagemover/new-azstoragemoveraznfsfileshareendpoint
 #>
 function New-AzStorageMoverAzNfsFileShareEndpoint {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IEndpoint])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpoint])]
     [CmdletBinding(DefaultParameterSetName = 'CreateExpanded', PositionalBinding =$false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
@@ -131,7 +131,7 @@ function New-AzStorageMoverAzNfsFileShareEndpoint {
     )
 
     process {
-        $Properties = [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.AzureStorageSmbFileShareEndpointProperties]::New()
+        $Properties = [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.AzureStorageNfsFileShareEndpointProperties]::New()
 
         if ($PSBoundParameters.ContainsKey('FileShareName')) {
             $Properties.FileShareName = $FileShareName
@@ -146,7 +146,6 @@ function New-AzStorageMoverAzNfsFileShareEndpoint {
             $null = $PSBoundParameters.Remove("Description")
         }
 
-        $Properties.EndpointType = "AzureStorageNfsFileShare"
         $PSBoundParameters.Add("Property", $Properties)
 
         Az.StorageMover.internal\New-AzStorageMoverEndpoint @PSBoundParameters

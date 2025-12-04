@@ -2,9 +2,187 @@
 <Configuration>
   <ViewDefinitions>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.ApiError</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.ApiError#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Code</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Message</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Target</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Code</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Message</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Target</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.ApiErrorBase</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.ApiErrorBase#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Code</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Message</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Target</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Code</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Message</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Target</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.CommunityGalleryInfo</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.CommunityGalleryInfo#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>CommunityGalleryEnabled</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Eula</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PublicNamePrefix</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PublisherContact</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PublisherUri</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>CommunityGalleryEnabled</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Eula</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PublicNamePrefix</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PublisherContact</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PublisherUri</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.ComputeDiagnosticBase</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.ComputeDiagnosticBase#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.ComputeIdentity</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.ComputeIdentity</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.ComputeIdentity#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -96,9 +274,59 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api60.ErrorDetail</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.DataDiskImageEncryption</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api60.ErrorDetail</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.DataDiskImageEncryption#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>DiskEncryptionSetId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Lun</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>DiskEncryptionSetId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Lun</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.DiskImageEncryption</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.DiskImageEncryption#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>DiskEncryptionSetId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>DiskEncryptionSetId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.ErrorDetail</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.ErrorDetail#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -130,67 +358,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api60.ProxyResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.ExtendedLocation</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api60.ProxyResource</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataCreatedAt</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataCreatedBy</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataCreatedByType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataLastModifiedAt</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataLastModifiedBy</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataLastModifiedByType</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataCreatedAt</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataCreatedBy</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataCreatedByType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataLastModifiedAt</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataLastModifiedBy</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataLastModifiedByType</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api60.ResourceAutoGenerated</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api60.ResourceAutoGenerated</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.ExtendedLocation#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -210,109 +380,33 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api60.SystemData</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Gallery</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api60.SystemData</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Gallery#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>CreatedAt</Label>
+            <Label>Location</Label>
           </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>CreatedBy</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>CreatedByType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>LastModifiedAt</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>LastModifiedBy</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>LastModifiedByType</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>CreatedAt</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>CreatedBy</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>CreatedByType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>LastModifiedAt</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>LastModifiedBy</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>LastModifiedByType</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20250605.ComputeDiagnosticBase</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20250605.ComputeDiagnosticBase</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
           <TableColumnHeader>
             <Label>Name</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>SystemDataCreatedAt</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataCreatedBy</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataCreatedByType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataLastModifiedAt</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataLastModifiedBy</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataLastModifiedByType</Label>
+            <Label>ResourceGroupName</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>SystemDataCreatedAt</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataCreatedBy</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataCreatedByType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataLastModifiedAt</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataLastModifiedBy</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+                <PropertyName>ResourceGroupName</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -320,345 +414,33 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20250605.DiagnosticProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.GalleryApplication</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20250605.DiagnosticProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.GalleryApplication#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>SupportedResourceType</Label>
+            <Label>Location</Label>
           </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>SupportedResourceType</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20250605.PlacementScore</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20250605.PlacementScore</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>AvailabilityZone</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>IsQuotaAvailable</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Region</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Score</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Sku</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>AvailabilityZone</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>IsQuotaAvailable</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Region</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Score</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Sku</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20250605.ResourceSize</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20250605.ResourceSize</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Sku</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Sku</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20250605.SpotPlacementScoresInput</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20250605.SpotPlacementScoresInput</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>AvailabilityZone</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>DesiredCount</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>DesiredLocation</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>AvailabilityZone</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>DesiredCount</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>DesiredLocation</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20250605.SpotPlacementScoresResponse</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20250605.SpotPlacementScoresResponse</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>AvailabilityZone</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>DesiredCount</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>DesiredLocation</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>AvailabilityZone</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>DesiredCount</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>DesiredLocation</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.InstanceViewStatus</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.InstanceViewStatus</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Code</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>DisplayStatus</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Level</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Message</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Time</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Code</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>DisplayStatus</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Level</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Message</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Time</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.RunCommandDocument</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.RunCommandDocument</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Description</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Label</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>OSType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Schema</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Script</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Description</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Label</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>OSType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Schema</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Script</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.RunCommandDocumentBase</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.RunCommandDocumentBase</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Description</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Label</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>OSType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Schema</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Description</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Label</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>OSType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Schema</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.RunCommandInput</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.RunCommandInput</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>CommandId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Script</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>CommandId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Script</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.RunCommandInputParameter</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.RunCommandInputParameter</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
           <TableColumnHeader>
             <Label>Name</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>Value</Label>
+            <Label>ResourceGroupName</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>Name</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>Value</PropertyName>
+                <PropertyName>ResourceGroupName</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -666,9 +448,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.RunCommandListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.GalleryApplicationList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.RunCommandListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.GalleryApplicationList#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -688,501 +470,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.RunCommandManagedIdentity</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.GalleryApplicationProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.RunCommandManagedIdentity</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>ClientId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ObjectId</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>ClientId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ObjectId</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.RunCommandParameterDefinition</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.RunCommandParameterDefinition</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>DefaultValue</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Required</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>DefaultValue</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Required</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.UpdateResourceTags</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.UpdateResourceTags</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Item</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Item</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.VirtualMachineRunCommand</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.VirtualMachineRunCommand</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Location</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Location</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.VirtualMachineRunCommandInstanceView</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.VirtualMachineRunCommandInstanceView</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>EndTime</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Error</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ExecutionMessage</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ExecutionState</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ExitCode</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Output</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>StartTime</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>EndTime</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Error</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ExecutionMessage</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ExecutionState</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ExitCode</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Output</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>StartTime</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.VirtualMachineRunCommandProperties</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.VirtualMachineRunCommandProperties</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>AsyncExecution</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ErrorBlobUri</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>OutputBlobUri</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ProvisioningState</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>RunAsPassword</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>RunAsUser</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>TimeoutInSecond</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>TreatFailureAsDeploymentFailure</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>AsyncExecution</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ErrorBlobUri</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>OutputBlobUri</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ProvisioningState</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>RunAsPassword</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>RunAsUser</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>TimeoutInSecond</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>TreatFailureAsDeploymentFailure</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.VirtualMachineRunCommandScriptSource</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.VirtualMachineRunCommandScriptSource</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>CommandId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Script</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ScriptUri</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>CommandId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Script</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ScriptUri</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.VirtualMachineRunCommandsListResult</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.VirtualMachineRunCommandsListResult</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>NextLink</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>NextLink</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.CommunityGalleryInfo</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.CommunityGalleryInfo</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>CommunityGalleryEnabled</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Eula</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>PublicName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>PublicNamePrefix</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>PublisherContact</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>PublisherUri</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>CommunityGalleryEnabled</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Eula</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>PublicName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>PublicNamePrefix</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>PublisherContact</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>PublisherUri</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.DataDiskImageEncryption</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.DataDiskImageEncryption</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>DiskEncryptionSetId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Lun</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>DiskEncryptionSetId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Lun</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.Disallowed</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.Disallowed</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>DiskType</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>DiskType</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.DiskImageEncryption</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.DiskImageEncryption</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>DiskEncryptionSetId</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>DiskEncryptionSetId</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.Gallery</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.Gallery</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Location</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Location</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryApplication</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryApplication</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Location</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Location</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryApplicationList</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryApplicationList</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>NextLink</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>NextLink</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryApplicationProperties</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryApplicationProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.GalleryApplicationProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1232,9 +522,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryApplicationUpdate</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.GalleryApplicationUpdate</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryApplicationUpdate</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.GalleryApplicationUpdate#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1254,9 +544,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryApplicationVersion</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.GalleryApplicationVersion</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryApplicationVersion</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.GalleryApplicationVersion#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1265,6 +555,9 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -1276,15 +569,18 @@
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
               </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryApplicationVersionList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.GalleryApplicationVersionList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryApplicationVersionList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.GalleryApplicationVersionList#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1304,9 +600,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryApplicationVersionProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.GalleryApplicationVersionProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryApplicationVersionProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.GalleryApplicationVersionProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1326,9 +622,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryApplicationVersionPublishingProfile</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.GalleryApplicationVersionPublishingProfile</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryApplicationVersionPublishingProfile</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.GalleryApplicationVersionPublishingProfile#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1384,9 +680,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryApplicationVersionPublishingProfileAdvancedSettings</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.GalleryApplicationVersionPublishingProfileAdvancedSettings</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryApplicationVersionPublishingProfileAdvancedSettings</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.GalleryApplicationVersionPublishingProfileAdvancedSettings#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1406,9 +702,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryApplicationVersionUpdate</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.GalleryApplicationVersionUpdate</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryApplicationVersionUpdate</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.GalleryApplicationVersionUpdate#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1428,9 +724,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryArtifactPublishingProfileBase</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.GalleryArtifactPublishingProfileBase</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryArtifactPublishingProfileBase</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.GalleryArtifactPublishingProfileBase#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1480,9 +776,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryArtifactVersionSource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.GalleryArtifactVersionSource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryArtifactVersionSource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.GalleryArtifactVersionSource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1502,9 +798,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryDataDiskImage</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.GalleryDataDiskImage</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryDataDiskImage</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.GalleryDataDiskImage#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1548,9 +844,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryDiskImage</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.GalleryDiskImage</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryDiskImage</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.GalleryDiskImage#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1576,9 +872,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryExtendedLocation</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.GalleryExtendedLocation</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryExtendedLocation</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.GalleryExtendedLocation#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1598,9 +894,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryIdentifier</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.GalleryIdentifier</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryIdentifier</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.GalleryIdentifier#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1620,9 +916,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryImage</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.GalleryImage</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryImage</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.GalleryImage#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1631,6 +927,9 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -1642,15 +941,18 @@
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
               </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryImageFeature</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.GalleryImageFeature</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryImageFeature</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.GalleryImageFeature#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1676,9 +978,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryImageIdentifier</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.GalleryImageIdentifier</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryImageIdentifier</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.GalleryImageIdentifier#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1710,9 +1012,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryImageList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.GalleryImageList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryImageList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.GalleryImageList#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1732,9 +1034,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryImageProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.GalleryImageProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryImageProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.GalleryImageProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1808,9 +1110,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryImageUpdate</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.GalleryImageUpdate</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryImageUpdate</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.GalleryImageUpdate#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1830,9 +1132,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryImageVersion</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.GalleryImageVersion</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryImageVersion</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.GalleryImageVersion#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1841,6 +1143,9 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -1852,15 +1157,18 @@
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
               </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryImageVersionList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.GalleryImageVersionList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryImageVersionList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.GalleryImageVersionList#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1880,9 +1188,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryImageVersionProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.GalleryImageVersionProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryImageVersionProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.GalleryImageVersionProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1902,9 +1210,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryImageVersionPublishingProfile</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.GalleryImageVersionPublishingProfile</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryImageVersionPublishingProfile</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.GalleryImageVersionPublishingProfile#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1954,9 +1262,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryImageVersionUpdate</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.GalleryImageVersionUpdate</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryImageVersionUpdate</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.GalleryImageVersionUpdate#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1976,9 +1284,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.GalleryList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.GalleryList#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1998,9 +1306,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryOSDiskImage</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.GalleryOSDiskImage</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryOSDiskImage</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.GalleryOSDiskImage#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2038,9 +1346,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.GalleryProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.GalleryProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2066,9 +1374,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryTargetExtendedLocation</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.GalleryTargetExtendedLocation</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryTargetExtendedLocation</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.GalleryTargetExtendedLocation#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2100,9 +1408,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryUpdate</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.GalleryUpdate</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryUpdate</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.GalleryUpdate#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2122,9 +1430,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ImagePurchasePlan</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.ImagePurchasePlan</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ImagePurchasePlan</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.ImagePurchasePlan#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2156,9 +1464,83 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.OSDiskImageEncryption</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.InnerError</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.OSDiskImageEncryption</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.InnerError#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Errordetail</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Exceptiontype</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Errordetail</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Exceptiontype</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.InstanceViewStatus</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.InstanceViewStatus#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Code</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DisplayStatus</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Level</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Message</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Time</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Code</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DisplayStatus</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Level</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Message</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Time</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.OSDiskImageEncryption</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.OSDiskImageEncryption#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2178,9 +1560,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.OSDiskImageSecurityProfile</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.OSDiskImageSecurityProfile</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.OSDiskImageSecurityProfile</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.OSDiskImageSecurityProfile#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2206,9 +1588,113 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.RegionalReplicationStatus</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.PlacementScore</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.RegionalReplicationStatus</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.PlacementScore#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>AvailabilityZone</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IsQuotaAvailable</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Region</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Score</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Sku</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>AvailabilityZone</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IsQuotaAvailable</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Region</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Score</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Sku</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.ProxyResource</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.ProxyResource#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.RegionalReplicationStatus</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.RegionalReplicationStatus#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2246,9 +1732,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.RegionalSharingStatus</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.RegionalSharingStatus</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.RegionalSharingStatus</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.RegionalSharingStatus#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2280,9 +1766,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ReplicationStatus</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.ReplicationStatus</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ReplicationStatus</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.ReplicationStatus#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2302,9 +1788,59 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ResourceRange</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Resource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ResourceRange</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Resource#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.ResourceAutoGenerated</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.ResourceAutoGenerated#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.ResourceRange</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.ResourceRange#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2330,9 +1866,323 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.SharingProfile</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.ResourceSize</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.SharingProfile</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.ResourceSize#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Sku</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Sku</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.ResourceTags</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.ResourceTags#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Item</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Item</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.ResourceWithOptionalLocation</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.ResourceWithOptionalLocation#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.ResourceWithOptionalLocationTags</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.ResourceWithOptionalLocationTags#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Item</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Item</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.RunCommandDocument</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.RunCommandDocument#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Description</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Label</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>OSType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Schema</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Description</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Label</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>OSType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Schema</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.RunCommandDocumentBase</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.RunCommandDocumentBase#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Description</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Label</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>OSType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Schema</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Description</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Label</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>OSType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Schema</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.RunCommandInput</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.RunCommandInput#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>CommandId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>CommandId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.RunCommandInputParameter</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.RunCommandInputParameter#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Value</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Value</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.RunCommandListResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.RunCommandListResult#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.RunCommandManagedIdentity</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.RunCommandManagedIdentity#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ClientId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ObjectId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ClientId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ObjectId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.RunCommandParameterDefinition</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.RunCommandParameterDefinition#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>DefaultValue</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Required</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>DefaultValue</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Required</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.SharingProfile</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.SharingProfile#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2352,9 +2202,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.SharingStatus</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.SharingStatus</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.SharingStatus</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.SharingStatus#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2374,9 +2224,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.SharingUpdate</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.SharingUpdate</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.SharingUpdate</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.SharingUpdate#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2396,9 +2246,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.SoftDeletePolicy</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.SoftDeletePolicy</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.SoftDeletePolicy</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.SoftDeletePolicy#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2418,9 +2268,145 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.TargetRegion</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.SpotPlacementScoresInput</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.TargetRegion</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.SpotPlacementScoresInput#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>AvailabilityZone</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DesiredCount</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>AvailabilityZone</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DesiredCount</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.SpotPlacementScoresResponse</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.SpotPlacementScoresResponse#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>AvailabilityZone</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DesiredCount</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>AvailabilityZone</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DesiredCount</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.SystemData</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.SystemData#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>CreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LastModifiedByType</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>CreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LastModifiedByType</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.SystemDataAutoGenerated</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.SystemDataAutoGenerated#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>CreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LastModifiedAt</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>CreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LastModifiedAt</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.TargetRegion</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.TargetRegion#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2452,9 +2438,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.UpdateResourceDefinition</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.UpdateResourceDefinition</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.UpdateResourceDefinition</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.UpdateResourceDefinition#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2474,9 +2460,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.UpdateResourceDefinitionTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.UpdateResourceDefinitionTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.UpdateResourceDefinitionTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.UpdateResourceDefinitionTags#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2496,9 +2482,31 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.UserArtifactManage</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.UpdateResourceTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.UserArtifactManage</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.UpdateResourceTags#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Item</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Item</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.UserArtifactManage</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.UserArtifactManage#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2530,9 +2538,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.UserArtifactSettings</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.UserArtifactSettings</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.UserArtifactSettings</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.UserArtifactSettings#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2558,9 +2566,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.UserArtifactSource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.UserArtifactSource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.UserArtifactSource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.UserArtifactSource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2586,255 +2594,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ApiError</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.UserAssignedIdentitiesValue</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ApiError</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Code</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Message</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Target</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Code</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Message</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Target</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ApiErrorBase</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ApiErrorBase</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Code</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Message</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Target</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Code</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Message</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Target</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ExtendedLocation</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ExtendedLocation</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.InnerError</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.InnerError</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Errordetail</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Exceptiontype</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Errordetail</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Exceptiontype</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.Resource</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.Resource</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Location</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Location</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ResourceTags</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ResourceTags</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Item</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Item</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ResourceWithOptionalLocation</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ResourceWithOptionalLocation</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Location</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Location</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ResourceWithOptionalLocationTags</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ResourceWithOptionalLocationTags</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Item</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Item</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.SystemDataAutoGenerated</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.SystemDataAutoGenerated</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>CreatedAt</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>LastModifiedAt</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>CreatedAt</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>LastModifiedAt</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.UserAssignedIdentitiesValue</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.UserAssignedIdentitiesValue</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.UserAssignedIdentitiesValue#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2853,6 +2615,218 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>PrincipalId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.VirtualMachineRunCommand</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.VirtualMachineRunCommand#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.VirtualMachineRunCommandInstanceView</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.VirtualMachineRunCommandInstanceView#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>EndTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Error</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ExecutionMessage</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ExecutionState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ExitCode</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Output</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>StartTime</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>EndTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Error</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ExecutionMessage</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ExecutionState</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ExitCode</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Output</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>StartTime</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.VirtualMachineRunCommandProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.VirtualMachineRunCommandProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>AsyncExecution</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ErrorBlobUri</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>OutputBlobUri</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RunAsPassword</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RunAsUser</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TimeoutInSecond</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TreatFailureAsDeploymentFailure</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>AsyncExecution</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ErrorBlobUri</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>OutputBlobUri</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RunAsPassword</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RunAsUser</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TimeoutInSecond</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TreatFailureAsDeploymentFailure</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.VirtualMachineRunCommandScriptSource</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.VirtualMachineRunCommandScriptSource#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>CommandId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Script</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ScriptUri</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>CommandId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Script</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ScriptUri</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.VirtualMachineRunCommandsListResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.VirtualMachineRunCommandsListResult#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

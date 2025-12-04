@@ -133,10 +133,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IInboundEndpointsInternal)this).AdditionalConfiguration = (string) content.GetValueForProperty("AdditionalConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IInboundEndpointsInternal)this).AdditionalConfiguration, global::System.Convert.ToString);
             }
-            if (content.Contains("AuthenticationX509Credentials"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IInboundEndpointsInternal)this).AuthenticationX509Credentials = (Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IX509Credentials) content.GetValueForProperty("AuthenticationX509Credentials",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IInboundEndpointsInternal)this).AuthenticationX509Credentials, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.X509CredentialsTypeConverter.ConvertFrom);
-            }
             if (content.Contains("AuthenticationMethod"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IInboundEndpointsInternal)this).AuthenticationMethod = (string) content.GetValueForProperty("AuthenticationMethod",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IInboundEndpointsInternal)this).AuthenticationMethod, global::System.Convert.ToString);
@@ -149,6 +145,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IInboundEndpointsInternal)this).AuthenticationUsernamePasswordCredentials = (Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IUsernamePasswordCredentials) content.GetValueForProperty("AuthenticationUsernamePasswordCredentials",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IInboundEndpointsInternal)this).AuthenticationUsernamePasswordCredentials, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.UsernamePasswordCredentialsTypeConverter.ConvertFrom);
             }
+            if (content.Contains("AuthenticationX509Credentials"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IInboundEndpointsInternal)this).AuthenticationX509Credentials = (Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IX509CertificateCredentials) content.GetValueForProperty("AuthenticationX509Credentials",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IInboundEndpointsInternal)this).AuthenticationX509Credentials, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.X509CertificateCredentialsTypeConverter.ConvertFrom);
+            }
             if (content.Contains("UsernamePasswordCredentialsUsernameSecretName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IInboundEndpointsInternal)this).UsernamePasswordCredentialsUsernameSecretName = (string) content.GetValueForProperty("UsernamePasswordCredentialsUsernameSecretName",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IInboundEndpointsInternal)this).UsernamePasswordCredentialsUsernameSecretName, global::System.Convert.ToString);
@@ -160,6 +160,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
             if (content.Contains("X509CredentialsCertificateSecretName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IInboundEndpointsInternal)this).X509CredentialsCertificateSecretName = (string) content.GetValueForProperty("X509CredentialsCertificateSecretName",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IInboundEndpointsInternal)this).X509CredentialsCertificateSecretName, global::System.Convert.ToString);
+            }
+            if (content.Contains("X509CredentialsKeySecretName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IInboundEndpointsInternal)this).X509CredentialsKeySecretName = (string) content.GetValueForProperty("X509CredentialsKeySecretName",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IInboundEndpointsInternal)this).X509CredentialsKeySecretName, global::System.Convert.ToString);
+            }
+            if (content.Contains("X509CredentialsIntermediateCertificatesSecretName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IInboundEndpointsInternal)this).X509CredentialsIntermediateCertificatesSecretName = (string) content.GetValueForProperty("X509CredentialsIntermediateCertificatesSecretName",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IInboundEndpointsInternal)this).X509CredentialsIntermediateCertificatesSecretName, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
@@ -202,10 +210,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IInboundEndpointsInternal)this).AdditionalConfiguration = (string) content.GetValueForProperty("AdditionalConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IInboundEndpointsInternal)this).AdditionalConfiguration, global::System.Convert.ToString);
             }
-            if (content.Contains("AuthenticationX509Credentials"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IInboundEndpointsInternal)this).AuthenticationX509Credentials = (Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IX509Credentials) content.GetValueForProperty("AuthenticationX509Credentials",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IInboundEndpointsInternal)this).AuthenticationX509Credentials, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.X509CredentialsTypeConverter.ConvertFrom);
-            }
             if (content.Contains("AuthenticationMethod"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IInboundEndpointsInternal)this).AuthenticationMethod = (string) content.GetValueForProperty("AuthenticationMethod",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IInboundEndpointsInternal)this).AuthenticationMethod, global::System.Convert.ToString);
@@ -218,6 +222,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IInboundEndpointsInternal)this).AuthenticationUsernamePasswordCredentials = (Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IUsernamePasswordCredentials) content.GetValueForProperty("AuthenticationUsernamePasswordCredentials",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IInboundEndpointsInternal)this).AuthenticationUsernamePasswordCredentials, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.UsernamePasswordCredentialsTypeConverter.ConvertFrom);
             }
+            if (content.Contains("AuthenticationX509Credentials"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IInboundEndpointsInternal)this).AuthenticationX509Credentials = (Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IX509CertificateCredentials) content.GetValueForProperty("AuthenticationX509Credentials",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IInboundEndpointsInternal)this).AuthenticationX509Credentials, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.X509CertificateCredentialsTypeConverter.ConvertFrom);
+            }
             if (content.Contains("UsernamePasswordCredentialsUsernameSecretName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IInboundEndpointsInternal)this).UsernamePasswordCredentialsUsernameSecretName = (string) content.GetValueForProperty("UsernamePasswordCredentialsUsernameSecretName",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IInboundEndpointsInternal)this).UsernamePasswordCredentialsUsernameSecretName, global::System.Convert.ToString);
@@ -229,6 +237,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
             if (content.Contains("X509CredentialsCertificateSecretName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IInboundEndpointsInternal)this).X509CredentialsCertificateSecretName = (string) content.GetValueForProperty("X509CredentialsCertificateSecretName",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IInboundEndpointsInternal)this).X509CredentialsCertificateSecretName, global::System.Convert.ToString);
+            }
+            if (content.Contains("X509CredentialsKeySecretName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IInboundEndpointsInternal)this).X509CredentialsKeySecretName = (string) content.GetValueForProperty("X509CredentialsKeySecretName",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IInboundEndpointsInternal)this).X509CredentialsKeySecretName, global::System.Convert.ToString);
+            }
+            if (content.Contains("X509CredentialsIntermediateCertificatesSecretName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IInboundEndpointsInternal)this).X509CredentialsIntermediateCertificatesSecretName = (string) content.GetValueForProperty("X509CredentialsIntermediateCertificatesSecretName",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IInboundEndpointsInternal)this).X509CredentialsIntermediateCertificatesSecretName, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

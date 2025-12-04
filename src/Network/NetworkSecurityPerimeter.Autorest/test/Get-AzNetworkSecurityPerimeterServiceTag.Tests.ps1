@@ -15,7 +15,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzNetworkSecurityPerimete
 }
 
 Describe 'Get-AzNetworkSecurityPerimeterServiceTag' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        {
+            Get-AzNetworkSecurityPerimeterServiceTag -Location $env.location
+
+        } | Should -Not -Throw
     }
 }

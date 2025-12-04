@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Updates a task with the specified parameters.
+Update a task for a container registry with the specified parameters.
 .Description
-Updates a task with the specified parameters.
+Update a task for a container registry with the specified parameters.
 .Example
 {{ Add code here }}
 .Example
@@ -27,7 +27,7 @@ Updates a task with the specified parameters.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.ITask
+Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.ITask
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -55,31 +55,54 @@ INPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
   [TokenName <String>]: The name of the token.
   [WebhookName <String>]: The name of the webhook.
 
-TRIGGERSOURCETRIGGER <ISourceTriggerUpdateParameters[]>: The collection of triggers based on source code repository.
+REGISTRYINPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
+  [AgentPoolName <String>]: The name of the agent pool.
+  [CacheRuleName <String>]: The name of the cache rule.
+  [ConnectedRegistryName <String>]: The name of the connected registry.
+  [CredentialSetName <String>]: The name of the credential set.
+  [ExportPipelineName <String>]: The name of the export pipeline.
+  [GroupName <String>]: The name of the private link resource.
+  [Id <String>]: Resource identity path
+  [ImportPipelineName <String>]: The name of the import pipeline.
+  [PipelineRunName <String>]: The name of the pipeline run.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [RegistryName <String>]: The name of the container registry.
+  [ReplicationName <String>]: The name of the replication.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The run ID.
+  [ScopeMapName <String>]: The name of the scope map.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TaskName <String>]: The name of the container registry task.
+  [TaskRunName <String>]: The name of the task run.
+  [TokenName <String>]: The name of the token.
+  [WebhookName <String>]: The name of the webhook.
+
+TRIGGERSOURCETRIGGER <ISourceTrigger[]>: The collection of triggers based on source code repository.
+  Event <List<String>>: The source event corresponding to the trigger.
   Name <String>: The name of the trigger.
+  SourceRepositorySourceControlType <String>: The type of source control service.
+  SourceRepositoryUrl <String>: The full URL to the source code repository
   [SourceControlAuthPropertyExpiresIn <Int32?>]: Time in seconds that the token remains valid
   [SourceControlAuthPropertyRefreshToken <String>]: The refresh token used to refresh the access token.
   [SourceControlAuthPropertyScope <String>]: The scope of the access token.
   [SourceControlAuthPropertyToken <String>]: The access token used to access the source control provider.
-  [SourceControlAuthPropertyTokenType <TokenType?>]: The type of Auth token.
+  [SourceControlAuthPropertyTokenType <String>]: The type of Auth token.
   [SourceRepositoryBranch <String>]: The branch name of the source code.
-  [SourceRepositorySourceControlType <SourceControlType?>]: The type of source control service.
-  [SourceRepositoryUrl <String>]: The full URL to the source code repository
-  [SourceTriggerEvent <SourceTriggerEvent[]>]: The source event corresponding to the trigger.
-  [Status <TriggerStatus?>]: The current status of trigger.
+  [Status <String>]: The current status of trigger.
 
-TRIGGERTIMERTRIGGER <ITimerTriggerUpdateParameters[]>: The collection of timer triggers.
+TRIGGERTIMERTRIGGER <ITimerTrigger[]>: The collection of timer triggers.
   Name <String>: The name of the trigger.
-  [Schedule <String>]: The CRON expression for the task schedule
-  [Status <TriggerStatus?>]: The current status of trigger.
+  Schedule <String>: The CRON expression for the task schedule
+  [Status <String>]: The current status of trigger.
 .Link
 https://learn.microsoft.com/powershell/module/az.containerregistry/update-azcontainerregistrytask
 #>
 function Update-AzContainerRegistryTask {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.ITask])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.ITask])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityRegistryExpanded', Mandatory)]
     [Alias('TaskName')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [System.String]
@@ -110,8 +133,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityRegistryExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
+    # Identity Parameter
+    ${RegistryInputObject},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
@@ -126,9 +154,9 @@ param(
     ${AgentPoolName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.BaseImageTriggerType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.PSArgumentCompleterAttribute("All", "Runtime")]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.BaseImageTriggerType]
+    [System.String]
     # The type of the auto trigger for base image dependency updates.
     ${BaseImageTriggerBaseImageTriggerType},
 
@@ -139,9 +167,9 @@ param(
     ${BaseImageTriggerName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.TriggerStatus])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.PSArgumentCompleterAttribute("Disabled", "Enabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.TriggerStatus]
+    [System.String]
     # The current status of trigger.
     ${BaseImageTriggerStatus},
 
@@ -152,19 +180,25 @@ param(
     ${BaseImageTriggerUpdateTriggerEndpoint},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.UpdateTriggerPayloadType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.PSArgumentCompleterAttribute("Default", "Token")]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.UpdateTriggerPayloadType]
+    [System.String]
     # Type of Payload body for Base image update triggers.
     ${BaseImageTriggerUpdateTriggerPayloadType},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.ICredentialsCustomRegistries]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.ICredentialsCustomRegistries]))]
     [System.Collections.Hashtable]
     # Describes the credential parameters for accessing other custom registries.
     # The keyfor the dictionary item will be the registry login server (myregistry.azurecr.io) andthe value of the item will be the registry credentials for accessing the registry.
     ${CredentialsCustomRegistry},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.Nullable[System.Boolean]]
+    # Determines whether to enable a system-assigned identity for the resource.
+    ${EnableSystemAssignedIdentity},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
@@ -179,19 +213,10 @@ param(
     ${IdentityTenantId},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.ResourceIdentityType])]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.ResourceIdentityType]
-    # The identity type.
-    ${IdentityType},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.IIdentityPropertiesUserAssignedIdentities]))]
-    [System.Collections.Hashtable]
-    # The list of user identities associated with the resource.
-    # The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/ providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-    ${IdentityUserAssignedIdentity},
+    [System.Management.Automation.SwitchParameter]
+    # The value of this property indicates whether the task resource is system task or not.
+    ${IsSystemTask},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
@@ -200,39 +225,39 @@ param(
     ${LogTemplate},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.Architecture])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.PSArgumentCompleterAttribute("amd64", "x86", "386", "arm", "arm64")]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.Architecture]
+    [System.String]
     # The OS architecture.
     ${PlatformArchitecture},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.OS])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.PSArgumentCompleterAttribute("Windows", "Linux")]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.OS]
+    [System.String]
     # The operating system type required for the run.
     ${PlatformOS},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.Variant])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.PSArgumentCompleterAttribute("v6", "v7", "v8")]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.Variant]
+    [System.String]
     # Variant of the CPU.
     ${PlatformVariant},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.SourceRegistryLoginMode])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.PSArgumentCompleterAttribute("None", "Default")]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.SourceRegistryLoginMode]
+    [System.String]
     # The authentication mode which determines the source registry login scope.
     # The credentials for the source registrywill be generated using the given scope.
     # These credentials will be used to login tothe source registry during the run.
     ${SourceRegistryLoginMode},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.TaskStatus])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.PSArgumentCompleterAttribute("Disabled", "Enabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.TaskStatus]
+    [System.String]
     # The current status of task.
     ${Status},
 
@@ -249,18 +274,18 @@ param(
     ${StepContextPath},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.StepType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.PSArgumentCompleterAttribute("Docker", "FileTask", "EncodedTask")]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.StepType]
+    [System.String]
     # The type of the step.
     ${StepType},
 
     [Parameter()]
     [Alias('Tags')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.ITaskUpdateParametersTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IResourceTags]))]
     [System.Collections.Hashtable]
-    # The ARM resource tags.
+    # The tags of the resource.
     ${Tag},
 
     [Parameter()]
@@ -272,18 +297,24 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.ISourceTriggerUpdateParameters[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.ISourceTrigger[]]
     # The collection of triggers based on source code repository.
-    # To construct, see NOTES section for TRIGGERSOURCETRIGGER properties and create a hash table.
     ${TriggerSourceTrigger},
 
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.ITimerTriggerUpdateParameters[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.ITimerTrigger[]]
     # The collection of timer triggers.
-    # To construct, see NOTES section for TRIGGERTIMERTRIGGER properties and create a hash table.
     ${TriggerTimerTrigger},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String[]]
+    # The array of user assigned identities associated with the resource.
+    # The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+    ${UserAssignedIdentity},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -353,14 +384,16 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             UpdateExpanded = 'Az.ContainerRegistry.private\Update-AzContainerRegistryTask_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.ContainerRegistry.private\Update-AzContainerRegistryTask_UpdateViaIdentityExpanded';
+            UpdateViaIdentityRegistryExpanded = 'Az.ContainerRegistry.private\Update-AzContainerRegistryTask_UpdateViaIdentityRegistryExpanded';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -369,6 +402,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

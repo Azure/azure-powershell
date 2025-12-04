@@ -20,14 +20,37 @@ Gets the signed-in user's permitted abilities in an environment type.
 .Description
 Gets the signed-in user's permitted abilities in an environment type.
 .Example
-{{ Add code here }}
+Get-AzDevCenterUserEnvironmentTypeAbility `
+  -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" `
+  -ProjectName "DevProject" `
+  -EnvironmentTypeName "DevTest"
 .Example
-{{ Add code here }}
+Get-AzDevCenterUserEnvironmentTypeAbility `
+  -DevCenterName "ContosoDevCenter" `
+  -ProjectName "DevProject" `
+  -EnvironmentTypeName "DevTest" `
+  -UserId "786a823c-8037-48ab-89b8-8599901e67d0"
+.Example
+$envTypeInput = @{
+    ProjectName = "DevProject"
+    EnvironmentTypeName = "DevTest"
+}
+Get-AzDevCenterUserEnvironmentTypeAbility `
+  -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" `
+  -InputObject $envTypeInput
+.Example
+$envTypeInput = @{
+    ProjectName = "DevProject"
+    EnvironmentTypeName = "DevTest"
+}
+Get-AzDevCenterUserEnvironmentTypeAbility `
+  -DevCenterName "ContosoDevCenter" `
+  -InputObject $envTypeInput
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironmentTypeAbilities
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IEnvironmentTypeAbilities
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -35,6 +58,7 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [ActionName <String>]: The name of the action.
+  [AddOnName <String>]: Name of the dev box addon.
   [CatalogName <String>]: Name of the catalog.
   [CustomizationGroupName <String>]: Name of the customization group.
   [CustomizationTaskId <String>]: A customization task ID.
@@ -43,17 +67,19 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [EnvironmentName <String>]: Environment name.
   [EnvironmentTypeName <String>]: Name of the environment type.
   [Id <String>]: Resource identity path
+  [ImageBuildLogId <String>]: An imaging build log id.
   [OperationId <String>]: Unique identifier for the Dev Box operation.
   [PoolName <String>]: Pool name.
   [ProjectName <String>]: Name of the project.
   [ScheduleName <String>]: Display name for the Schedule.
+  [SnapshotId <String>]: The id of the snapshot. Should be treated as opaque string.
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
 https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserenvironmenttypeability
 #>
 function Get-AzDevCenterUserEnvironmentTypeAbility {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironmentTypeAbilities])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IEnvironmentTypeAbilities])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -79,8 +105,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.DefaultInfo(Script='"me"')]
     [System.String]
     # The AAD object id of the user.
-    # If value is 'me', the identity is taken from the
-    #  authentication context.
+    # If value is 'me', the identity is taken from the authentication context.
     ${UserId},
 
     [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]

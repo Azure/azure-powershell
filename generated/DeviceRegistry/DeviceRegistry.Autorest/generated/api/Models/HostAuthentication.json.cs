@@ -78,7 +78,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
                 return;
             }
             {_usernamePasswordCredentials = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonObject>("usernamePasswordCredentials"), out var __jsonUsernamePasswordCredentials) ? Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.UsernamePasswordCredentials.FromJson(__jsonUsernamePasswordCredentials) : _usernamePasswordCredentials;}
-            {_x509Credentials = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonObject>("x509Credentials"), out var __jsonX509Credentials) ? Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.X509Credentials.FromJson(__jsonX509Credentials) : _x509Credentials;}
+            {_x509Credentials = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonObject>("x509Credentials"), out var __jsonX509Credentials) ? Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.X509CertificateCredentials.FromJson(__jsonX509Credentials) : _x509Credentials;}
             {_method = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonString>("method"), out var __jsonMethod) ? (string)__jsonMethod : (string)_method;}
             AfterFromJson(json);
         }

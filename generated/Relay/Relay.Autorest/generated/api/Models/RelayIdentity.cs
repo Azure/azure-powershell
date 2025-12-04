@@ -91,6 +91,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The authorization rule name.",
         SerializedName = @"authorizationRuleName",
         PossibleTypes = new [] { typeof(string) })]
@@ -99,6 +102,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The hybrid connection name.",
         SerializedName = @"hybridConnectionName",
         PossibleTypes = new [] { typeof(string) })]
@@ -107,6 +113,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource identity path",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -115,6 +124,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The namespace name",
         SerializedName = @"namespaceName",
         PossibleTypes = new [] { typeof(string) })]
@@ -123,6 +135,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The PrivateEndpointConnection name",
         SerializedName = @"privateEndpointConnectionName",
         PossibleTypes = new [] { typeof(string) })]
@@ -131,6 +146,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The PrivateLinkResource name",
         SerializedName = @"privateLinkResourceName",
         PossibleTypes = new [] { typeof(string) })]
@@ -139,6 +157,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The relay name.",
         SerializedName = @"relayName",
         PossibleTypes = new [] { typeof(string) })]
@@ -147,6 +168,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the Resource group within the Azure subscription.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
@@ -158,6 +182,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]

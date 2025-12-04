@@ -7,26 +7,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Extensions;
 
-    /// <summary>A list of private link resources</summary>
+    /// <summary>The response of a PrivateLinkResource list operation.</summary>
     public partial class PrivateLinkResourceListResult :
         Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IPrivateLinkResourceListResult,
         Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IPrivateLinkResourceListResultInternal
     {
 
-        /// <summary>Internal Acessors for NextLink</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IPrivateLinkResourceListResultInternal.NextLink { get => this._nextLink; set { {_nextLink = value;} } }
-
         /// <summary>Backing field for <see cref="NextLink" /> property.</summary>
         private string _nextLink;
 
-        /// <summary>URL to get the next set of operation list results (if there are any).</summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Origin(Microsoft.Azure.PowerShell.Cmdlets.Dashboard.PropertyOrigin.Owned)]
-        public string NextLink { get => this._nextLink; }
+        public string NextLink { get => this._nextLink; set => this._nextLink = value; }
 
         /// <summary>Backing field for <see cref="Value" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IPrivateLinkResource> _value;
 
-        /// <summary>Array of private link resources</summary>
+        /// <summary>The PrivateLinkResource items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Origin(Microsoft.Azure.PowerShell.Cmdlets.Dashboard.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IPrivateLinkResource> Value { get => this._value; set => this._value = value; }
 
@@ -36,41 +33,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models
 
         }
     }
-    /// A list of private link resources
+    /// The response of a PrivateLinkResource list operation.
     public partial interface IPrivateLinkResourceListResult :
         Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.IJsonSerializable
     {
-        /// <summary>URL to get the next set of operation list results (if there are any).</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"URL to get the next set of operation list results (if there are any).",
-        SerializedName = @"nextLink",
-        PossibleTypes = new [] { typeof(string) })]
-        string NextLink { get;  }
-        /// <summary>Array of private link resources</summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Array of private link resources",
+        Description = @"The link to the next page of items",
+        SerializedName = @"nextLink",
+        PossibleTypes = new [] { typeof(string) })]
+        string NextLink { get; set; }
+        /// <summary>The PrivateLinkResource items on this page</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Info(
+        Required = true,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The PrivateLinkResource items on this page",
         SerializedName = @"value",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IPrivateLinkResource) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IPrivateLinkResource> Value { get; set; }
 
     }
-    /// A list of private link resources
+    /// The response of a PrivateLinkResource list operation.
     internal partial interface IPrivateLinkResourceListResultInternal
 
     {
-        /// <summary>URL to get the next set of operation list results (if there are any).</summary>
+        /// <summary>The link to the next page of items</summary>
         string NextLink { get; set; }
-        /// <summary>Array of private link resources</summary>
+        /// <summary>The PrivateLinkResource items on this page</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IPrivateLinkResource> Value { get; set; }
 
     }

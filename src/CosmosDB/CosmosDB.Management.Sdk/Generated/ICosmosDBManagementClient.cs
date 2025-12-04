@@ -247,5 +247,20 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// </summary>
         IServiceOperations Service { get; }
 
+        /// <summary>
+        /// Gets the IFleetOperations
+        /// </summary>
+        IFleetOperations Fleet { get; }
+
+        /// <summary>
+        /// Gets the IFleetspaceOperations
+        /// </summary>
+        IFleetspaceOperations Fleetspace { get; }
+
+        /// <summary>
+        /// Gets the IFleetspaceAccountOperations
+        /// </summary>
+        IFleetspaceAccountOperations FleetspaceAccount { get; }
+
     }
 }

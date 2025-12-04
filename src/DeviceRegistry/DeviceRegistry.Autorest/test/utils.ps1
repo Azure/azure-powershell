@@ -46,7 +46,7 @@ function setupEnv() {
     # For any resources you created for test, you should add it to $env here.
     $env.Add("resourceGroup", "adr-pwsh-test-rg")
     $env.Add("location", "eastus2")
-    $env.Add("extendedLocationName", "/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.ExtendedLocation/customLocations/location-2pnh4")
+    $env.Add("extendedLocationName", "/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.ExtendedLocation/customLocations/location-mkzkq")
     $env.Add("extendedLocationType", "CustomLocation")
 
     $jsonStringConfig = '{"defaultPublishingInterval": 200, "defaultSamplingInterval": 500, "defaultQueueSize": 10}'
@@ -367,6 +367,8 @@ function setupEnv() {
 
     $env.Add("namespaceAssetTests", @{
         namespaceName = "adr-namespace"
+        resourceGroupName = "adr-canary-test-ga-2510"
+        extendedLocationName = "/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-canary-test-ga-2510/providers/Microsoft.ExtendedLocation/customLocations/adr-canary-test-ga-2510-cl"
         createTests = @{
             CreateExpanded = @{
                 name = "test-ns-asset-create-expanded"
@@ -477,6 +479,9 @@ function setupEnv() {
                     }
                     discoveryId = "myDiscoveryId"
                     version = 1
+                    displayName = "test-ns-dasset-displayName"
+                    description = "my test discovered asset"
+                    externalAssetId = "test-dasset-externalAssetId"
                     manufacturer = "Contoso123"
                     manufacturerUri = "https://contoso.com"
                     model = "ContosoModel"
@@ -538,6 +543,8 @@ function setupEnv() {
                 discoveryId = "myDiscoveryId"
                 version = 1
                 displayName = "test-ns-dasset-displayName"
+                description = "my test discovered asset"
+                externalAssetId = "test-dasset-externalAssetId"
                 manufacturer = "Contoso123"
                 manufacturerUri = "https://www.contoso.com/manufacturerUri"
                 model = "ContosoModel"
@@ -569,6 +576,9 @@ function setupEnv() {
 
     $env.Add("namespaceDeviceTests", @{
         namespaceName = "adr-namespace"
+        resourceGroupName = "adr-canary-test-ga-2510"
+        extendedLocationName = "/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-canary-test-ga-2510/providers/Microsoft.ExtendedLocation/customLocations/adr-canary-test-ga-2510-cl"
+        location = "eastus2euap"
         createTests = @{
             commonProperties = @{
                 enabled = $true
@@ -576,18 +586,20 @@ function setupEnv() {
                 model = "foo123"
                 operatingSystem = "Linux"
                 operatingSystemVersion = "1000"
-                outboundEndpointName = "myendpoint2"
-                outboundAddress = "https://myendpoint2.westeurope-1.edge.azure.net"
-                outboundEndpointType = "Microsoft.Devices/IoTHubs"
+                outboundEndpointName = "endpoint2"
+                outboundAddress = "https://myendpoint2.westeurope-1.iothub.azure.net"
+                outboundEndpointType = "Microsoft.Devices/IotHubs"
                 inboundEndpointName1 = "endpoint1"
                 inboundEndpointName2 = "endpoint2"
                 inboundAddress1 = "https://myendpoint1.westeurope-1.iothub.azure.net"
-                inboundEndpointType1 = "Microsoft.IotHub"
+                inboundEndpointType1 = "Microsoft.Devices/IotHubs"
                 inboundAddress2 = "https://myendpoint2.westeurope-1.iothub.azure.net"
-                inboundEndpointType2 = "Microsoft.IotHub"
+                inboundEndpointType2 = "Microsoft.Devices/IotHubs"
                 authenticationMethod1 = "Certificate"
                 authenticationMethod2 = "UsernamePassword"
                 certificateSecretName = "mycertificate"
+                keySecretName = "mykeysecret"
+                intermediateCertificatesSecretName = "myintermediatecerts"
                 usernameSecretName = "myUsernameSecretRef"
                 passwordSecretName = "myPasswordSecretRef"
             }
@@ -643,18 +655,20 @@ function setupEnv() {
                 model = "foo123"
                 operatingSystem = "Linux"
                 operatingSystemVersion = "1000"
-                outboundEndpointName = "myendpoint2"
-                outboundAddress = "https://myendpoint2.westeurope-1.edge.azure.net"
-                outboundEndpointType = "Microsoft.Devices/IoTHubs"
+                outboundEndpointName = "endpoint2"
+                outboundAddress = "https://myendpoint2.westeurope-1.iothub.azure.net"
+                outboundEndpointType = "Microsoft.Devices/IotHubs"
                 inboundEndpointName1 = "endpoint1"
                 inboundEndpointName2 = "endpoint2"
                 inboundAddress1 = "https://myendpoint1.westeurope-1.iothub.azure.net"
-                inboundEndpointType1 = "Microsoft.IotHub"
+                inboundEndpointType1 = "Microsoft.Devices/IotHubs"
                 inboundAddress2 = "https://myendpoint2.westeurope-1.iothub.azure.net"
-                inboundEndpointType2 = "Microsoft.IotHub"
+                inboundEndpointType2 = "Microsoft.Devices/IotHubs"
                 authenticationMethod1 = "Certificate"
                 authenticationMethod2 = "UsernamePassword"
                 certificateSecretName = "mycertificate"
+                keySecretName = "mykeysecret"
+                intermediateCertificatesSecretName = "myintermediatecerts"
                 usernameSecretName = "myusername"
                 passwordSecretName = "mypassword"
             }
@@ -689,7 +703,7 @@ function setupEnv() {
                 operatingSystem = "Linux"
                 operatingSystemVersion = "1000"
                 outboundEndpointName = "myendpoint2"
-                outboundAddress = "https://myendpoint2.westeurope-1.edge.azure.net"
+                outboundAddress = "https://myendpoint2.westeurope-1.iothub.azure.net"
                 outboundEndpointType = "Microsoft.Devices/IoTHubs"
                 inboundEndpointName1 = "endpoint1"
                 inboundEndpointName2 = "endpoint2"
@@ -754,7 +768,7 @@ function setupEnv() {
                 operatingSystem = "Linux"
                 operatingSystemVersion = "1000"
                 outboundEndpointName = "myendpoint2"
-                outboundAddress = "https://myendpoint2.westeurope-1.edge.azure.net"
+                outboundAddress = "https://myendpoint2.westeurope-1.iothub.azure.net"
                 outboundEndpointType = "Microsoft.Devices/IoTHubs"
                 inboundEndpointName1 = "endpoint1"
                 inboundEndpointName2 = "endpoint2"
@@ -868,7 +882,7 @@ function setupEnv() {
     })
 
     $env.Add("schemaTests", @{
-        schemaRegistryName = "aio-sr-d179cdfcb7"
+        schemaRegistryName = "aio-sr-06f973e875"
         commonProperties = @{
             displayName = "My schema"
             description = "This is a sample schema"
@@ -948,7 +962,7 @@ function setupEnv() {
     })
 
     $env.Add("schemaVersionTests", @{
-        schemaRegistryName = "aio-sr-d179cdfcb7"
+        schemaRegistryName = "aio-sr-06f973e875"
         schemaName = "myschema"
         commonProperties = @{
             description = "Schema version 1"

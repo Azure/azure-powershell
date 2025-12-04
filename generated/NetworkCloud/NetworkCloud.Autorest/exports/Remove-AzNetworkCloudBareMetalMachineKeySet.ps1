@@ -31,6 +31,30 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+CLUSTERINPUTOBJECT <INetworkCloudIdentity>: Identity Parameter
+  [AgentPoolName <String>]: The name of the Kubernetes cluster agent pool.
+  [BareMetalMachineKeySetName <String>]: The name of the bare metal machine key set.
+  [BareMetalMachineName <String>]: The name of the bare metal machine.
+  [BmcKeySetName <String>]: The name of the baseboard management controller key set.
+  [CloudServicesNetworkName <String>]: The name of the cloud services network.
+  [ClusterManagerName <String>]: The name of the cluster manager.
+  [ClusterName <String>]: The name of the cluster.
+  [ConsoleName <String>]: The name of the virtual machine console.
+  [FeatureName <String>]: The name of the feature.
+  [Id <String>]: Resource identity path
+  [KubernetesClusterName <String>]: The name of the Kubernetes cluster.
+  [L2NetworkName <String>]: The name of the L2 network.
+  [L3NetworkName <String>]: The name of the L3 network.
+  [MetricsConfigurationName <String>]: The name of the metrics configuration for the cluster.
+  [RackName <String>]: The name of the rack.
+  [RackSkuName <String>]: The name of the rack SKU.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [StorageApplianceName <String>]: The name of the storage appliance.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TrunkedNetworkName <String>]: The name of the trunked network.
+  [VirtualMachineName <String>]: The name of the virtual machine.
+  [VolumeName <String>]: The name of the volume.
+
 INPUTOBJECT <INetworkCloudIdentity>: Identity Parameter
   [AgentPoolName <String>]: The name of the Kubernetes cluster agent pool.
   [BareMetalMachineKeySetName <String>]: The name of the bare metal machine key set.
@@ -68,6 +92,7 @@ param(
     ${ClusterName},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityCluster', Mandatory)]
     [Alias('BareMetalMachineKeySetName')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Path')]
     [System.String]
@@ -93,8 +118,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityCluster', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity]
+    # Identity Parameter
+    ${ClusterInputObject},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Header')]
@@ -185,6 +215,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -206,10 +245,9 @@ begin {
         $mapping = @{
             Delete = 'Az.NetworkCloud.private\Remove-AzNetworkCloudBareMetalMachineKeySet_Delete';
             DeleteViaIdentity = 'Az.NetworkCloud.private\Remove-AzNetworkCloudBareMetalMachineKeySet_DeleteViaIdentity';
+            DeleteViaIdentityCluster = 'Az.NetworkCloud.private\Remove-AzNetworkCloudBareMetalMachineKeySet_DeleteViaIdentityCluster';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -223,6 +261,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

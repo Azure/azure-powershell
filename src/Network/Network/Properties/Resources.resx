@@ -578,7 +578,7 @@
   <data name="InvalidStatusCodeRangesFormat" xml:space="preserve">
     <value>Invalid format of status code ranges in HTTPConfiguration. Example of valid values: '100', '200-205', '3xx'. Codes should be between 100 and 600.</value>
   </data>
-   <data name="InvalidUserAssignedManagedIdentity" xml:space="preserve">
+  <data name="InvalidUserAssignedManagedIdentity" xml:space="preserve">
     <value>UserAssigned ManagedIdentity specified in flow log is not a valid ID ManagedIdentity.</value>
   </data>
   <data name="ConnectionMonitorEndpointMustHaveName" xml:space="preserve">
@@ -836,5 +836,8 @@
   </data>
   <data name="BastionShareableLinkNotEnabled" xml:space="preserve">
     <value>Shareable link feature is not enabled</value>
+  </data>
+  <data name="FlowLogRecordTypeExceedsLimit" xml:space="preserve">
+    <value>RecordType string can be maximum of 20 characters in length.</value>
   </data>
 </root>

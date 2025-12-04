@@ -1,15 +1,15 @@
 {
-  "ScheduledQueryRule+[NoContext]+CRUD+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/scheduled-query-rule-groupwgnbyd/providers/Microsoft.Insights/scheduledQueryRules/test-rule3dq5jv?api-version=2021-08-01+1": {
+  "ScheduledQueryRule+[NoContext]+CRUD+$PUT+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/scheduled-query-rule-group0716/providers/Microsoft.Insights/scheduledQueryRules/test-rule5gklzr?api-version=2021-08-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/scheduled-query-rule-groupwgnbyd/providers/Microsoft.Insights/scheduledQueryRules/test-rule3dq5jv?api-version=2021-08-01",
-      "Content": "{\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"criteria\": {\r\n      \"allOf\": [\r\n        {\r\n          \"failingPeriods\": {\r\n            \"numberOfEvaluationPeriods\": 1,\r\n            \"minFailingPeriodsToAlert\": 1\r\n          },\r\n          \"query\": \"Perf | where ObjectName == \\\"Processor\\\" and CounterName == \\\"% Processor Time\\\" | summarize AggregatedValue = avg(CounterValue) by bin(TimeGenerated, 5m), Computer\",\r\n          \"timeAggregation\": \"Average\",\r\n          \"metricMeasureColumn\": \"AggregatedValue\",\r\n          \"dimensions\": [\r\n            {\r\n              \"name\": \"Computer\",\r\n              \"operator\": \"Include\",\r\n              \"values\": [ \"*\" ]\r\n            }\r\n          ],\r\n          \"operator\": \"GreaterThan\",\r\n          \"threshold\": 70\r\n        }\r\n      ]\r\n    },\r\n    \"displayName\": \"test-rule\",\r\n    \"severity\": 4,\r\n    \"scopes\": [ \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/scheduled-query-rule-groupwgnbyd/providers/Microsoft.Compute/virtualMachines/test-vm5fq4nb\" ],\r\n    \"evaluationFrequency\": \"PT5M\",\r\n    \"windowSize\": \"PT10M\"\r\n  }\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/scheduled-query-rule-group0716/providers/Microsoft.Insights/scheduledQueryRules/test-rule5gklzr?api-version=2021-08-01",
+      "Content": "{\r\n  \"location\": \"eastus2\",\r\n  \"properties\": {\r\n    \"criteria\": {\r\n      \"allOf\": [\r\n        {\r\n          \"failingPeriods\": {\r\n            \"numberOfEvaluationPeriods\": 1,\r\n            \"minFailingPeriodsToAlert\": 1\r\n          },\r\n          \"query\": \"Perf | where ObjectName == \\\"Processor\\\" and CounterName == \\\"% Processor Time\\\" | summarize AggregatedValue = avg(CounterValue) by bin(TimeGenerated, 5m), Computer\",\r\n          \"timeAggregation\": \"Average\",\r\n          \"metricMeasureColumn\": \"AggregatedValue\",\r\n          \"dimensions\": [\r\n            {\r\n              \"name\": \"Computer\",\r\n              \"operator\": \"Include\",\r\n              \"values\": [ \"*\" ]\r\n            }\r\n          ],\r\n          \"operator\": \"GreaterThan\",\r\n          \"threshold\": 70\r\n        }\r\n      ]\r\n    },\r\n    \"displayName\": \"test-rule\",\r\n    \"severity\": 4,\r\n    \"scopes\": [ \"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/scheduled-query-rule-group0716/providers/Microsoft.Compute/virtualMachines/testvm250716\" ],\r\n    \"evaluationFrequency\": \"PT5M\",\r\n    \"windowSize\": \"PT10M\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "1082" ]
+        "Content-Length": [ "1080" ]
       }
     },
     "Response": {
@@ -17,40 +17,46 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
+        "Set-Cookie": [ "ARRAffinity=f929b3932b0be89c8b82fb99505574adcf7a61cbba6457cb7cd10973be7d395d;Path=/;HttpOnly;Secure;Domain=lsa.eastus2.prod.alertsrp.azure.com", "ARRAffinitySameSite=f929b3932b0be89c8b82fb99505574adcf7a61cbba6457cb7cd10973be7d395d;Path=/;HttpOnly;SameSite=None;Secure;Domain=lsa.eastus2.prod.alertsrp.azure.com" ],
+        "x-ms-request-id": [ "fef6c975-2c35-4250-b936-69feeaf9be2d" ],
+        "api-supported-versions": [ "2017-09-01-preview, 2017-09-01, 2018-04-16, 2020-05-01-preview, 2021-02-01-preview, 2021-08-01, 2022-06-15, 2022-08-01-preview, 2023-03-15-preview, 2023-12-01, 2024-01-01-preview, 2025-01-01-preview" ],
         "X-Rate-Limit-Limit": [ "1m" ],
-        "X-Rate-Limit-Remaining": [ "14" ],
-        "X-Rate-Limit-Reset": [ "2022-09-21T08:07:26.5863251Z" ],
-        "Server": [ "Kestrel" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
-        "x-ms-request-id": [ "65f0d975-ad01-43c8-ba38-6b48d5551fe6" ],
-        "x-ms-correlation-request-id": [ "65f0d975-ad01-43c8-ba38-6b48d5551fe6" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220921T080639Z:65f0d975-ad01-43c8-ba38-6b48d5551fe6" ],
+        "X-Rate-Limit-Remaining": [ "29" ],
+        "X-Rate-Limit-Reset": [ "2025-07-16T08:50:49.6285544Z" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-operation-identifier": [ "tenantId=213e87ed-8e08-4eb4-a63c-c073058f7b00,objectId=5dce0ce9-f0a7-437f-aea2-760d05c62ca9/southindia/174a43be-daba-484a-83e3-9bca156b03b4" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-correlation-request-id": [ "fef6c975-2c35-4250-b936-69feeaf9be2d" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20250716T084955Z:fef6c975-2c35-4250-b936-69feeaf9be2d" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 21 Sep 2022 08:06:38 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 096CC420E30A43658571A592E30547A1 Ref B: MAA201060515029 Ref C: 2025-07-16T08:49:45Z" ],
+        "Date": [ "Wed, 16 Jul 2025 08:49:54 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1245" ],
+        "Content-Length": [ "1282" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/scheduled-query-rule-groupwgnbyd/providers/microsoft.insights/scheduledqueryrules/test-rule3dq5jv\",\"name\":\"test-rule3dq5jv\",\"type\":\"microsoft.insights/scheduledqueryrules\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"yabhu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-09-21T08:06:26.4964881Z\",\"lastModifiedBy\":\"yabhu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-09-21T08:06:26.4964881Z\"},\"properties\":{\"displayName\":\"test-rule\",\"severity\":4,\"enabled\":true,\"evaluationFrequency\":\"PT5M\",\"scopes\":[\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/scheduled-query-rule-groupwgnbyd/providers/Microsoft.Compute/virtualMachines/test-vm5fq4nb\"],\"windowSize\":\"PT10M\",\"criteria\":{\"allOf\":[{\"query\":\"Perf | where ObjectName == \\\"Processor\\\" and CounterName == \\\"% Processor Time\\\" | summarize AggregatedValue = avg(CounterValue) by bin(TimeGenerated, 5m), Computer\",\"timeAggregation\":\"Average\",\"metricMeasureColumn\":\"AggregatedValue\",\"dimensions\":[{\"name\":\"Computer\",\"operator\":\"Include\",\"values\":[\"*\"]}],\"operator\":\"GreaterThan\",\"threshold\":70.0,\"failingPeriods\":{\"numberOfEvaluationPeriods\":1,\"minFailingPeriodsToAlert\":1}}]}}}",
+      "Content": "{\"id\":\"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/scheduled-query-rule-group0716/providers/microsoft.insights/scheduledqueryrules/test-rule5gklzr\",\"name\":\"test-rule5gklzr\",\"type\":\"Microsoft.Insights/scheduledQueryRules\",\"location\":\"eastus2\",\"systemData\":{\"createdBy\":\"v-jiaji@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-07-16T08:49:48.2767226Z\",\"lastModifiedBy\":\"v-jiaji@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-07-16T08:49:48.2767226Z\"},\"properties\":{\"createdWithApiVersion\":\"2021-08-01\",\"displayName\":\"test-rule\",\"severity\":4,\"enabled\":true,\"evaluationFrequency\":\"PT5M\",\"scopes\":[\"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/scheduled-query-rule-group0716/providers/Microsoft.Compute/virtualMachines/testvm250716\"],\"windowSize\":\"PT10M\",\"criteria\":{\"allOf\":[{\"query\":\"Perf | where ObjectName == \\\"Processor\\\" and CounterName == \\\"% Processor Time\\\" | summarize AggregatedValue = avg(CounterValue) by bin(TimeGenerated, 5m), Computer\",\"timeAggregation\":\"Average\",\"metricMeasureColumn\":\"AggregatedValue\",\"dimensions\":[{\"name\":\"Computer\",\"operator\":\"Include\",\"values\":[\"*\"]}],\"operator\":\"GreaterThan\",\"threshold\":70.0,\"failingPeriods\":{\"numberOfEvaluationPeriods\":1,\"minFailingPeriodsToAlert\":1}}]}}}",
       "isContentBase64": false
     }
   },
-  "ScheduledQueryRule+[NoContext]+CRUD+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/scheduled-query-rule-groupwgnbyd/providers/Microsoft.Insights/scheduledQueryRules/test-rule3dq5jv?api-version=2021-08-01+2": {
+  "ScheduledQueryRule+[NoContext]+CRUD+$GET+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/scheduled-query-rule-group0716/providers/Microsoft.Insights/scheduledQueryRules/test-rule5gklzr?api-version=2021-08-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/scheduled-query-rule-groupwgnbyd/providers/Microsoft.Insights/scheduledQueryRules/test-rule3dq5jv?api-version=2021-08-01",
+      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/scheduled-query-rule-group0716/providers/Microsoft.Insights/scheduledQueryRules/test-rule5gklzr?api-version=2021-08-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "3" ],
-        "x-ms-client-request-id": [ "5cb5ea31-30ae-4626-a063-cc9be4dc655d" ],
+        "x-ms-client-request-id": [ "51deb325-e0bb-428e-8392-761a48394a54" ],
         "CommandName": [ "Get-AzScheduledQueryRule" ],
         "FullCommandName": [ "Get-AzScheduledQueryRule_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.6", "Az.ScheduledQueryRule/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.1", "Az.ScheduledQueryRule/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -61,40 +67,90 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "X-Rate-Limit-Limit": [ "1m" ],
-        "X-Rate-Limit-Remaining": [ "49" ],
-        "X-Rate-Limit-Reset": [ "2022-09-21T08:07:39.8363171Z" ],
-        "Server": [ "Kestrel" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
-        "x-ms-request-id": [ "559cc5ff-78d9-4bda-bb44-05624995d5cd" ],
-        "x-ms-correlation-request-id": [ "559cc5ff-78d9-4bda-bb44-05624995d5cd" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220921T080640Z:559cc5ff-78d9-4bda-bb44-05624995d5cd" ],
+        "Vary": [ "Accept-Encoding" ],
+        "Set-Cookie": [ "ARRAffinity=9f7151225e66ec8053cafe9939ba36982979d3d25ed061eb4b454eb2e8474798;Path=/;HttpOnly;Secure;Domain=lsa.eastus2.prod.alertsrp.azure.com", "ARRAffinitySameSite=9f7151225e66ec8053cafe9939ba36982979d3d25ed061eb4b454eb2e8474798;Path=/;HttpOnly;SameSite=None;Secure;Domain=lsa.eastus2.prod.alertsrp.azure.com" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-request-id": [ "a310b78d-68a9-41e5-b4ae-1e5fb76bbcbe" ],
+        "x-ms-orig-api-version": [ "2021-08-01" ],
+        "api-supported-versions": [ "2017-09-01-preview, 2017-09-01, 2018-04-16, 2020-05-01-preview, 2021-02-01-preview, 2021-08-01, 2022-06-15, 2022-08-01-preview, 2023-03-15-preview, 2023-12-01, 2024-01-01-preview, 2025-01-01-preview" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-correlation-request-id": [ "a310b78d-68a9-41e5-b4ae-1e5fb76bbcbe" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20250716T084958Z:a310b78d-68a9-41e5-b4ae-1e5fb76bbcbe" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 21 Sep 2022 08:06:39 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: FAB6CE893AF0435988539944AC0224DE Ref B: MAA201060515029 Ref C: 2025-07-16T08:49:55Z" ],
+        "Date": [ "Wed, 16 Jul 2025 08:49:57 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1245" ],
+        "Content-Length": [ "1282" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/scheduled-query-rule-groupwgnbyd/providers/microsoft.insights/scheduledqueryrules/test-rule3dq5jv\",\"name\":\"test-rule3dq5jv\",\"type\":\"microsoft.insights/scheduledqueryrules\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"yabhu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-09-21T08:06:26.4964881Z\",\"lastModifiedBy\":\"yabhu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-09-21T08:06:26.4964881Z\"},\"properties\":{\"displayName\":\"test-rule\",\"severity\":4,\"enabled\":true,\"evaluationFrequency\":\"PT5M\",\"scopes\":[\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/scheduled-query-rule-groupwgnbyd/providers/Microsoft.Compute/virtualMachines/test-vm5fq4nb\"],\"windowSize\":\"PT10M\",\"criteria\":{\"allOf\":[{\"query\":\"Perf | where ObjectName == \\\"Processor\\\" and CounterName == \\\"% Processor Time\\\" | summarize AggregatedValue = avg(CounterValue) by bin(TimeGenerated, 5m), Computer\",\"timeAggregation\":\"Average\",\"metricMeasureColumn\":\"AggregatedValue\",\"dimensions\":[{\"name\":\"Computer\",\"operator\":\"Include\",\"values\":[\"*\"]}],\"operator\":\"GreaterThan\",\"threshold\":70.0,\"failingPeriods\":{\"numberOfEvaluationPeriods\":1,\"minFailingPeriodsToAlert\":1}}]}}}",
+      "Content": "{\"id\":\"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/scheduled-query-rule-group0716/providers/microsoft.insights/scheduledqueryrules/test-rule5gklzr\",\"name\":\"test-rule5gklzr\",\"type\":\"Microsoft.Insights/scheduledQueryRules\",\"location\":\"eastus2\",\"systemData\":{\"createdBy\":\"v-jiaji@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-07-16T08:49:48.2767226Z\",\"lastModifiedBy\":\"v-jiaji@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-07-16T08:49:48.2767226Z\"},\"properties\":{\"createdWithApiVersion\":\"2021-08-01\",\"displayName\":\"test-rule\",\"severity\":4,\"enabled\":true,\"evaluationFrequency\":\"PT5M\",\"scopes\":[\"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/scheduled-query-rule-group0716/providers/Microsoft.Compute/virtualMachines/testvm250716\"],\"windowSize\":\"PT10M\",\"criteria\":{\"allOf\":[{\"query\":\"Perf | where ObjectName == \\\"Processor\\\" and CounterName == \\\"% Processor Time\\\" | summarize AggregatedValue = avg(CounterValue) by bin(TimeGenerated, 5m), Computer\",\"timeAggregation\":\"Average\",\"metricMeasureColumn\":\"AggregatedValue\",\"dimensions\":[{\"name\":\"Computer\",\"operator\":\"Include\",\"values\":[\"*\"]}],\"operator\":\"GreaterThan\",\"threshold\":70.0,\"failingPeriods\":{\"numberOfEvaluationPeriods\":1,\"minFailingPeriodsToAlert\":1}}]}}}",
       "isContentBase64": false
     }
   },
-  "ScheduledQueryRule+[NoContext]+CRUD+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/scheduled-query-rule-groupwgnbyd/providers/Microsoft.Insights/scheduledQueryRules/test-rule3dq5jv?api-version=2021-08-01+3": {
+  "ScheduledQueryRule+[NoContext]+CRUD+$PATCH+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/scheduled-query-rule-group0716/providers/Microsoft.Insights/scheduledQueryRules/test-rule5gklzr?api-version=2021-08-01+3": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/scheduled-query-rule-group0716/providers/Microsoft.Insights/scheduledQueryRules/test-rule5gklzr?api-version=2021-08-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"description\": \"Updated description\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "70" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "Set-Cookie": [ "ARRAffinity=868db824452979a2f0e9fc65f4e4a7c1b3faaeb156895ba3525dfba9042ab533;Path=/;HttpOnly;Secure;Domain=lsa.eastus2.prod.alertsrp.azure.com", "ARRAffinitySameSite=868db824452979a2f0e9fc65f4e4a7c1b3faaeb156895ba3525dfba9042ab533;Path=/;HttpOnly;SameSite=None;Secure;Domain=lsa.eastus2.prod.alertsrp.azure.com" ],
+        "x-ms-operation-identifier": [ "tenantId=213e87ed-8e08-4eb4-a63c-c073058f7b00,objectId=5dce0ce9-f0a7-437f-aea2-760d05c62ca9/southindia/45c2fb1c-3298-45d6-986d-f1b0f1b9f2b0" ],
+        "x-ms-request-id": [ "2fdf2fbb-c90e-48aa-b1a4-dd3d3e901643" ],
+        "api-supported-versions": [ "2017-09-01-preview, 2017-09-01, 2018-04-16, 2020-05-01-preview, 2021-02-01-preview, 2021-08-01, 2022-06-15, 2022-08-01-preview, 2023-03-15-preview, 2023-12-01, 2024-01-01-preview, 2025-01-01-preview" ],
+        "X-Rate-Limit-Limit": [ "1m" ],
+        "X-Rate-Limit-Remaining": [ "29" ],
+        "X-Rate-Limit-Reset": [ "2025-07-16T08:51:00.9263377Z" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-correlation-request-id": [ "2fdf2fbb-c90e-48aa-b1a4-dd3d3e901643" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20250716T085006Z:2fdf2fbb-c90e-48aa-b1a4-dd3d3e901643" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 7098BA1693BC4FB2ADA3D243ED80C585 Ref B: MAA201060515029 Ref C: 2025-07-16T08:49:58Z" ],
+        "Date": [ "Wed, 16 Jul 2025 08:50:05 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1317" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/scheduled-query-rule-group0716/providers/microsoft.insights/scheduledqueryrules/test-rule5gklzr\",\"name\":\"test-rule5gklzr\",\"type\":\"Microsoft.Insights/scheduledQueryRules\",\"location\":\"eastus2\",\"systemData\":{\"createdBy\":\"v-jiaji@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-07-16T08:49:48.2767226Z\",\"lastModifiedBy\":\"v-jiaji@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-07-16T08:49:59.727038Z\"},\"properties\":{\"createdWithApiVersion\":\"2021-08-01\",\"displayName\":\"test-rule\",\"description\":\"Updated description\",\"severity\":4,\"enabled\":true,\"evaluationFrequency\":\"PT5M\",\"scopes\":[\"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/scheduled-query-rule-group0716/providers/Microsoft.Compute/virtualMachines/testvm250716\"],\"windowSize\":\"PT10M\",\"criteria\":{\"allOf\":[{\"query\":\"Perf | where ObjectName == \\\"Processor\\\" and CounterName == \\\"% Processor Time\\\" | summarize AggregatedValue = avg(CounterValue) by bin(TimeGenerated, 5m), Computer\",\"timeAggregation\":\"Average\",\"metricMeasureColumn\":\"AggregatedValue\",\"dimensions\":[{\"name\":\"Computer\",\"operator\":\"Include\",\"values\":[\"*\"]}],\"operator\":\"GreaterThan\",\"threshold\":70.0,\"failingPeriods\":{\"numberOfEvaluationPeriods\":1,\"minFailingPeriodsToAlert\":1}}]}}}",
+      "isContentBase64": false
+    }
+  },
+  "ScheduledQueryRule+[NoContext]+CRUD+$DELETE+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/scheduled-query-rule-group0716/providers/Microsoft.Insights/scheduledQueryRules/test-rule5gklzr?api-version=2021-08-01+4": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/scheduled-query-rule-groupwgnbyd/providers/Microsoft.Insights/scheduledQueryRules/test-rule3dq5jv?api-version=2021-08-01",
+      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/scheduled-query-rule-group0716/providers/Microsoft.Insights/scheduledQueryRules/test-rule5gklzr?api-version=2021-08-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "4" ],
-        "x-ms-client-request-id": [ "57f3e242-d9f0-4b3b-9c29-96a4ce9a60b3" ],
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "264b5c7f-17d9-44f0-a953-b884924a785c" ],
         "CommandName": [ "Remove-AzScheduledQueryRule" ],
         "FullCommandName": [ "Remove-AzScheduledQueryRule_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.6", "Az.ScheduledQueryRule/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.1", "Az.ScheduledQueryRule/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -105,14 +161,20 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Server": [ "Kestrel" ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
-        "x-ms-request-id": [ "be924b92-9336-4a22-a054-3f2d35670c4e" ],
-        "x-ms-correlation-request-id": [ "be924b92-9336-4a22-a054-3f2d35670c4e" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220921T080647Z:be924b92-9336-4a22-a054-3f2d35670c4e" ],
+        "Set-Cookie": [ "ARRAffinity=9f7151225e66ec8053cafe9939ba36982979d3d25ed061eb4b454eb2e8474798;Path=/;HttpOnly;Secure;Domain=lsa.eastus2.prod.alertsrp.azure.com", "ARRAffinitySameSite=9f7151225e66ec8053cafe9939ba36982979d3d25ed061eb4b454eb2e8474798;Path=/;HttpOnly;SameSite=None;Secure;Domain=lsa.eastus2.prod.alertsrp.azure.com" ],
+        "x-ms-request-id": [ "49fdf6bc-15ab-4540-9058-8109caae07a4" ],
+        "api-supported-versions": [ "2017-09-01-preview, 2017-09-01, 2018-04-16, 2020-05-01-preview, 2021-02-01-preview, 2021-08-01, 2022-06-15, 2022-08-01-preview, 2023-03-15-preview, 2023-12-01, 2024-01-01-preview, 2025-01-01-preview" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-operation-identifier": [ "tenantId=213e87ed-8e08-4eb4-a63c-c073058f7b00,objectId=5dce0ce9-f0a7-437f-aea2-760d05c62ca9/southindia/afe47f91-4a76-4b4f-8d0f-30243a5aba51" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "2999" ],
+        "x-ms-correlation-request-id": [ "49fdf6bc-15ab-4540-9058-8109caae07a4" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20250716T085010Z:49fdf6bc-15ab-4540-9058-8109caae07a4" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 21 Sep 2022 08:06:46 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 08B9675F05DE4703AD107EC450ACEDF6 Ref B: MAA201060515029 Ref C: 2025-07-16T08:50:06Z" ],
+        "Date": [ "Wed, 16 Jul 2025 08:50:09 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],

@@ -39,16 +39,19 @@ namespace Microsoft.Azure.Management.Search
         public SearchManagementClient Client { get; private set; }
 
         /// <summary>
-        /// Generates a new query key for the specified search service. You can create up to 50 query keys per service.
+        /// Generates a new query key for the specified search service. You can create
+        /// up to 50 query keys per service.
         /// </summary>
         /// <param name='searchManagementRequestOptions'>
         /// 
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group within the current subscription. You can
+        /// obtain this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='searchServiceName'>
-        /// The name of the Azure Cognitive Search service associated with the specified resource group.
+        /// The name of the Azure AI Search service associated with the specified
+        /// resource group.
         /// </param>
         /// <param name='name'>
         /// The name of the new query API key.
@@ -90,7 +93,13 @@ namespace Microsoft.Azure.Management.Search
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "searchServiceName");
             }
-
+            if (searchServiceName != null)
+            {
+                if (!System.Text.RegularExpressions.Regex.IsMatch(searchServiceName, "^(?=.{2,60}$)[a-z0-9][a-z0-9]+(-[a-z0-9]+)*$"))
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "searchServiceName", "^(?=.{2,60}$)[a-z0-9][a-z0-9]+(-[a-z0-9]+)*$");
+                }
+            }
             if (name == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "name");
@@ -281,16 +290,18 @@ namespace Microsoft.Azure.Management.Search
 
         }
         /// <summary>
-        /// Returns the list of query API keys for the given Azure Cognitive Search service.
+        /// Returns the list of query API keys for the given Azure AI Search service.
         /// </summary>
         /// <param name='searchManagementRequestOptions'>
         /// 
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group within the current subscription. You can
+        /// obtain this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='searchServiceName'>
-        /// The name of the Azure Cognitive Search service associated with the specified resource group.
+        /// The name of the Azure AI Search service associated with the specified
+        /// resource group.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -330,7 +341,13 @@ namespace Microsoft.Azure.Management.Search
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "searchServiceName");
             }
-
+            if (searchServiceName != null)
+            {
+                if (!System.Text.RegularExpressions.Regex.IsMatch(searchServiceName, "^(?=.{2,60}$)[a-z0-9][a-z0-9]+(-[a-z0-9]+)*$"))
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "searchServiceName", "^(?=.{2,60}$)[a-z0-9][a-z0-9]+(-[a-z0-9]+)*$");
+                }
+            }
 
             if (this.Client.ApiVersion == null)
             {
@@ -514,19 +531,24 @@ namespace Microsoft.Azure.Management.Search
 
         }
         /// <summary>
-        /// Deletes the specified query key. Unlike admin keys, query keys are not regenerated. The process for regenerating a query key is to delete and then recreate it.
+        /// Deletes the specified query key. Unlike admin keys, query keys are not
+        /// regenerated. The process for regenerating a query key is to delete and then
+        /// recreate it.
         /// </summary>
         /// <param name='searchManagementRequestOptions'>
         /// 
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group within the current subscription. You can
+        /// obtain this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='searchServiceName'>
-        /// The name of the Azure Cognitive Search service associated with the specified resource group.
+        /// The name of the Azure AI Search service associated with the specified
+        /// resource group.
         /// </param>
         /// <param name='key'>
-        /// The query key to be deleted. Query keys are identified by value, not by name.
+        /// The query key to be deleted. Query keys are identified by value, not by
+        /// name.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -562,7 +584,13 @@ namespace Microsoft.Azure.Management.Search
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "searchServiceName");
             }
-
+            if (searchServiceName != null)
+            {
+                if (!System.Text.RegularExpressions.Regex.IsMatch(searchServiceName, "^(?=.{2,60}$)[a-z0-9][a-z0-9]+(-[a-z0-9]+)*$"))
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "searchServiceName", "^(?=.{2,60}$)[a-z0-9][a-z0-9]+(-[a-z0-9]+)*$");
+                }
+            }
             if (key == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "key");
@@ -735,7 +763,7 @@ namespace Microsoft.Azure.Management.Search
 
         }
         /// <summary>
-        /// Returns the list of query API keys for the given Azure Cognitive Search service.
+        /// Returns the list of query API keys for the given Azure AI Search service.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

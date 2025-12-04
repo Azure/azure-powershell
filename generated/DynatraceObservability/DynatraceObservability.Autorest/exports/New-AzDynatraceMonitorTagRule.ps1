@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a TagRule
+Create a TagRule
 .Description
-create a TagRule
+Create a TagRule
 .Example
 $tagFilter = New-AzDynatraceMonitorFilteringTagObject -Action 'Include' -Name 'Environment' -Value 'Prod'
 New-AzDynatraceMonitorTagRule -ResourceGroupName dyobrg -MonitorName dyob-pwsh01 -LogRuleFilteringTag $tagFilter
@@ -44,11 +44,12 @@ METRICRULEFILTERINGTAG <IFilteringTag[]>: List of filtering tags to be used for 
 
 MONITORINPUTOBJECT <IDynatraceObservabilityIdentity>: Identity Parameter
   [ConfigurationName <String>]: Single Sign On Configuration Name
+  [DynatraceEnvironmentId <String>]: Dynatrace Environment Id
   [Id <String>]: Resource identity path
   [MonitorName <String>]: Monitor resource name
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RuleSetName <String>]: Monitor resource name
-  [SubscriptionId <String>]: The ID of the target subscription.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 .Link
 https://learn.microsoft.com/powershell/module/az.dynatraceobservability/new-azdynatracemonitortagrule
 #>
@@ -80,6 +81,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='CreateViaIdentityMonitorExpanded', Mandatory, ValueFromPipeline)]

@@ -25,6 +25,10 @@ Get-AzFunctionAppAvailableLocation
 Get-AzFunctionAppAvailableLocation -PlanType Premium -OSType Linux
 .Example
 Get-AzFunctionAppAvailableLocation -PlanType Consumption -OSType Windows
+.Example
+Get-AzFunctionAppAvailableLocation -PlanType FlexConsumption
+.Example
+Get-AzFunctionAppAvailableLocation -PlanType FlexConsumption -ZoneRedundancy
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IGeoRegion
@@ -56,6 +60,12 @@ param(
     [System.String]
     # The OS type for the service plan.
     ${OSType},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Filter the list to return only locations which support zone redundancy.
+    ${ZoneRedundancy},
 
     [Parameter(Position=3)]
     [Alias('AzureRMContext', 'AzureCredential')]

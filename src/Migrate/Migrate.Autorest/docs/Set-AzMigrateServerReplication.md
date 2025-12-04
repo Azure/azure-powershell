@@ -17,8 +17,9 @@ Updates the target properties for the replicating server.
 Set-AzMigrateServerReplication -TargetObjectID <String> [-DiskToUpdate <IVMwareCbtUpdateDiskInput[]>]
  [-LinuxLicenseType <String>] [-NicToUpdate <IVMwareCbtNicInput[]>] [-SqlServerLicenseType <String>]
  [-SubscriptionId <String>] [-TargetAvailabilitySet <String>] [-TargetAvailabilityZone <String>]
- [-TargetBootDiagnosticsStorageAccount <String>] [-TargetDiskName <String>] [-TargetNetworkId <String>]
- [-TargetResourceGroupID <String>] [-TargetVMName <String>] [-TargetVMSize <String>] [-TestNetworkId <String>]
+ [-TargetBootDiagnosticsStorageAccount <String>] [-TargetCapacityReservationGroupId <String>]
+ [-TargetDiskName <String>] [-TargetNetworkId <String>] [-TargetResourceGroupID <String>]
+ [-TargetVMName <String>] [-TargetVMSize <String>] [-TestNetworkId <String>]
  [-UpdateDiskTag <IVMwareCbtEnableMigrationInputTargetDiskTags>] [-UpdateDiskTagOperation <String>]
  [-UpdateNicTag <IVMwareCbtEnableMigrationInputTargetNicTags>] [-UpdateNicTagOperation <String>]
  [-UpdateTag <Hashtable>] [-UpdateTagOperation <String>]
@@ -31,8 +32,9 @@ Set-AzMigrateServerReplication -TargetObjectID <String> [-DiskToUpdate <IVMwareC
 Set-AzMigrateServerReplication -InputObject <IMigrationItem> [-DiskToUpdate <IVMwareCbtUpdateDiskInput[]>]
  [-LinuxLicenseType <String>] [-NicToUpdate <IVMwareCbtNicInput[]>] [-SqlServerLicenseType <String>]
  [-SubscriptionId <String>] [-TargetAvailabilitySet <String>] [-TargetAvailabilityZone <String>]
- [-TargetBootDiagnosticsStorageAccount <String>] [-TargetDiskName <String>] [-TargetNetworkId <String>]
- [-TargetResourceGroupID <String>] [-TargetVMName <String>] [-TargetVMSize <String>] [-TestNetworkId <String>]
+ [-TargetBootDiagnosticsStorageAccount <String>] [-TargetCapacityReservationGroupId <String>]
+ [-TargetDiskName <String>] [-TargetNetworkId <String>] [-TargetResourceGroupID <String>]
+ [-TargetVMName <String>] [-TargetVMSize <String>] [-TestNetworkId <String>]
  [-UpdateDiskTag <IVMwareCbtEnableMigrationInputTargetDiskTags>] [-UpdateDiskTagOperation <String>]
  [-UpdateNicTag <IVMwareCbtEnableMigrationInputTargetNicTags>] [-UpdateNicTagOperation <String>]
  [-UpdateTag <Hashtable>] [-UpdateTagOperation <String>]
@@ -132,7 +134,7 @@ Updates the disk for the Azure VM to be created.
 To construct, see NOTES section for DISKTOUPDATE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IVMwareCbtUpdateDiskInput[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IVMwareCbtUpdateDiskInput[]
 Parameter Sets: (All)
 Aliases:
 
@@ -149,7 +151,7 @@ The server object can be retrieved using the Get-AzMigrateServerReplication cmdl
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IMigrationItem
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IMigrationItem
 Parameter Sets: ByInputObjectVMwareCbt
 Aliases:
 
@@ -180,7 +182,7 @@ Updates the NIC for the Azure VM to be created.
 To construct, see NOTES section for NICTOUPDATE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IVMwareCbtNicInput[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IVMwareCbtNicInput[]
 Parameter Sets: (All)
 Aliases:
 
@@ -253,6 +255,21 @@ Accept wildcard characters: False
 
 ### -TargetBootDiagnosticsStorageAccount
 Specifies the storage account to be used for boot diagnostics.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetCapacityReservationGroupId
+Specifies the Target Capacity Reservation Group Id within the destination Azure subscription.
 
 ```yaml
 Type: System.String
@@ -378,7 +395,7 @@ Specifies the tag to be used for disk creation.
 To construct, see NOTES section for UPDATEDISKTAG properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IVMwareCbtEnableMigrationInputTargetDiskTags
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IVMwareCbtEnableMigrationInputTargetDiskTags
 Parameter Sets: (All)
 Aliases:
 
@@ -409,7 +426,7 @@ Specifies the tag to be used for NIC creation.
 To construct, see NOTES section for UPDATENICTAG properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IVMwareCbtEnableMigrationInputTargetNicTags
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IVMwareCbtEnableMigrationInputTargetNicTags
 Parameter Sets: (All)
 Aliases:
 
@@ -470,7 +487,7 @@ Specifies the tag to be used for VM creation.
 To construct, see NOTES section for UPDATEVMTAG properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IVMwareCbtEnableMigrationInputTargetVmtags
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IVMwareCbtEnableMigrationInputTargetVmtags
 Parameter Sets: (All)
 Aliases:
 
@@ -503,7 +520,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IJob
+### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IJob
 
 ## NOTES
 

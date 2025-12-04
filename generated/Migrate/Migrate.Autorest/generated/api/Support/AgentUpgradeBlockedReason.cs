@@ -31,6 +31,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.AgentUpgradeBlockedReason RcmProxyNoHeartbeat = @"RcmProxyNoHeartbeat";
 
+        public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.AgentUpgradeBlockedReason ReInstallRequired = @"ReInstallRequired";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.AgentUpgradeBlockedReason RebootRequired = @"RebootRequired";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.AgentUpgradeBlockedReason Unknown = @"Unknown";
