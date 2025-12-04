@@ -52,7 +52,7 @@ pac50,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-relea
 pac51,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Sql.6.3.0.zip;sourceType=sa]Az.Sql,6.3.0
 pac52,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.SqlVirtualMachine.2.4.0.zip;sourceType=sa]Az.SqlVirtualMachine,2.4.0
 pac53,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Ssh.0.2.3.zip;sourceType=sa]Az.Ssh,0.2.3
-pac54,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.StackHCI.2.6.4.zip;sourceType=sa]Az.StackHCI,2.6.4
+pac54,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.StackHCI.2.6.5.zip;sourceType=sa]Az.StackHCI,2.6.5
 pac55,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.StackHCIVM.1.1.0.zip;sourceType=sa]Az.StackHCIVM,1.1.0
 pac56,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.StandbyPool.0.3.0.zip;sourceType=sa]Az.StandbyPool,0.3.0
 pac57,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Storage.9.4.0.zip;sourceType=sa]Az.Storage,9.4.0
