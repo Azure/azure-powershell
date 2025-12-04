@@ -165,6 +165,17 @@ namespace Microsoft.Azure.Management.StorageSync.Models
             {
                 this.ChangeEnumerationStatus.Validate();
             }
+            if (this.ChangeEnumerationIntervalDays != null)
+            {
+                if (this.ChangeEnumerationIntervalDays > 20)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMaximum, "ChangeEnumerationIntervalDays", 20);
+                }
+                if (this.ChangeEnumerationIntervalDays < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "ChangeEnumerationIntervalDays", 1);
+                }
+            }
         }
     }
 }

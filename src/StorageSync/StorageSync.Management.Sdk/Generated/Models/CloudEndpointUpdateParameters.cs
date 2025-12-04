@@ -10,6 +10,7 @@ namespace Microsoft.Azure.Management.StorageSync.Models
     /// <summary>
     /// The parameters used when updating a cloud endpoint.
     /// </summary>
+    [Microsoft.Rest.Serialization.JsonTransformation]
     public partial class CloudEndpointUpdateParameters
     {
         /// <summary>
@@ -24,12 +25,12 @@ namespace Microsoft.Azure.Management.StorageSync.Models
         /// Initializes a new instance of the CloudEndpointUpdateParameters class.
         /// </summary>
 
-        /// <param name="properties">The properties of the cloud endpoint.
+        /// <param name="changeEnumerationIntervalDays">The interval for enumerating changes on the cloud endpoint.
         /// </param>
-        public CloudEndpointUpdateParameters(CloudEndpointUpdateProperties properties = default(CloudEndpointUpdateProperties))
+        public CloudEndpointUpdateParameters(int? changeEnumerationIntervalDays = default(int?))
 
         {
-            this.Properties = properties;
+            this.ChangeEnumerationIntervalDays = changeEnumerationIntervalDays;
             CustomInit();
         }
 
@@ -40,9 +41,29 @@ namespace Microsoft.Azure.Management.StorageSync.Models
 
 
         /// <summary>
-        /// Gets or sets the properties of the cloud endpoint.
+        /// Gets or sets the interval for enumerating changes on the cloud endpoint.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties")]
-        public CloudEndpointUpdateProperties Properties {get; set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.changeEnumerationIntervalDays")]
+        public int? ChangeEnumerationIntervalDays {get; set; }
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+            if (this.ChangeEnumerationIntervalDays != null)
+            {
+                if (this.ChangeEnumerationIntervalDays > 20)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMaximum, "ChangeEnumerationIntervalDays", 20);
+                }
+                if (this.ChangeEnumerationIntervalDays < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "ChangeEnumerationIntervalDays", 1);
+                }
+            }
+        }
     }
 }

@@ -568,8 +568,8 @@ namespace Microsoft.Azure.Management.StorageSync
         /// <param name='cloudEndpointName'>
         /// Name of Cloud Endpoint object.
         /// </param>
-        /// <param name='properties'>
-        /// The properties of the cloud endpoint.
+        /// <param name='changeEnumerationIntervalDays'>
+        /// The interval for enumerating changes on the cloud endpoint.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -577,10 +577,10 @@ namespace Microsoft.Azure.Management.StorageSync
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<CloudEndpoint,CloudEndpointsUpdateHeaders>> UpdateWithHttpMessagesAsync(string resourceGroupName, string storageSyncServiceName, string syncGroupName, string cloudEndpointName, CloudEndpointUpdateProperties properties = default(CloudEndpointUpdateProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<CloudEndpoint,CloudEndpointsUpdateHeaders>> UpdateWithHttpMessagesAsync(string resourceGroupName, string storageSyncServiceName, string syncGroupName, string cloudEndpointName, int? changeEnumerationIntervalDays = default(int?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
                 // Send Request
-                Microsoft.Rest.Azure.AzureOperationResponse<CloudEndpoint,CloudEndpointsUpdateHeaders> _response = await BeginUpdateWithHttpMessagesAsync(resourceGroupName, storageSyncServiceName, syncGroupName, cloudEndpointName, properties, customHeaders, cancellationToken).ConfigureAwait(false);
+                Microsoft.Rest.Azure.AzureOperationResponse<CloudEndpoint,CloudEndpointsUpdateHeaders> _response = await BeginUpdateWithHttpMessagesAsync(resourceGroupName, storageSyncServiceName, syncGroupName, cloudEndpointName, changeEnumerationIntervalDays, customHeaders, cancellationToken).ConfigureAwait(false);
                 return await this.Client.GetPutOrPatchOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
@@ -1290,7 +1290,10 @@ namespace Microsoft.Azure.Management.StorageSync
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "parameters");
             }
-
+            if (parameters != null)
+            {
+                parameters.Validate();
+            }
             if (this.Client.ApiVersion == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
@@ -1518,8 +1521,8 @@ namespace Microsoft.Azure.Management.StorageSync
         /// <param name='cloudEndpointName'>
         /// Name of Cloud Endpoint object.
         /// </param>
-        /// <param name='properties'>
-        /// The properties of the cloud endpoint.
+        /// <param name='changeEnumerationIntervalDays'>
+        /// The interval for enumerating changes on the cloud endpoint.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -1542,7 +1545,7 @@ namespace Microsoft.Azure.Management.StorageSync
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<CloudEndpoint,CloudEndpointsUpdateHeaders>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string storageSyncServiceName, string syncGroupName, string cloudEndpointName, CloudEndpointUpdateProperties properties = default(CloudEndpointUpdateProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<CloudEndpoint,CloudEndpointsUpdateHeaders>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string storageSyncServiceName, string syncGroupName, string cloudEndpointName, int? changeEnumerationIntervalDays = default(int?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
@@ -1584,10 +1587,10 @@ namespace Microsoft.Azure.Management.StorageSync
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "cloudEndpointName");
             }
 
-            CloudEndpointUpdateParameters properties1 = new CloudEndpointUpdateParameters();
-            if(properties != null)
+            CloudEndpointUpdateParameters properties = new CloudEndpointUpdateParameters();
+            if(changeEnumerationIntervalDays != null)
             {
-                properties1.Properties = properties;
+                properties.ChangeEnumerationIntervalDays = changeEnumerationIntervalDays;
             }
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
@@ -1601,7 +1604,7 @@ namespace Microsoft.Azure.Management.StorageSync
                 tracingParameters.Add("syncGroupName", syncGroupName);
                 tracingParameters.Add("cloudEndpointName", cloudEndpointName);
 
-                tracingParameters.Add("properties1", properties1);
+                tracingParameters.Add("properties", properties);
 
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 Microsoft.Rest.ServiceClientTracing.Enter(_invocationId, this, "BeginUpdate", tracingParameters);
@@ -1657,9 +1660,9 @@ namespace Microsoft.Azure.Management.StorageSync
             }
             // Serialize Request
             string _requestContent = null;
-            if(properties1 != null)
+            if(properties != null)
             {
-                _requestContent = Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(properties1, this.Client.SerializationSettings);
+                _requestContent = Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(properties, this.Client.SerializationSettings);
                 _httpRequest.Content = new System.Net.Http.StringContent(_requestContent, System.Text.Encoding.UTF8);
                 _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
             }

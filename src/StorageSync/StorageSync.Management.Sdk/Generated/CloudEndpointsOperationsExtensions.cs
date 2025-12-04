@@ -177,9 +177,9 @@ namespace Microsoft.Azure.Management.StorageSync
         /// <param name='cloudEndpointName'>
         /// Name of Cloud Endpoint object.
         /// </param>
-        public static CloudEndpoint Update(this ICloudEndpointsOperations operations, string resourceGroupName, string storageSyncServiceName, string syncGroupName, string cloudEndpointName, CloudEndpointUpdateProperties properties = default(CloudEndpointUpdateProperties))
+        public static CloudEndpoint Update(this ICloudEndpointsOperations operations, string resourceGroupName, string storageSyncServiceName, string syncGroupName, string cloudEndpointName, int? changeEnumerationIntervalDays = default(int?))
         {
-                return ((ICloudEndpointsOperations)operations).UpdateAsync(resourceGroupName, storageSyncServiceName, syncGroupName, cloudEndpointName, properties).GetAwaiter().GetResult();
+                return ((ICloudEndpointsOperations)operations).UpdateAsync(resourceGroupName, storageSyncServiceName, syncGroupName, cloudEndpointName, changeEnumerationIntervalDays).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -203,9 +203,9 @@ namespace Microsoft.Azure.Management.StorageSync
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<CloudEndpoint> UpdateAsync(this ICloudEndpointsOperations operations, string resourceGroupName, string storageSyncServiceName, string syncGroupName, string cloudEndpointName, CloudEndpointUpdateProperties properties = default(CloudEndpointUpdateProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<CloudEndpoint> UpdateAsync(this ICloudEndpointsOperations operations, string resourceGroupName, string storageSyncServiceName, string syncGroupName, string cloudEndpointName, int? changeEnumerationIntervalDays = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, storageSyncServiceName, syncGroupName, cloudEndpointName, properties, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, storageSyncServiceName, syncGroupName, cloudEndpointName, changeEnumerationIntervalDays, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -689,9 +689,9 @@ namespace Microsoft.Azure.Management.StorageSync
         /// <param name='cloudEndpointName'>
         /// Name of Cloud Endpoint object.
         /// </param>
-        public static CloudEndpoint BeginUpdate(this ICloudEndpointsOperations operations, string resourceGroupName, string storageSyncServiceName, string syncGroupName, string cloudEndpointName, CloudEndpointUpdateProperties properties = default(CloudEndpointUpdateProperties))
+        public static CloudEndpoint BeginUpdate(this ICloudEndpointsOperations operations, string resourceGroupName, string storageSyncServiceName, string syncGroupName, string cloudEndpointName, int? changeEnumerationIntervalDays = default(int?))
         {
-                return ((ICloudEndpointsOperations)operations).BeginUpdateAsync(resourceGroupName, storageSyncServiceName, syncGroupName, cloudEndpointName, properties).GetAwaiter().GetResult();
+                return ((ICloudEndpointsOperations)operations).BeginUpdateAsync(resourceGroupName, storageSyncServiceName, syncGroupName, cloudEndpointName, changeEnumerationIntervalDays).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -715,9 +715,9 @@ namespace Microsoft.Azure.Management.StorageSync
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<CloudEndpoint> BeginUpdateAsync(this ICloudEndpointsOperations operations, string resourceGroupName, string storageSyncServiceName, string syncGroupName, string cloudEndpointName, CloudEndpointUpdateProperties properties = default(CloudEndpointUpdateProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<CloudEndpoint> BeginUpdateAsync(this ICloudEndpointsOperations operations, string resourceGroupName, string storageSyncServiceName, string syncGroupName, string cloudEndpointName, int? changeEnumerationIntervalDays = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginUpdateWithHttpMessagesAsync(resourceGroupName, storageSyncServiceName, syncGroupName, cloudEndpointName, properties, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.BeginUpdateWithHttpMessagesAsync(resourceGroupName, storageSyncServiceName, syncGroupName, cloudEndpointName, changeEnumerationIntervalDays, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

@@ -84,5 +84,29 @@ namespace Microsoft.Azure.Management.StorageSync.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "changeEnumerationIntervalDays")]
         public int? ChangeEnumerationIntervalDays {get; set; }
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+
+
+
+
+            if (this.ChangeEnumerationIntervalDays != null)
+            {
+                if (this.ChangeEnumerationIntervalDays > 20)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMaximum, "ChangeEnumerationIntervalDays", 20);
+                }
+                if (this.ChangeEnumerationIntervalDays < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "ChangeEnumerationIntervalDays", 1);
+                }
+            }
+        }
     }
 }

@@ -127,8 +127,8 @@ namespace Microsoft.Azure.Management.StorageSync
         /// <param name='cloudEndpointName'>
         /// Name of Cloud Endpoint object.
         /// </param>
-        /// <param name='properties'>
-        /// The properties of the cloud endpoint.
+        /// <param name='changeEnumerationIntervalDays'>
+        /// The interval for enumerating changes on the cloud endpoint.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Management.StorageSync
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<CloudEndpoint,CloudEndpointsUpdateHeaders>> UpdateWithHttpMessagesAsync(string resourceGroupName, string storageSyncServiceName, string syncGroupName, string cloudEndpointName, CloudEndpointUpdateProperties properties = default(CloudEndpointUpdateProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<CloudEndpoint,CloudEndpointsUpdateHeaders>> UpdateWithHttpMessagesAsync(string resourceGroupName, string storageSyncServiceName, string syncGroupName, string cloudEndpointName, int? changeEnumerationIntervalDays = default(int?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Delete a given CloudEndpoint.
@@ -452,8 +452,8 @@ namespace Microsoft.Azure.Management.StorageSync
         /// <param name='cloudEndpointName'>
         /// Name of Cloud Endpoint object.
         /// </param>
-        /// <param name='properties'>
-        /// The properties of the cloud endpoint.
+        /// <param name='changeEnumerationIntervalDays'>
+        /// The interval for enumerating changes on the cloud endpoint.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -467,7 +467,7 @@ namespace Microsoft.Azure.Management.StorageSync
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<CloudEndpoint,CloudEndpointsUpdateHeaders>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string storageSyncServiceName, string syncGroupName, string cloudEndpointName, CloudEndpointUpdateProperties properties = default(CloudEndpointUpdateProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<CloudEndpoint,CloudEndpointsUpdateHeaders>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string storageSyncServiceName, string syncGroupName, string cloudEndpointName, int? changeEnumerationIntervalDays = default(int?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Delete a given CloudEndpoint.
