@@ -78,6 +78,10 @@ function setupEnv() {
     $env.Add("resourceGroup", $resourceGroup)
     New-AzResourceGroup -Name $env.resourceGroup -Location $env.location
 
+    $resourceGroup2 = "auto-test-databricks2-" + (RandomString -allChars $false -len 2)
+    $env.Add("resourceGroup2", $resourceGroup2)
+    New-AzResourceGroup -Name $env.resourceGroup2 -Location $env.location
+
     $dlg = New-AzDelegation -Name dbrdl -ServiceName "Microsoft.Databricks/workspaces"
 
     write-host "start to create NetworkSecurity env"
@@ -111,4 +115,5 @@ function setupEnv() {
 function cleanupEnv() {
     # Clean resources you create for testing
     # Remove-AzResourceGroup -Name $env.resourceGroup
+    # Remove-AzResourceGroup -Name $env.resourceGroup2
 }
