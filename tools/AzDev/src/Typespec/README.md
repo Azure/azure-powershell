@@ -26,7 +26,7 @@ https://microsoft.sharepoint.com/:fl:/s/39639d2e-2b30-484b-8cd0-b1da04c38d95/IQD
 
 ## Prerequisite
 - **node version >= 20**
-- **typespec compiler installed?**
+- **typespec compiler installed?**: `npm install -g @typespec/compiler`
 - **git clone/pull**
 
 ## Build
