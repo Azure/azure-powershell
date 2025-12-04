@@ -24,5 +24,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         // Gets or sets the AddProxyAgentExtension.
         public bool? AddProxyAgentExtension { get; set; }
 
+        // Gets or sets the ZonePlacementPolicy.
+        public string ZonePlacementPolicy { get; set; }
+
     }
 }
