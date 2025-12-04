@@ -24,17 +24,21 @@ namespace Microsoft.Azure.Management.StorageSync.Models
         /// <param name="location">
         /// </param>
 
-        /// <param name="xmsRequestId">
+        /// <param name="retryAfter">
         /// </param>
 
         /// <param name="xmsCorrelationRequestId">
         /// </param>
-        public CloudEndpointsPreRestoreHeaders(string location = default(string), string xmsRequestId = default(string), string xmsCorrelationRequestId = default(string))
+
+        /// <param name="xmsRequestId">
+        /// </param>
+        public CloudEndpointsPreRestoreHeaders(string location = default(string), int? retryAfter = default(int?), string xmsCorrelationRequestId = default(string), string xmsRequestId = default(string))
 
         {
             this.Location = location;
-            this.XMSRequestId = xmsRequestId;
+            this.RetryAfter = retryAfter;
             this.XMSCorrelationRequestId = xmsCorrelationRequestId;
+            this.XMSRequestId = xmsRequestId;
             CustomInit();
         }
 
@@ -53,13 +57,19 @@ namespace Microsoft.Azure.Management.StorageSync.Models
         /// <summary>
         /// Gets or sets
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "x-ms-request-id")]
-        public string XMSRequestId {get; set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "Retry-After")]
+        public int? RetryAfter {get; set; }
 
         /// <summary>
         /// Gets or sets
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "x-ms-correlation-request-id")]
         public string XMSCorrelationRequestId {get; set; }
+
+        /// <summary>
+        /// Gets or sets
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "x-ms-request-id")]
+        public string XMSRequestId {get; set; }
     }
 }
