@@ -22,27 +22,18 @@ Create an in-memory object for L3NetworkAttachmentConfiguration.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for L3NetworkAttachmentConfiguration.
 ```powershell
-{{ Add code here }}
+New-AzNetworkCloudL3NetworkAttachmentConfigurationObject -NetworkId '/subscriptions/{subscriptionId}/resourceGroups/resourceGroupName/providers/Microsoft.NetworkCloud/l3Networks/l3network-502' -IpamEnabled True -PluginType 'SRIOV'
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+IpamEnabled NetworkId                                                                                                                  PluginType
+----------- ---------                                                                                                                  ----------
+True        /subscriptions/{subscriptionId}/resourceGroups/resourceGroupName/providers/Microsoft.NetworkCloud/l3Networks/l3network-502 SRIOV
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Create an in-memory object for L3NetworkAttachmentConfiguration.
 
 ## PARAMETERS
 

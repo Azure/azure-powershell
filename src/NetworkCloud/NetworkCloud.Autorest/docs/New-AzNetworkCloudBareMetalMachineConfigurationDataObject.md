@@ -23,27 +23,20 @@ Create an in-memory object for BareMetalMachineConfigurationData.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for BareMetalMachineConfigurationData.
 ```powershell
-{{ Add code here }}
+$password = ConvertTo-SecureString "********" -AsPlainText -Force
+
+New-AzNetworkCloudBareMetalMachineConfigurationDataObject -BmcCredentialsPassword $password -BmcCredentialsUsername username -BmcMacAddress "00:BB:CC:DD:EE:FF" -BootMacAddress "00:BB:CC:DD:EE:FF" -RackSlot 1 -SerialNumber serialNumber -MachineDetail machineDetail -MachineName machineName
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+BmcConnectionString BmcMacAddress     BootMacAddress    MachineDetail MachineName RackSlot SerialNumber
+------------------- -------------     --------------    ------------- ----------- -------- ------------
+                    00:BB:CC:DD:EE:FF 00:BB:CC:DD:EE:FF machineDetail machineName 1        serialNumber
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Create an in-memory object for BareMetalMachineConfigurationData.
 
 ## PARAMETERS
 

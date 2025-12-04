@@ -23,27 +23,19 @@ Create an in-memory object for NetworkAttachment.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for NetworkAttachment.
 ```powershell
-{{ Add code here }}
+New-AzNetworkCloudNetworkAttachmentObject -AttachedNetworkId "/subscriptions/subscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.NetworkCloud/l3Networks/l3NetworkName" -IPAllocationMethod "Dynamic" -DefaultGateway "True" -Ipv4Address "198.51.100.1" -Ipv6Address "2001:0db8:0000:0000:0000:0000:0000:0001" -Name "netAttachName01"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+AttachedNetworkId                                                                                                        DefaultGateway IPAllocationMethod Ipv4Address  Ipv6Address
+-----------------                                                                                                        -------------- ------------------ -----------  -----------                   
+/subscriptions/subscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.NetworkCloud/l3Networks/l3NetworkName True           Dynamic            198.51.100.1 2001:0db8:0000:0000:0000:0000…
+
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Create an in-memory object for NetworkAttachment.
 
 ## PARAMETERS
 

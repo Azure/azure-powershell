@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for KeySetUser.
 ```powershell
-{{ Add code here }}
+New-AzNetworkCloudKeySetUserObject -AzureUserName azureUserName -SshPublicKeyData "ssh-rsa-key" -Description "userDescription"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+AzureUserName Description
+------------- -----------
+azureUserName userDescription
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Create an in-memory object for KeySetUser.

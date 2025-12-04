@@ -1,22 +1,13 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for StorageApplianceConfigurationData.
 ```powershell
-{{ Add code here }}
-```
+$password = ConvertTo-SecureString "********" -AsPlainText -Force
 
+New-AzNetworkCloudStorageApplianceConfigurationDataObject -AdminCredentialsPassword $password -AdminCredentialsUsername username -RackSlot 1 -SerialNumber serialNumber -StorageApplianceName storageApplianceName
+```
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+RackSlot SerialNumber StorageApplianceName
+-------- ------------ --------------------
+1        serialNumber storageApplianceName
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Create an in-memory object for StorageApplianceConfigurationData.

@@ -24,27 +24,22 @@ Create an in-memory object for ControlPlaneNodeConfiguration.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for ControlPlaneNodeConfiguration.
 ```powershell
-{{ Add code here }}
+
+$sshPublicKey=@{
+    keyData= "ssh-rsa"
+}
+New-AzNetworkCloudControlPlaneNodeConfigurationObject -Count 1 -VMSkuName vmSkuName -AdministratorConfigurationAdminUsername userName -AdministratorConfigurationSshPublicKey $sshPublicKey -AvailabilityZone @("1","2","3")
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+AvailabilityZone Count VMSkuName
+---------------- ----- ---------
+{1, 2, 3}        1     vmSkuName
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Create an in-memory object for ControlPlaneNodeConfiguration.
 
 ## PARAMETERS
 

@@ -1,22 +1,11 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for VirtualMachinePlacementHint.
 ```powershell
-{{ Add code here }}
+New-AzNetworkCloudVirtualMachinePlacementHintObject -HintType "Affinity" -ResourceId "/subscriptions/subscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.NetworkCloud/racks/rackName" -SchedulingExecution "Hard" -Scope "Machine"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+HintType ResourceId                                                                                                     SchedulingExecution Scope
+-------- ----------                                                                                                     ------------------- -----
+Affinity /subscriptions/subscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.NetworkCloud/racks/rackName Hard                Machine
 ```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Creates an in-memory object for VirtualMachinePlacementHint.
