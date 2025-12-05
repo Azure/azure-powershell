@@ -36,6 +36,8 @@ import-module {workspace}/azure-powershell/artifacts/AzDev/AzDev.psd1
 ```
 
 ## Usage
+- **Sample remote TSP Location without PowerShell emitter option**: https://github.com/VeryEarly/azure-rest-api-specs/blob/yabo/test-tspconfig/specification/azuredependencymap/DependencyMap.Management/tspconfig.yaml
+- **Sample AsPSConfig with PowerShell emitter option**: https://github.com/VeryEarly/azure-powershell/tree/yabo/tsp-client-bugbash/src/DependencyMap/DependencyMap.Autorest
 
 ### Local TSP only
 
