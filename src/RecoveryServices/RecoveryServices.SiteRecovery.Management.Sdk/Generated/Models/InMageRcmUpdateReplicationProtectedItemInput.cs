@@ -75,7 +75,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
         /// <param name="targetNicTags">The tags for the target NICs.
         /// </param>
-        public InMageRcmUpdateReplicationProtectedItemInput(string targetVMName = default(string), string targetVMSize = default(string), string targetResourceGroupId = default(string), string targetAvailabilitySetId = default(string), string targetAvailabilityZone = default(string), string targetProximityPlacementGroupId = default(string), string targetBootDiagnosticsStorageAccountId = default(string), string targetNetworkId = default(string), string testNetworkId = default(string), System.Collections.Generic.IList<InMageRcmNicInput> vmNics = default(System.Collections.Generic.IList<InMageRcmNicInput>), string licenseType = default(string), string sqlServerLicenseType = default(string), string linuxLicenseType = default(string), string userSelectedOSName = default(string), System.Collections.Generic.IList<UserCreatedResourceTag> targetVMTags = default(System.Collections.Generic.IList<UserCreatedResourceTag>), System.Collections.Generic.IList<UserCreatedResourceTag> targetManagedDiskTags = default(System.Collections.Generic.IList<UserCreatedResourceTag>), System.Collections.Generic.IList<UserCreatedResourceTag> targetNicTags = default(System.Collections.Generic.IList<UserCreatedResourceTag>))
+
+        /// <param name="vmDisks">The list of disk update properties.
+        /// </param>
+
+        /// <param name="targetCapacityReservationGroupId">The target capacity reservation group ARM Id.
+        /// </param>
+        public InMageRcmUpdateReplicationProtectedItemInput(string targetVMName = default(string), string targetVMSize = default(string), string targetResourceGroupId = default(string), string targetAvailabilitySetId = default(string), string targetAvailabilityZone = default(string), string targetProximityPlacementGroupId = default(string), string targetBootDiagnosticsStorageAccountId = default(string), string targetNetworkId = default(string), string testNetworkId = default(string), System.Collections.Generic.IList<InMageRcmNicInput> vmNics = default(System.Collections.Generic.IList<InMageRcmNicInput>), string licenseType = default(string), string sqlServerLicenseType = default(string), string linuxLicenseType = default(string), string userSelectedOSName = default(string), System.Collections.Generic.IList<UserCreatedResourceTag> targetVMTags = default(System.Collections.Generic.IList<UserCreatedResourceTag>), System.Collections.Generic.IList<UserCreatedResourceTag> targetManagedDiskTags = default(System.Collections.Generic.IList<UserCreatedResourceTag>), System.Collections.Generic.IList<UserCreatedResourceTag> targetNicTags = default(System.Collections.Generic.IList<UserCreatedResourceTag>), System.Collections.Generic.IList<UpdateDiskInput> vmDisks = default(System.Collections.Generic.IList<UpdateDiskInput>), string targetCapacityReservationGroupId = default(string))
 
         {
             this.TargetVMName = targetVMName;
@@ -95,6 +101,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
             this.TargetVMTags = targetVMTags;
             this.TargetManagedDiskTags = targetManagedDiskTags;
             this.TargetNicTags = targetNicTags;
+            this.VMDisks = vmDisks;
+            this.TargetCapacityReservationGroupId = targetCapacityReservationGroupId;
             CustomInit();
         }
 
@@ -205,5 +213,17 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "targetNicTags")]
         public System.Collections.Generic.IList<UserCreatedResourceTag> TargetNicTags {get; set; }
+
+        /// <summary>
+        /// Gets or sets the list of disk update properties.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "vmDisks")]
+        public System.Collections.Generic.IList<UpdateDiskInput> VMDisks {get; set; }
+
+        /// <summary>
+        /// Gets or sets the target capacity reservation group ARM Id.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "targetCapacityReservationGroupId")]
+        public string TargetCapacityReservationGroupId {get; set; }
     }
 }

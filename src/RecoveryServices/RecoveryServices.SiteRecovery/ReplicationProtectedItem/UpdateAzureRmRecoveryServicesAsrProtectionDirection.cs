@@ -407,6 +407,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string KeyEncryptionVaultId { get; set; }
 
         /// <summary>
+        /// Gets or sets the recovery availability zone for protected Vm.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure)]
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureWithMultipleStorageAccount)]
+        [ValidateNotNullOrEmpty]
+        public string RecoveryAvailabilityZone { get; set; }
+
+        /// <summary>
+        /// Gets or sets platform fault domain for protected Vm.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure)]
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureWithMultipleStorageAccount)]
+        [ValidateNotNullOrEmpty]
+        public int? PlatformFaultDomain { get; set; }
+
+        /// <summary>
         ///     ProcessRecord of the command.
         /// </summary>
         public override void ExecuteSiteRecoveryCmdlet()
@@ -783,7 +799,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     RecoveryBootDiagStorageAccountId = this.RecoveryBootDiagStorageAccountId,
                     RecoveryProximityPlacementGroupId = this.RecoveryProximityPlacementGroupId,
                     RecoveryVirtualMachineScaleSetId = this.RecoveryVirtualMachineScaleSetId,
-                    RecoveryCapacityReservationGroupId = this.RecoveryCapacityReservationGroupId
+                    RecoveryCapacityReservationGroupId = this.RecoveryCapacityReservationGroupId,
+                    RecoveryAvailabilityZone = this.RecoveryAvailabilityZone,
+                    PlatformFaultDomain = this.PlatformFaultDomain
                 };
 
                 // Fetch the latest Protected item objects
