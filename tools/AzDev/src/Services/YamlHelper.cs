@@ -20,10 +20,20 @@ internal static class YamlHelper
     private static IDeserializer Deserializer => _lazyDeserializer.Value;
     private static Lazy<IDeserializer> _lazyDeserializer = new Lazy<IDeserializer>(BuildDeserializer);
 
+    private static ISerializer Serializer => _lazySerializer.Value;
+    private static Lazy<ISerializer> _lazySerializer = new Lazy<ISerializer>(BuildSerializer);
+
     private static IDeserializer BuildDeserializer()
     {
         return new DeserializerBuilder()
             .IgnoreUnmatchedProperties()
+            .Build();
+    }
+
+    private static ISerializer BuildSerializer()
+    {
+        return new SerializerBuilder()
+            .WithNamingConvention(YamlDotNet.Serialization.NamingConventions.CamelCaseNamingConvention.Instance)
             .Build();
     }
 
@@ -48,6 +58,6 @@ internal static class YamlHelper
 
     public static string Serialize<T>(T obj)
     {
-        throw new NotImplementedException();
+        return Serializer.Serialize(obj);
     }
 }
