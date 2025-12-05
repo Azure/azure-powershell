@@ -1,6 +1,6 @@
 ---
 Module Name: Az.DeviceRegistry
-Module Guid: 1a0fe4cd-b9c8-4154-b8ec-e5d780d358a0
+Module Guid: 52c302d9-f50f-427c-94a3-e5682e580cef
 Download Help Link: https://learn.microsoft.com/powershell/module/az.deviceregistry
 Help Version: 1.0.0.0
 Locale: en-US
@@ -20,6 +20,9 @@ Get a AssetEndpointProfile
 ### [Get-AzDeviceRegistryBillingContainer](Get-AzDeviceRegistryBillingContainer.md)
 Get a BillingContainer
 
+### [Get-AzDeviceRegistryCredentials](Get-AzDeviceRegistryCredentials.md)
+Get a Credential
+
 ### [Get-AzDeviceRegistryNamespace](Get-AzDeviceRegistryNamespace.md)
 Get a Namespace
 
@@ -34,6 +37,9 @@ Get a NamespaceDiscoveredAsset
 
 ### [Get-AzDeviceRegistryNamespaceDiscoveredDevice](Get-AzDeviceRegistryNamespaceDiscoveredDevice.md)
 Get a NamespaceDiscoveredDevice
+
+### [Get-AzDeviceRegistryPolicy](Get-AzDeviceRegistryPolicy.md)
+Get a Policy
 
 ### [Get-AzDeviceRegistrySchema](Get-AzDeviceRegistrySchema.md)
 Get a Schema
@@ -53,6 +59,9 @@ Create a Asset
 ### [New-AzDeviceRegistryAssetEndpointProfile](New-AzDeviceRegistryAssetEndpointProfile.md)
 Create a AssetEndpointProfile
 
+### [New-AzDeviceRegistryCredentials](New-AzDeviceRegistryCredentials.md)
+Create a Credential
+
 ### [New-AzDeviceRegistryNamespace](New-AzDeviceRegistryNamespace.md)
 Create a Namespace
 
@@ -67,6 +76,9 @@ Create a NamespaceDiscoveredAsset
 
 ### [New-AzDeviceRegistryNamespaceDiscoveredDevice](New-AzDeviceRegistryNamespaceDiscoveredDevice.md)
 Create a NamespaceDiscoveredDevice
+
+### [New-AzDeviceRegistryPolicy](New-AzDeviceRegistryPolicy.md)
+Create a Policy
 
 ### [New-AzDeviceRegistrySchema](New-AzDeviceRegistrySchema.md)
 Create a Schema
@@ -83,6 +95,9 @@ Delete a Asset
 ### [Remove-AzDeviceRegistryAssetEndpointProfile](Remove-AzDeviceRegistryAssetEndpointProfile.md)
 Delete a AssetEndpointProfile
 
+### [Remove-AzDeviceRegistryCredentials](Remove-AzDeviceRegistryCredentials.md)
+Delete a Credential
+
 ### [Remove-AzDeviceRegistryNamespace](Remove-AzDeviceRegistryNamespace.md)
 Delete a Namespace
 
@@ -98,6 +113,9 @@ Delete a NamespaceDiscoveredAsset
 ### [Remove-AzDeviceRegistryNamespaceDiscoveredDevice](Remove-AzDeviceRegistryNamespaceDiscoveredDevice.md)
 Delete a NamespaceDiscoveredDevice
 
+### [Remove-AzDeviceRegistryPolicy](Remove-AzDeviceRegistryPolicy.md)
+Delete a Policy
+
 ### [Remove-AzDeviceRegistrySchema](Remove-AzDeviceRegistrySchema.md)
 Delete a Schema
 
@@ -107,11 +125,17 @@ Delete a SchemaRegistry
 ### [Remove-AzDeviceRegistrySchemaVersion](Remove-AzDeviceRegistrySchemaVersion.md)
 Delete a SchemaVersion
 
+### [Sync-AzDeviceRegistryCredentials](Sync-AzDeviceRegistryCredentials.md)
+A long-running resource action.
+
 ### [Update-AzDeviceRegistryAsset](Update-AzDeviceRegistryAsset.md)
 Update a Asset
 
 ### [Update-AzDeviceRegistryAssetEndpointProfile](Update-AzDeviceRegistryAssetEndpointProfile.md)
 Update a AssetEndpointProfile
+
+### [Update-AzDeviceRegistryCredentials](Update-AzDeviceRegistryCredentials.md)
+Update a Credential
 
 ### [Update-AzDeviceRegistryNamespace](Update-AzDeviceRegistryNamespace.md)
 Replace a Namespace
@@ -127,6 +151,9 @@ Update a NamespaceDiscoveredAsset
 
 ### [Update-AzDeviceRegistryNamespaceDiscoveredDevice](Update-AzDeviceRegistryNamespaceDiscoveredDevice.md)
 Update a NamespaceDiscoveredDevice
+
+### [Update-AzDeviceRegistryPolicy](Update-AzDeviceRegistryPolicy.md)
+Update a Policy
 
 ### [Update-AzDeviceRegistrySchema](Update-AzDeviceRegistrySchema.md)
 Replace a Schema
