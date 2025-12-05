@@ -761,7 +761,12 @@ namespace Microsoft.Azure.Commands.Aks
                 this.IsParameterBound(c => c.AzureKeyVaultKmsKeyId) ||
                 this.IsParameterBound(c => c.AzureKeyVaultKmsNetworkAccess) ||
                 this.IsParameterBound(c => c.AzureKeyVaultKmsResourceId) ||
-                this.IsParameterBound(c => c.CustomCaTrustCertificate))
+                this.IsParameterBound(c => c.CustomCaTrustCertificate) ||
+                this.IsParameterBound(c => c.DefenderLogAnalyticsWorkspaceResourceId) ||
+                this.IsParameterBound(c => c.EnableDefenderSecurityMonitoring) ||
+                this.IsParameterBound(c => c.EnableImageCleaner) ||
+                this.IsParameterBound(c => c.ImageCleanerIntervalHour) ||
+                this.IsParameterBound(c => c.EnableWorkloadIdentity) )
             {
                 securityProfile = new ManagedClusterSecurityProfile();
             }
