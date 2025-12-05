@@ -15,40 +15,40 @@ This command allows for changes on the adjustable parameters of a cloud endpoint
 ### StringParameterSet (Default)
 ```
 Set-AzStorageSyncCloudEndpoint [-ResourceGroupName] <String> [-StorageSyncServiceName] <String>
- [-SyncGroupName] <String> [-Name] <String> [-ChangeEnumerationIntervalDays <Int32>] [-AsJob]
+ [-SyncGroupName] <String> [-Name] <String> [-ChangeEnumerationIntervalDay <Int32>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-Set-AzStorageSyncCloudEndpoint [-ResourceId] <String> [-ChangeEnumerationIntervalDays <Int32>] [-AsJob]
+Set-AzStorageSyncCloudEndpoint [-ResourceId] <String> [-ChangeEnumerationIntervalDay <Int32>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ObjectParameterSet
 ```
-Set-AzStorageSyncCloudEndpoint [-InputObject] <PSCloudEndpoint> [-ChangeEnumerationIntervalDays <Int32>]
+Set-AzStorageSyncCloudEndpoint [-InputObject] <PSCloudEndpoint> [-ChangeEnumerationIntervalDay <Int32>]
  [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-This command allows for changes on the adjustable parameters of a cloud endpoint. Currently, it supports updating the ChangeEnumerationIntervalDays property, which controls the interval in days between change enumeration operations for the cloud endpoint.
+This command allows for changes on the adjustable parameters of a cloud endpoint. Currently, it supports updating the ChangeEnumerationIntervalDay property, which controls the interval in days between change enumeration operations for the cloud endpoint.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-Set-AzStorageSyncCloudEndpoint -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -SyncGroupName "mySyncGroupName" -Name "myCloudEndpointName" -ChangeEnumerationIntervalDays 5
+Set-AzStorageSyncCloudEndpoint -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -SyncGroupName "mySyncGroupName" -Name "myCloudEndpointName" -ChangeEnumerationIntervalDay 5
 ```
 
 This example updates the change enumeration interval to 5 days for the specified cloud endpoint.
 
 ### Example 2
 ```powershell
-Get-AzStorageSyncCloudEndpoint -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -SyncGroupName "mySyncGroupName" | Set-AzStorageSyncCloudEndpoint -ChangeEnumerationIntervalDays 10
+Get-AzStorageSyncCloudEndpoint -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -SyncGroupName "mySyncGroupName" | Set-AzStorageSyncCloudEndpoint -ChangeEnumerationIntervalDay 10
 ```
 
 This example retrieves a cloud endpoint and updates its change enumeration interval to 10 days using the pipeline.
@@ -70,8 +70,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ChangeEnumerationIntervalDays
-Change Enumeration Interval Days. This parameter defines the interval in days between change enumeration operations for the cloud endpoint. Valid values range from 1 to 20 days.
+### -ChangeEnumerationIntervalDay
+Change Enumeration Interval Day. This parameter defines the interval in days between change enumeration operations for the cloud endpoint. Valid values range from 1 to 20 days.
 
 ```yaml
 Type: System.Int32

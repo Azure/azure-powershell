@@ -16,21 +16,21 @@ This command creates an Azure File Sync cloud endpoint in a sync group.
 ```
 New-AzStorageSyncCloudEndpoint [-ResourceGroupName] <String> [-StorageSyncServiceName] <String>
  [-SyncGroupName] <String> -Name <String> -StorageAccountResourceId <String> -AzureFileShareName <String>
- [-StorageAccountTenantId <String>] [-ChangeEnumerationIntervalDays <Int32>] [-AsJob]
+ [-StorageAccountTenantId <String>] [-ChangeEnumerationIntervalDay <Int32>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ObjectParameterSet
 ```
 New-AzStorageSyncCloudEndpoint [-ParentObject] <PSSyncGroup> -Name <String> -StorageAccountResourceId <String>
- -AzureFileShareName <String> [-StorageAccountTenantId <String>] [-ChangeEnumerationIntervalDays <Int32>]
+ -AzureFileShareName <String> [-StorageAccountTenantId <String>] [-ChangeEnumerationIntervalDay <Int32>]
  [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ParentStringParameterSet
 ```
 New-AzStorageSyncCloudEndpoint [-ParentResourceId] <String> -Name <String> -StorageAccountResourceId <String>
- -AzureFileShareName <String> [-StorageAccountTenantId <String>] [-ChangeEnumerationIntervalDays <Int32>]
+ -AzureFileShareName <String> [-StorageAccountTenantId <String>] [-ChangeEnumerationIntervalDay <Int32>]
  [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -78,8 +78,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ChangeEnumerationIntervalDays
-Change Enumeration Interval Days. This parameter defines the interval in days between change enumeration operations for the cloud endpoint. Valid values range from 1 to 20 days.
+### -ChangeEnumerationIntervalDay
+Change Enumeration Interval Day. This parameter defines the interval in days between change enumeration operations for the cloud endpoint. Valid values range from 1 to 20 days.
 
 ```yaml
 Type: System.Int32
