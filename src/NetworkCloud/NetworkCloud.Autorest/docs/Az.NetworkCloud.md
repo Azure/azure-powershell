@@ -118,7 +118,7 @@ Triggers the execution of a runtime protection scan to detect and remediate dete
 Reimage the provided virtual machine.
 
 ### [New-AzNetworkCloudAgentPool](New-AzNetworkCloudAgentPool.md)
-Create a new Kubernetes cluster agent pool or create the properties of the existing one.
+Create a new Kubernetes cluster agent pool or update the properties of the existing one.
 
 ### [New-AzNetworkCloudBareMetalMachineConfigurationDataObject](New-AzNetworkCloudBareMetalMachineConfigurationDataObject.md)
 Create an in-memory object for BareMetalMachineConfigurationData.
@@ -136,13 +136,13 @@ Create an in-memory object for BgpServiceLoadBalancerConfiguration.
 Create a new baseboard management controller key set or create the existing one for the provided cluster.
 
 ### [New-AzNetworkCloudCluster](New-AzNetworkCloudCluster.md)
-Create a new cluster or create the properties of the cluster if it exists.
+Create a new cluster or update the properties of the cluster if it exists.
 
 ### [New-AzNetworkCloudClusterManager](New-AzNetworkCloudClusterManager.md)
 Create a new cluster manager or create properties of the cluster manager if it exists.
 
 ### [New-AzNetworkCloudConsole](New-AzNetworkCloudConsole.md)
-Create a new virtual machine console or create the properties of the existing virtual machine console.
+Create a new virtual machine console or update the properties of the existing virtual machine console.
 
 ### [New-AzNetworkCloudControlPlaneNodeConfigurationObject](New-AzNetworkCloudControlPlaneNodeConfigurationObject.md)
 Create an in-memory object for ControlPlaneNodeConfiguration.
@@ -163,22 +163,22 @@ Create an in-memory object for IpAddressPool.
 Create an in-memory object for KeySetUser.
 
 ### [New-AzNetworkCloudKubernetesCluster](New-AzNetworkCloudKubernetesCluster.md)
-Create a new Kubernetes cluster or create the properties of the existing one.
+Create a new Kubernetes cluster or update the properties of the existing one.
 
 ### [New-AzNetworkCloudKubernetesClusterFeature](New-AzNetworkCloudKubernetesClusterFeature.md)
 Create a new Kubernetes cluster feature or create properties of the Kubernetes cluster feature if it exists.
 
 ### [New-AzNetworkCloudL2Network](New-AzNetworkCloudL2Network.md)
-Create a new layer 2 (L2) network or create the properties of the existing network.
+Create a new layer 2 (L2) network or update the properties of the existing network.
 
 ### [New-AzNetworkCloudL3Network](New-AzNetworkCloudL3Network.md)
-Create a new layer 3 (L3) network or create the properties of the existing network.
+Create a new layer 3 (L3) network or update the properties of the existing network.
 
 ### [New-AzNetworkCloudL3NetworkAttachmentConfigurationObject](New-AzNetworkCloudL3NetworkAttachmentConfigurationObject.md)
 Create an in-memory object for L3NetworkAttachmentConfiguration.
 
 ### [New-AzNetworkCloudMetricsConfiguration](New-AzNetworkCloudMetricsConfiguration.md)
-Create new or create the existing metrics configuration of the provided cluster.
+Create new or update the existing metrics configuration of the provided cluster.
 
 ### [New-AzNetworkCloudNetworkAttachmentObject](New-AzNetworkCloudNetworkAttachmentObject.md)
 Create an in-memory object for NetworkAttachment.
@@ -190,22 +190,22 @@ Create an in-memory object for RackDefinition.
 Create an in-memory object for ServiceLoadBalancerBgpPeer.
 
 ### [New-AzNetworkCloudServicesNetwork](New-AzNetworkCloudServicesNetwork.md)
-Create a new cloud services network or create the properties of the existing cloud services network.
+Create a new cloud services network or update the properties of the existing cloud services network.
 
 ### [New-AzNetworkCloudStorageApplianceConfigurationDataObject](New-AzNetworkCloudStorageApplianceConfigurationDataObject.md)
 Create an in-memory object for StorageApplianceConfigurationData.
 
 ### [New-AzNetworkCloudTrunkedNetwork](New-AzNetworkCloudTrunkedNetwork.md)
-Create a new trunked network or create the properties of the existing trunked network.
+Create a new trunked network or update the properties of the existing trunked network.
 
 ### [New-AzNetworkCloudVirtualMachine](New-AzNetworkCloudVirtualMachine.md)
-Create a new virtual machine or create the properties of the existing virtual machine.
+Create a new virtual machine or update the properties of the existing virtual machine.
 
 ### [New-AzNetworkCloudVirtualMachinePlacementHintObject](New-AzNetworkCloudVirtualMachinePlacementHintObject.md)
 Create an in-memory object for VirtualMachinePlacementHint.
 
 ### [New-AzNetworkCloudVolume](New-AzNetworkCloudVolume.md)
-Create a new volume or create the properties of the existing one.
+Create a new volume or update the properties of the existing one.
 
 ### [Remove-AzNetworkCloudAgentPool](Remove-AzNetworkCloudAgentPool.md)
 Delete the provided Kubernetes cluster agent pool.
