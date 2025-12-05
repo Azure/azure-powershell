@@ -201,12 +201,8 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
                 }
 
                 // Create update parameters with the existing values and new ChangeEnumerationIntervalDays
-                var updateParameters = new CloudEndpointCreateParameters()
+                var updateParameters = new CloudEndpointUpdateParameters()
                 {
-                    StorageAccountResourceId = existingCloudEndpoint.StorageAccountResourceId,
-                    AzureFileShareName = existingCloudEndpoint.AzureFileShareName,
-                    StorageAccountTenantId = existingCloudEndpoint.StorageAccountTenantId,
-                    FriendlyName = existingCloudEndpoint.FriendlyName
                 };
 
                 // Apply the update if parameter is provided
@@ -222,12 +218,12 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
                 Target = string.Join("/", resourceGroupName, storageSyncServiceName, parentResourceName, resourceName);
                 if (ShouldProcess(Target, ActionMessage))
                 {
-                    StorageSyncModels.CloudEndpoint resource = StorageSyncClientWrapper.StorageSyncManagementClient.CloudEndpoints.Create(
+                    StorageSyncModels.CloudEndpoint resource = StorageSyncClientWrapper.StorageSyncManagementClient.CloudEndpoints.Update(
                         resourceGroupName,
                         storageSyncServiceName,
                         parentResourceName,
                         resourceName,
-                        updateParameters);
+                        updateParameters.ChangeEnumerationIntervalDays);
 
                     WriteObject(resource);
                 }
