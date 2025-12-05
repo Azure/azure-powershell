@@ -1,3 +1,8 @@
+## 15.1.1 - January 2026
+#### Az.StackHCI 2.6.5
+* ARC Enablement of Nodes Before Triggering Registration in New Registration Flow.
+* Resolved double hop authentication issue.
+
 ## 15.1.0 - December 2025
 #### Az.AppConfiguration 2.0.1
 * Fixed GitHub issue #23731 'Problem with Get-AzAppConfigurationKeyValue when more that 100 records are present'
