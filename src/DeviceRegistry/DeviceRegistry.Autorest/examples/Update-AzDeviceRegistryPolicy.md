@@ -132,22 +132,7 @@ $policyIdentity = @{
     PolicyName = "my-policy-name"
 }
 
-$jsonString = @"
-{
-    "properties": {
-        "certificate": {
-            "leafCertificateConfiguration": {
-                "validityPeriodInDays": 120
-            }
-        }
-    },
-    "tags": {
-        "environment": "staging"
-    }
-}
-"@
-
-Update-AzDeviceRegistryPolicy -InputObject $policyIdentity -JsonString $jsonString
+Update-AzDeviceRegistryPolicy -InputObject $policyIdentity -Tag @{"environment" = "staging"}
 ```
 
 ```output

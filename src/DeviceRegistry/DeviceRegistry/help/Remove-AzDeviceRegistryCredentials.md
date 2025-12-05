@@ -62,11 +62,15 @@ Useful for automation scenarios where the consequences are understood.
 
 ### Example 4: Remove credentials via identity object
 ```powershell
-$credentials = Get-AzDeviceRegistryCredentials -NamespaceName my-namespace -ResourceGroupName my-resource-group
-Remove-AzDeviceRegistryCredentials -InputObject $credentials -Confirm:$false
+$credentialsIdentity = @{
+    SubscriptionId = "xxxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx"
+    ResourceGroupName = "my-resource-group"
+    NamespaceName = "my-namespace"
+}
+Remove-AzDeviceRegistryCredentials -InputObject $credentialsIdentity -Confirm:$false
 ```
 
-Retrieves the credentials object and removes it using the identity object parameter.
+Removes the credentials using an identity object parameter.
 
 ### Example 5: Remove credentials after cleaning up policies
 ```powershell

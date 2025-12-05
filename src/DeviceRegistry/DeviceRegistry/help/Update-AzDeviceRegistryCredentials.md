@@ -75,8 +75,12 @@ Note: Credentials are system-managed, only tags can be updated by users.
 
 ### Example 2: Update credentials via identity object
 ```powershell
-$credentials = Get-AzDeviceRegistryCredentials -NamespaceName my-namespace -ResourceGroupName my-resource-group
-Update-AzDeviceRegistryCredentials -InputObject $credentials -Tag @{"environment" = "staging"; "team" = "iot"}
+$credentialsIdentity = @{
+    SubscriptionId = "xxxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx"
+    ResourceGroupName = "my-resource-group"
+    NamespaceName = "my-namespace"
+}
+Update-AzDeviceRegistryCredentials -InputObject $credentialsIdentity -Tag @{"environment" = "staging"; "team" = "iot"}
 ```
 
 ```output
@@ -98,7 +102,7 @@ Tag                          : {
 Type                         : Microsoft.DeviceRegistry/namespaces/credentials
 ```
 
-Updates credentials using an identity object from a previous Get operation.
+Updates the credentials using an identity object parameter.
 
 ### Example 3: Update credentials from a JSON file
 ```powershell
