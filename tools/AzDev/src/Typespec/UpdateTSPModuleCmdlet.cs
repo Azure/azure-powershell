@@ -50,10 +50,27 @@ namespace AzDev.Cmdlets.Typespec
     {
         private static readonly HttpClient httpClient = new HttpClient();
 
+        /// <summary>
+        /// Regex pattern to match GitHub URLs pointing to tspconfig.yaml files with 40-character commit hashes (SHA-1).
+        /// 
+        /// Examples:
+        /// - https://github.com/Azure/azure-rest-api-specs/blob/abc123.../path/tspconfig.yaml
+        /// - https://raw.githubusercontent.com/Azure/azure-rest-api-specs/abc123.../path/tspconfig.yaml
+        /// 
+        /// Note: The pattern expects exactly 40-character commit hashes (SHA-1). If GitHub moves to SHA-256 hashes (64 characters),
+        /// this pattern will need to be updated.
+        /// </summary>
         private const string UriRegex = "^https://(?<urlRoot>github|raw.githubusercontent).com/(?<repo>[^/]*/azure-rest-api-specs(-pr)?)/(tree/|blob/)?(?<commit>[0-9a-f]{40})/(?<path>.*)/tspconfig.yaml$";
 
         private const string emitterName = "@azure-tools/typespec-powershell";
 
+        /// <summary>
+        /// Name of the temporary directory used to store intermediate TypeSpec files during module update operations.
+        /// This directory is created in a controlled location and is intended to be cleaned up after use.
+        /// The name "TempTypeSpecFiles" was chosen for clarity, but developers should be aware of potential
+        /// conflicts if a directory with the same name exists in the target location, especially on case-sensitive file systems.
+        /// Consider updating the logic to use a more unique name if this becomes an issue.
+        /// </summary>
         private const string tempDirName = "TempTypeSpecFiles";
 
         private string _npmPath = "";
@@ -103,7 +120,7 @@ namespace AzDev.Cmdlets.Typespec
                     this.MyInvocation.BoundParameters.ContainsKey(nameof(RemoteRepositoryName)) ||
                     this.MyInvocation.BoundParameters.ContainsKey(nameof(RemoteForkName)))
                 {
-                    throw new ArgumentException("Please do not provide `-RemoteDirectory`, `-RemoteCommit`, `-RemoteRepository` or `-RemoteForkName` along with `-TSPLocation`.");
+                    throw new ArgumentException("Please do not provide `-RemoteDirectory`, `-RemoteCommit`, `-RemoteRepositoryName` or `-RemoteForkName` along with `-TSPLocation`.");
                 }
             }
             else
@@ -208,7 +225,7 @@ namespace AzDev.Cmdlets.Typespec
             {
                 throw new ArgumentException($"No emitter-output-dir configured in {TSPLocation}");
             }
-            // if emitter-outout-dir is not absolute, assume it's relative to RepoRoot
+            // if emitter-output-dir is not absolute, assume it's relative to RepoRoot
             if (!Path.IsPathRooted(emitterOutputDir))
             {
                 emitterOutputDir = Path.GetFullPath(emitterOutputDir, RepoRoot);
@@ -258,8 +275,8 @@ namespace AzDev.Cmdlets.Typespec
             */
             try
             {
-                installDependencies(Path.GetDirectoryName(tempTSPLocation)).Wait();
-                RunCommand(FindNPMCommandFromPath("tsp.cmd"), $"compile ./ --emit {EmitterPath ?? emitterName} --output-dir {emitterOutputDir}", Path.GetDirectoryName(tempTSPLocation)).Wait();
+                InstallDependencies(Path.GetDirectoryName(tempTSPLocation)).Wait();
+                RunCommand(FindNPMCommandFromPath("tsp"), $"compile ./ --emit {EmitterPath ?? emitterName} --output-dir {emitterOutputDir}", Path.GetDirectoryName(tempTSPLocation)).Wait();
             }
             catch (Exception ex)
             {
@@ -284,13 +301,14 @@ namespace AzDev.Cmdlets.Typespec
 
         private string FindNPMCommandFromPath(string command)
         {
-            if (_npmPath == "" || !File.Exists(_npmPath))
+            string commandSuffix = Environment.OSVersion.Platform == PlatformID.Win32NT ? ".cmd":"";
+            if ( string.IsNullOrEmpty(_npmPath) || !File.Exists(_npmPath))
             {
                 string pathEnv = Environment.GetEnvironmentVariable("PATH") ?? string.Empty;
                 string npmPath = pathEnv.Split(Path.PathSeparator).FirstOrDefault(path => path.EndsWith("npm"));
                 _npmPath = npmPath;
             }
-            string commandPath = Path.Combine(_npmPath, command);
+            string commandPath = Path.Combine(_npmPath, command+commandSuffix);
             if (!File.Exists(commandPath))
             {
                 
@@ -315,14 +333,14 @@ namespace AzDev.Cmdlets.Typespec
             Directory.Delete(path, true);
         }
 
-        private async Task installDependencies(string workingDirectory)
+        private async Task InstallDependencies(string workingDirectory)
         {
             if (!File.Exists(Path.Combine(workingDirectory, "package.json")))
             {
                 throw new FileNotFoundException($"package.json not found in {workingDirectory}");
             }
             string args = File.Exists(Path.Combine(workingDirectory, "package-lock.json")) ? "ci" : "install";
-            await RunCommand(FindNPMCommandFromPath("npm.cmd"), args, workingDirectory);
+            await RunCommand(FindNPMCommandFromPath("npm"), args, workingDirectory);
         }
 
         private (string, string, string, string) ResolveTSPConfigUri(string uri)
@@ -362,8 +380,7 @@ namespace AzDev.Cmdlets.Typespec
             await RunCommand("git", $"sparse-checkout set {path}", tempDirPath);
             await RunCommand("git", $"sparse-checkout add {path}", tempDirPath);
             await RunCommand("git", $"checkout {commit}", tempDirPath);
-            string tempTspLocation = Path.Combine(tempDirPath, path, "tspconfig.yaml");
-            return tempTspLocation;
+            return Path.Combine(tempDirPath, path, "tspconfig.yaml");
         }
 
         private string PrepareTSPFromLocal(string tspLocation, string outDir)
@@ -383,11 +400,11 @@ namespace AzDev.Cmdlets.Typespec
                 throw new InvalidOperationException($"Failed to prepare temporary directory [{tempDirPath}]: {ex.Message}", ex);
             }
             CopyDirectory(tspLocation, tempDirPath, ["tsp-output", "node_modules"]);
-            string tempTspLocation = Path.Combine(tempDirPath, tspLocation, "tspconfig.yaml");
-            return tempTspLocation;
+            return Path.Combine(tempDirPath, Path.GetFileName(tspLocation), "tspconfig.yaml");
         }
 
-        //copy sourcDir and put it under destinationDir
+        // Copies the contents of sourceDir into a subdirectory (named after sourceDir) within destinationDir,
+        // excluding any files or directories specified in the 'exclude' array.
         private void CopyDirectory(string sourceDir, string destinationDir, string[] exclude)
         {
             DirectoryInfo dir = new DirectoryInfo(sourceDir);
@@ -410,6 +427,10 @@ namespace AzDev.Cmdlets.Typespec
             }
             foreach (DirectoryInfo subdir in dirs)
             {
+                if (exclude != null && Array.Exists(exclude, e => e.Equals(subdir.Name, StringComparison.OrdinalIgnoreCase)))
+                {
+                    continue;
+                }
                 CopyDirectory(subdir.FullName, currentDir, exclude);
             }
         }
@@ -447,6 +468,10 @@ namespace AzDev.Cmdlets.Typespec
                 process.BeginOutputReadLine();
                 process.BeginErrorReadLine();
                 await process.WaitForExitAsync();
+                if (process.ExitCode != 0)
+                {
+                    throw new InvalidOperationException($"Command '{command} {arguments}' failed with exit code {process.ExitCode}");
+                }
             }
         }
 
@@ -507,7 +532,7 @@ namespace AzDev.Cmdlets.Typespec
             }
             if (string.IsNullOrEmpty(potentialRoot))
             {
-                throw new ArgumentException("Unable to determine Azure PowerShell repository root. Please execute this cmdlet in Azure-PowerShell repository, Or please provide `-RepoRoot` or set it through `Set-DevContext -RepoRoot`.");
+                throw new ArgumentException("Unable to determine Azure PowerShell repository root. Please execute this cmdlet in Azure-PowerShell repository, or please provide `-RepoRoot` or set it through `Set-DevContext -RepoRoot`.");
             }
             return potentialRoot;
         }

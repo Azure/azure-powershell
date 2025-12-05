@@ -18,7 +18,7 @@
     - ***Execute this cmdlet anywhere under $RootDirectory without explicitly providing it***: Run this cmdlet under any subdirectory of azure-powershell, `RepoRoot` will be calculated.
     - ***Pass by parameter***: `Update-DevTSPModule -RepoRoot $RootDirectory`
     - ***AzDev Cmdlet***: `Set-DevContext -RepoRoot $RootDirectory`
-- **Emitter**: The tool responsible for generating PowerShell code from the TypeSpec definition. This cmdlet specifically works witapprovedh the `@azure-tools/typespec-powershell` emitter.
+- **Emitter**: The tool responsible for generating PowerShell code from the TypeSpec definition. This cmdlet specifically works with the `@azure-tools/typespec-powershell` emitter.
 - **emitter-output-dir**: Emitter option to indicate the output directory of code generation. Usually `"{output-dir}/{service-dir}/${ModuleName}/${ModuleName}.Autorest"` under `tsp-config.yaml`. When not provided while AzPSConfig exists, fallback to directory of AzPSConfig.
 
 ## Legacy Document
@@ -37,7 +37,7 @@ import-module {workspace}/azure-powershell/artifacts/AzDev/AzDev.psd1
 
 ## Usage
 - **Sample remote TSP Location without PowerShell emitter option**: https://github.com/VeryEarly/azure-rest-api-specs/blob/yabo/test-tspconfig/specification/azuredependencymap/DependencyMap.Management/tspconfig.yaml
-- **Sample AsPSConfig with PowerShell emitter option**: https://github.com/VeryEarly/azure-powershell/tree/yabo/tsp-client-bugbash/src/DependencyMap/DependencyMap.Autorest
+- **Sample AsPSConfig with PowerShell emitter option**: https://github.com/VeryEarly/azure-powershell/blob/yabo/tsp-client-bugbash/src/DependencyMap/DependencyMap.Autorest/tspconfig.yaml
 
 ### Local TSP only
 
