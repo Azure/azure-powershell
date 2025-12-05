@@ -6,7 +6,7 @@
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "972e68a4-7e37-49ea-a050-044a43599be6"
+          "5cf83dc6-5227-4014-b028-d2d7acbfb714"
         ],
         "Accept-Language": [
           "en-US"
@@ -33,10 +33,10 @@
           "no-cache"
         ],
         "ETag": [
-          "W/\"0x8DE33C7B80291BF\""
+          "W/\"0x8DE3435E35FC160\""
         ],
         "x-ms-request-id": [
-          "6862bfe1-3f89-487b-9220-0e6bb89fae87"
+          "ace70b8c-f56b-4792-bf31-ea4ad3205638"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -45,7 +45,7 @@
           "nosniff"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=ac839cc2-33ee-4879-a5b5-2895202ccb29/eastus2/5dfa8144-092f-4eb0-a160-95d44745db01"
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=ac839cc2-33ee-4879-a5b5-2895202ccb29/westus2/581d0294-0930-4fcb-b674-62ce0ed3827b"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
           "799"
@@ -54,22 +54,22 @@
           "11999"
         ],
         "x-ms-correlation-request-id": [
-          "66232b31-5344-4a0b-aed3-2b06e6ec33d1"
+          "64a5ae4a-241b-4d2a-91d5-4e2da9dcd365"
         ],
         "x-ms-routing-request-id": [
-          "EASTUS2:20251205T063001Z:66232b31-5344-4a0b-aed3-2b06e6ec33d1"
+          "WESTUS2:20251205T193838Z:64a5ae4a-241b-4d2a-91d5-4e2da9dcd365"
         ],
         "X-Cache": [
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 9F4558A7B30F4F619B64FA4D40782BCE Ref B: CO6AA3150217047 Ref C: 2025-12-05T06:30:00Z"
+          "Ref A: FA28D3D684784671B7045190145246C3 Ref B: CO6AA3150220051 Ref C: 2025-12-05T19:38:37Z"
         ],
         "Date": [
-          "Fri, 05 Dec 2025 06:30:00 GMT"
+          "Fri, 05 Dec 2025 19:38:38 GMT"
         ],
         "Content-Length": [
-          "681"
+          "619"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -78,10 +78,10 @@
           "-1"
         ],
         "Last-Modified": [
-          "Fri, 05 Dec 2025 06:30:01 GMT"
+          "Fri, 05 Dec 2025 19:38:38 GMT"
         ]
       },
-      "ResponseBody": "{\r\n  \"type\": \"Microsoft.Batch/batchAccounts/applications/versions\",\r\n  \"id\": \"/subscriptions/94bd7ded-68b4-4ffa-82a5-37ac72caa2ec/resourceGroups/automation/providers/Microsoft.Batch/batchAccounts/dotnotsdkbatchaccount2/applications/newApplicationPackage/versions/foo\",\r\n  \"name\": \"foo\",\r\n  \"etag\": \"W/\\\"0x8DE33C7B80291BF\\\"\",\r\n  \"properties\": {\r\n    \"storageUrl\": \"https://batchstorageps1.blob.core.windows.net/app-newapplicationpackage-c131d82c015846f6a98602bc1b037be5/foo?sv=2025-05-05&se=2025-12-05T10%3A30%3A01Z&sr=b&sp=rw&sig=HnHaIh1Rysgw8eVTkXmx7BGcJx8m8L0qXW64iI20QuE%3D\",\r\n    \"storageUrlExpiry\": \"2025-12-05T10:30:01.1982987Z\",\r\n    \"state\": \"Active\",\r\n    \"format\": \"zip\",\r\n    \"lastActivationTime\": \"2025-12-05T06:21:17.6902339Z\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"type\": \"Microsoft.Batch/batchAccounts/applications/versions\",\r\n  \"id\": \"/subscriptions/94bd7ded-68b4-4ffa-82a5-37ac72caa2ec/resourceGroups/automation/providers/Microsoft.Batch/batchAccounts/dotnotsdkbatchaccount2/applications/newApplicationPackage/versions/foo\",\r\n  \"name\": \"foo\",\r\n  \"etag\": \"W/\\\"0x8DE3435E35FC160\\\"\",\r\n  \"properties\": {\r\n    \"storageUrl\": \"https://batchstorageps1.blob.core.windows.net/app-newapplicationpackage-bc8601ad99a24cabb29f20bb80df2a34/foo?sv=2025-05-05&se=2025-12-05T23%3A38%3A38Z&sr=b&sp=rw&sig=Kv4QmEFYRFfqIU%2FySHxgfHgHW8gOOV0q9WJRsopjN%2B0%3D\",\r\n    \"storageUrlExpiry\": \"2025-12-05T23:38:38.5885648Z\",\r\n    \"state\": \"Pending\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -93,7 +93,7 @@
           "en-US"
         ],
         "x-ms-client-request-id": [
-          "d208a972-c329-45fb-9a01-c0dde935e514"
+          "e331bb6c-237f-4837-8356-280d2cbb6f57"
         ],
         "User-Agent": [
           "FxVersion/8.0.2225.52707",
@@ -117,10 +117,10 @@
           "no-cache"
         ],
         "ETag": [
-          "W/\"0x8DE33C7E21AEA47\""
+          "W/\"0x8DE3435E5DEBBC0\""
         ],
         "x-ms-request-id": [
-          "9ce65783-d8f9-4c8b-b23a-ee4fc8d53029"
+          "1d818773-25e1-4b85-a8a7-0be85a141684"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -129,7 +129,7 @@
           "nosniff"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=ac839cc2-33ee-4879-a5b5-2895202ccb29/eastus2/f156fa19-705e-4369-8f7d-84b51513c114"
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=ac839cc2-33ee-4879-a5b5-2895202ccb29/eastus2/c3ccc3dc-f5a7-4377-9662-399b765607c9"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
           "799"
@@ -138,22 +138,22 @@
           "11999"
         ],
         "x-ms-correlation-request-id": [
-          "a45f4467-9c9b-42c3-8263-6a81d437c485"
+          "bcb7ea6d-5fdf-4762-87b2-0daa071d0088"
         ],
         "x-ms-routing-request-id": [
-          "EASTUS2:20251205T063111Z:a45f4467-9c9b-42c3-8263-6a81d437c485"
+          "EASTUS2:20251205T193842Z:bcb7ea6d-5fdf-4762-87b2-0daa071d0088"
         ],
         "X-Cache": [
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: D971A22B3B5C406098E3DF38EBE38745 Ref B: CO6AA3150217047 Ref C: 2025-12-05T06:31:11Z"
+          "Ref A: B4E78506C8C64602A39B71418D176D42 Ref B: CO6AA3150220051 Ref C: 2025-12-05T19:38:42Z"
         ],
         "Date": [
-          "Fri, 05 Dec 2025 06:31:11 GMT"
+          "Fri, 05 Dec 2025 19:38:42 GMT"
         ],
         "Content-Length": [
-          "685"
+          "621"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -162,10 +162,10 @@
           "-1"
         ],
         "Last-Modified": [
-          "Fri, 05 Dec 2025 06:31:11 GMT"
+          "Fri, 05 Dec 2025 19:38:42 GMT"
         ]
       },
-      "ResponseBody": "{\r\n  \"type\": \"Microsoft.Batch/batchAccounts/applications/versions\",\r\n  \"id\": \"/subscriptions/94bd7ded-68b4-4ffa-82a5-37ac72caa2ec/resourceGroups/automation/providers/Microsoft.Batch/batchAccounts/dotnotsdkbatchaccount2/applications/newApplicationPackage/versions/foo\",\r\n  \"name\": \"foo\",\r\n  \"etag\": \"W/\\\"0x8DE33C7E21AEA47\\\"\",\r\n  \"properties\": {\r\n    \"storageUrl\": \"https://batchstorageps1.blob.core.windows.net/app-newapplicationpackage-c131d82c015846f6a98602bc1b037be5/foo?sv=2025-05-05&se=2025-12-05T10%3A31%3A11Z&sr=b&sp=rw&sig=eKvoZC043S%2FmVhBPvgJhjc832Ru%2Bsr9AFyLxBdTolCI%3D\",\r\n    \"storageUrlExpiry\": \"2025-12-05T10:31:11.8191108Z\",\r\n    \"state\": \"Active\",\r\n    \"format\": \"zip\",\r\n    \"lastActivationTime\": \"2025-12-05T06:21:17.6902339Z\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"type\": \"Microsoft.Batch/batchAccounts/applications/versions\",\r\n  \"id\": \"/subscriptions/94bd7ded-68b4-4ffa-82a5-37ac72caa2ec/resourceGroups/automation/providers/Microsoft.Batch/batchAccounts/dotnotsdkbatchaccount2/applications/newApplicationPackage/versions/foo\",\r\n  \"name\": \"foo\",\r\n  \"etag\": \"W/\\\"0x8DE3435E5DEBBC0\\\"\",\r\n  \"properties\": {\r\n    \"storageUrl\": \"https://batchstorageps1.blob.core.windows.net/app-newapplicationpackage-bc8601ad99a24cabb29f20bb80df2a34/foo?sv=2025-05-05&se=2025-12-05T23%3A38%3A42Z&sr=b&sp=rw&sig=YfOMO9Q%2FGAzlOFr4ENGj3%2B7ToJ02LsWCZFdqbrtiK%2FI%3D\",\r\n    \"storageUrlExpiry\": \"2025-12-05T23:38:42.7756682Z\",\r\n    \"state\": \"Pending\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -177,7 +177,7 @@
           "en-US"
         ],
         "x-ms-client-request-id": [
-          "d208a972-c329-45fb-9a01-c0dde935e514"
+          "e331bb6c-237f-4837-8356-280d2cbb6f57"
         ],
         "User-Agent": [
           "FxVersion/8.0.2225.52707",
@@ -195,10 +195,10 @@
           "no-cache"
         ],
         "ETag": [
-          "W/\"0x8DE33C7B80291BF\""
+          "W/\"0x8DE3435E35FC160\""
         ],
         "x-ms-request-id": [
-          "003e9890-9959-4473-90f8-248f71093cca"
+          "62ea5f0b-2a5c-461e-9be7-248494adb381"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -207,7 +207,7 @@
           "nosniff"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=ac839cc2-33ee-4879-a5b5-2895202ccb29/eastus2/14191080-0b33-4f47-981d-94aeb5c480c2"
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=ac839cc2-33ee-4879-a5b5-2895202ccb29/eastus2/58fce0c4-102a-40b0-bfac-ed03c69e93bc"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "1099"
@@ -216,22 +216,22 @@
           "16499"
         ],
         "x-ms-correlation-request-id": [
-          "ef6710ee-a5f7-4e1f-b105-8a78212cb406"
+          "5de1debe-b721-4a15-aa00-93f62835bd8f"
         ],
         "x-ms-routing-request-id": [
-          "EASTUS2:20251205T063100Z:ef6710ee-a5f7-4e1f-b105-8a78212cb406"
+          "EASTUS2:20251205T193842Z:5de1debe-b721-4a15-aa00-93f62835bd8f"
         ],
         "X-Cache": [
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: B7F13B328D6F4699B4715E1B04496A23 Ref B: CO6AA3150217047 Ref C: 2025-12-05T06:31:00Z"
+          "Ref A: D62CA0AB220B4EB59FDEBE581FCA243C Ref B: CO6AA3150220051 Ref C: 2025-12-05T19:38:42Z"
         ],
         "Date": [
-          "Fri, 05 Dec 2025 06:31:00 GMT"
+          "Fri, 05 Dec 2025 19:38:41 GMT"
         ],
         "Content-Length": [
-          "681"
+          "621"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -240,10 +240,10 @@
           "-1"
         ],
         "Last-Modified": [
-          "Fri, 05 Dec 2025 06:30:01 GMT"
+          "Fri, 05 Dec 2025 19:38:38 GMT"
         ]
       },
-      "ResponseBody": "{\r\n  \"type\": \"Microsoft.Batch/batchAccounts/applications/versions\",\r\n  \"id\": \"/subscriptions/94bd7ded-68b4-4ffa-82a5-37ac72caa2ec/resourceGroups/automation/providers/Microsoft.Batch/batchAccounts/dotnotsdkbatchaccount2/applications/newApplicationPackage/versions/foo\",\r\n  \"name\": \"foo\",\r\n  \"etag\": \"W/\\\"0x8DE33C7B80291BF\\\"\",\r\n  \"properties\": {\r\n    \"storageUrl\": \"https://batchstorageps1.blob.core.windows.net/app-newapplicationpackage-c131d82c015846f6a98602bc1b037be5/foo?sv=2025-05-05&se=2025-12-05T10%3A31%3A00Z&sr=b&sp=rw&sig=aQO2MJYad0OLZCGJEtXUSpseAXeZBFGndfiHN1DjMg8%3D\",\r\n    \"storageUrlExpiry\": \"2025-12-05T10:31:00.8557064Z\",\r\n    \"state\": \"Active\",\r\n    \"format\": \"zip\",\r\n    \"lastActivationTime\": \"2025-12-05T06:21:17.6902339Z\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"type\": \"Microsoft.Batch/batchAccounts/applications/versions\",\r\n  \"id\": \"/subscriptions/94bd7ded-68b4-4ffa-82a5-37ac72caa2ec/resourceGroups/automation/providers/Microsoft.Batch/batchAccounts/dotnotsdkbatchaccount2/applications/newApplicationPackage/versions/foo\",\r\n  \"name\": \"foo\",\r\n  \"etag\": \"W/\\\"0x8DE3435E35FC160\\\"\",\r\n  \"properties\": {\r\n    \"storageUrl\": \"https://batchstorageps1.blob.core.windows.net/app-newapplicationpackage-bc8601ad99a24cabb29f20bb80df2a34/foo?sv=2025-05-05&se=2025-12-05T23%3A38%3A42Z&sr=b&sp=rw&sig=YfOMO9Q%2FGAzlOFr4ENGj3%2B7ToJ02LsWCZFdqbrtiK%2FI%3D\",\r\n    \"storageUrlExpiry\": \"2025-12-05T23:38:42.3713446Z\",\r\n    \"state\": \"Pending\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -255,7 +255,7 @@
           "en-US"
         ],
         "x-ms-client-request-id": [
-          "d208a972-c329-45fb-9a01-c0dde935e514"
+          "e331bb6c-237f-4837-8356-280d2cbb6f57"
         ],
         "User-Agent": [
           "FxVersion/8.0.2225.52707",
@@ -273,10 +273,10 @@
           "no-cache"
         ],
         "ETag": [
-          "W/\"0x8DE33C7E6E64851\""
+          "W/\"0x8DE3435E850A575\""
         ],
         "x-ms-request-id": [
-          "2c18aa52-c930-4960-ab34-adb41accd2bf"
+          "efe642d6-cea7-4006-8bbc-2622965fa6c8"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -285,7 +285,7 @@
           "nosniff"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=ac839cc2-33ee-4879-a5b5-2895202ccb29/eastus2/b46d3f00-d1a6-4fa4-a554-551646e6e62f"
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=ac839cc2-33ee-4879-a5b5-2895202ccb29/eastus2/84abf5d9-9cec-4848-b79f-2ed8844ec345"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "1099"
@@ -294,19 +294,19 @@
           "16499"
         ],
         "x-ms-correlation-request-id": [
-          "7c2e39fa-04ef-4f47-b72b-4223e4f1220f"
+          "6930b49a-5110-436a-ae88-09051c7bab76"
         ],
         "x-ms-routing-request-id": [
-          "EASTUS2:20251205T063325Z:7c2e39fa-04ef-4f47-b72b-4223e4f1220f"
+          "EASTUS2:20251205T193847Z:6930b49a-5110-436a-ae88-09051c7bab76"
         ],
         "X-Cache": [
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 5AD7296E15B04E17AA93D8F20DFC1AC0 Ref B: CO6AA3150218011 Ref C: 2025-12-05T06:33:24Z"
+          "Ref A: 0CB8A8B7E4DC421C95CE7D32F2C599E8 Ref B: CO6AA3150220051 Ref C: 2025-12-05T19:38:46Z"
         ],
         "Date": [
-          "Fri, 05 Dec 2025 06:33:24 GMT"
+          "Fri, 05 Dec 2025 19:38:46 GMT"
         ],
         "Content-Length": [
           "683"
@@ -318,10 +318,10 @@
           "-1"
         ],
         "Last-Modified": [
-          "Fri, 05 Dec 2025 06:31:19 GMT"
+          "Fri, 05 Dec 2025 19:38:46 GMT"
         ]
       },
-      "ResponseBody": "{\r\n  \"type\": \"Microsoft.Batch/batchAccounts/applications/versions\",\r\n  \"id\": \"/subscriptions/94bd7ded-68b4-4ffa-82a5-37ac72caa2ec/resourceGroups/automation/providers/Microsoft.Batch/batchAccounts/dotnotsdkbatchaccount2/applications/newApplicationPackage/versions/foo\",\r\n  \"name\": \"foo\",\r\n  \"etag\": \"W/\\\"0x8DE33C7E6E64851\\\"\",\r\n  \"properties\": {\r\n    \"storageUrl\": \"https://batchstorageps1.blob.core.windows.net/app-newapplicationpackage-c131d82c015846f6a98602bc1b037be5/foo?sv=2025-05-05&se=2025-12-05T10%3A33%3A25Z&sr=b&sp=rw&sig=Re79w01T2q5z6h%2F9SoEKJXKfQpqpnefC341wJWcFmaE%3D\",\r\n    \"storageUrlExpiry\": \"2025-12-05T10:33:25.0420776Z\",\r\n    \"state\": \"Active\",\r\n    \"format\": \"zip\",\r\n    \"lastActivationTime\": \"2025-12-05T06:31:19.8307036Z\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"type\": \"Microsoft.Batch/batchAccounts/applications/versions\",\r\n  \"id\": \"/subscriptions/94bd7ded-68b4-4ffa-82a5-37ac72caa2ec/resourceGroups/automation/providers/Microsoft.Batch/batchAccounts/dotnotsdkbatchaccount2/applications/newApplicationPackage/versions/foo\",\r\n  \"name\": \"foo\",\r\n  \"etag\": \"W/\\\"0x8DE3435E850A575\\\"\",\r\n  \"properties\": {\r\n    \"storageUrl\": \"https://batchstorageps1.blob.core.windows.net/app-newapplicationpackage-bc8601ad99a24cabb29f20bb80df2a34/foo?sv=2025-05-05&se=2025-12-05T23%3A38%3A47Z&sr=b&sp=rw&sig=KLYT8QV%2FgO1eKwcZoo1Wgrg06WLAmsBPvj2cnrQ4Fzk%3D\",\r\n    \"storageUrlExpiry\": \"2025-12-05T23:38:47.0717506Z\",\r\n    \"state\": \"Active\",\r\n    \"format\": \"zip\",\r\n    \"lastActivationTime\": \"2025-12-05T19:38:46.8634617Z\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -333,7 +333,7 @@
           "en-US"
         ],
         "x-ms-client-request-id": [
-          "d208a972-c329-45fb-9a01-c0dde935e514"
+          "e331bb6c-237f-4837-8356-280d2cbb6f57"
         ],
         "User-Agent": [
           "FxVersion/8.0.2225.52707",
@@ -351,10 +351,10 @@
           "no-cache"
         ],
         "ETag": [
-          "W/\"0x8DE33C5C3F582D1\""
+          "W/\"0x8DE3435E35DD711\""
         ],
         "x-ms-request-id": [
-          "38376bf5-d2f5-4816-b031-0ae98b0d6db6"
+          "c35fe665-eac6-451e-bdf2-2491bd7b39fc"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -363,7 +363,7 @@
           "nosniff"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=ac839cc2-33ee-4879-a5b5-2895202ccb29/eastus2/8d2ac1fd-6fb9-4451-9967-2309f4682398"
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=ac839cc2-33ee-4879-a5b5-2895202ccb29/eastus2/c85f2e99-0977-4252-9a63-11293b597efd"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "1099"
@@ -372,19 +372,19 @@
           "16499"
         ],
         "x-ms-correlation-request-id": [
-          "ccb9e528-2b94-4fcd-87a9-2599ba5e9f81"
+          "1b3e625b-2655-4a20-826d-6a205322e450"
         ],
         "x-ms-routing-request-id": [
-          "EASTUS2:20251205T063107Z:ccb9e528-2b94-4fcd-87a9-2599ba5e9f81"
+          "EASTUS2:20251205T193842Z:1b3e625b-2655-4a20-826d-6a205322e450"
         ],
         "X-Cache": [
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 965ECA2CA4BA49DCB3907BA150CDFA60 Ref B: CO6AA3150217047 Ref C: 2025-12-05T06:31:07Z"
+          "Ref A: C5FE1E1B5D7449D8AECACE2DA933B9DA Ref B: CO6AA3150220051 Ref C: 2025-12-05T19:38:42Z"
         ],
         "Date": [
-          "Fri, 05 Dec 2025 06:31:06 GMT"
+          "Fri, 05 Dec 2025 19:38:42 GMT"
         ],
         "Content-Length": [
           "335"
@@ -396,10 +396,10 @@
           "-1"
         ],
         "Last-Modified": [
-          "Fri, 05 Dec 2025 06:16:02 GMT"
+          "Fri, 05 Dec 2025 19:38:38 GMT"
         ]
       },
-      "ResponseBody": "{\r\n  \"type\": \"Microsoft.Batch/batchAccounts/applications\",\r\n  \"id\": \"/subscriptions/94bd7ded-68b4-4ffa-82a5-37ac72caa2ec/resourceGroups/automation/providers/Microsoft.Batch/batchAccounts/dotnotsdkbatchaccount2/applications/newApplicationPackage\",\r\n  \"name\": \"newApplicationPackage\",\r\n  \"etag\": \"W/\\\"0x8DE33C5C3F582D1\\\"\",\r\n  \"properties\": {\r\n    \"allowUpdates\": true\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"type\": \"Microsoft.Batch/batchAccounts/applications\",\r\n  \"id\": \"/subscriptions/94bd7ded-68b4-4ffa-82a5-37ac72caa2ec/resourceGroups/automation/providers/Microsoft.Batch/batchAccounts/dotnotsdkbatchaccount2/applications/newApplicationPackage\",\r\n  \"name\": \"newApplicationPackage\",\r\n  \"etag\": \"W/\\\"0x8DE3435E35DD711\\\"\",\r\n  \"properties\": {\r\n    \"allowUpdates\": true\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -411,7 +411,7 @@
           "en-US"
         ],
         "x-ms-client-request-id": [
-          "d208a972-c329-45fb-9a01-c0dde935e514"
+          "e331bb6c-237f-4837-8356-280d2cbb6f57"
         ],
         "User-Agent": [
           "FxVersion/8.0.2225.52707",
@@ -435,10 +435,10 @@
           "no-cache"
         ],
         "ETag": [
-          "W/\"0x8DE33C7E6E64851\""
+          "W/\"0x8DE3435E850A575\""
         ],
         "x-ms-request-id": [
-          "056d8963-3d55-4da5-942f-804c7c5f8e7f"
+          "bd484876-afba-4d51-b399-d394f12e0aeb"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -447,7 +447,7 @@
           "nosniff"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=ac839cc2-33ee-4879-a5b5-2895202ccb29/eastus2/613ab08a-b128-431c-84f7-777352a46e83"
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=ac839cc2-33ee-4879-a5b5-2895202ccb29/eastus2/5597a7e4-f312-40bd-827c-cf7a59a87c21"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
           "799"
@@ -456,22 +456,22 @@
           "11999"
         ],
         "x-ms-correlation-request-id": [
-          "103136a6-81fe-4089-a238-ec2c566b9d6c"
+          "465d5b34-459b-4fbb-9716-5bdff181a1fd"
         ],
         "x-ms-routing-request-id": [
-          "EASTUS2:20251205T063119Z:103136a6-81fe-4089-a238-ec2c566b9d6c"
+          "EASTUS2:20251205T193846Z:465d5b34-459b-4fbb-9716-5bdff181a1fd"
         ],
         "X-Cache": [
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 682870187EEB48348CDDC7FF597BBEC0 Ref B: CO6AA3150217047 Ref C: 2025-12-05T06:31:19Z"
+          "Ref A: 62EA97690D134A2EAF49EEB9C6EEE371 Ref B: CO6AA3150220051 Ref C: 2025-12-05T19:38:46Z"
         ],
         "Date": [
-          "Fri, 05 Dec 2025 06:31:19 GMT"
+          "Fri, 05 Dec 2025 19:38:46 GMT"
         ],
         "Content-Length": [
-          "685"
+          "683"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -480,10 +480,10 @@
           "-1"
         ],
         "Last-Modified": [
-          "Fri, 05 Dec 2025 06:31:19 GMT"
+          "Fri, 05 Dec 2025 19:38:46 GMT"
         ]
       },
-      "ResponseBody": "{\r\n  \"type\": \"Microsoft.Batch/batchAccounts/applications/versions\",\r\n  \"id\": \"/subscriptions/94bd7ded-68b4-4ffa-82a5-37ac72caa2ec/resourceGroups/automation/providers/Microsoft.Batch/batchAccounts/dotnotsdkbatchaccount2/applications/newApplicationPackage/versions/foo\",\r\n  \"name\": \"foo\",\r\n  \"etag\": \"W/\\\"0x8DE33C7E6E64851\\\"\",\r\n  \"properties\": {\r\n    \"storageUrl\": \"https://batchstorageps1.blob.core.windows.net/app-newapplicationpackage-c131d82c015846f6a98602bc1b037be5/foo?sv=2025-05-05&se=2025-12-05T10%3A31%3A19Z&sr=b&sp=rw&sig=%2FREUKvWfYAptTptjQxlZr3B5wl0gbEceZc0E9pZRF%2FI%3D\",\r\n    \"storageUrlExpiry\": \"2025-12-05T10:31:19.9003174Z\",\r\n    \"state\": \"Active\",\r\n    \"format\": \"zip\",\r\n    \"lastActivationTime\": \"2025-12-05T06:31:19.8307036Z\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"type\": \"Microsoft.Batch/batchAccounts/applications/versions\",\r\n  \"id\": \"/subscriptions/94bd7ded-68b4-4ffa-82a5-37ac72caa2ec/resourceGroups/automation/providers/Microsoft.Batch/batchAccounts/dotnotsdkbatchaccount2/applications/newApplicationPackage/versions/foo\",\r\n  \"name\": \"foo\",\r\n  \"etag\": \"W/\\\"0x8DE3435E850A575\\\"\",\r\n  \"properties\": {\r\n    \"storageUrl\": \"https://batchstorageps1.blob.core.windows.net/app-newapplicationpackage-bc8601ad99a24cabb29f20bb80df2a34/foo?sv=2025-05-05&se=2025-12-05T23%3A38%3A46Z&sr=b&sp=rw&sig=a5Xdg3k%2F4abJM7XOuz3k3cTCR63WcThWBcbO1DTIQoE%3D\",\r\n    \"storageUrlExpiry\": \"2025-12-05T23:38:46.8946589Z\",\r\n    \"state\": \"Active\",\r\n    \"format\": \"zip\",\r\n    \"lastActivationTime\": \"2025-12-05T19:38:46.8634617Z\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -492,7 +492,7 @@
       "RequestMethod": "DELETE",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "6d09960e-99fd-4d61-a1fa-62064d6ec2be"
+          "f93c7288-b0ad-4687-ad31-4b576c62f2a2"
         ],
         "Accept-Language": [
           "en-US"
@@ -513,7 +513,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "9d3688ab-18a6-4c18-9151-681105326ca0"
+          "d7289f6e-602b-47f7-ad58-d4d77f6d6efa"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -522,7 +522,7 @@
           "nosniff"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=ac839cc2-33ee-4879-a5b5-2895202ccb29/eastus2/838c0bc1-86c6-4e7b-ae99-1a79671096f3"
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=ac839cc2-33ee-4879-a5b5-2895202ccb29/eastus2/bdfb8fe6-f97f-46d9-8d89-dfafe000e474"
         ],
         "x-ms-ratelimit-remaining-subscription-deletes": [
           "799"
@@ -531,19 +531,19 @@
           "11999"
         ],
         "x-ms-correlation-request-id": [
-          "b086d688-0be3-4486-8dae-737b7399e2a1"
+          "13c087f0-c574-4e5f-98da-20d33e660fe6"
         ],
         "x-ms-routing-request-id": [
-          "EASTUS2:20251205T063325Z:b086d688-0be3-4486-8dae-737b7399e2a1"
+          "EASTUS2:20251205T193847Z:13c087f0-c574-4e5f-98da-20d33e660fe6"
         ],
         "X-Cache": [
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 72BD34FE438D4EC3B206FA31671B8A4C Ref B: CO6AA3150218011 Ref C: 2025-12-05T06:33:25Z"
+          "Ref A: B5CAD244E4F24BBA8A78C05858944A27 Ref B: CO6AA3150220051 Ref C: 2025-12-05T19:38:47Z"
         ],
         "Date": [
-          "Fri, 05 Dec 2025 06:33:24 GMT"
+          "Fri, 05 Dec 2025 19:38:46 GMT"
         ],
         "Expires": [
           "-1"
@@ -561,7 +561,7 @@
       "RequestMethod": "DELETE",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "237179e3-ad9d-40a3-85af-799899d567f1"
+          "ff40f2ef-5ead-4782-8b7d-6fd5d47916db"
         ],
         "Accept-Language": [
           "en-US"
@@ -582,7 +582,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "f75d1e92-9611-473a-8d32-c02b0670a3ac"
+          "df13234c-66c3-465a-8735-58585e1fc3d5"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -591,7 +591,7 @@
           "nosniff"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=ac839cc2-33ee-4879-a5b5-2895202ccb29/eastus2/09e105bf-7de7-4930-b6c5-3defd8489171"
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=ac839cc2-33ee-4879-a5b5-2895202ccb29/eastus2/a29753b9-1d69-41d0-92d1-d1a4b87b0021"
         ],
         "x-ms-ratelimit-remaining-subscription-deletes": [
           "799"
@@ -600,19 +600,19 @@
           "11999"
         ],
         "x-ms-correlation-request-id": [
-          "fc2008c8-1d8c-4a14-8446-70e47608c429"
+          "927fa8c1-fbf9-4eae-af1b-c6f045974c4d"
         ],
         "x-ms-routing-request-id": [
-          "EASTUS2:20251205T063325Z:fc2008c8-1d8c-4a14-8446-70e47608c429"
+          "EASTUS2:20251205T193847Z:927fa8c1-fbf9-4eae-af1b-c6f045974c4d"
         ],
         "X-Cache": [
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 71E8894AF92F4867A63873069B788376 Ref B: CO6AA3150218011 Ref C: 2025-12-05T06:33:25Z"
+          "Ref A: E530559258FA4615AE6EF61797B2AFCB Ref B: CO6AA3150220051 Ref C: 2025-12-05T19:38:47Z"
         ],
         "Date": [
-          "Fri, 05 Dec 2025 06:33:24 GMT"
+          "Fri, 05 Dec 2025 19:38:47 GMT"
         ],
         "Expires": [
           "-1"

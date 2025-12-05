@@ -28,8 +28,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 
         }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Fact(Skip = "Successful re-recording, but fails in playback. See issue https://github.com/Azure/azure-powershell/issues/7512")]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestUploadApplicationPackage()
         {
             string id = "newApplicationPackage";
