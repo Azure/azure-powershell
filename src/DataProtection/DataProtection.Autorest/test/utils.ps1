@@ -36,7 +36,7 @@ function setupEnv() {
     # as default. You could change them if needed.
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
-    $env.RecordDate = (Get-Date -Year 2025 -Month 10 -Day 25 -Hour 17 -Minute 31 -Second 02).ToString('dd-MM-yyyy-h-m-s')
+    $env.RecordDate = (Get-Date).ToString('dd-MM-yyyy-h-m-s')
     # For any resources you created for test, you should add it to $env here.
 
     $BackupInstanceTestVariables = @{
@@ -100,6 +100,7 @@ function setupEnv() {
         SubscriptionId = "62b829ee-7936-40c9-a1c9-47a93f9f3965"
         ResourceGroupName = "BlobBackup-BugBash"
         VaultName = "jecECYBlobVault"
+        StorageAccountName = "ecystorageaccount"
     }
 
     $OssVariables = @{
@@ -192,7 +193,7 @@ function setupEnv() {
         StorageAccountName = "blobsourcesa1"
         OperationalPolicyName = "operationalpol2"
         VaultPolicyName = "vaultpolicy"
-        OperationalVaultedPolicyName = "opvaultpolicy3"
+        OperationalVaultedPolicyName = "opvaultpolicy4"
         StorageAccId = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/dataprotectionpstest-rg/providers/Microsoft.Storage/storageAccounts/blobsourcesa1"
         TargetStorageAccId = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/dataprotectionpstest-rg/providers/Microsoft.Storage/storageAccounts/blobtargetsa"
         TargetStorageAccountName = "blobtargetsa"
