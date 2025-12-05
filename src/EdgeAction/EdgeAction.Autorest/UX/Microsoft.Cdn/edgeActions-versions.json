@@ -1,0 +1,138 @@
+{
+  "resourceType": "edgeActions/versions",
+  "apiVersion": "2025-09-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.edgeaction"
+  },
+  "commands": [
+    {
+      "name": "Get-AzEdgeActionVersion",
+      "description": "Get a EdgeActionVersion",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/edgeActions/{edgeActionName}/versions/{version}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.edgeaction/get-azedgeactionversion"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-EdgeActionName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]",
+              "-Version <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a EdgeActionVersion",
+          "parameters": [
+            {
+              "name": "-EdgeActionName",
+              "value": "[Path.edgeActionName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            },
+            {
+              "name": "-Version",
+              "value": "[Path.version]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzEdgeActionVersion",
+      "description": "Delete a EdgeActionVersion",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/edgeActions/{edgeActionName}/versions/{version}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.edgeaction/remove-azedgeactionversion"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-EdgeActionName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]",
+              "-Version <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a EdgeActionVersion",
+          "parameters": [
+            {
+              "name": "-EdgeActionName",
+              "value": "[Path.edgeActionName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            },
+            {
+              "name": "-Version",
+              "value": "[Path.version]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Switch-AzEdgeActionVersionDefault",
+      "description": "A long-running resource action.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/edgeActions/{edgeActionName}/versions/{version}/swapDefault",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.edgeaction/switch-azedgeactionversiondefault"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-EdgeActionName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]",
+              "-Version <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "A long-running resource action.",
+          "parameters": [
+            {
+              "name": "-EdgeActionName",
+              "value": "[Path.edgeActionName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            },
+            {
+              "name": "-Version",
+              "value": "[Path.version]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
