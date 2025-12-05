@@ -87,6 +87,8 @@ namespace Microsoft.Azure.Commands.Aks
         {
             BeforeBuildNewCluster();
 
+            var publicNetworkAccess = GetPublicNetworkAccess();
+
             var defaultAgentPoolProfile = new ManagedClusterAgentPoolProfile(
                 name: NodeName ?? "default",
                 count: NodeCount,
@@ -105,6 +107,10 @@ namespace Microsoft.Azure.Commands.Aks
             {
                 defaultAgentPoolProfile.EnableAutoScaling = EnableNodeAutoScaling.ToBool();
             }
+            if (this.IsParameterBound(c => c.NodeWorkloadRuntime))
+            {
+                defaultAgentPoolProfile.WorkloadRuntime = NodeWorkloadRuntime;
+            }
 
             var pubKey =
                 new List<ContainerServiceSshPublicKey> { new ContainerServiceSshPublicKey(SshKeyValue) };
@@ -118,7 +124,6 @@ namespace Microsoft.Azure.Commands.Aks
             var spProfile = new ManagedClusterServicePrincipalProfile(
                 acsServicePrincipal.SpId,
                 acsServicePrincipal.ClientSecret);
-
             WriteVerbose(string.Format(Resources.DeployingYourManagedKubeCluster, AcsSpFilePath));
             var managedCluster = new ManagedCluster(
                 Location,
@@ -126,6 +131,8 @@ namespace Microsoft.Azure.Commands.Aks
                 tags: TagsConversionHelper.CreateTagDictionary(Tag, true),
                 dnsPrefix: DnsNamePrefix,
                 kubernetesVersion: KubernetesVersion,
+                supportPlan: SupportPlan,
+                publicNetworkAccess: publicNetworkAccess,
                 agentPoolProfiles: new List<ManagedClusterAgentPoolProfile> { defaultAgentPoolProfile },
                 linuxProfile: linuxProfile,
                 servicePrincipalProfile: spProfile);
@@ -134,7 +141,25 @@ namespace Microsoft.Azure.Commands.Aks
 
         private ContainerServiceNetworkProfile SetNetworkProfile(ContainerServiceNetworkProfile networkProfile)
         {
+            if (this.IsParameterBound(c => c.IPFamily))
+            {
+                networkProfile.IPFamilies = IPFamily;
+            }
+            if (this.IsParameterBound(c => c.NetworkDataplane))
+            {
+                networkProfile.NetworkDataplane = NetworkDataplane;
+            }
+            if (this.IsParameterBound(c => c.NetworkPluginMode))
+            {
+                networkProfile.NetworkPluginMode = NetworkPluginMode;
+            }
+            if (this.IsParameterBound(c => c.EnabledStaticEgressGateway))
+            {
+                networkProfile.StaticEgressGatewayProfile = new ManagedClusterStaticEgressGatewayProfile(EnabledStaticEgressGateway.ToBool());
+            }
             networkProfile.LoadBalancerProfile = CreateOrUpdateLoadBalancerProfile(networkProfile.LoadBalancerProfile);
+            networkProfile.NatGatewayProfile = CreateOrUpdateNATGatewayProfile(networkProfile.NatGatewayProfile);
+            networkProfile.AdvancedNetworking = CreateOrUpdateAdvancedNetworking(networkProfile.AdvancedNetworking);
 
             return networkProfile;
         }
@@ -283,6 +308,10 @@ namespace Microsoft.Azure.Commands.Aks
                                     defaultAgentPoolProfile.NodeLabels.Add(key.ToString(), NodePoolLabel[key].ToString());
                                 }
                             }
+                            if (this.IsParameterBound(c => c.NodeTaint))
+                            {
+                                defaultAgentPoolProfile.NodeTaints = NodeTaint;
+                            }
                             if (this.IsParameterBound(c => c.NodePoolTag))
                             {
                                 defaultAgentPoolProfile.Tags = new Dictionary<string, string>();
@@ -291,8 +320,11 @@ namespace Microsoft.Azure.Commands.Aks
                                     defaultAgentPoolProfile.Tags.Add(key.ToString(), NodePoolTag[key].ToString());
                                 }
                             }
+                            if (this.IsParameterBound(c => c.NodeWorkloadRuntime))
+                            {
+                                defaultAgentPoolProfile.WorkloadRuntime = NodeWorkloadRuntime;
+                            }
                         }
-
                         if (this.IsParameterBound(c => c.KubernetesVersion) && this.IsParameterBound(c => c.NodeImageOnly))
                         {
                             throw new AzPSArgumentException(Resources.UpdateKubernetesVersionAndNodeImageOnlyConflict, "KubernetesVersion");
@@ -323,6 +355,14 @@ namespace Microsoft.Azure.Commands.Aks
                         {
                             WriteVerbose(Resources.UpdatingKubernetesVersion);
                             cluster.KubernetesVersion = KubernetesVersion;
+                        }
+                        if (this.IsParameterBound(c => c.SupportPlan))
+                        {
+                            cluster.SupportPlan = SupportPlan;
+                        }
+                        if (this.IsParameterBound(c => c.EnablePublicNetworkAccess))
+                        {
+                            cluster.PublicNetworkAccess = GetPublicNetworkAccess();
                         }
                         bool upgradeAllNode = false;
                         if (cluster.MaxAgentPools < 8 || !allAgentPoolVirtualMachineScaleSets)
@@ -404,6 +444,13 @@ namespace Microsoft.Azure.Commands.Aks
                     {
                         cluster.FqdnSubdomain = FqdnSubdomain;
                     }
+                    if (this.IsParameterBound(c => c.AssignKubeletIdentity))
+                    {
+                        cluster.IdentityProfile = new Dictionary<string, UserAssignedIdentity>
+                        {
+                            { "kubeletidentity", new UserAssignedIdentity(AssignKubeletIdentity) }
+                        };
+                    }
                     if (this.IsParameterBound(c => c.AutoScalerProfile))
                     {
                         cluster.AutoScalerProfile = AutoScalerProfile;
@@ -453,6 +500,44 @@ namespace Microsoft.Azure.Commands.Aks
                     {
                         cluster.DisableLocalAccounts = DisableLocalAccount.ToBool();
                     }
+                    if (this.IsParameterBound(c => c.EnabledMonitorMetric))
+                    {
+                        cluster.AzureMonitorProfile = new ManagedClusterAzureMonitorProfile(new ManagedClusterAzureMonitorProfileMetrics(enabled: EnabledMonitorMetric.ToBool()));
+                    }
+                    if (this.IsParameterBound(c => c.EnableAIToolchainOperator))
+                    {
+                        cluster.AiToolchainOperatorProfile = new ManagedClusterAIToolchainOperatorProfile(enabled: EnableAIToolchainOperator.ToBool());
+                    }
+                    if (this.IsParameterBound(c => c.EnableOidcIssuer))
+                    {
+                        cluster.OidcIssuerProfile = new ManagedClusterOidcIssuerProfile(enabled: EnableOidcIssuer.ToBool());
+                    }
+                    if (this.IsParameterBound(c => c.NodeProvisioningMode) || this.IsParameterBound(c => c.NodeProvisioningDefaultPool))
+                    {
+                        if (cluster.NodeProvisioningProfile == null)
+                        {
+                            cluster.NodeProvisioningProfile = new ManagedClusterNodeProvisioningProfile();
+                        }
+                        if (this.IsParameterBound(c => c.NodeProvisioningMode))
+                        {
+                            cluster.NodeProvisioningProfile.Mode = NodeProvisioningMode;
+                        }
+                        if (this.IsParameterBound(c => c.NodeProvisioningDefaultPool))
+                        {
+                            cluster.NodeProvisioningProfile.DefaultNodePools = NodeProvisioningDefaultPool;
+                        }
+                    }
+                    if (this.IsParameterBound(c => c.NodeResourceGroupRestrictionLevel))
+                    {
+                        cluster.NodeResourceGroupProfile = new ManagedClusterNodeResourceGroupProfile();
+                        cluster.NodeResourceGroupProfile.RestrictionLevel = NodeResourceGroupRestrictionLevel;
+                    }
+                    cluster.MetricsProfile = CreateOrUpdateMetricsProfile(cluster.MetricsProfile);
+                    cluster.BootstrapProfile = CreateOrUpdateBootstrapProfile(cluster.BootstrapProfile);
+                    cluster.PodIdentityProfile = CreateOrUpdatePodIdentityProfile(cluster.PodIdentityProfile);
+                    cluster.SecurityProfile = CreateOrUpdateSecurityProfile(cluster.SecurityProfile);
+                    cluster.WorkloadAutoScalerProfile = CreateOrUpdateWorkloadAutoScalerProfile(cluster.WorkloadAutoScalerProfile);
+
                     SetIdentity(cluster);
 
                     var kubeCluster = this.CreateOrUpdate(ResourceGroupName, Name, cluster);
@@ -487,11 +572,11 @@ namespace Microsoft.Azure.Commands.Aks
 
         private bool NeedUpdateNodeAgentPool()
         {
-            return this.IsParameterBound(c => c.NodeCount) || this.IsParameterBound(c => c.NodeOsDiskSize) ||
+            return this.IsParameterBound(c => c.NodeCount) || this.IsParameterBound(c => c.NodeOsDiskSize) || 
                 this.IsParameterBound(c => c.NodeVmSize) || this.IsParameterBound(c => c.EnableNodeAutoScaling) ||
                 this.IsParameterBound(c => c.NodeMinCount) || this.IsParameterBound(c => c.NodeMaxCount) || 
                 this.IsParameterBound(c => c.NodePoolMode) || this.IsParameterBound(c => c.NodePoolLabel) ||
-                this.IsParameterBound(c => c.NodePoolTag);
+                this.IsParameterBound(c => c.NodePoolTag) || this.IsParameterBound(c => c.NodeTaint);
         }
     }
 }
