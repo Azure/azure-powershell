@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 }
 
                 // Get the storage URL to upload the application package to by call create/update
-                var storageUrl = GetStorageUrl(resourceGroupName, accountName, applicationName, version);
+                var storageUrl = CreateUpdateAppPackage(resourceGroupName, accountName, applicationName, version);
 
                 UploadFileToApplicationPackage(resourceGroupName, accountName, applicationName, version, filePath, storageUrl, appPackageAlreadyExists);
 
@@ -194,7 +194,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
 
         private bool AppPackageExists(string resourceGroupName, string accountName, string applicationName, string version)
         {
-
             try
             {
                 // Checks to see if the package exists
@@ -221,9 +220,8 @@ namespace Microsoft.Azure.Commands.Batch.Models
         }
 
 
-        private string GetStorageUrl(string resourceGroupName, string accountName, string applicationName, string version)
+        private string CreateUpdateAppPackage(string resourceGroupName, string accountName, string applicationName, string version)
         {
-         
             try
             {
                 var addResponse = BatchManagementClient.ApplicationPackage.Create(
@@ -246,7 +244,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             return new PSApplicationPackage
             {
                 Format = response.Format,
-                //StorageUrl = response.StorageUrl,
+                StorageUrl = response.StorageUrl,
                 StorageUrlExpiry = response.StorageUrlExpiry,
                 State = response.State.Value,
                 Id = response.Id,

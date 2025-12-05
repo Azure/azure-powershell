@@ -53,6 +53,29 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestUploadApplicationPackageActivateOnly()
+        {
+            string id = "newApplicationPackage";
+
+            BatchAccountContext context = null;
+            TestRunner.RunTestScript(
+                null,
+                mockContext =>
+                {
+                    context = new ScenarioTestContext();
+                    ScenarioTestHelpers.CreateApplicationPackage(this, context, id, version, filePath);
+                },
+                () =>
+                {
+                    ScenarioTestHelpers.DeleteApplicationPackage(this, context, id, version);
+                    ScenarioTestHelpers.DeleteApplication(this, context, id);
+                },
+                $"Test-UploadApplicationPackageActivateOnly '{id}' '{version}' '{filePath}'"
+            );
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateApplicationPackage()
         {
             string id = "updateApplicationPackage";
