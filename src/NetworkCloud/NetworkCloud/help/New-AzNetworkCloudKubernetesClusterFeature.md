@@ -44,6 +44,14 @@ New-AzNetworkCloudKubernetesClusterFeature -FeatureName <String>
  [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### CreateViaIdentityKubernetesCluster
+```
+New-AzNetworkCloudKubernetesClusterFeature -FeatureName <String>
+ -KubernetesClusterInputObject <INetworkCloudIdentity> [-IfMatch <String>] [-IfNoneMatch <String>]
+ -KubernetesClusterFeatureParameter <IKubernetesClusterFeature> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Create a new Kubernetes cluster feature or create properties of the Kubernetes cluster feature if it exists.
 
@@ -173,12 +181,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -KubernetesClusterFeatureParameter
+KubernetesClusterFeature represents the feature of a Kubernetes cluster.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IKubernetesClusterFeature
+Parameter Sets: CreateViaIdentityKubernetesCluster
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -KubernetesClusterInputObject
 Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
-Parameter Sets: CreateViaIdentityKubernetesClusterExpanded
+Parameter Sets: CreateViaIdentityKubernetesClusterExpanded, CreateViaIdentityKubernetesCluster
 Aliases:
 
 Required: True
@@ -330,6 +353,8 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IKubernetesClusterFeature
 
 ### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
 

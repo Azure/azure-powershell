@@ -13,9 +13,10 @@ Create an in-memory object for ServiceLoadBalancerBgpPeer.
 ## SYNTAX
 
 ```
-New-AzNetworkCloudServiceLoadBalancerBgpPeerObject -Name <String> -PeerAddress <String> -PeerAsn <Int64>
- [-BfdEnabled <String>] [-BgpMultiHop <String>] [-HoldTime <String>] [-KeepAliveTime <String>] [-MyAsn <Int64>]
- [-Password <String>] [-PeerPort <Int64>] [<CommonParameters>]
+New-AzNetworkCloudServiceLoadBalancerBgpPeerObject [-BfdEnabled <String>] [-BgpMultiHop <String>]
+ [-HoldTime <String>] [-KeepAliveTime <String>] [-MyAsn <Int64>] [-Name <String>] [-Password <String>]
+ [-PeerAddress <String>] [-PeerAsn <Int64>] [-PeerPort <Int64>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,18 +24,27 @@ Create an in-memory object for ServiceLoadBalancerBgpPeer.
 
 ## EXAMPLES
 
-### Example 1: Create an in-memory object for ServiceLoadBalancerBgpPeer.
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzNetworkCloudServiceLoadBalancerBgpPeerObject -Name name -PeerAddress "203.0.113.254" -PeerAsn "64497" -BfdEnabled False -BgpMultiHop False -HoldTime "P300s" -KeepAliveTime "P300s" -MyAsn 64512 -Password REDACTED -PeerPort 1234
+{{ Add code here }}
 ```
 
 ```output
-BfdEnabled BgpMultiHop HoldTime KeepAliveTime MyAsn Name Password  PeerAddress   PeerAsn PeerPort
----------- ----------- -------- ------------- ----- ---- --------  -----------   ------- --------
-False      False       P300s    P300s         64512 name REDACTED 203.0.113.254 64497   1234
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Create an in-memory object for ServiceLoadBalancerBgpPeer.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -127,7 +137,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -157,7 +167,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -172,7 +182,7 @@ Type: System.Int64
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

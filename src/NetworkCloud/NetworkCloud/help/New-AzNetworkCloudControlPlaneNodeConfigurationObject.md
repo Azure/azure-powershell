@@ -13,10 +13,10 @@ Create an in-memory object for ControlPlaneNodeConfiguration.
 ## SYNTAX
 
 ```
-New-AzNetworkCloudControlPlaneNodeConfigurationObject -Count <Int64> -VMSkuName <String>
+New-AzNetworkCloudControlPlaneNodeConfigurationObject -Count <Int64>
  [-AdministratorConfigurationAdminUsername <String>]
  [-AdministratorConfigurationSshPublicKey <ISshPublicKey[]>] [-AvailabilityZone <String[]>]
- [<CommonParameters>]
+ [-VMSkuName <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,21 +24,27 @@ Create an in-memory object for ControlPlaneNodeConfiguration.
 
 ## EXAMPLES
 
-### Example 1: Create an in-memory object for ControlPlaneNodeConfiguration.
+### Example 1: {{ Add title here }}
 ```powershell
-$sshPublicKey=@{
-    keyData= "ssh-rsa"
-}
-New-AzNetworkCloudControlPlaneNodeConfigurationObject -Count 1 -VMSkuName vmSkuName -AdministratorConfigurationAdminUsername userName -AdministratorConfigurationSshPublicKey $sshPublicKey -AvailabilityZone @("1","2","3")
+{{ Add code here }}
 ```
 
 ```output
-AvailabilityZone Count VMSkuName
----------------- ----- ---------
-{1, 2, 3}        1     vmSkuName
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Create an in-memory object for ControlPlaneNodeConfiguration.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -113,7 +119,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

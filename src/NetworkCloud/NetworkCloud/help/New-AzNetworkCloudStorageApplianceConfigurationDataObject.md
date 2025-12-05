@@ -23,20 +23,27 @@ Create an in-memory object for StorageApplianceConfigurationData.
 
 ## EXAMPLES
 
-### Example 1: Create an in-memory object for StorageApplianceConfigurationData.
+### Example 1: {{ Add title here }}
 ```powershell
-$password = ConvertTo-SecureString "********" -AsPlainText -Force
-
-New-AzNetworkCloudStorageApplianceConfigurationDataObject -AdminCredentialsPassword $password -AdminCredentialsUsername username -RackSlot 1 -SerialNumber serialNumber -StorageApplianceName storageApplianceName
+{{ Add code here }}
 ```
 
 ```output
-RackSlot SerialNumber StorageApplianceName
--------- ------------ --------------------
-1        serialNumber storageApplianceName
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Create an in-memory object for StorageApplianceConfigurationData.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 

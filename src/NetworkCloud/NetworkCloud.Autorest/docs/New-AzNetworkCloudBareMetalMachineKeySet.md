@@ -12,12 +12,10 @@ Create a new bare metal machine key set or create the existing one for the provi
 
 ## SYNTAX
 
-### CreateViaIdentityClusterExpanded (Default)
+### CreateViaIdentityCluster (Default)
 ```
 New-AzNetworkCloudBareMetalMachineKeySet -ClusterInputObject <INetworkCloudIdentity> -Name <String>
- -AzureGroupId <String> -Expiration <DateTime> -ExtendedLocationName <String> -ExtendedLocationType <String>
- -JumpHostsAllowed <String[]> -Location <String> -PrivilegeLevel <String> -UserList <IKeySetUser[]>
- [-IfMatch <String>] [-IfNoneMatch <String>] [-OSGroupName <String>] [-Tag <Hashtable>]
+ -BareMetalMachineKeySetParameter <IBareMetalMachineKeySet> [-IfMatch <String>] [-IfNoneMatch <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -27,6 +25,16 @@ New-AzNetworkCloudBareMetalMachineKeySet -ClusterName <String> -Name <String> -R
  -AzureGroupId <String> -Expiration <DateTime> -ExtendedLocationName <String> -ExtendedLocationType <String>
  -JumpHostsAllowed <String[]> -Location <String> -PrivilegeLevel <String> -UserList <IKeySetUser[]>
  [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] [-OSGroupName <String>]
+ [-PrivilegeLevelName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentityClusterExpanded
+```
+New-AzNetworkCloudBareMetalMachineKeySet -ClusterInputObject <INetworkCloudIdentity> -Name <String>
+ -AzureGroupId <String> -Expiration <DateTime> -ExtendedLocationName <String> -ExtendedLocationType <String>
+ -JumpHostsAllowed <String[]> -Location <String> -PrivilegeLevel <String> -UserList <IKeySetUser[]>
+ [-IfMatch <String>] [-IfNoneMatch <String>] [-OSGroupName <String>] [-PrivilegeLevelName <String>]
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -106,12 +114,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -BareMetalMachineKeySetParameter
+BareMetalMachineKeySet represents the bare metal machine key set.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineKeySet
+Parameter Sets: CreateViaIdentityCluster
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ClusterInputObject
 Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
-Parameter Sets: CreateViaIdentityClusterExpanded
+Parameter Sets: CreateViaIdentityCluster, CreateViaIdentityClusterExpanded
 Aliases:
 
 Required: True
@@ -350,6 +373,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PrivilegeLevelName
+The name of the access level to apply when the privilege level is set to Other.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityClusterExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -447,6 +485,8 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineKeySet
 
 ### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
 

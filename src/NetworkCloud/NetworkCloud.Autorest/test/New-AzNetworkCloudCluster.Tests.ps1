@@ -59,6 +59,8 @@ Describe 'New-AzNetworkCloudCluster' {
             $tagHash = @{
                 tag1 = $clusterconfig.tags
             }
+            $identityUserAssignedIdentity = @{}
+            $identityUserAssignedIdentity.Add($clusterconfig.miUserAssignedIdentityResourceId, @{})
             $password = ConvertTo-SecureString "********" -AsPlainText -Force
             $bmmConfigurationData1 = New-AzNetworkCloudBareMetalMachineConfigurationDataObject -BmcCredentialsPassword $password -BmcCredentialsUsername $clusterconfig.bmcCredsUsername -BmcMacAddress $clusterconfig.bmcMacAddress1 -BootMacAddress $clusterconfig.bootMacAddress1 -RackSlot 1 -SerialNumber $clusterconfig.serialNumber1 -MachineDetail "machineDetail" -MachineName "lab00r750wkr1"
             $bmmConfigurationData2 = New-AzNetworkCloudBareMetalMachineConfigurationDataObject -BmcCredentialsPassword $password -BmcCredentialsUsername $clusterconfig.bmcCredsUsername -BmcMacAddress $clusterconfig.bmcMacAddress2 -BootMacAddress $clusterconfig.bootMacAddress2 -RackSlot 2 -SerialNumber $clusterconfig.serialNumber2 -MachineDetail "machineDetailmgr" -MachineName "lab00r750mgr1"
@@ -76,7 +78,8 @@ Describe 'New-AzNetworkCloudCluster' {
                 -AggregatorOrSingleRackDefinitionRackSkuId $clusterconfig.aggregatorRack.rackSkuId `
                 -AggregatorOrSingleRackDefinitionAvailabilityZone $clusterconfig.aggregatorRack.availabilityZone `
                 -AggregatorOrSingleRackDefinitionRackLocation "Foo Datacenter, Floor 3, Aisle 9, Rack 2" `
-                -UserAssignedIdentity $clusterconfig.miUserAssignedIdentityResourceId `
+                -IdentityType $clusterconfig.identityType `
+                -IdentityUserAssigned $identityUserAssignedIdentity `
                 -RuntimeProtectionConfigurationEnforcementLevel $clusterconfig.runtimeProtectionConfigEnforcementLevel `
                 -AnalyticOutputSettingAnalyticsWorkspaceId $clusterconfig.miAnalyticsWorkspaceId `
                 -AnalyticsOutputSettingsAssociatedIdentityType $clusterconfig.identityType `

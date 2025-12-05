@@ -13,7 +13,7 @@ Create an in-memory object for IpAddressPool.
 ## SYNTAX
 
 ```
-New-AzNetworkCloudIpAddressPoolObject -Name <String> [-Address <String[]>] [-AutoAssign <String>]
+New-AzNetworkCloudIpAddressPoolObject [-Address <String[]>] [-AutoAssign <String>] [-Name <String>]
  [-OnlyUseHostIP <String>] [<CommonParameters>]
 ```
 
@@ -22,18 +22,27 @@ Create an in-memory object for IpAddressPool.
 
 ## EXAMPLES
 
-### Example 1: Create an in-memory object for IpAddressPool.
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzNetworkCloudIpAddressPoolObject -Address @("198.51.102.0/24") -Name "pool1" -AutoAssign True -OnlyUseHostIP True
+{{ Add code here }}
 ```
 
 ```output
-Address           AutoAssign Name  OnlyUseHostIP
--------           ---------- ----  -------------
-{198.51.102.0/24} True       pool1 True
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Create an in-memory object for IpAddressPool.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -77,7 +86,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

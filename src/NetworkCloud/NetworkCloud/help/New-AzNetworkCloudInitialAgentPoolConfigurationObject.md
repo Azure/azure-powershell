@@ -13,16 +13,16 @@ Create an in-memory object for InitialAgentPoolConfiguration.
 ## SYNTAX
 
 ```
-New-AzNetworkCloudInitialAgentPoolConfigurationObject -Count <Int64> -Mode <String> -Name <String>
- -VMSkuName <String> [-AdministratorConfigurationAdminUsername <String>]
+New-AzNetworkCloudInitialAgentPoolConfigurationObject [-AdministratorConfigurationAdminUsername <String>]
  [-AdministratorConfigurationSshPublicKey <ISshPublicKey[]>] [-AgentOptionHugepagesCount <Int64>]
  [-AgentOptionHugepagesSize <String>]
  [-AttachedNetworkConfigurationL2Network <IL2NetworkAttachmentConfiguration[]>]
  [-AttachedNetworkConfigurationL3Network <IL3NetworkAttachmentConfiguration[]>]
  [-AttachedNetworkConfigurationTrunkedNetwork <ITrunkedNetworkAttachmentConfiguration[]>]
- [-AvailabilityZone <String[]>] [-Label <IKubernetesLabel[]>] [-Taint <IKubernetesLabel[]>]
- [-UpgradeSettingDrainTimeout <Int64>] [-UpgradeSettingMaxSurge <String>]
- [-UpgradeSettingMaxUnavailable <String>] [<CommonParameters>]
+ [-AvailabilityZone <String[]>] [-Count <Int64>] [-Label <IKubernetesLabel[]>] [-Mode <String>]
+ [-Name <String>] [-Taint <IKubernetesLabel[]>] [-UpgradeSettingDrainTimeout <Int64>]
+ [-UpgradeSettingMaxSurge <String>] [-UpgradeSettingMaxUnavailable <String>] [-VMSkuName <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,12 +30,27 @@ Create an in-memory object for InitialAgentPoolConfiguration.
 
 ## EXAMPLES
 
-### Example 1: Create an in-memory object for InitialAgentPoolConfiguration.
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzNetworkCloudInitialAgentPoolConfigurationObject -Count <Int64> -Mode <AgentPoolMode> -Name <String> -VMSkuName <String> -AdministratorConfigurationAdminUsername <String> -AdministratorConfigurationSshPublicKey <ISshPublicKey[]>  -AgentOptionHugepagesCount <Int64> -AgentOptionHugepagesSize <HugepagesSize> -AttachedNetworkConfigurationL2Network <IL2NetworkAttachmentConfiguration[]> -AttachedNetworkConfigurationL3Network <IL3NetworkAttachmentConfiguration[]> -AttachedNetworkConfigurationTrunkedNetwork <ITrunkedNetworkAttachmentConfiguration[]> -AvailabilityZone <String[]> -Label <IKubernetesLabel[]> -Taint <IKubernetesLabel[]> -UpgradeSettingMaxSurge <String>
+{{ Add code here }}
 ```
 
-Create an in-memory object for InitialAgentPoolConfiguration.
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -170,7 +185,7 @@ Type: System.Int64
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -202,7 +217,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -217,7 +232,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -307,7 +322,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

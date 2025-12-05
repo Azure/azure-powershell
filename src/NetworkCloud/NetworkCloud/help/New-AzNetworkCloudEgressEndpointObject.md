@@ -22,20 +22,27 @@ Create an in-memory object for EgressEndpoint.
 
 ## EXAMPLES
 
-### Example 1: Create an in-memory object for EgressEndpointObject.
+### Example 1: {{ Add title here }}
 ```powershell
-$endpointDependency=New-AzNetworkCloudEndpointDependencyObject -DomainName domainName -Port 1234
-
-New-AzNetworkCloudEgressEndpointObject -Category "azure-resource-management" -Endpoint ($endpointDependency)
+{{ Add code here }}
 ```
 
 ```output
-Category
---------
-azure-resource-management
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Create an in-memory object for EgressEndpoint.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 

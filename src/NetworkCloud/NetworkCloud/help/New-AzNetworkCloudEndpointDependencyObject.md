@@ -22,18 +22,27 @@ Create an in-memory object for EndpointDependency.
 
 ## EXAMPLES
 
-### Example 1: Create an in-memory object for EndpointDependency.
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzNetworkCloudEndpointDependencyObject -DomainName domainName -Port 1234
+{{ Add code here }}
 ```
 
 ```output
-DomainName Port
----------- ----
-domainName 1234
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Create an in-memory object for EndpointDependency.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 

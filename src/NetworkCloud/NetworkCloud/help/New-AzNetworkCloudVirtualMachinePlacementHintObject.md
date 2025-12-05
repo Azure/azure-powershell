@@ -13,8 +13,8 @@ Create an in-memory object for VirtualMachinePlacementHint.
 ## SYNTAX
 
 ```
-New-AzNetworkCloudVirtualMachinePlacementHintObject -HintType <String> -ResourceId <String>
- -SchedulingExecution <String> -Scope <String> [<CommonParameters>]
+New-AzNetworkCloudVirtualMachinePlacementHintObject [-HintType <String>] [-ResourceId <String>]
+ [-SchedulingExecution <String>] [-Scope <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -22,18 +22,27 @@ Create an in-memory object for VirtualMachinePlacementHint.
 
 ## EXAMPLES
 
-### Example 1: Create an in-memory object for VirtualMachinePlacementHint.
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzNetworkCloudVirtualMachinePlacementHintObject -HintType "Affinity" -ResourceId "/subscriptions/subscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.NetworkCloud/racks/rackName" -SchedulingExecution "Hard" -Scope "Machine"
+{{ Add code here }}
 ```
 
 ```output
-HintType ResourceId                                                                                                     SchedulingExecution Scope
--------- ----------                                                                                                     ------------------- -----
-Affinity /subscriptions/subscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.NetworkCloud/racks/rackName Hard                Machine
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Creates an in-memory object for VirtualMachinePlacementHint.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -45,7 +54,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -60,7 +69,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -75,7 +84,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -91,7 +100,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
