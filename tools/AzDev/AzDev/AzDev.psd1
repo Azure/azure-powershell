@@ -76,7 +76,8 @@ FunctionsToExport = 'Connect-DevCommonRepo', 'Disconnect-DevCommonRepo'
 CmdletsToExport = 'Get-DevContext', 'Set-DevContext',
     'Get-DevModule', 'Get-DevProject',
     'Update-DevAssembly',
-    'Open-DevSwagger'
+    'Open-DevSwagger',
+    'Compare-DevPackageDep'
 
 # Variables to export from this module
 VariablesToExport = '*'
