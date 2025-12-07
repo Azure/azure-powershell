@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
         public RSA GetKey() { return _key; }
         public X509Certificate2 GetCert() { return _cert; }
 
-        static RSAParameters RsaParamsFromPem(string path, string password)  // CodeQL [SM02205] (Approval Granted) Suppressed since BouncyCastle is the only api available because we need to be at netstandard2.0
+        static RSAParameters RsaParamsFromPem(string path, string password)  //CodeQL [SM02205] BouncyCastle is the only API available because we need to be at netstandard2.0
         {
             using (var stream = File.OpenText(path))
             {
