@@ -81,7 +81,7 @@
           "Fri, 05 Dec 2025 05:55:29 GMT"
         ]
       },
-      "ResponseBody": "{\r\n  \"type\": \"Microsoft.Batch/batchAccounts/applications/versions\",\r\n  \"id\": \"/subscriptions/94bd7ded-68b4-4ffa-82a5-37ac72caa2ec/resourceGroups/automation/providers/Microsoft.Batch/batchAccounts/dotnotsdkbatchaccount2/applications/updatePoolWithApplicationPackage/versions/foo\",\r\n  \"name\": \"foo\",\r\n  \"etag\": \"W/\\\"0x8DE33C2E53B40E6\\\"\",\r\n  \"properties\": {\r\n    \"storageUrl\": \"https://batchstorageps1.blob.core.windows.net/app-updatepoolwithapplicationp-303b3dd9d4654f8ebb17a14bae2e7358/foo?sv=2025-05-05&se=2025-12-05T09%3A55%3A29Z&sr=b&sp=rw&sig=3CX9MHRlacBwHTcyTTNBnXer7HrOroRt%2FNFoaGiedkg%3D\",\r\n    \"storageUrlExpiry\": \"2025-12-05T09:55:29.5788922Z\",\r\n    \"state\": \"Pending\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"type\": \"Microsoft.Batch/batchAccounts/applications/versions\",\r\n  \"id\": \"/subscriptions/94bd7ded-68b4-4ffa-82a5-37ac72caa2ec/resourceGroups/automation/providers/Microsoft.Batch/batchAccounts/dotnotsdkbatchaccount2/applications/updatePoolWithApplicationPackage/versions/foo\",\r\n  \"name\": \"foo\",\r\n  \"etag\": \"W/\\\"0x8DE33C2E53B40E6\\\"\",\r\n  \"properties\": {\r\n    \"storageUrl\": \"Sanitized\",\r\n    \"storageUrlExpiry\": \"2025-12-05T09:55:29.5788922Z\",\r\n    \"state\": \"Pending\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -232,7 +232,7 @@
           "Fri, 05 Dec 2025 05:55:31 GMT"
         ]
       },
-      "ResponseBody": "{\r\n  \"type\": \"Microsoft.Batch/batchAccounts/applications/versions\",\r\n  \"id\": \"/subscriptions/94bd7ded-68b4-4ffa-82a5-37ac72caa2ec/resourceGroups/automation/providers/Microsoft.Batch/batchAccounts/dotnotsdkbatchaccount2/applications/updatePoolWithApplicationPackage/versions/foo\",\r\n  \"name\": \"foo\",\r\n  \"etag\": \"W/\\\"0x8DE33C2E654C341\\\"\",\r\n  \"properties\": {\r\n    \"storageUrl\": \"https://batchstorageps1.blob.core.windows.net/app-updatepoolwithapplicationp-303b3dd9d4654f8ebb17a14bae2e7358/foo?sv=2025-05-05&se=2025-12-05T09%3A55%3A31Z&sr=b&sp=rw&sig=HDHMMEQOZD7o%2FWHMN58hNEaTJY4rBzKcgfrOSDQ9vy8%3D\",\r\n    \"storageUrlExpiry\": \"2025-12-05T09:55:31.4501849Z\",\r\n    \"state\": \"Active\",\r\n    \"format\": \"zip\",\r\n    \"lastActivationTime\": \"2025-12-05T05:55:31.3990634Z\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"type\": \"Microsoft.Batch/batchAccounts/applications/versions\",\r\n  \"id\": \"/subscriptions/94bd7ded-68b4-4ffa-82a5-37ac72caa2ec/resourceGroups/automation/providers/Microsoft.Batch/batchAccounts/dotnotsdkbatchaccount2/applications/updatePoolWithApplicationPackage/versions/foo\",\r\n  \"name\": \"foo\",\r\n  \"etag\": \"W/\\\"0x8DE33C2E654C341\\\"\",\r\n  \"properties\": {\r\n    \"storageUrl\": \"Sanitized\",\r\n    \"storageUrlExpiry\": \"2025-12-05T09:55:31.4501849Z\",\r\n    \"state\": \"Active\",\r\n    \"format\": \"zip\",\r\n    \"lastActivationTime\": \"2025-12-05T05:55:31.3990634Z\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -310,7 +310,7 @@
           "Fri, 05 Dec 2025 05:55:31 GMT"
         ]
       },
-      "ResponseBody": "{\r\n  \"type\": \"Microsoft.Batch/batchAccounts/applications/versions\",\r\n  \"id\": \"/subscriptions/94bd7ded-68b4-4ffa-82a5-37ac72caa2ec/resourceGroups/automation/providers/Microsoft.Batch/batchAccounts/dotnotsdkbatchaccount2/applications/updatePoolWithApplicationPackage/versions/foo\",\r\n  \"name\": \"foo\",\r\n  \"etag\": \"W/\\\"0x8DE33C2E654C341\\\"\",\r\n  \"properties\": {\r\n    \"storageUrl\": \"https://batchstorageps1.blob.core.windows.net/app-updatepoolwithapplicationp-303b3dd9d4654f8ebb17a14bae2e7358/foo?sv=2025-05-05&se=2025-12-05T09%3A55%3A31Z&sr=b&sp=rw&sig=HDHMMEQOZD7o%2FWHMN58hNEaTJY4rBzKcgfrOSDQ9vy8%3D\",\r\n    \"storageUrlExpiry\": \"2025-12-05T09:55:31.6344349Z\",\r\n    \"state\": \"Active\",\r\n    \"format\": \"zip\",\r\n    \"lastActivationTime\": \"2025-12-05T05:55:31.3990634Z\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"type\": \"Microsoft.Batch/batchAccounts/applications/versions\",\r\n  \"id\": \"/subscriptions/94bd7ded-68b4-4ffa-82a5-37ac72caa2ec/resourceGroups/automation/providers/Microsoft.Batch/batchAccounts/dotnotsdkbatchaccount2/applications/updatePoolWithApplicationPackage/versions/foo\",\r\n  \"name\": \"foo\",\r\n  \"etag\": \"W/\\\"0x8DE33C2E654C341\\\"\",\r\n  \"properties\": {\r\n    \"storageUrl\": \"Sanitized\",\r\n    \"storageUrlExpiry\": \"2025-12-05T09:55:31.6344349Z\",\r\n    \"state\": \"Active\",\r\n    \"format\": \"zip\",\r\n    \"lastActivationTime\": \"2025-12-05T05:55:31.3990634Z\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
