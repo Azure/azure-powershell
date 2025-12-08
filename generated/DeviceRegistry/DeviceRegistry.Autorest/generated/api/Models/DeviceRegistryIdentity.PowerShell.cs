@@ -137,6 +137,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceRegistryIdentityInternal)this).SchemaRegistryName = (string) content.GetValueForProperty("SchemaRegistryName",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceRegistryIdentityInternal)this).SchemaRegistryName, global::System.Convert.ToString);
             }
+            if (content.Contains("PolicyName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceRegistryIdentityInternal)this).PolicyName = (string) content.GetValueForProperty("PolicyName",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceRegistryIdentityInternal)this).PolicyName, global::System.Convert.ToString);
+            }
             if (content.Contains("DeviceName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceRegistryIdentityInternal)this).DeviceName = (string) content.GetValueForProperty("DeviceName",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceRegistryIdentityInternal)this).DeviceName, global::System.Convert.ToString);
@@ -213,6 +217,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
             if (content.Contains("SchemaRegistryName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceRegistryIdentityInternal)this).SchemaRegistryName = (string) content.GetValueForProperty("SchemaRegistryName",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceRegistryIdentityInternal)this).SchemaRegistryName, global::System.Convert.ToString);
+            }
+            if (content.Contains("PolicyName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceRegistryIdentityInternal)this).PolicyName = (string) content.GetValueForProperty("PolicyName",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceRegistryIdentityInternal)this).PolicyName, global::System.Convert.ToString);
             }
             if (content.Contains("DeviceName"))
             {
