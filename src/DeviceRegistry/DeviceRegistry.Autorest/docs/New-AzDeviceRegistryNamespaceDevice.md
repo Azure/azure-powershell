@@ -19,7 +19,8 @@ New-AzDeviceRegistryNamespaceDevice -DeviceName <String> -NamespaceName <String>
  [-Enabled] [-EndpointsInbound <Hashtable>] [-ExtendedLocationName <String>] [-ExtendedLocationType <String>]
  [-ExternalDeviceId <String>] [-Manufacturer <String>] [-Model <String>] [-OperatingSystem <String>]
  [-OperatingSystemVersion <String>] [-OutboundAssigned <Hashtable>] [-OutboundUnassigned <Hashtable>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-PolicyResourceId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -623,6 +624,21 @@ Set of most recently removed endpoints.
 
 ```yaml
 Type: System.Collections.Hashtable
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PolicyResourceId
+Resource Id of the Policy.
+
+```yaml
+Type: System.String
 Parameter Sets: CreateExpanded
 Aliases:
 
