@@ -90,6 +90,7 @@ Describe 'AzDatabricksWorkspaceServerless' {
         {
             $config = New-AzDatabricksWorkspace -Name $env.workSpaceName2 -ResourceGroupName $env.resourceGroup2 -Location $env.location -ComputeMode 'Serverless' -Sku premium
             $config.Name | Should -Be $env.workSpaceName2
+            $config.ComputeMode | Should -Be 'Serverless'
         } | Should -Not -Throw
     }
 
