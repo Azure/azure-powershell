@@ -78,6 +78,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
                 return;
             }
             {_endpoint = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonObject>("endpoints"), out var __jsonEndpoints) ? Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.MessagingEndpointsUpdate.FromJson(__jsonEndpoints) : _endpoint;}
+            {_policy = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonObject>("policy"), out var __jsonPolicy) ? Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.DeviceCredentialPolicy.FromJson(__jsonPolicy) : _policy;}
             {_operatingSystemVersion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonString>("operatingSystemVersion"), out var __jsonOperatingSystemVersion) ? (string)__jsonOperatingSystemVersion : (string)_operatingSystemVersion;}
             {_attribute = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonObject>("attributes"), out var __jsonAttributes) ? Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.NamespaceDeviceUpdatePropertiesAttributes.FromJson(__jsonAttributes) : _attribute;}
             {_enabled = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonBoolean>("enabled"), out var __jsonEnabled) ? (bool?)__jsonEnabled : _enabled;}
@@ -104,6 +105,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
                 return container;
             }
             AddIf( null != this._endpoint ? (Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonNode) this._endpoint.ToJson(null,serializationMode) : null, "endpoints" ,container.Add );
+            AddIf( null != this._policy ? (Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonNode) this._policy.ToJson(null,serializationMode) : null, "policy" ,container.Add );
             AddIf( null != (((object)this._operatingSystemVersion)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonString(this._operatingSystemVersion.ToString()) : null, "operatingSystemVersion" ,container.Add );
             AddIf( null != this._attribute ? (Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonNode) this._attribute.ToJson(null,serializationMode) : null, "attributes" ,container.Add );
             AddIf( null != this._enabled ? (Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonBoolean((bool)this._enabled) : null, "enabled" ,container.Add );
