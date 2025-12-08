@@ -8,41 +8,54 @@ schema: 2.0.0
 # New-AzMLWorkspace
 
 ## SYNOPSIS
-Creates or updates a workspace with the specified parameters.
+Create a workspace with the specified parameters.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzMLWorkspace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-AllowPublicAccessWhenBehindVnet] [-ApplicationInsightId <String>] [-AssociatedWorkspace <String[]>]
  [-ComputeRuntimeSparkRuntimeVersion <String>] [-ContainerRegistryId <String>]
  [-CosmoDbCollectionsThroughput <Int32>] [-Description <String>] [-DiscoveryUrl <String>]
- [-EnableDataIsolation] [-EncryptionStatus <EncryptionStatus>] [-EncryptionUserAssignedIdentity <String>]
- [-FeatureStoreSettingOfflineStoreConnectionName <String>]
+ [-EnableDataIsolation] [-EnableSystemAssignedIdentity] [-EncryptionStatus <String>]
+ [-EncryptionUserAssignedIdentity <String>] [-FeatureStoreSettingOfflineStoreConnectionName <String>]
  [-FeatureStoreSettingOnlineStoreConnectionName <String>] [-FriendlyName <String>] [-HbiWorkspace]
- [-HubResourceId <String>] [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssigned <Hashtable>]
- [-ImageBuildCompute <String>] [-KeyVaultArmId <String>] [-KeyVaultId <String>]
- [-KeyVaultIdentityClientId <String>] [-KeyVaultKeyIdentifier <String>] [-Kind <WorkspaceType>]
- [-Location <String>] [-ManagedNetworkIsolationMode <IsolationMode>] [-ManagedNetworkOutboundRule <Hashtable>]
- [-PrimaryUserAssignedIdentity <String>] [-PublicNetworkAccess <PublicNetworkAccess>]
+ [-HubResourceId <String>] [-IdentityUserAssigned <Hashtable>] [-ImageBuildCompute <String>]
+ [-KeyVaultArmId <String>] [-KeyVaultId <String>] [-KeyVaultIdentityClientId <String>]
+ [-KeyVaultKeyIdentifier <String>] [-Kind <String>] [-Location <String>]
+ [-ManagedNetworkIsolationMode <String>] [-ManagedNetworkOutboundRule <Hashtable>]
+ [-PrimaryUserAssignedIdentity <String>] [-PublicNetworkAccess <String>]
  [-ServerlessComputeSettingServerlessComputeCustomSubnet <String>]
  [-ServerlessComputeSettingServerlessComputeNoPublicIP]
  [-SharedPrivateLinkResource <ISharedPrivateLinkResource[]>] [-SkuCapacity <Int32>] [-SkuFamily <String>]
- [-SkuName <String>] [-SkuSize <String>] [-SkuTier <SkuTier>] [-Status <ManagedNetworkStatus>]
- [-StatusSparkReady] [-StorageAccountId <String>] [-Tag <Hashtable>] [-V1LegacyMode]
+ [-SkuName <String>] [-SkuSize <String>] [-SkuTier <String>] [-Status <String>] [-StatusSparkReady]
+ [-StorageAccountId <String>] [-Tag <Hashtable>] [-V1LegacyMode]
  [-WorkspaceHubConfigAdditionalWorkspaceStorageAccount <String[]>]
  [-WorkspaceHubConfigDefaultWorkspaceResourceGroup <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### CreateViaJsonFilePath
+```
+New-AzMLWorkspace -Name <String> -ResourceGroupName <String> -JsonFilePath <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzMLWorkspace -Name <String> -ResourceGroupName <String> -JsonString <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Creates or updates a workspace with the specified parameters.
+Create a workspace with the specified parameters.
 
 ## EXAMPLES
 
 ### Example 1: Creates or updates a workspace with the specified parameters
 ```powershell
-New-AzMLWorkspace -ResourceGroupName ml-rg-test -Name mlwork01 -Location eastus -ApplicationInsightId "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/ml-rg-test/providers/microsoft.insights/components/insightsmlworkspace" -KeyVaultId "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/ml-rg-test/providers/microsoft.keyvault/vaults/kmlworkspace" -StorageAccountId "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/ml-rg-test/providers/microsoft.storage/storageaccounts/storagemlworkspace01" -IdentityType 'SystemAssigned' -Kind 'Default'
+New-AzMLWorkspace -ResourceGroupName ml-rg-test -Name mlwork01 -Location eastus -ApplicationInsightId "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/ml-rg-test/providers/microsoft.insights/components/insightsmlworkspace" -KeyVaultId "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/ml-rg-test/providers/microsoft.keyvault/vaults/kmlworkspace" -StorageAccountId "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/ml-rg-test/providers/microsoft.storage/storageaccounts/storagemlworkspace01" -EnableSystemAssignedIdentity -Kind 'Default'
 ```
 
 ```output
@@ -60,7 +73,7 @@ The flag to indicate whether to allow public access when behind VNet.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -75,7 +88,7 @@ ARM id of the application insights associated with this workspace.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -105,7 +118,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -120,7 +133,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -135,7 +148,7 @@ ARM id of the container registry associated with this workspace.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -150,7 +163,7 @@ The throughput of the collections in cosmosdb database
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -181,7 +194,7 @@ The description of this workspace.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -196,7 +209,7 @@ Url for the discovery service to identify regional endpoints for machine learnin
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -211,7 +224,22 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableSystemAssignedIdentity
+Determines whether to enable a system-assigned identity for the resource.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -225,8 +253,8 @@ Accept wildcard characters: False
 Indicates whether or not the encryption is enabled for the workspace.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.EncryptionStatus
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -241,7 +269,7 @@ The ArmId of the user assigned identity that will be used to access the customer
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -256,7 +284,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -271,7 +299,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -287,7 +315,7 @@ This name in mutable
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -302,7 +330,7 @@ The flag to signal HBI data in the workspace and reduce diagnostic data collecte
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -317,22 +345,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IdentityType
-Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ManagedServiceIdentityType
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -349,7 +362,7 @@ The dictionary values can be empty objects ({}) in requests.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -364,10 +377,40 @@ The compute name for image build
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -379,7 +422,7 @@ The ArmId of the keyVault where the customer owned encryption key is present.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -395,7 +438,7 @@ This cannot be changed once the workspace has been created
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -410,7 +453,7 @@ For future use - The client id of the identity which will be used to access key 
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -425,7 +468,7 @@ Key vault uri to access the encryption key.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -440,8 +483,8 @@ Type of workspace.
 Possible values: Default, Hub, Project, FeatureStore.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.WorkspaceType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -456,7 +499,7 @@ Specifies the location of the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -470,8 +513,8 @@ Accept wildcard characters: False
 Isolation mode for the managed network of a machine learning workspace.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.IsolationMode
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -486,7 +529,7 @@ Dictionary of \<OutboundRule\>
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -531,7 +574,7 @@ The user assigned identity resource id that represents the workspace identity.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -545,8 +588,8 @@ Accept wildcard characters: False
 Whether requests from Public Network are allowed.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.PublicNetworkAccess
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -577,7 +620,7 @@ The resource ID of an existing virtual network subnet in which serverless comput
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -592,7 +635,7 @@ The flag to signal if serverless compute nodes deployed in custom vNet would hav
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -604,11 +647,10 @@ Accept wildcard characters: False
 
 ### -SharedPrivateLinkResource
 The list of shared private link resources in this workspace.
-To construct, see NOTES section for SHAREDPRIVATELINKRESOURCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.ISharedPrivateLinkResource[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.ISharedPrivateLinkResource[]
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -624,7 +666,7 @@ If scale out/in is not possible for the resource this may be omitted.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -639,7 +681,7 @@ If the service has different generations of hardware, for the same SKU, then tha
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -656,7 +698,7 @@ It is typically a letter+number code
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -672,7 +714,7 @@ When the name field is the combination of tier and some other value, this would 
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -686,8 +728,8 @@ Accept wildcard characters: False
 This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.SkuTier
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -701,8 +743,8 @@ Accept wildcard characters: False
 Status for the managed network of a machine learning workspace.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ManagedNetworkStatus
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -717,7 +759,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -733,7 +775,7 @@ This cannot be changed once the workspace has been created
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -763,7 +805,7 @@ Contains resource tags defined as key/value pairs.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -778,7 +820,7 @@ Enabling v1_legacy_mode may prevent you from using features provided by the v2 A
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -793,7 +835,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -808,7 +850,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -856,7 +898,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IWorkspace
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IWorkspace
 
 ## NOTES
 

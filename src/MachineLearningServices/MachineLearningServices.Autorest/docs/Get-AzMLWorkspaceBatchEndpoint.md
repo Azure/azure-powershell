@@ -31,6 +31,12 @@ Get-AzMLWorkspaceBatchEndpoint -InputObject <IMachineLearningServicesIdentity> [
  [<CommonParameters>]
 ```
 
+### GetViaIdentityWorkspace
+```
+Get-AzMLWorkspaceBatchEndpoint -Name <String> -WorkspaceInputObject <IMachineLearningServicesIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Gets a batch inference endpoint by name.
 
@@ -99,7 +105,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
@@ -118,7 +123,7 @@ Name for the Batch Endpoint.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityWorkspace
 Aliases:
 
 Required: True
@@ -174,6 +179,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -WorkspaceInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+Parameter Sets: GetViaIdentityWorkspace
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -WorkspaceName
 Name of Azure Machine Learning workspace.
 
@@ -198,7 +218,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IBatchEndpoint
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IBatchEndpoint
 
 ## NOTES
 

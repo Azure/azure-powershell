@@ -1,7 +1,7 @@
 ---
 external help file: Az.MachineLearningServices-help.xml
 Module Name: Az.MachineLearningServices
-online version: https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-AzMLWorkspaceIdAssetReferenceObject
+online version: https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-azmlworkspaceidassetreferenceobject
 schema: 2.0.0
 ---
 
@@ -13,7 +13,7 @@ Create an in-memory object for IdAssetReference.
 ## SYNTAX
 
 ```
-New-AzMLWorkspaceIdAssetReferenceObject -AssetId <String> -ReferenceType <ReferenceType>
+New-AzMLWorkspaceIdAssetReferenceObject -AssetId <String>
  [<CommonParameters>]
 ```
 
@@ -25,7 +25,7 @@ Create an in-memory object for IdAssetReference.
 ### Example 1: Create model reference
 ```powershell
 $model = Get-AzMLWorkspaceModelVersion -ResourceGroupName group-test -WorkspaceName mlworkspace-test -Version 1 -Name model1
-New-AzMLWorkspaceIdAssetReferenceObject -AssetId $model.Id -ReferenceType 'Id'
+New-AzMLWorkspaceIdAssetReferenceObject -AssetId $model.Id
 ```
 
 ```output
@@ -53,21 +53,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ReferenceType
-[Required] Specifies the type of asset reference.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ReferenceType
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -75,7 +60,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IdAssetReference
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IdAssetReference
 
 ## NOTES
 

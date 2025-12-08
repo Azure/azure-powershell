@@ -1,13 +1,44 @@
-### Example 1: Creates or updates an EnvironmentVersion.
+### Example 1: Create or update an EnvironmentVersion.
 ```powershell
-New-AzMLWorkspaceEnvironmentVersion -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-test01 -Name commandjobenv -Version 1 -Image "library/python:latest"
+New-AzMLWorkspaceEnvironmentVersion -ResourceGroupName ml-test -WorkspaceName mlworkspace-test2 -Name commandjobenv -Version 1 -Image "library/python:latest"
 ```
 
 ```output
-Name SystemDataCreatedAt  SystemDataCreatedBy                 SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy            SystemDataLastModifiedByType ResourceGroupName
----- -------------------  -------------------                 ----------------------- ------------------------ ------------------------            ---------------------------- -----------------
-1    5/31/2022 8:28:35 AM UserName (Example)                  User                    5/31/2022 8:28:35 AM     UserName (Example)                  User                         ml-rg-test
+AutoRebuild                  : Disabled
+BuildContextUri              : 
+BuildDockerfilePath          : 
+CondaFile                    : 
+Description                  : 
+EnvironmentType              : UserCreated
+Id                           : /subscriptions/11111111-2222-3333-4444-123456789101/resourceGroups/ml-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test2/environments/commandjobenv/versions/1
+Image                        : library/python:latest
+IsAnonymou                   : False
+IsArchived                   : False
+LivenessRoutePath            : 
+LivenessRoutePort            : 0
+Name                         : 1
+OSType                       : Linux
+ProvisioningState            : Succeeded
+ReadinessRoutePath           : 
+ReadinessRoutePort           : 0
+ResourceBaseProperty         : {
+                                 "azureml.labels": "latest"
+                               }
+ResourceGroupName            : ml-test
+ScoringRoutePath             : 
+ScoringRoutePort             : 0
+Stage                        : Development
+SystemDataCreatedAt          : 11/5/2025 9:40:49 AM
+SystemDataCreatedBy          : User Name (Example)
+SystemDataCreatedByType      : User
+SystemDataLastModifiedAt     : 11/5/2025 9:40:49 AM
+SystemDataLastModifiedBy     : User Name (Example)
+SystemDataLastModifiedByType : User
+Tag                          : {
+                               }
+Type                         : Microsoft.MachineLearningServices/workspaces/environments/versions
+XmsAsyncOperationTimeout     : 
 ```
 
-Creates or updates an EnvironmentVersion.
+This command creates or updates an EnvironmentVersion.
 
