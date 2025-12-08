@@ -125,6 +125,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         /// <summary>Internal Acessors for Message</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDevicePropertiesInternal.Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceStatusInternal)Status).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceStatusInternal)Status).Message = value ?? null; }
 
+        /// <summary>Internal Acessors for Policy</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceCredentialPolicy Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDevicePropertiesInternal.Policy { get => (this._policy = this._policy ?? new Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.DeviceCredentialPolicy()); set { {_policy = value;} } }
+
         /// <summary>Internal Acessors for ProvisioningState</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDevicePropertiesInternal.ProvisioningState { get => this._provisioningState; set { {_provisioningState = value;} } }
 
@@ -174,6 +177,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         /// <summary>Set of most recently removed endpoints.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Origin(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.PropertyOrigin.Inlined)]
         public Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IOutboundEndpointsUnassigned OutboundUnassigned { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IMessagingEndpoints1Internal)Endpoint).OutboundUnassigned; set => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IMessagingEndpoints1Internal)Endpoint).OutboundUnassigned = value ?? null /* model class */; }
+
+        /// <summary>Backing field for <see cref="Policy" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceCredentialPolicy _policy;
+
+        /// <summary>Policy used to issue device certificates.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Origin(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceCredentialPolicy Policy { get => (this._policy = this._policy ?? new Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.DeviceCredentialPolicy()); set => this._policy = value; }
+
+        /// <summary>Resource Id of the Policy.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Origin(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.PropertyOrigin.Inlined)]
+        public string PolicyResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceCredentialPolicyInternal)Policy).ResourceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceCredentialPolicyInternal)Policy).ResourceId = value ?? null; }
 
         /// <summary>Backing field for <see cref="ProvisioningState" /> property.</summary>
         private string _provisioningState;
@@ -416,6 +430,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         SerializedName = @"unassigned",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IOutboundEndpointsUnassigned) })]
         Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IOutboundEndpointsUnassigned OutboundUnassigned { get; set; }
+        /// <summary>Resource Id of the Policy.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Resource Id of the Policy.",
+        SerializedName = @"resourceId",
+        PossibleTypes = new [] { typeof(string) })]
+        string PolicyResourceId { get; set; }
         /// <summary>Provisioning state of the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Info(
         Required = false,
@@ -519,6 +544,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IOutboundEndpointsAssigned OutboundAssigned { get; set; }
         /// <summary>Set of most recently removed endpoints.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IOutboundEndpointsUnassigned OutboundUnassigned { get; set; }
+        /// <summary>Policy used to issue device certificates.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceCredentialPolicy Policy { get; set; }
+        /// <summary>Resource Id of the Policy.</summary>
+        string PolicyResourceId { get; set; }
         /// <summary>Provisioning state of the resource.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Accepted", "Deleting")]
         string ProvisioningState { get; set; }

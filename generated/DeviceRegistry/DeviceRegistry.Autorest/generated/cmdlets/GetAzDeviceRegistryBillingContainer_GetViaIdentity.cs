@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IBillingContainer))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Description(@"Get a BillingContainer")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.DeviceRegistry/billingContainers/{billingContainerName}", ApiVersion = "2025-10-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.DeviceRegistry/billingContainers/{billingContainerName}", ApiVersion = "2025-11-01-preview")]
     public partial class GetAzDeviceRegistryBillingContainer_GetViaIdentity : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IContext

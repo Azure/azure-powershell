@@ -117,6 +117,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDevicePropertiesInternal)this).Status = (Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceStatus) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDevicePropertiesInternal)this).Status, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.DeviceStatusTypeConverter.ConvertFrom);
             }
+            if (content.Contains("Policy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDevicePropertiesInternal)this).Policy = (Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceCredentialPolicy) content.GetValueForProperty("Policy",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDevicePropertiesInternal)this).Policy, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.DeviceCredentialPolicyTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Uuid"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDevicePropertiesInternal)this).Uuid = (string) content.GetValueForProperty("Uuid",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDevicePropertiesInternal)this).Uuid, global::System.Convert.ToString);
@@ -184,6 +188,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
             if (content.Contains("ConfigVersion"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDevicePropertiesInternal)this).ConfigVersion = (long?) content.GetValueForProperty("ConfigVersion",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDevicePropertiesInternal)this).ConfigVersion, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("PolicyResourceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDevicePropertiesInternal)this).PolicyResourceId = (string) content.GetValueForProperty("PolicyResourceId",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDevicePropertiesInternal)this).PolicyResourceId, global::System.Convert.ToString);
             }
             if (content.Contains("OutboundAssigned"))
             {
@@ -242,6 +250,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDevicePropertiesInternal)this).Status = (Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceStatus) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDevicePropertiesInternal)this).Status, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.DeviceStatusTypeConverter.ConvertFrom);
             }
+            if (content.Contains("Policy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDevicePropertiesInternal)this).Policy = (Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceCredentialPolicy) content.GetValueForProperty("Policy",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDevicePropertiesInternal)this).Policy, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.DeviceCredentialPolicyTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Uuid"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDevicePropertiesInternal)this).Uuid = (string) content.GetValueForProperty("Uuid",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDevicePropertiesInternal)this).Uuid, global::System.Convert.ToString);
@@ -309,6 +321,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
             if (content.Contains("ConfigVersion"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDevicePropertiesInternal)this).ConfigVersion = (long?) content.GetValueForProperty("ConfigVersion",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDevicePropertiesInternal)this).ConfigVersion, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("PolicyResourceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDevicePropertiesInternal)this).PolicyResourceId = (string) content.GetValueForProperty("PolicyResourceId",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDevicePropertiesInternal)this).PolicyResourceId, global::System.Convert.ToString);
             }
             if (content.Contains("OutboundAssigned"))
             {
