@@ -51,6 +51,7 @@ INPUTOBJECT <IDeviceRegistryIdentity>: Identity Parameter
   [Location <String>]: The name of the Azure region.
   [NamespaceName <String>]: The name of the namespace.
   [OperationId <String>]: The ID of an ongoing async operation.
+  [PolicyName <String>]: The name of the Policy tracked resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SchemaName <String>]: Schema name parameter.
   [SchemaRegistryName <String>]: Schema registry name parameter.
@@ -68,6 +69,7 @@ SCHEMAINPUTOBJECT <IDeviceRegistryIdentity>: Identity Parameter
   [Location <String>]: The name of the Azure region.
   [NamespaceName <String>]: The name of the namespace.
   [OperationId <String>]: The ID of an ongoing async operation.
+  [PolicyName <String>]: The name of the Policy tracked resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SchemaName <String>]: Schema name parameter.
   [SchemaRegistryName <String>]: Schema registry name parameter.
@@ -85,6 +87,7 @@ SCHEMAREGISTRYINPUTOBJECT <IDeviceRegistryIdentity>: Identity Parameter
   [Location <String>]: The name of the Azure region.
   [NamespaceName <String>]: The name of the namespace.
   [OperationId <String>]: The ID of an ongoing async operation.
+  [PolicyName <String>]: The name of the Policy tracked resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SchemaName <String>]: Schema name parameter.
   [SchemaRegistryName <String>]: Schema registry name parameter.
