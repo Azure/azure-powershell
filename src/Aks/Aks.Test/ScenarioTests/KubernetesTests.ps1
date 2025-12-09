@@ -1291,3 +1291,85 @@ function Test-EnableAHUB {
         Remove-AzResourceGroup -Name $resourceGroupName -Force
     }
 }
+
+function Test-API20250801-WithoutMSI {
+    $resourceGroupName = Get-RandomResourceGroupName
+    $kubeClusterName = Get-RandomClusterName
+    $location = 'eastus'
+
+    $nodeVmSize = "standard_d4_v4"
+    $nodeMessageOfTheDay = [Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes("Welcome to AKS Cluster"))
+    $NodeTaint = @("CriticalAddonsOnly=true:NoSchedule")
+
+    try {
+        New-AzResourceGroup -Name $resourceGroupName -Location $location
+
+        New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeVmSize $nodeVmSize -NodeCount 1 -Location $location -NodeMessageOfTheDay $nodeMessageOfTheDay -NodeTaint $NodeTaint -NodeOSDiskType Managed -NodePodIPAllocationMode DynamicIndividual -NodeEnableSecureBoot -NodeEnableVtpm -NodeSshAccess Disabled -DisableApiServerRunCommand -EnableApiServerVnetIntegration -NodeOSAutoUpgradeChannel SecurityPatch -BootstrapArtifactSource Direct -EnableAdvancedNetworking -EnableAdvancedNetworkingObservability -AdvancedNetworkingSecurityPolicy None -IPFamily IPv4 -LoadBalancerBackendPoolType NodeIP -LoadBalancerManagedOutboundIpCountIPv6 0 -LoadBalancerManagedOutboundIpCount 11 -NATGatewayIdleTimeoutInMinute 22 -NATGatewayManagedOutboundIpCount 12 -NetworkDataplane azure -NetworkPluginMode overlay -EnabledStaticEgressGateway -NodeProvisioningDefaultPool Auto -NodeProvisioningMode Manual -NodeResourceGroupRestrictionLevel Unrestricted -EnablePublicNetworkAccess -EnableImageCleaner -ImageCleanerIntervalHour 36 -EnableWorkloadIdentity -EnableOidcIssuer -SupportPlan KubernetesOfficial -EnableKEDA -EnableVerticalPodAutoscaler
+
+        $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
+
+        Assert-AreEqual $cluster.AgentPoolProfiles[0].MessageOfTheDay $nodeMessageOfTheDay 
+        Assert-AreEqual $cluster.AgentPoolProfiles[0].NodeTaints $NodeTaint 
+        Assert-AreEqual $cluster.AgentPoolProfiles[0].OsDiskType Managed 
+        Assert-AreEqual $cluster.AgentPoolProfiles[0].PodIPAllocationMode DynamicIndividual 
+        Assert-AreEqual $cluster.AgentPoolProfiles[0].SecurityProfile.EnableSecureBoot $true 
+        Assert-AreEqual $cluster.AgentPoolProfiles[0].SecurityProfile.EnableVtpm $true 
+        Assert-AreEqual $cluster.AgentPoolProfiles[0].SecurityProfile.SshAccess Disabled 
+        Assert-AreEqual $cluster.ApiServerAccessProfile.DisableRunCommand $true
+        Assert-AreEqual $cluster.ApiServerAccessProfile.EnableVnetIntegration $true
+        Assert-AreEqual $cluster.AutoUpgradeProfile.NodeOSUpgradeChannel SecurityPatch
+        Assert-AreEqual $cluster.BootstrapProfile.ArtifactSource Direct
+        Assert-AreEqual $cluster.NetworkProfile.AdvancedNetworking.Enabled $true
+        Assert-AreEqual $cluster.NetworkProfile.AdvancedNetworking.Observability.Enabled $true
+        Assert-AreEqual $cluster.NetworkProfile.AdvancedNetworking.Security.Enabled $false
+        Assert-AreEqual $cluster.NetworkProfile.AdvancedNetworking.Security.AdvancedNetworkPolicies None
+        Assert-AreEqual $cluster.NetworkProfile.IpFamilies[0] IPv4
+        $cluster.NetworkProfile | ConvertTo-Json | Out-File -FilePath .\NetworkProfile.json -Force
+        Assert-AreEqual $cluster.NetworkProfile.LoadBalancerProfile.BackendPoolType NodeIP
+        # return by server
+        Assert-AreEqual $cluster.NetworkProfile.LoadBalancerProfile.ManagedOutboundIPs.CountIPv6 $null
+        Assert-AreEqual $cluster.NetworkProfile.LoadBalancerProfile.ManagedOutboundIPs.Count 11
+        Assert-AreEqual $cluster.NetworkProfile.NatGatewayProfile.IdleTimeoutInMinutes 22
+        # return by server
+        Assert-AreEqual $cluster.NetworkProfile.NatGatewayProfile.ManagedOutboundIPProfile $null
+        Assert-AreEqual $cluster.NetworkProfile.NetworkDataplane azure
+        Assert-AreEqual $cluster.NetworkProfile.NetworkPluginMode overlay
+        Assert-AreEqual $cluster.NetworkProfile.StaticEgressGatewayProfile.Enabled $true
+        Assert-AreEqual $cluster.NodeProvisioningProfile.DefaultNodePools Auto
+        Assert-AreEqual $cluster.NodeResourceGroupProfile.RestrictionLevel Unrestricted
+        Assert-AreEqual $cluster.PublicNetworkAccess Enabled
+        Assert-AreEqual $cluster.SecurityProfile.ImageCleaner.Enabled $true
+        Assert-AreEqual $cluster.SecurityProfile.ImageCleaner.IntervalHours 36
+        Assert-AreEqual $cluster.SecurityProfile.WorkloadIdentity.Enabled $true
+        Assert-AreEqual $cluster.SupportPlan KubernetesOfficial
+        Assert-AreEqual $cluster.WorkloadAutoScalerProfile.Keda.Enabled $true
+        Assert-AreEqual $cluster.WorkloadAutoScalerProfile.VerticalPodAutoscaler.Enabled $true
+
+        New-AzAksNodePool -ResourceGroupName $resourceGroupName -ClusterName $kubeClusterName -Name pool2 -VmSize $nodeVmSize -Count 1 -GPUDriver None -MessageOfTheDay $nodeMessageOfTheDay -OSDiskType Managed -PodIPAllocationMode DynamicIndividual -ScaleDownMode Delete -EnableSecureBoot -EnableVtpm -SshAccess Disabled -DrainTimeoutInMinute 22 -MaxUnavailable '60%' -MaxSurge 0 -NodeSoakDurationInMinute 25 -UndrainableNodeBehavior Schedule -WorkloadRuntime OCIContainer
+        $nodepool = Get-AzAksNodePool -ResourceGroupName $resourceGroupName -ClusterName $kubeClusterName -Name pool2
+
+        Assert-AreEqual $nodepool.GpuProfile.Driver None
+        Assert-AreEqual $nodepool.MessageOfTheDay $nodeMessageOfTheDay 
+        Assert-AreEqual $nodepool.OsDiskType Managed 
+        Assert-AreEqual $nodepool.PodIPAllocationMode DynamicIndividual 
+        Assert-AreEqual $nodepool.ScaleDownMode Delete 
+        Assert-AreEqual $nodepool.SecurityProfile.EnableSecureBoot $true 
+        Assert-AreEqual $nodepool.SecurityProfile.EnableVtpm $true 
+        Assert-AreEqual $nodepool.SecurityProfile.SshAccess Disabled 
+        Assert-AreEqual $nodepool.UpgradeSettings.DrainTimeoutInMinutes 22 
+        Assert-AreEqual $nodepool.UpgradeSettings.MaxUnavailable '60%' 
+        Assert-AreEqual $nodepool.UpgradeSettings.MaxSurge 0 
+        Assert-AreEqual $nodepool.UpgradeSettings.NodeSoakDurationInMinutes 25
+        Assert-AreEqual $nodepool.UpgradeSettings.UndrainableNodeBehavior Schedule
+        Assert-AreEqual $nodepool.WorkloadRuntime OCIContainer
+
+        $nodepool = Update-AzAksNodePool -ResourceGroupName $resourceGroupName -ClusterName $kubeClusterName -Name pool2 -DrainTimeoutInMinute 18 -MaxUnavailable '80%' -NodeSoakDurationInMinute 23
+
+        Assert-AreEqual $nodepool.UpgradeSettings.DrainTimeoutInMinutes 18 
+        Assert-AreEqual $nodepool.UpgradeSettings.MaxUnavailable '80%' 
+        Assert-AreEqual $nodepool.UpgradeSettings.NodeSoakDurationInMinutes 23
+    }
+    finally {
+        Remove-AzResourceGroup -Name $resourceGroupName -Force
+    }
+}

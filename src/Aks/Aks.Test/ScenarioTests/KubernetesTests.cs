@@ -227,5 +227,12 @@ namespace Commands.Aks.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-EnableAHUB");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAPI20250801WithoutMSI()
+        {
+            TestRunner.RunTestScript("Test-API20250801-WithoutMSI");
+        }
     }
 }
