@@ -26,6 +26,8 @@ using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Rest.Azure;
 using Microsoft.Azure.Management.Authorization.Version2015_07_01;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using ArmCompute = Azure.ResourceManager.Compute.Models;
+using Azure.ResourceManager.Compute;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -117,6 +119,17 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipeline = true)]
         public String ResourceId { get; set; }
 
+        // In the parameter section, add:
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Specifies the API version for Event Grid and Resource Graph scheduled events in YYYY-MM-DD format.")]
+        [ValidatePattern(@"^\d{4}-\d{2}-\d{2}$")]
+        public string ScheduledEventsApiVersion { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Specifies whether Scheduled Events should be auto-approved when all instances are down.")]
+        public bool EnableAllInstancesDown { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -168,13 +181,19 @@ namespace Microsoft.Azure.Commands.Compute
                     }
                     else
                     {
-                        var result = this.VirtualMachineClient.GetWithHttpMessagesAsync(
-                            this.ResourceGroupName, this.Name).GetAwaiter().GetResult();
+                        VirtualMachineResource vmResource = this.ComputeClientTrack2.GetVirtualMachine(
+                            this.ResourceGroupName,
+                            this.Name);
 
-                        var psResult = ComputeAutoMapperProfile.Mapper.Map<PSVirtualMachine>(result);
-                        if (result.Body != null)
+                        VirtualMachineData data = vmResource.Data;
+
+                        //var result = this.VirtualMachineClient.GetWithHttpMessagesAsync(
+                        //    this.ResourceGroupName, this.Name).GetAwaiter().GetResult();
+
+                        var psResult = ComputeAutoMapperProfile.Mapper.Map<PSVirtualMachine>(vmResource.Data);
+                        if (vmResource.Data != null)
                         {
-                            psResult = ComputeAutoMapperProfile.Mapper.Map(result.Body, psResult);
+                            psResult = ComputeAutoMapperProfile.Mapper.Map(vmResource.Data, psResult);  
                         }
                         psResult.DisplayHint = this.DisplayHint;
                         WriteObject(psResult);
