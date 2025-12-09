@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDevice))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Description(@"update a NamespaceDevice")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/devices/{deviceName}", ApiVersion = "2025-10-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/devices/{deviceName}", ApiVersion = "2025-11-01-preview")]
     public partial class UpdateAzDeviceRegistryNamespaceDevice_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IContext
@@ -208,6 +208,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Cmdlets
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
         public Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.HttpPipeline Pipeline { get; set; }
+
+        /// <summary>Resource Id of the Policy.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Resource Id of the Policy.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Resource Id of the Policy.",
+        SerializedName = @"resourceId",
+        PossibleTypes = new [] { typeof(string) })]
+        public string PolicyResourceId { get => _propertiesBody.PolicyResourceId ?? null; set => _propertiesBody.PolicyResourceId = value; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]

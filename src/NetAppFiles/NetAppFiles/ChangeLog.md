@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* General availability for module Az.NetAppFiles
 
 ## Version 0.25.1
 * Updated Azure.Core from 1.45.0 to 1.47.3
