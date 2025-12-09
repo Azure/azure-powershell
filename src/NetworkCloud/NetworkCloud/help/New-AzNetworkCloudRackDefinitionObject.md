@@ -24,27 +24,47 @@ Create an in-memory object for RackDefinition.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create rack definition with basic configuration
 ```powershell
-{{ Add code here }}
+$bmConfig = New-AzNetworkCloudBareMetalMachineConfigurationDataObject -BmcCredentialsPassword (ConvertTo-SecureString -String "P@ssw0rd123!" -AsPlainText -Force) -BmcCredentialsUsername "admin" -BmcMacAddress "00:1a:2b:3c:4d:5e" -BootMacAddress "00:1a:2b:3c:4d:5f" -RackSlot 1 -SerialNumber "ABC123"
+New-AzNetworkCloudRackDefinitionObject -NetworkRackId "/subscriptions/subscription-id/resourceGroups/rg/providers/Microsoft.NetworkCloud/networkRacks/rack1" -RackSkuId "sku-123" -RackSerialNumber "RACK-001" -AvailabilityZone "1" -BareMetalMachineConfigurationData @($bmConfig)
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+AvailabilityZone                    : 1
+BareMetalMachineConfigurationData   : {Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.BareMetalMachineConfigurationData}
+NetworkRackId                       : /subscriptions/subscription-id/resourceGroups/rg/providers/Microsoft.NetworkCloud/networkRacks/rack1
+RackLocation                        : 
+RackSerialNumber                    : RACK-001
+RackSkuId                           : sku-123
+StorageApplianceConfigurationData   : {}
 ```
 
-{{ Add description here }}
+This example creates a rack definition with bare metal machine configuration.
 
-### Example 2: {{ Add title here }}
+### Example 2: Create rack definition with storage appliance configuration
 ```powershell
-{{ Add code here }}
+$storageConfig = @{
+    serialNumber = "STORAGE-001"
+    adminCredentials = @{
+        username = "admin"
+        password = "SecurePass123!"
+    }
+}
+New-AzNetworkCloudRackDefinitionObject -NetworkRackId "/subscriptions/subscription-id/resourceGroups/rg/providers/Microsoft.NetworkCloud/networkRacks/rack2" -RackSkuId "sku-456" -RackSerialNumber "RACK-002" -RackLocation "DataCenter-A" -StorageApplianceConfigurationData @($storageConfig)
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+AvailabilityZone                    : 
+BareMetalMachineConfigurationData   : {}
+NetworkRackId                       : /subscriptions/subscription-id/resourceGroups/rg/providers/Microsoft.NetworkCloud/networkRacks/rack2
+RackLocation                        : DataCenter-A
+RackSerialNumber                    : RACK-002
+RackSkuId                           : sku-456
+StorageApplianceConfigurationData   : {System.Collections.Hashtable}
 ```
 
-{{ Add description here }}
+This example creates a rack definition with storage appliance configuration and location information.
 
 ## PARAMETERS
 

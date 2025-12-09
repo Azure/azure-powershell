@@ -23,27 +23,37 @@ Create an in-memory object for NetworkAttachment.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create network attachment with dynamic IP allocation
 ```powershell
-{{ Add code here }}
+New-AzNetworkCloudNetworkAttachmentObject -Name "attachment1" -AttachedNetworkId "/subscriptions/subscription-id/resourceGroups/rg/providers/Microsoft.NetworkCloud/l3Networks/l3Network1" -IPAllocationMethod "Dynamic" -DefaultGateway "True"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+AttachedNetworkId   : /subscriptions/subscription-id/resourceGroups/rg/providers/Microsoft.NetworkCloud/l3Networks/l3Network1
+DefaultGateway      : True
+IPAllocationMethod  : Dynamic
+Ipv4Address         : 
+Ipv6Address         : 
+Name                : attachment1
 ```
 
-{{ Add description here }}
+This example creates a network attachment with dynamic IP allocation and marks it as the default gateway.
 
-### Example 2: {{ Add title here }}
+### Example 2: Create network attachment with static IPv4 address
 ```powershell
-{{ Add code here }}
+New-AzNetworkCloudNetworkAttachmentObject -Name "attachment2" -AttachedNetworkId "/subscriptions/subscription-id/resourceGroups/rg/providers/Microsoft.NetworkCloud/l3Networks/l3Network2" -IPAllocationMethod "Static" -Ipv4Address "10.0.1.50" -DefaultGateway "False"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+AttachedNetworkId   : /subscriptions/subscription-id/resourceGroups/rg/providers/Microsoft.NetworkCloud/l3Networks/l3Network2
+DefaultGateway      : False
+IPAllocationMethod  : Static
+Ipv4Address         : 10.0.1.50
+Ipv6Address         : 
+Name                : attachment2
 ```
 
-{{ Add description here }}
+This example creates a network attachment with a static IPv4 address.
 
 ## PARAMETERS
 

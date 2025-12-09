@@ -23,27 +23,34 @@ Create an in-memory object for BgpServiceLoadBalancerConfiguration.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create BGP service load balancer configuration with advertisement
 ```powershell
-{{ Add code here }}
+$bgpAdvertisement = New-AzNetworkCloudBgpAdvertisementObject -AdvertiseToFabric "True" -IPAddressPool @("pool1")
+New-AzNetworkCloudBgpServiceLoadBalancerConfigurationObject -FabricPeeringEnabled "True" -BgpAdvertisement @($bgpAdvertisement)
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+BgpAdvertisement      : {Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.BgpAdvertisement}
+BgpPeer               : {}
+FabricPeeringEnabled  : True
+IPAddressPool         : {}
 ```
 
-{{ Add description here }}
+This example creates a BGP service load balancer configuration with fabric peering enabled and associated IP pools.
 
-### Example 2: {{ Add title here }}
+### Example 2: Create configuration with fabric peering disabled
 ```powershell
-{{ Add code here }}
+New-AzNetworkCloudBgpServiceLoadBalancerConfigurationObject -FabricPeeringEnabled "False"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+BgpAdvertisement      : {}
+BgpPeer               : {}
+FabricPeeringEnabled  : False
+IPAddressPool         : {}
 ```
 
-{{ Add description here }}
+This example creates a BGP service load balancer configuration with fabric peering disabled.
 
 ## PARAMETERS
 

@@ -22,27 +22,33 @@ Create an in-memory object for IpAddressPool.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create IP address pool with CIDR notation
 ```powershell
-{{ Add code here }}
+New-AzNetworkCloudIpAddressPoolObject -Name "pool1" -Address @("10.0.0.0/24") -AutoAssign "True"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Address       : {10.0.0.0/24}
+AutoAssign    : True
+Name          : pool1
+OnlyUseHostIP : 
 ```
 
-{{ Add description here }}
+This example creates an IP address pool with automatic assignment enabled using CIDR notation.
 
-### Example 2: {{ Add title here }}
+### Example 2: Create IP address pool with explicit IP range
 ```powershell
-{{ Add code here }}
+New-AzNetworkCloudIpAddressPoolObject -Name "external-pool" -Address @("203.0.113.1-203.0.113.50") -AutoAssign "False" -OnlyUseHostIP "True"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Address       : {203.0.113.1-203.0.113.50}
+AutoAssign    : False
+Name          : external-pool
+OnlyUseHostIP : True
 ```
 
-{{ Add description here }}
+This example creates an IP address pool with explicit start-end IP range, excluding gateway addresses.
 
 ## PARAMETERS
 

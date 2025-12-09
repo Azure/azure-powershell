@@ -24,27 +24,35 @@ Create an in-memory object for ControlPlaneNodeConfiguration.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create control plane node configuration with default settings
 ```powershell
-{{ Add code here }}
+New-AzNetworkCloudControlPlaneNodeConfigurationObject -Count 3 -VMSkuName "Standard_D8s_v5"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+AdministratorConfigurationAdminUsername : 
+AdministratorConfigurationSshPublicKey  : {}
+AvailabilityZone                        : {}
+Count                                   : 3
+VMSkuName                               : Standard_D8s_v5
 ```
 
-{{ Add description here }}
+This example creates a control plane node configuration with 3 nodes using the specified VM SKU.
 
-### Example 2: {{ Add title here }}
+### Example 2: Create control plane configuration with admin settings and availability zones
 ```powershell
-{{ Add code here }}
+New-AzNetworkCloudControlPlaneNodeConfigurationObject -Count 5 -AdministratorConfigurationAdminUsername "azureuser" -AvailabilityZone @("1","2","3") -VMSkuName "Standard_D16s_v5"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+AdministratorConfigurationAdminUsername : azureuser
+AdministratorConfigurationSshPublicKey  : {}
+AvailabilityZone                        : {1, 2, 3}
+Count                                   : 5
+VMSkuName                               : Standard_D16s_v5
 ```
 
-{{ Add description here }}
+This example creates a control plane configuration with specific availability zones and administrator settings.
 
 ## PARAMETERS
 

@@ -22,27 +22,33 @@ Create an in-memory object for KeySetUser.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create keyset user with SSH public key
 ```powershell
-{{ Add code here }}
+New-AzNetworkCloudKeySetUserObject -AzureUserName "user1" -SshPublicKeyData "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC..." -Description "User for cluster access"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+AzureUserName      : user1
+Description        : User for cluster access
+SshPublicKeyData   : ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC...
+UserPrincipalName  : 
 ```
 
-{{ Add description here }}
+This example creates a keyset user with SSH public key authentication and a description.
 
-### Example 2: {{ Add title here }}
+### Example 2: Create keyset user with user principal name
 ```powershell
-{{ Add code here }}
+New-AzNetworkCloudKeySetUserObject -AzureUserName "user2" -SshPublicKeyData "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC..." -UserPrincipalName "user2@contoso.com"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+AzureUserName      : user2
+Description        : 
+SshPublicKeyData   : ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC...
+UserPrincipalName  : user2@contoso.com
 ```
 
-{{ Add description here }}
+This example creates a keyset user with Azure user name and associated user principal name for group membership validation.
 
 ## PARAMETERS
 

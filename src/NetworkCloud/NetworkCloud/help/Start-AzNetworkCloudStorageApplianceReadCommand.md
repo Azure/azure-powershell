@@ -46,27 +46,39 @@ Run one or more read-only commands on the provided storage appliance.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Run read-only command on storage appliance
 ```powershell
-{{ Add code here }}
+$command = @{
+    command = "readiness"
+    arguments = @()
+}
+Start-AzNetworkCloudStorageApplianceReadCommand -StorageApplianceName "storageApplianceName" -ResourceGroupName "resourceGroupName" -SubscriptionId "subscriptionId" -Command @($command) -LimitTimeSecond 60
 ```
 
 ```output
-{{ Add output here }}
+True
 ```
 
-{{ Add description here }}
+This example runs a read-only readiness check command on the specified storage appliance with a 60-second timeout.
 
-### Example 2: {{ Add title here }}
+### Example 2: Run multiple storage appliance read commands
 ```powershell
-{{ Add code here }}
+$command1 = @{
+    command = "readiness"
+    arguments = @()
+}
+$command2 = @{
+    command = "health"
+    arguments = @("-v")
+}
+Start-AzNetworkCloudStorageApplianceReadCommand -StorageApplianceName "storageApplianceName" -ResourceGroupName "resourceGroupName" -SubscriptionId "subscriptionId" -Command @($command1, $command2) -LimitTimeSecond 120
 ```
 
 ```output
-{{ Add output here }}
+True
 ```
 
-{{ Add description here }}
+This example runs multiple read-only commands on the storage appliance with a 120-second timeout.
 
 ## PARAMETERS
 

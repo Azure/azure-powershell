@@ -22,27 +22,29 @@ Create an in-memory object for EndpointDependency.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create endpoint dependency for API server
 ```powershell
-{{ Add code here }}
+New-AzNetworkCloudEndpointDependencyObject -DomainName "api.example.com" -Port 443
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+DomainName : api.example.com
+Port       : 443
 ```
 
-{{ Add description here }}
+This example creates an endpoint dependency object for an API server at the specified domain and port.
 
-### Example 2: {{ Add title here }}
+### Example 2: Create endpoint dependency without port specification
 ```powershell
-{{ Add code here }}
+New-AzNetworkCloudEndpointDependencyObject -DomainName "registry.example.com"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+DomainName : registry.example.com
+Port       : 
 ```
 
-{{ Add description here }}
+This example creates an endpoint dependency object without specifying a port, which will use the default.
 
 ## PARAMETERS
 

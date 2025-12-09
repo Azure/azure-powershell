@@ -22,27 +22,31 @@ Create an in-memory object for L3NetworkAttachmentConfiguration.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create L3 network attachment with IPAM enabled
 ```powershell
-{{ Add code here }}
+New-AzNetworkCloudL3NetworkAttachmentConfigurationObject -NetworkId "/subscriptions/subscription-id/resourceGroups/rg/providers/Microsoft.NetworkCloud/l3Networks/l3Network1" -IpamEnabled "True" -PluginType "IPVLAN"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+IpamEnabled : True
+NetworkId   : /subscriptions/subscription-id/resourceGroups/rg/providers/Microsoft.NetworkCloud/l3Networks/l3Network1
+PluginType  : IPVLAN
 ```
 
-{{ Add description here }}
+This example creates an L3 network attachment configuration with IP address management enabled.
 
-### Example 2: {{ Add title here }}
+### Example 2: Create L3 network attachment without IPAM
 ```powershell
-{{ Add code here }}
+New-AzNetworkCloudL3NetworkAttachmentConfigurationObject -NetworkId "/subscriptions/subscription-id/resourceGroups/rg/providers/Microsoft.NetworkCloud/l3Networks/l3Network2" -IpamEnabled "False" -PluginType "MACVLAN"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+IpamEnabled : False
+NetworkId   : /subscriptions/subscription-id/resourceGroups/rg/providers/Microsoft.NetworkCloud/l3Networks/l3Network2
+PluginType  : MACVLAN
 ```
 
-{{ Add description here }}
+This example creates an L3 network attachment without IPAM using MACVLAN plugin.
 
 ## PARAMETERS
 
