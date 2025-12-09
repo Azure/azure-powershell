@@ -395,12 +395,29 @@ function Get-AzMigrateServerMigrationStatus {
         {
             throw "No appliance found with name $ApplianceName"
         }
-
-        if ($parameterSet -eq "GetByMachineName" -or $parameterSet -eq "GetHealthByMachineName" -or $parameterSet -eq "GetByPrioritiseServer") {
-            $ReplicationMigrationItems = Get-AzMigrateServerReplication -ProjectName $ProjectName -ResourceGroupName $ResourceGroupName -MachineName $MachineName
+        if ($PSBoundParameters.ContainsKey('SubscriptionId')) {
+            if ($null -eq $PSBoundParameters['SubscriptionId'] -or `
+            ($PSBoundParameters['SubscriptionId'] -is [System.Array] -and $PSBoundParameters['SubscriptionId'].Count -eq 0) -or `
+            [string]::IsNullOrEmpty($PSBoundParameters['SubscriptionId'])) {
+                $currentContext = Get-AzContext
+                if ($null -eq $currentContext -or [string]::IsNullOrEmpty($currentContext.Subscription.Id)) {
+                    throw "No Azure context is set. Please login using Connect-AzAccount."
+                }
+                $PSBoundParameters['SubscriptionId'] = $currentContext.Subscription.Id
+            }
         }
         else {
-            $ReplicationMigrationItems = Get-AzMigrateServerReplication -ProjectName $ProjectName -ResourceGroupName $ResourceGroupName
+            $currentContext = Get-AzContext
+            if ($null -eq $currentContext -or [string]::IsNullOrEmpty($currentContext.Subscription.Id)) {
+                throw "No Azure context is set. Please login using Connect-AzAccount."
+            }
+            $PSBoundParameters['SubscriptionId'] = $currentContext.Subscription.Id
+        }
+        if ($parameterSet -eq "GetByMachineName" -or $parameterSet -eq "GetHealthByMachineName" -or $parameterSet -eq "GetByPrioritiseServer") {
+            $ReplicationMigrationItems = Get-AzMigrateServerReplication -ProjectName $ProjectName -ResourceGroupName $ResourceGroupName -MachineName $MachineName -SubscriptionId $PSBoundParameters['SubscriptionId']
+        }
+        else {
+            $ReplicationMigrationItems = Get-AzMigrateServerReplication -ProjectName $ProjectName -ResourceGroupName $ResourceGroupName -SubscriptionId $PSBoundParameters['SubscriptionId']
         }
 
         if ($ReplicationMigrationItems -eq $null) {

@@ -13,11 +13,11 @@ while(-not $mockingPath) {
 
 Describe 'Resume-AzMigrateServerReplication' {
     It 'ByIDVMwareCbt' {
-       {Resume-AzMigrateServerReplication -TargetObjectID $env.srsMachinetmpa} | Should -Not -Throw
+       {Resume-AzMigrateServerReplication -TargetObjectID $env.migMachineId} | Should -Not -Throw
     }
 
     It 'ByInputObjectVMwareCbt' {
-        $obj = Get-AzMigrateServerReplication -TargetObjectID  $env.srsMachinetmpx
+        $obj = Get-AzMigrateServerReplication -TargetObjectID $env.migMachineId2
         $obj.Count | Should -BeGreaterOrEqual 1
         {Resume-AzMigrateServerReplication -InputObject $obj} | Should -Not -Throw
         }
