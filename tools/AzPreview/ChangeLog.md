@@ -1,3 +1,19 @@
+## 15.2.0 - January 2026
+#### Az.DeviceRegistry 1.1.0
+* Public preview release of API version 2025-11-01-preview for Az.DeviceRegistry. 
+New resources included:
+    - Namespace Credentials
+    - Namespace Policies
+* Added cmdlets: New-AzDeviceRegistryCredentials, Get-AzDeviceRegistryCredentials, Update-AzDeviceRegistryCredentials, Remove-AzDeviceRegistryCredentials, Sync-AzDeviceRegistryCredentials
+* Added cmdlets: New-AzDeviceRegistryPolicy, Get-AzDeviceRegistryPolicy, Update-AzDeviceRegistryPolicy, Remove-AzDeviceRegistryPolicy
+
+#### Az.NetAppFiles 1.0.0
+* General availability for module Az.NetAppFiles
+
+#### Az.StackHCI 2.6.5
+* ARC Enablement of Nodes Before Triggering Registration in New Registration Flow.
+* Resolved double hop authentication issue.
+
 ## 15.1.0 - December 2025
 #### Az.AppConfiguration 2.0.1
 * Fixed GitHub issue #23731 'Problem with Get-AzAppConfigurationKeyValue when more that 100 records are present'
