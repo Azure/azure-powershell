@@ -19,6 +19,26 @@ Test-AzKustoScriptNameAvailability -ClusterName <String> -DatabaseName <String> 
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### CheckViaJsonString
+```
+Test-AzKustoScriptNameAvailability -ClusterName <String> -DatabaseName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CheckViaJsonFilePath
+```
+Test-AzKustoScriptNameAvailability -ClusterName <String> -DatabaseName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CheckViaIdentityClusterExpanded
+```
+Test-AzKustoScriptNameAvailability -DatabaseName <String> -ClusterInputObject <IKustoIdentity> -Name <String>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### CheckViaIdentityExpanded
 ```
 Test-AzKustoScriptNameAvailability -InputObject <IKustoIdentity> -Name <String> [-DefaultProfile <PSObject>]
@@ -58,12 +78,27 @@ The above command checks that the script name which is not valid.
 
 ## PARAMETERS
 
+### -ClusterInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
+Parameter Sets: CheckViaIdentityClusterExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ClusterName
 The name of the Kusto cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: CheckExpanded
+Parameter Sets: CheckExpanded, CheckViaJsonString, CheckViaJsonFilePath
 Aliases:
 
 Required: True
@@ -78,7 +113,7 @@ The name of the database in the Kusto cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: CheckExpanded
+Parameter Sets: CheckExpanded, CheckViaJsonString, CheckViaJsonFilePath, CheckViaIdentityClusterExpanded
 Aliases:
 
 Required: True
@@ -106,7 +141,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
@@ -120,12 +154,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Check operation
+
+```yaml
+Type: System.String
+Parameter Sets: CheckViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Check operation
+
+```yaml
+Type: System.String
+Parameter Sets: CheckViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Script name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CheckExpanded, CheckViaIdentityClusterExpanded, CheckViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -141,7 +205,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CheckExpanded
+Parameter Sets: CheckExpanded, CheckViaJsonString, CheckViaJsonFilePath
 Aliases:
 
 Required: True
@@ -156,7 +220,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: CheckExpanded
+Parameter Sets: CheckExpanded, CheckViaJsonString, CheckViaJsonFilePath
 Aliases:
 
 Required: False
@@ -206,7 +270,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ICheckNameResult
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.ICheckNameResult
 
 ## NOTES
 
