@@ -1,3 +1,16 @@
+## 15.2.0 - December 2025
+#### Az.Migrate 2.10.1 
+* Modified cmdlet `New-AzMigrateServerReplication`
+   - Added parameter `-TargetCapacityReservationGroupId`
+* Modified cmdlet `Set-AzMigrateServerReplication`
+   - Added parameter `-TargetCapacityReservationGroupId`
+* Modified cmdlet `Start-AzMigrateServerMigration`
+   - Added parameter `-TargetCapacityReservationGroupId`
+#### Az.StorageSync 2.6.0 
+* Modified cmdlet `New-AzStorageSyncCloudEndpoint`
+   - Added parameter `-ChangeEnumerationIntervalDay`
+* Added cmdlet `Set-AzStorageSyncCloudEndpoint`
+
 ## 15.1.0 - December 2025
 #### Az.Compute 11.1.0 
 * Modified cmdlet `Get-AzVmssVM`
@@ -1158,6 +1171,7 @@
    - Changed the type of parameter `-ManagedResourcesNetworkAccessType` from `ManagedResourcesNetworkAccessType` to `String`
    - Changed the type of parameter `-UserAssignedIdentity` from `Hashtable` to `String[]`
 * Added cmdlet `Update-AzWorkloadsProviderInstance`
+
 
 
 

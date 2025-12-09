@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.6.0
 * Added `ChangeEnumerationIntervalDays` parameter to `New-AzStorageSyncCloudEndpoint` cmdlet
     - Allows customers to configure the interval in days between change enumeration operations for cloud endpoints
     - Valid range: 1 to 20 days

@@ -8445,7 +8445,8 @@
       "Set-AzStorageSyncServerEndpointPermission": {},
       "Set-AzStorageSyncService": {},
       "Set-AzStorageSyncServiceIdentity": {},
-      "Unregister-AzStorageSyncServer": {}
+      "Unregister-AzStorageSyncServer": {},
+      "Set-AzStorageSyncCloudEndpoint": {}
     },
     "Az.StreamAnalytics": {
       "Get-AzStreamAnalyticsCluster": {},
