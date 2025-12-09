@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated the implementation of NewBatchApplicationPackage command to not call GetBatchApplicationPackage to retrieve storage keys for security imporvements. No behavior changes to the command.
 
 ## Version 4.0.0
 * Upgraded API version from 2022-10-01 to 2024-07-01.
