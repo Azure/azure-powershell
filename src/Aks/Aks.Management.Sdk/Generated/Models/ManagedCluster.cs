@@ -653,6 +653,19 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         {
             base.Validate();
 
+
+
+
+
+
+
+
+
+
+
+
+
+
             if (this.AgentPoolProfiles != null)
             {
                 foreach (var element in this.AgentPoolProfiles)
@@ -686,10 +699,22 @@ namespace Microsoft.Azure.Management.ContainerService.Models
                 }
             }
 
+
+
+
+
             if (this.NetworkProfile != null)
             {
                 this.NetworkProfile.Validate();
             }
+
+
+
+
+
+
+
+
 
             if (this.SecurityProfile != null)
             {

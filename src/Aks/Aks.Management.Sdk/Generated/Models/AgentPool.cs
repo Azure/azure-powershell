@@ -759,10 +759,16 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// </exception>
         public virtual void Validate()
         {
+
+
+
             if (this.KubeletConfig != null)
             {
                 this.KubeletConfig.Validate();
             }
+
+
+
 
             if (this.OSDiskSizeGb != null)
             {
@@ -776,20 +782,48 @@ namespace Microsoft.Azure.Management.ContainerService.Models
                 }
             }
 
+
+
+
+
+
+
+
+
+
+
+
+
             if (this.UpgradeSettings != null)
             {
                 this.UpgradeSettings.Validate();
             }
+
+
+
+
+
+
+
+
 
             if (this.LinuxOSConfig != null)
             {
                 this.LinuxOSConfig.Validate();
             }
 
+
+
+
+
+
             if (this.GatewayProfile != null)
             {
                 this.GatewayProfile.Validate();
             }
+
+
+
         }
     }
 }
