@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 // check to see if the application package already exists
                 bool appPackageAlreadyExists = AppPackageExists(resourceGroupName, accountName, applicationName, version);
 
-                // if exist verify it allows updates
+                // if it exists, verify it allows updates
                 if (appPackageAlreadyExists)
                 {
                     CheckApplicationAllowsUpdates(resourceGroupName, accountName, applicationName, version);
