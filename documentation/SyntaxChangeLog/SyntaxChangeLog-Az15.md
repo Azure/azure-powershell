@@ -1,3 +1,18 @@
+## 15.2.0 - January 2026
+#### Az.DeviceRegistry 1.1.0 
+* Modified cmdlet `New-AzDeviceRegistryNamespaceDevice`
+   - Added parameter `-PolicyResourceId`
+* Modified cmdlet `Update-AzDeviceRegistryNamespaceDevice`
+   - Added parameter `-PolicyResourceId`
+* Added cmdlet `Get-AzDeviceRegistryCredentials`, `Get-AzDeviceRegistryPolicy`, `New-AzDeviceRegistryCredentials`, `New-AzDeviceRegistryPolicy`, `Remove-AzDeviceRegistryCredentials`, `Remove-AzDeviceRegistryPolicy`, `Sync-AzDeviceRegistryCredentials`, `Update-AzDeviceRegistryCredentials`, `Update-AzDeviceRegistryPolicy`
+#### Az.Migrate 2.10.1 
+* Modified cmdlet `New-AzMigrateServerReplication`
+   - Added parameter `-TargetCapacityReservationGroupId`
+* Modified cmdlet `Set-AzMigrateServerReplication`
+   - Added parameter `-TargetCapacityReservationGroupId`
+* Modified cmdlet `Start-AzMigrateServerMigration`
+   - Added parameter `-TargetCapacityReservationGroupId`
+
 ## 15.1.0 - December 2025
 #### Az.Compute 11.1.0 
 * Modified cmdlet `Get-AzVmssVM`
@@ -1158,6 +1173,7 @@
    - Changed the type of parameter `-ManagedResourcesNetworkAccessType` from `ManagedResourcesNetworkAccessType` to `String`
    - Changed the type of parameter `-UserAssignedIdentity` from `Hashtable` to `String[]`
 * Added cmdlet `Update-AzWorkloadsProviderInstance`
+
 
 
 

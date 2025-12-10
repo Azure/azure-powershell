@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '15.1.0'
+ModuleVersion = '15.2.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -118,7 +118,7 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '5.3.1'; },
             @{ModuleName = 'Az.DesktopVirtualization'; RequiredVersion = '5.4.1'; }, 
             @{ModuleName = 'Az.DevCenter'; RequiredVersion = '3.0.0'; }, 
             @{ModuleName = 'Az.DeviceProvisioningServices'; RequiredVersion = '0.10.4'; }, 
-            @{ModuleName = 'Az.DeviceRegistry'; RequiredVersion = '1.0.0'; }, 
+            @{ModuleName = 'Az.DeviceRegistry'; RequiredVersion = '1.1.0'; }, 
             @{ModuleName = 'Az.DeviceUpdate'; RequiredVersion = '0.2.0'; }, 
             @{ModuleName = 'Az.DevTestLabs'; RequiredVersion = '1.1.0'; }, 
             @{ModuleName = 'Az.DigitalTwins'; RequiredVersion = '0.3.0'; }, 
@@ -182,7 +182,7 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '5.3.1'; },
             @{ModuleName = 'Az.MonitoringSolutions'; RequiredVersion = '0.2.0'; }, 
             @{ModuleName = 'Az.MySql'; RequiredVersion = '1.5.1'; }, 
             @{ModuleName = 'Az.NeonPostgres'; RequiredVersion = '0.2.0'; }, 
-            @{ModuleName = 'Az.NetAppFiles'; RequiredVersion = '0.25.1'; }, 
+            @{ModuleName = 'Az.NetAppFiles'; RequiredVersion = '1.0.0'; }, 
             @{ModuleName = 'Az.Network'; RequiredVersion = '7.24.0'; }, 
             @{ModuleName = 'Az.NetworkAnalytics'; RequiredVersion = '0.1.2'; }, 
             @{ModuleName = 'Az.NetworkCloud'; RequiredVersion = '2.0.0'; }, 
