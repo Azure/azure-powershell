@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     CheckApplicationAllowsUpdates(resourceGroupName, accountName, applicationName, version);
                 }
 
-                // Get the storage URL to upload the application package to by call create/update
+                // Get the storage URL to upload the application package to by calling create/update
                 var storageUrl = CreateUpdateAppPackage(resourceGroupName, accountName, applicationName, version);
 
                 UploadFileToApplicationPackage(resourceGroupName, accountName, applicationName, version, filePath, storageUrl, appPackageAlreadyExists);
