@@ -6186,7 +6186,6 @@ function Test-VirtualMachineScaleSetResiliencyView
         Clean-ResourceGroup $rgname;
     }
 }
-}
 
 <#
 .SYNOPSIS
@@ -6262,10 +6261,9 @@ function Test-VirtualMachineScaleSetAutomaticZonePlacement
         Assert-AreEqual $vmssResult.ResiliencyPolicy.ZoneAllocationPolicy.MaxInstancePercentPerZonePolicy.Value 50
 
         # Update vmss
-        $vmssUpdate = Update-AzVmss -ResourceGroupName $rgname -Name $vmssName2 -ZonePlacementPolicy 'Auto' -MaxZoneCount 3 -IncludeZone "1","2","3";
+        $vmssUpdate = Update-AzVmss -ResourceGroupName $rgname -Name $vmssName2 -MaxInstancePercentPerZoneValue 60;
 
-        Assert-AreEqual $vmssUpdate.ResiliencyPolicy.ZoneAllocationPolicy.MaxZoneCount 3;
-        Assert-AreEqual $vmssUpdate.Placement.IncludeZones.Count 3;
+        Assert-AreEqual $vmssUpdate.ResiliencyPolicy.ZoneAllocationPolicy.MaxInstancePercentPerZonePolicy.Value 60;
         #>
     }
     finally

@@ -20,8 +20,9 @@
 
 -->
 ## Upcoming Release
-* Added new parameters `ZonePlacementPolicy`, `IncludeZone`, `ExcludeZone`, `MaxZoneCount`, `EnableMaxInstancePercentPerZone` and `MaxInstancePercentPerZoneValue` to `New-AzVmssConfig` and `Update-AzVmss` cmdlets.
+* Added new parameters `ZonePlacementPolicy`, `IncludeZone`, `ExcludeZone`, `MaxZoneCount`, `EnableMaxInstancePercentPerZone` and `MaxInstancePercentPerZoneValue` to `New-AzVmssConfig` cmdlet.
 * Added new parameters `ZonePlacementPolicy`, `IncludeZone` and `ExcludeZone` to `New-AzVmss` cmdlet.
+* Added new parameters `MaxZoneCount`, `EnableMaxInstancePercentPerZone` and `MaxInstancePercentPerZoneValue` to `Update-AzVmss` cmdlet.
 
 ## Version 11.1.0
 * Added `-ResiliencyView` parameter to `Get-AzVmssVM` cmdlet

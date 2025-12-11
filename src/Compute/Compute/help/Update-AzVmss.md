@@ -39,8 +39,8 @@ Update-AzVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
  [-SkuProfileAllocationStrategy <String>] [-EnableResilientVMCreate <Boolean>]
  [-EnableResilientVMDelete <Boolean>] [-EnableAutomaticZoneRebalance <Boolean>]
  [-AutomaticZoneRebalanceStrategy <String>] [-AutomaticZoneRebalanceBehavior <String>]
- [-ZonePlacementPolicy <String>] [-MaxZoneCount <Int32>] [-EnableMaxInstancePercentPerZone <Boolean>]
- [-MaxInstancePercentPerZoneValue <Int32>] [-IncludeZone <String[]>] [-ExcludeZone <String[]>]
+ [-MaxZoneCount <Int32>] [-EnableMaxInstancePercentPerZone <Boolean>]
+ [-MaxInstancePercentPerZoneValue <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -71,8 +71,8 @@ Update-AzVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
  [-SkuProfileAllocationStrategy <String>] [-EnableResilientVMCreate <Boolean>]
  [-EnableResilientVMDelete <Boolean>] [-EnableAutomaticZoneRebalance <Boolean>]
  [-AutomaticZoneRebalanceStrategy <String>] [-AutomaticZoneRebalanceBehavior <String>]
- [-ZonePlacementPolicy <String>] [-MaxZoneCount <Int32>] [-EnableMaxInstancePercentPerZone <Boolean>]
- [-MaxInstancePercentPerZoneValue <Int32>] [-IncludeZone <String[]>] [-ExcludeZone <String[]>]
+ [-MaxZoneCount <Int32>] [-EnableMaxInstancePercentPerZone <Boolean>]
+ [-MaxInstancePercentPerZoneValue <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -450,21 +450,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ExcludeZone
-This property supplements the 'zonePlacementPolicy' property. If 'zonePlacementPolicy' is set to 'Any', availability zone selected by the system must not be present in the list of availability zones passed with 'excludeZones'. If 'excludeZones' is not provided, all availability zones in region will be considered for selection.
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -IdentityId
 Specifies the list of user identities associated with the virtual machine scale set.
 The user identity references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/identities/{identityName}'
@@ -626,21 +611,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IncludeZone
-This property supplements the 'zonePlacementPolicy' property. If 'zonePlacementPolicy' is set to 'Any', availability zone selected by the system must be present in the list of availability zones passed with 'includeZones'. If 'includeZones' is not provided, all availability zones in region will be considered for selection.
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -1319,21 +1289,6 @@ Aliases: Name
 
 Required: True
 Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ZonePlacementPolicy
-Specifies the policy for resource's placement in availability zone. Possible values are: **Any** (used for Virtual Machines), **Auto** (used for Virtual Machine Scale Sets) - An availability zone will be automatically picked by system as part of resource creation.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
