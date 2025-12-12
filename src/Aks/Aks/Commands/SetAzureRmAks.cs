@@ -446,9 +446,17 @@ namespace Microsoft.Azure.Commands.Aks
                     }
                     if (this.IsParameterBound(c => c.AssignKubeletIdentity))
                     {
+                        string controlplaneUserMIResourceId = GetControlPlaneUserManagedIdentity(cluster);
+                        AddMsiRoleAssignment(controlplaneUserMIResourceId, AssignKubeletIdentity);
+                        var kubeletUserMI = GetUserManagedIdentity(AssignKubeletIdentity);
+                        if (kubeletUserMI == null)
+                        {
+                            throw new AzPSArgumentException($"Can't find the user managed identity with id {AssignKubeletIdentity}", nameof(AssignKubeletIdentity));
+                        }
+
                         cluster.IdentityProfile = new Dictionary<string, UserAssignedIdentity>
                         {
-                            { "kubeletidentity", new UserAssignedIdentity(AssignKubeletIdentity) }
+                            { "kubeletidentity", new UserAssignedIdentity(AssignKubeletIdentity, kubeletUserMI.ClientId, kubeletUserMI.ObjectId) }
                         };
                     }
                     if (this.IsParameterBound(c => c.AutoScalerProfile))
@@ -544,6 +552,23 @@ namespace Microsoft.Azure.Commands.Aks
                     WriteObject(AdapterHelper<ManagedCluster, PSKubernetesCluster>.Adapt(kubeCluster));
                 });
             }
+        }
+
+        private string GetControlPlaneUserManagedIdentity(ManagedCluster cluster)
+        {
+            bool isUsingManagedIdentity = EnableManagedIdentity.IsPresent || cluster.Identity != null;
+            bool isUsingUserManagedIdentity = this.IsParameterBound(c => c.AssignKubeletIdentity) || cluster.Identity.UserAssignedIdentities != null;
+            if (!isUsingManagedIdentity || !isUsingUserManagedIdentity)
+            {
+                throw new AzPSArgumentException(
+                        "Parameter 'AssignKubeletIdentity' must work together with 'EnableManagedIdentity' and 'AssignIdentity'.",
+                        nameof(AssignKubeletIdentity));
+            }
+            if (this.IsParameterBound(c => c.AssignIdentity))
+            {
+                return AssignIdentity;
+            }
+            return cluster.Identity.UserAssignedIdentities.Keys.FirstOrDefault();
         }
 
         private void RemoveAcrRoleAssignment(string acrName, string acrParameterName, AcsServicePrincipal acsServicePrincipal)

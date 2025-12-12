@@ -78,6 +78,7 @@ namespace Microsoft.Azure.Commands.Aks
         public SwitchParameter EnableManagedIdentity { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "ResourceId of user assign managed identity for cluster.")]
+        [ValidateNotNullOrEmpty]
         public string AssignIdentity { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The Azure Active Directory configuration.")]
@@ -185,6 +186,7 @@ namespace Microsoft.Azure.Commands.Aks
         public string HttpProxyConfigTrustedCa { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "ResourceId of user assign managed identity used by the kubelet.")]
+        [ValidateNotNullOrEmpty]
         public string AssignKubeletIdentity { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The version of Kubernetes to use for creating the cluster.")]
@@ -505,6 +507,44 @@ namespace Microsoft.Azure.Commands.Aks
             return new AcsServicePrincipal { SpId = app.AppId, ClientSecret = clientSecret, ObjectId = sp.Id };
         }
 
+        protected void AddMsiRoleAssignment(string controlplaneUserMIResourceId, string kubeletUserMIResourceId)
+        {
+            var roleDefinitionId = GetRoleId("Managed Identity Operator", kubeletUserMIResourceId);
+            var controlplaneUserMI = GetUserManagedIdentity(controlplaneUserMIResourceId);
+            if (controlplaneUserMI == null)
+            {
+                throw new AzPSArgumentException($"Can't find the user managed identity with id {AssignKubeletIdentity}", nameof(AssignKubeletIdentity));
+            }
+
+            RoleAssignment roleAssignment = null;
+            var actionSuccess = RetryAction(() =>
+            {
+                var filter = $"principalId eq '{controlplaneUserMI.ObjectId}'";
+                roleAssignment = AuthClient.RoleAssignments.ListForScope(kubeletUserMIResourceId, new ODataQuery<RoleAssignmentFilter>(filter))
+                    .Where(x => x.Properties.RoleDefinitionId == roleDefinitionId)
+                    .FirstOrDefault();
+            });
+            if (!actionSuccess)
+            {
+                throw new AzPSArgumentException($"Can't list the RoleAssignments of the user managed identity with id {AssignKubeletIdentity}", nameof(AssignKubeletIdentity));
+            }
+
+            if (roleAssignment != null)
+            {
+                WriteDebug($"The cluster using user-assigned managed identity {controlplaneUserMI.ObjectId} has already been granted 'Managed Identity Operator' role to assign kubelet identity {kubeletUserMIResourceId}.");
+                return;
+            }
+            var success = RetryAction(() =>
+                AuthClient.RoleAssignments.Create(kubeletUserMIResourceId, Guid.NewGuid().ToString(), new RoleAssignmentCreateParameters()
+                {
+                    Properties = new RoleAssignmentProperties(roleDefinitionId, controlplaneUserMI.ObjectId)
+                }), Resources.AddRoleAssignment);
+            if (!success)
+            {
+                throw new AzPSInvalidOperationException(
+                    $"Can't assign 'Managed Identity Operator' role for {controlplaneUserMIResourceId} to kubelet identity {kubeletUserMIResourceId}. ");
+            }
+        }
         protected RoleAssignment GetRoleAssignmentWithRoleDefinitionId(string roleDefinitionId, string acrResourceId, string acsServicePrincipalObjectId)
         {
             RoleAssignment roleAssignment = null;
@@ -522,7 +562,6 @@ namespace Microsoft.Azure.Commands.Aks
             }
             return roleAssignment;
         }
-
         protected void AddAcrRoleAssignment(string acrName, string acrParameterName, AcsServicePrincipal acsServicePrincipal)
         {
             string acrResourceId = getSpecifiedAcr(acrName, acrParameterName);
@@ -595,6 +634,35 @@ namespace Microsoft.Azure.Commands.Aks
             {
                 throw new AzPSArgumentException(string.Format(Resources.CouldNotFindSpecifiedAcr, acrName), ex, string.Format(Resources.CouldNotFindSpecifiedAcr, "*"));
             }
+        }
+
+        protected UserAssignedIdentity GetUserManagedIdentity(string identityResourceId)
+        {
+            var provider = RmClient.Providers.Get("Microsoft.ManagedIdentity");
+            var userAssignedIdentitiesResourceType = provider.ResourceTypes.FirstOrDefault(rt =>
+                    rt.ResourceType.Equals("userAssignedIdentities", StringComparison.OrdinalIgnoreCase));
+            var apiVersion = userAssignedIdentitiesResourceType?.ApiVersions?.Where(av => !av.ToLower().EndsWith("-preview")).First();
+            if (apiVersion == null)
+            {
+                apiVersion = userAssignedIdentitiesResourceType?.ApiVersions?.FirstOrDefault();
+            }
+
+            var UserMIResource = RmClient.Resources.GetById(identityResourceId, apiVersion);
+
+            string objectId = null;
+            string clientId = null;
+
+            if (UserMIResource != null && UserMIResource.Properties != null)
+            {
+                var properties = Newtonsoft.Json.Linq.JObject.Parse(UserMIResource.Properties.ToString());
+                objectId = properties["principalId"]?.ToString();
+                clientId = properties["clientId"]?.ToString();
+            }
+            if (objectId == null || clientId == null)
+            {
+                return null;
+            }
+            return new UserAssignedIdentity(identityResourceId, clientId, objectId);
         }
 
         protected bool Exists()

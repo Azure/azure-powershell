@@ -234,5 +234,21 @@ namespace Commands.Aks.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-API20250801-WithoutMSI");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        // This test can be recorded but the role assignment url will contain a GUID which is not supported by test framework to playback. Mark it as LiveOnly for now.
+        public void TestAPI20250801WithMSI()
+        {
+            TestRunner.RunTestScript("Test-API20250801-WithMSI");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        // This test can be recorded but the role assignment url will contain a GUID which is not supported by test framework to playback. Mark it as LiveOnly for now.
+        public void TestAPI20250801WithMSISet()
+        {
+            TestRunner.RunTestScript("Test-API20250801-WithMSI-Set");
+        }
     }
 }

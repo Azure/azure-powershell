@@ -294,6 +294,21 @@ namespace Microsoft.Azure.Commands.Aks
                         desensitizedMessage: Resources.NetworkPluginShouldBeAzure);
                 }
             }
+            if (this.IsParameterBound(c => c.AssignKubeletIdentity))
+            {
+                if (!this.IsParameterBound(c => c.EnableManagedIdentity) || !this.IsParameterBound(c => c.AssignIdentity))
+                { 
+                    throw new AzPSArgumentException(
+                        "Parameter 'AssignKubeletIdentity' must work together with 'EnableManagedIdentity' and 'AssignIdentity'.",
+                        nameof(AssignKubeletIdentity));
+                }
+            }
+            if (this.IsParameterBound(c => c.EnableCostAnalysis) && !this.IsParameterBound(c => c.EnableUptimeSLA))
+            {
+                throw new AzPSArgumentException(
+                    "Parameter 'EnableCostAnalysis' must work together with 'EnableUptimeSLA'.",
+                    nameof(EnableCostAnalysis));
+            }
         }
 
         private string GenerateSshKeyValue()
@@ -419,9 +434,16 @@ namespace Microsoft.Azure.Commands.Aks
             }
             if (this.IsParameterBound(c => c.AssignKubeletIdentity))
             {
+                AddMsiRoleAssignment(AssignIdentity, AssignKubeletIdentity);
+                var kubeletUserMI = GetUserManagedIdentity(AssignKubeletIdentity);
+                if (kubeletUserMI == null) 
+                {
+                    throw new AzPSArgumentException($"Can't find the user managed identity with id {AssignKubeletIdentity}", nameof(AssignKubeletIdentity));
+                }
+
                 managedCluster.IdentityProfile = new Dictionary<string, UserAssignedIdentity>
                 {
-                    { "kubeletidentity", new UserAssignedIdentity(AssignKubeletIdentity) }
+                    { "kubeletidentity", new UserAssignedIdentity(AssignKubeletIdentity, kubeletUserMI.ClientId, kubeletUserMI.ObjectId) }
                 };
             }
             if (this.IsParameterBound(c => c.DiskEncryptionSetID))

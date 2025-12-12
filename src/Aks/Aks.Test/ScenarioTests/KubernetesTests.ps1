@@ -1373,3 +1373,64 @@ function Test-API20250801-WithoutMSI {
         Remove-AzResourceGroup -Name $resourceGroupName -Force
     }
 }
+
+function Test-API20250801-WithMSI {
+    $resourceGroupName = Get-RandomResourceGroupName
+    $kubeClusterName = Get-RandomClusterName
+    $location = 'eastus'
+
+    $nodeVmSize = "standard_a2_v2"
+    try {
+        New-AzResourceGroup -Name $resourceGroupName -Location $location
+        # prepare UserAssignedIdentity
+        # $resourceGroupName='AKS_TEST_RG'
+        # $identityName1='aks_test_mi'
+        # $identity1 = New-AzUserAssignedIdentity -ResourceGroupName $resourceGroupName -Name $identityName1 -Location $location
+        # $identityId1 = $identity1.Id
+
+        # $identityName2='aks_test_mi_2'
+        # $identity2 = New-AzUserAssignedIdentity -ResourceGroupName $resourceGroupName -Name $identityName2 -Location $location
+        # $identityId2 = $identity2.Id
+        $identityId1 = '/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourcegroups/AKS_TEST_RG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/aks_test_mi'
+        $identityId2 = '/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourcegroups/AKS_TEST_RG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/aks_test_mi_2'
+
+        New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeVmSize $nodeVmSize -NodeCount 1 -Location $location  -AssignKubeletIdentity $identityId2  -EnableManagedIdentity -AssignIdentity $identityId1 -EnableAIToolchainOperator -EnabledMonitorMetric -EnableCostAnalysis -EnableUptimeSLA
+
+        $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
+
+    }
+    finally {
+        Remove-AzResourceGroup -Name $resourceGroupName -Force
+    }
+}
+
+function Test-API20250801-WithMSI-Set {
+    $resourceGroupName = Get-RandomResourceGroupName
+    $kubeClusterName = Get-RandomClusterName
+    $location = 'eastus'
+
+    $nodeVmSize = "standard_a2_v2"
+    try {
+        New-AzResourceGroup -Name $resourceGroupName -Location $location
+        # prepare UserAssignedIdentity
+        # $resourceGroupName='AKS_TEST_RG'
+        # $identityName1='aks_test_mi'
+        # $identity1 = New-AzUserAssignedIdentity -ResourceGroupName $resourceGroupName -Name $identityName1 -Location $location
+        # $identityId1 = $identity1.Id
+
+        # $identityName2='aks_test_mi_2'
+        # $identity2 = New-AzUserAssignedIdentity -ResourceGroupName $resourceGroupName -Name $identityName2 -Location $location
+        # $identityId2 = $identity2.Id
+        $identityId1 = '/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourcegroups/AKS_TEST_RG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/aks_test_mi'
+        $identityId2 = '/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourcegroups/AKS_TEST_RG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/aks_test_mi_2'
+
+        New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeVmSize $nodeVmSize -NodeCount 1 -Location $location  -EnableManagedIdentity -AssignIdentity $identityId1
+        
+        $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
+
+        $cluster =  $cluster | Set-AzAksCluster -AssignKubeletIdentity $identityId2
+    }
+    finally {
+        Remove-AzResourceGroup -Name $resourceGroupName -Force
+    }
+}
