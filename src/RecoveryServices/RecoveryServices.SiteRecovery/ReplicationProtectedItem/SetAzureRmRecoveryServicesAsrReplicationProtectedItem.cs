@@ -702,6 +702,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         ? this.RecoveryCapacityReservationGroupId
                         : providerSpecificDetails.RecoveryCapacityReservationGroupId;
 
+                    availabilityZone = this.IsParameterBound(c => c.RecoveryAvailabilityZone)
+                        ? this.RecoveryAvailabilityZone : providerSpecificDetails.RecoveryAvailabilityZone;
+
                     platformFaultDomain = this.IsParameterBound(c => c.PlatformFaultDomain)
                         ? this.PlatformFaultDomain
                         : providerSpecificDetails.PlatformFaultDomain;
@@ -769,6 +772,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                             this.DiskEncryptionVaultId,
                             this.KeyEncryptionKeyUrl,
                             this.KeyEncryptionVaultId),
+                        RecoveryAvailabilityZone = this.RecoveryAvailabilityZone,
                         PlatformFaultDomain = this.PlatformFaultDomain
                     };
 

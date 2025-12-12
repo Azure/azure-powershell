@@ -65,6 +65,11 @@ function getLocationEcy
     return "eastus2euap"
 }
 
+function getLocationCcy
+{
+    return "centraluseuap"
+}
+
 function getPrimaryExtendedLocation
 {
     return "microsoftrrdclab4"
