@@ -187,16 +187,13 @@ namespace Microsoft.Azure.Commands.Compute
 
                         VirtualMachineData data = vmResource.Data;
 
-                        //var result = this.VirtualMachineClient.GetWithHttpMessagesAsync(
-                        //    this.ResourceGroupName, this.Name).GetAwaiter().GetResult();
-
-                        var psResult = ComputeAutoMapperProfile.Mapper.Map<PSVirtualMachine>(vmResource.Data);
                         if (vmResource.Data != null)
                         {
-                            psResult = ComputeAutoMapperProfile.Mapper.Map(vmResource.Data, psResult);  
+                            var psResultTrack2 = ComputeAutoMapperProfile.Mapper.Map<Models.Track2.PSVirtualMachine>(vmResource.Data);
+                            // convert psResultTrack2 to psResult of PSVirtualMachine type
+                            var psResult = ComputeAutoMapperProfile.Mapper.Map<PSVirtualMachine>(data);
+                            WriteObject(psResult);
                         }
-                        psResult.DisplayHint = this.DisplayHint;
-                        WriteObject(psResult);
                     }
                 }
                 else
@@ -207,6 +204,8 @@ namespace Microsoft.Azure.Commands.Compute
                 }
             });
         }
+
+        
 
         private void ReturnListVMObject(AzureOperationResponse<IPage<VirtualMachine>> vmListResult,
             Func<string, Dictionary<string, List<string>>, CancellationToken, Task<AzureOperationResponse<IPage<VirtualMachine>>>> listNextFunction)
