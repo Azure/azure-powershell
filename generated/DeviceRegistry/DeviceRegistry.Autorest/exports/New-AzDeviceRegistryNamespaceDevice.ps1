@@ -177,12 +177,6 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Body')]
-    [System.String]
-    # Resource Id of the Policy.
-    ${PolicyResourceId},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.

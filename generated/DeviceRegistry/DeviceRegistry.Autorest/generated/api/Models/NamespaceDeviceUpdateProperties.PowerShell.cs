@@ -113,10 +113,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDeviceUpdatePropertiesInternal)this).Endpoint = (Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IMessagingEndpointsUpdate) content.GetValueForProperty("Endpoint",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDeviceUpdatePropertiesInternal)this).Endpoint, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.MessagingEndpointsUpdateTypeConverter.ConvertFrom);
             }
-            if (content.Contains("Policy"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDeviceUpdatePropertiesInternal)this).Policy = (Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceCredentialPolicy) content.GetValueForProperty("Policy",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDeviceUpdatePropertiesInternal)this).Policy, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.DeviceCredentialPolicyTypeConverter.ConvertFrom);
-            }
             if (content.Contains("OperatingSystemVersion"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDeviceUpdatePropertiesInternal)this).OperatingSystemVersion = (string) content.GetValueForProperty("OperatingSystemVersion",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDeviceUpdatePropertiesInternal)this).OperatingSystemVersion, global::System.Convert.ToString);
@@ -136,10 +132,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
             if (content.Contains("EndpointInbound"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDeviceUpdatePropertiesInternal)this).EndpointInbound = (Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IMessagingEndpointsUpdateInbound) content.GetValueForProperty("EndpointInbound",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDeviceUpdatePropertiesInternal)this).EndpointInbound, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.MessagingEndpointsUpdateInboundTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("PolicyResourceId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDeviceUpdatePropertiesInternal)this).PolicyResourceId = (string) content.GetValueForProperty("PolicyResourceId",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDeviceUpdatePropertiesInternal)this).PolicyResourceId, global::System.Convert.ToString);
             }
             if (content.Contains("OutboundAssigned"))
             {
@@ -170,10 +162,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDeviceUpdatePropertiesInternal)this).Endpoint = (Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IMessagingEndpointsUpdate) content.GetValueForProperty("Endpoint",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDeviceUpdatePropertiesInternal)this).Endpoint, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.MessagingEndpointsUpdateTypeConverter.ConvertFrom);
             }
-            if (content.Contains("Policy"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDeviceUpdatePropertiesInternal)this).Policy = (Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceCredentialPolicy) content.GetValueForProperty("Policy",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDeviceUpdatePropertiesInternal)this).Policy, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.DeviceCredentialPolicyTypeConverter.ConvertFrom);
-            }
             if (content.Contains("OperatingSystemVersion"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDeviceUpdatePropertiesInternal)this).OperatingSystemVersion = (string) content.GetValueForProperty("OperatingSystemVersion",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDeviceUpdatePropertiesInternal)this).OperatingSystemVersion, global::System.Convert.ToString);
@@ -193,10 +181,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
             if (content.Contains("EndpointInbound"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDeviceUpdatePropertiesInternal)this).EndpointInbound = (Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IMessagingEndpointsUpdateInbound) content.GetValueForProperty("EndpointInbound",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDeviceUpdatePropertiesInternal)this).EndpointInbound, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.MessagingEndpointsUpdateInboundTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("PolicyResourceId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDeviceUpdatePropertiesInternal)this).PolicyResourceId = (string) content.GetValueForProperty("PolicyResourceId",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDeviceUpdatePropertiesInternal)this).PolicyResourceId, global::System.Convert.ToString);
             }
             if (content.Contains("OutboundAssigned"))
             {
