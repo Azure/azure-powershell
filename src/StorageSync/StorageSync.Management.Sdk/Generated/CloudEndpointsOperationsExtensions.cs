@@ -160,6 +160,57 @@ namespace Microsoft.Azure.Management.StorageSync
             }
         }
         /// <summary>
+        /// Patch a given CloudEndpoint.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='storageSyncServiceName'>
+        /// Name of Storage Sync Service resource.
+        /// </param>
+        /// <param name='syncGroupName'>
+        /// Name of Sync Group resource.
+        /// </param>
+        /// <param name='cloudEndpointName'>
+        /// Name of Cloud Endpoint object.
+        /// </param>
+        public static CloudEndpoint Update(this ICloudEndpointsOperations operations, string resourceGroupName, string storageSyncServiceName, string syncGroupName, string cloudEndpointName, int? changeEnumerationIntervalDays = default(int?))
+        {
+                return ((ICloudEndpointsOperations)operations).UpdateAsync(resourceGroupName, storageSyncServiceName, syncGroupName, cloudEndpointName, changeEnumerationIntervalDays).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Patch a given CloudEndpoint.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='storageSyncServiceName'>
+        /// Name of Storage Sync Service resource.
+        /// </param>
+        /// <param name='syncGroupName'>
+        /// Name of Sync Group resource.
+        /// </param>
+        /// <param name='cloudEndpointName'>
+        /// Name of Cloud Endpoint object.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<CloudEndpoint> UpdateAsync(this ICloudEndpointsOperations operations, string resourceGroupName, string storageSyncServiceName, string syncGroupName, string cloudEndpointName, int? changeEnumerationIntervalDays = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, storageSyncServiceName, syncGroupName, cloudEndpointName, changeEnumerationIntervalDays, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Delete a given CloudEndpoint.
         /// </summary>
         /// <param name='operations'>
@@ -616,6 +667,57 @@ namespace Microsoft.Azure.Management.StorageSync
         public static async System.Threading.Tasks.Task<CloudEndpoint> BeginCreateAsync(this ICloudEndpointsOperations operations, string resourceGroupName, string storageSyncServiceName, string syncGroupName, string cloudEndpointName, CloudEndpointCreateParameters parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.BeginCreateWithHttpMessagesAsync(resourceGroupName, storageSyncServiceName, syncGroupName, cloudEndpointName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Patch a given CloudEndpoint.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='storageSyncServiceName'>
+        /// Name of Storage Sync Service resource.
+        /// </param>
+        /// <param name='syncGroupName'>
+        /// Name of Sync Group resource.
+        /// </param>
+        /// <param name='cloudEndpointName'>
+        /// Name of Cloud Endpoint object.
+        /// </param>
+        public static CloudEndpoint BeginUpdate(this ICloudEndpointsOperations operations, string resourceGroupName, string storageSyncServiceName, string syncGroupName, string cloudEndpointName, int? changeEnumerationIntervalDays = default(int?))
+        {
+                return ((ICloudEndpointsOperations)operations).BeginUpdateAsync(resourceGroupName, storageSyncServiceName, syncGroupName, cloudEndpointName, changeEnumerationIntervalDays).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Patch a given CloudEndpoint.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='storageSyncServiceName'>
+        /// Name of Storage Sync Service resource.
+        /// </param>
+        /// <param name='syncGroupName'>
+        /// Name of Sync Group resource.
+        /// </param>
+        /// <param name='cloudEndpointName'>
+        /// Name of Cloud Endpoint object.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<CloudEndpoint> BeginUpdateAsync(this ICloudEndpointsOperations operations, string resourceGroupName, string storageSyncServiceName, string syncGroupName, string cloudEndpointName, int? changeEnumerationIntervalDays = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginUpdateWithHttpMessagesAsync(resourceGroupName, storageSyncServiceName, syncGroupName, cloudEndpointName, changeEnumerationIntervalDays, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

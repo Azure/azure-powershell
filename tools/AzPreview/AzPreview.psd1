@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '15.1.0'
+ModuleVersion = '15.2.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -238,7 +238,7 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '5.3.1'; },
             @{ModuleName = 'Az.StorageCache'; RequiredVersion = '0.3.0'; }, 
             @{ModuleName = 'Az.StorageDiscovery'; RequiredVersion = '1.0.0'; }, 
             @{ModuleName = 'Az.StorageMover'; RequiredVersion = '2.0.0'; }, 
-            @{ModuleName = 'Az.StorageSync'; RequiredVersion = '2.5.2'; }, 
+            @{ModuleName = 'Az.StorageSync'; RequiredVersion = '2.6.0'; }, 
             @{ModuleName = 'Az.StreamAnalytics'; RequiredVersion = '3.0.0'; }, 
             @{ModuleName = 'Az.Subscription'; RequiredVersion = '0.12.0'; }, 
             @{ModuleName = 'Az.Support'; RequiredVersion = '2.1.0'; }, 

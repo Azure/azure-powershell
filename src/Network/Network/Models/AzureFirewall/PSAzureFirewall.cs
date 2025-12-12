@@ -93,6 +93,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public string RouteServerId { get; set; }
 
+        public PSExtendedLocation ExtendedLocation { get; set; }
+
         [JsonIgnore]
         public string IpConfigurationsText
         {

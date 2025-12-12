@@ -1,3 +1,17 @@
+## 15.2.0 - December 2025
+#### Az.StackHCI 2.6.5
+* ARC Enablement of Nodes Before Triggering Registration in New Registration Flow.
+* Resolved double hop authentication issue.
+
+#### Az.StorageSync 2.6.0
+* Added 'ChangeEnumerationIntervalDays' parameter to 'New-AzStorageSyncCloudEndpoint' cmdlet
+    - Allows customers to configure the interval in days between change enumeration operations for cloud endpoints
+    - Valid range: 1 to 20 days
+    - Optional parameter that provides control over change detection frequency
+* Added 'Set-AzStorageSyncCloudEndpoint' cmdlet
+    - Allows customers to update the 'ChangeEnumerationIntervalDays' property of an existing cloud endpoint
+    - Valid range: 1 to 20 days
+
 ## 15.1.0 - December 2025
 #### Az.AppConfiguration 2.0.1
 * Fixed GitHub issue #23731 'Problem with Get-AzAppConfigurationKeyValue when more that 100 records are present'
