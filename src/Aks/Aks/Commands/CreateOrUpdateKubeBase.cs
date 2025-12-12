@@ -78,7 +78,6 @@ namespace Microsoft.Azure.Commands.Aks
         public SwitchParameter EnableManagedIdentity { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "ResourceId of user assign managed identity for cluster.")]
-        [ValidateNotNullOrEmpty]
         public string AssignIdentity { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The Azure Active Directory configuration.")]
