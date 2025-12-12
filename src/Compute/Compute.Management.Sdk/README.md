@@ -6,15 +6,15 @@ In this directory, run AutoRest:
 ```
 .\Rest-api-specs\preprocess-rest-api-spec.ps1
 autorest --reset
-autorest --use:@microsoft.azure/autorest.csharp@2.3.90
-autorest.cmd README.md --version=v2
+autorest --use:@autorest/powershell@4.x
 ```
 
 ### AutoRest Configuration
 > see https://aka.ms/autorest
 
 ``` yaml
-csharp: true
+isSdkGenerator: true
+powershell: true
 clear-output-folder: true
 reflect-api-versions: true
 openapi-type: arm
@@ -168,21 +168,25 @@ directive:
       }
       return $;
 
-  # Remove PurchasePlan definitions
+  # Normalize PurchasePlan in ComputeRP.json
   - from: ComputeRP.json
-    where: $.definitions
+    where: $.definitions.PurchasePlan
     transform: |
-      // Delete existing definitions if they exist
-      if ($.PurchasePlan) {
-        delete $.PurchasePlan;
+      if ($.required) {
+        $.required = ["publisher", "name", "product"];
       }
+      return $;
 
-  # Rename DiskPurchasePlan to PurchasePlan
+  # Rename DiskPurchasePlan to PurchasePlan and normalize required fields
   - from: DiskRP.json
     where: $.definitions
     transform: |
       if ($.DiskPurchasePlan) {
         $.PurchasePlan = $.DiskPurchasePlan;
+        // Normalize the required array order to match ComputeRP.json
+        if ($.PurchasePlan.required) {
+          $.PurchasePlan.required = ["publisher", "name", "product"];
+        }
         delete $.DiskPurchasePlan;
       }
       return $;
@@ -258,36 +262,6 @@ directive:
         }
       };
       return $;
-
-  # Rename TrackedResource definition to Resource
-  - from: swagger-document
-    where: $.definitions
-    transform: |
-      if ($.TrackedResource) {
-        $.Resource = $.TrackedResource;
-        delete $.TrackedResource;
-      }
-      return $;
-      
-  # Fix all references to TrackedResource
-  - from: swagger-document
-    where: $
-    transform: |
-      const traverse = (obj) => {
-        if (obj === null || typeof obj !== 'object') return obj;
-        
-        if (obj.$ref === '#/definitions/TrackedResource') {
-          obj.$ref = '#/definitions/Resource';
-        }
-        
-        Object.keys(obj).forEach(key => {
-          obj[key] = traverse(obj[key]);
-        });
-        
-        return obj;
-      };
-      
-      return traverse($);
 
   # Update OrchestrationServiceNames enum consistently
   - from: ComputeRP.json
