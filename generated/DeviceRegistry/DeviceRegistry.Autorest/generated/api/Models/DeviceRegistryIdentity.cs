@@ -82,13 +82,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Origin(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.PropertyOrigin.Owned)]
         public string OperationId { get => this._operationId; set => this._operationId = value; }
 
-        /// <summary>Backing field for <see cref="PolicyName" /> property.</summary>
-        private string _policyName;
-
-        /// <summary>The name of the Policy tracked resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Origin(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.PropertyOrigin.Owned)]
-        public string PolicyName { get => this._policyName; set => this._policyName = value; }
-
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
 
@@ -243,17 +236,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         SerializedName = @"operationId",
         PossibleTypes = new [] { typeof(string) })]
         string OperationId { get; set; }
-        /// <summary>The name of the Policy tracked resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"The name of the Policy tracked resource.",
-        SerializedName = @"policyName",
-        PossibleTypes = new [] { typeof(string) })]
-        string PolicyName { get; set; }
         /// <summary>The name of the resource group. The name is case insensitive.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Info(
         Required = false,
@@ -334,8 +316,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         string NamespaceName { get; set; }
         /// <summary>The ID of an ongoing async operation.</summary>
         string OperationId { get; set; }
-        /// <summary>The name of the Policy tracked resource.</summary>
-        string PolicyName { get; set; }
         /// <summary>The name of the resource group. The name is case insensitive.</summary>
         string ResourceGroupName { get; set; }
         /// <summary>Schema name parameter.</summary>
