@@ -1,3 +1,18 @@
+## 15.2.0 - January 2026
+#### Az.Batch 4.0.1
+* Updated the implementation of 'New-AzBatchApplicationPackage' cmdlet to not call 'Get-AzBatchApplicationPackage' to retrieve storage keys for security improvements. No behavior changes to the cmdlet.
+
+#### Az.Migrate 2.11.0
+* Updated DefaultCrashConsistentFrequencyInMinutes and DefaultAppConsistentFrequencyInMinutes to align with Azure Portal UX for Replication Policy
+ - 'New-AzMigrateLocalServerReplication'
+
+#### Az.NetAppFiles 1.0.0
+* General availability for module Az.NetAppFiles
+
+#### Az.StackHCI 2.6.5
+* ARC Enablement of Nodes Before Triggering Registration in New Registration Flow.
+* Resolved double hop authentication issue.
+
 ## 15.1.0 - December 2025
 #### Az.AppConfiguration 2.0.1
 * Fixed GitHub issue #23731 'Problem with Get-AzAppConfigurationKeyValue when more that 100 records are present'
