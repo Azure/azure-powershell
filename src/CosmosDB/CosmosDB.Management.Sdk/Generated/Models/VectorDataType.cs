@@ -16,5 +16,6 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         public const string Float32 = "float32";
         public const string Uint8 = "uint8";
         public const string Int8 = "int8";
+        public const string Float16 = "float16";
     }
 }

@@ -19,6 +19,13 @@
 -->
 ## Upcoming Release
 
+## Version 1.6.0
+* Reverted changes for auto scale, pre-backup, and pre-restore 
+    - `New-AzElasticSan`
+    - `Update-AzElasticSan`
+    - `Test-AzElasticSanVolumeBackup`
+    - `Test-AzElasticSanVolumeRestore`
+
 ## Version 1.5.0
 * Supported auto scale when creating and updating an Elastic SAN.
     - `New-AzElasticSan`
@@ -26,7 +33,7 @@
 * Supported checking whether disk snapshot backup can be taken for volumes.
     - `Test-AzElasticSanVolumeBackup`
     - `Test-AzElasticSanVolumeRestore`
-    
+
 ## Version 1.4.1
 * Added warning message for data integrity checking when create/update a volume group.
     - `New-AzElasticSanVolumeGroup`

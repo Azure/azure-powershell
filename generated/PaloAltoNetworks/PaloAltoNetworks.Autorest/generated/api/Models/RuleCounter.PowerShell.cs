@@ -151,7 +151,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models
             }
             if (content.Contains("AppSeenCount"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IRuleCounterInternal)this).AppSeenCount = (int) content.GetValueForProperty("AppSeenCount",((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IRuleCounterInternal)this).AppSeenCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IRuleCounterInternal)this).AppSeenCount = (int?) content.GetValueForProperty("AppSeenCount",((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IRuleCounterInternal)this).AppSeenCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("AppSeenList"))
             {
@@ -216,7 +216,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models
             }
             if (content.Contains("AppSeenCount"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IRuleCounterInternal)this).AppSeenCount = (int) content.GetValueForProperty("AppSeenCount",((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IRuleCounterInternal)this).AppSeenCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IRuleCounterInternal)this).AppSeenCount = (int?) content.GetValueForProperty("AppSeenCount",((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IRuleCounterInternal)this).AppSeenCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("AppSeenList"))
             {

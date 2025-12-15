@@ -18,5 +18,10 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         public const string InternallyReady = "InternallyReady";
         public const string Online = "Online";
         public const string Deleting = "Deleting";
+        public const string Creating = "Creating";
+        public const string Succeeded = "Succeeded";
+        public const string Failed = "Failed";
+        public const string Canceled = "Canceled";
+        public const string Updating = "Updating";
     }
 }

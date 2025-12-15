@@ -71,7 +71,13 @@ namespace Microsoft.Azure.Commands.NetAppFiles.N
         {
             try
             {
-                var anfCheckAvailabilityResponse = AzureNetAppFilesManagementClient.NetAppResource.CheckQuotaAvailability(location: Location, name: Name, type: Type, resourceGroup: ResourceGroupName);
+                QuotaAvailabilityRequest anfCheckAvailabilityRequest = new QuotaAvailabilityRequest
+                {
+                    Name = Name,
+                    Type = Type,
+                    ResourceGroup = ResourceGroupName
+                };
+                var anfCheckAvailabilityResponse = AzureNetAppFilesManagementClient.NetAppResource.CheckQuotaAvailability(location: Location, anfCheckAvailabilityRequest);
                 WriteObject(anfCheckAvailabilityResponse.ConvertToPs());
             }
             catch (ErrorResponseException ex)
