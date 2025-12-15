@@ -2275,8 +2275,6 @@ function Test-A2AEnableProtectionWithPlatformFaultDomain {
     $priRg = $logStg.Substring(0, $PriIndex)
 
     # Create recovery side resources
-    New-AzResourceGroup -name $recoveryRgName -location $recoveryLocation -force
-    Start-Sleep -Seconds 20
     # $RecoveryAzureNetworkId = createRecoveryNetworkIdForced -location $recoveryLocation -force
     $frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name frontendSubnet -AddressPrefix "10.0.1.0/24"
     $virtualNetwork = New-AzVirtualNetwork -ResourceGroupName $recoveryRgName -Location $recoveryLocation -Name $recoveryNetworkName -AddressPrefix 10.0.0.0/16 -Subnet $frontendSubnet -Force
@@ -2310,7 +2308,7 @@ function Test-A2AEnableProtectionWithPlatformFaultDomain {
         -PublisherName "MicrosoftWindowsServer" `
         -Offer "WindowsServer" `
         -Skus "2022-datacenter-g2" `
-        -Version "latest"
+        -Version "latest" | Set-AzVMBootDiagnostic -disable
 
     # Create mandatory NIC
     $primaryVnet = New-AzVirtualNetwork -Name "$vmName-vnet" -ResourceGroupName $primaryRgName -Location $primaryLocation -AddressPrefix "10.10.0.0/16" -Subnet @(New-AzVirtualNetworkSubnetConfig -Name "$vmName-subnet" -AddressPrefix "10.10.1.0/24")
@@ -2339,8 +2337,6 @@ function Test-A2AEnableProtectionWithPlatformFaultDomain {
     $primaryVmss = Get-AzVmss -ResourceGroupName $primaryRgName -VMScaleSetName 'vmss-pri-asr'
 
     # Create the new vault
-    New-AzRecoveryServicesVault -ResourceGroupName $recoveryRgName -Name $vaultName -Location $vaultLocation
-    Start-Sleep -Seconds 60
     $vault = Get-AzRecoveryServicesVault -ResourceGroupName $recoveryRgName -Name $vaultName -ErrorAction Stop
     Set-ASRVaultContext -Vault $vault
 
@@ -2519,8 +2515,6 @@ function Test-A2AUpdateProtectionWithZone {
     $priRg = $logStg.Substring(0, $PriIndex)
 
     # Create recovery side resources
-    New-AzResourceGroup -name $recoveryRgName -location $recoveryLocation -force
-    Start-Sleep -Seconds 20
     # $RecoveryAzureNetworkId = createRecoveryNetworkIdForced -location $recoveryLocation -force
     $frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name frontendSubnet -AddressPrefix "10.0.1.0/24"
     $virtualNetwork = New-AzVirtualNetwork -ResourceGroupName $recoveryRgName -Location $recoveryLocation -Name $recoveryNetworkName -AddressPrefix 10.0.0.0/16 -Subnet $frontendSubnet -Force
@@ -2560,7 +2554,7 @@ function Test-A2AUpdateProtectionWithZone {
         -PublisherName "MicrosoftWindowsServer" `
         -Offer "WindowsServer" `
         -Skus "2022-datacenter-g2" `
-        -Version "latest"
+        -Version "latest" | Set-AzVMBootDiagnostic -disable
 
     # Create mandatory NIC
     $primaryVnet = New-AzVirtualNetwork -Name "$vmName-vnet" -ResourceGroupName $primaryRgName -Location $primaryLocation -AddressPrefix "10.10.0.0/16" -Subnet @(New-AzVirtualNetworkSubnetConfig -Name "$vmName-subnet" -AddressPrefix "10.10.1.0/24")
@@ -2589,8 +2583,6 @@ function Test-A2AUpdateProtectionWithZone {
     $primaryVmss = Get-AzVmss -ResourceGroupName $primaryRgName -VMScaleSetName 'vmss-pri-asr'
 
     # Create the new vault
-    New-AzRecoveryServicesVault -ResourceGroupName $recoveryRgName -Name $vaultName -Location $vaultLocation
-    Start-Sleep -Seconds 60
     $vault = Get-AzRecoveryServicesVault -ResourceGroupName $recoveryRgName -Name $vaultName -ErrorAction Stop
     Set-ASRVaultContext -Vault $vault
 
