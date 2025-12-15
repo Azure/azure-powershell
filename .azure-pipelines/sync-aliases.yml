@@ -38,9 +38,9 @@ jobs:
       if (-not (Get-PackageProvider -Name NuGet -ErrorAction SilentlyContinue)) {
         Install-PackageProvider -Name NuGet -Force
       }
-      Install-Package -Name YamlDotNet -RequiredVersion $(YamlDotNetVersion) -ProviderName NuGet -Force -ErrorAction Stop
+      Register-PackageSource -Name LocalNuGet -Location ./tools/LocalPackages -ProviderName NuGet -Trusted
+      Install-Package -Name YamlDotNet -ProviderName NuGet -Source LocalNuGet -Force -ErrorAction Stop
     displayName: Install YamlDotNet NuGet Package
-    retryCountOnTaskFailure: 5
 
   - pwsh: |
       dotnet tool run pwsh -NoLogo -NoProfile -NonInteractive -File ./tools/Github/ParseServiceContactsList.ps1 -AccessToken $env:SYSTEM_ACCESSTOKEN
