@@ -931,211 +931,211 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg754/providers/Microsoft.Storage/storageAccounts/stopstestrg754/fileServices/default/shares/share1pstestrg754?$expand=snapshots&api-version=2025-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNzU0L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3RvcmFnZS9zdG9yYWdlQWNjb3VudHMvc3RvcHN0ZXN0cmc3NTQvZmlsZVNlcnZpY2VzL2RlZmF1bHQvc2hhcmVzL3NoYXJlMXBzdGVzdHJnNzU0PyRleHBhbmQ9c25hcHNob3RzJmFwaS12ZXJzaW9uPTIwMjUtMDYtMDE=",
-      "RequestMethod": "PUT",
-      "RequestBody": "{}",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "f006a7da-fefb-4992-bba4-0cdc7e9f7aa4"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.29916.01",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19043.",
-          "Microsoft.Azure.Management.Storage.StorageManagementClient/22.0.0.0"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Content-Length": [
-          "2"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "128512d4-fe29-4bd9-8c3c-0ebfc3ffc186"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Server": [
-          "Microsoft-Azure-Storage-Resource-Provider/1.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1195"
-        ],
-        "x-ms-correlation-request-id": [
-          "536d54e1-d207-42fe-9281-af22b638414d"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20210510T073603Z:536d54e1-d207-42fe-9281-af22b638414d"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Mon, 10 May 2021 07:36:03 GMT"
-        ],
-        "Content-Length": [
-          "343"
-        ],
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg754/providers/Microsoft.Storage/storageAccounts/stopstestrg754/fileServices/default/shares/share1pstestrg754\",\r\n  \"name\": \"share1pstestrg754\",\r\n  \"type\": \"Microsoft.Storage/storageAccounts/fileServices/shares\",\r\n  \"properties\": {\r\n    \"snapshotTime\": \"2021-05-10T07:36:03Z\"\r\n  }\r\n}",
-      "StatusCode": 201
+        "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg754/providers/Microsoft.Storage/storageAccounts/stopstestrg754/fileServices/default/shares/share1pstestrg754?api-version=2025-06-01&$expand=snapshots",
+        "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNzU0L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3RvcmFnZS9zdG9yYWdlQWNjb3VudHMvc3RvcHN0ZXN0cmc3NTQvZmlsZVNlcnZpY2VzL2RlZmF1bHQvc2hhcmVzL3NoYXJlMXBzdGVzdHJnNzU0P2FwaS12ZXJzaW9uPTIwMjUtMDYtMDEmJGV4cGFuZD1zbmFwc2hvdHM=",
+        "RequestMethod": "PUT",
+        "RequestBody": "{}",
+        "RequestHeaders": {
+            "x-ms-client-request-id": [
+                "f006a7da-fefb-4992-bba4-0cdc7e9f7aa4"
+            ],
+            "Accept-Language": [
+                "en-US"
+            ],
+            "User-Agent": [
+                "FxVersion/4.6.29916.01",
+                "OSName/Windows",
+                "OSVersion/Microsoft.Windows.10.0.19043.",
+                "Microsoft.Azure.Management.Storage.StorageManagementClient/22.0.0.0"
+            ],
+            "Content-Type": [
+                "application/json; charset=utf-8"
+            ],
+            "Content-Length": [
+                "2"
+            ]
+        },
+        "ResponseHeaders": {
+            "Cache-Control": [
+                "no-cache"
+            ],
+            "Pragma": [
+                "no-cache"
+            ],
+            "x-ms-request-id": [
+                "128512d4-fe29-4bd9-8c3c-0ebfc3ffc186"
+            ],
+            "Strict-Transport-Security": [
+                "max-age=31536000; includeSubDomains"
+            ],
+            "Server": [
+                "Microsoft-Azure-Storage-Resource-Provider/1.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0"
+            ],
+            "x-ms-ratelimit-remaining-subscription-writes": [
+                "1195"
+            ],
+            "x-ms-correlation-request-id": [
+                "536d54e1-d207-42fe-9281-af22b638414d"
+            ],
+            "x-ms-routing-request-id": [
+                "SOUTHEASTASIA:20210510T073603Z:536d54e1-d207-42fe-9281-af22b638414d"
+            ],
+            "X-Content-Type-Options": [
+                "nosniff"
+            ],
+            "Date": [
+                "Mon, 10 May 2021 07:36:03 GMT"
+            ],
+            "Content-Length": [
+                "343"
+            ],
+            "Content-Type": [
+                "application/json"
+            ],
+            "Expires": [
+                "-1"
+            ]
+        },
+        "ResponseBody": "{\r\n  \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg754/providers/Microsoft.Storage/storageAccounts/stopstestrg754/fileServices/default/shares/share1pstestrg754\",\r\n  \"name\": \"share1pstestrg754\",\r\n  \"type\": \"Microsoft.Storage/storageAccounts/fileServices/shares\",\r\n  \"properties\": {\r\n    \"snapshotTime\": \"2021-05-10T07:36:03Z\"\r\n  }\r\n}",
+        "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg754/providers/Microsoft.Storage/storageAccounts/stopstestrg754/fileServices/default/shares/share1pstestrg754?$expand=snapshots&api-version=2025-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNzU0L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3RvcmFnZS9zdG9yYWdlQWNjb3VudHMvc3RvcHN0ZXN0cmc3NTQvZmlsZVNlcnZpY2VzL2RlZmF1bHQvc2hhcmVzL3NoYXJlMXBzdGVzdHJnNzU0PyRleHBhbmQ9c25hcHNob3RzJmFwaS12ZXJzaW9uPTIwMjUtMDYtMDE=",
-      "RequestMethod": "PUT",
-      "RequestBody": "{}",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "e5bbcb48-7aee-4ffc-a6fd-2c12deb88d96"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.29916.01",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19043.",
-          "Microsoft.Azure.Management.Storage.StorageManagementClient/22.0.0.0"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Content-Length": [
-          "2"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "4f510563-8484-4852-88b4-e2b7e74be28b"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Server": [
-          "Microsoft-Azure-Storage-Resource-Provider/1.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1194"
-        ],
-        "x-ms-correlation-request-id": [
-          "5023cc5e-3abd-43a9-a137-cde5b69b43be"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20210510T073604Z:5023cc5e-3abd-43a9-a137-cde5b69b43be"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Mon, 10 May 2021 07:36:04 GMT"
-        ],
-        "Content-Length": [
-          "343"
-        ],
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg754/providers/Microsoft.Storage/storageAccounts/stopstestrg754/fileServices/default/shares/share1pstestrg754\",\r\n  \"name\": \"share1pstestrg754\",\r\n  \"type\": \"Microsoft.Storage/storageAccounts/fileServices/shares\",\r\n  \"properties\": {\r\n    \"snapshotTime\": \"2021-05-10T07:36:04Z\"\r\n  }\r\n}",
-      "StatusCode": 201
+        "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg754/providers/Microsoft.Storage/storageAccounts/stopstestrg754/fileServices/default/shares/share1pstestrg754?api-version=2025-06-01&$expand=snapshots",
+        "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNzU0L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3RvcmFnZS9zdG9yYWdlQWNjb3VudHMvc3RvcHN0ZXN0cmc3NTQvZmlsZVNlcnZpY2VzL2RlZmF1bHQvc2hhcmVzL3NoYXJlMXBzdGVzdHJnNzU0P2FwaS12ZXJzaW9uPTIwMjUtMDYtMDEmJGV4cGFuZD1zbmFwc2hvdHM=",
+        "RequestMethod": "PUT",
+        "RequestBody": "{}",
+        "RequestHeaders": {
+            "x-ms-client-request-id": [
+                "e5bbcb48-7aee-4ffc-a6fd-2c12deb88d96"
+            ],
+            "Accept-Language": [
+                "en-US"
+            ],
+            "User-Agent": [
+                "FxVersion/4.6.29916.01",
+                "OSName/Windows",
+                "OSVersion/Microsoft.Windows.10.0.19043.",
+                "Microsoft.Azure.Management.Storage.StorageManagementClient/22.0.0.0"
+            ],
+            "Content-Type": [
+                "application/json; charset=utf-8"
+            ],
+            "Content-Length": [
+                "2"
+            ]
+        },
+        "ResponseHeaders": {
+            "Cache-Control": [
+                "no-cache"
+            ],
+            "Pragma": [
+                "no-cache"
+            ],
+            "x-ms-request-id": [
+                "4f510563-8484-4852-88b4-e2b7e74be28b"
+            ],
+            "Strict-Transport-Security": [
+                "max-age=31536000; includeSubDomains"
+            ],
+            "Server": [
+                "Microsoft-Azure-Storage-Resource-Provider/1.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0"
+            ],
+            "x-ms-ratelimit-remaining-subscription-writes": [
+                "1194"
+            ],
+            "x-ms-correlation-request-id": [
+                "5023cc5e-3abd-43a9-a137-cde5b69b43be"
+            ],
+            "x-ms-routing-request-id": [
+                "SOUTHEASTASIA:20210510T073604Z:5023cc5e-3abd-43a9-a137-cde5b69b43be"
+            ],
+            "X-Content-Type-Options": [
+                "nosniff"
+            ],
+            "Date": [
+                "Mon, 10 May 2021 07:36:04 GMT"
+            ],
+            "Content-Length": [
+                "343"
+            ],
+            "Content-Type": [
+                "application/json"
+            ],
+            "Expires": [
+                "-1"
+            ]
+        },
+        "ResponseBody": "{\r\n  \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg754/providers/Microsoft.Storage/storageAccounts/stopstestrg754/fileServices/default/shares/share1pstestrg754\",\r\n  \"name\": \"share1pstestrg754\",\r\n  \"type\": \"Microsoft.Storage/storageAccounts/fileServices/shares\",\r\n  \"properties\": {\r\n    \"snapshotTime\": \"2021-05-10T07:36:04Z\"\r\n  }\r\n}",
+        "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg754/providers/Microsoft.Storage/storageAccounts/stopstestrg754/fileServices/default/shares/share2pstestrg754?$expand=snapshots&api-version=2025-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNzU0L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3RvcmFnZS9zdG9yYWdlQWNjb3VudHMvc3RvcHN0ZXN0cmc3NTQvZmlsZVNlcnZpY2VzL2RlZmF1bHQvc2hhcmVzL3NoYXJlMnBzdGVzdHJnNzU0PyRleHBhbmQ9c25hcHNob3RzJmFwaS12ZXJzaW9uPTIwMjUtMDYtMDE=",
-      "RequestMethod": "PUT",
-      "RequestBody": "{}",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "a6018cd8-3523-4631-b47f-595f2c10b3b5"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.29916.01",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19043.",
-          "Microsoft.Azure.Management.Storage.StorageManagementClient/22.0.0.0"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Content-Length": [
-          "2"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "1d4f9817-c5ae-4b82-8585-b390905f52d5"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Server": [
-          "Microsoft-Azure-Storage-Resource-Provider/1.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1193"
-        ],
-        "x-ms-correlation-request-id": [
-          "38f6d934-9945-4b52-9155-3f1155fb2679"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20210510T073605Z:38f6d934-9945-4b52-9155-3f1155fb2679"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Mon, 10 May 2021 07:36:04 GMT"
-        ],
-        "Content-Length": [
-          "343"
-        ],
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg754/providers/Microsoft.Storage/storageAccounts/stopstestrg754/fileServices/default/shares/share2pstestrg754\",\r\n  \"name\": \"share2pstestrg754\",\r\n  \"type\": \"Microsoft.Storage/storageAccounts/fileServices/shares\",\r\n  \"properties\": {\r\n    \"snapshotTime\": \"2021-05-10T07:36:04Z\"\r\n  }\r\n}",
-      "StatusCode": 201
+        "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg754/providers/Microsoft.Storage/storageAccounts/stopstestrg754/fileServices/default/shares/share2pstestrg754?api-version=2025-06-01&$expand=snapshots",
+        "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNzU0L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3RvcmFnZS9zdG9yYWdlQWNjb3VudHMvc3RvcHN0ZXN0cmc3NTQvZmlsZVNlcnZpY2VzL2RlZmF1bHQvc2hhcmVzL3NoYXJlMnBzdGVzdHJnNzU0P2FwaS12ZXJzaW9uPTIwMjUtMDYtMDEmJGV4cGFuZD1zbmFwc2hvdHM=",
+        "RequestMethod": "PUT",
+        "RequestBody": "{}",
+        "RequestHeaders": {
+            "x-ms-client-request-id": [
+                "a6018cd8-3523-4631-b47f-595f2c10b3b5"
+            ],
+            "Accept-Language": [
+                "en-US"
+            ],
+            "User-Agent": [
+                "FxVersion/4.6.29916.01",
+                "OSName/Windows",
+                "OSVersion/Microsoft.Windows.10.0.19043.",
+                "Microsoft.Azure.Management.Storage.StorageManagementClient/22.0.0.0"
+            ],
+            "Content-Type": [
+                "application/json; charset=utf-8"
+            ],
+            "Content-Length": [
+                "2"
+            ]
+        },
+        "ResponseHeaders": {
+            "Cache-Control": [
+                "no-cache"
+            ],
+            "Pragma": [
+                "no-cache"
+            ],
+            "x-ms-request-id": [
+                "1d4f9817-c5ae-4b82-8585-b390905f52d5"
+            ],
+            "Strict-Transport-Security": [
+                "max-age=31536000; includeSubDomains"
+            ],
+            "Server": [
+                "Microsoft-Azure-Storage-Resource-Provider/1.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0"
+            ],
+            "x-ms-ratelimit-remaining-subscription-writes": [
+                "1193"
+            ],
+            "x-ms-correlation-request-id": [
+                "38f6d934-9945-4b52-9155-3f1155fb2679"
+            ],
+            "x-ms-routing-request-id": [
+                "SOUTHEASTASIA:20210510T073605Z:38f6d934-9945-4b52-9155-3f1155fb2679"
+            ],
+            "X-Content-Type-Options": [
+                "nosniff"
+            ],
+            "Date": [
+                "Mon, 10 May 2021 07:36:04 GMT"
+            ],
+            "Content-Length": [
+                "343"
+            ],
+            "Content-Type": [
+                "application/json"
+            ],
+            "Expires": [
+                "-1"
+            ]
+        },
+        "ResponseBody": "{\r\n  \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg754/providers/Microsoft.Storage/storageAccounts/stopstestrg754/fileServices/default/shares/share2pstestrg754\",\r\n  \"name\": \"share2pstestrg754\",\r\n  \"type\": \"Microsoft.Storage/storageAccounts/fileServices/shares\",\r\n  \"properties\": {\r\n    \"snapshotTime\": \"2021-05-10T07:36:04Z\"\r\n  }\r\n}",
+        "StatusCode": 201
     },
     {
       "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg754/providers/Microsoft.Storage/storageAccounts/stopstestrg754/fileServices/default/shares?api-version=2025-06-01&$expand=snapshots",

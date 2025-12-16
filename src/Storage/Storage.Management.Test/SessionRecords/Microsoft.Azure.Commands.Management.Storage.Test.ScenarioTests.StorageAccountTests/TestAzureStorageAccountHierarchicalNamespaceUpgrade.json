@@ -523,76 +523,76 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourcegroups/pstestrg5751/providers/Microsoft.Storage/storageAccounts/stopstestrg5751/hnsonmigration?api-version=2025-06-01&requestType=HnsOnValidationRequest",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Jlc291cmNlZ3JvdXBzL3BzdGVzdHJnNTc1MS9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2Uvc3RvcmFnZUFjY291bnRzL3N0b3BzdGVzdHJnNTc1MS9obnNvbm1pZ3JhdGlvbj9hcGktdmVyc2lvbj0yMDI1LTA2LTAxJnJlcXVlc3RUeXBlPUhuc09uVmFsaWRhdGlvblJlcXVlc3Q=",
-      "RequestMethod": "POST",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "18ee19d1-e872-4e0a-90e0-85766b08c816"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.30411.01",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19043.",
-          "Microsoft.Azure.Management.Storage.StorageManagementClient/23.0.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Location": [
-          "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/providers/Microsoft.Storage/locations/eastus2euap/asyncoperations/dd3a13ca-a6f2-4da4-961f-48e3dbd6603c?monitor=true&api-version=2025-06-01"
-        ],
-        "Retry-After": [
-          "17"
-        ],
-        "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/providers/Microsoft.Storage/locations/eastus2euap/asyncoperations/dd3a13ca-a6f2-4da4-961f-48e3dbd6603c?monitor=true&api-version=2025-06-01"
-        ],
-        "x-ms-request-id": [
-          "dd3a13ca-a6f2-4da4-961f-48e3dbd6603c"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Server": [
-          "Microsoft-Azure-Storage-Resource-Provider/1.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
-        ],
-        "x-ms-correlation-request-id": [
-          "97e44da0-9b61-405c-98e2-2932ab2cca3a"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20210916T065850Z:97e44da0-9b61-405c-98e2-2932ab2cca3a"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Thu, 16 Sep 2021 06:58:49 GMT"
-        ],
-        "Content-Type": [
-          "text/plain; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "0"
-        ]
-      },
-      "ResponseBody": "",
-      "StatusCode": 202
+        "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg5751/providers/Microsoft.Storage/storageAccounts/stopstestrg5751/hnsonmigration?api-version=2025-06-01&requestType=HnsOnValidationRequest",
+        "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNTc1MS9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2Uvc3RvcmFnZUFjY291bnRzL3N0b3BzdGVzdHJnNTc1MS9obnNvbm1pZ3JhdGlvbj9hcGktdmVyc2lvbj0yMDI1LTA2LTAxJnJlcXVlc3RUeXBlPUhuc09uVmFsaWRhdGlvblJlcXVlc3Q=",
+        "RequestMethod": "POST",
+        "RequestBody": "",
+        "RequestHeaders": {
+            "x-ms-client-request-id": [
+                "18ee19d1-e872-4e0a-90e0-85766b08c816"
+            ],
+            "Accept-Language": [
+                "en-US"
+            ],
+            "User-Agent": [
+                "FxVersion/4.6.30411.01",
+                "OSName/Windows",
+                "OSVersion/Microsoft.Windows.10.0.19043.",
+                "Microsoft.Azure.Management.Storage.StorageManagementClient/23.0.0.0"
+            ]
+        },
+        "ResponseHeaders": {
+            "Cache-Control": [
+                "no-cache"
+            ],
+            "Pragma": [
+                "no-cache"
+            ],
+            "Location": [
+                "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/providers/Microsoft.Storage/locations/eastus2euap/asyncoperations/dd3a13ca-a6f2-4da4-961f-48e3dbd6603c?monitor=true&api-version=2025-06-01"
+            ],
+            "Retry-After": [
+                "17"
+            ],
+            "Azure-AsyncOperation": [
+                "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/providers/Microsoft.Storage/locations/eastus2euap/asyncoperations/dd3a13ca-a6f2-4da4-961f-48e3dbd6603c?monitor=true&api-version=2025-06-01"
+            ],
+            "x-ms-request-id": [
+                "dd3a13ca-a6f2-4da4-961f-48e3dbd6603c"
+            ],
+            "Strict-Transport-Security": [
+                "max-age=31536000; includeSubDomains"
+            ],
+            "Server": [
+                "Microsoft-Azure-Storage-Resource-Provider/1.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0"
+            ],
+            "x-ms-ratelimit-remaining-subscription-writes": [
+                "1199"
+            ],
+            "x-ms-correlation-request-id": [
+                "97e44da0-9b61-405c-98e2-2932ab2cca3a"
+            ],
+            "x-ms-routing-request-id": [
+                "SOUTHEASTASIA:20210916T065850Z:97e44da0-9b61-405c-98e2-2932ab2cca3a"
+            ],
+            "X-Content-Type-Options": [
+                "nosniff"
+            ],
+            "Date": [
+                "Thu, 16 Sep 2021 06:58:49 GMT"
+            ],
+            "Content-Type": [
+                "text/plain; charset=utf-8"
+            ],
+            "Expires": [
+                "-1"
+            ],
+            "Content-Length": [
+                "0"
+            ]
+        },
+        "ResponseBody": "",
+        "StatusCode": 202
     },
     {
       "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/providers/Microsoft.Storage/locations/eastus2euap/asyncoperations/dd3a13ca-a6f2-4da4-961f-48e3dbd6603c?monitor=true&api-version=2025-06-01",
