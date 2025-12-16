@@ -69,7 +69,10 @@ namespace Microsoft.Azure.Management.StorageSync.Models
 
         /// <param name="changeEnumerationStatus">Cloud endpoint change enumeration status
         /// </param>
-        public CloudEndpoint(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string storageAccountResourceId = default(string), string azureFileShareName = default(string), string storageAccountTenantId = default(string), string partnershipId = default(string), string friendlyName = default(string), string backupEnabled = default(string), string provisioningState = default(string), string lastWorkflowId = default(string), string lastOperationName = default(string), CloudEndpointChangeEnumerationStatus changeEnumerationStatus = default(CloudEndpointChangeEnumerationStatus))
+
+        /// <param name="changeEnumerationIntervalDays">The interval for enumerating changes on the cloud endpoint.
+        /// </param>
+        public CloudEndpoint(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string storageAccountResourceId = default(string), string azureFileShareName = default(string), string storageAccountTenantId = default(string), string partnershipId = default(string), string friendlyName = default(string), string backupEnabled = default(string), string provisioningState = default(string), string lastWorkflowId = default(string), string lastOperationName = default(string), CloudEndpointChangeEnumerationStatus changeEnumerationStatus = default(CloudEndpointChangeEnumerationStatus), int? changeEnumerationIntervalDays = default(int?))
 
         : base(id, name, type, systemData)
         {
@@ -83,6 +86,7 @@ namespace Microsoft.Azure.Management.StorageSync.Models
             this.LastWorkflowId = lastWorkflowId;
             this.LastOperationName = lastOperationName;
             this.ChangeEnumerationStatus = changeEnumerationStatus;
+            this.ChangeEnumerationIntervalDays = changeEnumerationIntervalDays;
             CustomInit();
         }
 
@@ -151,6 +155,12 @@ namespace Microsoft.Azure.Management.StorageSync.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.changeEnumerationStatus")]
         public CloudEndpointChangeEnumerationStatus ChangeEnumerationStatus {get; private set; }
+
+        /// <summary>
+        /// Gets or sets the interval for enumerating changes on the cloud endpoint.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.changeEnumerationIntervalDays")]
+        public int? ChangeEnumerationIntervalDays {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -171,6 +181,17 @@ namespace Microsoft.Azure.Management.StorageSync.Models
             if (this.ChangeEnumerationStatus != null)
             {
                 this.ChangeEnumerationStatus.Validate();
+            }
+            if (this.ChangeEnumerationIntervalDays != null)
+            {
+                if (this.ChangeEnumerationIntervalDays > 20)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMaximum, "ChangeEnumerationIntervalDays", 20);
+                }
+                if (this.ChangeEnumerationIntervalDays < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "ChangeEnumerationIntervalDays", 1);
+                }
             }
         }
     }
