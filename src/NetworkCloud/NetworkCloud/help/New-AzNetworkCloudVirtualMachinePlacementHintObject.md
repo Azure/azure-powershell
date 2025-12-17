@@ -22,33 +22,18 @@ Create an in-memory object for VirtualMachinePlacementHint.
 
 ## EXAMPLES
 
-### Example 1: Create virtual machine placement hint with affinity
+### Example 1: Create an in-memory object for VirtualMachinePlacementHint.
 ```powershell
-New-AzNetworkCloudVirtualMachinePlacementHintObject -HintType "Affinity" -Scope "Machine" -SchedulingExecution "Hard" -ResourceId "/subscriptions/subscription-id/resourceGroups/rg/providers/Microsoft.NetworkCloud/bareMetalMachines/bmm1"
+New-AzNetworkCloudVirtualMachinePlacementHintObject -HintType "Affinity" -ResourceId "/subscriptions/subscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.NetworkCloud/racks/rackName" -SchedulingExecution "Hard" -Scope "Machine"
 ```
 
 ```output
-HintType            : Affinity
-ResourceId          : /subscriptions/subscription-id/resourceGroups/rg/providers/Microsoft.NetworkCloud/bareMetalMachines/bmm1
-SchedulingExecution : Hard
-Scope               : Machine
+HintType ResourceId                                                                                                     SchedulingExecution Scope
+-------- ----------                                                                                                     ------------------- -----
+Affinity /subscriptions/subscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.NetworkCloud/racks/rackName Hard                Machine
 ```
 
-This example creates a placement hint with hard affinity constraint to schedule a VM on a specific bare metal machine.
-
-### Example 2: Create virtual machine placement hint with soft anti-affinity
-```powershell
-New-AzNetworkCloudVirtualMachinePlacementHintObject -HintType "AntiAffinity" -Scope "Machine" -SchedulingExecution "Soft" -ResourceId "/subscriptions/subscription-id/resourceGroups/rg/providers/Microsoft.NetworkCloud/bareMetalMachines/bmm2"
-```
-
-```output
-HintType            : AntiAffinity
-ResourceId          : /subscriptions/subscription-id/resourceGroups/rg/providers/Microsoft.NetworkCloud/bareMetalMachines/bmm2
-SchedulingExecution : Soft
-Scope               : Machine
-```
-
-This example creates a placement hint with soft anti-affinity constraint to avoid scheduling a VM on a specific bare metal machine if possible.
+Creates an in-memory object for VirtualMachinePlacementHint.
 
 ## PARAMETERS
 

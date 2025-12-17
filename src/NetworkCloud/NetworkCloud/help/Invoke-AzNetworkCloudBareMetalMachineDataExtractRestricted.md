@@ -13,11 +13,12 @@ The URL to storage account with the command execution results and the command ex
 
 ## SYNTAX
 
-### RunViaIdentityExpanded (Default)
+### RunViaIdentity (Default)
 ```
 Invoke-AzNetworkCloudBareMetalMachineDataExtractRestricted -InputObject <INetworkCloudIdentity>
- -Command <IBareMetalMachineCommandSpecification[]> -LimitTimeSecond <Int64> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -BareMetalMachineRunDataExtractsRestrictedParameter <IBareMetalMachineRunDataExtractsParameters>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### RunViaJsonString
@@ -42,22 +43,49 @@ Invoke-AzNetworkCloudBareMetalMachineDataExtractRestricted -BareMetalMachineName
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### Run
+```
+Invoke-AzNetworkCloudBareMetalMachineDataExtractRestricted -BareMetalMachineName <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>]
+ -BareMetalMachineRunDataExtractsRestrictedParameter <IBareMetalMachineRunDataExtractsParameters>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### RunViaIdentityExpanded
+```
+Invoke-AzNetworkCloudBareMetalMachineDataExtractRestricted -InputObject <INetworkCloudIdentity>
+ -Command <IBareMetalMachineCommandSpecification[]> -LimitTimeSecond <Int64> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Run one or more restricted data extractions on the provided bare metal machine.
 The URL to storage account with the command execution results and the command exit code can be retrieved from the operation status API once available.
 
 ## EXAMPLES
 
-### Example 1: Run restricted data extraction on a bare metal machine
+### Example 1: {{ Add title here }}
 ```powershell
-$command = @{
-    command = "command"
-    arguments = "commandArguments"
-}
-Invoke-AzNetworkCloudBareMetalMachineDataExtractRestricted -BareMetalMachineName bmmName -ResourceGroupName resourcceGroupName -SubscriptionId subscriptionId -Command $command -LimitTimeSecond 60
+{{ Add code here }}
 ```
 
-This example runs a restricted data extraction command on the specified bare metal machine with a 60-second timeout.
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -81,7 +109,7 @@ The name of the bare metal machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: RunViaJsonString, RunViaJsonFilePath, RunExpanded
+Parameter Sets: RunViaJsonString, RunViaJsonFilePath, RunExpanded, Run
 Aliases:
 
 Required: True
@@ -91,12 +119,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -BareMetalMachineRunDataExtractsRestrictedParameter
+BareMetalMachineRunDataExtractsParameters represents the body of request containing list of curated data extraction commands to run on the bare metal machine.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineRunDataExtractsParameters
+Parameter Sets: RunViaIdentity, Run
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Command
 The list of curated data extraction commands to be executed directly against the target machine.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineCommandSpecification[]
-Parameter Sets: RunViaIdentityExpanded, RunExpanded
+Parameter Sets: RunExpanded, RunViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -127,7 +170,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
-Parameter Sets: RunViaIdentityExpanded
+Parameter Sets: RunViaIdentity, RunViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -173,7 +216,7 @@ If the execution time exceeds the maximum, the script will be stopped, any outpu
 
 ```yaml
 Type: System.Int64
-Parameter Sets: RunViaIdentityExpanded, RunExpanded
+Parameter Sets: RunExpanded, RunViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -219,7 +262,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: RunViaJsonString, RunViaJsonFilePath, RunExpanded
+Parameter Sets: RunViaJsonString, RunViaJsonFilePath, RunExpanded, Run
 Aliases:
 
 Required: True
@@ -235,7 +278,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: RunViaJsonString, RunViaJsonFilePath, RunExpanded
+Parameter Sets: RunViaJsonString, RunViaJsonFilePath, RunExpanded, Run
 Aliases:
 
 Required: False
@@ -280,6 +323,8 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineRunDataExtractsParameters
 
 ### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
 

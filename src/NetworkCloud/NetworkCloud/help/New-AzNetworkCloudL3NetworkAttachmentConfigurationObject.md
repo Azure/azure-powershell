@@ -22,31 +22,18 @@ Create an in-memory object for L3NetworkAttachmentConfiguration.
 
 ## EXAMPLES
 
-### Example 1: Create L3 network attachment with IPAM enabled
+### Example 1: Create an in-memory object for L3NetworkAttachmentConfiguration.
 ```powershell
-New-AzNetworkCloudL3NetworkAttachmentConfigurationObject -NetworkId "/subscriptions/subscription-id/resourceGroups/rg/providers/Microsoft.NetworkCloud/l3Networks/l3Network1" -IpamEnabled "True" -PluginType "IPVLAN"
+New-AzNetworkCloudL3NetworkAttachmentConfigurationObject -NetworkId '/subscriptions/{subscriptionId}/resourceGroups/resourceGroupName/providers/Microsoft.NetworkCloud/l3Networks/l3network-502' -IpamEnabled True -PluginType 'SRIOV'
 ```
 
 ```output
-IpamEnabled : True
-NetworkId   : /subscriptions/subscription-id/resourceGroups/rg/providers/Microsoft.NetworkCloud/l3Networks/l3Network1
-PluginType  : IPVLAN
+IpamEnabled NetworkId                                                                                                                  PluginType
+----------- ---------                                                                                                                  ----------
+True        /subscriptions/{subscriptionId}/resourceGroups/resourceGroupName/providers/Microsoft.NetworkCloud/l3Networks/l3network-502 SRIOV
 ```
 
-This example creates an L3 network attachment configuration with IP address management enabled.
-
-### Example 2: Create L3 network attachment without IPAM
-```powershell
-New-AzNetworkCloudL3NetworkAttachmentConfigurationObject -NetworkId "/subscriptions/subscription-id/resourceGroups/rg/providers/Microsoft.NetworkCloud/l3Networks/l3Network2" -IpamEnabled "False" -PluginType "MACVLAN"
-```
-
-```output
-IpamEnabled : False
-NetworkId   : /subscriptions/subscription-id/resourceGroups/rg/providers/Microsoft.NetworkCloud/l3Networks/l3Network2
-PluginType  : MACVLAN
-```
-
-This example creates an L3 network attachment without IPAM using MACVLAN plugin.
+Create an in-memory object for L3NetworkAttachmentConfiguration.
 
 ## PARAMETERS
 

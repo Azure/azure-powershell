@@ -30,59 +30,12 @@ Create an in-memory object for InitialAgentPoolConfiguration.
 
 ## EXAMPLES
 
-### Example 1: Create initial agent pool configuration with basic settings
+### Example 1: Create an in-memory object for InitialAgentPoolConfiguration.
 ```powershell
-New-AzNetworkCloudInitialAgentPoolConfigurationObject -Count 3 -Mode "System" -Name "systempool" -VMSkuName "Standard_D4s_v5"
+New-AzNetworkCloudInitialAgentPoolConfigurationObject -Count <Int64> -Mode <AgentPoolMode> -Name <String> -VMSkuName <String> -AdministratorConfigurationAdminUsername <String> -AdministratorConfigurationSshPublicKey <ISshPublicKey[]>  -AgentOptionHugepagesCount <Int64> -AgentOptionHugepagesSize <HugepagesSize> -AttachedNetworkConfigurationL2Network <IL2NetworkAttachmentConfiguration[]> -AttachedNetworkConfigurationL3Network <IL3NetworkAttachmentConfiguration[]> -AttachedNetworkConfigurationTrunkedNetwork <ITrunkedNetworkAttachmentConfiguration[]> -AvailabilityZone <String[]> -Label <IKubernetesLabel[]> -Taint <IKubernetesLabel[]> -UpgradeSettingMaxSurge <String>
 ```
 
-```output
-AdministratorConfigurationAdminUsername         : 
-AdministratorConfigurationSshPublicKey          : {}
-AgentOptionHugepagesCount                       : 
-AgentOptionHugepagesSize                        : 
-AttachedNetworkConfigurationL2Network           : {}
-AttachedNetworkConfigurationL3Network           : {}
-AttachedNetworkConfigurationTrunkedNetwork      : {}
-AvailabilityZone                                : {}
-Count                                           : 3
-Label                                           : {}
-Mode                                            : System
-Name                                            : systempool
-Taint                                           : {}
-UpgradeSettingDrainTimeout                      : 
-UpgradeSettingMaxSurge                          : 
-UpgradeSettingMaxUnavailable                    : 
-VMSkuName                                       : Standard_D4s_v5
-```
-
-This example creates an initial agent pool configuration for a system pool with 3 nodes.
-
-### Example 2: Create user agent pool with admin configuration
-```powershell
-New-AzNetworkCloudInitialAgentPoolConfigurationObject -Count 5 -Mode "User" -Name "userpool" -VMSkuName "Standard_D8s_v5" -AdministratorConfigurationAdminUsername "azureuser" -AvailabilityZone @("1","2")
-```
-
-```output
-AdministratorConfigurationAdminUsername         : azureuser
-AdministratorConfigurationSshPublicKey          : {}
-AgentOptionHugepagesCount                       : 
-AgentOptionHugepagesSize                        : 
-AttachedNetworkConfigurationL2Network           : {}
-AttachedNetworkConfigurationL3Network           : {}
-AttachedNetworkConfigurationTrunkedNetwork      : {}
-AvailabilityZone                                : {1, 2}
-Count                                           : 5
-Label                                           : {}
-Mode                                            : User
-Name                                            : userpool
-Taint                                           : {}
-UpgradeSettingDrainTimeout                      : 
-UpgradeSettingMaxSurge                          : 
-UpgradeSettingMaxUnavailable                    : 
-VMSkuName                                       : Standard_D8s_v5
-```
-
-This example creates a user agent pool configuration with specific availability zones and administrator credentials.
+Create an in-memory object for InitialAgentPoolConfiguration.
 
 ## PARAMETERS
 

@@ -45,14 +45,6 @@ title: NetworkCloud
 service-name: NetworkCloud
 subject-prefix: NetworkCloud
 
-# If there are post APIs for some kinds of actions in the RP, you may need to
-# uncomment following line to support viaIdentity for these post APIs
-identity-correction-for-post: true
-resourcegroup-append: true
-nested-object-to-string: true
-flatten-userassignedidentity: false
-disable-transform-identity-type: true
-
 directive:
   # Following is two common directive which are normally required in all the RPs
   # 1. Remove the unexpanded parameter set

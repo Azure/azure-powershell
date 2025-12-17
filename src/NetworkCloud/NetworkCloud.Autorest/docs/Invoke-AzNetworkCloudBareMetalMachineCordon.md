@@ -19,6 +19,20 @@ Invoke-AzNetworkCloudBareMetalMachineCordon -BareMetalMachineName <String> -Reso
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### Cordon
+```
+Invoke-AzNetworkCloudBareMetalMachineCordon -BareMetalMachineName <String> -ResourceGroupName <String>
+ -BareMetalMachineCordonParameter <IBareMetalMachineCordonParameters> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CordonViaIdentity
+```
+Invoke-AzNetworkCloudBareMetalMachineCordon -InputObject <INetworkCloudIdentity>
+ -BareMetalMachineCordonParameter <IBareMetalMachineCordonParameters> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### CordonViaIdentityExpanded
 ```
 Invoke-AzNetworkCloudBareMetalMachineCordon -InputObject <INetworkCloudIdentity> [-Evacuate <String>]
@@ -68,12 +82,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -BareMetalMachineCordonParameter
+BareMetalMachineCordonParameters represents the body of the request to evacuate workloads from node on a bare metal machine.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineCordonParameters
+Parameter Sets: Cordon, CordonViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -BareMetalMachineName
 The name of the bare metal machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: CordonExpanded, CordonViaJsonFilePath, CordonViaJsonString
+Parameter Sets: Cordon, CordonExpanded, CordonViaJsonFilePath, CordonViaJsonString
 Aliases:
 
 Required: True
@@ -119,7 +148,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
-Parameter Sets: CordonViaIdentityExpanded
+Parameter Sets: CordonViaIdentity, CordonViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -195,7 +224,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CordonExpanded, CordonViaJsonFilePath, CordonViaJsonString
+Parameter Sets: Cordon, CordonExpanded, CordonViaJsonFilePath, CordonViaJsonString
 Aliases:
 
 Required: True
@@ -211,7 +240,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CordonExpanded, CordonViaJsonFilePath, CordonViaJsonString
+Parameter Sets: Cordon, CordonExpanded, CordonViaJsonFilePath, CordonViaJsonString
 Aliases:
 
 Required: False
@@ -256,6 +285,8 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineCordonParameters
 
 ### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
 

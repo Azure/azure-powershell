@@ -23,37 +23,20 @@ Create an in-memory object for StorageApplianceConfigurationData.
 
 ## EXAMPLES
 
-### Example 1: Create storage appliance configuration object
+### Example 1: Create an in-memory object for StorageApplianceConfigurationData.
 ```powershell
-$password = ConvertTo-SecureString -String "SecurePass123!" -AsPlainText -Force
-New-AzNetworkCloudStorageApplianceConfigurationDataObject -AdminCredentialsPassword $password -AdminCredentialsUsername "admin" -SerialNumber "SA-001" -RackSlot 1 -StorageApplianceName "storageappliance1"
+$password = ConvertTo-SecureString "********" -AsPlainText -Force
+
+New-AzNetworkCloudStorageApplianceConfigurationDataObject -AdminCredentialsPassword $password -AdminCredentialsUsername username -RackSlot 1 -SerialNumber serialNumber -StorageApplianceName storageApplianceName
 ```
 
 ```output
-AdminCredentialsPassword  : System.Security.SecureString
-AdminCredentialsUsername  : admin
-RackSlot                  : 1
-SerialNumber              : SA-001
-StorageApplianceName      : storageappliance1
+RackSlot SerialNumber StorageApplianceName
+-------- ------------ --------------------
+1        serialNumber storageApplianceName
 ```
 
-This example creates a storage appliance configuration object with administrative credentials and placement information.
-
-### Example 2: Create storage appliance configuration for different rack slot
-```powershell
-$password = ConvertTo-SecureString -String "AdminPassword456!" -AsPlainText -Force
-New-AzNetworkCloudStorageApplianceConfigurationDataObject -AdminCredentialsPassword $password -AdminCredentialsUsername "sa_admin" -SerialNumber "SA-002" -RackSlot 2
-```
-
-```output
-AdminCredentialsPassword  : System.Security.SecureString
-AdminCredentialsUsername  : sa_admin
-RackSlot                  : 2
-SerialNumber              : SA-002
-StorageApplianceName      : 
-```
-
-This example creates a storage appliance configuration for a different rack slot without specifying the appliance name.
+Create an in-memory object for StorageApplianceConfigurationData.
 
 ## PARAMETERS
 

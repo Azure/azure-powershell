@@ -8,8 +8,7 @@ schema: 2.0.0
 # Update-AzNetworkCloudCluster
 
 ## SYNOPSIS
-Patch the properties of the provided cluster, or update the tags associated with the cluster.
-Properties and tag update can be done independently.
+Update a new cluster or update the properties of the cluster if it exists.
 
 ## SYNTAX
 
@@ -32,29 +31,21 @@ Update-AzNetworkCloudCluster -Name <String> -ResourceGroupName <String> [-Subscr
  [-ClusterServicePrincipalTenantId <String>] [-CommandOutputSettingContainerUrl <String>]
  [-CommandOutputSettingOverride <ICommandOutputOverride[]>] [-ComputeDeploymentThresholdGrouping <String>]
  [-ComputeDeploymentThresholdType <String>] [-ComputeDeploymentThresholdValue <Int64>]
- [-ComputeRackDefinition <IRackDefinition[]>] [-IdentityType <String>]
- [-IdentityUserAssignedIdentity <Hashtable>] [-RuntimeProtectionConfigurationEnforcementLevel <String>]
- [-SecretArchiveKeyVaultId <String>] [-SecretArchiveSettingVaultUri <String>]
- [-SecretArchiveSettingsAssociatedIdentityType <String>]
+ [-ComputeRackDefinition <IRackDefinition[]>] [-EnableSystemAssignedIdentity <Boolean>]
+ [-RuntimeProtectionConfigurationEnforcementLevel <String>] [-SecretArchiveKeyVaultId <String>]
+ [-SecretArchiveSettingVaultUri <String>] [-SecretArchiveSettingsAssociatedIdentityType <String>]
  [-SecretArchiveSettingsAssociatedIdentityUserAssignedIdentityResourceId <String>]
  [-SecretArchiveUseKeyVault <String>] [-Tag <Hashtable>] [-UpdateStrategyMaxUnavailable <Int64>]
  [-UpdateStrategyThresholdType <String>] [-UpdateStrategyThresholdValue <Int64>] [-UpdateStrategyType <String>]
- [-UpdateStrategyWaitTimeMinute <Int64>] [-VulnerabilityScanningSettingContainerScan <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-UpdateStrategyWaitTimeMinute <Int64>] [-UserAssignedIdentity <String[]>]
+ [-VulnerabilityScanningSettingContainerScan <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### UpdateViaJsonString
+### Update
 ```
 Update-AzNetworkCloudCluster -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-IfMatch <String>] [-IfNoneMatch <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### UpdateViaJsonFilePath
-```
-Update-AzNetworkCloudCluster -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-IfMatch <String>] [-IfNoneMatch <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob]
+ [-IfMatch <String>] [-IfNoneMatch <String>] -ClusterParameter <ICluster> [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -77,21 +68,26 @@ Update-AzNetworkCloudCluster -InputObject <INetworkCloudIdentity> [-IfMatch <Str
  [-ClusterServicePrincipalTenantId <String>] [-CommandOutputSettingContainerUrl <String>]
  [-CommandOutputSettingOverride <ICommandOutputOverride[]>] [-ComputeDeploymentThresholdGrouping <String>]
  [-ComputeDeploymentThresholdType <String>] [-ComputeDeploymentThresholdValue <Int64>]
- [-ComputeRackDefinition <IRackDefinition[]>] [-IdentityType <String>]
- [-IdentityUserAssignedIdentity <Hashtable>] [-RuntimeProtectionConfigurationEnforcementLevel <String>]
- [-SecretArchiveKeyVaultId <String>] [-SecretArchiveSettingVaultUri <String>]
- [-SecretArchiveSettingsAssociatedIdentityType <String>]
+ [-ComputeRackDefinition <IRackDefinition[]>] [-EnableSystemAssignedIdentity <Boolean>]
+ [-RuntimeProtectionConfigurationEnforcementLevel <String>] [-SecretArchiveKeyVaultId <String>]
+ [-SecretArchiveSettingVaultUri <String>] [-SecretArchiveSettingsAssociatedIdentityType <String>]
  [-SecretArchiveSettingsAssociatedIdentityUserAssignedIdentityResourceId <String>]
  [-SecretArchiveUseKeyVault <String>] [-Tag <Hashtable>] [-UpdateStrategyMaxUnavailable <Int64>]
  [-UpdateStrategyThresholdType <String>] [-UpdateStrategyThresholdValue <Int64>] [-UpdateStrategyType <String>]
- [-UpdateStrategyWaitTimeMinute <Int64>] [-VulnerabilityScanningSettingContainerScan <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-UpdateStrategyWaitTimeMinute <Int64>] [-UserAssignedIdentity <String[]>]
+ [-VulnerabilityScanningSettingContainerScan <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentity
+```
+Update-AzNetworkCloudCluster -InputObject <INetworkCloudIdentity> [-IfMatch <String>] [-IfNoneMatch <String>]
+ -ClusterParameter <ICluster> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Patch the properties of the provided cluster, or update the tags associated with the cluster.
-Properties and tag update can be done independently.
+Update a new cluster or update the properties of the cluster if it exists.
 
 ## EXAMPLES
 
@@ -362,6 +358,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ClusterParameter
+Cluster represents the on-premises Network Cloud cluster.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICluster
+Parameter Sets: Update, UpdateViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ClusterServicePrincipalApplicationId
 The application ID, also known as client ID, of the service principal.
 
@@ -529,28 +540,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityType
-Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+### -EnableSystemAssignedIdentity
+Determines whether to enable a system-assigned identity for the resource.
 
 ```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IdentityUserAssignedIdentity
-The set of user assigned identities associated with the resource.
-The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-The dictionary values can be empty objects ({}) in requests.
-
-```yaml
-Type: System.Collections.Hashtable
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
@@ -599,7 +593,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
-Parameter Sets: UpdateViaIdentityExpanded
+Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentity
 Aliases:
 
 Required: True
@@ -609,42 +603,12 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -JsonFilePath
-Path of Json file supplied to the Update operation
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateViaJsonFilePath
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonString
-Json string supplied to the Update operation
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateViaJsonString
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
 The name of the cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
+Parameter Sets: UpdateExpanded, Update
 Aliases: ClusterName
 
 Required: True
@@ -675,7 +639,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
+Parameter Sets: UpdateExpanded, Update
 Aliases:
 
 Required: True
@@ -782,7 +746,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
+Parameter Sets: UpdateExpanded, Update
 Aliases:
 
 Required: False
@@ -793,7 +757,7 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-The Azure resource tags that will replace the existing ones.
+Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
@@ -884,6 +848,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -UserAssignedIdentity
+The array of user assigned identities associated with the resource.
+The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+
+```yaml
+Type: System.String[]
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -VulnerabilityScanningSettingContainerScan
 The mode selection for container vulnerability scanning.
 
@@ -934,6 +914,8 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICluster
 
 ### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
 

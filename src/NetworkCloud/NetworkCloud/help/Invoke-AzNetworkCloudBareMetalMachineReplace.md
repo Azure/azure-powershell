@@ -35,6 +35,14 @@ Invoke-AzNetworkCloudBareMetalMachineReplace -Name <String> -ResourceGroupName <
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### Replace
+```
+Invoke-AzNetworkCloudBareMetalMachineReplace -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -BareMetalMachineReplaceParameter <IBareMetalMachineReplaceParameters>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
 ### ReplaceViaIdentityExpanded
 ```
 Invoke-AzNetworkCloudBareMetalMachineReplace -InputObject <INetworkCloudIdentity>
@@ -42,6 +50,13 @@ Invoke-AzNetworkCloudBareMetalMachineReplace -InputObject <INetworkCloudIdentity
  [-BootMacAddress <String>] [-MachineName <String>] [-SafeguardMode <String>] [-SerialNumber <String>]
  [-StoragePolicy <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ReplaceViaIdentity
+```
+Invoke-AzNetworkCloudBareMetalMachineReplace -InputObject <INetworkCloudIdentity>
+ -BareMetalMachineReplaceParameter <IBareMetalMachineReplaceParameters> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -72,6 +87,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -BareMetalMachineReplaceParameter
+BareMetalMachineReplaceParameters represents the body of the request to physically swap a bare metal machine for another.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineReplaceParameters
+Parameter Sets: Replace, ReplaceViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -156,7 +186,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
-Parameter Sets: ReplaceViaIdentityExpanded
+Parameter Sets: ReplaceViaIdentityExpanded, ReplaceViaIdentity
 Aliases:
 
 Required: True
@@ -216,7 +246,7 @@ The name of the bare metal machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: ReplaceExpanded, ReplaceViaJsonString, ReplaceViaJsonFilePath
+Parameter Sets: ReplaceExpanded, ReplaceViaJsonString, ReplaceViaJsonFilePath, Replace
 Aliases: BareMetalMachineName
 
 Required: True
@@ -262,7 +292,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: ReplaceExpanded, ReplaceViaJsonString, ReplaceViaJsonFilePath
+Parameter Sets: ReplaceExpanded, ReplaceViaJsonString, ReplaceViaJsonFilePath, Replace
 Aliases:
 
 Required: True
@@ -323,7 +353,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: ReplaceExpanded, ReplaceViaJsonString, ReplaceViaJsonFilePath
+Parameter Sets: ReplaceExpanded, ReplaceViaJsonString, ReplaceViaJsonFilePath, Replace
 Aliases:
 
 Required: False
@@ -368,6 +398,8 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineReplaceParameters
 
 ### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
 

@@ -22,32 +22,20 @@ Create an in-memory object for EgressEndpoint.
 
 ## EXAMPLES
 
-### Example 1: Create egress endpoint for Azure resource management
+### Example 1: Create an in-memory object for EgressEndpointObject.
 ```powershell
-$endpoint = New-AzNetworkCloudEndpointDependencyObject -DomainName "management.azure.com" -Port 443
-New-AzNetworkCloudEgressEndpointObject -Category "azure-resource-management" -Endpoint @($endpoint)
+$endpointDependency=New-AzNetworkCloudEndpointDependencyObject -DomainName domainName -Port 1234
+
+New-AzNetworkCloudEgressEndpointObject -Category "azure-resource-management" -Endpoint ($endpointDependency)
 ```
 
 ```output
-Category : azure-resource-management
-Endpoint : {Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.EndpointDependency}
+Category
+--------
+azure-resource-management
 ```
 
-This example creates an egress endpoint configuration for Azure resource management endpoints.
-
-### Example 2: Create egress endpoint with multiple domain dependencies
-```powershell
-$endpoint1 = New-AzNetworkCloudEndpointDependencyObject -DomainName "api.github.com" -Port 443
-$endpoint2 = New-AzNetworkCloudEndpointDependencyObject -DomainName "github.com" -Port 443
-New-AzNetworkCloudEgressEndpointObject -Category "github" -Endpoint @($endpoint1, $endpoint2)
-```
-
-```output
-Category : github
-Endpoint : {Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.EndpointDependency, Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.EndpointDependency}
-```
-
-This example creates an egress endpoint configuration for GitHub with multiple domain dependencies.
+Create an in-memory object for EgressEndpoint.
 
 ## PARAMETERS
 

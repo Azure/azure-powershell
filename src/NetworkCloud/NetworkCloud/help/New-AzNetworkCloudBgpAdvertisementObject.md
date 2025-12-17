@@ -22,33 +22,27 @@ Create an in-memory object for BgpAdvertisement.
 
 ## EXAMPLES
 
-### Example 1: Create BGP advertisement with specific pools and communities
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzNetworkCloudBgpAdvertisementObject -AdvertiseToFabric "True" -IPAddressPool @("pool1", "pool2") -Community @("65001:100", "65001:200")
+{{ Add code here }}
 ```
 
 ```output
-AdvertiseToFabric : True
-Community         : {65001:100, 65001:200}
-IPAddressPool     : {pool1, pool2}
-Peer              : {}
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-This example creates a BGP advertisement object that advertises specific IP address pools to the fabric with associated BGP communities.
+{{ Add description here }}
 
-### Example 2: Create BGP advertisement for specific peers
+### Example 2: {{ Add title here }}
 ```powershell
-New-AzNetworkCloudBgpAdvertisementObject -AdvertiseToFabric "False" -IPAddressPool @("external-pool") -Peer @("peer1", "peer2")
+{{ Add code here }}
 ```
 
 ```output
-AdvertiseToFabric : False
-Community         : {}
-IPAddressPool     : {external-pool}
-Peer              : {peer1, peer2}
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-This example creates a BGP advertisement object that advertises to specific BGP peers without fabric peering.
+{{ Add description here }}
 
 ## PARAMETERS
 

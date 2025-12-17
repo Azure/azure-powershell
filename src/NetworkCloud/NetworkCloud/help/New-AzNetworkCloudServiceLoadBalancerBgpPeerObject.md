@@ -24,45 +24,18 @@ Create an in-memory object for ServiceLoadBalancerBgpPeer.
 
 ## EXAMPLES
 
-### Example 1: Create service load balancer BGP peer with basic configuration
+### Example 1: Create an in-memory object for ServiceLoadBalancerBgpPeer.
 ```powershell
-New-AzNetworkCloudServiceLoadBalancerBgpPeerObject -Name "peer1" -PeerAddress "192.168.1.1" -PeerAsn 65000 -MyAsn 65001 -BfdEnabled "True"
+New-AzNetworkCloudServiceLoadBalancerBgpPeerObject -Name name -PeerAddress "203.0.113.254" -PeerAsn "64497" -BfdEnabled False -BgpMultiHop False -HoldTime "P300s" -KeepAliveTime "P300s" -MyAsn 64512 -Password passsword -PeerPort 1234
 ```
 
 ```output
-BfdEnabled      : True
-BgpMultiHop     : 
-HoldTime        : 
-KeepAliveTime   : 
-MyAsn           : 65001
-Name            : peer1
-Password        : 
-PeerAddress     : 192.168.1.1
-PeerAsn         : 65000
-PeerPort        : 
+BfdEnabled BgpMultiHop HoldTime KeepAliveTime MyAsn Name Password  PeerAddress   PeerAsn PeerPort
+---------- ----------- -------- ------------- ----- ---- --------  -----------   ------- --------
+False      False       P300s    P300s         64512 name passsword 203.0.113.254 64497   1234
 ```
 
-This example creates a BGP peer configuration for service load balancer with BFD enabled.
-
-### Example 2: Create service load balancer BGP peer with multi-hop support
-```powershell
-New-AzNetworkCloudServiceLoadBalancerBgpPeerObject -Name "peer2" -PeerAddress "10.0.0.5" -PeerAsn 64512 -MyAsn 65001 -BgpMultiHop "True" -PeerPort 179
-```
-
-```output
-BfdEnabled      : 
-BgpMultiHop     : True
-HoldTime        : 
-KeepAliveTime   : 
-MyAsn           : 65001
-Name            : peer2
-Password        : 
-PeerAddress     : 10.0.0.5
-PeerAsn         : 64512
-PeerPort        : 179
-```
-
-This example creates a BGP peer with multi-hop support enabled and custom peer port.
+Create an in-memory object for ServiceLoadBalancerBgpPeer.
 
 ## PARAMETERS
 

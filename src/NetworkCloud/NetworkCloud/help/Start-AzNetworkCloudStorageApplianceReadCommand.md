@@ -12,11 +12,12 @@ Run one or more read-only commands on the provided storage appliance.
 
 ## SYNTAX
 
-### RunViaIdentityExpanded (Default)
+### RunViaIdentity (Default)
 ```
 Start-AzNetworkCloudStorageApplianceReadCommand -InputObject <INetworkCloudIdentity>
- -Command <IStorageApplianceCommandSpecification[]> -LimitTimeSecond <Int64> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -StorageApplianceRunReadCommandsParameter <IStorageApplianceRunReadCommandsParameters>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### RunViaJsonString
@@ -41,44 +42,48 @@ Start-AzNetworkCloudStorageApplianceReadCommand -ResourceGroupName <String> -Sto
  [-Confirm] [<CommonParameters>]
 ```
 
+### Run
+```
+Start-AzNetworkCloudStorageApplianceReadCommand -ResourceGroupName <String> -StorageApplianceName <String>
+ [-SubscriptionId <String>]
+ -StorageApplianceRunReadCommandsParameter <IStorageApplianceRunReadCommandsParameters>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### RunViaIdentityExpanded
+```
+Start-AzNetworkCloudStorageApplianceReadCommand -InputObject <INetworkCloudIdentity>
+ -Command <IStorageApplianceCommandSpecification[]> -LimitTimeSecond <Int64> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Run one or more read-only commands on the provided storage appliance.
 
 ## EXAMPLES
 
-### Example 1: Run read-only command on storage appliance
+### Example 1: {{ Add title here }}
 ```powershell
-$command = @{
-    command = "readiness"
-    arguments = @()
-}
-Start-AzNetworkCloudStorageApplianceReadCommand -StorageApplianceName "storageApplianceName" -ResourceGroupName "resourceGroupName" -SubscriptionId "subscriptionId" -Command @($command) -LimitTimeSecond 60
+{{ Add code here }}
 ```
 
 ```output
-True
+{{ Add output here }}
 ```
 
-This example runs a read-only readiness check command on the specified storage appliance with a 60-second timeout.
+{{ Add description here }}
 
-### Example 2: Run multiple storage appliance read commands
+### Example 2: {{ Add title here }}
 ```powershell
-$command1 = @{
-    command = "readiness"
-    arguments = @()
-}
-$command2 = @{
-    command = "health"
-    arguments = @("-v")
-}
-Start-AzNetworkCloudStorageApplianceReadCommand -StorageApplianceName "storageApplianceName" -ResourceGroupName "resourceGroupName" -SubscriptionId "subscriptionId" -Command @($command1, $command2) -LimitTimeSecond 120
+{{ Add code here }}
 ```
 
 ```output
-True
+{{ Add output here }}
 ```
 
-This example runs multiple read-only commands on the storage appliance with a 120-second timeout.
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -102,7 +107,7 @@ The list of read-only commands to be executed directly against the target storag
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IStorageApplianceCommandSpecification[]
-Parameter Sets: RunViaIdentityExpanded, RunExpanded
+Parameter Sets: RunExpanded, RunViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -133,7 +138,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
-Parameter Sets: RunViaIdentityExpanded
+Parameter Sets: RunViaIdentity, RunViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -178,7 +183,7 @@ The maximum time the commands are allowed to run.
 
 ```yaml
 Type: System.Int64
-Parameter Sets: RunViaIdentityExpanded, RunExpanded
+Parameter Sets: RunExpanded, RunViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -224,7 +229,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: RunViaJsonString, RunViaJsonFilePath, RunExpanded
+Parameter Sets: RunViaJsonString, RunViaJsonFilePath, RunExpanded, Run
 Aliases:
 
 Required: True
@@ -239,7 +244,7 @@ The name of the storage appliance.
 
 ```yaml
 Type: System.String
-Parameter Sets: RunViaJsonString, RunViaJsonFilePath, RunExpanded
+Parameter Sets: RunViaJsonString, RunViaJsonFilePath, RunExpanded, Run
 Aliases:
 
 Required: True
@@ -249,13 +254,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -StorageApplianceRunReadCommandsParameter
+StorageApplianceRunReadCommandsParameters represents the body of request containing list of read-only commands to run on the storage appliance.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IStorageApplianceRunReadCommandsParameters
+Parameter Sets: RunViaIdentity, Run
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 The ID of the target subscription.
 The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: RunViaJsonString, RunViaJsonFilePath, RunExpanded
+Parameter Sets: RunViaJsonString, RunViaJsonFilePath, RunExpanded, Run
 Aliases:
 
 Required: False
@@ -302,6 +322,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IStorageApplianceRunReadCommandsParameters
 
 ## OUTPUTS
 

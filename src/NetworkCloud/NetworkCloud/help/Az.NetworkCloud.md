@@ -293,12 +293,10 @@ Patch properties of baseboard management controller key set for the provided clu
 Properties and tag update can be done independently.
 
 ### [Update-AzNetworkCloudCluster](Update-AzNetworkCloudCluster.md)
-Patch the properties of the provided cluster, or update the tags associated with the cluster.
-Properties and tag update can be done independently.
+Update a new cluster or update the properties of the cluster if it exists.
 
 ### [Update-AzNetworkCloudClusterManager](Update-AzNetworkCloudClusterManager.md)
-Patch properties of the provided cluster manager, or update the tags assigned to the cluster manager.
-Properties and tag update can be done independently.
+Update a new cluster manager or update properties of the cluster manager if it exists.
 
 ### [Update-AzNetworkCloudConsole](Update-AzNetworkCloudConsole.md)
 Patch the properties of the provided virtual machine console, or update the tags associated with the virtual machine console.
@@ -336,8 +334,7 @@ Update properties of the provided storage appliance, or update tags associated w
 Update tags associated with the provided trunked network.
 
 ### [Update-AzNetworkCloudVirtualMachine](Update-AzNetworkCloudVirtualMachine.md)
-Patch the properties of the provided virtual machine, or update the tags associated with the virtual machine.
-Properties and tag update can be done independently.
+Update a new virtual machine or update the properties of the existing virtual machine.
 
 ### [Update-AzNetworkCloudVolume](Update-AzNetworkCloudVolume.md)
 Update tags associated with the provided volume.

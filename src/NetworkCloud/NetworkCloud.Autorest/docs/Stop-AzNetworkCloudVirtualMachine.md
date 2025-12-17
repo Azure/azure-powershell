@@ -19,6 +19,20 @@ Stop-AzNetworkCloudVirtualMachine -Name <String> -ResourceGroupName <String> [-S
  [<CommonParameters>]
 ```
 
+### PowerOff
+```
+Stop-AzNetworkCloudVirtualMachine -Name <String> -ResourceGroupName <String>
+ -VirtualMachinePowerOffParameter <IVirtualMachinePowerOffParameters> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### PowerOffViaIdentity
+```
+Stop-AzNetworkCloudVirtualMachine -InputObject <INetworkCloudIdentity>
+ -VirtualMachinePowerOffParameter <IVirtualMachinePowerOffParameters> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### PowerOffViaIdentityExpanded
 ```
 Stop-AzNetworkCloudVirtualMachine -InputObject <INetworkCloudIdentity> [-SkipShutdown <String>]
@@ -89,7 +103,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
-Parameter Sets: PowerOffViaIdentityExpanded
+Parameter Sets: PowerOffViaIdentity, PowerOffViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -134,7 +148,7 @@ The name of the virtual machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: PowerOffExpanded, PowerOffViaJsonFilePath, PowerOffViaJsonString
+Parameter Sets: PowerOff, PowerOffExpanded, PowerOffViaJsonFilePath, PowerOffViaJsonString
 Aliases: VirtualMachineName
 
 Required: True
@@ -180,7 +194,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: PowerOffExpanded, PowerOffViaJsonFilePath, PowerOffViaJsonString
+Parameter Sets: PowerOff, PowerOffExpanded, PowerOffViaJsonFilePath, PowerOffViaJsonString
 Aliases:
 
 Required: True
@@ -211,13 +225,28 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: PowerOffExpanded, PowerOffViaJsonFilePath, PowerOffViaJsonString
+Parameter Sets: PowerOff, PowerOffExpanded, PowerOffViaJsonFilePath, PowerOffViaJsonString
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VirtualMachinePowerOffParameter
+VirtualMachinePowerOffParameters represents the body of the request to power off virtual machine.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePowerOffParameters
+Parameter Sets: PowerOff, PowerOffViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -258,6 +287,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePowerOffParameters
 
 ## OUTPUTS
 

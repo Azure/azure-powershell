@@ -24,43 +24,20 @@ Create an in-memory object for BareMetalMachineConfigurationData.
 
 ## EXAMPLES
 
-### Example 1: Create bare metal machine configuration object
+### Example 1: Create an in-memory object for BareMetalMachineConfigurationData.
 ```powershell
-$password = ConvertTo-SecureString -String "P@ssw0rd123!" -AsPlainText -Force
-New-AzNetworkCloudBareMetalMachineConfigurationDataObject -BmcCredentialsPassword $password -BmcCredentialsUsername "admin" -BmcMacAddress "00:1a:2b:3c:4d:5e" -BootMacAddress "00:1a:2b:3c:4d:5f" -RackSlot 1 -SerialNumber "ABC123DEF456" -MachineName "bmm-001"
+$password = ConvertTo-SecureString "********" -AsPlainText -Force
+
+New-AzNetworkCloudBareMetalMachineConfigurationDataObject -BmcCredentialsPassword $password -BmcCredentialsUsername username -BmcMacAddress "00:BB:CC:DD:EE:FF" -BootMacAddress "00:BB:CC:DD:EE:FF" -RackSlot 1 -SerialNumber serialNumber -MachineDetail machineDetail -MachineName machineName
 ```
 
 ```output
-BmcCredentialsPassword      : System.Security.SecureString
-BmcCredentialsUsername      : admin
-BmcMacAddress               : 00:1a:2b:3c:4d:5e
-BootMacAddress              : 00:1a:2b:3c:4d:5f
-MachineDetail               : 
-MachineName                 : bmm-001
-RackSlot                    : 1
-SerialNumber                : ABC123DEF456
+BmcConnectionString BmcMacAddress     BootMacAddress    MachineDetail MachineName RackSlot SerialNumber
+------------------- -------------     --------------    ------------- ----------- -------- ------------
+                    00:BB:CC:DD:EE:FF 00:BB:CC:DD:EE:FF machineDetail machineName 1        serialNumber
 ```
 
-This example creates a bare metal machine configuration object with BMC credentials and networking details.
-
-### Example 2: Create bare metal machine configuration with additional details
-```powershell
-$password = ConvertTo-SecureString -String "SecurePass123!" -AsPlainText -Force
-New-AzNetworkCloudBareMetalMachineConfigurationDataObject -BmcCredentialsPassword $password -BmcCredentialsUsername "bmc_admin" -BmcMacAddress "00:2b:3c:4d:5e:6f" -BootMacAddress "00:2b:3c:4d:5e:70" -RackSlot 2 -SerialNumber "XYZ789UVW012" -MachineName "bmm-002" -MachineDetail "Asset Tag: AT-12345"
-```
-
-```output
-BmcCredentialsPassword      : System.Security.SecureString
-BmcCredentialsUsername      : bmc_admin
-BmcMacAddress               : 00:2b:3c:4d:5e:6f
-BootMacAddress              : 00:2b:3c:4d:5e:70
-MachineDetail               : Asset Tag: AT-12345
-MachineName                 : bmm-002
-RackSlot                    : 2
-SerialNumber                : XYZ789UVW012
-```
-
-This example creates a configuration object with additional machine details and higher rack slot.
+Create an in-memory object for BareMetalMachineConfigurationData.
 
 ## PARAMETERS
 
