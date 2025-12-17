@@ -250,5 +250,12 @@ namespace Commands.Aks.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-API20250801-WithMSI-Set");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAPI20250801StorageProfile()
+        {
+            TestRunner.RunTestScript("Test-API20250801-StorageProfile");
+        }
     }
 }

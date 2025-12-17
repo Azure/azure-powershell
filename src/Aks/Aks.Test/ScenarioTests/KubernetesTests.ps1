@@ -1434,3 +1434,26 @@ function Test-API20250801-WithMSI-Set {
         Remove-AzResourceGroup -Name $resourceGroupName -Force
     }
 }
+
+function Test-API20250801-StorageProfile {
+    $resourceGroupName = Get-RandomResourceGroupName
+    $kubeClusterName = Get-RandomClusterName
+    $location = 'eastus'
+    $nodeVmSize = "standard_a2_v2"
+
+    try {
+        New-AzResourceGroup -Name $resourceGroupName -Location $location
+
+        New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeVmSize $nodeVmSize -NodeCount 1 -Location $location -EnableDiskCSIDriver -EnableBlobCSIDriver -EnableFileCSIDriver -EnableSnapshotCSIDriver
+
+        $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
+
+        Assert-AreEqual $cluster.StorageProfile.DiskCsiDriver.Enabled $true
+        Assert-AreEqual $cluster.StorageProfile.FileCsiDriver.Enabled $true
+        Assert-AreEqual $cluster.StorageProfile.SnapshotController.Enabled $true
+        Assert-AreEqual $cluster.StorageProfile.BlobCsiDriver.Enabled $true
+    }
+    finally {
+        Remove-AzResourceGroup -Name $resourceGroupName -Force
+    }
+}
