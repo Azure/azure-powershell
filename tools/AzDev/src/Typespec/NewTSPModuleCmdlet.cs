@@ -45,8 +45,8 @@ namespace AzDev.Cmdlets.Typespec
         3. no -tsplocation and there is a tsp-location.yaml, use tsp-location.yaml as -tsplocation
         4. if -tspconfig provided, merge it with -tsplocation
     */
-    [Cmdlet("Update", "DevTSPModule")]
-    public class UpdateTSPModuleCmdlet : DevCmdletBase
+    [Cmdlet("New", "DevTSPModule")]
+    public class NewTSPModuleCmdlet : DevCmdletBase
     {
         private static readonly HttpClient httpClient = new HttpClient();
 

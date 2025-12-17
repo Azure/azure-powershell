@@ -1,6 +1,6 @@
-# Update-DevTSPModule
+# New-DevTSPModule
 
-`Update-DevTSPModule` is a PowerShell cmdlet designed to help manage TypeSpec (TSP) configurations for Azure PowerShell development. It facilitates the setup and update of `tspconfig.yaml` by resolving locations from local paths, remote URLs, or specific repository details. Then finally generate Azure-PowerShell module from TypeSpec configured.
+`New-DevTSPModule` is a PowerShell cmdlet designed to help manage TypeSpec (TSP) configurations for Azure PowerShell development. It facilitates the setup and update of `tspconfig.yaml` by resolving locations from local paths, remote URLs, or specific repository details. Then finally generate Azure-PowerShell module from TypeSpec configured.
 
 ## Terminology
 
@@ -16,7 +16,7 @@
     - ***repo***: `{ForkName}/{RepositoryName}`, e.g. `Azure/azure-rest-api-specs`. Empty when last generation was from local tsp
 - **RepoRoot**: Root directory of local azure-powershell. Can be provided in below ways
     - ***Execute this cmdlet anywhere under $RootDirectory without explicitly providing it***: Run this cmdlet under any subdirectory of azure-powershell, `RepoRoot` will be calculated.
-    - ***Pass by parameter***: `Update-DevTSPModule -RepoRoot $RootDirectory`
+    - ***Pass by parameter***: `New-DevTSPModule -RepoRoot $RootDirectory`
     - ***AzDev Cmdlet***: `Set-DevContext -RepoRoot $RootDirectory`
 - **Emitter**: The tool responsible for generating PowerShell code from the TypeSpec definition. This cmdlet specifically works with the `@azure-tools/typespec-powershell` emitter.
 - **emitter-output-dir**: Emitter option to indicate the output directory of code generation. Usually `"{output-dir}/{service-dir}/${ModuleName}/${ModuleName}.Autorest"` under `tsp-config.yaml`. When not provided while AzPSConfig exists, fallback to directory of AzPSConfig.
@@ -42,49 +42,49 @@ import-module {workspace}/azure-powershell/artifacts/AzDev/AzDev.psd1
 ### Local TSP only
 
 ```powershell
-Update-DevTSPModule -TSPLocation "D:\workspace\azure-rest-api-specs\specification\azuredependencymap\DependencyMap.Management\tspconfig.yaml"
+New-DevTSPModule -TSPLocation "D:\workspace\azure-rest-api-specs\specification\azuredependencymap\DependencyMap.Management\tspconfig.yaml"
 ```
 
 ### Remote TSP only
 
 ```powershell
-Update-DevTSPModule -TSPLocation "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/29e9e3ca1a1bccba66a6cf092dbc317c639989b1/specification/azuredependencymap/DependencyMap.Management/tspconfig.yaml"
+New-DevTSPModule -TSPLocation "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/29e9e3ca1a1bccba66a6cf092dbc317c639989b1/specification/azuredependencymap/DependencyMap.Management/tspconfig.yaml"
 ```
 
 ### Use tsp-location.yaml without providing `-TSPLocation`
 ```powershell
 cd "D:/workspace/azure-powershell/src/DependencyMap/DependencyMap.Autorest"
-Update-DevTSPModule
+New-DevTSPModule
 ```
 
 ### Use tsp-location.yaml with updated commit and fork When last time generated from remote
 ```powershell
 cd "D:/workspace/azure-powershell/src/DependencyMap/DependencyMap.Autorest"
-Update-DevTSPModule -RemoteForkName "VeryEarly" -RemoteCommit "e952eed8b787d99d10ba9a5ea3789ed0a9877214"
+New-DevTSPModule -RemoteForkName "VeryEarly" -RemoteCommit "e952eed8b787d99d10ba9a5ea3789ed0a9877214"
 ```
 
 ### Use local `-AzPSConfig` to override or extend `tspconfig.yaml` from `-TSPLocation`
 ```powershell
-Update-DevTSPModule -TSPLocation "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/29e9e3ca1a1bccba66a6cf092dbc317c639989b1/specification/azuredependencymap/DependencyMap.Management/tspconfig.yaml" -AzPSConfig "D:/workspace/azure-powershell/src/DependencyMap/DependencyMap.Autorest/tspconfig.yaml"
+New-DevTSPModule -TSPLocation "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/29e9e3ca1a1bccba66a6cf092dbc317c639989b1/specification/azuredependencymap/DependencyMap.Management/tspconfig.yaml" -AzPSConfig "D:/workspace/azure-powershell/src/DependencyMap/DependencyMap.Autorest/tspconfig.yaml"
 ```
 
 ### Use local `-AzPSConfig` to override or extend `tspconfig.yaml` from `tsp-location.yaml` both under current directory
 ```powershell
 cd "D:/workspace/azure-powershell/src/DependencyMap/DependencyMap.Autorest"
-Update-DevTSPModule
+New-DevTSPModule
 ```
 
-### Execute `Update-DevTSPModule` from directories outside of azure-powershell
+### Execute `New-DevTSPModule` from directories outside of azure-powershell
 ```powershell
 cd "C:/"
-Update-DevTSPModule -TSPLocation "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/29e9e3ca1a1bccba66a6cf092dbc317c639989b1/specification/azuredependencymap/DependencyMap.Management/tspconfig.yaml" -RepoRoot "D:/workspace/azure-powershell"
+New-DevTSPModule -TSPLocation "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/29e9e3ca1a1bccba66a6cf092dbc317c639989b1/specification/azuredependencymap/DependencyMap.Management/tspconfig.yaml" -RepoRoot "D:/workspace/azure-powershell"
 ```
 Or
 
 ```powershell
 cd "C:/"
 Set-DevContext -RepoRoot "D:/workspace/azure-powershell"
-Update-DevTSPModule -TSPLocation "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/29e9e3ca1a1bccba66a6cf092dbc317c639989b1/specification/azuredependencymap/DependencyMap.Management/tspconfig.yaml" 
+New-DevTSPModule -TSPLocation "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/29e9e3ca1a1bccba66a6cf092dbc317c639989b1/specification/azuredependencymap/DependencyMap.Management/tspconfig.yaml" 
 ```
 
 ## Notes
