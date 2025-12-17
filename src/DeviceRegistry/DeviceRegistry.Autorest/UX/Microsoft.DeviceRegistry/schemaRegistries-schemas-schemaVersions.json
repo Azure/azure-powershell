@@ -1,6 +1,6 @@
 {
   "resourceType": "schemaRegistries/schemas/schemaVersions",
-  "apiVersion": "2025-11-01-preview",
+  "apiVersion": "2025-10-01",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.deviceregistry"
   },

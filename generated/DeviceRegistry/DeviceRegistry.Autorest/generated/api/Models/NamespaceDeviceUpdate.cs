@@ -34,9 +34,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         /// <summary>Internal Acessors for EndpointOutbound</summary>
         Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IOutboundEndpointsUpdate Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDeviceUpdateInternal.EndpointOutbound { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDeviceUpdatePropertiesInternal)Property).EndpointOutbound; set => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDeviceUpdatePropertiesInternal)Property).EndpointOutbound = value ?? null /* model class */; }
 
-        /// <summary>Internal Acessors for Policy</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceCredentialPolicy Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDeviceUpdateInternal.Policy { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDeviceUpdatePropertiesInternal)Property).Policy; set => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDeviceUpdatePropertiesInternal)Property).Policy = value ?? null /* model class */; }
-
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDeviceUpdateProperties Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDeviceUpdateInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.NamespaceDeviceUpdateProperties()); set { {_property = value;} } }
 
@@ -51,10 +48,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         /// <summary>Set of most recently removed endpoints.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Origin(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.PropertyOrigin.Inlined)]
         public Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IOutboundEndpointsUpdateUnassigned OutboundUnassigned { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDeviceUpdatePropertiesInternal)Property).OutboundUnassigned; set => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDeviceUpdatePropertiesInternal)Property).OutboundUnassigned = value ?? null /* model class */; }
-
-        /// <summary>Resource Id of the Policy.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Origin(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.PropertyOrigin.Inlined)]
-        public string PolicyResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDeviceUpdatePropertiesInternal)Property).PolicyResourceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDeviceUpdatePropertiesInternal)Property).PolicyResourceId = value ?? null; }
 
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDeviceUpdateProperties _property;
@@ -149,17 +142,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         SerializedName = @"unassigned",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IOutboundEndpointsUpdateUnassigned) })]
         Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IOutboundEndpointsUpdateUnassigned OutboundUnassigned { get; set; }
-        /// <summary>Resource Id of the Policy.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Resource Id of the Policy.",
-        SerializedName = @"resourceId",
-        PossibleTypes = new [] { typeof(string) })]
-        string PolicyResourceId { get; set; }
         /// <summary>Resource tags.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Info(
         Required = false,
@@ -196,10 +178,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IOutboundEndpointsUpdateAssigned OutboundAssigned { get; set; }
         /// <summary>Set of most recently removed endpoints.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IOutboundEndpointsUpdateUnassigned OutboundUnassigned { get; set; }
-        /// <summary>Policy used to issue device certificates.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceCredentialPolicy Policy { get; set; }
-        /// <summary>Resource Id of the Policy.</summary>
-        string PolicyResourceId { get; set; }
         /// <summary>The resource-specific properties for this resource.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDeviceUpdateProperties Property { get; set; }
         /// <summary>Resource tags.</summary>

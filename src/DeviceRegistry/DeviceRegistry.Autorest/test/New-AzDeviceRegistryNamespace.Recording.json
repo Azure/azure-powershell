@@ -1,8 +1,8 @@
 {
-  "New-AzDeviceRegistryNamespace+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/test-namespace-create-expanded1?api-version=2025-11-01-preview+1": {
+  "New-AzDeviceRegistryNamespace+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/test-namespace-create-expanded1?api-version=2025-10-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/test-namespace-create-expanded1?api-version=2025-11-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/test-namespace-create-expanded1?api-version=2025-10-01",
       "Content": "{\n  \"location\": \"eastus2\",\n  \"properties\": {\n    \"messaging\": {\n      \"endpoints\": {\n        \"myendpoint2\": {\n          \"endpointType\": \"Microsoft.Devices/IotHubs\",\n          \"address\": \"https://myendpoint2.westeurope-1.iothub.azure.net\",\n          \"resourceId\": \"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.IotHub/namespaces/contoso-hub-namespace2\"\n        },\n        \"myendpoint1\": {\n          \"endpointType\": \"Microsoft.Devices/IotHubs\",\n          \"address\": \"https://myendpoint1.westeurope-1.iothub.azure.net\",\n          \"resourceId\": \"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.IotHub/namespaces/contoso-hub-namespace1\"\n        }\n      }\n    }\n  }\n}",
       "isContentBase64": false,
       "Headers": {
@@ -42,10 +42,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzDeviceRegistryNamespace+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/test-namespace-create-expanded1?api-version=2025-11-01-preview+2": {
+  "New-AzDeviceRegistryNamespace+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/test-namespace-create-expanded1?api-version=2025-10-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/test-namespace-create-expanded1?api-version=2025-11-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/test-namespace-create-expanded1?api-version=2025-10-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -86,10 +86,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzDeviceRegistryNamespace+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/test-namespace-create-expanded1?api-version=2025-11-01-preview+3": {
+  "New-AzDeviceRegistryNamespace+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/test-namespace-create-expanded1?api-version=2025-10-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/test-namespace-create-expanded1?api-version=2025-11-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/test-namespace-create-expanded1?api-version=2025-10-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -130,10 +130,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzDeviceRegistryNamespace+[NoContext]+CreateViaJsonFilePath+$PUT+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/test-namespace-create-json-file-path?api-version=2025-11-01-preview+1": {
+  "New-AzDeviceRegistryNamespace+[NoContext]+CreateViaJsonFilePath+$PUT+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/test-namespace-create-json-file-path?api-version=2025-10-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/test-namespace-create-json-file-path?api-version=2025-11-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/test-namespace-create-json-file-path?api-version=2025-10-01",
       "Content": "{\r\n  \"location\": \"eastus2\",\r\n  \"properties\": {        \r\n    \"messaging\": {\r\n      \"endpoints\": {\r\n        \"myendpoint1\": {\r\n          \"address\": \"https://myendpoint1.westeurope-1.iothub.azure.net\",\r\n          \"endpointType\": \"Microsoft.Devices/IotHubs\",\r\n          \"resourceId\": \"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.IotHub/namespaces/contoso-hub-namespace1\"\r\n        },\r\n        \"myendpoint2\": {\r\n          \"address\": \"https://myendpoint2.westeurope-1.iothub.azure.net\",\r\n          \"endpointType\": \"Microsoft.Devices/IotHubs\",\r\n          \"resourceId\": \"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.IotHub/namespaces/contoso-hub-namespace2\"\r\n        }\r\n      }\r\n    }\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -173,10 +173,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzDeviceRegistryNamespace+[NoContext]+CreateViaJsonFilePath+$GET+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/test-namespace-create-json-file-path?api-version=2025-11-01-preview+2": {
+  "New-AzDeviceRegistryNamespace+[NoContext]+CreateViaJsonFilePath+$GET+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/test-namespace-create-json-file-path?api-version=2025-10-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/test-namespace-create-json-file-path?api-version=2025-11-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/test-namespace-create-json-file-path?api-version=2025-10-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -217,10 +217,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzDeviceRegistryNamespace+[NoContext]+CreateViaJsonFilePath+$GET+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/test-namespace-create-json-file-path?api-version=2025-11-01-preview+3": {
+  "New-AzDeviceRegistryNamespace+[NoContext]+CreateViaJsonFilePath+$GET+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/test-namespace-create-json-file-path?api-version=2025-10-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/test-namespace-create-json-file-path?api-version=2025-11-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/test-namespace-create-json-file-path?api-version=2025-10-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -261,10 +261,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzDeviceRegistryNamespace+[NoContext]+CreateViaJsonString+$PUT+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/test-namespace-create-json-string?api-version=2025-11-01-preview+1": {
+  "New-AzDeviceRegistryNamespace+[NoContext]+CreateViaJsonString+$PUT+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/test-namespace-create-json-string?api-version=2025-10-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/test-namespace-create-json-string?api-version=2025-11-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/test-namespace-create-json-string?api-version=2025-10-01",
       "Content": "{\r\n  \"location\": \"eastus2\",\r\n  \"properties\": {        \r\n    \"messaging\": {\r\n      \"endpoints\": {\r\n        \"myendpoint1\": {\r\n          \"address\": \"https://myendpoint1.westeurope-1.iothub.azure.net\",\r\n          \"endpointType\": \"Microsoft.Devices/IotHubs\",\r\n          \"resourceId\": \"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.IotHub/namespaces/contoso-hub-namespace1\"\r\n        },\r\n        \"myendpoint2\": {\r\n          \"address\": \"https://myendpoint2.westeurope-1.iothub.azure.net\",\r\n          \"endpointType\": \"Microsoft.Devices/IotHubs\",\r\n          \"resourceId\": \"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.IotHub/namespaces/contoso-hub-namespace2\"\r\n        }\r\n      }\r\n    }\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -304,10 +304,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzDeviceRegistryNamespace+[NoContext]+CreateViaJsonString+$GET+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/test-namespace-create-json-string?api-version=2025-11-01-preview+2": {
+  "New-AzDeviceRegistryNamespace+[NoContext]+CreateViaJsonString+$GET+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/test-namespace-create-json-string?api-version=2025-10-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/test-namespace-create-json-string?api-version=2025-11-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/test-namespace-create-json-string?api-version=2025-10-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -348,10 +348,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzDeviceRegistryNamespace+[NoContext]+CreateViaJsonString+$GET+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/test-namespace-create-json-string?api-version=2025-11-01-preview+3": {
+  "New-AzDeviceRegistryNamespace+[NoContext]+CreateViaJsonString+$GET+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/test-namespace-create-json-string?api-version=2025-10-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/test-namespace-create-json-string?api-version=2025-11-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/namespaces/test-namespace-create-json-string?api-version=2025-10-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {

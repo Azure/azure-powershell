@@ -49,7 +49,6 @@ INPUTOBJECT <IDeviceRegistryIdentity>: Identity Parameter
   [Location <String>]: The name of the Azure region.
   [NamespaceName <String>]: The name of the namespace.
   [OperationId <String>]: The ID of an ongoing async operation.
-  [PolicyName <String>]: The name of the Policy tracked resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SchemaName <String>]: Schema name parameter.
   [SchemaRegistryName <String>]: Schema registry name parameter.
@@ -277,7 +276,6 @@ INPUTOBJECT <IDeviceRegistryIdentity>: Identity Parameter
   [Location <String>]: The name of the Azure region.
   [NamespaceName <String>]: The name of the namespace.
   [OperationId <String>]: The ID of an ongoing async operation.
-  [PolicyName <String>]: The name of the Policy tracked resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SchemaName <String>]: Schema name parameter.
   [SchemaRegistryName <String>]: Schema registry name parameter.
@@ -506,7 +504,6 @@ INPUTOBJECT <IDeviceRegistryIdentity>: Identity Parameter
   [Location <String>]: The name of the Azure region.
   [NamespaceName <String>]: The name of the namespace.
   [OperationId <String>]: The ID of an ongoing async operation.
-  [PolicyName <String>]: The name of the Policy tracked resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SchemaName <String>]: Schema name parameter.
   [SchemaRegistryName <String>]: Schema registry name parameter.
@@ -691,227 +688,6 @@ end {
 
 <#
 .Synopsis
-Get a Credential
-.Description
-Get a Credential
-.Example
-Get-AzDeviceRegistryCredentials -NamespaceName my-namespace -ResourceGroupName my-resource-group
-.Example
-Get-AzDeviceRegistryNamespace -Name my-namespace -ResourceGroupName my-resource-group | Get-AzDeviceRegistryCredentials
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceRegistryIdentity
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ICredential
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IDeviceRegistryIdentity>: Identity Parameter
-  [AssetEndpointProfileName <String>]: Asset Endpoint Profile name parameter.
-  [AssetName <String>]: Asset name parameter.
-  [BillingContainerName <String>]: Name of the billing container.
-  [DeviceName <String>]: The name of the device.
-  [DiscoveredAssetName <String>]: The name of the discovered asset.
-  [DiscoveredDeviceName <String>]: The name of the discovered device.
-  [Id <String>]: Resource identity path
-  [Location <String>]: The name of the Azure region.
-  [NamespaceName <String>]: The name of the namespace.
-  [OperationId <String>]: The ID of an ongoing async operation.
-  [PolicyName <String>]: The name of the Policy tracked resource.
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [SchemaName <String>]: Schema name parameter.
-  [SchemaRegistryName <String>]: Schema registry name parameter.
-  [SchemaVersionName <String>]: Schema version name parameter.
-  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-.Link
-https://learn.microsoft.com/powershell/module/az.deviceregistry/get-azdeviceregistrycredentials
-#>
-function Get-AzDeviceRegistryCredentials {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ICredential])]
-[CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
-param(
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Parameter(ParameterSetName='List', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Path')]
-    [System.String]
-    # The name of the namespace.
-    ${NamespaceName},
-
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Parameter(ParameterSetName='List', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='Get')]
-    [Parameter(ParameterSetName='List')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String[]]
-    # The ID of the target subscription.
-    # The value must be an UUID.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceRegistryIdentity]
-    # Identity Parameter
-    ${InputObject},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-        
-        $testPlayback = $false
-        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-
-        $context = Get-AzContext
-        if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
-        }
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            Get = 'Az.DeviceRegistry.private\Get-AzDeviceRegistryCredentials_Get';
-            GetViaIdentity = 'Az.DeviceRegistry.private\Get-AzDeviceRegistryCredentials_GetViaIdentity';
-            List = 'Az.DeviceRegistry.private\Get-AzDeviceRegistryCredentials_List';
-        }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        if ($wrappedCmd -eq $null) {
-            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
-        }
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
 Get a NamespaceAsset
 .Description
 Get a NamespaceAsset
@@ -955,7 +731,6 @@ INPUTOBJECT <IDeviceRegistryIdentity>: Identity Parameter
   [Location <String>]: The name of the Azure region.
   [NamespaceName <String>]: The name of the namespace.
   [OperationId <String>]: The ID of an ongoing async operation.
-  [PolicyName <String>]: The name of the Policy tracked resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SchemaName <String>]: Schema name parameter.
   [SchemaRegistryName <String>]: Schema registry name parameter.
@@ -973,7 +748,6 @@ NAMESPACEINPUTOBJECT <IDeviceRegistryIdentity>: Identity Parameter
   [Location <String>]: The name of the Azure region.
   [NamespaceName <String>]: The name of the namespace.
   [OperationId <String>]: The ID of an ongoing async operation.
-  [PolicyName <String>]: The name of the Policy tracked resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SchemaName <String>]: Schema name parameter.
   [SchemaRegistryName <String>]: Schema registry name parameter.
@@ -1223,7 +997,6 @@ INPUTOBJECT <IDeviceRegistryIdentity>: Identity Parameter
   [Location <String>]: The name of the Azure region.
   [NamespaceName <String>]: The name of the namespace.
   [OperationId <String>]: The ID of an ongoing async operation.
-  [PolicyName <String>]: The name of the Policy tracked resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SchemaName <String>]: Schema name parameter.
   [SchemaRegistryName <String>]: Schema registry name parameter.
@@ -1241,7 +1014,6 @@ NAMESPACEINPUTOBJECT <IDeviceRegistryIdentity>: Identity Parameter
   [Location <String>]: The name of the Azure region.
   [NamespaceName <String>]: The name of the namespace.
   [OperationId <String>]: The ID of an ongoing async operation.
-  [PolicyName <String>]: The name of the Policy tracked resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SchemaName <String>]: Schema name parameter.
   [SchemaRegistryName <String>]: Schema registry name parameter.
@@ -1491,7 +1263,6 @@ INPUTOBJECT <IDeviceRegistryIdentity>: Identity Parameter
   [Location <String>]: The name of the Azure region.
   [NamespaceName <String>]: The name of the namespace.
   [OperationId <String>]: The ID of an ongoing async operation.
-  [PolicyName <String>]: The name of the Policy tracked resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SchemaName <String>]: Schema name parameter.
   [SchemaRegistryName <String>]: Schema registry name parameter.
@@ -1509,7 +1280,6 @@ NAMESPACEINPUTOBJECT <IDeviceRegistryIdentity>: Identity Parameter
   [Location <String>]: The name of the Azure region.
   [NamespaceName <String>]: The name of the namespace.
   [OperationId <String>]: The ID of an ongoing async operation.
-  [PolicyName <String>]: The name of the Policy tracked resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SchemaName <String>]: Schema name parameter.
   [SchemaRegistryName <String>]: Schema registry name parameter.
@@ -1759,7 +1529,6 @@ INPUTOBJECT <IDeviceRegistryIdentity>: Identity Parameter
   [Location <String>]: The name of the Azure region.
   [NamespaceName <String>]: The name of the namespace.
   [OperationId <String>]: The ID of an ongoing async operation.
-  [PolicyName <String>]: The name of the Policy tracked resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SchemaName <String>]: Schema name parameter.
   [SchemaRegistryName <String>]: Schema registry name parameter.
@@ -1777,7 +1546,6 @@ NAMESPACEINPUTOBJECT <IDeviceRegistryIdentity>: Identity Parameter
   [Location <String>]: The name of the Azure region.
   [NamespaceName <String>]: The name of the namespace.
   [OperationId <String>]: The ID of an ongoing async operation.
-  [PolicyName <String>]: The name of the Policy tracked resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SchemaName <String>]: Schema name parameter.
   [SchemaRegistryName <String>]: Schema registry name parameter.
@@ -2021,7 +1789,6 @@ INPUTOBJECT <IDeviceRegistryIdentity>: Identity Parameter
   [Location <String>]: The name of the Azure region.
   [NamespaceName <String>]: The name of the namespace.
   [OperationId <String>]: The ID of an ongoing async operation.
-  [PolicyName <String>]: The name of the Policy tracked resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SchemaName <String>]: Schema name parameter.
   [SchemaRegistryName <String>]: Schema registry name parameter.
@@ -2216,260 +1983,6 @@ end {
 
 <#
 .Synopsis
-Get a Policy
-.Description
-Get a Policy
-.Example
-Get-AzDeviceRegistryPolicy -NamespaceName my-namespace -ResourceGroupName my-resource-group
-.Example
-Get-AzDeviceRegistryPolicy -Name my-policy-1 -NamespaceName my-namespace -ResourceGroupName my-resource-group
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceRegistryIdentity
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IPolicy
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IDeviceRegistryIdentity>: Identity Parameter
-  [AssetEndpointProfileName <String>]: Asset Endpoint Profile name parameter.
-  [AssetName <String>]: Asset name parameter.
-  [BillingContainerName <String>]: Name of the billing container.
-  [DeviceName <String>]: The name of the device.
-  [DiscoveredAssetName <String>]: The name of the discovered asset.
-  [DiscoveredDeviceName <String>]: The name of the discovered device.
-  [Id <String>]: Resource identity path
-  [Location <String>]: The name of the Azure region.
-  [NamespaceName <String>]: The name of the namespace.
-  [OperationId <String>]: The ID of an ongoing async operation.
-  [PolicyName <String>]: The name of the Policy tracked resource.
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [SchemaName <String>]: Schema name parameter.
-  [SchemaRegistryName <String>]: Schema registry name parameter.
-  [SchemaVersionName <String>]: Schema version name parameter.
-  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-
-NAMESPACEINPUTOBJECT <IDeviceRegistryIdentity>: Identity Parameter
-  [AssetEndpointProfileName <String>]: Asset Endpoint Profile name parameter.
-  [AssetName <String>]: Asset name parameter.
-  [BillingContainerName <String>]: Name of the billing container.
-  [DeviceName <String>]: The name of the device.
-  [DiscoveredAssetName <String>]: The name of the discovered asset.
-  [DiscoveredDeviceName <String>]: The name of the discovered device.
-  [Id <String>]: Resource identity path
-  [Location <String>]: The name of the Azure region.
-  [NamespaceName <String>]: The name of the namespace.
-  [OperationId <String>]: The ID of an ongoing async operation.
-  [PolicyName <String>]: The name of the Policy tracked resource.
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [SchemaName <String>]: Schema name parameter.
-  [SchemaRegistryName <String>]: Schema registry name parameter.
-  [SchemaVersionName <String>]: Schema version name parameter.
-  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-.Link
-https://learn.microsoft.com/powershell/module/az.deviceregistry/get-azdeviceregistrypolicy
-#>
-function Get-AzDeviceRegistryPolicy {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IPolicy])]
-[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
-param(
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Parameter(ParameterSetName='GetViaIdentityNamespace', Mandatory)]
-    [Alias('PolicyName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Path')]
-    [System.String]
-    # The name of the Policy tracked resource.
-    ${Name},
-
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Parameter(ParameterSetName='List', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Path')]
-    [System.String]
-    # The name of the namespace.
-    ${NamespaceName},
-
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Parameter(ParameterSetName='List', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='Get')]
-    [Parameter(ParameterSetName='List')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String[]]
-    # The ID of the target subscription.
-    # The value must be an UUID.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceRegistryIdentity]
-    # Identity Parameter
-    ${InputObject},
-
-    [Parameter(ParameterSetName='GetViaIdentityNamespace', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceRegistryIdentity]
-    # Identity Parameter
-    ${NamespaceInputObject},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-        
-        $testPlayback = $false
-        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-
-        $context = Get-AzContext
-        if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
-        }
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            Get = 'Az.DeviceRegistry.private\Get-AzDeviceRegistryPolicy_Get';
-            GetViaIdentity = 'Az.DeviceRegistry.private\Get-AzDeviceRegistryPolicy_GetViaIdentity';
-            GetViaIdentityNamespace = 'Az.DeviceRegistry.private\Get-AzDeviceRegistryPolicy_GetViaIdentityNamespace';
-            List = 'Az.DeviceRegistry.private\Get-AzDeviceRegistryPolicy_List';
-        }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        if ($wrappedCmd -eq $null) {
-            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
-        }
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
 Get a SchemaRegistry
 .Description
 Get a SchemaRegistry
@@ -2505,7 +2018,6 @@ INPUTOBJECT <IDeviceRegistryIdentity>: Identity Parameter
   [Location <String>]: The name of the Azure region.
   [NamespaceName <String>]: The name of the namespace.
   [OperationId <String>]: The ID of an ongoing async operation.
-  [PolicyName <String>]: The name of the Policy tracked resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SchemaName <String>]: Schema name parameter.
   [SchemaRegistryName <String>]: Schema registry name parameter.
@@ -2743,7 +2255,6 @@ INPUTOBJECT <IDeviceRegistryIdentity>: Identity Parameter
   [Location <String>]: The name of the Azure region.
   [NamespaceName <String>]: The name of the namespace.
   [OperationId <String>]: The ID of an ongoing async operation.
-  [PolicyName <String>]: The name of the Policy tracked resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SchemaName <String>]: Schema name parameter.
   [SchemaRegistryName <String>]: Schema registry name parameter.
@@ -2761,7 +2272,6 @@ SCHEMAINPUTOBJECT <IDeviceRegistryIdentity>: Identity Parameter
   [Location <String>]: The name of the Azure region.
   [NamespaceName <String>]: The name of the namespace.
   [OperationId <String>]: The ID of an ongoing async operation.
-  [PolicyName <String>]: The name of the Policy tracked resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SchemaName <String>]: Schema name parameter.
   [SchemaRegistryName <String>]: Schema registry name parameter.
@@ -2779,7 +2289,6 @@ SCHEMAREGISTRYINPUTOBJECT <IDeviceRegistryIdentity>: Identity Parameter
   [Location <String>]: The name of the Azure region.
   [NamespaceName <String>]: The name of the namespace.
   [OperationId <String>]: The ID of an ongoing async operation.
-  [PolicyName <String>]: The name of the Policy tracked resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SchemaName <String>]: Schema name parameter.
   [SchemaRegistryName <String>]: Schema registry name parameter.
@@ -3046,7 +2555,6 @@ INPUTOBJECT <IDeviceRegistryIdentity>: Identity Parameter
   [Location <String>]: The name of the Azure region.
   [NamespaceName <String>]: The name of the namespace.
   [OperationId <String>]: The ID of an ongoing async operation.
-  [PolicyName <String>]: The name of the Policy tracked resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SchemaName <String>]: Schema name parameter.
   [SchemaRegistryName <String>]: Schema registry name parameter.
@@ -3064,7 +2572,6 @@ SCHEMAREGISTRYINPUTOBJECT <IDeviceRegistryIdentity>: Identity Parameter
   [Location <String>]: The name of the Azure region.
   [NamespaceName <String>]: The name of the namespace.
   [OperationId <String>]: The ID of an ongoing async operation.
-  [PolicyName <String>]: The name of the Policy tracked resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SchemaName <String>]: Schema name parameter.
   [SchemaRegistryName <String>]: Schema registry name parameter.
@@ -3323,7 +2830,6 @@ INPUTOBJECT <IDeviceRegistryIdentity>: Identity Parameter
   [Location <String>]: The name of the Azure region.
   [NamespaceName <String>]: The name of the namespace.
   [OperationId <String>]: The ID of an ongoing async operation.
-  [PolicyName <String>]: The name of the Policy tracked resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SchemaName <String>]: Schema name parameter.
   [SchemaRegistryName <String>]: Schema registry name parameter.
@@ -4354,243 +3860,6 @@ end {
 
 <#
 .Synopsis
-Create a Credential
-.Description
-Create a Credential
-.Example
-New-AzDeviceRegistryCredentials -NamespaceName my-namespace -ResourceGroupName my-resource-group -Location eastus2 -Tag @{"environment" = "production"; "team" = "iot"}
-.Example
-New-AzDeviceRegistryCredentials -NamespaceName my-namespace -ResourceGroupName my-resource-group -JsonFilePath "C:\credentials\config.json"
-.Example
-$jsonString = @"
-{
-    "location": "eastus2",
-    "tags": {
-        "environment": "production",
-        "team": "iot"
-    }
-}
-"@
-
-New-AzDeviceRegistryCredentials -NamespaceName my-namespace -ResourceGroupName my-resource-group -JsonString $jsonString
-
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ICredential
-.Link
-https://learn.microsoft.com/powershell/module/az.deviceregistry/new-azdeviceregistrycredentials
-#>
-function New-AzDeviceRegistryCredentials {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ICredential])]
-[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Path')]
-    [System.String]
-    # The name of the namespace.
-    ${NamespaceName},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    # The value must be an UUID.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Body')]
-    [System.String]
-    # The geo-location where the resource lives
-    ${Location},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ITrackedResourceTags]))]
-    [System.Collections.Hashtable]
-    # Resource tags.
-    ${Tag},
-
-    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Body')]
-    [System.String]
-    # Path of Json file supplied to the Create operation
-    ${JsonFilePath},
-
-    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Body')]
-    [System.String]
-    # Json string supplied to the Create operation
-    ${JsonString},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-        
-        $testPlayback = $false
-        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-
-        $context = Get-AzContext
-        if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
-        }
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            CreateExpanded = 'Az.DeviceRegistry.private\New-AzDeviceRegistryCredentials_CreateExpanded';
-            CreateViaJsonFilePath = 'Az.DeviceRegistry.private\New-AzDeviceRegistryCredentials_CreateViaJsonFilePath';
-            CreateViaJsonString = 'Az.DeviceRegistry.private\New-AzDeviceRegistryCredentials_CreateViaJsonString';
-        }
-        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        if ($wrappedCmd -eq $null) {
-            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
-        }
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
 Create a NamespaceAsset
 .Description
 Create a NamespaceAsset
@@ -5393,12 +4662,6 @@ param(
     [System.Collections.Hashtable]
     # Set of most recently removed endpoints.
     ${OutboundUnassigned},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Body')]
-    [System.String]
-    # Resource Id of the Policy.
-    ${PolicyResourceId},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Body')]
@@ -6812,286 +6075,6 @@ end {
 
 <#
 .Synopsis
-Create a Policy
-.Description
-Create a Policy
-.Example
-$jsonString = @"
-{
-    "location": "eastus2",
-    "properties": {
-        "certificate": {
-            "certificateAuthorityConfiguration": {
-                "keyType": "ECC"
-            },
-            "leafCertificateConfiguration": {
-                "validityPeriodInDays": 90
-            }
-        }
-    },
-    "tags": {
-        "environment": "production",
-        "team": "iot"
-    }
-}
-"@
-
-New-AzDeviceRegistryPolicy -Name my-policy-ecc -NamespaceName my-namespace -ResourceGroupName my-resource-group -JsonString $jsonString
-.Example
-$jsonString = @"
-{
-    "location": "eastus2",
-    "properties": {
-        "certificate": {
-            "certificateAuthorityConfiguration": {
-                "keyType": "RSA"
-            },
-            "leafCertificateConfiguration": {
-                "validityPeriodInDays": 365
-            }
-        }
-    },
-    "tags": {
-        "environment": "production",
-        "certType": "RSA"
-    }
-}
-"@
-
-New-AzDeviceRegistryPolicy -Name my-policy-rsa -NamespaceName my-namespace -ResourceGroupName my-resource-group -JsonString $jsonString
-.Example
-New-AzDeviceRegistryPolicy -Name my-policy -NamespaceName my-namespace -ResourceGroupName my-resource-group -JsonFilePath "C:\policies\policy-config.json"
-
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IPolicy
-.Link
-https://learn.microsoft.com/powershell/module/az.deviceregistry/new-azdeviceregistrypolicy
-#>
-function New-AzDeviceRegistryPolicy {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IPolicy])]
-[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(Mandatory)]
-    [Alias('PolicyName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Path')]
-    [System.String]
-    # The name of the Policy tracked resource.
-    ${Name},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Path')]
-    [System.String]
-    # The name of the namespace.
-    ${NamespaceName},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    # The value must be an UUID.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Body')]
-    [System.String]
-    # The geo-location where the resource lives
-    ${Location},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Body')]
-    [System.Int32]
-    # The validity period in days.
-    ${LeafCertificateConfigurationValidityPeriodInDay},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ITrackedResourceTags]))]
-    [System.Collections.Hashtable]
-    # Resource tags.
-    ${Tag},
-
-    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Body')]
-    [System.String]
-    # Path of Json file supplied to the Create operation
-    ${JsonFilePath},
-
-    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Body')]
-    [System.String]
-    # Json string supplied to the Create operation
-    ${JsonString},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-        
-        $testPlayback = $false
-        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-
-        $context = Get-AzContext
-        if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
-        }
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            CreateExpanded = 'Az.DeviceRegistry.private\New-AzDeviceRegistryPolicy_CreateExpanded';
-            CreateViaJsonFilePath = 'Az.DeviceRegistry.private\New-AzDeviceRegistryPolicy_CreateViaJsonFilePath';
-            CreateViaJsonString = 'Az.DeviceRegistry.private\New-AzDeviceRegistryPolicy_CreateViaJsonString';
-        }
-        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        if ($wrappedCmd -eq $null) {
-            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
-        }
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
 Create a SchemaRegistry
 .Description
 Create a SchemaRegistry
@@ -7856,7 +6839,6 @@ INPUTOBJECT <IDeviceRegistryIdentity>: Identity Parameter
   [Location <String>]: The name of the Azure region.
   [NamespaceName <String>]: The name of the namespace.
   [OperationId <String>]: The ID of an ongoing async operation.
-  [PolicyName <String>]: The name of the Policy tracked resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SchemaName <String>]: Schema name parameter.
   [SchemaRegistryName <String>]: Schema registry name parameter.
@@ -8093,7 +7075,6 @@ INPUTOBJECT <IDeviceRegistryIdentity>: Identity Parameter
   [Location <String>]: The name of the Azure region.
   [NamespaceName <String>]: The name of the namespace.
   [OperationId <String>]: The ID of an ongoing async operation.
-  [PolicyName <String>]: The name of the Policy tracked resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SchemaName <String>]: Schema name parameter.
   [SchemaRegistryName <String>]: Schema registry name parameter.
@@ -8301,256 +7282,6 @@ end {
 
 <#
 .Synopsis
-Delete a Credential
-.Description
-Delete a Credential
-.Example
-Remove-AzDeviceRegistryCredentials -NamespaceName my-namespace -ResourceGroupName my-resource-group
-.Example
-Remove-AzDeviceRegistryCredentials -NamespaceName my-namespace -ResourceGroupName my-resource-group -Confirm
-.Example
-Remove-AzDeviceRegistryCredentials -NamespaceName my-namespace -ResourceGroupName my-resource-group -Confirm:$false
-.Example
-$credentialsIdentity = @{
-    SubscriptionId = "xxxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx"
-    ResourceGroupName = "my-resource-group"
-    NamespaceName = "my-namespace"
-}
-Remove-AzDeviceRegistryCredentials -InputObject $credentialsIdentity -Confirm:$false
-.Example
-# First remove all policies
-Get-AzDeviceRegistryPolicy -NamespaceName my-namespace -ResourceGroupName my-resource-group | Remove-AzDeviceRegistryPolicy -Confirm:$false
-
-# Then remove credentials
-Remove-AzDeviceRegistryCredentials -NamespaceName my-namespace -ResourceGroupName my-resource-group -Confirm:$false
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceRegistryIdentity
-.Outputs
-System.Boolean
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IDeviceRegistryIdentity>: Identity Parameter
-  [AssetEndpointProfileName <String>]: Asset Endpoint Profile name parameter.
-  [AssetName <String>]: Asset name parameter.
-  [BillingContainerName <String>]: Name of the billing container.
-  [DeviceName <String>]: The name of the device.
-  [DiscoveredAssetName <String>]: The name of the discovered asset.
-  [DiscoveredDeviceName <String>]: The name of the discovered device.
-  [Id <String>]: Resource identity path
-  [Location <String>]: The name of the Azure region.
-  [NamespaceName <String>]: The name of the namespace.
-  [OperationId <String>]: The ID of an ongoing async operation.
-  [PolicyName <String>]: The name of the Policy tracked resource.
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [SchemaName <String>]: Schema name parameter.
-  [SchemaRegistryName <String>]: Schema registry name parameter.
-  [SchemaVersionName <String>]: Schema version name parameter.
-  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-.Link
-https://learn.microsoft.com/powershell/module/az.deviceregistry/remove-azdeviceregistrycredentials
-#>
-function Remove-AzDeviceRegistryCredentials {
-[OutputType([System.Boolean])]
-[CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Path')]
-    [System.String]
-    # The name of the namespace.
-    ${NamespaceName},
-
-    [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='Delete')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    # The value must be an UUID.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceRegistryIdentity]
-    # Identity Parameter
-    ${InputObject},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Returns true when the command succeeds
-    ${PassThru},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-        
-        $testPlayback = $false
-        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-
-        $context = Get-AzContext
-        if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
-        }
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            Delete = 'Az.DeviceRegistry.private\Remove-AzDeviceRegistryCredentials_Delete';
-            DeleteViaIdentity = 'Az.DeviceRegistry.private\Remove-AzDeviceRegistryCredentials_DeleteViaIdentity';
-        }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        if ($wrappedCmd -eq $null) {
-            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
-        }
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
 Delete a NamespaceAsset
 .Description
 Delete a NamespaceAsset
@@ -8587,7 +7318,6 @@ INPUTOBJECT <IDeviceRegistryIdentity>: Identity Parameter
   [Location <String>]: The name of the Azure region.
   [NamespaceName <String>]: The name of the namespace.
   [OperationId <String>]: The ID of an ongoing async operation.
-  [PolicyName <String>]: The name of the Policy tracked resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SchemaName <String>]: Schema name parameter.
   [SchemaRegistryName <String>]: Schema registry name parameter.
@@ -8605,7 +7335,6 @@ NAMESPACEINPUTOBJECT <IDeviceRegistryIdentity>: Identity Parameter
   [Location <String>]: The name of the Azure region.
   [NamespaceName <String>]: The name of the namespace.
   [OperationId <String>]: The ID of an ongoing async operation.
-  [PolicyName <String>]: The name of the Policy tracked resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SchemaName <String>]: Schema name parameter.
   [SchemaRegistryName <String>]: Schema registry name parameter.
@@ -8862,7 +7591,6 @@ INPUTOBJECT <IDeviceRegistryIdentity>: Identity Parameter
   [Location <String>]: The name of the Azure region.
   [NamespaceName <String>]: The name of the namespace.
   [OperationId <String>]: The ID of an ongoing async operation.
-  [PolicyName <String>]: The name of the Policy tracked resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SchemaName <String>]: Schema name parameter.
   [SchemaRegistryName <String>]: Schema registry name parameter.
@@ -8880,7 +7608,6 @@ NAMESPACEINPUTOBJECT <IDeviceRegistryIdentity>: Identity Parameter
   [Location <String>]: The name of the Azure region.
   [NamespaceName <String>]: The name of the namespace.
   [OperationId <String>]: The ID of an ongoing async operation.
-  [PolicyName <String>]: The name of the Policy tracked resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SchemaName <String>]: Schema name parameter.
   [SchemaRegistryName <String>]: Schema registry name parameter.
@@ -9137,7 +7864,6 @@ INPUTOBJECT <IDeviceRegistryIdentity>: Identity Parameter
   [Location <String>]: The name of the Azure region.
   [NamespaceName <String>]: The name of the namespace.
   [OperationId <String>]: The ID of an ongoing async operation.
-  [PolicyName <String>]: The name of the Policy tracked resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SchemaName <String>]: Schema name parameter.
   [SchemaRegistryName <String>]: Schema registry name parameter.
@@ -9155,7 +7881,6 @@ NAMESPACEINPUTOBJECT <IDeviceRegistryIdentity>: Identity Parameter
   [Location <String>]: The name of the Azure region.
   [NamespaceName <String>]: The name of the namespace.
   [OperationId <String>]: The ID of an ongoing async operation.
-  [PolicyName <String>]: The name of the Policy tracked resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SchemaName <String>]: Schema name parameter.
   [SchemaRegistryName <String>]: Schema registry name parameter.
@@ -9412,7 +8137,6 @@ INPUTOBJECT <IDeviceRegistryIdentity>: Identity Parameter
   [Location <String>]: The name of the Azure region.
   [NamespaceName <String>]: The name of the namespace.
   [OperationId <String>]: The ID of an ongoing async operation.
-  [PolicyName <String>]: The name of the Policy tracked resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SchemaName <String>]: Schema name parameter.
   [SchemaRegistryName <String>]: Schema registry name parameter.
@@ -9430,7 +8154,6 @@ NAMESPACEINPUTOBJECT <IDeviceRegistryIdentity>: Identity Parameter
   [Location <String>]: The name of the Azure region.
   [NamespaceName <String>]: The name of the namespace.
   [OperationId <String>]: The ID of an ongoing async operation.
-  [PolicyName <String>]: The name of the Policy tracked resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SchemaName <String>]: Schema name parameter.
   [SchemaRegistryName <String>]: Schema registry name parameter.
@@ -9680,7 +8403,6 @@ INPUTOBJECT <IDeviceRegistryIdentity>: Identity Parameter
   [Location <String>]: The name of the Azure region.
   [NamespaceName <String>]: The name of the namespace.
   [OperationId <String>]: The ID of an ongoing async operation.
-  [PolicyName <String>]: The name of the Policy tracked resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SchemaName <String>]: Schema name parameter.
   [SchemaRegistryName <String>]: Schema registry name parameter.
@@ -9888,287 +8610,6 @@ end {
 
 <#
 .Synopsis
-Delete a Policy
-.Description
-Delete a Policy
-.Example
-Remove-AzDeviceRegistryPolicy -Name my-policy -NamespaceName my-namespace -ResourceGroupName my-resource-group
-.Example
-Remove-AzDeviceRegistryPolicy -Name my-policy -NamespaceName my-namespace -ResourceGroupName my-resource-group -Confirm
-.Example
-Remove-AzDeviceRegistryPolicy -Name my-policy -NamespaceName my-namespace -ResourceGroupName my-resource-group -Confirm:$false
-.Example
-$policyIdentity = @{
-    SubscriptionId = "xxxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx"
-    ResourceGroupName = "my-resource-group"
-    NamespaceName = "my-namespace"
-    CredentialName = "default"
-    PolicyName = "my-policy-name"
-}
-Remove-AzDeviceRegistryPolicy -InputObject $policyIdentity -Confirm:$false
-.Example
-Get-AzDeviceRegistryPolicy -NamespaceName my-namespace -ResourceGroupName my-resource-group | Where-Object { $_.Tag.environment -eq "test" } | Remove-AzDeviceRegistryPolicy -Confirm:$false
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceRegistryIdentity
-.Outputs
-System.Boolean
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IDeviceRegistryIdentity>: Identity Parameter
-  [AssetEndpointProfileName <String>]: Asset Endpoint Profile name parameter.
-  [AssetName <String>]: Asset name parameter.
-  [BillingContainerName <String>]: Name of the billing container.
-  [DeviceName <String>]: The name of the device.
-  [DiscoveredAssetName <String>]: The name of the discovered asset.
-  [DiscoveredDeviceName <String>]: The name of the discovered device.
-  [Id <String>]: Resource identity path
-  [Location <String>]: The name of the Azure region.
-  [NamespaceName <String>]: The name of the namespace.
-  [OperationId <String>]: The ID of an ongoing async operation.
-  [PolicyName <String>]: The name of the Policy tracked resource.
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [SchemaName <String>]: Schema name parameter.
-  [SchemaRegistryName <String>]: Schema registry name parameter.
-  [SchemaVersionName <String>]: Schema version name parameter.
-  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-
-NAMESPACEINPUTOBJECT <IDeviceRegistryIdentity>: Identity Parameter
-  [AssetEndpointProfileName <String>]: Asset Endpoint Profile name parameter.
-  [AssetName <String>]: Asset name parameter.
-  [BillingContainerName <String>]: Name of the billing container.
-  [DeviceName <String>]: The name of the device.
-  [DiscoveredAssetName <String>]: The name of the discovered asset.
-  [DiscoveredDeviceName <String>]: The name of the discovered device.
-  [Id <String>]: Resource identity path
-  [Location <String>]: The name of the Azure region.
-  [NamespaceName <String>]: The name of the namespace.
-  [OperationId <String>]: The ID of an ongoing async operation.
-  [PolicyName <String>]: The name of the Policy tracked resource.
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [SchemaName <String>]: Schema name parameter.
-  [SchemaRegistryName <String>]: Schema registry name parameter.
-  [SchemaVersionName <String>]: Schema version name parameter.
-  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-.Link
-https://learn.microsoft.com/powershell/module/az.deviceregistry/remove-azdeviceregistrypolicy
-#>
-function Remove-AzDeviceRegistryPolicy {
-[OutputType([System.Boolean])]
-[CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Parameter(ParameterSetName='DeleteViaIdentityNamespace', Mandatory)]
-    [Alias('PolicyName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Path')]
-    [System.String]
-    # The name of the Policy tracked resource.
-    ${Name},
-
-    [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Path')]
-    [System.String]
-    # The name of the namespace.
-    ${NamespaceName},
-
-    [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='Delete')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    # The value must be an UUID.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceRegistryIdentity]
-    # Identity Parameter
-    ${InputObject},
-
-    [Parameter(ParameterSetName='DeleteViaIdentityNamespace', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceRegistryIdentity]
-    # Identity Parameter
-    ${NamespaceInputObject},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Returns true when the command succeeds
-    ${PassThru},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-        
-        $testPlayback = $false
-        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-
-        $context = Get-AzContext
-        if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
-        }
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            Delete = 'Az.DeviceRegistry.private\Remove-AzDeviceRegistryPolicy_Delete';
-            DeleteViaIdentity = 'Az.DeviceRegistry.private\Remove-AzDeviceRegistryPolicy_DeleteViaIdentity';
-            DeleteViaIdentityNamespace = 'Az.DeviceRegistry.private\Remove-AzDeviceRegistryPolicy_DeleteViaIdentityNamespace';
-        }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        if ($wrappedCmd -eq $null) {
-            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
-        }
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
 Delete a SchemaRegistry
 .Description
 Delete a SchemaRegistry
@@ -10198,7 +8639,6 @@ INPUTOBJECT <IDeviceRegistryIdentity>: Identity Parameter
   [Location <String>]: The name of the Azure region.
   [NamespaceName <String>]: The name of the namespace.
   [OperationId <String>]: The ID of an ongoing async operation.
-  [PolicyName <String>]: The name of the Policy tracked resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SchemaName <String>]: Schema name parameter.
   [SchemaRegistryName <String>]: Schema registry name parameter.
@@ -10441,7 +8881,6 @@ INPUTOBJECT <IDeviceRegistryIdentity>: Identity Parameter
   [Location <String>]: The name of the Azure region.
   [NamespaceName <String>]: The name of the namespace.
   [OperationId <String>]: The ID of an ongoing async operation.
-  [PolicyName <String>]: The name of the Policy tracked resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SchemaName <String>]: Schema name parameter.
   [SchemaRegistryName <String>]: Schema registry name parameter.
@@ -10459,7 +8898,6 @@ SCHEMAINPUTOBJECT <IDeviceRegistryIdentity>: Identity Parameter
   [Location <String>]: The name of the Azure region.
   [NamespaceName <String>]: The name of the namespace.
   [OperationId <String>]: The ID of an ongoing async operation.
-  [PolicyName <String>]: The name of the Policy tracked resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SchemaName <String>]: Schema name parameter.
   [SchemaRegistryName <String>]: Schema registry name parameter.
@@ -10477,7 +8915,6 @@ SCHEMAREGISTRYINPUTOBJECT <IDeviceRegistryIdentity>: Identity Parameter
   [Location <String>]: The name of the Azure region.
   [NamespaceName <String>]: The name of the namespace.
   [OperationId <String>]: The ID of an ongoing async operation.
-  [PolicyName <String>]: The name of the Policy tracked resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SchemaName <String>]: Schema name parameter.
   [SchemaRegistryName <String>]: Schema registry name parameter.
@@ -10750,7 +9187,6 @@ INPUTOBJECT <IDeviceRegistryIdentity>: Identity Parameter
   [Location <String>]: The name of the Azure region.
   [NamespaceName <String>]: The name of the namespace.
   [OperationId <String>]: The ID of an ongoing async operation.
-  [PolicyName <String>]: The name of the Policy tracked resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SchemaName <String>]: Schema name parameter.
   [SchemaRegistryName <String>]: Schema registry name parameter.
@@ -10768,7 +9204,6 @@ SCHEMAREGISTRYINPUTOBJECT <IDeviceRegistryIdentity>: Identity Parameter
   [Location <String>]: The name of the Azure region.
   [NamespaceName <String>]: The name of the namespace.
   [OperationId <String>]: The ID of an ongoing async operation.
-  [PolicyName <String>]: The name of the Policy tracked resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SchemaName <String>]: Schema name parameter.
   [SchemaRegistryName <String>]: Schema registry name parameter.
@@ -10991,243 +9426,6 @@ end {
 
 <#
 .Synopsis
-A long-running resource action.
-.Description
-A long-running resource action.
-.Example
-Sync-AzDeviceRegistryCredentials -NamespaceName my-namespace -ResourceGroupName my-resource-group
-.Example
-Sync-AzDeviceRegistryCredentials -NamespaceName my-namespace -ResourceGroupName my-resource-group -Verbose
-.Example
-Get-AzDeviceRegistryCredentials -NamespaceName my-namespace -ResourceGroupName my-resource-group | Sync-AzDeviceRegistryCredentials
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceRegistryIdentity
-.Outputs
-System.Boolean
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IDeviceRegistryIdentity>: Identity Parameter
-  [AssetEndpointProfileName <String>]: Asset Endpoint Profile name parameter.
-  [AssetName <String>]: Asset name parameter.
-  [BillingContainerName <String>]: Name of the billing container.
-  [DeviceName <String>]: The name of the device.
-  [DiscoveredAssetName <String>]: The name of the discovered asset.
-  [DiscoveredDeviceName <String>]: The name of the discovered device.
-  [Id <String>]: Resource identity path
-  [Location <String>]: The name of the Azure region.
-  [NamespaceName <String>]: The name of the namespace.
-  [OperationId <String>]: The ID of an ongoing async operation.
-  [PolicyName <String>]: The name of the Policy tracked resource.
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [SchemaName <String>]: Schema name parameter.
-  [SchemaRegistryName <String>]: Schema registry name parameter.
-  [SchemaVersionName <String>]: Schema version name parameter.
-  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-.Link
-https://learn.microsoft.com/powershell/module/az.deviceregistry/sync-azdeviceregistrycredentials
-#>
-function Sync-AzDeviceRegistryCredentials {
-[OutputType([System.Boolean])]
-[CmdletBinding(DefaultParameterSetName='Synchronize', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='Synchronize', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Path')]
-    [System.String]
-    # The name of the namespace.
-    ${NamespaceName},
-
-    [Parameter(ParameterSetName='Synchronize', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='Synchronize')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    # The value must be an UUID.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='SynchronizeViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceRegistryIdentity]
-    # Identity Parameter
-    ${InputObject},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Returns true when the command succeeds
-    ${PassThru},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-        
-        $testPlayback = $false
-        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-
-        $context = Get-AzContext
-        if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
-        }
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            Synchronize = 'Az.DeviceRegistry.private\Sync-AzDeviceRegistryCredentials_Synchronize';
-            SynchronizeViaIdentity = 'Az.DeviceRegistry.private\Sync-AzDeviceRegistryCredentials_SynchronizeViaIdentity';
-        }
-        if (('Synchronize') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        if ($wrappedCmd -eq $null) {
-            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
-        }
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
 Update a AssetEndpointProfile
 .Description
 Update a AssetEndpointProfile
@@ -11266,7 +9464,6 @@ INPUTOBJECT <IDeviceRegistryIdentity>: Identity Parameter
   [Location <String>]: The name of the Azure region.
   [NamespaceName <String>]: The name of the namespace.
   [OperationId <String>]: The ID of an ongoing async operation.
-  [PolicyName <String>]: The name of the Policy tracked resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SchemaName <String>]: Schema name parameter.
   [SchemaRegistryName <String>]: Schema registry name parameter.
@@ -11604,7 +9801,6 @@ INPUTOBJECT <IDeviceRegistryIdentity>: Identity Parameter
   [Location <String>]: The name of the Azure region.
   [NamespaceName <String>]: The name of the namespace.
   [OperationId <String>]: The ID of an ongoing async operation.
-  [PolicyName <String>]: The name of the Policy tracked resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SchemaName <String>]: Schema name parameter.
   [SchemaRegistryName <String>]: Schema registry name parameter.
@@ -11969,282 +10165,6 @@ end {
 
 <#
 .Synopsis
-Update a Credential
-.Description
-Update a Credential
-.Example
-Update-AzDeviceRegistryCredentials -NamespaceName my-namespace -ResourceGroupName my-resource-group -Tag @{"environment" = "production"; "team" = "iot"; "updated" = "true"}
-.Example
-$credentialsIdentity = @{
-    SubscriptionId = "xxxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx"
-    ResourceGroupName = "my-resource-group"
-    NamespaceName = "my-namespace"
-}
-Update-AzDeviceRegistryCredentials -InputObject $credentialsIdentity -Tag @{"environment" = "staging"; "team" = "iot"}
-.Example
-Update-AzDeviceRegistryCredentials -NamespaceName my-namespace -ResourceGroupName my-resource-group -JsonFilePath "C:\credentials\update.json"
-.Example
-$jsonString = @"
-{
-    "tags": {
-        "environment": "production",
-        "team": "iot",
-        "version": "2.0"
-    }
-}
-"@
-
-Update-AzDeviceRegistryCredentials -NamespaceName my-namespace -ResourceGroupName my-resource-group -JsonString $jsonString
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceRegistryIdentity
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ICredential
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IDeviceRegistryIdentity>: Identity Parameter
-  [AssetEndpointProfileName <String>]: Asset Endpoint Profile name parameter.
-  [AssetName <String>]: Asset name parameter.
-  [BillingContainerName <String>]: Name of the billing container.
-  [DeviceName <String>]: The name of the device.
-  [DiscoveredAssetName <String>]: The name of the discovered asset.
-  [DiscoveredDeviceName <String>]: The name of the discovered device.
-  [Id <String>]: Resource identity path
-  [Location <String>]: The name of the Azure region.
-  [NamespaceName <String>]: The name of the namespace.
-  [OperationId <String>]: The ID of an ongoing async operation.
-  [PolicyName <String>]: The name of the Policy tracked resource.
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [SchemaName <String>]: Schema name parameter.
-  [SchemaRegistryName <String>]: Schema registry name parameter.
-  [SchemaVersionName <String>]: Schema version name parameter.
-  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-.Link
-https://learn.microsoft.com/powershell/module/az.deviceregistry/update-azdeviceregistrycredentials
-#>
-function Update-AzDeviceRegistryCredentials {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ICredential])]
-[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
-    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Path')]
-    [System.String]
-    # The name of the namespace.
-    ${NamespaceName},
-
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
-    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
-    [Parameter(ParameterSetName='UpdateViaJsonString')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    # The value must be an UUID.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceRegistryIdentity]
-    # Identity Parameter
-    ${InputObject},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ICredentialUpdateTags]))]
-    [System.Collections.Hashtable]
-    # Resource tags.
-    ${Tag},
-
-    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Body')]
-    [System.String]
-    # Path of Json file supplied to the Update operation
-    ${JsonFilePath},
-
-    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Body')]
-    [System.String]
-    # Json string supplied to the Update operation
-    ${JsonString},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-        
-        $testPlayback = $false
-        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-
-        $context = Get-AzContext
-        if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
-        }
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            UpdateExpanded = 'Az.DeviceRegistry.private\Update-AzDeviceRegistryCredentials_UpdateExpanded';
-            UpdateViaIdentityExpanded = 'Az.DeviceRegistry.private\Update-AzDeviceRegistryCredentials_UpdateViaIdentityExpanded';
-            UpdateViaJsonFilePath = 'Az.DeviceRegistry.private\Update-AzDeviceRegistryCredentials_UpdateViaJsonFilePath';
-            UpdateViaJsonString = 'Az.DeviceRegistry.private\Update-AzDeviceRegistryCredentials_UpdateViaJsonString';
-        }
-        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        if ($wrappedCmd -eq $null) {
-            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
-        }
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
 Update a NamespaceAsset
 .Description
 Update a NamespaceAsset
@@ -12326,7 +10246,6 @@ INPUTOBJECT <IDeviceRegistryIdentity>: Identity Parameter
   [Location <String>]: The name of the Azure region.
   [NamespaceName <String>]: The name of the namespace.
   [OperationId <String>]: The ID of an ongoing async operation.
-  [PolicyName <String>]: The name of the Policy tracked resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SchemaName <String>]: Schema name parameter.
   [SchemaRegistryName <String>]: Schema registry name parameter.
@@ -12360,7 +10279,6 @@ NAMESPACEINPUTOBJECT <IDeviceRegistryIdentity>: Identity Parameter
   [Location <String>]: The name of the Azure region.
   [NamespaceName <String>]: The name of the namespace.
   [OperationId <String>]: The ID of an ongoing async operation.
-  [PolicyName <String>]: The name of the Policy tracked resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SchemaName <String>]: Schema name parameter.
   [SchemaRegistryName <String>]: Schema registry name parameter.
@@ -12897,20 +10815,6 @@ $endpointsInbound = @{
 }
 Update-AzDeviceRegistryNamespaceDevice -NamespaceInputObject $namespaceIdentity -DeviceName "my-device" -OperatingSystemVersion "10.0.19041" -EndpointInbound $endpointsInbound
 .Example
-# Define the device identifiers
-$SubscriptionId = (Get-AzContext).Subscription.Id
-$ResourceGroupName = "my-resource-group"
-$NamespaceName = "my-namespace"
-$DeviceName = "my-device"
-
-# Create a device identity object
-$deviceIdentity = @{
-    SubscriptionId = $SubscriptionId
-    ResourceGroupName = $ResourceGroupName
-    NamespaceName = $NamespaceName
-    DeviceName = $DeviceName
-}
-
 $endpointsInbound = @{
     "endpoint1" = @{
         Address = "https://my-inbound-endpoint1.westeurope-1.iothub.azure.net"
@@ -12926,8 +10830,7 @@ $endpointsInbound = @{
         UsernamePasswordCredentialsPasswordSecretName = "my-password-secret"
     }
 }
-
-Update-AzDeviceRegistryNamespaceDevice -InputObject $deviceIdentity -OperatingSystemVersion "10.0.19041" -EndpointInbound $endpointsInbound
+Update-AzDeviceRegistryNamespaceDevice -InputObject $deviceObject -OperatingSystemVersion "10.0.19041" -EndpointInbound $endpointsInbound
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceRegistryIdentity
@@ -12949,7 +10852,6 @@ INPUTOBJECT <IDeviceRegistryIdentity>: Identity Parameter
   [Location <String>]: The name of the Azure region.
   [NamespaceName <String>]: The name of the namespace.
   [OperationId <String>]: The ID of an ongoing async operation.
-  [PolicyName <String>]: The name of the Policy tracked resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SchemaName <String>]: Schema name parameter.
   [SchemaRegistryName <String>]: Schema registry name parameter.
@@ -12967,7 +10869,6 @@ NAMESPACEINPUTOBJECT <IDeviceRegistryIdentity>: Identity Parameter
   [Location <String>]: The name of the Azure region.
   [NamespaceName <String>]: The name of the namespace.
   [OperationId <String>]: The ID of an ongoing async operation.
-  [PolicyName <String>]: The name of the Policy tracked resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SchemaName <String>]: Schema name parameter.
   [SchemaRegistryName <String>]: Schema registry name parameter.
@@ -13080,14 +10981,6 @@ param(
     [System.Collections.Hashtable]
     # Set of most recently removed endpoints.
     ${OutboundUnassigned},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityNamespaceExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Body')]
-    [System.String]
-    # Resource Id of the Policy.
-    ${PolicyResourceId},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
@@ -13358,7 +11251,6 @@ INPUTOBJECT <IDeviceRegistryIdentity>: Identity Parameter
   [Location <String>]: The name of the Azure region.
   [NamespaceName <String>]: The name of the namespace.
   [OperationId <String>]: The ID of an ongoing async operation.
-  [PolicyName <String>]: The name of the Policy tracked resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SchemaName <String>]: Schema name parameter.
   [SchemaRegistryName <String>]: Schema registry name parameter.
@@ -13394,7 +11286,6 @@ NAMESPACEINPUTOBJECT <IDeviceRegistryIdentity>: Identity Parameter
   [Location <String>]: The name of the Azure region.
   [NamespaceName <String>]: The name of the namespace.
   [OperationId <String>]: The ID of an ongoing async operation.
-  [PolicyName <String>]: The name of the Policy tracked resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SchemaName <String>]: Schema name parameter.
   [SchemaRegistryName <String>]: Schema registry name parameter.
@@ -13993,7 +11884,6 @@ INPUTOBJECT <IDeviceRegistryIdentity>: Identity Parameter
   [Location <String>]: The name of the Azure region.
   [NamespaceName <String>]: The name of the namespace.
   [OperationId <String>]: The ID of an ongoing async operation.
-  [PolicyName <String>]: The name of the Policy tracked resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SchemaName <String>]: Schema name parameter.
   [SchemaRegistryName <String>]: Schema registry name parameter.
@@ -14011,7 +11901,6 @@ NAMESPACEINPUTOBJECT <IDeviceRegistryIdentity>: Identity Parameter
   [Location <String>]: The name of the Azure region.
   [NamespaceName <String>]: The name of the namespace.
   [OperationId <String>]: The ID of an ongoing async operation.
-  [PolicyName <String>]: The name of the Policy tracked resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SchemaName <String>]: Schema name parameter.
   [SchemaRegistryName <String>]: Schema registry name parameter.
@@ -14359,7 +12248,6 @@ INPUTOBJECT <IDeviceRegistryIdentity>: Identity Parameter
   [Location <String>]: The name of the Azure region.
   [NamespaceName <String>]: The name of the namespace.
   [OperationId <String>]: The ID of an ongoing async operation.
-  [PolicyName <String>]: The name of the Policy tracked resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SchemaName <String>]: Schema name parameter.
   [SchemaRegistryName <String>]: Schema registry name parameter.
@@ -14581,349 +12469,6 @@ end {
 
 <#
 .Synopsis
-Update a Policy
-.Description
-Update a Policy
-.Example
-$jsonString = @"
-{
-    "properties": {
-        "certificate": {
-            "leafCertificateConfiguration": {
-                "validityPeriodInDays": 60
-            }
-        }
-    }
-}
-"@
-
-Update-AzDeviceRegistryPolicy -Name my-policy -NamespaceName my-namespace -ResourceGroupName my-resource-group -JsonString $jsonString
-.Example
-$jsonString = @"
-{
-    "tags": {
-        "environment": "production",
-        "team": "iot",
-        "updated": "true"
-    }
-}
-"@
-
-Update-AzDeviceRegistryPolicy -Name my-policy -NamespaceName my-namespace -ResourceGroupName my-resource-group -JsonString $jsonString
-.Example
-Update-AzDeviceRegistryPolicy -Name my-policy -NamespaceName my-namespace -ResourceGroupName my-resource-group -JsonFilePath "C:\policies\policy-update.json"
-.Example
-$policyIdentity = @{
-    SubscriptionId = "xxxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx"
-    ResourceGroupName = "my-resource-group"
-    NamespaceName = "my-namespace"
-    CredentialName = "default"
-    PolicyName = "my-policy-name"
-}
-
-Update-AzDeviceRegistryPolicy -InputObject $policyIdentity -Tag @{"environment" = "staging"}
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceRegistryIdentity
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IPolicy
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IDeviceRegistryIdentity>: Identity Parameter
-  [AssetEndpointProfileName <String>]: Asset Endpoint Profile name parameter.
-  [AssetName <String>]: Asset name parameter.
-  [BillingContainerName <String>]: Name of the billing container.
-  [DeviceName <String>]: The name of the device.
-  [DiscoveredAssetName <String>]: The name of the discovered asset.
-  [DiscoveredDeviceName <String>]: The name of the discovered device.
-  [Id <String>]: Resource identity path
-  [Location <String>]: The name of the Azure region.
-  [NamespaceName <String>]: The name of the namespace.
-  [OperationId <String>]: The ID of an ongoing async operation.
-  [PolicyName <String>]: The name of the Policy tracked resource.
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [SchemaName <String>]: Schema name parameter.
-  [SchemaRegistryName <String>]: Schema registry name parameter.
-  [SchemaVersionName <String>]: Schema version name parameter.
-  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-
-NAMESPACEINPUTOBJECT <IDeviceRegistryIdentity>: Identity Parameter
-  [AssetEndpointProfileName <String>]: Asset Endpoint Profile name parameter.
-  [AssetName <String>]: Asset name parameter.
-  [BillingContainerName <String>]: Name of the billing container.
-  [DeviceName <String>]: The name of the device.
-  [DiscoveredAssetName <String>]: The name of the discovered asset.
-  [DiscoveredDeviceName <String>]: The name of the discovered device.
-  [Id <String>]: Resource identity path
-  [Location <String>]: The name of the Azure region.
-  [NamespaceName <String>]: The name of the namespace.
-  [OperationId <String>]: The ID of an ongoing async operation.
-  [PolicyName <String>]: The name of the Policy tracked resource.
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [SchemaName <String>]: Schema name parameter.
-  [SchemaRegistryName <String>]: Schema registry name parameter.
-  [SchemaVersionName <String>]: Schema version name parameter.
-  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-.Link
-https://learn.microsoft.com/powershell/module/az.deviceregistry/update-azdeviceregistrypolicy
-#>
-function Update-AzDeviceRegistryPolicy {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IPolicy])]
-[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='UpdateViaIdentityNamespaceExpanded', Mandatory)]
-    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
-    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
-    [Alias('PolicyName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Path')]
-    [System.String]
-    # The name of the Policy tracked resource.
-    ${Name},
-
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
-    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Path')]
-    [System.String]
-    # The name of the namespace.
-    ${NamespaceName},
-
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
-    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
-    [Parameter(ParameterSetName='UpdateViaJsonString')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    # The value must be an UUID.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceRegistryIdentity]
-    # Identity Parameter
-    ${InputObject},
-
-    [Parameter(ParameterSetName='UpdateViaIdentityNamespaceExpanded', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceRegistryIdentity]
-    # Identity Parameter
-    ${NamespaceInputObject},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityNamespaceExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAny]
-    # The configuration to set up an ICA.
-    ${CertificateAuthorityConfiguration},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityNamespaceExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Body')]
-    [System.Int32]
-    # The validity period in days.
-    ${LeafCertificateConfigurationValidityPeriodInDay},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityNamespaceExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IPolicyUpdateTags]))]
-    [System.Collections.Hashtable]
-    # Resource tags.
-    ${Tag},
-
-    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Body')]
-    [System.String]
-    # Path of Json file supplied to the Update operation
-    ${JsonFilePath},
-
-    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Body')]
-    [System.String]
-    # Json string supplied to the Update operation
-    ${JsonString},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-        
-        $testPlayback = $false
-        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-
-        $context = Get-AzContext
-        if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
-        }
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            UpdateExpanded = 'Az.DeviceRegistry.private\Update-AzDeviceRegistryPolicy_UpdateExpanded';
-            UpdateViaIdentityExpanded = 'Az.DeviceRegistry.private\Update-AzDeviceRegistryPolicy_UpdateViaIdentityExpanded';
-            UpdateViaIdentityNamespaceExpanded = 'Az.DeviceRegistry.private\Update-AzDeviceRegistryPolicy_UpdateViaIdentityNamespaceExpanded';
-            UpdateViaJsonFilePath = 'Az.DeviceRegistry.private\Update-AzDeviceRegistryPolicy_UpdateViaJsonFilePath';
-            UpdateViaJsonString = 'Az.DeviceRegistry.private\Update-AzDeviceRegistryPolicy_UpdateViaJsonString';
-        }
-        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        if ($wrappedCmd -eq $null) {
-            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
-        }
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
 Replace a SchemaRegistry
 .Description
 Replace a SchemaRegistry
@@ -14957,7 +12502,6 @@ INPUTOBJECT <IDeviceRegistryIdentity>: Identity Parameter
   [Location <String>]: The name of the Azure region.
   [NamespaceName <String>]: The name of the namespace.
   [OperationId <String>]: The ID of an ongoing async operation.
-  [PolicyName <String>]: The name of the Policy tracked resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SchemaName <String>]: Schema name parameter.
   [SchemaRegistryName <String>]: Schema registry name parameter.
@@ -15218,7 +12762,6 @@ INPUTOBJECT <IDeviceRegistryIdentity>: Identity Parameter
   [Location <String>]: The name of the Azure region.
   [NamespaceName <String>]: The name of the namespace.
   [OperationId <String>]: The ID of an ongoing async operation.
-  [PolicyName <String>]: The name of the Policy tracked resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SchemaName <String>]: Schema name parameter.
   [SchemaRegistryName <String>]: Schema registry name parameter.
@@ -15236,7 +12779,6 @@ SCHEMAINPUTOBJECT <IDeviceRegistryIdentity>: Identity Parameter
   [Location <String>]: The name of the Azure region.
   [NamespaceName <String>]: The name of the namespace.
   [OperationId <String>]: The ID of an ongoing async operation.
-  [PolicyName <String>]: The name of the Policy tracked resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SchemaName <String>]: Schema name parameter.
   [SchemaRegistryName <String>]: Schema registry name parameter.
@@ -15254,7 +12796,6 @@ SCHEMAREGISTRYINPUTOBJECT <IDeviceRegistryIdentity>: Identity Parameter
   [Location <String>]: The name of the Azure region.
   [NamespaceName <String>]: The name of the namespace.
   [OperationId <String>]: The ID of an ongoing async operation.
-  [PolicyName <String>]: The name of the Policy tracked resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SchemaName <String>]: Schema name parameter.
   [SchemaRegistryName <String>]: Schema registry name parameter.
@@ -15514,7 +13055,6 @@ INPUTOBJECT <IDeviceRegistryIdentity>: Identity Parameter
   [Location <String>]: The name of the Azure region.
   [NamespaceName <String>]: The name of the namespace.
   [OperationId <String>]: The ID of an ongoing async operation.
-  [PolicyName <String>]: The name of the Policy tracked resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SchemaName <String>]: Schema name parameter.
   [SchemaRegistryName <String>]: Schema registry name parameter.
@@ -15532,7 +13072,6 @@ SCHEMAREGISTRYINPUTOBJECT <IDeviceRegistryIdentity>: Identity Parameter
   [Location <String>]: The name of the Azure region.
   [NamespaceName <String>]: The name of the namespace.
   [OperationId <String>]: The ID of an ongoing async operation.
-  [PolicyName <String>]: The name of the Policy tracked resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SchemaName <String>]: Schema name parameter.
   [SchemaRegistryName <String>]: Schema registry name parameter.
