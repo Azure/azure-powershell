@@ -23,7 +23,7 @@ Triggers the execution of a runtime protection scan to detect and remediate dete
 Invoke-AzNetworkCloudScanClusterRuntime -ResourceGroupName resourceGroupName -ClusterName clusterName -SubscriptionId subscriptionId -ScanActivity "Scan"
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IClusterScanRuntimeParameters
+Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterScanRuntimeParameters
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
 .Outputs
@@ -34,7 +34,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 CLUSTERSCANRUNTIMEPARAMETER <IClusterScanRuntimeParameters>: ClusterScanRuntimeParameters defines the parameters for the cluster scan runtime operation.
-  [ScanActivity <ClusterScanRuntimeParametersScanActivity?>]: The choice of if the scan operation should run the scan.
+  [ScanActivity <String>]: The choice of if the scan operation should run the scan.
 
 INPUTOBJECT <INetworkCloudIdentity>: Identity Parameter
   [AgentPoolName <String>]: The name of the Kubernetes cluster agent pool.
@@ -68,6 +68,8 @@ function Invoke-AzNetworkCloudScanClusterRuntime {
 param(
     [Parameter(ParameterSetName='Scan', Mandatory)]
     [Parameter(ParameterSetName='ScanExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ScanViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='ScanViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Path')]
     [System.String]
     # The name of the cluster.
@@ -75,6 +77,8 @@ param(
 
     [Parameter(ParameterSetName='Scan', Mandatory)]
     [Parameter(ParameterSetName='ScanExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ScanViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='ScanViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -83,6 +87,8 @@ param(
 
     [Parameter(ParameterSetName='Scan')]
     [Parameter(ParameterSetName='ScanExpanded')]
+    [Parameter(ParameterSetName='ScanViaJsonFilePath')]
+    [Parameter(ParameterSetName='ScanViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -95,24 +101,34 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='Scan', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='ScanViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IClusterScanRuntimeParameters]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterScanRuntimeParameters]
     # ClusterScanRuntimeParameters defines the parameters for the cluster scan runtime operation.
-    # To construct, see NOTES section for CLUSTERSCANRUNTIMEPARAMETER properties and create a hash table.
     ${ClusterScanRuntimeParameter},
 
     [Parameter(ParameterSetName='ScanExpanded')]
     [Parameter(ParameterSetName='ScanViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ClusterScanRuntimeParametersScanActivity])]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("Scan", "Skip")]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ClusterScanRuntimeParametersScanActivity]
+    [System.String]
     # The choice of if the scan operation should run the scan.
     ${ScanActivity},
+
+    [Parameter(ParameterSetName='ScanViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Scan operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='ScanViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
+    [System.String]
+    # Json string supplied to the Scan operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -188,6 +204,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -211,10 +236,10 @@ begin {
             ScanExpanded = 'Az.NetworkCloud.private\Invoke-AzNetworkCloudScanClusterRuntime_ScanExpanded';
             ScanViaIdentity = 'Az.NetworkCloud.private\Invoke-AzNetworkCloudScanClusterRuntime_ScanViaIdentity';
             ScanViaIdentityExpanded = 'Az.NetworkCloud.private\Invoke-AzNetworkCloudScanClusterRuntime_ScanViaIdentityExpanded';
+            ScanViaJsonFilePath = 'Az.NetworkCloud.private\Invoke-AzNetworkCloudScanClusterRuntime_ScanViaJsonFilePath';
+            ScanViaJsonString = 'Az.NetworkCloud.private\Invoke-AzNetworkCloudScanClusterRuntime_ScanViaJsonString';
         }
-        if (('Scan', 'ScanExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Scan', 'ScanExpanded', 'ScanViaJsonFilePath', 'ScanViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -228,6 +253,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

@@ -789,10 +789,6 @@
     "alias": "LoadTesting"
   },
   {
-    "alias": "MobileNetwork",
-    "module": "MobileNetwork"
-  },
-  {
     "module": "ArcResourceBridge",
     "alias": "ArcResourceBridge"
   },
@@ -995,5 +991,17 @@
   {
     "module": "Site",
     "alias": "Site"
+  },
+  {
+    "alias": "DnsResolver",
+    "module": "DnsResolver"
+  },
+  {
+    "module": "DurableTask",
+    "alias": "DurableTask"
+  },
+  {
+    "alias": "DisconnectedOperations",
+    "module": "DisconnectedOperations"
   }
 ]

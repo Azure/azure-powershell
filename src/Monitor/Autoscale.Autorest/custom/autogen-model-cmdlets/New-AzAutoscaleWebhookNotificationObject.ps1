@@ -21,17 +21,18 @@ Create an in-memory object for WebhookNotification.
 Create an in-memory object for WebhookNotification.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.WebhookNotification
+Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.WebhookNotification
 .Link
-https://learn.microsoft.com/powershell/module/Az.Monitor/new-AzAutoscaleWebhookNotificationObject
+https://learn.microsoft.com/powershell/module/Az.Monitor/new-azautoscalewebhooknotificationobject
 #>
 function New-AzAutoscaleWebhookNotificationObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.WebhookNotification')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.WebhookNotification')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
         [Parameter(HelpMessage="a property bag of settings. This value can be empty.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IWebhookNotificationProperties]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.IWebhookNotificationProperties]
         $Property,
         [Parameter(HelpMessage="the service address to receive the notification.")]
         [string]
@@ -39,7 +40,7 @@ function New-AzAutoscaleWebhookNotificationObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.WebhookNotification]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.WebhookNotification]::New()
 
         if ($PSBoundParameters.ContainsKey('Property')) {
             $Object.Property = $Property

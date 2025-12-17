@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 6.3.0
 * Updated with support for Immutable Long-Term Retention Backups
     - Updated `Set-AzSqlDatabaseBackupLongTermRetentionPolicy` cmdlet to expose `TimeBasedImmutability` and `TimeBasedImmutabilityMode` parameters.
     - Updated `AzureSqlDatabaseBackupLongTermRetentionPolicyModel` to add `TimeBasedImmutability` and `TimeBasedImmutabilityMode` properties.

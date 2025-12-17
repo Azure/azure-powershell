@@ -6,20 +6,23 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Extensions;
+    using Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PowerShell;
+    using Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create or update a gallery Application Definition.</summary>
+    /// <summary>create a gallery Application Definition.</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/applications/{galleryApplicationName}"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.Compute.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzGalleryApplication_CreateExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplication))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Compute.Description(@"Create or update a gallery Application Definition.")]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IGalleryApplication))]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Compute.Description(@"create a gallery Application Definition.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Compute.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Compute.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/applications/{galleryApplicationName}", ApiVersion = "2022-01-03")]
     public partial class NewAzGalleryApplication_CreateExpanded : global::System.Management.Automation.PSCmdlet,
-        Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener
+        Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener,
+        Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IContext
     {
         /// <summary>A unique id generatd for the this cmdlet when it is instantiated.</summary>
         private string __correlationId = System.Guid.NewGuid().ToString();
@@ -35,10 +38,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Cmdlets
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
+        /// <summary>A dictionary to carry over additional data for pipeline.</summary>
+        private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
+
         /// <summary>
         /// Specifies information about the gallery Application Definition that you want to create or update.
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplication _galleryApplicationBody = new Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryApplication();
+        private Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IGalleryApplication _galleryApplicationBody = new Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.GalleryApplication();
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
@@ -49,6 +55,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Cmdlets
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Compute.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Compute.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter Break { get; set; }
+
+        /// <summary>Accessor for cancellationTokenSource.</summary>
+        public global::System.Threading.CancellationTokenSource CancellationTokenSource { get => _cancellationTokenSource ; set { _cancellationTokenSource = value; } }
 
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.Compute.Compute Client => Microsoft.Azure.PowerShell.Cmdlets.Compute.Module.Instance.ClientAPI;
@@ -102,6 +111,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Compute.DoNotExport]
         public string Eula { get => _galleryApplicationBody.Eula ?? null; set => _galleryApplicationBody.Eula = value; }
+
+        /// <summary>Accessor for extensibleParameters.</summary>
+        public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
 
         /// <summary>Backing field for <see cref="GalleryName" /> property.</summary>
         private string _galleryName;
@@ -182,7 +194,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Cmdlets
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.HttpPipeline Pipeline { get; set; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.HttpPipeline Pipeline { get; set; }
 
         /// <summary>The privacy statement uri.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The privacy statement uri.")]
@@ -255,7 +267,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Cmdlets
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.DefaultInfo(
         Name = @"",
         Description =@"",
-        Script = @"(Get-AzContext).Subscription.Id")]
+        Script = @"(Get-AzContext).Subscription.Id",
+        SetCondition = @"")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Compute.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Compute.ParameterCategory.Path)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
@@ -270,9 +283,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Cmdlets
         ReadOnly = false,
         Description = @"This property allows you to specify the supported type of the OS that application is built for. <br><br> Possible values are: <br><br> **Windows** <br><br> **Linux**",
         SerializedName = @"supportedOSType",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.OperatingSystemTypes) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.OperatingSystemTypes))]
-        public Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.OperatingSystemTypes SupportedOSType { get => _galleryApplicationBody.SupportedOSType ?? ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.OperatingSystemTypes)""); set => _galleryApplicationBody.SupportedOSType = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Compute.PSArgumentCompleterAttribute("Windows", "Linux")]
+        public string SupportedOSType { get => _galleryApplicationBody.SupportedOSType ?? null; set => _galleryApplicationBody.SupportedOSType = value; }
 
         /// <summary>Resource tags</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.Compute.ExportAs(typeof(global::System.Collections.Hashtable))]
@@ -283,32 +296,32 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Cmdlets
         ReadOnly = false,
         Description = @"Resource tags",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.IResourceTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.IResourceTags Tag { get => _galleryApplicationBody.Tag ?? null /* object */; set => _galleryApplicationBody.Tag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IResourceTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IResourceTags Tag { get => _galleryApplicationBody.Tag ?? null /* object */; set => _galleryApplicationBody.Tag = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.ICloudError</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.ICloudError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplication">Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplication</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IGalleryApplication">Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IGalleryApplication</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplication> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IGalleryApplication> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -420,11 +433,36 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Cmdlets
                         WriteError(new global::System.Management.Automation.ErrorRecord( new global::System.Exception(messageData().Message), string.Empty, global::System.Management.Automation.ErrorCategory.NotSpecified, null ) );
                         return ;
                     }
+                    case Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.Progress:
+                    {
+                        var data = messageData();
+                        int progress = (int)data.Value;
+                        string activityMessage, statusDescription;
+                        global::System.Management.Automation.ProgressRecordType recordType;
+                        if (progress < 100)
+                        {
+                            activityMessage = "In progress";
+                            statusDescription = "Checking operation status";
+                            recordType = System.Management.Automation.ProgressRecordType.Processing;
+                        }
+                        else
+                        {
+                            activityMessage = "Completed";
+                            statusDescription = "Completed";
+                            recordType = System.Management.Automation.ProgressRecordType.Completed;
+                        }
+                        WriteProgress(new global::System.Management.Automation.ProgressRecord(1, activityMessage, statusDescription)
+                        {
+                            PercentComplete = progress,
+                        RecordType = recordType
+                        });
+                        return ;
+                    }
                     case Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.DelayBeforePolling:
                     {
+                        var data = messageData();
                         if (true == MyInvocation?.BoundParameters?.ContainsKey("NoWait"))
                         {
-                            var data = messageData();
                             if (data.ResponseMessage is System.Net.Http.HttpResponseMessage response)
                             {
                                 var asyncOperation = response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -436,10 +474,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Cmdlets
                                 return;
                             }
                         }
+                        else
+                        {
+                            if (data.ResponseMessage is System.Net.Http.HttpResponseMessage response)
+                            {
+                                int delay = (int)(response.Headers.RetryAfter?.Delta?.TotalSeconds ?? 30);
+                                WriteDebug($"Delaying {delay} seconds before polling.");
+                                for (var now = 0; now < delay; ++now)
+                                {
+                                    WriteProgress(new global::System.Management.Automation.ProgressRecord(1, "In progress", "Checking operation status")
+                                    {
+                                        PercentComplete = now * 100 / delay
+                                    });
+                                    await global::System.Threading.Tasks.Task.Delay(1000, token);
+                                }
+                            }
+                        }
                         break;
                     }
                 }
-                await Microsoft.Azure.PowerShell.Cmdlets.Compute.Module.Instance.Signal(id, token, messageData, (i,t,m) => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener)this).Signal(i,t,()=> Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.EventDataConverter.ConvertFrom( m() ) as Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.EventData ), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
+                await Microsoft.Azure.PowerShell.Cmdlets.Compute.Module.Instance.Signal(id, token, messageData, (i, t, m) => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener)this).Signal(i, t, () => Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.EventDataConverter.ConvertFrom(m()) as Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.EventData), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
                 if (token.IsCancellationRequested)
                 {
                     return ;
@@ -449,7 +503,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Cmdlets
         }
 
         /// <summary>
-        /// Intializes a new instance of the <see cref="NewAzGalleryApplication_CreateExpanded" /> cmdlet class.
+        /// Initializes a new instance of the <see cref="NewAzGalleryApplication_CreateExpanded" /> cmdlet class.
         /// </summary>
         public NewAzGalleryApplication_CreateExpanded()
         {
@@ -515,7 +569,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Cmdlets
             using( NoSynchronizationContext )
             {
                 await ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.Compute.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
+                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.Compute.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName, this.ExtensibleParameters);
                 if (null != HttpPipelinePrepend)
                 {
                     Pipeline.Prepend((this.CommandRuntime as Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PowerShell.IAsyncCommandRuntimeExtensions)?.Wrap(HttpPipelinePrepend) ?? HttpPipelinePrepend);
@@ -525,15 +579,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Cmdlets
                     Pipeline.Append((this.CommandRuntime as Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PowerShell.IAsyncCommandRuntimeExtensions)?.Wrap(HttpPipelineAppend) ?? HttpPipelineAppend);
                 }
                 // get the client instance
+                if (true == this.MyInvocation?.BoundParameters?.ContainsKey("Eula"))
+                {
+                    Eula = (string)this.MyInvocation.BoundParameters["Eula"];
+                }
+                if (true == this.MyInvocation?.BoundParameters?.ContainsKey("PrivacyStatementUri"))
+                {
+                    PrivacyStatementUri = (string)this.MyInvocation.BoundParameters["PrivacyStatementUri"];
+                }
+                if (true == this.MyInvocation?.BoundParameters?.ContainsKey("ReleaseNoteUri"))
+                {
+                    ReleaseNoteUri = (string)this.MyInvocation.BoundParameters["ReleaseNoteUri"];
+                }
+                if (true == this.MyInvocation?.BoundParameters?.ContainsKey("EndOfLifeDate"))
+                {
+                    EndOfLifeDate = (global::System.DateTime)this.MyInvocation.BoundParameters["EndOfLifeDate"];
+                }
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.GalleryApplicationsCreateOrUpdate(SubscriptionId, ResourceGroupName, GalleryName, Name, _galleryApplicationBody, onOk, onDefault, this, Pipeline);
+                    await this.Client.GalleryApplicationsCreateOrUpdate(SubscriptionId, ResourceGroupName, GalleryName, Name, _galleryApplicationBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.SerializationMode.IncludeCreate);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,GalleryName=GalleryName,Name=Name,body=_galleryApplicationBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,GalleryName=GalleryName,Name=Name})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -571,12 +641,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.ICloudError</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.ICloudError> response)
         {
             using( NoSynchronizationContext )
             {
@@ -593,15 +663,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, GalleryName=GalleryName, Name=Name, body=_galleryApplicationBody })
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.ICloudError>(responseMessage, await response);
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, GalleryName=GalleryName, Name=Name, body=_galleryApplicationBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -611,12 +681,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplication">Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplication</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IGalleryApplication">Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IGalleryApplication</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplication> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IGalleryApplication> response)
         {
             using( NoSynchronizationContext )
             {
@@ -628,8 +698,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplication
-                WriteObject((await response));
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IGalleryApplication
+                var result = (await response);
+                WriteObject(result, false);
             }
         }
     }

@@ -19,6 +19,10 @@
 -->
 ## Upcoming Release
 
+## Version 2.6.5
+* ARC Enablement of Nodes Before Triggering Registration in New Registration Flow.
+* Resolved double hop authentication issue.
+
 ## Version 2.6.4
 * Fixed bug: Buse boolean in comparision
 

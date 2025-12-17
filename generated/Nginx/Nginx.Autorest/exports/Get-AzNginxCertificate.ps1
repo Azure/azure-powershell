@@ -27,7 +27,7 @@ Get-AzNginxCertificate -DeploymentName nginx-test -Name cert -ResourceGroupName 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxCertificate
+Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxCertificate
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -40,11 +40,19 @@ INPUTOBJECT <INginxIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
+
+NGINXDEPLOYMENTINPUTOBJECT <INginxIdentity>: Identity Parameter
+  [CertificateName <String>]: The name of certificate
+  [ConfigurationName <String>]: The name of configuration, only 'default' is supported value due to the singleton of NGINX conf
+  [DeploymentName <String>]: The name of targeted NGINX deployment
+  [Id <String>]: Resource identity path
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
 .Link
 https://learn.microsoft.com/powershell/module/az.nginx/get-aznginxcertificate
 #>
 function Get-AzNginxCertificate {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxCertificate])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxCertificate])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -55,6 +63,7 @@ param(
     ${DeploymentName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityNginxDeployment', Mandatory)]
     [Alias('CertificateName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Path')]
     [System.String]
@@ -81,8 +90,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityNginxDeployment', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity]
+    # Identity Parameter
+    ${NginxDeploymentInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -140,6 +154,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -161,11 +184,10 @@ begin {
         $mapping = @{
             Get = 'Az.Nginx.private\Get-AzNginxCertificate_Get';
             GetViaIdentity = 'Az.Nginx.private\Get-AzNginxCertificate_GetViaIdentity';
+            GetViaIdentityNginxDeployment = 'Az.Nginx.private\Get-AzNginxCertificate_GetViaIdentityNginxDeployment';
             List = 'Az.Nginx.private\Get-AzNginxCertificate_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -179,6 +201,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

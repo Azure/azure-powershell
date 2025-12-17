@@ -114,6 +114,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             {_compartmentId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString>("compartmentId"), out var __jsonCompartmentId) ? (string)__jsonCompartmentId : (string)_compartmentId;}
             {_subnetOcid = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString>("subnetOcid"), out var __jsonSubnetOcid) ? (string)__jsonSubnetOcid : (string)_subnetOcid;}
             {_computeModel = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString>("computeModel"), out var __jsonComputeModel) ? (string)__jsonComputeModel : (string)_computeModel;}
+            {_exascaleDbStorageVaultId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString>("exascaleDbStorageVaultId"), out var __jsonExascaleDbStorageVaultId) ? (string)__jsonExascaleDbStorageVaultId : (string)_exascaleDbStorageVaultId;}
+            {_storageManagementType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString>("storageManagementType"), out var __jsonStorageManagementType) ? (string)__jsonStorageManagementType : (string)_storageManagementType;}
             AfterFromJson(json);
         }
 
@@ -376,6 +378,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.SerializationMode.IncludeRead))
             {
                 AddIf( null != (((object)this._computeModel)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString(this._computeModel.ToString()) : null, "computeModel" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.SerializationMode.IncludeRead)||serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.SerializationMode.IncludeCreate))
+            {
+                AddIf( null != (((object)this._exascaleDbStorageVaultId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString(this._exascaleDbStorageVaultId.ToString()) : null, "exascaleDbStorageVaultId" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.SerializationMode.IncludeRead))
+            {
+                AddIf( null != (((object)this._storageManagementType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString(this._storageManagementType.ToString()) : null, "storageManagementType" ,container.Add );
             }
             AfterToJson(ref container);
             return container;

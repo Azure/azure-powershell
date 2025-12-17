@@ -15,13 +15,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzMigrateLocalServerRe
 }
 
 Describe 'Remove-AzMigrateLocalServerReplication' {
-    It 'ByID' {
-        { Remove-AzMigrateLocalServerReplication -TargetObjectID $env.hciProtectedItem1 -SubscriptionId $env.hciSubscriptionId -ForceRemove "true" } | Should -Not -Throw
+    # See Test-AzMigrateLocalEndToEnd.Tests.ps1 for end to end tests.
+    It 'ByID' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'ByInputObject' {
-        $obj = Get-AzMigrateLocalServerReplication -TargetObjectID  $env.hciProtectedItem2 -SubscriptionId $env.hciSubscriptionId
-        $obj.Count | Should -BeGreaterOrEqual 1
-        { Remove-AzMigrateLocalServerReplication -InputObject $obj -SubscriptionId $env.hciSubscriptionId -ForceRemove "true" } | Should -Not -Throw
+    It 'ByInputObject' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

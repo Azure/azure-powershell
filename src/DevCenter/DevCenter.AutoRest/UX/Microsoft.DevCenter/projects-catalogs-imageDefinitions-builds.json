@@ -1,0 +1,168 @@
+{
+  "resourceType": "projects/catalogs/imageDefinitions/builds",
+  "apiVersion": "2025-04-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.devcenter"
+  },
+  "commands": [
+    {
+      "name": "Get-AzDevCenterAdminProjectCatalogImageDefinitionBuildDetail",
+      "description": "Gets Build details",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/catalogs/{catalogName}/imageDefinitions/{imageDefinitionName}/builds/{buildName}/getBuildDetails",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteradminprojectcatalogimagedefinitionbuilddetail"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-BuildName <String>",
+              "-CatalogName <String>",
+              "-ImageDefinitionName <String>",
+              "-ProjectName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets Build details",
+          "parameters": [
+            {
+              "name": "-BuildName",
+              "value": "[Path.buildName]"
+            },
+            {
+              "name": "-CatalogName",
+              "value": "[Path.catalogName]"
+            },
+            {
+              "name": "-ImageDefinitionName",
+              "value": "[Path.imageDefinitionName]"
+            },
+            {
+              "name": "-ProjectName",
+              "value": "[Path.projectName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Get-AzDevCenterAdminProjectCatalogImageDefinitionBuild",
+      "description": "Gets a build for a specified image definition.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/catalogs/{catalogName}/imageDefinitions/{imageDefinitionName}/builds/{buildName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteradminprojectcatalogimagedefinitionbuild"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-BuildName <String>",
+              "-CatalogName <String>",
+              "-ImageDefinitionName <String>",
+              "-ProjectName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets a build for a specified image definition.",
+          "parameters": [
+            {
+              "name": "-BuildName",
+              "value": "[Path.buildName]"
+            },
+            {
+              "name": "-CatalogName",
+              "value": "[Path.catalogName]"
+            },
+            {
+              "name": "-ImageDefinitionName",
+              "value": "[Path.imageDefinitionName]"
+            },
+            {
+              "name": "-ProjectName",
+              "value": "[Path.projectName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Stop-AzDevCenterAdminProjectCatalogImageDefinitionBuild",
+      "description": "Cancels the specified build for an image definition.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/catalogs/{catalogName}/imageDefinitions/{imageDefinitionName}/builds/{buildName}/cancel",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.devcenter/stop-azdevcenteradminprojectcatalogimagedefinitionbuild"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-BuildName <String>",
+              "-CatalogName <String>",
+              "-ImageDefinitionName <String>",
+              "-ProjectName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Cancels the specified build for an image definition.",
+          "parameters": [
+            {
+              "name": "-BuildName",
+              "value": "[Path.buildName]"
+            },
+            {
+              "name": "-CatalogName",
+              "value": "[Path.catalogName]"
+            },
+            {
+              "name": "-ImageDefinitionName",
+              "value": "[Path.imageDefinitionName]"
+            },
+            {
+              "name": "-ProjectName",
+              "value": "[Path.projectName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

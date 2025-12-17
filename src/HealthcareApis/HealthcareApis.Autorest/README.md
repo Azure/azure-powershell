@@ -37,15 +37,8 @@ module-version: 0.3.0
 title: HealthcareApis
 subject-prefix: $(service-name)
 
-resourcegroup-append: true
-identity-correction-for-post: true
-
 metadata: 
   tags: Azure ResourceManager ARM PSModule $(service-name) HealthCare FhirService
-
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
 
 directive:
   - where:
@@ -56,7 +49,10 @@ directive:
     where: $
     transform: return $.replace(/ErrorDetailsInternal/g, "InternalErrorDetails")
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
+    remove: true
+  - where:
+      variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$
     remove: true
   - where:
       verb: Set
@@ -239,120 +235,4 @@ directive:
       verb: New
       subject: IotConnectorFhirDestination
     hide: true
-
-  - where:
-      verb: Get|Update
-      subject: ApisService
-    set:
-      breaking-change:
-        deprecated-output-properties:
-          - PrivateEndpointConnection
-          - AccessPolicy
-          - AcrConfigurationOciArtifact
-          - CorConfigurationOrigin
-          - CorConfigurationMethod
-          - AcrConfigurationLoginServer
-          - CorConfigurationHeader
-        new-output-properties:
-          - PrivateEndpointConnection
-          - AccessPolicy
-          - AcrConfigurationOciArtifact
-          - CorConfigurationOrigin
-          - CorConfigurationMethod
-          - AcrConfigurationLoginServer
-          - CorConfigurationHeader
-        change-description: The types of the properties 'PrivateEndpointConnection', 'AccessPolicy', 'AcrConfigurationOciArtifact', 'CorConfigurationOrigin', 'CorConfigurationMethod', 'AcrConfigurationLoginServer', and 'CorConfigurationHeader' will be changed from single object to 'List'.
-        deprecated-by-version: 9.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/03
-
-  - where:
-      verb: Get|Update
-      subject: ApisWorkspace
-    set:
-      breaking-change:
-        deprecated-output-properties:
-          - PrivateEndpointConnection
-        new-output-properties:
-          - PrivateEndpointConnection
-        change-description: The types of the properties 'PrivateEndpointConnection' will be changed from single object to 'List'.
-        deprecated-by-version: 9.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/03
-
-  - where:
-      verb: Get|Update
-      subject: DicomService
-    set:
-      breaking-change:
-        deprecated-output-properties:
-          - PrivateEndpointConnection
-          - AuthenticationConfigurationAudience
-          - IdentityType
-          - IdentityUserAssignedIdentity
-        new-output-properties:
-          - PrivateEndpointConnection
-          - AuthenticationConfigurationAudience
-          - IdentityType
-          - IdentityUserAssignedIdentity
-        change-description: (1)The types of the properties 'PrivateEndpointConnection' and 'AuthenticationConfigurationAudience' will be changed from single object to 'List'. (2)IdentityType will be removed. EnableSystemAssignedIdentity will be used to enable/disable system assigned identity and UserAssignedIdentity will be used to specify user assigned identities.
-        deprecated-by-version: 9.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/03
-
-  - where:
-      verb: Get|Update
-      subject: FhirService
-    set:
-      breaking-change:
-        deprecated-output-properties:
-          - PrivateEndpointConnection
-          - AccessPolicy
-          - AcrConfigurationOciArtifact
-          - CorConfigurationOrigin
-          - CorConfigurationMethod
-          - AcrConfigurationLoginServer
-          - CorConfigurationHeader
-          - IdentityType
-          - IdentityUserAssignedIdentity
-        new-output-properties:
-          - PrivateEndpointConnection
-          - AccessPolicy
-          - AcrConfigurationOciArtifact
-          - CorConfigurationOrigin
-          - CorConfigurationMethod
-          - AcrConfigurationLoginServer
-          - CorConfigurationHeader
-          - IdentityType
-          - IdentityUserAssignedIdentity
-        change-description: (1)The types of the properties 'PrivateEndpointConnection' and 'AuthenticationConfigurationAudience' will be changed from single object to 'List'. (2)IdentityType will be removed. EnableSystemAssignedIdentity will be used to enable/disable system assigned identity and UserAssignedIdentity will be used to specify user assigned identities.
-        deprecated-by-version: 9.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/03
-
-  - where:
-      verb: Test
-      subject: ServiceNameAvailability
-      variant: CheckViaIdentityExpanded|CheckViaIdentity
-    set:
-      breaking-change:
-        deprecated-by-version: 9.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/03
-
-  - where:
-      verb: Update
-      subject: IotConnector
-    set:
-      breaking-change:
-        deprecated-output-properties:
-          - IdentityType
-          - IdentityUserAssignedIdentity
-        new-output-properties:
-          - EnableSystemAssignedIdentity
-          - UserAssignedIdentity
-        change-description: IdentityType will be removed. EnableSystemAssignedIdentity will be used to enable/disable system assigned identity and UserAssignedIdentity will be used to specify user assigned identities.
-        deprecated-by-version: 9.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/03
 ```

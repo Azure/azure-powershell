@@ -80,6 +80,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
                 return;
             }
             {_monitoringStatus = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonString>("monitoringStatus"), out var __jsonMonitoringStatus) ? (string)__jsonMonitoringStatus : (string)_monitoringStatus;}
+            {_cspm = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonBoolean>("cspm"), out var __jsonCspm) ? (bool?)__jsonCspm : _cspm;}
+            {_resourceCollection = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonBoolean>("resourceCollection"), out var __jsonResourceCollection) ? (bool?)__jsonResourceCollection : _resourceCollection;}
             AfterFromJson(json);
         }
 
@@ -103,6 +105,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
                 return container;
             }
             AddIf( null != (((object)this._monitoringStatus)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonString(this._monitoringStatus.ToString()) : null, "monitoringStatus" ,container.Add );
+            AddIf( null != this._cspm ? (Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonBoolean((bool)this._cspm) : null, "cspm" ,container.Add );
+            AddIf( null != this._resourceCollection ? (Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Json.JsonBoolean((bool)this._resourceCollection) : null, "resourceCollection" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

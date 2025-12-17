@@ -1,6 +1,6 @@
 ### Example 1: Create an output to a stream analytics job
 ```powershell
-New-AzStreamAnalyticsOutput -ResourceGroupName azure-rg-test -JobName sajob-02-pwsh -Name output-01 -File .\test\template-json\StroageAccount.json
+New-AzStreamAnalyticsOutput -ResourceGroupName azure-rg-test -JobName sajob-02-pwsh -Name output-01 -File .\test\template-json\StorageAccount.json
 ```
 ```output
 Name      Type                                            ETag
@@ -10,7 +10,7 @@ output-01 Microsoft.StreamAnalytics/streamingjobs/outputs 3819fb65-07f5-4dc3-83e
 
 This command creates a new output in the stream analytics job.
 
-(below is an example for "StroageAccount.json")
+(below is an example for "StorageAccount.json")
 {
   "properties": {
     "serialization": {

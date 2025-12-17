@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.3.0
 * Added AutoRest-generated NewRelic PowerShell module using API version 2025-05-01-preview
     - Generated 30 cmdlets covering complete NewRelic Observability service functionality
     - Added support for all NewRelic monitor management operations
