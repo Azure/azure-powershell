@@ -93,7 +93,7 @@ function Invoke-SubModuleGeneration {
     Set-Location -Path $GenerateDirectory
     $tspLocationPath = Join-Path $GenerateDirectory "tsp-location.yaml"
     if (Test-Path $tspLocationPath) {
-        # Not good practice to do this, this requires 'PrepareAutorestModule.ps1' to prepare AzDev and pipeline to install tsp compiler'
+        # Not good practice to do this, this requires 'PrepareAutorestModule.ps1' to prepare AzDev
         New-DevTSPModule >> $GenerateLog
     }
     else {
