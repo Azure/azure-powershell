@@ -454,9 +454,9 @@ namespace Microsoft.Azure.Commands.Aks
             {
                 managedCluster.DisableLocalAccounts = DisableLocalAccount;
             }
-            if (EnabledMonitorMetric.IsPresent)
+            if (EnableMonitorMetric.IsPresent)
             {
-                managedCluster.AzureMonitorProfile = new ManagedClusterAzureMonitorProfile(new ManagedClusterAzureMonitorProfileMetrics(enabled: EnabledMonitorMetric.ToBool()));
+                managedCluster.AzureMonitorProfile = new ManagedClusterAzureMonitorProfile(new ManagedClusterAzureMonitorProfileMetrics(enabled: EnableMonitorMetric.ToBool()));
             }
             //if(EnablePodSecurityPolicy.IsPresent)
             //{
@@ -512,6 +512,7 @@ namespace Microsoft.Azure.Commands.Aks
             managedCluster.PodIdentityProfile = CreateOrUpdatePodIdentityProfile();
             managedCluster.SecurityProfile = CreateOrUpdateSecurityProfile();
             managedCluster.WorkloadAutoScalerProfile = CreateOrUpdateWorkloadAutoScalerProfile();
+            managedCluster.StorageProfile = CreateOrUpdateStorageProfile();
 
             return managedCluster;
         }
@@ -555,9 +556,9 @@ namespace Microsoft.Azure.Commands.Aks
             {
                 networkProfile.NetworkPluginMode = NetworkPluginMode;
             }
-            if (this.IsParameterBound(c => c.EnabledStaticEgressGateway))
+            if (this.IsParameterBound(c => c.EnableStaticEgressGateway))
             {
-                networkProfile.StaticEgressGatewayProfile = new ManagedClusterStaticEgressGatewayProfile(EnabledStaticEgressGateway.ToBool());
+                networkProfile.StaticEgressGatewayProfile = new ManagedClusterStaticEgressGatewayProfile(EnableStaticEgressGateway.ToBool());
             }
 
             networkProfile.LoadBalancerProfile = CreateOrUpdateLoadBalancerProfile();

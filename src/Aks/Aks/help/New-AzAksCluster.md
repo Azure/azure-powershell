@@ -38,7 +38,7 @@ New-AzAksCluster [-EdgeZone <String>] [-AddOnNameToBeEnabled <String[]>] [-Subne
  [-ApiServerAccessAuthorizedIpRange <String[]>] [-DisableApiServerRunCommand]
  [-EnableApiServerAccessPrivateCluster] [-EnableApiServerAccessPrivateClusterPublicFQDN]
  [-EnableApiServerVnetIntegration] [-ApiServerAccessPrivateDnsZone <String>] [-ApiServerSubnetId <String>]
- [-NodeOSAutoUpgradeChannel <String>] [-NodeAutoUpgradeChannel <String>] [-EnabledMonitorMetric]
+ [-NodeOSAutoUpgradeChannel <String>] [-NodeAutoUpgradeChannel <String>] [-EnableMonitorMetric]
  [-BootstrapArtifactSource <String>] [-BootstrapContainerRegistryId <String>] [-DisableLocalAccount]
  [-DiskEncryptionSetID <String>] [-DnsNamePrefix <String>] [-FqdnSubdomain <String>] [-HttpProxy <String>]
  [-HttpsProxy <String>] [-HttpProxyConfigNoProxyEndpoint <String[]>] [-HttpProxyConfigTrustedCa <String>]
@@ -51,15 +51,16 @@ New-AzAksCluster [-EdgeZone <String>] [-AddOnNameToBeEnabled <String[]>] [-Subne
  [-LoadBalancerManagedOutboundIpCountIPv6 <Int32>] [-LoadBalancerOutboundIpPrefix <String[]>]
  [-LoadBalancerOutboundIp <String[]>] [-NATGatewayIdleTimeoutInMinute <Int32>]
  [-NATGatewayManagedOutboundIpCount <Int32>] [-NetworkDataplane <String>] [-NetworkPluginMode <String>]
- [-EnabledStaticEgressGateway] [-NodeProvisioningMode <String>] [-NodeProvisioningDefaultPool <String>]
- [-NodeResourceGroupRestrictionLevel <String>] [-EnabledPodIdentity] [-EnablePodIdentityWithKubenet]
+ [-EnableStaticEgressGateway] [-NodeProvisioningMode <String>] [-NodeProvisioningDefaultPool <String>]
+ [-NodeResourceGroupRestrictionLevel <String>] [-EnablePodIdentity] [-EnablePodIdentityWithKubenet]
  [-EnablePublicNetworkAccess] [-EnableAzureKeyVaultKms] [-AzureKeyVaultKmsKeyId <String>]
  [-AzureKeyVaultKmsNetworkAccess <String>] [-AzureKeyVaultKmsResourceId <String>]
  [-CustomCaTrustCertificate <String[]>] [-DefenderLogAnalyticsWorkspaceResourceId <String>]
  [-EnableDefenderSecurityMonitoring] [-EnableImageCleaner] [-ImageCleanerIntervalHour <Int32>]
  [-EnableWorkloadIdentity] [[-ServicePrincipalIdAndSecret] <PSCredential>] [-SupportPlan <String>]
  [-WindowsProfileAdminUserPassword <SecureString>] [-EnableAHUB] [-EnableKEDA] [-EnableVerticalPodAutoscaler]
- [-Tag <Hashtable>] [-AksCustomHeader <Hashtable>] [-IfMatch <String>] [-IfNoneMatch <String>]
+ [-Tag <Hashtable>] [-EnableBlobCSIDriver] [-EnableDiskCSIDriver] [-EnableFileCSIDriver]
+ [-EnableSnapshotCSIDriver] [-AksCustomHeader <Hashtable>] [-IfMatch <String>] [-IfNoneMatch <String>]
  [-AcrNameToAttach <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [-SubscriptionId <String>] [<CommonParameters>]
 ```
@@ -684,6 +685,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnableBlobCSIDriver
+Whether to to enable AzureBlob CSI Driver.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EnableCostAnalysis
 Whether to enable cost analysis. The Managed Cluster sku.tier must be set to &#39;Standard&#39; or &#39;Premium&#39; to enable this feature. Enabling this will add Kubernetes Namespace and Deployment details to the Cost Analysis views in the Azure portal. If not specified, the default is false. For more information see aka.ms/aks/docs/cost-analysis.
 
@@ -714,38 +730,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnabledMonitorMetric
-Whether to enable or disable the Azure Managed Prometheus addon for Prometheus monitoring. See aka.ms/AzureManagedPrometheus-aks-enable for details on enabling and disabling.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EnabledPodIdentity
-Whether the pod identity addon is enabled.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EnabledStaticEgressGateway
-Whether to enable Static Egress Gateway addon.
+### -EnableDiskCSIDriver
+Whether to enable AzureDisk CSI Driver.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -761,6 +747,21 @@ Accept wildcard characters: False
 
 ### -EnableEncryptionAtHost
 Whether to enable host based OS and data drive
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableFileCSIDriver
+Whether to enable AzureFile CSI Driver.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -834,6 +835,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnableMonitorMetric
+Whether to enable or disable the Azure Managed Prometheus addon for Prometheus monitoring. See aka.ms/AzureManagedPrometheus-aks-enable for details on enabling and disabling.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EnableNodeAutoScaling
 Whether to enable auto-scaler
 
@@ -879,6 +895,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnablePodIdentity
+Whether the pod identity addon is enabled.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EnablePodIdentityWithKubenet
 Whether pod identity is allowed to run on clusters with  Kubenet networking. Running in Kubenet is disabled by default due to the  security related nature of AAD Pod Identity and the risks of IP spoofing.  See [using Kubenet network plugin with AAD Pod  Identity](https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity#using-kubenet-network-plugin-with-azure-active-directory-pod-managed-identities)  for more information.
 
@@ -911,6 +942,36 @@ Accept wildcard characters: False
 
 ### -EnableRbac
 Whether to enable Kubernetes Role-Based Access
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableSnapshotCSIDriver
+Whether to enable Snapshot Controller.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableStaticEgressGateway
+Whether to enable Static Egress Gateway addon.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

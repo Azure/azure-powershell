@@ -153,9 +153,9 @@ namespace Microsoft.Azure.Commands.Aks
             {
                 networkProfile.NetworkPluginMode = NetworkPluginMode;
             }
-            if (this.IsParameterBound(c => c.EnabledStaticEgressGateway))
+            if (this.IsParameterBound(c => c.EnableStaticEgressGateway))
             {
-                networkProfile.StaticEgressGatewayProfile = new ManagedClusterStaticEgressGatewayProfile(EnabledStaticEgressGateway.ToBool());
+                networkProfile.StaticEgressGatewayProfile = new ManagedClusterStaticEgressGatewayProfile(EnableStaticEgressGateway.ToBool());
             }
             networkProfile.LoadBalancerProfile = CreateOrUpdateLoadBalancerProfile(networkProfile.LoadBalancerProfile);
             networkProfile.NatGatewayProfile = CreateOrUpdateNATGatewayProfile(networkProfile.NatGatewayProfile);
@@ -508,9 +508,9 @@ namespace Microsoft.Azure.Commands.Aks
                     {
                         cluster.DisableLocalAccounts = DisableLocalAccount.ToBool();
                     }
-                    if (this.IsParameterBound(c => c.EnabledMonitorMetric))
+                    if (this.IsParameterBound(c => c.EnableMonitorMetric))
                     {
-                        cluster.AzureMonitorProfile = new ManagedClusterAzureMonitorProfile(new ManagedClusterAzureMonitorProfileMetrics(enabled: EnabledMonitorMetric.ToBool()));
+                        cluster.AzureMonitorProfile = new ManagedClusterAzureMonitorProfile(new ManagedClusterAzureMonitorProfileMetrics(enabled: EnableMonitorMetric.ToBool()));
                     }
                     if (this.IsParameterBound(c => c.EnableAIToolchainOperator))
                     {
@@ -545,6 +545,7 @@ namespace Microsoft.Azure.Commands.Aks
                     cluster.PodIdentityProfile = CreateOrUpdatePodIdentityProfile(cluster.PodIdentityProfile);
                     cluster.SecurityProfile = CreateOrUpdateSecurityProfile(cluster.SecurityProfile);
                     cluster.WorkloadAutoScalerProfile = CreateOrUpdateWorkloadAutoScalerProfile(cluster.WorkloadAutoScalerProfile);
+                    cluster.StorageProfile = CreateOrUpdateStorageProfile(cluster.StorageProfile);
 
                     SetIdentity(cluster);
 

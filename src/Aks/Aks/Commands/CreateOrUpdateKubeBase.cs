@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Commands.Aks
         public string NodeAutoUpgradeChannel { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Whether to enable or disable the Azure Managed Prometheus addon for Prometheus monitoring. See aka.ms/AzureManagedPrometheus-aks-enable for details on enabling and disabling.")]
-        public SwitchParameter EnabledMonitorMetric { get; set; }
+        public SwitchParameter EnableMonitorMetric { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The artifact source. The source where the artifacts are downloaded from.")]
         [PSArgumentCompleter("Cache", "Direct")]
@@ -260,7 +260,7 @@ namespace Microsoft.Azure.Commands.Aks
         public string NetworkPluginMode { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Whether to enable Static Egress Gateway addon.")]
-        public SwitchParameter EnabledStaticEgressGateway { get; set; }
+        public SwitchParameter EnableStaticEgressGateway { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The node provisioning mode.")]
         [PSArgumentCompleter("Manual", "Auto")]
@@ -275,7 +275,7 @@ namespace Microsoft.Azure.Commands.Aks
         public string NodeResourceGroupRestrictionLevel { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Whether the pod identity addon is enabled.")]
-        public SwitchParameter EnabledPodIdentity { get; set; }
+        public SwitchParameter EnablePodIdentity { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Whether pod identity is allowed to run on clusters with  Kubenet networking. Running in Kubenet is disabled by default due to the  security related nature of AAD Pod Identity and the risks of IP spoofing.  See [using Kubenet network plugin with AAD Pod  Identity](https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity#using-kubenet-network-plugin-with-azure-active-directory-pod-managed-identities)  for more information.")]
         public SwitchParameter EnablePodIdentityWithKubenet { get; set; }
@@ -337,6 +337,18 @@ namespace Microsoft.Azure.Commands.Aks
 
         [Parameter(Mandatory = false)]
         public Hashtable Tag { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Whether to to enable AzureBlob CSI Driver.")]
+        public SwitchParameter EnableBlobCSIDriver { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Whether to enable AzureDisk CSI Driver.")]
+        public SwitchParameter EnableDiskCSIDriver { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Whether to enable AzureFile CSI Driver.")]
+        public SwitchParameter EnableFileCSIDriver { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Whether to enable Snapshot Controller.")]
+        public SwitchParameter EnableSnapshotCSIDriver { get; set; }
 
         // URL Header Parameters
 
@@ -1145,15 +1157,15 @@ namespace Microsoft.Azure.Commands.Aks
 
         protected ManagedClusterPodIdentityProfile CreateOrUpdatePodIdentityProfile(ManagedClusterPodIdentityProfile podIdentityProfile = null) 
         {
-            if (this.IsParameterBound(c => c.EnabledPodIdentity) ||
+            if (this.IsParameterBound(c => c.EnablePodIdentity) ||
                 this.IsParameterBound(c => c.EnablePodIdentityWithKubenet))
             {
                 if (podIdentityProfile == null)
                 {
                     podIdentityProfile = new ManagedClusterPodIdentityProfile();
                 }
-                if (this.IsParameterBound(c => c.EnabledPodIdentity)) {
-                    podIdentityProfile.Enabled = EnabledPodIdentity.ToBool();
+                if (this.IsParameterBound(c => c.EnablePodIdentity)) {
+                    podIdentityProfile.Enabled = EnablePodIdentity.ToBool();
                 }
                 if (this.IsParameterBound(c => c.EnablePodIdentityWithKubenet))
                 {
@@ -1217,6 +1229,53 @@ namespace Microsoft.Azure.Commands.Aks
                 }
             }
             return advancedNetworking;
+        }
+
+        protected ManagedClusterStorageProfile CreateOrUpdateStorageProfile(ManagedClusterStorageProfile storageProfile = null)
+        {
+            if (this.IsParameterBound(c => c.EnableBlobCSIDriver) ||
+                this.IsParameterBound(c => c.EnableDiskCSIDriver) ||
+                this.IsParameterBound(c => c.EnableFileCSIDriver) ||
+                this.IsParameterBound(c => c.EnableSnapshotCSIDriver))
+            {
+                if (storageProfile == null)
+                {
+                    storageProfile = new ManagedClusterStorageProfile();
+                }
+                if (this.IsParameterBound(c => c.EnableBlobCSIDriver))
+                {
+                    if (storageProfile.BlobCsiDriver == null)
+                    {
+                        storageProfile.BlobCsiDriver = new ManagedClusterStorageProfileBlobCSIDriver();
+                    }
+                    storageProfile.BlobCsiDriver.Enabled = EnableBlobCSIDriver.ToBool();
+                }
+                if (this.IsParameterBound(c => c.EnableDiskCSIDriver))
+                {
+                    if (storageProfile.DiskCsiDriver == null)
+                    {
+                        storageProfile.DiskCsiDriver = new ManagedClusterStorageProfileDiskCSIDriver();
+                    }
+                    storageProfile.DiskCsiDriver.Enabled = EnableDiskCSIDriver.ToBool();
+                }
+                if (this.IsParameterBound(c => c.EnableFileCSIDriver))
+                {
+                    if (storageProfile.FileCsiDriver == null)
+                    {
+                        storageProfile.FileCsiDriver = new ManagedClusterStorageProfileFileCSIDriver();
+                    }
+                    storageProfile.FileCsiDriver.Enabled = EnableFileCSIDriver.ToBool();
+                }
+                if (this.IsParameterBound(c => c.EnableSnapshotCSIDriver))
+                {
+                    if (storageProfile.SnapshotController == null)
+                    {
+                        storageProfile.SnapshotController = new ManagedClusterStorageProfileSnapshotController();
+                    }
+                    storageProfile.SnapshotController.Enabled = EnableSnapshotCSIDriver.ToBool();
+                }
+            }
+            return storageProfile;
         }
 
         private protected ManagedCluster CreateOrUpdate(string resourceGroupName, string resourceName, ManagedCluster parameters)
