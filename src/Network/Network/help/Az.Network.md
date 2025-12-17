@@ -1460,6 +1460,9 @@ V2 Version of Packet Capture Cmdlet which creates a new packet capture resource 
 ### [New-AzNetworkWatcherProtocolConfiguration](New-AzNetworkWatcherProtocolConfiguration.md)
 Creates a new protocol configuration object.
 
+### [New-AzNvaInterfaceConfiguration](New-AzNvaInterfaceConfiguration.md)
+Create a NVA Interface configuration
+
 ### [New-AzO365PolicyProperty](New-AzO365PolicyProperty.md)
 Create an office 365 traffic breakout policy object.
 
@@ -1615,6 +1618,9 @@ Creates a virtual network.
 
 ### [New-AzVirtualNetworkGateway](New-AzVirtualNetworkGateway.md)
 Creates a Virtual Network Gateway
+
+### [New-AzVirtualNetworkGatewayCertificateAuthentication](New-AzVirtualNetworkGatewayCertificateAuthentication.md)
+Creates a certificate authentication configuration object for VPN gateway connections.
 
 ### [New-AzVirtualNetworkGatewayConnection](New-AzVirtualNetworkGatewayConnection.md)
 Creates the Site-to-Site VPN connection between the virtual network gateway and the on-prem VPN device.

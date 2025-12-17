@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Updated Azure.Core from 1.47.3 to 1.50.0
+* Updated the implementation of 'New-AzBatchApplicationPackage' cmdlet to not call 'Get-AzBatchApplicationPackage' to retrieve storage keys for security improvements. No behavior changes to the cmdlet.
 
 ## Version 4.0.0
 * Upgraded API version from 2022-10-01 to 2024-07-01.

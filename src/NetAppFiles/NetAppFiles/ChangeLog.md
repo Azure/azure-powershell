@@ -19,9 +19,12 @@
 -->
 ## Upcoming Release
 * Updated Azure.Core from 1.47.3 to 1.50.0
+* General availability for module Az.NetAppFiles
 
 ## Version 0.25.1
 * Updated Azure.Core from 1.45.0 to 1.47.3
+* Updated to api-version 2025-09-01
+* Added argument `ExcludeFilter` to `Get-AzNetAppFilesVolumeReplication` to exclude deleted replications
 
 ## Version 0.25.0
 * Updated to api-version 2025-06-01

@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
     /// <summary>
     /// Restore payload for Single File Snapshot Restore
     /// </summary>
-    public partial class SnapshotRestoreFiles : Microsoft.Rest.Azure.IResource
+    public partial class SnapshotRestoreFiles
     {
         /// <summary>
         /// Initializes a new instance of the SnapshotRestoreFiles class.

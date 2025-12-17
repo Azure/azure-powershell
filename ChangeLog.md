@@ -1,3 +1,41 @@
+## 15.1.0 - December 2025
+#### Az.AppConfiguration 2.0.1
+* Fixed GitHub issue #23731 'Problem with Get-AzAppConfigurationKeyValue when more that 100 records are present'
+    - Fixed 'NextLink' property to give absolute URI, allowing subsequent pages of results to be retrieved.
+
+#### Az.Compute 11.1.0
+* Added '-ResiliencyView' parameter to 'Get-AzVmssVM' cmdlet
+    - Retrieves the resilient VM deletion status for Virtual Machine Scale Set (VMSS) VMs
+    - Indicates whether automatic delete retries are in progress, failed, or not started
+    - Supports monitoring the real-time status of the Resilient Delete feature
+
+#### Az.CosmosDB 1.19.0
+* Added fleet management support for Cosmos DB accounts.
+* Added support for priority based execution.
+
+#### Az.ElasticSan 1.6.0
+* Reverted changes for auto scale, pre-backup, and pre-restore 
+    - 'New-AzElasticSan'
+    - 'Update-AzElasticSan'
+    - 'Test-AzElasticSanVolumeBackup'
+    - 'Test-AzElasticSanVolumeRestore'
+
+#### Az.Functions 4.3.0
+* Added FlexConsumption support to Get-AzFunctionAppAvailableLocation, which returns a list of regions that supported Flex Consumption, including locations supporting zone redundancy (currently applied only to Flex Consumption)
+* Added a new cmdlet Get-AzFunctionAppFlexConsumptionRuntime to retrieve Flex Consumption runtimes for a specified location
+* Added a new parameter set to New-AzFunctionApp to support Flex Consumption function apps [#24349]
+* Refreshed stack definitions
+
+#### Az.Network 7.24.0
+* Added support for 'RecordType' property in 'New-AzNetworkWatcherFlowLog' and 'Set-AzNetworkWatcherFlowLog' cmdlets.
+* Added property 'NvaInterfaceConfiguration' to Network Virtual Appliances, as well as support for them in following cmdlets:
+    - 'New-AzNetworkVirtualAppliance'
+    - 'Get-AzNetworkVirtualAppliance'
+* Added cmdlet to take the NvaInterfaceConfigurations properties on the Network Virtual Appliance:
+    - 'New-AzNvaInterfaceConfiguration'  to build individual interface configuration for network virtual appliance.
+* Removed the None from the accepted value for the property 'Sensitivity'
+    - Updated 'New-AzApplicationGatewayFirewallPolicyManagedRuleOverride' cmdlet
+
 ## 15.0.0 - November 2025
 #### Az.Accounts 5.3.1
 * Updated Azure.Core from 1.45.0 to 1.47.3
