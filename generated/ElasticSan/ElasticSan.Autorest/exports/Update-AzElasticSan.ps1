@@ -20,7 +20,7 @@ Update a Elastic San.
 .Description
 Update a Elastic San.
 .Example
-$elasticSan = Update-AzElasticSan -ResourceGroupName myresourcegroup -Name myelasticsan -BaseSizeTib 5 -ExtendedCapacitySizeTib 20 -Tag @{"tag3" = "value3"} -CapacityUnitScaleUpLimitTiB 20 -IncreaseCapacityUnitByTiB 2 -UnusedSizeTiB 5 -AutoScalePolicyEnforcement Disabled
+$elasticSan = Update-AzElasticSan -ResourceGroupName myresourcegroup -Name myelasticsan -BaseSizeTib 64 -ExtendedCapacitySizeTib 128 -Tag @{"tag3" = "value3"}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity
@@ -75,13 +75,6 @@ param(
     ${InputObject},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("None", "Enabled", "Disabled")]
-    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
-    [System.String]
-    # Enable or Disable scale up setting on Elastic San Appliance.
-    ${AutoScalePolicyEnforcement},
-
-    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
     [System.Int64]
     # Base size of the Elastic San appliance in TiB.
@@ -90,20 +83,8 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
     [System.Int64]
-    # Maximum scale up size on Elastic San appliance in TiB.
-    ${CapacityUnitScaleUpLimitTiB},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
-    [System.Int64]
     # Extended size of the Elastic San appliance in TiB.
     ${ExtendedCapacitySizeTiB},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
-    [System.Int64]
-    # Unit to increase Capacity Unit on Elastic San appliance in TiB.
-    ${IncreaseCapacityUnitByTiB},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Enabled", "Disabled")]
@@ -119,12 +100,6 @@ param(
     [System.Collections.Hashtable]
     # Update tags
     ${Tag},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
-    [System.Int64]
-    # Unused size on Elastic San appliance in TiB.
-    ${UnusedSizeTiB},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]

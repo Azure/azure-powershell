@@ -9,16 +9,16 @@
           "en-US"
         ],
         "client-request-id": [
-          "963be595-75bb-44bb-980c-f416a0ead922"
+          "8917a5c8-3190-480a-baeb-a269cb19dfec"
         ],
         "ocp-date": [
-          "Wed, 29 Oct 2025 00:35:42 GMT"
+          "Fri, 05 Dec 2025 05:52:58 GMT"
         ],
         "x-ms-client-request-id": [
-          "8a3dd911-d417-4c30-a42c-a1ba47c3189e"
+          "2c3af8ec-5ebf-4db8-8dfe-c819896314da"
         ],
         "User-Agent": [
-          "FxVersion/8.0.2125.47513",
+          "FxVersion/8.0.2225.52707",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.26200",
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.300.124.47002",
@@ -37,7 +37,7 @@
           "chunked"
         ],
         "ETag": [
-          "0x8DE168317A0141F"
+          "0x8DE33C28BB19F6D"
         ],
         "Location": [
           "https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/pools/pool1"
@@ -46,7 +46,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "82c3f980-b2c5-426b-9f86-ad87bf9102b3"
+          "bd8376c5-97cb-4a62-bb06-11204058947b"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -61,10 +61,10 @@
           "https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/pools/pool1"
         ],
         "Date": [
-          "Wed, 29 Oct 2025 00:35:42 GMT"
+          "Fri, 05 Dec 2025 05:52:59 GMT"
         ],
         "Last-Modified": [
-          "Wed, 29 Oct 2025 00:35:42 GMT"
+          "Fri, 05 Dec 2025 05:52:59 GMT"
         ]
       },
       "ResponseBody": "",
@@ -79,16 +79,16 @@
           "en-US"
         ],
         "client-request-id": [
-          "e46d4d56-d2c6-4d63-a63d-523616cd7685"
+          "5fef1e36-3cab-4e10-b771-f3da58cda3e5"
         ],
         "ocp-date": [
-          "Wed, 29 Oct 2025 00:35:42 GMT"
+          "Fri, 05 Dec 2025 05:53:00 GMT"
         ],
         "x-ms-client-request-id": [
-          "0786de0f-38c4-42f3-91e7-155f9eba892f"
+          "3af4f77a-83ec-450d-999d-69ee1cbc68dd"
         ],
         "User-Agent": [
-          "FxVersion/8.0.2125.47513",
+          "FxVersion/8.0.2225.52707",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.26200",
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.300.124.47002",
@@ -107,7 +107,7 @@
           "chunked"
         ],
         "ETag": [
-          "0x8DE168317D30148"
+          "0x8DE33C28C61BE79"
         ],
         "Location": [
           "https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/pools/pool2"
@@ -116,7 +116,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "b96e0c50-7975-485e-8da6-7e63763fd608"
+          "42814c60-0f3d-424d-ac25-2fb1f8b093cb"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -131,10 +131,10 @@
           "https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/pools/pool2"
         ],
         "Date": [
-          "Wed, 29 Oct 2025 00:35:42 GMT"
+          "Fri, 05 Dec 2025 05:53:00 GMT"
         ],
         "Last-Modified": [
-          "Wed, 29 Oct 2025 00:35:42 GMT"
+          "Fri, 05 Dec 2025 05:53:00 GMT"
         ]
       },
       "ResponseBody": "",
@@ -149,16 +149,16 @@
           "en-US"
         ],
         "client-request-id": [
-          "45fca24b-2529-4f73-aafe-751c9543d3cd"
+          "dbc4dffd-7a70-4416-b77a-2ecdc6d6b847"
         ],
         "ocp-date": [
-          "Wed, 29 Oct 2025 00:35:43 GMT"
+          "Fri, 05 Dec 2025 05:53:00 GMT"
         ],
         "x-ms-client-request-id": [
-          "9b3981ad-30cc-4402-8e76-1e816a5e9c3e"
+          "8c540cae-280d-4bf8-8242-ea06ce7b7b1a"
         ],
         "User-Agent": [
-          "FxVersion/8.0.2125.47513",
+          "FxVersion/8.0.2225.52707",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.26200",
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.300.124.47002",
@@ -174,7 +174,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "08efa1ab-0c3e-4562-a443-d5a45bc8a1b7"
+          "696a6606-c061-49e0-be11-14af929ad92e"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -186,13 +186,13 @@
           "3.0"
         ],
         "Date": [
-          "Wed, 29 Oct 2025 00:35:42 GMT"
+          "Fri, 05 Dec 2025 05:53:00 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/$metadata#pools\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"pool1\",\r\n      \"url\": \"https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/pools/pool1\",\r\n      \"eTag\": \"0x8DE168317A0141F\",\r\n      \"lastModified\": \"2025-10-29T00:35:42.6082847Z\",\r\n      \"creationTime\": \"2025-10-29T00:35:42.6082822Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2025-10-29T00:35:42.6082822Z\",\r\n      \"allocationState\": \"resizing\",\r\n      \"allocationStateTransitionTime\": \"2025-10-29T00:35:42.6082849Z\",\r\n      \"vmSize\": \"standard_d1_v2\",\r\n      \"resizeTimeout\": \"PT15M\",\r\n      \"currentDedicatedNodes\": 0,\r\n      \"targetDedicatedNodes\": 0,\r\n      \"currentLowPriorityNodes\": 0,\r\n      \"targetLowPriorityNodes\": 0,\r\n      \"enableAutoScale\": false,\r\n      \"enableInterNodeCommunication\": false,\r\n      \"certificateReferences\": [],\r\n      \"taskSlotsPerNode\": 1,\r\n      \"taskSchedulingPolicy\": {\r\n        \"nodeFillType\": \"Spread\"\r\n      },\r\n      \"virtualMachineConfiguration\": {\r\n        \"imageReference\": {\r\n          \"publisher\": \"microsoft-azure-batch\",\r\n          \"offer\": \"ubuntu-server-container\",\r\n          \"sku\": \"20-04-lts\",\r\n          \"version\": \"latest\"\r\n        },\r\n        \"nodeAgentSKUId\": \"batch.node.ubuntu 20.04\",\r\n        \"containerConfiguration\": {\r\n          \"type\": \"dockerCompatible\",\r\n          \"containerImageNames\": [\r\n            \"test1\"\r\n          ]\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"pool2\",\r\n      \"url\": \"https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/pools/pool2\",\r\n      \"eTag\": \"0x8DE168317D30148\",\r\n      \"lastModified\": \"2025-10-29T00:35:42.942036Z\",\r\n      \"creationTime\": \"2025-10-29T00:35:42.9420349Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2025-10-29T00:35:42.9420349Z\",\r\n      \"allocationState\": \"resizing\",\r\n      \"allocationStateTransitionTime\": \"2025-10-29T00:35:42.9420361Z\",\r\n      \"vmSize\": \"standard_d1_v2\",\r\n      \"resizeTimeout\": \"PT15M\",\r\n      \"currentDedicatedNodes\": 0,\r\n      \"targetDedicatedNodes\": 0,\r\n      \"currentLowPriorityNodes\": 0,\r\n      \"targetLowPriorityNodes\": 0,\r\n      \"enableAutoScale\": false,\r\n      \"enableInterNodeCommunication\": false,\r\n      \"certificateReferences\": [],\r\n      \"taskSlotsPerNode\": 1,\r\n      \"taskSchedulingPolicy\": {\r\n        \"nodeFillType\": \"Spread\"\r\n      },\r\n      \"virtualMachineConfiguration\": {\r\n        \"imageReference\": {\r\n          \"publisher\": \"microsoft-azure-batch\",\r\n          \"offer\": \"ubuntu-server-container\",\r\n          \"sku\": \"20-04-lts\",\r\n          \"version\": \"latest\"\r\n        },\r\n        \"nodeAgentSKUId\": \"batch.node.ubuntu 20.04\",\r\n        \"containerConfiguration\": {\r\n          \"type\": \"dockerCompatible\",\r\n          \"containerImageNames\": [\r\n            \"test2\"\r\n          ]\r\n        }\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/$metadata#pools\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"pool1\",\r\n      \"url\": \"https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/pools/pool1\",\r\n      \"eTag\": \"0x8DE33C28BB19F6D\",\r\n      \"lastModified\": \"2025-12-05T05:52:59.3534829Z\",\r\n      \"creationTime\": \"2025-12-05T05:52:59.3534806Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2025-12-05T05:52:59.3534806Z\",\r\n      \"allocationState\": \"resizing\",\r\n      \"allocationStateTransitionTime\": \"2025-12-05T05:52:59.3534831Z\",\r\n      \"vmSize\": \"standard_d1_v2\",\r\n      \"resizeTimeout\": \"PT15M\",\r\n      \"currentDedicatedNodes\": 0,\r\n      \"targetDedicatedNodes\": 0,\r\n      \"currentLowPriorityNodes\": 0,\r\n      \"targetLowPriorityNodes\": 0,\r\n      \"enableAutoScale\": false,\r\n      \"enableInterNodeCommunication\": false,\r\n      \"certificateReferences\": [],\r\n      \"taskSlotsPerNode\": 1,\r\n      \"taskSchedulingPolicy\": {\r\n        \"nodeFillType\": \"Spread\"\r\n      },\r\n      \"virtualMachineConfiguration\": {\r\n        \"imageReference\": {\r\n          \"publisher\": \"microsoft-azure-batch\",\r\n          \"offer\": \"ubuntu-server-container\",\r\n          \"sku\": \"20-04-lts\",\r\n          \"version\": \"latest\"\r\n        },\r\n        \"nodeAgentSKUId\": \"batch.node.ubuntu 20.04\",\r\n        \"containerConfiguration\": {\r\n          \"type\": \"dockerCompatible\",\r\n          \"containerImageNames\": [\r\n            \"test1\"\r\n          ]\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"pool2\",\r\n      \"url\": \"https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/pools/pool2\",\r\n      \"eTag\": \"0x8DE33C28C61BE79\",\r\n      \"lastModified\": \"2025-12-05T05:53:00.5077113Z\",\r\n      \"creationTime\": \"2025-12-05T05:53:00.5077104Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2025-12-05T05:53:00.5077104Z\",\r\n      \"allocationState\": \"resizing\",\r\n      \"allocationStateTransitionTime\": \"2025-12-05T05:53:00.5077114Z\",\r\n      \"vmSize\": \"standard_d1_v2\",\r\n      \"resizeTimeout\": \"PT15M\",\r\n      \"currentDedicatedNodes\": 0,\r\n      \"targetDedicatedNodes\": 0,\r\n      \"currentLowPriorityNodes\": 0,\r\n      \"targetLowPriorityNodes\": 0,\r\n      \"enableAutoScale\": false,\r\n      \"enableInterNodeCommunication\": false,\r\n      \"certificateReferences\": [],\r\n      \"taskSlotsPerNode\": 1,\r\n      \"taskSchedulingPolicy\": {\r\n        \"nodeFillType\": \"Spread\"\r\n      },\r\n      \"virtualMachineConfiguration\": {\r\n        \"imageReference\": {\r\n          \"publisher\": \"microsoft-azure-batch\",\r\n          \"offer\": \"ubuntu-server-container\",\r\n          \"sku\": \"20-04-lts\",\r\n          \"version\": \"latest\"\r\n        },\r\n        \"nodeAgentSKUId\": \"batch.node.ubuntu 20.04\",\r\n        \"containerConfiguration\": {\r\n          \"type\": \"dockerCompatible\",\r\n          \"containerImageNames\": [\r\n            \"test2\"\r\n          ]\r\n        }\r\n      }\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -204,16 +204,16 @@
           "en-US"
         ],
         "client-request-id": [
-          "93c7290c-0925-4605-bd94-e16d35066de5"
+          "041bb31e-d67b-4c61-99cb-e348b85e6215"
         ],
         "ocp-date": [
-          "Wed, 29 Oct 2025 00:35:44 GMT"
+          "Fri, 05 Dec 2025 05:53:00 GMT"
         ],
         "x-ms-client-request-id": [
-          "632a0791-5ba8-404a-a207-b4e49ee6da55"
+          "38227053-4b9a-4683-985c-521d26c43e24"
         ],
         "User-Agent": [
-          "FxVersion/8.0.2125.47513",
+          "FxVersion/8.0.2225.52707",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.26200",
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.300.124.47002",
@@ -229,13 +229,13 @@
       "RequestBody": "{\r\n  \"startTask\": {\r\n    \"commandLine\": \"/bin/bash -c 'echo start task'\"\r\n  },\r\n  \"certificateReferences\": [],\r\n  \"applicationPackageReferences\": [],\r\n  \"metadata\": []\r\n}",
       "ResponseHeaders": {
         "ETag": [
-          "0x8DE168318D093B9"
+          "0x8DE33C28D6262A1"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "c4ee76bf-5723-432c-8f7b-95bb76ff2576"
+          "f4d5682e-65af-40d4-8721-4b4d1ebe5683"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -250,13 +250,13 @@
           "https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/pools/pool2/updateproperties"
         ],
         "Date": [
-          "Wed, 29 Oct 2025 00:35:43 GMT"
+          "Fri, 05 Dec 2025 05:53:01 GMT"
         ],
         "Content-Length": [
           "0"
         ],
         "Last-Modified": [
-          "Wed, 29 Oct 2025 00:35:44 GMT"
+          "Fri, 05 Dec 2025 05:53:02 GMT"
         ]
       },
       "ResponseBody": "",
@@ -271,16 +271,16 @@
           "en-US"
         ],
         "client-request-id": [
-          "73bd19c9-bbbc-4f79-b4b0-0bcd23ad2561"
+          "2a079469-8ef9-42a6-ae7b-9c291b46f974"
         ],
         "ocp-date": [
-          "Wed, 29 Oct 2025 00:35:44 GMT"
+          "Fri, 05 Dec 2025 05:53:01 GMT"
         ],
         "x-ms-client-request-id": [
-          "71cb5c2a-fa0c-4072-a5e8-c61ba38ab0de"
+          "3056e563-edfa-4e68-9c8b-53e156925fcd"
         ],
         "User-Agent": [
-          "FxVersion/8.0.2125.47513",
+          "FxVersion/8.0.2225.52707",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.26200",
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.300.124.47002",
@@ -293,13 +293,13 @@
           "chunked"
         ],
         "ETag": [
-          "0x8DE168318D093B9"
+          "0x8DE33C28D6262A1"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "b1465a1c-57aa-4034-81da-6ed1f92c0f77"
+          "5f09ea6c-32c2-4046-9474-9027f7448555"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -311,16 +311,16 @@
           "3.0"
         ],
         "Date": [
-          "Wed, 29 Oct 2025 00:35:43 GMT"
+          "Fri, 05 Dec 2025 05:53:01 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ],
         "Last-Modified": [
-          "Wed, 29 Oct 2025 00:35:44 GMT"
+          "Fri, 05 Dec 2025 05:53:02 GMT"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/$metadata#pools/@Element\",\r\n  \"id\": \"pool2\",\r\n  \"url\": \"https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/pools/pool2\",\r\n  \"eTag\": \"0x8DE168318D093B9\",\r\n  \"lastModified\": \"2025-10-29T00:35:44.6038457Z\",\r\n  \"creationTime\": \"2025-10-29T00:35:42.9420349Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2025-10-29T00:35:42.9420349Z\",\r\n  \"allocationState\": \"steady\",\r\n  \"allocationStateTransitionTime\": \"2025-10-29T00:35:44.5840513Z\",\r\n  \"vmSize\": \"standard_d1_v2\",\r\n  \"resizeTimeout\": \"PT15M\",\r\n  \"currentDedicatedNodes\": 0,\r\n  \"targetDedicatedNodes\": 0,\r\n  \"currentLowPriorityNodes\": 0,\r\n  \"targetLowPriorityNodes\": 0,\r\n  \"enableAutoScale\": false,\r\n  \"enableInterNodeCommunication\": false,\r\n  \"startTask\": {\r\n    \"commandLine\": \"/bin/bash -c 'echo start task'\",\r\n    \"userIdentity\": {\r\n      \"autoUser\": {\r\n        \"scope\": \"pool\",\r\n        \"elevationLevel\": \"nonadmin\"\r\n      }\r\n    },\r\n    \"maxTaskRetryCount\": 0,\r\n    \"waitForSuccess\": true\r\n  },\r\n  \"certificateReferences\": [],\r\n  \"taskSlotsPerNode\": 1,\r\n  \"taskSchedulingPolicy\": {\r\n    \"nodeFillType\": \"Spread\"\r\n  },\r\n  \"virtualMachineConfiguration\": {\r\n    \"imageReference\": {\r\n      \"publisher\": \"microsoft-azure-batch\",\r\n      \"offer\": \"ubuntu-server-container\",\r\n      \"sku\": \"20-04-lts\",\r\n      \"version\": \"latest\"\r\n    },\r\n    \"nodeAgentSKUId\": \"batch.node.ubuntu 20.04\",\r\n    \"containerConfiguration\": {\r\n      \"type\": \"dockerCompatible\",\r\n      \"containerImageNames\": [\r\n        \"test2\"\r\n      ]\r\n    }\r\n  },\r\n  \"targetNodeCommunicationMode\": \"default\"\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/$metadata#pools/@Element\",\r\n  \"id\": \"pool2\",\r\n  \"url\": \"https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/pools/pool2\",\r\n  \"eTag\": \"0x8DE33C28D6262A1\",\r\n  \"lastModified\": \"2025-12-05T05:53:02.1896353Z\",\r\n  \"creationTime\": \"2025-12-05T05:53:00.5077104Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2025-12-05T05:53:00.5077104Z\",\r\n  \"allocationState\": \"steady\",\r\n  \"allocationStateTransitionTime\": \"2025-12-05T05:53:02.1692442Z\",\r\n  \"vmSize\": \"standard_d1_v2\",\r\n  \"resizeTimeout\": \"PT15M\",\r\n  \"currentDedicatedNodes\": 0,\r\n  \"targetDedicatedNodes\": 0,\r\n  \"currentLowPriorityNodes\": 0,\r\n  \"targetLowPriorityNodes\": 0,\r\n  \"enableAutoScale\": false,\r\n  \"enableInterNodeCommunication\": false,\r\n  \"startTask\": {\r\n    \"commandLine\": \"/bin/bash -c 'echo start task'\",\r\n    \"userIdentity\": {\r\n      \"autoUser\": {\r\n        \"scope\": \"pool\",\r\n        \"elevationLevel\": \"nonadmin\"\r\n      }\r\n    },\r\n    \"maxTaskRetryCount\": 0,\r\n    \"waitForSuccess\": true\r\n  },\r\n  \"certificateReferences\": [],\r\n  \"taskSlotsPerNode\": 1,\r\n  \"taskSchedulingPolicy\": {\r\n    \"nodeFillType\": \"Spread\"\r\n  },\r\n  \"virtualMachineConfiguration\": {\r\n    \"imageReference\": {\r\n      \"publisher\": \"microsoft-azure-batch\",\r\n      \"offer\": \"ubuntu-server-container\",\r\n      \"sku\": \"20-04-lts\",\r\n      \"version\": \"latest\"\r\n    },\r\n    \"nodeAgentSKUId\": \"batch.node.ubuntu 20.04\",\r\n    \"containerConfiguration\": {\r\n      \"type\": \"dockerCompatible\",\r\n      \"containerImageNames\": [\r\n        \"test2\"\r\n      ]\r\n    }\r\n  },\r\n  \"targetNodeCommunicationMode\": \"default\"\r\n}",
       "StatusCode": 200
     },
     {
@@ -332,16 +332,16 @@
           "en-US"
         ],
         "client-request-id": [
-          "2286d26c-e3df-4e8e-99fd-9f2eea9c52f6"
+          "7aaf47db-7436-47ec-b4a0-61250fd3bed3"
         ],
         "ocp-date": [
-          "Wed, 29 Oct 2025 00:35:44 GMT"
+          "Fri, 05 Dec 2025 05:53:02 GMT"
         ],
         "x-ms-client-request-id": [
-          "204e3f4a-b2bf-4a01-8748-067964862fe8"
+          "a7fee622-b5c4-4691-99b5-e7a4e2f280a7"
         ],
         "User-Agent": [
-          "FxVersion/8.0.2125.47513",
+          "FxVersion/8.0.2225.52707",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.26200",
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.300.124.47002",
@@ -360,7 +360,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "a55c1a0f-2bad-46ab-8d43-92af08b76f0b"
+          "8eaac3ed-4cb7-4b0b-92ae-a5b974a99ccf"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -372,7 +372,7 @@
           "3.0"
         ],
         "Date": [
-          "Wed, 29 Oct 2025 00:35:44 GMT"
+          "Fri, 05 Dec 2025 05:53:02 GMT"
         ]
       },
       "ResponseBody": "",
@@ -387,16 +387,16 @@
           "en-US"
         ],
         "client-request-id": [
-          "da8cb47b-db2c-4842-926c-12930a775fdf"
+          "ade59cb6-d09a-4482-90f2-fab81a1d7bdb"
         ],
         "ocp-date": [
-          "Wed, 29 Oct 2025 00:35:44 GMT"
+          "Fri, 05 Dec 2025 05:53:02 GMT"
         ],
         "x-ms-client-request-id": [
-          "451ea926-f4a7-4c59-aa6c-8f1bfb923004"
+          "b6f95b1c-f6ae-49c4-b352-65ff67ccbafb"
         ],
         "User-Agent": [
-          "FxVersion/8.0.2125.47513",
+          "FxVersion/8.0.2225.52707",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.26200",
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.300.124.47002",
@@ -415,7 +415,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "0ac7f867-1909-4212-925f-b15d6a138fd3"
+          "ec5a515e-235b-44f4-aabc-9a440ba278d9"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -427,7 +427,7 @@
           "3.0"
         ],
         "Date": [
-          "Wed, 29 Oct 2025 00:35:44 GMT"
+          "Fri, 05 Dec 2025 05:53:02 GMT"
         ]
       },
       "ResponseBody": "",
@@ -442,16 +442,16 @@
           "en-US"
         ],
         "client-request-id": [
-          "f399b293-6bf3-4847-8044-61881ca0da52"
+          "9df9df1a-70bf-44bb-afbe-c401e6546032"
         ],
         "ocp-date": [
-          "Wed, 29 Oct 2025 00:35:44 GMT"
+          "Fri, 05 Dec 2025 05:53:02 GMT"
         ],
         "x-ms-client-request-id": [
-          "69ab1806-9dd9-4daa-9718-e06cd4910524"
+          "dc9efb28-167b-4237-a780-081eb1a2bf6a"
         ],
         "User-Agent": [
-          "FxVersion/8.0.2125.47513",
+          "FxVersion/8.0.2225.52707",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.26200",
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.300.124.47002",
@@ -467,7 +467,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "5556cb4a-4390-4c2b-9ead-c3bddadaafab"
+          "920a316d-e526-4548-b523-aaa6affb4aff"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -479,13 +479,13 @@
           "3.0"
         ],
         "Date": [
-          "Wed, 29 Oct 2025 00:35:44 GMT"
+          "Fri, 05 Dec 2025 05:53:02 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/$metadata#pools\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"pool1\",\r\n      \"url\": \"https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/pools/pool1\",\r\n      \"eTag\": \"0x8DE168318F3CE16\",\r\n      \"lastModified\": \"2025-10-29T00:35:44.8347158Z\",\r\n      \"creationTime\": \"2025-10-29T00:35:42.6082822Z\",\r\n      \"state\": \"deleting\",\r\n      \"stateTransitionTime\": \"2025-10-29T00:35:44.8347158Z\",\r\n      \"allocationState\": \"resizing\",\r\n      \"allocationStateTransitionTime\": \"2025-10-29T00:35:44.8505701Z\",\r\n      \"vmSize\": \"standard_d1_v2\",\r\n      \"resizeTimeout\": \"PT7M9.497S\",\r\n      \"currentDedicatedNodes\": 0,\r\n      \"targetDedicatedNodes\": 0,\r\n      \"currentLowPriorityNodes\": 0,\r\n      \"targetLowPriorityNodes\": 0,\r\n      \"enableAutoScale\": false,\r\n      \"enableInterNodeCommunication\": false,\r\n      \"certificateReferences\": [],\r\n      \"taskSlotsPerNode\": 1,\r\n      \"taskSchedulingPolicy\": {\r\n        \"nodeFillType\": \"Spread\"\r\n      },\r\n      \"virtualMachineConfiguration\": {\r\n        \"imageReference\": {\r\n          \"publisher\": \"microsoft-azure-batch\",\r\n          \"offer\": \"ubuntu-server-container\",\r\n          \"sku\": \"20-04-lts\",\r\n          \"version\": \"latest\"\r\n        },\r\n        \"nodeAgentSKUId\": \"batch.node.ubuntu 20.04\",\r\n        \"containerConfiguration\": {\r\n          \"type\": \"dockerCompatible\",\r\n          \"containerImageNames\": [\r\n            \"test1\"\r\n          ]\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"pool2\",\r\n      \"url\": \"https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/pools/pool2\",\r\n      \"eTag\": \"0x8DE16831903C4EE\",\r\n      \"lastModified\": \"2025-10-29T00:35:44.939339Z\",\r\n      \"creationTime\": \"2025-10-29T00:35:42.9420349Z\",\r\n      \"state\": \"deleting\",\r\n      \"stateTransitionTime\": \"2025-10-29T00:35:44.939339Z\",\r\n      \"allocationState\": \"resizing\",\r\n      \"allocationStateTransitionTime\": \"2025-10-29T00:35:44.9561207Z\",\r\n      \"vmSize\": \"standard_d1_v2\",\r\n      \"resizeTimeout\": \"PT7M9.497S\",\r\n      \"currentDedicatedNodes\": 0,\r\n      \"targetDedicatedNodes\": 0,\r\n      \"currentLowPriorityNodes\": 0,\r\n      \"targetLowPriorityNodes\": 0,\r\n      \"enableAutoScale\": false,\r\n      \"enableInterNodeCommunication\": false,\r\n      \"startTask\": {\r\n        \"commandLine\": \"/bin/bash -c 'echo start task'\",\r\n        \"userIdentity\": {\r\n          \"autoUser\": {\r\n            \"scope\": \"pool\",\r\n            \"elevationLevel\": \"nonadmin\"\r\n          }\r\n        },\r\n        \"maxTaskRetryCount\": 0,\r\n        \"waitForSuccess\": true\r\n      },\r\n      \"certificateReferences\": [],\r\n      \"taskSlotsPerNode\": 1,\r\n      \"taskSchedulingPolicy\": {\r\n        \"nodeFillType\": \"Spread\"\r\n      },\r\n      \"virtualMachineConfiguration\": {\r\n        \"imageReference\": {\r\n          \"publisher\": \"microsoft-azure-batch\",\r\n          \"offer\": \"ubuntu-server-container\",\r\n          \"sku\": \"20-04-lts\",\r\n          \"version\": \"latest\"\r\n        },\r\n        \"nodeAgentSKUId\": \"batch.node.ubuntu 20.04\",\r\n        \"containerConfiguration\": {\r\n          \"type\": \"dockerCompatible\",\r\n          \"containerImageNames\": [\r\n            \"test2\"\r\n          ]\r\n        }\r\n      },\r\n      \"targetNodeCommunicationMode\": \"default\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/$metadata#pools\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"pool1\",\r\n      \"url\": \"https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/pools/pool1\",\r\n      \"eTag\": \"0x8DE33C28D89D9D5\",\r\n      \"lastModified\": \"2025-12-05T05:53:02.4482773Z\",\r\n      \"creationTime\": \"2025-12-05T05:52:59.3534806Z\",\r\n      \"state\": \"deleting\",\r\n      \"stateTransitionTime\": \"2025-12-05T05:53:02.4482773Z\",\r\n      \"allocationState\": \"resizing\",\r\n      \"allocationStateTransitionTime\": \"2025-12-05T05:53:02.4643688Z\",\r\n      \"vmSize\": \"standard_d1_v2\",\r\n      \"resizeTimeout\": \"PT7M9.497S\",\r\n      \"currentDedicatedNodes\": 0,\r\n      \"targetDedicatedNodes\": 0,\r\n      \"currentLowPriorityNodes\": 0,\r\n      \"targetLowPriorityNodes\": 0,\r\n      \"enableAutoScale\": false,\r\n      \"enableInterNodeCommunication\": false,\r\n      \"certificateReferences\": [],\r\n      \"taskSlotsPerNode\": 1,\r\n      \"taskSchedulingPolicy\": {\r\n        \"nodeFillType\": \"Spread\"\r\n      },\r\n      \"virtualMachineConfiguration\": {\r\n        \"imageReference\": {\r\n          \"publisher\": \"microsoft-azure-batch\",\r\n          \"offer\": \"ubuntu-server-container\",\r\n          \"sku\": \"20-04-lts\",\r\n          \"version\": \"latest\"\r\n        },\r\n        \"nodeAgentSKUId\": \"batch.node.ubuntu 20.04\",\r\n        \"containerConfiguration\": {\r\n          \"type\": \"dockerCompatible\",\r\n          \"containerImageNames\": [\r\n            \"test1\"\r\n          ]\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"pool2\",\r\n      \"url\": \"https://dotnotsdkbatchaccount2.eastus2.batch.azure.com/pools/pool2\",\r\n      \"eTag\": \"0x8DE33C28D9B3A59\",\r\n      \"lastModified\": \"2025-12-05T05:53:02.5621593Z\",\r\n      \"creationTime\": \"2025-12-05T05:53:00.5077104Z\",\r\n      \"state\": \"deleting\",\r\n      \"stateTransitionTime\": \"2025-12-05T05:53:02.5621593Z\",\r\n      \"allocationState\": \"resizing\",\r\n      \"allocationStateTransitionTime\": \"2025-12-05T05:53:02.5771762Z\",\r\n      \"vmSize\": \"standard_d1_v2\",\r\n      \"resizeTimeout\": \"PT7M9.497S\",\r\n      \"currentDedicatedNodes\": 0,\r\n      \"targetDedicatedNodes\": 0,\r\n      \"currentLowPriorityNodes\": 0,\r\n      \"targetLowPriorityNodes\": 0,\r\n      \"enableAutoScale\": false,\r\n      \"enableInterNodeCommunication\": false,\r\n      \"startTask\": {\r\n        \"commandLine\": \"/bin/bash -c 'echo start task'\",\r\n        \"userIdentity\": {\r\n          \"autoUser\": {\r\n            \"scope\": \"pool\",\r\n            \"elevationLevel\": \"nonadmin\"\r\n          }\r\n        },\r\n        \"maxTaskRetryCount\": 0,\r\n        \"waitForSuccess\": true\r\n      },\r\n      \"certificateReferences\": [],\r\n      \"taskSlotsPerNode\": 1,\r\n      \"taskSchedulingPolicy\": {\r\n        \"nodeFillType\": \"Spread\"\r\n      },\r\n      \"virtualMachineConfiguration\": {\r\n        \"imageReference\": {\r\n          \"publisher\": \"microsoft-azure-batch\",\r\n          \"offer\": \"ubuntu-server-container\",\r\n          \"sku\": \"20-04-lts\",\r\n          \"version\": \"latest\"\r\n        },\r\n        \"nodeAgentSKUId\": \"batch.node.ubuntu 20.04\",\r\n        \"containerConfiguration\": {\r\n          \"type\": \"dockerCompatible\",\r\n          \"containerImageNames\": [\r\n            \"test2\"\r\n          ]\r\n        }\r\n      },\r\n      \"targetNodeCommunicationMode\": \"default\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     }
   ],

@@ -5,7 +5,7 @@ pac3,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-releas
 pac4,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.MySql.1.5.1.zip;sourceType=sa]Az.MySql,1.5.1
 pac5,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.NeonPostgres.0.2.0.zip;sourceType=sa]Az.NeonPostgres,0.2.0
 pac6,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.NetAppFiles.0.25.1.zip;sourceType=sa]Az.NetAppFiles,0.25.1
-pac7,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Network.7.23.1.zip;sourceType=sa]Az.Network,7.23.1
+pac7,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Network.7.24.0.zip;sourceType=sa]Az.Network,7.24.0
 pac8,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.NetworkAnalytics.0.1.2.zip;sourceType=sa]Az.NetworkAnalytics,0.1.2
 pac9,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.NetworkCloud.2.0.0.zip;sourceType=sa]Az.NetworkCloud,2.0.0
 pac10,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.NetworkFunction.0.2.0.zip;sourceType=sa]Az.NetworkFunction,0.2.0
@@ -15,7 +15,7 @@ pac13,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-relea
 pac14,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.OperationalInsights.3.3.0.zip;sourceType=sa]Az.OperationalInsights,3.3.0
 pac15,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Oracle.2.0.0.zip;sourceType=sa]Az.Oracle,2.0.0
 pac16,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Orbital.0.2.0.zip;sourceType=sa]Az.Orbital,0.2.0
-pac17,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.PaloAltoNetworks.0.3.1.zip;sourceType=sa]Az.PaloAltoNetworks,0.3.1
+pac17,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.PaloAltoNetworks.0.4.0.zip;sourceType=sa]Az.PaloAltoNetworks,0.4.0
 pac18,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Peering.0.5.0.zip;sourceType=sa]Az.Peering,0.5.0
 pac19,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Pinecone.0.1.0.zip;sourceType=sa]Az.Pinecone,0.1.0
 pac20,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.PolicyInsights.1.7.2.zip;sourceType=sa]Az.PolicyInsights,1.7.2
@@ -52,7 +52,7 @@ pac50,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-relea
 pac51,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Sql.6.3.0.zip;sourceType=sa]Az.Sql,6.3.0
 pac52,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.SqlVirtualMachine.2.4.0.zip;sourceType=sa]Az.SqlVirtualMachine,2.4.0
 pac53,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Ssh.0.2.3.zip;sourceType=sa]Az.Ssh,0.2.3
-pac54,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.StackHCI.2.6.4.zip;sourceType=sa]Az.StackHCI,2.6.4
+pac54,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.StackHCI.2.6.5.zip;sourceType=sa]Az.StackHCI,2.6.5
 pac55,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.StackHCIVM.1.1.0.zip;sourceType=sa]Az.StackHCIVM,1.1.0
 pac56,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.StandbyPool.0.3.0.zip;sourceType=sa]Az.StandbyPool,0.3.0
 pac57,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Storage.9.4.0.zip;sourceType=sa]Az.Storage,9.4.0

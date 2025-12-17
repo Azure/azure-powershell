@@ -1,0 +1,330 @@
+{
+  "Update-AzDisconnectedOperationsDisconnectedOperation+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/test-automation?api-version=2025-06-01-preview+1": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/test-automation?api-version=2025-06-01-preview",
+      "Content": "{\n  \"properties\": {\n    \"registrationStatus\": \"Registered\"\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "64" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"09006e0c-0000-4d00-0000-6916efd60000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=a2330d2c-ed16-4601-a8ce-6c9d0d999bf4/westus3/375d6fe9-e896-452e-8d5e-3c4ed1e0fecc" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "79797f07-368b-422d-a211-12d02042a225" ],
+        "x-ms-correlation-request-id": [ "7b3136de-a08e-437b-95a3-f8e7347be3ea" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-routing-request-id": [ "WESTUS3:20251114T090110Z:7b3136de-a08e-437b-95a3-f8e7347be3ea" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: CA8DDCE503A34A7EB810ECA81C512836 Ref B: SIN221080712007 Ref C: 2025-11-14T09:01:10Z" ],
+        "Date": [ "Fri, 14 Nov 2025 09:01:10 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "724" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedoperations/test-automation\",\"name\":\"test-automation\",\"type\":\"microsoft.edge/disconnectedoperations\",\"location\":\"West US 3\",\"tags\":{},\"systemData\":{\"createdBy\":\"anponnet@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-05-19T21:23:25.932068Z\",\"lastModifiedBy\":\"aviranjan@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-11-14T09:01:10.8391076Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"stampId\":\"594e3edd-b7e8-40f8-b350-68c9fccde5b6\",\"billingModel\":\"Capacity\",\"connectionIntent\":\"Disconnected\",\"connectionStatus\":\"Disconnected\",\"registrationStatus\":\"Registered\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzDisconnectedOperationsDisconnectedOperation+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/test-automation?api-version=2025-06-01-preview+2": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/test-automation?api-version=2025-06-01-preview",
+      "Content": "{\n  \"properties\": {\n    \"registrationStatus\": \"Unregistered\"\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "66" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"09007b0c-0000-4d00-0000-6916efd80000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=a2330d2c-ed16-4601-a8ce-6c9d0d999bf4/westus3/ac9f932f-e0b9-4db4-bb21-f6f31a26d86d" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "ade4f099-ba08-46d3-aa38-52d853b24c37" ],
+        "x-ms-correlation-request-id": [ "a961bbc7-8264-44fd-b517-dd461a0bc093" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "798" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11998" ],
+        "x-ms-routing-request-id": [ "WESTUS3:20251114T090112Z:a961bbc7-8264-44fd-b517-dd461a0bc093" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 3AE3061DE47E4D5DB39467D65DBBA0DF Ref B: SIN221080712007 Ref C: 2025-11-14T09:01:12Z" ],
+        "Date": [ "Fri, 14 Nov 2025 09:01:11 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "726" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedoperations/test-automation\",\"name\":\"test-automation\",\"type\":\"microsoft.edge/disconnectedoperations\",\"location\":\"West US 3\",\"tags\":{},\"systemData\":{\"createdBy\":\"anponnet@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-05-19T21:23:25.932068Z\",\"lastModifiedBy\":\"aviranjan@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-11-14T09:01:12.3234899Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"stampId\":\"594e3edd-b7e8-40f8-b350-68c9fccde5b6\",\"billingModel\":\"Capacity\",\"connectionIntent\":\"Disconnected\",\"connectionStatus\":\"Disconnected\",\"registrationStatus\":\"Unregistered\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzDisconnectedOperationsDisconnectedOperation+[NoContext]+UpdateViaJsonString+$PATCH+https://management.azure.com/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/test-automation?api-version=2025-06-01-preview+1": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/test-automation?api-version=2025-06-01-preview",
+      "Content": "{\"properties\":{\"registrationStatus\": \"Registered\"}}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "51" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0900840c-0000-4d00-0000-6916efd80000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=a2330d2c-ed16-4601-a8ce-6c9d0d999bf4/westus3/df5777f9-47d4-4c3a-a5b8-8c23a9d2f48a" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "31996071-03e9-4dec-8251-131d63c578ea" ],
+        "x-ms-correlation-request-id": [ "688c2f06-bdae-4901-a2de-fd3ba06e1f4c" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "797" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11997" ],
+        "x-ms-routing-request-id": [ "WESTUS3:20251114T090112Z:688c2f06-bdae-4901-a2de-fd3ba06e1f4c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 9E1255D0627343D8848953F16B7F57DB Ref B: SIN221080712007 Ref C: 2025-11-14T09:01:12Z" ],
+        "Date": [ "Fri, 14 Nov 2025 09:01:12 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "724" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedoperations/test-automation\",\"name\":\"test-automation\",\"type\":\"microsoft.edge/disconnectedoperations\",\"location\":\"West US 3\",\"tags\":{},\"systemData\":{\"createdBy\":\"anponnet@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-05-19T21:23:25.932068Z\",\"lastModifiedBy\":\"aviranjan@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-11-14T09:01:12.9016156Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"stampId\":\"594e3edd-b7e8-40f8-b350-68c9fccde5b6\",\"billingModel\":\"Capacity\",\"connectionIntent\":\"Disconnected\",\"connectionStatus\":\"Disconnected\",\"registrationStatus\":\"Registered\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzDisconnectedOperationsDisconnectedOperation+[NoContext]+UpdateViaJsonString+$PATCH+https://management.azure.com/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/test-automation?api-version=2025-06-01-preview+2": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/test-automation?api-version=2025-06-01-preview",
+      "Content": "{\n  \"properties\": {\n    \"registrationStatus\": \"Unregistered\"\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "66" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0900870c-0000-4d00-0000-6916efd90000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=a2330d2c-ed16-4601-a8ce-6c9d0d999bf4/westus3/423a0ba7-04f3-4ebe-b29d-562adb17c26d" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "e070e6b3-92cc-4bc6-b428-806097fb4d8d" ],
+        "x-ms-correlation-request-id": [ "07d986eb-3259-4c25-861d-ca5752e42222" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "796" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11996" ],
+        "x-ms-routing-request-id": [ "WESTUS3:20251114T090113Z:07d986eb-3259-4c25-861d-ca5752e42222" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: EC45DF3D632044E9A6C7CD56E3E39DC9 Ref B: SIN221080712007 Ref C: 2025-11-14T09:01:13Z" ],
+        "Date": [ "Fri, 14 Nov 2025 09:01:12 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "726" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedoperations/test-automation\",\"name\":\"test-automation\",\"type\":\"microsoft.edge/disconnectedoperations\",\"location\":\"West US 3\",\"tags\":{},\"systemData\":{\"createdBy\":\"anponnet@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-05-19T21:23:25.932068Z\",\"lastModifiedBy\":\"aviranjan@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-11-14T09:01:13.4172404Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"stampId\":\"594e3edd-b7e8-40f8-b350-68c9fccde5b6\",\"billingModel\":\"Capacity\",\"connectionIntent\":\"Disconnected\",\"connectionStatus\":\"Disconnected\",\"registrationStatus\":\"Unregistered\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzDisconnectedOperationsDisconnectedOperation+[NoContext]+UpdateViaJsonFilePath+$PATCH+https://management.azure.com/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/test-automation?api-version=2025-06-01-preview+1": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/test-automation?api-version=2025-06-01-preview",
+      "Content": "{\r\n  \"properties\": {\r\n    \"registrationStatus\": \"Registered\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "68" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0900890c-0000-4d00-0000-6916efda0000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=a2330d2c-ed16-4601-a8ce-6c9d0d999bf4/westus3/31caaee7-a9c7-4db7-8ff0-ccedbc02e70e" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "b0fbc174-be05-4b9c-9e23-91711604fdee" ],
+        "x-ms-correlation-request-id": [ "a906c75c-2228-4be5-a5c0-00fe01d680e3" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "795" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11995" ],
+        "x-ms-routing-request-id": [ "WESTUS3:20251114T090114Z:a906c75c-2228-4be5-a5c0-00fe01d680e3" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: F8C064145F7A455E89E244DFE205F4C4 Ref B: SIN221080712007 Ref C: 2025-11-14T09:01:13Z" ],
+        "Date": [ "Fri, 14 Nov 2025 09:01:13 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "724" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedoperations/test-automation\",\"name\":\"test-automation\",\"type\":\"microsoft.edge/disconnectedoperations\",\"location\":\"West US 3\",\"tags\":{},\"systemData\":{\"createdBy\":\"anponnet@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-05-19T21:23:25.932068Z\",\"lastModifiedBy\":\"aviranjan@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-11-14T09:01:14.0735941Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"stampId\":\"594e3edd-b7e8-40f8-b350-68c9fccde5b6\",\"billingModel\":\"Capacity\",\"connectionIntent\":\"Disconnected\",\"connectionStatus\":\"Disconnected\",\"registrationStatus\":\"Registered\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzDisconnectedOperationsDisconnectedOperation+[NoContext]+UpdateViaJsonFilePath+$PATCH+https://management.azure.com/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/test-automation?api-version=2025-06-01-preview+2": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/test-automation?api-version=2025-06-01-preview",
+      "Content": "{\n  \"properties\": {\n    \"registrationStatus\": \"Unregistered\"\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "66" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"09008a0c-0000-4d00-0000-6916efda0000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=a2330d2c-ed16-4601-a8ce-6c9d0d999bf4/westus3/e83a1589-905b-4320-aa0c-5aba80557161" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "b8f6f55a-0529-460f-bd1b-0f4c6994050b" ],
+        "x-ms-correlation-request-id": [ "a48ee907-8105-457e-b5c6-c1a134576a07" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "794" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11994" ],
+        "x-ms-routing-request-id": [ "WESTUS3:20251114T090114Z:a48ee907-8105-457e-b5c6-c1a134576a07" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 06ABB0F5D7C2412D96B9400512A41DEC Ref B: SIN221080712007 Ref C: 2025-11-14T09:01:14Z" ],
+        "Date": [ "Fri, 14 Nov 2025 09:01:13 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "726" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedoperations/test-automation\",\"name\":\"test-automation\",\"type\":\"microsoft.edge/disconnectedoperations\",\"location\":\"West US 3\",\"tags\":{},\"systemData\":{\"createdBy\":\"anponnet@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-05-19T21:23:25.932068Z\",\"lastModifiedBy\":\"aviranjan@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-11-14T09:01:14.6047412Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"stampId\":\"594e3edd-b7e8-40f8-b350-68c9fccde5b6\",\"billingModel\":\"Capacity\",\"connectionIntent\":\"Disconnected\",\"connectionStatus\":\"Disconnected\",\"registrationStatus\":\"Unregistered\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzDisconnectedOperationsDisconnectedOperation+[NoContext]+UpdateViaIdentityExpanded+$PATCH+https://management.azure.com/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/test-automation?api-version=2025-06-01-preview+1": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/test-automation?api-version=2025-06-01-preview",
+      "Content": "{\n  \"properties\": {\n    \"registrationStatus\": \"Registered\"\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "64" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"09008b0c-0000-4d00-0000-6916efdb0000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=a2330d2c-ed16-4601-a8ce-6c9d0d999bf4/westus3/e7815539-812f-40d3-89bd-3e61f18aef7c" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "6106240f-df94-4ec2-8262-124bc257609e" ],
+        "x-ms-correlation-request-id": [ "79d0b0db-8e17-4956-a88d-e4ca4d161c26" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "793" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11993" ],
+        "x-ms-routing-request-id": [ "WESTUS3:20251114T090115Z:79d0b0db-8e17-4956-a88d-e4ca4d161c26" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: D99C7F3BECE0401899602AAEBF084EBE Ref B: SIN221080712007 Ref C: 2025-11-14T09:01:14Z" ],
+        "Date": [ "Fri, 14 Nov 2025 09:01:14 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "724" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedoperations/test-automation\",\"name\":\"test-automation\",\"type\":\"microsoft.edge/disconnectedoperations\",\"location\":\"West US 3\",\"tags\":{},\"systemData\":{\"createdBy\":\"anponnet@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-05-19T21:23:25.932068Z\",\"lastModifiedBy\":\"aviranjan@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-11-14T09:01:15.0422454Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"stampId\":\"594e3edd-b7e8-40f8-b350-68c9fccde5b6\",\"billingModel\":\"Capacity\",\"connectionIntent\":\"Disconnected\",\"connectionStatus\":\"Disconnected\",\"registrationStatus\":\"Registered\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzDisconnectedOperationsDisconnectedOperation+[NoContext]+UpdateViaIdentityExpanded+$PATCH+https://management.azure.com/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/test-automation?api-version=2025-06-01-preview+2": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/test-automation?api-version=2025-06-01-preview",
+      "Content": "{\n  \"properties\": {\n    \"registrationStatus\": \"Unregistered\"\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "66" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"09008c0c-0000-4d00-0000-6916efdb0000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=a2330d2c-ed16-4601-a8ce-6c9d0d999bf4/westus3/96d806bc-4c0d-401a-95ba-446eb51261a5" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "0a804438-72d4-4b76-b079-599ac918010a" ],
+        "x-ms-correlation-request-id": [ "5c94924c-e9d5-4a4a-b442-7ba7bf012cdd" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "792" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11992" ],
+        "x-ms-routing-request-id": [ "WESTUS3:20251114T090115Z:5c94924c-e9d5-4a4a-b442-7ba7bf012cdd" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 4F9D012D25AA4CB094CB73CB75429599 Ref B: SIN221080712007 Ref C: 2025-11-14T09:01:15Z" ],
+        "Date": [ "Fri, 14 Nov 2025 09:01:14 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "726" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedoperations/test-automation\",\"name\":\"test-automation\",\"type\":\"microsoft.edge/disconnectedoperations\",\"location\":\"West US 3\",\"tags\":{},\"systemData\":{\"createdBy\":\"anponnet@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-05-19T21:23:25.932068Z\",\"lastModifiedBy\":\"aviranjan@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-11-14T09:01:15.4641183Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"stampId\":\"594e3edd-b7e8-40f8-b350-68c9fccde5b6\",\"billingModel\":\"Capacity\",\"connectionIntent\":\"Disconnected\",\"connectionStatus\":\"Disconnected\",\"registrationStatus\":\"Unregistered\"}}",
+      "isContentBase64": false
+    }
+  }
+}

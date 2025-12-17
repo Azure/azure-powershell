@@ -14,23 +14,24 @@ Updates a network manager routing configuration.
 
 ### ByInputObject (Default)
 ```
-Set-AzNetworkManagerRoutingConfiguration -InputObject <PSNetworkManagerRoutingConfiguration> 
- [-RouteTableUsageMode <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Set-AzNetworkManagerRoutingConfiguration -InputObject <PSNetworkManagerRoutingConfiguration>
+ [-RouteTableUsageMode <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByName
 ```
 Set-AzNetworkManagerRoutingConfiguration -Name <String> -ResourceGroupName <String>
- -NetworkManagerName <String> [-Description <String>] [-RouteTableUsageMode <String>] [-AsJob] 
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -NetworkManagerName <String> [-Description <String>] [-RouteTableUsageMode <String>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Set-AzNetworkManagerRoutingConfiguration -ResourceId <String> [-Description <String>] 
- [-RouteTableUsageMode <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Set-AzNetworkManagerRoutingConfiguration -ResourceId <String> [-Description <String>]
+ [-RouteTableUsageMode <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

@@ -65,7 +65,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
             {
                 return;
             }
-            {_autoScaleProperty = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonObject>("autoScaleProperties"), out var __jsonAutoScaleProperties) ? Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.AutoScaleProperties.FromJson(__jsonAutoScaleProperties) : _autoScaleProperty;}
             {_publicNetworkAccess = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonString>("publicNetworkAccess"), out var __jsonPublicNetworkAccess) ? (string)__jsonPublicNetworkAccess : (string)_publicNetworkAccess;}
             AfterFromJson(json);
         }
@@ -101,7 +100,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
             {
                 return container;
             }
-            AddIf( null != this._autoScaleProperty ? (Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode) this._autoScaleProperty.ToJson(null,serializationMode) : null, "autoScaleProperties" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.SerializationMode.IncludeUpdate))
             {
                 AddIf( null != this._baseSizeTiB ? (Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNumber((long)this._baseSizeTiB) : null, "baseSizeTiB" ,container.Add );

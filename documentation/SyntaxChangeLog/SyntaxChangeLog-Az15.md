@@ -1,3 +1,33 @@
+## 15.1.0 - December 2025
+#### Az.Compute 11.1.0 
+* Modified cmdlet `Get-AzVmssVM`
+   - Added parameter `-ResiliencyView`
+#### Az.CosmosDB 1.19.0 
+* Modified cmdlet `New-AzCosmosDBAccount`
+   - Added parameters `-EnablePriorityBasedExecution`, `-DefaultPriorityLevel`
+* Modified cmdlet `New-AzCosmosDBSqlVectorIndex`
+   - Added parameters `-QuantizationByteSize`, `-IndexingSearchListSize`, `-VectorIndexShardKey`
+* Modified cmdlet `Restore-AzCosmosDBAccount`
+   - Added parameter `-SourceBackupLocation`
+* Modified cmdlet `Update-AzCosmosDBAccount`
+   - Added parameters `-EnablePriorityBasedExecution`, `-DefaultPriorityLevel`
+* Added cmdlet `Add-AzCosmosDBFleetspaceAccount`, `Get-AzCosmosDBFleet`, `Get-AzCosmosDBFleetspace`, `Get-AzCosmosDBFleetspaceAccount`, `New-AzCosmosDBFleet`, `New-AzCosmosDBFleetspace`, `Remove-AzCosmosDBFleet`, `Remove-AzCosmosDBFleetspace`, `Remove-AzCosmosDBFleetspaceAccount`, `Update-AzCosmosDBFleet`, `Update-AzCosmosDBFleetspace`
+#### Az.Migrate 2.10.1 
+* Modified cmdlet `New-AzMigrateServerReplication`
+   - Added parameter `-TargetCapacityReservationGroupId`
+* Modified cmdlet `Set-AzMigrateServerReplication`
+   - Added parameter `-TargetCapacityReservationGroupId`
+* Modified cmdlet `Start-AzMigrateServerMigration`
+   - Added parameter `-TargetCapacityReservationGroupId`
+#### Az.Network 7.24.0 
+* Modified cmdlet `New-AzNetworkVirtualAppliance`
+   - Added parameter `-NvaInterfaceConfiguration`
+* Modified cmdlet `New-AzNetworkWatcherFlowLog`
+   - Added parameter `-RecordType`
+* Modified cmdlet `Set-AzNetworkWatcherFlowLog`
+   - Added parameter `-RecordType`
+* Added cmdlet `New-AzNvaInterfaceConfiguration`
+
 ## 15.0.0 - November 2025
 #### Az.Advisor 3.0.0 
 * Modified cmdlet `Set-AzAdvisorConfiguration`
@@ -1128,5 +1158,6 @@
    - Changed the type of parameter `-ManagedResourcesNetworkAccessType` from `ManagedResourcesNetworkAccessType` to `String`
    - Changed the type of parameter `-UserAssignedIdentity` from `Hashtable` to `String[]`
 * Added cmdlet `Update-AzWorkloadsProviderInstance`
+
 
 
