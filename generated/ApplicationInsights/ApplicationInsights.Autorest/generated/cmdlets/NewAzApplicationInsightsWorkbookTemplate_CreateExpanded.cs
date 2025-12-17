@@ -6,20 +6,22 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Extensions;
+    using Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.PowerShell;
+    using Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create a new workbook template.</summary>
+    /// <summary>create a new workbook template.</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.insights/workbooktemplates/{resourceName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzApplicationInsightsWorkbookTemplate_CreateExpanded", SupportsShouldProcess = true)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20201120.IWorkbookTemplate", "15.0.0", "9.0.0", "2025/11/03", DeprecatedOutputProperties=new string[] {"Gallery"}, NewOutputProperties=new string[] {"Gallery"}, ChangeDescription="The type of property 'Gallery' of type 'Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20201120.IWorkbookTemplate' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IWorkbookTemplateGallery' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IWorkbookTemplateGallery]'.")]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20201120.IWorkbookTemplate))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Description(@"Create a new workbook template.")]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IWorkbookTemplate))]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Description(@"create a new workbook template.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.insights/workbooktemplates/{resourceName}", ApiVersion = "2020-11-20")]
     public partial class NewAzApplicationInsightsWorkbookTemplate_CreateExpanded : global::System.Management.Automation.PSCmdlet,
-        Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.IEventListener
+        Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.IEventListener,
+        Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.IContext
     {
         /// <summary>A unique id generatd for the this cmdlet when it is instantiated.</summary>
         private string __correlationId = System.Guid.NewGuid().ToString();
@@ -35,8 +37,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Cmdlets
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
+        /// <summary>A dictionary to carry over additional data for pipeline.</summary>
+        private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
+
+        /// <summary>A buffer to record first returned object in response.</summary>
+        private object _firstResponse = null;
+
+        /// <summary>
+        /// A flag to tell whether it is the first returned object in a call. Zero means no response yet. One means 1 returned object.
+        /// Two means multiple returned objects in response.
+        /// </summary>
+        private int _responseSize = 0;
+
         /// <summary>An Application Insights workbook template definition.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20201120.IWorkbookTemplate _workbookTemplatePropertiesBody = new Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20201120.WorkbookTemplate();
+        private Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IWorkbookTemplate _workbookTemplatePropertiesBody = new Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.WorkbookTemplate();
 
         /// <summary>Information about the author of the workbook template.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Information about the author of the workbook template.")]
@@ -54,6 +68,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter Break { get; set; }
 
+        /// <summary>Accessor for cancellationTokenSource.</summary>
+        public global::System.Threading.CancellationTokenSource CancellationTokenSource { get => _cancellationTokenSource ; set { _cancellationTokenSource = value; } }
+
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.ApplicationInsightsManagementClient Client => Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Module.Instance.ClientAPI;
 
@@ -67,6 +84,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
 
+        /// <summary>Accessor for extensibleParameters.</summary>
+        public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
+
         /// <summary>Workbook galleries supported by the template.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Workbook galleries supported by the template.")]
@@ -76,8 +96,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Cmdlets
         ReadOnly = false,
         Description = @"Workbook galleries supported by the template.",
         SerializedName = @"galleries",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20201120.IWorkbookTemplateGallery) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20201120.IWorkbookTemplateGallery[] Gallery { get => _workbookTemplatePropertiesBody.Gallery ?? null /* arrayOf */; set => _workbookTemplatePropertiesBody.Gallery = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IWorkbookTemplateGallery) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IWorkbookTemplateGallery[] Gallery { get => _workbookTemplatePropertiesBody.Gallery?.ToArray() ?? null /* fixedArrayOf */; set => _workbookTemplatePropertiesBody.Gallery = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IWorkbookTemplateGallery>(value) : null); }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -105,8 +125,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Cmdlets
         ReadOnly = false,
         Description = @"Key value pair of localized gallery. Each key is the locale code of languages supported by the Azure portal.",
         SerializedName = @"localized",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20201120.IWorkbookTemplatePropertiesLocalized) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20201120.IWorkbookTemplatePropertiesLocalized Localized { get => _workbookTemplatePropertiesBody.Localized ?? null /* object */; set => _workbookTemplatePropertiesBody.Localized = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IWorkbookTemplatePropertiesLocalized) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IWorkbookTemplatePropertiesLocalized Localized { get => _workbookTemplatePropertiesBody.Localized ?? null /* object */; set => _workbookTemplatePropertiesBody.Localized = value; }
 
         /// <summary>Resource location</summary>
         [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Resource location")]
@@ -144,7 +164,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Cmdlets
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.HttpPipeline Pipeline { get; set; }
+        public Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.HttpPipeline Pipeline { get; set; }
 
         /// <summary>
         /// Priority of the template. Determines which template to open when a workbook gallery is opened in viewer mode.
@@ -203,7 +223,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Cmdlets
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.DefaultInfo(
         Name = @"",
         Description =@"",
-        Script = @"(Get-AzContext).Subscription.Id")]
+        Script = @"(Get-AzContext).Subscription.Id",
+        SetCondition = @"")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.ParameterCategory.Path)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
@@ -216,8 +237,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Cmdlets
         ReadOnly = false,
         Description = @"Resource tags",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20201120.IWorkbookTemplateResourceTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20201120.IWorkbookTemplateResourceTags Tag { get => _workbookTemplatePropertiesBody.Tag ?? null /* object */; set => _workbookTemplatePropertiesBody.Tag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IWorkbookTemplateResourceTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IWorkbookTemplateResourceTags Tag { get => _workbookTemplatePropertiesBody.Tag ?? null /* object */; set => _workbookTemplatePropertiesBody.Tag = value; }
 
         /// <summary>Valid JSON object containing workbook template payload.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.ExportAs(typeof(global::System.Collections.Hashtable))]
@@ -228,44 +249,44 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Cmdlets
         ReadOnly = false,
         Description = @"Valid JSON object containing workbook template payload.",
         SerializedName = @"templateData",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20201120.IWorkbookTemplatePropertiesTemplateData) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20201120.IWorkbookTemplatePropertiesTemplateData TemplateData { get => _workbookTemplatePropertiesBody.TemplateData ?? null /* object */; set => _workbookTemplatePropertiesBody.TemplateData = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IWorkbookTemplatePropertiesTemplateData) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IWorkbookTemplatePropertiesTemplateData TemplateData { get => _workbookTemplatePropertiesBody.TemplateData ?? null /* object */; set => _workbookTemplatePropertiesBody.TemplateData = value; }
 
         /// <summary>
         /// <c>overrideOnCreated</c> will be called before the regular onCreated has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20201120.IWorkbookTemplate">Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20201120.IWorkbookTemplate</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IWorkbookTemplate">Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IWorkbookTemplate</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onCreated method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnCreated(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20201120.IWorkbookTemplate> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnCreated(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IWorkbookTemplate> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20201120.IWorkbookTemplateError">Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20201120.IWorkbookTemplateError</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IWorkbookTemplateError">Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IWorkbookTemplateError</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20201120.IWorkbookTemplateError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IWorkbookTemplateError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20201120.IWorkbookTemplate">Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20201120.IWorkbookTemplate</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IWorkbookTemplate">Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IWorkbookTemplate</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20201120.IWorkbookTemplate> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IWorkbookTemplate> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -288,6 +309,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
+            if (1 ==_responseSize)
+            {
+                // Flush buffer
+                WriteObject(_firstResponse);
+            }
             var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
             if (telemetryInfo != null)
             {
@@ -352,8 +378,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Cmdlets
                         WriteError(new global::System.Management.Automation.ErrorRecord( new global::System.Exception(messageData().Message), string.Empty, global::System.Management.Automation.ErrorCategory.NotSpecified, null ) );
                         return ;
                     }
+                    case Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Events.Progress:
+                    {
+                        var data = messageData();
+                        int progress = (int)data.Value;
+                        string activityMessage, statusDescription;
+                        global::System.Management.Automation.ProgressRecordType recordType;
+                        if (progress < 100)
+                        {
+                            activityMessage = "In progress";
+                            statusDescription = "Checking operation status";
+                            recordType = System.Management.Automation.ProgressRecordType.Processing;
+                        }
+                        else
+                        {
+                            activityMessage = "Completed";
+                            statusDescription = "Completed";
+                            recordType = System.Management.Automation.ProgressRecordType.Completed;
+                        }
+                        WriteProgress(new global::System.Management.Automation.ProgressRecord(1, activityMessage, statusDescription)
+                        {
+                            PercentComplete = progress,
+                        RecordType = recordType
+                        });
+                        return ;
+                    }
                 }
-                await Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Module.Instance.Signal(id, token, messageData, (i,t,m) => ((Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.IEventListener)this).Signal(i,t,()=> Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.EventDataConverter.ConvertFrom( m() ) as Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.EventData ), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
+                await Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Module.Instance.Signal(id, token, messageData, (i, t, m) => ((Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.IEventListener)this).Signal(i, t, () => Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.EventDataConverter.ConvertFrom(m()) as Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.EventData), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
                 if (token.IsCancellationRequested)
                 {
                     return ;
@@ -363,7 +414,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Cmdlets
         }
 
         /// <summary>
-        /// Intializes a new instance of the <see cref="NewAzApplicationInsightsWorkbookTemplate_CreateExpanded" /> cmdlet class.
+        /// Initializes a new instance of the <see cref="NewAzApplicationInsightsWorkbookTemplate_CreateExpanded" /> cmdlet class.
         /// </summary>
         public NewAzApplicationInsightsWorkbookTemplate_CreateExpanded()
         {
@@ -417,7 +468,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Cmdlets
             using( NoSynchronizationContext )
             {
                 await ((Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
+                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName, this.ExtensibleParameters);
                 if (null != HttpPipelinePrepend)
                 {
                     Pipeline.Prepend((this.CommandRuntime as Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.PowerShell.IAsyncCommandRuntimeExtensions)?.Wrap(HttpPipelinePrepend) ?? HttpPipelinePrepend);
@@ -430,12 +481,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.WorkbookTemplatesCreateOrUpdate(SubscriptionId, ResourceGroupName, Name, _workbookTemplatePropertiesBody, onOk, onCreated, onDefault, this, Pipeline);
+                    await this.Client.WorkbookTemplatesCreateOrUpdate(SubscriptionId, ResourceGroupName, Name, _workbookTemplatePropertiesBody, onOk, onCreated, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.SerializationMode.IncludeCreate);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,Name=Name,body=_workbookTemplatePropertiesBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,Name=Name})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -471,12 +522,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 201 (Created).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20201120.IWorkbookTemplate">Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20201120.IWorkbookTemplate</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IWorkbookTemplate">Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IWorkbookTemplate</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onCreated(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20201120.IWorkbookTemplate> response)
+        private async global::System.Threading.Tasks.Task onCreated(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IWorkbookTemplate> response)
         {
             using( NoSynchronizationContext )
             {
@@ -488,8 +539,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Cmdlets
                     return ;
                 }
                 // onCreated - response for 201 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20201120.IWorkbookTemplate
-                WriteObject((await response));
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IWorkbookTemplate
+                var result = (await response);
+                if (null != result)
+                {
+                    if (0 == _responseSize)
+                    {
+                        _firstResponse = result;
+                        _responseSize = 1;
+                    }
+                    else
+                    {
+                        if (1 ==_responseSize)
+                        {
+                            // Flush buffer
+                            WriteObject(_firstResponse.AddMultipleTypeNameIntoPSObject());
+                        }
+                        WriteObject(result.AddMultipleTypeNameIntoPSObject());
+                        _responseSize = 2;
+                    }
+                }
             }
         }
 
@@ -497,12 +566,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20201120.IWorkbookTemplateError">Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20201120.IWorkbookTemplateError</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IWorkbookTemplateError">Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IWorkbookTemplateError</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20201120.IWorkbookTemplateError> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IWorkbookTemplateError> response)
         {
             using( NoSynchronizationContext )
             {
@@ -519,15 +588,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20201120.IWorkbookTemplateError>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name, body=_workbookTemplatePropertiesBody })
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IWorkbookTemplateError>(responseMessage, await response);
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name, body=_workbookTemplatePropertiesBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -537,12 +606,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20201120.IWorkbookTemplate">Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20201120.IWorkbookTemplate</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IWorkbookTemplate">Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IWorkbookTemplate</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20201120.IWorkbookTemplate> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IWorkbookTemplate> response)
         {
             using( NoSynchronizationContext )
             {
@@ -554,8 +623,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20201120.IWorkbookTemplate
-                WriteObject((await response));
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IWorkbookTemplate
+                var result = (await response);
+                if (null != result)
+                {
+                    if (0 == _responseSize)
+                    {
+                        _firstResponse = result;
+                        _responseSize = 1;
+                    }
+                    else
+                    {
+                        if (1 ==_responseSize)
+                        {
+                            // Flush buffer
+                            WriteObject(_firstResponse.AddMultipleTypeNameIntoPSObject());
+                        }
+                        WriteObject(result.AddMultipleTypeNameIntoPSObject());
+                        _responseSize = 2;
+                    }
+                }
             }
         }
     }

@@ -28,12 +28,12 @@ For information on how to develop for `Az.DevCenterdata`, see [how-to.md](how-to
 
 ```yaml
 # pin the swagger version by using the commit id instead of branch name
-commit: f9fb4b105657cfcca25585b0708ff80ff113b005
+commit: 82e9c6f9fbfa2d6d47d5e2a6a11c0ad2eb345c43
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/devcenter/data-plane/Microsoft.DevCenter/preview/2024-05-01-preview/devcenter.json
+  - $(repo)/specification/devcenter/data-plane/Microsoft.DevCenter/preview/2025-04-01-preview/devcenter.json
 title: DevCenterdata
 subject-prefix: DevCenter
 root-module-name: $(prefix).DevCenter
@@ -78,6 +78,55 @@ directive:
       }
   - from: swagger-document
     where: $.paths["/projects/{projectName}/users/{userId}/devboxes/{devBoxName}:repair"].post.responses
+    transform: >
+      $['200'] = {
+        "description": "OK. The request has succeeded.",
+        "schema": {"$ref": "#/definitions/OperationStatus"}
+      }
+  - from: swagger-document
+    where: $.paths["/projects/{projectName}/users/{userId}/devboxes/{devBoxName}:align"].post.responses
+    transform: >
+      $['200'] = {
+        "description": "OK. The request has succeeded.",
+        "schema": {"$ref": "#/definitions/OperationStatus"}
+      }
+  - from: swagger-document
+    where: $.paths["/projects/{projectName}/users/{userId}/devboxes/{devBoxName}:approve"].post.responses
+    transform: >
+      $['200'] = {
+        "description": "OK. The request has succeeded.",
+        "schema": {"$ref": "#/definitions/OperationStatus"}
+      }
+  - from: swagger-document
+    where: $.paths["/projects/{projectName}/users/{userId}/devboxes/{devBoxName}/addons/{addOnName}:disable"].post.responses
+    transform: >
+      $['200'] = {
+        "description": "OK. The request has succeeded.",
+        "schema": {"$ref": "#/definitions/OperationStatus"}
+      }
+  - from: swagger-document
+    where: $.paths["/projects/{projectName}/users/{userId}/devboxes/{devBoxName}/addons/{addOnName}:enable"].post.responses
+    transform: >
+      $['200'] = {
+        "description": "OK. The request has succeeded.",
+        "schema": {"$ref": "#/definitions/OperationStatus"}
+      }
+  - from: swagger-document
+    where: $.paths["/projects/{projectName}/users/{userId}/devboxes/{devBoxName}/addons/{addOnName}"].delete.responses
+    transform: >
+      $['200'] = {
+        "description": "OK. The request has succeeded.",
+        "schema": {"$ref": "#/definitions/OperationStatus"}
+      }
+  - from: swagger-document
+    where: $.paths["/projects/{projectName}/users/{userId}/devboxes/{devBoxName}:restoreSnapshot"].post.responses
+    transform: >
+      $['200'] = {
+        "description": "OK. The request has succeeded.",
+        "schema": {"$ref": "#/definitions/OperationStatus"}
+      }
+  - from: swagger-document
+    where: $.paths["/projects/{projectName}/users/{userId}/devboxes/{devBoxName}:captureSnapshot"].post.responses
     transform: >
       $['200'] = {
         "description": "OK. The request has succeeded.",
@@ -146,12 +195,17 @@ directive:
         script: '"me"'
 # Matches cmdlets with exact subject DevBox or Environment, but not with verb Get
   - where:
-      verb: ^(?!Get$)
+      verb: ^(?!Get$|Approve$)
       subject: ^(DevBox|Environment)$
       parameter-name: UserId
     set:
       default:
         script: '"me"'
+  - where:
+      verb: Invoke
+      subject: Pool
+    set:
+      subject: AlignPool
   - where:
       parameter-name: Top
     hide: true

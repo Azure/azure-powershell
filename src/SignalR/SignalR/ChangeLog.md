@@ -18,7 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.3.1
 * Updated Azure.Core from 1.45.0 to 1.47.3
+
+## Version 2.3.0
 * Added cmdlets for managing replicas:
     - Get-AzSignalRReplica: get replica(s) for SignalR
     - New-AzSignalRReplica: create a new replica for SignalR

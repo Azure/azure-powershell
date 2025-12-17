@@ -23,6 +23,7 @@ Use Update-AzMySqlServer instead if you want update AdministratorLoginPassword, 
 #>
 function Update-AzMySqlConfiguration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IConfiguration])]
+[Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.CmdletBreakingChangeAttribute("16.0.0", "2.0.0", "2026/05")]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]

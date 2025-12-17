@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
             TestRunner.RunTestScript("Test-SqlMigrateThroughputCmdlets");
         }
 
-        [Fact]
+        [Fact(Skip = "Tests requires specific identity, will be made generic in next version.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSqlRoleCmdlets()
         {

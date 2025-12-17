@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzDynatraceMonitorTagRule
 
 ## SYNOPSIS
-update a TagRule
+Update a TagRule
 
 ## SYNTAX
 
@@ -40,7 +40,7 @@ Update-AzDynatraceMonitorTagRule -MonitorInputObject <IDynatraceObservabilityIde
 ```
 
 ## DESCRIPTION
-update a TagRule
+Update a TagRule
 
 ## EXAMPLES
 
@@ -265,6 +265,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String

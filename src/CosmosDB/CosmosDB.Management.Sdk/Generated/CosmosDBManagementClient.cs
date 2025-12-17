@@ -204,6 +204,18 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// </summary>
         public virtual IServiceOperations Service { get; private set; }
         /// <summary>
+        /// Gets the IFleetOperations
+        /// </summary>
+        public virtual IFleetOperations Fleet { get; private set; }
+        /// <summary>
+        /// Gets the IFleetspaceOperations
+        /// </summary>
+        public virtual IFleetspaceOperations Fleetspace { get; private set; }
+        /// <summary>
+        /// Gets the IFleetspaceAccountOperations
+        /// </summary>
+        public virtual IFleetspaceAccountOperations FleetspaceAccount { get; private set; }
+        /// <summary>
         /// Initializes a new instance of the CosmosDBManagementClient class.
         /// </summary>
         /// <param name='httpClient'>
@@ -478,6 +490,9 @@ namespace Microsoft.Azure.Management.CosmosDB
             this.RestorableTables = new RestorableTablesOperations(this);
             this.RestorableTableResources = new RestorableTableResourcesOperations(this);
             this.Service = new ServiceOperations(this);
+            this.Fleet = new FleetOperations(this);
+            this.Fleetspace = new FleetspaceOperations(this);
+            this.FleetspaceAccount = new FleetspaceAccountOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;

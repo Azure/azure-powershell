@@ -6,20 +6,22 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Runtime.Extensions;
+    using Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Runtime.PowerShell;
+    using Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Update a scheduled query rule.</summary>
+    /// <summary>update a scheduled query rule.</summary>
     /// <remarks>
     /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/scheduledQueryRules/{ruleName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzScheduledQueryRule_UpdateExpanded", SupportsShouldProcess = true)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.Api20210801.IScheduledQueryRuleResource", "15.0.0", "7.0.0", "2025/11/03", DeprecatedOutputProperties=new string[] {"ActionGroup","CriterionAllOf","Scope","TargetResourceType"}, NewOutputProperties=new string[] {"ActionGroup","CriterionAllOf","Scope","TargetResourceType"}, ChangeDescription="The types of the properties ActionGroup, CriterionAllOf, Scope and TargetResourceType will be changed from single object or fixed array to 'List'.")]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.Api20210801.IScheduledQueryRuleResource))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Description(@"Update a scheduled query rule.")]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.IScheduledQueryRuleResource))]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Description(@"update a scheduled query rule.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/scheduledQueryRules/{ruleName}", ApiVersion = "2021-08-01")]
     public partial class UpdateAzScheduledQueryRule_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
-        Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Runtime.IEventListener
+        Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Runtime.IEventListener,
+        Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Runtime.IContext
     {
         /// <summary>A unique id generatd for the this cmdlet when it is instantiated.</summary>
         private string __correlationId = System.Guid.NewGuid().ToString();
@@ -35,8 +37,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Cmdlets
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
+        /// <summary>A dictionary to carry over additional data for pipeline.</summary>
+        private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
+
+        /// <summary>A buffer to record first returned object in response.</summary>
+        private object _firstResponse = null;
+
         /// <summary>The scheduled query rule resource for patch operations.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.Api20210801.IScheduledQueryRuleResourcePatch _parametersBody = new Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.Api20210801.ScheduledQueryRuleResourcePatch();
+        private Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.IScheduledQueryRuleResourcePatch _parametersBody = new Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.ScheduledQueryRuleResourcePatch();
+
+        /// <summary>
+        /// A flag to tell whether it is the first returned object in a call. Zero means no response yet. One means 1 returned object.
+        /// Two means multiple returned objects in response.
+        /// </summary>
+        private int _responseSize = 0;
 
         /// <summary>The properties of an alert payload.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.ExportAs(typeof(global::System.Collections.Hashtable))]
@@ -47,8 +61,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Cmdlets
         ReadOnly = false,
         Description = @"The properties of an alert payload.",
         SerializedName = @"customProperties",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.Api20210801.IActionsCustomProperties) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.Api20210801.IActionsCustomProperties ActionCustomProperty { get => _parametersBody.ActionCustomProperty ?? null /* object */; set => _parametersBody.ActionCustomProperty = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.IActionsCustomProperties) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.IActionsCustomProperties ActionCustomProperty { get => _parametersBody.ActionCustomProperty ?? null /* object */; set => _parametersBody.ActionCustomProperty = value; }
 
         /// <summary>Action Group resource Ids to invoke when the alert fires.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -60,7 +74,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Cmdlets
         Description = @"Action Group resource Ids to invoke when the alert fires.",
         SerializedName = @"actionGroups",
         PossibleTypes = new [] { typeof(string) })]
-        public string[] ActionGroupResourceId { get => _parametersBody.ActionGroup ?? null /* arrayOf */; set => _parametersBody.ActionGroup = value; }
+        public string[] ActionGroupResourceId { get => _parametersBody.ActionGroup?.ToArray() ?? null /* fixedArrayOf */; set => _parametersBody.ActionGroup = (value != null ? new System.Collections.Generic.List<string>(value) : null); }
 
         /// <summary>
         /// The flag that indicates whether the alert should be automatically resolved or not. The default is true. Relevant only
@@ -80,6 +94,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Cmdlets
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter Break { get; set; }
+
+        /// <summary>Accessor for cancellationTokenSource.</summary>
+        public global::System.Threading.CancellationTokenSource CancellationTokenSource { get => _cancellationTokenSource ; set { _cancellationTokenSource = value; } }
 
         /// <summary>
         /// The flag which indicates whether this scheduled query rule should be stored in the customer's storage. The default is
@@ -107,8 +124,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Cmdlets
         ReadOnly = false,
         Description = @"A list of conditions to evaluate against the specified scopes",
         SerializedName = @"allOf",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.Api20210801.ICondition) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.Api20210801.ICondition[] CriterionAllOf { get => _parametersBody.CriterionAllOf ?? null /* arrayOf */; set => _parametersBody.CriterionAllOf = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.ICondition) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.ICondition[] CriterionAllOf { get => _parametersBody.CriterionAllOf?.ToArray() ?? null /* fixedArrayOf */; set => _parametersBody.CriterionAllOf = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.ICondition>(value) : null); }
 
         /// <summary>
         /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
@@ -168,6 +185,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Cmdlets
         SerializedName = @"evaluationFrequency",
         PossibleTypes = new [] { typeof(global::System.TimeSpan) })]
         public global::System.TimeSpan EvaluationFrequency { get => _parametersBody.EvaluationFrequency ?? default(global::System.TimeSpan); set => _parametersBody.EvaluationFrequency = value; }
+
+        /// <summary>Accessor for extensibleParameters.</summary>
+        public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -237,7 +257,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Cmdlets
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Runtime.HttpPipeline Pipeline { get; set; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Runtime.HttpPipeline Pipeline { get; set; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -279,7 +299,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Cmdlets
         Description = @"The list of resource id's that this scheduled query rule is scoped to.",
         SerializedName = @"scopes",
         PossibleTypes = new [] { typeof(string) })]
-        public string[] Scope { get => _parametersBody.Scope ?? null /* arrayOf */; set => _parametersBody.Scope = value; }
+        public string[] Scope { get => _parametersBody.Scope?.ToArray() ?? null /* fixedArrayOf */; set => _parametersBody.Scope = (value != null ? new System.Collections.Generic.List<string>(value) : null); }
 
         /// <summary>
         /// Severity of the alert. Should be an integer between [0-4]. Value of 0 is severest. Relevant and required only for rules
@@ -323,7 +343,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Cmdlets
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Runtime.DefaultInfo(
         Name = @"",
         Description =@"",
-        Script = @"(Get-AzContext).Subscription.Id")]
+        Script = @"(Get-AzContext).Subscription.Id",
+        SetCondition = @"")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.ParameterCategory.Path)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
@@ -336,8 +357,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Cmdlets
         ReadOnly = false,
         Description = @"Resource tags",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.Api20210801.IScheduledQueryRuleResourcePatchTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.Api20210801.IScheduledQueryRuleResourcePatchTags Tag { get => _parametersBody.Tag ?? null /* object */; set => _parametersBody.Tag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.IScheduledQueryRuleResourcePatchTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.IScheduledQueryRuleResourcePatchTags Tag { get => _parametersBody.Tag ?? null /* object */; set => _parametersBody.Tag = value; }
 
         /// <summary>
         /// List of resource type of the target resource(s) on which the alert is created/updated. For example if the scope is a resource
@@ -353,7 +374,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Cmdlets
         Description = @"List of resource type of the target resource(s) on which the alert is created/updated. For example if the scope is a resource group and targetResourceTypes is Microsoft.Compute/virtualMachines, then a different alert will be fired for each virtual machine in the resource group which meet the alert criteria. Relevant only for rules of the kind LogAlert",
         SerializedName = @"targetResourceTypes",
         PossibleTypes = new [] { typeof(string) })]
-        public string[] TargetResourceType { get => _parametersBody.TargetResourceType ?? null /* arrayOf */; set => _parametersBody.TargetResourceType = value; }
+        public string[] TargetResourceType { get => _parametersBody.TargetResourceType?.ToArray() ?? null /* fixedArrayOf */; set => _parametersBody.TargetResourceType = (value != null ? new System.Collections.Generic.List<string>(value) : null); }
 
         /// <summary>
         /// The period of time (in ISO 8601 duration format) on which the Alert query will be executed (bin size). Relevant and required
@@ -374,24 +395,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Cmdlets
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.Api20210801.IErrorContract">Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.Api20210801.IErrorContract</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.IErrorContract">Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.IErrorContract</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.Api20210801.IErrorContract> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.IErrorContract> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.Api20210801.IScheduledQueryRuleResource">Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.Api20210801.IScheduledQueryRuleResource</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.IScheduledQueryRuleResource">Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.IScheduledQueryRuleResource</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.Api20210801.IScheduledQueryRuleResource> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.IScheduledQueryRuleResource> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -414,6 +435,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
+            if (1 ==_responseSize)
+            {
+                // Flush buffer
+                WriteObject(_firstResponse);
+            }
             var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
             if (telemetryInfo != null)
             {
@@ -478,8 +504,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Cmdlets
                         WriteError(new global::System.Management.Automation.ErrorRecord( new global::System.Exception(messageData().Message), string.Empty, global::System.Management.Automation.ErrorCategory.NotSpecified, null ) );
                         return ;
                     }
+                    case Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Runtime.Events.Progress:
+                    {
+                        var data = messageData();
+                        int progress = (int)data.Value;
+                        string activityMessage, statusDescription;
+                        global::System.Management.Automation.ProgressRecordType recordType;
+                        if (progress < 100)
+                        {
+                            activityMessage = "In progress";
+                            statusDescription = "Checking operation status";
+                            recordType = System.Management.Automation.ProgressRecordType.Processing;
+                        }
+                        else
+                        {
+                            activityMessage = "Completed";
+                            statusDescription = "Completed";
+                            recordType = System.Management.Automation.ProgressRecordType.Completed;
+                        }
+                        WriteProgress(new global::System.Management.Automation.ProgressRecord(1, activityMessage, statusDescription)
+                        {
+                            PercentComplete = progress,
+                        RecordType = recordType
+                        });
+                        return ;
+                    }
                 }
-                await Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Module.Instance.Signal(id, token, messageData, (i,t,m) => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Runtime.IEventListener)this).Signal(i,t,()=> Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Runtime.EventDataConverter.ConvertFrom( m() ) as Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Runtime.EventData ), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
+                await Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Module.Instance.Signal(id, token, messageData, (i, t, m) => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Runtime.IEventListener)this).Signal(i, t, () => Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Runtime.EventDataConverter.ConvertFrom(m()) as Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Runtime.EventData), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
                 if (token.IsCancellationRequested)
                 {
                     return ;
@@ -535,7 +586,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Cmdlets
             using( NoSynchronizationContext )
             {
                 await ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
+                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName, this.ExtensibleParameters);
                 if (null != HttpPipelinePrepend)
                 {
                     Pipeline.Prepend((this.CommandRuntime as Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Runtime.PowerShell.IAsyncCommandRuntimeExtensions)?.Wrap(HttpPipelinePrepend) ?? HttpPipelinePrepend);
@@ -548,12 +599,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.ScheduledQueryRulesUpdate(SubscriptionId, ResourceGroupName, Name, _parametersBody, onOk, onDefault, this, Pipeline);
+                    await this.Client.ScheduledQueryRulesUpdate(SubscriptionId, ResourceGroupName, Name, _parametersBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Runtime.SerializationMode.IncludeUpdate);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,Name=Name,body=_parametersBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,Name=Name})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -573,7 +624,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Cmdlets
         }
 
         /// <summary>
-        /// Intializes a new instance of the <see cref="UpdateAzScheduledQueryRule_UpdateExpanded" /> cmdlet class.
+        /// Initializes a new instance of the <see cref="UpdateAzScheduledQueryRule_UpdateExpanded" /> cmdlet class.
         /// </summary>
         public UpdateAzScheduledQueryRule_UpdateExpanded()
         {
@@ -599,12 +650,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.Api20210801.IErrorContract">Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.Api20210801.IErrorContract</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.IErrorContract">Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.IErrorContract</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.Api20210801.IErrorContract> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.IErrorContract> response)
         {
             using( NoSynchronizationContext )
             {
@@ -621,15 +672,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.Api20210801.IErrorContract>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name, body=_parametersBody })
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.IErrorContract>(responseMessage, await response);
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name, body=_parametersBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -639,12 +690,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.Api20210801.IScheduledQueryRuleResource">Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.Api20210801.IScheduledQueryRuleResource</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.IScheduledQueryRuleResource">Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.IScheduledQueryRuleResource</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.Api20210801.IScheduledQueryRuleResource> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.IScheduledQueryRuleResource> response)
         {
             using( NoSynchronizationContext )
             {
@@ -656,8 +707,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.Api20210801.IScheduledQueryRuleResource
-                WriteObject((await response));
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.IScheduledQueryRuleResource
+                var result = (await response);
+                if (null != result)
+                {
+                    if (0 == _responseSize)
+                    {
+                        _firstResponse = result;
+                        _responseSize = 1;
+                    }
+                    else
+                    {
+                        if (1 ==_responseSize)
+                        {
+                            // Flush buffer
+                            WriteObject(_firstResponse.AddMultipleTypeNameIntoPSObject());
+                        }
+                        WriteObject(result.AddMultipleTypeNameIntoPSObject());
+                        _responseSize = 2;
+                    }
+                }
             }
         }
     }
