@@ -44,9 +44,7 @@ namespace Microsoft.Azure.Management.ApiManagement
 
 
         /// <summary>
-        /// Subscription credentials which uniquely identify Microsoft Azure
-        /// subscription. The subscription ID forms part of the URI for every service
-        /// call.
+        /// The ID of the target subscription.
         /// </summary>
         string SubscriptionId { get; set;}
 
@@ -103,6 +101,16 @@ namespace Microsoft.Azure.Management.ApiManagement
         ITagOperations Tag { get; }
 
         /// <summary>
+        /// Gets the IGraphQlApiResolverOperations
+        /// </summary>
+        IGraphQlApiResolverOperations GraphQlApiResolver { get; }
+
+        /// <summary>
+        /// Gets the IGraphQlApiResolverPolicyOperations
+        /// </summary>
+        IGraphQlApiResolverPolicyOperations GraphQlApiResolverPolicy { get; }
+
+        /// <summary>
         /// Gets the IApiProductOperations
         /// </summary>
         IApiProductOperations ApiProduct { get; }
@@ -146,6 +154,16 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// Gets the IOperationOperations
         /// </summary>
         IOperationOperations Operation { get; }
+
+        /// <summary>
+        /// Gets the IApiWikiOperations
+        /// </summary>
+        IApiWikiOperations ApiWiki { get; }
+
+        /// <summary>
+        /// Gets the IApiWikisOperations
+        /// </summary>
+        IApiWikisOperations ApiWikis { get; }
 
         /// <summary>
         /// Gets the IApiExportOperations
@@ -363,6 +381,16 @@ namespace Microsoft.Azure.Management.ApiManagement
         IProductPolicyOperations ProductPolicy { get; }
 
         /// <summary>
+        /// Gets the IProductWikiOperations
+        /// </summary>
+        IProductWikiOperations ProductWiki { get; }
+
+        /// <summary>
+        /// Gets the IProductWikisOperations
+        /// </summary>
+        IProductWikisOperations ProductWikis { get; }
+
+        /// <summary>
         /// Gets the IQuotaByCounterKeysOperations
         /// </summary>
         IQuotaByCounterKeysOperations QuotaByCounterKeys { get; }
@@ -458,7 +486,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// errors encountered while trying to establish it.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.
@@ -491,7 +519,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// errors encountered while trying to establish it.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.

@@ -49,6 +49,10 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
         /// <param name="passwordResetPolicyName">Password Reset Policy Name. Only applies to AAD B2C Identity Provider.
         /// </param>
 
+        /// <param name="clientLibrary">The client library to be used in the developer portal. Only applies to AAD
+        /// and AAD B2C Identity Provider.
+        /// </param>
+
         /// <param name="clientId">Client Id of the Application in the external Identity Provider. It is App
         /// ID for Facebook login, Client ID for Google login, App ID for Microsoft.
         /// </param>
@@ -57,9 +61,9 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
         /// authenticate login request. For example, it is App Secret for Facebook
         /// login, API Key for Google login, Public Key for Microsoft.
         /// </param>
-        public IdentityProviderUpdateProperties(string type = default(string), string signinTenant = default(string), System.Collections.Generic.IList<string> allowedTenants = default(System.Collections.Generic.IList<string>), string authority = default(string), string signupPolicyName = default(string), string signinPolicyName = default(string), string profileEditingPolicyName = default(string), string passwordResetPolicyName = default(string), string clientId = default(string), string clientSecret = default(string))
+        public IdentityProviderUpdateProperties(string type = default(string), string signinTenant = default(string), System.Collections.Generic.IList<string> allowedTenants = default(System.Collections.Generic.IList<string>), string authority = default(string), string signupPolicyName = default(string), string signinPolicyName = default(string), string profileEditingPolicyName = default(string), string passwordResetPolicyName = default(string), string clientLibrary = default(string), string clientId = default(string), string clientSecret = default(string))
 
-        : base(type, signinTenant, allowedTenants, authority, signupPolicyName, signinPolicyName, profileEditingPolicyName, passwordResetPolicyName)
+        : base(type, signinTenant, allowedTenants, authority, signupPolicyName, signinPolicyName, profileEditingPolicyName, passwordResetPolicyName, clientLibrary)
         {
             this.ClientId = clientId;
             this.ClientSecret = clientSecret;

@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// Lists a collection of properties defined within a service instance.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// Gets the details of the Notification specified by its identifier.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// Create or Update API Management publisher notification.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.
