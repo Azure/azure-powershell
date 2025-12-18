@@ -16,20 +16,20 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzAksSnapshot'))
 
 Describe 'New-AzAksSnapshot' {
     It 'CreateExpanded' {
-        $nodepoolId = "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourcegroups/aks-test/providers/Microsoft.ContainerService/managedClusters/aks/agentPools/default"
+        $nodepoolId = "/subscriptions/$($env.SubscriptionId)/resourcegroups/$($env.ResourceGroupName)/providers/Microsoft.ContainerService/managedClusters/$($env.AksName)/agentPools/default"
         $Snapshot = New-AzAksSnapshot -ResourceGroupName $env.ResourceGroupName -ResourceName 'snapshot1' -Location $env.location -SnapshotType 'NodePool' -CreationDataSourceResourceId $nodepoolId
         
         $Snapshot.CreationDataSourceResourceId | Should -Be $nodepoolId
-        $Snapshot.KubernetesVersion | Should -Be '1.24.9'
+        $Snapshot.KubernetesVersion | Should -Be '1.32.7'
         $Snapshot.Location | Should -Be $env.location
         $Snapshot.Name | Should -Be 'snapshot1'
-        $Snapshot.NodeImageVersion | Should -Be 'AKSUbuntu-1804containerd-202303.13.0'
+        $Snapshot.NodeImageVersion | Should -Be 'AKSUbuntu-2204containerd-202510.19.1'
         $Snapshot.OSSku | Should -Be 'Ubuntu'
         $Snapshot.OSType | Should -Be 'Linux'
         $Snapshot.SnapshotType | Should -Be 'NodePool'
         $Snapshot.SystemDataCreatedByType | Should -Be 'User'
         $Snapshot.SystemDataLastModifiedByType | Should -Be 'User'
-        $Snapshot.VMSize | Should -Be 'Standard_D2_v2'
+        $Snapshot.VMSize | Should -Be 'standard_a2_v2'
 
         Remove-AzAksSnapshot -InputObject $Snapshot
     }
