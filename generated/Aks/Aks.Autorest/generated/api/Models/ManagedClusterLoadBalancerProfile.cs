@@ -23,12 +23,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
         public int? AllocatedOutboundPort { get => this._allocatedOutboundPort; set => this._allocatedOutboundPort = value; }
 
+        /// <summary>Backing field for <see cref="BackendPoolType" /> property.</summary>
+        private string _backendPoolType;
+
+        /// <summary>The type of the managed inbound Load Balancer BackendPool.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
+        public string BackendPoolType { get => this._backendPoolType; set => this._backendPoolType = value; }
+
         /// <summary>Backing field for <see cref="EffectiveOutboundIP" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceReference> _effectiveOutboundIP;
 
         /// <summary>The effective outbound IP resources of the cluster load balancer.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceReference> EffectiveOutboundIP { get => this._effectiveOutboundIP; set => this._effectiveOutboundIP = value; }
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceReference> EffectiveOutboundIP { get => this._effectiveOutboundIP; }
 
         /// <summary>Backing field for <see cref="EnableMultipleStandardLoadBalancer" /> property.</summary>
         private bool? _enableMultipleStandardLoadBalancer;
@@ -67,6 +74,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
         public int? ManagedOutboundIPCountIpv6 { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterLoadBalancerProfileManagedOutboundIPsInternal)ManagedOutboundIP).CountIPv6; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterLoadBalancerProfileManagedOutboundIPsInternal)ManagedOutboundIP).CountIPv6 = value ?? default(int); }
+
+        /// <summary>Internal Acessors for EffectiveOutboundIP</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceReference> Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterLoadBalancerProfileInternal.EffectiveOutboundIP { get => this._effectiveOutboundIP; set { {_effectiveOutboundIP = value;} } }
 
         /// <summary>Internal Acessors for ManagedOutboundIP</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterLoadBalancerProfileManagedOutboundIPs Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterLoadBalancerProfileInternal.ManagedOutboundIP { get => (this._managedOutboundIP = this._managedOutboundIP ?? new Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterLoadBalancerProfileManagedOutboundIPs()); set { {_managedOutboundIP = value;} } }
@@ -123,17 +133,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         SerializedName = @"allocatedOutboundPorts",
         PossibleTypes = new [] { typeof(int) })]
         int? AllocatedOutboundPort { get; set; }
-        /// <summary>The effective outbound IP resources of the cluster load balancer.</summary>
+        /// <summary>The type of the managed inbound Load Balancer BackendPool.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
+        Description = @"The type of the managed inbound Load Balancer BackendPool.",
+        SerializedName = @"backendPoolType",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("NodeIPConfiguration", "NodeIP")]
+        string BackendPoolType { get; set; }
+        /// <summary>The effective outbound IP resources of the cluster load balancer.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
         Description = @"The effective outbound IP resources of the cluster load balancer.",
         SerializedName = @"effectiveOutboundIPs",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceReference) })]
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceReference> EffectiveOutboundIP { get; set; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceReference> EffectiveOutboundIP { get;  }
         /// <summary>Enable multiple standard load balancers per AKS cluster or not.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
@@ -220,6 +242,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         /// value is 0 which results in Azure dynamically allocating ports.
         /// </summary>
         int? AllocatedOutboundPort { get; set; }
+        /// <summary>The type of the managed inbound Load Balancer BackendPool.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("NodeIPConfiguration", "NodeIP")]
+        string BackendPoolType { get; set; }
         /// <summary>The effective outbound IP resources of the cluster load balancer.</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceReference> EffectiveOutboundIP { get; set; }
         /// <summary>Enable multiple standard load balancers per AKS cluster or not.</summary>

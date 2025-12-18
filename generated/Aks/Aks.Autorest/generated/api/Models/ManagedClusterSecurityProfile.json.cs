@@ -81,6 +81,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
             {_azureKeyVaultKm = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonObject>("azureKeyVaultKms"), out var __jsonAzureKeyVaultKms) ? Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.AzureKeyVaultKms.FromJson(__jsonAzureKeyVaultKms) : _azureKeyVaultKm;}
             {_workloadIdentity = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonObject>("workloadIdentity"), out var __jsonWorkloadIdentity) ? Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterSecurityProfileWorkloadIdentity.FromJson(__jsonWorkloadIdentity) : _workloadIdentity;}
             {_imageCleaner = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonObject>("imageCleaner"), out var __jsonImageCleaner) ? Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterSecurityProfileImageCleaner.FromJson(__jsonImageCleaner) : _imageCleaner;}
+            {_customCaTrustCertificate = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonArray>("customCATrustCertificates"), out var __jsonCustomCaTrustCertificates) ? If( __jsonCustomCaTrustCertificates as Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<byte[]>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(byte[]) (null /* deserializeFromNode doesn't support 'application/json' C:\Users\cloudtest\.autorest\@autorest_powershell@4.0.750\node_modules\@autorest\powershell\dist\llcsharp\schema\byte-array.js*/)) ))() : null : _customCaTrustCertificate;}
             AfterFromJson(json);
         }
 
@@ -107,6 +108,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
             AddIf( null != this._azureKeyVaultKm ? (Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonNode) this._azureKeyVaultKm.ToJson(null,serializationMode) : null, "azureKeyVaultKms" ,container.Add );
             AddIf( null != this._workloadIdentity ? (Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonNode) this._workloadIdentity.ToJson(null,serializationMode) : null, "workloadIdentity" ,container.Add );
             AddIf( null != this._imageCleaner ? (Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonNode) this._imageCleaner.ToJson(null,serializationMode) : null, "imageCleaner" ,container.Add );
+            if (null != this._customCaTrustCertificate)
+            {
+                var __w = new Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.XNodeArray();
+                foreach( var __x in this._customCaTrustCertificate )
+                {
+                    AddIf(new Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonString(System.Convert.ToBase64String(__x)) ,__w.Add);
+                }
+                container.Add("customCATrustCertificates",__w);
+            }
             AfterToJson(ref container);
             return container;
         }

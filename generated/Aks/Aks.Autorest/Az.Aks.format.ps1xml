@@ -2,6 +2,34 @@
 <Configuration>
   <ViewDefinitions>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.AbsoluteMonthlySchedule</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.AbsoluteMonthlySchedule#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>DayOfMonth</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IntervalMonth</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>DayOfMonth</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IntervalMonth</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.AccessProfile</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.AccessProfile#Multiple</TypeName>
@@ -17,6 +45,78 @@
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>KubeConfig</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.AdvancedNetworking</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.AdvancedNetworking#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Enabled</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Enabled</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.AdvancedNetworkingObservability</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.AdvancedNetworkingObservability#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Enabled</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Enabled</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.AdvancedNetworkingSecurity</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.AdvancedNetworkingSecurity#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>AdvancedNetworkPolicy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Enabled</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>AdvancedNetworkPolicy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Enabled</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -114,6 +214,28 @@
       </TableControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.AgentPoolGatewayProfile</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.AgentPoolGatewayProfile#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>PublicIPPrefixSize</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>PublicIPPrefixSize</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.AgentPoolListResult</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.AgentPoolListResult#Multiple</TypeName>
@@ -151,6 +273,40 @@
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.AgentPoolSecurityProfile</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.AgentPoolSecurityProfile#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>EnableSecureBoot</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>EnableVtpm</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SshAccess</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>EnableSecureBoot</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>EnableVtpm</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SshAccess</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -255,14 +411,60 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
+            <Label>DrainTimeoutInMinute</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>MaxSurge</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MaxUnavailable</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>NodeSoakDurationInMinute</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>UndrainableNodeBehavior</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
+                <PropertyName>DrainTimeoutInMinute</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>MaxSurge</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>MaxUnavailable</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>NodeSoakDurationInMinute</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>UndrainableNodeBehavior</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.AgentPoolWindowsProfile</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.AgentPoolWindowsProfile#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>DisableOutboundNat</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>DisableOutboundNat</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -289,6 +491,12 @@
             <Label>Location</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>MachineName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Mode</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>PrivateEndpointConnectionName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -302,6 +510,9 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>SubscriptionId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TrustedAccessRoleBindingName</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -320,6 +531,12 @@
                 <PropertyName>Location</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>MachineName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Mode</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>PrivateEndpointConnectionName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -333,6 +550,9 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>SubscriptionId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TrustedAccessRoleBindingName</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -373,40 +593,6 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>KeyVaultResourceId</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.CloudErrorBody</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.CloudErrorBody#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Code</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Message</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Target</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Code</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Message</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Target</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -466,6 +652,28 @@
       </TableControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.CompatibleVersions</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.CompatibleVersions#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ContainerServiceLinuxProfile</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ContainerServiceLinuxProfile#Multiple</TypeName>
@@ -496,9 +704,6 @@
         <TableHeaders>
           <TableColumnHeader>
             <Label>DnsServiceIP</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>DockerBridgeCidr</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>LoadBalancerSku</Label>
@@ -533,9 +738,6 @@
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>DnsServiceIP</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>DockerBridgeCidr</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>LoadBalancerSku</PropertyName>
@@ -642,6 +844,96 @@
       </TableControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.DailySchedule</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.DailySchedule#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>IntervalDay</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>IntervalDay</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.DateSpan</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.DateSpan#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>End</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Start</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>End</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Start</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.DelegatedResource</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.DelegatedResource#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ReferralResource</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TenantId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ReferralResource</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TenantId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.EndpointDependency</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.EndpointDependency#Multiple</TypeName>
@@ -704,6 +996,40 @@
       </TableControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ErrorDetail</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ErrorDetail#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Code</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Message</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Target</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Code</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Message</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Target</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ExtendedLocation</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ExtendedLocation#Multiple</TypeName>
@@ -719,6 +1045,146 @@
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.GpuProfile</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.GpuProfile#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Driver</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Driver</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IPTag</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IPTag#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Tag</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Tag</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IstioEgressGateway</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IstioEgressGateway#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Enabled</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Enabled</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IstioIngressGateway</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IstioIngressGateway#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Enabled</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Mode</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Enabled</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Mode</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IstioPluginCertificateAuthority</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IstioPluginCertificateAuthority#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>CertChainObjectName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CertObjectName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>KeyObjectName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>KeyVaultId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RootCertObjectName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>CertChainObjectName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CertObjectName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>KeyObjectName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>KeyVaultId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RootCertObjectName</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -802,6 +1268,40 @@
       </TableControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.KubernetesVersion</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.KubernetesVersion#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>IsDefault</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IsPreview</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Version</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>IsDefault</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IsPreview</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Version</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.LinuxOSConfig</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.LinuxOSConfig#Multiple</TypeName>
@@ -829,6 +1329,106 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>TransparentHugePageEnabled</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Machine</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Machine#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.MachineIPAddress</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.MachineIPAddress#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Family</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IP</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Family</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IP</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.MachineListResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.MachineListResult#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.MachineProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.MachineProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ResourceId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ResourceId</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -886,6 +1486,46 @@
       </TableControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.MaintenanceWindow</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.MaintenanceWindow#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>DurationHour</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>StartDate</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>StartTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>UtcOffset</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>DurationHour</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>StartDate</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>StartTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>UtcOffset</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedCluster</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedCluster#Multiple</TypeName>
@@ -917,6 +1557,12 @@
             <Label>SystemDataLastModifiedByType</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>ETag</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Kind</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>ResourceGroupName</Label>
           </TableColumnHeader>
         </TableHeaders>
@@ -946,6 +1592,12 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ETag</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Kind</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ResourceGroupName</PropertyName>
@@ -1163,6 +1815,9 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
+            <Label>CapacityReservationGroupId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>Count</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -1170,6 +1825,9 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>CurrentOrchestratorVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ETag</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>EnableAutoScaling</Label>
@@ -1187,7 +1845,13 @@
             <Label>EnableUltraSsd</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>GatewayProfilePublicIPPrefixSize</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>GpuInstanceProfile</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>GpuProfileDriver</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>HostGroupId</Label>
@@ -1241,6 +1905,9 @@
             <Label>MaxPod</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>MessageOfTheDay</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>MinCount</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -1268,10 +1935,22 @@
             <Label>OrchestratorVersion</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>PodIPAllocationMode</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>PodSubnetId</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>PowerStateCode</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningErrorCode</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningErrorMessage</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningErrorTarget</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ProvisioningState</Label>
@@ -1289,16 +1968,40 @@
             <Label>ScaleSetPriority</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>SecurityProfileEnableSecureBoot</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SecurityProfileEnableVtpm</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SecurityProfileSshAccess</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>SpotMaxPrice</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>UpgradeSettingDrainTimeoutInMinute</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>UpgradeSettingMaxSurge</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>UpgradeSettingMaxUnavailable</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>UpgradeSettingNodeSoakDurationInMinute</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>UpgradeSettingUndrainableNodeBehavior</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>VMSize</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>VnetSubnetId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>WindowProfileDisableOutboundNat</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>WorkloadRuntime</Label>
@@ -1311,6 +2014,9 @@
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
+                <PropertyName>CapacityReservationGroupId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>Count</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -1318,6 +2024,9 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>CurrentOrchestratorVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ETag</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>EnableAutoScaling</PropertyName>
@@ -1335,7 +2044,13 @@
                 <PropertyName>EnableUltraSsd</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>GatewayProfilePublicIPPrefixSize</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>GpuInstanceProfile</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>GpuProfileDriver</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>HostGroupId</PropertyName>
@@ -1389,6 +2104,9 @@
                 <PropertyName>MaxPod</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>MessageOfTheDay</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>MinCount</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -1416,10 +2134,22 @@
                 <PropertyName>OrchestratorVersion</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>PodIPAllocationMode</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>PodSubnetId</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>PowerStateCode</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningErrorCode</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningErrorMessage</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningErrorTarget</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ProvisioningState</PropertyName>
@@ -1437,16 +2167,40 @@
                 <PropertyName>ScaleSetPriority</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>SecurityProfileEnableSecureBoot</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SecurityProfileEnableVtpm</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SecurityProfileSshAccess</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>SpotMaxPrice</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>UpgradeSettingDrainTimeoutInMinute</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>UpgradeSettingMaxSurge</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>UpgradeSettingMaxUnavailable</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>UpgradeSettingNodeSoakDurationInMinute</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>UpgradeSettingUndrainableNodeBehavior</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>VMSize</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>VnetSubnetId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>WindowProfileDisableOutboundNat</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>WorkloadRuntime</PropertyName>
@@ -1467,10 +2221,16 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
+            <Label>CapacityReservationGroupId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>Count</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>CurrentOrchestratorVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ETag</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>EnableAutoScaling</Label>
@@ -1503,6 +2263,9 @@
             <Label>MaxPod</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>MessageOfTheDay</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>MinCount</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -1528,6 +2291,9 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>OrchestratorVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PodIPAllocationMode</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>PodSubnetId</Label>
@@ -1564,10 +2330,16 @@
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
+                <PropertyName>CapacityReservationGroupId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>Count</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>CurrentOrchestratorVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ETag</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>EnableAutoScaling</PropertyName>
@@ -1600,6 +2372,9 @@
                 <PropertyName>MaxPod</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>MessageOfTheDay</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>MinCount</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -1625,6 +2400,9 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>OrchestratorVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PodIPAllocationMode</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>PodSubnetId</PropertyName>
@@ -1706,6 +2484,28 @@
       </TableControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterAiToolchainOperatorProfile</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterAiToolchainOperatorProfile#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Enabled</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Enabled</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterApiServerAccessProfile</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterApiServerAccessProfile#Multiple</TypeName>
@@ -1722,7 +2522,13 @@
             <Label>EnablePrivateClusterPublicFqdn</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>EnableVnetIntegration</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>PrivateDnsZone</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SubnetId</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -1738,7 +2544,13 @@
                 <PropertyName>EnablePrivateClusterPublicFqdn</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>EnableVnetIntegration</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>PrivateDnsZone</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SubnetId</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -1753,12 +2565,18 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
+            <Label>NodeOSUpgradeChannel</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>UpgradeChannel</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NodeOSUpgradeChannel</PropertyName>
+              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>UpgradeChannel</PropertyName>
               </TableColumnItem>
@@ -1799,6 +2617,56 @@
       <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterAzureMonitorProfileMetrics</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterAzureMonitorProfileMetrics#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Enabled</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Enabled</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterBootstrapProfile</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterBootstrapProfile#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ArtifactSource</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ContainerRegistryId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ArtifactSource</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ContainerRegistryId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterCostAnalysis</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterCostAnalysis#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1880,6 +2748,50 @@
       </TableControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterIngressProfileNginx</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterIngressProfileNginx#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>DefaultIngressControllerType</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>DefaultIngressControllerType</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterIngressProfileWebAppRouting</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterIngressProfileWebAppRouting#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Enabled</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Enabled</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterListResult</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterListResult#Multiple</TypeName>
@@ -1912,6 +2824,9 @@
             <Label>AllocatedOutboundPort</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>BackendPoolType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>EnableMultipleStandardLoadBalancer</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -1923,6 +2838,9 @@
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>AllocatedOutboundPort</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>BackendPoolType</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>EnableMultipleStandardLoadBalancer</PropertyName>
@@ -2001,6 +2919,56 @@
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>IdleTimeoutInMinute</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterNodeProvisioningProfile</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterNodeProvisioningProfile#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>DefaultNodePool</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Mode</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>DefaultNodePool</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Mode</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterNodeResourceGroupProfile</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterNodeResourceGroupProfile#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>RestrictionLevel</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>RestrictionLevel</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -2272,9 +3240,6 @@
             <Label>DnsPrefix</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>EnablePodSecurityPolicy</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
             <Label>EnableRbac</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -2301,6 +3266,12 @@
           <TableColumnHeader>
             <Label>PublicNetworkAccess</Label>
           </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceUid</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SupportPlan</Label>
+          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -2319,9 +3290,6 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>DnsPrefix</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>EnablePodSecurityPolicy</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>EnableRbac</PropertyName>
@@ -2350,6 +3318,12 @@
               <TableColumnItem>
                 <PropertyName>PublicNetworkAccess</PropertyName>
               </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceUid</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SupportPlan</PropertyName>
+              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
@@ -2366,7 +3340,16 @@
             <Label>BalanceSimilarNodeGroup</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>DaemonsetEvictionForEmptyNode</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DaemonsetEvictionForOccupiedNode</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>Expander</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IgnoreDaemonsetsUtilization</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>MaxEmptyBulkDelete</Label>
@@ -2421,7 +3404,16 @@
                 <PropertyName>BalanceSimilarNodeGroup</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>DaemonsetEvictionForEmptyNode</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DaemonsetEvictionForOccupiedNode</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>Expander</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IgnoreDaemonsetsUtilization</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>MaxEmptyBulkDelete</PropertyName>
@@ -2646,6 +3638,28 @@
       </TableControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterStaticEgressGatewayProfile</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterStaticEgressGatewayProfile#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Enabled</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Enabled</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterStorageProfileBlobCsiDriver</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterStorageProfileBlobCsiDriver#Multiple</TypeName>
@@ -2824,6 +3838,28 @@
       </TableControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscaler</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscaler#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Enabled</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Enabled</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedServiceIdentityUserAssignedIdentitiesValue</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedServiceIdentityUserAssignedIdentitiesValue#Multiple</TypeName>
@@ -2845,6 +3881,250 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>PrincipalId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManualScaleProfile</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManualScaleProfile#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Count</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Size</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Count</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Size</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.MeshRevision</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.MeshRevision#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Revision</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Revision</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.MeshRevisionProfile</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.MeshRevisionProfile#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.MeshRevisionProfileList</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.MeshRevisionProfileList#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.MeshUpgradeProfile</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.MeshUpgradeProfile#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.MeshUpgradeProfileList</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.MeshUpgradeProfileList#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.MeshUpgradeProfileProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.MeshUpgradeProfileProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Revision</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Revision</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -3022,62 +4302,6 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.OSOptionProfile</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.OSOptionProfile#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ResourceGroupName</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ResourceGroupName</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.OSOptionProperty</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.OSOptionProperty#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>EnableFipsImage</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>OSType</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>EnableFipsImage</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>OSType</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.OutboundEnvironmentEndpoint</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.OutboundEnvironmentEndpoint#Multiple</TypeName>
@@ -3115,6 +4339,40 @@
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.PortRange</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.PortRange#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>PortEnd</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PortStart</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Protocol</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>PortEnd</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PortStart</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Protocol</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -3262,6 +4520,98 @@
       </TableControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ProxyResource</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ProxyResource#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.RelativeMonthlySchedule</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.RelativeMonthlySchedule#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>DayOfWeek</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IntervalMonth</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>WeekIndex</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>DayOfWeek</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IntervalMonth</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>WeekIndex</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Resource</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Resource#Multiple</TypeName>
@@ -3333,6 +4683,28 @@
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ServiceMeshProfile</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ServiceMeshProfile#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Mode</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Mode</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -3906,6 +5278,198 @@
       </TableControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.TrustedAccessRole</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.TrustedAccessRole#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SourceResourceType</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SourceResourceType</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.TrustedAccessRoleBinding</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.TrustedAccessRoleBinding#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.TrustedAccessRoleBindingListResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.TrustedAccessRoleBindingListResult#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.TrustedAccessRoleBindingProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.TrustedAccessRoleBindingProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SourceResourceId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SourceResourceId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.TrustedAccessRoleListResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.TrustedAccessRoleListResult#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.UpgradeOverrideSettings</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.UpgradeOverrideSettings#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ForceUpgrade</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Until</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ForceUpgrade</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Until</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.UserAssignedIdentity</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.UserAssignedIdentity#Multiple</TypeName>
@@ -3933,6 +5497,62 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ResourceId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.VirtualMachineNodes</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.VirtualMachineNodes#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Count</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Size</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Count</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Size</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.WeeklySchedule</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.WeeklySchedule#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>DayOfWeek</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IntervalWeek</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>DayOfWeek</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IntervalWeek</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

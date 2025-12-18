@@ -7,7 +7,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.PowerShell;
 
-    /// <summary>Identities associated with the cluster.</summary>
+    /// <summary>
+    /// The user identity associated with the managed cluster. This identity will be used by the kubelet. Only one user assigned
+    /// identity is allowed. The only accepted key is "kubeletidentity", with value of "resourceId": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}".
+    /// </summary>
     [System.ComponentModel.TypeConverter(typeof(ManagedClusterPropertiesIdentityProfileTypeConverter))]
     public partial class ManagedClusterPropertiesIdentityProfile
     {
@@ -153,7 +156,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
             return ToJsonString();
         }
     }
-    /// Identities associated with the cluster.
+    /// The user identity associated with the managed cluster. This identity will be used by the kubelet. Only one user assigned
+    /// identity is allowed. The only accepted key is "kubeletidentity", with value of "resourceId": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}".
     [System.ComponentModel.TypeConverter(typeof(ManagedClusterPropertiesIdentityProfileTypeConverter))]
     public partial interface IManagedClusterPropertiesIdentityProfile
 

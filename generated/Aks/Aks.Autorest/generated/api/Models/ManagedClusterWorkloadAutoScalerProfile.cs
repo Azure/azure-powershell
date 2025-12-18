@@ -29,6 +29,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         /// <summary>Internal Acessors for Keda</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterWorkloadAutoScalerProfileKeda Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterWorkloadAutoScalerProfileInternal.Keda { get => (this._keda = this._keda ?? new Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterWorkloadAutoScalerProfileKeda()); set { {_keda = value;} } }
 
+        /// <summary>Internal Acessors for VerticalPodAutoscaler</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscaler Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterWorkloadAutoScalerProfileInternal.VerticalPodAutoscaler { get => (this._verticalPodAutoscaler = this._verticalPodAutoscaler ?? new Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscaler()); set { {_verticalPodAutoscaler = value;} } }
+
+        /// <summary>Backing field for <see cref="VerticalPodAutoscaler" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscaler _verticalPodAutoscaler;
+
+        /// <summary>VPA (Vertical Pod Autoscaler) settings for the workload auto-scaler profile.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscaler VerticalPodAutoscaler { get => (this._verticalPodAutoscaler = this._verticalPodAutoscaler ?? new Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscaler()); set => this._verticalPodAutoscaler = value; }
+
+        /// <summary>Whether to enable VPA. Default value is false.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
+        public bool? VerticalPodAutoscalerEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerInternal)VerticalPodAutoscaler).Enabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerInternal)VerticalPodAutoscaler).Enabled = value ?? default(bool); }
+
         /// <summary>Creates an new <see cref="ManagedClusterWorkloadAutoScalerProfile" /> instance.</summary>
         public ManagedClusterWorkloadAutoScalerProfile()
         {
@@ -50,6 +64,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         SerializedName = @"enabled",
         PossibleTypes = new [] { typeof(bool) })]
         bool? KedaEnabled { get; set; }
+        /// <summary>Whether to enable VPA. Default value is false.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Whether to enable VPA. Default value is false.",
+        SerializedName = @"enabled",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? VerticalPodAutoscalerEnabled { get; set; }
 
     }
     /// Workload Auto-scaler profile for the managed cluster.
@@ -62,6 +87,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterWorkloadAutoScalerProfileKeda Keda { get; set; }
         /// <summary>Whether to enable KEDA.</summary>
         bool? KedaEnabled { get; set; }
+        /// <summary>VPA (Vertical Pod Autoscaler) settings for the workload auto-scaler profile.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscaler VerticalPodAutoscaler { get; set; }
+        /// <summary>Whether to enable VPA. Default value is false.</summary>
+        bool? VerticalPodAutoscalerEnabled { get; set; }
 
     }
 }

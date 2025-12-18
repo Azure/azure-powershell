@@ -132,6 +132,38 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).CreationData = (Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ICreationData) content.GetValueForProperty("CreationData",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).CreationData, Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.CreationDataTypeConverter.ConvertFrom);
             }
+            if (content.Contains("NetworkProfile"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).NetworkProfile = (Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolNetworkProfile) content.GetValueForProperty("NetworkProfile",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).NetworkProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.AgentPoolNetworkProfileTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("WindowsProfile"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).WindowsProfile = (Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolWindowsProfile) content.GetValueForProperty("WindowsProfile",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).WindowsProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.AgentPoolWindowsProfileTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("SecurityProfile"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).SecurityProfile = (Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolSecurityProfile) content.GetValueForProperty("SecurityProfile",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).SecurityProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.AgentPoolSecurityProfileTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("GpuProfile"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).GpuProfile = (Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IGpuProfile) content.GetValueForProperty("GpuProfile",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).GpuProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.GpuProfileTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("GatewayProfile"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).GatewayProfile = (Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolGatewayProfile) content.GetValueForProperty("GatewayProfile",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).GatewayProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.AgentPoolGatewayProfileTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("VirtualMachinesProfile"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).VirtualMachinesProfile = (Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IVirtualMachinesProfile) content.GetValueForProperty("VirtualMachinesProfile",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).VirtualMachinesProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.VirtualMachinesProfileTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Status"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).Status = (Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolStatus) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).Status, Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.AgentPoolStatusTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ETag"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).ETag = (string) content.GetValueForProperty("ETag",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).ETag, global::System.Convert.ToString);
+            }
             if (content.Contains("Count"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).Count = (int?) content.GetValueForProperty("Count",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).Count, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
@@ -156,6 +188,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).WorkloadRuntime = (string) content.GetValueForProperty("WorkloadRuntime",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).WorkloadRuntime, global::System.Convert.ToString);
             }
+            if (content.Contains("MessageOfTheDay"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).MessageOfTheDay = (string) content.GetValueForProperty("MessageOfTheDay",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).MessageOfTheDay, global::System.Convert.ToString);
+            }
             if (content.Contains("VnetSubnetId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).VnetSubnetId = (string) content.GetValueForProperty("VnetSubnetId",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).VnetSubnetId, global::System.Convert.ToString);
@@ -163,6 +199,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
             if (content.Contains("PodSubnetId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).PodSubnetId = (string) content.GetValueForProperty("PodSubnetId",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).PodSubnetId, global::System.Convert.ToString);
+            }
+            if (content.Contains("PodIPAllocationMode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).PodIPAllocationMode = (string) content.GetValueForProperty("PodIPAllocationMode",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).PodIPAllocationMode, global::System.Convert.ToString);
             }
             if (content.Contains("MaxPod"))
             {
@@ -272,9 +312,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).GpuInstanceProfile = (string) content.GetValueForProperty("GpuInstanceProfile",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).GpuInstanceProfile, global::System.Convert.ToString);
             }
+            if (content.Contains("CapacityReservationGroupId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).CapacityReservationGroupId = (string) content.GetValueForProperty("CapacityReservationGroupId",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).CapacityReservationGroupId, global::System.Convert.ToString);
+            }
             if (content.Contains("HostGroupId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).HostGroupId = (string) content.GetValueForProperty("HostGroupId",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).HostGroupId, global::System.Convert.ToString);
+            }
+            if (content.Contains("VirtualMachineNodesStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).VirtualMachineNodesStatus = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IVirtualMachineNodes>) content.GetValueForProperty("VirtualMachineNodesStatus",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).VirtualMachineNodesStatus, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IVirtualMachineNodes>(__y, Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.VirtualMachineNodesTypeConverter.ConvertFrom));
             }
             if (content.Contains("PowerStateCode"))
             {
@@ -283,6 +331,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
             if (content.Contains("UpgradeSettingMaxSurge"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).UpgradeSettingMaxSurge = (string) content.GetValueForProperty("UpgradeSettingMaxSurge",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).UpgradeSettingMaxSurge, global::System.Convert.ToString);
+            }
+            if (content.Contains("UpgradeSettingMaxUnavailable"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).UpgradeSettingMaxUnavailable = (string) content.GetValueForProperty("UpgradeSettingMaxUnavailable",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).UpgradeSettingMaxUnavailable, global::System.Convert.ToString);
+            }
+            if (content.Contains("UpgradeSettingDrainTimeoutInMinute"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).UpgradeSettingDrainTimeoutInMinute = (int?) content.GetValueForProperty("UpgradeSettingDrainTimeoutInMinute",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).UpgradeSettingDrainTimeoutInMinute, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("UpgradeSettingNodeSoakDurationInMinute"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).UpgradeSettingNodeSoakDurationInMinute = (int?) content.GetValueForProperty("UpgradeSettingNodeSoakDurationInMinute",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).UpgradeSettingNodeSoakDurationInMinute, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("UpgradeSettingUndrainableNodeBehavior"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).UpgradeSettingUndrainableNodeBehavior = (string) content.GetValueForProperty("UpgradeSettingUndrainableNodeBehavior",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).UpgradeSettingUndrainableNodeBehavior, global::System.Convert.ToString);
             }
             if (content.Contains("KubeletConfigCpuManagerPolicy"))
             {
@@ -347,6 +411,74 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
             if (content.Contains("CreationDataSourceResourceId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).CreationDataSourceResourceId = (string) content.GetValueForProperty("CreationDataSourceResourceId",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).CreationDataSourceResourceId, global::System.Convert.ToString);
+            }
+            if (content.Contains("NetworkProfileNodePublicIPTag"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).NetworkProfileNodePublicIPTag = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IIPTag>) content.GetValueForProperty("NetworkProfileNodePublicIPTag",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).NetworkProfileNodePublicIPTag, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IIPTag>(__y, Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IPTagTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("NetworkProfileAllowedHostPort"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).NetworkProfileAllowedHostPort = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IPortRange>) content.GetValueForProperty("NetworkProfileAllowedHostPort",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).NetworkProfileAllowedHostPort, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IPortRange>(__y, Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.PortRangeTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("NetworkProfileApplicationSecurityGroup"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).NetworkProfileApplicationSecurityGroup = (System.Collections.Generic.List<string>) content.GetValueForProperty("NetworkProfileApplicationSecurityGroup",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).NetworkProfileApplicationSecurityGroup, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("WindowProfileDisableOutboundNat"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).WindowProfileDisableOutboundNat = (bool?) content.GetValueForProperty("WindowProfileDisableOutboundNat",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).WindowProfileDisableOutboundNat, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("SecurityProfileEnableVtpm"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).SecurityProfileEnableVtpm = (bool?) content.GetValueForProperty("SecurityProfileEnableVtpm",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).SecurityProfileEnableVtpm, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("SecurityProfileEnableSecureBoot"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).SecurityProfileEnableSecureBoot = (bool?) content.GetValueForProperty("SecurityProfileEnableSecureBoot",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).SecurityProfileEnableSecureBoot, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("SecurityProfileSshAccess"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).SecurityProfileSshAccess = (string) content.GetValueForProperty("SecurityProfileSshAccess",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).SecurityProfileSshAccess, global::System.Convert.ToString);
+            }
+            if (content.Contains("GpuProfileDriver"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).GpuProfileDriver = (string) content.GetValueForProperty("GpuProfileDriver",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).GpuProfileDriver, global::System.Convert.ToString);
+            }
+            if (content.Contains("GatewayProfilePublicIPPrefixSize"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).GatewayProfilePublicIPPrefixSize = (int?) content.GetValueForProperty("GatewayProfilePublicIPPrefixSize",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).GatewayProfilePublicIPPrefixSize, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("VirtualMachineProfileScale"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).VirtualMachineProfileScale = (Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IScaleProfile) content.GetValueForProperty("VirtualMachineProfileScale",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).VirtualMachineProfileScale, Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ScaleProfileTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("StatusProvisioningError"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).StatusProvisioningError = (Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IErrorDetail) content.GetValueForProperty("StatusProvisioningError",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).StatusProvisioningError, Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ErrorDetailTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ScaleManual"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).ScaleManual = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManualScaleProfile>) content.GetValueForProperty("ScaleManual",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).ScaleManual, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManualScaleProfile>(__y, Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManualScaleProfileTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("ProvisioningErrorCode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).ProvisioningErrorCode = (string) content.GetValueForProperty("ProvisioningErrorCode",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).ProvisioningErrorCode, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProvisioningErrorMessage"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).ProvisioningErrorMessage = (string) content.GetValueForProperty("ProvisioningErrorMessage",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).ProvisioningErrorMessage, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProvisioningErrorTarget"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).ProvisioningErrorTarget = (string) content.GetValueForProperty("ProvisioningErrorTarget",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).ProvisioningErrorTarget, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProvisioningErrorDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).ProvisioningErrorDetail = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IErrorDetail>) content.GetValueForProperty("ProvisioningErrorDetail",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).ProvisioningErrorDetail, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IErrorDetail>(__y, Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ErrorDetailTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("ProvisioningErrorAdditionalInfo"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).ProvisioningErrorAdditionalInfo = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IErrorAdditionalInfo>) content.GetValueForProperty("ProvisioningErrorAdditionalInfo",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).ProvisioningErrorAdditionalInfo, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IErrorAdditionalInfo>(__y, Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ErrorAdditionalInfoTypeConverter.ConvertFrom));
             }
             AfterDeserializeDictionary(content);
         }
@@ -385,6 +517,38 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).CreationData = (Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ICreationData) content.GetValueForProperty("CreationData",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).CreationData, Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.CreationDataTypeConverter.ConvertFrom);
             }
+            if (content.Contains("NetworkProfile"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).NetworkProfile = (Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolNetworkProfile) content.GetValueForProperty("NetworkProfile",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).NetworkProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.AgentPoolNetworkProfileTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("WindowsProfile"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).WindowsProfile = (Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolWindowsProfile) content.GetValueForProperty("WindowsProfile",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).WindowsProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.AgentPoolWindowsProfileTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("SecurityProfile"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).SecurityProfile = (Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolSecurityProfile) content.GetValueForProperty("SecurityProfile",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).SecurityProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.AgentPoolSecurityProfileTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("GpuProfile"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).GpuProfile = (Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IGpuProfile) content.GetValueForProperty("GpuProfile",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).GpuProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.GpuProfileTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("GatewayProfile"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).GatewayProfile = (Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolGatewayProfile) content.GetValueForProperty("GatewayProfile",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).GatewayProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.AgentPoolGatewayProfileTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("VirtualMachinesProfile"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).VirtualMachinesProfile = (Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IVirtualMachinesProfile) content.GetValueForProperty("VirtualMachinesProfile",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).VirtualMachinesProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.VirtualMachinesProfileTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Status"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).Status = (Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolStatus) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).Status, Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.AgentPoolStatusTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ETag"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).ETag = (string) content.GetValueForProperty("ETag",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).ETag, global::System.Convert.ToString);
+            }
             if (content.Contains("Count"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).Count = (int?) content.GetValueForProperty("Count",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).Count, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
@@ -409,6 +573,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).WorkloadRuntime = (string) content.GetValueForProperty("WorkloadRuntime",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).WorkloadRuntime, global::System.Convert.ToString);
             }
+            if (content.Contains("MessageOfTheDay"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).MessageOfTheDay = (string) content.GetValueForProperty("MessageOfTheDay",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).MessageOfTheDay, global::System.Convert.ToString);
+            }
             if (content.Contains("VnetSubnetId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).VnetSubnetId = (string) content.GetValueForProperty("VnetSubnetId",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).VnetSubnetId, global::System.Convert.ToString);
@@ -416,6 +584,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
             if (content.Contains("PodSubnetId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).PodSubnetId = (string) content.GetValueForProperty("PodSubnetId",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).PodSubnetId, global::System.Convert.ToString);
+            }
+            if (content.Contains("PodIPAllocationMode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).PodIPAllocationMode = (string) content.GetValueForProperty("PodIPAllocationMode",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).PodIPAllocationMode, global::System.Convert.ToString);
             }
             if (content.Contains("MaxPod"))
             {
@@ -525,9 +697,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).GpuInstanceProfile = (string) content.GetValueForProperty("GpuInstanceProfile",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).GpuInstanceProfile, global::System.Convert.ToString);
             }
+            if (content.Contains("CapacityReservationGroupId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).CapacityReservationGroupId = (string) content.GetValueForProperty("CapacityReservationGroupId",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).CapacityReservationGroupId, global::System.Convert.ToString);
+            }
             if (content.Contains("HostGroupId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).HostGroupId = (string) content.GetValueForProperty("HostGroupId",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).HostGroupId, global::System.Convert.ToString);
+            }
+            if (content.Contains("VirtualMachineNodesStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).VirtualMachineNodesStatus = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IVirtualMachineNodes>) content.GetValueForProperty("VirtualMachineNodesStatus",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).VirtualMachineNodesStatus, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IVirtualMachineNodes>(__y, Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.VirtualMachineNodesTypeConverter.ConvertFrom));
             }
             if (content.Contains("PowerStateCode"))
             {
@@ -536,6 +716,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
             if (content.Contains("UpgradeSettingMaxSurge"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).UpgradeSettingMaxSurge = (string) content.GetValueForProperty("UpgradeSettingMaxSurge",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).UpgradeSettingMaxSurge, global::System.Convert.ToString);
+            }
+            if (content.Contains("UpgradeSettingMaxUnavailable"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).UpgradeSettingMaxUnavailable = (string) content.GetValueForProperty("UpgradeSettingMaxUnavailable",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).UpgradeSettingMaxUnavailable, global::System.Convert.ToString);
+            }
+            if (content.Contains("UpgradeSettingDrainTimeoutInMinute"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).UpgradeSettingDrainTimeoutInMinute = (int?) content.GetValueForProperty("UpgradeSettingDrainTimeoutInMinute",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).UpgradeSettingDrainTimeoutInMinute, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("UpgradeSettingNodeSoakDurationInMinute"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).UpgradeSettingNodeSoakDurationInMinute = (int?) content.GetValueForProperty("UpgradeSettingNodeSoakDurationInMinute",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).UpgradeSettingNodeSoakDurationInMinute, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("UpgradeSettingUndrainableNodeBehavior"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).UpgradeSettingUndrainableNodeBehavior = (string) content.GetValueForProperty("UpgradeSettingUndrainableNodeBehavior",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).UpgradeSettingUndrainableNodeBehavior, global::System.Convert.ToString);
             }
             if (content.Contains("KubeletConfigCpuManagerPolicy"))
             {
@@ -600,6 +796,74 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
             if (content.Contains("CreationDataSourceResourceId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).CreationDataSourceResourceId = (string) content.GetValueForProperty("CreationDataSourceResourceId",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).CreationDataSourceResourceId, global::System.Convert.ToString);
+            }
+            if (content.Contains("NetworkProfileNodePublicIPTag"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).NetworkProfileNodePublicIPTag = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IIPTag>) content.GetValueForProperty("NetworkProfileNodePublicIPTag",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).NetworkProfileNodePublicIPTag, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IIPTag>(__y, Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IPTagTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("NetworkProfileAllowedHostPort"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).NetworkProfileAllowedHostPort = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IPortRange>) content.GetValueForProperty("NetworkProfileAllowedHostPort",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).NetworkProfileAllowedHostPort, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IPortRange>(__y, Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.PortRangeTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("NetworkProfileApplicationSecurityGroup"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).NetworkProfileApplicationSecurityGroup = (System.Collections.Generic.List<string>) content.GetValueForProperty("NetworkProfileApplicationSecurityGroup",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).NetworkProfileApplicationSecurityGroup, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("WindowProfileDisableOutboundNat"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).WindowProfileDisableOutboundNat = (bool?) content.GetValueForProperty("WindowProfileDisableOutboundNat",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).WindowProfileDisableOutboundNat, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("SecurityProfileEnableVtpm"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).SecurityProfileEnableVtpm = (bool?) content.GetValueForProperty("SecurityProfileEnableVtpm",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).SecurityProfileEnableVtpm, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("SecurityProfileEnableSecureBoot"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).SecurityProfileEnableSecureBoot = (bool?) content.GetValueForProperty("SecurityProfileEnableSecureBoot",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).SecurityProfileEnableSecureBoot, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("SecurityProfileSshAccess"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).SecurityProfileSshAccess = (string) content.GetValueForProperty("SecurityProfileSshAccess",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).SecurityProfileSshAccess, global::System.Convert.ToString);
+            }
+            if (content.Contains("GpuProfileDriver"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).GpuProfileDriver = (string) content.GetValueForProperty("GpuProfileDriver",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).GpuProfileDriver, global::System.Convert.ToString);
+            }
+            if (content.Contains("GatewayProfilePublicIPPrefixSize"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).GatewayProfilePublicIPPrefixSize = (int?) content.GetValueForProperty("GatewayProfilePublicIPPrefixSize",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).GatewayProfilePublicIPPrefixSize, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("VirtualMachineProfileScale"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).VirtualMachineProfileScale = (Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IScaleProfile) content.GetValueForProperty("VirtualMachineProfileScale",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).VirtualMachineProfileScale, Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ScaleProfileTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("StatusProvisioningError"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).StatusProvisioningError = (Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IErrorDetail) content.GetValueForProperty("StatusProvisioningError",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).StatusProvisioningError, Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ErrorDetailTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ScaleManual"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).ScaleManual = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManualScaleProfile>) content.GetValueForProperty("ScaleManual",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).ScaleManual, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManualScaleProfile>(__y, Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManualScaleProfileTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("ProvisioningErrorCode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).ProvisioningErrorCode = (string) content.GetValueForProperty("ProvisioningErrorCode",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).ProvisioningErrorCode, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProvisioningErrorMessage"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).ProvisioningErrorMessage = (string) content.GetValueForProperty("ProvisioningErrorMessage",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).ProvisioningErrorMessage, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProvisioningErrorTarget"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).ProvisioningErrorTarget = (string) content.GetValueForProperty("ProvisioningErrorTarget",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).ProvisioningErrorTarget, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProvisioningErrorDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).ProvisioningErrorDetail = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IErrorDetail>) content.GetValueForProperty("ProvisioningErrorDetail",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).ProvisioningErrorDetail, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IErrorDetail>(__y, Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ErrorDetailTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("ProvisioningErrorAdditionalInfo"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).ProvisioningErrorAdditionalInfo = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IErrorAdditionalInfo>) content.GetValueForProperty("ProvisioningErrorAdditionalInfo",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)this).ProvisioningErrorAdditionalInfo, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IErrorAdditionalInfo>(__y, Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ErrorAdditionalInfoTypeConverter.ConvertFrom));
             }
             AfterDeserializePSObject(content);
         }

@@ -80,6 +80,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolUpgradeSettingsInternal)this).MaxSurge = (string) content.GetValueForProperty("MaxSurge",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolUpgradeSettingsInternal)this).MaxSurge, global::System.Convert.ToString);
             }
+            if (content.Contains("MaxUnavailable"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolUpgradeSettingsInternal)this).MaxUnavailable = (string) content.GetValueForProperty("MaxUnavailable",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolUpgradeSettingsInternal)this).MaxUnavailable, global::System.Convert.ToString);
+            }
+            if (content.Contains("DrainTimeoutInMinute"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolUpgradeSettingsInternal)this).DrainTimeoutInMinute = (int?) content.GetValueForProperty("DrainTimeoutInMinute",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolUpgradeSettingsInternal)this).DrainTimeoutInMinute, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("NodeSoakDurationInMinute"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolUpgradeSettingsInternal)this).NodeSoakDurationInMinute = (int?) content.GetValueForProperty("NodeSoakDurationInMinute",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolUpgradeSettingsInternal)this).NodeSoakDurationInMinute, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("UndrainableNodeBehavior"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolUpgradeSettingsInternal)this).UndrainableNodeBehavior = (string) content.GetValueForProperty("UndrainableNodeBehavior",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolUpgradeSettingsInternal)this).UndrainableNodeBehavior, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -100,6 +116,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
             if (content.Contains("MaxSurge"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolUpgradeSettingsInternal)this).MaxSurge = (string) content.GetValueForProperty("MaxSurge",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolUpgradeSettingsInternal)this).MaxSurge, global::System.Convert.ToString);
+            }
+            if (content.Contains("MaxUnavailable"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolUpgradeSettingsInternal)this).MaxUnavailable = (string) content.GetValueForProperty("MaxUnavailable",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolUpgradeSettingsInternal)this).MaxUnavailable, global::System.Convert.ToString);
+            }
+            if (content.Contains("DrainTimeoutInMinute"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolUpgradeSettingsInternal)this).DrainTimeoutInMinute = (int?) content.GetValueForProperty("DrainTimeoutInMinute",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolUpgradeSettingsInternal)this).DrainTimeoutInMinute, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("NodeSoakDurationInMinute"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolUpgradeSettingsInternal)this).NodeSoakDurationInMinute = (int?) content.GetValueForProperty("NodeSoakDurationInMinute",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolUpgradeSettingsInternal)this).NodeSoakDurationInMinute, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("UndrainableNodeBehavior"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolUpgradeSettingsInternal)this).UndrainableNodeBehavior = (string) content.GetValueForProperty("UndrainableNodeBehavior",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolUpgradeSettingsInternal)this).UndrainableNodeBehavior, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

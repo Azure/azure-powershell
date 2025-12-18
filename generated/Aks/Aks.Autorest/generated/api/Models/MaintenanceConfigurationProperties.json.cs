@@ -77,6 +77,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
             {
                 return;
             }
+            {_maintenanceWindow = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonObject>("maintenanceWindow"), out var __jsonMaintenanceWindow) ? Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.MaintenanceWindow.FromJson(__jsonMaintenanceWindow) : _maintenanceWindow;}
             {_timeInWeek = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonArray>("timeInWeek"), out var __jsonTimeInWeek) ? If( __jsonTimeInWeek as Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ITimeInWeek>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ITimeInWeek) (Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.TimeInWeek.FromJson(__u) )) ))() : null : _timeInWeek;}
             {_notAllowedTime = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonArray>("notAllowedTime"), out var __jsonNotAllowedTime) ? If( __jsonNotAllowedTime as Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ITimeSpan>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__q, (__p)=>(Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ITimeSpan) (Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.TimeSpan.FromJson(__p) )) ))() : null : _notAllowedTime;}
             AfterFromJson(json);
@@ -102,6 +103,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
             {
                 return container;
             }
+            AddIf( null != this._maintenanceWindow ? (Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonNode) this._maintenanceWindow.ToJson(null,serializationMode) : null, "maintenanceWindow" ,container.Add );
             if (null != this._timeInWeek)
             {
                 var __w = new Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.XNodeArray();

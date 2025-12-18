@@ -26,6 +26,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         public System.Collections.Generic.List<string> AvailabilityZone { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).AvailabilityZone; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).AvailabilityZone = value ?? null /* arrayOf */; }
 
         /// <summary>
+        /// AKS will associate the specified agent pool with the Capacity Reservation Group.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inherited)]
+        public string CapacityReservationGroupId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).CapacityReservationGroupId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).CapacityReservationGroupId = value ?? null; }
+
+        /// <summary>
         /// Number of agents (VMs) to host docker containers. Allowed values must be in the range of 0 to 1000 (inclusive) for user
         /// pools and in the range of 1 to 1000 (inclusive) for system pools. The default value is 1.
         /// </summary>
@@ -43,33 +49,43 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         public string CreationDataSourceResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).CreationDataSourceResourceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).CreationDataSourceResourceId = value ?? null; }
 
         /// <summary>
-        /// If orchestratorVersion is a fully specified version <major.minor.patch>, this field will be exactly equal to it. If orchestratorVersion
-        /// is <major.minor>, this field will contain the full <major.minor.patch> version being used.
+        /// The version of Kubernetes the Agent Pool is running. If orchestratorVersion is a fully specified version <major.minor.patch>,
+        /// this field will be exactly equal to it. If orchestratorVersion is <major.minor>, this field will contain the full <major.minor.patch>
+        /// version being used.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inherited)]
         public string CurrentOrchestratorVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).CurrentOrchestratorVersion; }
+
+        /// <summary>
+        /// Unique read-only string used to implement optimistic concurrency. The eTag value will change when the resource is updated.
+        /// Specify an if-match or if-none-match header with the eTag value for a subsequent request to enable optimistic concurrency
+        /// per the normal etag convention.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inherited)]
+        public string ETag { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).ETag; }
 
         /// <summary>Whether to enable auto-scaler</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inherited)]
         public bool? EnableAutoScaling { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).EnableAutoScaling; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).EnableAutoScaling = value ?? default(bool); }
 
         /// <summary>
-        /// This is only supported on certain VM sizes and in certain Azure regions. For more information, see: https://docs.microsoft.com/azure/aks/enable-host-encryption
+        /// Whether to enable host based OS and data drive encryption. This is only supported on certain VM sizes and in certain Azure
+        /// regions. For more information, see: https://docs.microsoft.com/azure/aks/enable-host-encryption
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inherited)]
         public bool? EnableEncryptionAtHost { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).EnableEncryptionAtHost; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).EnableEncryptionAtHost = value ?? default(bool); }
 
         /// <summary>
-        /// See [Add a FIPS-enabled node pool](https://docs.microsoft.com/azure/aks/use-multiple-node-pools#add-a-fips-enabled-node-pool-preview)
+        /// Whether to use a FIPS-enabled OS. See [Add a FIPS-enabled node pool](https://docs.microsoft.com/azure/aks/use-multiple-node-pools#add-a-fips-enabled-node-pool-preview)
         /// for more details.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inherited)]
         public bool? EnableFips { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).EnableFips; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).EnableFips = value ?? default(bool); }
 
         /// <summary>
-        /// Some scenarios may require nodes in a node pool to receive their own dedicated public IP addresses. A common scenario
-        /// is for gaming workloads, where a console needs to make a direct connection to a cloud virtual machine to minimize hops.
-        /// For more information see [assigning a public IP per node](https://docs.microsoft.com/azure/aks/use-multiple-node-pools#assign-a-public-ip-per-node-for-your-node-pools).
+        /// Whether each node is allocated its own public IP. Some scenarios may require nodes in a node pool to receive their own
+        /// dedicated public IP addresses. A common scenario is for gaming workloads, where a console needs to make a direct connection
+        /// to a cloud virtual machine to minimize hops. For more information see [assigning a public IP per node](https://docs.microsoft.com/azure/aks/use-multiple-node-pools#assign-a-public-ip-per-node-for-your-node-pools).
         /// The default is false.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inherited)]
@@ -80,13 +96,38 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         public bool? EnableUltraSsd { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).EnableUltraSsd; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).EnableUltraSsd = value ?? default(bool); }
 
         /// <summary>
+        /// Profile specific to a managed agent pool in Gateway mode. This field cannot be set if agent pool mode is not Gateway.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inherited)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolGatewayProfile GatewayProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).GatewayProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).GatewayProfile = value ?? null /* model class */; }
+
+        /// <summary>
+        /// The Gateway agent pool associates one public IPPrefix for each static egress gateway to provide public egress. The size
+        /// of Public IPPrefix should be selected by the user. Each node in the agent pool is assigned with one IP from the IPPrefix.
+        /// The IPPrefix size thus serves as a cap on the size of the Gateway agent pool. Due to Azure public IPPrefix size limitation,
+        /// the valid value range is [28, 31] (/31 = 2 nodes/IPs, /30 = 4 nodes/IPs, /29 = 8 nodes/IPs, /28 = 16 nodes/IPs). The default
+        /// value is 31.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inherited)]
+        public int? GatewayProfilePublicIPPrefixSize { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).GatewayProfilePublicIPPrefixSize; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).GatewayProfilePublicIPPrefixSize = value ?? default(int); }
+
+        /// <summary>
         /// GPUInstanceProfile to be used to specify GPU MIG instance profile for supported GPU VM SKU.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inherited)]
         public string GpuInstanceProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).GpuInstanceProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).GpuInstanceProfile = value ?? null; }
 
+        /// <summary>GPU settings for the Agent Pool.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inherited)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IGpuProfile GpuProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).GpuProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).GpuProfile = value ?? null /* model class */; }
+
+        /// <summary>Whether to install GPU drivers. When it's not specified, default is Install.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inherited)]
+        public string GpuProfileDriver { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).GpuProfileDriver; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).GpuProfileDriver = value ?? null; }
+
         /// <summary>
-        /// This is of the form: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}.
+        /// The fully qualified resource ID of the Dedicated Host Group to provision virtual machines from, used only in creation
+        /// scenario and not allowed to changed once set. This is of the form: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}.
         /// For more information see [Azure dedicated hosts](https://docs.microsoft.com/azure/virtual-machines/dedicated-hosts).
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inherited)]
@@ -110,19 +151,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inherited)]
         public int? KubeletConfigContainerLogMaxSizeMb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).KubeletConfigContainerLogMaxSizeMb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).KubeletConfigContainerLogMaxSizeMb = value ?? default(int); }
 
-        /// <summary>The default is true.</summary>
+        /// <summary>
+        /// If CPU CFS quota enforcement is enabled for containers that specify CPU limits. The default is true.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inherited)]
         public bool? KubeletConfigCpuCfsQuota { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).KubeletConfigCpuCfsQuota; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).KubeletConfigCpuCfsQuota = value ?? default(bool); }
 
         /// <summary>
-        /// The default is '100ms.' Valid values are a sequence of decimal numbers with an optional fraction and a unit suffix. For
-        /// example: '300ms', '2h45m'. Supported units are 'ns', 'us', 'ms', 's', 'm', and 'h'.
+        /// The CPU CFS quota period value. The default is '100ms.' Valid values are a sequence of decimal numbers with an optional
+        /// fraction and a unit suffix. For example: '300ms', '2h45m'. Supported units are 'ns', 'us', 'ms', 's', 'm', and 'h'.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inherited)]
         public string KubeletConfigCpuCfsQuotaPeriod { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).KubeletConfigCpuCfsQuotaPeriod; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).KubeletConfigCpuCfsQuotaPeriod = value ?? null; }
 
         /// <summary>
-        /// The default is 'none'. See [Kubernetes CPU management policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/#cpu-management-policies)
+        /// The CPU Manager policy to use. The default is 'none'. See [Kubernetes CPU management policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/#cpu-management-policies)
         /// for more information. Allowed values are 'none' and 'static'.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inherited)]
@@ -134,11 +177,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inherited)]
         public bool? KubeletConfigFailSwapOn { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).KubeletConfigFailSwapOn; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).KubeletConfigFailSwapOn = value ?? default(bool); }
 
-        /// <summary>To disable image garbage collection, set to 100. The default is 85%</summary>
+        /// <summary>
+        /// The percent of disk usage after which image garbage collection is always run. To disable image garbage collection, set
+        /// to 100. The default is 85%
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inherited)]
         public int? KubeletConfigImageGcHighThreshold { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).KubeletConfigImageGcHighThreshold; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).KubeletConfigImageGcHighThreshold = value ?? default(int); }
 
-        /// <summary>This cannot be set higher than imageGcHighThreshold. The default is 80%</summary>
+        /// <summary>
+        /// The percent of disk usage before which image garbage collection is never run. This cannot be set higher than imageGcHighThreshold.
+        /// The default is 80%
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inherited)]
         public int? KubeletConfigImageGcLowThreshold { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).KubeletConfigImageGcLowThreshold; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).KubeletConfigImageGcLowThreshold = value ?? default(int); }
 
@@ -147,7 +196,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         public int? KubeletConfigPodMaxPid { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).KubeletConfigPodMaxPid; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).KubeletConfigPodMaxPid = value ?? default(int); }
 
         /// <summary>
-        /// For more information see [Kubernetes Topology Manager](https://kubernetes.io/docs/tasks/administer-cluster/topology-manager).
+        /// The Topology Manager policy to use. For more information see [Kubernetes Topology Manager](https://kubernetes.io/docs/tasks/administer-cluster/topology-manager).
         /// The default is 'none'. Allowed values are 'none', 'best-effort', 'restricted', and 'single-numa-node'.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inherited)]
@@ -172,14 +221,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         public Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISysctlConfig LinuxOSConfigSysctl { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).LinuxOSConfigSysctl; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).LinuxOSConfigSysctl = value ?? null /* model class */; }
 
         /// <summary>
-        /// Valid values are 'always', 'defer', 'defer+madvise', 'madvise' and 'never'. The default is 'madvise'. For more information
-        /// see [Transparent Hugepages](https://www.kernel.org/doc/html/latest/admin-guide/mm/transhuge.html#admin-guide-transhuge).
+        /// Whether the kernel should make aggressive use of memory compaction to make more hugepages available. Valid values are
+        /// 'always', 'defer', 'defer+madvise', 'madvise' and 'never'. The default is 'madvise'. For more information see [Transparent
+        /// Hugepages](https://www.kernel.org/doc/html/latest/admin-guide/mm/transhuge.html#admin-guide-transhuge).
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inherited)]
         public string LinuxOSConfigTransparentHugePageDefrag { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).LinuxOSConfigTransparentHugePageDefrag; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).LinuxOSConfigTransparentHugePageDefrag = value ?? null; }
 
         /// <summary>
-        /// Valid values are 'always', 'madvise', and 'never'. The default is 'always'. For more information see [Transparent Hugepages](https://www.kernel.org/doc/html/latest/admin-guide/mm/transhuge.html#admin-guide-transhuge).
+        /// Whether transparent hugepages are enabled. Valid values are 'always', 'madvise', and 'never'. The default is 'always'.
+        /// For more information see [Transparent Hugepages](https://www.kernel.org/doc/html/latest/admin-guide/mm/transhuge.html#admin-guide-transhuge).
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inherited)]
         public string LinuxOSConfigTransparentHugePageEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).LinuxOSConfigTransparentHugePageEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).LinuxOSConfigTransparentHugePageEnabled = value ?? null; }
@@ -192,37 +243,90 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inherited)]
         public int? MaxPod { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).MaxPod; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).MaxPod = value ?? default(int); }
 
+        /// <summary>
+        /// Message of the day for Linux nodes, base64-encoded. A base64-encoded string which will be written to /etc/motd after decoding.
+        /// This allows customization of the message of the day for Linux nodes. It must not be specified for Windows nodes. It must
+        /// be a static string (i.e., will be printed raw and not be executed as a script).
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inherited)]
+        public string MessageOfTheDay { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).MessageOfTheDay; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).MessageOfTheDay = value ?? null; }
+
         /// <summary>Internal Acessors for CreationData</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ICreationData Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal.CreationData { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).CreationData; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).CreationData = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ICreationData Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal.CreationData { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).CreationData; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).CreationData = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for CurrentOrchestratorVersion</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal.CurrentOrchestratorVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).CurrentOrchestratorVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).CurrentOrchestratorVersion = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal.CurrentOrchestratorVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).CurrentOrchestratorVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).CurrentOrchestratorVersion = value ?? null; }
+
+        /// <summary>Internal Acessors for ETag</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal.ETag { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).ETag; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).ETag = value ?? null; }
+
+        /// <summary>Internal Acessors for GatewayProfile</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolGatewayProfile Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal.GatewayProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).GatewayProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).GatewayProfile = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for GpuProfile</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IGpuProfile Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal.GpuProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).GpuProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).GpuProfile = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for KubeletConfig</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IKubeletConfig Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal.KubeletConfig { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).KubeletConfig; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).KubeletConfig = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IKubeletConfig Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal.KubeletConfig { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).KubeletConfig; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).KubeletConfig = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for LinuxOSConfig</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ILinuxOSConfig Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal.LinuxOSConfig { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).LinuxOSConfig; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).LinuxOSConfig = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ILinuxOSConfig Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal.LinuxOSConfig { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).LinuxOSConfig; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).LinuxOSConfig = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for NetworkProfile</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolNetworkProfile Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal.NetworkProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).NetworkProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).NetworkProfile = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for NodeImageVersion</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal.NodeImageVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).NodeImageVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).NodeImageVersion = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal.NodeImageVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).NodeImageVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).NodeImageVersion = value ?? null; }
 
         /// <summary>Internal Acessors for PowerState</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IPowerState Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal.PowerState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).PowerState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).PowerState = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IPowerState Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal.PowerState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).PowerState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).PowerState = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for ProvisioningErrorAdditionalInfo</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IErrorAdditionalInfo> Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal.ProvisioningErrorAdditionalInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).ProvisioningErrorAdditionalInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).ProvisioningErrorAdditionalInfo = value ?? null /* arrayOf */; }
+
+        /// <summary>Internal Acessors for ProvisioningErrorCode</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal.ProvisioningErrorCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).ProvisioningErrorCode; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).ProvisioningErrorCode = value ?? null; }
+
+        /// <summary>Internal Acessors for ProvisioningErrorDetail</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IErrorDetail> Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal.ProvisioningErrorDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).ProvisioningErrorDetail; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).ProvisioningErrorDetail = value ?? null /* arrayOf */; }
+
+        /// <summary>Internal Acessors for ProvisioningErrorMessage</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal.ProvisioningErrorMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).ProvisioningErrorMessage; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).ProvisioningErrorMessage = value ?? null; }
+
+        /// <summary>Internal Acessors for ProvisioningErrorTarget</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal.ProvisioningErrorTarget { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).ProvisioningErrorTarget; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).ProvisioningErrorTarget = value ?? null; }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).ProvisioningState = value ?? null; }
+
+        /// <summary>Internal Acessors for SecurityProfile</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolSecurityProfile Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal.SecurityProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).SecurityProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).SecurityProfile = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for Status</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolStatus Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal.Status { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).Status = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for StatusProvisioningError</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IErrorDetail Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal.StatusProvisioningError { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).StatusProvisioningError; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).StatusProvisioningError = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for UpgradeSetting</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolUpgradeSettings Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal.UpgradeSetting { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).UpgradeSetting; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).UpgradeSetting = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolUpgradeSettings Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal.UpgradeSetting { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).UpgradeSetting; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).UpgradeSetting = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for VirtualMachineProfileScale</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IScaleProfile Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal.VirtualMachineProfileScale { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).VirtualMachineProfileScale; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).VirtualMachineProfileScale = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for VirtualMachinesProfile</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IVirtualMachinesProfile Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal.VirtualMachinesProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).VirtualMachinesProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).VirtualMachinesProfile = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for WindowsProfile</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolWindowsProfile Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal.WindowsProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).WindowsProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).WindowsProfile = value ?? null /* model class */; }
 
         /// <summary>The minimum number of nodes for auto-scaling</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inherited)]
         public int? MinCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).MinCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).MinCount = value ?? default(int); }
 
         /// <summary>
-        /// A cluster must have at least one 'System' Agent Pool at all times. For additional information on agent pool restrictions
-        /// and best practices, see: https://docs.microsoft.com/azure/aks/use-system-pools
+        /// The mode of an agent pool. A cluster must have at least one 'System' Agent Pool at all times. For additional information
+        /// on agent pool restrictions and best practices, see: https://docs.microsoft.com/azure/aks/use-system-pools
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inherited)]
         public string Mode { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).Mode; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).Mode = value ?? null; }
@@ -230,9 +334,32 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
         private string _name;
 
-        /// <summary>Windows agent pool names must be 6 characters or less.</summary>
+        /// <summary>
+        /// Unique name of the agent pool profile in the context of the subscription and resource group. Windows agent pool names
+        /// must be 6 characters or less.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
         public string Name { get => this._name; set => this._name = value; }
+
+        /// <summary>Network-related settings of an agent pool.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inherited)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolNetworkProfile NetworkProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).NetworkProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).NetworkProfile = value ?? null /* model class */; }
+
+        /// <summary>
+        /// The port ranges that are allowed to access. The specified ranges are allowed to overlap.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inherited)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IPortRange> NetworkProfileAllowedHostPort { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).NetworkProfileAllowedHostPort; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).NetworkProfileAllowedHostPort = value ?? null /* arrayOf */; }
+
+        /// <summary>
+        /// The IDs of the application security groups which agent pool will associate when created.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inherited)]
+        public System.Collections.Generic.List<string> NetworkProfileApplicationSecurityGroup { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).NetworkProfileApplicationSecurityGroup; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).NetworkProfileApplicationSecurityGroup = value ?? null /* arrayOf */; }
+
+        /// <summary>IPTags of instance-level public IPs.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inherited)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IIPTag> NetworkProfileNodePublicIPTag { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).NetworkProfileNodePublicIPTag; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).NetworkProfileNodePublicIPTag = value ?? null /* arrayOf */; }
 
         /// <summary>The version of node image</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inherited)]
@@ -243,7 +370,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         public Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesNodeLabels NodeLabel { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).NodeLabel; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).NodeLabel = value ?? null /* model class */; }
 
         /// <summary>
-        /// This is of the form: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPPrefixes/{publicIPPrefixName}
+        /// The public IP prefix ID which VM nodes should use IPs from. This is of the form: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPPrefixes/{publicIPPrefixName}
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inherited)]
         public string NodePublicIPPrefixId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).NodePublicIPPrefixId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).NodePublicIPPrefixId = value ?? null; }
@@ -262,8 +389,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         public int? OSDiskSizeGb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).OSDiskSizeGb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).OSDiskSizeGb = value ?? default(int); }
 
         /// <summary>
-        /// The default is 'Ephemeral' if the VM supports it and has a cache disk larger than the requested OSDiskSizeGB. Otherwise,
-        /// defaults to 'Managed'. May not be changed after creation. For more information see [Ephemeral OS](https://docs.microsoft.com/azure/aks/cluster-configuration#ephemeral-os).
+        /// The OS disk type to be used for machines in the agent pool. The default is 'Ephemeral' if the VM supports it and has a
+        /// cache disk larger than the requested OSDiskSizeGB. Otherwise, defaults to 'Managed'. May not be changed after creation.
+        /// For more information see [Ephemeral OS](https://docs.microsoft.com/azure/aks/cluster-configuration#ephemeral-os).
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inherited)]
         public string OSDiskType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).OSDiskType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).OSDiskType = value ?? null; }
@@ -280,28 +408,35 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         public string OSType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).OSType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).OSType = value ?? null; }
 
         /// <summary>
-        /// Both patch version <major.minor.patch> (e.g. 1.20.13) and <major.minor> (e.g. 1.20) are supported. When <major.minor>
-        /// is specified, the latest supported GA patch version is chosen automatically. Updating the cluster with the same <major.minor>
-        /// once it has been created (e.g. 1.14.x -> 1.14) will not trigger an upgrade, even if a newer patch version is available.
-        /// As a best practice, you should upgrade all node pools in an AKS cluster to the same Kubernetes version. The node pool
-        /// version must have the same major version as the control plane. The node pool minor version must be within two minor versions
-        /// of the control plane version. The node pool version cannot be greater than the control plane version. For more information
-        /// see [upgrading a node pool](https://docs.microsoft.com/azure/aks/use-multiple-node-pools#upgrade-a-node-pool).
+        /// The version of Kubernetes specified by the user. Both patch version <major.minor.patch> (e.g. 1.20.13) and <major.minor>
+        /// (e.g. 1.20) are supported. When <major.minor> is specified, the latest supported GA patch version is chosen automatically.
+        /// Updating the cluster with the same <major.minor> once it has been created (e.g. 1.14.x -> 1.14) will not trigger an upgrade,
+        /// even if a newer patch version is available. As a best practice, you should upgrade all node pools in an AKS cluster to
+        /// the same Kubernetes version. The node pool version must have the same major version as the control plane. The node pool
+        /// minor version must be within two minor versions of the control plane version. The node pool version cannot be greater
+        /// than the control plane version. For more information see [upgrading a node pool](https://docs.microsoft.com/azure/aks/use-multiple-node-pools#upgrade-a-node-pool).
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inherited)]
         public string OrchestratorVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).OrchestratorVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).OrchestratorVersion = value ?? null; }
 
         /// <summary>
-        /// If omitted, pod IPs are statically assigned on the node subnet (see vnetSubnetID for more details). This is of the form:
-        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}
+        /// Pod IP Allocation Mode. The IP allocation mode for pods in the agent pool. Must be used with podSubnetId. The default
+        /// is 'DynamicIndividual'.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inherited)]
+        public string PodIPAllocationMode { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).PodIPAllocationMode; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).PodIPAllocationMode = value ?? null; }
+
+        /// <summary>
+        /// The ID of the subnet which pods will join when launched. If omitted, pod IPs are statically assigned on the node subnet
+        /// (see vnetSubnetID for more details). This is of the form: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inherited)]
         public string PodSubnetId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).PodSubnetId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).PodSubnetId = value ?? null; }
 
         /// <summary>
-        /// When an Agent Pool is first created it is initially Running. The Agent Pool can be stopped by setting this field to Stopped.
-        /// A stopped Agent Pool stops all of its VMs and does not accrue billing charges. An Agent Pool can only be stopped if it
-        /// is Running and provisioning state is Succeeded
+        /// Whether the Agent Pool is running or stopped. When an Agent Pool is first created it is initially Running. The Agent Pool
+        /// can be stopped by setting this field to Stopped. A stopped Agent Pool stops all of its VMs and does not accrue billing
+        /// charges. An Agent Pool can only be stopped if it is Running and provisioning state is Succeeded
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inherited)]
         internal Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IPowerState PowerState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).PowerState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).PowerState = value ?? null /* model class */; }
@@ -309,6 +444,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         /// <summary>Tells whether the cluster is Running or Stopped</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inherited)]
         public string PowerStateCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).PowerStateCode; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).PowerStateCode = value ?? null; }
+
+        /// <summary>The error additional info.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inherited)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IErrorAdditionalInfo> ProvisioningErrorAdditionalInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).ProvisioningErrorAdditionalInfo; }
+
+        /// <summary>The error code.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inherited)]
+        public string ProvisioningErrorCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).ProvisioningErrorCode; }
+
+        /// <summary>The error details.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inherited)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IErrorDetail> ProvisioningErrorDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).ProvisioningErrorDetail; }
+
+        /// <summary>The error message.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inherited)]
+        public string ProvisioningErrorMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).ProvisioningErrorMessage; }
+
+        /// <summary>The error target.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inherited)]
+        public string ProvisioningErrorTarget { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).ProvisioningErrorTarget; }
 
         /// <summary>The current deployment or provisioning state.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inherited)]
@@ -319,13 +474,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         public string ProximityPlacementGroupId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).ProximityPlacementGroupId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).ProximityPlacementGroupId = value ?? null; }
 
         /// <summary>
-        /// This also effects the cluster autoscaler behavior. If not specified, it defaults to Delete.
+        /// The scale down mode to use when scaling the Agent Pool. This also effects the cluster autoscaler behavior. If not specified,
+        /// it defaults to Delete.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inherited)]
         public string ScaleDownMode { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).ScaleDownMode; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).ScaleDownMode = value ?? null; }
 
+        /// <summary>Specifications on how to scale the VirtualMachines agent pool to a fixed size.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inherited)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManualScaleProfile> ScaleManual { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).ScaleManual; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).ScaleManual = value ?? null /* arrayOf */; }
+
         /// <summary>
-        /// This cannot be specified unless the scaleSetPriority is 'Spot'. If not specified, the default is 'Delete'.
+        /// The Virtual Machine Scale Set eviction policy to use. This cannot be specified unless the scaleSetPriority is 'Spot'.
+        /// If not specified, the default is 'Delete'.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inherited)]
         public string ScaleSetEvictionPolicy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).ScaleSetEvictionPolicy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).ScaleSetEvictionPolicy = value ?? null; }
@@ -336,12 +497,47 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inherited)]
         public string ScaleSetPriority { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).ScaleSetPriority; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).ScaleSetPriority = value ?? null; }
 
+        /// <summary>The security settings of an agent pool.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inherited)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolSecurityProfile SecurityProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).SecurityProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).SecurityProfile = value ?? null /* model class */; }
+
         /// <summary>
-        /// Possible values are any decimal value greater than zero or -1 which indicates the willingness to pay any on-demand price.
-        /// For more details on spot pricing, see [spot VMs pricing](https://docs.microsoft.com/azure/virtual-machines/spot-vms#pricing)
+        /// Secure Boot is a feature of Trusted Launch which ensures that only signed operating systems and drivers can boot. For
+        /// more details, see aka.ms/aks/trustedlaunch. If not specified, the default is false.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inherited)]
+        public bool? SecurityProfileEnableSecureBoot { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).SecurityProfileEnableSecureBoot; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).SecurityProfileEnableSecureBoot = value ?? default(bool); }
+
+        /// <summary>
+        /// vTPM is a Trusted Launch feature for configuring a dedicated secure vault for keys and measurements held locally on the
+        /// node. For more details, see aka.ms/aks/trustedlaunch. If not specified, the default is false.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inherited)]
+        public bool? SecurityProfileEnableVtpm { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).SecurityProfileEnableVtpm; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).SecurityProfileEnableVtpm = value ?? default(bool); }
+
+        /// <summary>SSH access method of an agent pool.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inherited)]
+        public string SecurityProfileSshAccess { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).SecurityProfileSshAccess; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).SecurityProfileSshAccess = value ?? null; }
+
+        /// <summary>
+        /// The max price (in US Dollars) you are willing to pay for spot instances. Possible values are any decimal value greater
+        /// than zero or -1 which indicates default price to be up-to on-demand. Possible values are any decimal value greater than
+        /// zero or -1 which indicates the willingness to pay any on-demand price. For more details on spot pricing, see [spot VMs
+        /// pricing](https://docs.microsoft.com/azure/virtual-machines/spot-vms#pricing)
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inherited)]
         public float? SpotMaxPrice { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).SpotMaxPrice; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).SpotMaxPrice = value ?? default(float); }
+
+        /// <summary>Contains read-only information about the Agent Pool.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inherited)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolStatus Status { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).Status = value ?? null /* model class */; }
+
+        /// <summary>
+        /// The error detail information of the agent pool. Preserves the detailed info of failure. If there was no error, this field
+        /// is omitted.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inherited)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IErrorDetail StatusProvisioningError { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).StatusProvisioningError; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).StatusProvisioningError = value ?? null /* model class */; }
 
         /// <summary>The tags to be persisted on the agent pool virtual machine scale set.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inherited)]
@@ -356,26 +552,83 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         internal Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolUpgradeSettings UpgradeSetting { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).UpgradeSetting; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).UpgradeSetting = value ?? null /* model class */; }
 
         /// <summary>
-        /// This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the
-        /// percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up.
-        /// If not specified, the default is 1. For more information, including best practices, see: https://docs.microsoft.com/azure/aks/upgrade-cluster#customize-node-surge-upgrade
+        /// The drain timeout for a node. The amount of time (in minutes) to wait on eviction of pods and graceful termination per
+        /// node. This eviction wait time honors waiting on pod disruption budgets. If this time is exceeded, the upgrade fails. If
+        /// not specified, the default is 30 minutes.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inherited)]
+        public int? UpgradeSettingDrainTimeoutInMinute { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).UpgradeSettingDrainTimeoutInMinute; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).UpgradeSettingDrainTimeoutInMinute = value ?? default(int); }
+
+        /// <summary>
+        /// The maximum number or percentage of nodes that are surged during upgrade. This can either be set to an integer (e.g. '5')
+        /// or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time
+        /// of the upgrade. For percentages, fractional nodes are rounded up. If not specified, the default is 10%. For more information,
+        /// including best practices, see: https://learn.microsoft.com/en-us/azure/aks/upgrade-cluster
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inherited)]
         public string UpgradeSettingMaxSurge { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).UpgradeSettingMaxSurge; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).UpgradeSettingMaxSurge = value ?? null; }
 
         /// <summary>
-        /// VM size availability varies by region. If a node contains insufficient compute resources (memory, cpu, etc) pods might
-        /// fail to run correctly. For more details on restricted VM sizes, see: https://docs.microsoft.com/azure/aks/quotas-skus-regions
+        /// The maximum number or percentage of nodes that can be simultaneously unavailable during upgrade. This can either be set
+        /// to an integer (e.g. '1') or a percentage (e.g. '5%'). If a percentage is specified, it is the percentage of the total
+        /// agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified, the default
+        /// is 0. For more information, including best practices, see: https://learn.microsoft.com/en-us/azure/aks/upgrade-cluster
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inherited)]
+        public string UpgradeSettingMaxUnavailable { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).UpgradeSettingMaxUnavailable; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).UpgradeSettingMaxUnavailable = value ?? null; }
+
+        /// <summary>
+        /// The soak duration for a node. The amount of time (in minutes) to wait after draining a node and before reimaging it and
+        /// moving on to next node. If not specified, the default is 0 minutes.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inherited)]
+        public int? UpgradeSettingNodeSoakDurationInMinute { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).UpgradeSettingNodeSoakDurationInMinute; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).UpgradeSettingNodeSoakDurationInMinute = value ?? default(int); }
+
+        /// <summary>
+        /// Defines the behavior for undrainable nodes during upgrade. The most common cause of undrainable nodes is Pod Disruption
+        /// Budgets (PDBs), but other issues, such as pod termination grace period is exceeding the remaining per-node drain timeout
+        /// or pod is still being in a running state, can also cause undrainable nodes.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inherited)]
+        public string UpgradeSettingUndrainableNodeBehavior { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).UpgradeSettingUndrainableNodeBehavior; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).UpgradeSettingUndrainableNodeBehavior = value ?? null; }
+
+        /// <summary>
+        /// The size of the agent pool VMs. VM size availability varies by region. If a node contains insufficient compute resources
+        /// (memory, cpu, etc) pods might fail to run correctly. For more details on restricted VM sizes, see: https://docs.microsoft.com/azure/aks/quotas-skus-regions
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inherited)]
         public string VMSize { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).VMSize; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).VMSize = value ?? null; }
 
+        /// <summary>The status of nodes in a VirtualMachines agent pool.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inherited)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IVirtualMachineNodes> VirtualMachineNodesStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).VirtualMachineNodesStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).VirtualMachineNodesStatus = value ?? null /* arrayOf */; }
+
+        /// <summary>Specifications on how to scale a VirtualMachines agent pool.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inherited)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IScaleProfile VirtualMachineProfileScale { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).VirtualMachineProfileScale; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).VirtualMachineProfileScale = value ?? null /* model class */; }
+
+        /// <summary>Specifications on VirtualMachines agent pool.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inherited)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IVirtualMachinesProfile VirtualMachinesProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).VirtualMachinesProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).VirtualMachinesProfile = value ?? null /* model class */; }
+
         /// <summary>
-        /// If this is not specified, a VNET and subnet will be generated and used. If no podSubnetID is specified, this applies to
-        /// nodes and pods, otherwise it applies to just nodes. This is of the form: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}
+        /// The ID of the subnet which agent pool nodes and optionally pods will join on startup. If this is not specified, a VNET
+        /// and subnet will be generated and used. If no podSubnetID is specified, this applies to nodes and pods, otherwise it applies
+        /// to just nodes. This is of the form: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inherited)]
         public string VnetSubnetId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).VnetSubnetId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).VnetSubnetId = value ?? null; }
+
+        /// <summary>
+        /// Whether to disable OutboundNAT in windows nodes. The default value is false. Outbound NAT can only be disabled if the
+        /// cluster outboundType is NAT Gateway and the Windows agent pool does not have node public IP enabled.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inherited)]
+        public bool? WindowProfileDisableOutboundNat { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).WindowProfileDisableOutboundNat; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).WindowProfileDisableOutboundNat = value ?? default(bool); }
+
+        /// <summary>The Windows agent pool's specific profile.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inherited)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolWindowsProfile WindowsProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).WindowsProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal)__managedClusterAgentPoolProfileProperties).WindowsProfile = value ?? null /* model class */; }
 
         /// <summary>Determines the type of workload a node can run.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inherited)]
@@ -404,14 +657,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IJsonSerializable,
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfileProperties
     {
-        /// <summary>Windows agent pool names must be 6 characters or less.</summary>
+        /// <summary>
+        /// Unique name of the agent pool profile in the context of the subscription and resource group. Windows agent pool names
+        /// must be 6 characters or less.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = true,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Windows agent pool names must be 6 characters or less.",
+        Description = @"Unique name of the agent pool profile in the context of the subscription and resource group. Windows agent pool names must be 6 characters or less.",
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(string) })]
         string Name { get; set; }
@@ -421,7 +677,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
     internal partial interface IManagedClusterAgentPoolProfileInternal :
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfilePropertiesInternal
     {
-        /// <summary>Windows agent pool names must be 6 characters or less.</summary>
+        /// <summary>
+        /// Unique name of the agent pool profile in the context of the subscription and resource group. Windows agent pool names
+        /// must be 6 characters or less.
+        /// </summary>
         string Name { get; set; }
 
     }

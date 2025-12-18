@@ -166,7 +166,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         Description = @"Specifies the OS SKU used by the agent pool. The default is Ubuntu if OSType is Linux. The default is Windows2019 when Kubernetes <= 1.24 or Windows2022 when Kubernetes >= 1.25 if OSType is Windows.",
         SerializedName = @"osSku",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("Ubuntu", "CBLMariner", "Windows2019", "Windows2022")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("Ubuntu", "AzureLinux", "AzureLinux3", "CBLMariner", "Windows2019", "Windows2022", "Ubuntu2204")]
         string OSSku { get;  }
         /// <summary>The operating system type. The default is Linux.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
@@ -225,7 +225,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         /// Specifies the OS SKU used by the agent pool. The default is Ubuntu if OSType is Linux. The default is Windows2019 when
         /// Kubernetes <= 1.24 or Windows2022 when Kubernetes >= 1.25 if OSType is Windows.
         /// </summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("Ubuntu", "CBLMariner", "Windows2019", "Windows2022")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("Ubuntu", "AzureLinux", "AzureLinux3", "CBLMariner", "Windows2019", "Windows2022", "Ubuntu2204")]
         string OSSku { get; set; }
         /// <summary>The operating system type. The default is Linux.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("Linux", "Windows")]
