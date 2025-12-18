@@ -33,25 +33,11 @@ Stop-AzNetworkCloudBareMetalMachine -Name <String> -ResourceGroupName <String> [
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### PowerOff
-```
-Stop-AzNetworkCloudBareMetalMachine -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -BareMetalMachinePowerOffParameter <IBareMetalMachinePowerOffParameters> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ### PowerOffViaIdentityExpanded
 ```
 Stop-AzNetworkCloudBareMetalMachine -InputObject <INetworkCloudIdentity> [-SkipShutdown <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
  [-Confirm] [<CommonParameters>]
-```
-
-### PowerOffViaIdentity
-```
-Stop-AzNetworkCloudBareMetalMachine -InputObject <INetworkCloudIdentity>
- -BareMetalMachinePowerOffParameter <IBareMetalMachinePowerOffParameters> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -83,21 +69,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -BareMetalMachinePowerOffParameter
-BareMetalMachinePowerOffParameters represents the body of the request to power off bare metal machine.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachinePowerOffParameters
-Parameter Sets: PowerOff, PowerOffViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -119,7 +90,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
-Parameter Sets: PowerOffViaIdentityExpanded, PowerOffViaIdentity
+Parameter Sets: PowerOffViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -164,7 +135,7 @@ The name of the bare metal machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: PowerOffExpanded, PowerOffViaJsonString, PowerOffViaJsonFilePath, PowerOff
+Parameter Sets: PowerOffExpanded, PowerOffViaJsonString, PowerOffViaJsonFilePath
 Aliases: BareMetalMachineName
 
 Required: True
@@ -210,7 +181,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: PowerOffExpanded, PowerOffViaJsonString, PowerOffViaJsonFilePath, PowerOff
+Parameter Sets: PowerOffExpanded, PowerOffViaJsonString, PowerOffViaJsonFilePath
 Aliases:
 
 Required: True
@@ -241,7 +212,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: PowerOffExpanded, PowerOffViaJsonString, PowerOffViaJsonFilePath, PowerOff
+Parameter Sets: PowerOffExpanded, PowerOffViaJsonString, PowerOffViaJsonFilePath
 Aliases:
 
 Required: False
@@ -286,8 +257,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachinePowerOffParameters
 
 ### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
 

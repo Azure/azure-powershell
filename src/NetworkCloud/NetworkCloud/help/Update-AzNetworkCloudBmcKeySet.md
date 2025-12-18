@@ -37,14 +37,6 @@ Update-AzNetworkCloudBmcKeySet -ClusterName <String> -Name <String> -ResourceGro
  [<CommonParameters>]
 ```
 
-### Update
-```
-Update-AzNetworkCloudBmcKeySet -ClusterName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>]
- -BmcKeySetUpdateParameter <IBmcKeySetPatchParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ### UpdateViaIdentityClusterExpanded
 ```
 Update-AzNetworkCloudBmcKeySet -Name <String> -ClusterInputObject <INetworkCloudIdentity> [-IfMatch <String>]
@@ -65,13 +57,6 @@ Update-AzNetworkCloudBmcKeySet -Name <String> -ClusterInputObject <INetworkCloud
 Update-AzNetworkCloudBmcKeySet -InputObject <INetworkCloudIdentity> [-IfMatch <String>] [-IfNoneMatch <String>]
  [-Expiration <DateTime>] [-Tag <Hashtable>] [-UserList <IKeySetUser[]>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Update-AzNetworkCloudBmcKeySet -InputObject <INetworkCloudIdentity> [-IfMatch <String>] [-IfNoneMatch <String>]
- -BmcKeySetUpdateParameter <IBmcKeySetPatchParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -124,7 +109,7 @@ BmcKeySetPatchParameters represents the body of the request to patch the baseboa
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBmcKeySetPatchParameters
-Parameter Sets: Update, UpdateViaIdentityCluster, UpdateViaIdentity
+Parameter Sets: UpdateViaIdentityCluster
 Aliases:
 
 Required: True
@@ -154,7 +139,7 @@ The name of the cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, Update
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -233,7 +218,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
-Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -278,7 +263,7 @@ The name of the baseboard management controller key set.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, Update, UpdateViaIdentityClusterExpanded, UpdateViaIdentityCluster
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateViaIdentityClusterExpanded, UpdateViaIdentityCluster
 Aliases: BmcKeySetName
 
 Required: True
@@ -309,7 +294,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, Update
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -325,7 +310,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, Update
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: False

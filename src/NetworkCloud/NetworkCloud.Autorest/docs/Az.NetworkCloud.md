@@ -1,6 +1,6 @@
 ---
 Module Name: Az.NetworkCloud
-Module Guid: 68af4f64-d3df-41e9-807a-177692937201
+Module Guid: 42b9ed45-b3b8-4668-8c6f-bc850a448740
 Download Help Link: https://learn.microsoft.com/powershell/module/az.networkcloud
 Help Version: 1.0.0.0
 Locale: en-US
