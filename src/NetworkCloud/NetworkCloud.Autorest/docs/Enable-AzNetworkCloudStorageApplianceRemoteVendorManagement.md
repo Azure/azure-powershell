@@ -19,22 +19,6 @@ Enable-AzNetworkCloudStorageApplianceRemoteVendorManagement -ResourceGroupName <
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Enable
-```
-Enable-AzNetworkCloudStorageApplianceRemoteVendorManagement -ResourceGroupName <String>
- -StorageApplianceName <String>
- -StorageApplianceEnableRemoteVendorManagementParameter <IStorageApplianceEnableRemoteVendorManagementParameters>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### EnableViaIdentity
-```
-Enable-AzNetworkCloudStorageApplianceRemoteVendorManagement -InputObject <INetworkCloudIdentity>
- -StorageApplianceEnableRemoteVendorManagementParameter <IStorageApplianceEnableRemoteVendorManagementParameters>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### EnableViaIdentityExpanded
 ```
 Enable-AzNetworkCloudStorageApplianceRemoteVendorManagement -InputObject <INetworkCloudIdentity>
@@ -106,7 +90,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
-Parameter Sets: EnableViaIdentity, EnableViaIdentityExpanded
+Parameter Sets: EnableViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -182,7 +166,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Enable, EnableExpanded, EnableViaJsonFilePath, EnableViaJsonString
+Parameter Sets: EnableExpanded, EnableViaJsonFilePath, EnableViaJsonString
 Aliases:
 
 Required: True
@@ -192,27 +176,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -StorageApplianceEnableRemoteVendorManagementParameter
-StorageApplianceEnableRemoteVendorManagementParameters represents the body of the request to enable remote vendor management of a storage appliance.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IStorageApplianceEnableRemoteVendorManagementParameters
-Parameter Sets: Enable, EnableViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -StorageApplianceName
 The name of the storage appliance.
 
 ```yaml
 Type: System.String
-Parameter Sets: Enable, EnableExpanded, EnableViaJsonFilePath, EnableViaJsonString
+Parameter Sets: EnableExpanded, EnableViaJsonFilePath, EnableViaJsonString
 Aliases:
 
 Required: True
@@ -228,7 +197,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Enable, EnableExpanded, EnableViaJsonFilePath, EnableViaJsonString
+Parameter Sets: EnableExpanded, EnableViaJsonFilePath, EnableViaJsonString
 Aliases:
 
 Required: False
@@ -292,8 +261,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
-
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IStorageApplianceEnableRemoteVendorManagementParameters
 
 ## OUTPUTS
 

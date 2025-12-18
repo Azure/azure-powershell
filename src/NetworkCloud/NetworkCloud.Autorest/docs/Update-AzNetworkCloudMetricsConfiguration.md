@@ -21,22 +21,6 @@ Update-AzNetworkCloudMetricsConfiguration -ClusterName <String> -Name <String> -
  [-WhatIf] [<CommonParameters>]
 ```
 
-### Update
-```
-Update-AzNetworkCloudMetricsConfiguration -ClusterName <String> -Name <String> -ResourceGroupName <String>
- -MetricsConfigurationUpdateParameter <IClusterMetricsConfigurationPatchParameters> [-SubscriptionId <String>]
- [-IfMatch <String>] [-IfNoneMatch <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Update-AzNetworkCloudMetricsConfiguration -InputObject <INetworkCloudIdentity>
- -MetricsConfigurationUpdateParameter <IClusterMetricsConfigurationPatchParameters> [-IfMatch <String>]
- [-IfNoneMatch <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
 ### UpdateViaIdentityCluster
 ```
 Update-AzNetworkCloudMetricsConfiguration -ClusterInputObject <INetworkCloudIdentity> -Name <String>
@@ -129,7 +113,7 @@ The name of the cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -223,7 +207,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
-Parameter Sets: UpdateViaIdentity, UpdateViaIdentityExpanded
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -268,7 +252,7 @@ ClusterMetricsConfigurationPatchParameters represents the body of the request to
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterMetricsConfigurationPatchParameters
-Parameter Sets: Update, UpdateViaIdentity, UpdateViaIdentityCluster
+Parameter Sets: UpdateViaIdentityCluster
 Aliases:
 
 Required: True
@@ -283,7 +267,7 @@ The name of the metrics configuration for the cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded, UpdateViaIdentityCluster, UpdateViaIdentityClusterExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaIdentityCluster, UpdateViaIdentityClusterExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases: MetricsConfigurationName
 
 Required: True
@@ -314,7 +298,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -330,7 +314,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: False

@@ -39,14 +39,6 @@ Update-AzNetworkCloudAgentPool -KubernetesClusterName <String> -Name <String> -R
  [<CommonParameters>]
 ```
 
-### Update
-```
-Update-AzNetworkCloudAgentPool -KubernetesClusterName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>]
- -AgentPoolUpdateParameter <IAgentPoolPatchParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ### UpdateViaIdentityKubernetesClusterExpanded
 ```
 Update-AzNetworkCloudAgentPool -Name <String> -KubernetesClusterInputObject <INetworkCloudIdentity>
@@ -70,13 +62,6 @@ Update-AzNetworkCloudAgentPool -InputObject <INetworkCloudIdentity> [-IfMatch <S
  [-AdministratorConfigurationSshPublicKey <ISshPublicKey[]>] [-Count <Int64>] [-Tag <Hashtable>]
  [-UpgradeSettingDrainTimeout <Int64>] [-UpgradeSettingMaxSurge <String>]
  [-UpgradeSettingMaxUnavailable <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Update-AzNetworkCloudAgentPool -InputObject <INetworkCloudIdentity> [-IfMatch <String>] [-IfNoneMatch <String>]
- -AgentPoolUpdateParameter <IAgentPoolPatchParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -121,7 +106,7 @@ AgentPoolPatchParameters represents the body of the request to patch the Kuberne
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IAgentPoolPatchParameters
-Parameter Sets: Update, UpdateViaIdentityKubernetesCluster, UpdateViaIdentity
+Parameter Sets: UpdateViaIdentityKubernetesCluster
 Aliases:
 
 Required: True
@@ -215,7 +200,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
-Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -275,7 +260,7 @@ The name of the Kubernetes cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, Update
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -290,7 +275,7 @@ The name of the Kubernetes cluster agent pool.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, Update, UpdateViaIdentityKubernetesClusterExpanded, UpdateViaIdentityKubernetesCluster
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateViaIdentityKubernetesClusterExpanded, UpdateViaIdentityKubernetesCluster
 Aliases: AgentPoolName
 
 Required: True
@@ -321,7 +306,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, Update
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -337,7 +322,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, Update
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: False

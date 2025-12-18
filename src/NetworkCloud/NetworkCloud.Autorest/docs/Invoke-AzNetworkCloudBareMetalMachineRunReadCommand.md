@@ -13,19 +13,11 @@ The URL to storage account with the command execution results and the command ex
 
 ## SYNTAX
 
-### RunViaIdentity (Default)
+### RunViaIdentityExpanded (Default)
 ```
 Invoke-AzNetworkCloudBareMetalMachineRunReadCommand -InputObject <INetworkCloudIdentity>
- -BareMetalMachineRunReadCommandsParameter <IBareMetalMachineRunReadCommandsParameters>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Run
-```
-Invoke-AzNetworkCloudBareMetalMachineRunReadCommand -BareMetalMachineName <String> -ResourceGroupName <String>
- -BareMetalMachineRunReadCommandsParameter <IBareMetalMachineRunReadCommandsParameters>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ -Command <IBareMetalMachineCommandSpecification[]> -LimitTimeSecond <Int64> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### RunExpanded
@@ -33,13 +25,6 @@ Invoke-AzNetworkCloudBareMetalMachineRunReadCommand -BareMetalMachineName <Strin
 Invoke-AzNetworkCloudBareMetalMachineRunReadCommand -BareMetalMachineName <String> -ResourceGroupName <String>
  -Command <IBareMetalMachineCommandSpecification[]> -LimitTimeSecond <Int64> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### RunViaIdentityExpanded
-```
-Invoke-AzNetworkCloudBareMetalMachineRunReadCommand -InputObject <INetworkCloudIdentity>
- -Command <IBareMetalMachineCommandSpecification[]> -LimitTimeSecond <Int64> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### RunViaJsonFilePath
@@ -98,28 +83,13 @@ The name of the bare metal machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: Run, RunExpanded, RunViaJsonFilePath, RunViaJsonString
+Parameter Sets: RunExpanded, RunViaJsonFilePath, RunViaJsonString
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -BareMetalMachineRunReadCommandsParameter
-BareMetalMachineRunReadCommandsParameters represents the body of request containing list of read-only commands to run on the bare metal machine.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineRunReadCommandsParameters
-Parameter Sets: Run, RunViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -159,7 +129,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
-Parameter Sets: RunViaIdentity, RunViaIdentityExpanded
+Parameter Sets: RunViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -251,7 +221,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Run, RunExpanded, RunViaJsonFilePath, RunViaJsonString
+Parameter Sets: RunExpanded, RunViaJsonFilePath, RunViaJsonString
 Aliases:
 
 Required: True
@@ -267,7 +237,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Run, RunExpanded, RunViaJsonFilePath, RunViaJsonString
+Parameter Sets: RunExpanded, RunViaJsonFilePath, RunViaJsonString
 Aliases:
 
 Required: False
@@ -312,8 +282,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineRunReadCommandsParameters
 
 ### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
 

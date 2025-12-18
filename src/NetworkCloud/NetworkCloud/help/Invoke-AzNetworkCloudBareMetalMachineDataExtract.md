@@ -13,12 +13,11 @@ The URL to storage account with the command execution results and the command ex
 
 ## SYNTAX
 
-### RunViaIdentity (Default)
+### RunViaIdentityExpanded (Default)
 ```
 Invoke-AzNetworkCloudBareMetalMachineDataExtract -InputObject <INetworkCloudIdentity>
- -BareMetalMachineRunDataExtractsParameter <IBareMetalMachineRunDataExtractsParameters>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ -Command <IBareMetalMachineCommandSpecification[]> -LimitTimeSecond <Int64> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RunViaJsonString
@@ -41,22 +40,6 @@ Invoke-AzNetworkCloudBareMetalMachineDataExtract -BareMetalMachineName <String> 
  [-SubscriptionId <String>] -Command <IBareMetalMachineCommandSpecification[]> -LimitTimeSecond <Int64>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
  [-Confirm] [<CommonParameters>]
-```
-
-### Run
-```
-Invoke-AzNetworkCloudBareMetalMachineDataExtract -BareMetalMachineName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>]
- -BareMetalMachineRunDataExtractsParameter <IBareMetalMachineRunDataExtractsParameters>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
- [-Confirm] [<CommonParameters>]
-```
-
-### RunViaIdentityExpanded
-```
-Invoke-AzNetworkCloudBareMetalMachineDataExtract -InputObject <INetworkCloudIdentity>
- -Command <IBareMetalMachineCommandSpecification[]> -LimitTimeSecond <Int64> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -101,7 +84,7 @@ The name of the bare metal machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: RunViaJsonString, RunViaJsonFilePath, RunExpanded, Run
+Parameter Sets: RunViaJsonString, RunViaJsonFilePath, RunExpanded
 Aliases:
 
 Required: True
@@ -111,27 +94,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -BareMetalMachineRunDataExtractsParameter
-BareMetalMachineRunDataExtractsParameters represents the body of request containing list of curated data extraction commands to run on the bare metal machine.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineRunDataExtractsParameters
-Parameter Sets: RunViaIdentity, Run
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Command
 The list of curated data extraction commands to be executed directly against the target machine.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineCommandSpecification[]
-Parameter Sets: RunExpanded, RunViaIdentityExpanded
+Parameter Sets: RunViaIdentityExpanded, RunExpanded
 Aliases:
 
 Required: True
@@ -162,7 +130,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
-Parameter Sets: RunViaIdentity, RunViaIdentityExpanded
+Parameter Sets: RunViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -208,7 +176,7 @@ If the execution time exceeds the maximum, the script will be stopped, any outpu
 
 ```yaml
 Type: System.Int64
-Parameter Sets: RunExpanded, RunViaIdentityExpanded
+Parameter Sets: RunViaIdentityExpanded, RunExpanded
 Aliases:
 
 Required: True
@@ -254,7 +222,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: RunViaJsonString, RunViaJsonFilePath, RunExpanded, Run
+Parameter Sets: RunViaJsonString, RunViaJsonFilePath, RunExpanded
 Aliases:
 
 Required: True
@@ -270,7 +238,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: RunViaJsonString, RunViaJsonFilePath, RunExpanded, Run
+Parameter Sets: RunViaJsonString, RunViaJsonFilePath, RunExpanded
 Aliases:
 
 Required: False
@@ -315,8 +283,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineRunDataExtractsParameters
 
 ### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
 
