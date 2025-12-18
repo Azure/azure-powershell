@@ -1,6 +1,6 @@
 ---
 Module Name: Az.NetworkCloud
-Module Guid: eb2cc21e-b11c-4bd1-93b0-ddc86e985310
+Module Guid: 42b9ed45-b3b8-4668-8c6f-bc850a448740
 Download Help Link: https://learn.microsoft.com/powershell/module/az.networkcloud
 Help Version: 1.0.0.0
 Locale: en-US
@@ -82,6 +82,10 @@ Cordon the provided bare metal machine's Kubernetes node.
 
 ### [Invoke-AzNetworkCloudBareMetalMachineDataExtract](Invoke-AzNetworkCloudBareMetalMachineDataExtract.md)
 Run one or more data extractions on the provided bare metal machine.
+The URL to storage account with the command execution results and the command exit code can be retrieved from the operation status API once available.
+
+### [Invoke-AzNetworkCloudBareMetalMachineDataExtractRestricted](Invoke-AzNetworkCloudBareMetalMachineDataExtractRestricted.md)
+Run one or more restricted data extractions on the provided bare metal machine.
 The URL to storage account with the command execution results and the command exit code can be retrieved from the operation status API once available.
 
 ### [Invoke-AzNetworkCloudBareMetalMachineReimage](Invoke-AzNetworkCloudBareMetalMachineReimage.md)
@@ -260,6 +264,9 @@ Restart the provided virtual machine.
 ### [Start-AzNetworkCloudBareMetalMachine](Start-AzNetworkCloudBareMetalMachine.md)
 Start the provided bare metal machine.
 
+### [Start-AzNetworkCloudStorageApplianceReadCommand](Start-AzNetworkCloudStorageApplianceReadCommand.md)
+Run one or more read-only commands on the provided storage appliance.
+
 ### [Start-AzNetworkCloudVirtualMachine](Start-AzNetworkCloudVirtualMachine.md)
 Start the provided virtual machine.
 
@@ -327,8 +334,7 @@ Update properties of the provided storage appliance, or update tags associated w
 Update tags associated with the provided trunked network.
 
 ### [Update-AzNetworkCloudVirtualMachine](Update-AzNetworkCloudVirtualMachine.md)
-Patch the properties of the provided virtual machine, or update the tags associated with the virtual machine.
-Properties and tag update can be done independently.
+Update a new virtual machine or update the properties of the existing virtual machine.
 
 ### [Update-AzNetworkCloudVolume](Update-AzNetworkCloudVolume.md)
 Update tags associated with the provided volume.
