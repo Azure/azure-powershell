@@ -33,9 +33,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
         public Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ApplicationType? ApplicationType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponentPropertiesInternal)Property).ApplicationType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponentPropertiesInternal)Property).ApplicationType = value ?? ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ApplicationType)""); }
 
+        /// <summary>Application Insights component connection string.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
+        public string ConnectionString { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponentPropertiesInternal)Property).ConnectionString; }
+
         /// <summary>Creation Date for the Application Insights component, in ISO 8601 format.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
         public global::System.DateTime? CreationDate { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponentPropertiesInternal)Property).CreationDate; }
+
+        /// <summary>Disable IP masking.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
+        public bool? DisableIPMasking { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponentPropertiesInternal)Property).DisableIPMasking; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponentPropertiesInternal)Property).DisableIPMasking = value ?? default(bool); }
 
         /// <summary>
         /// Used by the Application Insights system to determine what kind of flow this component was created by. This is to be set
@@ -59,6 +67,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501
         /// <summary>Azure resource Id</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inherited)]
         public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IComponentsResourceInternal)__componentsResource).Id; }
+
+        /// <summary>Purge data immediately after 30 days.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
+        public bool? ImmediatePurgeDataOn30Day { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponentPropertiesInternal)Property).ImmediatePurgeDataOn30Day; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponentPropertiesInternal)Property).ImmediatePurgeDataOn30Day = value ?? default(bool); }
+
+        /// <summary>Indicates the flow of the ingestion.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
+        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.IngestionMode? IngestionMode { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponentPropertiesInternal)Property).IngestionMode; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponentPropertiesInternal)Property).IngestionMode = value ?? ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.IngestionMode)""); }
 
         /// <summary>
         /// Application Insights Instrumentation key. A read-only value that applications can use to identify the destination for
@@ -88,6 +104,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501
         /// <summary>Internal Acessors for ApplicationId</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponentInternal.ApplicationId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponentPropertiesInternal)Property).ApplicationId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponentPropertiesInternal)Property).ApplicationId = value; }
 
+        /// <summary>Internal Acessors for ConnectionString</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponentInternal.ConnectionString { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponentPropertiesInternal)Property).ConnectionString; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponentPropertiesInternal)Property).ConnectionString = value; }
+
         /// <summary>Internal Acessors for CreationDate</summary>
         global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponentInternal.CreationDate { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponentPropertiesInternal)Property).CreationDate; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponentPropertiesInternal)Property).CreationDate = value; }
 
@@ -96,6 +115,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501
 
         /// <summary>Internal Acessors for InstrumentationKey</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponentInternal.InstrumentationKey { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponentPropertiesInternal)Property).InstrumentationKey; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponentPropertiesInternal)Property).InstrumentationKey = value; }
+
+        /// <summary>Internal Acessors for PrivateLinkScopedResource</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IPrivateLinkScopedResource[] Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponentInternal.PrivateLinkScopedResource { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponentPropertiesInternal)Property).PrivateLinkScopedResource; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponentPropertiesInternal)Property).PrivateLinkScopedResource = value; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponentProperties Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponentInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.ApplicationInsightsComponentProperties()); set { {_property = value;} } }
@@ -119,6 +141,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inherited)]
         public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IComponentsResourceInternal)__componentsResource).Name; }
 
+        /// <summary>List of linked private link scope resources.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
+        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IPrivateLinkScopedResource[] PrivateLinkScopedResource { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponentPropertiesInternal)Property).PrivateLinkScopedResource; }
+
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponentProperties _property;
 
@@ -139,6 +165,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
         public Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RequestSource? RequestSource { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponentPropertiesInternal)Property).RequestSource; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponentPropertiesInternal)Property).RequestSource = value ?? ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RequestSource)""); }
+
+        /// <summary>Retention period in days.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
+        public int? RetentionInDay { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponentPropertiesInternal)Property).RetentionInDay; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponentPropertiesInternal)Property).RetentionInDay = value ?? default(int); }
 
         /// <summary>
         /// Percentage of the data produced by the application being monitored that is being sampled for Application Insights telemetry.
@@ -207,6 +237,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501
         SerializedName = @"Application_Type",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ApplicationType) })]
         Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ApplicationType? ApplicationType { get; set; }
+        /// <summary>Application Insights component connection string.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Description = @"Application Insights component connection string.",
+        SerializedName = @"ConnectionString",
+        PossibleTypes = new [] { typeof(string) })]
+        string ConnectionString { get;  }
         /// <summary>Creation Date for the Application Insights component, in ISO 8601 format.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
@@ -215,6 +253,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501
         SerializedName = @"CreationDate",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
         global::System.DateTime? CreationDate { get;  }
+        /// <summary>Disable IP masking.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Disable IP masking.",
+        SerializedName = @"DisableIpMasking",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? DisableIPMasking { get; set; }
         /// <summary>
         /// Used by the Application Insights system to determine what kind of flow this component was created by. This is to be set
         /// to 'Bluefield' when creating/updating a component via the REST API.
@@ -246,6 +292,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501
         SerializedName = @"HockeyAppToken",
         PossibleTypes = new [] { typeof(string) })]
         string HockeyAppToken { get;  }
+        /// <summary>Purge data immediately after 30 days.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Purge data immediately after 30 days.",
+        SerializedName = @"ImmediatePurgeDataOn30Days",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? ImmediatePurgeDataOn30Day { get; set; }
+        /// <summary>Indicates the flow of the ingestion.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Indicates the flow of the ingestion.",
+        SerializedName = @"IngestionMode",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.IngestionMode) })]
+        Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.IngestionMode? IngestionMode { get; set; }
         /// <summary>
         /// Application Insights Instrumentation key. A read-only value that applications can use to identify the destination for
         /// all telemetry sent to Azure Application Insights. This value will be supplied upon construction of each new Application
@@ -269,6 +331,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501
         SerializedName = @"kind",
         PossibleTypes = new [] { typeof(string) })]
         string Kind { get; set; }
+        /// <summary>List of linked private link scope resources.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Description = @"List of linked private link scope resources.",
+        SerializedName = @"PrivateLinkScopedResources",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IPrivateLinkScopedResource) })]
+        Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IPrivateLinkScopedResource[] PrivateLinkScopedResource { get;  }
         /// <summary>
         /// Current state of this component: whether or not is has been provisioned within the resource group it is defined. Users
         /// cannot change this value but are able to read from it. Values will include Succeeded, Deploying, Canceled, and Failed.
@@ -291,6 +361,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501
         SerializedName = @"Request_Source",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RequestSource) })]
         Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RequestSource? RequestSource { get; set; }
+        /// <summary>Retention period in days.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Retention period in days.",
+        SerializedName = @"RetentionInDays",
+        PossibleTypes = new [] { typeof(int) })]
+        int? RetentionInDay { get; set; }
         /// <summary>
         /// Percentage of the data produced by the application being monitored that is being sampled for Application Insights telemetry.
         /// </summary>
@@ -323,8 +401,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501
         string ApplicationId { get; set; }
         /// <summary>Type of application being monitored.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ApplicationType? ApplicationType { get; set; }
+        /// <summary>Application Insights component connection string.</summary>
+        string ConnectionString { get; set; }
         /// <summary>Creation Date for the Application Insights component, in ISO 8601 format.</summary>
         global::System.DateTime? CreationDate { get; set; }
+        /// <summary>Disable IP masking.</summary>
+        bool? DisableIPMasking { get; set; }
         /// <summary>
         /// Used by the Application Insights system to determine what kind of flow this component was created by. This is to be set
         /// to 'Bluefield' when creating/updating a component via the REST API.
@@ -338,6 +420,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501
         /// Token used to authenticate communications with between Application Insights and HockeyApp.
         /// </summary>
         string HockeyAppToken { get; set; }
+        /// <summary>Purge data immediately after 30 days.</summary>
+        bool? ImmediatePurgeDataOn30Day { get; set; }
+        /// <summary>Indicates the flow of the ingestion.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.IngestionMode? IngestionMode { get; set; }
         /// <summary>
         /// Application Insights Instrumentation key. A read-only value that applications can use to identify the destination for
         /// all telemetry sent to Azure Application Insights. This value will be supplied upon construction of each new Application
@@ -349,6 +435,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501
         /// typically be one of the following: web, ios, other, store, java, phone.
         /// </summary>
         string Kind { get; set; }
+        /// <summary>List of linked private link scope resources.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IPrivateLinkScopedResource[] PrivateLinkScopedResource { get; set; }
         /// <summary>Properties that define an Application Insights component resource.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponentProperties Property { get; set; }
         /// <summary>
@@ -361,6 +449,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501
         /// 'rest'.
         /// </summary>
         Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RequestSource? RequestSource { get; set; }
+        /// <summary>Retention period in days.</summary>
+        int? RetentionInDay { get; set; }
         /// <summary>
         /// Percentage of the data produced by the application being monitored that is being sampled for Application Insights telemetry.
         /// </summary>

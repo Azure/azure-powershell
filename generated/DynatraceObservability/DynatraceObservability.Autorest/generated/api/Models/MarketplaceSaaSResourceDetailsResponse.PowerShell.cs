@@ -126,6 +126,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMarketplaceSaaSResourceDetailsResponseInternal)this).MarketplaceSubscriptionStatus = (string) content.GetValueForProperty("MarketplaceSubscriptionStatus",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMarketplaceSaaSResourceDetailsResponseInternal)this).MarketplaceSubscriptionStatus, global::System.Convert.ToString);
             }
+            if (content.Contains("MarketplaceSaaSResourceName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMarketplaceSaaSResourceDetailsResponseInternal)this).MarketplaceSaaSResourceName = (string) content.GetValueForProperty("MarketplaceSaaSResourceName",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMarketplaceSaaSResourceDetailsResponseInternal)this).MarketplaceSaaSResourceName, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -154,6 +158,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models
             if (content.Contains("MarketplaceSubscriptionStatus"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMarketplaceSaaSResourceDetailsResponseInternal)this).MarketplaceSubscriptionStatus = (string) content.GetValueForProperty("MarketplaceSubscriptionStatus",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMarketplaceSaaSResourceDetailsResponseInternal)this).MarketplaceSubscriptionStatus, global::System.Convert.ToString);
+            }
+            if (content.Contains("MarketplaceSaaSResourceName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMarketplaceSaaSResourceDetailsResponseInternal)this).MarketplaceSaaSResourceName = (string) content.GetValueForProperty("MarketplaceSaaSResourceName",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMarketplaceSaaSResourceDetailsResponseInternal)this).MarketplaceSaaSResourceName, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

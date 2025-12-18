@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafana))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Description(@"List all resources of workspaces for Grafana under the specified subscription.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.Dashboard/grafana", ApiVersion = "2022-08-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.Dashboard/grafana", ApiVersion = "2025-08-01")]
     public partial class GetAzGrafana_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.IContext

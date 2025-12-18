@@ -21,12 +21,13 @@ Create an in-memory object for CertBasedSecurityPrincipal.
 Create an in-memory object for CertBasedSecurityPrincipal.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.CertBasedSecurityPrincipal
+Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.CertBasedSecurityPrincipal
 .Link
-https://learn.microsoft.com/powershell/module/Az.ConfidentialLedger/new-AzConfidentialLedgerCertBasedSecurityPrincipalObject
+https://learn.microsoft.com/powershell/module/Az.ConfidentialLedger/new-azconfidentialledgercertbasedsecurityprincipalobject
 #>
 function New-AzConfidentialLedgerCertBasedSecurityPrincipalObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.CertBasedSecurityPrincipal')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.CertBasedSecurityPrincipal')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -34,13 +35,13 @@ function New-AzConfidentialLedgerCertBasedSecurityPrincipalObject {
         [string]
         $Cert,
         [Parameter(HelpMessage="LedgerRole associated with the Security Principal of Ledger.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Support.LedgerRoleName])]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Support.LedgerRoleName]
+        [Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.PSArgumentCompleterAttribute("Reader", "Contributor", "Administrator")]
+        [string]
         $LedgerRoleName
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.CertBasedSecurityPrincipal]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.CertBasedSecurityPrincipal]::New()
 
         if ($PSBoundParameters.ContainsKey('Cert')) {
             $Object.Cert = $Cert

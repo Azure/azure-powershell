@@ -11,8 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.ActivityLogAlert.private.dll'
   FormatsToProcess = './Az.ActivityLogAlert.format.ps1xml'
-  FunctionsToExport = 'Get-AzActivityLogAlert', 'New-AzActivityLogAlert', 'New-AzActivityLogAlertActionGroupObject', 'New-AzActivityLogAlertAlertRuleAnyOfOrLeafConditionObject', 'New-AzActivityLogAlertAlertRuleLeafConditionObject', 'Remove-AzActivityLogAlert', 'Update-AzActivityLogAlert', '*'
-  AliasesToExport = '*'
+  FunctionsToExport = 'Get-AzActivityLogAlert', 'New-AzActivityLogAlert', 'New-AzActivityLogAlertActionGroupObject', 'New-AzActivityLogAlertAlertRuleAnyOfOrLeafConditionObject', 'New-AzActivityLogAlertAlertRuleLeafConditionObject', 'Remove-AzActivityLogAlert', 'Update-AzActivityLogAlert'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'ActivityLogAlert'

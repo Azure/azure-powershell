@@ -99,7 +99,7 @@ Describes the override sensitivity to be applied when rule matches.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: None, Low, Medium, High
+Accepted values: Low, Medium, High
 
 Required: False
 Position: Named

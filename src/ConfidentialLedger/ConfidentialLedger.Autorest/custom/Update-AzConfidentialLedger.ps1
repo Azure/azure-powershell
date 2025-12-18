@@ -73,8 +73,7 @@ INPUTOBJECT <IConfidentialLedgerIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.confidentialledger/update-azconfidentialledger
 #>
 function Update-AzConfidentialLedger {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.IConfidentialLedger])]
-[Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.OutputBreakingChangeAttribute("Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.IConfidentialLedger", "15.0.0", "9.0.0", "2025/11/03", ReplacementCmdletOutputType = "Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.IConfidentialLedger", DeprecatedOutputProperties = ("AadBasedSecurityPrincipal Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.IAadBasedSecurityPrincipal", "CertBasedSecurityPrincipal Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.ICertBasedSecurityPrincipal"), NewOutputProperties = ("AadBasedSecurityPrincipal System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.IAadBasedSecurityPrincipal]", "CertBasedSecurityPrincipal System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.ICertBasedSecurityPrincipal]"))]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.IConfidentialLedger])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -103,29 +102,26 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.IConfidentialLedgerIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.IAadBasedSecurityPrincipal[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.IAadBasedSecurityPrincipal[]]
     # Array of all AAD based Security Principals.
-    # To construct, see NOTES section for AADBASEDSECURITYPRINCIPAL properties and create a hash table.
     ${AadBasedSecurityPrincipal},
 
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.ICertBasedSecurityPrincipal[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.ICertBasedSecurityPrincipal[]]
     # Array of all cert based Security Principals.
-    # To construct, see NOTES section for CERTBASEDSECURITYPRINCIPAL properties and create a hash table.
     ${CertBasedSecurityPrincipal},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Support.LedgerType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.PSArgumentCompleterAttribute("Unknown", "Public", "Private")]
     [Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Support.LedgerType]
+    [System.String]
     # Type of Confidential Ledger
     ${LedgerType},
 
@@ -137,7 +133,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.ITags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.ITags]))]
     [System.Collections.Hashtable]
     # Additional tags for Confidential Ledger
     ${Tag},
@@ -147,7 +143,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]

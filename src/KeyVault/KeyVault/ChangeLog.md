@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 6.4.1
+* Updated Azure.Core from 1.45.0 to 1.47.3
+
 ## Version 6.4.0
 * Added Managed HSM network rule cmdlets mirroring existing Key Vault network rule management: `New-AzKeyVaultManagedHsmNetworkRuleSetObject`, `Add-AzKeyVaultManagedHsmNetworkRule`, `Remove-AzKeyVaultManagedHsmNetworkRule`, `Update-AzKeyVaultManagedHsmNetworkRuleSet`
 * New-AzKeyVaultManagedHsm now supports -NetworkRuleSet parameter to specify Managed HSM network rules (default action, bypass, IP ranges, virtual network resource IDs) at creation.

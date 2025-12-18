@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzDynatraceMonitorMarketplaceSaaSResourceDetail
 
 ## SYNOPSIS
-Get Marketplace SaaS resource details of a tenant under a specific subscription
+Get Marketplace SaaS resource details
 
 ## SYNTAX
 
@@ -37,7 +37,7 @@ Get-AzDynatraceMonitorMarketplaceSaaSResourceDetail -JsonString <String> [-Subsc
 ```
 
 ## DESCRIPTION
-Get Marketplace SaaS resource details of a tenant under a specific subscription
+Get Marketplace SaaS resource details
 
 ## EXAMPLES
 
@@ -119,6 +119,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String[]

@@ -8,7 +8,7 @@ Locale: en-US
 
 # Az.DataMigration Module
 ## Description
-{{Azure DataMigration Service Module}}
+Microsoft Azure PowerShell: Azure DataMigration Service Module
 
 ## Az.DataMigration Cmdlets
 ### [Get-AzDataMigrationAssessment](Get-AzDataMigrationAssessment.md)
