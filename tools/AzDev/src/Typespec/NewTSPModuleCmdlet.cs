@@ -305,19 +305,19 @@ namespace AzDev.Cmdlets.Typespec
 
         private string FindNPMCommandFromPath(string command)
         {
-            Console.WriteLine.WriteLine($"##########DEBUG: looking for command: {command} ##########");
+            Console.WriteLine($"##########DEBUG: looking for command: {command} ##########");
             string commandSuffix = Environment.OSVersion.Platform == PlatformID.Win32NT ? ".cmd":"";
-            Console.WriteLine.WriteLine($"##########DEBUG: looking for suffix: {commandSuffix} ##########");
+            Console.WriteLine($"##########DEBUG: looking for suffix: {commandSuffix} ##########");
             if ( string.IsNullOrEmpty(_npmPath) || !File.Exists(_npmPath))
             {
                 string pathEnv = Environment.GetEnvironmentVariable("PATH") ?? string.Empty;
-                Console.WriteLine.WriteLine($"##########DEBUG: looking for path: {pathEnv} ##########");
+                Console.WriteLine($"##########DEBUG: looking for path: {pathEnv} ##########");
                 string npmPath = pathEnv.Split(Path.PathSeparator).FirstOrDefault(path => path.EndsWith("npm"));
                 _npmPath = npmPath;
             }
-            Console.WriteLine.WriteLine($"##########DEBUG: looking for npm path: {_npmPath} ##########");
+            Console.WriteLine($"##########DEBUG: looking for npm path: {_npmPath} ##########");
             string commandPath = Path.Combine(_npmPath, command+commandSuffix);
-            Console.WriteLine.WriteLine($"##########DEBUG: Found npm command path: {commandPath} ##########");
+            Console.WriteLine($"##########DEBUG: Found npm command path: {commandPath} ##########");
             if (!File.Exists(commandPath))
             {
                 
