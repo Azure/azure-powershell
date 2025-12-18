@@ -268,7 +268,8 @@ namespace AzDev.Cmdlets.Typespec
             File.WriteAllText(Path.Combine(emitterOutputDir, "tsp-location.yaml"), YamlHelper.Serialize(tspLocationData));
 
             string emitterPackageJsonPath = Path.Combine(RepoRoot, "eng", "emitter-package.json");
-            File.Copy(emitterPackageJsonPath, Path.Combine(Path.GetDirectoryName(tempTSPLocation), "package.json"), true);
+            tempTSPLocation = Path.GetDirectoryName(tempTSPLocation);
+            File.Copy(emitterPackageJsonPath, Path.Combine(tempTSPLocation, "package.json"), true);
 
             /*
                 emit from tempTSPLocation
@@ -280,11 +281,11 @@ namespace AzDev.Cmdlets.Typespec
                     throw new FileNotFoundException($"package.json not found in {tempTSPLocation}");
                 }
                 RunCommand(FindNPMCommandFromPath("npm"), File.Exists(Path.Combine(tempTSPLocation, "package-lock.json")) ? "ci" : "install", tempTSPLocation).Wait();
-                RunCommand(FindNPMCommandFromPath("tsp"), $"compile ./ --emit {EmitterPath ?? emitterName} --output-dir {emitterOutputDir}", Path.GetDirectoryName(tempTSPLocation)).Wait();
+                RunCommand(FindNPMCommandFromPath("tsp"), $"compile ./ --emit {EmitterPath ?? emitterName} --output-dir {emitterOutputDir}", tempTSPLocation).Wait();
             }
             catch (Exception ex)
             {
-                throw new InvalidOperationException($"Failed to emit from TSP config [{tempTSPLocation}]: {ex.Message}", ex);
+                throw new InvalidOperationException($"Failed to emit from TSP config [{Path.Combine(tempTSPLocation, "tspconfig.yaml")}]: {ex.Message}", ex);
             }
             finally
             {
