@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Added `-HighSpeedInterconnectPlacement` parameter to `New-AzVmssConfig`, `New-AzVmss`, and `Update-AzVmss` cmdlets.
 
 ## Version 11.1.0
 * Added `-ResiliencyView` parameter to `Get-AzVmssVM` cmdlet
@@ -39,7 +40,6 @@
 * ComputeRP related cmdlets will now use 2025-04-01 version of the ComputeRP API.
 * Added `-AddProxyAgentExtension` parameter (Switch) to `New-AzVmss` and `New-AzVM`
 * Added `-AddProxyAgentExtension` parameter (Bool) to `Set-AzVMProxyAgentSetting` and  `Set-AzVmssProxyAgentSetting`
-* Added `-HighSpeedInterconnectPlacement` parameter to `New-AzVmssConfig` and `New-AzVmss` cmdlets.
 
 ## Version 10.4.0
 * Added `-InstantAccessDurationMinutes` parameter to New-AzSnapshotConfig.
