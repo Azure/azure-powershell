@@ -275,11 +275,11 @@ namespace AzDev.Cmdlets.Typespec
             */
             try
             {
-                if (!File.Exists(Path.Combine(workingDirectory, "package.json")))
+                if (!File.Exists(Path.Combine(tempTSPLocation, "package.json")))
                 {
-                    throw new FileNotFoundException($"package.json not found in {workingDirectory}");
+                    throw new FileNotFoundException($"package.json not found in {tempTSPLocation}");
                 }
-                RunCommand(FindNPMCommandFromPath("npm"), File.Exists(Path.Combine(workingDirectory, "package-lock.json")) ? "ci" : "install", workingDirectory).Wait();
+                RunCommand(FindNPMCommandFromPath("npm"), File.Exists(Path.Combine(tempTSPLocation, "package-lock.json")) ? "ci" : "install", tempTSPLocation).Wait();
                 RunCommand(FindNPMCommandFromPath("tsp"), $"compile ./ --emit {EmitterPath ?? emitterName} --output-dir {emitterOutputDir}", Path.GetDirectoryName(tempTSPLocation)).Wait();
             }
             catch (Exception ex)
