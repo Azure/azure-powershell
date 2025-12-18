@@ -610,6 +610,7 @@ Specifies the high speed interconnect placement for the virtual machine scale se
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+Accepted values: None, Trunk
 
 Required: False
 Position: Named
