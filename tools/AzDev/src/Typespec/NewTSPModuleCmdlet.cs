@@ -275,7 +275,11 @@ namespace AzDev.Cmdlets.Typespec
             */
             try
             {
-                InstallDependencies(Path.GetDirectoryName(tempTSPLocation)).Wait();
+                if (!File.Exists(Path.Combine(workingDirectory, "package.json")))
+                {
+                    throw new FileNotFoundException($"package.json not found in {workingDirectory}");
+                }
+                RunCommand(FindNPMCommandFromPath("npm"), File.Exists(Path.Combine(workingDirectory, "package-lock.json")) ? "ci" : "install", workingDirectory).Wait();
                 RunCommand(FindNPMCommandFromPath("tsp"), $"compile ./ --emit {EmitterPath ?? emitterName} --output-dir {emitterOutputDir}", Path.GetDirectoryName(tempTSPLocation)).Wait();
             }
             catch (Exception ex)
@@ -301,14 +305,19 @@ namespace AzDev.Cmdlets.Typespec
 
         private string FindNPMCommandFromPath(string command)
         {
+            Console.WriteLine.WriteLine($"##########DEBUG: looking for command: {command} ##########");
             string commandSuffix = Environment.OSVersion.Platform == PlatformID.Win32NT ? ".cmd":"";
+            Console.WriteLine.WriteLine($"##########DEBUG: looking for suffix: {commandSuffix} ##########");
             if ( string.IsNullOrEmpty(_npmPath) || !File.Exists(_npmPath))
             {
                 string pathEnv = Environment.GetEnvironmentVariable("PATH") ?? string.Empty;
+                Console.WriteLine.WriteLine($"##########DEBUG: looking for path: {pathEnv} ##########");
                 string npmPath = pathEnv.Split(Path.PathSeparator).FirstOrDefault(path => path.EndsWith("npm"));
                 _npmPath = npmPath;
             }
+            Console.WriteLine.WriteLine($"##########DEBUG: looking for npm path: {_npmPath} ##########");
             string commandPath = Path.Combine(_npmPath, command+commandSuffix);
+            Console.WriteLine.WriteLine($"##########DEBUG: Found npm command path: {commandPath} ##########");
             if (!File.Exists(commandPath))
             {
                 
@@ -331,16 +340,6 @@ namespace AzDev.Cmdlets.Typespec
             }
 
             Directory.Delete(path, true);
-        }
-
-        private async Task InstallDependencies(string workingDirectory)
-        {
-            if (!File.Exists(Path.Combine(workingDirectory, "package.json")))
-            {
-                throw new FileNotFoundException($"package.json not found in {workingDirectory}");
-            }
-            string args = File.Exists(Path.Combine(workingDirectory, "package-lock.json")) ? "ci" : "install";
-            await RunCommand(FindNPMCommandFromPath("npm"), args, workingDirectory);
         }
 
         private (string, string, string, string) ResolveTSPConfigUri(string uri)
