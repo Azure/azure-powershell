@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Updated the success message of browser-based interactive login to warn users against using this authentication method and recommend switching to Web Account Manager (WAM) for a more robust authentication mechanism.
 
 ## Version 5.3.1
 * Updated Azure.Core from 1.45.0 to 1.47.3
