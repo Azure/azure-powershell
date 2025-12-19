@@ -72,8 +72,6 @@ namespace AzDev.Cmdlets.Typespec
         /// Consider updating the logic to use a more unique name if this becomes an issue.
         /// </summary>
         private const string tempDirName = "TempTypeSpecFiles";
-
-        private string _npmPath = "";
         
         [Parameter(HelpMessage = "The location of the TSP config file (can be a URL or local path). Will look for `tsp-location.yaml` in current directory if not provided.")]
         public string TSPLocation { get; set; }
@@ -268,19 +266,24 @@ namespace AzDev.Cmdlets.Typespec
             File.WriteAllText(Path.Combine(emitterOutputDir, "tsp-location.yaml"), YamlHelper.Serialize(tspLocationData));
 
             string emitterPackageJsonPath = Path.Combine(RepoRoot, "eng", "emitter-package.json");
-            File.Copy(emitterPackageJsonPath, Path.Combine(Path.GetDirectoryName(tempTSPLocation), "package.json"), true);
+            tempTSPLocation = Path.GetDirectoryName(tempTSPLocation);
+            File.Copy(emitterPackageJsonPath, Path.Combine(tempTSPLocation, "package.json"), true);
 
             /*
                 emit from tempTSPLocation
             */
             try
             {
-                InstallDependencies(Path.GetDirectoryName(tempTSPLocation)).Wait();
-                RunCommand(FindNPMCommandFromPath("tsp"), $"compile ./ --emit {EmitterPath ?? emitterName} --output-dir {emitterOutputDir}", Path.GetDirectoryName(tempTSPLocation)).Wait();
+                if (!File.Exists(Path.Combine(tempTSPLocation, "package.json")))
+                {
+                    throw new FileNotFoundException($"package.json not found in {tempTSPLocation}");
+                }
+                RunCommand(FindCommandFromPath("npm"), File.Exists(Path.Combine(tempTSPLocation, "package-lock.json")) ? "ci" : "install", tempTSPLocation).Wait();
+                RunCommand("node", $"{Path.Combine("node_modules", "@typespec", "compiler", "cmd", "tsp")} compile ./ --emit {EmitterPath ?? emitterName} --output-dir {emitterOutputDir}", tempTSPLocation).Wait();
             }
             catch (Exception ex)
             {
-                throw new InvalidOperationException($"Failed to emit from TSP config [{tempTSPLocation}]: {ex.Message}", ex);
+                throw new InvalidOperationException($"Failed to emit from TSP config [{Path.Combine(tempTSPLocation, "tspconfig.yaml")}]: {ex.Message}", ex);
             }
             finally
             {
@@ -299,22 +302,34 @@ namespace AzDev.Cmdlets.Typespec
             }
         }
 
-        private string FindNPMCommandFromPath(string command)
+        private string FindCommandFromPath(string command)
         {
-            string commandSuffix = Environment.OSVersion.Platform == PlatformID.Win32NT ? ".cmd":"";
-            if ( string.IsNullOrEmpty(_npmPath) || !File.Exists(_npmPath))
+            string pathEnv = Environment.GetEnvironmentVariable("PATH") ?? string.Empty;
+            string[] paths = pathEnv.Split(Path.PathSeparator);
+            string[] extensions = Environment.OSVersion.Platform == PlatformID.Win32NT 
+                ? new[] { ".cmd", ".exe", ".bat", "" } 
+                : new[] { "" };
+
+            foreach (string path in paths)
             {
-                string pathEnv = Environment.GetEnvironmentVariable("PATH") ?? string.Empty;
-                string npmPath = pathEnv.Split(Path.PathSeparator).FirstOrDefault(path => path.EndsWith("npm"));
-                _npmPath = npmPath;
+                foreach (string extension in extensions)
+                {
+                    try
+                    {
+                        string fullPath = Path.Combine(path, command + extension);
+                        if (File.Exists(fullPath))
+                        {
+                            return fullPath;
+                        }
+                    }
+                    catch
+                    {
+                        // Ignore invalid paths in PATH
+                    }
+                }
             }
-            string commandPath = Path.Combine(_npmPath, command+commandSuffix);
-            if (!File.Exists(commandPath))
-            {
-                
-                throw new FileNotFoundException($"Command '{command}' not found in system PATH.");
-            }
-            return commandPath;
+
+            throw new FileNotFoundException($"Command '{command}' not found in system PATH.");
         }
 
         private string NormalizePath(string path) => path.Replace('/', Path.DirectorySeparatorChar).Replace('\\', Path.DirectorySeparatorChar);
@@ -331,16 +346,6 @@ namespace AzDev.Cmdlets.Typespec
             }
 
             Directory.Delete(path, true);
-        }
-
-        private async Task InstallDependencies(string workingDirectory)
-        {
-            if (!File.Exists(Path.Combine(workingDirectory, "package.json")))
-            {
-                throw new FileNotFoundException($"package.json not found in {workingDirectory}");
-            }
-            string args = File.Exists(Path.Combine(workingDirectory, "package-lock.json")) ? "ci" : "install";
-            await RunCommand(FindNPMCommandFromPath("npm"), args, workingDirectory);
         }
 
         private (string, string, string, string) ResolveTSPConfigUri(string uri)
@@ -541,15 +546,19 @@ namespace AzDev.Cmdlets.Typespec
         {
             Dictionary<string, object> tspLocationPWDContent = YamlHelper.Deserialize<Dictionary<string, object>>(File.ReadAllText(tspLocationPath));
             //if tspconfig emitted previously was from local, only record the absolute directory name
+            (string RemoteDirectory, string RemoteCommit, string RemoteRepositoryName, string RemoteForkName) = remoteInfo;
+            //if tspconfig emitted previously was from local, only record the absolute directory name
             if (File.Exists((string)tspLocationPWDContent["directory"]) && string.IsNullOrEmpty((string)tspLocationPWDContent["repo"]) && string.IsNullOrEmpty((string)tspLocationPWDContent["commit"]))
             {
-                if (remoteInfo != (null, null, null, null))
+                if ( !string.IsNullOrEmpty(RemoteDirectory) ||
+                    !string.IsNullOrEmpty(RemoteCommit) ||
+                    !string.IsNullOrEmpty(RemoteRepositoryName) ||
+                    !string.IsNullOrEmpty(RemoteForkName))
                 {
                     throw new ArgumentException("Emitted by local TSP last time, cannot update by remote info. Please provide remote `-TSPLocation`.");
                 }
                 return (string)tspLocationPWDContent["directory"];
             }
-            (string RemoteDirectory, string RemoteCommit, string RemoteRepositoryName, string RemoteForkName) = remoteInfo;
             //otherwise it was from remote, construct its url
             string repo = !string.IsNullOrEmpty(RemoteForkName) ? $"{RemoteForkName}/azure-rest-api-specs" : (!string.IsNullOrEmpty(RemoteRepositoryName) ? RemoteRepositoryName : (string)tspLocationPWDContent["repo"]);
             string commit = !string.IsNullOrEmpty(RemoteCommit) ? RemoteCommit : (string)tspLocationPWDContent["commit"];
