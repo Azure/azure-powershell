@@ -313,7 +313,7 @@ namespace Microsoft.Azure.Commands.Aks
         }
 
         // From OpenSSH 9.4 onwards, the default key type is ed25519, which is not supported in AKS.
-        // To ensure retrocompatibility, we need to check the OpenSSH version installed and adjust the parameters accordingly.
+        // To ensure backward compatibility, we need to check the OpenSSH version installed and adjust the parameters accordingly.
         static Version GetOpenSSHVersion()
         {
             using (Process process = new Process())
@@ -322,7 +322,8 @@ namespace Microsoft.Azure.Commands.Aks
                 {
                     // Using runtime information to determine the path to ssh.exe based on OS type.
                     bool isWindows = RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
-                    process.StartInfo.FileName = isWindows ? "C:\\Windows\\System32\\OpenSSH\\ssh.exe" : "ssh";
+                    string defaultWindowsSshPath = @"C:\Windows\System32\OpenSSH\ssh.exe";
+                    process.StartInfo.FileName = isWindows && File.Exists(defaultWindowsSshPath) ? defaultWindowsSshPath : "ssh";
                     process.StartInfo.Arguments = "-V";
                     process.StartInfo.UseShellExecute = false;
                     process.StartInfo.RedirectStandardInput = true;
@@ -392,7 +393,7 @@ namespace Microsoft.Azure.Commands.Aks
                     process.StartInfo.FileName = "ssh-keygen";
                     // if keyTypeArgument is empty, we skip it to maintain compatibility with older OpenSSH versions
                     // Otherwise, we explicitly set the key type to rsa
-                    process.StartInfo.Arguments = String.IsNullOrEmpty(keyTypeArgument) ? String.Format("-f \"{0}\"", generateSshKeyPath) : String.Format("-t rsa -f \"{0}\"", generateSshKeyPath);
+                    process.StartInfo.Arguments = String.Format("{0}-f \"{1}\"", keyTypeArgument, generateSshKeyPath);
                     process.StartInfo.UseShellExecute = false;
                     process.StartInfo.RedirectStandardInput = true;
                     process.StartInfo.RedirectStandardError = true;
