@@ -11,7 +11,7 @@ steps:
 - task: NodeTool@0
   displayName: Install autorest
   inputs:
-    versionSpec: '18.20.7'
+    versionSpec: '20.19.6'
     command: custom
     verbose: false
     customCommand: install autorest@latest
