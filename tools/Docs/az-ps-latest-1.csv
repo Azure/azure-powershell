@@ -64,7 +64,7 @@ pac62,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-relea
 pac63,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DesktopVirtualization.5.4.1.zip;sourceType=sa]Az.DesktopVirtualization,5.4.1
 pac64,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DevCenter.3.0.0.zip;sourceType=sa]Az.DevCenter,3.0.0
 pac65,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DeviceProvisioningServices.0.10.4.zip;sourceType=sa]Az.DeviceProvisioningServices,0.10.4
-pac66,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DeviceRegistry.1.0.0.zip;sourceType=sa]Az.DeviceRegistry,1.0.0
+pac66,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DeviceRegistry.1.0.1.zip;sourceType=sa]Az.DeviceRegistry,1.0.1
 pac67,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DeviceUpdate.0.2.0.zip;sourceType=sa]Az.DeviceUpdate,0.2.0
 pac68,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DevTestLabs.1.1.0.zip;sourceType=sa]Az.DevTestLabs,1.1.0
 pac69,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DigitalTwins.0.3.0.zip;sourceType=sa]Az.DigitalTwins,0.3.0
