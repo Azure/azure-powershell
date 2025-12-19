@@ -30,6 +30,7 @@ using Microsoft.Azure.Management.ContainerService.Models;
 using Microsoft.Rest;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System.Runtime.InteropServices;
 
 namespace Microsoft.Azure.Commands.Aks
 {
@@ -311,6 +312,58 @@ namespace Microsoft.Azure.Commands.Aks
             }
         }
 
+        // From OpenSSH 9.4 onwards, the default key type is ed25519, which is not supported in AKS.
+        // To ensure retrocompatibility, we need to check the OpenSSH version installed and adjust the parameters accordingly.
+        static Version GetOpenSSHVersion()
+        {
+            using (Process process = new Process())
+            {
+                try
+                {
+                    // Using runtime information to determine the path to ssh.exe based on OS type.
+                    bool isWindows = RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
+                    process.StartInfo.FileName = isWindows ? "C:\\Windows\\System32\\OpenSSH\\ssh.exe" : "ssh";
+                    process.StartInfo.Arguments = "-V";
+                    process.StartInfo.UseShellExecute = false;
+                    process.StartInfo.RedirectStandardInput = true;
+                    process.StartInfo.RedirectStandardError = true;
+                    process.StartInfo.RedirectStandardOutput = true;
+                    process.StartInfo.CreateNoWindow = true;
+                    process.Start();
+
+                    string standOutput = process.StandardOutput.ReadToEnd() + process.StandardError.ReadToEnd();
+
+                    process.WaitForExit();
+                    // OpenSSH version for Windows follows the format: OpenSSH_for_Windows_X.XpX
+                    // Examples
+                    // "OpenSSH_for_Windows_8.6p1, LibreSSL 3.4.3"
+                    // "OpenSSH_for_Windows_9.5p1, LibreSSL 3.8.2"
+                    var regMatch = System.Text.RegularExpressions.Regex.Match(standOutput, @"OpenSSH_for_Windows_(\d+)\.(\d+)p(\d+)");
+
+                    // We don't really care about the patch version, so only return major and minor version. 
+                    return regMatch.Success ? new Version(int.Parse(regMatch.Groups[1].Value), int.Parse(regMatch.Groups[2].Value)) : null;
+                } // We're not expecting ssh to be missing, but just in case, we catch any exception and return null.
+                catch
+                {
+                    return null;
+                }
+                finally //Ensure process is properly disposed of and exited
+                {
+                    if (!process.HasExited)
+                    {
+                        try
+                        {
+                            process.Kill();
+                        }
+                        catch
+                        {
+                            // Ignore exceptions from Kill if process already exited
+                        }
+                    }
+                }
+            }
+        }
+
         private string GenerateSshKeyValue()
         {
             String generateSshKeyFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".ssh");
@@ -329,8 +382,17 @@ namespace Microsoft.Azure.Commands.Aks
             {
                 try
                 {
+                    // Validate if OpenSSH version is 9.4 or above to add -t rsa argument
+                    // Which has been defaulted to ed25519 from OpenSSH 9.4 onwards
+                    // https://github.com/openssh/openssh-portable/blob/master/ssh-keygen.c#L70
+                    var openSshVersion = GetOpenSSHVersion();
+                    // If we cannot determine the OpenSSH version, we assume it's below 9.4 to maintain compatibility.
+                    // If openSshVersion isn't null and is >= 9.4, we add the -t rsa argument, otherwise we skip it
+                    var keyTypeArgument = openSshVersion != null && openSshVersion >= new Version(9, 4) ? "-t rsa " : "";
                     process.StartInfo.FileName = "ssh-keygen";
-                    process.StartInfo.Arguments = String.Format("-f \"{0}\"", generateSshKeyPath);
+                    // if keyTypeArgument is empty, we skip it to maintain compatibility with older OpenSSH versions
+                    // Otherwise, we explicitly set the key type to rsa
+                    process.StartInfo.Arguments = String.IsNullOrEmpty(keyTypeArgument) ? String.Format("-f \"{0}\"", generateSshKeyPath) : String.Format("-t rsa -f \"{0}\"", generateSshKeyPath);
                     process.StartInfo.UseShellExecute = false;
                     process.StartInfo.RedirectStandardInput = true;
                     process.StartInfo.RedirectStandardError = true;
