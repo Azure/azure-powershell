@@ -54,6 +54,12 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             var requestContext = new TokenRequestContext(scopes, claims: claimsChallenge, isCaeEnabled: true);
             var authority = interactiveParameters.Environment.ActiveDirectoryAuthority;
 
+            var browserCustomizationOptions = new BrowserCustomizationOptions()
+            {
+                SuccessMessage = @"Login completed successfully. You can close this browser window and return to the application.
+<b>Warning:</b> We strongly advise against the authentication method you are about to use. Please switch to the broker (WAM) for a more robust authentication mechanism. Learn more about using WAM here http://",
+            };
+
             var options = new InteractiveBrowserCredentialOptions()
             {
                 ClientId = clientId,
@@ -61,6 +67,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
                 TokenCachePersistenceOptions = tokenCacheProvider.GetTokenCachePersistenceOptions(),
                 AuthorityHost = new Uri(authority),
                 RedirectUri = GetReplyUrl(onPremise, interactiveParameters.PromptAction),
+                BrowserCustomization = browserCustomizationOptions,
                 LoginHint = interactiveParameters.UserId
             };
             options.DisableInstanceDiscovery = interactiveParameters.DisableInstanceDiscovery ?? options.DisableInstanceDiscovery;
