@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '15.1.0'
+ModuleVersion = '15.2.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -55,7 +55,7 @@ DotNetFrameworkVersion = '4.7.2'
 RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '5.3.1'; }, 
             @{ModuleName = 'Az.ADDomainServices'; RequiredVersion = '0.3.0'; }, 
             @{ModuleName = 'Az.Advisor'; RequiredVersion = '3.0.0'; }, 
-            @{ModuleName = 'Az.Aks'; RequiredVersion = '7.0.0'; }, 
+            @{ModuleName = 'Az.Aks'; RequiredVersion = '7.1.0'; }, 
             @{ModuleName = 'Az.AksArc'; RequiredVersion = '0.1.4'; }, 
             @{ModuleName = 'Az.Alb'; RequiredVersion = '0.1.4'; }, 
             @{ModuleName = 'Az.AlertsManagement'; RequiredVersion = '0.7.0'; }, 
@@ -73,7 +73,7 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '5.3.1'; },
             @{ModuleName = 'Az.Automanage'; RequiredVersion = '2.0.0'; }, 
             @{ModuleName = 'Az.Automation'; RequiredVersion = '1.11.2'; }, 
             @{ModuleName = 'Az.BareMetal'; RequiredVersion = '0.2.0'; }, 
-            @{ModuleName = 'Az.Batch'; RequiredVersion = '4.0.0'; }, 
+            @{ModuleName = 'Az.Batch'; RequiredVersion = '4.0.1'; }, 
             @{ModuleName = 'Az.Billing'; RequiredVersion = '2.2.0'; }, 
             @{ModuleName = 'Az.BillingBenefits'; RequiredVersion = '0.2.1'; }, 
             @{ModuleName = 'Az.Blueprint'; RequiredVersion = '0.4.6'; }, 
@@ -174,14 +174,14 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '5.3.1'; },
             @{ModuleName = 'Az.Marketplace'; RequiredVersion = '0.5.2'; }, 
             @{ModuleName = 'Az.MarketplaceOrdering'; RequiredVersion = '2.2.0'; }, 
             @{ModuleName = 'Az.Mdp'; RequiredVersion = '0.1.2'; }, 
-            @{ModuleName = 'Az.Migrate'; RequiredVersion = '2.10.1'; }, 
+            @{ModuleName = 'Az.Migrate'; RequiredVersion = '2.11.0'; }, 
             @{ModuleName = 'Az.MixedReality'; RequiredVersion = '0.3.0'; }, 
             @{ModuleName = 'Az.MongoDB'; RequiredVersion = '0.1.1'; }, 
             @{ModuleName = 'Az.Monitor'; RequiredVersion = '7.0.0'; }, 
             @{ModuleName = 'Az.MonitoringSolutions'; RequiredVersion = '0.2.0'; }, 
             @{ModuleName = 'Az.MySql'; RequiredVersion = '1.5.1'; }, 
             @{ModuleName = 'Az.NeonPostgres'; RequiredVersion = '0.2.0'; }, 
-            @{ModuleName = 'Az.NetAppFiles'; RequiredVersion = '0.25.1'; }, 
+            @{ModuleName = 'Az.NetAppFiles'; RequiredVersion = '1.0.0'; }, 
             @{ModuleName = 'Az.Network'; RequiredVersion = '7.24.0'; }, 
             @{ModuleName = 'Az.NetworkAnalytics'; RequiredVersion = '0.1.2'; }, 
             @{ModuleName = 'Az.NetworkCloud'; RequiredVersion = '2.0.0'; }, 
