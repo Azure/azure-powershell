@@ -72,8 +72,6 @@ namespace AzDev.Cmdlets.Typespec
         /// Consider updating the logic to use a more unique name if this becomes an issue.
         /// </summary>
         private const string tempDirName = "TempTypeSpecFiles";
-
-        private string _npmPath = "";
         
         [Parameter(HelpMessage = "The location of the TSP config file (can be a URL or local path). Will look for `tsp-location.yaml` in current directory if not provided.")]
         public string TSPLocation { get; set; }
@@ -314,11 +312,11 @@ namespace AzDev.Cmdlets.Typespec
 
             foreach (string path in paths)
             {
-                foreach (string ext in extensions)
+                foreach (string extension in extensions)
                 {
                     try
                     {
-                        string fullPath = Path.Combine(path, command + ext);
+                        string fullPath = Path.Combine(path, command + extension);
                         if (File.Exists(fullPath))
                         {
                             return fullPath;
@@ -548,15 +546,19 @@ namespace AzDev.Cmdlets.Typespec
         {
             Dictionary<string, object> tspLocationPWDContent = YamlHelper.Deserialize<Dictionary<string, object>>(File.ReadAllText(tspLocationPath));
             //if tspconfig emitted previously was from local, only record the absolute directory name
+            (string RemoteDirectory, string RemoteCommit, string RemoteRepositoryName, string RemoteForkName) = remoteInfo;
+            //if tspconfig emitted previously was from local, only record the absolute directory name
             if (File.Exists((string)tspLocationPWDContent["directory"]) && string.IsNullOrEmpty((string)tspLocationPWDContent["repo"]) && string.IsNullOrEmpty((string)tspLocationPWDContent["commit"]))
             {
-                if (remoteInfo != (null, null, null, null))
+                if ( !string.IsNullOrEmpty(RemoteDirectory) ||
+                    !string.IsNullOrEmpty(RemoteCommit) ||
+                    !string.IsNullOrEmpty(RemoteRepositoryName) ||
+                    !string.IsNullOrEmpty(RemoteForkName))
                 {
                     throw new ArgumentException("Emitted by local TSP last time, cannot update by remote info. Please provide remote `-TSPLocation`.");
                 }
                 return (string)tspLocationPWDContent["directory"];
             }
-            (string RemoteDirectory, string RemoteCommit, string RemoteRepositoryName, string RemoteForkName) = remoteInfo;
             //otherwise it was from remote, construct its url
             string repo = !string.IsNullOrEmpty(RemoteForkName) ? $"{RemoteForkName}/azure-rest-api-specs" : (!string.IsNullOrEmpty(RemoteRepositoryName) ? RemoteRepositoryName : (string)tspLocationPWDContent["repo"]);
             string commit = !string.IsNullOrEmpty(RemoteCommit) ? RemoteCommit : (string)tspLocationPWDContent["commit"];
