@@ -100,7 +100,7 @@ $resourceTestCommands = @(
     @{Name = "Az.Batch [DataPlane]"; Command = { Get-Command Get-AzBatchSupportedImage } },
     @{Name = "Az.Billing"; Command = { Get-AzBillingInvoice } },
     # @{Name = "Az.Billing [Consumption]"; Command = { Get-AzConsumptionBudget } },
-    @{Name = "Az.Cdn"; Command = { Get-AzCdnProfile } },
+    @{Name = "Az.Cdn"; Command = { Get-AzCdnProfile -Debug } },
     @{Name = "Az.CognitiveServices"; Command = { Get-AzCognitiveServicesAccount } },
     @{Name = "Az.Compute"; Command = { Get-AzVM }; Since = "7.0.0" },
     @{Name = "Az.ContainerInstance"; Command = { Get-AzContainerGroup } },
