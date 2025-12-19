@@ -122,4 +122,6 @@ pac120,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-rele
 pac121,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Mdp.0.1.2.zip;sourceType=sa]Az.Mdp,0.1.2
 pac122,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Migrate.2.10.1.zip;sourceType=sa]Az.Migrate,2.10.1
 pac123,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.MixedReality.0.3.0.zip;sourceType=sa]Az.MixedReality,0.3.0
+pac124,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.MongoDB.0.1.1.zip;sourceType=sa]Az.MongoDB,0.1.1
+pac125,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Monitor.7.0.0.zip;sourceType=sa]Az.Monitor,7.0.0
 
