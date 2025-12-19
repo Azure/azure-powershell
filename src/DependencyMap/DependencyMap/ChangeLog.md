@@ -18,7 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Pipeline test
 
 ## Version 0.1.0
 * First preview release for module Az.DependencyMap
