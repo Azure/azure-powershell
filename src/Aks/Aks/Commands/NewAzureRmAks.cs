@@ -335,15 +335,17 @@ namespace Microsoft.Azure.Commands.Aks
                     string standardOutput = process.StandardOutput.ReadToEnd() + process.StandardError.ReadToEnd();
 
                     process.WaitForExit();
-                    // OpenSSH version for Windows follows the format: OpenSSH_for_Windows_X.XpX
-                    // Examples
-                    // "OpenSSH_for_Windows_8.6p1, LibreSSL 3.4.3"
-                    // "OpenSSH_for_Windows_9.5p1, LibreSSL 3.8.2"
-                    var regMatch = System.Text.RegularExpressions.Regex.Match(standardOutput, @"OpenSSH_for_Windows_(\d+)\.(\d+)p(\d+)");
+                    // OpenSSH version output follows formats like:
+                    //   Windows: "OpenSSH_for_Windows_8.6p1, LibreSSL 3.4.3"
+                    //   Windows: "OpenSSH_for_Windows_9.5p1, LibreSSL 3.8.2"
+                    //   Linux/macOS: "OpenSSH_9.5p1, OpenSSL 3.0.13 30 Jan 2024"
+                    // We match the common "OpenSSH_" prefix and make "for_Windows_" optional so this works across platforms.
+                    var regMatch = System.Text.RegularExpressions.Regex.Match(standardOutput, @"OpenSSH_(?:for_Windows_)?(\d+)\.(\d+)");
 
                     // We don't really care about the patch version, so only return major and minor version. 
                     return regMatch.Success ? new Version(int.Parse(regMatch.Groups[1].Value), int.Parse(regMatch.Groups[2].Value)) : null;
-                } // We're not expecting ssh to be missing, but just in case, we catch any exception and return null.
+                }
+                // We're not expecting ssh to be missing, but just in case, we catch any exception and return null.
                 catch
                 {
                     return null;
