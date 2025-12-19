@@ -21,9 +21,6 @@
 - **Emitter**: The tool responsible for generating PowerShell code from the TypeSpec definition. This cmdlet specifically works with the `@azure-tools/typespec-powershell` emitter.
 - **emitter-output-dir**: Emitter option to indicate the output directory of code generation. Usually `"{output-dir}/{service-dir}/${ModuleName}/${ModuleName}.Autorest"` under `tsp-config.yaml`. When not provided while AzPSConfig exists, fallback to directory of AzPSConfig.
 
-## Legacy Document
-https://microsoft.sharepoint.com/:fl:/s/39639d2e-2b30-484b-8cd0-b1da04c38d95/IQDW4AwiMVYdR4lhRhPz1a_mARd9gEu1L1Z4lf93opQMtIc?e=QQe2VB&nav=cz0lMkZzaXRlcyUyRjM5NjM5ZDJlLTJiMzAtNDg0Yi04Y2QwLWIxZGEwNGMzOGQ5NSZkPWIlMjFHR2xLSHJvQU1rbWJZa2d6Z1FqZzBvYjA4Z2lVSWRoTnFKN3NIeE5MSDFGTklBYXdpRzZ0VEo2bmJMWVdfUlRyJmY9MDFKSUdTU0Y2VzRBR0NFTUtXRFZEWVNZS0dDUFo1TEw3RyZjPSUyRiZhPUxvb3BBcHAmcD0lNDBmbHVpZHglMkZsb29wLXBhZ2UtY29udGFpbmVyJng9JTdCJTIydyUyMiUzQSUyMlQwUlRVSHh0YVdOeWIzTnZablF1YzJoaGNtVndiMmx1ZEM1amIyMThZaUZIUjJ4TFNISnZRVTFyYldKWmEyZDZaMUZxWnpCdllqQTRaMmxWU1dSb1RuRktOM05JZUU1TVNERkdUa2xCWVhkcFJ6WjBWRW8yYm1KTVdWZGZVbFJ5ZkRBeFNrbEhVMU5HTkVJMVVWUklVbHBEUzFsQ1JrdExWRmsyUzBWSFNqTlpNMGMlM0QlMjIlMkMlMjJpJTIyJTNBJTIyMDkxZjE5NjktMTA4Yi00ZmRlLWE0NWQtMWFiOTJhZGUzYWZiJTIyJTdE
-
 ## Prerequisite
 - **node version >= 20**
 - **typespec compiler installed?**: `npm install -g @typespec/compiler`
