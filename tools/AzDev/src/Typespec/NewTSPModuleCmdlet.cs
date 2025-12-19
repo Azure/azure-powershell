@@ -281,7 +281,7 @@ namespace AzDev.Cmdlets.Typespec
                     throw new FileNotFoundException($"package.json not found in {tempTSPLocation}");
                 }
                 RunCommand(FindNPMCommandFromPath("npm"), File.Exists(Path.Combine(tempTSPLocation, "package-lock.json")) ? "ci" : "install", tempTSPLocation).Wait();
-                RunCommand(FindNPMCommandFromPath("tsp"), $"compile ./ --emit {EmitterPath ?? emitterName} --output-dir {emitterOutputDir}", tempTSPLocation).Wait();
+                RunCommand("node", $"{Path.Combine("node_modules", "@typespec", "compiler", "cmd", "tsp")} compile ./ --emit {EmitterPath ?? emitterName} --output-dir {emitterOutputDir}", tempTSPLocation).Wait();
             }
             catch (Exception ex)
             {
