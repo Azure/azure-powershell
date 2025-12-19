@@ -280,7 +280,7 @@ namespace AzDev.Cmdlets.Typespec
                 {
                     throw new FileNotFoundException($"package.json not found in {tempTSPLocation}");
                 }
-                RunCommand(FindNPMCommandFromPath("npm"), File.Exists(Path.Combine(tempTSPLocation, "package-lock.json")) ? "ci" : "install", tempTSPLocation).Wait();
+                RunCommand(FindCommandFromPath("npm"), File.Exists(Path.Combine(tempTSPLocation, "package-lock.json")) ? "ci" : "install", tempTSPLocation).Wait();
                 RunCommand("node", $"{Path.Combine("node_modules", "@typespec", "compiler", "cmd", "tsp")} compile ./ --emit {EmitterPath ?? emitterName} --output-dir {emitterOutputDir}", tempTSPLocation).Wait();
             }
             catch (Exception ex)
@@ -304,27 +304,34 @@ namespace AzDev.Cmdlets.Typespec
             }
         }
 
-        private string FindNPMCommandFromPath(string command)
+        private string FindCommandFromPath(string command)
         {
-            Console.WriteLine($"##########DEBUG: looking for command: {command} ##########");
-            string commandSuffix = Environment.OSVersion.Platform == PlatformID.Win32NT ? ".cmd":"";
-            Console.WriteLine($"##########DEBUG: looking for suffix: {commandSuffix} ##########");
-            if ( string.IsNullOrEmpty(_npmPath) || !File.Exists(_npmPath))
+            string pathEnv = Environment.GetEnvironmentVariable("PATH") ?? string.Empty;
+            string[] paths = pathEnv.Split(Path.PathSeparator);
+            string[] extensions = Environment.OSVersion.Platform == PlatformID.Win32NT 
+                ? new[] { ".cmd", ".exe", ".bat", "" } 
+                : new[] { "" };
+
+            foreach (string path in paths)
             {
-                string pathEnv = Environment.GetEnvironmentVariable("PATH") ?? string.Empty;
-                Console.WriteLine($"##########DEBUG: looking for path: {pathEnv} ##########");
-                string npmPath = pathEnv.Split(Path.PathSeparator).FirstOrDefault(path => path.EndsWith("npm"));
-                _npmPath = npmPath;
+                foreach (string ext in extensions)
+                {
+                    try
+                    {
+                        string fullPath = Path.Combine(path, command + ext);
+                        if (File.Exists(fullPath))
+                        {
+                            return fullPath;
+                        }
+                    }
+                    catch
+                    {
+                        // Ignore invalid paths in PATH
+                    }
+                }
             }
-            Console.WriteLine($"##########DEBUG: looking for npm path: {_npmPath} ##########");
-            string commandPath = Path.Combine(_npmPath, command+commandSuffix);
-            Console.WriteLine($"##########DEBUG: Found npm command path: {commandPath} ##########");
-            if (!File.Exists(commandPath))
-            {
-                
-                throw new FileNotFoundException($"Command '{command}' not found in system PATH.");
-            }
-            return commandPath;
+
+            throw new FileNotFoundException($"Command '{command}' not found in system PATH.");
         }
 
         private string NormalizePath(string path) => path.Replace('/', Path.DirectorySeparatorChar).Replace('\\', Path.DirectorySeparatorChar);

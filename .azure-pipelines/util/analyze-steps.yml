@@ -21,11 +21,6 @@ steps:
     targetType: inline
     script: "$env:NODE_OPTIONS=\"--max-old-space-size=65536\""
     pwsh: true
-- task: Npm@1
-  displayName: Install tsp client
-  inputs:
-    command: custom
-    customCommand: install -g @azure-tools/typespec-client-generator-cli@0.15.x
 - task: UseDotNet@2
   displayName: 'Use .NET SDK'
   inputs:
