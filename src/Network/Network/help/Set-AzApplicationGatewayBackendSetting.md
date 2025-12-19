@@ -16,7 +16,7 @@ Updates back-end TCP\TLS settings for an application gateway.
 Set-AzApplicationGatewayBackendSetting -ApplicationGateway <PSApplicationGateway> -Name <String> -Port <Int32>
  -Protocol <String> [-Timeout <Int32>] [-ProbeId <String>] [-Probe <PSApplicationGatewayProbe>]
  [-TrustedRootCertificate <PSApplicationGatewayTrustedRootCertificate[]>] [-PickHostNameFromBackendAddress]
- [-HostName <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-HostName <String>] [-EnableL4ClientIpPreservation <Boolean>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -63,6 +63,21 @@ Aliases: AzContext, AzureRmContext, AzureCredential
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableL4ClientIpPreservation
+Whether to send Proxy Protocol header to backend servers over TCP or TLS protocols. Default value is false.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

@@ -34,12 +34,18 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <param name="firstRowOnly">Whether to return first row or all rows. Default value is true. Type:
         /// boolean (or Expression with resultType boolean).
         /// </param>
-        public LookupActivityTypeProperties(CopySource source, DatasetReference dataset, object firstRowOnly = default(object))
+
+        /// <param name="treatDecimalAsString">Indicates whether to treat decimal values as strings to avoid value
+        /// overflow issue. This option is enabled for SnowflakeV2 connector only.
+        /// Type: boolean (or Expression with resultType boolean).
+        /// </param>
+        public LookupActivityTypeProperties(CopySource source, DatasetReference dataset, object firstRowOnly = default(object), object treatDecimalAsString = default(object))
 
         {
             this.Source = source;
             this.Dataset = dataset;
             this.FirstRowOnly = firstRowOnly;
+            this.TreatDecimalAsString = treatDecimalAsString;
             CustomInit();
         }
 
@@ -68,6 +74,14 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "firstRowOnly")]
         public object FirstRowOnly {get; set; }
+
+        /// <summary>
+        /// Gets or sets indicates whether to treat decimal values as strings to avoid
+        /// value overflow issue. This option is enabled for SnowflakeV2 connector
+        /// only. Type: boolean (or Expression with resultType boolean).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "treatDecimalAsString")]
+        public object TreatDecimalAsString {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -89,6 +103,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
             {
                 this.Dataset.Validate();
             }
+
 
         }
     }

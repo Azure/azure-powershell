@@ -7,7 +7,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Extensions;
 
-    /// <summary>User info</summary>
+    /// <summary>
+    /// Includes name, email and optionally, phone number. User Information can't be null.
+    /// </summary>
     public partial class UserInfo
     {
 

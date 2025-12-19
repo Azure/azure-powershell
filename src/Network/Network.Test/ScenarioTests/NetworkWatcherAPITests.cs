@@ -225,5 +225,21 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VnetFlowLogWithEmptyFilteringCondition");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
+        public void TestVnetFlowLogWithRecordType()
+        {
+            TestRunner.RunTestScript("Test-VnetFlowLogWithRecordType");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
+        public void TestVnetFlowLogWithEmptyRecordTypeCondition()
+        {
+            TestRunner.RunTestScript("Test-VnetFlowLogWithEmptyRecordTypeCondition");
+        }
     }
 }

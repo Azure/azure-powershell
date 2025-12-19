@@ -6,20 +6,22 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Extensions;
+    using Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.PowerShell;
+    using Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Patch an IoT Connector.</summary>
+    /// <summary>update an IoT Connector resource with the specified parameters.</summary>
     /// <remarks>
-    /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/iotconnectors/{iotConnectorName}"
+    /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/iotconnectors/{iotConnectorName}"
+    /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/iotconnectors/{iotConnectorName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzHealthcareIotConnector_UpdateViaIdentityExpanded", SupportsShouldProcess = true)]
-    [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IIotConnector", "15.0.0", "9.0.0", "2025/11/03", DeprecatedOutputProperties=new string[] {"IdentityType","IdentityUserAssignedIdentity"}, NewOutputProperties=new string[] {"EnableSystemAssignedIdentity","UserAssignedIdentity"}, ChangeDescription="IdentityType will be removed. EnableSystemAssignedIdentity will be used to enable/disable system assigned identity and UserAssignedIdentity will be used to specify user assigned identities.")]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IIotConnector))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Description(@"Patch an IoT Connector.")]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IIotConnector))]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Description(@"update an IoT Connector resource with the specified parameters.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/iotconnectors/{iotConnectorName}", ApiVersion = "2021-11-01")]
     public partial class UpdateAzHealthcareIotConnector_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
-        Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.IEventListener
+        Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.IEventListener,
+        Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.IContext
     {
         /// <summary>A unique id generatd for the this cmdlet when it is instantiated.</summary>
         private string __correlationId = System.Guid.NewGuid().ToString();
@@ -35,8 +37,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
-        /// <summary>Iot Connector patch properties</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IIotConnectorPatchResource _iotConnectorPatchResourceBody = new Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IotConnectorPatchResource();
+        /// <summary>A dictionary to carry over additional data for pipeline.</summary>
+        private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
+
+        /// <summary>IoT Connector definition.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IIotConnector _iotConnectorBody = new Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IotConnector();
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
@@ -47,6 +52,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter Break { get; set; }
+
+        /// <summary>Accessor for cancellationTokenSource.</summary>
+        public global::System.Threading.CancellationTokenSource CancellationTokenSource { get => _cancellationTokenSource ; set { _cancellationTokenSource = value; } }
 
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.HealthcareApis Client => Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Module.Instance.ClientAPI;
@@ -61,6 +69,38 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
 
+        /// <summary>The mapping.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.ExportAs(typeof(global::System.Collections.Hashtable))]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The mapping.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The mapping.",
+        SerializedName = @"content",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IIotMappingPropertiesContent) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IIotMappingPropertiesContent DeviceMappingContent { get => _iotConnectorBody.DeviceMappingContent ?? null /* object */; set => _iotConnectorBody.DeviceMappingContent = value; }
+
+        /// <summary>Determines whether to enable a system-assigned identity for the resource.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Determines whether to enable a system-assigned identity for the resource.")]
+        public System.Boolean? EnableSystemAssignedIdentity { get; set; }
+
+        /// <summary>
+        /// An etag associated with the resource, used for optimistic concurrency when editing it.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "An etag associated with the resource, used for optimistic concurrency when editing it.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"An etag associated with the resource, used for optimistic concurrency when editing it.",
+        SerializedName = @"etag",
+        PossibleTypes = new [] { typeof(string) })]
+        public string Etag { get => _iotConnectorBody.Etag ?? null; set => _iotConnectorBody.Etag = value; }
+
+        /// <summary>Accessor for extensibleParameters.</summary>
+        public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
+
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
         [global::System.Management.Automation.ValidateNotNull]
@@ -73,35 +113,38 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.ParameterCategory.Runtime)]
         public Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.SendAsyncStep[] HttpPipelinePrepend { get; set; }
 
-        /// <summary>
-        /// Type of identity being specified, currently SystemAssigned and None are allowed.
-        /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Type of identity being specified, currently SystemAssigned and None are allowed.")]
+        /// <summary>Consumer group of the event hub to connected to.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Consumer group of the event hub to connected to.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Type of identity being specified, currently SystemAssigned and None are allowed.",
-        SerializedName = @"type",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.ServiceManagedIdentityType) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.ServiceManagedIdentityType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.ServiceManagedIdentityType IdentityType { get => _iotConnectorPatchResourceBody.IdentityType ?? ((Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.ServiceManagedIdentityType)""); set => _iotConnectorPatchResourceBody.IdentityType = value; }
+        Description = @"Consumer group of the event hub to connected to.",
+        SerializedName = @"consumerGroup",
+        PossibleTypes = new [] { typeof(string) })]
+        public string IngestionEndpointConfigurationConsumerGroup { get => _iotConnectorBody.IngestionEndpointConfigurationConsumerGroup ?? null; set => _iotConnectorBody.IngestionEndpointConfigurationConsumerGroup = value; }
 
-        /// <summary>
-        /// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM
-        /// resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-        /// The dictionary values can be empty objects ({}) in requests.
-        /// </summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.ExportAs(typeof(global::System.Collections.Hashtable))]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.")]
+        /// <summary>Event Hub name to connect to.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Event Hub name to connect to.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.",
-        SerializedName = @"userAssignedIdentities",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IUserAssignedIdentities) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IUserAssignedIdentities IdentityUserAssignedIdentity { get => _iotConnectorPatchResourceBody.IdentityUserAssignedIdentity ?? null /* object */; set => _iotConnectorPatchResourceBody.IdentityUserAssignedIdentity = value; }
+        Description = @"Event Hub name to connect to.",
+        SerializedName = @"eventHubName",
+        PossibleTypes = new [] { typeof(string) })]
+        public string IngestionEndpointConfigurationEventHubName { get => _iotConnectorBody.IngestionEndpointConfigurationEventHubName ?? null; set => _iotConnectorBody.IngestionEndpointConfigurationEventHubName = value; }
+
+        /// <summary>Fully qualified namespace of the Event Hub to connect to.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Fully qualified namespace of the Event Hub to connect to.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Fully qualified namespace of the Event Hub to connect to.",
+        SerializedName = @"fullyQualifiedEventHubNamespace",
+        PossibleTypes = new [] { typeof(string) })]
+        public string IngestionEndpointConfigurationFullyQualifiedEventHubNamespace { get => _iotConnectorBody.IngestionEndpointConfigurationFullyQualifiedEventHubNamespace ?? null; set => _iotConnectorBody.IngestionEndpointConfigurationFullyQualifiedEventHubNamespace = value; }
 
         /// <summary>Backing field for <see cref="InputObject" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IHealthcareApisIdentity _inputObject;
@@ -133,7 +176,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.HttpPipeline Pipeline { get; set; }
+        public Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.HttpPipeline Pipeline { get; set; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -160,32 +203,40 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
         ReadOnly = false,
         Description = @"Resource tags.",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IResourceTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IResourceTags Tag { get => _iotConnectorPatchResourceBody.Tag ?? null /* object */; set => _iotConnectorPatchResourceBody.Tag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IResourceTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IResourceTags Tag { get => _iotConnectorBody.Tag ?? null /* object */; set => _iotConnectorBody.Tag = value; }
+
+        /// <summary>
+        /// The array of user assigned identities associated with the resource. The elements in array will be ARM resource ids in
+        /// the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The array of user assigned identities associated with the resource. The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'")]
+        [global::System.Management.Automation.AllowEmptyCollection]
+        public string[] UserAssignedIdentity { get; set; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IErrorDetails">Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IErrorDetails</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IErrorDetails">Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IErrorDetails</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IErrorDetails> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IErrorDetails> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IIotConnector">Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IIotConnector</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IIotConnector">Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IIotConnector</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IIotConnector> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IIotConnector> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -224,7 +275,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
             clone.ProxyUseDefaultCredentials = this.ProxyUseDefaultCredentials;
             clone.HttpPipelinePrepend = this.HttpPipelinePrepend;
             clone.HttpPipelineAppend = this.HttpPipelineAppend;
-            clone._iotConnectorPatchResourceBody = this._iotConnectorPatchResourceBody;
+            clone._iotConnectorBody = this._iotConnectorBody;
             return clone;
         }
 
@@ -295,11 +346,36 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
                         WriteError(new global::System.Management.Automation.ErrorRecord( new global::System.Exception(messageData().Message), string.Empty, global::System.Management.Automation.ErrorCategory.NotSpecified, null ) );
                         return ;
                     }
+                    case Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Events.Progress:
+                    {
+                        var data = messageData();
+                        int progress = (int)data.Value;
+                        string activityMessage, statusDescription;
+                        global::System.Management.Automation.ProgressRecordType recordType;
+                        if (progress < 100)
+                        {
+                            activityMessage = "In progress";
+                            statusDescription = "Checking operation status";
+                            recordType = System.Management.Automation.ProgressRecordType.Processing;
+                        }
+                        else
+                        {
+                            activityMessage = "Completed";
+                            statusDescription = "Completed";
+                            recordType = System.Management.Automation.ProgressRecordType.Completed;
+                        }
+                        WriteProgress(new global::System.Management.Automation.ProgressRecord(1, activityMessage, statusDescription)
+                        {
+                            PercentComplete = progress,
+                        RecordType = recordType
+                        });
+                        return ;
+                    }
                     case Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Events.DelayBeforePolling:
                     {
+                        var data = messageData();
                         if (true == MyInvocation?.BoundParameters?.ContainsKey("NoWait"))
                         {
-                            var data = messageData();
                             if (data.ResponseMessage is System.Net.Http.HttpResponseMessage response)
                             {
                                 var asyncOperation = response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -311,15 +387,69 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
                                 return;
                             }
                         }
+                        else
+                        {
+                            if (data.ResponseMessage is System.Net.Http.HttpResponseMessage response)
+                            {
+                                int delay = (int)(response.Headers.RetryAfter?.Delta?.TotalSeconds ?? 30);
+                                WriteDebug($"Delaying {delay} seconds before polling.");
+                                for (var now = 0; now < delay; ++now)
+                                {
+                                    WriteProgress(new global::System.Management.Automation.ProgressRecord(1, "In progress", "Checking operation status")
+                                    {
+                                        PercentComplete = now * 100 / delay
+                                    });
+                                    await global::System.Threading.Tasks.Task.Delay(1000, token);
+                                }
+                            }
+                        }
                         break;
                     }
                 }
-                await Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Module.Instance.Signal(id, token, messageData, (i,t,m) => ((Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.IEventListener)this).Signal(i,t,()=> Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.EventDataConverter.ConvertFrom( m() ) as Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.EventData ), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
+                await Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Module.Instance.Signal(id, token, messageData, (i, t, m) => ((Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.IEventListener)this).Signal(i, t, () => Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.EventDataConverter.ConvertFrom(m()) as Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.EventData), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
                 if (token.IsCancellationRequested)
                 {
                     return ;
                 }
                 WriteDebug($"{id}: {(messageData().Message ?? global::System.String.Empty)}");
+            }
+        }
+
+        private void PreProcessManagedIdentityParametersWithGetResult()
+        {
+            bool supportsSystemAssignedIdentity = (true == this.EnableSystemAssignedIdentity || null == this.EnableSystemAssignedIdentity && true == _iotConnectorBody?.IdentityType?.Contains("SystemAssigned"));
+            bool supportsUserAssignedIdentity = false;
+            if (this.UserAssignedIdentity?.Length > 0)
+            {
+                // calculate UserAssignedIdentity
+                _iotConnectorBody.IdentityUserAssignedIdentity.Clear();
+                foreach( var id in this.UserAssignedIdentity )
+                {
+                    _iotConnectorBody.IdentityUserAssignedIdentity.Add(id, new Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.UserAssignedIdentity());
+                }
+            }
+            supportsUserAssignedIdentity = true == this.MyInvocation?.BoundParameters?.ContainsKey("UserAssignedIdentity") && this.UserAssignedIdentity?.Length > 0 ||
+                    true != this.MyInvocation?.BoundParameters?.ContainsKey("UserAssignedIdentity") && true == _iotConnectorBody.IdentityType?.Contains("UserAssigned");
+            if (!supportsUserAssignedIdentity)
+            {
+                _iotConnectorBody.IdentityUserAssignedIdentity = null;
+            }
+            // calculate IdentityType
+            if ((supportsUserAssignedIdentity && supportsSystemAssignedIdentity))
+            {
+                _iotConnectorBody.IdentityType = "SystemAssigned,UserAssigned";
+            }
+            else if ((supportsUserAssignedIdentity && !supportsSystemAssignedIdentity))
+            {
+                _iotConnectorBody.IdentityType = "UserAssigned";
+            }
+            else if ((!supportsUserAssignedIdentity && supportsSystemAssignedIdentity))
+            {
+                _iotConnectorBody.IdentityType = "SystemAssigned";
+            }
+            else
+            {
+                _iotConnectorBody.IdentityType = "None";
             }
         }
 
@@ -331,7 +461,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
             try
             {
                 // work
-                if (ShouldProcess($"Call remote 'IotConnectorsUpdate' operation"))
+                if (ShouldProcess($"Call remote 'IotConnectorsCreateOrUpdate' operation"))
                 {
                     if (true == MyInvocation?.BoundParameters?.ContainsKey("AsJob"))
                     {
@@ -382,7 +512,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
             using( NoSynchronizationContext )
             {
                 await ((Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
+                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName, this.ExtensibleParameters);
                 if (null != HttpPipelinePrepend)
                 {
                     Pipeline.Prepend((this.CommandRuntime as Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.PowerShell.IAsyncCommandRuntimeExtensions)?.Wrap(HttpPipelinePrepend) ?? HttpPipelinePrepend);
@@ -397,34 +527,40 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
                     await ((Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     if (InputObject?.Id != null)
                     {
-                        await this.Client.IotConnectorsUpdateViaIdentity(InputObject.Id, _iotConnectorPatchResourceBody, onOk, onDefault, this, Pipeline);
+                        _iotConnectorBody = await this.Client.IotConnectorsGetViaIdentityWithResult(InputObject.Id, this, Pipeline);
+                        this.PreProcessManagedIdentityParametersWithGetResult();
+                        this.Update_iotConnectorBody();
+                        await this.Client.IotConnectorsCreateOrUpdateViaIdentity(InputObject.Id, _iotConnectorBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.SerializationMode.IncludeUpdate);
                     }
                     else
                     {
                         // try to call with PATH parameters from Input Object
-                        if (null == InputObject.ResourceGroupName)
-                        {
-                            ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.ResourceGroupName"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
-                        }
                         if (null == InputObject.SubscriptionId)
                         {
                             ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.SubscriptionId"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
                         }
-                        if (null == InputObject.IotConnectorName)
+                        if (null == InputObject.ResourceGroupName)
                         {
-                            ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.IotConnectorName"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
+                            ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.ResourceGroupName"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
                         }
                         if (null == InputObject.WorkspaceName)
                         {
                             ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.WorkspaceName"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
                         }
-                        await this.Client.IotConnectorsUpdate(InputObject.ResourceGroupName ?? null, InputObject.SubscriptionId ?? null, InputObject.IotConnectorName ?? null, InputObject.WorkspaceName ?? null, _iotConnectorPatchResourceBody, onOk, onDefault, this, Pipeline);
+                        if (null == InputObject.IotConnectorName)
+                        {
+                            ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.IotConnectorName"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
+                        }
+                        _iotConnectorBody = await this.Client.IotConnectorsGetWithResult(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.WorkspaceName ?? null, InputObject.IotConnectorName ?? null, this, Pipeline);
+                        this.PreProcessManagedIdentityParametersWithGetResult();
+                        this.Update_iotConnectorBody();
+                        await this.Client.IotConnectorsCreateOrUpdate(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.WorkspaceName ?? null, InputObject.IotConnectorName ?? null, _iotConnectorBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.SerializationMode.IncludeUpdate);
                     }
                     await ((Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  body=_iotConnectorPatchResourceBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -444,11 +580,39 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
         }
 
         /// <summary>
-        /// Intializes a new instance of the <see cref="UpdateAzHealthcareIotConnector_UpdateViaIdentityExpanded" /> cmdlet class.
+        /// Initializes a new instance of the <see cref="UpdateAzHealthcareIotConnector_UpdateViaIdentityExpanded" /> cmdlet class.
         /// </summary>
         public UpdateAzHealthcareIotConnector_UpdateViaIdentityExpanded()
         {
 
+        }
+
+        private void Update_iotConnectorBody()
+        {
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("Tag")))
+            {
+                this.Tag = (Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IResourceTags)(this.MyInvocation?.BoundParameters["Tag"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("Etag")))
+            {
+                this.Etag = (string)(this.MyInvocation?.BoundParameters["Etag"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("IngestionEndpointConfigurationEventHubName")))
+            {
+                this.IngestionEndpointConfigurationEventHubName = (string)(this.MyInvocation?.BoundParameters["IngestionEndpointConfigurationEventHubName"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("IngestionEndpointConfigurationConsumerGroup")))
+            {
+                this.IngestionEndpointConfigurationConsumerGroup = (string)(this.MyInvocation?.BoundParameters["IngestionEndpointConfigurationConsumerGroup"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("IngestionEndpointConfigurationFullyQualifiedEventHubNamespace")))
+            {
+                this.IngestionEndpointConfigurationFullyQualifiedEventHubNamespace = (string)(this.MyInvocation?.BoundParameters["IngestionEndpointConfigurationFullyQualifiedEventHubNamespace"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("DeviceMappingContent")))
+            {
+                this.DeviceMappingContent = (Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IIotMappingPropertiesContent)(this.MyInvocation?.BoundParameters["DeviceMappingContent"]);
+            }
         }
 
         /// <param name="sendToPipeline"></param>
@@ -470,12 +634,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IErrorDetails">Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IErrorDetails</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IErrorDetails">Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IErrorDetails</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IErrorDetails> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IErrorDetails> response)
         {
             using( NoSynchronizationContext )
             {
@@ -492,15 +656,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IErrorDetails>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=_iotConnectorPatchResourceBody })
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IErrorDetails>(responseMessage, await response);
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=_iotConnectorPatchResourceBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -510,12 +674,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IIotConnector">Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IIotConnector</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IIotConnector">Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IIotConnector</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IIotConnector> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IIotConnector> response)
         {
             using( NoSynchronizationContext )
             {
@@ -527,8 +691,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IIotConnector
-                WriteObject((await response));
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IIotConnector
+                var result = (await response);
+                WriteObject(result, false);
             }
         }
     }

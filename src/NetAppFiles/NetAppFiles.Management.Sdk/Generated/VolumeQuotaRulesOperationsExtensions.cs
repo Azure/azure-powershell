@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// <param name='volumeName'>
         /// The name of the volume
         /// </param>
-        public static System.Collections.Generic.IEnumerable<VolumeQuotaRule> ListByVolume(this IVolumeQuotaRulesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName)
+        public static Microsoft.Rest.Azure.IPage<VolumeQuotaRule> ListByVolume(this IVolumeQuotaRulesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName)
         {
                 return ((IVolumeQuotaRulesOperations)operations).ListByVolumeAsync(resourceGroupName, accountName, poolName, volumeName).GetAwaiter().GetResult();
         }
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<VolumeQuotaRule>> ListByVolumeAsync(this IVolumeQuotaRulesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<VolumeQuotaRule>> ListByVolumeAsync(this IVolumeQuotaRulesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListByVolumeWithHttpMessagesAsync(resourceGroupName, accountName, poolName, volumeName, null, cancellationToken).ConfigureAwait(false))
             {
@@ -255,9 +255,9 @@ namespace Microsoft.Azure.Management.NetApp
         /// <param name='volumeQuotaRuleName'>
         /// The name of volume quota rule
         /// </param>
-        public static void Delete(this IVolumeQuotaRulesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, string volumeQuotaRuleName)
+        public static VolumeQuotaRulesDeleteHeaders Delete(this IVolumeQuotaRulesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, string volumeQuotaRuleName)
         {
-                ((IVolumeQuotaRulesOperations)operations).DeleteAsync(resourceGroupName, accountName, poolName, volumeName, volumeQuotaRuleName).GetAwaiter().GetResult();
+                return ((IVolumeQuotaRulesOperations)operations).DeleteAsync(resourceGroupName, accountName, poolName, volumeName, volumeQuotaRuleName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -284,9 +284,12 @@ namespace Microsoft.Azure.Management.NetApp
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IVolumeQuotaRulesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, string volumeQuotaRuleName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<VolumeQuotaRulesDeleteHeaders> DeleteAsync(this IVolumeQuotaRulesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, string volumeQuotaRuleName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, accountName, poolName, volumeName, volumeQuotaRuleName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, accountName, poolName, volumeName, volumeQuotaRuleName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Create the specified quota rule within the given volume
@@ -423,9 +426,9 @@ namespace Microsoft.Azure.Management.NetApp
         /// <param name='volumeQuotaRuleName'>
         /// The name of volume quota rule
         /// </param>
-        public static void BeginDelete(this IVolumeQuotaRulesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, string volumeQuotaRuleName)
+        public static VolumeQuotaRulesDeleteHeaders BeginDelete(this IVolumeQuotaRulesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, string volumeQuotaRuleName)
         {
-                ((IVolumeQuotaRulesOperations)operations).BeginDeleteAsync(resourceGroupName, accountName, poolName, volumeName, volumeQuotaRuleName).GetAwaiter().GetResult();
+                return ((IVolumeQuotaRulesOperations)operations).BeginDeleteAsync(resourceGroupName, accountName, poolName, volumeName, volumeQuotaRuleName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -452,9 +455,45 @@ namespace Microsoft.Azure.Management.NetApp
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IVolumeQuotaRulesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, string volumeQuotaRuleName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<VolumeQuotaRulesDeleteHeaders> BeginDeleteAsync(this IVolumeQuotaRulesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, string volumeQuotaRuleName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, accountName, poolName, volumeName, volumeQuotaRuleName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, accountName, poolName, volumeName, volumeQuotaRuleName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// List all quota rules associated with the volume
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<VolumeQuotaRule> ListByVolumeNext(this IVolumeQuotaRulesOperations operations, string nextPageLink)
+        {
+                return ((IVolumeQuotaRulesOperations)operations).ListByVolumeNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// List all quota rules associated with the volume
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<VolumeQuotaRule>> ListByVolumeNextAsync(this IVolumeQuotaRulesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListByVolumeNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
         }
     }
 }

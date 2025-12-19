@@ -49,13 +49,7 @@ title: Authorization
 namespace: Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization
 # remove subject-prefix for all generated cmdlets.
 subject-prefix: ''
-identity-correction-for-post: true
-resourcegroup-append: true
 default-exclude-tableview-properties: false
-
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
 
 directive:
   - where:
@@ -102,19 +96,11 @@ directive:
       }
       
   # Remove "Create", "CreateViaIdentity", "CreateViaIdentityExpanded" syntax variant of the cmdlets. Because of new cmdlet does unsupport.
-  - where:
-      verb: New
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$
-      # subject: RoleEligibilityScheduleRequest$|RoleManagementPolicyAssignment$
-    remove: true
-
   # Remove "Update", "UpdateViaIdentity", syntax variant of the cmdlets. Because of update cmdlet does unsupport.
   - where:
-      verb: Update
-      variant: ^Update$|^UpdateViaIdentity$
-      subject: RoleManagementPolicy$
+      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))|^CreateViaIdentityExpanded$
     remove: true
-  
+
   # The parameter is not friendly and needs to be renamed.
   - where:
       parameter-name: ^TicketInfoTicketNumber$
@@ -128,8 +114,9 @@ directive:
   # Generate cmdlet for RoleManagementPolicyRule memory object and copy to the custom folder for rename cmdlet(New-AzAuthorizationRoleManagementPolicyRuleObject --> New-AzRoleManagementPolicyRuleObject).
   # Then cancel configuration of it.   
   # - model-cmdlet:
-  #   - RoleManagementPolicyRule
-  
+  #   - model-name: RoleManagementPolicyRule
+  #     cmdlet-name: New-AzRoleManagementPolicyRuleObject
+
   - where:
       model-name: EligibleChildResource
     set:

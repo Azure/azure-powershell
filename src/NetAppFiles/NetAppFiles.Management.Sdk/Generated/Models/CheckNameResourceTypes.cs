@@ -17,5 +17,14 @@ namespace Microsoft.Azure.Management.NetApp.Models
         public const string MicrosoftNetAppNetAppAccountsCapacityPools = "Microsoft.NetApp/netAppAccounts/capacityPools";
         public const string MicrosoftNetAppNetAppAccountsCapacityPoolsVolumes = "Microsoft.NetApp/netAppAccounts/capacityPools/volumes";
         public const string MicrosoftNetAppNetAppAccountsCapacityPoolsVolumesSnapshots = "Microsoft.NetApp/netAppAccounts/capacityPools/volumes/snapshots";
+        /// <summary>
+        /// ANF Backup under a volume , deprecated, use
+        /// `Microsoft.NetApp/netAppAccounts/backupVaults/backups` instead.
+        /// </summary>
+        public const string MicrosoftNetAppNetAppAccountsBackupVaultsBackups = "Microsoft.NetApp/netAppAccounts/backupVaults/backups";
+        /// <summary>
+        /// ANF Backup under a Backup Vault
+        /// </summary>
+        public const string MicrosoftNetAppNetAppAccountsCapacityPoolsVolumesBackups = "Microsoft.NetApp/netAppAccounts/capacityPools/volumes/backups";
     }
 }

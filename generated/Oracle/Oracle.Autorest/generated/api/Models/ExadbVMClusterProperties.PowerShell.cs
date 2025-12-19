@@ -274,6 +274,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExadbVMClusterPropertiesInternal)this).SubnetOcid = (string) content.GetValueForProperty("SubnetOcid",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExadbVMClusterPropertiesInternal)this).SubnetOcid, global::System.Convert.ToString);
             }
+            if (content.Contains("ShapeAttribute"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExadbVMClusterPropertiesInternal)this).ShapeAttribute = (string) content.GetValueForProperty("ShapeAttribute",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExadbVMClusterPropertiesInternal)this).ShapeAttribute, global::System.Convert.ToString);
+            }
             if (content.Contains("IormConfigCacheObjective"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExadbVMClusterPropertiesInternal)this).IormConfigCacheObjective = (string) content.GetValueForProperty("IormConfigCacheObjective",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExadbVMClusterPropertiesInternal)this).IormConfigCacheObjective, global::System.Convert.ToString);
@@ -502,6 +506,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             if (content.Contains("SubnetOcid"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExadbVMClusterPropertiesInternal)this).SubnetOcid = (string) content.GetValueForProperty("SubnetOcid",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExadbVMClusterPropertiesInternal)this).SubnetOcid, global::System.Convert.ToString);
+            }
+            if (content.Contains("ShapeAttribute"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExadbVMClusterPropertiesInternal)this).ShapeAttribute = (string) content.GetValueForProperty("ShapeAttribute",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExadbVMClusterPropertiesInternal)this).ShapeAttribute, global::System.Convert.ToString);
             }
             if (content.Contains("IormConfigCacheObjective"))
             {

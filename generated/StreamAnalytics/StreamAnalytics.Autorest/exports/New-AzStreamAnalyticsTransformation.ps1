@@ -16,27 +16,39 @@
 
 <#
 .Synopsis
-Creates a transformation or replaces an already existing transformation under an existing streaming job.
+Create a transformation or replaces an already existing transformation under an existing streaming job.
 .Description
-Creates a transformation or replaces an already existing transformation under an existing streaming job.
+Create a transformation or replaces an already existing transformation under an existing streaming job.
 .Example
 New-AzStreamAnalyticsTransformation -ResourceGroupName azure-rg-test -JobName sajob-01-pwsh -Name tranf-01 -StreamingUnit 6 -Query "Select Id, Name from input-01"
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IStreamAnalyticsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.ITransformation
+Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.ITransformation
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+STREAMINGJOBINPUTOBJECT <IStreamAnalyticsIdentity>: Identity Parameter
+  [ClusterName <String>]: The name of the cluster.
+  [FunctionName <String>]: The name of the function.
+  [Id <String>]: Resource identity path
+  [InputName <String>]: The name of the input.
+  [JobName <String>]: The name of the streaming job.
+  [Location <String>]: The region in which to retrieve the subscription's quota information. You can find out which regions Azure Stream Analytics is supported in here: https://azure.microsoft.com/en-us/regions/
+  [OutputName <String>]: The name of the output.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [TransformationName <String>]: The name of the transformation.
 .Link
 https://learn.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticstransformation
 #>
 function New-AzStreamAnalyticsTransformation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.ITransformation])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.ITransformation])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category('Path')]
-    [System.String]
-    # The name of the streaming job.
-    ${JobName},
-
     [Parameter(Mandatory)]
     [Alias('TransformationName')]
     [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category('Path')]
@@ -44,19 +56,37 @@ param(
     # The name of the transformation.
     ${Name},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category('Path')]
+    [System.String]
+    # The name of the streaming job.
+    ${JobName},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
+
+    [Parameter(ParameterSetName='CreateViaIdentityStreamingjobExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IStreamAnalyticsIdentity]
+    # Identity Parameter
+    ${StreamingjobInputObject},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category('Header')]
@@ -73,7 +103,8 @@ param(
     # Other values will result in a 412 Pre-condition Failed response.
     ${IfNoneMatch},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityStreamingjobExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category('Body')]
     [System.String]
     # Specifies the query that will be run in the streaming job.
@@ -81,11 +112,24 @@ param(
     # Required on PUT (CreateOrReplace) requests.
     ${Query},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityStreamingjobExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category('Body')]
     [System.Int32]
     # Specifies the number of streaming units that the streaming job uses.
     ${StreamingUnit},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -143,6 +187,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -163,10 +216,11 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.StreamAnalytics.private\New-AzStreamAnalyticsTransformation_CreateExpanded';
+            CreateViaIdentityStreamingjobExpanded = 'Az.StreamAnalytics.private\New-AzStreamAnalyticsTransformation_CreateViaIdentityStreamingjobExpanded';
+            CreateViaJsonFilePath = 'Az.StreamAnalytics.private\New-AzStreamAnalyticsTransformation_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.StreamAnalytics.private\New-AzStreamAnalyticsTransformation_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -180,6 +234,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

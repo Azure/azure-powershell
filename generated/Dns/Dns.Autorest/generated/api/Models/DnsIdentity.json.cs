@@ -64,12 +64,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns.Models
             {
                 return;
             }
-            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)ResourceGroupName;}
-            {_zoneName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonString>("zoneName"), out var __jsonZoneName) ? (string)__jsonZoneName : (string)ZoneName;}
-            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)SubscriptionId;}
-            {_relativeRecordSetName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonString>("relativeRecordSetName"), out var __jsonRelativeRecordSetName) ? (string)__jsonRelativeRecordSetName : (string)RelativeRecordSetName;}
-            {_recordType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonString>("recordType"), out var __jsonRecordType) ? (string)__jsonRecordType : (string)RecordType;}
-            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)Id;}
+            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)_subscriptionId;}
+            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)_resourceGroupName;}
+            {_zoneName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonString>("zoneName"), out var __jsonZoneName) ? (string)__jsonZoneName : (string)_zoneName;}
+            {_relativeRecordSetName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonString>("relativeRecordSetName"), out var __jsonRelativeRecordSetName) ? (string)__jsonRelativeRecordSetName : (string)_relativeRecordSetName;}
+            {_recordType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonString>("recordType"), out var __jsonRecordType) ? (string)__jsonRecordType : (string)_recordType;}
+            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
             AfterFromJson(json);
         }
 
@@ -102,9 +102,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns.Models
             {
                 return container;
             }
+            AddIf( null != (((object)this._subscriptionId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonString(this._subscriptionId.ToString()) : null, "subscriptionId" ,container.Add );
             AddIf( null != (((object)this._resourceGroupName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonString(this._resourceGroupName.ToString()) : null, "resourceGroupName" ,container.Add );
             AddIf( null != (((object)this._zoneName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonString(this._zoneName.ToString()) : null, "zoneName" ,container.Add );
-            AddIf( null != (((object)this._subscriptionId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonString(this._subscriptionId.ToString()) : null, "subscriptionId" ,container.Add );
             AddIf( null != (((object)this._relativeRecordSetName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonString(this._relativeRecordSetName.ToString()) : null, "relativeRecordSetName" ,container.Add );
             AddIf( null != (((object)this._recordType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonString(this._recordType.ToString()) : null, "recordType" ,container.Add );
             AddIf( null != (((object)this._id)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonString(this._id.ToString()) : null, "id" ,container.Add );

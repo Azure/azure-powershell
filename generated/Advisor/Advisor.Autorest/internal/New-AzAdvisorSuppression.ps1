@@ -18,23 +18,39 @@
 .Synopsis
 Enables the snoozed or dismissed attribute of a recommendation.
 The snoozed or dismissed attribute is referred to as a suppression.
-Use this API to create or update the snoozed or dismissed status of a recommendation.
+Use this API to create the snoozed or dismissed status of a recommendation.
 .Description
 Enables the snoozed or dismissed attribute of a recommendation.
 The snoozed or dismissed attribute is referred to as a suppression.
-Use this API to create or update the snoozed or dismissed status of a recommendation.
+Use this API to create the snoozed or dismissed status of a recommendation.
 .Example
 {{ Add code here }}
 .Example
 {{ Add code here }}
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IAdvisorIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.ISuppressionContract
+Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.ISuppressionContract
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+RECOMMENDATIONINPUTOBJECT <IAdvisorIdentity>: Identity Parameter
+  [ConfigurationName <String>]: Advisor configuration name. Value must be 'default'
+  [Id <String>]: Resource identity path
+  [Name <String>]: Name of metadata entity.
+  [OperationId <String>]: The operation ID, which can be found from the Location field in the generate recommendation response header.
+  [RecommendationId <String>]: The recommendation ID.
+  [ResourceGroup <String>]: The name of the Azure resource group.
+  [ResourceUri <String>]: The fully qualified Azure Resource Manager identifier of the resource to which the recommendation applies.
+  [SubscriptionId <String>]: The Azure subscription ID.
 .Link
 https://learn.microsoft.com/powershell/module/az.advisor/new-azadvisorsuppression
 #>
 function New-AzAdvisorSuppression {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.ISuppressionContract])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.ISuppressionContract])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -43,17 +59,23 @@ param(
     # The name of the suppression.
     ${Name},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Category('Path')]
     [System.String]
     # The recommendation ID.
     ${RecommendationId},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Category('Path')]
     [System.String]
     # The fully qualified Azure Resource Manager identifier of the resource to which the recommendation applies.
     ${ResourceUri},
+
+    [Parameter(ParameterSetName='CreateViaIdentityRecommendationExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IAdvisorIdentity]
+    # Identity Parameter
+    ${RecommendationInputObject},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Category('Body')]
@@ -123,12 +145,19 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             CreateExpanded = 'Az.Advisor.private\New-AzAdvisorSuppression_CreateExpanded';
+            CreateViaIdentityRecommendationExpanded = 'Az.Advisor.private\New-AzAdvisorSuppression_CreateViaIdentityRecommendationExpanded';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

@@ -29,7 +29,6 @@ using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.ContainerService.Models;
 using Microsoft.Rest;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Aks
@@ -38,54 +37,126 @@ namespace Microsoft.Azure.Commands.Aks
     [OutputType(typeof(PSKubernetesCluster))]
     public class NewAzureRmAks : CreateOrUpdateKubeBase
     {
-        [Parameter(Mandatory = false, HelpMessage = "Represents types of an node pool. Possible values include: 'VirtualMachineScaleSets', 'AvailabilitySet'")]
-        [PSArgumentCompleter("AvailabilitySet", "VirtualMachineScaleSets")]
-        public string NodeVmSetType { get; set; }
+        // Request Body Parameters
 
-        [Parameter(Mandatory = false, HelpMessage = "VNet SubnetID specifies the VNet's subnet identifier.")]
-        public string NodeVnetSubnetID { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "Maximum number of pods that can run on node.")]
-        public int NodeMaxPodCount { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "ScaleSetPriority to be used to specify virtual machine scale set priority. Default to regular.")]
-        [PSArgumentCompleter("Low", "Regular")]
-        public string NodeSetPriority { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "NodePoolMode represents mode of an node pool.")]
-        [PSArgumentCompleter("System", "User")]
-        public string NodePoolMode { get; set; } = "System";
-
-        [Parameter(Mandatory = false, HelpMessage = "The default OS sku for the node pools.")]
-        [PSArgumentCompleter("Ubuntu", "CBLMariner", "AzureLinux", "Windows2019", "Windows2022")]
-        public string NodeOsSKU { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "ScaleSetEvictionPolicy to be used to specify eviction policy for low priority virtual machine scale set. Default to Delete.")]
-        [PSArgumentCompleter("Delete", "Deallocate")]
-        public string NodeScaleSetEvictionPolicy { get; set; }
+        [Parameter(Mandatory = false, HelpMessage = "The name of the Edge Zone.")]
+        public string EdgeZone { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Add-on names to be enabled when cluster is created.")]
         [ValidateNotNullOrEmpty()]
         [PSArgumentCompleter("HttpApplicationRouting", "Monitoring", "VirtualNode", "AzurePolicy", "KubeDashboard")]
         public string[] AddOnNameToBeEnabled { get; set; }
 
-        [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Resource Id of the workspace of Monitoring addon.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Subnet name of VirtualNode addon.")]
+        [ValidateNotNullOrEmpty]
+        public string SubnetName { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Resource Id of the workspace of Monitoring addon.")]
         [ValidateNotNullOrEmpty]
         public string WorkspaceResourceId { get; set; }
 
-        [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Subnet name of VirtualNode addon.")]
-        [ValidateNotNullOrEmpty]
-        public string SubnetName { get; set; }
+        [Parameter(Mandatory = false, HelpMessage = "Availability zones for cluster. Must use VirtualMachineScaleSets AgentPoolType.")]
+        public string[] AvailabilityZone { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Whether to enable host based OS and data drive")]
+        public SwitchParameter EnableEncryptionAtHost { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Whether to use a FIPS-enabled OS.")]
+        public SwitchParameter EnableFIPS { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Whether to enable public IP for nodes.")]
+        public SwitchParameter EnableNodePublicIp { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Whether to enable UltraSSD")]
+        public SwitchParameter EnableUltraSSD { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The GpuInstanceProfile to be used to specify GPU MIG instance profile for supported GPU VM SKU.")]
+        [PSArgumentCompleter("MIG1g", "MIG2g", "MIG3g", "MIG4g", "MIG7g")]
+        public string GpuInstanceProfile { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The fully qualified resource ID of the Dedicated Host Group to provision virtual machines from, used only in creation scenario and not allowed to changed once set.")]
+        public string NodeHostGroupID { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The Kubelet configuration on the agent pool nodes.")]
+        public KubeletConfig NodeKubeletConfig { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The OS configuration of Linux agent nodes.")]
+        public LinuxOSConfig NodeLinuxOSConfig { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Maximum number of pods that can run on node.")]
+        public int NodeMaxPodCount { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The message of the day for Linux nodes, base64-encoded. A base64-encoded string which will be written to /etc/motd after decoding. This allows customization of the message of the day for Linux nodes. It must not be specified for Windows nodes. It must be a static string (i.e., will be printed raw and not be executed as a script).")]
+        public string NodeMessageOfTheDay { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "NodePoolMode represents mode of an node pool.")]
+        [PSArgumentCompleter("System", "User")]
+        public string NodePoolMode { get; set; } = "System";
+
+        [Parameter(Mandatory = false, HelpMessage = "The network-related settings of an agent pool.")]
+        public AgentPoolNetworkProfile NodeNetworkProfile { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The resource Id of public IP prefix for node pool.")]
+        public string NodePublicIPPrefixID { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The default is 'Ephemeral' if the VM supports it and has a cache disk larger than the requested OSDiskSizeGB. Otherwise, defaults to 'Managed'. May not be changed after creation. For more information see [Ephemeral OS](https://docs.microsoft.com/azure/aks/cluster-configuration#ephemeral-os).")]
+        [PSArgumentCompleter("Managed", "Ephemeral")]
+        public string NodeOSDiskType { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The default OS sku for the node pools.")]
+        [PSArgumentCompleter("Ubuntu", "Mariner", "AzureLinux", "Windows2019", "Windows2022")]
+        public string NodeOsSKU { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The pod IP Allocation Mode. The IP allocation mode for pods in the agent pool. Must be used with podSubnetId. ")]
+        [PSArgumentCompleter("DynamicIndividual", "StaticBlock")]
+        public string NodePodIPAllocationMode { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The ID of the subnet which pods will join when launched.")]
+        public string NodePodSubnetID { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The ID for Proximity Placement Group.")]
+        public string PPG { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "ScaleSetEvictionPolicy to be used to specify eviction policy for low priority virtual machine scale set. Default to Delete.")]
+        [PSArgumentCompleter("Delete", "Deallocate")]
+        public string NodeScaleSetEvictionPolicy { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "ScaleSetPriority to be used to specify virtual machine scale set priority. Default to regular.")]
+        [PSArgumentCompleter("Low", "Regular")]
+        public string NodeSetPriority { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The secure Boot is a feature of Trusted Launch which ensures that only signed operating systems and drivers can boot. For more details, see aka.ms/aks/trustedlaunch.  If not specified, the default is false.")]
+        public SwitchParameter NodeEnableSecureBoot { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The vTPM is a Trusted Launch feature for configuring a dedicated secure vault for keys and measurements held locally on the node. For more details, see aka.ms/aks/trustedlaunch. If not specified, the default is false.")]
+        public SwitchParameter NodeEnableVtpm { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The sSH access method of an agent pool.")]
+        [PSArgumentCompleter("LocalUser", "Disabled")]
+        public string NodeSshAccess { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Represents types of an node pool. Possible values include: 'VirtualMachineScaleSets', 'AvailabilitySet'")]
+        [PSArgumentCompleter("AvailabilitySet", "VirtualMachineScaleSets", "VirtualMachines")]
+        public string NodeVmSetType { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The maximum number or percentage of nodes that ar surged during upgrade.")]
+        public string NodeMaxSurge { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The parameters to be applied to the cluster-autoscaler.")]
+        public ManagedClusterPropertiesAutoScalerProfile AutoScalerProfile { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "VNet SubnetID specifies the VNet's subnet identifier.")]
+        public string NodeVnetSubnetID { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Whether to enable Kubernetes Role-Based Access")]
         public SwitchParameter EnableRbac { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "The administrator username to use for Windows VMs.")]
-        public string WindowsProfileAdminUserName { get; set; }
+        [Parameter(Mandatory = false, HelpMessage = "DNS service IP used for building Kubernetes network.")]
+        public string DnsServiceIP { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The load balancer sku for the managed cluster.")]
+        [PSArgumentCompleter("basic", "standard")]
+        public string LoadBalancerSku { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Network plugin used for building Kubernetes network.")]
         [PSArgumentCompleter("azure", "kubenet")]
@@ -94,89 +165,35 @@ namespace Microsoft.Azure.Commands.Aks
         [Parameter(Mandatory = false, HelpMessage = "Network policy used for building Kubernetes network.")]
         public string NetworkPolicy { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "The outbound (egress) routing method.")]
+        [PSArgumentCompleter("loadBalancer", "userDefinedRouting", "managedNATGateway", "userAssignedNATGateway")]
+        public string OutboundType { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Pod cidr used for building Kubernetes network.")]
         public string PodCidr { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Service cidr used for building Kubernetes network.")]
         public string ServiceCidr { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "DNS service IP used for building Kubernetes network.")]
-        public string DnsServiceIP { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "The outbound (egress) routing method.")]
-        [PSArgumentCompleter("loadBalancer", "userDefinedRouting", "managedNATGateway", "userAssignedNATGateway")]
-        public string OutboundType { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "The load balancer sku for the managed cluster.")]
-        [PSArgumentCompleter("basic", "standard")]
-        public string LoadBalancerSku { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "Create cluster even if it already exists")]
-        public SwitchParameter Force { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "Generate ssh key file to folder {HOME}/.ssh/ using pre-installed ssh-keygen.")]
-        public SwitchParameter GenerateSshKey { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "Whether to enable public IP for nodes.")]
-        public SwitchParameter EnableNodePublicIp { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "The resource Id of public IP prefix for node pool.")]
-        public string NodePublicIPPrefixID { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "Availability zones for cluster. Must use VirtualMachineScaleSets AgentPoolType.")]
-        public string[] AvailabilityZone { get; set; }
-
         [Parameter(Mandatory = false, HelpMessage = "The resource group containing agent pool.")]
         public string NodeResourceGroup { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Whether to enable host based OS and data drive")]
-        public SwitchParameter EnableEncryptionAtHost { get; set; }
+        [Parameter(Mandatory = false, HelpMessage = "Whether to enable OIDC issuer feature.")]
+        public SwitchParameter EnableOidcIssuer { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Whether to enable UltraSSD")]
-        public SwitchParameter EnableUltraSSD { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "The OS configuration of Linux agent nodes.")]
-        public LinuxOSConfig NodeLinuxOSConfig { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "The Kubelet configuration on the agent pool nodes.")]
-        public KubeletConfig NodeKubeletConfig { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "The maximum number or percentage of nodes that ar surged during upgrade.")]
-        public string NodeMaxSurge { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "The ID for Proximity Placement Group.")]
-        public string PPG { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "Whether to use a FIPS-enabled OS.")]
-        public SwitchParameter EnableFIPS { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "The parameters to be applied to the cluster-autoscaler.")]
-        public ManagedClusterPropertiesAutoScalerProfile AutoScalerProfile { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "The GpuInstanceProfile to be used to specify GPU MIG instance profile for supported GPU VM SKU.")]
-        [PSArgumentCompleter("MIG1g", "MIG2g", "MIG3g", "MIG4g", "MIG7g")]
-        public string GpuInstanceProfile { get; set; }
+        [Parameter(Mandatory = false, HelpMessage = "The administrator username to use for Windows VMs.")]
+        public string WindowsProfileAdminUserName { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Whether to use use Uptime SLA.")]
         public SwitchParameter EnableUptimeSLA { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "The name of the Edge Zone.")]
-        public string EdgeZone { get; set; }
+        // Other Parameters
 
-        [Parameter(Mandatory = false, HelpMessage = "The fully qualified resource ID of the Dedicated Host Group to provision virtual machines from, used only in creation scenario and not allowed to changed once set.")]
-        public string NodeHostGroupID { get; set; }
+        [Parameter(Mandatory = false, HelpMessage = "Generate ssh key file to folder {HOME}/.ssh/ using pre-installed ssh-keygen.")]
+        public SwitchParameter GenerateSshKey { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "The ID of the subnet which pods will join when launched.")]
-        public string NodePodSubnetID { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "Whether to enable OIDC issuer feature.")]
-        public SwitchParameter EnableOidcIssuer { get; set; }
+        [Parameter(Mandatory = false, HelpMessage = "Create cluster even if it already exists")]
+        public SwitchParameter Force { get; set; }
 
         private AcsServicePrincipal acsServicePrincipal;
 
@@ -277,6 +294,21 @@ namespace Microsoft.Azure.Commands.Aks
                         desensitizedMessage: Resources.NetworkPluginShouldBeAzure);
                 }
             }
+            if (this.IsParameterBound(c => c.AssignKubeletIdentity))
+            {
+                if (!this.IsParameterBound(c => c.EnableManagedIdentity) || !this.IsParameterBound(c => c.AssignIdentity))
+                { 
+                    throw new AzPSArgumentException(
+                        "Parameter 'AssignKubeletIdentity' must work together with 'EnableManagedIdentity' and 'AssignIdentity'.",
+                        nameof(AssignKubeletIdentity));
+                }
+            }
+            if (this.IsParameterBound(c => c.EnableCostAnalysis) && !this.IsParameterBound(c => c.EnableUptimeSLA))
+            {
+                throw new AzPSArgumentException(
+                    "Parameter 'EnableCostAnalysis' must work together with 'EnableUptimeSLA'.",
+                    nameof(EnableCostAnalysis));
+            }
         }
 
         private string GenerateSshKeyValue()
@@ -352,6 +384,8 @@ namespace Microsoft.Azure.Commands.Aks
                 acsServicePrincipal.SpId,
                 acsServicePrincipal.ClientSecret);
 
+            var publicNetworkAccess = GetPublicNetworkAccess();
+
             var defaultAgentPoolProfile = GetAgentPoolProfile();
 
             var windowsProfile = GetWindowsProfile();
@@ -372,9 +406,11 @@ namespace Microsoft.Azure.Commands.Aks
                 Location,
                 name: Name,
                 tags: TagsConversionHelper.CreateTagDictionary(Tag, true),
+                publicNetworkAccess: publicNetworkAccess,
                 dnsPrefix: DnsNamePrefix,
                 kubernetesVersion: KubernetesVersion,
                 nodeResourceGroup: NodeResourceGroup,
+                supportPlan: SupportPlan,
                 agentPoolProfiles: new List<ManagedClusterAgentPoolProfile> { defaultAgentPoolProfile },
                 linuxProfile: linuxProfile,
                 windowsProfile: windowsProfile,
@@ -396,6 +432,20 @@ namespace Microsoft.Azure.Commands.Aks
             {
                 managedCluster.FqdnSubdomain = FqdnSubdomain;
             }
+            if (this.IsParameterBound(c => c.AssignKubeletIdentity))
+            {
+                AddMsiRoleAssignment(AssignIdentity, AssignKubeletIdentity);
+                var kubeletUserMI = GetUserManagedIdentity(AssignKubeletIdentity);
+                if (kubeletUserMI == null) 
+                {
+                    throw new AzPSArgumentException($"Can't find the user managed identity with id {AssignKubeletIdentity}", nameof(AssignKubeletIdentity));
+                }
+
+                managedCluster.IdentityProfile = new Dictionary<string, UserAssignedIdentity>
+                {
+                    { "kubeletidentity", new UserAssignedIdentity(AssignKubeletIdentity, kubeletUserMI.ClientId, kubeletUserMI.ObjectId) }
+                };
+            }
             if (this.IsParameterBound(c => c.DiskEncryptionSetID))
             {
                 managedCluster.DiskEncryptionSetId = DiskEncryptionSetID;
@@ -403,6 +453,10 @@ namespace Microsoft.Azure.Commands.Aks
             if (DisableLocalAccount.IsPresent)
             {
                 managedCluster.DisableLocalAccounts = DisableLocalAccount;
+            }
+            if (EnableMonitorMetric.IsPresent)
+            {
+                managedCluster.AzureMonitorProfile = new ManagedClusterAzureMonitorProfile(new ManagedClusterAzureMonitorProfileMetrics(enabled: EnableMonitorMetric.ToBool()));
             }
             //if(EnablePodSecurityPolicy.IsPresent)
             //{
@@ -428,10 +482,37 @@ namespace Microsoft.Azure.Commands.Aks
                 managedCluster.ExtendedLocation = new ExtendedLocation(name: EdgeZone, type: "EdgeZone");
             }
 
-            if (EnableOidcIssuer.IsPresent)
+            if (this.IsParameterBound(c => c.EnableAIToolchainOperator))
             {
-                managedCluster.OidcIssuerProfile = new ManagedClusterOidcIssuerProfile(enabled: true);
+                managedCluster.AiToolchainOperatorProfile = new ManagedClusterAIToolchainOperatorProfile(enabled: EnableAIToolchainOperator.ToBool());
             }
+            if (this.IsParameterBound(c => c.EnableOidcIssuer))
+            {
+                managedCluster.OidcIssuerProfile = new ManagedClusterOidcIssuerProfile(enabled: EnableOidcIssuer.ToBool());
+            }
+            if (this.IsParameterBound(c => c.NodeProvisioningMode) || this.IsParameterBound(c => c.NodeProvisioningDefaultPool))
+            {
+                managedCluster.NodeProvisioningProfile = new ManagedClusterNodeProvisioningProfile();
+                if (this.IsParameterBound(c => c.NodeProvisioningMode)) {
+                    managedCluster.NodeProvisioningProfile.Mode = NodeProvisioningMode;
+                }
+                if (this.IsParameterBound(c => c.NodeProvisioningDefaultPool))
+                {
+                    managedCluster.NodeProvisioningProfile.DefaultNodePools = NodeProvisioningDefaultPool;
+                }
+            }
+            if (this.IsParameterBound(c => c.NodeResourceGroupRestrictionLevel))
+            {
+                managedCluster.NodeResourceGroupProfile = new ManagedClusterNodeResourceGroupProfile();
+                managedCluster.NodeResourceGroupProfile.RestrictionLevel = NodeResourceGroupRestrictionLevel;
+            }
+
+            managedCluster.MetricsProfile = CreateOrUpdateMetricsProfile();
+            managedCluster.BootstrapProfile = CreateOrUpdateBootstrapProfile();
+            managedCluster.PodIdentityProfile = CreateOrUpdatePodIdentityProfile();
+            managedCluster.SecurityProfile = CreateOrUpdateSecurityProfile();
+            managedCluster.WorkloadAutoScalerProfile = CreateOrUpdateWorkloadAutoScalerProfile();
+            managedCluster.StorageProfile = CreateOrUpdateStorageProfile();
 
             return managedCluster;
         }
@@ -463,7 +544,26 @@ namespace Microsoft.Azure.Commands.Aks
             {
                 networkProfile.OutboundType = OutboundType;
             }
-            networkProfile.LoadBalancerProfile = CreateOrUpdateLoadBalancerProfile(null);
+            if (this.IsParameterBound(c => c.IPFamily))
+            {
+                networkProfile.IPFamilies = IPFamily;
+            }
+            if (this.IsParameterBound(c => c.NetworkDataplane))
+            {
+                networkProfile.NetworkDataplane = NetworkDataplane;
+            }
+            if (this.IsParameterBound(c => c.NetworkPluginMode))
+            {
+                networkProfile.NetworkPluginMode = NetworkPluginMode;
+            }
+            if (this.IsParameterBound(c => c.EnableStaticEgressGateway))
+            {
+                networkProfile.StaticEgressGatewayProfile = new ManagedClusterStaticEgressGatewayProfile(EnableStaticEgressGateway.ToBool());
+            }
+
+            networkProfile.LoadBalancerProfile = CreateOrUpdateLoadBalancerProfile();
+            networkProfile.NatGatewayProfile = CreateOrUpdateNATGatewayProfile();
+            networkProfile.AdvancedNetworking = CreateOrUpdateAdvancedNetworking();
 
             return networkProfile;
         }
@@ -492,6 +592,8 @@ namespace Microsoft.Azure.Commands.Aks
                 count: NodeCount,
                 vmSize: NodeVmSize,
                 osDiskSizeGb: NodeOsDiskSize,
+                osDiskType: NodeOSDiskType,
+                messageOfTheDay: NodeMessageOfTheDay,
                 type: NodeVmSetType ?? "VirtualMachineScaleSets",
                 vnetSubnetId: NodeVnetSubnetID);
             defaultAgentPoolProfile.OSType = "Linux";
@@ -514,6 +616,10 @@ namespace Microsoft.Azure.Commands.Aks
             {
                 defaultAgentPoolProfile.MaxCount = NodeMaxCount;
             }
+            if (this.IsParameterBound(c => c.NodePodIPAllocationMode))
+            {
+                defaultAgentPoolProfile.PodIPAllocationMode = NodePodIPAllocationMode;
+            }
             if (EnableNodeAutoScaling.IsPresent)
             {
                 defaultAgentPoolProfile.EnableAutoScaling = EnableNodeAutoScaling.ToBool();
@@ -534,6 +640,10 @@ namespace Microsoft.Azure.Commands.Aks
             {
                 defaultAgentPoolProfile.ScaleSetPriority = NodeSetPriority;
             }
+            if (this.IsParameterBound(c => c.NodeWorkloadRuntime))
+            {
+                defaultAgentPoolProfile.WorkloadRuntime = NodeWorkloadRuntime;
+            }
             if (this.IsParameterBound(c => c.NodePoolLabel))
             {
                 defaultAgentPoolProfile.NodeLabels = new Dictionary<string, string>();
@@ -541,6 +651,10 @@ namespace Microsoft.Azure.Commands.Aks
                 {
                     defaultAgentPoolProfile.NodeLabels.Add(key.ToString(), NodePoolLabel[key].ToString());
                 }
+            }
+            if(this.IsParameterBound(c => c.NodeTaint))
+            {
+                defaultAgentPoolProfile.NodeTaints = NodeTaint;
             }
             if (this.IsParameterBound(c => c.NodePoolTag))
             {
@@ -573,6 +687,10 @@ namespace Microsoft.Azure.Commands.Aks
             {
                 defaultAgentPoolProfile.KubeletConfig = NodeKubeletConfig;
             }
+            if (this.IsParameterBound(c => c.NodeNetworkProfile))
+            {
+                defaultAgentPoolProfile.NetworkProfile = NodeNetworkProfile;
+            }
             if (this.IsParameterBound(c => c.NodeMaxSurge))
             {
                 defaultAgentPoolProfile.UpgradeSettings = new AgentPoolUpgradeSettings(NodeMaxSurge);
@@ -593,9 +711,35 @@ namespace Microsoft.Azure.Commands.Aks
                 defaultAgentPoolProfile.HostGroupId = NodeHostGroupID;
             }
 
+            defaultAgentPoolProfile.SecurityProfile = GetAgentPoolSecurityProfile();
+
             defaultAgentPoolProfile.Mode = NodePoolMode;
 
             return defaultAgentPoolProfile;
+        }
+
+        private AgentPoolSecurityProfile GetAgentPoolSecurityProfile()
+        {
+            if (this.IsParameterBound(c => c.NodeEnableSecureBoot) || 
+                this.IsParameterBound(c => c.NodeEnableVtpm) ||
+                this.IsParameterBound(c => c.NodeSshAccess))
+            {
+                var securityProfile = new AgentPoolSecurityProfile();
+                if (this.IsParameterBound(c => c.NodeEnableVtpm))
+                {
+                    securityProfile.EnableVtpm = NodeEnableVtpm.ToBool();
+                }
+                if (this.IsParameterBound(c => c.NodeEnableSecureBoot))
+                {
+                    securityProfile.EnableSecureBoot = NodeEnableSecureBoot.ToBool();
+                }
+                if (this.IsParameterBound(c => c.NodeSshAccess))
+                {
+                    securityProfile.SshAccess = NodeSshAccess;
+                }
+                return securityProfile;
+            }
+            return null;
         }
 
         private IDictionary<string, ManagedClusterAddonProfile> CreateAddonsProfiles()

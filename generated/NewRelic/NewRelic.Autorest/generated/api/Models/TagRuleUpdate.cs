@@ -49,10 +49,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models
         public string MetricRuleUserEmail { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ITagRuleUpdatePropertiesInternal)Property).MetricRuleUserEmail; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ITagRuleUpdatePropertiesInternal)Property).MetricRuleUserEmail = value ?? null; }
 
         /// <summary>Internal Acessors for LogRule</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ILogRules Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ITagRuleUpdateInternal.LogRule { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ITagRuleUpdatePropertiesInternal)Property).LogRule; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ITagRuleUpdatePropertiesInternal)Property).LogRule = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ILogRules Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ITagRuleUpdateInternal.LogRule { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ITagRuleUpdatePropertiesInternal)Property).LogRule; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ITagRuleUpdatePropertiesInternal)Property).LogRule = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for MetricRule</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMetricRules Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ITagRuleUpdateInternal.MetricRule { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ITagRuleUpdatePropertiesInternal)Property).MetricRule; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ITagRuleUpdatePropertiesInternal)Property).MetricRule = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMetricRules Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ITagRuleUpdateInternal.MetricRule { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ITagRuleUpdatePropertiesInternal)Property).MetricRule; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ITagRuleUpdatePropertiesInternal)Property).MetricRule = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ITagRuleUpdateProperties Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ITagRuleUpdateInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.TagRuleUpdateProperties()); set { {_property = value;} } }

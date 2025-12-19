@@ -55,7 +55,12 @@ namespace Microsoft.Azure.Commands.NetAppFiles.N
         {
             try
             {
-                var anfNetworkSiblingSetQuery = AzureNetAppFilesManagementClient.NetAppResource.QueryNetworkSiblingSet(Location, NetworkSiblingSetId, SubnetId);
+                QueryNetworkSiblingSetRequest queryNetworkSiblingSetRequest = new QueryNetworkSiblingSetRequest
+                {
+                    SubnetId = SubnetId,
+                    NetworkSiblingSetId = NetworkSiblingSetId
+                };
+                var anfNetworkSiblingSetQuery = AzureNetAppFilesManagementClient.NetAppResource.QueryNetworkSiblingSet(Location, queryNetworkSiblingSetRequest);
                 WriteObject(anfNetworkSiblingSetQuery.ConvertToPs());
             }
             catch (ErrorResponseException ex)

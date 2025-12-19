@@ -12,6 +12,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support
     {
         public static Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.HealthCheckStatus Failed = @"Failed";
 
+        public static Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.HealthCheckStatus Informational = @"Informational";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.HealthCheckStatus Passed = @"Passed";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.HealthCheckStatus Pending = @"Pending";

@@ -15,24 +15,28 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzMigrateLocalServerRepli
 }
 
 Describe 'Get-AzMigrateLocalServerReplication' {
-    It 'ListByName' -Skip {
-        $output = Get-AzMigrateLocalServerReplication -ProjectName $env.hciProjectName -ResourceGroupName $env.hciMigResourceGroup -SubscriptionId $env.hciSubscriptionId
-        $output.Count | Should -BeGreaterOrEqual 1 
+    # See Test-AzMigrateLocalEndToEnd.Tests.ps1 for end to end tests.
+    It 'ListByName' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'GetByItemID' {
-        $output = Get-AzMigrateLocalServerReplication -TargetObjectID $env.hciProtectedItem1 -SubscriptionId $env.hciSubscriptionId
-        $output.Count | Should -BeGreaterOrEqual 1 
+    It 'GetByMachineName' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'GetBySDSID' {
-        $output = Get-AzMigrateLocalServerReplication -DiscoveredMachineId $env.hciSDSMachineId1 -SubscriptionId $env.hciSubscriptionId
-        $output.Count | Should -BeGreaterOrEqual 1 
+    It 'GetByItemID' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'GetByInputObject' {
-        $output = Get-AzMigrateLocalServerReplication -TargetObjectID $env.hciProtectedItem1 -SubscriptionId $env.hciSubscriptionId
-        $output = Get-AzMigrateLocalServerReplication -InputObject $output -SubscriptionId $env.hciSubscriptionId
-        $output.Count | Should -BeGreaterOrEqual 1 
+    It 'GetBySDSID' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'GetByInputObject' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'ListById' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

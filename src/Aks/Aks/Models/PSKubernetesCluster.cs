@@ -291,5 +291,89 @@ namespace Microsoft.Azure.Commands.Aks.Models
                 Formatting = Formatting.Indented
             });
         }
+
+        /// <summary>
+        /// Gets unique read-only string used to implement optimistic concurrency. The
+        /// eTag value will change when the resource is updated. Specify an if-match or
+        /// if-none-match header with the eTag value for a subsequent request to enable
+        /// optimistic concurrency per the normal etag convention.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "eTag")]
+        public string ETag { get; private set; }
+
+        /// <summary>
+        /// Gets or sets this is primarily used to expose different UI experiences in
+        /// the portal for different kinds
+        /// </summary>
+        public string Kind { get; set; }
+
+        /// <summary>
+        /// Gets or sets profile of the node resource group configuration.
+        /// </summary>
+        public ManagedClusterNodeResourceGroupProfile NodeResourceGroupProfile { get; set; }
+
+        /// <summary>
+        /// Gets or sets the support plan for the Managed Cluster. If unspecified, the
+        /// default is &#39;KubernetesOfficial&#39;. Possible values include: &#39;KubernetesOfficial&#39;, &#39;AKSLongTermSupport&#39;
+        /// </summary>
+        public string SupportPlan { get; set; }
+
+        /// <summary>
+        /// Gets or sets settings for upgrading a cluster.
+        /// </summary>
+        public ClusterUpgradeSettings UpgradeSettings { get; set; }
+
+        /// <summary>
+        /// Gets or sets ingress profile for the managed cluster.
+        /// </summary>
+        public ManagedClusterIngressProfile IngressProfile { get; set; }
+
+        /// <summary>
+        /// Gets or sets workload Auto-scaler profile for the managed cluster.
+        /// </summary>
+        public ManagedClusterWorkloadAutoScalerProfile WorkloadAutoScalerProfile { get; set; }
+
+        /// <summary>
+        /// Gets or sets azure Monitor addon profiles for monitoring the managed
+        /// cluster.
+        /// </summary>
+        public ManagedClusterAzureMonitorProfile AzureMonitorProfile { get; set; }
+
+        /// <summary>
+        /// Gets or sets service mesh profile for a managed cluster.
+        /// </summary>
+        public ServiceMeshProfile ServiceMeshProfile { get; set; }
+
+        /// <summary>
+        /// Gets the resourceUID uniquely identifies ManagedClusters that reuse ARM
+        /// ResourceIds (i.e: create, delete, create sequence)
+        /// </summary>
+        public string ResourceUid { get; private set; }
+
+        /// <summary>
+        /// Gets or sets optional cluster metrics configuration.
+        /// </summary>
+        public ManagedClusterMetricsProfile MetricsProfile { get; set; }
+
+        /// <summary>
+        /// Gets or sets node provisioning settings that apply to the whole cluster.
+        /// </summary>
+        public ManagedClusterNodeProvisioningProfile NodeProvisioningProfile { get; set; }
+
+        /// <summary>
+        /// Gets or sets profile of the cluster bootstrap configuration.
+        /// </summary>
+        public ManagedClusterBootstrapProfile BootstrapProfile { get; set; }
+
+        /// <summary>
+        /// Gets or sets aI toolchain operator settings that apply to the whole
+        /// cluster.
+        /// </summary>
+        public ManagedClusterAIToolchainOperatorProfile AiToolchainOperatorProfile { get; set; }
+
+        /// <summary>
+        /// Gets or sets contains read-only information about the Managed Cluster.
+        /// </summary>
+        public ManagedClusterStatus Status { get; set; }
     }
 }

@@ -32,14 +32,14 @@ The route set information can help evaluate the gateway's resiliency, availabili
 Get-AzVirtualNetworkGatewayRoutesInformation -ResourceGroupName "test_rg" -VirtualNetworkGatewayName "test_gateway"
 ```
 
-This example retrieves the route set information for the virtual network gateway named "test_gateway" in the resource group "test_rg". The command provides the current routing information, including details about the gateway’s resiliency and routes configuration.
+This example retrieves the route set information for the virtual network gateway named "test_gateway" in the resource group "test_rg". The command provides the current routing information, including details about the gateway's resiliency and routes configuration.
 
 ### Example 2
 ```powershell
 Get-AzVirtualNetworkGatewayRoutesInformation -ResourceGroupName "test_rg" -VirtualNetworkGatewayName "test_gateway" -AttemptRefresh $true
 ```
 
-This example retrieves the route set information for the "test_gateway" in the "test_rg" resource group. The -AttemptRefresh parameter is used to recalculate the route sets, ensuring that the most recent data is returned after any potential configuration changes or updates to the gateway’s routing information.
+This example retrieves the route set information for the "test_gateway" in the "test_rg" resource group. The -AttemptRefresh parameter is used to recalculate the route sets, ensuring that the most recent data is returned after any potential configuration changes or updates to the gateway's routing information.
 
 ## PARAMETERS
 

@@ -23,10 +23,14 @@ namespace Microsoft.Azure.Management.NetApp.Models
 
         /// <param name="location">
         /// </param>
-        public BackupVaultsDeleteHeaders(string location = default(string))
+
+        /// <param name="retryAfter">
+        /// </param>
+        public BackupVaultsDeleteHeaders(string location = default(string), int? retryAfter = default(int?))
 
         {
             this.Location = location;
+            this.RetryAfter = retryAfter;
             CustomInit();
         }
 
@@ -41,5 +45,11 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "Location")]
         public string Location {get; set; }
+
+        /// <summary>
+        /// Gets or sets
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "Retry-After")]
+        public int? RetryAfter {get; set; }
     }
 }

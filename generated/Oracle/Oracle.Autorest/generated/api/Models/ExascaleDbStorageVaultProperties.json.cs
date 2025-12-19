@@ -76,6 +76,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             {_vMClusterCount = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber>("vmClusterCount"), out var __jsonVMClusterCount) ? (int?)__jsonVMClusterCount : _vMClusterCount;}
             {_ocid = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString>("ocid"), out var __jsonOcid) ? (string)__jsonOcid : (string)_ocid;}
             {_ociUrl = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString>("ociUrl"), out var __jsonOciUrl) ? (string)__jsonOciUrl : (string)_ociUrl;}
+            {_exadataInfrastructureId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString>("exadataInfrastructureId"), out var __jsonExadataInfrastructureId) ? (string)__jsonExadataInfrastructureId : (string)_exadataInfrastructureId;}
+            {_attachedShapeAttribute = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonArray>("attachedShapeAttributes"), out var __jsonAttachedShapeAttributes) ? If( __jsonAttachedShapeAttributes as Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(string) (__u is Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString __t ? (string)(__t.ToString()) : null)) ))() : null : _attachedShapeAttribute;}
             AfterFromJson(json);
         }
 
@@ -157,6 +159,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.SerializationMode.IncludeRead))
             {
                 AddIf( null != (((object)this._ociUrl)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString(this._ociUrl.ToString()) : null, "ociUrl" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.SerializationMode.IncludeRead)||serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.SerializationMode.IncludeCreate))
+            {
+                AddIf( null != (((object)this._exadataInfrastructureId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString(this._exadataInfrastructureId.ToString()) : null, "exadataInfrastructureId" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.SerializationMode.IncludeRead))
+            {
+                if (null != this._attachedShapeAttribute)
+                {
+                    var __w = new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.XNodeArray();
+                    foreach( var __x in this._attachedShapeAttribute )
+                    {
+                        AddIf(null != (((object)__x)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString(__x.ToString()) : null ,__w.Add);
+                    }
+                    container.Add("attachedShapeAttributes",__w);
+                }
             }
             AfterToJson(ref container);
             return container;

@@ -81,19 +81,33 @@ function Test-AzureFSContainer
 	}
 	finally
 	{
-		Cleanup-Vault $vault $item $containers
+		Disable-AzRecoveryServicesBackupProtection `
+		-VaultId $vault.ID `
+		-Item $item `
+		-RemoveRecoveryPoints `
+		-Force;
+
+		# Cleanup-Vault $vault $item $containers
 	}
 }
 
 function Test-AzureFSUnregisterContainer
 {
-	$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
-	$item = Enable-Protection $vault $fileShareFriendlyName $saName
+	$subId = "38304e13-357e-405e-9e9a-220351dcce8c"
+	$fileShareFriendlyName = "donotuse-powershell-fileshare"
 
+	$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+	
 	$container = Get-AzRecoveryServicesBackupContainer `
 		-VaultId $vault.ID `
 		-ContainerType AzureStorage `
 		-FriendlyName $saName
+
+	$item = Get-AzRecoveryServicesBackupItem `
+		-VaultId $vault.ID `
+		-Container $container `
+		-WorkloadType AzureFiles `
+		-Name $fileShareFriendlyName
 
 	# Disable Protection
 	Disable-AzRecoveryServicesBackupProtection `
@@ -111,4 +125,7 @@ function Test-AzureFSUnregisterContainer
 		-ContainerType AzureStorage `
 		-FriendlyName $saName
 	Assert-Null $container	
+
+	$item = Enable-Protection $vault $fileShareFriendlyName $saName
+	Assert-True {$item.FriendlyName -eq $fileShareFriendlyName}
 }

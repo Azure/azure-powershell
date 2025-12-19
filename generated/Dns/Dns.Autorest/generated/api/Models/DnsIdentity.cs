@@ -21,11 +21,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns.Models
         public string Id { get => this._id; set => this._id = value; }
 
         /// <summary>Backing field for <see cref="RecordType" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Dns.Support.RecordType? _recordType;
+        private string _recordType;
 
         /// <summary>The type of DNS record in this record set.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Dns.Origin(Microsoft.Azure.PowerShell.Cmdlets.Dns.PropertyOrigin.Owned)]
-        public Microsoft.Azure.PowerShell.Cmdlets.Dns.Support.RecordType? RecordType { get => this._recordType; set => this._recordType = value; }
+        public string RecordType { get => this._recordType; set => this._recordType = value; }
 
         /// <summary>Backing field for <see cref="RelativeRecordSetName" /> property.</summary>
         private string _relativeRecordSetName;
@@ -68,6 +68,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource identity path",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -76,14 +79,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The type of DNS record in this record set.",
         SerializedName = @"recordType",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Dns.Support.RecordType) })]
-        Microsoft.Azure.PowerShell.Cmdlets.Dns.Support.RecordType? RecordType { get; set; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Dns.PSArgumentCompleterAttribute("A", "AAAA", "CAA", "CNAME", "MX", "NS", "PTR", "SOA", "SRV", "TXT", "TLSA", "DS", "NAPTR")]
+        string RecordType { get; set; }
         /// <summary>The name of the record set, relative to the name of the zone.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the record set, relative to the name of the zone.",
         SerializedName = @"relativeRecordSetName",
         PossibleTypes = new [] { typeof(string) })]
@@ -92,6 +102,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the resource group. The name is case insensitive.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
@@ -100,6 +113,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The ID of the target subscription.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
@@ -108,6 +124,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the DNS zone (without a terminating dot).",
         SerializedName = @"zoneName",
         PossibleTypes = new [] { typeof(string) })]
@@ -120,7 +139,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns.Models
         /// <summary>Resource identity path</summary>
         string Id { get; set; }
         /// <summary>The type of DNS record in this record set.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Dns.Support.RecordType? RecordType { get; set; }
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Dns.PSArgumentCompleterAttribute("A", "AAAA", "CAA", "CNAME", "MX", "NS", "PTR", "SOA", "SRV", "TXT", "TLSA", "DS", "NAPTR")]
+        string RecordType { get; set; }
         /// <summary>The name of the record set, relative to the name of the zone.</summary>
         string RelativeRecordSetName { get; set; }
         /// <summary>The name of the resource group. The name is case insensitive.</summary>

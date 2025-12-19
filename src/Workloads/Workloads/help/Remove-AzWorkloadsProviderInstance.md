@@ -19,6 +19,13 @@ Remove-AzWorkloadsProviderInstance -MonitorName <String> -Name <String> -Resourc
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### DeleteViaIdentityMonitor
+```
+Remove-AzWorkloadsProviderInstance -Name <String> -MonitorInputObject <IMonitorsIdentity>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
 ### DeleteViaIdentity
 ```
 Remove-AzWorkloadsProviderInstance -InputObject <IMonitorsIdentity> [-DefaultProfile <PSObject>] [-AsJob]
@@ -91,11 +98,25 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IMonitorsIdentity
 Parameter Sets: DeleteViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -MonitorInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IMonitorsIdentity
+Parameter Sets: DeleteViaIdentityMonitor
 Aliases:
 
 Required: True
@@ -125,7 +146,7 @@ Name of the provider instance.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, DeleteViaIdentityMonitor
 Aliases: ProviderInstanceName
 
 Required: True
@@ -236,7 +257,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api30.IOperationStatusResult
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IOperationStatusResult
 
 ## NOTES
 

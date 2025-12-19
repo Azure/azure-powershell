@@ -11,8 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.Advisor.private.dll'
   FormatsToProcess = './Az.Advisor.format.ps1xml'
-  FunctionsToExport = 'Disable-AzAdvisorRecommendation', 'Enable-AzAdvisorRecommendation', 'Get-AzAdvisorConfiguration', 'Get-AzAdvisorRecommendation', 'Set-AzAdvisorConfiguration', '*'
-  AliasesToExport = '*'
+  FunctionsToExport = 'Disable-AzAdvisorRecommendation', 'Enable-AzAdvisorRecommendation', 'Get-AzAdvisorConfiguration', 'Get-AzAdvisorRecommendation', 'Set-AzAdvisorConfiguration'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'Advisor'

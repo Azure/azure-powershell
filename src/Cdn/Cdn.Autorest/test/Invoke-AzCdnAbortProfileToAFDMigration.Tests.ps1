@@ -18,7 +18,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzCdnAbortProfileToAFD
 Describe 'Invoke-AzCdnAbortProfileToAFDMigration' {
     It 'Abort' {
         $subId = $env.SubscriptionId
-        $cdnProfileName = 'cdn-migratipn-test-profile-abort'
+        $cdnProfileName = 'cdn-migration-test-profile-abort'
         Write-Host -ForegroundColor Green "Use CdnProfileName : $($cdnProfileName)"
         $profileSku = "Standard_Microsoft";
         New-AzCdnProfile -SkuName $profileSku -Name $cdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global

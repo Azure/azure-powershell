@@ -24,16 +24,16 @@ namespace Microsoft.Azure.Management.RecoveryServices.Models
         /// Initializes a new instance of the ErrorAdditionalInfo class.
         /// </summary>
 
-        /// <param name="info">The additional info.
-        /// </param>
-
         /// <param name="type">The additional info type.
         /// </param>
-        public ErrorAdditionalInfo(object info = default(object), string type = default(string))
+
+        /// <param name="info">The additional info.
+        /// </param>
+        public ErrorAdditionalInfo(string type = default(string), object info = default(object))
 
         {
-            this.Info = info;
             this.Type = type;
+            this.Info = info;
             CustomInit();
         }
 
@@ -44,15 +44,15 @@ namespace Microsoft.Azure.Management.RecoveryServices.Models
 
 
         /// <summary>
-        /// Gets the additional info.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "info")]
-        public object Info {get; private set; }
-
-        /// <summary>
         /// Gets the additional info type.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
         public string Type {get; private set; }
+
+        /// <summary>
+        /// Gets the additional info.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "info")]
+        public object Info {get; private set; }
     }
 }

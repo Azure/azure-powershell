@@ -15,22 +15,37 @@ Partially updates a machine pool
 ### UpdateExpanded (Default)
 ```
 Update-AzDevCenterAdminPool -Name <String> -ProjectName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DevBoxDefinitionName <String>] [-DisplayName <String>]
- [-LocalAdministrator <LocalAdminStatus>] [-ManagedVirtualNetworkRegion <String[]>]
- [-NetworkConnectionName <String>] [-SingleSignOnStatus <SingleSignOnStatus>]
- [-StopOnDisconnectGracePeriodMinute <Int32>] [-StopOnDisconnectStatus <StopOnDisconnectEnableStatus>]
- [-Tag <Hashtable>] [-VirtualNetworkType <VirtualNetworkType>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-ActiveHourConfigurationAutoStartEnableStatus <AutoStartEnableStatus>]
+ [-ActiveHourConfigurationDefaultEndTimeHour <Int32>] [-ActiveHourConfigurationDefaultStartTimeHour <Int32>]
+ [-ActiveHourConfigurationDefaultTimeZone <String>]
+ [-ActiveHourConfigurationKeepAwakeEnableStatus <KeepAwakeEnableStatus>] [-DevBoxDefinitionName <String>]
+ [-DevBoxDefinitionType <PoolDevBoxDefinitionType>] [-DevBoxTunnelEnableStatus <DevBoxTunnelEnableStatus>]
+ [-DisplayName <String>] [-ImageReferenceId <String>] [-LocalAdministrator <LocalAdminStatus>]
+ [-ManagedVirtualNetworkRegion <String[]>] [-NetworkConnectionName <String>]
+ [-SingleSignOnStatus <SingleSignOnStatus>] [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuName <String>]
+ [-SkuSize <String>] [-SkuTier <SkuTier>] [-StopOnDisconnectGracePeriodMinute <Int32>]
+ [-StopOnDisconnectStatus <StopOnDisconnectEnableStatus>] [-StopOnNoConnectGracePeriodMinute <Int32>]
+ [-StopOnNoConnectStatus <StopOnNoConnectEnableStatus>] [-Tag <Hashtable>]
+ [-VirtualNetworkType <VirtualNetworkType>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzDevCenterAdminPool -InputObject <IDevCenterIdentity> [-DevBoxDefinitionName <String>]
- [-DisplayName <String>] [-LocalAdministrator <LocalAdminStatus>] [-ManagedVirtualNetworkRegion <String[]>]
- [-NetworkConnectionName <String>] [-SingleSignOnStatus <SingleSignOnStatus>]
- [-StopOnDisconnectGracePeriodMinute <Int32>] [-StopOnDisconnectStatus <StopOnDisconnectEnableStatus>]
- [-Tag <Hashtable>] [-VirtualNetworkType <VirtualNetworkType>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzDevCenterAdminPool -InputObject <IDevCenterIdentity>
+ [-ActiveHourConfigurationAutoStartEnableStatus <AutoStartEnableStatus>]
+ [-ActiveHourConfigurationDefaultEndTimeHour <Int32>] [-ActiveHourConfigurationDefaultStartTimeHour <Int32>]
+ [-ActiveHourConfigurationDefaultTimeZone <String>]
+ [-ActiveHourConfigurationKeepAwakeEnableStatus <KeepAwakeEnableStatus>] [-DevBoxDefinitionName <String>]
+ [-DevBoxDefinitionType <PoolDevBoxDefinitionType>] [-DevBoxTunnelEnableStatus <DevBoxTunnelEnableStatus>]
+ [-DisplayName <String>] [-ImageReferenceId <String>] [-LocalAdministrator <LocalAdminStatus>]
+ [-ManagedVirtualNetworkRegion <String[]>] [-NetworkConnectionName <String>]
+ [-SingleSignOnStatus <SingleSignOnStatus>] [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuName <String>]
+ [-SkuSize <String>] [-SkuTier <SkuTier>] [-StopOnDisconnectGracePeriodMinute <Int32>]
+ [-StopOnDisconnectStatus <StopOnDisconnectEnableStatus>] [-StopOnNoConnectGracePeriodMinute <Int32>]
+ [-StopOnNoConnectStatus <StopOnNoConnectEnableStatus>] [-Tag <Hashtable>]
+ [-VirtualNetworkType <VirtualNetworkType>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -55,6 +70,81 @@ Update-AzDevCenterAdminPool -InputObject $poolInput -DevBoxDefinitionName WebDev
 This command updates a pool named "DevPool" in the project "DevProject".
 
 ## PARAMETERS
+
+### -ActiveHourConfigurationAutoStartEnableStatus
+Enables or disables whether the Dev Box should be automatically started at commencement of active hours.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.AutoStartEnableStatus
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ActiveHourConfigurationDefaultEndTimeHour
+The default end time of the active hours
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ActiveHourConfigurationDefaultStartTimeHour
+The default start time of the active hours.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ActiveHourConfigurationDefaultTimeZone
+The default IANA timezone id of the active hours.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ActiveHourConfigurationKeepAwakeEnableStatus
+Enables or disables whether the Dev Box should be kept awake during active hours.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.KeepAwakeEnableStatus
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AsJob
 Run the command as a job
@@ -88,7 +178,8 @@ Accept wildcard characters: False
 ```
 
 ### -DevBoxDefinitionName
-Name of a Dev Box definition in parent Project of this Pool
+Name of a Dev Box definition in parent Project of this Pool.
+Will be ignored if devBoxDefinitionType is Value.
 
 ```yaml
 Type: System.String
@@ -102,8 +193,54 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DevBoxDefinitionType
+Indicates if the pool is created from an existing Dev Box Definition or if one is provided directly.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.PoolDevBoxDefinitionType
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DevBoxTunnelEnableStatus
+Indicates whether Dev Box Tunnel is enabled for a the pool.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.DevBoxTunnelEnableStatus
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DisplayName
 The display name of the pool.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ImageReferenceId
+Image ID, or Image version ID.
+When Image ID is provided, its latest version will be used.
 
 ```yaml
 Type: System.String
@@ -255,6 +392,86 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SkuCapacity
+If the SKU supports scale out/in then the capacity integer should be included.
+If scale out/in is not possible for the resource this may be omitted.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkuFamily
+If the service has different generations of hardware, for the same SKU, then that can be captured here.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkuName
+The name of the SKU.
+E.g.
+P3.
+It is typically a letter+number code
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkuSize
+The SKU size.
+When the name field is the combination of tier and some other value, this would be the standalone code.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkuTier
+This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.SkuTier
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -StopOnDisconnectGracePeriodMinute
 The specified time in minutes to wait before stopping a Dev Box once disconnect is detected.
 
@@ -275,6 +492,36 @@ Whether the feature to stop the Dev Box on disconnect once the grace period has 
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.StopOnDisconnectEnableStatus
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StopOnNoConnectGracePeriodMinute
+The specified time in minutes to wait before stopping a Dev Box if no connection is made.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StopOnNoConnectStatus
+Enables the feature to stop a started Dev Box when it has not been connected to, once the grace period has lapsed.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.StopOnNoConnectEnableStatus
 Parameter Sets: (All)
 Aliases:
 
@@ -370,7 +617,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IPool
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.IPool
 
 ## NOTES
 

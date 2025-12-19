@@ -7,67 +7,71 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Extensions;
 
+    /// <summary>
+    /// Concrete proxy resource types can be created by aliasing this type using a specific property type.
+    /// </summary>
     public partial class DatadogSingleSignOnResource :
         Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogSingleSignOnResource,
-        Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogSingleSignOnResourceInternal
+        Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogSingleSignOnResourceInternal,
+        Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.IValidates
     {
+        /// <summary>
+        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IProxyResource" />
+        /// </summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IProxyResource __proxyResource = new Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ProxyResource();
 
         /// <summary>The Id of the Enterprise App used for Single sign-on.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inlined)]
         public string EnterpriseAppId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogSingleSignOnPropertiesInternal)Property).EnterpriseAppId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogSingleSignOnPropertiesInternal)Property).EnterpriseAppId = value ?? null; }
 
-        /// <summary>Backing field for <see cref="Id" /> property.</summary>
-        private string _id;
-
-        /// <summary>ARM id of the resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Owned)]
-        public string Id { get => this._id; }
-
-        /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogSingleSignOnResourceInternal.Id { get => this._id; set { {_id = value;} } }
-
-        /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogSingleSignOnResourceInternal.Name { get => this._name; set { {_name = value;} } }
+        /// <summary>
+        /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inherited)]
+        public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__proxyResource).Id; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogSingleSignOnProperties Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogSingleSignOnResourceInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.DatadogSingleSignOnProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogSingleSignOnResourceInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogSingleSignOnPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogSingleSignOnPropertiesInternal)Property).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogSingleSignOnResourceInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogSingleSignOnPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogSingleSignOnPropertiesInternal)Property).ProvisioningState = value ?? null; }
 
         /// <summary>Internal Acessors for SingleSignOnUrl</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogSingleSignOnResourceInternal.SingleSignOnUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogSingleSignOnPropertiesInternal)Property).SingleSignOnUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogSingleSignOnPropertiesInternal)Property).SingleSignOnUrl = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogSingleSignOnResourceInternal.SingleSignOnUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogSingleSignOnPropertiesInternal)Property).SingleSignOnUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogSingleSignOnPropertiesInternal)Property).SingleSignOnUrl = value ?? null; }
+
+        /// <summary>Internal Acessors for Id</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__proxyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__proxyResource).Id = value ?? null; }
+
+        /// <summary>Internal Acessors for Name</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__proxyResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__proxyResource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for SystemData</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogSingleSignOnResourceInternal.SystemData { get => (this._systemData = this._systemData ?? new Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.SystemData()); set { {_systemData = value;} } }
+        Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__proxyResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__proxyResource).SystemData = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogSingleSignOnResourceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).CreatedAt = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogSingleSignOnResourceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).CreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).CreatedBy = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy = value ?? null; }
 
         /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogSingleSignOnResourceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).CreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).CreatedByType = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType = value ?? null; }
 
         /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogSingleSignOnResourceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).LastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).LastModifiedAt = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogSingleSignOnResourceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).LastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).LastModifiedBy = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy = value ?? null; }
 
         /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogSingleSignOnResourceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).LastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).LastModifiedByType = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogSingleSignOnResourceInternal.Type { get => this._type; set { {_type = value;} } }
+        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__proxyResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__proxyResource).Type = value ?? null; }
 
-        /// <summary>Backing field for <see cref="Name" /> property.</summary>
-        private string _name;
-
-        /// <summary>Name of the configuration.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Owned)]
-        public string Name { get => this._name; }
+        /// <summary>The name of the resource</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inherited)]
+        public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__proxyResource).Name; }
 
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogSingleSignOnProperties _property;
@@ -90,52 +94,64 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inlined)]
         public string SingleSignOnUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogSingleSignOnPropertiesInternal)Property).SingleSignOnUrl; }
 
-        /// <summary>Backing field for <see cref="SystemData" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemData _systemData;
-
-        /// <summary>Metadata pertaining to creation and last modification of the resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Owned)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemData SystemData { get => (this._systemData = this._systemData ?? new Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.SystemData()); }
+        /// <summary>
+        /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inherited)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__proxyResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__proxyResource).SystemData = value ?? null /* model class */; }
 
         /// <summary>The timestamp of resource creation (UTC).</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inlined)]
-        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).CreatedAt; }
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inherited)]
+        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt; }
 
         /// <summary>The identity that created the resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inlined)]
-        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).CreatedBy; }
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inherited)]
+        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy; }
 
         /// <summary>The type of identity that created the resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inlined)]
-        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).CreatedByType; }
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inherited)]
+        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType; }
 
         /// <summary>The timestamp of resource last modification (UTC)</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inlined)]
-        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).LastModifiedAt; }
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inherited)]
+        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt; }
 
         /// <summary>The identity that last modified the resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inlined)]
-        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).LastModifiedBy; }
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inherited)]
+        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy; }
 
         /// <summary>The type of identity that last modified the resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inlined)]
-        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).LastModifiedByType; }
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inherited)]
+        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType; }
 
-        /// <summary>Backing field for <see cref="Type" /> property.</summary>
-        private string _type;
-
-        /// <summary>The type of the resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Owned)]
-        public string Type { get => this._type; }
+        /// <summary>
+        /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inherited)]
+        public string Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__proxyResource).Type; }
 
         /// <summary>Creates an new <see cref="DatadogSingleSignOnResource" /> instance.</summary>
         public DatadogSingleSignOnResource()
         {
 
         }
+
+        /// <summary>Validates that this object meets the validation criteria.</summary>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.IEventListener" /> instance that will receive validation
+        /// events.</param>
+        /// <returns>
+        /// A <see cref = "global::System.Threading.Tasks.Task" /> that will be complete when validation is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task Validate(Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.IEventListener eventListener)
+        {
+            await eventListener.AssertNotNull(nameof(__proxyResource), __proxyResource);
+            await eventListener.AssertObjectIsValid(nameof(__proxyResource), __proxyResource);
+        }
     }
+    /// Concrete proxy resource types can be created by aliasing this type using a specific property type.
     public partial interface IDatadogSingleSignOnResource :
-        Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.IJsonSerializable
+        Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.IJsonSerializable,
+        Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IProxyResource
     {
         /// <summary>The Id of the Enterprise App used for Single sign-on.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
@@ -148,28 +164,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
         SerializedName = @"enterpriseAppId",
         PossibleTypes = new [] { typeof(string) })]
         string EnterpriseAppId { get; set; }
-        /// <summary>ARM id of the resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"ARM id of the resource.",
-        SerializedName = @"id",
-        PossibleTypes = new [] { typeof(string) })]
-        string Id { get;  }
-        /// <summary>Name of the configuration.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"Name of the configuration.",
-        SerializedName = @"name",
-        PossibleTypes = new [] { typeof(string) })]
-        string Name { get;  }
 
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
         Required = false,
@@ -205,96 +199,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
         SerializedName = @"singleSignOnUrl",
         PossibleTypes = new [] { typeof(string) })]
         string SingleSignOnUrl { get;  }
-        /// <summary>The timestamp of resource creation (UTC).</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"The timestamp of resource creation (UTC).",
-        SerializedName = @"createdAt",
-        PossibleTypes = new [] { typeof(global::System.DateTime) })]
-        global::System.DateTime? SystemDataCreatedAt { get;  }
-        /// <summary>The identity that created the resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"The identity that created the resource.",
-        SerializedName = @"createdBy",
-        PossibleTypes = new [] { typeof(string) })]
-        string SystemDataCreatedBy { get;  }
-        /// <summary>The type of identity that created the resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"The type of identity that created the resource.",
-        SerializedName = @"createdByType",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.PSArgumentCompleterAttribute("User", "Application", "ManagedIdentity", "Key")]
-        string SystemDataCreatedByType { get;  }
-        /// <summary>The timestamp of resource last modification (UTC)</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"The timestamp of resource last modification (UTC)",
-        SerializedName = @"lastModifiedAt",
-        PossibleTypes = new [] { typeof(global::System.DateTime) })]
-        global::System.DateTime? SystemDataLastModifiedAt { get;  }
-        /// <summary>The identity that last modified the resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"The identity that last modified the resource.",
-        SerializedName = @"lastModifiedBy",
-        PossibleTypes = new [] { typeof(string) })]
-        string SystemDataLastModifiedBy { get;  }
-        /// <summary>The type of identity that last modified the resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"The type of identity that last modified the resource.",
-        SerializedName = @"lastModifiedByType",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.PSArgumentCompleterAttribute("User", "Application", "ManagedIdentity", "Key")]
-        string SystemDataLastModifiedByType { get;  }
-        /// <summary>The type of the resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"The type of the resource.",
-        SerializedName = @"type",
-        PossibleTypes = new [] { typeof(string) })]
-        string Type { get;  }
 
     }
-    internal partial interface IDatadogSingleSignOnResourceInternal
-
+    /// Concrete proxy resource types can be created by aliasing this type using a specific property type.
+    internal partial interface IDatadogSingleSignOnResourceInternal :
+        Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IProxyResourceInternal
     {
         /// <summary>The Id of the Enterprise App used for Single sign-on.</summary>
         string EnterpriseAppId { get; set; }
-        /// <summary>ARM id of the resource.</summary>
-        string Id { get; set; }
-        /// <summary>Name of the configuration.</summary>
-        string Name { get; set; }
 
         Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogSingleSignOnProperties Property { get; set; }
 
@@ -305,24 +217,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
         string SingleSignOnState { get; set; }
         /// <summary>The login URL specific to this Datadog Organization.</summary>
         string SingleSignOnUrl { get; set; }
-        /// <summary>Metadata pertaining to creation and last modification of the resource.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemData SystemData { get; set; }
-        /// <summary>The timestamp of resource creation (UTC).</summary>
-        global::System.DateTime? SystemDataCreatedAt { get; set; }
-        /// <summary>The identity that created the resource.</summary>
-        string SystemDataCreatedBy { get; set; }
-        /// <summary>The type of identity that created the resource.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.PSArgumentCompleterAttribute("User", "Application", "ManagedIdentity", "Key")]
-        string SystemDataCreatedByType { get; set; }
-        /// <summary>The timestamp of resource last modification (UTC)</summary>
-        global::System.DateTime? SystemDataLastModifiedAt { get; set; }
-        /// <summary>The identity that last modified the resource.</summary>
-        string SystemDataLastModifiedBy { get; set; }
-        /// <summary>The type of identity that last modified the resource.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.PSArgumentCompleterAttribute("User", "Application", "ManagedIdentity", "Key")]
-        string SystemDataLastModifiedByType { get; set; }
-        /// <summary>The type of the resource.</summary>
-        string Type { get; set; }
 
     }
 }

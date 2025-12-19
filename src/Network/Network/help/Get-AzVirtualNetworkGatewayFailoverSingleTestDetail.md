@@ -25,7 +25,6 @@ You can obtain the FailoverTestId (or TestGuid) from the output of the Get-AzVir
 
 This cmdlet is especially useful when you need to examine the results of a single failover test, such as the start time, end time, status, and other related test details. You can specify the failover test to retrieve by using the FailoverTestId and PeeringLocation.
 
-
 ## EXAMPLES
 
 ### Example 1

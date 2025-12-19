@@ -22,10 +22,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SerializationMode"/>.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DnsResourceReferenceGetByTargetResources(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IDnsResourceReferenceRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IDnsResourceReferenceResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DnsResourceReferenceGetByTargetResources(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnsResourceReferenceRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnsResourceReferenceResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SerializationMode.IncludeUpdate)
         {
             var apiVersion = @"2023-07-01-preview";
             // Constant Parameters
@@ -49,11 +50,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
-                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.DnsResourceReferenceGetByTargetResources_Call(request,onOk,onDefault,eventListener,sender);
+                await this.DnsResourceReferenceGetByTargetResources_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -65,10 +66,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SerializationMode"/>.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DnsResourceReferenceGetByTargetResourcesViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IDnsResourceReferenceRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IDnsResourceReferenceResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DnsResourceReferenceGetByTargetResourcesViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnsResourceReferenceRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnsResourceReferenceResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SerializationMode.IncludeUpdate)
         {
             var apiVersion = @"2023-07-01-preview";
             // Constant Parameters
@@ -76,10 +78,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.Network/getDnsResourceReference$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.Network$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.Network/getDnsResourceReference'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.Network'");
                 }
 
                 // replace URI parameters with values from identity
@@ -102,16 +104,256 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
-                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.DnsResourceReferenceGetByTargetResources_Call(request,onOk,onDefault,eventListener,sender);
+                await this.DnsResourceReferenceGetByTargetResources_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Returns the DNS records specified by the referencing targetResourceIds.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">Properties for dns resource reference request.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnsResourceReferenceResult>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnsResourceReferenceResult> DnsResourceReferenceGetByTargetResourcesViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnsResourceReferenceRequest body, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2023-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.Network$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.Network'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/providers/Microsoft.Network/getDnsResourceReference"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.DnsResourceReferenceGetByTargetResourcesWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Returns the DNS records specified by the referencing targetResourceIds.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="jsonString">Json string supplied to the DnsResourceReferenceGetByTargetResources operation</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task DnsResourceReferenceGetByTargetResourcesViaJsonString(string subscriptionId, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnsResourceReferenceResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/providers/Microsoft.Network/getDnsResourceReference"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.DnsResourceReferenceGetByTargetResources_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Returns the DNS records specified by the referencing targetResourceIds.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="jsonString">Json string supplied to the DnsResourceReferenceGetByTargetResources operation</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnsResourceReferenceResult>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnsResourceReferenceResult> DnsResourceReferenceGetByTargetResourcesViaJsonStringWithResult(string subscriptionId, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/providers/Microsoft.Network/getDnsResourceReference"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.DnsResourceReferenceGetByTargetResourcesWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Returns the DNS records specified by the referencing targetResourceIds.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="body">Properties for dns resource reference request.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnsResourceReferenceResult>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnsResourceReferenceResult> DnsResourceReferenceGetByTargetResourcesWithResult(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnsResourceReferenceRequest body, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2023-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/providers/Microsoft.Network/getDnsResourceReference"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.DnsResourceReferenceGetByTargetResourcesWithResult_Call (request, eventListener,sender);
             }
         }
 
         /// <summary>
-        /// Actual wire call for <see cref="DnsResourceReferenceGetByTargetResources" /> method.
+        /// Actual wire call for <see cref= "DnsResourceReferenceGetByTargetResourcesWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnsResourceReferenceResult>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnsResourceReferenceResult> DnsResourceReferenceGetByTargetResourcesWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.DnsResourceReferenceResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ICloudError>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "DnsResourceReferenceGetByTargetResources" /> method.
         /// </summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -122,7 +364,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DnsResourceReferenceGetByTargetResources_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IDnsResourceReferenceResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DnsResourceReferenceGetByTargetResources_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnsResourceReferenceResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -133,6 +375,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -140,13 +383,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.DnsResourceReferenceResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.DnsResourceReferenceResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -171,7 +414,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DnsResourceReferenceGetByTargetResources_Validate(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IDnsResourceReferenceRequest body, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task DnsResourceReferenceGetByTargetResources_Validate(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnsResourceReferenceRequest body, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -182,14 +425,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
             }
         }
 
-        /// <summary>Creates or updates the DNSSEC configuration on a DNS zone.</summary>
+        /// <summary>update the DNSSEC configuration on a DNS zone.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="zoneName">The name of the DNS zone (without a terminating dot).</param>
         /// <param name="ifMatch">The etag of the DNSSEC configuration. Omit this value to always overwrite the DNSSEC configuration.
         /// Specify the last-seen etag value to prevent accidentally overwriting any concurrent changes.</param>
         /// <param name="ifNoneMatch">Set to '*' to allow this DNSSEC configuration to be created, but to prevent updating existing
         /// DNSSEC configuration. Other values will be ignored.</param>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -198,7 +441,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DnssecConfigsCreateOrUpdate(string resourceGroupName, string zoneName, string ifMatch, string ifNoneMatch, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IDnssecConfig>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DnssecConfigsCreateOrUpdate(string subscriptionId, string resourceGroupName, string zoneName, string ifMatch, string ifNoneMatch, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnssecConfig>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2023-07-01-preview";
             // Constant Parameters
@@ -236,11 +479,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.DnssecConfigsCreateOrUpdate_Call(request,onOk,onDefault,eventListener,sender);
+                await this.DnssecConfigsCreateOrUpdate_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Creates or updates the DNSSEC configuration on a DNS zone.</summary>
+        /// <summary>update the DNSSEC configuration on a DNS zone.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="ifMatch">The etag of the DNSSEC configuration. Omit this value to always overwrite the DNSSEC configuration.
         /// Specify the last-seen etag value to prevent accidentally overwriting any concurrent changes.</param>
@@ -254,7 +497,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DnssecConfigsCreateOrUpdateViaIdentity(global::System.String viaIdentity, string ifMatch, string ifNoneMatch, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IDnssecConfig>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DnssecConfigsCreateOrUpdateViaIdentity(global::System.String viaIdentity, string ifMatch, string ifNoneMatch, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnssecConfig>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2023-07-01-preview";
             // Constant Parameters
@@ -269,9 +512,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
                 }
 
                 // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
                 var resourceGroupName = _match.Groups["resourceGroupName"].Value;
                 var zoneName = _match.Groups["zoneName"].Value;
-                var subscriptionId = _match.Groups["subscriptionId"].Value;
                 // construct URL
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
                         "/subscriptions/"
@@ -304,11 +547,290 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.DnssecConfigsCreateOrUpdate_Call(request,onOk,onDefault,eventListener,sender);
+                await this.DnssecConfigsCreateOrUpdate_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="DnssecConfigsCreateOrUpdate" /> method.</summary>
+        /// <summary>update the DNSSEC configuration on a DNS zone.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="ifMatch">The etag of the DNSSEC configuration. Omit this value to always overwrite the DNSSEC configuration.
+        /// Specify the last-seen etag value to prevent accidentally overwriting any concurrent changes.</param>
+        /// <param name="ifNoneMatch">Set to '*' to allow this DNSSEC configuration to be created, but to prevent updating existing
+        /// DNSSEC configuration. Other values will be ignored.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnssecConfig>" /> that
+        /// will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnssecConfig> DnssecConfigsCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, string ifMatch, string ifNoneMatch, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Network/dnsZones/(?<zoneName>[^/]+)/dnssecConfigs/default$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}/dnssecConfigs/default'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var zoneName = _match.Groups["zoneName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Network/dnsZones/"
+                        + zoneName
+                        + "/dnssecConfigs/default"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // add headers parameters
+                if (null != ifMatch)
+                {
+                    request.Headers.Add("If-Match",ifMatch);
+                }
+                if (null != ifNoneMatch)
+                {
+                    request.Headers.Add("If-None-Match",ifNoneMatch);
+                }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.DnssecConfigsCreateOrUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>update the DNSSEC configuration on a DNS zone.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="zoneName">The name of the DNS zone (without a terminating dot).</param>
+        /// <param name="ifMatch">The etag of the DNSSEC configuration. Omit this value to always overwrite the DNSSEC configuration.
+        /// Specify the last-seen etag value to prevent accidentally overwriting any concurrent changes.</param>
+        /// <param name="ifNoneMatch">Set to '*' to allow this DNSSEC configuration to be created, but to prevent updating existing
+        /// DNSSEC configuration. Other values will be ignored.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnssecConfig>" /> that
+        /// will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnssecConfig> DnssecConfigsCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string zoneName, string ifMatch, string ifNoneMatch, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Network/dnsZones/"
+                        + global::System.Uri.EscapeDataString(zoneName)
+                        + "/dnssecConfigs/default"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // add headers parameters
+                if (null != ifMatch)
+                {
+                    request.Headers.Add("If-Match",ifMatch);
+                }
+                if (null != ifNoneMatch)
+                {
+                    request.Headers.Add("If-None-Match",ifNoneMatch);
+                }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.DnssecConfigsCreateOrUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "DnssecConfigsCreateOrUpdateWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnssecConfig>" /> that
+        /// will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnssecConfig> DnssecConfigsCreateOrUpdateWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    // declared final-state-via: default
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+                        // delay before making the next polling request
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
+                                          break;
+                                      }
+
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        if (!string.IsNullOrWhiteSpace(_originalUri))
+                        {
+                            // create a new request with the final uri
+                            request = request.CloneAndDispose(new global::System.Uri(_originalUri), Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Method.Get);
+
+                            // drop the old response
+                            _response?.Dispose();
+
+                            // make the final call
+                            _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            break;
+                        }
+                    }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.DnssecConfig.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ICloudError>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "DnssecConfigsCreateOrUpdate" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -318,31 +840,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DnssecConfigsCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IDnssecConfig>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DnssecConfigsCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnssecConfig>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
-                    var sendTask = sender.SendAsync(request, eventListener);
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    _response = await sendTask;
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                     // this operation supports x-ms-long-running-operation
                     var _originalUri = request.RequestUri.AbsoluteUri;
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                     // declared final-state-via: default
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
-
-                        // get the delay before polling. (default to 30 seconds if not present)
-                        int delay = (int)(_response.Headers.RetryAfter?.Delta?.TotalSeconds ?? 30);
-                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.DelayBeforePolling, $"Delaying {delay} seconds before polling.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                        // start the delay timer (we'll await later...)
-                        var waiting = global::System.Threading.Tasks.Task.Delay(delay * 1000, eventListener.Token );
+                        // delay before making the next polling request
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                         // while we wait, let's grab the headers and get ready to poll.
                         if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
@@ -351,15 +870,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
                         var content = await _response.Content.ReadAsStringAsync();
-                        await waiting;
-
-                        // check for cancellation
-                        if( eventListener.Token.IsCancellationRequested ) { return; }
 
                         // drop the old response
                         _response?.Dispose();
@@ -368,45 +886,45 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
                         _response = await sender.SendAsync(request, eventListener);
                         await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                        // if we got back an OK, take a peek inside and see if it's done
-                        if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
-                        {
-                            var error = false;
-                            try {
-                                if( Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonObject json)
-                                {
-                                    var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonString>("status");
-                                    if( state is null )
-                                    {
-                                        // the body doesn't contain any information that has the state of the LRO
-                                        // we're going to just get out, and let the consumer have the result
-                                        break;
-                                    }
-
-                                    switch( state?.ToString()?.ToLower() )
-                                    {
-                                      case "failed":
-                                          error = true;
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
                                           break;
-                                      case "succeeded":
-                                      case "canceled":
-                                        // we're done polling.
-                                        break;
+                                      }
 
-                                      default:
-                                        // need to keep polling!
-                                        _response.StatusCode = global::System.Net.HttpStatusCode.Created;
-                                        continue;
-                                    }
-                                }
-                            } catch {
-                                // if we run into a problem peeking into the result,
-                                // we really don't want to do anything special.
-                            }
-                            if (error) {
-                                throw new Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.UndeclaredResponseException(_response);
-                            }
-                        }
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
 
                         // check for terminal status code
                         if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
@@ -428,6 +946,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
                             break;
                         }
                     }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -435,13 +954,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.DnssecConfig.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.DnssecConfig.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -460,40 +979,40 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
         /// Validation method for <see cref="DnssecConfigsCreateOrUpdate" /> method. Call this like the actual call, but you will
         /// get validation events back.
         /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="zoneName">The name of the DNS zone (without a terminating dot).</param>
         /// <param name="ifMatch">The etag of the DNSSEC configuration. Omit this value to always overwrite the DNSSEC configuration.
         /// Specify the last-seen etag value to prevent accidentally overwriting any concurrent changes.</param>
         /// <param name="ifNoneMatch">Set to '*' to allow this DNSSEC configuration to be created, but to prevent updating existing
         /// DNSSEC configuration. Other values will be ignored.</param>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DnssecConfigsCreateOrUpdate_Validate(string resourceGroupName, string zoneName, string ifMatch, string ifNoneMatch, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task DnssecConfigsCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string zoneName, string ifMatch, string ifNoneMatch, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(zoneName),zoneName);
                 await eventListener.AssertNotNull(nameof(ifMatch),ifMatch);
                 await eventListener.AssertNotNull(nameof(ifNoneMatch),ifNoneMatch);
-                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
             }
         }
 
         /// <summary>
         /// Deletes the DNSSEC configuration on a DNS zone. This operation cannot be undone.
         /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="zoneName">The name of the DNS zone (without a terminating dot).</param>
         /// <param name="ifMatch">The etag of this DNSSEC configuration. Omit this value to always delete the DNSSEC configuration.
         /// Specify the last-seen etag value to prevent accidentally deleting any concurrent changes.</param>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -503,7 +1022,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DnssecConfigsDelete(string resourceGroupName, string zoneName, string ifMatch, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DnssecConfigsDelete(string subscriptionId, string resourceGroupName, string zoneName, string ifMatch, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2023-07-01-preview";
             // Constant Parameters
@@ -537,7 +1056,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.DnssecConfigsDelete_Call(request,onOk,onNoContent,onDefault,eventListener,sender);
+                await this.DnssecConfigsDelete_Call (request, onOk,onNoContent,onDefault,eventListener,sender);
             }
         }
 
@@ -556,7 +1075,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DnssecConfigsDeleteViaIdentity(global::System.String viaIdentity, string ifMatch, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DnssecConfigsDeleteViaIdentity(global::System.String viaIdentity, string ifMatch, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2023-07-01-preview";
             // Constant Parameters
@@ -571,9 +1090,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
                 }
 
                 // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
                 var resourceGroupName = _match.Groups["resourceGroupName"].Value;
                 var zoneName = _match.Groups["zoneName"].Value;
-                var subscriptionId = _match.Groups["subscriptionId"].Value;
                 // construct URL
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
                         "/subscriptions/"
@@ -602,11 +1121,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.DnssecConfigsDelete_Call(request,onOk,onNoContent,onDefault,eventListener,sender);
+                await this.DnssecConfigsDelete_Call (request, onOk,onNoContent,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="DnssecConfigsDelete" /> method.</summary>
+        /// <summary>Actual wire call for <see cref= "DnssecConfigsDelete" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
@@ -617,32 +1136,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DnssecConfigsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DnssecConfigsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
-                    var sendTask = sender.SendAsync(request, eventListener);
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    _response = await sendTask;
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                     // this operation supports x-ms-long-running-operation
                     var _originalUri = request.RequestUri.AbsoluteUri;
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                     // declared final-state-via: default
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
-
-                        // get the delay before polling. (default to 30 seconds if not present)
-                        int delay = (int)(_response.Headers.RetryAfter?.Delta?.TotalSeconds ?? 30);
-                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.DelayBeforePolling, $"Delaying {delay} seconds before polling.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                        // start the delay timer (we'll await later...)
-                        var waiting = global::System.Threading.Tasks.Task.Delay(delay * 1000, eventListener.Token );
+                        // delay before making the next polling request
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                         // while we wait, let's grab the headers and get ready to poll.
                         if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
@@ -651,15 +1167,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
                         var content = await _response.Content.ReadAsStringAsync();
-                        await waiting;
-
-                        // check for cancellation
-                        if( eventListener.Token.IsCancellationRequested ) { return; }
 
                         // drop the old response
                         _response?.Dispose();
@@ -668,45 +1183,45 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
                         _response = await sender.SendAsync(request, eventListener);
                         await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                        // if we got back an OK, take a peek inside and see if it's done
-                        if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
-                        {
-                            var error = false;
-                            try {
-                                if( Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonObject json)
-                                {
-                                    var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonString>("status");
-                                    if( state is null )
-                                    {
-                                        // the body doesn't contain any information that has the state of the LRO
-                                        // we're going to just get out, and let the consumer have the result
-                                        break;
-                                    }
-
-                                    switch( state?.ToString()?.ToLower() )
-                                    {
-                                      case "failed":
-                                          error = true;
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
                                           break;
-                                      case "succeeded":
-                                      case "canceled":
-                                        // we're done polling.
-                                        break;
+                                      }
 
-                                      default:
-                                        // need to keep polling!
-                                        _response.StatusCode = global::System.Net.HttpStatusCode.Created;
-                                        continue;
-                                    }
-                                }
-                            } catch {
-                                // if we run into a problem peeking into the result,
-                                // we really don't want to do anything special.
-                            }
-                            if (error) {
-                                throw new Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.UndeclaredResponseException(_response);
-                            }
-                        }
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
 
                         // check for terminal status code
                         if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
@@ -728,6 +1243,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
                             break;
                         }
                     }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -747,7 +1263,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -766,33 +1282,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
         /// Validation method for <see cref="DnssecConfigsDelete" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="zoneName">The name of the DNS zone (without a terminating dot).</param>
         /// <param name="ifMatch">The etag of this DNSSEC configuration. Omit this value to always delete the DNSSEC configuration.
         /// Specify the last-seen etag value to prevent accidentally deleting any concurrent changes.</param>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DnssecConfigsDelete_Validate(string resourceGroupName, string zoneName, string ifMatch, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task DnssecConfigsDelete_Validate(string subscriptionId, string resourceGroupName, string zoneName, string ifMatch, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(zoneName),zoneName);
                 await eventListener.AssertNotNull(nameof(ifMatch),ifMatch);
-                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
             }
         }
 
         /// <summary>Gets the DNSSEC configuration.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="zoneName">The name of the DNS zone (without a terminating dot).</param>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -801,7 +1317,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DnssecConfigsGet(string resourceGroupName, string zoneName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IDnssecConfig>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DnssecConfigsGet(string subscriptionId, string resourceGroupName, string zoneName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnssecConfig>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2023-07-01-preview";
             // Constant Parameters
@@ -829,7 +1345,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.DnssecConfigsGet_Call(request,onOk,onDefault,eventListener,sender);
+                await this.DnssecConfigsGet_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -843,7 +1359,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DnssecConfigsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IDnssecConfig>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DnssecConfigsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnssecConfig>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2023-07-01-preview";
             // Constant Parameters
@@ -858,9 +1374,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
                 }
 
                 // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
                 var resourceGroupName = _match.Groups["resourceGroupName"].Value;
                 var zoneName = _match.Groups["zoneName"].Value;
-                var subscriptionId = _match.Groups["subscriptionId"].Value;
                 // construct URL
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
                         "/subscriptions/"
@@ -883,11 +1399,165 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.DnssecConfigsGet_Call(request,onOk,onDefault,eventListener,sender);
+                await this.DnssecConfigsGet_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="DnssecConfigsGet" /> method.</summary>
+        /// <summary>Gets the DNSSEC configuration.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnssecConfig>" /> that
+        /// will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnssecConfig> DnssecConfigsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Network/dnsZones/(?<zoneName>[^/]+)/dnssecConfigs/default$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}/dnssecConfigs/default'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var zoneName = _match.Groups["zoneName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Network/dnsZones/"
+                        + zoneName
+                        + "/dnssecConfigs/default"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.DnssecConfigsGetWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Gets the DNSSEC configuration.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="zoneName">The name of the DNS zone (without a terminating dot).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnssecConfig>" /> that
+        /// will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnssecConfig> DnssecConfigsGetWithResult(string subscriptionId, string resourceGroupName, string zoneName, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Network/dnsZones/"
+                        + global::System.Uri.EscapeDataString(zoneName)
+                        + "/dnssecConfigs/default"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.DnssecConfigsGetWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "DnssecConfigsGetWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnssecConfig>" /> that
+        /// will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnssecConfig> DnssecConfigsGetWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.DnssecConfig.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ICloudError>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "DnssecConfigsGet" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -897,7 +1567,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DnssecConfigsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IDnssecConfig>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DnssecConfigsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnssecConfig>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -908,6 +1578,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -915,13 +1586,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.DnssecConfig.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.DnssecConfig.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -940,30 +1611,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
         /// Validation method for <see cref="DnssecConfigsGet" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="zoneName">The name of the DNS zone (without a terminating dot).</param>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DnssecConfigsGet_Validate(string resourceGroupName, string zoneName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task DnssecConfigsGet_Validate(string subscriptionId, string resourceGroupName, string zoneName, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(zoneName),zoneName);
-                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
             }
         }
 
         /// <summary>Lists the DNSSEC configurations in a DNS zone.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="zoneName">The name of the DNS zone (without a terminating dot).</param>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -972,7 +1643,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DnssecConfigsListByDnsZone(string resourceGroupName, string zoneName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IDnssecConfigListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DnssecConfigsListByDnsZone(string subscriptionId, string resourceGroupName, string zoneName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnssecConfigListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2023-07-01-preview";
             // Constant Parameters
@@ -1000,7 +1671,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.DnssecConfigsListByDnsZone_Call(request,onOk,onDefault,eventListener,sender);
+                await this.DnssecConfigsListByDnsZone_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -1014,7 +1685,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DnssecConfigsListByDnsZoneViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IDnssecConfigListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DnssecConfigsListByDnsZoneViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnssecConfigListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2023-07-01-preview";
             // Constant Parameters
@@ -1029,9 +1700,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
                 }
 
                 // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
                 var resourceGroupName = _match.Groups["resourceGroupName"].Value;
                 var zoneName = _match.Groups["zoneName"].Value;
-                var subscriptionId = _match.Groups["subscriptionId"].Value;
                 // construct URL
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
                         "/subscriptions/"
@@ -1054,11 +1725,167 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.DnssecConfigsListByDnsZone_Call(request,onOk,onDefault,eventListener,sender);
+                await this.DnssecConfigsListByDnsZone_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="DnssecConfigsListByDnsZone" /> method.</summary>
+        /// <summary>Lists the DNSSEC configurations in a DNS zone.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnssecConfigListResult>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnssecConfigListResult> DnssecConfigsListByDnsZoneViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Network/dnsZones/(?<zoneName>[^/]+)/dnssecConfigs$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}/dnssecConfigs'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var zoneName = _match.Groups["zoneName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Network/dnsZones/"
+                        + zoneName
+                        + "/dnssecConfigs"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.DnssecConfigsListByDnsZoneWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Lists the DNSSEC configurations in a DNS zone.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="zoneName">The name of the DNS zone (without a terminating dot).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnssecConfigListResult>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnssecConfigListResult> DnssecConfigsListByDnsZoneWithResult(string subscriptionId, string resourceGroupName, string zoneName, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Network/dnsZones/"
+                        + global::System.Uri.EscapeDataString(zoneName)
+                        + "/dnssecConfigs"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.DnssecConfigsListByDnsZoneWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "DnssecConfigsListByDnsZoneWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnssecConfigListResult>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnssecConfigListResult> DnssecConfigsListByDnsZoneWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.DnssecConfigListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ICloudError>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "DnssecConfigsListByDnsZone" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -1068,7 +1895,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DnssecConfigsListByDnsZone_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IDnssecConfigListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DnssecConfigsListByDnsZone_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnssecConfigListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1079,6 +1906,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -1086,13 +1914,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.DnssecConfigListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.DnssecConfigListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -1111,30 +1939,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
         /// Validation method for <see cref="DnssecConfigsListByDnsZone" /> method. Call this like the actual call, but you will get
         /// validation events back.
         /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="zoneName">The name of the DNS zone (without a terminating dot).</param>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DnssecConfigsListByDnsZone_Validate(string resourceGroupName, string zoneName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task DnssecConfigsListByDnsZone_Validate(string subscriptionId, string resourceGroupName, string zoneName, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(zoneName),zoneName);
-                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
             }
         }
 
         /// <summary>
-        /// Creates or updates a record set within a DNS zone. Record sets of type SOA can be updated but not created (they are created
-        /// when the DNS zone is created).
+        /// update a record set within a DNS zone. Record sets of type SOA can be updated but not created (they are created when the
+        /// DNS zone is created).
         /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="zoneName">The name of the DNS zone (without a terminating dot).</param>
         /// <param name="relativeRecordSetName">The name of the record set, relative to the name of the zone.</param>
@@ -1143,7 +1972,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
         /// the last-seen etag value to prevent accidentally overwriting any concurrent changes.</param>
         /// <param name="ifNoneMatch">Set to '*' to allow a new record set to be created, but to prevent updating an existing record
         /// set. Other values will be ignored.</param>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="body">Parameters supplied to the CreateOrUpdate operation.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onCreated">a delegate that is called when the remote service returns 201 (Created).</param>
@@ -1151,10 +1979,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SerializationMode"/>.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task RecordSetsCreateOrUpdate(string resourceGroupName, string zoneName, string relativeRecordSetName, Microsoft.Azure.PowerShell.Cmdlets.Dns.Support.RecordType recordType, string ifMatch, string ifNoneMatch, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IRecordSet body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IRecordSet>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IRecordSet>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task RecordSetsCreateOrUpdate(string subscriptionId, string resourceGroupName, string zoneName, string relativeRecordSetName, string recordType, string ifMatch, string ifNoneMatch, Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IRecordSet body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IRecordSet>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IRecordSet>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SerializationMode.IncludeUpdate)
         {
             var apiVersion = @"2023-07-01-preview";
             // Constant Parameters
@@ -1195,17 +2024,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
-                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.RecordSetsCreateOrUpdate_Call(request,onOk,onCreated,onDefault,eventListener,sender);
+                await this.RecordSetsCreateOrUpdate_Call (request, onOk,onCreated,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>
-        /// Creates or updates a record set within a DNS zone. Record sets of type SOA can be updated but not created (they are created
-        /// when the DNS zone is created).
+        /// update a record set within a DNS zone. Record sets of type SOA can be updated but not created (they are created when the
+        /// DNS zone is created).
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="ifMatch">The etag of the record set. Omit this value to always overwrite the current record set. Specify
@@ -1219,10 +2048,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SerializationMode"/>.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task RecordSetsCreateOrUpdateViaIdentity(global::System.String viaIdentity, string ifMatch, string ifNoneMatch, Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IRecordSet body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IRecordSet>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IRecordSet>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task RecordSetsCreateOrUpdateViaIdentity(global::System.String viaIdentity, string ifMatch, string ifNoneMatch, Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IRecordSet body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IRecordSet>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IRecordSet>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SerializationMode.IncludeUpdate)
         {
             var apiVersion = @"2023-07-01-preview";
             // Constant Parameters
@@ -1237,11 +2067,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
                 }
 
                 // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
                 var resourceGroupName = _match.Groups["resourceGroupName"].Value;
                 var zoneName = _match.Groups["zoneName"].Value;
                 var relativeRecordSetName = _match.Groups["relativeRecordSetName"].Value;
                 var recordType = _match.Groups["recordType"].Value;
-                var subscriptionId = _match.Groups["subscriptionId"].Value;
                 // construct URL
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
                         "/subscriptions/"
@@ -1277,15 +2107,372 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
-                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.RecordSetsCreateOrUpdate_Call(request,onOk,onCreated,onDefault,eventListener,sender);
+                await this.RecordSetsCreateOrUpdate_Call (request, onOk,onCreated,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="RecordSetsCreateOrUpdate" /> method.</summary>
+        /// <summary>
+        /// update a record set within a DNS zone. Record sets of type SOA can be updated but not created (they are created when the
+        /// DNS zone is created).
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="ifMatch">The etag of the record set. Omit this value to always overwrite the current record set. Specify
+        /// the last-seen etag value to prevent accidentally overwriting any concurrent changes.</param>
+        /// <param name="ifNoneMatch">Set to '*' to allow a new record set to be created, but to prevent updating an existing record
+        /// set. Other values will be ignored.</param>
+        /// <param name="body">Parameters supplied to the CreateOrUpdate operation.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IRecordSet>" /> that will
+        /// be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IRecordSet> RecordSetsCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, string ifMatch, string ifNoneMatch, Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IRecordSet body, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2023-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Network/dnsZones/(?<zoneName>[^/]+)/(?<recordType>[^/]+)/(?<relativeRecordSetName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}/{recordType}/{relativeRecordSetName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var zoneName = _match.Groups["zoneName"].Value;
+                var relativeRecordSetName = _match.Groups["relativeRecordSetName"].Value;
+                var recordType = _match.Groups["recordType"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Network/dnsZones/"
+                        + zoneName
+                        + "/"
+                        + recordType
+                        + "/"
+                        + relativeRecordSetName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // add headers parameters
+                if (null != ifMatch)
+                {
+                    request.Headers.Add("If-Match",ifMatch);
+                }
+                if (null != ifNoneMatch)
+                {
+                    request.Headers.Add("If-None-Match",ifNoneMatch);
+                }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.RecordSetsCreateOrUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// update a record set within a DNS zone. Record sets of type SOA can be updated but not created (they are created when the
+        /// DNS zone is created).
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="zoneName">The name of the DNS zone (without a terminating dot).</param>
+        /// <param name="relativeRecordSetName">The name of the record set, relative to the name of the zone.</param>
+        /// <param name="recordType">The type of DNS record in this record set.</param>
+        /// <param name="ifMatch">The etag of the record set. Omit this value to always overwrite the current record set. Specify
+        /// the last-seen etag value to prevent accidentally overwriting any concurrent changes.</param>
+        /// <param name="ifNoneMatch">Set to '*' to allow a new record set to be created, but to prevent updating an existing record
+        /// set. Other values will be ignored.</param>
+        /// <param name="jsonString">Json string supplied to the RecordSetsCreateOrUpdate operation</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onCreated">a delegate that is called when the remote service returns 201 (Created).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task RecordSetsCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string zoneName, string relativeRecordSetName, string recordType, string ifMatch, string ifNoneMatch, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IRecordSet>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IRecordSet>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Network/dnsZones/"
+                        + global::System.Uri.EscapeDataString(zoneName)
+                        + "/"
+                        + global::System.Uri.EscapeDataString(recordType)
+                        + "/"
+                        + (relativeRecordSetName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // add headers parameters
+                if (null != ifMatch)
+                {
+                    request.Headers.Add("If-Match",ifMatch);
+                }
+                if (null != ifNoneMatch)
+                {
+                    request.Headers.Add("If-None-Match",ifNoneMatch);
+                }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.RecordSetsCreateOrUpdate_Call (request, onOk,onCreated,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// update a record set within a DNS zone. Record sets of type SOA can be updated but not created (they are created when the
+        /// DNS zone is created).
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="zoneName">The name of the DNS zone (without a terminating dot).</param>
+        /// <param name="relativeRecordSetName">The name of the record set, relative to the name of the zone.</param>
+        /// <param name="recordType">The type of DNS record in this record set.</param>
+        /// <param name="ifMatch">The etag of the record set. Omit this value to always overwrite the current record set. Specify
+        /// the last-seen etag value to prevent accidentally overwriting any concurrent changes.</param>
+        /// <param name="ifNoneMatch">Set to '*' to allow a new record set to be created, but to prevent updating an existing record
+        /// set. Other values will be ignored.</param>
+        /// <param name="jsonString">Json string supplied to the RecordSetsCreateOrUpdate operation</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IRecordSet>" /> that will
+        /// be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IRecordSet> RecordSetsCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string zoneName, string relativeRecordSetName, string recordType, string ifMatch, string ifNoneMatch, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Network/dnsZones/"
+                        + global::System.Uri.EscapeDataString(zoneName)
+                        + "/"
+                        + global::System.Uri.EscapeDataString(recordType)
+                        + "/"
+                        + (relativeRecordSetName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // add headers parameters
+                if (null != ifMatch)
+                {
+                    request.Headers.Add("If-Match",ifMatch);
+                }
+                if (null != ifNoneMatch)
+                {
+                    request.Headers.Add("If-None-Match",ifNoneMatch);
+                }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.RecordSetsCreateOrUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// update a record set within a DNS zone. Record sets of type SOA can be updated but not created (they are created when the
+        /// DNS zone is created).
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="zoneName">The name of the DNS zone (without a terminating dot).</param>
+        /// <param name="relativeRecordSetName">The name of the record set, relative to the name of the zone.</param>
+        /// <param name="recordType">The type of DNS record in this record set.</param>
+        /// <param name="ifMatch">The etag of the record set. Omit this value to always overwrite the current record set. Specify
+        /// the last-seen etag value to prevent accidentally overwriting any concurrent changes.</param>
+        /// <param name="ifNoneMatch">Set to '*' to allow a new record set to be created, but to prevent updating an existing record
+        /// set. Other values will be ignored.</param>
+        /// <param name="body">Parameters supplied to the CreateOrUpdate operation.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IRecordSet>" /> that will
+        /// be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IRecordSet> RecordSetsCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string zoneName, string relativeRecordSetName, string recordType, string ifMatch, string ifNoneMatch, Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IRecordSet body, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2023-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Network/dnsZones/"
+                        + global::System.Uri.EscapeDataString(zoneName)
+                        + "/"
+                        + global::System.Uri.EscapeDataString(recordType)
+                        + "/"
+                        + (relativeRecordSetName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // add headers parameters
+                if (null != ifMatch)
+                {
+                    request.Headers.Add("If-Match",ifMatch);
+                }
+                if (null != ifNoneMatch)
+                {
+                    request.Headers.Add("If-None-Match",ifNoneMatch);
+                }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.RecordSetsCreateOrUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "RecordSetsCreateOrUpdateWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IRecordSet>" /> that will
+        /// be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IRecordSet> RecordSetsCreateOrUpdateWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.RecordSet.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        case global::System.Net.HttpStatusCode.Created:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.RecordSet.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ICloudError>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "RecordSetsCreateOrUpdate" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onCreated">a delegate that is called when the remote service returns 201 (Created).</param>
@@ -1296,7 +2483,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task RecordSetsCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IRecordSet>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IRecordSet>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task RecordSetsCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IRecordSet>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IRecordSet>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1307,6 +2494,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -1314,19 +2502,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.RecordSet.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.RecordSet.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         case global::System.Net.HttpStatusCode.Created:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onCreated(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.RecordSet.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onCreated(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.RecordSet.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -1345,6 +2533,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
         /// Validation method for <see cref="RecordSetsCreateOrUpdate" /> method. Call this like the actual call, but you will get
         /// validation events back.
         /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="zoneName">The name of the DNS zone (without a terminating dot).</param>
         /// <param name="relativeRecordSetName">The name of the record set, relative to the name of the zone.</param>
@@ -1353,27 +2542,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
         /// the last-seen etag value to prevent accidentally overwriting any concurrent changes.</param>
         /// <param name="ifNoneMatch">Set to '*' to allow a new record set to be created, but to prevent updating an existing record
         /// set. Other values will be ignored.</param>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="body">Parameters supplied to the CreateOrUpdate operation.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task RecordSetsCreateOrUpdate_Validate(string resourceGroupName, string zoneName, string relativeRecordSetName, Microsoft.Azure.PowerShell.Cmdlets.Dns.Support.RecordType recordType, string ifMatch, string ifNoneMatch, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IRecordSet body, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task RecordSetsCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string zoneName, string relativeRecordSetName, string recordType, string ifMatch, string ifNoneMatch, Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IRecordSet body, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(zoneName),zoneName);
                 await eventListener.AssertNotNull(nameof(relativeRecordSetName),relativeRecordSetName);
                 await eventListener.AssertNotNull(nameof(recordType),recordType);
-                await eventListener.AssertEnum(nameof(recordType),recordType,@"A", @"AAAA", @"CAA", @"CNAME", @"MX", @"NS", @"PTR", @"SOA", @"SRV", @"TXT", @"TLSA", @"DS", @"NAPTR");
                 await eventListener.AssertNotNull(nameof(ifMatch),ifMatch);
                 await eventListener.AssertNotNull(nameof(ifNoneMatch),ifNoneMatch);
-                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(body), body);
                 await eventListener.AssertObjectIsValid(nameof(body), body);
             }
@@ -1383,13 +2570,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
         /// Deletes a record set from a DNS zone. This operation cannot be undone. Record sets of type SOA cannot be deleted (they
         /// are deleted when the DNS zone is deleted).
         /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="zoneName">The name of the DNS zone (without a terminating dot).</param>
         /// <param name="relativeRecordSetName">The name of the record set, relative to the name of the zone.</param>
         /// <param name="recordType">The type of DNS record in this record set.</param>
         /// <param name="ifMatch">The etag of the record set. Omit this value to always delete the current record set. Specify the
         /// last-seen etag value to prevent accidentally deleting any concurrent changes.</param>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -1399,7 +2586,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task RecordSetsDelete(string resourceGroupName, string zoneName, string relativeRecordSetName, Microsoft.Azure.PowerShell.Cmdlets.Dns.Support.RecordType recordType, string ifMatch, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task RecordSetsDelete(string subscriptionId, string resourceGroupName, string zoneName, string relativeRecordSetName, string recordType, string ifMatch, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2023-07-01-preview";
             // Constant Parameters
@@ -1436,7 +2623,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.RecordSetsDelete_Call(request,onOk,onNoContent,onDefault,eventListener,sender);
+                await this.RecordSetsDelete_Call (request, onOk,onNoContent,onDefault,eventListener,sender);
             }
         }
 
@@ -1456,7 +2643,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task RecordSetsDeleteViaIdentity(global::System.String viaIdentity, string ifMatch, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task RecordSetsDeleteViaIdentity(global::System.String viaIdentity, string ifMatch, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2023-07-01-preview";
             // Constant Parameters
@@ -1471,11 +2658,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
                 }
 
                 // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
                 var resourceGroupName = _match.Groups["resourceGroupName"].Value;
                 var zoneName = _match.Groups["zoneName"].Value;
                 var relativeRecordSetName = _match.Groups["relativeRecordSetName"].Value;
                 var recordType = _match.Groups["recordType"].Value;
-                var subscriptionId = _match.Groups["subscriptionId"].Value;
                 // construct URL
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
                         "/subscriptions/"
@@ -1507,11 +2694,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.RecordSetsDelete_Call(request,onOk,onNoContent,onDefault,eventListener,sender);
+                await this.RecordSetsDelete_Call (request, onOk,onNoContent,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="RecordSetsDelete" /> method.</summary>
+        /// <summary>Actual wire call for <see cref= "RecordSetsDelete" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
@@ -1522,7 +2709,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task RecordSetsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task RecordSetsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1533,6 +2720,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -1552,7 +2740,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -1571,40 +2759,39 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
         /// Validation method for <see cref="RecordSetsDelete" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="zoneName">The name of the DNS zone (without a terminating dot).</param>
         /// <param name="relativeRecordSetName">The name of the record set, relative to the name of the zone.</param>
         /// <param name="recordType">The type of DNS record in this record set.</param>
         /// <param name="ifMatch">The etag of the record set. Omit this value to always delete the current record set. Specify the
         /// last-seen etag value to prevent accidentally deleting any concurrent changes.</param>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task RecordSetsDelete_Validate(string resourceGroupName, string zoneName, string relativeRecordSetName, Microsoft.Azure.PowerShell.Cmdlets.Dns.Support.RecordType recordType, string ifMatch, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task RecordSetsDelete_Validate(string subscriptionId, string resourceGroupName, string zoneName, string relativeRecordSetName, string recordType, string ifMatch, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(zoneName),zoneName);
                 await eventListener.AssertNotNull(nameof(relativeRecordSetName),relativeRecordSetName);
                 await eventListener.AssertNotNull(nameof(recordType),recordType);
-                await eventListener.AssertEnum(nameof(recordType),recordType,@"A", @"AAAA", @"CAA", @"CNAME", @"MX", @"NS", @"PTR", @"SOA", @"SRV", @"TXT", @"TLSA", @"DS", @"NAPTR");
                 await eventListener.AssertNotNull(nameof(ifMatch),ifMatch);
-                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
             }
         }
 
         /// <summary>Gets a record set.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="zoneName">The name of the DNS zone (without a terminating dot).</param>
         /// <param name="relativeRecordSetName">The name of the record set, relative to the name of the zone.</param>
         /// <param name="recordType">The type of DNS record in this record set.</param>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -1613,7 +2800,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task RecordSetsGet(string resourceGroupName, string zoneName, string relativeRecordSetName, Microsoft.Azure.PowerShell.Cmdlets.Dns.Support.RecordType recordType, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IRecordSet>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task RecordSetsGet(string subscriptionId, string resourceGroupName, string zoneName, string relativeRecordSetName, string recordType, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IRecordSet>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2023-07-01-preview";
             // Constant Parameters
@@ -1644,7 +2831,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.RecordSetsGet_Call(request,onOk,onDefault,eventListener,sender);
+                await this.RecordSetsGet_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -1658,7 +2845,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task RecordSetsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IRecordSet>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task RecordSetsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IRecordSet>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2023-07-01-preview";
             // Constant Parameters
@@ -1673,11 +2860,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
                 }
 
                 // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
                 var resourceGroupName = _match.Groups["resourceGroupName"].Value;
                 var zoneName = _match.Groups["zoneName"].Value;
                 var relativeRecordSetName = _match.Groups["relativeRecordSetName"].Value;
                 var recordType = _match.Groups["recordType"].Value;
-                var subscriptionId = _match.Groups["subscriptionId"].Value;
                 // construct URL
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
                         "/subscriptions/"
@@ -1703,11 +2890,175 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.RecordSetsGet_Call(request,onOk,onDefault,eventListener,sender);
+                await this.RecordSetsGet_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="RecordSetsGet" /> method.</summary>
+        /// <summary>Gets a record set.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IRecordSet>" /> that will
+        /// be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IRecordSet> RecordSetsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Network/dnsZones/(?<zoneName>[^/]+)/(?<recordType>[^/]+)/(?<relativeRecordSetName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}/{recordType}/{relativeRecordSetName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var zoneName = _match.Groups["zoneName"].Value;
+                var relativeRecordSetName = _match.Groups["relativeRecordSetName"].Value;
+                var recordType = _match.Groups["recordType"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Network/dnsZones/"
+                        + zoneName
+                        + "/"
+                        + recordType
+                        + "/"
+                        + relativeRecordSetName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.RecordSetsGetWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Gets a record set.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="zoneName">The name of the DNS zone (without a terminating dot).</param>
+        /// <param name="relativeRecordSetName">The name of the record set, relative to the name of the zone.</param>
+        /// <param name="recordType">The type of DNS record in this record set.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IRecordSet>" /> that will
+        /// be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IRecordSet> RecordSetsGetWithResult(string subscriptionId, string resourceGroupName, string zoneName, string relativeRecordSetName, string recordType, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Network/dnsZones/"
+                        + global::System.Uri.EscapeDataString(zoneName)
+                        + "/"
+                        + global::System.Uri.EscapeDataString(recordType)
+                        + "/"
+                        + (relativeRecordSetName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.RecordSetsGetWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "RecordSetsGetWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IRecordSet>" /> that will
+        /// be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IRecordSet> RecordSetsGetWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.RecordSet.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ICloudError>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "RecordSetsGet" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -1717,7 +3068,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task RecordSetsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IRecordSet>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task RecordSetsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IRecordSet>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1728,6 +3079,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -1735,13 +3087,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.RecordSet.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.RecordSet.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -1760,38 +3112,37 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
         /// Validation method for <see cref="RecordSetsGet" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="zoneName">The name of the DNS zone (without a terminating dot).</param>
         /// <param name="relativeRecordSetName">The name of the record set, relative to the name of the zone.</param>
         /// <param name="recordType">The type of DNS record in this record set.</param>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task RecordSetsGet_Validate(string resourceGroupName, string zoneName, string relativeRecordSetName, Microsoft.Azure.PowerShell.Cmdlets.Dns.Support.RecordType recordType, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task RecordSetsGet_Validate(string subscriptionId, string resourceGroupName, string zoneName, string relativeRecordSetName, string recordType, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(zoneName),zoneName);
                 await eventListener.AssertNotNull(nameof(relativeRecordSetName),relativeRecordSetName);
                 await eventListener.AssertNotNull(nameof(recordType),recordType);
-                await eventListener.AssertEnum(nameof(recordType),recordType,@"A", @"AAAA", @"CAA", @"CNAME", @"MX", @"NS", @"PTR", @"SOA", @"SRV", @"TXT", @"TLSA", @"DS", @"NAPTR");
-                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
             }
         }
 
         /// <summary>Lists all record sets in a DNS zone.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="zoneName">The name of the DNS zone (without a terminating dot).</param>
         /// <param name="Top">The maximum number of record sets to return. If not specified, returns up to 100 record sets.</param>
         /// <param name="Recordsetnamesuffix">The suffix label of the record set name that has to be used to filter the record set
         /// enumerations. If this parameter is specified, Enumeration will return only records that end with .<recordSetNameSuffix></param>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -1800,7 +3151,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task RecordSetsListAllByDnsZone(string resourceGroupName, string zoneName, int? Top, string Recordsetnamesuffix, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IRecordSetListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task RecordSetsListAllByDnsZone(string subscriptionId, string resourceGroupName, string zoneName, int? Top, string Recordsetnamesuffix, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IRecordSetListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2023-07-01-preview";
             // Constant Parameters
@@ -1832,7 +3183,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.RecordSetsListAllByDnsZone_Call(request,onOk,onDefault,eventListener,sender);
+                await this.RecordSetsListAllByDnsZone_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -1849,7 +3200,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task RecordSetsListAllByDnsZoneViaIdentity(global::System.String viaIdentity, int? Top, string Recordsetnamesuffix, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IRecordSetListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task RecordSetsListAllByDnsZoneViaIdentity(global::System.String viaIdentity, int? Top, string Recordsetnamesuffix, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IRecordSetListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2023-07-01-preview";
             // Constant Parameters
@@ -1864,9 +3215,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
                 }
 
                 // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
                 var resourceGroupName = _match.Groups["resourceGroupName"].Value;
                 var zoneName = _match.Groups["zoneName"].Value;
-                var subscriptionId = _match.Groups["subscriptionId"].Value;
                 // construct URL
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
                         "/subscriptions/"
@@ -1893,11 +3244,181 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.RecordSetsListAllByDnsZone_Call(request,onOk,onDefault,eventListener,sender);
+                await this.RecordSetsListAllByDnsZone_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="RecordSetsListAllByDnsZone" /> method.</summary>
+        /// <summary>Lists all record sets in a DNS zone.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="Top">The maximum number of record sets to return. If not specified, returns up to 100 record sets.</param>
+        /// <param name="Recordsetnamesuffix">The suffix label of the record set name that has to be used to filter the record set
+        /// enumerations. If this parameter is specified, Enumeration will return only records that end with .<recordSetNameSuffix></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IRecordSetListResult>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IRecordSetListResult> RecordSetsListAllByDnsZoneViaIdentityWithResult(global::System.String viaIdentity, int? Top, string Recordsetnamesuffix, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Network/dnsZones/(?<zoneName>[^/]+)/all$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}/all'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var zoneName = _match.Groups["zoneName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Network/dnsZones/"
+                        + zoneName
+                        + "/all"
+                        + "?"
+                        + (null == Top ? global::System.String.Empty : "$top=" + global::System.Uri.EscapeDataString(Top.ToString()))
+                        + "&"
+                        + (string.IsNullOrEmpty(Recordsetnamesuffix) ? global::System.String.Empty : "$recordsetnamesuffix=" + global::System.Uri.EscapeDataString(Recordsetnamesuffix))
+                        + "&"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.RecordSetsListAllByDnsZoneWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Lists all record sets in a DNS zone.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="zoneName">The name of the DNS zone (without a terminating dot).</param>
+        /// <param name="Top">The maximum number of record sets to return. If not specified, returns up to 100 record sets.</param>
+        /// <param name="Recordsetnamesuffix">The suffix label of the record set name that has to be used to filter the record set
+        /// enumerations. If this parameter is specified, Enumeration will return only records that end with .<recordSetNameSuffix></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IRecordSetListResult>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IRecordSetListResult> RecordSetsListAllByDnsZoneWithResult(string subscriptionId, string resourceGroupName, string zoneName, int? Top, string Recordsetnamesuffix, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Network/dnsZones/"
+                        + global::System.Uri.EscapeDataString(zoneName)
+                        + "/all"
+                        + "?"
+                        + (null == Top ? global::System.String.Empty : "$top=" + global::System.Uri.EscapeDataString(Top.ToString()))
+                        + "&"
+                        + (string.IsNullOrEmpty(Recordsetnamesuffix) ? global::System.String.Empty : "$recordsetnamesuffix=" + global::System.Uri.EscapeDataString(Recordsetnamesuffix))
+                        + "&"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.RecordSetsListAllByDnsZoneWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "RecordSetsListAllByDnsZoneWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IRecordSetListResult>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IRecordSetListResult> RecordSetsListAllByDnsZoneWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.RecordSetListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ICloudError>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "RecordSetsListAllByDnsZone" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -1907,7 +3428,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task RecordSetsListAllByDnsZone_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IRecordSetListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task RecordSetsListAllByDnsZone_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IRecordSetListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1918,6 +3439,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -1925,13 +3447,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.RecordSetListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.RecordSetListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -1950,37 +3472,37 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
         /// Validation method for <see cref="RecordSetsListAllByDnsZone" /> method. Call this like the actual call, but you will get
         /// validation events back.
         /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="zoneName">The name of the DNS zone (without a terminating dot).</param>
         /// <param name="Top">The maximum number of record sets to return. If not specified, returns up to 100 record sets.</param>
         /// <param name="Recordsetnamesuffix">The suffix label of the record set name that has to be used to filter the record set
         /// enumerations. If this parameter is specified, Enumeration will return only records that end with .<recordSetNameSuffix></param>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task RecordSetsListAllByDnsZone_Validate(string resourceGroupName, string zoneName, int? Top, string Recordsetnamesuffix, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task RecordSetsListAllByDnsZone_Validate(string subscriptionId, string resourceGroupName, string zoneName, int? Top, string Recordsetnamesuffix, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(zoneName),zoneName);
                 await eventListener.AssertNotNull(nameof(Recordsetnamesuffix),Recordsetnamesuffix);
-                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
             }
         }
 
         /// <summary>Lists all record sets in a DNS zone.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="zoneName">The name of the DNS zone (without a terminating dot).</param>
         /// <param name="Top">The maximum number of record sets to return. If not specified, returns up to 100 record sets.</param>
         /// <param name="Recordsetnamesuffix">The suffix label of the record set name that has to be used to filter the record set
         /// enumerations. If this parameter is specified, Enumeration will return only records that end with .<recordSetNameSuffix></param>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -1989,7 +3511,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task RecordSetsListByDnsZone(string resourceGroupName, string zoneName, int? Top, string Recordsetnamesuffix, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IRecordSetListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task RecordSetsListByDnsZone(string subscriptionId, string resourceGroupName, string zoneName, int? Top, string Recordsetnamesuffix, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IRecordSetListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2023-07-01-preview";
             // Constant Parameters
@@ -2021,7 +3543,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.RecordSetsListByDnsZone_Call(request,onOk,onDefault,eventListener,sender);
+                await this.RecordSetsListByDnsZone_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -2038,7 +3560,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task RecordSetsListByDnsZoneViaIdentity(global::System.String viaIdentity, int? Top, string Recordsetnamesuffix, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IRecordSetListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task RecordSetsListByDnsZoneViaIdentity(global::System.String viaIdentity, int? Top, string Recordsetnamesuffix, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IRecordSetListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2023-07-01-preview";
             // Constant Parameters
@@ -2053,9 +3575,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
                 }
 
                 // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
                 var resourceGroupName = _match.Groups["resourceGroupName"].Value;
                 var zoneName = _match.Groups["zoneName"].Value;
-                var subscriptionId = _match.Groups["subscriptionId"].Value;
                 // construct URL
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
                         "/subscriptions/"
@@ -2082,11 +3604,179 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.RecordSetsListByDnsZone_Call(request,onOk,onDefault,eventListener,sender);
+                await this.RecordSetsListByDnsZone_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="RecordSetsListByDnsZone" /> method.</summary>
+        /// <summary>Lists all record sets in a DNS zone.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="Top">The maximum number of record sets to return. If not specified, returns up to 100 record sets.</param>
+        /// <param name="Recordsetnamesuffix">The suffix label of the record set name that has to be used to filter the record set
+        /// enumerations. If this parameter is specified, Enumeration will return only records that end with .<recordSetNameSuffix></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IRecordSetListResult>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IRecordSetListResult> RecordSetsListByDnsZoneViaIdentityWithResult(global::System.String viaIdentity, int? Top, string Recordsetnamesuffix, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Network/dnsZones/(?<zoneName>[^/]+)/recordsets$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}/recordsets'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var zoneName = _match.Groups["zoneName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Network/dnsZones/"
+                        + zoneName
+                        + "/recordsets"
+                        + "?"
+                        + (null == Top ? global::System.String.Empty : "$top=" + global::System.Uri.EscapeDataString(Top.ToString()))
+                        + "&"
+                        + (string.IsNullOrEmpty(Recordsetnamesuffix) ? global::System.String.Empty : "$recordsetnamesuffix=" + global::System.Uri.EscapeDataString(Recordsetnamesuffix))
+                        + "&"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.RecordSetsListByDnsZoneWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Lists all record sets in a DNS zone.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="zoneName">The name of the DNS zone (without a terminating dot).</param>
+        /// <param name="Top">The maximum number of record sets to return. If not specified, returns up to 100 record sets.</param>
+        /// <param name="Recordsetnamesuffix">The suffix label of the record set name that has to be used to filter the record set
+        /// enumerations. If this parameter is specified, Enumeration will return only records that end with .<recordSetNameSuffix></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IRecordSetListResult>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IRecordSetListResult> RecordSetsListByDnsZoneWithResult(string subscriptionId, string resourceGroupName, string zoneName, int? Top, string Recordsetnamesuffix, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Network/dnsZones/"
+                        + global::System.Uri.EscapeDataString(zoneName)
+                        + "/recordsets"
+                        + "?"
+                        + (null == Top ? global::System.String.Empty : "$top=" + global::System.Uri.EscapeDataString(Top.ToString()))
+                        + "&"
+                        + (string.IsNullOrEmpty(Recordsetnamesuffix) ? global::System.String.Empty : "$recordsetnamesuffix=" + global::System.Uri.EscapeDataString(Recordsetnamesuffix))
+                        + "&"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.RecordSetsListByDnsZoneWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "RecordSetsListByDnsZoneWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IRecordSetListResult>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IRecordSetListResult> RecordSetsListByDnsZoneWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.RecordSetListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ICloudError>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "RecordSetsListByDnsZone" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -2096,7 +3786,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task RecordSetsListByDnsZone_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IRecordSetListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task RecordSetsListByDnsZone_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IRecordSetListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2107,6 +3797,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -2114,13 +3805,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.RecordSetListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.RecordSetListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -2139,38 +3830,38 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
         /// Validation method for <see cref="RecordSetsListByDnsZone" /> method. Call this like the actual call, but you will get
         /// validation events back.
         /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="zoneName">The name of the DNS zone (without a terminating dot).</param>
         /// <param name="Top">The maximum number of record sets to return. If not specified, returns up to 100 record sets.</param>
         /// <param name="Recordsetnamesuffix">The suffix label of the record set name that has to be used to filter the record set
         /// enumerations. If this parameter is specified, Enumeration will return only records that end with .<recordSetNameSuffix></param>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task RecordSetsListByDnsZone_Validate(string resourceGroupName, string zoneName, int? Top, string Recordsetnamesuffix, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task RecordSetsListByDnsZone_Validate(string subscriptionId, string resourceGroupName, string zoneName, int? Top, string Recordsetnamesuffix, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(zoneName),zoneName);
                 await eventListener.AssertNotNull(nameof(Recordsetnamesuffix),Recordsetnamesuffix);
-                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
             }
         }
 
         /// <summary>Lists the record sets of a specified type in a DNS zone.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="zoneName">The name of the DNS zone (without a terminating dot).</param>
         /// <param name="recordType">The type of DNS record in this record set.</param>
         /// <param name="Top">The maximum number of record sets to return. If not specified, returns up to 100 record sets.</param>
         /// <param name="Recordsetnamesuffix">The suffix label of the record set name that has to be used to filter the record set
         /// enumerations. If this parameter is specified, Enumeration will return only records that end with .<recordSetNameSuffix></param>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -2179,7 +3870,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task RecordSetsListByType(string resourceGroupName, string zoneName, Microsoft.Azure.PowerShell.Cmdlets.Dns.Support.RecordType recordType, int? Top, string Recordsetnamesuffix, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IRecordSetListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task RecordSetsListByType(string subscriptionId, string resourceGroupName, string zoneName, string recordType, int? Top, string Recordsetnamesuffix, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IRecordSetListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2023-07-01-preview";
             // Constant Parameters
@@ -2212,7 +3903,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.RecordSetsListByType_Call(request,onOk,onDefault,eventListener,sender);
+                await this.RecordSetsListByType_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -2229,7 +3920,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task RecordSetsListByTypeViaIdentity(global::System.String viaIdentity, int? Top, string Recordsetnamesuffix, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IRecordSetListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task RecordSetsListByTypeViaIdentity(global::System.String viaIdentity, int? Top, string Recordsetnamesuffix, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IRecordSetListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2023-07-01-preview";
             // Constant Parameters
@@ -2244,10 +3935,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
                 }
 
                 // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
                 var resourceGroupName = _match.Groups["resourceGroupName"].Value;
                 var zoneName = _match.Groups["zoneName"].Value;
                 var recordType = _match.Groups["recordType"].Value;
-                var subscriptionId = _match.Groups["subscriptionId"].Value;
                 // construct URL
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
                         "/subscriptions/"
@@ -2275,11 +3966,183 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.RecordSetsListByType_Call(request,onOk,onDefault,eventListener,sender);
+                await this.RecordSetsListByType_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="RecordSetsListByType" /> method.</summary>
+        /// <summary>Lists the record sets of a specified type in a DNS zone.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="Top">The maximum number of record sets to return. If not specified, returns up to 100 record sets.</param>
+        /// <param name="Recordsetnamesuffix">The suffix label of the record set name that has to be used to filter the record set
+        /// enumerations. If this parameter is specified, Enumeration will return only records that end with .<recordSetNameSuffix></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IRecordSetListResult>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IRecordSetListResult> RecordSetsListByTypeViaIdentityWithResult(global::System.String viaIdentity, int? Top, string Recordsetnamesuffix, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Network/dnsZones/(?<zoneName>[^/]+)/(?<recordType>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}/{recordType}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var zoneName = _match.Groups["zoneName"].Value;
+                var recordType = _match.Groups["recordType"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Network/dnsZones/"
+                        + zoneName
+                        + "/"
+                        + recordType
+                        + "?"
+                        + (null == Top ? global::System.String.Empty : "$top=" + global::System.Uri.EscapeDataString(Top.ToString()))
+                        + "&"
+                        + (string.IsNullOrEmpty(Recordsetnamesuffix) ? global::System.String.Empty : "$recordsetnamesuffix=" + global::System.Uri.EscapeDataString(Recordsetnamesuffix))
+                        + "&"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.RecordSetsListByTypeWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Lists the record sets of a specified type in a DNS zone.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="zoneName">The name of the DNS zone (without a terminating dot).</param>
+        /// <param name="recordType">The type of DNS record in this record set.</param>
+        /// <param name="Top">The maximum number of record sets to return. If not specified, returns up to 100 record sets.</param>
+        /// <param name="Recordsetnamesuffix">The suffix label of the record set name that has to be used to filter the record set
+        /// enumerations. If this parameter is specified, Enumeration will return only records that end with .<recordSetNameSuffix></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IRecordSetListResult>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IRecordSetListResult> RecordSetsListByTypeWithResult(string subscriptionId, string resourceGroupName, string zoneName, string recordType, int? Top, string Recordsetnamesuffix, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Network/dnsZones/"
+                        + global::System.Uri.EscapeDataString(zoneName)
+                        + "/"
+                        + global::System.Uri.EscapeDataString(recordType)
+                        + "?"
+                        + (null == Top ? global::System.String.Empty : "$top=" + global::System.Uri.EscapeDataString(Top.ToString()))
+                        + "&"
+                        + (string.IsNullOrEmpty(Recordsetnamesuffix) ? global::System.String.Empty : "$recordsetnamesuffix=" + global::System.Uri.EscapeDataString(Recordsetnamesuffix))
+                        + "&"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.RecordSetsListByTypeWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "RecordSetsListByTypeWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IRecordSetListResult>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IRecordSetListResult> RecordSetsListByTypeWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.RecordSetListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ICloudError>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "RecordSetsListByType" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -2289,7 +4152,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task RecordSetsListByType_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IRecordSetListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task RecordSetsListByType_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IRecordSetListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2300,6 +4163,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -2307,13 +4171,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.RecordSetListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.RecordSetListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -2332,51 +4196,51 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
         /// Validation method for <see cref="RecordSetsListByType" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="zoneName">The name of the DNS zone (without a terminating dot).</param>
         /// <param name="recordType">The type of DNS record in this record set.</param>
         /// <param name="Top">The maximum number of record sets to return. If not specified, returns up to 100 record sets.</param>
         /// <param name="Recordsetnamesuffix">The suffix label of the record set name that has to be used to filter the record set
         /// enumerations. If this parameter is specified, Enumeration will return only records that end with .<recordSetNameSuffix></param>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task RecordSetsListByType_Validate(string resourceGroupName, string zoneName, Microsoft.Azure.PowerShell.Cmdlets.Dns.Support.RecordType recordType, int? Top, string Recordsetnamesuffix, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task RecordSetsListByType_Validate(string subscriptionId, string resourceGroupName, string zoneName, string recordType, int? Top, string Recordsetnamesuffix, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(zoneName),zoneName);
                 await eventListener.AssertNotNull(nameof(recordType),recordType);
-                await eventListener.AssertEnum(nameof(recordType),recordType,@"A", @"AAAA", @"CAA", @"CNAME", @"MX", @"NS", @"PTR", @"SOA", @"SRV", @"TXT", @"TLSA", @"DS", @"NAPTR");
                 await eventListener.AssertNotNull(nameof(Recordsetnamesuffix),Recordsetnamesuffix);
-                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
             }
         }
 
-        /// <summary>Updates a record set within a DNS zone.</summary>
+        /// <summary>update a record set within a DNS zone.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="zoneName">The name of the DNS zone (without a terminating dot).</param>
         /// <param name="relativeRecordSetName">The name of the record set, relative to the name of the zone.</param>
         /// <param name="recordType">The type of DNS record in this record set.</param>
         /// <param name="ifMatch">The etag of the record set. Omit this value to always overwrite the current record set. Specify
         /// the last-seen etag value to prevent accidentally overwriting concurrent changes.</param>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="body">Parameters supplied to the Update operation.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SerializationMode"/>.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task RecordSetsUpdate(string resourceGroupName, string zoneName, string relativeRecordSetName, Microsoft.Azure.PowerShell.Cmdlets.Dns.Support.RecordType recordType, string ifMatch, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IRecordSet body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IRecordSet>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task RecordSetsUpdate(string subscriptionId, string resourceGroupName, string zoneName, string relativeRecordSetName, string recordType, string ifMatch, Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IRecordSet body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IRecordSet>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SerializationMode.IncludeUpdate)
         {
             var apiVersion = @"2023-07-01-preview";
             // Constant Parameters
@@ -2413,15 +4277,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
-                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.RecordSetsUpdate_Call(request,onOk,onDefault,eventListener,sender);
+                await this.RecordSetsUpdate_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Updates a record set within a DNS zone.</summary>
+        /// <summary>update a record set within a DNS zone.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="ifMatch">The etag of the record set. Omit this value to always overwrite the current record set. Specify
         /// the last-seen etag value to prevent accidentally overwriting concurrent changes.</param>
@@ -2431,10 +4295,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SerializationMode"/>.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task RecordSetsUpdateViaIdentity(global::System.String viaIdentity, string ifMatch, Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IRecordSet body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IRecordSet>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task RecordSetsUpdateViaIdentity(global::System.String viaIdentity, string ifMatch, Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IRecordSet body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IRecordSet>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SerializationMode.IncludeUpdate)
         {
             var apiVersion = @"2023-07-01-preview";
             // Constant Parameters
@@ -2449,11 +4314,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
                 }
 
                 // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
                 var resourceGroupName = _match.Groups["resourceGroupName"].Value;
                 var zoneName = _match.Groups["zoneName"].Value;
                 var relativeRecordSetName = _match.Groups["relativeRecordSetName"].Value;
                 var recordType = _match.Groups["recordType"].Value;
-                var subscriptionId = _match.Groups["subscriptionId"].Value;
                 // construct URL
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
                         "/subscriptions/"
@@ -2485,15 +4350,329 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
-                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.RecordSetsUpdate_Call(request,onOk,onDefault,eventListener,sender);
+                await this.RecordSetsUpdate_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="RecordSetsUpdate" /> method.</summary>
+        /// <summary>update a record set within a DNS zone.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="ifMatch">The etag of the record set. Omit this value to always overwrite the current record set. Specify
+        /// the last-seen etag value to prevent accidentally overwriting concurrent changes.</param>
+        /// <param name="body">Parameters supplied to the Update operation.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IRecordSet>" /> that will
+        /// be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IRecordSet> RecordSetsUpdateViaIdentityWithResult(global::System.String viaIdentity, string ifMatch, Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IRecordSet body, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2023-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Network/dnsZones/(?<zoneName>[^/]+)/(?<recordType>[^/]+)/(?<relativeRecordSetName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}/{recordType}/{relativeRecordSetName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var zoneName = _match.Groups["zoneName"].Value;
+                var relativeRecordSetName = _match.Groups["relativeRecordSetName"].Value;
+                var recordType = _match.Groups["recordType"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Network/dnsZones/"
+                        + zoneName
+                        + "/"
+                        + recordType
+                        + "/"
+                        + relativeRecordSetName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Method.Patch, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // add headers parameters
+                if (null != ifMatch)
+                {
+                    request.Headers.Add("If-Match",ifMatch);
+                }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.RecordSetsUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>update a record set within a DNS zone.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="zoneName">The name of the DNS zone (without a terminating dot).</param>
+        /// <param name="relativeRecordSetName">The name of the record set, relative to the name of the zone.</param>
+        /// <param name="recordType">The type of DNS record in this record set.</param>
+        /// <param name="ifMatch">The etag of the record set. Omit this value to always overwrite the current record set. Specify
+        /// the last-seen etag value to prevent accidentally overwriting concurrent changes.</param>
+        /// <param name="jsonString">Json string supplied to the RecordSetsUpdate operation</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task RecordSetsUpdateViaJsonString(string subscriptionId, string resourceGroupName, string zoneName, string relativeRecordSetName, string recordType, string ifMatch, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IRecordSet>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Network/dnsZones/"
+                        + global::System.Uri.EscapeDataString(zoneName)
+                        + "/"
+                        + global::System.Uri.EscapeDataString(recordType)
+                        + "/"
+                        + (relativeRecordSetName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Method.Patch, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // add headers parameters
+                if (null != ifMatch)
+                {
+                    request.Headers.Add("If-Match",ifMatch);
+                }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.RecordSetsUpdate_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>update a record set within a DNS zone.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="zoneName">The name of the DNS zone (without a terminating dot).</param>
+        /// <param name="relativeRecordSetName">The name of the record set, relative to the name of the zone.</param>
+        /// <param name="recordType">The type of DNS record in this record set.</param>
+        /// <param name="ifMatch">The etag of the record set. Omit this value to always overwrite the current record set. Specify
+        /// the last-seen etag value to prevent accidentally overwriting concurrent changes.</param>
+        /// <param name="jsonString">Json string supplied to the RecordSetsUpdate operation</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IRecordSet>" /> that will
+        /// be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IRecordSet> RecordSetsUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string zoneName, string relativeRecordSetName, string recordType, string ifMatch, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Network/dnsZones/"
+                        + global::System.Uri.EscapeDataString(zoneName)
+                        + "/"
+                        + global::System.Uri.EscapeDataString(recordType)
+                        + "/"
+                        + (relativeRecordSetName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Method.Patch, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // add headers parameters
+                if (null != ifMatch)
+                {
+                    request.Headers.Add("If-Match",ifMatch);
+                }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.RecordSetsUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>update a record set within a DNS zone.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="zoneName">The name of the DNS zone (without a terminating dot).</param>
+        /// <param name="relativeRecordSetName">The name of the record set, relative to the name of the zone.</param>
+        /// <param name="recordType">The type of DNS record in this record set.</param>
+        /// <param name="ifMatch">The etag of the record set. Omit this value to always overwrite the current record set. Specify
+        /// the last-seen etag value to prevent accidentally overwriting concurrent changes.</param>
+        /// <param name="body">Parameters supplied to the Update operation.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IRecordSet>" /> that will
+        /// be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IRecordSet> RecordSetsUpdateWithResult(string subscriptionId, string resourceGroupName, string zoneName, string relativeRecordSetName, string recordType, string ifMatch, Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IRecordSet body, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2023-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Network/dnsZones/"
+                        + global::System.Uri.EscapeDataString(zoneName)
+                        + "/"
+                        + global::System.Uri.EscapeDataString(recordType)
+                        + "/"
+                        + (relativeRecordSetName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Method.Patch, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // add headers parameters
+                if (null != ifMatch)
+                {
+                    request.Headers.Add("If-Match",ifMatch);
+                }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.RecordSetsUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "RecordSetsUpdateWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IRecordSet>" /> that will
+        /// be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IRecordSet> RecordSetsUpdateWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.RecordSet.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ICloudError>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "RecordSetsUpdate" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -2503,7 +4682,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task RecordSetsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IRecordSet>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task RecordSetsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IRecordSet>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2514,6 +4693,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -2521,13 +4701,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.RecordSet.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.RecordSet.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -2546,45 +4726,44 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
         /// Validation method for <see cref="RecordSetsUpdate" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="zoneName">The name of the DNS zone (without a terminating dot).</param>
         /// <param name="relativeRecordSetName">The name of the record set, relative to the name of the zone.</param>
         /// <param name="recordType">The type of DNS record in this record set.</param>
         /// <param name="ifMatch">The etag of the record set. Omit this value to always overwrite the current record set. Specify
         /// the last-seen etag value to prevent accidentally overwriting concurrent changes.</param>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="body">Parameters supplied to the Update operation.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task RecordSetsUpdate_Validate(string resourceGroupName, string zoneName, string relativeRecordSetName, Microsoft.Azure.PowerShell.Cmdlets.Dns.Support.RecordType recordType, string ifMatch, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IRecordSet body, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task RecordSetsUpdate_Validate(string subscriptionId, string resourceGroupName, string zoneName, string relativeRecordSetName, string recordType, string ifMatch, Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IRecordSet body, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(zoneName),zoneName);
                 await eventListener.AssertNotNull(nameof(relativeRecordSetName),relativeRecordSetName);
                 await eventListener.AssertNotNull(nameof(recordType),recordType);
-                await eventListener.AssertEnum(nameof(recordType),recordType,@"A", @"AAAA", @"CAA", @"CNAME", @"MX", @"NS", @"PTR", @"SOA", @"SRV", @"TXT", @"TLSA", @"DS", @"NAPTR");
                 await eventListener.AssertNotNull(nameof(ifMatch),ifMatch);
-                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(body), body);
                 await eventListener.AssertObjectIsValid(nameof(body), body);
             }
         }
 
-        /// <summary>Creates or updates a DNS zone. Does not modify DNS records within the zone.</summary>
+        /// <summary>update a DNS zone. Does not modify DNS records within the zone.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="zoneName">The name of the DNS zone (without a terminating dot).</param>
         /// <param name="ifMatch">The etag of the DNS zone. Omit this value to always overwrite the current zone. Specify the last-seen
         /// etag value to prevent accidentally overwriting any concurrent changes.</param>
         /// <param name="ifNoneMatch">Set to '*' to allow a new DNS zone to be created, but to prevent updating an existing zone.
         /// Other values will be ignored.</param>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="body">Parameters supplied to the CreateOrUpdate operation.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onCreated">a delegate that is called when the remote service returns 201 (Created).</param>
@@ -2592,10 +4771,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SerializationMode"/>.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ZonesCreateOrUpdate(string resourceGroupName, string zoneName, string ifMatch, string ifNoneMatch, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IZone body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IZone>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IZone>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ZonesCreateOrUpdate(string subscriptionId, string resourceGroupName, string zoneName, string ifMatch, string ifNoneMatch, Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IZone body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IZone>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IZone>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SerializationMode.IncludeUpdate)
         {
             var apiVersion = @"2023-07-01-preview";
             // Constant Parameters
@@ -2632,15 +4812,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
-                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ZonesCreateOrUpdate_Call(request,onOk,onCreated,onDefault,eventListener,sender);
+                await this.ZonesCreateOrUpdate_Call (request, onOk,onCreated,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Creates or updates a DNS zone. Does not modify DNS records within the zone.</summary>
+        /// <summary>update a DNS zone. Does not modify DNS records within the zone.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="ifMatch">The etag of the DNS zone. Omit this value to always overwrite the current zone. Specify the last-seen
         /// etag value to prevent accidentally overwriting any concurrent changes.</param>
@@ -2653,10 +4833,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SerializationMode"/>.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ZonesCreateOrUpdateViaIdentity(global::System.String viaIdentity, string ifMatch, string ifNoneMatch, Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IZone body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IZone>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IZone>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ZonesCreateOrUpdateViaIdentity(global::System.String viaIdentity, string ifMatch, string ifNoneMatch, Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IZone body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IZone>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IZone>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SerializationMode.IncludeUpdate)
         {
             var apiVersion = @"2023-07-01-preview";
             // Constant Parameters
@@ -2671,9 +4852,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
                 }
 
                 // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
                 var resourceGroupName = _match.Groups["resourceGroupName"].Value;
                 var zoneName = _match.Groups["zoneName"].Value;
-                var subscriptionId = _match.Groups["subscriptionId"].Value;
                 // construct URL
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
                         "/subscriptions/"
@@ -2705,15 +4886,336 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
-                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ZonesCreateOrUpdate_Call(request,onOk,onCreated,onDefault,eventListener,sender);
+                await this.ZonesCreateOrUpdate_Call (request, onOk,onCreated,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="ZonesCreateOrUpdate" /> method.</summary>
+        /// <summary>update a DNS zone. Does not modify DNS records within the zone.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="ifMatch">The etag of the DNS zone. Omit this value to always overwrite the current zone. Specify the last-seen
+        /// etag value to prevent accidentally overwriting any concurrent changes.</param>
+        /// <param name="ifNoneMatch">Set to '*' to allow a new DNS zone to be created, but to prevent updating an existing zone.
+        /// Other values will be ignored.</param>
+        /// <param name="body">Parameters supplied to the CreateOrUpdate operation.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IZone>" /> that will be
+        /// complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IZone> ZonesCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, string ifMatch, string ifNoneMatch, Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IZone body, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2023-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Network/dnsZones/(?<zoneName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var zoneName = _match.Groups["zoneName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Network/dnsZones/"
+                        + zoneName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // add headers parameters
+                if (null != ifMatch)
+                {
+                    request.Headers.Add("If-Match",ifMatch);
+                }
+                if (null != ifNoneMatch)
+                {
+                    request.Headers.Add("If-None-Match",ifNoneMatch);
+                }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ZonesCreateOrUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>update a DNS zone. Does not modify DNS records within the zone.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="zoneName">The name of the DNS zone (without a terminating dot).</param>
+        /// <param name="ifMatch">The etag of the DNS zone. Omit this value to always overwrite the current zone. Specify the last-seen
+        /// etag value to prevent accidentally overwriting any concurrent changes.</param>
+        /// <param name="ifNoneMatch">Set to '*' to allow a new DNS zone to be created, but to prevent updating an existing zone.
+        /// Other values will be ignored.</param>
+        /// <param name="jsonString">Json string supplied to the ZonesCreateOrUpdate operation</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onCreated">a delegate that is called when the remote service returns 201 (Created).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ZonesCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string zoneName, string ifMatch, string ifNoneMatch, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IZone>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IZone>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Network/dnsZones/"
+                        + global::System.Uri.EscapeDataString(zoneName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // add headers parameters
+                if (null != ifMatch)
+                {
+                    request.Headers.Add("If-Match",ifMatch);
+                }
+                if (null != ifNoneMatch)
+                {
+                    request.Headers.Add("If-None-Match",ifNoneMatch);
+                }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ZonesCreateOrUpdate_Call (request, onOk,onCreated,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>update a DNS zone. Does not modify DNS records within the zone.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="zoneName">The name of the DNS zone (without a terminating dot).</param>
+        /// <param name="ifMatch">The etag of the DNS zone. Omit this value to always overwrite the current zone. Specify the last-seen
+        /// etag value to prevent accidentally overwriting any concurrent changes.</param>
+        /// <param name="ifNoneMatch">Set to '*' to allow a new DNS zone to be created, but to prevent updating an existing zone.
+        /// Other values will be ignored.</param>
+        /// <param name="jsonString">Json string supplied to the ZonesCreateOrUpdate operation</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IZone>" /> that will be
+        /// complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IZone> ZonesCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string zoneName, string ifMatch, string ifNoneMatch, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Network/dnsZones/"
+                        + global::System.Uri.EscapeDataString(zoneName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // add headers parameters
+                if (null != ifMatch)
+                {
+                    request.Headers.Add("If-Match",ifMatch);
+                }
+                if (null != ifNoneMatch)
+                {
+                    request.Headers.Add("If-None-Match",ifNoneMatch);
+                }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ZonesCreateOrUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>update a DNS zone. Does not modify DNS records within the zone.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="zoneName">The name of the DNS zone (without a terminating dot).</param>
+        /// <param name="ifMatch">The etag of the DNS zone. Omit this value to always overwrite the current zone. Specify the last-seen
+        /// etag value to prevent accidentally overwriting any concurrent changes.</param>
+        /// <param name="ifNoneMatch">Set to '*' to allow a new DNS zone to be created, but to prevent updating an existing zone.
+        /// Other values will be ignored.</param>
+        /// <param name="body">Parameters supplied to the CreateOrUpdate operation.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IZone>" /> that will be
+        /// complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IZone> ZonesCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string zoneName, string ifMatch, string ifNoneMatch, Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IZone body, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2023-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Network/dnsZones/"
+                        + global::System.Uri.EscapeDataString(zoneName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // add headers parameters
+                if (null != ifMatch)
+                {
+                    request.Headers.Add("If-Match",ifMatch);
+                }
+                if (null != ifNoneMatch)
+                {
+                    request.Headers.Add("If-None-Match",ifNoneMatch);
+                }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ZonesCreateOrUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ZonesCreateOrUpdateWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IZone>" /> that will be
+        /// complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IZone> ZonesCreateOrUpdateWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Zone.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        case global::System.Net.HttpStatusCode.Created:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Zone.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ICloudError>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ZonesCreateOrUpdate" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onCreated">a delegate that is called when the remote service returns 201 (Created).</param>
@@ -2724,7 +5226,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ZonesCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IZone>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IZone>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ZonesCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IZone>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IZone>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2735,6 +5237,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -2742,19 +5245,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.Zone.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Zone.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         case global::System.Net.HttpStatusCode.Created:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onCreated(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.Zone.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onCreated(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Zone.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -2773,30 +5276,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
         /// Validation method for <see cref="ZonesCreateOrUpdate" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="zoneName">The name of the DNS zone (without a terminating dot).</param>
         /// <param name="ifMatch">The etag of the DNS zone. Omit this value to always overwrite the current zone. Specify the last-seen
         /// etag value to prevent accidentally overwriting any concurrent changes.</param>
         /// <param name="ifNoneMatch">Set to '*' to allow a new DNS zone to be created, but to prevent updating an existing zone.
         /// Other values will be ignored.</param>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="body">Parameters supplied to the CreateOrUpdate operation.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ZonesCreateOrUpdate_Validate(string resourceGroupName, string zoneName, string ifMatch, string ifNoneMatch, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IZone body, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ZonesCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string zoneName, string ifMatch, string ifNoneMatch, Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IZone body, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(zoneName),zoneName);
                 await eventListener.AssertNotNull(nameof(ifMatch),ifMatch);
                 await eventListener.AssertNotNull(nameof(ifNoneMatch),ifNoneMatch);
-                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(body), body);
                 await eventListener.AssertObjectIsValid(nameof(body), body);
             }
@@ -2805,11 +5308,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
         /// <summary>
         /// Deletes a DNS zone. WARNING: All DNS records in the zone will also be deleted. This operation cannot be undone.
         /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="zoneName">The name of the DNS zone (without a terminating dot).</param>
         /// <param name="ifMatch">The etag of the DNS zone. Omit this value to always delete the current zone. Specify the last-seen
         /// etag value to prevent accidentally deleting any concurrent changes.</param>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -2819,7 +5322,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ZonesDelete(string resourceGroupName, string zoneName, string ifMatch, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ZonesDelete(string subscriptionId, string resourceGroupName, string zoneName, string ifMatch, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2023-07-01-preview";
             // Constant Parameters
@@ -2852,7 +5355,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ZonesDelete_Call(request,onOk,onNoContent,onDefault,eventListener,sender);
+                await this.ZonesDelete_Call (request, onOk,onNoContent,onDefault,eventListener,sender);
             }
         }
 
@@ -2871,7 +5374,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ZonesDeleteViaIdentity(global::System.String viaIdentity, string ifMatch, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ZonesDeleteViaIdentity(global::System.String viaIdentity, string ifMatch, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2023-07-01-preview";
             // Constant Parameters
@@ -2886,9 +5389,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
                 }
 
                 // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
                 var resourceGroupName = _match.Groups["resourceGroupName"].Value;
                 var zoneName = _match.Groups["zoneName"].Value;
-                var subscriptionId = _match.Groups["subscriptionId"].Value;
                 // construct URL
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
                         "/subscriptions/"
@@ -2916,11 +5419,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ZonesDelete_Call(request,onOk,onNoContent,onDefault,eventListener,sender);
+                await this.ZonesDelete_Call (request, onOk,onNoContent,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="ZonesDelete" /> method.</summary>
+        /// <summary>Actual wire call for <see cref= "ZonesDelete" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
@@ -2931,32 +5434,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ZonesDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ZonesDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
-                    var sendTask = sender.SendAsync(request, eventListener);
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    _response = await sendTask;
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                     // this operation supports x-ms-long-running-operation
                     var _originalUri = request.RequestUri.AbsoluteUri;
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                     // declared final-state-via: default
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
-
-                        // get the delay before polling. (default to 30 seconds if not present)
-                        int delay = (int)(_response.Headers.RetryAfter?.Delta?.TotalSeconds ?? 30);
-                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.DelayBeforePolling, $"Delaying {delay} seconds before polling.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                        // start the delay timer (we'll await later...)
-                        var waiting = global::System.Threading.Tasks.Task.Delay(delay * 1000, eventListener.Token );
+                        // delay before making the next polling request
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                         // while we wait, let's grab the headers and get ready to poll.
                         if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
@@ -2965,15 +5465,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
                         var content = await _response.Content.ReadAsStringAsync();
-                        await waiting;
-
-                        // check for cancellation
-                        if( eventListener.Token.IsCancellationRequested ) { return; }
 
                         // drop the old response
                         _response?.Dispose();
@@ -2982,45 +5481,45 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
                         _response = await sender.SendAsync(request, eventListener);
                         await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                        // if we got back an OK, take a peek inside and see if it's done
-                        if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
-                        {
-                            var error = false;
-                            try {
-                                if( Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonObject json)
-                                {
-                                    var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonString>("status");
-                                    if( state is null )
-                                    {
-                                        // the body doesn't contain any information that has the state of the LRO
-                                        // we're going to just get out, and let the consumer have the result
-                                        break;
-                                    }
-
-                                    switch( state?.ToString()?.ToLower() )
-                                    {
-                                      case "failed":
-                                          error = true;
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
                                           break;
-                                      case "succeeded":
-                                      case "canceled":
-                                        // we're done polling.
-                                        break;
+                                      }
 
-                                      default:
-                                        // need to keep polling!
-                                        _response.StatusCode = global::System.Net.HttpStatusCode.Created;
-                                        continue;
-                                    }
-                                }
-                            } catch {
-                                // if we run into a problem peeking into the result,
-                                // we really don't want to do anything special.
-                            }
-                            if (error) {
-                                throw new Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.UndeclaredResponseException(_response);
-                            }
-                        }
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
 
                         // check for terminal status code
                         if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
@@ -3042,6 +5541,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
                             break;
                         }
                     }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -3061,7 +5561,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -3080,35 +5580,35 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
         /// Validation method for <see cref="ZonesDelete" /> method. Call this like the actual call, but you will get validation events
         /// back.
         /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="zoneName">The name of the DNS zone (without a terminating dot).</param>
         /// <param name="ifMatch">The etag of the DNS zone. Omit this value to always delete the current zone. Specify the last-seen
         /// etag value to prevent accidentally deleting any concurrent changes.</param>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ZonesDelete_Validate(string resourceGroupName, string zoneName, string ifMatch, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ZonesDelete_Validate(string subscriptionId, string resourceGroupName, string zoneName, string ifMatch, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(zoneName),zoneName);
                 await eventListener.AssertNotNull(nameof(ifMatch),ifMatch);
-                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
             }
         }
 
         /// <summary>
         /// Gets a DNS zone. Retrieves the zone properties, but not the record sets within the zone.
         /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="zoneName">The name of the DNS zone (without a terminating dot).</param>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -3117,7 +5617,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ZonesGet(string resourceGroupName, string zoneName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IZone>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ZonesGet(string subscriptionId, string resourceGroupName, string zoneName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IZone>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2023-07-01-preview";
             // Constant Parameters
@@ -3144,7 +5644,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ZonesGet_Call(request,onOk,onDefault,eventListener,sender);
+                await this.ZonesGet_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -3160,7 +5660,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ZonesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IZone>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ZonesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IZone>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2023-07-01-preview";
             // Constant Parameters
@@ -3175,9 +5675,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
                 }
 
                 // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
                 var resourceGroupName = _match.Groups["resourceGroupName"].Value;
                 var zoneName = _match.Groups["zoneName"].Value;
-                var subscriptionId = _match.Groups["subscriptionId"].Value;
                 // construct URL
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
                         "/subscriptions/"
@@ -3199,11 +5699,167 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ZonesGet_Call(request,onOk,onDefault,eventListener,sender);
+                await this.ZonesGet_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="ZonesGet" /> method.</summary>
+        /// <summary>
+        /// Gets a DNS zone. Retrieves the zone properties, but not the record sets within the zone.
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IZone>" /> that will be
+        /// complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IZone> ZonesGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Network/dnsZones/(?<zoneName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var zoneName = _match.Groups["zoneName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Network/dnsZones/"
+                        + zoneName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ZonesGetWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Gets a DNS zone. Retrieves the zone properties, but not the record sets within the zone.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="zoneName">The name of the DNS zone (without a terminating dot).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IZone>" /> that will be
+        /// complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IZone> ZonesGetWithResult(string subscriptionId, string resourceGroupName, string zoneName, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Network/dnsZones/"
+                        + global::System.Uri.EscapeDataString(zoneName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ZonesGetWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ZonesGetWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IZone>" /> that will be
+        /// complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IZone> ZonesGetWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Zone.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ICloudError>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ZonesGet" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -3213,7 +5869,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ZonesGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IZone>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ZonesGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IZone>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3224,6 +5880,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -3231,13 +5888,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.Zone.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Zone.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -3256,29 +5913,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
         /// Validation method for <see cref="ZonesGet" /> method. Call this like the actual call, but you will get validation events
         /// back.
         /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="zoneName">The name of the DNS zone (without a terminating dot).</param>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ZonesGet_Validate(string resourceGroupName, string zoneName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ZonesGet_Validate(string subscriptionId, string resourceGroupName, string zoneName, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(zoneName),zoneName);
-                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
             }
         }
 
         /// <summary>Lists the DNS zones in all resource groups in a subscription.</summary>
-        /// <param name="Top">The maximum number of DNS zones to return. If not specified, returns up to 100 zones.</param>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="Top">The maximum number of DNS zones to return. If not specified, returns up to 100 zones.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -3287,7 +5944,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ZonesList(int? Top, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IZoneListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ZonesList(string subscriptionId, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IZoneListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2023-07-01-preview";
             // Constant Parameters
@@ -3313,14 +5970,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ZonesList_Call(request,onOk,onDefault,eventListener,sender);
+                await this.ZonesList_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Lists the DNS zones within a resource group.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="Top">The maximum number of record sets to return. If not specified, returns up to 100 record sets.</param>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -3329,7 +5986,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ZonesListByResourceGroup(string resourceGroupName, int? Top, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IZoneListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ZonesListByResourceGroup(string subscriptionId, string resourceGroupName, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IZoneListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2023-07-01-preview";
             // Constant Parameters
@@ -3357,7 +6014,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ZonesListByResourceGroup_Call(request,onOk,onDefault,eventListener,sender);
+                await this.ZonesListByResourceGroup_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -3372,7 +6029,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ZonesListByResourceGroupViaIdentity(global::System.String viaIdentity, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IZoneListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ZonesListByResourceGroupViaIdentity(global::System.String viaIdentity, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IZoneListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2023-07-01-preview";
             // Constant Parameters
@@ -3387,8 +6044,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
                 }
 
                 // replace URI parameters with values from identity
-                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
                 var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
                 // construct URL
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
                         "/subscriptions/"
@@ -3411,11 +6068,165 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ZonesListByResourceGroup_Call(request,onOk,onDefault,eventListener,sender);
+                await this.ZonesListByResourceGroup_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="ZonesListByResourceGroup" /> method.</summary>
+        /// <summary>Lists the DNS zones within a resource group.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="Top">The maximum number of record sets to return. If not specified, returns up to 100 record sets.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IZoneListResult>" /> that
+        /// will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IZoneListResult> ZonesListByResourceGroupViaIdentityWithResult(global::System.String viaIdentity, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Network/dnsZones$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Network/dnsZones"
+                        + "?"
+                        + (null == Top ? global::System.String.Empty : "$top=" + global::System.Uri.EscapeDataString(Top.ToString()))
+                        + "&"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ZonesListByResourceGroupWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Lists the DNS zones within a resource group.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="Top">The maximum number of record sets to return. If not specified, returns up to 100 record sets.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IZoneListResult>" /> that
+        /// will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IZoneListResult> ZonesListByResourceGroupWithResult(string subscriptionId, string resourceGroupName, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Network/dnsZones"
+                        + "?"
+                        + (null == Top ? global::System.String.Empty : "$top=" + global::System.Uri.EscapeDataString(Top.ToString()))
+                        + "&"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ZonesListByResourceGroupWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ZonesListByResourceGroupWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IZoneListResult>" /> that
+        /// will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IZoneListResult> ZonesListByResourceGroupWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ZoneListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ICloudError>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ZonesListByResourceGroup" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -3425,7 +6236,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ZonesListByResourceGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IZoneListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ZonesListByResourceGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IZoneListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3436,6 +6247,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -3443,13 +6255,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.ZoneListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ZoneListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -3468,22 +6280,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
         /// Validation method for <see cref="ZonesListByResourceGroup" /> method. Call this like the actual call, but you will get
         /// validation events back.
         /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="Top">The maximum number of record sets to return. If not specified, returns up to 100 record sets.</param>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ZonesListByResourceGroup_Validate(string resourceGroupName, int? Top, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ZonesListByResourceGroup_Validate(string subscriptionId, string resourceGroupName, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
-                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
             }
         }
 
@@ -3498,7 +6310,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ZonesListViaIdentity(global::System.String viaIdentity, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IZoneListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ZonesListViaIdentity(global::System.String viaIdentity, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IZoneListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2023-07-01-preview";
             // Constant Parameters
@@ -3534,11 +6346,159 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ZonesList_Call(request,onOk,onDefault,eventListener,sender);
+                await this.ZonesList_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="ZonesList" /> method.</summary>
+        /// <summary>Lists the DNS zones in all resource groups in a subscription.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="Top">The maximum number of DNS zones to return. If not specified, returns up to 100 zones.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IZoneListResult>" /> that
+        /// will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IZoneListResult> ZonesListViaIdentityWithResult(global::System.String viaIdentity, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.Network/dnszones$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.Network/dnszones'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/providers/Microsoft.Network/dnszones"
+                        + "?"
+                        + (null == Top ? global::System.String.Empty : "$top=" + global::System.Uri.EscapeDataString(Top.ToString()))
+                        + "&"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ZonesListWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Lists the DNS zones in all resource groups in a subscription.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="Top">The maximum number of DNS zones to return. If not specified, returns up to 100 zones.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IZoneListResult>" /> that
+        /// will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IZoneListResult> ZonesListWithResult(string subscriptionId, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/providers/Microsoft.Network/dnszones"
+                        + "?"
+                        + (null == Top ? global::System.String.Empty : "$top=" + global::System.Uri.EscapeDataString(Top.ToString()))
+                        + "&"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ZonesListWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ZonesListWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IZoneListResult>" /> that
+        /// will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IZoneListResult> ZonesListWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ZoneListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ICloudError>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ZonesList" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -3548,7 +6508,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ZonesList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IZoneListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ZonesList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IZoneListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3559,6 +6519,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -3566,13 +6527,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.ZoneListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ZoneListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -3591,13 +6552,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
         /// Validation method for <see cref="ZonesList" /> method. Call this like the actual call, but you will get validation events
         /// back.
         /// </summary>
-        /// <param name="Top">The maximum number of DNS zones to return. If not specified, returns up to 100 zones.</param>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="Top">The maximum number of DNS zones to return. If not specified, returns up to 100 zones.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ZonesList_Validate(int? Top, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ZonesList_Validate(string subscriptionId, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -3606,22 +6567,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
             }
         }
 
-        /// <summary>Updates a DNS zone. Does not modify DNS records within the zone.</summary>
+        /// <summary>update a DNS zone. Does not modify DNS records within the zone.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="zoneName">The name of the DNS zone (without a terminating dot).</param>
         /// <param name="ifMatch">The etag of the DNS zone. Omit this value to always overwrite the current zone. Specify the last-seen
         /// etag value to prevent accidentally overwriting any concurrent changes.</param>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="body">Parameters supplied to the Update operation.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SerializationMode"/>.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ZonesUpdate(string resourceGroupName, string zoneName, string ifMatch, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IZoneUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IZone>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ZonesUpdate(string subscriptionId, string resourceGroupName, string zoneName, string ifMatch, Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IZoneUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IZone>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SerializationMode.IncludeUpdate)
         {
             var apiVersion = @"2023-07-01-preview";
             // Constant Parameters
@@ -3654,15 +6616,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
-                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ZonesUpdate_Call(request,onOk,onDefault,eventListener,sender);
+                await this.ZonesUpdate_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Updates a DNS zone. Does not modify DNS records within the zone.</summary>
+        /// <summary>update a DNS zone. Does not modify DNS records within the zone.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="ifMatch">The etag of the DNS zone. Omit this value to always overwrite the current zone. Specify the last-seen
         /// etag value to prevent accidentally overwriting any concurrent changes.</param>
@@ -3672,10 +6634,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SerializationMode"/>.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ZonesUpdateViaIdentity(global::System.String viaIdentity, string ifMatch, Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IZoneUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IZone>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ZonesUpdateViaIdentity(global::System.String viaIdentity, string ifMatch, Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IZoneUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IZone>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SerializationMode.IncludeUpdate)
         {
             var apiVersion = @"2023-07-01-preview";
             // Constant Parameters
@@ -3690,9 +6653,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
                 }
 
                 // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
                 var resourceGroupName = _match.Groups["resourceGroupName"].Value;
                 var zoneName = _match.Groups["zoneName"].Value;
-                var subscriptionId = _match.Groups["subscriptionId"].Value;
                 // construct URL
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
                         "/subscriptions/"
@@ -3720,15 +6683,305 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
-                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ZonesUpdate_Call(request,onOk,onDefault,eventListener,sender);
+                await this.ZonesUpdate_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="ZonesUpdate" /> method.</summary>
+        /// <summary>update a DNS zone. Does not modify DNS records within the zone.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="ifMatch">The etag of the DNS zone. Omit this value to always overwrite the current zone. Specify the last-seen
+        /// etag value to prevent accidentally overwriting any concurrent changes.</param>
+        /// <param name="body">Parameters supplied to the Update operation.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IZone>" /> that will be
+        /// complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IZone> ZonesUpdateViaIdentityWithResult(global::System.String viaIdentity, string ifMatch, Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IZoneUpdate body, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2023-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Network/dnsZones/(?<zoneName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var zoneName = _match.Groups["zoneName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Network/dnsZones/"
+                        + zoneName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Method.Patch, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // add headers parameters
+                if (null != ifMatch)
+                {
+                    request.Headers.Add("If-Match",ifMatch);
+                }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ZonesUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>update a DNS zone. Does not modify DNS records within the zone.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="zoneName">The name of the DNS zone (without a terminating dot).</param>
+        /// <param name="ifMatch">The etag of the DNS zone. Omit this value to always overwrite the current zone. Specify the last-seen
+        /// etag value to prevent accidentally overwriting any concurrent changes.</param>
+        /// <param name="jsonString">Json string supplied to the ZonesUpdate operation</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ZonesUpdateViaJsonString(string subscriptionId, string resourceGroupName, string zoneName, string ifMatch, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IZone>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Network/dnsZones/"
+                        + global::System.Uri.EscapeDataString(zoneName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Method.Patch, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // add headers parameters
+                if (null != ifMatch)
+                {
+                    request.Headers.Add("If-Match",ifMatch);
+                }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ZonesUpdate_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>update a DNS zone. Does not modify DNS records within the zone.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="zoneName">The name of the DNS zone (without a terminating dot).</param>
+        /// <param name="ifMatch">The etag of the DNS zone. Omit this value to always overwrite the current zone. Specify the last-seen
+        /// etag value to prevent accidentally overwriting any concurrent changes.</param>
+        /// <param name="jsonString">Json string supplied to the ZonesUpdate operation</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IZone>" /> that will be
+        /// complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IZone> ZonesUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string zoneName, string ifMatch, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Network/dnsZones/"
+                        + global::System.Uri.EscapeDataString(zoneName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Method.Patch, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // add headers parameters
+                if (null != ifMatch)
+                {
+                    request.Headers.Add("If-Match",ifMatch);
+                }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ZonesUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>update a DNS zone. Does not modify DNS records within the zone.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="zoneName">The name of the DNS zone (without a terminating dot).</param>
+        /// <param name="ifMatch">The etag of the DNS zone. Omit this value to always overwrite the current zone. Specify the last-seen
+        /// etag value to prevent accidentally overwriting any concurrent changes.</param>
+        /// <param name="body">Parameters supplied to the Update operation.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IZone>" /> that will be
+        /// complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IZone> ZonesUpdateWithResult(string subscriptionId, string resourceGroupName, string zoneName, string ifMatch, Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IZoneUpdate body, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2023-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Network/dnsZones/"
+                        + global::System.Uri.EscapeDataString(zoneName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Method.Patch, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // add headers parameters
+                if (null != ifMatch)
+                {
+                    request.Headers.Add("If-Match",ifMatch);
+                }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ZonesUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ZonesUpdateWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IZone>" /> that will be
+        /// complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IZone> ZonesUpdateWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Zone.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ICloudError>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ZonesUpdate" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -3738,7 +6991,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ZonesUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IZone>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ZonesUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IZone>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3749,6 +7002,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -3756,13 +7010,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.Zone.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Zone.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -3781,27 +7035,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns
         /// Validation method for <see cref="ZonesUpdate" /> method. Call this like the actual call, but you will get validation events
         /// back.
         /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="zoneName">The name of the DNS zone (without a terminating dot).</param>
         /// <param name="ifMatch">The etag of the DNS zone. Omit this value to always overwrite the current zone. Specify the last-seen
         /// etag value to prevent accidentally overwriting any concurrent changes.</param>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="body">Parameters supplied to the Update operation.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ZonesUpdate_Validate(string resourceGroupName, string zoneName, string ifMatch, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IZoneUpdate body, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ZonesUpdate_Validate(string subscriptionId, string resourceGroupName, string zoneName, string ifMatch, Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IZoneUpdate body, Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(zoneName),zoneName);
                 await eventListener.AssertNotNull(nameof(ifMatch),ifMatch);
-                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(body), body);
                 await eventListener.AssertObjectIsValid(nameof(body), body);
             }

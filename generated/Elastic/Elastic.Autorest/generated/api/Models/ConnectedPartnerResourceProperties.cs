@@ -16,30 +16,37 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
         /// <summary>Backing field for <see cref="AzureResourceId" /> property.</summary>
         private string _azureResourceId;
 
-        /// <summary>The azure resource Id of the deployment.</summary>
+        /// <summary>The azure resource Id of the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Origin(Microsoft.Azure.PowerShell.Cmdlets.Elastic.PropertyOrigin.Owned)]
         public string AzureResourceId { get => this._azureResourceId; set => this._azureResourceId = value; }
 
         /// <summary>Backing field for <see cref="Location" /> property.</summary>
         private string _location;
 
-        /// <summary>The location of the deployment.</summary>
+        /// <summary>The location of the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Origin(Microsoft.Azure.PowerShell.Cmdlets.Elastic.PropertyOrigin.Owned)]
         public string Location { get => this._location; set => this._location = value; }
 
         /// <summary>Backing field for <see cref="PartnerDeploymentName" /> property.</summary>
         private string _partnerDeploymentName;
 
-        /// <summary>Elastic deployment name</summary>
+        /// <summary>Elastic resource name</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Origin(Microsoft.Azure.PowerShell.Cmdlets.Elastic.PropertyOrigin.Owned)]
         public string PartnerDeploymentName { get => this._partnerDeploymentName; set => this._partnerDeploymentName = value; }
 
         /// <summary>Backing field for <see cref="PartnerDeploymentUri" /> property.</summary>
         private string _partnerDeploymentUri;
 
-        /// <summary>Deployment URL of the elasticsearch in Elastic cloud deployment.</summary>
+        /// <summary>URL of the resource in Elastic cloud.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Origin(Microsoft.Azure.PowerShell.Cmdlets.Elastic.PropertyOrigin.Owned)]
         public string PartnerDeploymentUri { get => this._partnerDeploymentUri; set => this._partnerDeploymentUri = value; }
+
+        /// <summary>Backing field for <see cref="Type" /> property.</summary>
+        private string _type;
+
+        /// <summary>The hosting type of the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Origin(Microsoft.Azure.PowerShell.Cmdlets.Elastic.PropertyOrigin.Owned)]
+        public string Type { get => this._type; set => this._type = value; }
 
         /// <summary>Creates an new <see cref="ConnectedPartnerResourceProperties" /> instance.</summary>
         public ConnectedPartnerResourceProperties()
@@ -51,64 +58,77 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
     public partial interface IConnectedPartnerResourceProperties :
         Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IJsonSerializable
     {
-        /// <summary>The azure resource Id of the deployment.</summary>
+        /// <summary>The azure resource Id of the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The azure resource Id of the deployment.",
+        Description = @"The azure resource Id of the resource.",
         SerializedName = @"azureResourceId",
         PossibleTypes = new [] { typeof(string) })]
         string AzureResourceId { get; set; }
-        /// <summary>The location of the deployment.</summary>
+        /// <summary>The location of the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The location of the deployment.",
+        Description = @"The location of the resource.",
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
         string Location { get; set; }
-        /// <summary>Elastic deployment name</summary>
+        /// <summary>Elastic resource name</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Elastic deployment name",
+        Description = @"Elastic resource name",
         SerializedName = @"partnerDeploymentName",
         PossibleTypes = new [] { typeof(string) })]
         string PartnerDeploymentName { get; set; }
-        /// <summary>Deployment URL of the elasticsearch in Elastic cloud deployment.</summary>
+        /// <summary>URL of the resource in Elastic cloud.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Deployment URL of the elasticsearch in Elastic cloud deployment.",
+        Description = @"URL of the resource in Elastic cloud.",
         SerializedName = @"partnerDeploymentUri",
         PossibleTypes = new [] { typeof(string) })]
         string PartnerDeploymentUri { get; set; }
+        /// <summary>The hosting type of the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The hosting type of the resource.",
+        SerializedName = @"type",
+        PossibleTypes = new [] { typeof(string) })]
+        string Type { get; set; }
 
     }
     /// Connected Partner Resource Properties
     internal partial interface IConnectedPartnerResourcePropertiesInternal
 
     {
-        /// <summary>The azure resource Id of the deployment.</summary>
+        /// <summary>The azure resource Id of the resource.</summary>
         string AzureResourceId { get; set; }
-        /// <summary>The location of the deployment.</summary>
+        /// <summary>The location of the resource.</summary>
         string Location { get; set; }
-        /// <summary>Elastic deployment name</summary>
+        /// <summary>Elastic resource name</summary>
         string PartnerDeploymentName { get; set; }
-        /// <summary>Deployment URL of the elasticsearch in Elastic cloud deployment.</summary>
+        /// <summary>URL of the resource in Elastic cloud.</summary>
         string PartnerDeploymentUri { get; set; }
+        /// <summary>The hosting type of the resource.</summary>
+        string Type { get; set; }
 
     }
 }

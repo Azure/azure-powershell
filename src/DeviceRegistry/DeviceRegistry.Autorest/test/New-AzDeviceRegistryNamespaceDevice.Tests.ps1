@@ -19,6 +19,9 @@ Describe 'New-AzDeviceRegistryNamespaceDevice' {
         $testConfig = $env.namespaceDeviceTests.createTests.CreateExpanded
         $commonProperties = $env.namespaceDeviceTests.createTests.commonProperties
         $namespaceName = $env.namespaceDeviceTests.namespaceName
+        $resourceGroupName = $env.namespaceDeviceTests.resourceGroupName
+        $extendedLocationName = $env.namespaceDeviceTests.extendedLocationName
+        $location = $env.namespaceDeviceTests.location
         $outboundAssigned = @{
             $commonProperties.outboundEndpointName = @{
                 address = $commonProperties.outboundAddress
@@ -41,11 +44,11 @@ Describe 'New-AzDeviceRegistryNamespaceDevice' {
             }
         }
 
-        $result = New-AzDeviceRegistryNamespaceDevice -ResourceGroupName $env.resourceGroup -NamespaceName $namespaceName -DeviceName $testConfig.name -Location $env.location -ExtendedLocationName $env.extendedLocationName -ExtendedLocationType $env.extendedLocationType -Manufacturer $commonProperties.manufacturer -Model $commonProperties.model -OperatingSystem $commonProperties.operatingSystem -OperatingSystemVersion $commonProperties.operatingSystemVersion -OutboundAssigned $outboundAssigned -EndpointsInbound $endpointsInbound -Enabled
-        
+        $result = New-AzDeviceRegistryNamespaceDevice -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -DeviceName $testConfig.name -Location $location -ExtendedLocationName $extendedLocationName -ExtendedLocationType $env.extendedLocationType -Manufacturer $commonProperties.manufacturer -Model $commonProperties.model -OperatingSystem $commonProperties.operatingSystem -OperatingSystemVersion $commonProperties.operatingSystemVersion -OutboundAssigned $outboundAssigned -EndpointsInbound $endpointsInbound -Enabled
+
         $result.Name | Should -Be $testConfig.name
-        $result.Location | Should -Be $env.location
-        $result.ExtendedLocationName | Should -Be $env.extendedLocationName
+        $result.Location | Should -Be $location
+        $result.ExtendedLocationName | Should -Be $extendedLocationName
         $result.ExtendedLocationType | Should -Be $env.extendedLocationType
         $result.Enabled | Should -Be $commonProperties.enabled
         $result.Manufacturer | Should -Be $commonProperties.manufacturer
@@ -68,14 +71,17 @@ Describe 'New-AzDeviceRegistryNamespaceDevice' {
     It 'CreateViaJsonFilePath' {
         $testConfig = $env.namespaceDeviceTests.createTests.CreateViaJsonFilePath
         $commonProperties = $env.namespaceDeviceTests.createTests.commonProperties
+        $resourceGroupName = $env.namespaceDeviceTests.resourceGroupName
+        $extendedLocationName = $env.namespaceDeviceTests.extendedLocationName
+        $location = $env.namespaceDeviceTests.location
         $namespaceName = $env.namespaceDeviceTests.namespaceName
         $jsonFilePath = Join-Path $PSScriptRoot $testConfig.jsonFilePath
-        
-        $result = New-AzDeviceRegistryNamespaceDevice -ResourceGroupName $env.resourceGroup -NamespaceName $namespaceName -DeviceName $testConfig.name -JsonFilePath $jsonFilePath
-        
+
+        $result = New-AzDeviceRegistryNamespaceDevice -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -DeviceName $testConfig.name -JsonFilePath $jsonFilePath
+
         $result.Name | Should -Be $testConfig.name
-        $result.Location | Should -Be $env.location
-        $result.ExtendedLocationName | Should -Be $env.extendedLocationName
+        $result.Location | Should -Be $location
+        $result.ExtendedLocationName | Should -Be $extendedLocationName
         $result.ExtendedLocationType | Should -Be $env.extendedLocationType
         $result.Enabled | Should -Be $commonProperties.enabled
         $result.Manufacturer | Should -Be $commonProperties.manufacturer
@@ -90,6 +96,8 @@ Describe 'New-AzDeviceRegistryNamespaceDevice' {
         $result.EndpointsInbound[$commonProperties.inboundEndpointName1].EndpointType | Should -Be $commonProperties.inboundEndpointType1
         $result.EndpointsInbound[$commonProperties.inboundEndpointName1].AuthenticationMethod | Should -Be $commonProperties.authenticationMethod1
         $result.EndpointsInbound[$commonProperties.inboundEndpointName1].X509CredentialsCertificateSecretName | Should -Be $commonProperties.certificateSecretName
+        $result.EndpointsInbound[$commonProperties.inboundEndpointName1].X509CredentialsKeySecretName | Should -Be $commonProperties.keySecretName
+        $result.EndpointsInbound[$commonProperties.inboundEndpointName1].X509CredentialsIntermediateCertificatesSecretName | Should -Be $commonProperties.intermediateCertificatesSecretName
         $result.EndpointsInbound[$commonProperties.inboundEndpointName2].Address | Should -Be $commonProperties.inboundAddress2
         $result.EndpointsInbound[$commonProperties.inboundEndpointName2].EndpointType | Should -Be $commonProperties.inboundEndpointType2
         $result.EndpointsInbound[$commonProperties.inboundEndpointName2].AuthenticationMethod | Should -Be $commonProperties.authenticationMethod2
@@ -98,15 +106,18 @@ Describe 'New-AzDeviceRegistryNamespaceDevice' {
     It 'CreateViaJsonString' {
         $testConfig = $env.namespaceDeviceTests.createTests.CreateViaJsonString
         $commonProperties = $env.namespaceDeviceTests.createTests.commonProperties
+        $resourceGroupName = $env.namespaceDeviceTests.resourceGroupName
+        $extendedLocationName = $env.namespaceDeviceTests.extendedLocationName
+        $location = $env.namespaceDeviceTests.location
         $namespaceName = $env.namespaceDeviceTests.namespaceName
         $jsonFilePath = Join-Path $PSScriptRoot $testConfig.jsonFilePath
         $jsonString = Get-Content -Path $jsonFilePath -Raw
-        
-        $result = New-AzDeviceRegistryNamespaceDevice -ResourceGroupName $env.resourceGroup -NamespaceName $namespaceName -DeviceName $testConfig.name -JsonString $jsonString
+
+        $result = New-AzDeviceRegistryNamespaceDevice -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -DeviceName $testConfig.name -JsonString $jsonString
         
         $result.Name | Should -Be $testConfig.name
-        $result.Location | Should -Be $env.location
-        $result.ExtendedLocationName | Should -Be $env.extendedLocationName
+        $result.Location | Should -Be $location
+        $result.ExtendedLocationName | Should -Be $extendedLocationName
         $result.ExtendedLocationType | Should -Be $env.extendedLocationType
         $result.Enabled | Should -Be $commonProperties.enabled
         $result.Manufacturer | Should -Be $commonProperties.manufacturer
@@ -121,6 +132,8 @@ Describe 'New-AzDeviceRegistryNamespaceDevice' {
         $result.EndpointsInbound[$commonProperties.inboundEndpointName1].EndpointType | Should -Be $commonProperties.inboundEndpointType1
         $result.EndpointsInbound[$commonProperties.inboundEndpointName1].AuthenticationMethod | Should -Be $commonProperties.authenticationMethod1
         $result.EndpointsInbound[$commonProperties.inboundEndpointName1].X509CredentialsCertificateSecretName | Should -Be $commonProperties.certificateSecretName
+        $result.EndpointsInbound[$commonProperties.inboundEndpointName1].X509CredentialsKeySecretName | Should -Be $commonProperties.keySecretName
+        $result.EndpointsInbound[$commonProperties.inboundEndpointName1].X509CredentialsIntermediateCertificatesSecretName | Should -Be $commonProperties.intermediateCertificatesSecretName
         $result.EndpointsInbound[$commonProperties.inboundEndpointName2].Address | Should -Be $commonProperties.inboundAddress2
         $result.EndpointsInbound[$commonProperties.inboundEndpointName2].EndpointType | Should -Be $commonProperties.inboundEndpointType2
         $result.EndpointsInbound[$commonProperties.inboundEndpointName2].AuthenticationMethod | Should -Be $commonProperties.authenticationMethod2

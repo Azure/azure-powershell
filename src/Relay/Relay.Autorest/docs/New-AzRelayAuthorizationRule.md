@@ -8,33 +8,75 @@ schema: 2.0.0
 # New-AzRelayAuthorizationRule
 
 ## SYNOPSIS
-Creates or updates an authorization rule for a namespace.
+Create an authorization rule for a namespace.
 
 ## SYNTAX
 
 ### CreateExpanded (Default)
 ```
 New-AzRelayAuthorizationRule -Name <String> -Namespace <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-Rights <AccessRights[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [-SubscriptionId <String>] [-Rights <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### CreateExpanded1
 ```
 New-AzRelayAuthorizationRule -HybridConnection <String> -Name <String> -Namespace <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-Rights <AccessRights[]>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-Rights <String[]>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateExpanded2
 ```
 New-AzRelayAuthorizationRule -Name <String> -Namespace <String> -ResourceGroupName <String> -WcfRelay <String>
- [-SubscriptionId <String>] [-Rights <AccessRights[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [-SubscriptionId <String>] [-Rights <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzRelayAuthorizationRule -Name <String> -Namespace <String> -ResourceGroupName <String>
+ -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath1
+```
+New-AzRelayAuthorizationRule -HybridConnection <String> -Name <String> -Namespace <String>
+ -ResourceGroupName <String> -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath2
+```
+New-AzRelayAuthorizationRule -Name <String> -Namespace <String> -ResourceGroupName <String> -WcfRelay <String>
+ -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzRelayAuthorizationRule -Name <String> -Namespace <String> -ResourceGroupName <String>
+ -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CreateViaJsonString1
+```
+New-AzRelayAuthorizationRule -HybridConnection <String> -Name <String> -Namespace <String>
+ -ResourceGroupName <String> -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonString2
+```
+New-AzRelayAuthorizationRule -Name <String> -Namespace <String> -ResourceGroupName <String> -WcfRelay <String>
+ -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates or updates an authorization rule for a namespace.
+Create an authorization rule for a namespace.
 
 ## EXAMPLES
 
@@ -129,7 +171,37 @@ The hybrid connection name.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded1
+Parameter Sets: CreateExpanded1, CreateViaJsonFilePath1, CreateViaJsonString1
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath, CreateViaJsonFilePath1, CreateViaJsonFilePath2
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString, CreateViaJsonString1, CreateViaJsonString2
 Aliases:
 
 Required: True
@@ -188,8 +260,8 @@ Accept wildcard characters: False
 The rights associated with the rule.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Relay.Support.AccessRights[]
-Parameter Sets: (All)
+Type: System.String[]
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateExpanded2
 Aliases:
 
 Required: False
@@ -220,7 +292,7 @@ The relay name.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded2
+Parameter Sets: CreateExpanded2, CreateViaJsonFilePath2, CreateViaJsonString2
 Aliases:
 
 Required: True
@@ -268,7 +340,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IAuthorizationRule
+### Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRule
 
 ## NOTES
 

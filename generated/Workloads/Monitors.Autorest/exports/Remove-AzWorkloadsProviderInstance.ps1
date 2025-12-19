@@ -27,7 +27,7 @@ Remove-AzWorkloadsProviderInstance -InputObject "/subscriptions/49d64d54-e966-4c
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IMonitorsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api30.IOperationStatusResult
+Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IOperationStatusResult
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -39,11 +39,18 @@ INPUTOBJECT <IMonitorsIdentity>: Identity Parameter
   [ProviderInstanceName <String>]: Name of the provider instance.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
+
+MONITORINPUTOBJECT <IMonitorsIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [MonitorName <String>]: Name of the SAP monitor resource.
+  [ProviderInstanceName <String>]: Name of the provider instance.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
 .Link
 https://learn.microsoft.com/powershell/module/az.workloads/remove-azworkloadsproviderinstance
 #>
 function Remove-AzWorkloadsProviderInstance {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api30.IOperationStatusResult])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IOperationStatusResult])]
 [CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Delete', Mandatory)]
@@ -53,6 +60,7 @@ param(
     ${MonitorName},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityMonitor', Mandatory)]
     [Alias('ProviderInstanceName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Path')]
     [System.String]
@@ -77,8 +85,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IMonitorsIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityMonitor', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IMonitorsIdentity]
+    # Identity Parameter
+    ${MonitorInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -154,6 +167,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -175,10 +197,9 @@ begin {
         $mapping = @{
             Delete = 'Az.Monitors.private\Remove-AzWorkloadsProviderInstance_Delete';
             DeleteViaIdentity = 'Az.Monitors.private\Remove-AzWorkloadsProviderInstance_DeleteViaIdentity';
+            DeleteViaIdentityMonitor = 'Az.Monitors.private\Remove-AzWorkloadsProviderInstance_DeleteViaIdentityMonitor';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -192,6 +213,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

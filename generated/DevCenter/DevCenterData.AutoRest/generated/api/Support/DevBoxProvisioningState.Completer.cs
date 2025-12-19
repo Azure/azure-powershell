@@ -62,6 +62,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("'Provisioning'", "Provisioning", global::System.Management.Automation.CompletionResultType.ParameterValue, "Provisioning");
             }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "PendingApproval".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'PendingApproval'", "PendingApproval", global::System.Management.Automation.CompletionResultType.ParameterValue, "PendingApproval");
+            }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "ProvisionedWithWarning".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
                 yield return new global::System.Management.Automation.CompletionResult("'ProvisionedWithWarning'", "ProvisionedWithWarning", global::System.Management.Automation.CompletionResultType.ParameterValue, "ProvisionedWithWarning");

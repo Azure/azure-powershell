@@ -229,6 +229,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISitePropertiesInternal)this).ClientCertExclusionPath = (string) content.GetValueForProperty("ClientCertExclusionPath",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISitePropertiesInternal)this).ClientCertExclusionPath, global::System.Convert.ToString);
             }
+            if (content.Contains("EndToEndEncryptionEnabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISitePropertiesInternal)this).EndToEndEncryptionEnabled = (bool?) content.GetValueForProperty("EndToEndEncryptionEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISitePropertiesInternal)this).EndToEndEncryptionEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
             if (content.Contains("HostNamesDisabled"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISitePropertiesInternal)this).HostNamesDisabled = (bool?) content.GetValueForProperty("HostNamesDisabled",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISitePropertiesInternal)this).HostNamesDisabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
@@ -471,11 +475,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201
             }
             if (content.Contains("ScaleAndConcurrencyMaximumInstanceCount"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISitePropertiesInternal)this).ScaleAndConcurrencyMaximumInstanceCount = (float?) content.GetValueForProperty("ScaleAndConcurrencyMaximumInstanceCount",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISitePropertiesInternal)this).ScaleAndConcurrencyMaximumInstanceCount, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISitePropertiesInternal)this).ScaleAndConcurrencyMaximumInstanceCount = (int?) content.GetValueForProperty("ScaleAndConcurrencyMaximumInstanceCount",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISitePropertiesInternal)this).ScaleAndConcurrencyMaximumInstanceCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("ScaleAndConcurrencyInstanceMemoryMb"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISitePropertiesInternal)this).ScaleAndConcurrencyInstanceMemoryMb = (float?) content.GetValueForProperty("ScaleAndConcurrencyInstanceMemoryMb",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISitePropertiesInternal)this).ScaleAndConcurrencyInstanceMemoryMb, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISitePropertiesInternal)this).ScaleAndConcurrencyInstanceMemoryMb = (int?) content.GetValueForProperty("ScaleAndConcurrencyInstanceMemoryMb",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISitePropertiesInternal)this).ScaleAndConcurrencyInstanceMemoryMb, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("StorageAuthentication"))
             {
@@ -507,7 +511,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201
             }
             if (content.Contains("HttpPerInstanceConcurrency"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISitePropertiesInternal)this).HttpPerInstanceConcurrency = (float?) content.GetValueForProperty("HttpPerInstanceConcurrency",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISitePropertiesInternal)this).HttpPerInstanceConcurrency, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISitePropertiesInternal)this).HttpPerInstanceConcurrency = (int?) content.GetValueForProperty("HttpPerInstanceConcurrency",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISitePropertiesInternal)this).HttpPerInstanceConcurrency, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             AfterDeserializeDictionary(content);
         }
@@ -654,6 +658,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISitePropertiesInternal)this).ClientCertExclusionPath = (string) content.GetValueForProperty("ClientCertExclusionPath",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISitePropertiesInternal)this).ClientCertExclusionPath, global::System.Convert.ToString);
             }
+            if (content.Contains("EndToEndEncryptionEnabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISitePropertiesInternal)this).EndToEndEncryptionEnabled = (bool?) content.GetValueForProperty("EndToEndEncryptionEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISitePropertiesInternal)this).EndToEndEncryptionEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
             if (content.Contains("HostNamesDisabled"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISitePropertiesInternal)this).HostNamesDisabled = (bool?) content.GetValueForProperty("HostNamesDisabled",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISitePropertiesInternal)this).HostNamesDisabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
@@ -896,11 +904,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201
             }
             if (content.Contains("ScaleAndConcurrencyMaximumInstanceCount"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISitePropertiesInternal)this).ScaleAndConcurrencyMaximumInstanceCount = (float?) content.GetValueForProperty("ScaleAndConcurrencyMaximumInstanceCount",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISitePropertiesInternal)this).ScaleAndConcurrencyMaximumInstanceCount, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISitePropertiesInternal)this).ScaleAndConcurrencyMaximumInstanceCount = (int?) content.GetValueForProperty("ScaleAndConcurrencyMaximumInstanceCount",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISitePropertiesInternal)this).ScaleAndConcurrencyMaximumInstanceCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("ScaleAndConcurrencyInstanceMemoryMb"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISitePropertiesInternal)this).ScaleAndConcurrencyInstanceMemoryMb = (float?) content.GetValueForProperty("ScaleAndConcurrencyInstanceMemoryMb",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISitePropertiesInternal)this).ScaleAndConcurrencyInstanceMemoryMb, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISitePropertiesInternal)this).ScaleAndConcurrencyInstanceMemoryMb = (int?) content.GetValueForProperty("ScaleAndConcurrencyInstanceMemoryMb",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISitePropertiesInternal)this).ScaleAndConcurrencyInstanceMemoryMb, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("StorageAuthentication"))
             {
@@ -932,7 +940,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201
             }
             if (content.Contains("HttpPerInstanceConcurrency"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISitePropertiesInternal)this).HttpPerInstanceConcurrency = (float?) content.GetValueForProperty("HttpPerInstanceConcurrency",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISitePropertiesInternal)this).HttpPerInstanceConcurrency, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISitePropertiesInternal)this).HttpPerInstanceConcurrency = (int?) content.GetValueForProperty("HttpPerInstanceConcurrency",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISitePropertiesInternal)this).HttpPerInstanceConcurrency, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             AfterDeserializePSObject(content);
         }

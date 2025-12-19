@@ -28,6 +28,15 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = true, HelpMessage = Constants.VectorIndexTypeHelpMessage)]
         public string Type { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = Constants.VectorIndexQuantizationByteSizeHelpMessage)]
+        public long? QuantizationByteSize { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = Constants.VectorIndexIndexingSearchListSizeHelpMessage)]
+        public long? IndexingSearchListSize { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = Constants.VectorIndexShardKeyHelpMessage)]
+        public IList<string> VectorIndexShardKey { get; set; } = new List<string>();
+
         public override void ExecuteCmdlet()
         {
             PSVectorIndex pSVectorIndex = new PSVectorIndex();
@@ -40,6 +49,21 @@ namespace Microsoft.Azure.Commands.CosmosDB
             if (Path != null)
             {     
                 pSVectorIndex.Path = Path;
+            }
+
+            if (QuantizationByteSize != null)
+            {
+                pSVectorIndex.QuantizationByteSize = QuantizationByteSize;
+            }
+
+            if (IndexingSearchListSize != null)
+            {
+                pSVectorIndex.IndexingSearchListSize = IndexingSearchListSize;
+            }
+
+            if (VectorIndexShardKey != null && VectorIndexShardKey.Count > 0)
+            {
+                pSVectorIndex.VectorIndexShardKey = VectorIndexShardKey;
             }
 
             WriteObject(pSVectorIndex);

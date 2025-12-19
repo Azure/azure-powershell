@@ -80,6 +80,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
             {_principalId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonString>("principalId"), out var __jsonPrincipalId) ? (string)__jsonPrincipalId : (string)_principalId;}
             {_tenantId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonString>("tenantId"), out var __jsonTenantId) ? (string)__jsonTenantId : (string)_tenantId;}
             {_type = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonString>("type"), out var __jsonType) ? (string)__jsonType : (string)_type;}
+            {_delegatedResource = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonObject>("delegatedResources"), out var __jsonDelegatedResources) ? Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.DelegatedResources.FromJson(__jsonDelegatedResources) : _delegatedResource;}
             {_userAssignedIdentity = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonObject>("userAssignedIdentities"), out var __jsonUserAssignedIdentities) ? Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterIdentityUserAssignedIdentities.FromJson(__jsonUserAssignedIdentities) : _userAssignedIdentity;}
             AfterFromJson(json);
         }
@@ -112,6 +113,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
                 AddIf( null != (((object)this._tenantId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonString(this._tenantId.ToString()) : null, "tenantId" ,container.Add );
             }
             AddIf( null != (((object)this._type)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonString(this._type.ToString()) : null, "type" ,container.Add );
+            AddIf( null != this._delegatedResource ? (Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonNode) this._delegatedResource.ToJson(null,serializationMode) : null, "delegatedResources" ,container.Add );
             AddIf( null != this._userAssignedIdentity ? (Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonNode) this._userAssignedIdentity.ToJson(null,serializationMode) : null, "userAssignedIdentities" ,container.Add );
             AfterToJson(ref container);
             return container;

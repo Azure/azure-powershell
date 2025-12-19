@@ -74,7 +74,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201
 
         /// <summary>
         /// The OpenID Connect Issuer URI that represents the entity which issues access tokens for this application.
-        /// When using Azure Active Directory, this value is the URI of the directory tenant, e.g. https://login.microsoftonline.com/v2.0/{tenant-guid}/.
+        /// When using Azure Active Directory, this value is the URI of the directory tenant, e.g. `https://login.microsoftonline.com/v2.0/{tenant-guid}/`.
         /// This URI is a case-sensitive identifier for the token issuer.
         /// More information on OpenID Connect Discovery: http://openid.net/specs/openid-connect-discovery-1_0.html
         /// </summary>
@@ -158,7 +158,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201
         string ClientSecretSettingName { get; set; }
         /// <summary>
         /// The OpenID Connect Issuer URI that represents the entity which issues access tokens for this application.
-        /// When using Azure Active Directory, this value is the URI of the directory tenant, e.g. https://login.microsoftonline.com/v2.0/{tenant-guid}/.
+        /// When using Azure Active Directory, this value is the URI of the directory tenant, e.g. `https://login.microsoftonline.com/v2.0/{tenant-guid}/`.
         /// This URI is a case-sensitive identifier for the token issuer.
         /// More information on OpenID Connect Discovery: http://openid.net/specs/openid-connect-discovery-1_0.html
         /// </summary>
@@ -166,7 +166,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201
         Required = false,
         ReadOnly = false,
         Description = @"The OpenID Connect Issuer URI that represents the entity which issues access tokens for this application.
-        When using Azure Active Directory, this value is the URI of the directory tenant, e.g. https://login.microsoftonline.com/v2.0/{tenant-guid}/.
+        When using Azure Active Directory, this value is the URI of the directory tenant, e.g. `https://login.microsoftonline.com/v2.0/{tenant-guid}/`.
         This URI is a case-sensitive identifier for the token issuer.
         More information on OpenID Connect Discovery: http://openid.net/specs/openid-connect-discovery-1_0.html",
         SerializedName = @"openIdIssuer",
@@ -209,7 +209,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201
         string ClientSecretSettingName { get; set; }
         /// <summary>
         /// The OpenID Connect Issuer URI that represents the entity which issues access tokens for this application.
-        /// When using Azure Active Directory, this value is the URI of the directory tenant, e.g. https://login.microsoftonline.com/v2.0/{tenant-guid}/.
+        /// When using Azure Active Directory, this value is the URI of the directory tenant, e.g. `https://login.microsoftonline.com/v2.0/{tenant-guid}/`.
         /// This URI is a case-sensitive identifier for the token issuer.
         /// More information on OpenID Connect Discovery: http://openid.net/specs/openid-connect-discovery-1_0.html
         /// </summary>

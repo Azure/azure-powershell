@@ -15,14 +15,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models
         /// <summary>Backing field for <see cref="NextLink" /> property.</summary>
         private string _nextLink;
 
-        /// <summary>next Link</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Origin(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.PropertyOrigin.Owned)]
         public string NextLink { get => this._nextLink; set => this._nextLink = value; }
 
         /// <summary>Backing field for <see cref="Value" /> property.</summary>
         private System.Collections.Generic.List<string> _value;
 
-        /// <summary>List of AppIds</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Origin(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<string> Value { get => this._value; set => this._value = value; }
 
@@ -35,25 +33,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models
     public partial interface IListAppIdResponse :
         Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IJsonSerializable
     {
-        /// <summary>next Link</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"next Link",
+        Description = @"",
         SerializedName = @"nextLink",
         PossibleTypes = new [] { typeof(string) })]
         string NextLink { get; set; }
-        /// <summary>List of AppIds</summary>
+
         [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Info(
         Required = true,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"List of AppIds",
+        Description = @"",
         SerializedName = @"value",
         PossibleTypes = new [] { typeof(string) })]
         System.Collections.Generic.List<string> Value { get; set; }
@@ -62,9 +59,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models
     internal partial interface IListAppIdResponseInternal
 
     {
-        /// <summary>next Link</summary>
         string NextLink { get; set; }
-        /// <summary>List of AppIds</summary>
+
         System.Collections.Generic.List<string> Value { get; set; }
 
     }

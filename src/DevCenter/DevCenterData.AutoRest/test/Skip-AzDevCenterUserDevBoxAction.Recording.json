@@ -1,8 +1,8 @@
 {
-  "Skip-AzDevCenterUserDevBoxAction+[NoContext]+Skip+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/skipDevBox1/actions/schedule-default?api-version=2024-05-01-preview+1": {
+  "Skip-AzDevCenterUserDevBoxAction+[NoContext]+Skip+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/skipDevBox1/actions/schedule-default?api-version=2025-04-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/skipDevBox1/actions/schedule-default?api-version=2024-05-01-preview",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/skipDevBox1/actions/schedule-default?api-version=2025-04-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -72,10 +72,10 @@
       "isContentBase64": false
     }
   },
-  "Skip-AzDevCenterUserDevBoxAction+[NoContext]+Skip+$POST+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/skipDevBox1/actions/schedule-default:skip?api-version=2024-05-01-preview+2": {
+  "Skip-AzDevCenterUserDevBoxAction+[NoContext]+Skip+$POST+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/skipDevBox1/actions/schedule-default:skip?api-version=2025-04-01-preview+2": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/skipDevBox1/actions/schedule-default:skip?api-version=2024-05-01-preview",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/skipDevBox1/actions/schedule-default:skip?api-version=2025-04-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -138,10 +138,10 @@
       "isContentBase64": false
     }
   },
-  "Skip-AzDevCenterUserDevBoxAction+[NoContext]+Skip+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/skipDevBox1/actions/schedule-default?api-version=2024-05-01-preview+3": {
+  "Skip-AzDevCenterUserDevBoxAction+[NoContext]+Skip+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/skipDevBox1/actions/schedule-default?api-version=2025-04-01-preview+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/skipDevBox1/actions/schedule-default?api-version=2024-05-01-preview",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/skipDevBox1/actions/schedule-default?api-version=2025-04-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -211,10 +211,10 @@
       "isContentBase64": false
     }
   },
-  "Skip-AzDevCenterUserDevBoxAction+[NoContext]+Skip+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/skipDevBox4/actions/schedule-default?api-version=2024-05-01-preview+4": {
+  "Skip-AzDevCenterUserDevBoxAction+[NoContext]+Skip+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/skipDevBox4/actions/schedule-default?api-version=2025-04-01-preview+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/skipDevBox4/actions/schedule-default?api-version=2024-05-01-preview",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/skipDevBox4/actions/schedule-default?api-version=2025-04-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -284,10 +284,10 @@
       "isContentBase64": false
     }
   },
-  "Skip-AzDevCenterUserDevBoxAction+[NoContext]+Skip+$POST+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/skipDevBox4/actions/schedule-default:skip?api-version=2024-05-01-preview+5": {
+  "Skip-AzDevCenterUserDevBoxAction+[NoContext]+Skip+$POST+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/skipDevBox4/actions/schedule-default:skip?api-version=2025-04-01-preview+5": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/skipDevBox4/actions/schedule-default:skip?api-version=2024-05-01-preview",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/skipDevBox4/actions/schedule-default:skip?api-version=2025-04-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -350,10 +350,10 @@
       "isContentBase64": false
     }
   },
-  "Skip-AzDevCenterUserDevBoxAction+[NoContext]+Skip+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/skipDevBox4/actions/schedule-default?api-version=2024-05-01-preview+6": {
+  "Skip-AzDevCenterUserDevBoxAction+[NoContext]+Skip+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/skipDevBox4/actions/schedule-default?api-version=2025-04-01-preview+6": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/skipDevBox4/actions/schedule-default?api-version=2024-05-01-preview",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/skipDevBox4/actions/schedule-default?api-version=2025-04-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -423,10 +423,10 @@
       "isContentBase64": false
     }
   },
-  "Skip-AzDevCenterUserDevBoxAction+[NoContext]+SkipViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/skipDevBox2/actions/schedule-default?api-version=2024-05-01-preview+1": {
+  "Skip-AzDevCenterUserDevBoxAction+[NoContext]+SkipViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/skipDevBox2/actions/schedule-default?api-version=2025-04-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/skipDevBox2/actions/schedule-default?api-version=2024-05-01-preview",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/skipDevBox2/actions/schedule-default?api-version=2025-04-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -496,10 +496,10 @@
       "isContentBase64": false
     }
   },
-  "Skip-AzDevCenterUserDevBoxAction+[NoContext]+SkipViaIdentity+$POST+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/skipDevBox2/actions/schedule-default:skip?api-version=2024-05-01-preview+2": {
+  "Skip-AzDevCenterUserDevBoxAction+[NoContext]+SkipViaIdentity+$POST+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/skipDevBox2/actions/schedule-default:skip?api-version=2025-04-01-preview+2": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/skipDevBox2/actions/schedule-default:skip?api-version=2024-05-01-preview",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/skipDevBox2/actions/schedule-default:skip?api-version=2025-04-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -562,10 +562,10 @@
       "isContentBase64": false
     }
   },
-  "Skip-AzDevCenterUserDevBoxAction+[NoContext]+SkipViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/skipDevBox2/actions/schedule-default?api-version=2024-05-01-preview+3": {
+  "Skip-AzDevCenterUserDevBoxAction+[NoContext]+SkipViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/skipDevBox2/actions/schedule-default?api-version=2025-04-01-preview+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/skipDevBox2/actions/schedule-default?api-version=2024-05-01-preview",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/skipDevBox2/actions/schedule-default?api-version=2025-04-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -635,10 +635,10 @@
       "isContentBase64": false
     }
   },
-  "Skip-AzDevCenterUserDevBoxAction+[NoContext]+SkipViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/skipDevBox3/actions/schedule-default?api-version=2024-05-01-preview+4": {
+  "Skip-AzDevCenterUserDevBoxAction+[NoContext]+SkipViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/skipDevBox3/actions/schedule-default?api-version=2025-04-01-preview+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/skipDevBox3/actions/schedule-default?api-version=2024-05-01-preview",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/skipDevBox3/actions/schedule-default?api-version=2025-04-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -708,10 +708,10 @@
       "isContentBase64": false
     }
   },
-  "Skip-AzDevCenterUserDevBoxAction+[NoContext]+SkipViaIdentity+$POST+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/skipDevBox3/actions/schedule-default:skip?api-version=2024-05-01-preview+5": {
+  "Skip-AzDevCenterUserDevBoxAction+[NoContext]+SkipViaIdentity+$POST+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/skipDevBox3/actions/schedule-default:skip?api-version=2025-04-01-preview+5": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/skipDevBox3/actions/schedule-default:skip?api-version=2024-05-01-preview",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/skipDevBox3/actions/schedule-default:skip?api-version=2025-04-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -774,10 +774,10 @@
       "isContentBase64": false
     }
   },
-  "Skip-AzDevCenterUserDevBoxAction+[NoContext]+SkipViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/skipDevBox3/actions/schedule-default?api-version=2024-05-01-preview+6": {
+  "Skip-AzDevCenterUserDevBoxAction+[NoContext]+SkipViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/skipDevBox3/actions/schedule-default?api-version=2025-04-01-preview+6": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/skipDevBox3/actions/schedule-default?api-version=2024-05-01-preview",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/skipDevBox3/actions/schedule-default?api-version=2025-04-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {

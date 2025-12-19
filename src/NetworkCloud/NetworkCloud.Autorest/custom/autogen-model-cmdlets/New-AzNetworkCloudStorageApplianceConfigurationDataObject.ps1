@@ -21,12 +21,13 @@ Create an in-memory object for StorageApplianceConfigurationData.
 Create an in-memory object for StorageApplianceConfigurationData.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.StorageApplianceConfigurationData
+Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.StorageApplianceConfigurationData
 .Link
-https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-AzNetworkCloudStorageApplianceConfigurationDataObject
+https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-aznetworkcloudstorageapplianceconfigurationdataobject
 #>
 function New-AzNetworkCloudStorageApplianceConfigurationDataObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.StorageApplianceConfigurationData')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.StorageApplianceConfigurationData')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -48,7 +49,7 @@ function New-AzNetworkCloudStorageApplianceConfigurationDataObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.StorageApplianceConfigurationData]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.StorageApplianceConfigurationData]::New()
 
         if ($PSBoundParameters.ContainsKey('AdminCredentialsPassword')) {
             $Object.AdminCredentialsPassword = $AdminCredentialsPassword

@@ -79,8 +79,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201
             }
             {_trigger = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject>("triggers"), out var __jsonTriggers) ? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.FunctionsScaleAndConcurrencyTriggers.FromJson(__jsonTriggers) : Trigger;}
             {_alwaysReady = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray>("alwaysReady"), out var __jsonAlwaysReady) ? If( __jsonAlwaysReady as Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionsAlwaysReadyConfig[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionsAlwaysReadyConfig) (Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.FunctionsAlwaysReadyConfig.FromJson(__u) )) ))() : null : AlwaysReady;}
-            {_maximumInstanceCount = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("maximumInstanceCount"), out var __jsonMaximumInstanceCount) ? (float?)__jsonMaximumInstanceCount : MaximumInstanceCount;}
-            {_instanceMemoryMb = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("instanceMemoryMB"), out var __jsonInstanceMemoryMb) ? (float?)__jsonInstanceMemoryMb : InstanceMemoryMb;}
+            {_maximumInstanceCount = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("maximumInstanceCount"), out var __jsonMaximumInstanceCount) ? (int?)__jsonMaximumInstanceCount : MaximumInstanceCount;}
+            {_instanceMemoryMb = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("instanceMemoryMB"), out var __jsonInstanceMemoryMb) ? (int?)__jsonInstanceMemoryMb : InstanceMemoryMb;}
             AfterFromJson(json);
         }
 
@@ -113,8 +113,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201
                 }
                 container.Add("alwaysReady",__w);
             }
-            AddIf( null != this._maximumInstanceCount ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber((float)this._maximumInstanceCount) : null, "maximumInstanceCount" ,container.Add );
-            AddIf( null != this._instanceMemoryMb ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber((float)this._instanceMemoryMb) : null, "instanceMemoryMB" ,container.Add );
+            AddIf( null != this._maximumInstanceCount ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber((int)this._maximumInstanceCount) : null, "maximumInstanceCount" ,container.Add );
+            AddIf( null != this._instanceMemoryMb ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber((int)this._instanceMemoryMb) : null, "instanceMemoryMB" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.Search.Models
         /// provided does not match the naming requirements (incorrect length,
         /// unsupported characters, etc.). &#39;AlreadyExists&#39; indicates that the name is
         /// already in use and is therefore unavailable.
-        /// Possible values include: 'Invalid', 'AlreadyExists'</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;AlreadyExists&#39;</param>
 
         /// <param name="message">A message that explains why the name is invalid and provides resource
         /// naming requirements. Available only if &#39;Invalid&#39; is returned in the

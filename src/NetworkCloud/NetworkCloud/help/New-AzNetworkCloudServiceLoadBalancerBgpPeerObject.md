@@ -1,7 +1,7 @@
 ---
 external help file: Az.NetworkCloud-help.xml
 Module Name: Az.NetworkCloud
-online version: https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-AzNetworkCloudServiceLoadBalancerBgpPeerObject
+online version: https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-aznetworkcloudserviceloadbalancerbgppeerobject
 schema: 2.0.0
 ---
 
@@ -14,9 +14,8 @@ Create an in-memory object for ServiceLoadBalancerBgpPeer.
 
 ```
 New-AzNetworkCloudServiceLoadBalancerBgpPeerObject -Name <String> -PeerAddress <String> -PeerAsn <Int64>
- [-BfdEnabled <BfdEnabled>] [-BgpMultiHop <BgpMultiHop>] [-HoldTime <String>] [-KeepAliveTime <String>]
- [-MyAsn <Int64>] [-Password <String>] [-PeerPort <Int64>]
- [<CommonParameters>]
+ [-BfdEnabled <String>] [-BgpMultiHop <String>] [-HoldTime <String>] [-KeepAliveTime <String>] [-MyAsn <Int64>]
+ [-Password <String>] [-PeerPort <Int64>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,7 +42,7 @@ Create an in-memory object for ServiceLoadBalancerBgpPeer.
 The indicator of BFD enablement for this BgpPeer.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.BfdEnabled
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -58,7 +57,7 @@ Accept wildcard characters: False
 The indicator to enable multi-hop peering support.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.BgpMultiHop
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -202,7 +201,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.ServiceLoadBalancerBgpPeer
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ServiceLoadBalancerBgpPeer
 
 ## NOTES
 

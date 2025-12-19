@@ -19,6 +19,12 @@ Remove-AzWcfRelay -Name <String> -Namespace <String> -ResourceGroupName <String>
  [<CommonParameters>]
 ```
 
+### DeleteViaIdentityNamespace
+```
+Remove-AzWcfRelay -Name <String> -NamespaceInputObject <IRelayIdentity> [-DefaultProfile <PSObject>]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### DeleteViaIdentity
 ```
 Remove-AzWcfRelay -InputObject <IRelayIdentity> [-DefaultProfile <PSObject>] [-PassThru]
@@ -64,7 +70,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayIdentity
@@ -83,7 +88,7 @@ The relay name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, DeleteViaIdentityNamespace
 Aliases:
 
 Required: True
@@ -105,6 +110,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NamespaceInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayIdentity
+Parameter Sets: DeleteViaIdentityNamespace
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

@@ -1,8 +1,8 @@
 {
-  "Get-AzDevCenterUserEnvironmentOperation+[NoContext]+List+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshtestdevcenter.centraluseuap.devcenter.azure.com/projects/pwshProj3stxlh/users/me/environments/amlim-pwsh/operations?api-version=2024-05-01-preview+1": {
+  "Get-AzDevCenterUserEnvironmentOperation+[NoContext]+List+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshtestdevcenter.centraluseuap.devcenter.azure.com/projects/pwshProj3stxlh/users/me/environments/amlim-pwsh/operations?api-version=2025-04-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshtestdevcenter.centraluseuap.devcenter.azure.com/projects/pwshProj3stxlh/users/me/environments/amlim-pwsh/operations?api-version=2024-05-01-preview",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshtestdevcenter.centraluseuap.devcenter.azure.com/projects/pwshProj3stxlh/users/me/environments/amlim-pwsh/operations?api-version=2025-04-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -40,10 +40,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzDevCenterUserEnvironmentOperation+[NoContext]+Get+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshtestdevcenter.centraluseuap.devcenter.azure.com/projects/pwshProj3stxlh/users/me/environments/amlim-pwsh/operations/4d48a4d5-7edc-437d-9bfa-30e9b4328f68?api-version=2024-05-01-preview+1": {
+  "Get-AzDevCenterUserEnvironmentOperation+[NoContext]+Get+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshtestdevcenter.centraluseuap.devcenter.azure.com/projects/pwshProj3stxlh/users/me/environments/amlim-pwsh/operations/4d48a4d5-7edc-437d-9bfa-30e9b4328f68?api-version=2025-04-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshtestdevcenter.centraluseuap.devcenter.azure.com/projects/pwshProj3stxlh/users/me/environments/amlim-pwsh/operations/4d48a4d5-7edc-437d-9bfa-30e9b4328f68?api-version=2024-05-01-preview",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshtestdevcenter.centraluseuap.devcenter.azure.com/projects/pwshProj3stxlh/users/me/environments/amlim-pwsh/operations/4d48a4d5-7edc-437d-9bfa-30e9b4328f68?api-version=2025-04-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -81,10 +81,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzDevCenterUserEnvironmentOperation+[NoContext]+GetViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshtestdevcenter.centraluseuap.devcenter.azure.com/projects/pwshProj3stxlh/users/me/environments/amlim-pwsh/operations/4d48a4d5-7edc-437d-9bfa-30e9b4328f68?api-version=2024-05-01-preview+1": {
+  "Get-AzDevCenterUserEnvironmentOperation+[NoContext]+GetViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshtestdevcenter.centraluseuap.devcenter.azure.com/projects/pwshProj3stxlh/users/me/environments/amlim-pwsh/operations/4d48a4d5-7edc-437d-9bfa-30e9b4328f68?api-version=2025-04-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshtestdevcenter.centraluseuap.devcenter.azure.com/projects/pwshProj3stxlh/users/me/environments/amlim-pwsh/operations/4d48a4d5-7edc-437d-9bfa-30e9b4328f68?api-version=2024-05-01-preview",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshtestdevcenter.centraluseuap.devcenter.azure.com/projects/pwshProj3stxlh/users/me/environments/amlim-pwsh/operations/4d48a4d5-7edc-437d-9bfa-30e9b4328f68?api-version=2025-04-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {

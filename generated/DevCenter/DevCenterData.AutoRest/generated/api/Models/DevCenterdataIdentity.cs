@@ -19,6 +19,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Origin(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.PropertyOrigin.Owned)]
         public string ActionName { get => this._actionName; set => this._actionName = value; }
 
+        /// <summary>Backing field for <see cref="AddOnName" /> property.</summary>
+        private string _addOnName;
+
+        /// <summary>Name of the dev box addon.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Origin(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.PropertyOrigin.Owned)]
+        public string AddOnName { get => this._addOnName; set => this._addOnName = value; }
+
         /// <summary>Backing field for <see cref="CatalogName" /> property.</summary>
         private string _catalogName;
 
@@ -75,6 +82,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Origin(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.PropertyOrigin.Owned)]
         public string Id { get => this._id; set => this._id = value; }
 
+        /// <summary>Backing field for <see cref="ImageBuildLogId" /> property.</summary>
+        private string _imageBuildLogId;
+
+        /// <summary>An imaging build log id.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Origin(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.PropertyOrigin.Owned)]
+        public string ImageBuildLogId { get => this._imageBuildLogId; set => this._imageBuildLogId = value; }
+
         /// <summary>Backing field for <see cref="OperationId" /> property.</summary>
         private string _operationId;
 
@@ -102,6 +116,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models
         /// <summary>Display name for the Schedule.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Origin(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.PropertyOrigin.Owned)]
         public string ScheduleName { get => this._scheduleName; set => this._scheduleName = value; }
+
+        /// <summary>Backing field for <see cref="SnapshotId" /> property.</summary>
+        private string _snapshotId;
+
+        /// <summary>The id of the snapshot. Should be treated as opaque string.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Origin(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.PropertyOrigin.Owned)]
+        public string SnapshotId { get => this._snapshotId; set => this._snapshotId = value; }
 
         /// <summary>Backing field for <see cref="TaskName" /> property.</summary>
         private string _taskName;
@@ -136,6 +157,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models
         SerializedName = @"actionName",
         PossibleTypes = new [] { typeof(string) })]
         string ActionName { get; set; }
+        /// <summary>Name of the dev box addon.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Name of the dev box addon.",
+        SerializedName = @"addOnName",
+        PossibleTypes = new [] { typeof(string) })]
+        string AddOnName { get; set; }
         /// <summary>Name of the catalog.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Info(
         Required = false,
@@ -200,6 +229,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
         string Id { get; set; }
+        /// <summary>An imaging build log id.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"An imaging build log id.",
+        SerializedName = @"imageBuildLogId",
+        PossibleTypes = new [] { typeof(string) })]
+        string ImageBuildLogId { get; set; }
         /// <summary>Unique identifier for the Dev Box operation.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Info(
         Required = false,
@@ -232,6 +269,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models
         SerializedName = @"scheduleName",
         PossibleTypes = new [] { typeof(string) })]
         string ScheduleName { get; set; }
+        /// <summary>The id of the snapshot. Should be treated as opaque string.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The id of the snapshot. Should be treated as opaque string.",
+        SerializedName = @"snapshotId",
+        PossibleTypes = new [] { typeof(string) })]
+        string SnapshotId { get; set; }
         /// <summary>Full name of the task: {catalogName}/{taskName}.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Info(
         Required = false,
@@ -257,6 +302,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models
     {
         /// <summary>The name of the action.</summary>
         string ActionName { get; set; }
+        /// <summary>Name of the dev box addon.</summary>
+        string AddOnName { get; set; }
         /// <summary>Name of the catalog.</summary>
         string CatalogName { get; set; }
         /// <summary>Name of the customization group.</summary>
@@ -273,6 +320,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models
         string EnvironmentTypeName { get; set; }
         /// <summary>Resource identity path</summary>
         string Id { get; set; }
+        /// <summary>An imaging build log id.</summary>
+        string ImageBuildLogId { get; set; }
         /// <summary>Unique identifier for the Dev Box operation.</summary>
         string OperationId { get; set; }
         /// <summary>Pool name.</summary>
@@ -281,6 +330,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models
         string ProjectName { get; set; }
         /// <summary>Display name for the Schedule.</summary>
         string ScheduleName { get; set; }
+        /// <summary>The id of the snapshot. Should be treated as opaque string.</summary>
+        string SnapshotId { get; set; }
         /// <summary>Full name of the task: {catalogName}/{taskName}.</summary>
         string TaskName { get; set; }
         /// <summary>

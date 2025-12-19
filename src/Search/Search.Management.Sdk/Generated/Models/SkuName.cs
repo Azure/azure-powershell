@@ -11,92 +11,41 @@ namespace Microsoft.Azure.Management.Search.Models
     /// </summary>
 
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SkuName
+    public static class SkuName
     {
         /// <summary>
-        /// Free tier, with no SLA guarantees and a subset of features offered to paid tiers.
+        /// Free tier, with no SLA guarantees and a subset of the features offered on
+        /// billable tiers.
         /// </summary>
-        [System.Runtime.Serialization.EnumMember(Value = "free")]
-        Free,
+        public const string Free = "free";
         /// <summary>
-        /// Paid tier dedicated service with up to 3 replicas.
+        /// Billable tier for a dedicated service having up to 3 replicas.
         /// </summary>
-        [System.Runtime.Serialization.EnumMember(Value = "basic")]
-        Basic,
+        public const string Basic = "basic";
         /// <summary>
-        /// Paid tier dedicated service with up to 12 partitions and 12 replicas.
+        /// Billable tier for a dedicated service having up to 12 partitions and 12
+        /// replicas.
         /// </summary>
-        [System.Runtime.Serialization.EnumMember(Value = "standard")]
-        Standard,
+        public const string Standard = "standard";
         /// <summary>
-        /// Similar to 'standard', but with more capacity per search unit.
+        /// Similar to &#39;standard&#39;, but with more capacity per search unit.
         /// </summary>
-        [System.Runtime.Serialization.EnumMember(Value = "standard2")]
-        Standard2,
+        public const string Standard2 = "standard2";
         /// <summary>
-        ///  The largest Standard offering with up to 12 partitions and 12 replicas (or up to 3 partitions with more indexes if you also set the hostingMode property to 'highDensity').
+        /// The largest Standard offering with up to 12 partitions and 12 replicas (or
+        /// up to 3 partitions with more indexes if you also set the hostingMode
+        /// property to &#39;highDensity&#39;).
         /// </summary>
-        [System.Runtime.Serialization.EnumMember(Value = "standard3")]
-        Standard3,
+        public const string Standard3 = "standard3";
         /// <summary>
-        /// Paid tier dedicated service that supports 1TB per partition, up to 12 partitions.
+        /// Billable tier for a dedicated service that supports 1TB per partition, up
+        /// to 12 partitions.
         /// </summary>
-        [System.Runtime.Serialization.EnumMember(Value = "storage_optimized_l1")]
-        StorageOptimizedL1,
+        public const string StorageOptimizedL1 = "storage_optimized_l1";
         /// <summary>
-        /// Paid tier dedicated service that supports 2TB per partition, up to 12 partitions.
+        /// Billable tier for a dedicated service that supports 2TB per partition, up
+        /// to 12 partitions.
         /// </summary>
-        [System.Runtime.Serialization.EnumMember(Value = "storage_optimized_l2")]
-        StorageOptimizedL2
-    }
-    internal static class SkuNameEnumExtension
-    {
-        internal static string ToSerializedValue(this SkuName? value)
-        {
-            return value == null ? null : ((SkuName)value).ToSerializedValue();
-        }
-        internal static string ToSerializedValue(this SkuName value)
-        {
-            switch( value )
-            {
-                case SkuName.Free:
-                    return "free";
-                case SkuName.Basic:
-                    return "basic";
-                case SkuName.Standard:
-                    return "standard";
-                case SkuName.Standard2:
-                    return "standard2";
-                case SkuName.Standard3:
-                    return "standard3";
-                case SkuName.StorageOptimizedL1:
-                    return "storage_optimized_l1";
-                case SkuName.StorageOptimizedL2:
-                    return "storage_optimized_l2";
-            }
-            return null;
-        }
-        internal static SkuName? ParseSkuName(this string value)
-        {
-            switch( value )
-            {
-                case "free":
-                    return SkuName.Free;
-                case "basic":
-                    return SkuName.Basic;
-                case "standard":
-                    return SkuName.Standard;
-                case "standard2":
-                    return SkuName.Standard2;
-                case "standard3":
-                    return SkuName.Standard3;
-                case "storage_optimized_l1":
-                    return SkuName.StorageOptimizedL1;
-                case "storage_optimized_l2":
-                    return SkuName.StorageOptimizedL2;
-            }
-            return null;
-        }
+        public const string StorageOptimizedL2 = "storage_optimized_l2";
     }
 }

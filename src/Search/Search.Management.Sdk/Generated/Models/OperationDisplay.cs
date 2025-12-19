@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.Search.Models
     using System.Linq;
 
     /// <summary>
-    /// The object that describes the operation.
+    /// Localized display information for this particular operation.
     /// </summary>
     public partial class OperationDisplay
     {
@@ -24,23 +24,28 @@ namespace Microsoft.Azure.Management.Search.Models
         /// Initializes a new instance of the OperationDisplay class.
         /// </summary>
 
-        /// <param name="provider">The friendly name of the resource provider.
+        /// <param name="provider">The localized friendly form of the resource provider name, e.g. &#34;Microsoft
+        /// Monitoring Insights&#34; or &#34;Microsoft Compute&#34;.
         /// </param>
 
-        /// <param name="operation">The operation type: read, write, delete, listKeys/action, etc.
+        /// <param name="resource">The localized friendly name of the resource type related to this operation.
+        /// E.g. &#34;Virtual Machines&#34; or &#34;Job Schedule Collections&#34;.
         /// </param>
 
-        /// <param name="resource">The resource type on which the operation is performed.
+        /// <param name="operation">The concise, localized friendly name for the operation; suitable for
+        /// dropdowns. E.g. &#34;Create or Update Virtual Machine&#34;, &#34;Restart Virtual
+        /// Machine&#34;.
         /// </param>
 
-        /// <param name="description">The friendly name of the operation.
+        /// <param name="description">The short, localized friendly description of the operation; suitable for
+        /// tool tips and detailed views.
         /// </param>
-        public OperationDisplay(string provider = default(string), string operation = default(string), string resource = default(string), string description = default(string))
+        public OperationDisplay(string provider = default(string), string resource = default(string), string operation = default(string), string description = default(string))
 
         {
             this.Provider = provider;
-            this.Operation = operation;
             this.Resource = resource;
+            this.Operation = operation;
             this.Description = description;
             CustomInit();
         }
@@ -52,25 +57,30 @@ namespace Microsoft.Azure.Management.Search.Models
 
 
         /// <summary>
-        /// Gets the friendly name of the resource provider.
+        /// Gets the localized friendly form of the resource provider name, e.g.
+        /// &#34;Microsoft Monitoring Insights&#34; or &#34;Microsoft Compute&#34;.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "provider")]
         public string Provider {get; private set; }
 
         /// <summary>
-        /// Gets the operation type: read, write, delete, listKeys/action, etc.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "operation")]
-        public string Operation {get; private set; }
-
-        /// <summary>
-        /// Gets the resource type on which the operation is performed.
+        /// Gets the localized friendly name of the resource type related to this
+        /// operation. E.g. &#34;Virtual Machines&#34; or &#34;Job Schedule Collections&#34;.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "resource")]
         public string Resource {get; private set; }
 
         /// <summary>
-        /// Gets the friendly name of the operation.
+        /// Gets the concise, localized friendly name for the operation; suitable for
+        /// dropdowns. E.g. &#34;Create or Update Virtual Machine&#34;, &#34;Restart Virtual
+        /// Machine&#34;.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "operation")]
+        public string Operation {get; private set; }
+
+        /// <summary>
+        /// Gets the short, localized friendly description of the operation; suitable
+        /// for tool tips and detailed views.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "description")]
         public string Description {get; private set; }

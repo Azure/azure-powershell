@@ -17,18 +17,31 @@ Describe 'New-AzFunctionApp' {
 
     It 'CustomDockerImage' {
 
-        $functionName = $env.functionNameContainer
+        $appName = $env.functionNameContainer
+        Write-Verbose "App name: $appName" -Verbose
+
+        $resourceGroupName = $env.resourceGroupNameLinuxPremium
+        Write-Verbose "Resource group name: $resourceGroupName" -Verbose
+
+        $planName = $env.planNameWorkerTypeLinux
+        Write-Verbose "Plan name: $planName" -Verbose
+
+        $storageAccountName = $env.storageAccountLinux
+        Write-Verbose "Storage account name: $storageAccountName" -Verbose
+
         $expectedLinuxFxVersion = "DOCKER|divyag2411/test:customcontainer"
 
         try
         {
-            New-AzFunctionApp -Name $functionName `
-                              -ResourceGroupName $env.resourceGroupNameLinuxPremium `
-                              -PlanName $env.planNameWorkerTypeLinux `
-                              -StorageAccount $env.storageAccountLinux `
+            Write-Verbose "Creating function app with a custom docker image" -Verbose
+            New-AzFunctionApp -Name $appName `
+                              -ResourceGroupName $resourceGroupName `
+                              -PlanName $planName `
+                              -StorageAccount $storageAccountName `
                               -DockerImageName "divyag2411/test:customcontainer"
 
-            $functionApp = Get-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameLinuxPremium
+            Write-Verbose "Validating function app properties..." -Verbose
+            $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName
             $functionApp.OSType | Should -Be "Linux"
             $functionApp.Runtime | Should -Be "Custom Image"
             $functionApp.SiteConfig.LinuxFxVersion | Should -Be $expectedLinuxFxVersion
@@ -39,10 +52,12 @@ Describe 'New-AzFunctionApp' {
         }
         finally
         {
-            $functionApp = Get-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameLinuxPremium -ErrorAction SilentlyContinue
+            Write-Verbose "Delete the function app..." -Verbose
+            $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName -ErrorAction SilentlyContinue
             if ($functionApp)
             {
-                Remove-AzFunctionApp -InputObject $functionApp -Force -ErrorAction SilentlyContinue
+                Write-Verbose "Removing function app $appName using -InputObject" -Verbose
+                Remove-AzFunctionApp -InputObject $functionApp -Force #-ErrorAction SilentlyContinue
             }
         }
     }
@@ -88,7 +103,7 @@ Describe 'New-AzFunctionApp' {
         },
         @{
             "Runtime" = "DotNet-Isolated"
-            "RuntimeVersion" = "6"
+            "RuntimeVersion" = "9"
             "StorageAccountName" = $env.storageAccountWindows
             "ResourceGroupName" = $env.resourceGroupNameWindowsPremium
             "Location" = $env.location
@@ -96,7 +111,7 @@ Describe 'New-AzFunctionApp' {
         },
         @{
             "Runtime" = "PowerShell"
-            "RuntimeVersion" = "7.2"
+            "RuntimeVersion" = "7.4"
             "StorageAccountName" = $env.storageAccountWindows
             "ResourceGroupName" = $env.resourceGroupNameWindowsPremium
             "Location" = $env.location
@@ -104,7 +119,7 @@ Describe 'New-AzFunctionApp' {
         },
         @{
             "Runtime" = "Java"
-            "RuntimeVersion" = "17"
+            "RuntimeVersion" = "21"
             "StorageAccountName" = $env.storageAccountWindows
             "ResourceGroupName" = $env.resourceGroupNameWindowsPremium
             "Location" = $env.location
@@ -112,19 +127,11 @@ Describe 'New-AzFunctionApp' {
         },
         @{
             "Runtime" = "Node"
-            "RuntimeVersion" = "18"
+            "RuntimeVersion" = "22"
             "StorageAccountName" = $env.storageAccountWindows
             "ResourceGroupName" = $env.resourceGroupNameWindowsPremium
             "Location" = $env.location
             "ExpectedOSType" = "Windows"
-        },
-        @{
-            "Runtime" = "Python"
-            "RuntimeVersion" = "3.10"
-            "StorageAccountName" = $env.storageAccountLinux
-            "ResourceGroupName" = $env.resourceGroupNameLinuxPremium
-            "Location" = $env.location
-            "ExpectedOSType" = "Linux"
         }
     )
 
@@ -145,13 +152,20 @@ Describe 'New-AzFunctionApp' {
 
             try
             {
-                $functionName =  $env.functionNameTestApp
+                $appName =  $env.functionNameTestApp
+                Write-Verbose "App name: $appName" -Verbose
+                Write-Verbose "Resource group name: $resourceGroupName" -Verbose
+                Write-Verbose "Storage account name: $storageAccountName" -Verbose
+                Write-Verbose "Location: $location" -Verbose
+                Write-Verbose "Runtime: $runtime" -Verbose
+                Write-Verbose "RuntimeVersion: $runtimeVersion" -Verbose
 
-                &{
+                & {
                     # We use -WhatIf which performs all the inputs validation for the function app creation, and we return right before sending the request to the backend
                     if ($runtimeVersion)
                     {
-                        New-AzFunctionApp -Name $functionName `
+                        Write-Verbose "Create function app with runtime version" -Verbose
+                        New-AzFunctionApp -Name $appName `
                                           -ResourceGroupName $resourceGroupName `
                                           -Location $location `
                                           -StorageAccountName $storageAccountName `
@@ -161,7 +175,8 @@ Describe 'New-AzFunctionApp' {
                     }
                     else
                     {
-                        New-AzFunctionApp -Name $functionName `
+                        Write-Verbose "Create function app without runtime version" -Verbose
+                        New-AzFunctionApp -Name $appName `
                                           -ResourceGroupName $resourceGroupName `
                                           -Location $location `
                                           -StorageAccountName $storageAccountName `
@@ -173,6 +188,7 @@ Describe 'New-AzFunctionApp' {
 
                 $logFileContent = Get-Content -Path $filePath -Raw
 
+                Write-Verbose "Validate the default FunctionsVersion and OSType" -Verbose
                 $expectectedFunctionsVersionWarning = "FunctionsVersion not specified. Setting default value to '$expectedFunctionsVersion'."
                 $expectectedOSTypeWarning = "OSType not specified. Setting default value to '$expectedOSType'."
 
@@ -182,6 +198,7 @@ Describe 'New-AzFunctionApp' {
             }
             finally
             {
+                Write-Verbose "Cleaning up the verbose output log file..." -Verbose
                 if (Test-Path $filePath)
                 {
                     Remove-Item $filePath -Force -ErrorAction SilentlyContinue
@@ -195,13 +212,11 @@ Describe 'New-AzFunctionApp' {
     $runtimeVersionNotSupported = @{
         "Linux" = @{
             "4" =  @{
-                "Node" = "10"
                 "Python" = "3.6"
             }
         }
         "Windows" = @{
             "4" =  @{
-                "Node" = "10"
                 "PowerShell" = "6.2"
             }
         }
@@ -218,8 +233,16 @@ Describe 'New-AzFunctionApp' {
 
             foreach ($runtime in $runtimeVersionNotSupported[$OSType][$functionsVersion].Keys)
             {
-                $functionName = $env.functionNameTestApp
+                $appName = $env.functionNameTestApp
                 $runtimeVersion = $runtimeVersionNotSupported[$OSType][$functionsVersion][$runtime]
+                Write-Verbose "App name: $appName" -Verbose
+                Write-Verbose "Resource group name: $resourceGroupName" -Verbose
+                Write-Verbose "Storage account name: $storageAccountName" -Verbose
+                Write-Verbose "Plan name: $planName" -Verbose
+                Write-Verbose "Runtime: $runtime" -Verbose
+                Write-Verbose "RuntimeVersion: $runtimeVersion" -Verbose
+                Write-Verbose "OSType: $OSType" -Verbose
+                Write-Verbose "FunctionsVersion: $functionsVersion" -Verbose
 
                 $expectedErrorMessage = "Runtime '$runtime' version '$runtimeVersion' in Functions version '$functionsVersion' on '$OSType' is not supported."
                 $errorId = "RuntimeVersionNotSupported"
@@ -229,7 +252,7 @@ Describe 'New-AzFunctionApp' {
                     $myError = $null
                     try
                     {
-                        New-AzFunctionApp -Name $functionName `
+                        New-AzFunctionApp -Name $appName `
                                           -ResourceGroupName $resourceGroupName `
                                           -PlanName $planName `
                                           -StorageAccountName $storageAccountName `
@@ -242,10 +265,13 @@ Describe 'New-AzFunctionApp' {
                     }
                     catch
                     {
+                        Write-Verbose "Catch the expected exception" -Verbose
                         $myError = $_
                     }
 
+                    Write-Verbose "Validate FullyQualifiedErrorId" -Verbose
                     $myError.FullyQualifiedErrorId | Should Be $errorId
+                    Write-Verbose "Validate Exception.Message" -Verbose
                     $myError.Exception.Message | Should Match $expectedErrorMessage
                 }
             }
@@ -259,6 +285,7 @@ Describe 'New-AzFunctionApp' {
         $expectedErrorMessage = "Runtime 'Go' is not supported. Currently supported runtimes: 'Custom', 'DotNet', 'DotNet-Isolated', 'Java', 'Node', 'PowerShell', 'Python'."
         try
         {
+            Write-Verbose "Create function app with an invalid runtime" -Verbose
             New-AzFunctionApp -Name $env.functionNameTestApp `
                               -ResourceGroupName $env.resourceGroupNameWindowsPremium `
                               -PlanName $env.planNameWorkerTypeWindows `
@@ -267,40 +294,65 @@ Describe 'New-AzFunctionApp' {
         }
         catch
         {
+             Write-Verbose "Catch the expected exception" -Verbose
             $myError = $_
         }
 
+        Write-Verbose "Validate FullyQualifiedErrorId" -Verbose
         $myError.FullyQualifiedErrorId | Should Be $errorId
+        Write-Verbose "Validate Exception.Message" -Verbose
         $myError.Exception.Message | Should Match $expectedErrorMessage
     }
 
     It "Linux functions apps should not set the 'WEBSITE_NODE_DEFAULT_VERSION' app setting" {
 
-        $functionName = $env.functionNamePython
+        $appName = $env.functionNamePython
+        Write-Verbose "App name: $appName" -Verbose
+
+        $resourceGroupName = $env.resourceGroupNameLinuxPremium
+        Write-Verbose "Resource group name: $resourceGroupName" -Verbose
+
+        $storageAccountName = $env.storageAccountLinux
+        Write-Verbose "Storage account name: $storageAccountName" -Verbose
+
+        $planName = $env.planNameWorkerTypeLinux
+        Write-Verbose "Plan name: $planName" -Verbose
+
+        $runtime = "python"
+        Write-Verbose "runtime: $runtime" -Verbose
+
+        $runtimeVersion = "3.13"
+        Write-Verbose "Runtime version: $runtimeVersion" -Verbose
 
         try
         {
-            New-AzFunctionApp -Name $functionName `
-                              -ResourceGroupName $env.resourceGroupNameLinuxPremium `
-                              -PlanName $env.planNameWorkerTypeLinux `
-                              -StorageAccount $env.storageAccountLinux `
-                              -Runtime Python `
-                              -RuntimeVersion "3.10" `
+            Write-Verbose "Creating Linux function app with Python runtime" -Verbose
+            New-AzFunctionApp -Name $appName `
+                              -ResourceGroupName $resourceGroupName  `
+                              -PlanName $planName `
+                              -StorageAccount $storageAccountName `
+                              -Runtime $runtime `
+                              -RuntimeVersion $runtimeVersion `
                               -FunctionsVersion 4
 
-            $functionApp = Get-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameLinuxPremium
+            Write-Verbose "Validating function app properties..." -Verbose
+            $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName 
             $functionApp.OSType | Should -Be "Linux"
-            $functionApp.Runtime | Should -Be "Python"
+            $functionApp.Runtime | Should -Be $runtime
+            $functionApp.SiteConfig.LinuxFxVersion | Should -Be "$runtime|$runtimeVersion"
 
-            $applicationSettings = Get-AzFunctionAppSetting -Name $functionName -ResourceGroupName $env.resourceGroupNameLinuxPremium
+            Write-Verbose "Validating app settings..." -Verbose
+            $applicationSettings = Get-AzFunctionAppSetting -Name $appName -ResourceGroupName $resourceGroupName 
             $applicationSettings.ContainsKey("WEBSITE_NODE_DEFAULT_VERSION") | Should -Be $false
         }
         finally
         {
-            $functionApp = Get-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameLinuxPremium -ErrorAction SilentlyContinue
+            Write-Verbose "Cleaning up the function app..." -Verbose
+            $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName -ErrorAction SilentlyContinue
             if ($functionApp)
             {
-                Remove-AzFunctionApp -InputObject $functionApp -Force -ErrorAction SilentlyContinue
+                Write-Verbose "Removing function app $appName using -InputObject" -Verbose
+                Remove-AzFunctionApp -InputObject $functionApp -Force #-ErrorAction SilentlyContinue
             }
         }
     }
@@ -316,7 +368,9 @@ Describe 'New-AzFunctionApp' {
         #    - Tag values
         #
 
-        $functionName = $env.functionNamePowerShell
+        $appName = $env.functionNamePowerShell
+        $resourceGroupName = $env.resourceGroupNameWindowsConsumption
+        $storageAccountName = $env.storageAccountWindows
         $location = 'centralus'
         $tags = @{
             "MyTag1" = "MyTag1Value1"
@@ -329,32 +383,39 @@ Describe 'New-AzFunctionApp' {
             "AppSetting3" = ""
         }
 
+        Write-Verbose "App name: $appName" -Verbose
+        Write-Verbose "Resource group name: $resourceGroupName" -Verbose
+        Write-Verbose "Storage account name: $storageAccountName" -Verbose
+        Write-Verbose "Location: $location" -Verbose
+        Write-Verbose "Tags: $($tags | Out-String)" -Verbose
+
         try
         {
-            New-AzFunctionApp -Name $functionName `
-                              -ResourceGroupName $env.resourceGroupNameWindowsConsumption `
+            New-AzFunctionApp -Name $appName `
+                              -ResourceGroupName $resourceGroupName `
                               -Location $location `
-                              -StorageAccount $env.storageAccountWindows `
+                              -StorageAccount $storageAccountName `
                               -OSType "Windows" `
                               -Runtime "PowerShell" `
-                              -RuntimeVersion "7.2" `
+                              -RuntimeVersion "7.4" `
                               -FunctionsVersion 4 `
                               -Tag $tags `
                               -AppSetting $appSetting
 
-            $functionApp = Get-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsConsumption
+            Write-Verbose "Validating function app properties..." -Verbose
+            $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName
             $functionApp.OSType | Should -Be "Windows"
             $functionApp.Runtime | Should -Be "PowerShell"
             $functionApp.Location | Should -Be "Central US"
 
-            # Validate tags
+            Write-Verbose "Validating tags..." -Verbose
             foreach ($tagName in $tags.Keys)
             {
                 $functionApp.Tag.AdditionalProperties[$tagName] | Should Be $tags[$tagName]
             }
 
-            # Validate app settings
-            $applicationSettings = Get-AzFunctionAppSetting -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsConsumption
+            Write-Verbose "Validating app settings..." -Verbose
+            $applicationSettings = Get-AzFunctionAppSetting -Name $appName -ResourceGroupName $env.resourceGroupNameWindowsConsumption
             foreach ($appSettingName in $appSetting.Keys)
             {
                 $expectedValue = $appSetting[$appSettingName]
@@ -367,84 +428,123 @@ Describe 'New-AzFunctionApp' {
                 $applicationSettings[$appSettingName] | Should Be $expectedValue
             }
 
-            # Validate WEBSITE_CONTENTSHARE
-            $applicationSettings["WEBSITE_CONTENTSHARE"] | Should Match $functionName
+            Write-Verbose "Validating 'WEBSITE_CONTENTSHARE' app setting..." -Verbose
+            $applicationSettings["WEBSITE_CONTENTSHARE"] | Should Match $appName
 
-            # Validate the connection string suffix
+            Write-Verbose "Validating storage account connection string suffix..." -Verbose
             $expectedSuffix = GetStorageAccountEndpointSuffix
-            foreach ($appSettingName in @("AzureWebJobsStorage", "AzureWebJobsDashboard", "WEBSITE_CONTENTAZUREFILECONNECTIONSTRING"))
+            foreach ($appSettingName in @("AzureWebJobsStorage", "WEBSITE_CONTENTAZUREFILECONNECTIONSTRING"))
             {
                 $applicationSettings[$appSettingName] | Should Match $expectedSuffix
             }
         }
         finally
         {
-            $functionApp = Get-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsConsumption -ErrorAction SilentlyContinue
+            Write-Verbose "Cleaning up the function app..." -Verbose
+            $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName -ErrorAction SilentlyContinue
             if ($functionApp)
             {
-                Remove-AzFunctionApp -InputObject $functionApp -Force -ErrorAction SilentlyContinue
+                Write-Verbose "Removing function app $appName using -InputObject" -Verbose
+                Remove-AzFunctionApp -InputObject $functionApp -Force #-ErrorAction SilentlyContinue
             }
         }
     }
 
     It "Create a function app with 'UserAssigned' managed identity " {
 
-        $functionName = $env.functionNamePowerShell
+        $appName = $env.functionNamePowerShell
         $identityInfo = $env.identityInfo
+        $resourceGroupName = $env.resourceGroupNameWindowsPremium
+        $storageAccountName = $env.storageAccountWindows
+        $planName = $env.planNameWorkerTypeWindows
+        $runtime = "PowerShell"
+        $runtimeVersion = 7.4
+
+        Write-Verbose "App name: $appName" -Verbose
+        Write-Verbose "IdentityInfo id: $($identityInfo.Id)" -Verbose
+        Write-Verbose "Resource group name: $resourceGroupName" -Verbose
+        Write-Verbose "Storage account name: $storageAccountName" -Verbose
+        Write-Verbose "Plan name: $planName" -Verbose
+        Write-Verbose "Tags: $($tags | Out-String)" -Verbose
 
         try
         {
-            New-AzFunctionApp -Name $functionName `
-                              -ResourceGroupName $env.resourceGroupNameWindowsPremium `
-                              -PlanName $env.planNameWorkerTypeWindows `
-                              -StorageAccount $env.storageAccountWindows  `
-                              -Runtime PowerShell `
-                              -RuntimeVersion "7.2" `
+            Write-Verbose "Creating function app with a UserAssigned managed identity" -Verbose
+            New-AzFunctionApp -Name $appName `
+                              -ResourceGroupName $resourceGroupName `
+                              -PlanName $planName `
+                              -StorageAccount $storageAccountName  `
+                              -Runtime $runtime `
+                              -RuntimeVersion $runtimeVersion `
                               -FunctionsVersion 4 `
                               -IdentityType UserAssigned `
-                              -IdentityID $identityInfo.Id
+                              -IdentityID $identityInfo.Id `
+                              -OSType Windows
 
-            $functionApp = Get-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium
+            Write-Verbose "Validating function app properties..." -Verbose
+            $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName
             $functionApp.OSType | Should -Be "Windows"
-            $functionApp.Runtime | Should -Be "PowerShell"
+            $functionApp.Runtime | Should -Be $runtime
             $functionApp.IdentityType | Should -Be "UserAssigned"
         }
         finally
         {
-            $functionApp = Get-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium -ErrorAction SilentlyContinue
+            Write-Verbose  "Cleaning up the function app..." -Verbose
+            $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName -ErrorAction SilentlyContinue
             if ($functionApp)
             {
-                Remove-AzFunctionApp -InputObject $functionApp -Force -ErrorAction SilentlyContinue
+                Write-Verbose "Removing function app $appName using -InputObject" -Verbose
+                Remove-AzFunctionApp -InputObject $functionApp -Force #-ErrorAction SilentlyContinue
             }
         }
     }
 
     It "Create a function app with custom app settings and 'SystemAssigned' managed identity " {
 
-        $functionName = $env.functionNamePowerShell
+        $appName = $env.functionNamePowerShell
+        Write-Verbose "App name: $appName" -Verbose
+
+        $resourceGroupName = $env.resourceGroupNameWindowsPremium
+        Write-Verbose "Resource group name: $resourceGroupName" -Verbose
+
+        $planName = $env.planNameWorkerTypeWindows
+        Write-Verbose "Plan name: $planName" -Verbose
+
+        $storageAccountName = $env.storageAccountWindows
+        Write-Verbose "Storage account name: $storageAccountName" -Verbose
+
+        $runtime = "PowerShell"
+        Write-Verbose "Runtime: $runtime" -Verbose
+
+        $runtimeVersion = 7.4
+        Write-Verbose "RuntimeVersion: $runtimeVersion" -Verbose
+
         $appSetting = @{}
         $appSetting.Add("MyAppSetting1", 98765)
         $appSetting.Add("MyAppSetting2", "FooBar")
 
         try
         {
-            New-AzFunctionApp -Name $functionName `
-                              -ResourceGroupName $env.resourceGroupNameWindowsPremium `
-                              -PlanName $env.planNameWorkerTypeWindows `
-                              -StorageAccount $env.storageAccountWindows  `
-                              -Runtime PowerShell `
-                              -RuntimeVersion "7.2" `
+            Write-Verbose "Creating function app with a SystemAssigned managed identity" -Verbose
+            New-AzFunctionApp -Name $appName `
+                              -ResourceGroupName $resourceGroupName `
+                              -PlanName $planName `
+                              -StorageAccount  $storageAccountName  `
+                              -Runtime $runtime `
+                              -RuntimeVersion $runtimeVersion `
                               -FunctionsVersion 4 `
                               -IdentityType SystemAssigned `
                               -AppSetting $appSetting
 
-            $functionApp = Get-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium
+            Write-Verbose "Validating function app properties..." -Verbose
+            $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $env.resourceGroupNameWindowsPremium
             $functionApp.OSType | Should -Be "Windows"
-            $functionApp.Runtime | Should -Be "PowerShell"
+            $functionApp.Runtime | Should -Be $runtime
             $functionApp.IdentityType | Should -Be "SystemAssigned"
 
             # Get app settings
-            $applicationSettings = Get-AzFunctionAppSetting -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium
+            Write-Verbose "Validating app settings..." -Verbose
+            $applicationSettings = Get-AzFunctionAppSetting -Name $appName -ResourceGroupName $env.resourceGroupNameWindowsPremium
 
             foreach ($appSettingName in $appSetting.Keys)
             {
@@ -453,10 +553,12 @@ Describe 'New-AzFunctionApp' {
         }
         finally
         {
-            $functionApp = Get-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium -ErrorAction SilentlyContinue
+            Write-Verbose "Cleaning up the function app..." -Verbose
+            $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $env.resourceGroupNameWindowsPremium -ErrorAction SilentlyContinue
             if ($functionApp)
             {
-                Remove-AzFunctionApp -InputObject $functionApp -Force -ErrorAction SilentlyContinue
+                Write-Verbose "Removing function app $appName using -InputObject" -Verbose
+                Remove-AzFunctionApp -InputObject $functionApp -Force #-ErrorAction SilentlyContinue
             }
         }
     }
@@ -464,82 +566,144 @@ Describe 'New-AzFunctionApp' {
     It "Creating a function app with 'UserAssigned' managed identity should throw if IdentityID is not provided " {
 
         # Make sure user identiy is available
-        $expetedErrorId = "IdentityIDIsRequiredForUserAssignedIdentity"
+        $expectedErrorId = "IdentityIDIsRequiredForUserAssignedIdentity"
 
-        $functionName = $env.functionNamePowerShell
+        $appName = $env.functionNamePowerShell
+        Write-Verbose "App name: $appName" -Verbose
+
+        $resourceGroupName = $env.resourceGroupNameWindowsPremium
+        Write-Verbose "Resource group name: $resourceGroupName" -Verbose
+
+        $planName = $env.planNameWorkerTypeWindows
+        Write-Verbose "Plan name: $planName" -Verbose
+
+        $storageAccountName = $env.storageAccountWindows
+        Write-Verbose "Storage account name: $storageAccountName" -Verbose
+
+        $runtime = "PowerShell"
+        Write-Verbose "Runtime: $runtime" -Verbose
+
+        $runtimeVersion = 7.4
+        Write-Verbose "RuntimeVersion: $runtimeVersion" -Verbose
 
         $scriptblock = {
-            New-AzFunctionApp -Name $functionName `
-                              -ResourceGroupName $env.resourceGroupNameWindowsPremium `
-                              -PlanName $env.planNameWorkerTypeWindows `
-                              -StorageAccount $env.storageAccountWindows  `
-                              -Runtime PowerShell `
-                              -RuntimeVersion "7.2" `
+            Write-Verbose "Creating function app with a UserAssigned managed identity but without IdentityID" -Verbose
+            New-AzFunctionApp -Name $appName `
+                              -ResourceGroupName $resourceGroupName `
+                              -PlanName $planName `
+                              -StorageAccount $storageAccountName  `
+                              -Runtime $runtime `
+                              -RuntimeVersion $runtimeVersion `
                               -FunctionsVersion 4 `
                               -IdentityType UserAssigned
         }
-        $scriptblock | Should -Throw -ErrorId $expetedErrorId
+        Write-Verbose "Validate that the expected expetedErrorId is thrown" -Verbose
+        $scriptblock | Should -Throw -ErrorId $expectedErrorId
     }
 
     It "Validate that creating a DotNet function app in consumption for Linux sets the LinuxFxVersion property" {
 
-        $functionName = $env.functionNameDotNet
+        $appName = $env.functionNameDotNet
+        Write-Verbose "App name: $appName" -Verbose
+
+        $resourceGroupName = $env.resourceGroupNameLinuxConsumption
+        Write-Verbose "Resource group name: $resourceGroupName" -Verbose
+
+        $storageAccountName = $env.storageAccountLinux
+        Write-Verbose "Storage account name: $storageAccountName" -Verbose
+
+        $location = $env.location
+        Write-Verbose "Location: $location" -Verbose
+
+        $runtime = "dotnet"
+        Write-Verbose "Runtime: $runtime" -Verbose
+
+        $runtimeVersion = 8
+        Write-Verbose "RuntimeVersion: $runtimeVersion" -Verbose
+
+        $expectedLinuxFxVersion = "DOTNET|8.0"
 
         try
         {
-            New-AzFunctionApp -Name $functionName `
-                              -ResourceGroupName $env.resourceGroupNameLinuxConsumption `
-                              -Location $env.location `
-                              -StorageAccount $env.storageAccountLinux  `
-                              -Runtime DotNet `
-                              -RuntimeVersion 6 `
+            Write-Verbose "Creating a DotNet function app in consumption for Linux" -Verbose
+            New-AzFunctionApp -Name $appName `
+                              -ResourceGroupName  $resourceGroupName `
+                              -Location $location `
+                              -StorageAccount $storageAccountName  `
+                              -Runtime $runtime `
+                              -RuntimeVersion $runtimeVersion `
                               -FunctionsVersion 4 `
                               -OSType Linux
 
-            $functionApp = Get-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameLinuxConsumption
+            Write-Verbose "Validating function app properties..." -Verbose
+            $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName
             $functionApp.OSType | Should -Be "Linux"
-            $functionApp.Runtime | Should -Be "DotNet"
-            $functionApp.SiteConfig.LinuxFxVersion | Should -Be "dotnet|6.0"
+            $functionApp.Runtime | Should -Be $runtime
+            $functionApp.SiteConfig.LinuxFxVersion | Should -Be $expectedLinuxFxVersion
         }
         finally
         {
-            $functionApp = Get-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameLinuxConsumption -ErrorAction SilentlyContinue
+            Write-Verbose "Cleaning up the function app..." -Verbose
+            $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName  $resourceGroupName -ErrorAction SilentlyContinue
             if ($functionApp)
             {
-                Remove-AzFunctionApp -InputObject $functionApp -Force -ErrorAction SilentlyContinue
+                Write-Verbose "Removing function app $appName using -InputObject" -Verbose
+                Remove-AzFunctionApp -InputObject $functionApp -Force #-ErrorAction SilentlyContinue
             }
         }
     }
 
     It "Validate that creating a function app with -DisableApplicationInsights does not create an Application Insights project." {
 
-        $functionName = $env.functionNamePowerShell
+        $appName = $env.functionNamePowerShell
+        Write-Verbose "App name: $appName" -Verbose
+
+        $resourceGroupName = $env.resourceGroupNameWindowsPremium
+        Write-Verbose "Resource group name: $resourceGroupName" -Verbose
+
+        $planName = $env.planNameWorkerTypeWindows
+        Write-Verbose "Plan name: $planName" -Verbose
+
+        $storageAccountName = $env.storageAccountWindows
+        Write-Verbose "Storage account name: $storageAccountName" -Verbose
+
+        $runtime = "PowerShell"
+        Write-Verbose "Runtime: $runtime" -Verbose
+
+        $runtimeVersion = 7.4
+        Write-Verbose "RuntimeVersion: $runtimeVersion" -Verbose
+
+        $appSettingName = "APPLICATIONINSIGHTS_CONNECTION_STRING"
 
         try
         {
-            New-AzFunctionApp -Name $functionName `
-                              -ResourceGroupName $env.resourceGroupNameWindowsPremium `
-                              -PlanName $env.planNameWorkerTypeWindows `
-                              -StorageAccount $env.storageAccountWindows  `
-                              -Runtime PowerShell `
-                              -RuntimeVersion 7.2 `
+            Write-Verbose "Creating function app with -DisableApplicationInsights" -Verbose
+            New-AzFunctionApp -Name $appName `
+                              -ResourceGroupName $resourceGroupName `
+                              -PlanName $planName `
+                              -StorageAccount $storageAccountName  `
+                              -Runtime $runtime `
+                              -RuntimeVersion $runtimeVersion `
                               -FunctionsVersion 4 `
                               -DisableApplicationInsights
 
-            $functionApp = Get-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium
+            Write-Verbose "Validating function app properties..." -Verbose
+            $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName
             $functionApp.OSType | Should -Be "Windows"
             $functionApp.Runtime | Should -Be "PowerShell"
 
-            # Get app settings
-            $applicationSettings = Get-AzFunctionAppSetting -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium
-            $applicationSettings.ContainsKey("APPINSIGHTS_INSTRUMENTATIONKEY") | Should -Be $false
+            Write-Verbose "Validating that the app setting '$appSettingName' does not exist..." -Verbose
+            $applicationSettings = Get-AzFunctionAppSetting -Name $appName -ResourceGroupName $resourceGroupName
+            $applicationSettings.ContainsKey($appSettingName) | Should -Be $false
         }
         finally
         {
-            $functionApp = Get-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium -ErrorAction SilentlyContinue
+            Write-Verbose "Cleaning up the function app..." -Verbose
+            $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName -ErrorAction SilentlyContinue
             if ($functionApp)
             {
-                Remove-AzFunctionApp -InputObject $functionApp -Force -ErrorAction SilentlyContinue
+                Write-Verbose "Removing function app $appName using -InputObject" -Verbose
+                Remove-AzFunctionApp -InputObject $functionApp -Force #-ErrorAction SilentlyContinue
             }
         }
     }
@@ -548,104 +712,43 @@ Describe 'New-AzFunctionApp' {
     $functionAppCreationTestCases = @(
         # Consumption apps
         @{
-            "Name" = $env.functionNameDotNet
-            "Runtime" = "DotNet"
-            "RuntimeVersion" = "6"
-            "StorageAccountName" = $env.storageAccountLinux
-            "ResourceGroupName" = $env.resourceGroupNameLinuxConsumption
-            "Location" = $env.location
-            "OSType" = "Linux"
-            "ExpectedSiteConfig" = @{
-                "LinuxFxVersion" = "DOTNET|6.0"
-            }
-        },
-        @{
             "Name" = $env.functionNameJava
             "Runtime" = "Java"
-            "RuntimeVersion" = "17"
+            "RuntimeVersion" = "21"
             "StorageAccountName" = $env.storageAccountLinux
             "ResourceGroupName" = $env.resourceGroupNameLinuxConsumption
             "Location" = $env.location
             "OSType" = "Linux"
             "ExpectedSiteConfig" = @{
-                "LinuxFxVersion" = "Java|17"
+                "LinuxFxVersion" = "Java|21"
             }
         },
         @{
             "Name" = $env.functionNameNode
             "Runtime" = "Node"
-            "RuntimeVersion" = "18"
+            "RuntimeVersion" = "22"
             "StorageAccountName" = $env.storageAccountLinux
             "ResourceGroupName" = $env.resourceGroupNameLinuxConsumption
             "Location" = $env.location
             "OSType" = "Linux"
             "ExpectedSiteConfig" = @{
-                "LinuxFxVersion" = "Node|18"
-            }
-        },
-        @{
-            "Name" = $env.functionNamePython
-            "Runtime" = "Python"
-            "RuntimeVersion" = "3.10"
-            "StorageAccountName" = $env.storageAccountLinux
-            "ResourceGroupName" = $env.resourceGroupNameLinuxConsumption
-            "Location" = $env.location
-            "OSType" = "Linux"
-            "ExpectedSiteConfig" = @{
-                "LinuxFxVersion" = "Python|3.10"
-            }
-        },
-        @{
-            "Name" = $env.functionNamePowerShell
-            "Runtime" = "PowerShell"
-            "RuntimeVersion" = "7.2"
-            "StorageAccountName" = $env.storageAccountLinux
-            "ResourceGroupName" = $env.resourceGroupNameLinuxConsumption
-            "Location" = $env.location
-            "OSType" = "Linux"
-            "ExpectedSiteConfig" = @{
-                "LinuxFxVersion" = "PowerShell|7.2"
+                "LinuxFxVersion" = "Node|22"
             }
         }
         # Premium function app service plan
         @{
             "Name" = $env.functionNameDotNetIsolated
             "Runtime" = "DotNet-Isolated"
-            "RuntimeVersion" = "6"
+            "RuntimeVersion" = "9"
             "StorageAccountName" = $env.storageAccountWindows
             "ResourceGroupName" = $env.resourceGroupNameWindowsPremium
             "PlanName" = $env.planNameWorkerTypeWindows
             "OSType" = "Windows"
             "ExpectedSiteConfig" = @{
-                "NetFrameworkVersion" = "v6.0"
+                "NetFrameworkVersion" = "v9.0"
             }
             "ExpectedAppSettings" = @{
                 "FUNCTIONS_WORKER_RUNTIME" = "dotnet-isolated"
-            }
-        }
-        @{
-            "Name" = $env.functionNamePython
-            "Runtime" = "Python"
-            "RuntimeVersion" = "3.9"
-            "StorageAccountName" = $env.storageAccountLinux
-            "ResourceGroupName" = $env.resourceGroupNameLinuxPremium
-            "PlanName" = $env.planNameWorkerTypeLinux
-            "OSType" = "Linux"
-            "ExpectedSiteConfig" = @{
-                "LinuxFxVersion" = "Python|3.9"
-            }
-        },
-        @{
-            "Name" = $env.functionNameJava
-            "Runtime" = "Java"
-            "RuntimeVersion" = "17"
-            "StorageAccountName" = $env.storageAccountWindows
-            "ResourceGroupName" = $env.resourceGroupNameWindowsPremium
-            "PlanName" = $env.planNameWorkerTypeWindows
-            "OSType" = "Windows"
-            "ExpectedSiteConfig" = @{
-                "JavaVersion" = "17"
-                "netFrameworkVersion" = "v6.0"
             }
         }
         @{
@@ -668,12 +771,20 @@ Describe 'New-AzFunctionApp' {
     foreach ($testCase in $functionAppCreationTestCases)
     {
         $functionsVersion = 4
-        $functionName =  $testCase["Name"]
+        $appName =  $testCase["Name"]
         $runtime = $testCase["Runtime"]
         $runtimeVersion = $testCase["RuntimeVersion"]
         $resourceGroupName = $testCase["ResourceGroupName"]
         $storageAccountName = $testCase["StorageAccountName"]
         $OSType = $testCase["OSType"]
+
+        Write-Verbose "App name: $appName" -Verbose
+        Write-Verbose "Resource group name: $resourceGroupName" -Verbose
+        Write-Verbose "Storage account name: $storageAccountName" -Verbose
+        Write-Verbose "Runtime: $runtime" -Verbose
+        Write-Verbose "RuntimeVersion: $runtimeVersion" -Verbose
+        Write-Verbose "OSType: $OSType" -Verbose
+        Write-Verbose "FunctionsVersion: $functionsVersion" -Verbose
 
         $planType = $null
         $location = $null
@@ -690,6 +801,10 @@ Describe 'New-AzFunctionApp' {
             $planName = $testCase["PlanName"]
         }
 
+        Write-Verbose "PlanType: $planType" -Verbose
+        if ($planName) { Write-Verbose "PlanName: $planName" -Verbose }
+        if ($location) { Write-Verbose "Location: $location" -Verbose }
+
         It "Create v4 $OSType $runtime $runtimeVersion Function App hosted in a $planType plan." {
 
             try
@@ -698,7 +813,7 @@ Describe 'New-AzFunctionApp' {
                 {
                     if ($runtimeVersion)
                     {
-                        New-AzFunctionApp -Name $functionName `
+                        New-AzFunctionApp -Name $appName `
                                           -ResourceGroupName $resourceGroupName `
                                           -Location $location `
                                           -StorageAccountName $storageAccountName `
@@ -709,7 +824,7 @@ Describe 'New-AzFunctionApp' {
                     }
                     else
                     {
-                        New-AzFunctionApp -Name $functionName `
+                        New-AzFunctionApp -Name $appName `
                                           -ResourceGroupName $resourceGroupName `
                                           -Location $location `
                                           -StorageAccountName $storageAccountName `
@@ -722,7 +837,7 @@ Describe 'New-AzFunctionApp' {
                 {
                     if ($runtimeVersion)
                     {
-                        New-AzFunctionApp -Name $functionName `
+                        New-AzFunctionApp -Name $appName `
                                           -ResourceGroupName $resourceGroupName `
                                           -PlanName $planName `
                                           -StorageAccountName $storageAccountName `
@@ -733,7 +848,7 @@ Describe 'New-AzFunctionApp' {
                     }
                     else
                     {
-                        New-AzFunctionApp -Name $functionName `
+                        New-AzFunctionApp -Name $appName `
                                           -ResourceGroupName $resourceGroupName `
                                           -PlanName $planName `
                                           -StorageAccountName $storageAccountName `
@@ -743,16 +858,21 @@ Describe 'New-AzFunctionApp' {
                     }
                 }
 
-                $functionApp = Get-AzFunctionApp -Name $functionName -ResourceGroupName $resourceGroupName
+                Write-Verbose "Validating function app properties..." -Verbose
+                $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName
                 $functionApp.OSType | Should -Be $OSType
                 $functionApp.Runtime | Should -Be $runtime
 
-                # Validate FUNCTIONS_EXTENSION_VERSION
-                $applicationSettings = Get-AzFunctionAppSetting -Name $functionName -ResourceGroupName $resourceGroupName
-                $applicationSettings.FUNCTIONS_EXTENSION_VERSION | Should be "~$functionsVersion"
+                Write-Verbose "Validating FUNCTIONS_EXTENSION_VERSION and app settings..." -Verbose
+                $applicationSettings = Get-AzFunctionAppSetting -Name $appName -ResourceGroupName $resourceGroupName
+                $applicationSettings.FUNCTIONS_EXTENSION_VERSION | Should -Be "~$functionsVersion"
+
+                Write-Verbose "Validating that APPLICATIONINSIGHTS_CONNECTION_STRING is set..." -Verbose
+                $applicationSettings.APPLICATIONINSIGHTS_CONNECTION_STRING | Should -Not -BeNullOrEmpty
 
                 if ($testCase.ContainsKey("ExpectedSiteConfig"))
                 {
+                    Write-Verbose "Validating SiteConfig properties..." -Verbose
                     $expectedSiteConfig = $testCase["ExpectedSiteConfig"]
                     foreach ($propertyName in $expectedSiteConfig.Keys)
                     {
@@ -763,6 +883,7 @@ Describe 'New-AzFunctionApp' {
 
                 if ($testCase.ContainsKey("ExpectedAppSettings"))
                 {
+                    Write-Verbose "Validating custom app settings..." -Verbose
                     $expectedAppSettings = $testCase["ExpectedAppSettings"]
                     foreach ($appSettingName in $expectedAppSettings.Keys)
                     {
@@ -773,10 +894,12 @@ Describe 'New-AzFunctionApp' {
             }
             finally
             {
-                $functionApp = Get-AzFunctionApp -Name $functionName -ResourceGroupName $resourceGroupName -ErrorAction SilentlyContinue
+                Write-Verbose "Cleaning up the function app..." -Verbose
+                $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName -ErrorAction SilentlyContinue
                 if ($functionApp)
                 {
-                    Remove-AzFunctionApp -InputObject $functionApp -Force -ErrorAction SilentlyContinue
+                    Write-Verbose "Removing function app $appName using -InputObject" -Verbose
+                    Remove-AzFunctionApp -InputObject $functionApp -Force #-ErrorAction SilentlyContinue
                 }
             }
         }
@@ -791,18 +914,23 @@ Describe 'New-AzFunctionApp' {
             $expectedErrorMessage = "Functions version not supported. Currently supported version are:"
             try
             {
+                Write-Verbose "Create function app with an invalid FunctionsVersion: $functionsVersion" -Verbose
+                # Use valid parameters for other properties
                 New-AzFunctionApp -Name $env.functionNameTestApp `
                                   -ResourceGroupName $env.resourceGroupNameWindowsPremium `
                                   -PlanName $env.planNameWorkerTypeWindows `
                                   -StorageAccount $env.storageAccountWindows  `
                                   -Runtime PowerShell `
-                                  -FunctionsVersion $functionsVersion
+                                  -FunctionsVersion $functionsVersion `
+                                  -ErrorAction Stop
             }
             catch
             {
+                Write-Verbose "Catch the expected exception" -Verbose
                 $myError = $_
             }
 
+            Write-Verbose "Validate FullyQualifiedErrorId" -Verbose
             $myError.FullyQualifiedErrorId | Should Be $errorId
             $myError.Exception.Message | Should Match $expectedErrorMessage
         }

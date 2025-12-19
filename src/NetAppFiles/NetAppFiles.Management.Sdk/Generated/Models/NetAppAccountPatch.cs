@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
     /// NetApp account patch resource
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class NetAppAccountPatch : Microsoft.Rest.Azure.IResource
+    public partial class NetAppAccountPatch
     {
         /// <summary>
         /// Initializes a new instance of the NetAppAccountPatch class.

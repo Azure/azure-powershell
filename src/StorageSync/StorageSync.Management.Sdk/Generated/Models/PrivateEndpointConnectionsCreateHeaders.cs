@@ -30,19 +30,19 @@ namespace Microsoft.Azure.Management.StorageSync.Models
         /// <param name="retryAfter">
         /// </param>
 
-        /// <param name="xmsRequestId">
-        /// </param>
-
         /// <param name="xmsCorrelationRequestId">
         /// </param>
-        public PrivateEndpointConnectionsCreateHeaders(string azureAsyncOperation = default(string), string location = default(string), string retryAfter = default(string), string xmsRequestId = default(string), string xmsCorrelationRequestId = default(string))
+
+        /// <param name="xmsRequestId">
+        /// </param>
+        public PrivateEndpointConnectionsCreateHeaders(string azureAsyncOperation = default(string), string location = default(string), int? retryAfter = default(int?), string xmsCorrelationRequestId = default(string), string xmsRequestId = default(string))
 
         {
             this.AzureAsyncOperation = azureAsyncOperation;
             this.Location = location;
             this.RetryAfter = retryAfter;
-            this.XMSRequestId = xmsRequestId;
             this.XMSCorrelationRequestId = xmsCorrelationRequestId;
+            this.XMSRequestId = xmsRequestId;
             CustomInit();
         }
 
@@ -68,18 +68,18 @@ namespace Microsoft.Azure.Management.StorageSync.Models
         /// Gets or sets
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "Retry-After")]
-        public string RetryAfter {get; set; }
-
-        /// <summary>
-        /// Gets or sets
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "x-ms-request-id")]
-        public string XMSRequestId {get; set; }
+        public int? RetryAfter {get; set; }
 
         /// <summary>
         /// Gets or sets
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "x-ms-correlation-request-id")]
         public string XMSCorrelationRequestId {get; set; }
+
+        /// <summary>
+        /// Gets or sets
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "x-ms-request-id")]
+        public string XMSRequestId {get; set; }
     }
 }

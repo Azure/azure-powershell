@@ -10,15 +10,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Get a list of available versions for a region.</summary>
+    /// <summary>
+    /// Retrieve a list of all available Elastic versions for a specified region, helping you choose the best version for your
+    /// deployment.
+    /// </summary>
     /// <remarks>
     /// [OpenAPI] List=>GET:"/subscriptions/{subscriptionId}/providers/Microsoft.Elastic/elasticVersions"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzElasticVersion_List")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticVersionListFormat))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.Description(@"Get a list of available versions for a region.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.Description(@"Retrieve a list of all available Elastic versions for a specified region, helping you choose the best version for your deployment.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.Elastic/elasticVersions", ApiVersion = "2024-03-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.Elastic/elasticVersions", ApiVersion = "2025-06-01")]
     public partial class GetAzElasticVersion_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IContext

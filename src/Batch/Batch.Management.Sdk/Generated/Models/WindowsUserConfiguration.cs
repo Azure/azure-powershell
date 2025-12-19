@@ -27,9 +27,7 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// Initializes a new instance of the WindowsUserConfiguration class.
         /// </summary>
 
-        /// <param name="loginMode">Specifies login mode for the user. The default value for
-        /// VirtualMachineConfiguration pools is interactive mode and for
-        /// CloudServiceConfiguration pools is batch mode.
+        /// <param name="loginMode">Specifies login mode for the user. The default value is Interactive.
         /// Possible values include: &#39;Batch&#39;, &#39;Interactive&#39;</param>
         public WindowsUserConfiguration(LoginMode? loginMode = default(LoginMode?))
 
@@ -45,9 +43,8 @@ namespace Microsoft.Azure.Management.Batch.Models
 
 
         /// <summary>
-        /// Gets or sets specifies login mode for the user. The default value for
-        /// VirtualMachineConfiguration pools is interactive mode and for
-        /// CloudServiceConfiguration pools is batch mode. Possible values include: &#39;Batch&#39;, &#39;Interactive&#39;
+        /// Gets or sets specifies login mode for the user. The default value is
+        /// Interactive. Possible values include: &#39;Batch&#39;, &#39;Interactive&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "loginMode")]
         public LoginMode? LoginMode {get; set; }

@@ -24,14 +24,20 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// Initializes a new instance of the ManagedClusterAgentPoolProfileProperties class.
         /// </summary>
 
+        /// <param name="eTag">Unique read-only string used to implement optimistic concurrency. The eTag
+        /// value will change when the resource is updated. Specify an if-match or
+        /// if-none-match header with the eTag value for a subsequent request to enable
+        /// optimistic concurrency per the normal etag convention.
+        /// </param>
+
         /// <param name="count">Number of agents (VMs) to host docker containers. Allowed values must be in
         /// the range of 0 to 1000 (inclusive) for user pools and in the range of 1 to
         /// 1000 (inclusive) for system pools. The default value is 1.
         /// </param>
 
-        /// <param name="vmSize">VM size availability varies by region. If a node contains insufficient
-        /// compute resources (memory, cpu, etc) pods might fail to run correctly. For
-        /// more details on restricted VM sizes, see:
+        /// <param name="vmSize">The size of the agent pool VMs. VM size availability varies by region. If a
+        /// node contains insufficient compute resources (memory, cpu, etc) pods might
+        /// fail to run correctly. For more details on restricted VM sizes, see:
         /// https://docs.microsoft.com/azure/aks/quotas-skus-regions
         /// </param>
 
@@ -40,9 +46,10 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// size according to the vmSize specified.
         /// </param>
 
-        /// <param name="osDiskType">The default is &#39;Ephemeral&#39; if the VM supports it and has a cache disk
-        /// larger than the requested OSDiskSizeGB. Otherwise, defaults to &#39;Managed&#39;.
-        /// May not be changed after creation. For more information see [Ephemeral
+        /// <param name="osDiskType">The OS disk type to be used for machines in the agent pool. The default is
+        /// &#39;Ephemeral&#39; if the VM supports it and has a cache disk larger than the
+        /// requested OSDiskSizeGB. Otherwise, defaults to &#39;Managed&#39;. May not be
+        /// changed after creation. For more information see [Ephemeral
         /// OS](https://docs.microsoft.com/azure/aks/cluster-configuration#ephemeral-os).
         /// Possible values include: &#39;Managed&#39;, &#39;Ephemeral&#39;</param>
 
@@ -53,16 +60,29 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// <param name="workloadRuntime">Determines the type of workload a node can run.
         /// Possible values include: &#39;OCIContainer&#39;, &#39;WasmWasi&#39;</param>
 
-        /// <param name="vnetSubnetId">If this is not specified, a VNET and subnet will be generated and used. If
-        /// no podSubnetID is specified, this applies to nodes and pods, otherwise it
-        /// applies to just nodes. This is of the form:
+        /// <param name="messageOfTheDay">Message of the day for Linux nodes, base64-encoded. A base64-encoded string
+        /// which will be written to /etc/motd after decoding. This allows
+        /// customization of the message of the day for Linux nodes. It must not be
+        /// specified for Windows nodes. It must be a static string (i.e., will be
+        /// printed raw and not be executed as a script).
+        /// </param>
+
+        /// <param name="vnetSubnetId">The ID of the subnet which agent pool nodes and optionally pods will join
+        /// on startup. If this is not specified, a VNET and subnet will be generated
+        /// and used. If no podSubnetID is specified, this applies to nodes and pods,
+        /// otherwise it applies to just nodes. This is of the form:
         /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}
         /// </param>
 
-        /// <param name="podSubnetId">If omitted, pod IPs are statically assigned on the node subnet (see
-        /// vnetSubnetID for more details). This is of the form:
+        /// <param name="podSubnetId">The ID of the subnet which pods will join when launched. If omitted, pod
+        /// IPs are statically assigned on the node subnet (see vnetSubnetID for more
+        /// details). This is of the form:
         /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}
         /// </param>
+
+        /// <param name="podIPAllocationMode">Pod IP Allocation Mode. The IP allocation mode for pods in the agent pool.
+        /// Must be used with podSubnetId. The default is &#39;DynamicIndividual&#39;.
+        /// Possible values include: &#39;DynamicIndividual&#39;, &#39;StaticBlock&#39;</param>
 
         /// <param name="maxPods">The maximum number of pods that can run on a node.
         /// </param>
@@ -73,8 +93,8 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// <param name="osSku">Specifies the OS SKU used by the agent pool. The default is Ubuntu if
         /// OSType is Linux. The default is Windows2019 when Kubernetes &lt;= 1.24 or
         /// Windows2022 when Kubernetes &gt;= 1.25 if OSType is Windows.
-        /// Possible values include: &#39;Ubuntu&#39;, &#39;AzureLinux&#39;, &#39;CBLMariner&#39;,
-        /// &#39;Windows2019&#39;, &#39;Windows2022&#39;</param>
+        /// Possible values include: &#39;Ubuntu&#39;, &#39;AzureLinux&#39;, &#39;AzureLinux3&#39;,
+        /// &#39;CBLMariner&#39;, &#39;Windows2019&#39;, &#39;Windows2022&#39;, &#39;Ubuntu2204&#39;</param>
 
         /// <param name="maxCount">The maximum number of nodes for auto-scaling
         /// </param>
@@ -85,36 +105,39 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// <param name="enableAutoScaling">Whether to enable auto-scaler
         /// </param>
 
-        /// <param name="scaleDownMode">This also effects the cluster autoscaler behavior. If not specified, it
-        /// defaults to Delete.
+        /// <param name="scaleDownMode">The scale down mode to use when scaling the Agent Pool. This also effects
+        /// the cluster autoscaler behavior. If not specified, it defaults to Delete.
         /// Possible values include: &#39;Delete&#39;, &#39;Deallocate&#39;</param>
 
         /// <param name="type">The type of Agent Pool.
-        /// Possible values include: &#39;VirtualMachineScaleSets&#39;, &#39;AvailabilitySet&#39;</param>
+        /// Possible values include: &#39;VirtualMachineScaleSets&#39;, &#39;AvailabilitySet&#39;,
+        /// &#39;VirtualMachines&#39;</param>
 
-        /// <param name="mode">A cluster must have at least one &#39;System&#39; Agent Pool at all times. For
-        /// additional information on agent pool restrictions and best practices, see:
+        /// <param name="mode">The mode of an agent pool. A cluster must have at least one &#39;System&#39; Agent
+        /// Pool at all times. For additional information on agent pool restrictions
+        /// and best practices, see:
         /// https://docs.microsoft.com/azure/aks/use-system-pools
-        /// Possible values include: &#39;System&#39;, &#39;User&#39;</param>
+        /// Possible values include: &#39;System&#39;, &#39;User&#39;, &#39;Gateway&#39;</param>
 
-        /// <param name="orchestratorVersion">Both patch version (major.minor.patch) (e.g. 1.20.13) and (major.minor)
-        /// (e.g. 1.20) are supported. When (major.minor) is specified, the latest
-        /// supported GA patch version is chosen automatically. Updating the cluster
-        /// with the same (major.minor) once it has been created (e.g. 1.14.x -) 1.14)
-        /// will not trigger an upgrade, even if a newer patch version is available. As
-        /// a best practice, you should upgrade all node pools in an AKS cluster to the
-        /// same Kubernetes version. The node pool version must have the same major
-        /// version as the control plane. The node pool minor version must be within
-        /// two minor versions of the control plane version. The node pool version
-        /// cannot be greater than the control plane version. For more information see
-        /// [upgrading a node
+        /// <param name="orchestratorVersion">The version of Kubernetes specified by the user. Both patch version
+        /// (major.minor.patch) (e.g. 1.20.13) and (major.minor) (e.g. 1.20) are
+        /// supported. When (major.minor) is specified, the latest supported GA patch
+        /// version is chosen automatically. Updating the cluster with the same
+        /// (major.minor) once it has been created (e.g. 1.14.x -) 1.14) will not
+        /// trigger an upgrade, even if a newer patch version is available. As a best
+        /// practice, you should upgrade all node pools in an AKS cluster to the same
+        /// Kubernetes version. The node pool version must have the same major version
+        /// as the control plane. The node pool minor version must be within two minor
+        /// versions of the control plane version. The node pool version cannot be
+        /// greater than the control plane version. For more information see [upgrading
+        /// a node
         /// pool](https://docs.microsoft.com/azure/aks/use-multiple-node-pools#upgrade-a-node-pool).
         /// </param>
 
-        /// <param name="currentOrchestratorVersion">If orchestratorVersion is a fully specified version (major.minor.patch),
-        /// this field will be exactly equal to it. If orchestratorVersion is
-        /// (major.minor), this field will contain the full (major.minor.patch) version
-        /// being used.
+        /// <param name="currentOrchestratorVersion">The version of Kubernetes the Agent Pool is running. If orchestratorVersion
+        /// is a fully specified version (major.minor.patch), this field will be
+        /// exactly equal to it. If orchestratorVersion is (major.minor), this field
+        /// will contain the full (major.minor.patch) version being used.
         /// </param>
 
         /// <param name="nodeImageVersion">The version of node image
@@ -126,26 +149,28 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// <param name="provisioningState">The current deployment or provisioning state.
         /// </param>
 
-        /// <param name="powerState">When an Agent Pool is first created it is initially Running. The Agent Pool
-        /// can be stopped by setting this field to Stopped. A stopped Agent Pool stops
-        /// all of its VMs and does not accrue billing charges. An Agent Pool can only
-        /// be stopped if it is Running and provisioning state is Succeeded
+        /// <param name="powerState">Whether the Agent Pool is running or stopped. When an Agent Pool is first
+        /// created it is initially Running. The Agent Pool can be stopped by setting
+        /// this field to Stopped. A stopped Agent Pool stops all of its VMs and does
+        /// not accrue billing charges. An Agent Pool can only be stopped if it is
+        /// Running and provisioning state is Succeeded
         /// </param>
 
         /// <param name="availabilityZones">The list of Availability zones to use for nodes. This can only be specified
         /// if the AgentPoolType property is &#39;VirtualMachineScaleSets&#39;.
         /// </param>
 
-        /// <param name="enableNodePublicIP">Some scenarios may require nodes in a node pool to receive their own
-        /// dedicated public IP addresses. A common scenario is for gaming workloads,
-        /// where a console needs to make a direct connection to a cloud virtual
-        /// machine to minimize hops. For more information see [assigning a public IP
-        /// per
+        /// <param name="enableNodePublicIP">Whether each node is allocated its own public IP. Some scenarios may
+        /// require nodes in a node pool to receive their own dedicated public IP
+        /// addresses. A common scenario is for gaming workloads, where a console needs
+        /// to make a direct connection to a cloud virtual machine to minimize hops.
+        /// For more information see [assigning a public IP per
         /// node](https://docs.microsoft.com/azure/aks/use-multiple-node-pools#assign-a-public-ip-per-node-for-your-node-pools).
         /// The default is false.
         /// </param>
 
-        /// <param name="nodePublicIPPrefixId">This is of the form:
+        /// <param name="nodePublicIPPrefixId">The public IP prefix ID which VM nodes should use IPs from. This is of the
+        /// form:
         /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPPrefixes/{publicIPPrefixName}
         /// </param>
 
@@ -153,13 +178,16 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// &#39;Regular&#39;.
         /// Possible values include: &#39;Spot&#39;, &#39;Regular&#39;</param>
 
-        /// <param name="scaleSetEvictionPolicy">This cannot be specified unless the scaleSetPriority is &#39;Spot&#39;. If not
-        /// specified, the default is &#39;Delete&#39;.
+        /// <param name="scaleSetEvictionPolicy">The Virtual Machine Scale Set eviction policy to use. This cannot be
+        /// specified unless the scaleSetPriority is &#39;Spot&#39;. If not specified, the
+        /// default is &#39;Delete&#39;.
         /// Possible values include: &#39;Delete&#39;, &#39;Deallocate&#39;</param>
 
-        /// <param name="spotMaxPrice">Possible values are any decimal value greater than zero or -1 which
-        /// indicates the willingness to pay any on-demand price. For more details on
-        /// spot pricing, see [spot VMs
+        /// <param name="spotMaxPrice">The max price (in US Dollars) you are willing to pay for spot instances.
+        /// Possible values are any decimal value greater than zero or -1 which
+        /// indicates default price to be up-to on-demand. Possible values are any
+        /// decimal value greater than zero or -1 which indicates the willingness to
+        /// pay any on-demand price. For more details on spot pricing, see [spot VMs
         /// pricing](https://docs.microsoft.com/azure/virtual-machines/spot-vms#pricing)
         /// </param>
 
@@ -182,15 +210,16 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// <param name="linuxOSConfig">The OS configuration of Linux agent nodes.
         /// </param>
 
-        /// <param name="enableEncryptionAtHost">This is only supported on certain VM sizes and in certain Azure regions.
-        /// For more information, see:
+        /// <param name="enableEncryptionAtHost">Whether to enable host based OS and data drive encryption. This is only
+        /// supported on certain VM sizes and in certain Azure regions. For more
+        /// information, see:
         /// https://docs.microsoft.com/azure/aks/enable-host-encryption
         /// </param>
 
         /// <param name="enableUltraSsd">Whether to enable UltraSSD
         /// </param>
 
-        /// <param name="enableFips">See [Add a FIPS-enabled node
+        /// <param name="enableFips">Whether to use a FIPS-enabled OS. See [Add a FIPS-enabled node
         /// pool](https://docs.microsoft.com/azure/aks/use-multiple-node-pools#add-a-fips-enabled-node-pool-preview)
         /// for more details.
         /// </param>
@@ -203,22 +232,56 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// will be created/upgraded using a snapshot.
         /// </param>
 
-        /// <param name="hostGroupId">This is of the form:
+        /// <param name="capacityReservationGroupId">AKS will associate the specified agent pool with the Capacity Reservation
+        /// Group.
+        /// </param>
+
+        /// <param name="hostGroupId">The fully qualified resource ID of the Dedicated Host Group to provision
+        /// virtual machines from, used only in creation scenario and not allowed to
+        /// changed once set. This is of the form:
         /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}.
         /// For more information see [Azure dedicated
         /// hosts](https://docs.microsoft.com/azure/virtual-machines/dedicated-hosts).
         /// </param>
-        public ManagedClusterAgentPoolProfileProperties(int? count = default(int?), string vmSize = default(string), int? osDiskSizeGb = default(int?), string osDiskType = default(string), string kubeletDiskType = default(string), string workloadRuntime = default(string), string vnetSubnetId = default(string), string podSubnetId = default(string), int? maxPods = default(int?), string osType = default(string), string osSku = default(string), int? maxCount = default(int?), int? minCount = default(int?), bool? enableAutoScaling = default(bool?), string scaleDownMode = default(string), string type = default(string), string mode = default(string), string orchestratorVersion = default(string), string currentOrchestratorVersion = default(string), string nodeImageVersion = default(string), AgentPoolUpgradeSettings upgradeSettings = default(AgentPoolUpgradeSettings), string provisioningState = default(string), PowerState powerState = default(PowerState), System.Collections.Generic.IList<string> availabilityZones = default(System.Collections.Generic.IList<string>), bool? enableNodePublicIP = default(bool?), string nodePublicIPPrefixId = default(string), string scaleSetPriority = default(string), string scaleSetEvictionPolicy = default(string), double? spotMaxPrice = default(double?), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IDictionary<string, string> nodeLabels = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IList<string> nodeTaints = default(System.Collections.Generic.IList<string>), string proximityPlacementGroupId = default(string), KubeletConfig kubeletConfig = default(KubeletConfig), LinuxOSConfig linuxOSConfig = default(LinuxOSConfig), bool? enableEncryptionAtHost = default(bool?), bool? enableUltraSsd = default(bool?), bool? enableFips = default(bool?), string gpuInstanceProfile = default(string), CreationData creationData = default(CreationData), string hostGroupId = default(string))
+
+        /// <param name="networkProfile">Network-related settings of an agent pool.
+        /// </param>
+
+        /// <param name="windowsProfile">The Windows agent pool&#39;s specific profile.
+        /// </param>
+
+        /// <param name="securityProfile">The security settings of an agent pool.
+        /// </param>
+
+        /// <param name="gpuProfile">GPU settings for the Agent Pool.
+        /// </param>
+
+        /// <param name="gatewayProfile">Profile specific to a managed agent pool in Gateway mode. This field cannot
+        /// be set if agent pool mode is not Gateway.
+        /// </param>
+
+        /// <param name="virtualMachinesProfile">Specifications on VirtualMachines agent pool.
+        /// </param>
+
+        /// <param name="virtualMachineNodesStatus">The status of nodes in a VirtualMachines agent pool.
+        /// </param>
+
+        /// <param name="status">Contains read-only information about the Agent Pool.
+        /// </param>
+        public ManagedClusterAgentPoolProfileProperties(string eTag = default(string), int? count = default(int?), string vmSize = default(string), int? osDiskSizeGb = default(int?), string osDiskType = default(string), string kubeletDiskType = default(string), string workloadRuntime = default(string), string messageOfTheDay = default(string), string vnetSubnetId = default(string), string podSubnetId = default(string), string podIPAllocationMode = default(string), int? maxPods = default(int?), string osType = default(string), string osSku = default(string), int? maxCount = default(int?), int? minCount = default(int?), bool? enableAutoScaling = default(bool?), string scaleDownMode = default(string), string type = default(string), string mode = default(string), string orchestratorVersion = default(string), string currentOrchestratorVersion = default(string), string nodeImageVersion = default(string), AgentPoolUpgradeSettings upgradeSettings = default(AgentPoolUpgradeSettings), string provisioningState = default(string), PowerState powerState = default(PowerState), System.Collections.Generic.IList<string> availabilityZones = default(System.Collections.Generic.IList<string>), bool? enableNodePublicIP = default(bool?), string nodePublicIPPrefixId = default(string), string scaleSetPriority = default(string), string scaleSetEvictionPolicy = default(string), double? spotMaxPrice = default(double?), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IDictionary<string, string> nodeLabels = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IList<string> nodeTaints = default(System.Collections.Generic.IList<string>), string proximityPlacementGroupId = default(string), KubeletConfig kubeletConfig = default(KubeletConfig), LinuxOSConfig linuxOSConfig = default(LinuxOSConfig), bool? enableEncryptionAtHost = default(bool?), bool? enableUltraSsd = default(bool?), bool? enableFips = default(bool?), string gpuInstanceProfile = default(string), CreationData creationData = default(CreationData), string capacityReservationGroupId = default(string), string hostGroupId = default(string), AgentPoolNetworkProfile networkProfile = default(AgentPoolNetworkProfile), AgentPoolWindowsProfile windowsProfile = default(AgentPoolWindowsProfile), AgentPoolSecurityProfile securityProfile = default(AgentPoolSecurityProfile), GPUProfile gpuProfile = default(GPUProfile), AgentPoolGatewayProfile gatewayProfile = default(AgentPoolGatewayProfile), VirtualMachinesProfile virtualMachinesProfile = default(VirtualMachinesProfile), System.Collections.Generic.IList<VirtualMachineNodes> virtualMachineNodesStatus = default(System.Collections.Generic.IList<VirtualMachineNodes>), AgentPoolStatus status = default(AgentPoolStatus))
 
         {
+            this.ETag = eTag;
             this.Count = count;
             this.VMSize = vmSize;
             this.OSDiskSizeGb = osDiskSizeGb;
             this.OSDiskType = osDiskType;
             this.KubeletDiskType = kubeletDiskType;
             this.WorkloadRuntime = workloadRuntime;
+            this.MessageOfTheDay = messageOfTheDay;
             this.VnetSubnetId = vnetSubnetId;
             this.PodSubnetId = podSubnetId;
+            this.PodIPAllocationMode = podIPAllocationMode;
             this.MaxPods = maxPods;
             this.OSType = osType;
             this.OSSku = osSku;
@@ -251,7 +314,16 @@ namespace Microsoft.Azure.Management.ContainerService.Models
             this.EnableFips = enableFips;
             this.GpuInstanceProfile = gpuInstanceProfile;
             this.CreationData = creationData;
+            this.CapacityReservationGroupId = capacityReservationGroupId;
             this.HostGroupId = hostGroupId;
+            this.NetworkProfile = networkProfile;
+            this.WindowsProfile = windowsProfile;
+            this.SecurityProfile = securityProfile;
+            this.GpuProfile = gpuProfile;
+            this.GatewayProfile = gatewayProfile;
+            this.VirtualMachinesProfile = virtualMachinesProfile;
+            this.VirtualMachineNodesStatus = virtualMachineNodesStatus;
+            this.Status = status;
             CustomInit();
         }
 
@@ -260,6 +332,15 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// </summary>
         partial void CustomInit();
 
+
+        /// <summary>
+        /// Gets unique read-only string used to implement optimistic concurrency. The
+        /// eTag value will change when the resource is updated. Specify an if-match or
+        /// if-none-match header with the eTag value for a subsequent request to enable
+        /// optimistic concurrency per the normal etag convention.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "eTag")]
+        public string ETag {get; private set; }
 
         /// <summary>
         /// Gets or sets number of agents (VMs) to host docker containers. Allowed
@@ -271,10 +352,10 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         public int? Count {get; set; }
 
         /// <summary>
-        /// Gets or sets vM size availability varies by region. If a node contains
-        /// insufficient compute resources (memory, cpu, etc) pods might fail to run
-        /// correctly. For more details on restricted VM sizes, see:
-        /// https://docs.microsoft.com/azure/aks/quotas-skus-regions
+        /// Gets or sets the size of the agent pool VMs. VM size availability varies by
+        /// region. If a node contains insufficient compute resources (memory, cpu,
+        /// etc) pods might fail to run correctly. For more details on restricted VM
+        /// sizes, see: https://docs.microsoft.com/azure/aks/quotas-skus-regions
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "vmSize")]
         public string VMSize {get; set; }
@@ -288,10 +369,10 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         public int? OSDiskSizeGb {get; set; }
 
         /// <summary>
-        /// Gets or sets the default is &#39;Ephemeral&#39; if the VM supports it and has a
-        /// cache disk larger than the requested OSDiskSizeGB. Otherwise, defaults to
-        /// &#39;Managed&#39;. May not be changed after creation. For more information see
-        /// [Ephemeral
+        /// Gets or sets the OS disk type to be used for machines in the agent pool.
+        /// The default is &#39;Ephemeral&#39; if the VM supports it and has a cache disk
+        /// larger than the requested OSDiskSizeGB. Otherwise, defaults to &#39;Managed&#39;.
+        /// May not be changed after creation. For more information see [Ephemeral
         /// OS](https://docs.microsoft.com/azure/aks/cluster-configuration#ephemeral-os). Possible values include: &#39;Managed&#39;, &#39;Ephemeral&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "osDiskType")]
@@ -311,21 +392,41 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         public string WorkloadRuntime {get; set; }
 
         /// <summary>
-        /// Gets or sets if this is not specified, a VNET and subnet will be generated
-        /// and used. If no podSubnetID is specified, this applies to nodes and pods,
-        /// otherwise it applies to just nodes. This is of the form:
+        /// Gets or sets message of the day for Linux nodes, base64-encoded. A
+        /// base64-encoded string which will be written to /etc/motd after decoding.
+        /// This allows customization of the message of the day for Linux nodes. It
+        /// must not be specified for Windows nodes. It must be a static string (i.e.,
+        /// will be printed raw and not be executed as a script).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "messageOfTheDay")]
+        public string MessageOfTheDay {get; set; }
+
+        /// <summary>
+        /// Gets or sets the ID of the subnet which agent pool nodes and optionally
+        /// pods will join on startup. If this is not specified, a VNET and subnet will
+        /// be generated and used. If no podSubnetID is specified, this applies to
+        /// nodes and pods, otherwise it applies to just nodes. This is of the form:
         /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "vnetSubnetID")]
         public string VnetSubnetId {get; set; }
 
         /// <summary>
-        /// Gets or sets if omitted, pod IPs are statically assigned on the node subnet
-        /// (see vnetSubnetID for more details). This is of the form:
+        /// Gets or sets the ID of the subnet which pods will join when launched. If
+        /// omitted, pod IPs are statically assigned on the node subnet (see
+        /// vnetSubnetID for more details). This is of the form:
         /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "podSubnetID")]
         public string PodSubnetId {get; set; }
+
+        /// <summary>
+        /// Gets or sets pod IP Allocation Mode. The IP allocation mode for pods in the
+        /// agent pool. Must be used with podSubnetId. The default is
+        /// &#39;DynamicIndividual&#39;. Possible values include: &#39;DynamicIndividual&#39;, &#39;StaticBlock&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "podIPAllocationMode")]
+        public string PodIPAllocationMode {get; set; }
 
         /// <summary>
         /// Gets or sets the maximum number of pods that can run on a node.
@@ -342,7 +443,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// <summary>
         /// Gets or sets specifies the OS SKU used by the agent pool. The default is
         /// Ubuntu if OSType is Linux. The default is Windows2019 when Kubernetes &lt;=
-        /// 1.24 or Windows2022 when Kubernetes &gt;= 1.25 if OSType is Windows. Possible values include: &#39;Ubuntu&#39;, &#39;AzureLinux&#39;, &#39;CBLMariner&#39;, &#39;Windows2019&#39;, &#39;Windows2022&#39;
+        /// 1.24 or Windows2022 when Kubernetes &gt;= 1.25 if OSType is Windows. Possible values include: &#39;Ubuntu&#39;, &#39;AzureLinux&#39;, &#39;AzureLinux3&#39;, &#39;CBLMariner&#39;, &#39;Windows2019&#39;, &#39;Windows2022&#39;, &#39;Ubuntu2204&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "osSKU")]
         public string OSSku {get; set; }
@@ -366,48 +467,51 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         public bool? EnableAutoScaling {get; set; }
 
         /// <summary>
-        /// Gets or sets this also effects the cluster autoscaler behavior. If not
-        /// specified, it defaults to Delete. Possible values include: &#39;Delete&#39;, &#39;Deallocate&#39;
+        /// Gets or sets the scale down mode to use when scaling the Agent Pool. This
+        /// also effects the cluster autoscaler behavior. If not specified, it defaults
+        /// to Delete. Possible values include: &#39;Delete&#39;, &#39;Deallocate&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "scaleDownMode")]
         public string ScaleDownMode {get; set; }
 
         /// <summary>
-        /// Gets or sets the type of Agent Pool. Possible values include: &#39;VirtualMachineScaleSets&#39;, &#39;AvailabilitySet&#39;
+        /// Gets or sets the type of Agent Pool. Possible values include: &#39;VirtualMachineScaleSets&#39;, &#39;AvailabilitySet&#39;, &#39;VirtualMachines&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
         public string Type {get; set; }
 
         /// <summary>
-        /// Gets or sets a cluster must have at least one &#39;System&#39; Agent Pool at all
-        /// times. For additional information on agent pool restrictions and best
-        /// practices, see: https://docs.microsoft.com/azure/aks/use-system-pools Possible values include: &#39;System&#39;, &#39;User&#39;
+        /// Gets or sets the mode of an agent pool. A cluster must have at least one
+        /// &#39;System&#39; Agent Pool at all times. For additional information on agent pool
+        /// restrictions and best practices, see:
+        /// https://docs.microsoft.com/azure/aks/use-system-pools Possible values include: &#39;System&#39;, &#39;User&#39;, &#39;Gateway&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "mode")]
         public string Mode {get; set; }
 
         /// <summary>
-        /// Gets or sets both patch version (major.minor.patch) (e.g. 1.20.13) and
-        /// (major.minor) (e.g. 1.20) are supported. When (major.minor) is specified,
-        /// the latest supported GA patch version is chosen automatically. Updating the
-        /// cluster with the same (major.minor) once it has been created (e.g. 1.14.x
-        /// -) 1.14) will not trigger an upgrade, even if a newer patch version is
-        /// available. As a best practice, you should upgrade all node pools in an AKS
-        /// cluster to the same Kubernetes version. The node pool version must have the
-        /// same major version as the control plane. The node pool minor version must
-        /// be within two minor versions of the control plane version. The node pool
-        /// version cannot be greater than the control plane version. For more
-        /// information see [upgrading a node
+        /// Gets or sets the version of Kubernetes specified by the user. Both patch
+        /// version (major.minor.patch) (e.g. 1.20.13) and (major.minor) (e.g. 1.20)
+        /// are supported. When (major.minor) is specified, the latest supported GA
+        /// patch version is chosen automatically. Updating the cluster with the same
+        /// (major.minor) once it has been created (e.g. 1.14.x -) 1.14) will not
+        /// trigger an upgrade, even if a newer patch version is available. As a best
+        /// practice, you should upgrade all node pools in an AKS cluster to the same
+        /// Kubernetes version. The node pool version must have the same major version
+        /// as the control plane. The node pool minor version must be within two minor
+        /// versions of the control plane version. The node pool version cannot be
+        /// greater than the control plane version. For more information see [upgrading
+        /// a node
         /// pool](https://docs.microsoft.com/azure/aks/use-multiple-node-pools#upgrade-a-node-pool).
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "orchestratorVersion")]
         public string OrchestratorVersion {get; set; }
 
         /// <summary>
-        /// Gets if orchestratorVersion is a fully specified version
-        /// (major.minor.patch), this field will be exactly equal to it. If
-        /// orchestratorVersion is (major.minor), this field will contain the full
-        /// (major.minor.patch) version being used.
+        /// Gets the version of Kubernetes the Agent Pool is running. If
+        /// orchestratorVersion is a fully specified version (major.minor.patch), this
+        /// field will be exactly equal to it. If orchestratorVersion is (major.minor),
+        /// this field will contain the full (major.minor.patch) version being used.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "currentOrchestratorVersion")]
         public string CurrentOrchestratorVersion {get; private set; }
@@ -431,11 +535,11 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         public string ProvisioningState {get; private set; }
 
         /// <summary>
-        /// Gets or sets when an Agent Pool is first created it is initially Running.
-        /// The Agent Pool can be stopped by setting this field to Stopped. A stopped
-        /// Agent Pool stops all of its VMs and does not accrue billing charges. An
-        /// Agent Pool can only be stopped if it is Running and provisioning state is
-        /// Succeeded
+        /// Gets or sets whether the Agent Pool is running or stopped. When an Agent
+        /// Pool is first created it is initially Running. The Agent Pool can be
+        /// stopped by setting this field to Stopped. A stopped Agent Pool stops all of
+        /// its VMs and does not accrue billing charges. An Agent Pool can only be
+        /// stopped if it is Running and provisioning state is Succeeded
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "powerState")]
         public PowerState PowerState {get; set; }
@@ -448,11 +552,11 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         public System.Collections.Generic.IList<string> AvailabilityZones {get; set; }
 
         /// <summary>
-        /// Gets or sets some scenarios may require nodes in a node pool to receive
-        /// their own dedicated public IP addresses. A common scenario is for gaming
-        /// workloads, where a console needs to make a direct connection to a cloud
-        /// virtual machine to minimize hops. For more information see [assigning a
-        /// public IP per
+        /// Gets or sets whether each node is allocated its own public IP. Some
+        /// scenarios may require nodes in a node pool to receive their own dedicated
+        /// public IP addresses. A common scenario is for gaming workloads, where a
+        /// console needs to make a direct connection to a cloud virtual machine to
+        /// minimize hops. For more information see [assigning a public IP per
         /// node](https://docs.microsoft.com/azure/aks/use-multiple-node-pools#assign-a-public-ip-per-node-for-your-node-pools).
         /// The default is false.
         /// </summary>
@@ -460,7 +564,8 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         public bool? EnableNodePublicIP {get; set; }
 
         /// <summary>
-        /// Gets or sets this is of the form:
+        /// Gets or sets the public IP prefix ID which VM nodes should use IPs from.
+        /// This is of the form:
         /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPPrefixes/{publicIPPrefixName}
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "nodePublicIPPrefixID")]
@@ -474,16 +579,19 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         public string ScaleSetPriority {get; set; }
 
         /// <summary>
-        /// Gets or sets this cannot be specified unless the scaleSetPriority is
-        /// &#39;Spot&#39;. If not specified, the default is &#39;Delete&#39;. Possible values include: &#39;Delete&#39;, &#39;Deallocate&#39;
+        /// Gets or sets the Virtual Machine Scale Set eviction policy to use. This
+        /// cannot be specified unless the scaleSetPriority is &#39;Spot&#39;. If not
+        /// specified, the default is &#39;Delete&#39;. Possible values include: &#39;Delete&#39;, &#39;Deallocate&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "scaleSetEvictionPolicy")]
         public string ScaleSetEvictionPolicy {get; set; }
 
         /// <summary>
-        /// Gets or sets possible values are any decimal value greater than zero or -1
-        /// which indicates the willingness to pay any on-demand price. For more
-        /// details on spot pricing, see [spot VMs
+        /// Gets or sets the max price (in US Dollars) you are willing to pay for spot
+        /// instances. Possible values are any decimal value greater than zero or -1
+        /// which indicates default price to be up-to on-demand. Possible values are
+        /// any decimal value greater than zero or -1 which indicates the willingness
+        /// to pay any on-demand price. For more details on spot pricing, see [spot VMs
         /// pricing](https://docs.microsoft.com/azure/virtual-machines/spot-vms#pricing)
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "spotMaxPrice")]
@@ -529,8 +637,9 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         public LinuxOSConfig LinuxOSConfig {get; set; }
 
         /// <summary>
-        /// Gets or sets this is only supported on certain VM sizes and in certain
-        /// Azure regions. For more information, see:
+        /// Gets or sets whether to enable host based OS and data drive encryption.
+        /// This is only supported on certain VM sizes and in certain Azure regions.
+        /// For more information, see:
         /// https://docs.microsoft.com/azure/aks/enable-host-encryption
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "enableEncryptionAtHost")]
@@ -543,7 +652,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         public bool? EnableUltraSsd {get; set; }
 
         /// <summary>
-        /// Gets or sets see [Add a FIPS-enabled node
+        /// Gets or sets whether to use a FIPS-enabled OS. See [Add a FIPS-enabled node
         /// pool](https://docs.microsoft.com/azure/aks/use-multiple-node-pools#add-a-fips-enabled-node-pool-preview)
         /// for more details.
         /// </summary>
@@ -565,13 +674,71 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         public CreationData CreationData {get; set; }
 
         /// <summary>
-        /// Gets or sets this is of the form:
+        /// Gets or sets aKS will associate the specified agent pool with the Capacity
+        /// Reservation Group.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "capacityReservationGroupID")]
+        public string CapacityReservationGroupId {get; set; }
+
+        /// <summary>
+        /// Gets or sets the fully qualified resource ID of the Dedicated Host Group to
+        /// provision virtual machines from, used only in creation scenario and not
+        /// allowed to changed once set. This is of the form:
         /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}.
         /// For more information see [Azure dedicated
         /// hosts](https://docs.microsoft.com/azure/virtual-machines/dedicated-hosts).
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "hostGroupID")]
         public string HostGroupId {get; set; }
+
+        /// <summary>
+        /// Gets or sets network-related settings of an agent pool.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "networkProfile")]
+        public AgentPoolNetworkProfile NetworkProfile {get; set; }
+
+        /// <summary>
+        /// Gets or sets the Windows agent pool&#39;s specific profile.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "windowsProfile")]
+        public AgentPoolWindowsProfile WindowsProfile {get; set; }
+
+        /// <summary>
+        /// Gets or sets the security settings of an agent pool.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "securityProfile")]
+        public AgentPoolSecurityProfile SecurityProfile {get; set; }
+
+        /// <summary>
+        /// Gets or sets gPU settings for the Agent Pool.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "gpuProfile")]
+        public GPUProfile GpuProfile {get; set; }
+
+        /// <summary>
+        /// Gets or sets profile specific to a managed agent pool in Gateway mode. This
+        /// field cannot be set if agent pool mode is not Gateway.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "gatewayProfile")]
+        public AgentPoolGatewayProfile GatewayProfile {get; set; }
+
+        /// <summary>
+        /// Gets or sets specifications on VirtualMachines agent pool.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "virtualMachinesProfile")]
+        public VirtualMachinesProfile VirtualMachinesProfile {get; set; }
+
+        /// <summary>
+        /// Gets or sets the status of nodes in a VirtualMachines agent pool.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "virtualMachineNodesStatus")]
+        public System.Collections.Generic.IList<VirtualMachineNodes> VirtualMachineNodesStatus {get; set; }
+
+        /// <summary>
+        /// Gets or sets contains read-only information about the Agent Pool.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "status")]
+        public AgentPoolStatus Status {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -580,6 +747,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// </exception>
         public virtual void Validate()
         {
+
 
             if (this.OSDiskSizeGb != null)
             {
@@ -607,6 +775,11 @@ namespace Microsoft.Azure.Management.ContainerService.Models
 
 
 
+            if (this.UpgradeSettings != null)
+            {
+                this.UpgradeSettings.Validate();
+            }
+
 
 
 
@@ -620,7 +793,22 @@ namespace Microsoft.Azure.Management.ContainerService.Models
             {
                 this.KubeletConfig.Validate();
             }
+            if (this.LinuxOSConfig != null)
+            {
+                this.LinuxOSConfig.Validate();
+            }
 
+
+
+
+
+
+
+
+            if (this.GatewayProfile != null)
+            {
+                this.GatewayProfile.Validate();
+            }
 
 
 

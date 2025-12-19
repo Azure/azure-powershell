@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzElasticVMCollection
 
 ## SYNOPSIS
-update the vm details that will be monitored by the Elastic monitor resource.
+Update the VM details that will be monitored by the Elastic monitor resource, ensuring optimal observability and performance.
 
 ## SYNTAX
 
@@ -38,7 +38,7 @@ Update-AzElasticVMCollection -Name <String> -ResourceGroupName <String> -JsonStr
 ```
 
 ## DESCRIPTION
-update the vm details that will be monitored by the Elastic monitor resource.
+Update the VM details that will be monitored by the Elastic monitor resource, ensuring optimal observability and performance.
 
 ## EXAMPLES
 

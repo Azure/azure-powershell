@@ -39,7 +39,8 @@ namespace Microsoft.Azure.Management.KeyVault
         public KeyVaultManagementClient Client { get; private set; }
 
         /// <summary>
-        /// The List operation gets information about the private endpoint connections associated with the managed HSM Pool.
+        /// The List operation gets information about the private endpoint connections
+        /// associated with the managed HSM Pool.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// Name of the resource group that contains the managed HSM pool.
@@ -247,7 +248,8 @@ namespace Microsoft.Azure.Management.KeyVault
 
         }
         /// <summary>
-        /// Gets the specified private endpoint connection associated with the managed HSM Pool.
+        /// Gets the specified private endpoint connection associated with the managed
+        /// HSM Pool.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// Name of the resource group that contains the managed HSM pool.
@@ -256,7 +258,8 @@ namespace Microsoft.Azure.Management.KeyVault
         /// Name of the managed HSM Pool
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// Name of the private endpoint connection associated with the managed hsm pool.
+        /// Name of the private endpoint connection associated with the managed hsm
+        /// pool.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -465,7 +468,8 @@ namespace Microsoft.Azure.Management.KeyVault
 
         }
         /// <summary>
-        /// Updates the specified private endpoint connection associated with the managed hsm pool.
+        /// Updates the specified private endpoint connection associated with the
+        /// managed hsm pool.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// Name of the resource group that contains the managed HSM pool.
@@ -474,7 +478,8 @@ namespace Microsoft.Azure.Management.KeyVault
         /// Name of the managed HSM Pool
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// Name of the private endpoint connection associated with the managed hsm pool.
+        /// Name of the private endpoint connection associated with the managed hsm
+        /// pool.
         /// </param>
         /// <param name='properties'>
         /// The intended state of private endpoint connection.
@@ -716,7 +721,8 @@ namespace Microsoft.Azure.Management.KeyVault
 
         }
         /// <summary>
-        /// Deletes the specified private endpoint connection associated with the managed hsm pool.
+        /// Deletes the specified private endpoint connection associated with the
+        /// managed hsm pool.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// Name of the resource group that contains the managed HSM pool.
@@ -725,7 +731,8 @@ namespace Microsoft.Azure.Management.KeyVault
         /// Name of the managed HSM Pool
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// Name of the private endpoint connection associated with the managed hsm pool.
+        /// Name of the private endpoint connection associated with the managed hsm
+        /// pool.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -741,7 +748,8 @@ namespace Microsoft.Azure.Management.KeyVault
         }
 
         /// <summary>
-        /// Deletes the specified private endpoint connection associated with the managed hsm pool.
+        /// Deletes the specified private endpoint connection associated with the
+        /// managed hsm pool.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// Name of the resource group that contains the managed HSM pool.
@@ -750,7 +758,8 @@ namespace Microsoft.Azure.Management.KeyVault
         /// Name of the managed HSM Pool
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// Name of the private endpoint connection associated with the managed hsm pool.
+        /// Name of the private endpoint connection associated with the managed hsm
+        /// pool.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -977,7 +986,8 @@ namespace Microsoft.Azure.Management.KeyVault
 
         }
         /// <summary>
-        /// The List operation gets information about the private endpoint connections associated with the managed HSM Pool.
+        /// The List operation gets information about the private endpoint connections
+        /// associated with the managed HSM Pool.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -1018,6 +1028,7 @@ namespace Microsoft.Azure.Management.KeyVault
                 _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
                 tracingParameters.Add("nextPageLink", nextPageLink);
+               
 
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 Microsoft.Rest.ServiceClientTracing.Enter(_invocationId, this, "ListByResourceNext", tracingParameters);

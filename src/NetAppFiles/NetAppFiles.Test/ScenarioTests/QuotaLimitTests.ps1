@@ -38,3 +38,38 @@ function Test-QuotaLimit
         Clean-ResourceGroup $resourceGroup
     }
 }
+
+<#
+.SYNOPSIS
+Test QuotaLimits
+#>
+function Test-AccountQuotaLimit
+{
+    $resourceLocation = Get-ProviderLocation "Microsoft.NetApp"
+    $resourceGroup = Get-ResourceGroupName
+    $accName = Get-ResourceName
+    $quotaLimitName = "totalTiBsPerSubscription"
+    try
+    {
+        # create the resource group
+        New-AzResourceGroup -Name $resourceGroup -Location $resourceLocation -Tags @{Owner = 'b-aubald'}
+
+        # create account
+        $retrievedAcc = New-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName
+
+        # get limits list 
+        $retrievedLimits = Get-AzNetAppFilesQuotaLimit -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName
+        Assert-NotNull $retrievedLimits
+        Assert-True {$retrievedLimits.Length -gt 0}
+
+        # get limit by name 
+        $retrievedLimit = Get-AzNetAppFilesQuotaLimit -Location $resourceLocation -ResourceGroupName $resourceGroup -AccountName $accName -Name $quotaLimitName
+        Assert-NotNull $retrievedLimit
+        Assert-AreEqual "$resourceLocation/$quotaLimitName" $retrievedLimit.Name
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $resourceGroup
+    }
+}

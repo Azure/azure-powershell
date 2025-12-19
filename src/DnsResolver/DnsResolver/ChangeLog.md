@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.2.1
+* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
+
 ## Version 1.1.1
 * Upgraded nuget package to signed package.
 

@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResource))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Description(@"update a MonitorResource")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Dynatrace.Observability/monitors/{monitorName}", ApiVersion = "2023-04-27")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Dynatrace.Observability/monitors/{monitorName}", ApiVersion = "2024-04-24")]
     public partial class UpdateAzDynatraceMonitor_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IContext
@@ -88,6 +88,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.ParameterCategory.Runtime)]
         public Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SendAsyncStep[] HttpPipelinePrepend { get; set; }
 
+        /// <summary>
+        /// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).",
+        SerializedName = @"type",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.PSArgumentCompleterAttribute("None", "SystemAssigned", "UserAssigned", "SystemAssigned,UserAssigned")]
+        public string IdentityType { get => _resourceBody.IdentityType ?? null; set => _resourceBody.IdentityType = value; }
+
         /// <summary>Backing field for <see cref="InputObject" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceObservabilityIdentity _inputObject;
 
@@ -111,6 +125,50 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Cmdlets
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
         public Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.HttpPipeline Pipeline { get; set; }
+
+        /// <summary>different billing cycles like MONTHLY/WEEKLY. this could be enum</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "different billing cycles like MONTHLY/WEEKLY. this could be enum")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"different billing cycles like MONTHLY/WEEKLY. this could be enum",
+        SerializedName = @"billingCycle",
+        PossibleTypes = new [] { typeof(string) })]
+        public string PlanBillingCycle { get => _resourceBody.PlanDataBillingCycle ?? null; set => _resourceBody.PlanDataBillingCycle = value; }
+
+        /// <summary>plan id as published by Dynatrace</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "plan id as published by Dynatrace")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"plan id as published by Dynatrace",
+        SerializedName = @"planDetails",
+        PossibleTypes = new [] { typeof(string) })]
+        public string PlanDetail { get => _resourceBody.PlanDataPlanDetail ?? null; set => _resourceBody.PlanDataPlanDetail = value; }
+
+        /// <summary>date when plan was applied</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "date when plan was applied")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"date when plan was applied",
+        SerializedName = @"effectiveDate",
+        PossibleTypes = new [] { typeof(global::System.DateTime) })]
+        public global::System.DateTime PlanEffectiveDate { get => _resourceBody.PlanDataEffectiveDate ?? default(global::System.DateTime); set => _resourceBody.PlanDataEffectiveDate = value; }
+
+        /// <summary>different usage type like PAYG/COMMITTED. this could be enum</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "different usage type like PAYG/COMMITTED. this could be enum")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"different usage type like PAYG/COMMITTED. this could be enum",
+        SerializedName = @"usageType",
+        PossibleTypes = new [] { typeof(string) })]
+        public string PlanUsageType { get => _resourceBody.PlanDataUsageType ?? null; set => _resourceBody.PlanDataUsageType = value; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -139,6 +197,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Cmdlets
         SerializedName = @"tags",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceUpdateTags) })]
         public Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceUpdateTags Tag { get => _resourceBody.Tag ?? null /* object */; set => _resourceBody.Tag = value; }
+
+        /// <summary>
+        /// The array of user assigned identities associated with the resource. The elements in array will be ARM resource ids in
+        /// the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The array of user assigned identities associated with the resource. The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'")]
+        [global::System.Management.Automation.AllowEmptyCollection]
+        public string[] UserAssignedIdentity { get; set; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
@@ -351,6 +417,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Cmdlets
                     await ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     if (InputObject?.Id != null)
                     {
+                        if (this.UserAssignedIdentity?.Length > 0)
+                        {
+                            // calculate UserAssignedIdentity
+                            _resourceBody.IdentityUserAssignedIdentity.Clear();
+                            foreach( var id in this.UserAssignedIdentity )
+                            {
+                                _resourceBody.IdentityUserAssignedIdentity.Add(id, new Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.UserAssignedIdentity());
+                            }
+                        }
                         await this.Client.MonitorsUpdateViaIdentity(InputObject.Id, _resourceBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeUpdate);
                     }
                     else
@@ -367,6 +442,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Cmdlets
                         if (null == InputObject.MonitorName)
                         {
                             ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.MonitorName"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
+                        }
+                        if (this.UserAssignedIdentity?.Length > 0)
+                        {
+                            // calculate UserAssignedIdentity
+                            _resourceBody.IdentityUserAssignedIdentity.Clear();
+                            foreach( var id in this.UserAssignedIdentity )
+                            {
+                                _resourceBody.IdentityUserAssignedIdentity.Add(id, new Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.UserAssignedIdentity());
+                            }
                         }
                         await this.Client.MonitorsUpdate(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.MonitorName ?? null, _resourceBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeUpdate);
                     }

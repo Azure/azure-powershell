@@ -151,11 +151,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
             }
             if (content.Contains("DatadogOrganizationPropertyApiKey"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)this).DatadogOrganizationPropertyApiKey = (string) content.GetValueForProperty("DatadogOrganizationPropertyApiKey",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)this).DatadogOrganizationPropertyApiKey, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)this).DatadogOrganizationPropertyApiKey = (System.Security.SecureString) content.GetValueForProperty("DatadogOrganizationPropertyApiKey",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)this).DatadogOrganizationPropertyApiKey, (object ss) => (System.Security.SecureString)ss);
             }
             if (content.Contains("DatadogOrganizationPropertyApplicationKey"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)this).DatadogOrganizationPropertyApplicationKey = (string) content.GetValueForProperty("DatadogOrganizationPropertyApplicationKey",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)this).DatadogOrganizationPropertyApplicationKey, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)this).DatadogOrganizationPropertyApplicationKey = (System.Security.SecureString) content.GetValueForProperty("DatadogOrganizationPropertyApplicationKey",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)this).DatadogOrganizationPropertyApplicationKey, (object ss) => (System.Security.SecureString)ss);
             }
             if (content.Contains("UserInfoName"))
             {
@@ -171,15 +171,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
             }
             if (content.Contains("DatadogOrganizationPropertyLinkingAuthCode"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)this).DatadogOrganizationPropertyLinkingAuthCode = (string) content.GetValueForProperty("DatadogOrganizationPropertyLinkingAuthCode",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)this).DatadogOrganizationPropertyLinkingAuthCode, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)this).DatadogOrganizationPropertyLinkingAuthCode = (System.Security.SecureString) content.GetValueForProperty("DatadogOrganizationPropertyLinkingAuthCode",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)this).DatadogOrganizationPropertyLinkingAuthCode, (object ss) => (System.Security.SecureString)ss);
             }
             if (content.Contains("DatadogOrganizationPropertyLinkingClientId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)this).DatadogOrganizationPropertyLinkingClientId = (string) content.GetValueForProperty("DatadogOrganizationPropertyLinkingClientId",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)this).DatadogOrganizationPropertyLinkingClientId, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)this).DatadogOrganizationPropertyLinkingClientId = (System.Security.SecureString) content.GetValueForProperty("DatadogOrganizationPropertyLinkingClientId",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)this).DatadogOrganizationPropertyLinkingClientId, (object ss) => (System.Security.SecureString)ss);
             }
             if (content.Contains("DatadogOrganizationPropertyEnterpriseAppId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)this).DatadogOrganizationPropertyEnterpriseAppId = (string) content.GetValueForProperty("DatadogOrganizationPropertyEnterpriseAppId",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)this).DatadogOrganizationPropertyEnterpriseAppId, global::System.Convert.ToString);
+            }
+            if (content.Contains("DatadogOrganizationPropertyCspm"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)this).DatadogOrganizationPropertyCspm = (bool?) content.GetValueForProperty("DatadogOrganizationPropertyCspm",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)this).DatadogOrganizationPropertyCspm, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("DatadogOrganizationPropertyResourceCollection"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)this).DatadogOrganizationPropertyResourceCollection = (bool?) content.GetValueForProperty("DatadogOrganizationPropertyResourceCollection",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)this).DatadogOrganizationPropertyResourceCollection, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             AfterDeserializeDictionary(content);
         }
@@ -240,11 +248,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
             }
             if (content.Contains("DatadogOrganizationPropertyApiKey"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)this).DatadogOrganizationPropertyApiKey = (string) content.GetValueForProperty("DatadogOrganizationPropertyApiKey",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)this).DatadogOrganizationPropertyApiKey, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)this).DatadogOrganizationPropertyApiKey = (System.Security.SecureString) content.GetValueForProperty("DatadogOrganizationPropertyApiKey",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)this).DatadogOrganizationPropertyApiKey, (object ss) => (System.Security.SecureString)ss);
             }
             if (content.Contains("DatadogOrganizationPropertyApplicationKey"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)this).DatadogOrganizationPropertyApplicationKey = (string) content.GetValueForProperty("DatadogOrganizationPropertyApplicationKey",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)this).DatadogOrganizationPropertyApplicationKey, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)this).DatadogOrganizationPropertyApplicationKey = (System.Security.SecureString) content.GetValueForProperty("DatadogOrganizationPropertyApplicationKey",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)this).DatadogOrganizationPropertyApplicationKey, (object ss) => (System.Security.SecureString)ss);
             }
             if (content.Contains("UserInfoName"))
             {
@@ -260,15 +268,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
             }
             if (content.Contains("DatadogOrganizationPropertyLinkingAuthCode"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)this).DatadogOrganizationPropertyLinkingAuthCode = (string) content.GetValueForProperty("DatadogOrganizationPropertyLinkingAuthCode",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)this).DatadogOrganizationPropertyLinkingAuthCode, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)this).DatadogOrganizationPropertyLinkingAuthCode = (System.Security.SecureString) content.GetValueForProperty("DatadogOrganizationPropertyLinkingAuthCode",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)this).DatadogOrganizationPropertyLinkingAuthCode, (object ss) => (System.Security.SecureString)ss);
             }
             if (content.Contains("DatadogOrganizationPropertyLinkingClientId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)this).DatadogOrganizationPropertyLinkingClientId = (string) content.GetValueForProperty("DatadogOrganizationPropertyLinkingClientId",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)this).DatadogOrganizationPropertyLinkingClientId, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)this).DatadogOrganizationPropertyLinkingClientId = (System.Security.SecureString) content.GetValueForProperty("DatadogOrganizationPropertyLinkingClientId",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)this).DatadogOrganizationPropertyLinkingClientId, (object ss) => (System.Security.SecureString)ss);
             }
             if (content.Contains("DatadogOrganizationPropertyEnterpriseAppId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)this).DatadogOrganizationPropertyEnterpriseAppId = (string) content.GetValueForProperty("DatadogOrganizationPropertyEnterpriseAppId",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)this).DatadogOrganizationPropertyEnterpriseAppId, global::System.Convert.ToString);
+            }
+            if (content.Contains("DatadogOrganizationPropertyCspm"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)this).DatadogOrganizationPropertyCspm = (bool?) content.GetValueForProperty("DatadogOrganizationPropertyCspm",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)this).DatadogOrganizationPropertyCspm, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("DatadogOrganizationPropertyResourceCollection"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)this).DatadogOrganizationPropertyResourceCollection = (bool?) content.GetValueForProperty("DatadogOrganizationPropertyResourceCollection",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)this).DatadogOrganizationPropertyResourceCollection, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             AfterDeserializePSObject(content);
         }

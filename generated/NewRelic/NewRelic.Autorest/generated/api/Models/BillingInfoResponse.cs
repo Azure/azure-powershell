@@ -37,6 +37,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models
         [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Origin(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.PropertyOrigin.Inlined)]
         public string MarketplaceSaaInfoMarketplaceSubscriptionName { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).MarketplaceSubscriptionName; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).MarketplaceSubscriptionName = value ?? null; }
 
+        /// <summary>Offer Id of the Marketplace offer,</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Origin(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.PropertyOrigin.Inlined)]
+        public string MarketplaceSaaInfoOfferId { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).OfferId; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).OfferId = value ?? null; }
+
+        /// <summary>Publisher Id of the Marketplace offer.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Origin(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.PropertyOrigin.Inlined)]
+        public string MarketplaceSaaInfoPublisherId { get => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).PublisherId; set => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).PublisherId = value ?? null; }
+
         /// <summary>Backing field for <see cref="MarketplaceSaasInfo" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMarketplaceSaaSInfo _marketplaceSaasInfo;
 
@@ -132,6 +140,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models
         SerializedName = @"marketplaceSubscriptionName",
         PossibleTypes = new [] { typeof(string) })]
         string MarketplaceSaaInfoMarketplaceSubscriptionName { get; set; }
+        /// <summary>Offer Id of the Marketplace offer,</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Offer Id of the Marketplace offer,",
+        SerializedName = @"offerId",
+        PossibleTypes = new [] { typeof(string) })]
+        string MarketplaceSaaInfoOfferId { get; set; }
+        /// <summary>Publisher Id of the Marketplace offer.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Publisher Id of the Marketplace offer.",
+        SerializedName = @"publisherId",
+        PossibleTypes = new [] { typeof(string) })]
+        string MarketplaceSaaInfoPublisherId { get; set; }
         /// <summary>The New Relic Organization Id.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Info(
         Required = false,
@@ -172,6 +202,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models
         string MarketplaceSaaInfoMarketplaceSubscriptionId { get; set; }
         /// <summary>Marketplace Subscription Details: SAAS Name</summary>
         string MarketplaceSaaInfoMarketplaceSubscriptionName { get; set; }
+        /// <summary>Offer Id of the Marketplace offer,</summary>
+        string MarketplaceSaaInfoOfferId { get; set; }
+        /// <summary>Publisher Id of the Marketplace offer.</summary>
+        string MarketplaceSaaInfoPublisherId { get; set; }
         /// <summary>Marketplace Subscription details</summary>
         Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMarketplaceSaaSInfo MarketplaceSaasInfo { get; set; }
         /// <summary>Partner Billing Entity details: Organization Info</summary>

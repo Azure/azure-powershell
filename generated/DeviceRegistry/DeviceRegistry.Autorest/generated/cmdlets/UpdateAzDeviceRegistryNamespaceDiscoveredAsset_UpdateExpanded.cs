@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAsset))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Description(@"update a NamespaceDiscoveredAsset")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/discoveredAssets/{discoveredAssetName}", ApiVersion = "2025-07-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/discoveredAssets/{discoveredAssetName}", ApiVersion = "2025-10-01")]
     public partial class UpdateAzDeviceRegistryNamespaceDiscoveredAsset_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IContext
@@ -199,6 +199,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Cmdlets
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IStreamDestination) })]
         public Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IStreamDestination[] DefaultStreamsDestination { get => _propertiesBody.DefaultStreamsDestination?.ToArray() ?? null /* fixedArrayOf */; set => _propertiesBody.DefaultStreamsDestination = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IStreamDestination>(value) : null); }
 
+        /// <summary>Human-readable description of the asset.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Human-readable description of the asset.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Human-readable description of the asset.",
+        SerializedName = @"description",
+        PossibleTypes = new [] { typeof(string) })]
+        public string Description { get => _propertiesBody.Description ?? null; set => _propertiesBody.Description = value; }
+
         /// <summary>Name of the device resource</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Name of the device resource")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.ParameterCategory.Body)]
@@ -246,6 +257,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         public string DiscoveryId { get => _propertiesBody.DiscoveryId ?? null; set => _propertiesBody.DiscoveryId = value; }
 
+        /// <summary>Human-readable display name.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Human-readable display name.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Human-readable display name.",
+        SerializedName = @"displayName",
+        PossibleTypes = new [] { typeof(string) })]
+        public string DisplayName { get => _propertiesBody.DisplayName ?? null; set => _propertiesBody.DisplayName = value; }
+
         /// <summary>Asset documentation reference.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Asset documentation reference.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.ParameterCategory.Body)]
@@ -258,18 +280,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Cmdlets
         public string DocumentationUri { get => _propertiesBody.DocumentationUri ?? null; set => _propertiesBody.DocumentationUri = value; }
 
         /// <summary>
-        /// Array of events that are part of the asset. Each event can have per-event configuration.
+        /// Array of event groups that are part of the asset. Each event group can have per-event group configuration.
         /// </summary>
         [global::System.Management.Automation.AllowEmptyCollection]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Array of events that are part of the asset. Each event can have per-event configuration.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Array of event groups that are part of the asset. Each event group can have per-event group configuration.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Array of events that are part of the asset. Each event can have per-event configuration.",
-        SerializedName = @"events",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredEvent) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredEvent[] Event { get => _propertiesBody.Event?.ToArray() ?? null /* fixedArrayOf */; set => _propertiesBody.Event = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredEvent>(value) : null); }
+        Description = @"Array of event groups that are part of the asset. Each event group can have per-event group configuration.",
+        SerializedName = @"eventGroups",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredEventGroup) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredEventGroup[] EventGroup { get => _propertiesBody.EventGroup?.ToArray() ?? null /* fixedArrayOf */; set => _propertiesBody.EventGroup = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredEventGroup>(value) : null); }
 
         /// <summary>Accessor for extensibleParameters.</summary>
         public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }

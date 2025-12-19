@@ -1,8 +1,8 @@
 {
-  "Update-AzDeviceRegistrySchema+[NoContext]+UpdateExpanded+$PUT+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-d179cdfcb7/schemas/test-schema-update?api-version=2025-07-01-preview+1": {
+  "Update-AzDeviceRegistrySchema+[NoContext]+UpdateExpanded+$PUT+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/test-schema-update?api-version=2025-10-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-d179cdfcb7/schemas/test-schema-update?api-version=2025-07-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/test-schema-update?api-version=2025-10-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"displayName\": \"My schema\",\r\n    \"description\": \"This is a sample schema\",\r\n    \"schemaType\": \"MessageSchema\",\r\n    \"format\": \"JsonSchema/draft-07\",\r\n    \"tags\": {\r\n      \"sampleKey\": \"sampleValue\"\r\n    }\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -39,14 +39,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-d179cdfcb7/schemas/test-schema-update\",\"name\":\"test-schema-update\",\"type\":\"microsoft.deviceregistry/schemaregistries/schemas\",\"systemData\":{\"createdBy\":\"rylo@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-07-25T01:00:55.5635473Z\",\"lastModifiedBy\":\"rylo@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-07-25T01:00:55.5635473Z\"},\"properties\":{\"uuid\":\"775ae13e-3732-4940-a8c9-bb860c9b243e\",\"displayName\":\"My schema\",\"description\":\"This is a sample schema\",\"schemaType\":\"MessageSchema\",\"format\":\"JsonSchema/draft-07\",\"tags\":{\"sampleKey\":\"sampleValue\"},\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"id\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/test-schema-update\",\"name\":\"test-schema-update\",\"type\":\"microsoft.deviceregistry/schemaregistries/schemas\",\"systemData\":{\"createdBy\":\"rylo@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-07-25T01:00:55.5635473Z\",\"lastModifiedBy\":\"rylo@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-07-25T01:00:55.5635473Z\"},\"properties\":{\"uuid\":\"775ae13e-3732-4940-a8c9-bb860c9b243e\",\"displayName\":\"My schema\",\"description\":\"This is a sample schema\",\"schemaType\":\"MessageSchema\",\"format\":\"JsonSchema/draft-07\",\"tags\":{\"sampleKey\":\"sampleValue\"},\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   },
-  "Update-AzDeviceRegistrySchema+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-d179cdfcb7/schemas/test-schema-update?api-version=2025-07-01-preview+2": {
+  "Update-AzDeviceRegistrySchema+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/test-schema-update?api-version=2025-10-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-d179cdfcb7/schemas/test-schema-update?api-version=2025-07-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/test-schema-update?api-version=2025-10-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -87,14 +87,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourcegroups/adr-pwsh-test-rg/providers/microsoft.deviceregistry/schemaregistries/aio-sr-d179cdfcb7/schemas/test-schema-update\",\"name\":\"test-schema-update\",\"type\":\"microsoft.deviceregistry/schemaregistries/schemas\",\"systemData\":{\"createdBy\":\"rylo@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-07-25T01:00:55.5635473Z\",\"lastModifiedBy\":\"rylo@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-07-25T01:00:55.5635473Z\"},\"properties\":{\"uuid\":\"775ae13e-3732-4940-a8c9-bb860c9b243e\",\"displayName\":\"My schema\",\"description\":\"This is a sample schema\",\"schemaType\":\"MessageSchema\",\"format\":\"JsonSchema/draft-07\",\"tags\":{\"sampleKey\":\"sampleValue\"},\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"id\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourcegroups/adr-pwsh-test-rg/providers/microsoft.deviceregistry/schemaregistries/aio-sr-06f973e875/schemas/test-schema-update\",\"name\":\"test-schema-update\",\"type\":\"microsoft.deviceregistry/schemaregistries/schemas\",\"systemData\":{\"createdBy\":\"rylo@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-07-25T01:00:55.5635473Z\",\"lastModifiedBy\":\"rylo@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-07-25T01:00:55.5635473Z\"},\"properties\":{\"uuid\":\"775ae13e-3732-4940-a8c9-bb860c9b243e\",\"displayName\":\"My schema\",\"description\":\"This is a sample schema\",\"schemaType\":\"MessageSchema\",\"format\":\"JsonSchema/draft-07\",\"tags\":{\"sampleKey\":\"sampleValue\"},\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   },
-  "Update-AzDeviceRegistrySchema+[NoContext]+UpdateExpanded+$PUT+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-d179cdfcb7/schemas/test-schema-update?api-version=2025-07-01-preview+3": {
+  "Update-AzDeviceRegistrySchema+[NoContext]+UpdateExpanded+$PUT+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/test-schema-update?api-version=2025-10-01+3": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-d179cdfcb7/schemas/test-schema-update?api-version=2025-07-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/test-schema-update?api-version=2025-10-01",
       "Content": "{\n  \"properties\": {\n    \"displayName\": \"Updated schema display name\",\n    \"description\": \"Updated schema description\",\n    \"format\": \"JsonSchema/draft-07\",\n    \"schemaType\": \"MessageSchema\",\n    \"tags\": {\n      \"updatedKey\": \"updatedValue\"\n    }\n  }\n}",
       "isContentBase64": false,
       "Headers": {
@@ -131,14 +131,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-d179cdfcb7/schemas/test-schema-update\",\"name\":\"test-schema-update\",\"type\":\"microsoft.deviceregistry/schemaregistries/schemas\",\"systemData\":{\"createdBy\":\"rylo@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-07-25T01:00:57.3433517Z\",\"lastModifiedBy\":\"rylo@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-07-25T01:00:57.3433517Z\"},\"properties\":{\"uuid\":\"775ae13e-3732-4940-a8c9-bb860c9b243e\",\"displayName\":\"Updated schema display name\",\"description\":\"Updated schema description\",\"schemaType\":\"MessageSchema\",\"format\":\"JsonSchema/draft-07\",\"tags\":{\"updatedKey\":\"updatedValue\"},\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"id\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/test-schema-update\",\"name\":\"test-schema-update\",\"type\":\"microsoft.deviceregistry/schemaregistries/schemas\",\"systemData\":{\"createdBy\":\"rylo@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-07-25T01:00:57.3433517Z\",\"lastModifiedBy\":\"rylo@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-07-25T01:00:57.3433517Z\"},\"properties\":{\"uuid\":\"775ae13e-3732-4940-a8c9-bb860c9b243e\",\"displayName\":\"Updated schema display name\",\"description\":\"Updated schema description\",\"schemaType\":\"MessageSchema\",\"format\":\"JsonSchema/draft-07\",\"tags\":{\"updatedKey\":\"updatedValue\"},\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   },
-  "Update-AzDeviceRegistrySchema+[NoContext]+UpdateViaIdentitySchemaRegistryExpanded+$PUT+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-d179cdfcb7/schemas/test-schema-update-via-identity-sr-expanded?api-version=2025-07-01-preview+1": {
+  "Update-AzDeviceRegistrySchema+[NoContext]+UpdateViaIdentitySchemaRegistryExpanded+$PUT+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/test-schema-update-via-identity-sr-expanded?api-version=2025-10-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-d179cdfcb7/schemas/test-schema-update-via-identity-sr-expanded?api-version=2025-07-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/test-schema-update-via-identity-sr-expanded?api-version=2025-10-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"displayName\": \"My schema\",\r\n    \"description\": \"This is a sample schema\",\r\n    \"schemaType\": \"MessageSchema\",\r\n    \"format\": \"JsonSchema/draft-07\",\r\n    \"tags\": {\r\n      \"sampleKey\": \"sampleValue\"\r\n    }\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -175,14 +175,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-d179cdfcb7/schemas/test-schema-update-via-identity-sr-expanded\",\"name\":\"test-schema-update-via-identity-sr-expanded\",\"type\":\"microsoft.deviceregistry/schemaregistries/schemas\",\"systemData\":{\"createdBy\":\"rylo@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-07-25T01:00:57.8879503Z\",\"lastModifiedBy\":\"rylo@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-07-25T01:00:57.8879503Z\"},\"properties\":{\"uuid\":\"825bd43b-bb5c-41ab-af46-a477144c4cd3\",\"displayName\":\"My schema\",\"description\":\"This is a sample schema\",\"schemaType\":\"MessageSchema\",\"format\":\"JsonSchema/draft-07\",\"tags\":{\"sampleKey\":\"sampleValue\"},\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"id\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/test-schema-update-via-identity-sr-expanded\",\"name\":\"test-schema-update-via-identity-sr-expanded\",\"type\":\"microsoft.deviceregistry/schemaregistries/schemas\",\"systemData\":{\"createdBy\":\"rylo@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-07-25T01:00:57.8879503Z\",\"lastModifiedBy\":\"rylo@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-07-25T01:00:57.8879503Z\"},\"properties\":{\"uuid\":\"825bd43b-bb5c-41ab-af46-a477144c4cd3\",\"displayName\":\"My schema\",\"description\":\"This is a sample schema\",\"schemaType\":\"MessageSchema\",\"format\":\"JsonSchema/draft-07\",\"tags\":{\"sampleKey\":\"sampleValue\"},\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   },
-  "Update-AzDeviceRegistrySchema+[NoContext]+UpdateViaIdentitySchemaRegistryExpanded+$GET+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-d179cdfcb7/schemas/test-schema-update-via-identity-sr-expanded?api-version=2025-07-01-preview+2": {
+  "Update-AzDeviceRegistrySchema+[NoContext]+UpdateViaIdentitySchemaRegistryExpanded+$GET+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/test-schema-update-via-identity-sr-expanded?api-version=2025-10-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-d179cdfcb7/schemas/test-schema-update-via-identity-sr-expanded?api-version=2025-07-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/test-schema-update-via-identity-sr-expanded?api-version=2025-10-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -223,14 +223,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourcegroups/adr-pwsh-test-rg/providers/microsoft.deviceregistry/schemaregistries/aio-sr-d179cdfcb7/schemas/test-schema-update-via-identity-sr-expanded\",\"name\":\"test-schema-update-via-identity-sr-expanded\",\"type\":\"microsoft.deviceregistry/schemaregistries/schemas\",\"systemData\":{\"createdBy\":\"rylo@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-07-25T01:00:57.8879503Z\",\"lastModifiedBy\":\"rylo@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-07-25T01:00:57.8879503Z\"},\"properties\":{\"uuid\":\"825bd43b-bb5c-41ab-af46-a477144c4cd3\",\"displayName\":\"My schema\",\"description\":\"This is a sample schema\",\"schemaType\":\"MessageSchema\",\"format\":\"JsonSchema/draft-07\",\"tags\":{\"sampleKey\":\"sampleValue\"},\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"id\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourcegroups/adr-pwsh-test-rg/providers/microsoft.deviceregistry/schemaregistries/aio-sr-06f973e875/schemas/test-schema-update-via-identity-sr-expanded\",\"name\":\"test-schema-update-via-identity-sr-expanded\",\"type\":\"microsoft.deviceregistry/schemaregistries/schemas\",\"systemData\":{\"createdBy\":\"rylo@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-07-25T01:00:57.8879503Z\",\"lastModifiedBy\":\"rylo@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-07-25T01:00:57.8879503Z\"},\"properties\":{\"uuid\":\"825bd43b-bb5c-41ab-af46-a477144c4cd3\",\"displayName\":\"My schema\",\"description\":\"This is a sample schema\",\"schemaType\":\"MessageSchema\",\"format\":\"JsonSchema/draft-07\",\"tags\":{\"sampleKey\":\"sampleValue\"},\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   },
-  "Update-AzDeviceRegistrySchema+[NoContext]+UpdateViaIdentitySchemaRegistryExpanded+$PUT+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-d179cdfcb7/schemas/test-schema-update-via-identity-sr-expanded?api-version=2025-07-01-preview+3": {
+  "Update-AzDeviceRegistrySchema+[NoContext]+UpdateViaIdentitySchemaRegistryExpanded+$PUT+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/test-schema-update-via-identity-sr-expanded?api-version=2025-10-01+3": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-d179cdfcb7/schemas/test-schema-update-via-identity-sr-expanded?api-version=2025-07-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/test-schema-update-via-identity-sr-expanded?api-version=2025-10-01",
       "Content": "{\n  \"properties\": {\n    \"displayName\": \"Updated schema display name\",\n    \"description\": \"Updated schema description\",\n    \"format\": \"JsonSchema/draft-07\",\n    \"schemaType\": \"MessageSchema\",\n    \"tags\": {\n      \"updatedKey\": \"updatedValue\"\n    }\n  }\n}",
       "isContentBase64": false,
       "Headers": {
@@ -267,14 +267,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-d179cdfcb7/schemas/test-schema-update-via-identity-sr-expanded\",\"name\":\"test-schema-update-via-identity-sr-expanded\",\"type\":\"microsoft.deviceregistry/schemaregistries/schemas\",\"systemData\":{\"createdBy\":\"rylo@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-07-25T01:00:59.1033977Z\",\"lastModifiedBy\":\"rylo@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-07-25T01:00:59.1033977Z\"},\"properties\":{\"uuid\":\"825bd43b-bb5c-41ab-af46-a477144c4cd3\",\"displayName\":\"Updated schema display name\",\"description\":\"Updated schema description\",\"schemaType\":\"MessageSchema\",\"format\":\"JsonSchema/draft-07\",\"tags\":{\"updatedKey\":\"updatedValue\"},\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"id\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/test-schema-update-via-identity-sr-expanded\",\"name\":\"test-schema-update-via-identity-sr-expanded\",\"type\":\"microsoft.deviceregistry/schemaregistries/schemas\",\"systemData\":{\"createdBy\":\"rylo@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-07-25T01:00:59.1033977Z\",\"lastModifiedBy\":\"rylo@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-07-25T01:00:59.1033977Z\"},\"properties\":{\"uuid\":\"825bd43b-bb5c-41ab-af46-a477144c4cd3\",\"displayName\":\"Updated schema display name\",\"description\":\"Updated schema description\",\"schemaType\":\"MessageSchema\",\"format\":\"JsonSchema/draft-07\",\"tags\":{\"updatedKey\":\"updatedValue\"},\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   },
-  "Update-AzDeviceRegistrySchema+[NoContext]+UpdateViaIdentityExpanded+$PUT+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-d179cdfcb7/schemas/test-schema-update-via-identity-expanded?api-version=2025-07-01-preview+1": {
+  "Update-AzDeviceRegistrySchema+[NoContext]+UpdateViaIdentityExpanded+$PUT+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/test-schema-update-via-identity-expanded?api-version=2025-10-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-d179cdfcb7/schemas/test-schema-update-via-identity-expanded?api-version=2025-07-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/test-schema-update-via-identity-expanded?api-version=2025-10-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"displayName\": \"My schema\",\r\n    \"description\": \"This is a sample schema\",\r\n    \"schemaType\": \"MessageSchema\",\r\n    \"format\": \"JsonSchema/draft-07\",\r\n    \"tags\": {\r\n      \"sampleKey\": \"sampleValue\"\r\n    }\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -311,14 +311,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-d179cdfcb7/schemas/test-schema-update-via-identity-expanded\",\"name\":\"test-schema-update-via-identity-expanded\",\"type\":\"microsoft.deviceregistry/schemaregistries/schemas\",\"systemData\":{\"createdBy\":\"rylo@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-07-25T01:01:00.6397484Z\",\"lastModifiedBy\":\"rylo@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-07-25T01:01:00.6397484Z\"},\"properties\":{\"uuid\":\"88e9a5c5-4842-47d7-bfc8-e54bbc09003c\",\"displayName\":\"My schema\",\"description\":\"This is a sample schema\",\"schemaType\":\"MessageSchema\",\"format\":\"JsonSchema/draft-07\",\"tags\":{\"sampleKey\":\"sampleValue\"},\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"id\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/test-schema-update-via-identity-expanded\",\"name\":\"test-schema-update-via-identity-expanded\",\"type\":\"microsoft.deviceregistry/schemaregistries/schemas\",\"systemData\":{\"createdBy\":\"rylo@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-07-25T01:01:00.6397484Z\",\"lastModifiedBy\":\"rylo@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-07-25T01:01:00.6397484Z\"},\"properties\":{\"uuid\":\"88e9a5c5-4842-47d7-bfc8-e54bbc09003c\",\"displayName\":\"My schema\",\"description\":\"This is a sample schema\",\"schemaType\":\"MessageSchema\",\"format\":\"JsonSchema/draft-07\",\"tags\":{\"sampleKey\":\"sampleValue\"},\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   },
-  "Update-AzDeviceRegistrySchema+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-d179cdfcb7/schemas/test-schema-update-via-identity-expanded?api-version=2025-07-01-preview+2": {
+  "Update-AzDeviceRegistrySchema+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/test-schema-update-via-identity-expanded?api-version=2025-10-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-d179cdfcb7/schemas/test-schema-update-via-identity-expanded?api-version=2025-07-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/test-schema-update-via-identity-expanded?api-version=2025-10-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -359,14 +359,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourcegroups/adr-pwsh-test-rg/providers/microsoft.deviceregistry/schemaregistries/aio-sr-d179cdfcb7/schemas/test-schema-update-via-identity-expanded\",\"name\":\"test-schema-update-via-identity-expanded\",\"type\":\"microsoft.deviceregistry/schemaregistries/schemas\",\"systemData\":{\"createdBy\":\"rylo@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-07-25T01:01:00.6397484Z\",\"lastModifiedBy\":\"rylo@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-07-25T01:01:00.6397484Z\"},\"properties\":{\"uuid\":\"88e9a5c5-4842-47d7-bfc8-e54bbc09003c\",\"displayName\":\"My schema\",\"description\":\"This is a sample schema\",\"schemaType\":\"MessageSchema\",\"format\":\"JsonSchema/draft-07\",\"tags\":{\"sampleKey\":\"sampleValue\"},\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"id\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourcegroups/adr-pwsh-test-rg/providers/microsoft.deviceregistry/schemaregistries/aio-sr-06f973e875/schemas/test-schema-update-via-identity-expanded\",\"name\":\"test-schema-update-via-identity-expanded\",\"type\":\"microsoft.deviceregistry/schemaregistries/schemas\",\"systemData\":{\"createdBy\":\"rylo@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-07-25T01:01:00.6397484Z\",\"lastModifiedBy\":\"rylo@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-07-25T01:01:00.6397484Z\"},\"properties\":{\"uuid\":\"88e9a5c5-4842-47d7-bfc8-e54bbc09003c\",\"displayName\":\"My schema\",\"description\":\"This is a sample schema\",\"schemaType\":\"MessageSchema\",\"format\":\"JsonSchema/draft-07\",\"tags\":{\"sampleKey\":\"sampleValue\"},\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   },
-  "Update-AzDeviceRegistrySchema+[NoContext]+UpdateViaIdentityExpanded+$PUT+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-d179cdfcb7/schemas/test-schema-update-via-identity-expanded?api-version=2025-07-01-preview+3": {
+  "Update-AzDeviceRegistrySchema+[NoContext]+UpdateViaIdentityExpanded+$PUT+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/test-schema-update-via-identity-expanded?api-version=2025-10-01+3": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-d179cdfcb7/schemas/test-schema-update-via-identity-expanded?api-version=2025-07-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/test-schema-update-via-identity-expanded?api-version=2025-10-01",
       "Content": "{\n  \"properties\": {\n    \"displayName\": \"Updated schema display name\",\n    \"description\": \"Updated schema description\",\n    \"format\": \"JsonSchema/draft-07\",\n    \"schemaType\": \"MessageSchema\",\n    \"tags\": {\n      \"updatedKey\": \"updatedValue\"\n    }\n  }\n}",
       "isContentBase64": false,
       "Headers": {
@@ -403,7 +403,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-d179cdfcb7/schemas/test-schema-update-via-identity-expanded\",\"name\":\"test-schema-update-via-identity-expanded\",\"type\":\"microsoft.deviceregistry/schemaregistries/schemas\",\"systemData\":{\"createdBy\":\"rylo@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-07-25T01:01:01.8511454Z\",\"lastModifiedBy\":\"rylo@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-07-25T01:01:01.8511454Z\"},\"properties\":{\"uuid\":\"88e9a5c5-4842-47d7-bfc8-e54bbc09003c\",\"displayName\":\"Updated schema display name\",\"description\":\"Updated schema description\",\"schemaType\":\"MessageSchema\",\"format\":\"JsonSchema/draft-07\",\"tags\":{\"updatedKey\":\"updatedValue\"},\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"id\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/test-schema-update-via-identity-expanded\",\"name\":\"test-schema-update-via-identity-expanded\",\"type\":\"microsoft.deviceregistry/schemaregistries/schemas\",\"systemData\":{\"createdBy\":\"rylo@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-07-25T01:01:01.8511454Z\",\"lastModifiedBy\":\"rylo@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-07-25T01:01:01.8511454Z\"},\"properties\":{\"uuid\":\"88e9a5c5-4842-47d7-bfc8-e54bbc09003c\",\"displayName\":\"Updated schema display name\",\"description\":\"Updated schema description\",\"schemaType\":\"MessageSchema\",\"format\":\"JsonSchema/draft-07\",\"tags\":{\"updatedKey\":\"updatedValue\"},\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   }

@@ -12,16 +12,42 @@ Get metric status
 
 ## SYNTAX
 
-### Get (Default)
+### GetExpanded (Default)
 ```
 Get-AzDynatraceMonitorMetricStatus -MonitorName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-MonitoredResourceId <String[]>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### Get
+```
+Get-AzDynatraceMonitorMetricStatus -MonitorName <String> -ResourceGroupName <String>
+ -Request <IMetricStatusRequest> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzDynatraceMonitorMetricStatus -InputObject <IDynatraceObservabilityIdentity> [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzDynatraceMonitorMetricStatus -InputObject <IDynatraceObservabilityIdentity>
+ -Request <IMetricStatusRequest> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### GetViaIdentityExpanded
+```
+Get-AzDynatraceMonitorMetricStatus -InputObject <IDynatraceObservabilityIdentity>
+ [-MonitoredResourceId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### GetViaJsonFilePath
+```
+Get-AzDynatraceMonitorMetricStatus -MonitorName <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### GetViaJsonString
+```
+Get-AzDynatraceMonitorMetricStatus -MonitorName <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -64,7 +90,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceObservabilityIdentity
-Parameter Sets: GetViaIdentity
+Parameter Sets: GetViaIdentity, GetViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -74,12 +100,12 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -MonitorName
-Name of the Monitor resource
+### -JsonFilePath
+Path of Json file supplied to the Get operation
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: GetViaJsonFilePath
 Aliases:
 
 Required: True
@@ -89,13 +115,73 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -JsonString
+Json string supplied to the Get operation
+
+```yaml
+Type: System.String
+Parameter Sets: GetViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MonitoredResourceId
+List of azure resource Id of monitored resources for which we get the metric status
+
+```yaml
+Type: System.String[]
+Parameter Sets: GetExpanded, GetViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MonitorName
+Name of the Monitors resource
+
+```yaml
+Type: System.String
+Parameter Sets: Get, GetExpanded, GetViaJsonFilePath, GetViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Request
+Request for getting metric status for given monitored resource Ids
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMetricStatusRequest
+Parameter Sets: Get, GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetExpanded, GetViaJsonFilePath, GetViaJsonString
 Aliases:
 
 Required: True
@@ -107,10 +193,11 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get
+Parameter Sets: Get, GetExpanded, GetViaJsonFilePath, GetViaJsonString
 Aliases:
 
 Required: False
@@ -157,6 +244,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceObservabilityIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMetricStatusRequest
 
 ## OUTPUTS
 

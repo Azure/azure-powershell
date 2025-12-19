@@ -47,7 +47,10 @@ namespace Microsoft.Azure.Management.ContainerService.Models
 
         /// <param name="enableMultipleStandardLoadBalancers">Enable multiple standard load balancers per AKS cluster or not.
         /// </param>
-        public ManagedClusterLoadBalancerProfile(ManagedClusterLoadBalancerProfileManagedOutboundIPs managedOutboundIPs = default(ManagedClusterLoadBalancerProfileManagedOutboundIPs), ManagedClusterLoadBalancerProfileOutboundIPPrefixes outboundIPPrefixes = default(ManagedClusterLoadBalancerProfileOutboundIPPrefixes), ManagedClusterLoadBalancerProfileOutboundIPs outboundIPs = default(ManagedClusterLoadBalancerProfileOutboundIPs), System.Collections.Generic.IList<ResourceReference> effectiveOutboundIPs = default(System.Collections.Generic.IList<ResourceReference>), int? allocatedOutboundPorts = default(int?), int? idleTimeoutInMinutes = default(int?), bool? enableMultipleStandardLoadBalancers = default(bool?))
+
+        /// <param name="backendPoolType">The type of the managed inbound Load Balancer BackendPool.
+        /// Possible values include: &#39;NodeIPConfiguration&#39;, &#39;NodeIP&#39;</param>
+        public ManagedClusterLoadBalancerProfile(ManagedClusterLoadBalancerProfileManagedOutboundIPs managedOutboundIPs = default(ManagedClusterLoadBalancerProfileManagedOutboundIPs), ManagedClusterLoadBalancerProfileOutboundIPPrefixes outboundIPPrefixes = default(ManagedClusterLoadBalancerProfileOutboundIPPrefixes), ManagedClusterLoadBalancerProfileOutboundIPs outboundIPs = default(ManagedClusterLoadBalancerProfileOutboundIPs), System.Collections.Generic.IList<ResourceReference> effectiveOutboundIPs = default(System.Collections.Generic.IList<ResourceReference>), int? allocatedOutboundPorts = default(int?), int? idleTimeoutInMinutes = default(int?), bool? enableMultipleStandardLoadBalancers = default(bool?), string backendPoolType = default(string))
 
         {
             this.ManagedOutboundIPs = managedOutboundIPs;
@@ -57,6 +60,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
             this.AllocatedOutboundPorts = allocatedOutboundPorts;
             this.IdleTimeoutInMinutes = idleTimeoutInMinutes;
             this.EnableMultipleStandardLoadBalancers = enableMultipleStandardLoadBalancers;
+            this.BackendPoolType = backendPoolType;
             CustomInit();
         }
 
@@ -86,11 +90,10 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         public ManagedClusterLoadBalancerProfileOutboundIPs OutboundIPs {get; set; }
 
         /// <summary>
-        /// Gets or sets the effective outbound IP resources of the cluster load
-        /// balancer.
+        /// Gets the effective outbound IP resources of the cluster load balancer.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "effectiveOutboundIPs")]
-        public System.Collections.Generic.IList<ResourceReference> EffectiveOutboundIPs {get; set; }
+        public System.Collections.Generic.IList<ResourceReference> EffectiveOutboundIPs {get; private set; }
 
         /// <summary>
         /// Gets or sets the desired number of allocated SNAT ports per VM. Allowed
@@ -113,6 +116,12 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "enableMultipleStandardLoadBalancers")]
         public bool? EnableMultipleStandardLoadBalancers {get; set; }
+
+        /// <summary>
+        /// Gets or sets the type of the managed inbound Load Balancer BackendPool. Possible values include: &#39;NodeIPConfiguration&#39;, &#39;NodeIP&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "backendPoolType")]
+        public string BackendPoolType {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -150,6 +159,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "IdleTimeoutInMinutes", 4);
                 }
             }
+
         }
     }
 }

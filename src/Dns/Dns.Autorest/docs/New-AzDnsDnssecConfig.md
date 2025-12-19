@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzDnsDnssecConfig
 
 ## SYNOPSIS
-Creates or updates the DNSSEC configuration on a DNS zone.
+Create the DNSSEC configuration on a DNS zone.
 
 ## SYNTAX
 
@@ -26,7 +26,7 @@ New-AzDnsDnssecConfig -InputObject <IDnsIdentity> [-IfMatch <String>] [-IfNoneMa
 ```
 
 ## DESCRIPTION
-Creates or updates the DNSSEC configuration on a DNS zone.
+Create the DNSSEC configuration on a DNS zone.
 
 ## EXAMPLES
 
@@ -141,7 +141,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnsIdentity
@@ -256,7 +255,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IDnssecConfig
+### Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnssecConfig
 
 ## NOTES
 

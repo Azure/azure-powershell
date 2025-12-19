@@ -7,6 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Extensions;
 
+    /// <summary>Represents the SKU of a resource.</summary>
     public partial class ResourceSku :
         Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IResourceSku,
         Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IResourceSkuInternal
@@ -25,6 +26,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models
 
         }
     }
+    /// Represents the SKU of a resource.
     public partial interface IResourceSku :
         Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.IJsonSerializable
     {
@@ -41,6 +43,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models
         string Name { get; set; }
 
     }
+    /// Represents the SKU of a resource.
     internal partial interface IResourceSkuInternal
 
     {

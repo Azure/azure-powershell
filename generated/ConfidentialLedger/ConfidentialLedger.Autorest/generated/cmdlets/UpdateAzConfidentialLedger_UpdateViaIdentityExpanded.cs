@@ -6,20 +6,23 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.Extensions;
+    using Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.PowerShell;
+    using Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Updates properties of Confidential Ledger</summary>
+    /// <summary>update properties of Confidential Ledger</summary>
     /// <remarks>
     /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConfidentialLedger/ledgers/{ledgerName}"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzConfidentialLedger_UpdateViaIdentityExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.IConfidentialLedger))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Description(@"Updates properties of Confidential Ledger")]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.IConfidentialLedger))]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Description(@"update properties of Confidential Ledger")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConfidentialLedger/ledgers/{ledgerName}", ApiVersion = "2022-05-13")]
     public partial class UpdateAzConfidentialLedger_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
-        Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.IEventListener
+        Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.IEventListener,
+        Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.IContext
     {
         /// <summary>A unique id generatd for the this cmdlet when it is instantiated.</summary>
         private string __correlationId = System.Guid.NewGuid().ToString();
@@ -36,7 +39,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Cmdlets
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
         /// <summary>Confidential Ledger. Contains the properties of Confidential Ledger Resource.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.IConfidentialLedger _confidentialLedgerBody = new Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.ConfidentialLedger();
+        private Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.IConfidentialLedger _confidentialLedgerBody = new Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.ConfidentialLedger();
+
+        /// <summary>A dictionary to carry over additional data for pipeline.</summary>
+        private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
 
         /// <summary>Array of all AAD based Security Principals.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -47,8 +53,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Cmdlets
         ReadOnly = false,
         Description = @"Array of all AAD based Security Principals.",
         SerializedName = @"aadBasedSecurityPrincipals",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.IAadBasedSecurityPrincipal) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.IAadBasedSecurityPrincipal[] AadBasedSecurityPrincipal { get => _confidentialLedgerBody.AadBasedSecurityPrincipal ?? null /* arrayOf */; set => _confidentialLedgerBody.AadBasedSecurityPrincipal = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.IAadBasedSecurityPrincipal) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.IAadBasedSecurityPrincipal[] AadBasedSecurityPrincipal { get => _confidentialLedgerBody.AadBasedSecurityPrincipal?.ToArray() ?? null /* fixedArrayOf */; set => _confidentialLedgerBody.AadBasedSecurityPrincipal = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.IAadBasedSecurityPrincipal>(value) : null); }
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
@@ -60,6 +66,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter Break { get; set; }
 
+        /// <summary>Accessor for cancellationTokenSource.</summary>
+        public global::System.Threading.CancellationTokenSource CancellationTokenSource { get => _cancellationTokenSource ; set { _cancellationTokenSource = value; } }
+
         /// <summary>Array of all cert based Security Principals.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Array of all cert based Security Principals.")]
@@ -69,8 +78,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Cmdlets
         ReadOnly = false,
         Description = @"Array of all cert based Security Principals.",
         SerializedName = @"certBasedSecurityPrincipals",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.ICertBasedSecurityPrincipal) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.ICertBasedSecurityPrincipal[] CertBasedSecurityPrincipal { get => _confidentialLedgerBody.CertBasedSecurityPrincipal ?? null /* arrayOf */; set => _confidentialLedgerBody.CertBasedSecurityPrincipal = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.ICertBasedSecurityPrincipal) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.ICertBasedSecurityPrincipal[] CertBasedSecurityPrincipal { get => _confidentialLedgerBody.CertBasedSecurityPrincipal?.ToArray() ?? null /* fixedArrayOf */; set => _confidentialLedgerBody.CertBasedSecurityPrincipal = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.ICertBasedSecurityPrincipal>(value) : null); }
 
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.ConfidentialLedger Client => Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Module.Instance.ClientAPI;
@@ -84,6 +93,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Cmdlets
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
+
+        /// <summary>Accessor for extensibleParameters.</summary>
+        public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -116,9 +128,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Cmdlets
         ReadOnly = false,
         Description = @"Type of Confidential Ledger",
         SerializedName = @"ledgerType",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Support.LedgerType) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Support.LedgerType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Support.LedgerType LedgerType { get => _confidentialLedgerBody.LedgerType ?? ((Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Support.LedgerType)""); set => _confidentialLedgerBody.LedgerType = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.PSArgumentCompleterAttribute("Unknown", "Public", "Private")]
+        public string LedgerType { get => _confidentialLedgerBody.LedgerType ?? null; set => _confidentialLedgerBody.LedgerType = value; }
 
         /// <summary>The Azure location where the Confidential Ledger is running.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The Azure location where the Confidential Ledger is running.")]
@@ -150,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Cmdlets
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.HttpPipeline Pipeline { get; set; }
+        public Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.HttpPipeline Pipeline { get; set; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -177,32 +189,32 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Cmdlets
         ReadOnly = false,
         Description = @"Additional tags for Confidential Ledger",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.ITags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.ITags Tag { get => _confidentialLedgerBody.Tag ?? null /* object */; set => _confidentialLedgerBody.Tag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.ITags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.ITags Tag { get => _confidentialLedgerBody.Tag ?? null /* object */; set => _confidentialLedgerBody.Tag = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.IErrorResponse</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.IConfidentialLedger">Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.IConfidentialLedger</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.IConfidentialLedger">Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.IConfidentialLedger</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.IConfidentialLedger> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.IConfidentialLedger> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -310,11 +322,36 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Cmdlets
                         WriteError(new global::System.Management.Automation.ErrorRecord( new global::System.Exception(messageData().Message), string.Empty, global::System.Management.Automation.ErrorCategory.NotSpecified, null ) );
                         return ;
                     }
+                    case Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.Events.Progress:
+                    {
+                        var data = messageData();
+                        int progress = (int)data.Value;
+                        string activityMessage, statusDescription;
+                        global::System.Management.Automation.ProgressRecordType recordType;
+                        if (progress < 100)
+                        {
+                            activityMessage = "In progress";
+                            statusDescription = "Checking operation status";
+                            recordType = System.Management.Automation.ProgressRecordType.Processing;
+                        }
+                        else
+                        {
+                            activityMessage = "Completed";
+                            statusDescription = "Completed";
+                            recordType = System.Management.Automation.ProgressRecordType.Completed;
+                        }
+                        WriteProgress(new global::System.Management.Automation.ProgressRecord(1, activityMessage, statusDescription)
+                        {
+                            PercentComplete = progress,
+                        RecordType = recordType
+                        });
+                        return ;
+                    }
                     case Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.Events.DelayBeforePolling:
                     {
+                        var data = messageData();
                         if (true == MyInvocation?.BoundParameters?.ContainsKey("NoWait"))
                         {
-                            var data = messageData();
                             if (data.ResponseMessage is System.Net.Http.HttpResponseMessage response)
                             {
                                 var asyncOperation = response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -326,10 +363,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Cmdlets
                                 return;
                             }
                         }
+                        else
+                        {
+                            if (data.ResponseMessage is System.Net.Http.HttpResponseMessage response)
+                            {
+                                int delay = (int)(response.Headers.RetryAfter?.Delta?.TotalSeconds ?? 30);
+                                WriteDebug($"Delaying {delay} seconds before polling.");
+                                for (var now = 0; now < delay; ++now)
+                                {
+                                    WriteProgress(new global::System.Management.Automation.ProgressRecord(1, "In progress", "Checking operation status")
+                                    {
+                                        PercentComplete = now * 100 / delay
+                                    });
+                                    await global::System.Threading.Tasks.Task.Delay(1000, token);
+                                }
+                            }
+                        }
                         break;
                     }
                 }
-                await Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Module.Instance.Signal(id, token, messageData, (i,t,m) => ((Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.IEventListener)this).Signal(i,t,()=> Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.EventDataConverter.ConvertFrom( m() ) as Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.EventData ), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
+                await Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Module.Instance.Signal(id, token, messageData, (i, t, m) => ((Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.IEventListener)this).Signal(i, t, () => Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.EventDataConverter.ConvertFrom(m()) as Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.EventData), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
                 if (token.IsCancellationRequested)
                 {
                     return ;
@@ -397,7 +450,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Cmdlets
             using( NoSynchronizationContext )
             {
                 await ((Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
+                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName, this.ExtensibleParameters);
                 if (null != HttpPipelinePrepend)
                 {
                     Pipeline.Prepend((this.CommandRuntime as Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.PowerShell.IAsyncCommandRuntimeExtensions)?.Wrap(HttpPipelinePrepend) ?? HttpPipelinePrepend);
@@ -412,7 +465,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Cmdlets
                     await ((Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     if (InputObject?.Id != null)
                     {
-                        await this.Client.LedgerUpdateViaIdentity(InputObject.Id, _confidentialLedgerBody, onOk, onDefault, this, Pipeline);
+                        await this.Client.LedgerUpdateViaIdentity(InputObject.Id, _confidentialLedgerBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.SerializationMode.IncludeUpdate);
                     }
                     else
                     {
@@ -429,13 +482,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Cmdlets
                         {
                             ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.LedgerName"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
                         }
-                        await this.Client.LedgerUpdate(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.LedgerName ?? null, _confidentialLedgerBody, onOk, onDefault, this, Pipeline);
+                        await this.Client.LedgerUpdate(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.LedgerName ?? null, _confidentialLedgerBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.SerializationMode.IncludeUpdate);
                     }
                     await ((Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  body=_confidentialLedgerBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -455,7 +508,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Cmdlets
         }
 
         /// <summary>
-        /// Intializes a new instance of the <see cref="UpdateAzConfidentialLedger_UpdateViaIdentityExpanded" /> cmdlet class.
+        /// Initializes a new instance of the <see cref="UpdateAzConfidentialLedger_UpdateViaIdentityExpanded" /> cmdlet class.
         /// </summary>
         public UpdateAzConfidentialLedger_UpdateViaIdentityExpanded()
         {
@@ -481,12 +534,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.IErrorResponse</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20.IErrorResponse> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.IErrorResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -503,15 +556,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20.IErrorResponse>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=_confidentialLedgerBody })
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.IErrorResponse>(responseMessage, await response);
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=_confidentialLedgerBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -521,12 +574,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.IConfidentialLedger">Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.IConfidentialLedger</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.IConfidentialLedger">Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.IConfidentialLedger</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.IConfidentialLedger> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.IConfidentialLedger> response)
         {
             using( NoSynchronizationContext )
             {
@@ -538,8 +591,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.IConfidentialLedger
-                WriteObject((await response));
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.IConfidentialLedger
+                var result = (await response);
+                WriteObject(result, false);
             }
         }
     }

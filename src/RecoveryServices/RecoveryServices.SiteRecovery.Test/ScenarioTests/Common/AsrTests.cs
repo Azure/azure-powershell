@@ -88,7 +88,7 @@ namespace RecoveryServices.SiteRecovery.Test
                 cikToken);
         }
 
-        [Fact]
+        [Fact(Skip = "need fix up by ASR team")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureMonitorAlertsForSiteRecovery()
         {

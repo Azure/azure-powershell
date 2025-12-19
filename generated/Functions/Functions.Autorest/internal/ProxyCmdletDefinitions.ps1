@@ -822,6 +822,268 @@ end {
 
 <#
 .Synopsis
+Gets properties of a specified container.
+.Description
+Gets properties of a specified container.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IBlobContainer
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IListContainerItem
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
+  [AccountName <String>]: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+  [ActionName <String>]: The workflow action name.
+  [AnalysisName <String>]: Analysis Name
+  [AppSettingKey <String>]: App Setting key name.
+  [Authprovider <String>]: The auth provider for the users.
+  [BackupId <String>]: ID of the backup.
+  [BaseAddress <String>]: Module base address.
+  [BasicAuthName <BasicAuthName?>]: name of the basic auth entry.
+  [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
+  [CertificateOrderName <String>]: Name of the certificate order..
+  [ConnectionStringKey <String>]: 
+  [ContainerName <String>]: Site Container Name
+  [DatabaseConnectionName <String>]: Name of the database connection.
+  [DeletedSiteId <String>]: The numeric ID of the deleted app, e.g. 12345
+  [DetectorName <String>]: Detector Resource Name
+  [DiagnosticCategory <String>]: Diagnostic Category
+  [DiagnosticsName <String>]: Name of the diagnostics item.
+  [DomainName <String>]: Name of the domain.
+  [DomainOwnershipIdentifierName <String>]: Name of domain ownership identifier.
+  [EntityName <String>]: Name of the hybrid connection.
+  [EnvironmentName <String>]: The stage site identifier.
+  [FunctionAppName <String>]: Name of the function app registered with the static site build.
+  [FunctionName <String>]: Function name.
+  [GatewayName <String>]: Name of the gateway. Currently, the only supported string is "primary".
+  [HistoryName <String>]: The workflow trigger history name. Corresponds to the run name for triggers that resulted in a run.
+  [HostName <String>]: Hostname in the hostname binding.
+  [HostingEnvironmentName <String>]: Name of the hosting environment.
+  [Id <String>]: Deployment ID.
+  [Id1 <String>]: Resource identity path
+  [ImmutabilityPolicyName <String>]: The name of the blob container immutabilityPolicy within the specified storage account. ImmutabilityPolicy Name must be 'default'
+  [Instance <String>]: Name of the instance in the multi-role pool.
+  [InstanceId <String>]: 
+  [KeyId <String>]: The API Key ID. This is unique within a Application Insights component.
+  [KeyName <String>]: The name of the key.
+  [KeyType <String>]: The type of host key.
+  [LinkedBackendName <String>]: Name of the linked backend that should be retrieved
+  [Location <String>]: 
+  [ManagementPolicyName <ManagementPolicyName?>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [Name <String>]: Name of the certificate.
+  [NamespaceName <String>]: The namespace for this hybrid connection.
+  [OperationId <String>]: GUID of the operation.
+  [PremierAddOnName <String>]: Add-on name.
+  [PrivateEndpointConnectionName <String>]: Name of the private endpoint connection.
+  [ProcessId <String>]: PID.
+  [PublicCertificateName <String>]: Public certificate name.
+  [PurgeId <String>]: In a purge status request, this is the Id of the operation the status of which is returned.
+  [RelayName <String>]: The relay name for this hybrid connection.
+  [RepetitionName <String>]: The workflow repetition.
+  [RequestHistoryName <String>]: The request history name.
+  [ResourceGroupName <String>]: Name of the resource group to which the resource belongs.
+  [ResourceName <String>]: The name of the Application Insights component resource.
+  [RouteName <String>]: Name of the Virtual Network route.
+  [RunName <String>]: The workflow run name.
+  [Scope <String>]: The resource provider scope of the resource. Parent resource being extended by Managed Identities.
+  [SiteExtensionId <String>]: Site extension name.
+  [SiteName <String>]: Site Name
+  [Slot <String>]: Slot Name
+  [SnapshotId <String>]: The ID of the snapshot to read.
+  [SourceControlType <String>]: Type of source control
+  [SubscriptionId <String>]: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+  [TriggerName <String>]: The workflow trigger name.
+  [Userid <String>]: The user id of the user.
+  [VersionId <String>]: The workflow versionId.
+  [View <String>]: The type of view. Only "summary" is supported at this time.
+  [VnetName <String>]: Name of the virtual network.
+  [WebJobName <String>]: Name of Web Job.
+  [WorkerName <String>]: Name of worker machine, which typically starts with RD.
+  [WorkerPoolName <String>]: Name of the worker pool.
+  [WorkflowName <String>]: Workflow name.
+.Link
+https://learn.microsoft.com/powershell/module/az.functions/get-azblobcontainer
+#>
+function Get-AzBlobContainer {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IBlobContainer], [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IListContainerItem])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+param(
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [System.String]
+    # The name of the storage account within the specified resource group.
+    # Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+    ${AccountName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [System.String]
+    # The name of the blob container within the specified storage account.
+    # Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only.
+    # Every dash (-) character must be immediately preceded and followed by a letter or number.
+    ${ContainerName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [System.String]
+    # The name of the resource group within the user's subscription.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # Your Azure subscription ID.
+    # This is a GUID-formatted string (e.g.
+    # 00000000-0000-0000-0000-000000000000).
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Query')]
+    [System.String]
+    # Optional.
+    # When specified, only container names starting with the filter will be listed.
+    ${Filter},
+
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Query')]
+    [System.String]
+    # Optional.
+    # Specified maximum number of containers that can be included in the list.
+    ${Maxpagesize},
+
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Query')]
+    [System.String]
+    # Optional.
+    # Continuation token for the list operation.
+    ${SkipToken},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Get = 'Az.Functions.private\Get-AzBlobContainer_Get';
+            GetViaIdentity = 'Az.Functions.private\Get-AzBlobContainer_GetViaIdentity';
+            List = 'Az.Functions.private\Get-AzBlobContainer_List';
+        }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
 Description for Get a list of available geographical regions.
 .Description
 Description for Get a list of available geographical regions.
@@ -831,6 +1093,10 @@ Get-AzFunctionAppAvailableLocation
 Get-AzFunctionAppAvailableLocation -PlanType Premium -OSType Linux
 .Example
 Get-AzFunctionAppAvailableLocation -PlanType Consumption -OSType Windows
+.Example
+Get-AzFunctionAppAvailableLocation -PlanType FlexConsumption
+.Example
+Get-AzFunctionAppAvailableLocation -PlanType FlexConsumption -ZoneRedundancy
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IGeoRegion
@@ -6126,9 +6392,13 @@ INSIGHTPROPERTY <IApplicationInsightsComponent>: An Application Insights compone
   [Tag <IComponentsResourceTags>]: Resource tags
     [(Any) <String>]: This indicates any property can be added to this object.
   [ApplicationType <ApplicationType?>]: Type of application being monitored.
+  [DisableIPMasking <Boolean?>]: Disable IP masking.
   [FlowType <FlowType?>]: Used by the Application Insights system to determine what kind of flow this component was created by. This is to be set to 'Bluefield' when creating/updating a component via the REST API.
   [HockeyAppId <String>]: The unique application ID created when a new application is added to HockeyApp, used for communications with HockeyApp.
+  [ImmediatePurgeDataOn30Day <Boolean?>]: Purge data immediately after 30 days.
+  [IngestionMode <IngestionMode?>]: Indicates the flow of the ingestion.
   [RequestSource <RequestSource?>]: Describes what tool created this Application Insights component. Customers using this API should set this to the default 'rest'.
+  [RetentionInDay <Int32?>]: Retention period in days.
   [SamplingPercentage <Double?>]: Percentage of the data produced by the application being monitored that is being sampled for Application Insights telemetry.
 .Link
 https://learn.microsoft.com/powershell/module/az.functions/new-azappinsights
@@ -6203,6 +6473,13 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Disable IP masking.
+    ${DisableIPMasking},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FlowType])]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FlowType]
@@ -6219,12 +6496,34 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Purge data immediately after 30 days.
+    ${ImmediatePurgeDataOn30Day},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.IngestionMode])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.IngestionMode]
+    # Indicates the flow of the ingestion.
+    ${IngestionMode},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RequestSource])]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RequestSource]
     # Describes what tool created this Application Insights component.
     # Customers using this API should set this to the default 'rest'.
     ${RequestSource},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.Int32]
+    # Retention period in days.
+    ${RetentionInDay},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
@@ -6303,6 +6602,285 @@ begin {
             CreateExpanded = 'Az.Functions.private\New-AzAppInsights_CreateExpanded';
             CreateViaIdentity = 'Az.Functions.private\New-AzAppInsights_CreateViaIdentity';
             CreateViaIdentityExpanded = 'Az.Functions.private\New-AzAppInsights_CreateViaIdentityExpanded';
+        }
+        if (('Create', 'CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Creates a new container under the specified account as described by request body.
+The container resource includes metadata and properties for that container.
+It does not include a list of the blobs contained by the container.
+.Description
+Creates a new container under the specified account as described by request body.
+The container resource includes metadata and properties for that container.
+It does not include a list of the blobs contained by the container.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IBlobContainer
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IBlobContainer
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+BLOBCONTAINER <IBlobContainer>: Properties of the blob container, including Id, resource name, resource type, Etag.
+  [ContainerPropertyMetadata <IContainerPropertiesMetadata>]: A name-value pair to associate with the container as metadata.
+    [(Any) <String>]: This indicates any property can be added to this object.
+  [ContainerPropertyPublicAccess <PublicAccess?>]: Specifies whether data in the container may be accessed publicly and the level of access.
+  [ImmutabilityPeriodSinceCreationInDay <Int32?>]: The immutability period for the blobs in the container since the policy creation, in days.
+  [LegalHoldTag <ITagProperty[]>]: The list of LegalHold tags of a blob container.
+
+INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
+  [AccountName <String>]: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+  [ActionName <String>]: The workflow action name.
+  [AnalysisName <String>]: Analysis Name
+  [AppSettingKey <String>]: App Setting key name.
+  [Authprovider <String>]: The auth provider for the users.
+  [BackupId <String>]: ID of the backup.
+  [BaseAddress <String>]: Module base address.
+  [BasicAuthName <BasicAuthName?>]: name of the basic auth entry.
+  [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
+  [CertificateOrderName <String>]: Name of the certificate order..
+  [ConnectionStringKey <String>]: 
+  [ContainerName <String>]: Site Container Name
+  [DatabaseConnectionName <String>]: Name of the database connection.
+  [DeletedSiteId <String>]: The numeric ID of the deleted app, e.g. 12345
+  [DetectorName <String>]: Detector Resource Name
+  [DiagnosticCategory <String>]: Diagnostic Category
+  [DiagnosticsName <String>]: Name of the diagnostics item.
+  [DomainName <String>]: Name of the domain.
+  [DomainOwnershipIdentifierName <String>]: Name of domain ownership identifier.
+  [EntityName <String>]: Name of the hybrid connection.
+  [EnvironmentName <String>]: The stage site identifier.
+  [FunctionAppName <String>]: Name of the function app registered with the static site build.
+  [FunctionName <String>]: Function name.
+  [GatewayName <String>]: Name of the gateway. Currently, the only supported string is "primary".
+  [HistoryName <String>]: The workflow trigger history name. Corresponds to the run name for triggers that resulted in a run.
+  [HostName <String>]: Hostname in the hostname binding.
+  [HostingEnvironmentName <String>]: Name of the hosting environment.
+  [Id <String>]: Deployment ID.
+  [Id1 <String>]: Resource identity path
+  [ImmutabilityPolicyName <String>]: The name of the blob container immutabilityPolicy within the specified storage account. ImmutabilityPolicy Name must be 'default'
+  [Instance <String>]: Name of the instance in the multi-role pool.
+  [InstanceId <String>]: 
+  [KeyId <String>]: The API Key ID. This is unique within a Application Insights component.
+  [KeyName <String>]: The name of the key.
+  [KeyType <String>]: The type of host key.
+  [LinkedBackendName <String>]: Name of the linked backend that should be retrieved
+  [Location <String>]: 
+  [ManagementPolicyName <ManagementPolicyName?>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [Name <String>]: Name of the certificate.
+  [NamespaceName <String>]: The namespace for this hybrid connection.
+  [OperationId <String>]: GUID of the operation.
+  [PremierAddOnName <String>]: Add-on name.
+  [PrivateEndpointConnectionName <String>]: Name of the private endpoint connection.
+  [ProcessId <String>]: PID.
+  [PublicCertificateName <String>]: Public certificate name.
+  [PurgeId <String>]: In a purge status request, this is the Id of the operation the status of which is returned.
+  [RelayName <String>]: The relay name for this hybrid connection.
+  [RepetitionName <String>]: The workflow repetition.
+  [RequestHistoryName <String>]: The request history name.
+  [ResourceGroupName <String>]: Name of the resource group to which the resource belongs.
+  [ResourceName <String>]: The name of the Application Insights component resource.
+  [RouteName <String>]: Name of the Virtual Network route.
+  [RunName <String>]: The workflow run name.
+  [Scope <String>]: The resource provider scope of the resource. Parent resource being extended by Managed Identities.
+  [SiteExtensionId <String>]: Site extension name.
+  [SiteName <String>]: Site Name
+  [Slot <String>]: Slot Name
+  [SnapshotId <String>]: The ID of the snapshot to read.
+  [SourceControlType <String>]: Type of source control
+  [SubscriptionId <String>]: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+  [TriggerName <String>]: The workflow trigger name.
+  [Userid <String>]: The user id of the user.
+  [VersionId <String>]: The workflow versionId.
+  [View <String>]: The type of view. Only "summary" is supported at this time.
+  [VnetName <String>]: Name of the virtual network.
+  [WebJobName <String>]: Name of Web Job.
+  [WorkerName <String>]: Name of worker machine, which typically starts with RD.
+  [WorkerPoolName <String>]: Name of the worker pool.
+  [WorkflowName <String>]: Workflow name.
+.Link
+https://learn.microsoft.com/powershell/module/az.functions/new-azblobcontainer
+#>
+function New-AzBlobContainer {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IBlobContainer])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Create', Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [System.String]
+    # The name of the storage account within the specified resource group.
+    # Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+    ${AccountName},
+
+    [Parameter(ParameterSetName='Create', Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [System.String]
+    # The name of the blob container within the specified storage account.
+    # Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only.
+    # Every dash (-) character must be immediately preceded and followed by a letter or number.
+    ${ContainerName},
+
+    [Parameter(ParameterSetName='Create', Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [System.String]
+    # The name of the resource group within the user's subscription.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Create')]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # Your Azure subscription ID.
+    # This is a GUID-formatted string (e.g.
+    # 00000000-0000-0000-0000-000000000000).
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IBlobContainer]
+    # Properties of the blob container, including Id, resource name, resource type, Etag.
+    # To construct, see NOTES section for BLOBCONTAINER properties and create a hash table.
+    ${BlobContainer},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IContainerPropertiesMetadata]))]
+    [System.Collections.Hashtable]
+    # A name-value pair to associate with the container as metadata.
+    ${ContainerPropertyMetadata},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.PublicAccess])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.PublicAccess]
+    # Specifies whether data in the container may be accessed publicly and the level of access.
+    ${ContainerPropertyPublicAccess},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Create = 'Az.Functions.private\New-AzBlobContainer_Create';
+            CreateExpanded = 'Az.Functions.private\New-AzBlobContainer_CreateExpanded';
+            CreateViaIdentity = 'Az.Functions.private\New-AzBlobContainer_CreateViaIdentity';
+            CreateViaIdentityExpanded = 'Az.Functions.private\New-AzBlobContainer_CreateViaIdentityExpanded';
         }
         if (('Create', 'CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $testPlayback = $false
@@ -6895,6 +7473,12 @@ New-AzFunctionApp -Name MyUniqueFunctionAppName `
                   -StorageAccountName MyStorageAccountName `
                   -Environment MyEnvironment `
                   -WorkloadProfileName MyWorkloadProfileName
+.Example
+New-AzFunctionApp -Name MyUniqueFunctionAppName `
+                  -ResourceGroupName MyResourceGroupName `
+                  -FlexConsumptionLocation LocationWhereFlexConsumptionIsSupported `
+                  -StorageAccountName MyStorageAccountName `
+                  -Runtime PowerShell
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISite
@@ -6987,7 +7571,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkflowName <String>]: Workflow name.
 
 SCALEANDCONCURRENCYALWAYSREADY <IFunctionsAlwaysReadyConfig[]>: 'Always Ready' configuration for the function app.
-  [InstanceCount <Single?>]: Sets the number of 'Always Ready' instances for a given function group or a specific function. For additional information see https://aka.ms/flexconsumption/alwaysready.
+  [InstanceCount <Int32?>]: Sets the number of 'Always Ready' instances for a given function group or a specific function. For additional information see https://aka.ms/flexconsumption/alwaysready.
   [Name <String>]: Either a function group or a function name is required. For additional information see https://aka.ms/flexconsumption/alwaysready.
 
 SITECONFIG <ISiteConfig>: Configuration of the app.
@@ -7021,7 +7605,7 @@ SITECONFIG <ISiteConfig>: Configuration of the app.
   [ElasticWebAppScaleLimit <Int32?>]: Maximum number of workers that a site can scale out to.         This setting only applies to apps in plans where ElasticScaleEnabled is <code>true</code>
   [ExperimentRampUpRule <IRampUpRule[]>]: List of ramp-up rules.
     [ActionHostName <String>]: Hostname of a slot to which the traffic will be redirected if decided to. E.g. myapp-stage.azurewebsites.net.
-    [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified. See TiPCallback site extension for the scaffold and contracts.         https://www.siteextensions.net/packages/TiPCallback/
+    [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified.
     [ChangeIntervalInMinute <Int32?>]: Specifies interval in minutes to reevaluate ReroutePercentage.
     [ChangeStep <Double?>]: In auto ramp up scenario this is the step to add/remove from <code>ReroutePercentage</code> until it reaches \n<code>MinReroutePercentage</code> or         <code>MaxReroutePercentage</code>. Site metrics are checked every N minutes specified in <code>ChangeIntervalInMinutes</code>.\nCustom decision algorithm         can be provided in TiPCallback site extension which URL can be specified in <code>ChangeDecisionCallbackUrl</code>.
     [MaxReroutePercentage <Double?>]: Specifies upper boundary below which ReroutePercentage will stay.
@@ -7191,7 +7775,7 @@ SITEENVELOPE <ISite>: A web app, a mobile app backend, or an API app.
     [ElasticWebAppScaleLimit <Int32?>]: Maximum number of workers that a site can scale out to.         This setting only applies to apps in plans where ElasticScaleEnabled is <code>true</code>
     [ExperimentRampUpRule <IRampUpRule[]>]: List of ramp-up rules.
       [ActionHostName <String>]: Hostname of a slot to which the traffic will be redirected if decided to. E.g. myapp-stage.azurewebsites.net.
-      [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified. See TiPCallback site extension for the scaffold and contracts.         https://www.siteextensions.net/packages/TiPCallback/
+      [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified.
       [ChangeIntervalInMinute <Int32?>]: Specifies interval in minutes to reevaluate ReroutePercentage.
       [ChangeStep <Double?>]: In auto ramp up scenario this is the step to add/remove from <code>ReroutePercentage</code> until it reaches \n<code>MinReroutePercentage</code> or         <code>MaxReroutePercentage</code>. Site metrics are checked every N minutes specified in <code>ChangeIntervalInMinutes</code>.\nCustom decision algorithm         can be provided in TiPCallback site extension which URL can be specified in <code>ChangeDecisionCallbackUrl</code>.
       [MaxReroutePercentage <Double?>]: Specifies upper boundary below which ReroutePercentage will stay.
@@ -7321,6 +7905,7 @@ SITEENVELOPE <ISite>: A web app, a mobile app backend, or an API app.
   [DnsConfigurationDnsRetryAttemptTimeout <Int32?>]: Timeout for a single dns lookup in seconds. Allowed range: 1-30. Default is 3.
   [DnsConfigurationDnsServer <String[]>]: List of custom DNS servers to be used by an app for lookups. Maximum 5 dns servers can be set.
   [Enabled <Boolean?>]: <code>true</code> if the app is enabled; otherwise, <code>false</code>. Setting this value to false disables the app (takes the app offline).
+  [EndToEndEncryptionEnabled <Boolean?>]: Whether to use end to end encryption between the FrontEnd and the Worker
   [ExtendedLocationName <String>]: Name of extended location.
   [HostNameSslState <IHostNameSslState[]>]: Hostname SSL states are used to manage the SSL bindings for app's hostnames.
     [HostType <HostType?>]: Indicates whether the hostname is a standard or repository hostname.
@@ -7331,7 +7916,7 @@ SITEENVELOPE <ISite>: A web app, a mobile app backend, or an API app.
     [VirtualIP <String>]: Virtual IP address assigned to the hostname if IP based SSL is enabled.
   [HostNamesDisabled <Boolean?>]: <code>true</code> to disable the public hostnames of the app; otherwise, <code>false</code>.          If <code>true</code>, the app is only accessible via API management process.
   [HostingEnvironmentProfileId <String>]: Resource ID of the App Service Environment.
-  [HttpPerInstanceConcurrency <Single?>]: The maximum number of concurrent HTTP trigger invocations per instance.
+  [HttpPerInstanceConcurrency <Int32?>]: The maximum number of concurrent HTTP trigger invocations per instance.
   [HttpsOnly <Boolean?>]: HttpsOnly: configures a web site to accept only https requests. Issues redirect for         http requests
   [HyperV <Boolean?>]: Hyper-V sandbox.
   [IdentityType <ManagedServiceIdentityType?>]: Type of managed service identity.
@@ -7348,10 +7933,10 @@ SITEENVELOPE <ISite>: A web app, a mobile app backend, or an API app.
   [RuntimeName <RuntimeName?>]: Function app runtime name. Available options: dotnet-isolated, node, java, powershell, python, custom
   [RuntimeVersion <String>]: Function app runtime version. Example: 8 (for dotnet-isolated)
   [ScaleAndConcurrencyAlwaysReady <IFunctionsAlwaysReadyConfig[]>]: 'Always Ready' configuration for the function app.
-    [InstanceCount <Single?>]: Sets the number of 'Always Ready' instances for a given function group or a specific function. For additional information see https://aka.ms/flexconsumption/alwaysready.
+    [InstanceCount <Int32?>]: Sets the number of 'Always Ready' instances for a given function group or a specific function. For additional information see https://aka.ms/flexconsumption/alwaysready.
     [Name <String>]: Either a function group or a function name is required. For additional information see https://aka.ms/flexconsumption/alwaysready.
-  [ScaleAndConcurrencyInstanceMemoryMb <Single?>]: Set the amount of memory allocated to each instance of the function app in MB. CPU and network bandwidth are allocated proportionally.
-  [ScaleAndConcurrencyMaximumInstanceCount <Single?>]: The maximum number of instances for the function app.
+  [ScaleAndConcurrencyInstanceMemoryMb <Int32?>]: Set the amount of memory allocated to each instance of the function app in MB. CPU and network bandwidth are allocated proportionally.
+  [ScaleAndConcurrencyMaximumInstanceCount <Int32?>]: The maximum number of instances for the function app.
   [ScmSiteAlsoStopped <Boolean?>]: <code>true</code> to stop SCM (KUDU) site when the app is stopped; otherwise, <code>false</code>. The default is <code>false</code>.
   [ServerFarmId <String>]: Resource ID of the associated App Service plan, formatted as: "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
   [StorageAccountRequired <Boolean?>]: Checks if Customer provided storage account is required
@@ -7692,6 +8277,13 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Whether to use end to end encryption between the FrontEnd and the Worker
+    ${EndToEndEncryptionEnabled},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Name of extended location.
     ${ExtendedLocationName},
@@ -7723,7 +8315,7 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.Single]
+    [System.Int32]
     # The maximum number of concurrent HTTP trigger invocations per instance.
     ${HttpPerInstanceConcurrency},
 
@@ -7856,7 +8448,7 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.Single]
+    [System.Int32]
     # Set the amount of memory allocated to each instance of the function app in MB.
     # CPU and network bandwidth are allocated proportionally.
     ${ScaleAndConcurrencyInstanceMemoryMb},
@@ -7864,7 +8456,7 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.Single]
+    [System.Int32]
     # The maximum number of instances for the function app.
     ${ScaleAndConcurrencyMaximumInstanceCount},
 
@@ -8750,7 +9342,7 @@ CONNECTIONSTRING <IConnStringInfo[]>: Connection strings.
 
 EXPERIMENTRAMPUPRULE <IRampUpRule[]>: List of ramp-up rules.
   [ActionHostName <String>]: Hostname of a slot to which the traffic will be redirected if decided to. E.g. myapp-stage.azurewebsites.net.
-  [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified. See TiPCallback site extension for the scaffold and contracts.         https://www.siteextensions.net/packages/TiPCallback/
+  [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified.
   [ChangeIntervalInMinute <Int32?>]: Specifies interval in minutes to reevaluate ReroutePercentage.
   [ChangeStep <Double?>]: In auto ramp up scenario this is the step to add/remove from <code>ReroutePercentage</code> until it reaches \n<code>MinReroutePercentage</code> or         <code>MaxReroutePercentage</code>. Site metrics are checked every N minutes specified in <code>ChangeIntervalInMinutes</code>.\nCustom decision algorithm         can be provided in TiPCallback site extension which URL can be specified in <code>ChangeDecisionCallbackUrl</code>.
   [MaxReroutePercentage <Double?>]: Specifies upper boundary below which ReroutePercentage will stay.
@@ -8898,7 +9490,7 @@ SITECONFIG <ISiteConfigResource>: Web app configuration ARM resource.
   [ElasticWebAppScaleLimit <Int32?>]: Maximum number of workers that a site can scale out to.         This setting only applies to apps in plans where ElasticScaleEnabled is <code>true</code>
   [ExperimentRampUpRule <IRampUpRule[]>]: List of ramp-up rules.
     [ActionHostName <String>]: Hostname of a slot to which the traffic will be redirected if decided to. E.g. myapp-stage.azurewebsites.net.
-    [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified. See TiPCallback site extension for the scaffold and contracts.         https://www.siteextensions.net/packages/TiPCallback/
+    [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified.
     [ChangeIntervalInMinute <Int32?>]: Specifies interval in minutes to reevaluate ReroutePercentage.
     [ChangeStep <Double?>]: In auto ramp up scenario this is the step to add/remove from <code>ReroutePercentage</code> until it reaches \n<code>MinReroutePercentage</code> or         <code>MaxReroutePercentage</code>. Site metrics are checked every N minutes specified in <code>ChangeIntervalInMinutes</code>.\nCustom decision algorithm         can be provided in TiPCallback site extension which URL can be specified in <code>ChangeDecisionCallbackUrl</code>.
     [MaxReroutePercentage <Double?>]: Specifies upper boundary below which ReroutePercentage will stay.
@@ -9920,7 +10512,7 @@ CONNECTIONSTRING <IConnStringInfo[]>: Connection strings.
 
 EXPERIMENTRAMPUPRULE <IRampUpRule[]>: List of ramp-up rules.
   [ActionHostName <String>]: Hostname of a slot to which the traffic will be redirected if decided to. E.g. myapp-stage.azurewebsites.net.
-  [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified. See TiPCallback site extension for the scaffold and contracts.         https://www.siteextensions.net/packages/TiPCallback/
+  [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified.
   [ChangeIntervalInMinute <Int32?>]: Specifies interval in minutes to reevaluate ReroutePercentage.
   [ChangeStep <Double?>]: In auto ramp up scenario this is the step to add/remove from <code>ReroutePercentage</code> until it reaches \n<code>MinReroutePercentage</code> or         <code>MaxReroutePercentage</code>. Site metrics are checked every N minutes specified in <code>ChangeIntervalInMinutes</code>.\nCustom decision algorithm         can be provided in TiPCallback site extension which URL can be specified in <code>ChangeDecisionCallbackUrl</code>.
   [MaxReroutePercentage <Double?>]: Specifies upper boundary below which ReroutePercentage will stay.
@@ -10068,7 +10660,7 @@ SITECONFIG <ISiteConfigResource>: Web app configuration ARM resource.
   [ElasticWebAppScaleLimit <Int32?>]: Maximum number of workers that a site can scale out to.         This setting only applies to apps in plans where ElasticScaleEnabled is <code>true</code>
   [ExperimentRampUpRule <IRampUpRule[]>]: List of ramp-up rules.
     [ActionHostName <String>]: Hostname of a slot to which the traffic will be redirected if decided to. E.g. myapp-stage.azurewebsites.net.
-    [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified. See TiPCallback site extension for the scaffold and contracts.         https://www.siteextensions.net/packages/TiPCallback/
+    [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified.
     [ChangeIntervalInMinute <Int32?>]: Specifies interval in minutes to reevaluate ReroutePercentage.
     [ChangeStep <Double?>]: In auto ramp up scenario this is the step to add/remove from <code>ReroutePercentage</code> until it reaches \n<code>MinReroutePercentage</code> or         <code>MaxReroutePercentage</code>. Site metrics are checked every N minutes specified in <code>ChangeIntervalInMinutes</code>.\nCustom decision algorithm         can be provided in TiPCallback site extension which URL can be specified in <code>ChangeDecisionCallbackUrl</code>.
     [MaxReroutePercentage <Double?>]: Specifies upper boundary below which ReroutePercentage will stay.
@@ -11011,6 +11603,479 @@ begin {
             CreateViaIdentityExpanded = 'Az.Functions.private\New-AzWebAppConfiguration_CreateViaIdentityExpanded';
         }
         if (('Create', 'CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Deletes an Application Insights component.
+.Description
+Deletes an Application Insights component.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
+  [AccountName <String>]: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+  [ActionName <String>]: The workflow action name.
+  [AnalysisName <String>]: Analysis Name
+  [AppSettingKey <String>]: App Setting key name.
+  [Authprovider <String>]: The auth provider for the users.
+  [BackupId <String>]: ID of the backup.
+  [BaseAddress <String>]: Module base address.
+  [BasicAuthName <BasicAuthName?>]: name of the basic auth entry.
+  [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
+  [CertificateOrderName <String>]: Name of the certificate order..
+  [ConnectionStringKey <String>]: 
+  [ContainerName <String>]: Site Container Name
+  [DatabaseConnectionName <String>]: Name of the database connection.
+  [DeletedSiteId <String>]: The numeric ID of the deleted app, e.g. 12345
+  [DetectorName <String>]: Detector Resource Name
+  [DiagnosticCategory <String>]: Diagnostic Category
+  [DiagnosticsName <String>]: Name of the diagnostics item.
+  [DomainName <String>]: Name of the domain.
+  [DomainOwnershipIdentifierName <String>]: Name of domain ownership identifier.
+  [EntityName <String>]: Name of the hybrid connection.
+  [EnvironmentName <String>]: The stage site identifier.
+  [FunctionAppName <String>]: Name of the function app registered with the static site build.
+  [FunctionName <String>]: Function name.
+  [GatewayName <String>]: Name of the gateway. Currently, the only supported string is "primary".
+  [HistoryName <String>]: The workflow trigger history name. Corresponds to the run name for triggers that resulted in a run.
+  [HostName <String>]: Hostname in the hostname binding.
+  [HostingEnvironmentName <String>]: Name of the hosting environment.
+  [Id <String>]: Deployment ID.
+  [Id1 <String>]: Resource identity path
+  [ImmutabilityPolicyName <String>]: The name of the blob container immutabilityPolicy within the specified storage account. ImmutabilityPolicy Name must be 'default'
+  [Instance <String>]: Name of the instance in the multi-role pool.
+  [InstanceId <String>]: 
+  [KeyId <String>]: The API Key ID. This is unique within a Application Insights component.
+  [KeyName <String>]: The name of the key.
+  [KeyType <String>]: The type of host key.
+  [LinkedBackendName <String>]: Name of the linked backend that should be retrieved
+  [Location <String>]: 
+  [ManagementPolicyName <ManagementPolicyName?>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [Name <String>]: Name of the certificate.
+  [NamespaceName <String>]: The namespace for this hybrid connection.
+  [OperationId <String>]: GUID of the operation.
+  [PremierAddOnName <String>]: Add-on name.
+  [PrivateEndpointConnectionName <String>]: Name of the private endpoint connection.
+  [ProcessId <String>]: PID.
+  [PublicCertificateName <String>]: Public certificate name.
+  [PurgeId <String>]: In a purge status request, this is the Id of the operation the status of which is returned.
+  [RelayName <String>]: The relay name for this hybrid connection.
+  [RepetitionName <String>]: The workflow repetition.
+  [RequestHistoryName <String>]: The request history name.
+  [ResourceGroupName <String>]: Name of the resource group to which the resource belongs.
+  [ResourceName <String>]: The name of the Application Insights component resource.
+  [RouteName <String>]: Name of the Virtual Network route.
+  [RunName <String>]: The workflow run name.
+  [Scope <String>]: The resource provider scope of the resource. Parent resource being extended by Managed Identities.
+  [SiteExtensionId <String>]: Site extension name.
+  [SiteName <String>]: Site Name
+  [Slot <String>]: Slot Name
+  [SnapshotId <String>]: The ID of the snapshot to read.
+  [SourceControlType <String>]: Type of source control
+  [SubscriptionId <String>]: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+  [TriggerName <String>]: The workflow trigger name.
+  [Userid <String>]: The user id of the user.
+  [VersionId <String>]: The workflow versionId.
+  [View <String>]: The type of view. Only "summary" is supported at this time.
+  [VnetName <String>]: Name of the virtual network.
+  [WebJobName <String>]: Name of Web Job.
+  [WorkerName <String>]: Name of worker machine, which typically starts with RD.
+  [WorkerPoolName <String>]: Name of the worker pool.
+  [WorkflowName <String>]: Workflow name.
+.Link
+https://learn.microsoft.com/powershell/module/az.functions/remove-azappinsights
+#>
+function Remove-AzAppInsights {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [System.String]
+    # The name of the Application Insights component resource.
+    ${ResourceName},
+
+    [Parameter(ParameterSetName='Delete')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # Your Azure subscription ID.
+    # This is a GUID-formatted string (e.g.
+    # 00000000-0000-0000-0000-000000000000).
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Delete = 'Az.Functions.private\Remove-AzAppInsights_Delete';
+            DeleteViaIdentity = 'Az.Functions.private\Remove-AzAppInsights_DeleteViaIdentity';
+        }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Deletes specified container under its account.
+.Description
+Deletes specified container under its account.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
+  [AccountName <String>]: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+  [ActionName <String>]: The workflow action name.
+  [AnalysisName <String>]: Analysis Name
+  [AppSettingKey <String>]: App Setting key name.
+  [Authprovider <String>]: The auth provider for the users.
+  [BackupId <String>]: ID of the backup.
+  [BaseAddress <String>]: Module base address.
+  [BasicAuthName <BasicAuthName?>]: name of the basic auth entry.
+  [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
+  [CertificateOrderName <String>]: Name of the certificate order..
+  [ConnectionStringKey <String>]: 
+  [ContainerName <String>]: Site Container Name
+  [DatabaseConnectionName <String>]: Name of the database connection.
+  [DeletedSiteId <String>]: The numeric ID of the deleted app, e.g. 12345
+  [DetectorName <String>]: Detector Resource Name
+  [DiagnosticCategory <String>]: Diagnostic Category
+  [DiagnosticsName <String>]: Name of the diagnostics item.
+  [DomainName <String>]: Name of the domain.
+  [DomainOwnershipIdentifierName <String>]: Name of domain ownership identifier.
+  [EntityName <String>]: Name of the hybrid connection.
+  [EnvironmentName <String>]: The stage site identifier.
+  [FunctionAppName <String>]: Name of the function app registered with the static site build.
+  [FunctionName <String>]: Function name.
+  [GatewayName <String>]: Name of the gateway. Currently, the only supported string is "primary".
+  [HistoryName <String>]: The workflow trigger history name. Corresponds to the run name for triggers that resulted in a run.
+  [HostName <String>]: Hostname in the hostname binding.
+  [HostingEnvironmentName <String>]: Name of the hosting environment.
+  [Id <String>]: Deployment ID.
+  [Id1 <String>]: Resource identity path
+  [ImmutabilityPolicyName <String>]: The name of the blob container immutabilityPolicy within the specified storage account. ImmutabilityPolicy Name must be 'default'
+  [Instance <String>]: Name of the instance in the multi-role pool.
+  [InstanceId <String>]: 
+  [KeyId <String>]: The API Key ID. This is unique within a Application Insights component.
+  [KeyName <String>]: The name of the key.
+  [KeyType <String>]: The type of host key.
+  [LinkedBackendName <String>]: Name of the linked backend that should be retrieved
+  [Location <String>]: 
+  [ManagementPolicyName <ManagementPolicyName?>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [Name <String>]: Name of the certificate.
+  [NamespaceName <String>]: The namespace for this hybrid connection.
+  [OperationId <String>]: GUID of the operation.
+  [PremierAddOnName <String>]: Add-on name.
+  [PrivateEndpointConnectionName <String>]: Name of the private endpoint connection.
+  [ProcessId <String>]: PID.
+  [PublicCertificateName <String>]: Public certificate name.
+  [PurgeId <String>]: In a purge status request, this is the Id of the operation the status of which is returned.
+  [RelayName <String>]: The relay name for this hybrid connection.
+  [RepetitionName <String>]: The workflow repetition.
+  [RequestHistoryName <String>]: The request history name.
+  [ResourceGroupName <String>]: Name of the resource group to which the resource belongs.
+  [ResourceName <String>]: The name of the Application Insights component resource.
+  [RouteName <String>]: Name of the Virtual Network route.
+  [RunName <String>]: The workflow run name.
+  [Scope <String>]: The resource provider scope of the resource. Parent resource being extended by Managed Identities.
+  [SiteExtensionId <String>]: Site extension name.
+  [SiteName <String>]: Site Name
+  [Slot <String>]: Slot Name
+  [SnapshotId <String>]: The ID of the snapshot to read.
+  [SourceControlType <String>]: Type of source control
+  [SubscriptionId <String>]: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+  [TriggerName <String>]: The workflow trigger name.
+  [Userid <String>]: The user id of the user.
+  [VersionId <String>]: The workflow versionId.
+  [View <String>]: The type of view. Only "summary" is supported at this time.
+  [VnetName <String>]: Name of the virtual network.
+  [WebJobName <String>]: Name of Web Job.
+  [WorkerName <String>]: Name of worker machine, which typically starts with RD.
+  [WorkerPoolName <String>]: Name of the worker pool.
+  [WorkflowName <String>]: Workflow name.
+.Link
+https://learn.microsoft.com/powershell/module/az.functions/remove-azblobcontainer
+#>
+function Remove-AzBlobContainer {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [System.String]
+    # The name of the storage account within the specified resource group.
+    # Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+    ${AccountName},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [System.String]
+    # The name of the blob container within the specified storage account.
+    # Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only.
+    # Every dash (-) character must be immediately preceded and followed by a letter or number.
+    ${ContainerName},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [System.String]
+    # The name of the resource group within the user's subscription.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Delete')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # Your Azure subscription ID.
+    # This is a GUID-formatted string (e.g.
+    # 00000000-0000-0000-0000-000000000000).
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Delete = 'Az.Functions.private\Remove-AzBlobContainer_Delete';
+            DeleteViaIdentity = 'Az.Functions.private\Remove-AzBlobContainer_DeleteViaIdentity';
+        }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
@@ -13047,7 +14112,7 @@ HOSTNAMESSLSTATE <IHostNameSslState[]>: Hostname SSL states are used to manage t
   [VirtualIP <String>]: Virtual IP address assigned to the hostname if IP based SSL is enabled.
 
 SCALEANDCONCURRENCYALWAYSREADY <IFunctionsAlwaysReadyConfig[]>: 'Always Ready' configuration for the function app.
-  [InstanceCount <Single?>]: Sets the number of 'Always Ready' instances for a given function group or a specific function. For additional information see https://aka.ms/flexconsumption/alwaysready.
+  [InstanceCount <Int32?>]: Sets the number of 'Always Ready' instances for a given function group or a specific function. For additional information see https://aka.ms/flexconsumption/alwaysready.
   [Name <String>]: Either a function group or a function name is required. For additional information see https://aka.ms/flexconsumption/alwaysready.
 
 SITECONFIG <ISiteConfig>: Configuration of the app.
@@ -13081,7 +14146,7 @@ SITECONFIG <ISiteConfig>: Configuration of the app.
   [ElasticWebAppScaleLimit <Int32?>]: Maximum number of workers that a site can scale out to.         This setting only applies to apps in plans where ElasticScaleEnabled is <code>true</code>
   [ExperimentRampUpRule <IRampUpRule[]>]: List of ramp-up rules.
     [ActionHostName <String>]: Hostname of a slot to which the traffic will be redirected if decided to. E.g. myapp-stage.azurewebsites.net.
-    [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified. See TiPCallback site extension for the scaffold and contracts.         https://www.siteextensions.net/packages/TiPCallback/
+    [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified.
     [ChangeIntervalInMinute <Int32?>]: Specifies interval in minutes to reevaluate ReroutePercentage.
     [ChangeStep <Double?>]: In auto ramp up scenario this is the step to add/remove from <code>ReroutePercentage</code> until it reaches \n<code>MinReroutePercentage</code> or         <code>MaxReroutePercentage</code>. Site metrics are checked every N minutes specified in <code>ChangeIntervalInMinutes</code>.\nCustom decision algorithm         can be provided in TiPCallback site extension which URL can be specified in <code>ChangeDecisionCallbackUrl</code>.
     [MaxReroutePercentage <Double?>]: Specifies upper boundary below which ReroutePercentage will stay.
@@ -13251,7 +14316,7 @@ SITEENVELOPE <ISite>: A web app, a mobile app backend, or an API app.
     [ElasticWebAppScaleLimit <Int32?>]: Maximum number of workers that a site can scale out to.         This setting only applies to apps in plans where ElasticScaleEnabled is <code>true</code>
     [ExperimentRampUpRule <IRampUpRule[]>]: List of ramp-up rules.
       [ActionHostName <String>]: Hostname of a slot to which the traffic will be redirected if decided to. E.g. myapp-stage.azurewebsites.net.
-      [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified. See TiPCallback site extension for the scaffold and contracts.         https://www.siteextensions.net/packages/TiPCallback/
+      [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified.
       [ChangeIntervalInMinute <Int32?>]: Specifies interval in minutes to reevaluate ReroutePercentage.
       [ChangeStep <Double?>]: In auto ramp up scenario this is the step to add/remove from <code>ReroutePercentage</code> until it reaches \n<code>MinReroutePercentage</code> or         <code>MaxReroutePercentage</code>. Site metrics are checked every N minutes specified in <code>ChangeIntervalInMinutes</code>.\nCustom decision algorithm         can be provided in TiPCallback site extension which URL can be specified in <code>ChangeDecisionCallbackUrl</code>.
       [MaxReroutePercentage <Double?>]: Specifies upper boundary below which ReroutePercentage will stay.
@@ -13381,6 +14446,7 @@ SITEENVELOPE <ISite>: A web app, a mobile app backend, or an API app.
   [DnsConfigurationDnsRetryAttemptTimeout <Int32?>]: Timeout for a single dns lookup in seconds. Allowed range: 1-30. Default is 3.
   [DnsConfigurationDnsServer <String[]>]: List of custom DNS servers to be used by an app for lookups. Maximum 5 dns servers can be set.
   [Enabled <Boolean?>]: <code>true</code> if the app is enabled; otherwise, <code>false</code>. Setting this value to false disables the app (takes the app offline).
+  [EndToEndEncryptionEnabled <Boolean?>]: Whether to use end to end encryption between the FrontEnd and the Worker
   [ExtendedLocationName <String>]: Name of extended location.
   [HostNameSslState <IHostNameSslState[]>]: Hostname SSL states are used to manage the SSL bindings for app's hostnames.
     [HostType <HostType?>]: Indicates whether the hostname is a standard or repository hostname.
@@ -13391,7 +14457,7 @@ SITEENVELOPE <ISite>: A web app, a mobile app backend, or an API app.
     [VirtualIP <String>]: Virtual IP address assigned to the hostname if IP based SSL is enabled.
   [HostNamesDisabled <Boolean?>]: <code>true</code> to disable the public hostnames of the app; otherwise, <code>false</code>.          If <code>true</code>, the app is only accessible via API management process.
   [HostingEnvironmentProfileId <String>]: Resource ID of the App Service Environment.
-  [HttpPerInstanceConcurrency <Single?>]: The maximum number of concurrent HTTP trigger invocations per instance.
+  [HttpPerInstanceConcurrency <Int32?>]: The maximum number of concurrent HTTP trigger invocations per instance.
   [HttpsOnly <Boolean?>]: HttpsOnly: configures a web site to accept only https requests. Issues redirect for         http requests
   [HyperV <Boolean?>]: Hyper-V sandbox.
   [IdentityType <ManagedServiceIdentityType?>]: Type of managed service identity.
@@ -13408,10 +14474,10 @@ SITEENVELOPE <ISite>: A web app, a mobile app backend, or an API app.
   [RuntimeName <RuntimeName?>]: Function app runtime name. Available options: dotnet-isolated, node, java, powershell, python, custom
   [RuntimeVersion <String>]: Function app runtime version. Example: 8 (for dotnet-isolated)
   [ScaleAndConcurrencyAlwaysReady <IFunctionsAlwaysReadyConfig[]>]: 'Always Ready' configuration for the function app.
-    [InstanceCount <Single?>]: Sets the number of 'Always Ready' instances for a given function group or a specific function. For additional information see https://aka.ms/flexconsumption/alwaysready.
+    [InstanceCount <Int32?>]: Sets the number of 'Always Ready' instances for a given function group or a specific function. For additional information see https://aka.ms/flexconsumption/alwaysready.
     [Name <String>]: Either a function group or a function name is required. For additional information see https://aka.ms/flexconsumption/alwaysready.
-  [ScaleAndConcurrencyInstanceMemoryMb <Single?>]: Set the amount of memory allocated to each instance of the function app in MB. CPU and network bandwidth are allocated proportionally.
-  [ScaleAndConcurrencyMaximumInstanceCount <Single?>]: The maximum number of instances for the function app.
+  [ScaleAndConcurrencyInstanceMemoryMb <Int32?>]: Set the amount of memory allocated to each instance of the function app in MB. CPU and network bandwidth are allocated proportionally.
+  [ScaleAndConcurrencyMaximumInstanceCount <Int32?>]: The maximum number of instances for the function app.
   [ScmSiteAlsoStopped <Boolean?>]: <code>true</code> to stop SCM (KUDU) site when the app is stopped; otherwise, <code>false</code>. The default is <code>false</code>.
   [ServerFarmId <String>]: Resource ID of the associated App Service plan, formatted as: "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
   [StorageAccountRequired <Boolean?>]: Checks if Customer provided storage account is required
@@ -13704,6 +14770,12 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Whether to use end to end encryption between the FrontEnd and the Worker
+    ${EndToEndEncryptionEnabled},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Name of extended location.
     ${ExtendedLocationName},
@@ -13731,7 +14803,7 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.Single]
+    [System.Int32]
     # The maximum number of concurrent HTTP trigger invocations per instance.
     ${HttpPerInstanceConcurrency},
 
@@ -13847,14 +14919,14 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.Single]
+    [System.Int32]
     # Set the amount of memory allocated to each instance of the function app in MB.
     # CPU and network bandwidth are allocated proportionally.
     ${ScaleAndConcurrencyInstanceMemoryMb},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.Single]
+    [System.Int32]
     # The maximum number of instances for the function app.
     ${ScaleAndConcurrencyMaximumInstanceCount},
 
@@ -14609,7 +15681,7 @@ CONNECTIONSTRING <IConnStringInfo[]>: Connection strings.
 
 EXPERIMENTRAMPUPRULE <IRampUpRule[]>: List of ramp-up rules.
   [ActionHostName <String>]: Hostname of a slot to which the traffic will be redirected if decided to. E.g. myapp-stage.azurewebsites.net.
-  [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified. See TiPCallback site extension for the scaffold and contracts.         https://www.siteextensions.net/packages/TiPCallback/
+  [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified.
   [ChangeIntervalInMinute <Int32?>]: Specifies interval in minutes to reevaluate ReroutePercentage.
   [ChangeStep <Double?>]: In auto ramp up scenario this is the step to add/remove from <code>ReroutePercentage</code> until it reaches \n<code>MinReroutePercentage</code> or         <code>MaxReroutePercentage</code>. Site metrics are checked every N minutes specified in <code>ChangeIntervalInMinutes</code>.\nCustom decision algorithm         can be provided in TiPCallback site extension which URL can be specified in <code>ChangeDecisionCallbackUrl</code>.
   [MaxReroutePercentage <Double?>]: Specifies upper boundary below which ReroutePercentage will stay.
@@ -14686,7 +15758,7 @@ SITECONFIG <ISiteConfigResource>: Web app configuration ARM resource.
   [ElasticWebAppScaleLimit <Int32?>]: Maximum number of workers that a site can scale out to.         This setting only applies to apps in plans where ElasticScaleEnabled is <code>true</code>
   [ExperimentRampUpRule <IRampUpRule[]>]: List of ramp-up rules.
     [ActionHostName <String>]: Hostname of a slot to which the traffic will be redirected if decided to. E.g. myapp-stage.azurewebsites.net.
-    [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified. See TiPCallback site extension for the scaffold and contracts.         https://www.siteextensions.net/packages/TiPCallback/
+    [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified.
     [ChangeIntervalInMinute <Int32?>]: Specifies interval in minutes to reevaluate ReroutePercentage.
     [ChangeStep <Double?>]: In auto ramp up scenario this is the step to add/remove from <code>ReroutePercentage</code> until it reaches \n<code>MinReroutePercentage</code> or         <code>MaxReroutePercentage</code>. Site metrics are checked every N minutes specified in <code>ChangeIntervalInMinutes</code>.\nCustom decision algorithm         can be provided in TiPCallback site extension which URL can be specified in <code>ChangeDecisionCallbackUrl</code>.
     [MaxReroutePercentage <Double?>]: Specifies upper boundary below which ReroutePercentage will stay.
@@ -15599,7 +16671,7 @@ CONNECTIONSTRING <IConnStringInfo[]>: Connection strings.
 
 EXPERIMENTRAMPUPRULE <IRampUpRule[]>: List of ramp-up rules.
   [ActionHostName <String>]: Hostname of a slot to which the traffic will be redirected if decided to. E.g. myapp-stage.azurewebsites.net.
-  [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified. See TiPCallback site extension for the scaffold and contracts.         https://www.siteextensions.net/packages/TiPCallback/
+  [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified.
   [ChangeIntervalInMinute <Int32?>]: Specifies interval in minutes to reevaluate ReroutePercentage.
   [ChangeStep <Double?>]: In auto ramp up scenario this is the step to add/remove from <code>ReroutePercentage</code> until it reaches \n<code>MinReroutePercentage</code> or         <code>MaxReroutePercentage</code>. Site metrics are checked every N minutes specified in <code>ChangeIntervalInMinutes</code>.\nCustom decision algorithm         can be provided in TiPCallback site extension which URL can be specified in <code>ChangeDecisionCallbackUrl</code>.
   [MaxReroutePercentage <Double?>]: Specifies upper boundary below which ReroutePercentage will stay.
@@ -15676,7 +16748,7 @@ SITECONFIG <ISiteConfigResource>: Web app configuration ARM resource.
   [ElasticWebAppScaleLimit <Int32?>]: Maximum number of workers that a site can scale out to.         This setting only applies to apps in plans where ElasticScaleEnabled is <code>true</code>
   [ExperimentRampUpRule <IRampUpRule[]>]: List of ramp-up rules.
     [ActionHostName <String>]: Hostname of a slot to which the traffic will be redirected if decided to. E.g. myapp-stage.azurewebsites.net.
-    [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified. See TiPCallback site extension for the scaffold and contracts.         https://www.siteextensions.net/packages/TiPCallback/
+    [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified.
     [ChangeIntervalInMinute <Int32?>]: Specifies interval in minutes to reevaluate ReroutePercentage.
     [ChangeStep <Double?>]: In auto ramp up scenario this is the step to add/remove from <code>ReroutePercentage</code> until it reaches \n<code>MinReroutePercentage</code> or         <code>MaxReroutePercentage</code>. Site metrics are checked every N minutes specified in <code>ChangeIntervalInMinutes</code>.\nCustom decision algorithm         can be provided in TiPCallback site extension which URL can be specified in <code>ChangeDecisionCallbackUrl</code>.
     [MaxReroutePercentage <Double?>]: Specifies upper boundary below which ReroutePercentage will stay.
@@ -19023,7 +20095,7 @@ SITECONFIG <ISiteConfig>: Configuration of the app.
   [ElasticWebAppScaleLimit <Int32?>]: Maximum number of workers that a site can scale out to.         This setting only applies to apps in plans where ElasticScaleEnabled is <code>true</code>
   [ExperimentRampUpRule <IRampUpRule[]>]: List of ramp-up rules.
     [ActionHostName <String>]: Hostname of a slot to which the traffic will be redirected if decided to. E.g. myapp-stage.azurewebsites.net.
-    [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified. See TiPCallback site extension for the scaffold and contracts.         https://www.siteextensions.net/packages/TiPCallback/
+    [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified.
     [ChangeIntervalInMinute <Int32?>]: Specifies interval in minutes to reevaluate ReroutePercentage.
     [ChangeStep <Double?>]: In auto ramp up scenario this is the step to add/remove from <code>ReroutePercentage</code> until it reaches \n<code>MinReroutePercentage</code> or         <code>MaxReroutePercentage</code>. Site metrics are checked every N minutes specified in <code>ChangeIntervalInMinutes</code>.\nCustom decision algorithm         can be provided in TiPCallback site extension which URL can be specified in <code>ChangeDecisionCallbackUrl</code>.
     [MaxReroutePercentage <Double?>]: Specifies upper boundary below which ReroutePercentage will stay.
@@ -19216,7 +20288,7 @@ SITEENVELOPE <ISitePatchResource>: ARM resource for a site.
     [ElasticWebAppScaleLimit <Int32?>]: Maximum number of workers that a site can scale out to.         This setting only applies to apps in plans where ElasticScaleEnabled is <code>true</code>
     [ExperimentRampUpRule <IRampUpRule[]>]: List of ramp-up rules.
       [ActionHostName <String>]: Hostname of a slot to which the traffic will be redirected if decided to. E.g. myapp-stage.azurewebsites.net.
-      [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified. See TiPCallback site extension for the scaffold and contracts.         https://www.siteextensions.net/packages/TiPCallback/
+      [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified.
       [ChangeIntervalInMinute <Int32?>]: Specifies interval in minutes to reevaluate ReroutePercentage.
       [ChangeStep <Double?>]: In auto ramp up scenario this is the step to add/remove from <code>ReroutePercentage</code> until it reaches \n<code>MinReroutePercentage</code> or         <code>MaxReroutePercentage</code>. Site metrics are checked every N minutes specified in <code>ChangeIntervalInMinutes</code>.\nCustom decision algorithm         can be provided in TiPCallback site extension which URL can be specified in <code>ChangeDecisionCallbackUrl</code>.
       [MaxReroutePercentage <Double?>]: Specifies upper boundary below which ReroutePercentage will stay.
@@ -20095,7 +21167,7 @@ CONNECTIONSTRING <IConnStringInfo[]>: Connection strings.
 
 EXPERIMENTRAMPUPRULE <IRampUpRule[]>: List of ramp-up rules.
   [ActionHostName <String>]: Hostname of a slot to which the traffic will be redirected if decided to. E.g. myapp-stage.azurewebsites.net.
-  [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified. See TiPCallback site extension for the scaffold and contracts.         https://www.siteextensions.net/packages/TiPCallback/
+  [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified.
   [ChangeIntervalInMinute <Int32?>]: Specifies interval in minutes to reevaluate ReroutePercentage.
   [ChangeStep <Double?>]: In auto ramp up scenario this is the step to add/remove from <code>ReroutePercentage</code> until it reaches \n<code>MinReroutePercentage</code> or         <code>MaxReroutePercentage</code>. Site metrics are checked every N minutes specified in <code>ChangeIntervalInMinutes</code>.\nCustom decision algorithm         can be provided in TiPCallback site extension which URL can be specified in <code>ChangeDecisionCallbackUrl</code>.
   [MaxReroutePercentage <Double?>]: Specifies upper boundary below which ReroutePercentage will stay.
@@ -20243,7 +21315,7 @@ SITECONFIG <ISiteConfigResource>: Web app configuration ARM resource.
   [ElasticWebAppScaleLimit <Int32?>]: Maximum number of workers that a site can scale out to.         This setting only applies to apps in plans where ElasticScaleEnabled is <code>true</code>
   [ExperimentRampUpRule <IRampUpRule[]>]: List of ramp-up rules.
     [ActionHostName <String>]: Hostname of a slot to which the traffic will be redirected if decided to. E.g. myapp-stage.azurewebsites.net.
-    [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified. See TiPCallback site extension for the scaffold and contracts.         https://www.siteextensions.net/packages/TiPCallback/
+    [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified.
     [ChangeIntervalInMinute <Int32?>]: Specifies interval in minutes to reevaluate ReroutePercentage.
     [ChangeStep <Double?>]: In auto ramp up scenario this is the step to add/remove from <code>ReroutePercentage</code> until it reaches \n<code>MinReroutePercentage</code> or         <code>MaxReroutePercentage</code>. Site metrics are checked every N minutes specified in <code>ChangeIntervalInMinutes</code>.\nCustom decision algorithm         can be provided in TiPCallback site extension which URL can be specified in <code>ChangeDecisionCallbackUrl</code>.
     [MaxReroutePercentage <Double?>]: Specifies upper boundary below which ReroutePercentage will stay.
@@ -21265,7 +22337,7 @@ CONNECTIONSTRING <IConnStringInfo[]>: Connection strings.
 
 EXPERIMENTRAMPUPRULE <IRampUpRule[]>: List of ramp-up rules.
   [ActionHostName <String>]: Hostname of a slot to which the traffic will be redirected if decided to. E.g. myapp-stage.azurewebsites.net.
-  [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified. See TiPCallback site extension for the scaffold and contracts.         https://www.siteextensions.net/packages/TiPCallback/
+  [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified.
   [ChangeIntervalInMinute <Int32?>]: Specifies interval in minutes to reevaluate ReroutePercentage.
   [ChangeStep <Double?>]: In auto ramp up scenario this is the step to add/remove from <code>ReroutePercentage</code> until it reaches \n<code>MinReroutePercentage</code> or         <code>MaxReroutePercentage</code>. Site metrics are checked every N minutes specified in <code>ChangeIntervalInMinutes</code>.\nCustom decision algorithm         can be provided in TiPCallback site extension which URL can be specified in <code>ChangeDecisionCallbackUrl</code>.
   [MaxReroutePercentage <Double?>]: Specifies upper boundary below which ReroutePercentage will stay.
@@ -21413,7 +22485,7 @@ SITECONFIG <ISiteConfigResource>: Web app configuration ARM resource.
   [ElasticWebAppScaleLimit <Int32?>]: Maximum number of workers that a site can scale out to.         This setting only applies to apps in plans where ElasticScaleEnabled is <code>true</code>
   [ExperimentRampUpRule <IRampUpRule[]>]: List of ramp-up rules.
     [ActionHostName <String>]: Hostname of a slot to which the traffic will be redirected if decided to. E.g. myapp-stage.azurewebsites.net.
-    [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified. See TiPCallback site extension for the scaffold and contracts.         https://www.siteextensions.net/packages/TiPCallback/
+    [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified.
     [ChangeIntervalInMinute <Int32?>]: Specifies interval in minutes to reevaluate ReroutePercentage.
     [ChangeStep <Double?>]: In auto ramp up scenario this is the step to add/remove from <code>ReroutePercentage</code> until it reaches \n<code>MinReroutePercentage</code> or         <code>MaxReroutePercentage</code>. Site metrics are checked every N minutes specified in <code>ChangeIntervalInMinutes</code>.\nCustom decision algorithm         can be provided in TiPCallback site extension which URL can be specified in <code>ChangeDecisionCallbackUrl</code>.
     [MaxReroutePercentage <Double?>]: Specifies upper boundary below which ReroutePercentage will stay.

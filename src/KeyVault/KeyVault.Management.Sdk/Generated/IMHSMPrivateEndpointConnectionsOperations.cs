@@ -14,10 +14,12 @@ namespace Microsoft.Azure.Management.KeyVault
     public partial interface IMhsmPrivateEndpointConnectionsOperations
     {
         /// <summary>
-        /// The List operation gets information about the private endpoint connections associated with the managed HSM Pool.
+        /// The List operation gets information about the private endpoint connections
+        /// associated with the managed HSM Pool.
         /// </summary>
         /// <remarks>
-        /// The List operation gets information about the private endpoint connections associated with the managed HSM Pool.
+        /// The List operation gets information about the private endpoint connections
+        /// associated with the managed HSM Pool.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group that contains the managed HSM pool.
@@ -40,10 +42,12 @@ namespace Microsoft.Azure.Management.KeyVault
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<MhsmPrivateEndpointConnection>>> ListByResourceWithHttpMessagesAsync(string resourceGroupName, string name, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets the specified private endpoint connection associated with the managed HSM Pool.
+        /// Gets the specified private endpoint connection associated with the managed
+        /// HSM Pool.
         /// </summary>
         /// <remarks>
-        /// Gets the specified private endpoint connection associated with the managed HSM Pool.
+        /// Gets the specified private endpoint connection associated with the managed
+        /// HSM Pool.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group that contains the managed HSM pool.
@@ -52,7 +56,8 @@ namespace Microsoft.Azure.Management.KeyVault
         /// Name of the managed HSM Pool
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// Name of the private endpoint connection associated with the managed hsm pool.
+        /// Name of the private endpoint connection associated with the managed hsm
+        /// pool.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -69,10 +74,12 @@ namespace Microsoft.Azure.Management.KeyVault
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<MhsmPrivateEndpointConnection>> GetWithHttpMessagesAsync(string resourceGroupName, string name, string privateEndpointConnectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Updates the specified private endpoint connection associated with the managed hsm pool.
+        /// Updates the specified private endpoint connection associated with the
+        /// managed hsm pool.
         /// </summary>
         /// <remarks>
-        /// Updates the specified private endpoint connection associated with the managed hsm pool.
+        /// Updates the specified private endpoint connection associated with the
+        /// managed hsm pool.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group that contains the managed HSM pool.
@@ -81,7 +88,8 @@ namespace Microsoft.Azure.Management.KeyVault
         /// Name of the managed HSM Pool
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// Name of the private endpoint connection associated with the managed hsm pool.
+        /// Name of the private endpoint connection associated with the managed hsm
+        /// pool.
         /// </param>
         /// <param name='properties'>
         /// The intended state of private endpoint connection.
@@ -101,10 +109,12 @@ namespace Microsoft.Azure.Management.KeyVault
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<MhsmPrivateEndpointConnection,MhsmPrivateEndpointConnectionsPutHeaders>> PutWithHttpMessagesAsync(string resourceGroupName, string name, string privateEndpointConnectionName, MhsmPrivateEndpointConnection properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Deletes the specified private endpoint connection associated with the managed hsm pool.
+        /// Deletes the specified private endpoint connection associated with the
+        /// managed hsm pool.
         /// </summary>
         /// <remarks>
-        /// Deletes the specified private endpoint connection associated with the managed hsm pool.
+        /// Deletes the specified private endpoint connection associated with the
+        /// managed hsm pool.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group that contains the managed HSM pool.
@@ -113,7 +123,8 @@ namespace Microsoft.Azure.Management.KeyVault
         /// Name of the managed HSM Pool
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// Name of the private endpoint connection associated with the managed hsm pool.
+        /// Name of the private endpoint connection associated with the managed hsm
+        /// pool.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -130,10 +141,12 @@ namespace Microsoft.Azure.Management.KeyVault
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<MhsmPrivateEndpointConnection,MhsmPrivateEndpointConnectionsDeleteHeaders>> DeleteWithHttpMessagesAsync(string resourceGroupName, string name, string privateEndpointConnectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Deletes the specified private endpoint connection associated with the managed hsm pool.
+        /// Deletes the specified private endpoint connection associated with the
+        /// managed hsm pool.
         /// </summary>
         /// <remarks>
-        /// Deletes the specified private endpoint connection associated with the managed hsm pool.
+        /// Deletes the specified private endpoint connection associated with the
+        /// managed hsm pool.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group that contains the managed HSM pool.
@@ -142,7 +155,8 @@ namespace Microsoft.Azure.Management.KeyVault
         /// Name of the managed HSM Pool
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// Name of the private endpoint connection associated with the managed hsm pool.
+        /// Name of the private endpoint connection associated with the managed hsm
+        /// pool.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -159,10 +173,12 @@ namespace Microsoft.Azure.Management.KeyVault
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<MhsmPrivateEndpointConnection,MhsmPrivateEndpointConnectionsDeleteHeaders>> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string name, string privateEndpointConnectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// The List operation gets information about the private endpoint connections associated with the managed HSM Pool.
+        /// The List operation gets information about the private endpoint connections
+        /// associated with the managed HSM Pool.
         /// </summary>
         /// <remarks>
-        /// The List operation gets information about the private endpoint connections associated with the managed HSM Pool.
+        /// The List operation gets information about the private endpoint connections
+        /// associated with the managed HSM Pool.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
 
         /// <summary>The effective outbound IP resources of the cluster NAT gateway.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceReference> EffectiveOutboundIP { get => this._effectiveOutboundIP; set => this._effectiveOutboundIP = value; }
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceReference> EffectiveOutboundIP { get => this._effectiveOutboundIP; }
 
         /// <summary>Backing field for <see cref="IdleTimeoutInMinute" /> property.</summary>
         private int? _idleTimeoutInMinute;
@@ -44,6 +44,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
         public int? ManagedOutboundIPProfileCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterManagedOutboundIPProfileInternal)ManagedOutboundIPProfile).Count; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterManagedOutboundIPProfileInternal)ManagedOutboundIPProfile).Count = value ?? default(int); }
 
+        /// <summary>Internal Acessors for EffectiveOutboundIP</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceReference> Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterNatGatewayProfileInternal.EffectiveOutboundIP { get => this._effectiveOutboundIP; set { {_effectiveOutboundIP = value;} } }
+
         /// <summary>Internal Acessors for ManagedOutboundIPProfile</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterManagedOutboundIPProfile Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterNatGatewayProfileInternal.ManagedOutboundIPProfile { get => (this._managedOutboundIPProfile = this._managedOutboundIPProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterManagedOutboundIPProfile()); set { {_managedOutboundIPProfile = value;} } }
 
@@ -60,14 +63,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         /// <summary>The effective outbound IP resources of the cluster NAT gateway.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
-        ReadOnly = false,
+        ReadOnly = true,
         Read = true,
-        Create = true,
-        Update = true,
+        Create = false,
+        Update = false,
         Description = @"The effective outbound IP resources of the cluster NAT gateway.",
         SerializedName = @"effectiveOutboundIPs",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceReference) })]
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceReference> EffectiveOutboundIP { get; set; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceReference> EffectiveOutboundIP { get;  }
         /// <summary>
         /// Desired outbound flow idle timeout in minutes. Allowed values are in the range of 4 to 120 (inclusive). The default value
         /// is 4 minutes.

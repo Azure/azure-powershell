@@ -1,0 +1,174 @@
+{
+  "id": null,
+  "name": "node",
+  "type": "Microsoft.Web/locations/functionAppStacks?stackOsType=All",
+  "location": "eastasia",
+  "properties": {
+    "displayText": "Node.js",
+    "value": "node",
+    "preferredOs": "windows",
+    "majorVersions": [
+      {
+        "displayText": "Node.js 22",
+        "value": "22",
+        "minorVersions": [
+          {
+            "displayText": "Node.js 22",
+            "value": "22 LTS",
+            "stackSettings": {
+              "linuxRuntimeSettings": {
+                "runtimeVersion": "Node|22",
+                "isDefault": true,
+                "remoteDebuggingSupported": false,
+                "appInsightsSettings": {
+                  "isSupported": true
+                },
+                "gitHubActionSettings": {
+                  "isSupported": true,
+                  "supportedVersion": "22.x"
+                },
+                "appSettingsDictionary": {
+                  "FUNCTIONS_WORKER_RUNTIME": "node"
+                },
+                "siteConfigPropertiesDictionary": {
+                  "use32BitWorkerProcess": false,
+                  "linuxFxVersion": "Node|22"
+                },
+                "supportedFunctionsExtensionVersions": [
+                  "~4"
+                ],
+                "supportedFunctionsExtensionVersionsInfo": [
+                  {
+                    "version": "~4",
+                    "isDeprecated": false,
+                    "isDefault": true
+                  }
+                ],
+                "Sku": [
+                  {
+                    "skuCode": "Y1"
+                  },
+                  {
+                    "skuCode": "Dedicated"
+                  },
+                  {
+                    "skuCode": "ElasticPremium"
+                  },
+                  {
+                    "skuCode": "FC1",
+                    "instanceMemoryMB": [
+                      {
+                        "size": "512",
+                        "isDefault": false
+                      },
+                      {
+                        "size": "2048",
+                        "isDefault": true
+                      },
+                      {
+                        "size": "4096",
+                        "isDefault": false
+                      }
+                    ],
+                    "maximumInstanceCount": {
+                      "lowestMaximumInstanceCount": 40,
+                      "highestMaximumInstanceCount": 1000,
+                      "defaultValue": 100
+                    },
+                    "functionAppConfigProperties": {
+                      "runtime": {
+                        "name": "node",
+                        "version": "22"
+                      }
+                    }
+                  }
+                ],
+                "endOfLifeDate": "Fri Apr 30 2027 00:00:00 GMT+0000 (Coordinated Universal Time)"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "displayText": "Node.js 20",
+        "value": "20",
+        "minorVersions": [
+          {
+            "displayText": "Node.js 20 LTS",
+            "value": "20 LTS",
+            "stackSettings": {
+              "linuxRuntimeSettings": {
+                "runtimeVersion": "Node|20",
+                "remoteDebuggingSupported": false,
+                "appInsightsSettings": {
+                  "isSupported": true
+                },
+                "gitHubActionSettings": {
+                  "isSupported": true,
+                  "supportedVersion": "20.x"
+                },
+                "appSettingsDictionary": {
+                  "FUNCTIONS_WORKER_RUNTIME": "node"
+                },
+                "siteConfigPropertiesDictionary": {
+                  "use32BitWorkerProcess": false,
+                  "linuxFxVersion": "Node|20"
+                },
+                "supportedFunctionsExtensionVersions": [
+                  "~4"
+                ],
+                "supportedFunctionsExtensionVersionsInfo": [
+                  {
+                    "version": "~4",
+                    "isDeprecated": false,
+                    "isDefault": true
+                  }
+                ],
+                "Sku": [
+                  {
+                    "skuCode": "Y1"
+                  },
+                  {
+                    "skuCode": "Dedicated"
+                  },
+                  {
+                    "skuCode": "ElasticPremium"
+                  },
+                  {
+                    "skuCode": "FC1",
+                    "instanceMemoryMB": [
+                      {
+                        "size": "512",
+                        "isDefault": false
+                      },
+                      {
+                        "size": "2048",
+                        "isDefault": true
+                      },
+                      {
+                        "size": "4096",
+                        "isDefault": false
+                      }
+                    ],
+                    "maximumInstanceCount": {
+                      "lowestMaximumInstanceCount": 40,
+                      "highestMaximumInstanceCount": 1000,
+                      "defaultValue": 100
+                    },
+                    "functionAppConfigProperties": {
+                      "runtime": {
+                        "name": "node",
+                        "version": "20"
+                      }
+                    }
+                  }
+                ],
+                "endOfLifeDate": "Thu Apr 30 2026 00:00:00 GMT+0000 (Coordinated Universal Time)"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

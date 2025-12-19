@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Creates or updates an authorization rule for a namespace.
+Create an authorization rule for a namespace.
 .Description
-Creates or updates an authorization rule for a namespace.
+Create an authorization rule for a namespace.
 .Example
 New-AzRelayAuthorizationRule -ResourceGroupName lucas-relay-rg -Namespace namespace-pwsh01 -Name authRule-03 -Rights 'Listen','Send'
 .Example
@@ -27,12 +27,12 @@ New-AzRelayAuthorizationRule -ResourceGroupName lucas-relay-rg -Namespace namesp
 New-AzRelayAuthorizationRule -ResourceGroupName lucas-relay-rg -Namespace namespace-pwsh01 -WcfRelay wcf-01 -Name authRule-01 -Rights 'Listen','Send' | Format-List
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IAuthorizationRule
+Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRule
 .Link
 https://learn.microsoft.com/powershell/module/az.relay/new-azrelayauthorizationrule
 #>
 function New-AzRelayAuthorizationRule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IAuthorizationRule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRule])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -63,24 +63,46 @@ param(
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='CreateExpanded1', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath1', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString1', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
     [System.String]
     # The hybrid connection name.
     ${HybridConnection},
 
     [Parameter(ParameterSetName='CreateExpanded2', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath2', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString2', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
     [System.String]
     # The relay name.
     ${WcfRelay},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateExpanded1')]
+    [Parameter(ParameterSetName='CreateExpanded2')]
     [AllowEmptyCollection()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Relay.Support.AccessRights])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.PSArgumentCompleterAttribute("Manage", "Send", "Listen")]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Support.AccessRights[]]
+    [System.String[]]
     # The rights associated with the rule.
     ${Rights},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath1', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath2', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString1', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString2', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -138,6 +160,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -160,10 +191,14 @@ begin {
             CreateExpanded = 'Az.Relay.private\New-AzRelayAuthorizationRule_CreateExpanded';
             CreateExpanded1 = 'Az.Relay.private\New-AzRelayAuthorizationRule_CreateExpanded1';
             CreateExpanded2 = 'Az.Relay.private\New-AzRelayAuthorizationRule_CreateExpanded2';
+            CreateViaJsonFilePath = 'Az.Relay.private\New-AzRelayAuthorizationRule_CreateViaJsonFilePath';
+            CreateViaJsonFilePath1 = 'Az.Relay.private\New-AzRelayAuthorizationRule_CreateViaJsonFilePath1';
+            CreateViaJsonFilePath2 = 'Az.Relay.private\New-AzRelayAuthorizationRule_CreateViaJsonFilePath2';
+            CreateViaJsonString = 'Az.Relay.private\New-AzRelayAuthorizationRule_CreateViaJsonString';
+            CreateViaJsonString1 = 'Az.Relay.private\New-AzRelayAuthorizationRule_CreateViaJsonString1';
+            CreateViaJsonString2 = 'Az.Relay.private\New-AzRelayAuthorizationRule_CreateViaJsonString2';
         }
-        if (('CreateExpanded', 'CreateExpanded1', 'CreateExpanded2') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateExpanded1', 'CreateExpanded2', 'CreateViaJsonFilePath', 'CreateViaJsonFilePath1', 'CreateViaJsonFilePath2', 'CreateViaJsonString', 'CreateViaJsonString1', 'CreateViaJsonString2') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -177,6 +212,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

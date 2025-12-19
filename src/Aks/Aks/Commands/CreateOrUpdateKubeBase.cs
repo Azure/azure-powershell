@@ -27,7 +27,6 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Authorization.Version2015_07_01;
 using Microsoft.Azure.Management.Authorization.Version2015_07_01.Models;
 using Microsoft.Azure.Management.Internal.Resources;
-using Microsoft.Rest.Azure;
 using Newtonsoft.Json;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Aks.Properties;
@@ -50,6 +49,7 @@ namespace Microsoft.Azure.Commands.Aks
         protected const string DefaultParamSet = "defaultParameterSet";
         protected readonly Regex DnsRegex = new Regex("[^A-Za-z0-9-]");
 
+        // URL Path Parameters
         [Parameter(
             Position = 0,
             Mandatory = true,
@@ -69,101 +69,10 @@ namespace Microsoft.Azure.Commands.Aks
         [ValidateLength(2, 64)]
         public string Name { get; set; }
 
-        [Parameter(
-            Position = 2,
-            Mandatory = false,
-            ParameterSetName = DefaultParamSet,
-            HelpMessage = "The client id and client secret associated with the AAD application / service principal.")]
-        public PSCredential ServicePrincipalIdAndSecret { get; set; }
-
-        [Parameter(Mandatory = false,
-            HelpMessage = "Azure location for the cluster. Defaults to the location of the resource group.")]
+        // Request Body Parameters
+        [Parameter(Mandatory = false, HelpMessage = "Azure location for the cluster. Defaults to the location of the resource group.")]
         [LocationCompleter("Microsoft.ContainerService/managedClusters")]
         public string Location { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "User name for the Linux Virtual Machines.")]
-        [Alias("AdminUserName")]
-        public string LinuxProfileAdminUserName { get; set; } = "azureuser";
-
-        [Parameter(Mandatory = false, HelpMessage = "The DNS name prefix for the cluster. The length must be <= 9 if users plan to add windows container.")]
-        public string DnsNamePrefix { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "The version of Kubernetes to use for creating the cluster.")]
-        public string KubernetesVersion { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "Unique name of the node pool profile in the context of the subscription and resource group.")]
-        public string NodeName { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "Minimum number of nodes for auto-scaling.")]
-        public int NodeMinCount { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "Maximum number of nodes for auto-scaling")]
-        public int NodeMaxCount { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "Whether to enable auto-scaler")]
-        public SwitchParameter EnableNodeAutoScaling { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "The default number of nodes for the node pools.")]
-        public int NodeCount { get; set; } = 3;
-
-        [Parameter(Mandatory = false, HelpMessage = "The default number of nodes for the node pools.")]
-        public int NodeOsDiskSize { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "The size of the Virtual Machine. Default value is dynamically selected by the AKS resource provider based on quota and capacity.")]
-        public string NodeVmSize { get; set; } = "";
-
-        [Parameter(Mandatory = false, HelpMessage = "Node pool labels used for building Kubernetes network.")]
-        public Hashtable NodePoolLabel { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "The tags to be persisted on the agent pool virtual machine scale set.")]
-        public Hashtable NodePoolTag { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "SSH key file value or key file path. Defaults to {HOME}/.ssh/id_rsa.pub.")]
-        [Alias("SshKeyPath")]
-        public string SshKeyValue { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "Grant the 'acrpull' role of the specified ACR to AKS Service Principal, e.g. myacr")]
-        public string AcrNameToAttach { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
-        public SwitchParameter AsJob { get; set; }
-
-        [Parameter(Mandatory = false)]
-        public Hashtable Tag { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "The desired number of allocated SNAT ports per VM.")]
-        [ValidateRange(0, 64000)]
-        public int LoadBalancerAllocatedOutboundPort { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "Desired managed outbound IPs count for the cluster load balancer.")]
-        public int LoadBalancerManagedOutboundIpCount { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "Desired outbound IP resources for the cluster load balancer.")]
-        public string[] LoadBalancerOutboundIp { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "Desired outbound IP Prefix resources for the cluster load balancer.")]
-        public string[] LoadBalancerOutboundIpPrefix { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "Desired outbound flow idle timeout in minutes.")]
-        [ValidateRange(4, 120)]
-        public int LoadBalancerIdleTimeoutInMinute { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "The IP ranges authorized to access the Kubernetes API server.")]
-        public string[] ApiServerAccessAuthorizedIpRange { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "Whether to create the cluster as a private cluster or not.")]
-        public SwitchParameter EnableApiServerAccessPrivateCluster { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "The private DNS zone mode for the cluster.")]
-        public string ApiServerAccessPrivateDnsZone { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "Whether to create additional public FQDN for private cluster or not.")]
-        public SwitchParameter EnableApiServerAccessPrivateClusterPublicFQDN { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "The FQDN subdomain of the private cluster with custom private dns zone.")]
-        public string FqdnSubdomain { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Using a managed identity to manage cluster resource group.")]
         public SwitchParameter EnableManagedIdentity { get; set; }
@@ -171,15 +80,97 @@ namespace Microsoft.Azure.Commands.Aks
         [Parameter(Mandatory = false, HelpMessage = "ResourceId of user assign managed identity for cluster.")]
         public string AssignIdentity { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "The Azure Active Directory configuration.")]
+        public ManagedClusterAADProfile AadProfile { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The default number of nodes for the node pools.")]
+        public int NodeCount { get; set; } = 3;
+
+        [Parameter(Mandatory = false, HelpMessage = "Whether to enable auto-scaler")]
+        public SwitchParameter EnableNodeAutoScaling { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Maximum number of nodes for auto-scaling")]
+        public int NodeMaxCount { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Minimum number of nodes for auto-scaling.")]
+        public int NodeMinCount { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Unique name of the node pool profile in the context of the subscription and resource group.")]
+        public string NodeName { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Node pool labels used for building Kubernetes network.")]
+        public Hashtable NodePoolLabel { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The taints added to new nodes during node pool create and scale. For example, key=value:NoSchedule.")]
+        public string[] NodeTaint { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "OS Disk Size in GB to be used to specify the disk size for every machine in the master/agent pool. If you specify 0, it will apply the default osDisk size according to the vmSize specified.")]
+        public int NodeOsDiskSize { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The tags to be persisted on the agent pool virtual machine scale set.")]
+        public Hashtable NodePoolTag { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The size of the Virtual Machine. Default value is dynamically selected by the AKS resource provider based on quota and capacity.")]
+        public string NodeVmSize { get; set; } = "";
+
+        [Parameter(Mandatory = false, HelpMessage = "The type of workload a node can run.")]
+        [PSArgumentCompleter("OCIContainer", "WasmWasi")]
+        public string NodeWorkloadRuntime { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Whether to enable AI toolchain operator to the cluster. Indicates if AI toolchain operator enabled or not.")]
+        public SwitchParameter EnableAIToolchainOperator { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The IP ranges authorized to access the Kubernetes API server.")]
+        public string[] ApiServerAccessAuthorizedIpRange { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Whether to disable run command for the cluster or not.")]
+        public SwitchParameter DisableApiServerRunCommand { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Whether to create the cluster as a private cluster or not.")]
+        public SwitchParameter EnableApiServerAccessPrivateCluster { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Whether to create additional public FQDN for private cluster or not.")]
+        public SwitchParameter EnableApiServerAccessPrivateClusterPublicFQDN { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Whether to enable apiserver vnet integration for the cluster or not. See aka.ms/AksVnetIntegration for more details.")]
+        public SwitchParameter EnableApiServerVnetIntegration { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The private DNS zone mode for the cluster.")]
+        public string ApiServerAccessPrivateDnsZone { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The subnet to be used when apiserver vnet integration is enabled. It is required when creating a new cluster with BYO Vnet, or when updating an existing cluster to enable apiserver vnet integration.")]
+        public string ApiServerSubnetId { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The node OS Upgrade Channel. Manner in which the OS on your nodes is updated.")]
+        [PSArgumentCompleter("None", "Unmanaged", "NodeImage", "SecurityPatch")]
+        public string NodeOSAutoUpgradeChannel { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "The upgrade channel for auto upgrade. For more information see https://learn.microsoft.com/azure/aks/upgrade-cluster#set-auto-upgrade-channel.")]
         [PSArgumentCompleter("rapid", "stable", "patch", "node-image", "none")]
-        public string AutoUpgradeChannel { get; set; }
+        [Alias("AutoUpgradeChannel")]
+        public string NodeAutoUpgradeChannel { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Whether to enable or disable the Azure Managed Prometheus addon for Prometheus monitoring. See aka.ms/AzureManagedPrometheus-aks-enable for details on enabling and disabling.")]
+        public SwitchParameter EnableMonitorMetric { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The artifact source. The source where the artifacts are downloaded from.")]
+        [PSArgumentCompleter("Cache", "Direct")]
+        public string BootstrapArtifactSource { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The resource Id of Azure Container Registry. The registry must have private network access, premium SKU and zone redundancy.")]
+        public string BootstrapContainerRegistryId { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Local accounts should be disabled on the Managed Cluster.")]
+        public SwitchParameter DisableLocalAccount { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The resource ID of the disk encryption set to use for enabling encryption.")]
         public string DiskEncryptionSetID { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Local accounts should be disabled on the Managed Cluster.")]
-        public SwitchParameter DisableLocalAccount { get; set; }
+        [Parameter(Mandatory = false, HelpMessage = "The DNS name prefix for the cluster. The length must be <= 9 if users plan to add windows container.")]
+        public string DnsNamePrefix { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The FQDN subdomain of the private cluster with custom private dns zone.")]
+        public string FqdnSubdomain { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The HTTP proxy server endpoint to use.")]
         public string HttpProxy { get; set; }
@@ -193,19 +184,190 @@ namespace Microsoft.Azure.Commands.Aks
         [Parameter(Mandatory = false, HelpMessage = "Alternative CA cert to use for connecting to proxy servers.")]
         public string HttpProxyConfigTrustedCa { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Aks custom headers used for building Kubernetes network.")]
-        public Hashtable AksCustomHeader { get; set; }
+        [Parameter(Mandatory = false, HelpMessage = "ResourceId of user assign managed identity used by the kubelet.")]
+        [ValidateNotNullOrEmpty]
+        public string AssignKubeletIdentity { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "The Azure Active Directory configuration.")]
-        public ManagedClusterAADProfile AadProfile { get; set; }
+        [Parameter(Mandatory = false, HelpMessage = "The version of Kubernetes to use for creating the cluster.")]
+        public string KubernetesVersion { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "User name for the Linux Virtual Machines.")]
+        [Alias("AdminUserName")]
+        public string LinuxProfileAdminUserName { get; set; } = "azureuser";
+
+        [Parameter(Mandatory = false, HelpMessage = "SSH key file value or key file path. Defaults to {HOME}/.ssh/id_rsa.pub.")]
+        [Alias("SshKeyPath")]
+        public string SshKeyValue { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Whether to enable cost analysis. The Managed Cluster sku.tier must be set to &#39;Standard&#39; or &#39;Premium&#39; to enable this feature. Enabling this will add Kubernetes Namespace and Deployment details to the Cost Analysis views in the Azure portal. If not specified, the default is false. For more information see aka.ms/aks/docs/cost-analysis.")]
+        public SwitchParameter EnableCostAnalysis { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Enable Advanced Networking functionalities of observability and security on AKS clusters. When this is set to true, all observability and security features will be set to enabled unless explicitly disabled. If not specified, the default is false.")]
+        public SwitchParameter EnableAdvancedNetworking { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Enable Advanced Networking observability functionalities on clusters.")]
+        public SwitchParameter EnableAdvancedNetworkingObservability { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Whether to allow user to configure network policy based on DNS (FQDN) names. It can be enabled only on cilium based clusters. If not specified, the default is false.")]
+        public SwitchParameter EnableAdvancedNetworkingSecurity { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The advanced network policies. This allows users to configure Layer 7 network policies (FQDN, HTTP, Kafka). Policies themselves must be configured via the Cilium Network Policy resources, see https://docs.cilium.io/en/latest/security/policy/index.html. This can be enabled only on cilium-based clusters. If not specified, the default value is FQDN if EnableAdvancedNetworkingSecurity is set to true.")]
+        [PSArgumentCompleter("FQDN", "L7", "None")]
+        public string AdvancedNetworkingSecurityPolicy{ get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "the IP families used to specify IP versions available to the cluster. IP families are used to determine single-stack or dual-stack clusters. For single-stack, the expected value is IPv4. For dual-stack, the expected values are IPv4 and IPv6.")]
+        [PSArgumentCompleter("IPv4", "IPv6")]
+        public string[] IPFamily { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The desired number of allocated SNAT ports per VM.")]
+        [ValidateRange(0, 64000)]
+        public int LoadBalancerAllocatedOutboundPort { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The type of the managed inbound Load Balancer BackendPool.")]
+        [PSArgumentCompleter("NodeIPConfiguration", "NodeIP")]
+        public string LoadBalancerBackendPoolType { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Desired outbound flow idle timeout in minutes for the load balancer.")]
+        [ValidateRange(4, 120)]
+        public int LoadBalancerIdleTimeoutInMinute { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Desired managed outbound IPs count for the cluster load balancer.")]
+        public int LoadBalancerManagedOutboundIpCount { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Desired number of IPv6 outbound IPs created/managed by Azure for the cluster load balancer.")]
+        public int LoadBalancerManagedOutboundIpCountIPv6 { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Desired outbound IP Prefix resources for the cluster load balancer.")]
+        public string[] LoadBalancerOutboundIpPrefix { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Desired outbound IP resources for the cluster load balancer.")]
+        public string[] LoadBalancerOutboundIp { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Desired outbound flow idle timeout in minutes for NAT Gateway.")]
+        [ValidateRange(4, 120)]
+        public int NATGatewayIdleTimeoutInMinute { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The desired number of outbound IPs created/managed by Azure.")]
+        [ValidateRange(1, 16)]
+        public int NATGatewayManagedOutboundIpCount { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The network dataplane used in the Kubernetes cluster.")]
+        [PSArgumentCompleter("azure", "cilium")]
+        public string NetworkDataplane { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The mode the network plugin should use.")]
+        [PSArgumentCompleter("overlay")]
+        public string NetworkPluginMode { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Whether to enable Static Egress Gateway addon.")]
+        public SwitchParameter EnableStaticEgressGateway { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The node provisioning mode.")]
+        [PSArgumentCompleter("Manual", "Auto")]
+        public string NodeProvisioningMode { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The set of default Karpenter NodePools (CRDs) configured for node provisioning. This field has no effect unless mode is &#39;Auto&#39;. Warning: Changing this from Auto to None on an existing cluster will cause the default Karpenter NodePools to be deleted, which will drain and delete the nodes associated with those pools. It is strongly recommended to not do this unless there are idle nodes ready to take the pods evicted by that action. If not specified, the default is Auto. For more information see aka.ms/aks/nap#node-pools.")]
+        [PSArgumentCompleter("None", "Auto")]
+        public string NodeProvisioningDefaultPool { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The restriction level applied to the cluster node resource group.")]
+        [PSArgumentCompleter("Unrestricted", "Auto")]
+        public string NodeResourceGroupRestrictionLevel { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Whether the pod identity addon is enabled.")]
+        public SwitchParameter EnablePodIdentity { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Whether pod identity is allowed to run on clusters with  Kubenet networking. Running in Kubenet is disabled by default due to the  security related nature of AAD Pod Identity and the risks of IP spoofing.  See [using Kubenet network plugin with AAD Pod  Identity](https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity#using-kubenet-network-plugin-with-azure-active-directory-pod-managed-identities)  for more information.")]
+        public SwitchParameter EnablePodIdentityWithKubenet { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "If enable publicNetworkAccess of the managedCluster")]
+        public SwitchParameter EnablePublicNetworkAccess { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Whether to enable Azure Key Vault key management service.")]
+        public SwitchParameter EnableAzureKeyVaultKms { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The identifier of Azure Key Vault key. See [key identifier format](https://docs.microsoft.com/en-us/azure/key-vault/general/about-keys-secrets-certificates#vault-name-and-object-name) for more details. When EnableAzureKeyVaultKms is set, this field is required and must be a valid key identifier. ")]
+        public string AzureKeyVaultKmsKeyId { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The network access of the key vault. Network access of key vault. The possible values are `Public` and `Private`. `Public` means the key vault allows public access from all networks. `Private` means the key vault disables public access and enables private link.")]
+        [PSArgumentCompleter("Public", "Private")]
+        public string AzureKeyVaultKmsNetworkAccess { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The resource ID of key vault. When AzureKeyVaultKmsNetworkAccess is `Private`, this field is required and must be a valid resource ID. When AzureKeyVaultKmsNetworkAccess is `Public`, leave the field empty.")]
+        public string AzureKeyVaultKmsResourceId { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The list of up to 10 base64 encoded CAs that will be added to the trust store on all nodes in the cluster. For more information see [Custom CA Trust Certificates](https://learn.microsoft.com/en-us/azure/aks/custom-certificate-authority).")]
+        public string[] CustomCaTrustCertificate { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The resource ID of the Log Analytics workspace to be associated with Microsoft Defender. When Microsoft Defender is enabled, this field is required and must be a valid workspace resource ID. When Microsoft Defender is disabled, leave the field empty.")]
+        public string DefenderLogAnalyticsWorkspaceResourceId { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Whether to enable Defender threat detection")]
+        public SwitchParameter EnableDefenderSecurityMonitoring { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Whether to enable Image Cleaner on AKS cluster.")]
+        public SwitchParameter EnableImageCleaner { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The image Cleaner scanning interval in hours.")]
+        public int ImageCleanerIntervalHour { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Whether to enable workload identity.")]
+        public SwitchParameter EnableWorkloadIdentity { get; set; }
+
+        [Parameter(Position = 2, Mandatory = false, ParameterSetName = DefaultParamSet, HelpMessage = "The client id and client secret associated with the AAD application / service principal.")]
+        public PSCredential ServicePrincipalIdAndSecret { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The support plan for the Managed Cluster.")]
+        [PSArgumentCompleter("KubernetesOfficial", "AKSLongTermSupport")]
+        public string SupportPlan { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The administrator password to use for Windows VMs. Password requirement:"
-          + "At least one lower case, one upper case, one special character !@#$%^&*(), the minimum length is 12.")]
++ "At least one lower case, one upper case, one special character !@#$%^&*(), the minimum length is 12.")]
         [ValidateSecureString(RegularExpression = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%\\^&\\*\\(\\)])[a-zA-Z\\d!@#$%\\^&\\*\\(\\)]{12,123}$", ParameterName = nameof(WindowsProfileAdminUserPassword))]
         public SecureString WindowsProfileAdminUserPassword { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Whether to enable Azure Hybrid User Benefits (AHUB) for Windows VMs.")]
         public SwitchParameter EnableAHUB { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Whether to enable KEDA.")]
+        public SwitchParameter EnableKEDA { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Whether to enable Vertical Pod Autoscaler.")]
+        public SwitchParameter EnableVerticalPodAutoscaler { get; set; }
+
+        [Parameter(Mandatory = false)]
+        public Hashtable Tag { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Whether to to enable AzureBlob CSI Driver.")]
+        public SwitchParameter EnableBlobCSIDriver { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Whether to enable AzureDisk CSI Driver.")]
+        public SwitchParameter EnableDiskCSIDriver { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Whether to enable AzureFile CSI Driver.")]
+        public SwitchParameter EnableFileCSIDriver { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Whether to enable Snapshot Controller.")]
+        public SwitchParameter EnableSnapshotCSIDriver { get; set; }
+
+        // URL Header Parameters
+
+        [Parameter(Mandatory = false, HelpMessage = "Aks custom headers used for building Kubernetes network.")]
+        public Hashtable AksCustomHeader { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The request should only proceed if an entity matches this string.")]
+        public string IfMatch { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The request should only proceed if no entity matches this string.")]
+        public string IfNoneMatch { get; set; }
+
+        // Other Parameters
+
+        [Parameter(Mandatory = false, HelpMessage = "Grant the 'acrpull' role of the specified ACR to AKS Service Principal, e.g. myacr")]
+        public string AcrNameToAttach { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
 
         protected void BeforeBuildNewCluster()
         {
@@ -356,6 +518,44 @@ namespace Microsoft.Azure.Commands.Aks
             return new AcsServicePrincipal { SpId = app.AppId, ClientSecret = clientSecret, ObjectId = sp.Id };
         }
 
+        protected void AddMsiRoleAssignment(string controlplaneUserMIResourceId, string kubeletUserMIResourceId)
+        {
+            var roleDefinitionId = GetRoleId("Managed Identity Operator", kubeletUserMIResourceId);
+            var controlplaneUserMI = GetUserManagedIdentity(controlplaneUserMIResourceId);
+            if (controlplaneUserMI == null)
+            {
+                throw new AzPSArgumentException($"Can't find the user managed identity with id {AssignKubeletIdentity}", nameof(AssignKubeletIdentity));
+            }
+
+            RoleAssignment roleAssignment = null;
+            var actionSuccess = RetryAction(() =>
+            {
+                var filter = $"principalId eq '{controlplaneUserMI.ObjectId}'";
+                roleAssignment = AuthClient.RoleAssignments.ListForScope(kubeletUserMIResourceId, new ODataQuery<RoleAssignmentFilter>(filter))
+                    .Where(x => x.Properties.RoleDefinitionId == roleDefinitionId)
+                    .FirstOrDefault();
+            });
+            if (!actionSuccess)
+            {
+                throw new AzPSArgumentException($"Can't list the RoleAssignments of the user managed identity with id {AssignKubeletIdentity}", nameof(AssignKubeletIdentity));
+            }
+
+            if (roleAssignment != null)
+            {
+                WriteDebug($"The cluster using user-assigned managed identity {controlplaneUserMI.ObjectId} has already been granted 'Managed Identity Operator' role to assign kubelet identity {kubeletUserMIResourceId}.");
+                return;
+            }
+            var success = RetryAction(() =>
+                AuthClient.RoleAssignments.Create(kubeletUserMIResourceId, Guid.NewGuid().ToString(), new RoleAssignmentCreateParameters()
+                {
+                    Properties = new RoleAssignmentProperties(roleDefinitionId, controlplaneUserMI.ObjectId)
+                }), Resources.AddRoleAssignment);
+            if (!success)
+            {
+                throw new AzPSInvalidOperationException(
+                    $"Can't assign 'Managed Identity Operator' role for {controlplaneUserMIResourceId} to kubelet identity {kubeletUserMIResourceId}. ");
+            }
+        }
         protected RoleAssignment GetRoleAssignmentWithRoleDefinitionId(string roleDefinitionId, string acrResourceId, string acsServicePrincipalObjectId)
         {
             RoleAssignment roleAssignment = null;
@@ -373,7 +573,6 @@ namespace Microsoft.Azure.Commands.Aks
             }
             return roleAssignment;
         }
-
         protected void AddAcrRoleAssignment(string acrName, string acrParameterName, AcsServicePrincipal acsServicePrincipal)
         {
             string acrResourceId = getSpecifiedAcr(acrName, acrParameterName);
@@ -448,6 +647,35 @@ namespace Microsoft.Azure.Commands.Aks
             }
         }
 
+        protected UserAssignedIdentity GetUserManagedIdentity(string identityResourceId)
+        {
+            var provider = RmClient.Providers.Get("Microsoft.ManagedIdentity");
+            var userAssignedIdentitiesResourceType = provider.ResourceTypes.FirstOrDefault(rt =>
+                    rt.ResourceType.Equals("userAssignedIdentities", StringComparison.OrdinalIgnoreCase));
+            var apiVersion = userAssignedIdentitiesResourceType?.ApiVersions?.Where(av => !av.ToLower().EndsWith("-preview")).First();
+            if (apiVersion == null)
+            {
+                apiVersion = userAssignedIdentitiesResourceType?.ApiVersions?.FirstOrDefault();
+            }
+
+            var UserMIResource = RmClient.Resources.GetById(identityResourceId, apiVersion);
+
+            string objectId = null;
+            string clientId = null;
+
+            if (UserMIResource != null && UserMIResource.Properties != null)
+            {
+                var properties = Newtonsoft.Json.Linq.JObject.Parse(UserMIResource.Properties.ToString());
+                objectId = properties["principalId"]?.ToString();
+                clientId = properties["clientId"]?.ToString();
+            }
+            if (objectId == null || clientId == null)
+            {
+                return null;
+            }
+            return new UserAssignedIdentity(identityResourceId, clientId, objectId);
+        }
+
         protected bool Exists()
         {
             try
@@ -456,7 +684,7 @@ namespace Microsoft.Azure.Commands.Aks
                 WriteVerbose(string.Format(Resources.ClusterExists, exists));
                 return exists;
             }
-            catch (CloudException)
+            catch (ErrorResponseException)
             {
                 WriteVerbose(Resources.ClusterDoesNotExist);
                 return false;
@@ -556,50 +784,221 @@ namespace Microsoft.Azure.Commands.Aks
             return $"{namePart}{subPart}";
         }
 
-        protected ManagedClusterLoadBalancerProfile CreateOrUpdateLoadBalancerProfile(ManagedClusterLoadBalancerProfile loadBalancerProfile)
+        protected ManagedClusterLoadBalancerProfile CreateOrUpdateLoadBalancerProfile(ManagedClusterLoadBalancerProfile loadBalancerProfile = null)
         {
-            if ((this.IsParameterBound(c => c.LoadBalancerManagedOutboundIpCount) ||
-                this.IsParameterBound(c => c.LoadBalancerOutboundIp) ||
+            if (this.IsParameterBound(c => c.LoadBalancerAllocatedOutboundPort) ||
+                this.IsParameterBound(c => c.LoadBalancerBackendPoolType) ||
+                this.IsParameterBound(c => c.LoadBalancerIdleTimeoutInMinute) ||
+                this.IsParameterBound(c => c.LoadBalancerManagedOutboundIpCount) ||
+                this.IsParameterBound(c => c.LoadBalancerManagedOutboundIpCountIPv6) ||
                 this.IsParameterBound(c => c.LoadBalancerOutboundIpPrefix) ||
-                this.IsParameterBound(c => c.LoadBalancerAllocatedOutboundPort) ||
-                this.IsParameterBound(c => c.LoadBalancerIdleTimeoutInMinute)) &&
-                loadBalancerProfile == null)
+                this.IsParameterBound(c => c.LoadBalancerOutboundIp))
             {
-                loadBalancerProfile = new ManagedClusterLoadBalancerProfile();
+                if (loadBalancerProfile == null) {
+                    loadBalancerProfile = new ManagedClusterLoadBalancerProfile();
+                }
+                if (this.IsParameterBound(c => c.LoadBalancerAllocatedOutboundPort))
+                {
+                    loadBalancerProfile.AllocatedOutboundPorts = LoadBalancerAllocatedOutboundPort;
+                }
+                if (this.IsParameterBound(c => c.LoadBalancerBackendPoolType))
+                {
+                    loadBalancerProfile.BackendPoolType = LoadBalancerBackendPoolType;
+                }
+                if (this.IsParameterBound(c => c.LoadBalancerIdleTimeoutInMinute))
+                {
+                    loadBalancerProfile.IdleTimeoutInMinutes = LoadBalancerIdleTimeoutInMinute;
+                }
+                if (this.IsParameterBound(c => c.LoadBalancerManagedOutboundIpCount) ||
+                    this.IsParameterBound(c => c.LoadBalancerManagedOutboundIpCountIPv6)) {
+                    if (loadBalancerProfile.ManagedOutboundIPs == null) {
+                        loadBalancerProfile.ManagedOutboundIPs = new ManagedClusterLoadBalancerProfileManagedOutboundIPs();
+                    }
+                    if (this.IsParameterBound(c => c.LoadBalancerManagedOutboundIpCount))
+                    {
+                        loadBalancerProfile.ManagedOutboundIPs.Count = LoadBalancerManagedOutboundIpCount;
+                    }
+                    if (this.IsParameterBound(c => c.LoadBalancerManagedOutboundIpCountIPv6))
+                    {
+                        loadBalancerProfile.ManagedOutboundIPs.CountIPv6 = LoadBalancerManagedOutboundIpCountIPv6;
+                    }
+                }
+                if (this.IsParameterBound(c => c.LoadBalancerOutboundIpPrefix))
+                {
+                    loadBalancerProfile.OutboundIPPrefixes = new ManagedClusterLoadBalancerProfileOutboundIPPrefixes(LoadBalancerOutboundIpPrefix.ToList().Select(x => { return new ResourceReference(x); }).ToList());
+                }
+                if (this.IsParameterBound(c => c.LoadBalancerOutboundIp))
+                {
+                    loadBalancerProfile.OutboundIPs = new ManagedClusterLoadBalancerProfileOutboundIPs(LoadBalancerOutboundIp.ToList().Select(x => { return new ResourceReference(x); }).ToList());
+                }
             }
-            if (this.IsParameterBound(c => c.LoadBalancerManagedOutboundIpCount))
+            return loadBalancerProfile;
+        }
+
+        protected ManagedClusterSecurityProfile CreateOrUpdateSecurityProfile(ManagedClusterSecurityProfile securityProfile = null) {
+            if (this.IsParameterBound(c => c.EnableAzureKeyVaultKms) ||
+                this.IsParameterBound(c => c.AzureKeyVaultKmsKeyId) ||
+                this.IsParameterBound(c => c.AzureKeyVaultKmsNetworkAccess) ||
+                this.IsParameterBound(c => c.AzureKeyVaultKmsResourceId) ||
+                this.IsParameterBound(c => c.CustomCaTrustCertificate) ||
+                this.IsParameterBound(c => c.DefenderLogAnalyticsWorkspaceResourceId) ||
+                this.IsParameterBound(c => c.EnableDefenderSecurityMonitoring) ||
+                this.IsParameterBound(c => c.EnableImageCleaner) ||
+                this.IsParameterBound(c => c.ImageCleanerIntervalHour) ||
+                this.IsParameterBound(c => c.EnableWorkloadIdentity) )
             {
-                loadBalancerProfile.ManagedOutboundIPs = new ManagedClusterLoadBalancerProfileManagedOutboundIPs(LoadBalancerManagedOutboundIpCount);
+                securityProfile = new ManagedClusterSecurityProfile();
             }
-            if (this.IsParameterBound(c => c.LoadBalancerOutboundIp))
+            if (this.IsParameterBound(c => c.CustomCaTrustCertificate))
             {
-                loadBalancerProfile.OutboundIPs = new ManagedClusterLoadBalancerProfileOutboundIPs(LoadBalancerOutboundIp.ToList().Select(x => { return new ResourceReference(x); }).ToList());
+                securityProfile.CustomCaTrustCertificates = new List<byte[]>();
+                foreach (var cert in CustomCaTrustCertificate)
+                {
+                    securityProfile.CustomCaTrustCertificates.Add(Convert.FromBase64String(cert));
+                }
             }
-            if (this.IsParameterBound(c => c.LoadBalancerOutboundIpPrefix))
-            {
-                loadBalancerProfile.OutboundIPPrefixes = new ManagedClusterLoadBalancerProfileOutboundIPPrefixes(LoadBalancerOutboundIpPrefix.ToList().Select(x => { return new ResourceReference(x); }).ToList());
+            if (this.IsParameterBound(c => c.EnableAzureKeyVaultKms) ||
+                this.IsParameterBound(c => c.AzureKeyVaultKmsKeyId) ||
+                this.IsParameterBound(c => c.AzureKeyVaultKmsNetworkAccess) ||
+                this.IsParameterBound(c => c.AzureKeyVaultKmsResourceId)) {
+                if (securityProfile.AzureKeyVaultKms == null) {
+                    securityProfile.AzureKeyVaultKms = new AzureKeyVaultKms();
+                }
+                if (this.IsParameterBound(c => c.EnableAzureKeyVaultKms))
+                {
+                    securityProfile.AzureKeyVaultKms.Enabled = EnableAzureKeyVaultKms.ToBool();
+                }
+                if (this.IsParameterBound(c => c.AzureKeyVaultKmsKeyId))
+                {
+                    securityProfile.AzureKeyVaultKms.KeyId = AzureKeyVaultKmsKeyId;
+                }
+                if (this.IsParameterBound(c => c.AzureKeyVaultKmsNetworkAccess))
+                {
+                    securityProfile.AzureKeyVaultKms.KeyVaultNetworkAccess = AzureKeyVaultKmsNetworkAccess;
+                }
+                if (this.IsParameterBound(c => c.AzureKeyVaultKmsResourceId))
+                {
+                    securityProfile.AzureKeyVaultKms.KeyVaultResourceId = AzureKeyVaultKmsResourceId;
+                }
+
             }
-            if (this.IsParameterBound(c => c.LoadBalancerAllocatedOutboundPort))
+            if (this.IsParameterBound(c => c.DefenderLogAnalyticsWorkspaceResourceId) ||
+                this.IsParameterBound(c => c.EnableDefenderSecurityMonitoring))
             {
-                loadBalancerProfile.AllocatedOutboundPorts = LoadBalancerAllocatedOutboundPort;
+                if (securityProfile.Defender == null)
+                {
+                    securityProfile.Defender = new ManagedClusterSecurityProfileDefender();
+                }
+                if (this.IsParameterBound(c => c.DefenderLogAnalyticsWorkspaceResourceId))
+                {
+                    securityProfile.Defender.LogAnalyticsWorkspaceResourceId = DefenderLogAnalyticsWorkspaceResourceId;
+                }
+                if (this.IsParameterBound(c => c.EnableDefenderSecurityMonitoring))
+                {
+                    if (securityProfile.Defender.SecurityMonitoring == null)
+                    {
+                        securityProfile.Defender.SecurityMonitoring = new ManagedClusterSecurityProfileDefenderSecurityMonitoring();
+                    }
+                    securityProfile.Defender.SecurityMonitoring.Enabled = EnableDefenderSecurityMonitoring.ToBool();
+                }
             }
-            if (this.IsParameterBound(c => c.LoadBalancerIdleTimeoutInMinute))
+            if (this.IsParameterBound(c => c.EnableImageCleaner) ||
+                this.IsParameterBound(c => c.ImageCleanerIntervalHour))
             {
-                loadBalancerProfile.IdleTimeoutInMinutes = LoadBalancerIdleTimeoutInMinute;
+                if (securityProfile.ImageCleaner == null)
+                {
+                    securityProfile.ImageCleaner = new ManagedClusterSecurityProfileImageCleaner();
+                }
+                if (this.IsParameterBound(c => c.EnableImageCleaner))
+                {
+                    securityProfile.ImageCleaner.Enabled = EnableImageCleaner.ToBool();
+                }
+                if (this.IsParameterBound(c => c.ImageCleanerIntervalHour))
+                {
+                    securityProfile.ImageCleaner.IntervalHours = ImageCleanerIntervalHour;
+                }
+            }
+            if (this.IsParameterBound(c => c.EnableWorkloadIdentity))
+            {
+                if (securityProfile.WorkloadIdentity == null)
+                {
+                    securityProfile.WorkloadIdentity = new ManagedClusterSecurityProfileWorkloadIdentity();
+                }
+                if (this.IsParameterBound(c => c.EnableWorkloadIdentity))
+                {
+                    securityProfile.WorkloadIdentity.Enabled = EnableWorkloadIdentity.ToBool();
+                }
+            }
+            return securityProfile;
+        }
+
+        protected ManagedClusterWorkloadAutoScalerProfile CreateOrUpdateWorkloadAutoScalerProfile(ManagedClusterWorkloadAutoScalerProfile workloadAutoScalerProfile = null) {
+            if (this.IsParameterBound(c => c.EnableKEDA) ||
+                this.IsParameterBound(c => c.EnableVerticalPodAutoscaler))
+            {
+                workloadAutoScalerProfile = new ManagedClusterWorkloadAutoScalerProfile();
+            }
+            if (this.IsParameterBound(c => c.EnableKEDA))
+            {
+                if (workloadAutoScalerProfile.Keda == null)
+                {
+                    workloadAutoScalerProfile.Keda = new ManagedClusterWorkloadAutoScalerProfileKeda();
+                }
+                workloadAutoScalerProfile.Keda.Enabled = EnableKEDA.ToBool();
+            }
+            if (this.IsParameterBound(c => c.EnableVerticalPodAutoscaler))
+            {
+                if (workloadAutoScalerProfile.VerticalPodAutoscaler == null)
+                {
+                    workloadAutoScalerProfile.VerticalPodAutoscaler = new ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscaler();
+                }
+                workloadAutoScalerProfile.VerticalPodAutoscaler.Enabled = EnableVerticalPodAutoscaler.ToBool();
             }
 
-            return loadBalancerProfile;
+            return workloadAutoScalerProfile;
+        }
+
+        protected ManagedClusterNATGatewayProfile CreateOrUpdateNATGatewayProfile(ManagedClusterNATGatewayProfile natGatewayProfile = null)
+        {
+            if (this.IsParameterBound(c => c.NATGatewayIdleTimeoutInMinute) ||
+                this.IsParameterBound(c => c.NATGatewayManagedOutboundIpCount))
+            {
+                if (natGatewayProfile == null)
+                {
+                    natGatewayProfile = new ManagedClusterNATGatewayProfile();
+                }
+                if (this.IsParameterBound(c => c.NATGatewayIdleTimeoutInMinute))
+                {
+                    natGatewayProfile.IdleTimeoutInMinutes = NATGatewayIdleTimeoutInMinute;
+                }
+                if (this.IsParameterBound(c => c.NATGatewayManagedOutboundIpCount))
+                {
+                    if (natGatewayProfile.ManagedOutboundIPProfile == null)
+                    {
+                        natGatewayProfile.ManagedOutboundIPProfile = new ManagedClusterManagedOutboundIPProfile();
+                    }
+                    natGatewayProfile.ManagedOutboundIPProfile.Count = NATGatewayManagedOutboundIpCount;
+                }
+            }
+            return natGatewayProfile;
         }
 
         protected ManagedClusterAutoUpgradeProfile CreateOrUpdateAutoUpgradeProfile(ManagedClusterAutoUpgradeProfile autoUpgradeProfile)
         {
-            if (this.IsParameterBound(c => c.AutoUpgradeChannel) && autoUpgradeProfile == null)
+            if (this.IsParameterBound(c => c.NodeAutoUpgradeChannel) || this.IsParameterBound(c => c.NodeOSAutoUpgradeChannel))
             {
-                autoUpgradeProfile = new ManagedClusterAutoUpgradeProfile();
-            }
-            if (this.IsParameterBound(c => c.AutoUpgradeChannel))
-            {
-                autoUpgradeProfile.UpgradeChannel = AutoUpgradeChannel;
+                if (autoUpgradeProfile == null) {
+                    autoUpgradeProfile = new ManagedClusterAutoUpgradeProfile();
+                }
+                if (this.IsParameterBound(c => c.NodeAutoUpgradeChannel))
+                {
+                    autoUpgradeProfile.UpgradeChannel = NodeAutoUpgradeChannel;
+                }
+                if (this.IsParameterBound(c => c.NodeOSAutoUpgradeChannel))
+                {
+                    autoUpgradeProfile.NodeOSUpgradeChannel = NodeOSAutoUpgradeChannel;
+                }
+
             }
             return autoUpgradeProfile;
         }
@@ -639,7 +1038,10 @@ namespace Microsoft.Azure.Commands.Aks
             if ((this.IsParameterBound(c => c.ApiServerAccessAuthorizedIpRange) ||
                 this.IsParameterBound(c => c.EnableApiServerAccessPrivateCluster) ||
                 this.IsParameterBound(c => c.ApiServerAccessPrivateDnsZone) ||
-                this.IsParameterBound(c => c.EnableApiServerAccessPrivateClusterPublicFQDN)) &&
+                this.IsParameterBound(c => c.EnableApiServerAccessPrivateClusterPublicFQDN) ||
+                this.IsParameterBound(c => c.DisableApiServerRunCommand) ||
+                this.IsParameterBound(c => c.ApiServerSubnetId) ||
+                this.IsParameterBound(c => c.EnableApiServerVnetIntegration)) &&
                 apiServerAccessProfile == null)
             {
                 apiServerAccessProfile = new ManagedClusterAPIServerAccessProfile();
@@ -659,6 +1061,18 @@ namespace Microsoft.Azure.Commands.Aks
             if (this.IsParameterBound(c => c.EnableApiServerAccessPrivateClusterPublicFQDN))
             {
                 apiServerAccessProfile.EnablePrivateClusterPublicFqdn = EnableApiServerAccessPrivateClusterPublicFQDN;
+            }
+            if (this.IsParameterBound(c => c.DisableApiServerRunCommand))
+            {
+                apiServerAccessProfile.DisableRunCommand = DisableApiServerRunCommand.ToBool();
+            }
+            if (this.IsParameterBound(c => c.ApiServerSubnetId))
+            {
+                apiServerAccessProfile.SubnetId = ApiServerSubnetId;
+            }
+            if (this.IsParameterBound(c => c.EnableApiServerVnetIntegration))
+            {
+                apiServerAccessProfile.EnableVnetIntegration = EnableApiServerVnetIntegration.ToBool();
             }
 
             return apiServerAccessProfile;
@@ -700,9 +1114,168 @@ namespace Microsoft.Azure.Commands.Aks
                     cluster.Identity.Type = ResourceIdentityType.SystemAssigned;
                     cluster.Identity.UserAssignedIdentities = null;
                 }
-            }
+            } 
 
             return cluster;
+        }
+
+        protected string GetPublicNetworkAccess()
+        {
+            if (this.IsParameterBound(c => c.EnablePublicNetworkAccess))
+            {
+                if (EnablePublicNetworkAccess.ToBool())
+                {
+                    return "Enabled";
+                }
+                else
+                {
+                    return "Disabled";
+                }
+            }
+            return null;
+        }
+
+        protected ManagedClusterBootstrapProfile CreateOrUpdateBootstrapProfile(ManagedClusterBootstrapProfile bootstrapProfile = null) 
+        { 
+            if (this.IsParameterBound(c => c.BootstrapArtifactSource) ||
+                this.IsParameterBound(c => c.BootstrapContainerRegistryId))
+            {
+                if (bootstrapProfile == null) {
+                    bootstrapProfile = new ManagedClusterBootstrapProfile();
+                }
+                if (this.IsParameterBound(c => c.BootstrapArtifactSource))
+                {
+                    bootstrapProfile.ArtifactSource = BootstrapArtifactSource;
+                }
+                if (this.IsParameterBound(c => c.BootstrapContainerRegistryId))
+                {
+                    bootstrapProfile.ContainerRegistryId = BootstrapContainerRegistryId;
+                }
+            }
+            return bootstrapProfile;
+        }
+
+        protected ManagedClusterPodIdentityProfile CreateOrUpdatePodIdentityProfile(ManagedClusterPodIdentityProfile podIdentityProfile = null) 
+        {
+            if (this.IsParameterBound(c => c.EnablePodIdentity) ||
+                this.IsParameterBound(c => c.EnablePodIdentityWithKubenet))
+            {
+                if (podIdentityProfile == null)
+                {
+                    podIdentityProfile = new ManagedClusterPodIdentityProfile();
+                }
+                if (this.IsParameterBound(c => c.EnablePodIdentity)) {
+                    podIdentityProfile.Enabled = EnablePodIdentity.ToBool();
+                }
+                if (this.IsParameterBound(c => c.EnablePodIdentityWithKubenet))
+                {
+                    podIdentityProfile.AllowNetworkPluginKubenet = EnablePodIdentityWithKubenet.ToBool();
+                }
+            }
+            return podIdentityProfile;
+        }
+
+        protected ManagedClusterMetricsProfile CreateOrUpdateMetricsProfile(ManagedClusterMetricsProfile metricsProfile = null) {
+            if (this.IsParameterBound(c => c.EnableCostAnalysis))
+            {
+                if (metricsProfile == null)
+                {
+                    metricsProfile = new ManagedClusterMetricsProfile();
+                }
+                if (metricsProfile.CostAnalysis == null)
+                {
+                    metricsProfile.CostAnalysis = new ManagedClusterCostAnalysis(enabled: EnableCostAnalysis.ToBool());
+                }
+                else
+                {
+                    metricsProfile.CostAnalysis.Enabled = EnableCostAnalysis.ToBool();
+                }
+            }
+            return metricsProfile;
+        }
+
+        protected AdvancedNetworking CreateOrUpdateAdvancedNetworking(AdvancedNetworking advancedNetworking = null) 
+        {
+            if (this.IsParameterBound(c => c.EnableAdvancedNetworking))
+            {
+                if (advancedNetworking == null)
+                {
+                    advancedNetworking = new AdvancedNetworking();
+                }
+                advancedNetworking.Enabled = EnableAdvancedNetworking.ToBool();
+                if (this.IsParameterBound(c => c.EnableAdvancedNetworkingObservability))
+                {
+                    if (advancedNetworking.Observability == null)
+                    {
+                        advancedNetworking.Observability = new AdvancedNetworkingObservability();
+                    }
+                    advancedNetworking.Observability.Enabled = EnableAdvancedNetworkingObservability.ToBool();
+                }
+                if (this.IsParameterBound(c => c.EnableAdvancedNetworkingSecurity) ||
+                    this.IsParameterBound(c => c.AdvancedNetworkingSecurityPolicy))
+                {
+                    if (advancedNetworking.Security == null)
+                    {
+                        advancedNetworking.Security = new AdvancedNetworkingSecurity();
+                    }
+                    if (this.IsParameterBound(c => c.EnableAdvancedNetworkingSecurity))
+                    {
+                        advancedNetworking.Security.Enabled = EnableAdvancedNetworkingSecurity.ToBool();
+                    }
+                    if (this.IsParameterBound(c => c.AdvancedNetworkingSecurityPolicy))
+                    {
+                        advancedNetworking.Security.AdvancedNetworkPolicies = AdvancedNetworkingSecurityPolicy;
+                    }
+                }
+            }
+            return advancedNetworking;
+        }
+
+        protected ManagedClusterStorageProfile CreateOrUpdateStorageProfile(ManagedClusterStorageProfile storageProfile = null)
+        {
+            if (this.IsParameterBound(c => c.EnableBlobCSIDriver) ||
+                this.IsParameterBound(c => c.EnableDiskCSIDriver) ||
+                this.IsParameterBound(c => c.EnableFileCSIDriver) ||
+                this.IsParameterBound(c => c.EnableSnapshotCSIDriver))
+            {
+                if (storageProfile == null)
+                {
+                    storageProfile = new ManagedClusterStorageProfile();
+                }
+                if (this.IsParameterBound(c => c.EnableBlobCSIDriver))
+                {
+                    if (storageProfile.BlobCsiDriver == null)
+                    {
+                        storageProfile.BlobCsiDriver = new ManagedClusterStorageProfileBlobCSIDriver();
+                    }
+                    storageProfile.BlobCsiDriver.Enabled = EnableBlobCSIDriver.ToBool();
+                }
+                if (this.IsParameterBound(c => c.EnableDiskCSIDriver))
+                {
+                    if (storageProfile.DiskCsiDriver == null)
+                    {
+                        storageProfile.DiskCsiDriver = new ManagedClusterStorageProfileDiskCSIDriver();
+                    }
+                    storageProfile.DiskCsiDriver.Enabled = EnableDiskCSIDriver.ToBool();
+                }
+                if (this.IsParameterBound(c => c.EnableFileCSIDriver))
+                {
+                    if (storageProfile.FileCsiDriver == null)
+                    {
+                        storageProfile.FileCsiDriver = new ManagedClusterStorageProfileFileCSIDriver();
+                    }
+                    storageProfile.FileCsiDriver.Enabled = EnableFileCSIDriver.ToBool();
+                }
+                if (this.IsParameterBound(c => c.EnableSnapshotCSIDriver))
+                {
+                    if (storageProfile.SnapshotController == null)
+                    {
+                        storageProfile.SnapshotController = new ManagedClusterStorageProfileSnapshotController();
+                    }
+                    storageProfile.SnapshotController.Enabled = EnableSnapshotCSIDriver.ToBool();
+                }
+            }
+            return storageProfile;
         }
 
         private protected ManagedCluster CreateOrUpdate(string resourceGroupName, string resourceName, ManagedCluster parameters)
@@ -710,11 +1283,11 @@ namespace Microsoft.Azure.Commands.Aks
             if (this.IsParameterBound(c => c.AksCustomHeader))
             {
                 Dictionary<string, List<string>> customHeaders = Utilities.HashtableToDictionary(AksCustomHeader);
-                return Client.ManagedClusters.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, resourceName, parameters, customHeaders).GetAwaiter().GetResult().Body;
+                return Client.ManagedClusters.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, resourceName, parameters, IfMatch, IfNoneMatch, customHeaders).GetAwaiter().GetResult().Body;
             }
             else
             {
-                return Client.ManagedClusters.CreateOrUpdate(resourceGroupName, resourceName, parameters);
+                return Client.ManagedClusters.CreateOrUpdate(resourceGroupName, resourceName, parameters, IfMatch, IfNoneMatch);
             }
         }
     }

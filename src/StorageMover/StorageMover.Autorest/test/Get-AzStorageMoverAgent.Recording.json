@@ -7,7 +7,7 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "10" ],
-        "x-ms-client-request-id": [ "c614f1d8-465e-492b-8c80-ceea3057f76b" ],
+        "x-ms-client-request-id": [ "10ffabe5-5d61-4fc8-904d-c57ffa64629f" ],
         "CommandName": [ "Get-AzStorageMoverAgent" ],
         "FullCommandName": [ "Get-AzStorageMoverAgent_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -22,26 +22,26 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=ade47690-3254-48fb-af97-0c4da9dd127c/centraluseuap/ad65df1a-6ef2-4582-8862-f894adb3b49b" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=ade47690-3254-48fb-af97-0c4da9dd127c/centraluseuap/ce0e73e0-4ba7-498b-9278-5f0c7cf0cd95" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "mise-correlation-id": [ "b62f6c66-5412-4145-9917-80f284c269ec" ],
-        "x-ms-request-id": [ "538f3ce6-55b8-4c9c-86a2-b97e2ea56247" ],
-        "x-ms-correlation-request-id": [ "e6e8723b-76d3-451c-a636-1e82305f81fe" ],
+        "mise-correlation-id": [ "cb26db90-7f71-48e2-a5dc-6a1de79f817a" ],
+        "x-ms-request-id": [ "5d5b6404-e608-48cf-8fee-38889fe79172" ],
+        "x-ms-correlation-request-id": [ "964e047c-0d5f-4857-8814-f71ad736ec8d" ],
         "x-ms-throttling-version": [ "v2" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "1098" ],
-        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20250923T054533Z:e6e8723b-76d3-451c-a636-1e82305f81fe" ],
+        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20250919T101223Z:964e047c-0d5f-4857-8814-f71ad736ec8d" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 16F3254205E1415FAE9A23E1060813A8 Ref B: MAA201060514047 Ref C: 2025-09-23T05:45:33Z" ],
-        "Date": [ "Tue, 23 Sep 2025 05:45:32 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 6B7B57B72D74407E935454E69901A054 Ref B: MAA201060515011 Ref C: 2025-09-19T10:12:23Z" ],
+        "Date": [ "Fri, 19 Sep 2025 10:12:22 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1004" ],
+        "Content-Length": [ "1003" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testmoverpreview1/agents/testagent12\",\"name\":\"testagent12\",\"type\":\"microsoft.storagemover/storagemovers/agents\",\"systemData\":{\"createdBy\":\"choudharysu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-09-23T05:30:19.8244817Z\",\"lastModifiedBy\":\"aed824f0-6446-4ef9-9e17-98b0157c09dc\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-09-23T05:45:29.9669414Z\"},\"properties\":{\"agentVersion\":\"3.4.831_amd64:3.4.846_amd64\",\"arcResourceId\":\"/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.HybridCompute/machines/testagent12\",\"arcVmUuid\":\"3919140f-7b36-fb45-b298-95d724237da6\",\"timeZone\":\"UTC\",\"localIPAddress\":\"10.126.12.27\",\"memoryInMB\":3918,\"numberOfCores\":1,\"uptimeInSeconds\":1022526,\"lastStatusUpdate\":\"2025-09-23T05:45:27.4415525Z\",\"agentStatus\":\"Online\",\"provisioningState\":\"Succeeded\"}}]}",
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testmoverpreview1/agents/testagent12\",\"name\":\"testagent12\",\"type\":\"microsoft.storagemover/storagemovers/agents\",\"systemData\":{\"createdBy\":\"choudharysu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-09-19T09:43:31.2634499Z\",\"lastModifiedBy\":\"aed824f0-6446-4ef9-9e17-98b0157c09dc\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-09-19T10:12:11.2110528Z\"},\"properties\":{\"agentVersion\":\"3.4.831_amd64:3.4.846_amd64\",\"arcResourceId\":\"/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.HybridCompute/machines/testagent12\",\"arcVmUuid\":\"3919140f-7b36-fb45-b298-95d724237da6\",\"timeZone\":\"UTC\",\"localIPAddress\":\"10.126.12.27\",\"memoryInMB\":3918,\"numberOfCores\":1,\"uptimeInSeconds\":692930,\"lastStatusUpdate\":\"2025-09-19T10:12:10.8396675Z\",\"agentStatus\":\"Online\",\"provisioningState\":\"Succeeded\"}}]}",
       "isContentBase64": false
     }
   },
@@ -53,7 +53,7 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "11" ],
-        "x-ms-client-request-id": [ "ef7c872a-56d7-4b02-bad9-2b3ceaadae42" ],
+        "x-ms-client-request-id": [ "16931fd5-3296-4c55-a18a-0dc2e8030d5f" ],
         "CommandName": [ "Get-AzStorageMoverAgent" ],
         "FullCommandName": [ "Get-AzStorageMoverAgent_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -68,27 +68,27 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"570078e9-0000-3300-0000-68d233fa0000\"" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=ade47690-3254-48fb-af97-0c4da9dd127c/centraluseuap/5933068f-5999-49fa-b5fd-b401a42fb652" ],
+        "ETag": [ "\"65004bbd-0000-3300-0000-68cd2c7b0000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=ade47690-3254-48fb-af97-0c4da9dd127c/centraluseuap/cb91b99e-4323-4355-9324-182f768961fe" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "mise-correlation-id": [ "2c67cdb9-fa1b-45c4-aa6f-dfcc50b2568b" ],
-        "x-ms-request-id": [ "05236463-169f-4483-a269-0f1677198e41" ],
-        "x-ms-correlation-request-id": [ "1079eb1a-6a08-448e-add5-8b3517cb9da3" ],
+        "mise-correlation-id": [ "6067cb83-0a86-4d75-93c2-72e1dfc99023" ],
+        "x-ms-request-id": [ "a5cb772d-aaa7-4c8b-a39e-445a370416d0" ],
+        "x-ms-correlation-request-id": [ "9aa7cb2e-a363-4e96-8b7d-1dccb03de206" ],
         "x-ms-throttling-version": [ "v2" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
-        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20250923T054534Z:1079eb1a-6a08-448e-add5-8b3517cb9da3" ],
+        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20250919T101224Z:9aa7cb2e-a363-4e96-8b7d-1dccb03de206" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 22FED42BA1844E509F60AE0D99FEFA0C Ref B: MAA201060514047 Ref C: 2025-09-23T05:45:33Z" ],
-        "Date": [ "Tue, 23 Sep 2025 05:45:33 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 6F01BECF522B4D4C8F3ADFEC487B211C Ref B: MAA201060515011 Ref C: 2025-09-19T10:12:23Z" ],
+        "Date": [ "Fri, 19 Sep 2025 10:12:23 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "992" ],
+        "Content-Length": [ "991" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testmoverpreview1/agents/testagent12\",\"name\":\"testagent12\",\"type\":\"microsoft.storagemover/storagemovers/agents\",\"systemData\":{\"createdBy\":\"choudharysu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-09-23T05:30:19.8244817Z\",\"lastModifiedBy\":\"aed824f0-6446-4ef9-9e17-98b0157c09dc\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-09-23T05:45:29.9669414Z\"},\"properties\":{\"agentVersion\":\"3.4.831_amd64:3.4.846_amd64\",\"arcResourceId\":\"/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.HybridCompute/machines/testagent12\",\"arcVmUuid\":\"3919140f-7b36-fb45-b298-95d724237da6\",\"timeZone\":\"UTC\",\"localIPAddress\":\"10.126.12.27\",\"memoryInMB\":3918,\"numberOfCores\":1,\"uptimeInSeconds\":1022526,\"lastStatusUpdate\":\"2025-09-23T05:45:27.4415525Z\",\"agentStatus\":\"Online\",\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"id\":\"/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testmoverpreview1/agents/testagent12\",\"name\":\"testagent12\",\"type\":\"microsoft.storagemover/storagemovers/agents\",\"systemData\":{\"createdBy\":\"choudharysu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-09-19T09:43:31.2634499Z\",\"lastModifiedBy\":\"aed824f0-6446-4ef9-9e17-98b0157c09dc\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-09-19T10:12:11.2110528Z\"},\"properties\":{\"agentVersion\":\"3.4.831_amd64:3.4.846_amd64\",\"arcResourceId\":\"/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.HybridCompute/machines/testagent12\",\"arcVmUuid\":\"3919140f-7b36-fb45-b298-95d724237da6\",\"timeZone\":\"UTC\",\"localIPAddress\":\"10.126.12.27\",\"memoryInMB\":3918,\"numberOfCores\":1,\"uptimeInSeconds\":692930,\"lastStatusUpdate\":\"2025-09-19T10:12:10.8396675Z\",\"agentStatus\":\"Online\",\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   }

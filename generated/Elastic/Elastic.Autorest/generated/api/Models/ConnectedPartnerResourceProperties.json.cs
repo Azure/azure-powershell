@@ -69,6 +69,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
             {_partnerDeploymentUri = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonString>("partnerDeploymentUri"), out var __jsonPartnerDeploymentUri) ? (string)__jsonPartnerDeploymentUri : (string)_partnerDeploymentUri;}
             {_azureResourceId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonString>("azureResourceId"), out var __jsonAzureResourceId) ? (string)__jsonAzureResourceId : (string)_azureResourceId;}
             {_location = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonString>("location"), out var __jsonLocation) ? (string)__jsonLocation : (string)_location;}
+            {_type = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonString>("type"), out var __jsonType) ? (string)__jsonType : (string)_type;}
             AfterFromJson(json);
         }
 
@@ -108,6 +109,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
             AddIf( null != (((object)this._partnerDeploymentUri)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonString(this._partnerDeploymentUri.ToString()) : null, "partnerDeploymentUri" ,container.Add );
             AddIf( null != (((object)this._azureResourceId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonString(this._azureResourceId.ToString()) : null, "azureResourceId" ,container.Add );
             AddIf( null != (((object)this._location)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonString(this._location.ToString()) : null, "location" ,container.Add );
+            AddIf( null != (((object)this._type)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonString(this._type.ToString()) : null, "type" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

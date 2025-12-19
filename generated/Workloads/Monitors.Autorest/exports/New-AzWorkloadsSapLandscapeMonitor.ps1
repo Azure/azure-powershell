@@ -16,14 +16,14 @@
 
 <#
 .Synopsis
-Creates a SAP Landscape Monitor Dashboard for the specified subscription, resource group, and resource name.
+Create a SAP Landscape Monitor Dashboard for the specified subscription, resource group, and resource name.
 .Description
-Creates a SAP Landscape Monitor Dashboard for the specified subscription, resource group, and resource name.
+Create a SAP Landscape Monitor Dashboard for the specified subscription, resource group, and resource name.
 .Example
 New-AzWorkloadsSapLandscapeMonitor -MonitorName suha-0202-ams9 -ResourceGroupName suha-0802-rg1 -SubscriptionId 49d64d54-e966-4c46-a868-1999802b762c -GroupingLandscape '{"name":"Prod","topSid":["SID1","SID2"]}' -GroupingSapApplication '{"name":"ERP1","topSid":["SID1","SID2"]}' -TopMetricsThreshold '{"name":"Instance Availability","green":90,"yellow":75,"red":50}'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.ISapLandscapeMonitor
+Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.ISapLandscapeMonitor
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -31,11 +31,11 @@ To create the parameters described below, construct a hash table containing the 
 
 GROUPINGLANDSCAPE <ISapLandscapeMonitorSidMapping[]>: Gets or sets the list of landscape to SID mappings.
   [Name <String>]: Gets or sets the name of the grouping.
-  [TopSid <String[]>]: Gets or sets the list of SID's.
+  [TopSid <List<String>>]: Gets or sets the list of SID's.
 
 GROUPINGSAPAPPLICATION <ISapLandscapeMonitorSidMapping[]>: Gets or sets the list of Sap Applications to SID mappings.
   [Name <String>]: Gets or sets the name of the grouping.
-  [TopSid <String[]>]: Gets or sets the list of SID's.
+  [TopSid <List<String>>]: Gets or sets the list of SID's.
 
 TOPMETRICSTHRESHOLD <ISapLandscapeMonitorMetricThresholds[]>: Gets or sets the list Top Metric Thresholds for SAP Landscape Monitor Dashboard
   [Green <Single?>]: Gets or sets the threshold value for Green.
@@ -46,7 +46,7 @@ TOPMETRICSTHRESHOLD <ISapLandscapeMonitorMetricThresholds[]>: Gets or sets the l
 https://learn.microsoft.com/powershell/module/az.workloads/new-azworkloadssaplandscapemonitor
 #>
 function New-AzWorkloadsSapLandscapeMonitor {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.ISapLandscapeMonitor])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.ISapLandscapeMonitor])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -69,29 +69,38 @@ param(
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.ISapLandscapeMonitorSidMapping[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.ISapLandscapeMonitorSidMapping[]]
     # Gets or sets the list of landscape to SID mappings.
-    # To construct, see NOTES section for GROUPINGLANDSCAPE properties and create a hash table.
     ${GroupingLandscape},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.ISapLandscapeMonitorSidMapping[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.ISapLandscapeMonitorSidMapping[]]
     # Gets or sets the list of Sap Applications to SID mappings.
-    # To construct, see NOTES section for GROUPINGSAPAPPLICATION properties and create a hash table.
     ${GroupingSapApplication},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.ISapLandscapeMonitorMetricThresholds[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.ISapLandscapeMonitorMetricThresholds[]]
     # Gets or sets the list Top Metric Thresholds for SAP Landscape Monitor Dashboard
-    # To construct, see NOTES section for TOPMETRICSTHRESHOLD properties and create a hash table.
     ${TopMetricsThreshold},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -149,6 +158,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -169,10 +187,10 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.Monitors.private\New-AzWorkloadsSapLandscapeMonitor_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.Monitors.private\New-AzWorkloadsSapLandscapeMonitor_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.Monitors.private\New-AzWorkloadsSapLandscapeMonitor_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -186,6 +204,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

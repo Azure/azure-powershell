@@ -132,5 +132,27 @@ namespace Microsoft.Azure.Commands.Aks.Models
         /// </remarks>
         public IList<string> IpFamilies { get; set; }
 
+        /// <summary>
+        /// Gets or sets the mode the network plugin should use. Possible values include: &#39;overlay&#39;
+        /// </summary>
+        public string NetworkPluginMode { get; set; }
+
+        /// <summary>
+        /// Gets or sets network dataplane used in the Kubernetes cluster. Possible values include: &#39;azure&#39;, &#39;cilium&#39;
+        /// </summary>
+        public string NetworkDataplane { get; set; }
+
+        /// <summary>
+        /// Gets or sets advanced Networking profile for enabling observability and
+        /// security feature suite on a cluster. For more information see
+        /// aka.ms/aksadvancednetworking.
+        /// </summary>
+        public AdvancedNetworking AdvancedNetworking { get; set; }
+
+        /// <summary>
+        /// Gets or sets the profile for Static Egress Gateway addon. For more details
+        /// about Static Egress Gateway, see https://aka.ms/aks/static-egress-gateway.
+        /// </summary>
+        public ManagedClusterStaticEgressGatewayProfile StaticEgressGatewayProfile { get; set; }
     }
 }

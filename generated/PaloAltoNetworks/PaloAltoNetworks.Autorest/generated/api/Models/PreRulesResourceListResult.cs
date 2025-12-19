@@ -23,7 +23,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models
         /// <summary>Backing field for <see cref="Value" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPreRulesResource> _value;
 
-        /// <summary>The items on this page</summary>
+        /// <summary>The PreRulesResource items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Origin(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPreRulesResource> Value { get => this._value; set => this._value = value; }
 
@@ -48,14 +48,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models
         SerializedName = @"nextLink",
         PossibleTypes = new [] { typeof(string) })]
         string NextLink { get; set; }
-        /// <summary>The items on this page</summary>
+        /// <summary>The PreRulesResource items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Info(
         Required = true,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The items on this page",
+        Description = @"The PreRulesResource items on this page",
         SerializedName = @"value",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPreRulesResource) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPreRulesResource> Value { get; set; }
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models
     {
         /// <summary>The link to the next page of items</summary>
         string NextLink { get; set; }
-        /// <summary>The items on this page</summary>
+        /// <summary>The PreRulesResource items on this page</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPreRulesResource> Value { get; set; }
 
     }

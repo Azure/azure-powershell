@@ -15,7 +15,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzAksArcClusterUpgrade'))
 }
 
 Describe 'Get-AzAksArcClusterUpgrade' {
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $upgradeProfiles = Get-AzAksArcClusterUpgrade `
+            -ClusterName $env.clusterName `
+            -ResourceGroupName $env.resourceGroupName `
+            -SubscriptionId $env.subscriptionID
+        $upgradeProfiles[0] | Should -Not -BeNullOrEmpty
+        $upgradeProfiles[0].ProvisioningState | Should -be "Succeeded"
+        $upgradeProfiles[0].Type | Should -Be "microsoft.hybridcontainerservice/provisionedclusterinstances/upgradeprofiles"
     }
 }

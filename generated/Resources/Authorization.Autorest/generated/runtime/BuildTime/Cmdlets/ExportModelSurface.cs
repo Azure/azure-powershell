@@ -24,7 +24,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.Pow
     public bool UseExpandedFormat { get; set; }
 
     private const string ModelNamespace = @"Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models";
-    private const string SupportNamespace = @"Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Support";
+    private const string SupportNamespace = @"${$project.supportNamespace.fullName}";
 
     protected override void ProcessRecord()
     {

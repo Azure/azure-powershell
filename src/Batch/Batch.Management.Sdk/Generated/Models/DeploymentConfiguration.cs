@@ -27,19 +27,12 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// Initializes a new instance of the DeploymentConfiguration class.
         /// </summary>
 
-        /// <param name="cloudServiceConfiguration">This property and virtualMachineConfiguration are mutually exclusive and
-        /// one of the properties must be specified. This property cannot be specified
-        /// if the Batch account was created with its poolAllocationMode property set
-        /// to &#39;UserSubscription&#39;.
+        /// <param name="virtualMachineConfiguration">The configuration for compute nodes in a pool based on the Azure Virtual
+        /// Machines infrastructure.
         /// </param>
-
-        /// <param name="virtualMachineConfiguration">This property and cloudServiceConfiguration are mutually exclusive and one
-        /// of the properties must be specified.
-        /// </param>
-        public DeploymentConfiguration(CloudServiceConfiguration cloudServiceConfiguration = default(CloudServiceConfiguration), VirtualMachineConfiguration virtualMachineConfiguration = default(VirtualMachineConfiguration))
+        public DeploymentConfiguration(VirtualMachineConfiguration virtualMachineConfiguration = default(VirtualMachineConfiguration))
 
         {
-            this.CloudServiceConfiguration = cloudServiceConfiguration;
             this.VirtualMachineConfiguration = virtualMachineConfiguration;
             CustomInit();
         }
@@ -51,17 +44,8 @@ namespace Microsoft.Azure.Management.Batch.Models
 
 
         /// <summary>
-        /// Gets or sets this property and virtualMachineConfiguration are mutually
-        /// exclusive and one of the properties must be specified. This property cannot
-        /// be specified if the Batch account was created with its poolAllocationMode
-        /// property set to &#39;UserSubscription&#39;.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "cloudServiceConfiguration")]
-        public CloudServiceConfiguration CloudServiceConfiguration {get; set; }
-
-        /// <summary>
-        /// Gets or sets this property and cloudServiceConfiguration are mutually
-        /// exclusive and one of the properties must be specified.
+        /// Gets or sets the configuration for compute nodes in a pool based on the
+        /// Azure Virtual Machines infrastructure.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "virtualMachineConfiguration")]
         public VirtualMachineConfiguration VirtualMachineConfiguration {get; set; }
@@ -73,10 +57,6 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (this.CloudServiceConfiguration != null)
-            {
-                this.CloudServiceConfiguration.Validate();
-            }
             if (this.VirtualMachineConfiguration != null)
             {
                 this.VirtualMachineConfiguration.Validate();

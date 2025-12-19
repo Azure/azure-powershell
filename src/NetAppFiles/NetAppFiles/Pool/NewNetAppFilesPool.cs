@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
                 QosType = QosType,
                 CoolAccess = CoolAccess,
                 EncryptionType = EncryptionType,
-                CustomThroughputMibps = CustomThroughput,
+                CustomThroughputMibps = CustomThroughput.HasValue ? (int)CustomThroughput : (int?)null,
             };
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, ResourceGroupName)))

@@ -5,8 +5,8 @@ function Test-NewNodePool
     $resourceGroupName = Get-RandomResourceGroupName
     $kubeClusterName = Get-RandomClusterName
     $location = 'eastus'
-    $kubeVersion = "1.25.5"
-    $nodeVmSize = "Standard_A2"
+    $kubeVersion = "1.32.7"
+    $nodeVmSize = "standard_a2_v2"
     $nodeVmSetType = "VirtualMachineScaleSets"
     $nodeOsType = "Linux"
     $networkPlugin = "azure"
@@ -17,16 +17,16 @@ function Test-NewNodePool
     $winNodeOsType = "Windows"
     $updatedNodePoolSize = 5
 
-    $poolKubeVersion = "1.25.5"
+    $poolKubeVersion = "1.32.7"
 
     try
     {
         New-AzResourceGroup -Name $resourceGroupName -Location $location
         
-        $cred = $(createTestCredential "a6148f60-19b8-49b8-a5a5-54945aec926e" "EmN8Q~mLAb~WBrSOQPvaY3FX4RA~4l5-KDEC6cR8")
+        $cred = $(createTestCredential "8184c03b-75cb-4c66-8686-8c171ab2f522" "Sanitized")
         New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -ServicePrincipalIdAndSecret $cred -NetworkPlugin $networkPlugin `
             -KubernetesVersion $kubeVersion -NodeVmSetType $nodeVmSetType -WindowsProfileAdminUserName $winAdminUser `
-            -WindowsProfileAdminUserPassword $winPassword
+            -WindowsProfileAdminUserPassword $winPassword -NodeVmSize $nodeVmSize
 
 
         $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
@@ -65,7 +65,7 @@ function Test-NodePoolMode
     $resourceGroupName = Get-RandomResourceGroupName
     $kubeClusterName = Get-RandomClusterName
     $location = 'eastus'
-    $nodeVmSize = "Standard_D2_v2"
+    $nodeVmSize = "standard_a2_v2"
 
     try
     {
@@ -85,7 +85,7 @@ function Test-NodePoolMode
 
         
         # create the 2nd nodepool, default mode, mode=User
-        New-AzAksNodePool -ResourceGroupName $resourceGroupName -ClusterName $kubeClusterName -Name "pool2" -Count 1
+        New-AzAksNodePool -ResourceGroupName $resourceGroupName -ClusterName $kubeClusterName -Name "pool2" -Count 1 -VmSize $nodeVmSize
         
         $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
         Assert-AreEqual 2 $cluster.AgentPoolProfiles.Count
@@ -98,7 +98,7 @@ function Test-NodePoolMode
         Assert-AreEqual "User" ($pools | where {$_.Name -eq "pool2"}).Mode
 
         # create the 3rd nodepool, mode=System
-        New-AzAksNodePool -ResourceGroupName $resourceGroupName -ClusterName $kubeClusterName -Name "pool3" -Count 1 -Mode System
+        New-AzAksNodePool -ResourceGroupName $resourceGroupName -ClusterName $kubeClusterName -Name "pool3" -Count 1 -Mode System -VmSize $nodeVmSize
 
         $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
         Assert-AreEqual 3 $cluster.AgentPoolProfiles.Count
@@ -128,7 +128,7 @@ function Test-NodePoolMode
         Assert-AreEqual "User" ($pools | where {$_.Name -eq "pool3"}).Mode
 
         # update the 2nd nodepool, mode=System
-        Set-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeName "pool2" -NodePoolMode System
+        Set-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeName "pool2" -NodePoolMode System 
 
         $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
         Assert-AreEqual 3 $cluster.AgentPoolProfiles.Count

@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
     /// Volume patch resource
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class VolumePatch : Microsoft.Rest.Azure.IResource
+    public partial class VolumePatch
     {
         /// <summary>
         /// Initializes a new instance of the VolumePatch class.
@@ -44,6 +44,15 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// Possible values include: &#39;Standard&#39;, &#39;Premium&#39;, &#39;Ultra&#39;, &#39;StandardZRS&#39;,
         /// &#39;Flexible&#39;</param>
 
+        /// <param name="unixPermissions">UNIX permissions for NFS volume accepted in octal 4 digit format. First
+        /// digit selects the set user ID(4), set group ID (2) and sticky (1)
+        /// attributes. Second digit selects permission for the owner of the file: read
+        /// (4), write (2) and execute (1). Third selects permissions for other users
+        /// in the same group. the fourth for other users not in the group. 0755 -
+        /// gives read/write/execute permissions to owner and read/execute to group and
+        /// other users.
+        /// </param>
+
         /// <param name="usageThreshold">Maximum storage quota allowed for a file system in bytes. This is a soft
         /// quota used for alerting only. For regular volumes, valid values are in the
         /// range 50GiB to 100TiB. For large volumes, valid values are in the range
@@ -74,15 +83,6 @@ namespace Microsoft.Azure.Management.NetApp.Models
 
         /// <param name="defaultGroupQuotaInKiBs">Default group quota for volume in KiBs. If isDefaultQuotaEnabled is set,
         /// the minimum value of 4 KiBs applies.
-        /// </param>
-
-        /// <param name="unixPermissions">UNIX permissions for NFS volume accepted in octal 4 digit format. First
-        /// digit selects the set user ID(4), set group ID (2) and sticky (1)
-        /// attributes. Second digit selects permission for the owner of the file: read
-        /// (4), write (2) and execute (1). Third selects permissions for other users
-        /// in the same group. the fourth for other users not in the group. 0755 -
-        /// gives read/write/execute permissions to owner and read/execute to group and
-        /// other users.
         /// </param>
 
         /// <param name="coolAccess">Specifies whether Cool Access(tiering) is enabled for the volume.
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// <param name="smbNonBrowsable">Enables non-browsable property for SMB Shares. Only applicable for
         /// SMB/DualProtocol volume
         /// Possible values include: &#39;Disabled&#39;, &#39;Enabled&#39;</param>
-        public VolumePatch(string location = default(string), string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string serviceLevel = default(string), long? usageThreshold = default(long?), VolumePatchPropertiesExportPolicy exportPolicy = default(VolumePatchPropertiesExportPolicy), System.Collections.Generic.IList<string> protocolTypes = default(System.Collections.Generic.IList<string>), double? throughputMibps = default(double?), VolumePatchPropertiesDataProtection dataProtection = default(VolumePatchPropertiesDataProtection), bool? isDefaultQuotaEnabled = default(bool?), long? defaultUserQuotaInKiBs = default(long?), long? defaultGroupQuotaInKiBs = default(long?), string unixPermissions = default(string), bool? coolAccess = default(bool?), int? coolnessPeriod = default(int?), string coolAccessRetrievalPolicy = default(string), string coolAccessTieringPolicy = default(string), bool? snapshotDirectoryVisible = default(bool?), string smbAccessBasedEnumeration = default(string), string smbNonBrowsable = default(string))
+        public VolumePatch(string location = default(string), string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string serviceLevel = default(string), string unixPermissions = default(string), long? usageThreshold = default(long?), VolumePatchPropertiesExportPolicy exportPolicy = default(VolumePatchPropertiesExportPolicy), System.Collections.Generic.IList<string> protocolTypes = default(System.Collections.Generic.IList<string>), double? throughputMibps = default(double?), VolumePatchPropertiesDataProtection dataProtection = default(VolumePatchPropertiesDataProtection), bool? isDefaultQuotaEnabled = default(bool?), long? defaultUserQuotaInKiBs = default(long?), long? defaultGroupQuotaInKiBs = default(long?), bool? coolAccess = default(bool?), int? coolnessPeriod = default(int?), string coolAccessRetrievalPolicy = default(string), string coolAccessTieringPolicy = default(string), bool? snapshotDirectoryVisible = default(bool?), string smbAccessBasedEnumeration = default(string), string smbNonBrowsable = default(string))
 
         {
             this.Location = location;
@@ -130,6 +130,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
             this.Type = type;
             this.Tags = tags;
             this.ServiceLevel = serviceLevel;
+            this.UnixPermissions = unixPermissions;
             this.UsageThreshold = usageThreshold;
             this.ExportPolicy = exportPolicy;
             this.ProtocolTypes = protocolTypes;
@@ -138,7 +139,6 @@ namespace Microsoft.Azure.Management.NetApp.Models
             this.IsDefaultQuotaEnabled = isDefaultQuotaEnabled;
             this.DefaultUserQuotaInKiBs = defaultUserQuotaInKiBs;
             this.DefaultGroupQuotaInKiBs = defaultGroupQuotaInKiBs;
-            this.UnixPermissions = unixPermissions;
             this.CoolAccess = coolAccess;
             this.CoolnessPeriod = coolnessPeriod;
             this.CoolAccessRetrievalPolicy = coolAccessRetrievalPolicy;
@@ -190,6 +190,18 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.serviceLevel")]
         public string ServiceLevel {get; set; }
+
+        /// <summary>
+        /// Gets or sets uNIX permissions for NFS volume accepted in octal 4 digit
+        /// format. First digit selects the set user ID(4), set group ID (2) and sticky
+        /// (1) attributes. Second digit selects permission for the owner of the file:
+        /// read (4), write (2) and execute (1). Third selects permissions for other
+        /// users in the same group. the fourth for other users not in the group. 0755
+        /// - gives read/write/execute permissions to owner and read/execute to group
+        /// and other users.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.unixPermissions")]
+        public string UnixPermissions {get; set; }
 
         /// <summary>
         /// Gets or sets maximum storage quota allowed for a file system in bytes. This
@@ -246,18 +258,6 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.defaultGroupQuotaInKiBs")]
         public long? DefaultGroupQuotaInKiBs {get; set; }
-
-        /// <summary>
-        /// Gets or sets uNIX permissions for NFS volume accepted in octal 4 digit
-        /// format. First digit selects the set user ID(4), set group ID (2) and sticky
-        /// (1) attributes. Second digit selects permission for the owner of the file:
-        /// read (4), write (2) and execute (1). Third selects permissions for other
-        /// users in the same group. the fourth for other users not in the group. 0755
-        /// - gives read/write/execute permissions to owner and read/execute to group
-        /// and other users.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.unixPermissions")]
-        public string UnixPermissions {get; set; }
 
         /// <summary>
         /// Gets or sets specifies whether Cool Access(tiering) is enabled for the
@@ -331,6 +331,17 @@ namespace Microsoft.Azure.Management.NetApp.Models
 
 
 
+            if (this.UnixPermissions != null)
+            {
+                if (this.UnixPermissions.Length > 4)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "UnixPermissions", 4);
+                }
+                if (this.UnixPermissions.Length < 4)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "UnixPermissions", 4);
+                }
+            }
             if (this.UsageThreshold != null)
             {
                 if (this.UsageThreshold > 2638827906662400)
@@ -345,17 +356,6 @@ namespace Microsoft.Azure.Management.NetApp.Models
 
 
 
-            if (this.UnixPermissions != null)
-            {
-                if (this.UnixPermissions.Length > 4)
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "UnixPermissions", 4);
-                }
-                if (this.UnixPermissions.Length < 4)
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "UnixPermissions", 4);
-                }
-            }
             if (this.CoolnessPeriod != null)
             {
                 if (this.CoolnessPeriod > 183)

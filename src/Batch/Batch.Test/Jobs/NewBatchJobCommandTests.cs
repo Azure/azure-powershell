@@ -181,7 +181,15 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
                     PoolLifetimeOption = Azure.Batch.Common.PoolLifetimeOption.Job,
                     PoolSpecification = new PSPoolSpecification
                     {
-                        CloudServiceConfiguration = new PSCloudServiceConfiguration("4", "*"),
+                        VirtualMachineConfiguration = new PSVirtualMachineConfiguration(
+                            new PSImageReference
+                            {
+                                Publisher = "Canonical",
+                                Offer = "UbuntuServer",
+                                Sku = "18.04-LTS",
+                                Version = "latest"
+                            },
+                            "batch.node.ubuntu 18.04"),
                         UserAccounts = new List<PSUserAccount>() { adminUser, nonAdminUser, sshUser }
                     }
                 }

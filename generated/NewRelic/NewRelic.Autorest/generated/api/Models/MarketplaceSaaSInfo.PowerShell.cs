@@ -129,6 +129,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMarketplaceSaaSInfoInternal)this).BilledAzureSubscriptionId = (string) content.GetValueForProperty("BilledAzureSubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMarketplaceSaaSInfoInternal)this).BilledAzureSubscriptionId, global::System.Convert.ToString);
             }
+            if (content.Contains("PublisherId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMarketplaceSaaSInfoInternal)this).PublisherId = (string) content.GetValueForProperty("PublisherId",((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMarketplaceSaaSInfoInternal)this).PublisherId, global::System.Convert.ToString);
+            }
+            if (content.Contains("OfferId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMarketplaceSaaSInfoInternal)this).OfferId = (string) content.GetValueForProperty("OfferId",((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMarketplaceSaaSInfoInternal)this).OfferId, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -165,6 +173,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models
             if (content.Contains("BilledAzureSubscriptionId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMarketplaceSaaSInfoInternal)this).BilledAzureSubscriptionId = (string) content.GetValueForProperty("BilledAzureSubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMarketplaceSaaSInfoInternal)this).BilledAzureSubscriptionId, global::System.Convert.ToString);
+            }
+            if (content.Contains("PublisherId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMarketplaceSaaSInfoInternal)this).PublisherId = (string) content.GetValueForProperty("PublisherId",((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMarketplaceSaaSInfoInternal)this).PublisherId, global::System.Convert.ToString);
+            }
+            if (content.Contains("OfferId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMarketplaceSaaSInfoInternal)this).OfferId = (string) content.GetValueForProperty("OfferId",((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMarketplaceSaaSInfoInternal)this).OfferId, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

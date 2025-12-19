@@ -14,8 +14,8 @@ Get a GiVersion
 
 ### List (Default)
 ```
-Get-AzOracleGiVersion -Location <String> [-SubscriptionId <String[]>] [-Shape <String>] [-Zone <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzOracleGiVersion -Location <String> [-SubscriptionId <String[]>] [-Shape <String>]
+ [-ShapeAttribute <String>] [-Zone <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
@@ -135,6 +135,21 @@ Accept wildcard characters: False
 
 ### -Shape
 If provided, filters the results for the given shape
+
+```yaml
+Type: System.String
+Parameter Sets: List
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ShapeAttribute
+Filters the result for the given Shape Attribute, such as BLOCK_STORAGE or SMART_STORAGE.
 
 ```yaml
 Type: System.String

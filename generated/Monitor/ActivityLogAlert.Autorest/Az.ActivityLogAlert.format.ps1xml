@@ -2,9 +2,31 @@
 <Configuration>
   <ViewDefinitions>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.ActionGroupWebhookProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.ActionGroupWebhookProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Item</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Item</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.ActivityLogAlertIdentity</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.ActivityLogAlertIdentity</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.ActivityLogAlertIdentity#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -36,31 +58,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.ActionGroupWebhookProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.ActivityLogAlertResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.ActionGroupWebhookProperties</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Item</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Item</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.ActivityLogAlertResource</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.ActivityLogAlertResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.ActivityLogAlertResource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -92,15 +92,12 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.AlertRuleAnyOfOrLeafCondition</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.AlertRuleAnyOfOrLeafCondition</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.AlertRuleAnyOfOrLeafCondition</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.AlertRuleAnyOfOrLeafCondition#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
-          <TableColumnHeader>
-            <Label>ContainsAny</Label>
-          </TableColumnHeader>
           <TableColumnHeader>
             <Label>Equal</Label>
           </TableColumnHeader>
@@ -111,9 +108,6 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>ContainsAny</PropertyName>
-              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Equal</PropertyName>
               </TableColumnItem>
@@ -126,15 +120,12 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.AlertRuleLeafCondition</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.AlertRuleLeafCondition</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.AlertRuleLeafCondition</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.AlertRuleLeafCondition#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
-          <TableColumnHeader>
-            <Label>ContainsAny</Label>
-          </TableColumnHeader>
           <TableColumnHeader>
             <Label>Equal</Label>
           </TableColumnHeader>
@@ -145,9 +136,6 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>ContainsAny</PropertyName>
-              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Equal</PropertyName>
               </TableColumnItem>
@@ -160,9 +148,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.AlertRuleList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.AlertRuleList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.AlertRuleList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.AlertRuleList#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -182,9 +170,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.AlertRulePatchObjectTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.AlertRulePatchObjectTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.AlertRulePatchObjectTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.AlertRulePatchObjectTags#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -204,9 +192,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.AlertRulePatchProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.AlertRulePatchProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.AlertRulePatchProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.AlertRulePatchProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -226,9 +214,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.AlertRuleProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.AlertRuleProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.AlertRuleProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.AlertRuleProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -237,9 +225,6 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Enabled</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Scope</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -251,18 +236,15 @@
               <TableColumnItem>
                 <PropertyName>Enabled</PropertyName>
               </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Scope</PropertyName>
-              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.AzureResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.AzureResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.AzureResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.AzureResource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -288,9 +270,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.AzureResourceTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.AzureResourceTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.AzureResourceTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.AzureResourceTags#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -310,9 +292,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.ErrorResponse</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.ErrorResponse</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.ErrorResponse</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.ErrorResponse#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>

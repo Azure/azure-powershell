@@ -30,7 +30,7 @@
   <!-- The generator projects specific dependencies needs to be added to PackageReference and TargetPathWithTargetPlatformMonikor -->
 
   <ItemGroup>
-    <PackageReference Include="System.Text.Json" Version="6.0.0" GeneratePathProperty="true" PrivateAssets="all"/>
+    <PackageReference Include="System.Text.Json" Version="6.0.10" GeneratePathProperty="true" PrivateAssets="all"/>
   </ItemGroup>
 
   <PropertyGroup>

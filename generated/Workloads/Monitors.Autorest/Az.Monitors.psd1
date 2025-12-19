@@ -11,8 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.Monitors.private.dll'
   FormatsToProcess = './Az.Monitors.format.ps1xml'
-  FunctionsToExport = 'Get-AzWorkloadsMonitor', 'Get-AzWorkloadsProviderInstance', 'Get-AzWorkloadsSapLandscapeMonitor', 'New-AzWorkloadsMonitor', 'New-AzWorkloadsProviderDB2InstanceObject', 'New-AzWorkloadsProviderHanaDbInstanceObject', 'New-AzWorkloadsProviderInstance', 'New-AzWorkloadsProviderPrometheusHaClusterInstanceObject', 'New-AzWorkloadsProviderPrometheusOSInstanceObject', 'New-AzWorkloadsProviderSapNetWeaverInstanceObject', 'New-AzWorkloadsProviderSqlServerInstanceObject', 'New-AzWorkloadsSapLandscapeMonitor', 'New-AzWorkloadsSapLandscapeMonitorMetricThresholdsObject', 'New-AzWorkloadsSapLandscapeMonitorSidMappingObject', 'Remove-AzWorkloadsMonitor', 'Remove-AzWorkloadsProviderInstance', 'Remove-AzWorkloadsSapLandscapeMonitor', 'Update-AzWorkloadsMonitor', 'Update-AzWorkloadsSapLandscapeMonitor', '*'
-  AliasesToExport = '*'
+  FunctionsToExport = 'Get-AzWorkloadsMonitor', 'Get-AzWorkloadsProviderInstance', 'Get-AzWorkloadsSapLandscapeMonitor', 'New-AzWorkloadsMonitor', 'New-AzWorkloadsProviderDB2InstanceObject', 'New-AzWorkloadsProviderHanaDbInstanceObject', 'New-AzWorkloadsProviderInstance', 'New-AzWorkloadsProviderPrometheusHaClusterInstanceObject', 'New-AzWorkloadsProviderPrometheusOSInstanceObject', 'New-AzWorkloadsProviderSapNetWeaverInstanceObject', 'New-AzWorkloadsProviderSqlServerInstanceObject', 'New-AzWorkloadsSapLandscapeMonitor', 'New-AzWorkloadsSapLandscapeMonitorMetricThresholdsObject', 'New-AzWorkloadsSapLandscapeMonitorSidMappingObject', 'Remove-AzWorkloadsMonitor', 'Remove-AzWorkloadsProviderInstance', 'Remove-AzWorkloadsSapLandscapeMonitor', 'Update-AzWorkloadsMonitor', 'Update-AzWorkloadsProviderInstance', 'Update-AzWorkloadsSapLandscapeMonitor'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'Monitors'

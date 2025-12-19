@@ -39,13 +39,19 @@ namespace Microsoft.Azure.Management.ContainerService.Models
 
         /// <param name="imageCleaner">Image Cleaner settings for the security profile.
         /// </param>
-        public ManagedClusterSecurityProfile(ManagedClusterSecurityProfileDefender defender = default(ManagedClusterSecurityProfileDefender), AzureKeyVaultKms azureKeyVaultKms = default(AzureKeyVaultKms), ManagedClusterSecurityProfileWorkloadIdentity workloadIdentity = default(ManagedClusterSecurityProfileWorkloadIdentity), ManagedClusterSecurityProfileImageCleaner imageCleaner = default(ManagedClusterSecurityProfileImageCleaner))
+
+        /// <param name="customCaTrustCertificates">A list of up to 10 base64 encoded CAs that will be added to the trust store
+        /// on all nodes in the cluster. For more information see [Custom CA Trust
+        /// Certificates](https://learn.microsoft.com/en-us/azure/aks/custom-certificate-authority).
+        /// </param>
+        public ManagedClusterSecurityProfile(ManagedClusterSecurityProfileDefender defender = default(ManagedClusterSecurityProfileDefender), AzureKeyVaultKms azureKeyVaultKms = default(AzureKeyVaultKms), ManagedClusterSecurityProfileWorkloadIdentity workloadIdentity = default(ManagedClusterSecurityProfileWorkloadIdentity), ManagedClusterSecurityProfileImageCleaner imageCleaner = default(ManagedClusterSecurityProfileImageCleaner), System.Collections.Generic.IList<byte[]> customCaTrustCertificates = default(System.Collections.Generic.IList<byte[]>))
 
         {
             this.Defender = defender;
             this.AzureKeyVaultKms = azureKeyVaultKms;
             this.WorkloadIdentity = workloadIdentity;
             this.ImageCleaner = imageCleaner;
+            this.CustomCaTrustCertificates = customCaTrustCertificates;
             CustomInit();
         }
 
@@ -82,5 +88,34 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "imageCleaner")]
         public ManagedClusterSecurityProfileImageCleaner ImageCleaner {get; set; }
+
+        /// <summary>
+        /// Gets or sets a list of up to 10 base64 encoded CAs that will be added to
+        /// the trust store on all nodes in the cluster. For more information see
+        /// [Custom CA Trust
+        /// Certificates](https://learn.microsoft.com/en-us/azure/aks/custom-certificate-authority).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "customCATrustCertificates")]
+        public System.Collections.Generic.IList<byte[]> CustomCaTrustCertificates {get; set; }
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+
+
+
+
+            if (this.CustomCaTrustCertificates != null)
+            {
+                if (this.CustomCaTrustCertificates.Count > 10)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxItems, "CustomCaTrustCertificates", 10);
+                }
+            }
+        }
     }
 }

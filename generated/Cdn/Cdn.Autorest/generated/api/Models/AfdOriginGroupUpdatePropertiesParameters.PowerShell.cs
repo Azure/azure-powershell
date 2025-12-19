@@ -76,6 +76,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("Authentication"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupUpdatePropertiesParametersInternal)this).Authentication = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginAuthenticationProperties) content.GetValueForProperty("Authentication",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupUpdatePropertiesParametersInternal)this).Authentication, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.OriginAuthenticationPropertiesTypeConverter.ConvertFrom);
+            }
             if (content.Contains("ProfileName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupUpdatePropertiesParametersInternal)this).ProfileName = (string) content.GetValueForProperty("ProfileName",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupUpdatePropertiesParametersInternal)this).ProfileName, global::System.Convert.ToString);
@@ -95,6 +99,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             if (content.Contains("SessionAffinityState"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupUpdatePropertiesParametersInternal)this).SessionAffinityState = (string) content.GetValueForProperty("SessionAffinityState",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupUpdatePropertiesParametersInternal)this).SessionAffinityState, global::System.Convert.ToString);
+            }
+            if (content.Contains("AuthenticationUserAssignedIdentity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupUpdatePropertiesParametersInternal)this).AuthenticationUserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference) content.GetValueForProperty("AuthenticationUserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupUpdatePropertiesParametersInternal)this).AuthenticationUserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ResourceReferenceTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("AuthenticationType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupUpdatePropertiesParametersInternal)this).AuthenticationType = (string) content.GetValueForProperty("AuthenticationType",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupUpdatePropertiesParametersInternal)this).AuthenticationType, global::System.Convert.ToString);
+            }
+            if (content.Contains("AuthenticationScope"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupUpdatePropertiesParametersInternal)this).AuthenticationScope = (string) content.GetValueForProperty("AuthenticationScope",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupUpdatePropertiesParametersInternal)this).AuthenticationScope, global::System.Convert.ToString);
+            }
+            if (content.Contains("UserAssignedIdentityId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupUpdatePropertiesParametersInternal)this).UserAssignedIdentityId = (string) content.GetValueForProperty("UserAssignedIdentityId",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupUpdatePropertiesParametersInternal)this).UserAssignedIdentityId, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
@@ -113,6 +133,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("Authentication"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupUpdatePropertiesParametersInternal)this).Authentication = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginAuthenticationProperties) content.GetValueForProperty("Authentication",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupUpdatePropertiesParametersInternal)this).Authentication, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.OriginAuthenticationPropertiesTypeConverter.ConvertFrom);
+            }
             if (content.Contains("ProfileName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupUpdatePropertiesParametersInternal)this).ProfileName = (string) content.GetValueForProperty("ProfileName",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupUpdatePropertiesParametersInternal)this).ProfileName, global::System.Convert.ToString);
@@ -132,6 +156,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             if (content.Contains("SessionAffinityState"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupUpdatePropertiesParametersInternal)this).SessionAffinityState = (string) content.GetValueForProperty("SessionAffinityState",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupUpdatePropertiesParametersInternal)this).SessionAffinityState, global::System.Convert.ToString);
+            }
+            if (content.Contains("AuthenticationUserAssignedIdentity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupUpdatePropertiesParametersInternal)this).AuthenticationUserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference) content.GetValueForProperty("AuthenticationUserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupUpdatePropertiesParametersInternal)this).AuthenticationUserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ResourceReferenceTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("AuthenticationType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupUpdatePropertiesParametersInternal)this).AuthenticationType = (string) content.GetValueForProperty("AuthenticationType",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupUpdatePropertiesParametersInternal)this).AuthenticationType, global::System.Convert.ToString);
+            }
+            if (content.Contains("AuthenticationScope"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupUpdatePropertiesParametersInternal)this).AuthenticationScope = (string) content.GetValueForProperty("AuthenticationScope",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupUpdatePropertiesParametersInternal)this).AuthenticationScope, global::System.Convert.ToString);
+            }
+            if (content.Contains("UserAssignedIdentityId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupUpdatePropertiesParametersInternal)this).UserAssignedIdentityId = (string) content.GetValueForProperty("UserAssignedIdentityId",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupUpdatePropertiesParametersInternal)this).UserAssignedIdentityId, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

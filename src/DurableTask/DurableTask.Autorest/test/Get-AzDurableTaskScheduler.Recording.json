@@ -1,0 +1,182 @@
+{
+  "Get-AzDurableTaskScheduler+[NoContext]+List+$GET+https://management.azure.com/subscriptions/01cd122d-8616-45ca-adce-1ec35d96f1e7/resourceGroups/ps-test-durable-task-b67i/providers/Microsoft.DurableTask/schedulers?api-version=2025-11-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/01cd122d-8616-45ca-adce-1ec35d96f1e7/resourceGroups/ps-test-durable-task-b67i/providers/Microsoft.DurableTask/schedulers?api-version=2025-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "27" ],
+        "x-ms-client-request-id": [ "35b30001-9ab0-4c44-9695-dd3f84223672" ],
+        "CommandName": [ "Get-AzDurableTaskScheduler" ],
+        "FullCommandName": [ "Get-AzDurableTaskScheduler_List1" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.5.4", "Az.DurableTask/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-original-request-ids": [ "05e7a852-3fca-431d-824f-e25bd5e2323a" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-correlation-request-id": [ "883b506a-1f1c-452c-ab3c-a53324924000" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-request-id": [ "883b506a-1f1c-452c-ab3c-a53324924000" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20251119T004714Z:883b506a-1f1c-452c-ab3c-a53324924000" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: F77DE5D8E25742AB9BFCEAA5AD12412C Ref B: MWH011020808023 Ref C: 2025-11-19T00:47:14Z" ],
+        "Date": [ "Wed, 19 Nov 2025 00:47:14 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "744" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/01cd122d-8616-45ca-adce-1ec35d96f1e7/resourceGroups/ps-test-durable-task-b67i/providers/Microsoft.DurableTask/schedulers/ps-test-scheduler-75gx\",\"name\":\"ps-test-scheduler-75gx\",\"type\":\"microsoft.durabletask/schedulers\",\"location\":\"northcentralus\",\"tags\":{},\"systemData\":{\"createdBy\":\"anatolib@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-11-19T00:39:30.7276001Z\",\"lastModifiedBy\":\"anatolib@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-11-19T00:39:30.7276001Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"endpoint\":\"https://ps-test-schedul-fgdbavga.northcentralus.durabletask.io\",\"ipAllowlist\":[\"10.0.0.0/8\"],\"sku\":{\"name\":\"Dedicated\",\"capacity\":1,\"redundancyState\":\"None\"}}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzDurableTaskScheduler+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/01cd122d-8616-45ca-adce-1ec35d96f1e7/resourceGroups/ps-test-durable-task-b67i/providers/Microsoft.DurableTask/schedulers/ps-test-scheduler-75gx?api-version=2025-11-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/01cd122d-8616-45ca-adce-1ec35d96f1e7/resourceGroups/ps-test-durable-task-b67i/providers/Microsoft.DurableTask/schedulers/ps-test-scheduler-75gx?api-version=2025-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "28" ],
+        "x-ms-client-request-id": [ "bbc8c1ce-6403-40ac-a04e-7de218b2ef29" ],
+        "CommandName": [ "Get-AzDurableTaskScheduler" ],
+        "FullCommandName": [ "Get-AzDurableTaskScheduler_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.5.4", "Az.DurableTask/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"bd04c971-0000-0100-0000-691d13270000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "17bd086c-f42e-45f8-9b28-050662849b11" ],
+        "x-ms-correlation-request-id": [ "751ea73d-9f33-4838-80aa-e09e6c0bf0fb" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "NORTHCENTRALUS:20251119T004714Z:751ea73d-9f33-4838-80aa-e09e6c0bf0fb" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: A835D724AEE5452F9DD007C673058E12 Ref B: MWH011020808023 Ref C: 2025-11-19T00:47:14Z" ],
+        "Date": [ "Wed, 19 Nov 2025 00:47:14 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "732" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/01cd122d-8616-45ca-adce-1ec35d96f1e7/resourceGroups/ps-test-durable-task-b67i/providers/Microsoft.DurableTask/schedulers/ps-test-scheduler-75gx\",\"name\":\"ps-test-scheduler-75gx\",\"type\":\"microsoft.durabletask/schedulers\",\"location\":\"northcentralus\",\"tags\":{},\"systemData\":{\"createdBy\":\"anatolib@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-11-19T00:39:30.7276001Z\",\"lastModifiedBy\":\"anatolib@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-11-19T00:39:30.7276001Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"endpoint\":\"https://ps-test-schedul-fgdbavga.northcentralus.durabletask.io\",\"ipAllowlist\":[\"10.0.0.0/8\"],\"sku\":{\"name\":\"Dedicated\",\"capacity\":1,\"redundancyState\":\"None\"}}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzDurableTaskScheduler+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/01cd122d-8616-45ca-adce-1ec35d96f1e7/resourceGroups/ps-test-durable-task-b67i/providers/Microsoft.DurableTask/schedulers/ps-test-scheduler-75gx?api-version=2025-11-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/01cd122d-8616-45ca-adce-1ec35d96f1e7/resourceGroups/ps-test-durable-task-b67i/providers/Microsoft.DurableTask/schedulers/ps-test-scheduler-75gx?api-version=2025-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "29" ],
+        "x-ms-client-request-id": [ "d12f7cdd-ca10-4ae0-b422-cd7a7b625798" ],
+        "CommandName": [ "Get-AzDurableTaskScheduler" ],
+        "FullCommandName": [ "Get-AzDurableTaskScheduler_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.5.4", "Az.DurableTask/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"bd04c971-0000-0100-0000-691d13270000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "23fa0425-c727-452b-89e6-e4c547b672ff" ],
+        "x-ms-correlation-request-id": [ "7d5a0ce8-fbfc-40c1-823f-13aa6ff48cf8" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "NORTHCENTRALUS:20251119T004715Z:7d5a0ce8-fbfc-40c1-823f-13aa6ff48cf8" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 353C7AEDF44C47E99141C39AEB0E27D7 Ref B: MWH011020808023 Ref C: 2025-11-19T00:47:15Z" ],
+        "Date": [ "Wed, 19 Nov 2025 00:47:14 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "732" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/01cd122d-8616-45ca-adce-1ec35d96f1e7/resourceGroups/ps-test-durable-task-b67i/providers/Microsoft.DurableTask/schedulers/ps-test-scheduler-75gx\",\"name\":\"ps-test-scheduler-75gx\",\"type\":\"microsoft.durabletask/schedulers\",\"location\":\"northcentralus\",\"tags\":{},\"systemData\":{\"createdBy\":\"anatolib@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-11-19T00:39:30.7276001Z\",\"lastModifiedBy\":\"anatolib@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-11-19T00:39:30.7276001Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"endpoint\":\"https://ps-test-schedul-fgdbavga.northcentralus.durabletask.io\",\"ipAllowlist\":[\"10.0.0.0/8\"],\"sku\":{\"name\":\"Dedicated\",\"capacity\":1,\"redundancyState\":\"None\"}}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzDurableTaskScheduler+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/01cd122d-8616-45ca-adce-1ec35d96f1e7/resourceGroups/ps-test-durable-task-b67i/providers/Microsoft.DurableTask/schedulers/ps-test-scheduler-75gx?api-version=2025-11-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/01cd122d-8616-45ca-adce-1ec35d96f1e7/resourceGroups/ps-test-durable-task-b67i/providers/Microsoft.DurableTask/schedulers/ps-test-scheduler-75gx?api-version=2025-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "30" ],
+        "x-ms-client-request-id": [ "d4eb88e6-aab8-4b06-9a9f-4b6fcff64fc7" ],
+        "CommandName": [ "Get-AzDurableTaskScheduler" ],
+        "FullCommandName": [ "Get-AzDurableTaskScheduler_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.5.4", "Az.DurableTask/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"bd04c971-0000-0100-0000-691d13270000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "4413a564-4b9c-4b1a-9336-1ec6d3dddb8e" ],
+        "x-ms-correlation-request-id": [ "ef99ea0c-a747-4121-8599-f69be1a628ab" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "NORTHCENTRALUS:20251119T004715Z:ef99ea0c-a747-4121-8599-f69be1a628ab" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 0651EF6D222D48D9B3DE08ADEA9503AE Ref B: MWH011020808023 Ref C: 2025-11-19T00:47:15Z" ],
+        "Date": [ "Wed, 19 Nov 2025 00:47:15 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "732" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/01cd122d-8616-45ca-adce-1ec35d96f1e7/resourceGroups/ps-test-durable-task-b67i/providers/Microsoft.DurableTask/schedulers/ps-test-scheduler-75gx\",\"name\":\"ps-test-scheduler-75gx\",\"type\":\"microsoft.durabletask/schedulers\",\"location\":\"northcentralus\",\"tags\":{},\"systemData\":{\"createdBy\":\"anatolib@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-11-19T00:39:30.7276001Z\",\"lastModifiedBy\":\"anatolib@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-11-19T00:39:30.7276001Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"endpoint\":\"https://ps-test-schedul-fgdbavga.northcentralus.durabletask.io\",\"ipAllowlist\":[\"10.0.0.0/8\"],\"sku\":{\"name\":\"Dedicated\",\"capacity\":1,\"redundancyState\":\"None\"}}}",
+      "isContentBase64": false
+    }
+  }
+}

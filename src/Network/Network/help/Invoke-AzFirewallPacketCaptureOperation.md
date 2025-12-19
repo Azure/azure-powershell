@@ -72,7 +72,6 @@ Invoke-AzFirewallPacketCaptureOperation -AzureFirewall $azureFirewall -Parameter
 
 This example invokes a stop packet capture request on azure firewall with the parameters mentioned.
 
-
 ## PARAMETERS
 
 ### -AsJob

@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzDynatraceMonitorSSOConfig
 
 ## SYNOPSIS
-create a DynatraceSingleSignOnResource
+Create a DynatraceSingleSignOnResource
 
 ## SYNTAX
 
@@ -41,7 +41,7 @@ New-AzDynatraceMonitorSSOConfig -MonitorName <String> -ResourceGroupName <String
 ```
 
 ## DESCRIPTION
-create a DynatraceSingleSignOnResource
+Create a DynatraceSingleSignOnResource
 
 ## EXAMPLES
 
@@ -244,6 +244,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String

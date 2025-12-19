@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.Storage.private.dll'
   FormatsToProcess = './Az.Storage.format.ps1xml'
-  FunctionsToExport = 'Get-AzStorageAccountMigration', 'Get-AzStorageFileServiceUsage', 'Get-AzStorageSku', 'Get-AzStorageTaskAssignment', 'Get-AzStorageTaskAssignmentInstancesReport', 'New-AzStorageTaskAssignment', 'Remove-AzStorageTaskAssignment', 'Start-AzStorageAccountMigration', 'Update-AzStorageTaskAssignment'
+  FunctionsToExport = 'Get-AzStorageAccountMigration', 'Get-AzStorageFileServiceUsage', 'Get-AzStorageNetworkSecurityPerimeterConfiguration', 'Get-AzStorageSku', 'Get-AzStorageTaskAssignment', 'Get-AzStorageTaskAssignmentInstancesReport', 'Invoke-AzStorageReconcileNetworkSecurityPerimeterConfiguration', 'New-AzStorageTaskAssignment', 'Remove-AzStorageTaskAssignment', 'Start-AzStorageAccountMigration', 'Update-AzStorageTaskAssignment'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'Storage'

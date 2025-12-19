@@ -2,7 +2,7 @@
 
 function Start-AzDataProtectionBackupInstanceRestore
 {   
-	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IOperationJobExtendedInfo')]
+	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IOperationJobExtendedInfo')]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Triggers restore for a BackupInstance')]
 
@@ -25,7 +25,7 @@ function Start-AzDataProtectionBackupInstanceRestore
         ${VaultName},
 
         [Parameter(ParameterSetName="Trigger", Mandatory, HelpMessage='Restore request object to be initialized using Initialize-AzDataProtectionRestoreRequest cmdlet', ValueFromPipeline=$true)]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IAzureBackupRestoreRequest]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IAzureBackupRestoreRequest]
         ${Parameter},
 
         [Parameter(Mandatory=$false, HelpMessage='Resource guard operation request in the format similar to <resourceguard-ARMID>/dppTriggerRestoreRequests/default. Use this parameter when the operation is MUA protected.')]
@@ -45,7 +45,7 @@ function Start-AzDataProtectionBackupInstanceRestore
         ${ObjectType},
 
         [Parameter(ParameterSetName="TriggerExpanded", Mandatory, HelpMessage='Gets or sets the restore target information')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IRestoreTargetInfoBase]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IRestoreTargetInfoBase]
         ${RestoreTargetInfo},
 
         [Parameter(ParameterSetName="TriggerExpanded", Mandatory, HelpMessage='Type of the source data store')]
@@ -176,7 +176,7 @@ function Start-AzDataProtectionBackupInstanceRestore
             
             $backupInstanceId = "/subscriptions/" + $SubscriptionId + "/resourceGroups/" + $ResourceGroupName + "/providers/Microsoft.DataProtection/backupVaults/" + $VaultName + "/backupInstances/" + $BackupInstanceName
 
-            $crossRegionRestoreDetail = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.CrossRegionRestoreDetails]::new()
+            $crossRegionRestoreDetail = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.CrossRegionRestoreDetails]::new()
             $crossRegionRestoreDetail.SourceBackupInstanceId = $backupInstanceId
             $crossRegionRestoreDetail.SourceRegion = $vault.Location
             
@@ -187,7 +187,7 @@ function Start-AzDataProtectionBackupInstanceRestore
                 $PSBoundParameters.Add("RestoreRequestObject", $Parameter)
             }
             else{
-                $restoreRequestObject = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.AzureBackupRestoreRequest]::new()
+                $restoreRequestObject = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.AzureBackupRestoreRequest]::new()
                 if($hasObjectType) { $restoreRequestObject.ObjectType = $ObjectType }
                 if($hasRestoreTargetInfo) { $restoreRequestObject.RestoreTargetInfo = $RestoreTargetInfo }
                 if($hasSourceDataStoreType) { $restoreRequestObject.SourceDataStoreType = $SourceDataStoreType }

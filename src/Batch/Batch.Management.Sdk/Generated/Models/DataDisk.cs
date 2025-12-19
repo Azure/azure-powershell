@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// <param name="storageAccountType">If omitted, the default is &#34;Standard_LRS&#34;. Values are:
         /// Standard_LRS - The data disk should use standard locally redundant storage.
         /// Premium_LRS - The data disk should use premium locally redundant storage.
-        /// Possible values include: &#39;Standard_LRS&#39;, &#39;Premium_LRS&#39;</param>
+        /// Possible values include: &#39;Standard_LRS&#39;, &#39;Premium_LRS&#39;, &#39;StandardSSD_LRS&#39;</param>
         public DataDisk(int lun, int diskSizeGb, CachingType? caching = default(CachingType?), StorageAccountType? storageAccountType = default(StorageAccountType?))
 
         {
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// <summary>
         /// Gets or sets if omitted, the default is &#34;Standard_LRS&#34;. Values are:
         /// Standard_LRS - The data disk should use standard locally redundant storage.
-        /// Premium_LRS - The data disk should use premium locally redundant storage. Possible values include: &#39;Standard_LRS&#39;, &#39;Premium_LRS&#39;
+        /// Premium_LRS - The data disk should use premium locally redundant storage. Possible values include: &#39;Standard_LRS&#39;, &#39;Premium_LRS&#39;, &#39;StandardSSD_LRS&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "storageAccountType")]
         public StorageAccountType? StorageAccountType {get; set; }

@@ -40,21 +40,13 @@ module-version: 0.1.0
 subject-prefix: $(service-name)
 namespace: Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace
 
-resourcegroup-append: true
-identity-correction-for-post: true
-nested-object-to-string: true
-
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
-
 directive:
   - where:
       subject: ^AzureMonitorWorkspace(.*)
     set:
       subject: $1
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^Update$|^UpdateViaIdentity$
+      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
   - where:
       subject: MonitorOperation

@@ -20,6 +20,7 @@
     <ProjectReference Include="..\RecoveryServices.Backup.Models\RecoveryServices.Backup.Models.csproj" />
     <ProjectReference Include="..\RecoveryServices.Backup.Providers\RecoveryServices.Backup.Providers.csproj" />
     <ProjectReference Include="..\RecoveryServices.Backup.ServiceClientAdapter\RecoveryServices.Backup.ServiceClientAdapter.csproj" />
+	<ProjectReference Include="..\RecoveryServices.Helper\RecoveryServices.Helper.csproj" />
   </ItemGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />

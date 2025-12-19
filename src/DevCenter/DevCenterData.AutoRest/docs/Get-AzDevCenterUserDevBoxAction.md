@@ -116,7 +116,7 @@ Accept wildcard characters: False
 ```
 
 ### -DevBoxName
-The name of a Dev Box.
+Display name for the Dev Box.
 
 ```yaml
 Type: System.String
@@ -231,7 +231,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IDevBoxAction
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IDevBoxAction
 
 ## NOTES
 

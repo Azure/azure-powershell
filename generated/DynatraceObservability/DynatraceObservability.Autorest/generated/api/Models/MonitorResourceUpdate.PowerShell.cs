@@ -109,9 +109,53 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("Property"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceUpdateInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorUpdateProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceUpdateInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.MonitorUpdatePropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Identity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceUpdateInternal)this).Identity = (Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IManagedServiceIdentity) content.GetValueForProperty("Identity",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceUpdateInternal)this).Identity, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ManagedServiceIdentityTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Tag"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceUpdateInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceUpdateTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceUpdateInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.MonitorResourceUpdateTagsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("PlanData"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceUpdateInternal)this).PlanData = (Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IPlanData) content.GetValueForProperty("PlanData",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceUpdateInternal)this).PlanData, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.PlanDataTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("PlanDataUsageType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceUpdateInternal)this).PlanDataUsageType = (string) content.GetValueForProperty("PlanDataUsageType",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceUpdateInternal)this).PlanDataUsageType, global::System.Convert.ToString);
+            }
+            if (content.Contains("PlanDataBillingCycle"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceUpdateInternal)this).PlanDataBillingCycle = (string) content.GetValueForProperty("PlanDataBillingCycle",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceUpdateInternal)this).PlanDataBillingCycle, global::System.Convert.ToString);
+            }
+            if (content.Contains("PlanDataPlanDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceUpdateInternal)this).PlanDataPlanDetail = (string) content.GetValueForProperty("PlanDataPlanDetail",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceUpdateInternal)this).PlanDataPlanDetail, global::System.Convert.ToString);
+            }
+            if (content.Contains("PlanDataEffectiveDate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceUpdateInternal)this).PlanDataEffectiveDate = (global::System.DateTime?) content.GetValueForProperty("PlanDataEffectiveDate",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceUpdateInternal)this).PlanDataEffectiveDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("IdentityPrincipalId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceUpdateInternal)this).IdentityPrincipalId = (string) content.GetValueForProperty("IdentityPrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceUpdateInternal)this).IdentityPrincipalId, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityTenantId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceUpdateInternal)this).IdentityTenantId = (string) content.GetValueForProperty("IdentityTenantId",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceUpdateInternal)this).IdentityTenantId, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceUpdateInternal)this).IdentityType = (string) content.GetValueForProperty("IdentityType",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceUpdateInternal)this).IdentityType, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityUserAssignedIdentity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceUpdateInternal)this).IdentityUserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IUserAssignedIdentities) content.GetValueForProperty("IdentityUserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceUpdateInternal)this).IdentityUserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.UserAssignedIdentitiesTypeConverter.ConvertFrom);
             }
             AfterDeserializeDictionary(content);
         }
@@ -130,9 +174,53 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("Property"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceUpdateInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorUpdateProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceUpdateInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.MonitorUpdatePropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Identity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceUpdateInternal)this).Identity = (Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IManagedServiceIdentity) content.GetValueForProperty("Identity",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceUpdateInternal)this).Identity, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ManagedServiceIdentityTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Tag"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceUpdateInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceUpdateTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceUpdateInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.MonitorResourceUpdateTagsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("PlanData"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceUpdateInternal)this).PlanData = (Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IPlanData) content.GetValueForProperty("PlanData",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceUpdateInternal)this).PlanData, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.PlanDataTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("PlanDataUsageType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceUpdateInternal)this).PlanDataUsageType = (string) content.GetValueForProperty("PlanDataUsageType",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceUpdateInternal)this).PlanDataUsageType, global::System.Convert.ToString);
+            }
+            if (content.Contains("PlanDataBillingCycle"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceUpdateInternal)this).PlanDataBillingCycle = (string) content.GetValueForProperty("PlanDataBillingCycle",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceUpdateInternal)this).PlanDataBillingCycle, global::System.Convert.ToString);
+            }
+            if (content.Contains("PlanDataPlanDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceUpdateInternal)this).PlanDataPlanDetail = (string) content.GetValueForProperty("PlanDataPlanDetail",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceUpdateInternal)this).PlanDataPlanDetail, global::System.Convert.ToString);
+            }
+            if (content.Contains("PlanDataEffectiveDate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceUpdateInternal)this).PlanDataEffectiveDate = (global::System.DateTime?) content.GetValueForProperty("PlanDataEffectiveDate",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceUpdateInternal)this).PlanDataEffectiveDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("IdentityPrincipalId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceUpdateInternal)this).IdentityPrincipalId = (string) content.GetValueForProperty("IdentityPrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceUpdateInternal)this).IdentityPrincipalId, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityTenantId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceUpdateInternal)this).IdentityTenantId = (string) content.GetValueForProperty("IdentityTenantId",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceUpdateInternal)this).IdentityTenantId, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceUpdateInternal)this).IdentityType = (string) content.GetValueForProperty("IdentityType",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceUpdateInternal)this).IdentityType, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityUserAssignedIdentity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceUpdateInternal)this).IdentityUserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IUserAssignedIdentities) content.GetValueForProperty("IdentityUserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceUpdateInternal)this).IdentityUserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.UserAssignedIdentitiesTypeConverter.ConvertFrom);
             }
             AfterDeserializePSObject(content);
         }

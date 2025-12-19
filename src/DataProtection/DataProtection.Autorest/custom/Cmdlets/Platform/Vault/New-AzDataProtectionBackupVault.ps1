@@ -30,7 +30,7 @@
         ${Location},
 
         [Parameter(Mandatory, HelpMessage='Storage Settings of the vault. Use New-AzDataProtectionBackupVaultStorageSetting Cmdlet to Create.')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IStorageSetting[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IStorageSetting[]]
         ${StorageSetting},
 
         [Parameter(Mandatory=$false, HelpMessage='Parameter to Enable or Disable built-in azure monitor alerts for job failures. Security alerts cannot be disabled.')]
@@ -160,13 +160,13 @@
             return
         }
 
-        $encryptionSettings = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.EncryptionSettings]::new()
+        $encryptionSettings = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.EncryptionSettings]::new()
         $encryptionSettings.State = $CmkEncryptionState
         $encryptionSettings.CmkInfrastructureEncryption = $CmkInfrastructureEncryption
-        $encryptionSettings.CmkIdentity = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.CmkKekIdentity]::new()
+        $encryptionSettings.CmkIdentity = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.CmkKekIdentity]::new()
         $encryptionSettings.CmkIdentity.IdentityType = $CmkIdentityType
         $encryptionSettings.CmkIdentity.IdentityId = $CmkUserAssignedIdentityId
-        $encryptionSettings.CmkKeyVaultProperty = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.CmkKeyVaultProperties]::new()
+        $encryptionSettings.CmkKeyVaultProperty = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.CmkKeyVaultProperties]::new()
         $encryptionSettings.CmkKeyVaultProperty.KeyUri = $CmkEncryptionKeyUri
 
         $PSBoundParameters.Add("EncryptionSetting", $encryptionSettings)

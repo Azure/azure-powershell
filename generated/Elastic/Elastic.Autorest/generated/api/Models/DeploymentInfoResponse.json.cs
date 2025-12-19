@@ -74,6 +74,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
             {_diskCapacity = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonString>("diskCapacity"), out var __jsonDiskCapacity) ? (string)__jsonDiskCapacity : (string)_diskCapacity;}
             {_elasticsearchEndPoint = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonString>("elasticsearchEndPoint"), out var __jsonElasticsearchEndPoint) ? (string)__jsonElasticsearchEndPoint : (string)_elasticsearchEndPoint;}
             {_deploymentUrl = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonString>("deploymentUrl"), out var __jsonDeploymentUrl) ? (string)__jsonDeploymentUrl : (string)_deploymentUrl;}
+            {_projectType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonString>("projectType"), out var __jsonProjectType) ? (string)__jsonProjectType : (string)_projectType;}
+            {_configurationType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonString>("configurationType"), out var __jsonConfigurationType) ? (string)__jsonConfigurationType : (string)_configurationType;}
             AfterFromJson(json);
         }
 
@@ -135,6 +137,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeRead))
             {
                 AddIf( null != (((object)this._deploymentUrl)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonString(this._deploymentUrl.ToString()) : null, "deploymentUrl" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeRead))
+            {
+                AddIf( null != (((object)this._projectType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonString(this._projectType.ToString()) : null, "projectType" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SerializationMode.IncludeRead))
+            {
+                AddIf( null != (((object)this._configurationType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonString(this._configurationType.ToString()) : null, "configurationType" ,container.Add );
             }
             AfterToJson(ref container);
             return container;

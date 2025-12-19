@@ -31,7 +31,9 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// Possible values include: &#39;Microsoft.NetApp/netAppAccounts&#39;,
         /// &#39;Microsoft.NetApp/netAppAccounts/capacityPools&#39;,
         /// &#39;Microsoft.NetApp/netAppAccounts/capacityPools/volumes&#39;,
-        /// &#39;Microsoft.NetApp/netAppAccounts/capacityPools/volumes/snapshots&#39;</param>
+        /// &#39;Microsoft.NetApp/netAppAccounts/capacityPools/volumes/snapshots&#39;,
+        /// &#39;Microsoft.NetApp/netAppAccounts/backupVaults/backups&#39;,
+        /// &#39;Microsoft.NetApp/netAppAccounts/capacityPools/volumes/backups&#39;</param>
 
         /// <param name="resourceGroup">Resource group name.
         /// </param>
@@ -57,7 +59,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
         public string Name {get; set; }
 
         /// <summary>
-        /// Gets or sets resource type used for verification. Possible values include: &#39;Microsoft.NetApp/netAppAccounts&#39;, &#39;Microsoft.NetApp/netAppAccounts/capacityPools&#39;, &#39;Microsoft.NetApp/netAppAccounts/capacityPools/volumes&#39;, &#39;Microsoft.NetApp/netAppAccounts/capacityPools/volumes/snapshots&#39;
+        /// Gets or sets resource type used for verification. Possible values include: &#39;Microsoft.NetApp/netAppAccounts&#39;, &#39;Microsoft.NetApp/netAppAccounts/capacityPools&#39;, &#39;Microsoft.NetApp/netAppAccounts/capacityPools/volumes&#39;, &#39;Microsoft.NetApp/netAppAccounts/capacityPools/volumes/snapshots&#39;, &#39;Microsoft.NetApp/netAppAccounts/backupVaults/backups&#39;, &#39;Microsoft.NetApp/netAppAccounts/capacityPools/volumes/backups&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
         public string Type {get; set; }

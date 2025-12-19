@@ -71,6 +71,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Functions.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
 
+        /// <summary>Disable IP masking.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Disable IP masking.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Functions.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Disable IP masking.",
+        SerializedName = @"DisableIpMasking",
+        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
+        public global::System.Management.Automation.SwitchParameter DisableIPMasking { get => _insightPropertiesBody.DisableIPMasking ?? default(global::System.Management.Automation.SwitchParameter); set => _insightPropertiesBody.DisableIPMasking = value; }
+
         /// <summary>
         /// Used by the Application Insights system to determine what kind of flow this component was created by. This is to be set
         /// to 'Bluefield' when creating/updating a component via the REST API.
@@ -110,6 +121,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         [global::System.Management.Automation.ValidateNotNull]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Functions.ParameterCategory.Runtime)]
         public Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[] HttpPipelinePrepend { get; set; }
+
+        /// <summary>Purge data immediately after 30 days.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Purge data immediately after 30 days.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Functions.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Purge data immediately after 30 days.",
+        SerializedName = @"ImmediatePurgeDataOn30Days",
+        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
+        public global::System.Management.Automation.SwitchParameter ImmediatePurgeDataOn30Day { get => _insightPropertiesBody.ImmediatePurgeDataOn30Day ?? default(global::System.Management.Automation.SwitchParameter); set => _insightPropertiesBody.ImmediatePurgeDataOn30Day = value; }
+
+        /// <summary>Indicates the flow of the ingestion.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Indicates the flow of the ingestion.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Functions.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Indicates the flow of the ingestion.",
+        SerializedName = @"IngestionMode",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.IngestionMode) })]
+        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.IngestionMode))]
+        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.IngestionMode IngestionMode { get => _insightPropertiesBody.IngestionMode ?? ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.IngestionMode)""); set => _insightPropertiesBody.IngestionMode = value; }
 
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
@@ -210,6 +244,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Functions.ParameterCategory.Path)]
         public string ResourceName { get => this._resourceName; set => this._resourceName = value; }
+
+        /// <summary>Retention period in days.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Retention period in days.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Functions.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Retention period in days.",
+        SerializedName = @"RetentionInDays",
+        PossibleTypes = new [] { typeof(int) })]
+        public int RetentionInDay { get => _insightPropertiesBody.RetentionInDay ?? default(int); set => _insightPropertiesBody.RetentionInDay = value; }
 
         /// <summary>
         /// Percentage of the data produced by the application being monitored that is being sampled for Application Insights telemetry.

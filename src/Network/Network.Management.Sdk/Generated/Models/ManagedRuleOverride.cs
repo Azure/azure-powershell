@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// &#39;JSChallenge&#39;</param>
 
         /// <param name="sensitivity">Describes the override sensitivity to be applied when rule matches.
-        /// Possible values include: &#39;None&#39;, &#39;Low&#39;, &#39;Medium&#39;, &#39;High&#39;</param>
+        /// Possible values include: &#39;Low&#39;, &#39;Medium&#39;, &#39;High&#39;</param>
         public ManagedRuleOverride(string ruleId, string state = default(string), string action = default(string), string sensitivity = default(string))
 
         {
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <summary>
         /// Gets or sets describes the override sensitivity to be applied when rule
-        /// matches. Possible values include: &#39;None&#39;, &#39;Low&#39;, &#39;Medium&#39;, &#39;High&#39;
+        /// matches. Possible values include: &#39;Low&#39;, &#39;Medium&#39;, &#39;High&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "sensitivity")]
         public string Sensitivity {get; set; }

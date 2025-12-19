@@ -26,8 +26,8 @@ namespace Microsoft.Azure.Management.NetApp.Models
 
         /// <param name="provisioningState">Gets the status of the VolumeQuotaRule at the time the operation was
         /// called.
-        /// Possible values include: &#39;Accepted&#39;, &#39;Creating&#39;, &#39;Patching&#39;, &#39;Deleting&#39;,
-        /// &#39;Moving&#39;, &#39;Failed&#39;, &#39;Succeeded&#39;</param>
+        /// Possible values include: &#39;Accepted&#39;, &#39;Creating&#39;, &#39;Patching&#39;, &#39;Updating&#39;,
+        /// &#39;Deleting&#39;, &#39;Moving&#39;, &#39;Failed&#39;, &#39;Succeeded&#39;</param>
 
         /// <param name="quotaSizeInKiBs">Size of quota
         /// </param>
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// be found by running ‘id’ or ‘getent’ command for the user or group and SID
         /// can be found by running &lt;wmic useraccount where name=&#39;user-name&#39; get sid&gt;
         /// </param>
-        public VolumeQuotaRulesProperties(ProvisioningState? provisioningState = default(ProvisioningState?), long? quotaSizeInKiBs = default(long?), string quotaType = default(string), string quotaTarget = default(string))
+        public VolumeQuotaRulesProperties(string provisioningState = default(string), long? quotaSizeInKiBs = default(long?), string quotaType = default(string), string quotaTarget = default(string))
 
         {
             this.ProvisioningState = provisioningState;
@@ -58,10 +58,10 @@ namespace Microsoft.Azure.Management.NetApp.Models
 
         /// <summary>
         /// Gets gets the status of the VolumeQuotaRule at the time the operation was
-        /// called. Possible values include: &#39;Accepted&#39;, &#39;Creating&#39;, &#39;Patching&#39;, &#39;Deleting&#39;, &#39;Moving&#39;, &#39;Failed&#39;, &#39;Succeeded&#39;
+        /// called. Possible values include: &#39;Accepted&#39;, &#39;Creating&#39;, &#39;Patching&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Moving&#39;, &#39;Failed&#39;, &#39;Succeeded&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "provisioningState")]
-        public ProvisioningState? ProvisioningState {get; private set; }
+        public string ProvisioningState {get; private set; }
 
         /// <summary>
         /// Gets or sets size of quota

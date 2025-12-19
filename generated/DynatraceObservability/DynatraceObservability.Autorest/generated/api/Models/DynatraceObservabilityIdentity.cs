@@ -19,6 +19,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Origin(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.PropertyOrigin.Owned)]
         public string ConfigurationName { get => this._configurationName; set => this._configurationName = value; }
 
+        /// <summary>Backing field for <see cref="DynatraceEnvironmentId" /> property.</summary>
+        private string _dynatraceEnvironmentId;
+
+        /// <summary>Dynatrace Environment Id</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Origin(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.PropertyOrigin.Owned)]
+        public string DynatraceEnvironmentId { get => this._dynatraceEnvironmentId; set => this._dynatraceEnvironmentId = value; }
+
         /// <summary>Backing field for <see cref="Id" /> property.</summary>
         private string _id;
 
@@ -50,7 +57,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
 
-        /// <summary>The ID of the target subscription.</summary>
+        /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Origin(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.PropertyOrigin.Owned)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
@@ -74,6 +81,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models
         SerializedName = @"configurationName",
         PossibleTypes = new [] { typeof(string) })]
         string ConfigurationName { get; set; }
+        /// <summary>Dynatrace Environment Id</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Dynatrace Environment Id",
+        SerializedName = @"dynatraceEnvironmentId",
+        PossibleTypes = new [] { typeof(string) })]
+        string DynatraceEnvironmentId { get; set; }
         /// <summary>Resource identity path</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Info(
         Required = false,
@@ -118,14 +136,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models
         SerializedName = @"ruleSetName",
         PossibleTypes = new [] { typeof(string) })]
         string RuleSetName { get; set; }
-        /// <summary>The ID of the target subscription.</summary>
+        /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The ID of the target subscription.",
+        Description = @"The ID of the target subscription. The value must be an UUID.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
         string SubscriptionId { get; set; }
@@ -136,6 +154,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models
     {
         /// <summary>Single Sign On Configuration Name</summary>
         string ConfigurationName { get; set; }
+        /// <summary>Dynatrace Environment Id</summary>
+        string DynatraceEnvironmentId { get; set; }
         /// <summary>Resource identity path</summary>
         string Id { get; set; }
         /// <summary>Monitor resource name</summary>
@@ -144,7 +164,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models
         string ResourceGroupName { get; set; }
         /// <summary>Monitor resource name</summary>
         string RuleSetName { get; set; }
-        /// <summary>The ID of the target subscription.</summary>
+        /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
         string SubscriptionId { get; set; }
 
     }

@@ -6,20 +6,22 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.Extensions;
+    using Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PowerShell;
+    using Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Updates a container registry with the specified parameters.</summary>
+    /// <summary>update a container registry with the specified parameters.</summary>
     /// <remarks>
-    /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}"
+    /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}"
+    /// [OpenAPI] Create=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzContainerRegistry_UpdateExpanded", SupportsShouldProcess = true)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IRegistry", "15.0.0", "9.0.0", "2025/11/03", DeprecatedOutputProperties=new string[] {"NetworkRuleSetIPRule","PrivateEndpointConnection","DataEndpointHostName","IdentityType","IdentityUserAssignedIdentity"}, NewOutputProperties=new string[] {"NetworkRuleSetIPRule","PrivateEndpointConnection","DataEndpointHostName","IdentityType","IdentityUserAssignedIdentity"}, ChangeDescription="(1) The types of the properties 'NetworkRuleSetIPRule', 'PrivateEndpointConnection' and 'DataEndpointHostName' will be changed from single object to 'List'. (2) IdentityType will be removed. EnableSystemAssignedIdentity will be used to enable/disable system assigned identity and UserAssignedIdentity will be used to specify user assigned identities.")]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IRegistry))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Description(@"Updates a container registry with the specified parameters.")]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IRegistry))]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Description(@"update a container registry with the specified parameters.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}", ApiVersion = "2023-01-01-preview")]
     public partial class UpdateAzContainerRegistry_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
-        Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.IEventListener
+        Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.IEventListener,
+        Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.IContext
     {
         /// <summary>A unique id generatd for the this cmdlet when it is instantiated.</summary>
         private string __correlationId = System.Guid.NewGuid().ToString();
@@ -35,8 +37,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Cmdlets
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
-        /// <summary>The parameters for updating a container registry.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IRegistryUpdateParameters _registryUpdateParametersBody = new Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.RegistryUpdateParameters();
+        /// <summary>A dictionary to carry over additional data for pipeline.</summary>
+        private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
+
+        /// <summary>An object that represents a container registry.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IRegistry _registryBody = new Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Registry();
 
         /// <summary>Enables registry-wide pull from unauthenticated clients.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Enables registry-wide pull from unauthenticated clients.")]
@@ -47,7 +52,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Cmdlets
         Description = @"Enables registry-wide pull from unauthenticated clients.",
         SerializedName = @"anonymousPullEnabled",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
-        public global::System.Management.Automation.SwitchParameter AnonymousPullEnabled { get => _registryUpdateParametersBody.AnonymousPullEnabled ?? default(global::System.Management.Automation.SwitchParameter); set => _registryUpdateParametersBody.AnonymousPullEnabled = value; }
+        public global::System.Management.Automation.SwitchParameter AnonymousPullEnabled { get => _registryBody.AnonymousPullEnabled ?? default(global::System.Management.Automation.SwitchParameter); set => _registryBody.AnonymousPullEnabled = value; }
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
@@ -62,14 +67,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Cmdlets
         ReadOnly = false,
         Description = @"The value that indicates whether the policy is enabled or not.",
         SerializedName = @"status",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.AzureAdAuthenticationAsArmPolicyStatus) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.AzureAdAuthenticationAsArmPolicyStatus))]
-        public Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.AzureAdAuthenticationAsArmPolicyStatus AzureAdAuthenticationAsArmPolicyStatus { get => _registryUpdateParametersBody.AzureAdAuthenticationAsArmPolicyStatus ?? ((Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.AzureAdAuthenticationAsArmPolicyStatus)""); set => _registryUpdateParametersBody.AzureAdAuthenticationAsArmPolicyStatus = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.PSArgumentCompleterAttribute("enabled", "disabled")]
+        public string AzureAdAuthenticationAsArmPolicyStatus { get => _registryBody.AzureAdAuthenticationAsArmPolicyStatus ?? null; set => _registryBody.AzureAdAuthenticationAsArmPolicyStatus = value; }
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter Break { get; set; }
+
+        /// <summary>Accessor for cancellationTokenSource.</summary>
+        public global::System.Threading.CancellationTokenSource CancellationTokenSource { get => _cancellationTokenSource ; set { _cancellationTokenSource = value; } }
 
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.ContainerRegistry Client => Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Module.Instance.ClientAPI;
@@ -83,7 +91,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Cmdlets
         Description = @"Enable a single data endpoint per region for serving data.",
         SerializedName = @"dataEndpointEnabled",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
-        public global::System.Management.Automation.SwitchParameter DataEndpointEnabled { get => _registryUpdateParametersBody.DataEndpointEnabled ?? default(global::System.Management.Automation.SwitchParameter); set => _registryUpdateParametersBody.DataEndpointEnabled = value; }
+        public global::System.Management.Automation.SwitchParameter DataEndpointEnabled { get => _registryBody.DataEndpointEnabled ?? default(global::System.Management.Automation.SwitchParameter); set => _registryBody.DataEndpointEnabled = value; }
 
         /// <summary>
         /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
@@ -104,7 +112,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Cmdlets
         Description = @"The value that indicates whether the admin user is enabled.",
         SerializedName = @"adminUserEnabled",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
-        public global::System.Management.Automation.SwitchParameter EnableAdminUser { get => _registryUpdateParametersBody.AdminUserEnabled ?? default(global::System.Management.Automation.SwitchParameter); set => _registryUpdateParametersBody.AdminUserEnabled = value; }
+        public global::System.Management.Automation.SwitchParameter EnableAdminUser { get => _registryBody.AdminUserEnabled ?? default(global::System.Management.Automation.SwitchParameter); set => _registryBody.AdminUserEnabled = value; }
+
+        /// <summary>Determines whether to enable a system-assigned identity for the resource.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Determines whether to enable a system-assigned identity for the resource.")]
+        public System.Boolean? EnableSystemAssignedIdentity { get; set; }
 
         /// <summary>Indicates whether or not the encryption is enabled for container registry.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Indicates whether or not the encryption is enabled for container registry.")]
@@ -114,9 +126,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Cmdlets
         ReadOnly = false,
         Description = @"Indicates whether or not the encryption is enabled for container registry.",
         SerializedName = @"status",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.EncryptionStatus) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.EncryptionStatus))]
-        public Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.EncryptionStatus EncryptionStatus { get => _registryUpdateParametersBody.EncryptionStatus ?? ((Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.EncryptionStatus)""); set => _registryUpdateParametersBody.EncryptionStatus = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.PSArgumentCompleterAttribute("enabled", "disabled")]
+        public string EncryptionStatus { get => _registryBody.EncryptionStatus ?? null; set => _registryBody.EncryptionStatus = value; }
 
         /// <summary>The value that indicates whether the policy is enabled or not.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The value that indicates whether the policy is enabled or not.")]
@@ -126,9 +138,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Cmdlets
         ReadOnly = false,
         Description = @"The value that indicates whether the policy is enabled or not.",
         SerializedName = @"status",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.ExportPolicyStatus) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.ExportPolicyStatus))]
-        public Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.ExportPolicyStatus ExportPolicyStatus { get => _registryUpdateParametersBody.ExportPolicyStatus ?? ((Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.ExportPolicyStatus)""); set => _registryUpdateParametersBody.ExportPolicyStatus = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.PSArgumentCompleterAttribute("enabled", "disabled")]
+        public string ExportPolicyStatus { get => _registryBody.ExportPolicyStatus ?? null; set => _registryBody.ExportPolicyStatus = value; }
+
+        /// <summary>Accessor for extensibleParameters.</summary>
+        public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -151,7 +166,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Cmdlets
         Description = @"The principal ID of resource identity.",
         SerializedName = @"principalId",
         PossibleTypes = new [] { typeof(string) })]
-        public string IdentityPrincipalId { get => _registryUpdateParametersBody.IdentityPrincipalId ?? null; set => _registryUpdateParametersBody.IdentityPrincipalId = value; }
+        public string IdentityPrincipalId { get => _registryBody.IdentityPrincipalId ?? null; set => _registryBody.IdentityPrincipalId = value; }
 
         /// <summary>The tenant ID of resource.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The tenant ID of resource.")]
@@ -162,34 +177,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Cmdlets
         Description = @"The tenant ID of resource.",
         SerializedName = @"tenantId",
         PossibleTypes = new [] { typeof(string) })]
-        public string IdentityTenantId { get => _registryUpdateParametersBody.IdentityTenantId ?? null; set => _registryUpdateParametersBody.IdentityTenantId = value; }
-
-        /// <summary>The identity type.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The identity type.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The identity type.",
-        SerializedName = @"type",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.ResourceIdentityType) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.ResourceIdentityType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.ResourceIdentityType IdentityType { get => _registryUpdateParametersBody.IdentityType ?? ((Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.ResourceIdentityType)""); set => _registryUpdateParametersBody.IdentityType = value; }
-
-        /// <summary>
-        /// The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource
-        /// ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/ providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-        /// </summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.ExportAs(typeof(global::System.Collections.Hashtable))]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/ providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/ providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.",
-        SerializedName = @"userAssignedIdentities",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.IIdentityPropertiesUserAssignedIdentities) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.IIdentityPropertiesUserAssignedIdentities IdentityUserAssignedIdentity { get => _registryUpdateParametersBody.IdentityUserAssignedIdentity ?? null /* object */; set => _registryUpdateParametersBody.IdentityUserAssignedIdentity = value; }
+        public string IdentityTenantId { get => _registryBody.IdentityTenantId ?? null; set => _registryBody.IdentityTenantId = value; }
 
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
@@ -203,7 +191,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Cmdlets
         Description = @"The client id of the identity which will be used to access key vault.",
         SerializedName = @"identity",
         PossibleTypes = new [] { typeof(string) })]
-        public string KeyVaultPropertyIdentity { get => _registryUpdateParametersBody.KeyVaultPropertyIdentity ?? null; set => _registryUpdateParametersBody.KeyVaultPropertyIdentity = value; }
+        public string KeyVaultPropertyIdentity { get => _registryBody.KeyVaultPropertyIdentity ?? null; set => _registryBody.KeyVaultPropertyIdentity = value; }
 
         /// <summary>Key vault uri to access the encryption key.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Key vault uri to access the encryption key.")]
@@ -214,7 +202,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Cmdlets
         Description = @"Key vault uri to access the encryption key.",
         SerializedName = @"keyIdentifier",
         PossibleTypes = new [] { typeof(string) })]
-        public string KeyVaultPropertyKeyIdentifier { get => _registryUpdateParametersBody.KeyVaultPropertyKeyIdentifier ?? null; set => _registryUpdateParametersBody.KeyVaultPropertyKeyIdentifier = value; }
+        public string KeyVaultPropertyKeyIdentifier { get => _registryBody.KeyVaultPropertyKeyIdentifier ?? null; set => _registryBody.KeyVaultPropertyKeyIdentifier = value; }
 
         /// <summary>
         /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
@@ -249,9 +237,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Cmdlets
         ReadOnly = false,
         Description = @"Whether to allow trusted Azure services to access a network restricted registry.",
         SerializedName = @"networkRuleBypassOptions",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.NetworkRuleBypassOptions) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.NetworkRuleBypassOptions))]
-        public Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.NetworkRuleBypassOptions NetworkRuleBypassOption { get => _registryUpdateParametersBody.NetworkRuleBypassOption ?? ((Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.NetworkRuleBypassOptions)""); set => _registryUpdateParametersBody.NetworkRuleBypassOption = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.PSArgumentCompleterAttribute("AzureServices", "None")]
+        public string NetworkRuleBypassOption { get => _registryBody.NetworkRuleBypassOption ?? null; set => _registryBody.NetworkRuleBypassOption = value; }
 
         /// <summary>The default action of allow or deny when no other rules match.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The default action of allow or deny when no other rules match.")]
@@ -261,9 +249,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Cmdlets
         ReadOnly = false,
         Description = @"The default action of allow or deny when no other rules match.",
         SerializedName = @"defaultAction",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.DefaultAction) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.DefaultAction))]
-        public Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.DefaultAction NetworkRuleSetDefaultAction { get => _registryUpdateParametersBody.NetworkRuleSetDefaultAction ?? ((Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.DefaultAction)""); set => _registryUpdateParametersBody.NetworkRuleSetDefaultAction = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.PSArgumentCompleterAttribute("Allow", "Deny")]
+        public string NetworkRuleSetDefaultAction { get => _registryBody.NetworkRuleSetDefaultAction ?? null; set => _registryBody.NetworkRuleSetDefaultAction = value; }
 
         /// <summary>The IP ACL rules.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -274,8 +262,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Cmdlets
         ReadOnly = false,
         Description = @"The IP ACL rules.",
         SerializedName = @"ipRules",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IIPRule) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IIPRule[] NetworkRuleSetIPRule { get => _registryUpdateParametersBody.NetworkRuleSetIPRule ?? null /* arrayOf */; set => _registryUpdateParametersBody.NetworkRuleSetIPRule = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IIPRule) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IIPRule[] NetworkRuleSetIPRule { get => _registryBody.NetworkRuleSetIPRule?.ToArray() ?? null /* fixedArrayOf */; set => _registryBody.NetworkRuleSetIPRule = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IIPRule>(value) : null); }
 
         /// <summary>
         /// when specified, will make the remote call, and return an AsyncOperationResponse, letting the remote operation continue
@@ -288,7 +276,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Cmdlets
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.HttpPipeline Pipeline { get; set; }
+        public Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.HttpPipeline Pipeline { get; set; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -314,9 +302,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Cmdlets
         ReadOnly = false,
         Description = @"Whether or not public network access is allowed for the container registry.",
         SerializedName = @"publicNetworkAccess",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.PublicNetworkAccess) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.PublicNetworkAccess))]
-        public Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.PublicNetworkAccess PublicNetworkAccess { get => _registryUpdateParametersBody.PublicNetworkAccess ?? ((Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.PublicNetworkAccess)""); set => _registryUpdateParametersBody.PublicNetworkAccess = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        public string PublicNetworkAccess { get => _registryBody.PublicNetworkAccess ?? null; set => _registryBody.PublicNetworkAccess = value; }
 
         /// <summary>The value that indicates whether the policy is enabled or not.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The value that indicates whether the policy is enabled or not.")]
@@ -326,9 +314,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Cmdlets
         ReadOnly = false,
         Description = @"The value that indicates whether the policy is enabled or not.",
         SerializedName = @"status",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.PolicyStatus) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.PolicyStatus))]
-        public Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.PolicyStatus QuarantinePolicyStatus { get => _registryUpdateParametersBody.QuarantinePolicyStatus ?? ((Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.PolicyStatus)""); set => _registryUpdateParametersBody.QuarantinePolicyStatus = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.PSArgumentCompleterAttribute("enabled", "disabled")]
+        public string QuarantinePolicyStatus { get => _registryBody.QuarantinePolicyStatus ?? null; set => _registryBody.QuarantinePolicyStatus = value; }
 
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
@@ -353,7 +341,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Cmdlets
         Description = @"The number of days to retain an untagged manifest after which it gets purged.",
         SerializedName = @"days",
         PossibleTypes = new [] { typeof(int) })]
-        public int RetentionPolicyDay { get => _registryUpdateParametersBody.RetentionPolicyDay ?? default(int); set => _registryUpdateParametersBody.RetentionPolicyDay = value; }
+        public int RetentionPolicyDay { get => _registryBody.RetentionPolicyDay ?? default(int); set => _registryBody.RetentionPolicyDay = value; }
 
         /// <summary>The value that indicates whether the policy is enabled or not.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The value that indicates whether the policy is enabled or not.")]
@@ -363,9 +351,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Cmdlets
         ReadOnly = false,
         Description = @"The value that indicates whether the policy is enabled or not.",
         SerializedName = @"status",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.PolicyStatus) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.PolicyStatus))]
-        public Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.PolicyStatus RetentionPolicyStatus { get => _registryUpdateParametersBody.RetentionPolicyStatus ?? ((Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.PolicyStatus)""); set => _registryUpdateParametersBody.RetentionPolicyStatus = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.PSArgumentCompleterAttribute("enabled", "disabled")]
+        public string RetentionPolicyStatus { get => _registryBody.RetentionPolicyStatus ?? null; set => _registryBody.RetentionPolicyStatus = value; }
 
         /// <summary>The SKU name of the container registry. Required for registry creation.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The SKU name of the container registry. Required for registry creation.")]
@@ -375,9 +363,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Cmdlets
         ReadOnly = false,
         Description = @"The SKU name of the container registry. Required for registry creation.",
         SerializedName = @"name",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.SkuName) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.SkuName))]
-        public Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.SkuName Sku { get => _registryUpdateParametersBody.SkuName ?? ((Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.SkuName)""); set => _registryUpdateParametersBody.SkuName = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.PSArgumentCompleterAttribute("Classic", "Basic", "Standard", "Premium")]
+        public string Sku { get => _registryBody.SkuName ?? null; set => _registryBody.SkuName = value; }
 
         /// <summary>The number of days after which a soft-deleted item is permanently deleted.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The number of days after which a soft-deleted item is permanently deleted.")]
@@ -388,7 +376,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Cmdlets
         Description = @"The number of days after which a soft-deleted item is permanently deleted.",
         SerializedName = @"retentionDays",
         PossibleTypes = new [] { typeof(int) })]
-        public int SoftDeletePolicyRetentionDay { get => _registryUpdateParametersBody.SoftDeletePolicyRetentionDay ?? default(int); set => _registryUpdateParametersBody.SoftDeletePolicyRetentionDay = value; }
+        public int SoftDeletePolicyRetentionDay { get => _registryBody.SoftDeletePolicyRetentionDay ?? default(int); set => _registryBody.SoftDeletePolicyRetentionDay = value; }
 
         /// <summary>The value that indicates whether the policy is enabled or not.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The value that indicates whether the policy is enabled or not.")]
@@ -398,9 +386,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Cmdlets
         ReadOnly = false,
         Description = @"The value that indicates whether the policy is enabled or not.",
         SerializedName = @"status",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.PolicyStatus) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.PolicyStatus))]
-        public Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.PolicyStatus SoftDeletePolicyStatus { get => _registryUpdateParametersBody.SoftDeletePolicyStatus ?? ((Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.PolicyStatus)""); set => _registryUpdateParametersBody.SoftDeletePolicyStatus = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.PSArgumentCompleterAttribute("enabled", "disabled")]
+        public string SoftDeletePolicyStatus { get => _registryBody.SoftDeletePolicyStatus ?? null; set => _registryBody.SoftDeletePolicyStatus = value; }
 
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
@@ -416,22 +404,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Cmdlets
         [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.DefaultInfo(
         Name = @"",
         Description =@"",
-        Script = @"(Get-AzContext).Subscription.Id")]
+        Script = @"(Get-AzContext).Subscription.Id",
+        SetCondition = @"")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.ParameterCategory.Path)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
-        /// <summary>The tags for the container registry.</summary>
+        /// <summary>The tags of the resource.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.ExportAs(typeof(global::System.Collections.Hashtable))]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The tags for the container registry.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The tags of the resource.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The tags for the container registry.",
+        Description = @"The tags of the resource.",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IRegistryUpdateParametersTags) })]
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IResourceTags) })]
         [global::System.Management.Automation.Alias("Tags")]
-        public Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IRegistryUpdateParametersTags Tag { get => _registryUpdateParametersBody.Tag ?? null /* object */; set => _registryUpdateParametersBody.Tag = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IResourceTags Tag { get => _registryBody.Tag ?? null /* object */; set => _registryBody.Tag = value; }
 
         /// <summary>The value that indicates whether the policy is enabled or not.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The value that indicates whether the policy is enabled or not.")]
@@ -441,9 +430,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Cmdlets
         ReadOnly = false,
         Description = @"The value that indicates whether the policy is enabled or not.",
         SerializedName = @"status",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.PolicyStatus) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.PolicyStatus))]
-        public Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.PolicyStatus TrustPolicyStatus { get => _registryUpdateParametersBody.TrustPolicyStatus ?? ((Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.PolicyStatus)""); set => _registryUpdateParametersBody.TrustPolicyStatus = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.PSArgumentCompleterAttribute("enabled", "disabled")]
+        public string TrustPolicyStatus { get => _registryBody.TrustPolicyStatus ?? null; set => _registryBody.TrustPolicyStatus = value; }
 
         /// <summary>The type of trust policy.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The type of trust policy.")]
@@ -453,21 +442,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Cmdlets
         ReadOnly = false,
         Description = @"The type of trust policy.",
         SerializedName = @"type",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.TrustPolicyType) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.TrustPolicyType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.TrustPolicyType TrustPolicyType { get => _registryUpdateParametersBody.TrustPolicyType ?? ((Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.TrustPolicyType)""); set => _registryUpdateParametersBody.TrustPolicyType = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.PSArgumentCompleterAttribute("Notary")]
+        public string TrustPolicyType { get => _registryBody.TrustPolicyType ?? null; set => _registryBody.TrustPolicyType = value; }
+
+        /// <summary>
+        /// The array of user assigned identities associated with the resource. The elements in array will be ARM resource ids in
+        /// the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The array of user assigned identities associated with the resource. The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'")]
+        [global::System.Management.Automation.AllowEmptyCollection]
+        public string[] UserAssignedIdentity { get; set; }
+
+        /// <summary>Whether or not zone redundancy is enabled for this container registry</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Whether or not zone redundancy is enabled for this container registry")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Whether or not zone redundancy is enabled for this container registry",
+        SerializedName = @"zoneRedundancy",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        public string ZoneRedundancy { get => _registryBody.ZoneRedundancy ?? null; set => _registryBody.ZoneRedundancy = value; }
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IRegistry">Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IRegistry</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IRegistry">Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IRegistry</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IRegistry> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IRegistry> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -504,7 +513,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Cmdlets
             clone.ProxyUseDefaultCredentials = this.ProxyUseDefaultCredentials;
             clone.HttpPipelinePrepend = this.HttpPipelinePrepend;
             clone.HttpPipelineAppend = this.HttpPipelineAppend;
-            clone._registryUpdateParametersBody = this._registryUpdateParametersBody;
+            clone._registryBody = this._registryBody;
             clone.SubscriptionId = this.SubscriptionId;
             clone.ResourceGroupName = this.ResourceGroupName;
             clone.Name = this.Name;
@@ -578,11 +587,36 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Cmdlets
                         WriteError(new global::System.Management.Automation.ErrorRecord( new global::System.Exception(messageData().Message), string.Empty, global::System.Management.Automation.ErrorCategory.NotSpecified, null ) );
                         return ;
                     }
+                    case Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.Events.Progress:
+                    {
+                        var data = messageData();
+                        int progress = (int)data.Value;
+                        string activityMessage, statusDescription;
+                        global::System.Management.Automation.ProgressRecordType recordType;
+                        if (progress < 100)
+                        {
+                            activityMessage = "In progress";
+                            statusDescription = "Checking operation status";
+                            recordType = System.Management.Automation.ProgressRecordType.Processing;
+                        }
+                        else
+                        {
+                            activityMessage = "Completed";
+                            statusDescription = "Completed";
+                            recordType = System.Management.Automation.ProgressRecordType.Completed;
+                        }
+                        WriteProgress(new global::System.Management.Automation.ProgressRecord(1, activityMessage, statusDescription)
+                        {
+                            PercentComplete = progress,
+                        RecordType = recordType
+                        });
+                        return ;
+                    }
                     case Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.Events.DelayBeforePolling:
                     {
+                        var data = messageData();
                         if (true == MyInvocation?.BoundParameters?.ContainsKey("NoWait"))
                         {
-                            var data = messageData();
                             if (data.ResponseMessage is System.Net.Http.HttpResponseMessage response)
                             {
                                 var asyncOperation = response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -594,15 +628,69 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Cmdlets
                                 return;
                             }
                         }
+                        else
+                        {
+                            if (data.ResponseMessage is System.Net.Http.HttpResponseMessage response)
+                            {
+                                int delay = (int)(response.Headers.RetryAfter?.Delta?.TotalSeconds ?? 30);
+                                WriteDebug($"Delaying {delay} seconds before polling.");
+                                for (var now = 0; now < delay; ++now)
+                                {
+                                    WriteProgress(new global::System.Management.Automation.ProgressRecord(1, "In progress", "Checking operation status")
+                                    {
+                                        PercentComplete = now * 100 / delay
+                                    });
+                                    await global::System.Threading.Tasks.Task.Delay(1000, token);
+                                }
+                            }
+                        }
                         break;
                     }
                 }
-                await Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Module.Instance.Signal(id, token, messageData, (i,t,m) => ((Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.IEventListener)this).Signal(i,t,()=> Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.EventDataConverter.ConvertFrom( m() ) as Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.EventData ), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
+                await Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Module.Instance.Signal(id, token, messageData, (i, t, m) => ((Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.IEventListener)this).Signal(i, t, () => Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.EventDataConverter.ConvertFrom(m()) as Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.EventData), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
                 if (token.IsCancellationRequested)
                 {
                     return ;
                 }
                 WriteDebug($"{id}: {(messageData().Message ?? global::System.String.Empty)}");
+            }
+        }
+
+        private void PreProcessManagedIdentityParametersWithGetResult()
+        {
+            bool supportsSystemAssignedIdentity = (true == this.EnableSystemAssignedIdentity || null == this.EnableSystemAssignedIdentity && true == _registryBody?.IdentityType?.Contains("SystemAssigned"));
+            bool supportsUserAssignedIdentity = false;
+            if (this.UserAssignedIdentity?.Length > 0)
+            {
+                // calculate UserAssignedIdentity
+                _registryBody.IdentityUserAssignedIdentity.Clear();
+                foreach( var id in this.UserAssignedIdentity )
+                {
+                    _registryBody.IdentityUserAssignedIdentity.Add(id, new Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.UserIdentityProperties());
+                }
+            }
+            supportsUserAssignedIdentity = true == this.MyInvocation?.BoundParameters?.ContainsKey("UserAssignedIdentity") && this.UserAssignedIdentity?.Length > 0 ||
+                    true != this.MyInvocation?.BoundParameters?.ContainsKey("UserAssignedIdentity") && true == _registryBody.IdentityType?.Contains("UserAssigned");
+            if (!supportsUserAssignedIdentity)
+            {
+                _registryBody.IdentityUserAssignedIdentity = null;
+            }
+            // calculate IdentityType
+            if ((supportsUserAssignedIdentity && supportsSystemAssignedIdentity))
+            {
+                _registryBody.IdentityType = "SystemAssigned,UserAssigned";
+            }
+            else if ((supportsUserAssignedIdentity && !supportsSystemAssignedIdentity))
+            {
+                _registryBody.IdentityType = "UserAssigned";
+            }
+            else if ((!supportsUserAssignedIdentity && supportsSystemAssignedIdentity))
+            {
+                _registryBody.IdentityType = "SystemAssigned";
+            }
+            else
+            {
+                _registryBody.IdentityType = "None";
             }
         }
 
@@ -614,7 +702,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Cmdlets
             try
             {
                 // work
-                if (ShouldProcess($"Call remote 'RegistriesUpdate' operation"))
+                if (ShouldProcess($"Call remote 'RegistriesCreate' operation"))
                 {
                     if (true == MyInvocation?.BoundParameters?.ContainsKey("AsJob"))
                     {
@@ -665,7 +753,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Cmdlets
             using( NoSynchronizationContext )
             {
                 await ((Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
+                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName, this.ExtensibleParameters);
                 if (null != HttpPipelinePrepend)
                 {
                     Pipeline.Prepend((this.CommandRuntime as Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PowerShell.IAsyncCommandRuntimeExtensions)?.Wrap(HttpPipelinePrepend) ?? HttpPipelinePrepend);
@@ -678,12 +766,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.RegistriesUpdate(SubscriptionId, ResourceGroupName, Name, _registryUpdateParametersBody, onOk, this, Pipeline);
+                    _registryBody = await this.Client.RegistriesGetWithResult(SubscriptionId, ResourceGroupName, Name, this, Pipeline);
+                    this.PreProcessManagedIdentityParametersWithGetResult();
+                    this.Update_registryBody();
+                    await this.Client.RegistriesCreate(SubscriptionId, ResourceGroupName, Name, _registryBody, onOk, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.SerializationMode.IncludeUpdate);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,Name=Name,body=_registryUpdateParametersBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,Name=Name})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -703,11 +794,111 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Cmdlets
         }
 
         /// <summary>
-        /// Intializes a new instance of the <see cref="UpdateAzContainerRegistry_UpdateExpanded" /> cmdlet class.
+        /// Initializes a new instance of the <see cref="UpdateAzContainerRegistry_UpdateExpanded" /> cmdlet class.
         /// </summary>
         public UpdateAzContainerRegistry_UpdateExpanded()
         {
 
+        }
+
+        private void Update_registryBody()
+        {
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("Tag")))
+            {
+                this.Tag = (Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IResourceTags)(this.MyInvocation?.BoundParameters["Tag"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("Sku")))
+            {
+                this.Sku = (string)(this.MyInvocation?.BoundParameters["Sku"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("ZoneRedundancy")))
+            {
+                this.ZoneRedundancy = (string)(this.MyInvocation?.BoundParameters["ZoneRedundancy"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("IdentityPrincipalId")))
+            {
+                this.IdentityPrincipalId = (string)(this.MyInvocation?.BoundParameters["IdentityPrincipalId"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("IdentityTenantId")))
+            {
+                this.IdentityTenantId = (string)(this.MyInvocation?.BoundParameters["IdentityTenantId"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("EnableAdminUser")))
+            {
+                this.EnableAdminUser = (global::System.Management.Automation.SwitchParameter)(this.MyInvocation?.BoundParameters["EnableAdminUser"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("DataEndpointEnabled")))
+            {
+                this.DataEndpointEnabled = (global::System.Management.Automation.SwitchParameter)(this.MyInvocation?.BoundParameters["DataEndpointEnabled"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("PublicNetworkAccess")))
+            {
+                this.PublicNetworkAccess = (string)(this.MyInvocation?.BoundParameters["PublicNetworkAccess"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("NetworkRuleBypassOption")))
+            {
+                this.NetworkRuleBypassOption = (string)(this.MyInvocation?.BoundParameters["NetworkRuleBypassOption"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("AnonymousPullEnabled")))
+            {
+                this.AnonymousPullEnabled = (global::System.Management.Automation.SwitchParameter)(this.MyInvocation?.BoundParameters["AnonymousPullEnabled"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("NetworkRuleSetDefaultAction")))
+            {
+                this.NetworkRuleSetDefaultAction = (string)(this.MyInvocation?.BoundParameters["NetworkRuleSetDefaultAction"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("NetworkRuleSetIPRule")))
+            {
+                this.NetworkRuleSetIPRule = (Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IIPRule[])(this.MyInvocation?.BoundParameters["NetworkRuleSetIPRule"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("EncryptionStatus")))
+            {
+                this.EncryptionStatus = (string)(this.MyInvocation?.BoundParameters["EncryptionStatus"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("TrustPolicyType")))
+            {
+                this.TrustPolicyType = (string)(this.MyInvocation?.BoundParameters["TrustPolicyType"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("RetentionPolicyDay")))
+            {
+                this.RetentionPolicyDay = (int)(this.MyInvocation?.BoundParameters["RetentionPolicyDay"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("ExportPolicyStatus")))
+            {
+                this.ExportPolicyStatus = (string)(this.MyInvocation?.BoundParameters["ExportPolicyStatus"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("SoftDeletePolicyRetentionDay")))
+            {
+                this.SoftDeletePolicyRetentionDay = (int)(this.MyInvocation?.BoundParameters["SoftDeletePolicyRetentionDay"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("KeyVaultPropertyKeyIdentifier")))
+            {
+                this.KeyVaultPropertyKeyIdentifier = (string)(this.MyInvocation?.BoundParameters["KeyVaultPropertyKeyIdentifier"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("KeyVaultPropertyIdentity")))
+            {
+                this.KeyVaultPropertyIdentity = (string)(this.MyInvocation?.BoundParameters["KeyVaultPropertyIdentity"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("QuarantinePolicyStatus")))
+            {
+                this.QuarantinePolicyStatus = (string)(this.MyInvocation?.BoundParameters["QuarantinePolicyStatus"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("TrustPolicyStatus")))
+            {
+                this.TrustPolicyStatus = (string)(this.MyInvocation?.BoundParameters["TrustPolicyStatus"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("RetentionPolicyStatus")))
+            {
+                this.RetentionPolicyStatus = (string)(this.MyInvocation?.BoundParameters["RetentionPolicyStatus"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("AzureAdAuthenticationAsArmPolicyStatus")))
+            {
+                this.AzureAdAuthenticationAsArmPolicyStatus = (string)(this.MyInvocation?.BoundParameters["AzureAdAuthenticationAsArmPolicyStatus"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("SoftDeletePolicyStatus")))
+            {
+                this.SoftDeletePolicyStatus = (string)(this.MyInvocation?.BoundParameters["SoftDeletePolicyStatus"]);
+            }
         }
 
         /// <param name="sendToPipeline"></param>
@@ -727,12 +918,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IRegistry">Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IRegistry</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IRegistry">Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IRegistry</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IRegistry> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IRegistry> response)
         {
             using( NoSynchronizationContext )
             {
@@ -744,8 +935,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IRegistry
-                WriteObject((await response));
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IRegistry
+                var result = (await response);
+                WriteObject(result, false);
             }
         }
     }

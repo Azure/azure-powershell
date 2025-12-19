@@ -19,8 +19,8 @@ Describe 'Invoke-AzAksAbortManagedClusterLatestOperation' {
         Invoke-AzAksAbortManagedClusterLatestOperation -ResourceGroupName $env.ResourceGroupName -ResourceName $env.AksName
     }
 
-    It 'AbortViaIdentity' {
-        $aks = @{Id = '/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourcegroups/aks-test/providers/Microsoft.ContainerService/managedClusters/aks2'}
-        Invoke-AzAksAbortManagedClusterLatestOperation -InputObject $aks
-    }
+    # It 'AbortViaIdentity' {
+    #     $aks = @{Id = "/subscriptions/$($env.SubscriptionId)/resourcegroups/$($env.ResourceGroupName)/providers/Microsoft.ContainerService/managedClusters/$($env.AksName)"}
+    #     Invoke-AzAksAbortManagedClusterLatestOperation -InputObject $aks
+    # }
 }

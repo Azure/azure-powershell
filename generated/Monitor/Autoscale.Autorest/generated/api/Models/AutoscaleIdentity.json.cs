@@ -64,10 +64,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models
             {
                 return;
             }
-            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)ResourceGroupName;}
-            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)SubscriptionId;}
-            {_autoscaleSettingName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.Json.JsonString>("autoscaleSettingName"), out var __jsonAutoscaleSettingName) ? (string)__jsonAutoscaleSettingName : (string)AutoscaleSettingName;}
-            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)Id;}
+            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)_subscriptionId;}
+            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)_resourceGroupName;}
+            {_autoscaleSettingName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.Json.JsonString>("autoscaleSettingName"), out var __jsonAutoscaleSettingName) ? (string)__jsonAutoscaleSettingName : (string)_autoscaleSettingName;}
+            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
             AfterFromJson(json);
         }
 
@@ -102,8 +102,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models
             {
                 return container;
             }
-            AddIf( null != (((object)this._resourceGroupName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.Json.JsonString(this._resourceGroupName.ToString()) : null, "resourceGroupName" ,container.Add );
             AddIf( null != (((object)this._subscriptionId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.Json.JsonString(this._subscriptionId.ToString()) : null, "subscriptionId" ,container.Add );
+            AddIf( null != (((object)this._resourceGroupName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.Json.JsonString(this._resourceGroupName.ToString()) : null, "resourceGroupName" ,container.Add );
             AddIf( null != (((object)this._autoscaleSettingName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.Json.JsonString(this._autoscaleSettingName.ToString()) : null, "autoscaleSettingName" ,container.Add );
             AddIf( null != (((object)this._id)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.Json.JsonString(this._id.ToString()) : null, "id" ,container.Add );
             AfterToJson(ref container);

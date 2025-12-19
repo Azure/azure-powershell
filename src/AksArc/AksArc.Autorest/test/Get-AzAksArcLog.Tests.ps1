@@ -16,6 +16,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzAksArcLog'))
 
 Describe 'Get-AzAksArcLog' {
     It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        # TODO: Skip for now because this command requires running inside an HCI environment. Currently, we can't build 
+        # autorest container inside a HCI host node since virtualization is disabled. This requires manual configuration
+        # of autorest dependencies.
     }
 }

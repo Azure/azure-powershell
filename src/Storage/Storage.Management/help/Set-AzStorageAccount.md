@@ -27,8 +27,8 @@ Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-S
  [-AllowCrossTenantReplication <Boolean>] [-DefaultSharePermission <String>] [-PublicNetworkAccess <String>]
  [-ImmutabilityPeriod <Int32>] [-ImmutabilityPolicyState <String>] [-EnableSftp <Boolean>]
  [-EnableLocalUser <Boolean>] [-AllowedCopyScope <String>] [-Zone <String[]>] [-ZonePlacementPolicy <String>]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EnableBlobGeoPriorityReplication <Boolean>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-RoutingChoice <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### KeyvaultEncryption
@@ -46,8 +46,8 @@ Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-S
  [-AllowCrossTenantReplication <Boolean>] [-DefaultSharePermission <String>] [-PublicNetworkAccess <String>]
  [-ImmutabilityPeriod <Int32>] [-ImmutabilityPolicyState <String>] [-EnableSftp <Boolean>]
  [-EnableLocalUser <Boolean>] [-AllowedCopyScope <String>] [-Zone <String[]>] [-ZonePlacementPolicy <String>]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EnableBlobGeoPriorityReplication <Boolean>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-RoutingChoice <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AzureActiveDirectoryKerberosForFile
@@ -64,9 +64,9 @@ Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-S
  [-SasExpirationAction <String>] [-KeyExpirationPeriodInDay <Int32>] [-AllowCrossTenantReplication <Boolean>]
  [-DefaultSharePermission <String>] [-PublicNetworkAccess <String>] [-ImmutabilityPeriod <Int32>]
  [-ImmutabilityPolicyState <String>] [-EnableSftp <Boolean>] [-EnableLocalUser <Boolean>]
- [-AllowedCopyScope <String>] [-Zone <String[]>] [-ZonePlacementPolicy <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AllowedCopyScope <String>] [-Zone <String[]>] [-ZonePlacementPolicy <String>]
+ [-EnableBlobGeoPriorityReplication <Boolean>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-RoutingChoice <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ActiveDirectoryDomainServicesForFile
@@ -86,9 +86,9 @@ Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-S
  [-SasExpirationAction <String>] [-KeyExpirationPeriodInDay <Int32>] [-AllowCrossTenantReplication <Boolean>]
  [-DefaultSharePermission <String>] [-PublicNetworkAccess <String>] [-ImmutabilityPeriod <Int32>]
  [-ImmutabilityPolicyState <String>] [-EnableSftp <Boolean>] [-EnableLocalUser <Boolean>]
- [-AllowedCopyScope <String>] [-Zone <String[]>] [-ZonePlacementPolicy <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AllowedCopyScope <String>] [-Zone <String[]>] [-ZonePlacementPolicy <String>]
+ [-EnableBlobGeoPriorityReplication <Boolean>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-RoutingChoice <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -475,6 +475,19 @@ $account = Set-AzStorageAccount -ResourceGroupName "myresourcegroup" -Name "myac
 
 This command updates a Storage account by setting Zone to 1 and ZonePlacementPolicy to Any, then shows the updated account related properties.
 
+### Example 24: Enable Blob Geo Priority Replication on a Storage account
+```powershell
+$account = Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -EnableBlobGeoPriorityReplication $true
+
+$account.GeoPriorityReplicationStatus.IsBlobEnabled
+```
+
+```output
+True
+```
+
+This command enables Blob Geo Priority Replication on a Storage account. 
+
 ## PARAMETERS
 
 ### -AccessTier
@@ -770,7 +783,7 @@ Accept wildcard characters: False
 ```
 
 ### -EnableAzureActiveDirectoryDomainServicesForFile
-Enable Azure Files Active Directory Domain Service Authentication for the storage account.
+Enable Azure Files Azure Active Directory Domain Service Authentication for the storage account.
 
 ```yaml
 Type: System.Boolean
@@ -790,6 +803,23 @@ Enable Azure Files Active Directory Domain Service Kerberos Authentication for t
 ```yaml
 Type: System.Boolean
 Parameter Sets: AzureActiveDirectoryKerberosForFile
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableBlobGeoPriorityReplication
+Indicates whether Blob Geo Priority Replication is enabled for the storage account. 
+This feature provides enhanced geo-replication with service level agreement for priority replication to improve recovery time objectives (RTO). 
+Only available for geo-redundant storage account types (GRS, GZRS, RAGRS, RAGZRS).
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
 Aliases:
 
 Required: False

@@ -18,6 +18,12 @@ Get-AzWcfRelay -Namespace <String> -ResourceGroupName <String> [-SubscriptionId 
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentityNamespace
+```
+Get-AzWcfRelay -Name <String> -NamespaceInputObject <IRelayIdentity> [-DefaultProfile <PSObject>] [-PassThru]
+ [<CommonParameters>]
+```
+
 ### Get
 ```
 Get-AzWcfRelay -Name <String> -Namespace <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
@@ -113,7 +119,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayIdentity
@@ -132,7 +137,7 @@ The relay name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: GetViaIdentityNamespace, Get
 Aliases:
 
 Required: True
@@ -157,12 +162,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -NamespaceInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayIdentity
+Parameter Sets: GetViaIdentityNamespace
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -PassThru
 Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: Get, GetViaIdentity
+Parameter Sets: GetViaIdentityNamespace, Get, GetViaIdentity
 Aliases:
 
 Required: False
@@ -212,7 +232,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IWcfRelay
+### Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IWcfRelay
 
 ## NOTES
 

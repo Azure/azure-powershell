@@ -7,7 +7,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Extensions;
 
-    /// <summary>Identities associated with the cluster.</summary>
+    /// <summary>
+    /// The user identity associated with the managed cluster. This identity will be used by the kubelet. Only one user assigned
+    /// identity is allowed. The only accepted key is "kubeletidentity", with value of "resourceId": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}".
+    /// </summary>
     public partial class ManagedClusterPropertiesIdentityProfile :
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesIdentityProfile,
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesIdentityProfileInternal
@@ -19,14 +22,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
 
         }
     }
-    /// Identities associated with the cluster.
+    /// The user identity associated with the managed cluster. This identity will be used by the kubelet. Only one user assigned
+    /// identity is allowed. The only accepted key is "kubeletidentity", with value of "resourceId": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}".
     public partial interface IManagedClusterPropertiesIdentityProfile :
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IJsonSerializable,
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IAssociativeArray<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IUserAssignedIdentity>
     {
 
     }
-    /// Identities associated with the cluster.
+    /// The user identity associated with the managed cluster. This identity will be used by the kubelet. Only one user assigned
+    /// identity is allowed. The only accepted key is "kubeletidentity", with value of "resourceId": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}".
     internal partial interface IManagedClusterPropertiesIdentityProfileInternal
 
     {

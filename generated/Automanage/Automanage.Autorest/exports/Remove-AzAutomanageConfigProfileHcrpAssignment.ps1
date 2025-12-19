@@ -45,6 +45,19 @@ INPUTOBJECT <IAutomanageIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [VMName <String>]: The name of the virtual machine.
   [VersionName <String>]: The Automanage best practice version name.
+
+MACHINEINPUTOBJECT <IAutomanageIdentity>: Identity Parameter
+  [BestPracticeName <String>]: The Automanage best practice name.
+  [ClusterName <String>]: The name of the Arc machine.
+  [ConfigurationProfileAssignmentName <String>]: Name of the configuration profile assignment. Only default is supported.
+  [ConfigurationProfileName <String>]: Name of the configuration profile.
+  [Id <String>]: Resource identity path
+  [MachineName <String>]: The name of the Arc machine.
+  [ReportName <String>]: The report name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VMName <String>]: The name of the virtual machine.
+  [VersionName <String>]: The Automanage best practice version name.
 .Link
 https://learn.microsoft.com/powershell/module/az.automanage/remove-azautomanageconfigprofilehcrpassignment
 #>
@@ -76,8 +89,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityMachine', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity]
+    # Identity Parameter
+    ${MachineInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -141,6 +159,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -162,18 +189,17 @@ begin {
         $mapping = @{
             Delete = 'Az.Automanage.private\Remove-AzAutomanageConfigProfileHcrpAssignment_Delete';
             DeleteViaIdentity = 'Az.Automanage.private\Remove-AzAutomanageConfigProfileHcrpAssignment_DeleteViaIdentity';
+            DeleteViaIdentityMachine = 'Az.Automanage.private\Remove-AzAutomanageConfigProfileHcrpAssignment_DeleteViaIdentityMachine';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('Name')) {
-            $PSBoundParameters['Name'] = 'default'
-        }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
                 $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
             }
+        }
+        if (('Delete', 'DeleteViaIdentityMachine') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('Name') ) {
+            $PSBoundParameters['Name'] = 'default'
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -182,6 +208,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

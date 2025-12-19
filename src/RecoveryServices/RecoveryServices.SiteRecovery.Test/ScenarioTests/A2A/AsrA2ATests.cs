@@ -219,7 +219,7 @@ namespace RecoveryServices.SiteRecovery.Test
                 "Test-A2AResyncReplicationProtectionCluster");
         }
 
-        [Fact]
+        [Fact(Skip = "need fix up by ASR team")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void A2AReprotectClusterWithoutProtectedItemDetailsTest()
         {

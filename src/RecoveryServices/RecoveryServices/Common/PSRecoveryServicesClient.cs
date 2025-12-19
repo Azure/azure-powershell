@@ -153,6 +153,29 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         }
 
         /// <summary>
+        /// Helper method to extract location from deleted vault ID
+        /// </summary>
+        /// <param name="deletedVaultId">Deleted vault resource ID</param>
+        /// <returns>Location name</returns>
+        public static string GetLocationFromDeletedVaultId(string deletedVaultId)
+        {
+            if (string.IsNullOrEmpty(deletedVaultId))
+                return string.Empty;
+                
+            // Pattern: /subscriptions/{subscriptionId}/providers/Microsoft.RecoveryServices/locations/{location}/deletedVaults/{vaultName}
+            const string locations = "locations";
+            var startIndex = deletedVaultId.IndexOf(locations, StringComparison.OrdinalIgnoreCase) + locations.Length + 1;
+            var endIndex = deletedVaultId.IndexOf("/", startIndex, StringComparison.OrdinalIgnoreCase);
+            
+            if (startIndex > locations.Length && endIndex > startIndex)
+            {
+                return deletedVaultId.Substring(startIndex, endIndex - startIndex);
+            }
+            
+            return string.Empty;
+        }
+
+        /// <summary>
         /// Gets request headers.
         /// </summary>
         /// <returns>Custom request headers</returns>

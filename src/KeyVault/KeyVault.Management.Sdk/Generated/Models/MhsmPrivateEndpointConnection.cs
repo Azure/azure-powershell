@@ -36,8 +36,8 @@ namespace Microsoft.Azure.Management.KeyVault.Models
         /// </param>
 
         /// <param name="provisioningState">Provisioning state of the private endpoint connection.
-        /// Possible values include: 'Succeeded', 'Creating', 'Updating', 'Deleting',
-        /// 'Failed', 'Disconnected'</param>
+        /// Possible values include: &#39;Succeeded&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;,
+        /// &#39;Failed&#39;, &#39;Disconnected&#39;</param>
         public MhsmPrivateEndpointConnection(string etag = default(string), MhsmPrivateEndpoint privateEndpoint = default(MhsmPrivateEndpoint), MhsmPrivateLinkServiceConnectionState privateLinkServiceConnectionState = default(MhsmPrivateLinkServiceConnectionState), string provisioningState = default(string))
 
         {

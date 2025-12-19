@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-List all available API operations provided by Microsoft.Dashboard.
+List the operations for the provider
 .Description
-List all available API operations provided by Microsoft.Dashboard.
+List the operations for the provider
 .Example
 {{ Add code here }}
 .Example

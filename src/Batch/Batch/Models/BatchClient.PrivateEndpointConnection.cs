@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             return result;
         }
 
-        public virtual void UpdatePrivateEndpointConnection(string resourceGroup, string accountName, string name, PrivateLinkServiceConnectionStatus status, string description)
+        public virtual void UpdatePrivateEndpointConnection(string resourceGroup, string accountName, string name, PrivateLinkServiceConnectionStatus status, string description, PrivateEndpoint privateEndpoint, PrivateEndpointConnectionProvisioningState provisioningState, System.Collections.Generic.IList<string> groupIds)
         {
             if (resourceGroup == null)
             {
@@ -92,8 +92,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
 
             PrivateLinkServiceConnectionState state = new PrivateLinkServiceConnectionState(status: status, description: description);
-
-            BatchManagementClient.PrivateEndpointConnection.Update(resourceGroup, accountName, name, state, default);
+            PrivateEndpointConnection parameters = new PrivateEndpointConnection()
+            {
+                PrivateLinkServiceConnectionState = state,
+            };
+            BatchManagementClient.PrivateEndpointConnection.Update(resourceGroup, accountName, name, parameters, default);
         }
 
         internal IEnumerable<PrivateEndpointConnection> ListAllPrivateEndpointConnections(string resourceGroup, string accountName, int? maxResults = null)

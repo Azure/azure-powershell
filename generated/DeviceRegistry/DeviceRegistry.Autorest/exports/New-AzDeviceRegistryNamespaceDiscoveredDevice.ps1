@@ -22,24 +22,24 @@ Create a NamespaceDiscoveredDevice
 .Example
 $outboundAssigned = @{
     "myendpoint2" = @{
-        Address = "https://myendpoint2.westeurope-1.edge.azure.net"
+        Address = "https://myendpoint2.westeurope-1.iothub.azure.net"
         EndpointType = "Microsoft.Devices/IoTHubs"
     }
 }
 $endpointInbound = @{
     "endpoint1" = @{
         Address = "https://myendpoint1.westeurope-1.iothub.azure.net"
-        EndpointType = "Microsoft.IotHub"
+        EndpointType = "Microsoft.Devices/IotHubs"
         Version = "1.0"
     }
     "endpoint2" = @{
         Address = "https://myendpoint2.westeurope-1.iothub.azure.net"
-        EndpointType = "Microsoft.IotHub"
+        EndpointType = "Microsoft.Devices/IotHubs"
         Version = "2.0"
     }
 }
 
-New-AzDeviceRegistryNamespaceDiscoveredDevice -ResourceGroupName "my-resource-group" -NamespaceName "my-namespace" -DiscoveredDeviceName "my-discovered-device" -Location "East US" -ExtendedLocationName "/subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.ExtendedLocation/customLocations/location-2pnh4" -ExtendedLocationType "CustomLocation" -DiscoveryId "discovery-123" -Version "1.0.0" -Manufacturer "Contoso" -Model "Device-X1" -OperatingSystem "Linux" -OperatingSystemVersion "Ubuntu 20.04" -OutboundAssigned $outboundAssigned -EndpointInbound $endpointInbound
+New-AzDeviceRegistryNamespaceDiscoveredDevice -ResourceGroupName "my-resource-group" -NamespaceName "my-namespace" -DiscoveredDeviceName "my-discovered-device" -Location "East US" -ExtendedLocationName "/subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.ExtendedLocation/customLocations/location-mkzkq" -ExtendedLocationType "CustomLocation" -DiscoveryId "discovery-123" -Version "1.0.0" -Manufacturer "Contoso" -Model "Device-X1" -OperatingSystem "Linux" -OperatingSystemVersion "Ubuntu 20.04" -OutboundAssigned $outboundAssigned -EndpointInbound $endpointInbound
 .Example
 New-AzDeviceRegistryNamespaceDiscoveredDevice -ResourceGroupName "my-resource-group" -NamespaceName "my-namespace" -DiscoveredDeviceName "my-discovered-device" -JsonFilePath "C:\path\to\device-config.json"
 .Example

@@ -6,10 +6,12 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.Extensions;
+    using Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.PowerShell;
+    using Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.Cmdlets;
     using System;
 
     /// <summary>
-    /// Updates an existing streaming job. This can be used to partially update (ie. update one or two properties) a streaming
+    /// update an existing streaming job. This can be used to partially update (ie. update one or two properties) a streaming
     /// job without affecting the rest the job definition.
     /// </summary>
     /// <remarks>
@@ -17,12 +19,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Cmdlets
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzStreamAnalyticsJob_UpdateExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IStreamingJob))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Description(@"Updates an existing streaming job. This can be used to partially update (ie. update one or two properties) a streaming job without affecting the rest the job definition.")]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IStreamingJob))]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Description(@"update an existing streaming job. This can be used to partially update (ie. update one or two properties) a streaming job without affecting the rest the job definition.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}", ApiVersion = "2017-04-01-preview")]
     public partial class UpdateAzStreamAnalyticsJob_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
-        Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.IEventListener
+        Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.IEventListener,
+        Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.IContext
     {
         /// <summary>A unique id generatd for the this cmdlet when it is instantiated.</summary>
         private string __correlationId = System.Guid.NewGuid().ToString();
@@ -38,15 +41,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Cmdlets
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
+        /// <summary>A dictionary to carry over additional data for pipeline.</summary>
+        private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
+
+        /// <summary>A buffer to record first returned object in response.</summary>
+        private object _firstResponse = null;
+
+        /// <summary>
+        /// A flag to tell whether it is the first returned object in a call. Zero means no response yet. One means 1 returned object.
+        /// Two means multiple returned objects in response.
+        /// </summary>
+        private int _responseSize = 0;
+
         /// <summary>
         /// A streaming job object, containing all information associated with the named streaming job.
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IStreamingJob _streamingJobBody = new Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.StreamingJob();
+        private Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IStreamingJob _streamingJobBody = new Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.StreamingJob();
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter Break { get; set; }
+
+        /// <summary>Accessor for cancellationTokenSource.</summary>
+        public global::System.Threading.CancellationTokenSource CancellationTokenSource { get => _cancellationTokenSource ; set { _cancellationTokenSource = value; } }
 
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.StreamAnalytics Client => Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Module.Instance.ClientAPI;
@@ -70,9 +88,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Cmdlets
         ReadOnly = false,
         Description = @"Controls certain runtime behaviors of the streaming job.",
         SerializedName = @"compatibilityLevel",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Support.CompatibilityLevel) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Support.CompatibilityLevel))]
-        public Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Support.CompatibilityLevel CompatibilityLevel { get => _streamingJobBody.CompatibilityLevel ?? ((Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Support.CompatibilityLevel)""); set => _streamingJobBody.CompatibilityLevel = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.PSArgumentCompleterAttribute("1.0")]
+        public string CompatibilityLevel { get => _streamingJobBody.CompatibilityLevel ?? null; set => _streamingJobBody.CompatibilityLevel = value; }
 
         /// <summary>
         /// Valid values are JobStorageAccount and SystemAccount. If set to JobStorageAccount, this requires the user to also specify
@@ -85,9 +103,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Cmdlets
         ReadOnly = false,
         Description = @"Valid values are JobStorageAccount and SystemAccount. If set to JobStorageAccount, this requires the user to also specify jobStorageAccount property. .",
         SerializedName = @"contentStoragePolicy",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Support.ContentStoragePolicy) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Support.ContentStoragePolicy))]
-        public Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Support.ContentStoragePolicy ContentStoragePolicy { get => _streamingJobBody.ContentStoragePolicy ?? ((Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Support.ContentStoragePolicy)""); set => _streamingJobBody.ContentStoragePolicy = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.PSArgumentCompleterAttribute("SystemAccount", "JobStorageAccount")]
+        public string ContentStoragePolicy { get => _streamingJobBody.ContentStoragePolicy ?? null; set => _streamingJobBody.ContentStoragePolicy = value; }
 
         /// <summary>
         /// The data locale of the stream analytics job. Value should be the name of a supported .NET Culture from the set https://msdn.microsoft.com/en-us/library/system.globalization.culturetypes(v=vs.110).aspx.
@@ -151,9 +169,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Cmdlets
         ReadOnly = false,
         Description = @"Indicates the policy to apply to events that arrive out of order in the input event stream.",
         SerializedName = @"eventsOutOfOrderPolicy",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Support.EventsOutOfOrderPolicy) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Support.EventsOutOfOrderPolicy))]
-        public Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Support.EventsOutOfOrderPolicy EventsOutOfOrderPolicy { get => _streamingJobBody.EventsOutOfOrderPolicy ?? ((Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Support.EventsOutOfOrderPolicy)""); set => _streamingJobBody.EventsOutOfOrderPolicy = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.PSArgumentCompleterAttribute("Adjust", "Drop")]
+        public string EventsOutOfOrderPolicy { get => _streamingJobBody.EventsOutOfOrderPolicy ?? null; set => _streamingJobBody.EventsOutOfOrderPolicy = value; }
+
+        /// <summary>Accessor for extensibleParameters.</summary>
+        public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
 
         /// <summary>.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = ".")]
@@ -190,8 +211,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Cmdlets
         ReadOnly = false,
         Description = @"A list of one or more functions for the streaming job. The name property for each function is required when specifying this property in a PUT request. This property cannot be modify via a PATCH operation. You must use the PATCH API available for the individual transformation.",
         SerializedName = @"functions",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IFunction) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IFunction[] Function { get => _streamingJobBody.Function ?? null /* arrayOf */; set => _streamingJobBody.Function = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IFunction) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IFunction[] Function { get => _streamingJobBody.Function?.ToArray() ?? null /* fixedArrayOf */; set => _streamingJobBody.Function = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IFunction>(value) : null); }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -268,8 +289,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Cmdlets
         ReadOnly = false,
         Description = @"A list of one or more inputs to the streaming job. The name property for each input is required when specifying this property in a PUT request. This property cannot be modify via a PATCH operation. You must use the PATCH API available for the individual input.",
         SerializedName = @"inputs",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IInput) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IInput[] Input { get => _streamingJobBody.Input ?? null /* arrayOf */; set => _streamingJobBody.Input = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IInput) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IInput[] Input { get => _streamingJobBody.Input?.ToArray() ?? null /* fixedArrayOf */; set => _streamingJobBody.Input = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IInput>(value) : null); }
 
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
@@ -282,9 +303,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Cmdlets
         ReadOnly = false,
         Description = @"Authentication Mode.",
         SerializedName = @"authenticationMode",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Support.AuthenticationMode) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Support.AuthenticationMode))]
-        public Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Support.AuthenticationMode JobStorageAccountAuthenticationMode { get => _streamingJobBody.JobStorageAccountAuthenticationMode ?? ((Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Support.AuthenticationMode)""); set => _streamingJobBody.JobStorageAccountAuthenticationMode = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.PSArgumentCompleterAttribute("Msi", "UserToken", "ConnectionString")]
+        public string JobStorageAccountAuthenticationMode { get => _streamingJobBody.JobStorageAccountAuthenticationMode ?? null; set => _streamingJobBody.JobStorageAccountAuthenticationMode = value; }
 
         /// <summary>
         /// The account key for the Azure Storage account. Required on PUT (CreateOrReplace) requests.
@@ -320,20 +341,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Cmdlets
         ReadOnly = false,
         Description = @"Describes the type of the job. Valid modes are `Cloud` and 'Edge'.",
         SerializedName = @"jobType",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Support.JobType) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Support.JobType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Support.JobType JobType { get => _streamingJobBody.JobType ?? ((Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Support.JobType)""); set => _streamingJobBody.JobType = value; }
-
-        /// <summary>The geo-location where the resource lives</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The geo-location where the resource lives")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The geo-location where the resource lives",
-        SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
-        public string Location { get => _streamingJobBody.Location ?? null; set => _streamingJobBody.Location = value; }
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.PSArgumentCompleterAttribute("Cloud", "Edge")]
+        public string JobType { get => _streamingJobBody.JobType ?? null; set => _streamingJobBody.JobType = value; }
 
         /// <summary>
         /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
@@ -370,8 +380,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Cmdlets
         ReadOnly = false,
         Description = @"A list of one or more outputs for the streaming job. The name property for each output is required when specifying this property in a PUT request. This property cannot be modify via a PATCH operation. You must use the PATCH API available for the individual output.",
         SerializedName = @"outputs",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IOutput) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IOutput[] Output { get => _streamingJobBody.Output ?? null /* arrayOf */; set => _streamingJobBody.Output = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IOutput) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IOutput[] Output { get => _streamingJobBody.Output?.ToArray() ?? null /* fixedArrayOf */; set => _streamingJobBody.Output = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IOutput>(value) : null); }
 
         /// <summary>
         /// Indicates the policy to apply to events that arrive at the output and cannot be written to the external storage due to
@@ -384,9 +394,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Cmdlets
         ReadOnly = false,
         Description = @"Indicates the policy to apply to events that arrive at the output and cannot be written to the external storage due to being malformed (missing column values, column values of wrong type or size).",
         SerializedName = @"outputErrorPolicy",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Support.OutputErrorPolicy) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Support.OutputErrorPolicy))]
-        public Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Support.OutputErrorPolicy OutputErrorPolicy { get => _streamingJobBody.OutputErrorPolicy ?? ((Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Support.OutputErrorPolicy)""); set => _streamingJobBody.OutputErrorPolicy = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.PSArgumentCompleterAttribute("Stop", "Drop")]
+        public string OutputErrorPolicy { get => _streamingJobBody.OutputErrorPolicy ?? null; set => _streamingJobBody.OutputErrorPolicy = value; }
 
         /// <summary>
         /// This property should only be utilized when it is desired that the job be started immediately upon creation. Value may
@@ -401,9 +411,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Cmdlets
         ReadOnly = false,
         Description = @"This property should only be utilized when it is desired that the job be started immediately upon creation. Value may be JobStartTime, CustomTime, or LastOutputEventTime to indicate whether the starting point of the output event stream should start whenever the job is started, start at a custom user time stamp specified via the outputStartTime property, or start from the last event output time.",
         SerializedName = @"outputStartMode",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Support.OutputStartMode) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Support.OutputStartMode))]
-        public Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Support.OutputStartMode OutputStartMode { get => _streamingJobBody.OutputStartMode ?? ((Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Support.OutputStartMode)""); set => _streamingJobBody.OutputStartMode = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.PSArgumentCompleterAttribute("JobStartTime", "CustomTime", "LastOutputEventTime")]
+        public string OutputStartMode { get => _streamingJobBody.OutputStartMode ?? null; set => _streamingJobBody.OutputStartMode = value; }
 
         /// <summary>
         /// Value is either an ISO-8601 formatted time stamp that indicates the starting point of the output event stream, or null
@@ -423,7 +433,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Cmdlets
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.HttpPipeline Pipeline { get; set; }
+        public Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.HttpPipeline Pipeline { get; set; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -477,9 +487,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Cmdlets
         ReadOnly = false,
         Description = @"The name of the SKU. Required on PUT (CreateOrReplace) requests.",
         SerializedName = @"name",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Support.StreamingJobSkuName) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Support.StreamingJobSkuName))]
-        public Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Support.StreamingJobSkuName SkuName { get => _streamingJobBody.SkuName ?? ((Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Support.StreamingJobSkuName)""); set => _streamingJobBody.SkuName = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.PSArgumentCompleterAttribute("Standard")]
+        public string SkuName { get => _streamingJobBody.SkuName ?? null; set => _streamingJobBody.SkuName = value; }
 
         /// <summary>
         /// The account key for the Azure Storage account. Required on PUT (CreateOrReplace) requests.
@@ -532,7 +542,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Cmdlets
         [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.DefaultInfo(
         Name = @"",
         Description =@"",
-        Script = @"(Get-AzContext).Subscription.Id")]
+        Script = @"(Get-AzContext).Subscription.Id",
+        SetCondition = @"")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.ParameterCategory.Path)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
@@ -545,20 +556,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Cmdlets
         ReadOnly = false,
         Description = @"Resource tags.",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.ApiV1.ITrackedResourceTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.ApiV1.ITrackedResourceTags Tag { get => _streamingJobBody.Tag ?? null /* object */; set => _streamingJobBody.Tag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.ITrackedResourceTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.ITrackedResourceTags Tag { get => _streamingJobBody.Tag ?? null /* object */; set => _streamingJobBody.Tag = value; }
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IStreamingJob">Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IStreamingJob</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IStreamingJob">Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IStreamingJob</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IStreamingJob> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IStreamingJob> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -581,6 +592,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
+            if (1 ==_responseSize)
+            {
+                // Flush buffer
+                WriteObject(_firstResponse);
+            }
             var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
             if (telemetryInfo != null)
             {
@@ -645,8 +661,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Cmdlets
                         WriteError(new global::System.Management.Automation.ErrorRecord( new global::System.Exception(messageData().Message), string.Empty, global::System.Management.Automation.ErrorCategory.NotSpecified, null ) );
                         return ;
                     }
+                    case Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.Events.Progress:
+                    {
+                        var data = messageData();
+                        int progress = (int)data.Value;
+                        string activityMessage, statusDescription;
+                        global::System.Management.Automation.ProgressRecordType recordType;
+                        if (progress < 100)
+                        {
+                            activityMessage = "In progress";
+                            statusDescription = "Checking operation status";
+                            recordType = System.Management.Automation.ProgressRecordType.Processing;
+                        }
+                        else
+                        {
+                            activityMessage = "Completed";
+                            statusDescription = "Completed";
+                            recordType = System.Management.Automation.ProgressRecordType.Completed;
+                        }
+                        WriteProgress(new global::System.Management.Automation.ProgressRecord(1, activityMessage, statusDescription)
+                        {
+                            PercentComplete = progress,
+                        RecordType = recordType
+                        });
+                        return ;
+                    }
                 }
-                await Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Module.Instance.Signal(id, token, messageData, (i,t,m) => ((Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.IEventListener)this).Signal(i,t,()=> Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.EventDataConverter.ConvertFrom( m() ) as Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.EventData ), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
+                await Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Module.Instance.Signal(id, token, messageData, (i, t, m) => ((Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.IEventListener)this).Signal(i, t, () => Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.EventDataConverter.ConvertFrom(m()) as Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.EventData), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
                 if (token.IsCancellationRequested)
                 {
                     return ;
@@ -702,7 +743,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Cmdlets
             using( NoSynchronizationContext )
             {
                 await ((Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
+                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName, this.ExtensibleParameters);
                 if (null != HttpPipelinePrepend)
                 {
                     Pipeline.Prepend((this.CommandRuntime as Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.PowerShell.IAsyncCommandRuntimeExtensions)?.Wrap(HttpPipelinePrepend) ?? HttpPipelinePrepend);
@@ -715,12 +756,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.StreamingJobsUpdate(this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null, SubscriptionId, ResourceGroupName, Name, _streamingJobBody, onOk, this, Pipeline);
+                    await this.Client.StreamingJobsUpdate(SubscriptionId, ResourceGroupName, Name, this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null, _streamingJobBody, onOk, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.SerializationMode.IncludeUpdate);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  IfMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null,SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,Name=Name,body=_streamingJobBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,IfMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null,Name=Name})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -740,7 +781,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Cmdlets
         }
 
         /// <summary>
-        /// Intializes a new instance of the <see cref="UpdateAzStreamAnalyticsJob_UpdateExpanded" /> cmdlet class.
+        /// Initializes a new instance of the <see cref="UpdateAzStreamAnalyticsJob_UpdateExpanded" /> cmdlet class.
         /// </summary>
         public UpdateAzStreamAnalyticsJob_UpdateExpanded()
         {
@@ -764,12 +805,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IStreamingJob">Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IStreamingJob</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IStreamingJob">Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IStreamingJob</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IStreamingJob> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IStreamingJob> response)
         {
             using( NoSynchronizationContext )
             {
@@ -781,8 +822,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IStreamingJob
-                WriteObject((await response));
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IStreamingJob
+                var result = (await response);
+                if (null != result)
+                {
+                    if (0 == _responseSize)
+                    {
+                        _firstResponse = result;
+                        _responseSize = 1;
+                    }
+                    else
+                    {
+                        if (1 ==_responseSize)
+                        {
+                            // Flush buffer
+                            WriteObject(_firstResponse.AddMultipleTypeNameIntoPSObject());
+                        }
+                        WriteObject(result.AddMultipleTypeNameIntoPSObject());
+                        _responseSize = 2;
+                    }
+                }
             }
         }
     }

@@ -72,29 +72,43 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Origin(Microsoft.Azure.PowerShell.Cmdlets.Elastic.PropertyOrigin.Inlined)]
         public string MarketplaceSubscriptionId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).MarketplaceSubscriptionId; }
 
+        /// <summary>Offer Id of the Marketplace offer,</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Origin(Microsoft.Azure.PowerShell.Cmdlets.Elastic.PropertyOrigin.Inlined)]
+        public string MarketplaceSubscriptionOfferId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).MarketplaceSubscriptionOfferId; }
+
+        /// <summary>Publisher Id of the Marketplace offer.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Origin(Microsoft.Azure.PowerShell.Cmdlets.Elastic.PropertyOrigin.Inlined)]
+        public string MarketplaceSubscriptionPublisherId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).MarketplaceSubscriptionPublisherId; }
+
         /// <summary>Internal Acessors for MarketplaceSaaInfoBilledAzureSubscriptionId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticOrganizationToAzureSubscriptionMappingResponsePropertiesInternal.MarketplaceSaaInfoBilledAzureSubscriptionId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).BilledAzureSubscriptionId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).BilledAzureSubscriptionId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticOrganizationToAzureSubscriptionMappingResponsePropertiesInternal.MarketplaceSaaInfoBilledAzureSubscriptionId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).BilledAzureSubscriptionId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).BilledAzureSubscriptionId = value ?? null; }
 
         /// <summary>Internal Acessors for MarketplaceSaaInfoMarketplaceName</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticOrganizationToAzureSubscriptionMappingResponsePropertiesInternal.MarketplaceSaaInfoMarketplaceName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).MarketplaceName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).MarketplaceName = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticOrganizationToAzureSubscriptionMappingResponsePropertiesInternal.MarketplaceSaaInfoMarketplaceName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).MarketplaceName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).MarketplaceName = value ?? null; }
 
         /// <summary>Internal Acessors for MarketplaceSaaInfoMarketplaceResourceId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticOrganizationToAzureSubscriptionMappingResponsePropertiesInternal.MarketplaceSaaInfoMarketplaceResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).MarketplaceResourceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).MarketplaceResourceId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticOrganizationToAzureSubscriptionMappingResponsePropertiesInternal.MarketplaceSaaInfoMarketplaceResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).MarketplaceResourceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).MarketplaceResourceId = value ?? null; }
 
         /// <summary>Internal Acessors for MarketplaceSaaInfoMarketplaceStatus</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticOrganizationToAzureSubscriptionMappingResponsePropertiesInternal.MarketplaceSaaInfoMarketplaceStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).MarketplaceStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).MarketplaceStatus = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticOrganizationToAzureSubscriptionMappingResponsePropertiesInternal.MarketplaceSaaInfoMarketplaceStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).MarketplaceStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).MarketplaceStatus = value ?? null; }
 
         /// <summary>Internal Acessors for MarketplaceSaaInfoMarketplaceSubscription</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoMarketplaceSubscription Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticOrganizationToAzureSubscriptionMappingResponsePropertiesInternal.MarketplaceSaaInfoMarketplaceSubscription { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).MarketplaceSubscription; set => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).MarketplaceSubscription = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoMarketplaceSubscription Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticOrganizationToAzureSubscriptionMappingResponsePropertiesInternal.MarketplaceSaaInfoMarketplaceSubscription { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).MarketplaceSubscription; set => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).MarketplaceSubscription = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for MarketplaceSaaInfoSubscribed</summary>
-        bool? Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticOrganizationToAzureSubscriptionMappingResponsePropertiesInternal.MarketplaceSaaInfoSubscribed { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).Subscribed; set => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).Subscribed = value; }
+        bool? Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticOrganizationToAzureSubscriptionMappingResponsePropertiesInternal.MarketplaceSaaInfoSubscribed { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).Subscribed; set => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).Subscribed = value ?? default(bool); }
 
         /// <summary>Internal Acessors for MarketplaceSaasInfo</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfo Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticOrganizationToAzureSubscriptionMappingResponsePropertiesInternal.MarketplaceSaasInfo { get => (this._marketplaceSaasInfo = this._marketplaceSaasInfo ?? new Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.MarketplaceSaaSInfo()); set { {_marketplaceSaasInfo = value;} } }
 
         /// <summary>Internal Acessors for MarketplaceSubscriptionId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticOrganizationToAzureSubscriptionMappingResponsePropertiesInternal.MarketplaceSubscriptionId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).MarketplaceSubscriptionId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).MarketplaceSubscriptionId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticOrganizationToAzureSubscriptionMappingResponsePropertiesInternal.MarketplaceSubscriptionId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).MarketplaceSubscriptionId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).MarketplaceSubscriptionId = value ?? null; }
+
+        /// <summary>Internal Acessors for MarketplaceSubscriptionOfferId</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticOrganizationToAzureSubscriptionMappingResponsePropertiesInternal.MarketplaceSubscriptionOfferId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).MarketplaceSubscriptionOfferId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).MarketplaceSubscriptionOfferId = value ?? null; }
+
+        /// <summary>Internal Acessors for MarketplaceSubscriptionPublisherId</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticOrganizationToAzureSubscriptionMappingResponsePropertiesInternal.MarketplaceSubscriptionPublisherId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).MarketplaceSubscriptionPublisherId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).MarketplaceSubscriptionPublisherId = value ?? null; }
 
         /// <summary>
         /// Creates an new <see cref="ElasticOrganizationToAzureSubscriptionMappingResponseProperties" /> instance.
@@ -212,6 +226,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
         string MarketplaceSubscriptionId { get;  }
+        /// <summary>Offer Id of the Marketplace offer,</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Offer Id of the Marketplace offer,",
+        SerializedName = @"offerId",
+        PossibleTypes = new [] { typeof(string) })]
+        string MarketplaceSubscriptionOfferId { get;  }
+        /// <summary>Publisher Id of the Marketplace offer.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Publisher Id of the Marketplace offer.",
+        SerializedName = @"publisherId",
+        PossibleTypes = new [] { typeof(string) })]
+        string MarketplaceSubscriptionPublisherId { get;  }
 
     }
     /// The properties of Azure Subscription ID to which the Organization of the logged in user belongs and gets billed into.
@@ -245,6 +281,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
         Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfo MarketplaceSaasInfo { get; set; }
         /// <summary>Marketplace Subscription Id. This is a GUID-formatted string.</summary>
         string MarketplaceSubscriptionId { get; set; }
+        /// <summary>Offer Id of the Marketplace offer,</summary>
+        string MarketplaceSubscriptionOfferId { get; set; }
+        /// <summary>Publisher Id of the Marketplace offer.</summary>
+        string MarketplaceSubscriptionPublisherId { get; set; }
 
     }
 }

@@ -21,7 +21,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901
 
         /// <summary>Gets or sets any custom properties of the affected object.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inherited)]
-        public Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IJobModelCustomPropertiesAffectedObjectDetails AffectedObjectDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IJobModelCustomPropertiesInternal)__jobModelCustomProperties).AffectedObjectDetail; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IAffectedObjectDetails AffectedObjectDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IJobModelCustomPropertiesInternal)__jobModelCustomProperties).AffectedObjectDetail; }
 
         /// <summary>Discriminator property for JobModelCustomProperties.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inherited)]
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901
         Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFailoverProtectedItemProperties[] Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFailoverJobModelCustomPropertiesInternal.ProtectedItemDetail { get => this._protectedItemDetail; set { {_protectedItemDetail = value;} } }
 
         /// <summary>Internal Acessors for AffectedObjectDetail</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IJobModelCustomPropertiesAffectedObjectDetails Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IJobModelCustomPropertiesInternal.AffectedObjectDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IJobModelCustomPropertiesInternal)__jobModelCustomProperties).AffectedObjectDetail; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IJobModelCustomPropertiesInternal)__jobModelCustomProperties).AffectedObjectDetail = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IAffectedObjectDetails Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IJobModelCustomPropertiesInternal.AffectedObjectDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IJobModelCustomPropertiesInternal)__jobModelCustomProperties).AffectedObjectDetail; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IJobModelCustomPropertiesInternal)__jobModelCustomProperties).AffectedObjectDetail = value; }
 
         /// <summary>Backing field for <see cref="ProtectedItemDetail" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFailoverProtectedItemProperties[] _protectedItemDetail;

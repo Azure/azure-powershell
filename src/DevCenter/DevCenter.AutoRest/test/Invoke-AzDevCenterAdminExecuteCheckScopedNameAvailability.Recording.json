@@ -1,8 +1,8 @@
 {
-  "Invoke-AzDevCenterAdminExecuteCheckScopedNameAvailability+[NoContext]+ExecuteExpanded+$POST+https://management.azure.com/subscriptions/306bbddd-068b-4efc-a779-50342af2547a/providers/Microsoft.DevCenter/checkScopedNameAvailability?api-version=2024-05-01-preview+1": {
+  "Invoke-AzDevCenterAdminExecuteCheckScopedNameAvailability+[NoContext]+ExecuteExpanded+$POST+https://management.azure.com/subscriptions/306bbddd-068b-4efc-a779-50342af2547a/providers/Microsoft.DevCenter/checkScopedNameAvailability?api-version=2025-04-01-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/306bbddd-068b-4efc-a779-50342af2547a/providers/Microsoft.DevCenter/checkScopedNameAvailability?api-version=2024-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/306bbddd-068b-4efc-a779-50342af2547a/providers/Microsoft.DevCenter/checkScopedNameAvailability?api-version=2025-04-01-preview",
       "Content": "{\n  \"name\": \"test-ado-errors\",\n  \"type\": \"Microsoft.DevCenter/projects/catalogs\",\n  \"scope\": \"/subscriptions/306bbddd-068b-4efc-a779-50342af2547a/resourceGroups/ibiza-testing/providers/Microsoft.DevCenter/projects/test-ibiza-project\"\n}",
       "isContentBase64": false,
       "Headers": {
@@ -42,10 +42,10 @@
       "isContentBase64": false
     }
   },
-  "Invoke-AzDevCenterAdminExecuteCheckScopedNameAvailability+[NoContext]+ExecuteExpanded+$POST+https://management.azure.com/subscriptions/306bbddd-068b-4efc-a779-50342af2547a/providers/Microsoft.DevCenter/checkScopedNameAvailability?api-version=2024-05-01-preview+2": {
+  "Invoke-AzDevCenterAdminExecuteCheckScopedNameAvailability+[NoContext]+ExecuteExpanded+$POST+https://management.azure.com/subscriptions/306bbddd-068b-4efc-a779-50342af2547a/providers/Microsoft.DevCenter/checkScopedNameAvailability?api-version=2025-04-01-preview+2": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/306bbddd-068b-4efc-a779-50342af2547a/providers/Microsoft.DevCenter/checkScopedNameAvailability?api-version=2024-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/306bbddd-068b-4efc-a779-50342af2547a/providers/Microsoft.DevCenter/checkScopedNameAvailability?api-version=2025-04-01-preview",
       "Content": "{\n  \"name\": \"test-ado-errors11\",\n  \"type\": \"Microsoft.DevCenter/projects/catalogs\",\n  \"scope\": \"/subscriptions/306bbddd-068b-4efc-a779-50342af2547a/resourceGroups/ibiza-testing/providers/Microsoft.DevCenter/projects/test-ibiza-project\"\n}",
       "isContentBase64": false,
       "Headers": {

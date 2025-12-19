@@ -17,9 +17,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         private System.Collections.Generic.List<string> _authorizedIPRange;
 
         /// <summary>
-        /// IP ranges are specified in CIDR format, e.g. 137.117.106.88/29. This feature is not compatible with clusters that use
-        /// Public IP Per Node, or clusters that are using a Basic Load Balancer. For more information see [API server authorized
-        /// IP ranges](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges).
+        /// The IP ranges authorized to access the Kubernetes API server. IP ranges are specified in CIDR format, e.g. 137.117.106.88/29.
+        /// This feature is not compatible with clusters that use Public IP Per Node, or clusters that are using a Basic Load Balancer.
+        /// For more information see [API server authorized IP ranges](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges).
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<string> AuthorizedIPRange { get => this._authorizedIPRange; set => this._authorizedIPRange = value; }
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         private bool? _enablePrivateCluster;
 
         /// <summary>
-        /// For more details, see [Creating a private AKS cluster](https://docs.microsoft.com/azure/aks/private-clusters).
+        /// Whether to create the cluster as a private cluster or not. For more details, see [Creating a private AKS cluster](https://docs.microsoft.com/azure/aks/private-clusters).
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
         public bool? EnablePrivateCluster { get => this._enablePrivateCluster; set => this._enablePrivateCluster = value; }
@@ -47,15 +47,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
         public bool? EnablePrivateClusterPublicFqdn { get => this._enablePrivateClusterPublicFqdn; set => this._enablePrivateClusterPublicFqdn = value; }
 
+        /// <summary>Backing field for <see cref="EnableVnetIntegration" /> property.</summary>
+        private bool? _enableVnetIntegration;
+
+        /// <summary>
+        /// Whether to enable apiserver vnet integration for the cluster or not. See aka.ms/AksVnetIntegration for more details.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
+        public bool? EnableVnetIntegration { get => this._enableVnetIntegration; set => this._enableVnetIntegration = value; }
+
         /// <summary>Backing field for <see cref="PrivateDnsZone" /> property.</summary>
         private string _privateDnsZone;
 
         /// <summary>
-        /// The default is System. For more details see [configure private DNS zone](https://docs.microsoft.com/azure/aks/private-clusters#configure-private-dns-zone).
+        /// The private DNS zone mode for the cluster. The default is System. For more details see [configure private DNS zone](https://docs.microsoft.com/azure/aks/private-clusters#configure-private-dns-zone).
         /// Allowed values are 'system' and 'none'.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
         public string PrivateDnsZone { get => this._privateDnsZone; set => this._privateDnsZone = value; }
+
+        /// <summary>Backing field for <see cref="SubnetId" /> property.</summary>
+        private string _subnetId;
+
+        /// <summary>
+        /// The subnet to be used when apiserver vnet integration is enabled. It is required when creating a new cluster with BYO
+        /// Vnet, or when updating an existing cluster to enable apiserver vnet integration.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
+        public string SubnetId { get => this._subnetId; set => this._subnetId = value; }
 
         /// <summary>Creates an new <see cref="ManagedClusterApiServerAccessProfile" /> instance.</summary>
         public ManagedClusterApiServerAccessProfile()
@@ -68,9 +87,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IJsonSerializable
     {
         /// <summary>
-        /// IP ranges are specified in CIDR format, e.g. 137.117.106.88/29. This feature is not compatible with clusters that use
-        /// Public IP Per Node, or clusters that are using a Basic Load Balancer. For more information see [API server authorized
-        /// IP ranges](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges).
+        /// The IP ranges authorized to access the Kubernetes API server. IP ranges are specified in CIDR format, e.g. 137.117.106.88/29.
+        /// This feature is not compatible with clusters that use Public IP Per Node, or clusters that are using a Basic Load Balancer.
+        /// For more information see [API server authorized IP ranges](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges).
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
@@ -78,7 +97,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"IP ranges are specified in CIDR format, e.g. 137.117.106.88/29. This feature is not compatible with clusters that use Public IP Per Node, or clusters that are using a Basic Load Balancer. For more information see [API server authorized IP ranges](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges).",
+        Description = @"The IP ranges authorized to access the Kubernetes API server. IP ranges are specified in CIDR format, e.g. 137.117.106.88/29. This feature is not compatible with clusters that use Public IP Per Node, or clusters that are using a Basic Load Balancer. For more information see [API server authorized IP ranges](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges).",
         SerializedName = @"authorizedIPRanges",
         PossibleTypes = new [] { typeof(string) })]
         System.Collections.Generic.List<string> AuthorizedIPRange { get; set; }
@@ -94,7 +113,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         PossibleTypes = new [] { typeof(bool) })]
         bool? DisableRunCommand { get; set; }
         /// <summary>
-        /// For more details, see [Creating a private AKS cluster](https://docs.microsoft.com/azure/aks/private-clusters).
+        /// Whether to create the cluster as a private cluster or not. For more details, see [Creating a private AKS cluster](https://docs.microsoft.com/azure/aks/private-clusters).
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
@@ -102,7 +121,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"For more details, see [Creating a private AKS cluster](https://docs.microsoft.com/azure/aks/private-clusters).",
+        Description = @"Whether to create the cluster as a private cluster or not. For more details, see [Creating a private AKS cluster](https://docs.microsoft.com/azure/aks/private-clusters).",
         SerializedName = @"enablePrivateCluster",
         PossibleTypes = new [] { typeof(bool) })]
         bool? EnablePrivateCluster { get; set; }
@@ -118,7 +137,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         PossibleTypes = new [] { typeof(bool) })]
         bool? EnablePrivateClusterPublicFqdn { get; set; }
         /// <summary>
-        /// The default is System. For more details see [configure private DNS zone](https://docs.microsoft.com/azure/aks/private-clusters#configure-private-dns-zone).
+        /// Whether to enable apiserver vnet integration for the cluster or not. See aka.ms/AksVnetIntegration for more details.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Whether to enable apiserver vnet integration for the cluster or not. See aka.ms/AksVnetIntegration for more details.",
+        SerializedName = @"enableVnetIntegration",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? EnableVnetIntegration { get; set; }
+        /// <summary>
+        /// The private DNS zone mode for the cluster. The default is System. For more details see [configure private DNS zone](https://docs.microsoft.com/azure/aks/private-clusters#configure-private-dns-zone).
         /// Allowed values are 'system' and 'none'.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
@@ -127,10 +159,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The default is System. For more details see [configure private DNS zone](https://docs.microsoft.com/azure/aks/private-clusters#configure-private-dns-zone). Allowed values are 'system' and 'none'.",
+        Description = @"The private DNS zone mode for the cluster. The default is System. For more details see [configure private DNS zone](https://docs.microsoft.com/azure/aks/private-clusters#configure-private-dns-zone). Allowed values are 'system' and 'none'.",
         SerializedName = @"privateDNSZone",
         PossibleTypes = new [] { typeof(string) })]
         string PrivateDnsZone { get; set; }
+        /// <summary>
+        /// The subnet to be used when apiserver vnet integration is enabled. It is required when creating a new cluster with BYO
+        /// Vnet, or when updating an existing cluster to enable apiserver vnet integration.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The subnet to be used when apiserver vnet integration is enabled. It is required when creating a new cluster with BYO Vnet, or when updating an existing cluster to enable apiserver vnet integration.",
+        SerializedName = @"subnetId",
+        PossibleTypes = new [] { typeof(string) })]
+        string SubnetId { get; set; }
 
     }
     /// Access profile for managed cluster API server.
@@ -138,24 +184,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
 
     {
         /// <summary>
-        /// IP ranges are specified in CIDR format, e.g. 137.117.106.88/29. This feature is not compatible with clusters that use
-        /// Public IP Per Node, or clusters that are using a Basic Load Balancer. For more information see [API server authorized
-        /// IP ranges](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges).
+        /// The IP ranges authorized to access the Kubernetes API server. IP ranges are specified in CIDR format, e.g. 137.117.106.88/29.
+        /// This feature is not compatible with clusters that use Public IP Per Node, or clusters that are using a Basic Load Balancer.
+        /// For more information see [API server authorized IP ranges](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges).
         /// </summary>
         System.Collections.Generic.List<string> AuthorizedIPRange { get; set; }
         /// <summary>Whether to disable run command for the cluster or not.</summary>
         bool? DisableRunCommand { get; set; }
         /// <summary>
-        /// For more details, see [Creating a private AKS cluster](https://docs.microsoft.com/azure/aks/private-clusters).
+        /// Whether to create the cluster as a private cluster or not. For more details, see [Creating a private AKS cluster](https://docs.microsoft.com/azure/aks/private-clusters).
         /// </summary>
         bool? EnablePrivateCluster { get; set; }
         /// <summary>Whether to create additional public FQDN for private cluster or not.</summary>
         bool? EnablePrivateClusterPublicFqdn { get; set; }
         /// <summary>
-        /// The default is System. For more details see [configure private DNS zone](https://docs.microsoft.com/azure/aks/private-clusters#configure-private-dns-zone).
+        /// Whether to enable apiserver vnet integration for the cluster or not. See aka.ms/AksVnetIntegration for more details.
+        /// </summary>
+        bool? EnableVnetIntegration { get; set; }
+        /// <summary>
+        /// The private DNS zone mode for the cluster. The default is System. For more details see [configure private DNS zone](https://docs.microsoft.com/azure/aks/private-clusters#configure-private-dns-zone).
         /// Allowed values are 'system' and 'none'.
         /// </summary>
         string PrivateDnsZone { get; set; }
+        /// <summary>
+        /// The subnet to be used when apiserver vnet integration is enabled. It is required when creating a new cluster with BYO
+        /// Vnet, or when updating an existing cluster to enable apiserver vnet integration.
+        /// </summary>
+        string SubnetId { get; set; }
 
     }
 }

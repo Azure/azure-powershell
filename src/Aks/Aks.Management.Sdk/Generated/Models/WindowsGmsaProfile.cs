@@ -24,7 +24,8 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// Initializes a new instance of the WindowsGmsaProfile class.
         /// </summary>
 
-        /// <param name="enabled">Specifies whether to enable Windows gMSA in the managed cluster.
+        /// <param name="enabled">Whether to enable Windows gMSA. Specifies whether to enable Windows gMSA in
+        /// the managed cluster.
         /// </param>
 
         /// <param name="dnsServer">Specifies the DNS server for Windows gMSA. &lt;br&gt;&lt;br&gt; Set it to empty if you
@@ -52,8 +53,8 @@ namespace Microsoft.Azure.Management.ContainerService.Models
 
 
         /// <summary>
-        /// Gets or sets specifies whether to enable Windows gMSA in the managed
-        /// cluster.
+        /// Gets or sets whether to enable Windows gMSA. Specifies whether to enable
+        /// Windows gMSA in the managed cluster.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "enabled")]
         public bool? Enabled {get; set; }

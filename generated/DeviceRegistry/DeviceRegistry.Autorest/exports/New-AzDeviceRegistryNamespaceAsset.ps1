@@ -20,7 +20,154 @@ Create a NamespaceAsset
 .Description
 Create a NamespaceAsset
 .Example
-New-AzDeviceRegistryNamespaceAsset -ResourceGroupName "my-resource-group" -NamespaceName "my-namespace" -AssetName "my-asset" -Location "eastus" -ExtendedLocationName "/subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.ExtendedLocation/customLocations/location-2pnh4" -ExtendedLocationType "CustomLocation" -DeviceRefDeviceName "my-device" -DeviceRefEndpointName "my-endpoint" -ExternalAssetId "my-external-asset-id" -DisplayName "My Asset Display Name" -Manufacturer "Contoso" -ManufacturerUri "https://www.contoso.com/manufacturerUri" -Model "ContosoModel" -ProductCode "SA34VDG" -SoftwareRevision "2.0" -HardwareRevision "1.0" -SerialNumber "64-103816-519918-8" -DocumentationUri "https://www.example.com/manual/"
+$eventGroups = @(
+    @{
+        name = "eventGroup1"
+        dataSource = "nsu=http://microsoft.com/Opc/OpcPlc/EventGroup1"
+        eventGroupConfiguration = '{"publishingInterval":10,"samplingInterval":15,"queueSize":20}'
+        typeRef = "eventGroup1TypeRef"
+        events = @(
+            @{
+                name = "event1"
+                dataSource = "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt5"
+                eventConfiguration = '{"publishingInterval":7,"samplingInterval":1,"queueSize":8}'
+                destinations = @(
+                    @{
+                        target = "Mqtt"
+                        configuration = @{
+                            topic = "/contoso/testEvent1"
+                            retain = "Keep"
+                            qos = "Qos0"
+                            ttl = 7200
+                        }
+                    }
+                )
+                typeRef = "event1Ref"
+            }
+        )
+    },
+    @{
+        name = "eventGroup2"
+        events = @(
+            @{
+                name = "event2"
+                dataSource = "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt8"
+                eventConfiguration = '{"publishingInterval":7,"samplingInterval":1,"queueSize":8}'
+                destinations = @(
+                    @{
+                        target = "Storage"
+                        configuration = @{
+                            path = "/tmp/event2"
+                        }
+                    }
+                )
+                typeRef = "event2Ref"
+            }
+        )
+    }
+)
+
+$managementGroups = @(
+    @{
+        name = "managementGroup1"
+        managementGroupConfiguration = '{"retryCount":10,"retryBackoffInterval":15}'
+        typeRef = "managementGroup1TypeRef"
+        defaultTopic = "/contoso/managementGroup1"
+        defaultTimeoutInSeconds = 100
+        actions = @(
+            @{
+                name = "action1"
+                actionConfiguration = '{"retryCount":5,"retryBackoffInterval":5}'
+                targetUri = "/onvif/device_service?ONVIFProfile=Profile1"
+                typeRef = "action1TypeRef"
+                topic = "/contoso/managementGroup1/action1"
+                actionType = "Call"
+                timeoutInSeconds = 60
+            },
+            @{
+                name = "action2"
+                actionConfiguration = '{"retryCount":5,"retryBackoffInterval":5}'
+                targetUri = "/onvif/device_service?ONVIFProfile=Profile2"
+                typeRef = "action2TypeRef"
+                topic = "/contoso/managementGroup1/action2"
+                actionType = "Call"
+                timeoutInSeconds = 60
+            }
+        )
+    }
+)
+
+$datasets = @(
+    @{
+        name = "dataset1"
+        dataSource = "nsu=http://microsoft.com/Opc/OpcPlc"
+    },
+    @{
+        name = "dataSet2"
+        dataSource = "nsu=http://microsoft.com/Opc/OpcPlc/Oven;i=5"
+        typeRef = "dataset1TypeRef"
+        datasetConfiguration = '{"publishingInterval":10,"samplingInterval":15,"queueSize":20}'
+        destinations = @(
+            @{
+                target = "Mqtt"
+                configuration = @{
+                    topic = "/contoso/test2"
+                    retain = "Keep"
+                    qos = "Qos1"
+                    ttl = 3600
+                }
+            }
+        )
+        dataPoints = @(
+            @{
+                name = "dataset1DataPoint1"
+                dataSource = "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt3"
+                dataPointConfiguration = '{"publishingInterval":8,"samplingInterval":8,"queueSize":4}'
+                typeRef = "dataset1DataPoint1TypeRef"
+            },
+            @{
+                name = "dataset1DataPoint2"
+                dataSource = "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt4"
+                dataPointConfiguration = '{"publishingInterval":8,"samplingInterval":8,"queueSize":4}'
+                typeRef = "dataset1DataPoint2TypeRef"
+            }
+        )
+    }
+)
+
+$streams = @(
+    @{
+        name = "stream1"
+        streamConfiguration = '{"publishingInterval":8,"samplingInterval":8,"queueSize":4}'
+        typeRef = "stream1TypeRef"
+        destinations = @(
+            @{
+                target = "Storage"
+                configuration = @{
+                    path = "/tmp/stream1"
+                }
+            }
+        )
+    },
+    @{
+        name = "stream2"
+        streamConfiguration = '{"publishingInterval":8,"samplingInterval":8,"queueSize":4}'
+        typeRef = "stream2TypeRef"
+        destinations = @(
+            @{
+                target = "Mqtt"
+                configuration = @{
+                    topic = "/contoso/testStream2"
+                    retain = "Never"
+                    qos = "Qos0"
+                    ttl = 7200
+                }
+            }
+        )
+    }
+)
+
+New-AzDeviceRegistryNamespaceAsset -ResourceGroupName "my-resource-group" -NamespaceName "my-namespace" -AssetName "my-asset" -Location "eastus" -ExtendedLocationName "/subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.ExtendedLocation/customLocations/location-mkzkq" -ExtendedLocationType "CustomLocation" -DeviceRefDeviceName "my-device" -DeviceRefEndpointName "my-endpoint" -ExternalAssetId "my-external-asset-id" -DisplayName "My Asset Display Name" -Manufacturer "Contoso" -ManufacturerUri "https://www.contoso.com/manufacturerUri" -Model "ContosoModel" -ProductCode "SA34VDG" -SoftwareRevision "2.0" -HardwareRevision "1.0" -SerialNumber "64-103816-519918-8" -DocumentationUri "https://www.example.com/manual/" -EventGroup $eventGroups -ManagementGroup $managementGroups -Dataset $datasets -Stream $streams
 .Example
 New-AzDeviceRegistryNamespaceAsset -ResourceGroupName "my-resource-group" -NamespaceName "my-namespace" -AssetName "my-asset" -JsonFilePath "C:\path\to\asset.json"
 .Example
@@ -56,16 +203,18 @@ DEFAULTEVENTSDESTINATION <IEventDestination[]>: Default destinations for an even
 DEFAULTSTREAMSDESTINATION <IStreamDestination[]>: Default destinations for a stream.
   Target <String>: Target destination.
 
-EVENT <INamespaceEvent[]>: Array of events that are part of the asset. Each event can have per-event configuration.
-  EventNotifier <String>: The address of the notifier of the event in the asset (e.g. URL) so that a client can access the event on the asset.
-  Name <String>: The name of the event.
-  [DataPoint <List<INamespaceEventDataPoint>>]: Array of data points that are part of the event. Each data point can have a per-data point configuration.
-    DataSource <String>: The address of the source of the data in the asset (e.g. URL) so that a client can access the data source on the asset.
-    Name <String>: The name of the data point.
-    [DataPointConfiguration <String>]: Stringified JSON that contains connector-specific configuration for the data point. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
-  [Destination <List<IEventDestination>>]: Destinations for an event.
+EVENTGROUP <INamespaceEventGroup[]>: Array of event groups that are part of the asset. Each event group can have per-event group configuration.
+  Name <String>: The name of the event group.
+  [DataSource <String>]: The address of the notifier of the event group in the asset (e.g. URL) so that a client can access the event group on the asset.
+  [DefaultDestination <List<IEventDestination>>]: Destinations for events. Default destinations when destinations is not defined at the event level.
     Target <String>: Target destination.
-  [EventConfiguration <String>]: Stringified JSON that contains connector-specific configuration for the event. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
+  [Event <List<INamespaceEvent>>]: Array of events that are part of the event group.
+    Name <String>: The name of the event.
+    [DataSource <String>]: Reference to a data source for a given event.
+    [Destination <List<IEventDestination>>]: Destinations for an event.
+    [EventConfiguration <String>]: Stringified JSON that contains connector-specific configuration for the event. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
+    [TypeRef <String>]: URI or type definition ID.
+  [EventGroupConfiguration <String>]: Stringified JSON that contains connector-specific configuration for the event group. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
   [TypeRef <String>]: URI or type definition ID.
 
 MANAGEMENTGROUP <IManagementGroup[]>: Array of management groups that are part of the asset. Each management group can have a per-group configuration.
@@ -79,6 +228,7 @@ MANAGEMENTGROUP <IManagementGroup[]>: Array of management groups that are part o
     [Topic <String>]: The MQTT topic path on which a client will receive the request for the action.
     [TypeRef <String>]: URI or type definition ID.
   [Configuration <String>]: Stringified JSON that contains connector-specific configuration for the management group.
+  [DataSource <String>]: Reference to a data source for a given management group.
   [DefaultTimeoutInSecond <Int32?>]: Default response timeout for all actions that are part of the management group.
   [DefaultTopic <String>]: Default MQTT topic path on which a client will receive the request for all actions that are part of the management group.
   [TypeRef <String>]: URI or type definition ID.
@@ -260,10 +410,10 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEvent[]]
-    # Array of events that are part of the asset.
-    # Each event can have per-event configuration.
-    ${Event},
+    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEventGroup[]]
+    # Array of event groups that are part of the asset.
+    # Each event group can have per-event group configuration.
+    ${EventGroup},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Body')]

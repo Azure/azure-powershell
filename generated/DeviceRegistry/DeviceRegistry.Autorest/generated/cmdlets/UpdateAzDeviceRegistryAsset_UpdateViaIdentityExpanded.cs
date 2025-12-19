@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAsset))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Description(@"update a Asset")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/assets/{assetName}", ApiVersion = "2025-07-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/assets/{assetName}", ApiVersion = "2025-10-01")]
     public partial class UpdateAzDeviceRegistryAsset_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IContext

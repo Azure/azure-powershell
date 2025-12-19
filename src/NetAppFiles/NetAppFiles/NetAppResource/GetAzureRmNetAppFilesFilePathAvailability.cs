@@ -62,7 +62,13 @@ namespace Microsoft.Azure.Commands.NetAppFiles.N
         {
             try
             {
-                var anfCheckAvailabilityResponse = AzureNetAppFilesManagementClient.NetAppResource.CheckFilePathAvailability(location: Location, name: Name, subnetId: SubnetId, availabilityZone: Zone);
+                FilePathAvailabilityRequest filePathAvailabilityRequest = new FilePathAvailabilityRequest
+                {
+                    Name = Name,
+                    SubnetId = SubnetId,
+                    AvailabilityZone = Zone
+                };
+                var anfCheckAvailabilityResponse = AzureNetAppFilesManagementClient.NetAppResource.CheckFilePathAvailability(location: Location, filePathAvailabilityRequest);
                 WriteObject(anfCheckAvailabilityResponse.ConvertToPs());
             }
             catch (ErrorResponseException ex)

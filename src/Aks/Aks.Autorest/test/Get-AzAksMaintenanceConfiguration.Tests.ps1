@@ -18,20 +18,20 @@ Describe 'Get-AzAksMaintenanceConfiguration' {
     It 'List' {
         $MaintenanceConfigs = Get-AzAksMaintenanceConfiguration -ResourceGroupName $env.ResourceGroupName -ResourceName $env.AksName
         $MaintenanceConfigs.Count | Should -Be 2
-        $MaintenanceConfigs.Name.Contains('aks_maintenance_config1') | Should -Be $true
-        $MaintenanceConfigs.Name.Contains('aks_maintenance_config2') | Should -Be $true
+        $MaintenanceConfigs.Name.Contains('aksManagedAutoUpgradeSchedule') | Should -Be $true
+        $MaintenanceConfigs.Name.Contains('default') | Should -Be $true
     }
 
     It 'Get' {
-        $MaintenanceConfig = Get-AzAksMaintenanceConfiguration -ResourceGroupName $env.ResourceGroupName -ResourceName $env.AksName -ConfigName 'aks_maintenance_config1'
+        $MaintenanceConfig = Get-AzAksMaintenanceConfiguration -ResourceGroupName $env.ResourceGroupName -ResourceName $env.AksName -ConfigName 'aksManagedAutoUpgradeSchedule'
         $MaintenanceConfig.Count | Should -Be 1
-        $MaintenanceConfig.Name | Should -Be 'aks_maintenance_config1'
+        $MaintenanceConfig.Name | Should -Be 'aksManagedAutoUpgradeSchedule'
     }
 
     It 'GetViaIdentity' {
-        $InputObject = @{Id = "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/aks-test/providers/Microsoft.ContainerService/managedClusters/aks/maintenanceConfigurations/aks_maintenance_config1" }
+        $InputObject = @{Id = "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/AKS_TEST_RG/providers/Microsoft.ContainerService/managedClusters/AKS_Test_Cluster/maintenanceConfigurations/aksManagedAutoUpgradeSchedule" }
         $MaintenanceConfig = Get-AzAksMaintenanceConfiguration -InputObject $InputObject
         $MaintenanceConfig.Count | Should -Be 1
-        $MaintenanceConfig.Name | Should -Be 'aks_maintenance_config1'
+        $MaintenanceConfig.Name | Should -Be 'aksManagedAutoUpgradeSchedule'
     }
 }

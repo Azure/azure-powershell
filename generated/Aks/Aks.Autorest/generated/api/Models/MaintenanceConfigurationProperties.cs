@@ -13,6 +13,76 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal
     {
 
+        /// <summary>The date of the month.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
+        public int? AbsoluteMonthlyDayOfMonth { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceWindowInternal)MaintenanceWindow).AbsoluteMonthlyDayOfMonth; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceWindowInternal)MaintenanceWindow).AbsoluteMonthlyDayOfMonth = value ?? default(int); }
+
+        /// <summary>Specifies the number of months between each set of occurrences.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
+        public int? AbsoluteMonthlyIntervalMonth { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceWindowInternal)MaintenanceWindow).AbsoluteMonthlyIntervalMonth; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceWindowInternal)MaintenanceWindow).AbsoluteMonthlyIntervalMonth = value ?? default(int); }
+
+        /// <summary>Specifies the number of days between each set of occurrences.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
+        public int? DailyIntervalDay { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceWindowInternal)MaintenanceWindow).DailyIntervalDay; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceWindowInternal)MaintenanceWindow).DailyIntervalDay = value ?? default(int); }
+
+        /// <summary>Backing field for <see cref="MaintenanceWindow" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceWindow _maintenanceWindow;
+
+        /// <summary>Maintenance window for the maintenance configuration.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceWindow MaintenanceWindow { get => (this._maintenanceWindow = this._maintenanceWindow ?? new Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.MaintenanceWindow()); set => this._maintenanceWindow = value; }
+
+        /// <summary>Length of maintenance window range from 4 to 24 hours.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
+        public int? MaintenanceWindowDurationHour { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceWindowInternal)MaintenanceWindow).DurationHour; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceWindowInternal)MaintenanceWindow).DurationHour = value ?? default(int); }
+
+        /// <summary>
+        /// Date ranges on which upgrade is not allowed. 'utcOffset' applies to this field. For example, with 'utcOffset: +02:00'
+        /// and 'dateSpan' being '2022-12-23' to '2023-01-03', maintenance will be blocked from '2022-12-22 22:00' to '2023-01-03
+        /// 22:00' in UTC time.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IDateSpan> MaintenanceWindowNotAllowedDate { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceWindowInternal)MaintenanceWindow).NotAllowedDate; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceWindowInternal)MaintenanceWindow).NotAllowedDate = value ?? null /* arrayOf */; }
+
+        /// <summary>
+        /// The date the maintenance window activates. If the current date is before this date, the maintenance window is inactive
+        /// and will not be used for upgrades. If not specified, the maintenance window will be active right away.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
+        public global::System.DateTime? MaintenanceWindowStartDate { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceWindowInternal)MaintenanceWindow).StartDate; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceWindowInternal)MaintenanceWindow).StartDate = value ?? default(global::System.DateTime); }
+
+        /// <summary>
+        /// The start time of the maintenance window. Accepted values are from '00:00' to '23:59'. 'utcOffset' applies to this field.
+        /// For example: '02:00' with 'utcOffset: +02:00' means UTC time '00:00'.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
+        public string MaintenanceWindowStartTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceWindowInternal)MaintenanceWindow).StartTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceWindowInternal)MaintenanceWindow).StartTime = value ?? null; }
+
+        /// <summary>
+        /// The UTC offset in format +/-HH:mm. For example, '+05:30' for IST and '-07:00' for PST. If not specified, the default is
+        /// '+00:00'.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
+        public string MaintenanceWindowUtcOffset { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceWindowInternal)MaintenanceWindow).UtcOffset; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceWindowInternal)MaintenanceWindow).UtcOffset = value ?? null; }
+
+        /// <summary>Internal Acessors for MaintenanceWindow</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceWindow Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal.MaintenanceWindow { get => (this._maintenanceWindow = this._maintenanceWindow ?? new Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.MaintenanceWindow()); set { {_maintenanceWindow = value;} } }
+
+        /// <summary>Internal Acessors for MaintenanceWindowSchedule</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISchedule Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal.MaintenanceWindowSchedule { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceWindowInternal)MaintenanceWindow).Schedule; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceWindowInternal)MaintenanceWindow).Schedule = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for ScheduleAbsoluteMonthly</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAbsoluteMonthlySchedule Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal.ScheduleAbsoluteMonthly { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceWindowInternal)MaintenanceWindow).ScheduleAbsoluteMonthly; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceWindowInternal)MaintenanceWindow).ScheduleAbsoluteMonthly = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for ScheduleDaily</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IDailySchedule Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal.ScheduleDaily { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceWindowInternal)MaintenanceWindow).ScheduleDaily; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceWindowInternal)MaintenanceWindow).ScheduleDaily = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for ScheduleRelativeMonthly</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IRelativeMonthlySchedule Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal.ScheduleRelativeMonthly { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceWindowInternal)MaintenanceWindow).ScheduleRelativeMonthly; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceWindowInternal)MaintenanceWindow).ScheduleRelativeMonthly = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for ScheduleWeekly</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IWeeklySchedule Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal.ScheduleWeekly { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceWindowInternal)MaintenanceWindow).ScheduleWeekly; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceWindowInternal)MaintenanceWindow).ScheduleWeekly = value ?? null /* model class */; }
+
         /// <summary>Backing field for <see cref="NotAllowedTime" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ITimeSpan> _notAllowedTime;
 
@@ -20,14 +90,35 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ITimeSpan> NotAllowedTime { get => this._notAllowedTime; set => this._notAllowedTime = value; }
 
+        /// <summary>Specifies on which day of the week the maintenance occurs.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
+        public string RelativeMonthlyDayOfWeek { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceWindowInternal)MaintenanceWindow).RelativeMonthlyDayOfWeek; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceWindowInternal)MaintenanceWindow).RelativeMonthlyDayOfWeek = value ?? null; }
+
+        /// <summary>Specifies the number of months between each set of occurrences.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
+        public int? RelativeMonthlyIntervalMonth { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceWindowInternal)MaintenanceWindow).RelativeMonthlyIntervalMonth; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceWindowInternal)MaintenanceWindow).RelativeMonthlyIntervalMonth = value ?? default(int); }
+
+        /// <summary>The week index. Specifies on which week of the month the dayOfWeek applies.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
+        public string RelativeMonthlyWeekIndex { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceWindowInternal)MaintenanceWindow).RelativeMonthlyWeekIndex; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceWindowInternal)MaintenanceWindow).RelativeMonthlyWeekIndex = value ?? null; }
+
         /// <summary>Backing field for <see cref="TimeInWeek" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ITimeInWeek> _timeInWeek;
 
         /// <summary>
-        /// If two array entries specify the same day of the week, the applied configuration is the union of times in both entries.
+        /// Time slots during the week when planned maintenance is allowed to proceed. If two array entries specify the same day of
+        /// the week, the applied configuration is the union of times in both entries.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ITimeInWeek> TimeInWeek { get => this._timeInWeek; set => this._timeInWeek = value; }
+
+        /// <summary>Specifies on which day of the week the maintenance occurs.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
+        public string WeeklyDayOfWeek { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceWindowInternal)MaintenanceWindow).WeeklyDayOfWeek; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceWindowInternal)MaintenanceWindow).WeeklyDayOfWeek = value ?? null; }
+
+        /// <summary>Specifies the number of weeks between each set of occurrences.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
+        public int? WeeklyIntervalWeek { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceWindowInternal)MaintenanceWindow).WeeklyIntervalWeek; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceWindowInternal)MaintenanceWindow).WeeklyIntervalWeek = value ?? default(int); }
 
         /// <summary>Creates an new <see cref="MaintenanceConfigurationProperties" /> instance.</summary>
         public MaintenanceConfigurationProperties()
@@ -39,6 +130,107 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
     public partial interface IMaintenanceConfigurationProperties :
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IJsonSerializable
     {
+        /// <summary>The date of the month.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The date of the month.",
+        SerializedName = @"dayOfMonth",
+        PossibleTypes = new [] { typeof(int) })]
+        int? AbsoluteMonthlyDayOfMonth { get; set; }
+        /// <summary>Specifies the number of months between each set of occurrences.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Specifies the number of months between each set of occurrences.",
+        SerializedName = @"intervalMonths",
+        PossibleTypes = new [] { typeof(int) })]
+        int? AbsoluteMonthlyIntervalMonth { get; set; }
+        /// <summary>Specifies the number of days between each set of occurrences.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Specifies the number of days between each set of occurrences.",
+        SerializedName = @"intervalDays",
+        PossibleTypes = new [] { typeof(int) })]
+        int? DailyIntervalDay { get; set; }
+        /// <summary>Length of maintenance window range from 4 to 24 hours.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Length of maintenance window range from 4 to 24 hours.",
+        SerializedName = @"durationHours",
+        PossibleTypes = new [] { typeof(int) })]
+        int? MaintenanceWindowDurationHour { get; set; }
+        /// <summary>
+        /// Date ranges on which upgrade is not allowed. 'utcOffset' applies to this field. For example, with 'utcOffset: +02:00'
+        /// and 'dateSpan' being '2022-12-23' to '2023-01-03', maintenance will be blocked from '2022-12-22 22:00' to '2023-01-03
+        /// 22:00' in UTC time.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Date ranges on which upgrade is not allowed. 'utcOffset' applies to this field. For example, with 'utcOffset: +02:00' and 'dateSpan' being '2022-12-23' to '2023-01-03', maintenance will be blocked from '2022-12-22 22:00' to '2023-01-03 22:00' in UTC time.",
+        SerializedName = @"notAllowedDates",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IDateSpan) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IDateSpan> MaintenanceWindowNotAllowedDate { get; set; }
+        /// <summary>
+        /// The date the maintenance window activates. If the current date is before this date, the maintenance window is inactive
+        /// and will not be used for upgrades. If not specified, the maintenance window will be active right away.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The date the maintenance window activates. If the current date is before this date, the maintenance window is inactive and will not be used for upgrades. If not specified, the maintenance window will be active right away.",
+        SerializedName = @"startDate",
+        PossibleTypes = new [] { typeof(global::System.DateTime) })]
+        global::System.DateTime? MaintenanceWindowStartDate { get; set; }
+        /// <summary>
+        /// The start time of the maintenance window. Accepted values are from '00:00' to '23:59'. 'utcOffset' applies to this field.
+        /// For example: '02:00' with 'utcOffset: +02:00' means UTC time '00:00'.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The start time of the maintenance window. Accepted values are from '00:00' to '23:59'. 'utcOffset' applies to this field. For example: '02:00' with 'utcOffset: +02:00' means UTC time '00:00'.",
+        SerializedName = @"startTime",
+        PossibleTypes = new [] { typeof(string) })]
+        string MaintenanceWindowStartTime { get; set; }
+        /// <summary>
+        /// The UTC offset in format +/-HH:mm. For example, '+05:30' for IST and '-07:00' for PST. If not specified, the default is
+        /// '+00:00'.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The UTC offset in format +/-HH:mm. For example, '+05:30' for IST and '-07:00' for PST. If not specified, the default is '+00:00'.",
+        SerializedName = @"utcOffset",
+        PossibleTypes = new [] { typeof(string) })]
+        string MaintenanceWindowUtcOffset { get; set; }
         /// <summary>Time slots on which upgrade is not allowed.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
@@ -50,8 +242,44 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         SerializedName = @"notAllowedTime",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ITimeSpan) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ITimeSpan> NotAllowedTime { get; set; }
+        /// <summary>Specifies on which day of the week the maintenance occurs.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Specifies on which day of the week the maintenance occurs.",
+        SerializedName = @"dayOfWeek",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday")]
+        string RelativeMonthlyDayOfWeek { get; set; }
+        /// <summary>Specifies the number of months between each set of occurrences.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Specifies the number of months between each set of occurrences.",
+        SerializedName = @"intervalMonths",
+        PossibleTypes = new [] { typeof(int) })]
+        int? RelativeMonthlyIntervalMonth { get; set; }
+        /// <summary>The week index. Specifies on which week of the month the dayOfWeek applies.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The week index. Specifies on which week of the month the dayOfWeek applies.",
+        SerializedName = @"weekIndex",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("First", "Second", "Third", "Fourth", "Last")]
+        string RelativeMonthlyWeekIndex { get; set; }
         /// <summary>
-        /// If two array entries specify the same day of the week, the applied configuration is the union of times in both entries.
+        /// Time slots during the week when planned maintenance is allowed to proceed. If two array entries specify the same day of
+        /// the week, the applied configuration is the union of times in both entries.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
@@ -59,22 +287,104 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"If two array entries specify the same day of the week, the applied configuration is the union of times in both entries.",
+        Description = @"Time slots during the week when planned maintenance is allowed to proceed. If two array entries specify the same day of the week, the applied configuration is the union of times in both entries.",
         SerializedName = @"timeInWeek",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ITimeInWeek) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ITimeInWeek> TimeInWeek { get; set; }
+        /// <summary>Specifies on which day of the week the maintenance occurs.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Specifies on which day of the week the maintenance occurs.",
+        SerializedName = @"dayOfWeek",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday")]
+        string WeeklyDayOfWeek { get; set; }
+        /// <summary>Specifies the number of weeks between each set of occurrences.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Specifies the number of weeks between each set of occurrences.",
+        SerializedName = @"intervalWeeks",
+        PossibleTypes = new [] { typeof(int) })]
+        int? WeeklyIntervalWeek { get; set; }
 
     }
     /// Properties used to configure planned maintenance for a Managed Cluster.
     internal partial interface IMaintenanceConfigurationPropertiesInternal
 
     {
+        /// <summary>The date of the month.</summary>
+        int? AbsoluteMonthlyDayOfMonth { get; set; }
+        /// <summary>Specifies the number of months between each set of occurrences.</summary>
+        int? AbsoluteMonthlyIntervalMonth { get; set; }
+        /// <summary>Specifies the number of days between each set of occurrences.</summary>
+        int? DailyIntervalDay { get; set; }
+        /// <summary>Maintenance window for the maintenance configuration.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceWindow MaintenanceWindow { get; set; }
+        /// <summary>Length of maintenance window range from 4 to 24 hours.</summary>
+        int? MaintenanceWindowDurationHour { get; set; }
+        /// <summary>
+        /// Date ranges on which upgrade is not allowed. 'utcOffset' applies to this field. For example, with 'utcOffset: +02:00'
+        /// and 'dateSpan' being '2022-12-23' to '2023-01-03', maintenance will be blocked from '2022-12-22 22:00' to '2023-01-03
+        /// 22:00' in UTC time.
+        /// </summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IDateSpan> MaintenanceWindowNotAllowedDate { get; set; }
+        /// <summary>Recurrence schedule for the maintenance window.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISchedule MaintenanceWindowSchedule { get; set; }
+        /// <summary>
+        /// The date the maintenance window activates. If the current date is before this date, the maintenance window is inactive
+        /// and will not be used for upgrades. If not specified, the maintenance window will be active right away.
+        /// </summary>
+        global::System.DateTime? MaintenanceWindowStartDate { get; set; }
+        /// <summary>
+        /// The start time of the maintenance window. Accepted values are from '00:00' to '23:59'. 'utcOffset' applies to this field.
+        /// For example: '02:00' with 'utcOffset: +02:00' means UTC time '00:00'.
+        /// </summary>
+        string MaintenanceWindowStartTime { get; set; }
+        /// <summary>
+        /// The UTC offset in format +/-HH:mm. For example, '+05:30' for IST and '-07:00' for PST. If not specified, the default is
+        /// '+00:00'.
+        /// </summary>
+        string MaintenanceWindowUtcOffset { get; set; }
         /// <summary>Time slots on which upgrade is not allowed.</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ITimeSpan> NotAllowedTime { get; set; }
+        /// <summary>Specifies on which day of the week the maintenance occurs.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday")]
+        string RelativeMonthlyDayOfWeek { get; set; }
+        /// <summary>Specifies the number of months between each set of occurrences.</summary>
+        int? RelativeMonthlyIntervalMonth { get; set; }
+        /// <summary>The week index. Specifies on which week of the month the dayOfWeek applies.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("First", "Second", "Third", "Fourth", "Last")]
+        string RelativeMonthlyWeekIndex { get; set; }
         /// <summary>
-        /// If two array entries specify the same day of the week, the applied configuration is the union of times in both entries.
+        /// For schedules like: 'recur every month on the 15th' or 'recur every 3 months on the 20th'.
+        /// </summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAbsoluteMonthlySchedule ScheduleAbsoluteMonthly { get; set; }
+        /// <summary>For schedules like: 'recur every day' or 'recur every 3 days'.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IDailySchedule ScheduleDaily { get; set; }
+        /// <summary>
+        /// For schedules like: 'recur every month on the first Monday' or 'recur every 3 months on last Friday'.
+        /// </summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IRelativeMonthlySchedule ScheduleRelativeMonthly { get; set; }
+        /// <summary>For schedules like: 'recur every Monday' or 'recur every 3 weeks on Wednesday'.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IWeeklySchedule ScheduleWeekly { get; set; }
+        /// <summary>
+        /// Time slots during the week when planned maintenance is allowed to proceed. If two array entries specify the same day of
+        /// the week, the applied configuration is the union of times in both entries.
         /// </summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ITimeInWeek> TimeInWeek { get; set; }
+        /// <summary>Specifies on which day of the week the maintenance occurs.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday")]
+        string WeeklyDayOfWeek { get; set; }
+        /// <summary>Specifies the number of weeks between each set of occurrences.</summary>
+        int? WeeklyIntervalWeek { get; set; }
 
     }
 }

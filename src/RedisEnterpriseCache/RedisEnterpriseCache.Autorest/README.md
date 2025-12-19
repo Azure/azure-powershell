@@ -32,12 +32,12 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-commit: f11631f1c1057d8363f9e3f9597c73b90f8924c8
+commit: a39b73b1c7d12a633805a3b2ed3177a8bfddd9e2
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 # lock the commit
 input-file:
-  - $(repo)/specification/redisenterprise/resource-manager/Microsoft.Cache/preview/2025-05-01-preview/redisenterprise.json
+  - $(repo)/specification/redisenterprise/resource-manager/Microsoft.Cache/RedisEnterprise/stable/2025-07-01/redisenterprise.json
 
 module-version: 1.0.0
 title: RedisEnterpriseCache
@@ -264,6 +264,16 @@ directive:
     set:
       default:
         script: '"default"'
+
+  # add breaking change warning message
+  - where:
+      verb: New|Update
+      subject: RedisEnterpriseCache
+    set:
+      preview-announcement:
+        preview-message: This cmdlet will undergo a breaking change in a future release. A new required property publicNetworkAccess will be added and AccessKeysAuthentication default value will be updated to Disabled
+        estimated-ga-date:  2025/11/19
+
   # Fix bugs in generated code from namespace conflict
   - from: source-file-csharp
     where: $

@@ -292,6 +292,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             HelpMessage = "Specifies whether Metadata Security Protocol(ProxyAgent) feature should be enabled or not.")]
         public SwitchParameter EnableProxyAgent { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = SimpleParameterSet,
+            HelpMessage = "Specify whether to implicitly install the ProxyAgent Extension. This option is currently applicable only for Linux Os.")]
+        public SwitchParameter AddProxyAgentExtension { get; set; }
+
         private void ConfigureSecuritySettings()
         {
             if (SecurityType?.ToLower() == SecurityTypes.TrustedLaunch ||
@@ -552,7 +559,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     ifNoneMatch: _cmdlet.IfNoneMatch,
                     securityPostureId: _cmdlet.SecurityPostureId,
                     securityPostureExcludeExtension: _cmdlet.SecurityPostureExcludeExtension,
-                    enableProxyAgent: _cmdlet.EnableProxyAgent ? true : (bool?)null
+                    enableProxyAgent: _cmdlet.EnableProxyAgent ? true : (bool?)null,
+                    addProxyAgentExtension: _cmdlet.AddProxyAgentExtension.IsPresent ? true : (bool?)null
                     );
             }
 
@@ -692,7 +700,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     ifNoneMatch: _cmdlet.IfNoneMatch,
                     securityPostureId: _cmdlet.SecurityPostureId,
                     securityPostureExcludeExtension: _cmdlet.SecurityPostureExcludeExtension,
-                    enableProxyAgent: _cmdlet.EnableProxyAgent ? true : (bool?)null
+                    enableProxyAgent: _cmdlet.EnableProxyAgent ? true : (bool?)null,
+                    addProxyAgentExtension: _cmdlet.AddProxyAgentExtension.IsPresent ? true : (bool?)null
                 );
             }
         }

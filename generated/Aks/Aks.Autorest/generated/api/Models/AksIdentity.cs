@@ -43,9 +43,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         /// <summary>Backing field for <see cref="Location" /> property.</summary>
         private string _location;
 
-        /// <summary>The name of Azure region.</summary>
+        /// <summary>The name of the Azure region.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
         public string Location { get => this._location; set => this._location = value; }
+
+        /// <summary>Backing field for <see cref="MachineName" /> property.</summary>
+        private string _machineName;
+
+        /// <summary>host name of the machine</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
+        public string MachineName { get => this._machineName; set => this._machineName = value; }
+
+        /// <summary>Backing field for <see cref="Mode" /> property.</summary>
+        private string _mode;
+
+        /// <summary>The mode of the mesh.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
+        public string Mode { get => this._mode; set => this._mode = value; }
 
         /// <summary>Backing field for <see cref="PrivateEndpointConnectionName" /> property.</summary>
         private string _privateEndpointConnectionName;
@@ -78,9 +92,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
 
-        /// <summary>The ID of the target subscription.</summary>
+        /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
+
+        /// <summary>Backing field for <see cref="TrustedAccessRoleBindingName" /> property.</summary>
+        private string _trustedAccessRoleBindingName;
+
+        /// <summary>The name of trusted access role binding.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
+        public string TrustedAccessRoleBindingName { get => this._trustedAccessRoleBindingName; set => this._trustedAccessRoleBindingName = value; }
 
         /// <summary>Creates an new <see cref="AksIdentity" /> instance.</summary>
         public AksIdentity()
@@ -135,17 +156,39 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
         string Id { get; set; }
-        /// <summary>The name of Azure region.</summary>
+        /// <summary>The name of the Azure region.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The name of Azure region.",
+        Description = @"The name of the Azure region.",
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
         string Location { get; set; }
+        /// <summary>host name of the machine</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"host name of the machine",
+        SerializedName = @"machineName",
+        PossibleTypes = new [] { typeof(string) })]
+        string MachineName { get; set; }
+        /// <summary>The mode of the mesh.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The mode of the mesh.",
+        SerializedName = @"mode",
+        PossibleTypes = new [] { typeof(string) })]
+        string Mode { get; set; }
         /// <summary>The name of the private endpoint connection.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
@@ -190,17 +233,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         SerializedName = @"roleName",
         PossibleTypes = new [] { typeof(string) })]
         string RoleName { get; set; }
-        /// <summary>The ID of the target subscription.</summary>
+        /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The ID of the target subscription.",
+        Description = @"The ID of the target subscription. The value must be an UUID.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
         string SubscriptionId { get; set; }
+        /// <summary>The name of trusted access role binding.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The name of trusted access role binding.",
+        SerializedName = @"trustedAccessRoleBindingName",
+        PossibleTypes = new [] { typeof(string) })]
+        string TrustedAccessRoleBindingName { get; set; }
 
     }
     internal partial interface IAksIdentityInternal
@@ -214,8 +268,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         string ConfigName { get; set; }
         /// <summary>Resource identity path</summary>
         string Id { get; set; }
-        /// <summary>The name of Azure region.</summary>
+        /// <summary>The name of the Azure region.</summary>
         string Location { get; set; }
+        /// <summary>host name of the machine</summary>
+        string MachineName { get; set; }
+        /// <summary>The mode of the mesh.</summary>
+        string Mode { get; set; }
         /// <summary>The name of the private endpoint connection.</summary>
         string PrivateEndpointConnectionName { get; set; }
         /// <summary>The name of the resource group. The name is case insensitive.</summary>
@@ -224,8 +282,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         string ResourceName { get; set; }
         /// <summary>The name of the role for managed cluster accessProfile resource.</summary>
         string RoleName { get; set; }
-        /// <summary>The ID of the target subscription.</summary>
+        /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
         string SubscriptionId { get; set; }
+        /// <summary>The name of trusted access role binding.</summary>
+        string TrustedAccessRoleBindingName { get; set; }
 
     }
 }

@@ -28,25 +28,24 @@ System.String
 https://learn.microsoft.com/powershell/module/az.containerregistry/test-azcontainerregistrywebhook
 #>
 function Test-AzContainerRegistryWebhook {
-[OutputType([System.String])]
-[Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.OutputBreakingChangeAttribute("System.String", "15.0.0", "9.0.0", "2025/11/03", ReplacementCmdletOutputType = "System.String", DeprecatedOutputProperties = ("Action"), NewOutputProperties = ("Action. This parameter will be changed from single object to 'List'."))]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IEventInfo])]
 [CmdletBinding(DefaultParameterSetName='Ping', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='Ping',Mandatory)]
+    [Parameter(ParameterSetName='Ping', Mandatory)]
     [Alias('WebhookName', 'ResourceName')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [System.String]
     # The name of the webhook.
     ${Name},
 
-    [Parameter(ParameterSetName='Ping',Mandatory)]
+    [Parameter(ParameterSetName='Ping', Mandatory)]
     [Alias('ContainerRegistryName')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [System.String]
     # The name of the container registry.
     ${RegistryName},
 
-    [Parameter(ParameterSetName='Ping',Mandatory)]
+    [Parameter(ParameterSetName='Ping', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -55,7 +54,7 @@ param(
 
     [Parameter(ParameterSetName='PingByWebhook',Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IWebhook]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IWebhook]
     # The webhook object.
     ${Webhook},
 
@@ -72,7 +71,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]

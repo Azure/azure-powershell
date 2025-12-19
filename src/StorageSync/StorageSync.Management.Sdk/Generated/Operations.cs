@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Management.StorageSync
         public StorageSyncManagementClient Client { get; private set; }
 
         /// <summary>
-        /// Lists all of the available Storage Sync Rest API operations.
+        /// List the operations for the provider
         /// </summary>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -234,7 +234,7 @@ namespace Microsoft.Azure.Management.StorageSync
 
         }
         /// <summary>
-        /// Lists all of the available Storage Sync Rest API operations.
+        /// List the operations for the provider
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

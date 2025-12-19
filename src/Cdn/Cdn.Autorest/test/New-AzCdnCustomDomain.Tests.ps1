@@ -18,8 +18,9 @@ Describe 'New-AzCdnCustomDomain'  {
     It 'CreateExpanded' {
         $subId = $env.SubscriptionId
         # Hard-coding host and endpoint names due to requirement for DNS CNAME
-        $classicCdnEndpointName = 'ps-2024-0901-domain030'
-        $customDomainHostName = 'ps-2024-0901-domain030.ps.cdne2e.azfdtest.xyz'
+        $classicCdnEndpointName = 'ps2025-0601-domain1'
+        $customDomainHostName = 'ps2025-0601-domain1.ps.cdne2e.azfdtest.xyz'
+        $customDomainInvalidHostName = 'ps2025-0601-domain1e.ps.cdne2e.azfdtest.xyz'
         $customDomainName = 'cd-pstest010'
         $location = "westus"
         $origin = @{
@@ -46,6 +47,17 @@ Describe 'New-AzCdnCustomDomain'  {
 
         $customDomain.Name | Should -Be $customDomainName
         $customDomain.HostName | Should -Be $customDomainHostName
+
+
+        $validateResult = Test-AzCdnEndpointCustomDomain -EndpointName $classicCdnEndpointName -HostName $customDomainHostName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
+
+        $validateResult.CustomDomainValidated | Should -BeTrue
+
+        $validateResult = Test-AzCdnEndpointCustomDomain -EndpointName $classicCdnEndpointName -HostName $customDomainInvalidHostName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
+
+        $validateResult.CustomDomainValidated | Should -BeFalse
+
+        Remove-AzCdnCustomDomain -EndpointName $classicCdnEndpointName -Name $customDomainName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
     }
 }
 
