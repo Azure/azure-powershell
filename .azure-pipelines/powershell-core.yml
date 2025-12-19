@@ -63,6 +63,12 @@ jobs:
       command: custom
       customCommand: install -g @azure-tools/typespec-client-generator-cli@0.15.x
   - task: PowerShell@2
+    displayName: 'List npm'
+    inputs:
+      targetType: inline
+      script: Get-ChildItem -Path 'C:\npm\prefix' -Recurse
+      pwsh: true
+  - task: PowerShell@2
     displayName: 'Build'
     inputs:
       targetType: inline
