@@ -34,12 +34,16 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="product">Specifies the product of the image from the marketplace. This is the same
         /// value as Offer under the imageReference element.
         /// </param>
-        public PurchasePlan(string publisher, string name, string product)
+
+        /// <param name="promotionCode">The Offer Promotion Code.
+        /// </param>
+        public PurchasePlan(string publisher, string name, string product, string promotionCode = default(string))
 
         {
             this.Publisher = publisher;
             this.Name = name;
             this.Product = product;
+            this.PromotionCode = promotionCode;
             CustomInit();
         }
 
@@ -67,6 +71,12 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "product")]
         public string Product {get; set; }
+
+        /// <summary>
+        /// Gets or sets the Offer Promotion Code.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "promotionCode")]
+        public string PromotionCode {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -87,6 +97,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "Product");
             }
+
 
 
 

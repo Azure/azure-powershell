@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         public ResourceSkuCosts(string meterId = default(string), long? quantity = default(long?), string extendedUnit = default(string))
 
         {
-            this.MeterId = meterId;
+            this.MeterID = meterId;
             this.Quantity = quantity;
             this.ExtendedUnit = extendedUnit;
             CustomInit();
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Gets used for querying price from commerce.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "meterID")]
-        public string MeterId {get; private set; }
+        public string MeterID {get; private set; }
 
         /// <summary>
         /// Gets the multiplier is needed to extend the base metered cost.

@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         public AdditionalCapabilities(bool? ultraSsdEnabled = default(bool?), bool? hibernationEnabled = default(bool?))
 
         {
-            this.UltraSsdEnabled = ultraSsdEnabled;
+            this.UltraSSDEnabled = ultraSsdEnabled;
             this.HibernationEnabled = hibernationEnabled;
             CustomInit();
         }
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// enabled.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "ultraSSDEnabled")]
-        public bool? UltraSsdEnabled {get; set; }
+        public bool? UltraSSDEnabled {get; set; }
 
         /// <summary>
         /// Gets or sets the flag that enables or disables hibernation capability on

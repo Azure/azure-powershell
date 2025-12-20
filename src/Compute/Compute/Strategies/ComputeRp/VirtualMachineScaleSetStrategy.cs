@@ -200,7 +200,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             VmSizes = skuProfileVmSize,
                             AllocationStrategy = skuProfileAllocationStrategy
                         },
-                        DoNotRunExtensionsOnOverprovisionedVMs = doNotRunExtensionsOnOverprovisionedVMs ? true : (bool?)null,
+                        DoNotRunExtensionsOnOverprovisionedVms = doNotRunExtensionsOnOverprovisionedVMs ? true : (bool?)null,
                         OrchestrationMode = orchestrationMode
                     };
                     if (auxAuthHeader != null)
@@ -352,7 +352,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             VmSizes = skuProfileVmSize,
                             AllocationStrategy = skuProfileAllocationStrategy
                         },
-                        DoNotRunExtensionsOnOverprovisionedVMs = doNotRunExtensionsOnOverprovisionedVMs ? true : (bool?)null,
+                        DoNotRunExtensionsOnOverprovisionedVms = doNotRunExtensionsOnOverprovisionedVMs ? true : (bool?)null,
                         OrchestrationMode = orchestrationMode
                     };
                     if (auxAuthHeader != null)

@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             this.ManagedDisk = managedDisk;
             this.BlobUri = blobUri;
             this.Caching = caching;
-            this.DiskSizeGb = diskSizeGb;
+            this.DiskSizeGB = diskSizeGb;
             this.StorageAccountType = storageAccountType;
             this.DiskEncryptionSet = diskEncryptionSet;
             CustomInit();
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// image. This value cannot be larger than 1023 GB.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "diskSizeGB")]
-        public int? DiskSizeGb {get; set; }
+        public int? DiskSizeGB {get; set; }
 
         /// <summary>
         /// Gets or sets specifies the storage account type for the managed disk. NOTE:

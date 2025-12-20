@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         public VirtualMachineScaleSetUpdateVMProfile(VirtualMachineScaleSetUpdateOSProfile osProfile = default(VirtualMachineScaleSetUpdateOSProfile), VirtualMachineScaleSetUpdateStorageProfile storageProfile = default(VirtualMachineScaleSetUpdateStorageProfile), VirtualMachineScaleSetUpdateNetworkProfile networkProfile = default(VirtualMachineScaleSetUpdateNetworkProfile), SecurityPostureReferenceUpdate securityPostureReference = default(SecurityPostureReferenceUpdate), SecurityProfile securityProfile = default(SecurityProfile), DiagnosticsProfile diagnosticsProfile = default(DiagnosticsProfile), VirtualMachineScaleSetExtensionProfile extensionProfile = default(VirtualMachineScaleSetExtensionProfile), string licenseType = default(string), BillingProfile billingProfile = default(BillingProfile), ScheduledEventsProfile scheduledEventsProfile = default(ScheduledEventsProfile), string userData = default(string), VirtualMachineScaleSetHardwareProfile hardwareProfile = default(VirtualMachineScaleSetHardwareProfile))
 
         {
-            this.OSProfile = osProfile;
+            this.OsProfile = osProfile;
             this.StorageProfile = storageProfile;
             this.NetworkProfile = networkProfile;
             this.SecurityPostureReference = securityPostureReference;
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Gets or sets the virtual machine scale set OS profile.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "osProfile")]
-        public VirtualMachineScaleSetUpdateOSProfile OSProfile {get; set; }
+        public VirtualMachineScaleSetUpdateOSProfile OsProfile {get; set; }
 
         /// <summary>
         /// Gets or sets the virtual machine scale set storage profile.

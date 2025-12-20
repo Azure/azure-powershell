@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         public SharedGalleryDiskImage(int? diskSizeGb = default(int?), string hostCaching = default(string))
 
         {
-            this.DiskSizeGb = diskSizeGb;
+            this.DiskSizeGB = diskSizeGb;
             this.HostCaching = hostCaching;
             CustomInit();
         }
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Gets this property indicates the size of the VHD to be created.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "diskSizeGB")]
-        public int? DiskSizeGb {get; private set; }
+        public int? DiskSizeGB {get; private set; }
 
         /// <summary>
         /// Gets or sets the host caching of the disk. Valid values are &#39;None&#39;,

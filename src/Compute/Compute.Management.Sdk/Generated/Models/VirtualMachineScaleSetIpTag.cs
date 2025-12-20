@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         public VirtualMachineScaleSetIpTag(string ipTagType = default(string), string tag = default(string))
 
         {
-            this.IPTagType = ipTagType;
+            this.IpTagType = ipTagType;
             this.Tag = tag;
             CustomInit();
         }
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Gets or sets iP tag type. Example: FirstPartyUsage.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "ipTagType")]
-        public string IPTagType {get; set; }
+        public string IpTagType {get; set; }
 
         /// <summary>
         /// Gets or sets iP tag associated with the public IP. Example: SQL, Storage

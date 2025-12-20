@@ -5,7 +5,7 @@
     /// <summary>
     /// Snapshot resource.
     /// </summary>
-    public partial class Snapshot : Resource
+    public partial class Snapshot : TrackedResource
     {
         /// <summary>
         /// Initializes a new instance of the Snapshot class.

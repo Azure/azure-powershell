@@ -63,8 +63,8 @@ namespace Microsoft.Azure.Management.Compute.Models
 
         : base(snapshot, managedDisk, blobUri, caching, diskSizeGb, storageAccountType, diskEncryptionSet)
         {
-            this.OSType = osType;
-            this.OSState = osState;
+            this.OsType = osType;
+            this.OsState = osState;
             CustomInit();
         }
 
@@ -80,13 +80,13 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// are: **Windows,** **Linux.** Possible values include: &#39;Windows&#39;, &#39;Linux&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "osType")]
-        public OperatingSystemTypes OSType {get; set; }
+        public OperatingSystemTypes OsType {get; set; }
 
         /// <summary>
         /// Gets or sets the OS State. For managed images, use Generalized. Possible values include: &#39;Generalized&#39;, &#39;Specialized&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "osState")]
-        public OperatingSystemStateTypes OSState {get; set; }
+        public OperatingSystemStateTypes OsState {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>

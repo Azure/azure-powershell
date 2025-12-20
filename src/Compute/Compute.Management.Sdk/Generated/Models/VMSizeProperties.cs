@@ -24,25 +24,25 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the VMSizeProperties class.
         /// </summary>
 
-        /// <param name="vCpUsAvailable">Specifies the number of vCPUs available for the VM. When this property is
+        /// <param name="vcpUsAvailable">Specifies the number of vCPUs available for the VM. When this property is
         /// not specified in the request body the default behavior is to set it to the
         /// value of vCPUs available for that VM size exposed in api response of [List
         /// all available virtual machine sizes in a
         /// region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list).
         /// </param>
 
-        /// <param name="vCpUsPerCore">Specifies the vCPU to physical core ratio. When this property is not
+        /// <param name="vcpUsPerCore">Specifies the vCPU to physical core ratio. When this property is not
         /// specified in the request body the default behavior is set to the value of
         /// vCPUsPerCore for the VM Size exposed in api response of [List all available
         /// virtual machine sizes in a
         /// region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list).
         /// **Setting this property to 1 also means that hyper-threading is disabled.**
         /// </param>
-        public VMSizeProperties(int? vCpUsAvailable = default(int?), int? vCpUsPerCore = default(int?))
+        public VMSizeProperties(int? vcpUsAvailable = default(int?), int? vcpUsPerCore = default(int?))
 
         {
-            this.VCpUsAvailable = vCpUsAvailable;
-            this.VCpUsPerCore = vCpUsPerCore;
+            this.VCPUsAvailable = vcpUsAvailable;
+            this.VCPUsPerCore = vcpUsPerCore;
             CustomInit();
         }
 
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list).
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "vCPUsAvailable")]
-        public int? VCpUsAvailable {get; set; }
+        public int? VCPUsAvailable {get; set; }
 
         /// <summary>
         /// Gets or sets specifies the vCPU to physical core ratio. When this property
@@ -71,6 +71,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// **Setting this property to 1 also means that hyper-threading is disabled.**
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "vCPUsPerCore")]
-        public int? VCpUsPerCore {get; set; }
+        public int? VCPUsPerCore {get; set; }
     }
 }

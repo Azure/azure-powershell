@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             this.EnableAutomaticOSUpgrade = enableAutomaticOSUpgrade;
             this.DisableAutomaticRollback = disableAutomaticRollback;
             this.UseRollingUpgradePolicy = useRollingUpgradePolicy;
-            this.OSRollingUpgradeDeferral = osRollingUpgradeDeferral;
+            this.OsRollingUpgradeDeferral = osRollingUpgradeDeferral;
             CustomInit();
         }
 
@@ -97,6 +97,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// approved via an ApproveRollingUpgrade call.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "osRollingUpgradeDeferral")]
-        public bool? OSRollingUpgradeDeferral {get; set; }
+        public bool? OsRollingUpgradeDeferral {get; set; }
     }
 }

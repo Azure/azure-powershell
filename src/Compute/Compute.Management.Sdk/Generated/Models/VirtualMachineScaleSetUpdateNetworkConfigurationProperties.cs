@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             this.EnableFpga = enableFpga;
             this.NetworkSecurityGroup = networkSecurityGroup;
             this.DnsSettings = dnsSettings;
-            this.IPConfigurations = ipConfigurations;
+            this.IpConfigurations = ipConfigurations;
             this.EnableIPForwarding = enableIPForwarding;
             this.DeleteOption = deleteOption;
             this.AuxiliaryMode = auxiliaryMode;
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Gets or sets the virtual machine scale set IP Configuration.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "ipConfigurations")]
-        public System.Collections.Generic.IList<VirtualMachineScaleSetUpdateIPConfiguration> IPConfigurations {get; set; }
+        public System.Collections.Generic.IList<VirtualMachineScaleSetUpdateIPConfiguration> IpConfigurations {get; set; }
 
         /// <summary>
         /// Gets or sets whether IP forwarding enabled on this NIC.

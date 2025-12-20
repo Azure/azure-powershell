@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             EncryptionSettingsCollection = encryptionSettingsCollection;
             DiskIOPSReadWrite = diskIOPSReadWrite;
             DiskMBpsReadWrite = diskMBpsReadWrite;
-            DiskIOPSReadOnly = diskIOPSReadOnly;
+            DiskIopsReadOnly = diskIOPSReadOnly;
             DiskMBpsReadOnly = diskMBpsReadOnly;
             MaxShares = maxShares;
             Encryption = encryption;
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             EncryptionSettingsCollection = encryptionSettingsCollection;
             DiskIOPSReadWrite = diskIOPSReadWrite;
             DiskMBpsReadWrite = diskMBpsReadWrite;
-            DiskIOPSReadOnly = diskIOPSReadOnly;
+            DiskIopsReadOnly = diskIOPSReadOnly;
             DiskMBpsReadOnly = diskMBpsReadOnly;
             MaxShares = maxShares;
             Encryption = encryption;
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             EncryptionSettingsCollection = encryptionSettingsCollection;
             DiskIOPSReadWrite = diskIOPSReadWrite;
             DiskMBpsReadWrite = diskMBpsReadWrite;
-            DiskIOPSReadOnly = diskIOPSReadOnly;
+            DiskIopsReadOnly = diskIOPSReadOnly;
             DiskMBpsReadOnly = diskMBpsReadOnly;
             MaxShares = maxShares;
             Encryption = encryption;
@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             EncryptionSettingsCollection = encryptionSettingsCollection;
             DiskIOPSReadWrite = diskIOPSReadWrite;
             DiskMBpsReadWrite = diskMBpsReadWrite;
-            DiskIOPSReadOnly = diskIOPSReadOnly;
+            DiskIopsReadOnly = diskIOPSReadOnly;
             DiskMBpsReadOnly = diskMBpsReadOnly;
             MaxShares = maxShares;
             Encryption = encryption;
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             EncryptionSettingsCollection = encryptionSettingsCollection;
             DiskIOPSReadWrite = diskIOPSReadWrite;
             DiskMBpsReadWrite = diskMBpsReadWrite;
-            DiskIOPSReadOnly = diskIOPSReadOnly;
+            DiskIopsReadOnly = diskIOPSReadOnly;
             DiskMBpsReadOnly = diskMBpsReadOnly;
             MaxShares = maxShares;
             Encryption = encryption;
@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             EncryptionSettingsCollection = encryptionSettingsCollection;
             DiskIOPSReadWrite = diskIOPSReadWrite;
             DiskMBpsReadWrite = diskMBpsReadWrite;
-            DiskIOPSReadOnly = diskIOPSReadOnly;
+            DiskIopsReadOnly = diskIOPSReadOnly;
             DiskMBpsReadOnly = diskMBpsReadOnly;
             MaxShares = maxShares;
             Encryption = encryption;

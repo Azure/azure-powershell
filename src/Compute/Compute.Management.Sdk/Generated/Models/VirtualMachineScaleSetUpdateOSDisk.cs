@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             this.Caching = caching;
             this.WriteAcceleratorEnabled = writeAcceleratorEnabled;
             this.DiffDiskSettings = diffDiskSettings;
-            this.DiskSizeGb = diskSizeGb;
+            this.DiskSizeGB = diskSizeGb;
             this.Image = image;
             this.VhdContainers = vhdContainers;
             this.ManagedDisk = managedDisk;
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// the value cannot be larger than 1023
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "diskSizeGB")]
-        public int? DiskSizeGb {get; set; }
+        public int? DiskSizeGB {get; set; }
 
         /// <summary>
         /// Gets or sets the Source User Image VirtualHardDisk. This VirtualHardDisk

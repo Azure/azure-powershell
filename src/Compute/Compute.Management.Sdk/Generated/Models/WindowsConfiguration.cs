@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             this.TimeZone = timeZone;
             this.AdditionalUnattendContent = additionalUnattendContent;
             this.PatchSettings = patchSettings;
-            this.WinRm = winRm;
+            this.WinRM = winRm;
             this.EnableVMAgentPlatformUpdates = enableVMAgentPlatformUpdates;
             CustomInit();
         }
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// enables remote Windows PowerShell.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "winRM")]
-        public WinRMConfiguration WinRm {get; set; }
+        public WinRMConfiguration WinRM {get; set; }
 
         /// <summary>
         /// Gets indicates whether VMAgent Platform Updates are enabled for the Windows

@@ -240,8 +240,8 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                         // 3-3: GENERATE SAS
                         WriteVerbose("Generating SAS");
                         var accessUri = GenerateSAS();
-                        Uri sasUri = new Uri(accessUri.AccessSAS);
-                        WriteVerbose("SAS generated: " + accessUri.AccessSAS);
+                        Uri sasUri = new Uri(accessUri.AccessSas);
+                        WriteVerbose("SAS generated: " + accessUri.AccessSas);
 
 
                         // 3-4: UPLOAD                  

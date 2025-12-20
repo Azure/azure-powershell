@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.Compute.Models
 
         {
             this.TerminateNotificationProfile = terminateNotificationProfile;
-            this.OSImageNotificationProfile = osImageNotificationProfile;
+            this.OsImageNotificationProfile = osImageNotificationProfile;
             CustomInit();
         }
 
@@ -50,6 +50,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Gets or sets specifies OS Image Scheduled Event related configurations.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "osImageNotificationProfile")]
-        public OSImageNotificationProfile OSImageNotificationProfile {get; set; }
+        public OSImageNotificationProfile OsImageNotificationProfile {get; set; }
     }
 }

@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         : base(name, location, id, tags, extendedLocation)
         {
             this.Plan = plan;
-            this.OSDiskImage = osDiskImage;
+            this.OsDiskImage = osDiskImage;
             this.DataDiskImages = dataDiskImages;
             this.AutomaticOSUpgradeProperties = automaticOSUpgradeProperties;
             this.HyperVGeneration = hyperVGeneration;
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Gets or sets contains the os disk image information.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.osDiskImage")]
-        public OSDiskImage OSDiskImage {get; set; }
+        public OSDiskImage OsDiskImage {get; set; }
 
         /// <summary>
         /// Gets or sets the list of data disk images information.
@@ -160,9 +160,9 @@ namespace Microsoft.Azure.Management.Compute.Models
             {
                 this.Plan.Validate();
             }
-            if (this.OSDiskImage != null)
+            if (this.OsDiskImage != null)
             {
-                this.OSDiskImage.Validate();
+                this.OsDiskImage.Validate();
             }
 
             if (this.AutomaticOSUpgradeProperties != null)

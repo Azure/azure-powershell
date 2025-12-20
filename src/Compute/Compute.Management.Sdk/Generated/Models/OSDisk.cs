@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         public OSDisk(string createOption, OperatingSystemTypes? osType = default(OperatingSystemTypes?), DiskEncryptionSettings encryptionSettings = default(DiskEncryptionSettings), string name = default(string), VirtualHardDisk vhd = default(VirtualHardDisk), VirtualHardDisk image = default(VirtualHardDisk), CachingTypes? caching = default(CachingTypes?), bool? writeAcceleratorEnabled = default(bool?), DiffDiskSettings diffDiskSettings = default(DiffDiskSettings), int? diskSizeGb = default(int?), ManagedDiskParameters managedDisk = default(ManagedDiskParameters), string deleteOption = default(string))
 
         {
-            this.OSType = osType;
+            this.OsType = osType;
             this.EncryptionSettings = encryptionSettings;
             this.Name = name;
             this.Vhd = vhd;
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             this.WriteAcceleratorEnabled = writeAcceleratorEnabled;
             this.DiffDiskSettings = diffDiskSettings;
             this.CreateOption = createOption;
-            this.DiskSizeGb = diskSizeGb;
+            this.DiskSizeGB = diskSizeGb;
             this.ManagedDisk = managedDisk;
             this.DeleteOption = deleteOption;
             CustomInit();
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Possible values are: **Windows,** **Linux.** Possible values include: &#39;Windows&#39;, &#39;Linux&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "osType")]
-        public OperatingSystemTypes? OSType {get; set; }
+        public OperatingSystemTypes? OsType {get; set; }
 
         /// <summary>
         /// Gets or sets specifies the encryption settings for the OS Disk. Minimum
@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// disk and the value cannot be larger than 1023.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "diskSizeGB")]
-        public int? DiskSizeGb {get; set; }
+        public int? DiskSizeGB {get; set; }
 
         /// <summary>
         /// Gets or sets the managed disk parameters.

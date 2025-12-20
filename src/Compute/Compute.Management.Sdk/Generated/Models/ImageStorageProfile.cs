@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         public ImageStorageProfile(ImageOSDisk osDisk = default(ImageOSDisk), System.Collections.Generic.IList<ImageDataDisk> dataDisks = default(System.Collections.Generic.IList<ImageDataDisk>), bool? zoneResilient = default(bool?))
 
         {
-            this.OSDisk = osDisk;
+            this.OsDisk = osDisk;
             this.DataDisks = dataDisks;
             this.ZoneResilient = zoneResilient;
             CustomInit();
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "osDisk")]
-        public ImageOSDisk OSDisk {get; set; }
+        public ImageOSDisk OsDisk {get; set; }
 
         /// <summary>
         /// Gets or sets specifies the parameters that are used to add a data disk to a
@@ -88,9 +88,9 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (this.OSDisk != null)
+            if (this.OsDisk != null)
             {
-                this.OSDisk.Validate();
+                this.OsDisk.Validate();
             }
             if (this.DataDisks != null)
             {

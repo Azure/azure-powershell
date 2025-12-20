@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         public GalleryDiskImage(int? sizeInGb = default(int?), HostCaching? hostCaching = default(HostCaching?), GalleryDiskImageSource source = default(GalleryDiskImageSource))
 
         {
-            this.SizeInGb = sizeInGb;
+            this.SizeInGB = sizeInGb;
             this.HostCaching = hostCaching;
             this.Source = source;
             CustomInit();
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Gets this property indicates the size of the VHD to be created.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "sizeInGB")]
-        public int? SizeInGb {get; private set; }
+        public int? SizeInGB {get; private set; }
 
         /// <summary>
         /// Gets or sets the host caching of the disk. Valid values are &#39;None&#39;,

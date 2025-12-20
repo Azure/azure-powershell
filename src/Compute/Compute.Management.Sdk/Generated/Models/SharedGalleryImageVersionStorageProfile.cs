@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         public SharedGalleryImageVersionStorageProfile(SharedGalleryOSDiskImage osDiskImage = default(SharedGalleryOSDiskImage), System.Collections.Generic.IList<SharedGalleryDataDiskImage> dataDiskImages = default(System.Collections.Generic.IList<SharedGalleryDataDiskImage>))
 
         {
-            this.OSDiskImage = osDiskImage;
+            this.OsDiskImage = osDiskImage;
             this.DataDiskImages = dataDiskImages;
             CustomInit();
         }
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Gets or sets this is the OS disk image.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "osDiskImage")]
-        public SharedGalleryOSDiskImage OSDiskImage {get; set; }
+        public SharedGalleryOSDiskImage OsDiskImage {get; set; }
 
         /// <summary>
         /// Gets or sets a list of data disk images.

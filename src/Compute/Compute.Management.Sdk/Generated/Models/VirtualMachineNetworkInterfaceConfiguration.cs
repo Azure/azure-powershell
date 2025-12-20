@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             this.EnableIPForwarding = enableIPForwarding;
             this.NetworkSecurityGroup = networkSecurityGroup;
             this.DnsSettings = dnsSettings;
-            this.IPConfigurations = ipConfigurations;
+            this.IpConfigurations = ipConfigurations;
             this.DscpConfiguration = dscpConfiguration;
             this.AuxiliaryMode = auxiliaryMode;
             this.AuxiliarySku = auxiliarySku;
@@ -166,7 +166,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Gets or sets specifies the IP configurations of the network interface.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.ipConfigurations")]
-        public System.Collections.Generic.IList<VirtualMachineNetworkInterfaceIPConfiguration> IPConfigurations {get; set; }
+        public System.Collections.Generic.IList<VirtualMachineNetworkInterfaceIPConfiguration> IpConfigurations {get; set; }
 
         /// <summary>
         /// Gets or sets
@@ -204,9 +204,9 @@ namespace Microsoft.Azure.Management.Compute.Models
 
 
 
-            if (this.IPConfigurations != null)
+            if (this.IpConfigurations != null)
             {
-                foreach (var element in this.IPConfigurations)
+                foreach (var element in this.IpConfigurations)
                 {
                     if (element != null)
                     {

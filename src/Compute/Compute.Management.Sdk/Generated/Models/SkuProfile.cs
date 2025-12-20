@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         public SkuProfile(System.Collections.Generic.IList<SkuProfileVMSize> vmSizes = default(System.Collections.Generic.IList<SkuProfileVMSize>), string allocationStrategy = default(string))
 
         {
-            this.VMSizes = vmSizes;
+            this.VmSizes = vmSizes;
             this.AllocationStrategy = allocationStrategy;
             CustomInit();
         }
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Gets or sets specifies the VM sizes for the virtual machine scale set.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "vmSizes")]
-        public System.Collections.Generic.IList<SkuProfileVMSize> VMSizes {get; set; }
+        public System.Collections.Generic.IList<SkuProfileVMSize> VmSizes {get; set; }
 
         /// <summary>
         /// Gets or sets specifies the allocation strategy for the virtual machine

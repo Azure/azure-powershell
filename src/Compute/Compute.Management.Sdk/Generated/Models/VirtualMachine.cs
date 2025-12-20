@@ -227,7 +227,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             this.HardwareProfile = hardwareProfile;
             this.StorageProfile = storageProfile;
             this.AdditionalCapabilities = additionalCapabilities;
-            this.OSProfile = osProfile;
+            this.OsProfile = osProfile;
             this.NetworkProfile = networkProfile;
             this.SecurityProfile = securityProfile;
             this.DiagnosticsProfile = diagnosticsProfile;
@@ -244,7 +244,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             this.ProvisioningState = provisioningState;
             this.InstanceView = instanceView;
             this.LicenseType = licenseType;
-            this.VMId = vmId;
+            this.VmId = vmId;
             this.ExtensionsTimeBudget = extensionsTimeBudget;
             this.PlatformFaultDomain = platformFaultDomain;
             this.ScheduledEventsProfile = scheduledEventsProfile;
@@ -344,7 +344,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// provisioned.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.osProfile")]
-        public OSProfile OSProfile {get; set; }
+        public OSProfile OsProfile {get; set; }
 
         /// <summary>
         /// Gets or sets specifies the network interfaces of the virtual machine.
@@ -491,7 +491,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// platform BIOS commands.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.vmId")]
-        public string VMId {get; private set; }
+        public string VmId {get; private set; }
 
         /// <summary>
         /// Gets or sets specifies the time alloted for all extensions to start. The

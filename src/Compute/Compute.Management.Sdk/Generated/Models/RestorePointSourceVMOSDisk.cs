@@ -50,11 +50,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         public RestorePointSourceVmosDisk(string osType = default(string), DiskEncryptionSettings encryptionSettings = default(DiskEncryptionSettings), string name = default(string), CachingTypes? caching = default(CachingTypes?), int? diskSizeGb = default(int?), ManagedDiskParameters managedDisk = default(ManagedDiskParameters), DiskRestorePointAttributes diskRestorePoint = default(DiskRestorePointAttributes), bool? writeAcceleratorEnabled = default(bool?))
 
         {
-            this.OSType = osType;
+            this.OsType = osType;
             this.EncryptionSettings = encryptionSettings;
             this.Name = name;
             this.Caching = caching;
-            this.DiskSizeGb = diskSizeGb;
+            this.DiskSizeGB = diskSizeGb;
             this.ManagedDisk = managedDisk;
             this.DiskRestorePoint = diskRestorePoint;
             this.WriteAcceleratorEnabled = writeAcceleratorEnabled;
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Gets gets the Operating System type. Possible values include: &#39;Windows&#39;, &#39;Linux&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "osType")]
-        public string OSType {get; private set; }
+        public string OsType {get; private set; }
 
         /// <summary>
         /// Gets gets the disk encryption settings.
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Gets gets the disk size in GB.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "diskSizeGB")]
-        public int? DiskSizeGb {get; private set; }
+        public int? DiskSizeGB {get; private set; }
 
         /// <summary>
         /// Gets or sets gets the managed disk details

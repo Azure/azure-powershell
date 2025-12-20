@@ -24,13 +24,13 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the DedicatedHostAvailableCapacity class.
         /// </summary>
 
-        /// <param name="allocatableVms">The unutilized capacity of the dedicated host represented in terms of each
+        /// <param name="allocatableVMS">The unutilized capacity of the dedicated host represented in terms of each
         /// VM size that is allowed to be deployed to the dedicated host.
         /// </param>
-        public DedicatedHostAvailableCapacity(System.Collections.Generic.IList<DedicatedHostAllocatableVM> allocatableVms = default(System.Collections.Generic.IList<DedicatedHostAllocatableVM>))
+        public DedicatedHostAvailableCapacity(System.Collections.Generic.IList<DedicatedHostAllocatableVM> allocatableVMS = default(System.Collections.Generic.IList<DedicatedHostAllocatableVM>))
 
         {
-            this.AllocatableVMS = allocatableVms;
+            this.AllocatableVMs = allocatableVMS;
             CustomInit();
         }
 
@@ -45,6 +45,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// terms of each VM size that is allowed to be deployed to the dedicated host.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "allocatableVMs")]
-        public System.Collections.Generic.IList<DedicatedHostAllocatableVM> AllocatableVMS {get; set; }
+        public System.Collections.Generic.IList<DedicatedHostAllocatableVM> AllocatableVMs {get; set; }
     }
 }

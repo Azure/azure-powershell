@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Management.Compute.Models
 
         {
             this.ImageReference = imageReference;
-            this.OSDisk = osDisk;
+            this.OsDisk = osDisk;
             this.DataDisks = dataDisks;
             this.DiskControllerType = diskControllerType;
             this.AlignRegionalDisksToVMZone = alignRegionalDisksToVMZone;
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "osDisk")]
-        public OSDisk OSDisk {get; set; }
+        public OSDisk OsDisk {get; set; }
 
         /// <summary>
         /// Gets or sets specifies the parameters that are used to add a data disk to a
@@ -132,9 +132,9 @@ namespace Microsoft.Azure.Management.Compute.Models
         public virtual void Validate()
         {
 
-            if (this.OSDisk != null)
+            if (this.OsDisk != null)
             {
-                this.OSDisk.Validate();
+                this.OsDisk.Validate();
             }
             if (this.DataDisks != null)
             {

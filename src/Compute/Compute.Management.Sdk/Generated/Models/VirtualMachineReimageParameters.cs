@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         {
             this.TempDisk = tempDisk;
             this.ExactVersion = exactVersion;
-            this.OSProfile = osProfile;
+            this.OsProfile = osProfile;
             CustomInit();
         }
 
@@ -73,6 +73,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// OS disk.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "osProfile")]
-        public OSProfileProvisioningData OSProfile {get; set; }
+        public OSProfileProvisioningData OsProfile {get; set; }
     }
 }

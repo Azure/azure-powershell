@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="publisher">The name of the extension handler publisher.
         /// </param>
 
-        /// <param name="propertiesType">Specifies the type of the extension; an example is &#34;CustomScriptExtension&#34;.
+        /// <param name="virtualMachineExtensionType">Specifies the type of the extension; an example is &#34;CustomScriptExtension&#34;.
         /// </param>
 
         /// <param name="typeHandlerVersion">Specifies the version of the script handler.
@@ -88,13 +88,13 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="provisionAfterExtensions">Collection of extension names after which this extension needs to be
         /// provisioned.
         /// </param>
-        public VirtualMachineExtension(string location, string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string forceUpdateTag = default(string), string publisher = default(string), string propertiesType = default(string), string typeHandlerVersion = default(string), bool? autoUpgradeMinorVersion = default(bool?), bool? enableAutomaticUpgrade = default(bool?), object settings = default(object), object protectedSettings = default(object), string provisioningState = default(string), VirtualMachineExtensionInstanceView instanceView = default(VirtualMachineExtensionInstanceView), bool? suppressFailures = default(bool?), KeyVaultSecretReference protectedSettingsFromKeyVault = default(KeyVaultSecretReference), System.Collections.Generic.IList<string> provisionAfterExtensions = default(System.Collections.Generic.IList<string>))
+        public VirtualMachineExtension(string location, string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string forceUpdateTag = default(string), string publisher = default(string), string virtualMachineExtensionType = default(string), string typeHandlerVersion = default(string), bool? autoUpgradeMinorVersion = default(bool?), bool? enableAutomaticUpgrade = default(bool?), object settings = default(object), object protectedSettings = default(object), string provisioningState = default(string), VirtualMachineExtensionInstanceView instanceView = default(VirtualMachineExtensionInstanceView), bool? suppressFailures = default(bool?), KeyVaultSecretReference protectedSettingsFromKeyVault = default(KeyVaultSecretReference), System.Collections.Generic.IList<string> provisionAfterExtensions = default(System.Collections.Generic.IList<string>))
 
         : base(location, id, name, type, tags)
         {
             this.ForceUpdateTag = forceUpdateTag;
             this.Publisher = publisher;
-            this.PropertiesType = propertiesType;
+            this.VirtualMachineExtensionType = virtualMachineExtensionType;
             this.TypeHandlerVersion = typeHandlerVersion;
             this.AutoUpgradeMinorVersion = autoUpgradeMinorVersion;
             this.EnableAutomaticUpgrade = enableAutomaticUpgrade;
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// &#34;CustomScriptExtension&#34;.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.type")]
-        public string PropertiesType {get; set; }
+        public string VirtualMachineExtensionType {get; set; }
 
         /// <summary>
         /// Gets or sets specifies the version of the script handler.

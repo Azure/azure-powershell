@@ -82,8 +82,8 @@ namespace Microsoft.Azure.Management.Compute.Models
             this.Sku = sku;
             this.Encryption = encryption;
             this.SupportedCapabilities = supportedCapabilities;
-            this.OSType = osType;
-            this.DiskSizeGb = diskSizeGb;
+            this.OsType = osType;
+            this.DiskSizeGB = diskSizeGb;
             this.EncryptionSettingsCollection = encryptionSettingsCollection;
             this.NetworkAccessPolicy = networkAccessPolicy;
             this.DiskAccessId = diskAccessId;
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Gets or sets the Operating System type. Possible values include: &#39;Windows&#39;, &#39;Linux&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.osType")]
-        public OperatingSystemTypes? OSType {get; set; }
+        public OperatingSystemTypes? OsType {get; set; }
 
         /// <summary>
         /// Gets or sets if creationData.createOption is Empty, this field is mandatory
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// increase the disk&#39;s size.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.diskSizeGB")]
-        public int? DiskSizeGb {get; set; }
+        public int? DiskSizeGB {get; set; }
 
         /// <summary>
         /// Gets or sets encryption settings collection used be Azure Disk Encryption,

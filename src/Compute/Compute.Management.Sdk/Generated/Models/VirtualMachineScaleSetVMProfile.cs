@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         public VirtualMachineScaleSetVMProfile(VirtualMachineScaleSetOSProfile osProfile = default(VirtualMachineScaleSetOSProfile), VirtualMachineScaleSetStorageProfile storageProfile = default(VirtualMachineScaleSetStorageProfile), VirtualMachineScaleSetNetworkProfile networkProfile = default(VirtualMachineScaleSetNetworkProfile), SecurityProfile securityProfile = default(SecurityProfile), DiagnosticsProfile diagnosticsProfile = default(DiagnosticsProfile), VirtualMachineScaleSetExtensionProfile extensionProfile = default(VirtualMachineScaleSetExtensionProfile), string licenseType = default(string), string priority = default(string), string evictionPolicy = default(string), BillingProfile billingProfile = default(BillingProfile), ScheduledEventsProfile scheduledEventsProfile = default(ScheduledEventsProfile), string userData = default(string), CapacityReservationProfile capacityReservation = default(CapacityReservationProfile), ApplicationProfile applicationProfile = default(ApplicationProfile), VirtualMachineScaleSetHardwareProfile hardwareProfile = default(VirtualMachineScaleSetHardwareProfile), ServiceArtifactReference serviceArtifactReference = default(ServiceArtifactReference), SecurityPostureReference securityPostureReference = default(SecurityPostureReference), System.DateTime? timeCreated = default(System.DateTime?))
 
         {
-            this.OSProfile = osProfile;
+            this.OsProfile = osProfile;
             this.StorageProfile = storageProfile;
             this.NetworkProfile = networkProfile;
             this.SecurityProfile = securityProfile;
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// machines in the scale set.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "osProfile")]
-        public VirtualMachineScaleSetOSProfile OSProfile {get; set; }
+        public VirtualMachineScaleSetOSProfile OsProfile {get; set; }
 
         /// <summary>
         /// Gets or sets specifies the storage settings for the virtual machine disks.

@@ -62,10 +62,10 @@ namespace Microsoft.Azure.Management.Compute.Models
         {
             this.HardwareProfile = hardwareProfile;
             this.StorageProfile = storageProfile;
-            this.OSProfile = osProfile;
+            this.OsProfile = osProfile;
             this.DiagnosticsProfile = diagnosticsProfile;
             this.LicenseType = licenseType;
-            this.VMId = vmId;
+            this.VmId = vmId;
             this.SecurityProfile = securityProfile;
             this.Location = location;
             this.UserData = userData;
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Gets gets the OS profile.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "osProfile")]
-        public OSProfile OSProfile {get; private set; }
+        public OSProfile OsProfile {get; private set; }
 
         /// <summary>
         /// Gets gets the diagnostics profile.
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Gets gets the virtual machine unique id.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "vmId")]
-        public string VMId {get; private set; }
+        public string VmId {get; private set; }
 
         /// <summary>
         /// Gets gets the security profile.

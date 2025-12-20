@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Management.Compute.Models
 
         {
             this.ImageReference = imageReference;
-            this.OSDisk = osDisk;
+            this.OsDisk = osDisk;
             this.DataDisks = dataDisks;
             this.DiskControllerType = diskControllerType;
             CustomInit();
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Gets or sets the OS disk.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "osDisk")]
-        public VirtualMachineScaleSetUpdateOSDisk OSDisk {get; set; }
+        public VirtualMachineScaleSetUpdateOSDisk OsDisk {get; set; }
 
         /// <summary>
         /// Gets or sets the data disks.

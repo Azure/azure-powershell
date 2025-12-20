@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         public EncryptionImages(OSDiskImageEncryption osDiskImage = default(OSDiskImageEncryption), System.Collections.Generic.IList<DataDiskImageEncryption> dataDiskImages = default(System.Collections.Generic.IList<DataDiskImageEncryption>))
 
         {
-            this.OSDiskImage = osDiskImage;
+            this.OsDiskImage = osDiskImage;
             this.DataDiskImages = dataDiskImages;
             CustomInit();
         }
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Gets or sets contains encryption settings for an OS disk image.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "osDiskImage")]
-        public OSDiskImageEncryption OSDiskImage {get; set; }
+        public OSDiskImageEncryption OsDiskImage {get; set; }
 
         /// <summary>
         /// Gets or sets a list of encryption specifications for data disk images.

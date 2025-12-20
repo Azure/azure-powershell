@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         public ShareInfoElement(string vmUri = default(string))
 
         {
-            this.VMUri = vmUri;
+            this.VmUri = vmUri;
             CustomInit();
         }
 
@@ -40,6 +40,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Gets a relative URI containing the ID of the VM that has the disk attached.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "vmUri")]
-        public string VMUri {get; private set; }
+        public string VmUri {get; private set; }
     }
 }

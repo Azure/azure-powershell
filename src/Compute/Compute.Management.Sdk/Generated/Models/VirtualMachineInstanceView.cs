@@ -87,15 +87,15 @@ namespace Microsoft.Azure.Management.Compute.Models
             this.PlatformUpdateDomain = platformUpdateDomain;
             this.PlatformFaultDomain = platformFaultDomain;
             this.ComputerName = computerName;
-            this.OSName = osName;
-            this.OSVersion = osVersion;
+            this.OsName = osName;
+            this.OsVersion = osVersion;
             this.HyperVGeneration = hyperVGeneration;
             this.RdpThumbPrint = rdpThumbPrint;
-            this.VMAgent = vmAgent;
+            this.VmAgent = vmAgent;
             this.MaintenanceRedeployStatus = maintenanceRedeployStatus;
             this.Disks = disks;
             this.Extensions = extensions;
-            this.VMHealth = vmHealth;
+            this.VmHealth = vmHealth;
             this.BootDiagnostics = bootDiagnostics;
             this.AssignedHost = assignedHost;
             this.Statuses = statuses;
@@ -132,14 +132,14 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Gets or sets the Operating System running on the virtual machine.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "osName")]
-        public string OSName {get; set; }
+        public string OsName {get; set; }
 
         /// <summary>
         /// Gets or sets the version of Operating System running on the virtual
         /// machine.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "osVersion")]
-        public string OSVersion {get; set; }
+        public string OsVersion {get; set; }
 
         /// <summary>
         /// Gets or sets specifies the HyperVGeneration Type associated with a resource Possible values include: &#39;V1&#39;, &#39;V2&#39;
@@ -157,7 +157,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Gets or sets the VM Agent running on the virtual machine.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "vmAgent")]
-        public VirtualMachineAgentInstanceView VMAgent {get; set; }
+        public VirtualMachineAgentInstanceView VmAgent {get; set; }
 
         /// <summary>
         /// Gets or sets the Maintenance Operation status on the virtual machine.
@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Gets the health status for the VM.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "vmHealth")]
-        public VirtualMachineHealthStatus VMHealth {get; private set; }
+        public VirtualMachineHealthStatus VmHealth {get; private set; }
 
         /// <summary>
         /// Gets or sets boot Diagnostics is a debugging feature which allows you to

@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             this.Lun = lun;
             this.Name = name;
             this.Caching = caching;
-            this.DiskSizeGb = diskSizeGb;
+            this.DiskSizeGB = diskSizeGb;
             this.ManagedDisk = managedDisk;
             this.DiskRestorePoint = diskRestorePoint;
             this.WriteAcceleratorEnabled = writeAcceleratorEnabled;
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// desired size for existing OS and Data disks.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "diskSizeGB")]
-        public int? DiskSizeGb {get; private set; }
+        public int? DiskSizeGB {get; private set; }
 
         /// <summary>
         /// Gets or sets contains the managed disk details.

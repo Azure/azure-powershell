@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         public VirtualMachineScaleSetHardwareProfile(VMSizeProperties vmSizeProperties = default(VMSizeProperties))
 
         {
-            this.VMSizeProperties = vmSizeProperties;
+            this.VmSizeProperties = vmSizeProperties;
             CustomInit();
         }
 
@@ -48,6 +48,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// details.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "vmSizeProperties")]
-        public VMSizeProperties VMSizeProperties {get; set; }
+        public VMSizeProperties VmSizeProperties {get; set; }
     }
 }

@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         public DedicatedHostGroupPropertiesAdditionalCapabilities(bool? ultraSsdEnabled = default(bool?))
 
         {
-            this.UltraSsdEnabled = ultraSsdEnabled;
+            this.UltraSSDEnabled = ultraSsdEnabled;
             CustomInit();
         }
 
@@ -60,6 +60,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Minimum api-version: 2022-03-01.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "ultraSSDEnabled")]
-        public bool? UltraSsdEnabled {get; set; }
+        public bool? UltraSSDEnabled {get; set; }
     }
 }

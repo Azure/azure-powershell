@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             this.IdleTimeoutInMinutes = idleTimeoutInMinutes;
             this.DeleteOption = deleteOption;
             this.DnsSettings = dnsSettings;
-            this.IPTags = ipTags;
+            this.IpTags = ipTags;
             this.PublicIPPrefix = publicIPPrefix;
             this.PublicIPAddressVersion = publicIPAddressVersion;
             this.PublicIPAllocationMethod = publicIPAllocationMethod;
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Gets or sets the list of IP tags associated with the public IP address.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "ipTags")]
-        public System.Collections.Generic.IList<VirtualMachineIpTag> IPTags {get; set; }
+        public System.Collections.Generic.IList<VirtualMachineIpTag> IpTags {get; set; }
 
         /// <summary>
         /// Gets or sets the PublicIPPrefix from which to allocate publicIP addresses.

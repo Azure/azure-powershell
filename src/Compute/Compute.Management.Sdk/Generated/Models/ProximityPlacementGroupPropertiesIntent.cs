@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         public ProximityPlacementGroupPropertiesIntent(System.Collections.Generic.IList<string> vmSizes = default(System.Collections.Generic.IList<string>))
 
         {
-            this.VMSizes = vmSizes;
+            this.VmSizes = vmSizes;
             CustomInit();
         }
 
@@ -45,6 +45,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// created in the proximity placement group.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "vmSizes")]
-        public System.Collections.Generic.IList<string> VMSizes {get; set; }
+        public System.Collections.Generic.IList<string> VmSizes {get; set; }
     }
 }

@@ -117,11 +117,11 @@ namespace Microsoft.Azure.Management.Compute.Models
             this.Caching = caching;
             this.WriteAcceleratorEnabled = writeAcceleratorEnabled;
             this.CreateOption = createOption;
-            this.DiskSizeGb = diskSizeGb;
+            this.DiskSizeGB = diskSizeGb;
             this.ManagedDisk = managedDisk;
             this.SourceResource = sourceResource;
             this.ToBeDetached = toBeDetached;
-            this.DiskIopsReadWrite = diskIopsReadWrite;
+            this.DiskIOPSReadWrite = diskIopsReadWrite;
             this.DiskMBpsReadWrite = diskMBpsReadWrite;
             this.DetachOption = detachOption;
             this.DeleteOption = deleteOption;
@@ -200,7 +200,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// disk and the value cannot be larger than 1023.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "diskSizeGB")]
-        public int? DiskSizeGb {get; set; }
+        public int? DiskSizeGB {get; set; }
 
         /// <summary>
         /// Gets or sets the managed disk parameters.
@@ -229,7 +229,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Scale Set.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "diskIOPSReadWrite")]
-        public long? DiskIopsReadWrite {get; private set; }
+        public long? DiskIOPSReadWrite {get; private set; }
 
         /// <summary>
         /// Gets specifies the bandwidth in MB per second for the managed disk when

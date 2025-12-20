@@ -47,16 +47,16 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// scaled-in.(Feature in Preview)
         /// </param>
 
-        /// <param name="prioritizeUnhealthyVms">This property allows you to prioritize the deletion of unhealthy and
+        /// <param name="prioritizeUnhealthyVMS">This property allows you to prioritize the deletion of unhealthy and
         /// inactive VMs when a virtual machine scale set is being scaled-in.(Feature
         /// in Preview)
         /// </param>
-        public ScaleInPolicy(System.Collections.Generic.IList<string> rules = default(System.Collections.Generic.IList<string>), bool? forceDeletion = default(bool?), bool? prioritizeUnhealthyVms = default(bool?))
+        public ScaleInPolicy(System.Collections.Generic.IList<string> rules = default(System.Collections.Generic.IList<string>), bool? forceDeletion = default(bool?), bool? prioritizeUnhealthyVMS = default(bool?))
 
         {
             this.Rules = rules;
             this.ForceDeletion = forceDeletion;
-            this.PrioritizeUnhealthyVMS = prioritizeUnhealthyVms;
+            this.PrioritizeUnhealthyVMs = prioritizeUnhealthyVMS;
             CustomInit();
         }
 
@@ -102,6 +102,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// scaled-in.(Feature in Preview)
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "prioritizeUnhealthyVMs")]
-        public bool? PrioritizeUnhealthyVMS {get; set; }
+        public bool? PrioritizeUnhealthyVMs {get; set; }
     }
 }

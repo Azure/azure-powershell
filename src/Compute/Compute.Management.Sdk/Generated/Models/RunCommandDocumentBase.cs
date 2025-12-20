@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         {
             this.Schema = schema;
             this.Id = id;
-            this.OSType = osType;
+            this.OsType = osType;
             this.Label = label;
             this.Description = description;
             CustomInit();
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Gets or sets the Operating System type. Possible values include: &#39;Windows&#39;, &#39;Linux&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "osType")]
-        public OperatingSystemTypes OSType {get; set; }
+        public OperatingSystemTypes OsType {get; set; }
 
         /// <summary>
         /// Gets or sets the VM run command label.

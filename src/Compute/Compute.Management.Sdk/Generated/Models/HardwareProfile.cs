@@ -89,8 +89,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         public HardwareProfile(string vmSize = default(string), VMSizeProperties vmSizeProperties = default(VMSizeProperties))
 
         {
-            this.VMSize = vmSize;
-            this.VMSizeProperties = vmSizeProperties;
+            this.VmSize = vmSize;
+            this.VmSizeProperties = vmSizeProperties;
             CustomInit();
         }
 
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// available VM sizes depend on region and availability set. Possible values include: &#39;Basic_A0&#39;, &#39;Basic_A1&#39;, &#39;Basic_A2&#39;, &#39;Basic_A3&#39;, &#39;Basic_A4&#39;, &#39;Standard_A0&#39;, &#39;Standard_A1&#39;, &#39;Standard_A2&#39;, &#39;Standard_A3&#39;, &#39;Standard_A4&#39;, &#39;Standard_A5&#39;, &#39;Standard_A6&#39;, &#39;Standard_A7&#39;, &#39;Standard_A8&#39;, &#39;Standard_A9&#39;, &#39;Standard_A10&#39;, &#39;Standard_A11&#39;, &#39;Standard_A1_v2&#39;, &#39;Standard_A2_v2&#39;, &#39;Standard_A4_v2&#39;, &#39;Standard_A8_v2&#39;, &#39;Standard_A2m_v2&#39;, &#39;Standard_A4m_v2&#39;, &#39;Standard_A8m_v2&#39;, &#39;Standard_B1s&#39;, &#39;Standard_B1ms&#39;, &#39;Standard_B2s&#39;, &#39;Standard_B2ms&#39;, &#39;Standard_B4ms&#39;, &#39;Standard_B8ms&#39;, &#39;Standard_D1&#39;, &#39;Standard_D2&#39;, &#39;Standard_D3&#39;, &#39;Standard_D4&#39;, &#39;Standard_D11&#39;, &#39;Standard_D12&#39;, &#39;Standard_D13&#39;, &#39;Standard_D14&#39;, &#39;Standard_D1_v2&#39;, &#39;Standard_D2_v2&#39;, &#39;Standard_D3_v2&#39;, &#39;Standard_D4_v2&#39;, &#39;Standard_D5_v2&#39;, &#39;Standard_D2_v3&#39;, &#39;Standard_D4_v3&#39;, &#39;Standard_D8_v3&#39;, &#39;Standard_D16_v3&#39;, &#39;Standard_D32_v3&#39;, &#39;Standard_D64_v3&#39;, &#39;Standard_D2s_v3&#39;, &#39;Standard_D4s_v3&#39;, &#39;Standard_D8s_v3&#39;, &#39;Standard_D16s_v3&#39;, &#39;Standard_D32s_v3&#39;, &#39;Standard_D64s_v3&#39;, &#39;Standard_D11_v2&#39;, &#39;Standard_D12_v2&#39;, &#39;Standard_D13_v2&#39;, &#39;Standard_D14_v2&#39;, &#39;Standard_D15_v2&#39;, &#39;Standard_DS1&#39;, &#39;Standard_DS2&#39;, &#39;Standard_DS3&#39;, &#39;Standard_DS4&#39;, &#39;Standard_DS11&#39;, &#39;Standard_DS12&#39;, &#39;Standard_DS13&#39;, &#39;Standard_DS14&#39;, &#39;Standard_DS1_v2&#39;, &#39;Standard_DS2_v2&#39;, &#39;Standard_DS3_v2&#39;, &#39;Standard_DS4_v2&#39;, &#39;Standard_DS5_v2&#39;, &#39;Standard_DS11_v2&#39;, &#39;Standard_DS12_v2&#39;, &#39;Standard_DS13_v2&#39;, &#39;Standard_DS14_v2&#39;, &#39;Standard_DS15_v2&#39;, &#39;Standard_DS13-4_v2&#39;, &#39;Standard_DS13-2_v2&#39;, &#39;Standard_DS14-8_v2&#39;, &#39;Standard_DS14-4_v2&#39;, &#39;Standard_E2_v3&#39;, &#39;Standard_E4_v3&#39;, &#39;Standard_E8_v3&#39;, &#39;Standard_E16_v3&#39;, &#39;Standard_E32_v3&#39;, &#39;Standard_E64_v3&#39;, &#39;Standard_E2s_v3&#39;, &#39;Standard_E4s_v3&#39;, &#39;Standard_E8s_v3&#39;, &#39;Standard_E16s_v3&#39;, &#39;Standard_E32s_v3&#39;, &#39;Standard_E64s_v3&#39;, &#39;Standard_E32-16_v3&#39;, &#39;Standard_E32-8s_v3&#39;, &#39;Standard_E64-32s_v3&#39;, &#39;Standard_E64-16s_v3&#39;, &#39;Standard_F1&#39;, &#39;Standard_F2&#39;, &#39;Standard_F4&#39;, &#39;Standard_F8&#39;, &#39;Standard_F16&#39;, &#39;Standard_F1s&#39;, &#39;Standard_F2s&#39;, &#39;Standard_F4s&#39;, &#39;Standard_F8s&#39;, &#39;Standard_F16s&#39;, &#39;Standard_F2s_v2&#39;, &#39;Standard_F4s_v2&#39;, &#39;Standard_F8s_v2&#39;, &#39;Standard_F16s_v2&#39;, &#39;Standard_F32s_v2&#39;, &#39;Standard_F64s_v2&#39;, &#39;Standard_F72s_v2&#39;, &#39;Standard_G1&#39;, &#39;Standard_G2&#39;, &#39;Standard_G3&#39;, &#39;Standard_G4&#39;, &#39;Standard_G5&#39;, &#39;Standard_GS1&#39;, &#39;Standard_GS2&#39;, &#39;Standard_GS3&#39;, &#39;Standard_GS4&#39;, &#39;Standard_GS5&#39;, &#39;Standard_GS4-8&#39;, &#39;Standard_GS4-4&#39;, &#39;Standard_GS5-16&#39;, &#39;Standard_GS5-8&#39;, &#39;Standard_H8&#39;, &#39;Standard_H16&#39;, &#39;Standard_H8m&#39;, &#39;Standard_H16m&#39;, &#39;Standard_H16r&#39;, &#39;Standard_H16mr&#39;, &#39;Standard_L4s&#39;, &#39;Standard_L8s&#39;, &#39;Standard_L16s&#39;, &#39;Standard_L32s&#39;, &#39;Standard_M64s&#39;, &#39;Standard_M64ms&#39;, &#39;Standard_M128s&#39;, &#39;Standard_M128ms&#39;, &#39;Standard_M64-32ms&#39;, &#39;Standard_M64-16ms&#39;, &#39;Standard_M128-64ms&#39;, &#39;Standard_M128-32ms&#39;, &#39;Standard_NC6&#39;, &#39;Standard_NC12&#39;, &#39;Standard_NC24&#39;, &#39;Standard_NC24r&#39;, &#39;Standard_NC6s_v2&#39;, &#39;Standard_NC12s_v2&#39;, &#39;Standard_NC24s_v2&#39;, &#39;Standard_NC24rs_v2&#39;, &#39;Standard_NC6s_v3&#39;, &#39;Standard_NC12s_v3&#39;, &#39;Standard_NC24s_v3&#39;, &#39;Standard_NC24rs_v3&#39;, &#39;Standard_ND6s&#39;, &#39;Standard_ND12s&#39;, &#39;Standard_ND24s&#39;, &#39;Standard_ND24rs&#39;, &#39;Standard_NV6&#39;, &#39;Standard_NV12&#39;, &#39;Standard_NV24&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "vmSize")]
-        public string VMSize {get; set; }
+        public string VmSize {get; set; }
 
         /// <summary>
         /// Gets or sets specifies the properties for customizing the size of the
@@ -125,6 +125,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// more details.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "vmSizeProperties")]
-        public VMSizeProperties VMSizeProperties {get; set; }
+        public VMSizeProperties VmSizeProperties {get; set; }
     }
 }

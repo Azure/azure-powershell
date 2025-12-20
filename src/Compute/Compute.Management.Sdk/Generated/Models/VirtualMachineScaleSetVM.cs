@@ -163,12 +163,12 @@ namespace Microsoft.Azure.Management.Compute.Models
             this.HardwareProfile = hardwareProfile;
             this.StorageProfile = storageProfile;
             this.AdditionalCapabilities = additionalCapabilities;
-            this.OSProfile = osProfile;
+            this.OsProfile = osProfile;
             this.SecurityProfile = securityProfile;
             this.NetworkProfile = networkProfile;
             this.DiagnosticsProfile = diagnosticsProfile;
             this.LatestModelApplied = latestModelApplied;
-            this.VMId = vmId;
+            this.VmId = vmId;
             this.InstanceView = instanceView;
             this.ResilientVMDeletionStatus = resilientVMDeletionStatus;
             this.NetworkProfileConfiguration = networkProfileConfiguration;
@@ -263,7 +263,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// machine.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.osProfile")]
-        public OSProfile OSProfile {get; set; }
+        public OSProfile OsProfile {get; set; }
 
         /// <summary>
         /// Gets or sets specifies the Security related profile settings for the
@@ -296,7 +296,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Gets azure VM unique ID.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.vmId")]
-        public string VMId {get; private set; }
+        public string VmId {get; private set; }
 
         /// <summary>
         /// Gets the virtual machine instance view.

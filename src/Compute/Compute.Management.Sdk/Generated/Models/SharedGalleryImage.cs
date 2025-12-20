@@ -86,8 +86,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         {
             this.Disallowed = disallowed;
             this.Architecture = architecture;
-            this.OSType = osType;
-            this.OSState = osState;
+            this.OsType = osType;
+            this.OsState = osState;
             this.EndOfLifeDate = endOfLifeDate;
             this.PropertiesIdentifier = propertiesIdentifier;
             this.Recommended = recommended;
@@ -124,14 +124,14 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// values are: **Windows,** **Linux.** Possible values include: &#39;Windows&#39;, &#39;Linux&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.osType")]
-        public OperatingSystemTypes? OSType {get; set; }
+        public OperatingSystemTypes? OsType {get; set; }
 
         /// <summary>
         /// Gets or sets this property allows the user to specify whether the virtual
         /// machines created under this image are &#39;Generalized&#39; or &#39;Specialized&#39;. Possible values include: &#39;Generalized&#39;, &#39;Specialized&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.osState")]
-        public OperatingSystemStateTypes? OSState {get; set; }
+        public OperatingSystemStateTypes? OsState {get; set; }
 
         /// <summary>
         /// Gets or sets the end of life date of the gallery image definition. This

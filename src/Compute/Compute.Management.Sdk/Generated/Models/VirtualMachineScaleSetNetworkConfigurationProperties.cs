@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             this.EnableFpga = enableFpga;
             this.NetworkSecurityGroup = networkSecurityGroup;
             this.DnsSettings = dnsSettings;
-            this.IPConfigurations = ipConfigurations;
+            this.IpConfigurations = ipConfigurations;
             this.EnableIPForwarding = enableIPForwarding;
             this.DeleteOption = deleteOption;
             this.AuxiliaryMode = auxiliaryMode;
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Gets or sets specifies the IP configurations of the network interface.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "ipConfigurations")]
-        public System.Collections.Generic.IList<VirtualMachineScaleSetIPConfiguration> IPConfigurations {get; set; }
+        public System.Collections.Generic.IList<VirtualMachineScaleSetIPConfiguration> IpConfigurations {get; set; }
 
         /// <summary>
         /// Gets or sets whether IP forwarding enabled on this NIC.
@@ -162,15 +162,15 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (this.IPConfigurations == null)
+            if (this.IpConfigurations == null)
             {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "IPConfigurations");
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "IpConfigurations");
             }
 
 
-            if (this.IPConfigurations != null)
+            if (this.IpConfigurations != null)
             {
-                foreach (var element in this.IPConfigurations)
+                foreach (var element in this.IpConfigurations)
                 {
                     if (element != null)
                     {

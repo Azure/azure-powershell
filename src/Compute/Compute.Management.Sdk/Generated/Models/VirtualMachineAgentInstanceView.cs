@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         public VirtualMachineAgentInstanceView(string vmAgentVersion = default(string), System.Collections.Generic.IList<VirtualMachineExtensionHandlerInstanceView> extensionHandlers = default(System.Collections.Generic.IList<VirtualMachineExtensionHandlerInstanceView>), System.Collections.Generic.IList<InstanceViewStatus> statuses = default(System.Collections.Generic.IList<InstanceViewStatus>))
 
         {
-            this.VMAgentVersion = vmAgentVersion;
+            this.VmAgentVersion = vmAgentVersion;
             this.ExtensionHandlers = extensionHandlers;
             this.Statuses = statuses;
             CustomInit();
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Gets or sets the VM Agent full version.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "vmAgentVersion")]
-        public string VMAgentVersion {get; set; }
+        public string VmAgentVersion {get; set; }
 
         /// <summary>
         /// Gets or sets the virtual machine extension handler instance view.

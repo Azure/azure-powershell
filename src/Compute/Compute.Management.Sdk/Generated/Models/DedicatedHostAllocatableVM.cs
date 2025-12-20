@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         public DedicatedHostAllocatableVM(string vmSize = default(string), double? count = default(double?))
 
         {
-            this.VMSize = vmSize;
+            this.VmSize = vmSize;
             this.Count = count;
             CustomInit();
         }
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// represented.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "vmSize")]
-        public string VMSize {get; set; }
+        public string VmSize {get; set; }
 
         /// <summary>
         /// Gets or sets maximum number of VMs of size vmSize that can fit in the

@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         public RestorePointSourceVMStorageProfile(RestorePointSourceVmosDisk osDisk = default(RestorePointSourceVmosDisk), System.Collections.Generic.IList<RestorePointSourceVMDataDisk> dataDisks = default(System.Collections.Generic.IList<RestorePointSourceVMDataDisk>), string diskControllerType = default(string))
 
         {
-            this.OSDisk = osDisk;
+            this.OsDisk = osDisk;
             this.DataDisks = dataDisks;
             this.DiskControllerType = diskControllerType;
             CustomInit();
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// point creation.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "osDisk")]
-        public RestorePointSourceVmosDisk OSDisk {get; set; }
+        public RestorePointSourceVmosDisk OsDisk {get; set; }
 
         /// <summary>
         /// Gets or sets gets the data disks of the VM captured at the time of the
@@ -78,9 +78,9 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (this.OSDisk != null)
+            if (this.OsDisk != null)
             {
-                this.OSDisk.Validate();
+                this.OsDisk.Validate();
             }
 
 

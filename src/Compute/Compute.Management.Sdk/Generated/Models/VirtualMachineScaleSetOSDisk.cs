@@ -86,8 +86,8 @@ namespace Microsoft.Azure.Management.Compute.Models
             this.WriteAcceleratorEnabled = writeAcceleratorEnabled;
             this.CreateOption = createOption;
             this.DiffDiskSettings = diffDiskSettings;
-            this.DiskSizeGb = diskSizeGb;
-            this.OSType = osType;
+            this.DiskSizeGB = diskSizeGb;
+            this.OsType = osType;
             this.Image = image;
             this.VhdContainers = vhdContainers;
             this.ManagedDisk = managedDisk;
@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// disk and the value cannot be larger than 1023.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "diskSizeGB")]
-        public int? DiskSizeGb {get; set; }
+        public int? DiskSizeGB {get; set; }
 
         /// <summary>
         /// Gets or sets this property allows you to specify the type of the OS that is
@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Possible values are: **Windows,** **Linux.** Possible values include: &#39;Windows&#39;, &#39;Linux&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "osType")]
-        public OperatingSystemTypes? OSType {get; set; }
+        public OperatingSystemTypes? OsType {get; set; }
 
         /// <summary>
         /// Gets or sets specifies information about the unmanaged user image to base

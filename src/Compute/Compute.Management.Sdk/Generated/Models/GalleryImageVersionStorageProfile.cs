@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.Compute.Models
 
         {
             this.Source = source;
-            this.OSDiskImage = osDiskImage;
+            this.OsDiskImage = osDiskImage;
             this.DataDiskImages = dataDiskImages;
             CustomInit();
         }
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Gets or sets this is the OS disk image.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "osDiskImage")]
-        public GalleryOSDiskImage OSDiskImage {get; set; }
+        public GalleryOSDiskImage OsDiskImage {get; set; }
 
         /// <summary>
         /// Gets or sets a list of data disk images.

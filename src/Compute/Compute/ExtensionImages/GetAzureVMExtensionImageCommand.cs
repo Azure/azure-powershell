@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.Compute
                         OperatingSystem = result.Body.OperatingSystem,
                         ComputeRole = result.Body.ComputeRole,
                         SupportsMultipleExtensions = result.Body.SupportsMultipleExtensions,
-                        VMScaleSetEnabled = result.Body.VmScaleSetEnabled,
+                        VMScaleSetEnabled = result.Body.VMScaleSetEnabled,
                         Version = result.Body.Name,
                         PublisherName = this.PublisherName,
                         Type = this.Type,

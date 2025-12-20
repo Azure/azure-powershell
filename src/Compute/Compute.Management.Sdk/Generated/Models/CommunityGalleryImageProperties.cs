@@ -75,8 +75,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         public CommunityGalleryImageProperties(OperatingSystemTypes osType, OperatingSystemStateTypes osState, CommunityGalleryImageIdentifier identifier, System.DateTime? endOfLifeDate = default(System.DateTime?), RecommendedMachineConfiguration recommended = default(RecommendedMachineConfiguration), Disallowed disallowed = default(Disallowed), string hyperVGeneration = default(string), System.Collections.Generic.IList<GalleryImageFeature> features = default(System.Collections.Generic.IList<GalleryImageFeature>), ImagePurchasePlan purchasePlan = default(ImagePurchasePlan), string architecture = default(string), string privacyStatementUri = default(string), string eula = default(string), string disclaimer = default(string), System.Collections.Generic.IDictionary<string, string> artifactTags = default(System.Collections.Generic.IDictionary<string, string>))
 
         {
-            this.OSType = osType;
-            this.OSState = osState;
+            this.OsType = osType;
+            this.OsState = osState;
             this.EndOfLifeDate = endOfLifeDate;
             this.Identifier = identifier;
             this.Recommended = recommended;
@@ -104,14 +104,14 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// values are: **Windows,** **Linux.** Possible values include: &#39;Windows&#39;, &#39;Linux&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "osType")]
-        public OperatingSystemTypes OSType {get; set; }
+        public OperatingSystemTypes OsType {get; set; }
 
         /// <summary>
         /// Gets or sets this property allows the user to specify whether the virtual
         /// machines created under this image are &#39;Generalized&#39; or &#39;Specialized&#39;. Possible values include: &#39;Generalized&#39;, &#39;Specialized&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "osState")]
-        public OperatingSystemStateTypes OSState {get; set; }
+        public OperatingSystemStateTypes OsState {get; set; }
 
         /// <summary>
         /// Gets or sets the end of life date of the gallery image definition. This
