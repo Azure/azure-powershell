@@ -17,8 +17,8 @@ New-AzPrivateEndpoint -Name <String> -ResourceGroupName <String> -Location <Stri
  -PrivateLinkServiceConnection <PSPrivateLinkServiceConnection[]> [-ByManualRequest] [-EdgeZone <String>]
  [-Tag <Hashtable>] [-Force] [-AsJob] [-ApplicationSecurityGroup <PSApplicationSecurityGroup[]>]
  [-IpConfiguration <PSPrivateEndpointIPConfiguration[]>] [-CustomNetworkInterfaceName <String>]
- [-IpVersionType <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-IpVersionType <String>] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -172,6 +172,7 @@ Specifies the IP version type for the private IPs of the private endpoint. If no
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+Accepted values: IPv4, IPv6, DualStack
 
 Required: False
 Position: Named
@@ -226,6 +227,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
