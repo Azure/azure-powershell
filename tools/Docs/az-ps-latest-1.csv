@@ -1,7 +1,7 @@
 pac0,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Accounts.5.3.1.zip;sourceType=sa]Az.Accounts,5.3.1
 pac1,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ADDomainServices.0.3.0.zip;sourceType=sa]Az.ADDomainServices,0.3.0
 pac2,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Advisor.3.0.0.zip;sourceType=sa]Az.Advisor,3.0.0
-pac3,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Aks.7.0.0.zip;sourceType=sa]Az.Aks,7.0.0
+pac3,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Aks.7.1.0.zip;sourceType=sa]Az.Aks,7.1.0
 pac4,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.AksArc.0.1.4.zip;sourceType=sa]Az.AksArc,0.1.4
 pac5,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Alb.0.1.4.zip;sourceType=sa]Az.Alb,0.1.4
 pac6,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.AlertsManagement.0.7.0.zip;sourceType=sa]Az.AlertsManagement,0.7.0
@@ -19,7 +19,7 @@ pac17,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-relea
 pac18,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Automanage.2.0.0.zip;sourceType=sa]Az.Automanage,2.0.0
 pac19,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Automation.1.11.2.zip;sourceType=sa]Az.Automation,1.11.2
 pac20,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.BareMetal.0.2.0.zip;sourceType=sa]Az.BareMetal,0.2.0
-pac21,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Batch.4.0.0.zip;sourceType=sa]Az.Batch,4.0.0
+pac21,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Batch.4.0.1.zip;sourceType=sa]Az.Batch,4.0.1
 pac22,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Billing.2.2.0.zip;sourceType=sa]Az.Billing,2.2.0
 pac23,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.BillingBenefits.0.2.1.zip;sourceType=sa]Az.BillingBenefits,0.2.1
 pac24,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Blueprint.0.4.6.zip;sourceType=sa]Az.Blueprint,0.4.6
@@ -120,6 +120,8 @@ pac118,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-rele
 pac119,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Marketplace.0.5.2.zip;sourceType=sa]Az.Marketplace,0.5.2
 pac120,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.MarketplaceOrdering.2.2.0.zip;sourceType=sa]Az.MarketplaceOrdering,2.2.0
 pac121,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Mdp.0.1.2.zip;sourceType=sa]Az.Mdp,0.1.2
-pac122,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Migrate.2.10.1.zip;sourceType=sa]Az.Migrate,2.10.1
+pac122,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Migrate.2.11.0.zip;sourceType=sa]Az.Migrate,2.11.0
 pac123,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.MixedReality.0.3.0.zip;sourceType=sa]Az.MixedReality,0.3.0
+pac124,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.MongoDB.0.1.1.zip;sourceType=sa]Az.MongoDB,0.1.1
+pac125,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Monitor.7.0.0.zip;sourceType=sa]Az.Monitor,7.0.0
 
