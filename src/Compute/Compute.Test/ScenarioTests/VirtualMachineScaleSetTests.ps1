@@ -6264,7 +6264,6 @@ function Test-VirtualMachineScaleSetAutomaticZonePlacement
         $vmssUpdate = Update-AzVmss -ResourceGroupName $rgname -Name $vmssName2 -MaxInstancePercentPerZoneValue 60;
 
         Assert-AreEqual $vmssUpdate.ResiliencyPolicy.ZoneAllocationPolicy.MaxInstancePercentPerZonePolicy.Value 60;
-        #>
     }
     finally
     {
