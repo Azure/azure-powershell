@@ -13,8 +13,8 @@ Create an in-memory object for BgpAdvertisement.
 ## SYNTAX
 
 ```
-New-AzNetworkCloudBgpAdvertisementObject -IPAddressPool <String[]> [-AdvertiseToFabric <String>]
- [-Community <String[]>] [-Peer <String[]>] [<CommonParameters>]
+New-AzNetworkCloudBgpAdvertisementObject [-AdvertiseToFabric <String>] [-Community <String[]>]
+ [-IPAddressPool <String[]>] [-Peer <String[]>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -22,18 +22,27 @@ Create an in-memory object for BgpAdvertisement.
 
 ## EXAMPLES
 
-### Example 1: Create an in-memory object for BgpAdvertisement.
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzNetworkCloudBgpAdvertisementObject -IPAddressPool  @("pool1","pool2") -AdvertiseToFabric "True" -Community  @("communityString") -Peer @("peer1") 
+{{ Add code here }}
 ```
 
 ```output
-AdvertiseToFabric Community         IPAddressPool  Peer
------------------ ---------         -------------  ----
-True              {communityString} {pool1, pool2} {peer1}
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Create an in-memory object for BgpAdvertisement.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -76,7 +85,7 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

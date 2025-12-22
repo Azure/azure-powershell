@@ -44,6 +44,15 @@ Update-AzNetworkCloudKubernetesClusterFeature -FeatureName <String>
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### UpdateViaIdentityKubernetesCluster
+```
+Update-AzNetworkCloudKubernetesClusterFeature -FeatureName <String>
+ -KubernetesClusterInputObject <INetworkCloudIdentity> [-IfMatch <String>] [-IfNoneMatch <String>]
+ -KubernetesClusterFeatureUpdateParameter <IKubernetesClusterFeaturePatchParameters>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
 ### UpdateViaIdentityExpanded
 ```
 Update-AzNetworkCloudKubernetesClusterFeature -InputObject <INetworkCloudIdentity> [-IfMatch <String>]
@@ -59,9 +68,9 @@ Patch properties of the provided Kubernetes cluster feature.
 ### Example 1: Update Kubernetes cluster's feature
 ```powershell
 $tagUpdatedHash = @{
-    tag = "tag"
+    tag1 = "tag1"
+    tag2 = "tag1Update"
 }
-
 Update-AzNetworkCloudKubernetesClusterFeature -FeatureName featureName -KubernetesClusterName kubernetesClusterName -ResourceGroupName resourceGroup -SubscriptionId subscriptionId -Tag $tagUpdatedHash
 ```
 
@@ -111,7 +120,7 @@ The name of the feature.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateViaIdentityKubernetesClusterExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateViaIdentityKubernetesClusterExpanded, UpdateViaIdentityKubernetesCluster
 Aliases:
 
 Required: True
@@ -199,12 +208,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -KubernetesClusterFeatureUpdateParameter
+KubernetesClusterFeaturePatchParameters represents the body of the request to patch the Kubernetes cluster feature.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IKubernetesClusterFeaturePatchParameters
+Parameter Sets: UpdateViaIdentityKubernetesCluster
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -KubernetesClusterInputObject
 Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
-Parameter Sets: UpdateViaIdentityKubernetesClusterExpanded
+Parameter Sets: UpdateViaIdentityKubernetesClusterExpanded, UpdateViaIdentityKubernetesCluster
 Aliases:
 
 Required: True
@@ -341,6 +365,8 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IKubernetesClusterFeaturePatchParameters
 
 ### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
 
