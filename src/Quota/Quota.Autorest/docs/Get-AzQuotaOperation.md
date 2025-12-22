@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzQuotaOperation
 
 ## SYNOPSIS
-List all the operations supported by the Microsoft.Quota resource provider.
+List the operations for the provider
 
 ## SYNTAX
 
@@ -17,7 +17,7 @@ Get-AzQuotaOperation [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-List all the operations supported by the Microsoft.Quota resource provider.
+List the operations for the provider
 
 ## EXAMPLES
 
