@@ -16,17 +16,17 @@
 
 <#
 .Synopsis
-Create an in-memory object for UriFileJobOutput.
+Create an in-memory object for UriFolderJobOutput.
 .Description
-Create an in-memory object for UriFileJobOutput.
+Create an in-memory object for UriFolderJobOutput.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.UriFileJobOutput
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.UriFolderJobOutput
 .Link
-https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-AzMLWorkspaceUriFileJobOutputObject
+https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-AzMLWorkspaceUriFolderJobOutputObject
 #>
-function New-AzMLWorkspaceUriFileJobOutputObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.UriFileJobOutput')]
+function New-AzMLWorkspaceUriFolderJobOutputObject {
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.UriFolderJobOutput')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -40,6 +40,7 @@ function New-AzMLWorkspaceUriFileJobOutputObject {
         [Parameter(HelpMessage="Description for the output.")]
         [string]
         $Description,
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.ParameterBreakingChangeAttribute("Type", "16.0.0", "1.3.0", "2026/05")]
         [Parameter(Mandatory, HelpMessage="[Required] Specifies the type of job.")]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.JobOutputType])]
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.JobOutputType]
@@ -47,7 +48,7 @@ function New-AzMLWorkspaceUriFileJobOutputObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.UriFileJobOutput]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.UriFolderJobOutput]::New()
 
         if ($PSBoundParameters.ContainsKey('Mode')) {
             $Object.Mode = $Mode

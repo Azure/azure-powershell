@@ -16,17 +16,17 @@
 
 <#
 .Synopsis
-Create an in-memory object for TritonModelJobInput.
+Create an in-memory object for UriFolderJobInput.
 .Description
-Create an in-memory object for TritonModelJobInput.
+Create an in-memory object for UriFolderJobInput.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.TritonModelJobInput
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.UriFolderJobInput
 .Link
-https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-AzMLWorkspaceTritonModelJobInputObject
+https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-AzMLWorkspaceUriFolderJobInputObject
 #>
-function New-AzMLWorkspaceTritonModelJobInputObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.TritonModelJobInput')]
+function New-AzMLWorkspaceUriFolderJobInputObject {
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.UriFolderJobInput')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -40,6 +40,7 @@ function New-AzMLWorkspaceTritonModelJobInputObject {
         [Parameter(HelpMessage="Description for the input.")]
         [string]
         $Description,
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.ParameterBreakingChangeAttribute("Type", "16.0.0", "1.3.0", "2026/05")]
         [Parameter(Mandatory, HelpMessage="[Required] Specifies the type of job.")]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.JobInputType])]
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.JobInputType]
@@ -47,7 +48,7 @@ function New-AzMLWorkspaceTritonModelJobInputObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.TritonModelJobInput]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.UriFolderJobInput]::New()
 
         if ($PSBoundParameters.ContainsKey('Mode')) {
             $Object.Mode = $Mode
