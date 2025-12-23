@@ -50,6 +50,16 @@ Connect-AzContainerRegistry -Name $RegistryName -UserName $ServicePrincipal -Pas
 
 Login to ACR with service principal application ID and password.
 
+### Example 4
+```powershell
+$cred = Connect-AzContainerRegistry -Name $RegistryName -ExposeToken
+$token = ($cred.accessToken | ConvertFrom-SecureString -AsPlainText)
+$loginServer = $cred.loginServer
+docker login $loginServer -u 00000000-0000-0000-0000-000000000000 --password $token
+```
+
+Login to ACR with native containerize tool.
+
 ## PARAMETERS
 
 ### -DefaultProfile
