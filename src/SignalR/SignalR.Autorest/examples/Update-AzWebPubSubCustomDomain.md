@@ -1,13 +1,16 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update a custom domain
 ```powershell
-{{ Add code here }}
+$cert = Get-AzWebPubSubCustomCertificate -Name mycustomcert -ResourceGroupName rg -ResourceName wps
+Update-AzWebPubSubCustomDomain -Name mydomain -ResourceGroupName rg -ResourceName wps -DomainName wps.manual-test.dev.signalr.azure.com -CustomCertificateId $cert.Id
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name     DomainName                                    ProvisioningState
+----     ----------                                    -----------------
+mydomain wps.manual-test.dev.signalr.azure.com Succeeded
 ```
 
-{{ Add description here }}
+Update a custom domain.
 
 ### Example 2: {{ Add title here }}
 ```powershell
