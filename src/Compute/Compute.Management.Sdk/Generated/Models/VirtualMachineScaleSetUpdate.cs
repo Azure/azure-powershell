@@ -244,14 +244,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         public IList<string> Zones { get; set; }
 
         /// <summary>
-        /// Gets or sets the placement of a vmss. Placement section specifies 
-        /// the user-defined constraints for virtual machine scale set hardware placement. 
-        /// This property cannot be changed once VMSS is provisioned.
-        /// </summary>
-        [JsonProperty(PropertyName = "placement")]
-        public Placement Placement { get; set; }
-
-        /// <summary>
         /// Validate the object.
         /// </summary>
         /// <exception cref="ValidationException">

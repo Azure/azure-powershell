@@ -205,12 +205,12 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         },
                         DoNotRunExtensionsOnOverprovisionedVMs = doNotRunExtensionsOnOverprovisionedVMs ? true : (bool?)null,
                         OrchestrationMode = orchestrationMode,
-                        Placement = new Placement
+                        Placement = (zonePlacementPolicy != null || includeZone != null || excludeZone != null) ? new Placement
                         {
                             ZonePlacementPolicy = zonePlacementPolicy,
                             IncludeZones = includeZone,
                             ExcludeZones = excludeZone
-                        }
+                        } : null
                     };
                     if (auxAuthHeader != null)
                     {
@@ -366,12 +366,12 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         },
                         DoNotRunExtensionsOnOverprovisionedVMs = doNotRunExtensionsOnOverprovisionedVMs ? true : (bool?)null,
                         OrchestrationMode = orchestrationMode,
-                        Placement = new Placement
+                        Placement = (zonePlacementPolicy != null || includeZone != null || excludeZone != null) ? new Placement
                         {
                             ZonePlacementPolicy = zonePlacementPolicy,
                             IncludeZones = includeZone,
                             ExcludeZones = excludeZone
-                        }
+                        } : null
                     };
                     if (auxAuthHeader != null)
                     {

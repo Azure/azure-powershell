@@ -1241,7 +1241,7 @@ Specifies the policy for resource's placement in availability zone. Possible val
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: SimpleParameterSet
 Aliases:
 
 Required: False

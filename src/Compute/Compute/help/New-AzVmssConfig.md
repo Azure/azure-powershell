@@ -721,7 +721,7 @@ Accept wildcard characters: False
 ```
 
 ### -MaxInstancePercentPerZoneValue
-The configuration parameters used to limit the number of virtual machines per availability zone in the virtual machine scale set.
+Limit on the number of instances in each availability zone as a percentage of the total capacity of the virtual machine scale set. For example: if set to 50, this means that at any time, no more than 50% of the VMs in your scale set can be allocated to a single zone.
 
 ```yaml
 Type: System.Int32
