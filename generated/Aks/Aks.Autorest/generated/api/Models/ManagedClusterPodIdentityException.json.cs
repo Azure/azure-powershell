@@ -8,7 +8,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
     using static Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Extensions;
 
     /// <summary>
-    /// See [disable AAD Pod Identity for a specific Pod/Application](https://azure.github.io/aad-pod-identity/docs/configure/application_exception/)
+    /// A pod identity exception, which allows pods with certain labels to access the Azure Instance Metadata Service (IMDS) endpoint
+    /// without being intercepted by the node-managed identity (NMI) server. See [disable AAD Pod Identity for a specific Pod/Application](https://azure.github.io/aad-pod-identity/docs/configure/application_exception/)
     /// for more details.
     /// </summary>
     public partial class ManagedClusterPodIdentityException

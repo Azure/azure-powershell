@@ -111,6 +111,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("MaintenanceWindow"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).MaintenanceWindow = (Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceWindow) content.GetValueForProperty("MaintenanceWindow",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).MaintenanceWindow, Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.MaintenanceWindowTypeConverter.ConvertFrom);
+            }
             if (content.Contains("TimeInWeek"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).TimeInWeek = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ITimeInWeek>) content.GetValueForProperty("TimeInWeek",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).TimeInWeek, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ITimeInWeek>(__y, Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.TimeInWeekTypeConverter.ConvertFrom));
@@ -118,6 +122,78 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
             if (content.Contains("NotAllowedTime"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).NotAllowedTime = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ITimeSpan>) content.GetValueForProperty("NotAllowedTime",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).NotAllowedTime, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ITimeSpan>(__y, Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.TimeSpanTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("MaintenanceWindowSchedule"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).MaintenanceWindowSchedule = (Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISchedule) content.GetValueForProperty("MaintenanceWindowSchedule",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).MaintenanceWindowSchedule, Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ScheduleTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("MaintenanceWindowDurationHour"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).MaintenanceWindowDurationHour = (int?) content.GetValueForProperty("MaintenanceWindowDurationHour",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).MaintenanceWindowDurationHour, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("MaintenanceWindowUtcOffset"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).MaintenanceWindowUtcOffset = (string) content.GetValueForProperty("MaintenanceWindowUtcOffset",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).MaintenanceWindowUtcOffset, global::System.Convert.ToString);
+            }
+            if (content.Contains("MaintenanceWindowStartDate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).MaintenanceWindowStartDate = (global::System.DateTime?) content.GetValueForProperty("MaintenanceWindowStartDate",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).MaintenanceWindowStartDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("MaintenanceWindowStartTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).MaintenanceWindowStartTime = (string) content.GetValueForProperty("MaintenanceWindowStartTime",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).MaintenanceWindowStartTime, global::System.Convert.ToString);
+            }
+            if (content.Contains("MaintenanceWindowNotAllowedDate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).MaintenanceWindowNotAllowedDate = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IDateSpan>) content.GetValueForProperty("MaintenanceWindowNotAllowedDate",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).MaintenanceWindowNotAllowedDate, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IDateSpan>(__y, Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.DateSpanTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("ScheduleDaily"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).ScheduleDaily = (Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IDailySchedule) content.GetValueForProperty("ScheduleDaily",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).ScheduleDaily, Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.DailyScheduleTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ScheduleWeekly"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).ScheduleWeekly = (Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IWeeklySchedule) content.GetValueForProperty("ScheduleWeekly",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).ScheduleWeekly, Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.WeeklyScheduleTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ScheduleAbsoluteMonthly"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).ScheduleAbsoluteMonthly = (Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAbsoluteMonthlySchedule) content.GetValueForProperty("ScheduleAbsoluteMonthly",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).ScheduleAbsoluteMonthly, Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.AbsoluteMonthlyScheduleTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ScheduleRelativeMonthly"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).ScheduleRelativeMonthly = (Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IRelativeMonthlySchedule) content.GetValueForProperty("ScheduleRelativeMonthly",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).ScheduleRelativeMonthly, Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.RelativeMonthlyScheduleTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("DailyIntervalDay"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).DailyIntervalDay = (int?) content.GetValueForProperty("DailyIntervalDay",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).DailyIntervalDay, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("WeeklyIntervalWeek"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).WeeklyIntervalWeek = (int?) content.GetValueForProperty("WeeklyIntervalWeek",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).WeeklyIntervalWeek, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("WeeklyDayOfWeek"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).WeeklyDayOfWeek = (string) content.GetValueForProperty("WeeklyDayOfWeek",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).WeeklyDayOfWeek, global::System.Convert.ToString);
+            }
+            if (content.Contains("AbsoluteMonthlyIntervalMonth"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).AbsoluteMonthlyIntervalMonth = (int?) content.GetValueForProperty("AbsoluteMonthlyIntervalMonth",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).AbsoluteMonthlyIntervalMonth, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("AbsoluteMonthlyDayOfMonth"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).AbsoluteMonthlyDayOfMonth = (int?) content.GetValueForProperty("AbsoluteMonthlyDayOfMonth",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).AbsoluteMonthlyDayOfMonth, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("RelativeMonthlyIntervalMonth"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).RelativeMonthlyIntervalMonth = (int?) content.GetValueForProperty("RelativeMonthlyIntervalMonth",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).RelativeMonthlyIntervalMonth, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("RelativeMonthlyWeekIndex"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).RelativeMonthlyWeekIndex = (string) content.GetValueForProperty("RelativeMonthlyWeekIndex",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).RelativeMonthlyWeekIndex, global::System.Convert.ToString);
+            }
+            if (content.Contains("RelativeMonthlyDayOfWeek"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).RelativeMonthlyDayOfWeek = (string) content.GetValueForProperty("RelativeMonthlyDayOfWeek",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).RelativeMonthlyDayOfWeek, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
@@ -136,6 +212,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("MaintenanceWindow"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).MaintenanceWindow = (Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceWindow) content.GetValueForProperty("MaintenanceWindow",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).MaintenanceWindow, Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.MaintenanceWindowTypeConverter.ConvertFrom);
+            }
             if (content.Contains("TimeInWeek"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).TimeInWeek = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ITimeInWeek>) content.GetValueForProperty("TimeInWeek",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).TimeInWeek, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ITimeInWeek>(__y, Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.TimeInWeekTypeConverter.ConvertFrom));
@@ -143,6 +223,78 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
             if (content.Contains("NotAllowedTime"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).NotAllowedTime = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ITimeSpan>) content.GetValueForProperty("NotAllowedTime",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).NotAllowedTime, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ITimeSpan>(__y, Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.TimeSpanTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("MaintenanceWindowSchedule"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).MaintenanceWindowSchedule = (Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ISchedule) content.GetValueForProperty("MaintenanceWindowSchedule",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).MaintenanceWindowSchedule, Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ScheduleTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("MaintenanceWindowDurationHour"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).MaintenanceWindowDurationHour = (int?) content.GetValueForProperty("MaintenanceWindowDurationHour",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).MaintenanceWindowDurationHour, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("MaintenanceWindowUtcOffset"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).MaintenanceWindowUtcOffset = (string) content.GetValueForProperty("MaintenanceWindowUtcOffset",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).MaintenanceWindowUtcOffset, global::System.Convert.ToString);
+            }
+            if (content.Contains("MaintenanceWindowStartDate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).MaintenanceWindowStartDate = (global::System.DateTime?) content.GetValueForProperty("MaintenanceWindowStartDate",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).MaintenanceWindowStartDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("MaintenanceWindowStartTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).MaintenanceWindowStartTime = (string) content.GetValueForProperty("MaintenanceWindowStartTime",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).MaintenanceWindowStartTime, global::System.Convert.ToString);
+            }
+            if (content.Contains("MaintenanceWindowNotAllowedDate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).MaintenanceWindowNotAllowedDate = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IDateSpan>) content.GetValueForProperty("MaintenanceWindowNotAllowedDate",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).MaintenanceWindowNotAllowedDate, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IDateSpan>(__y, Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.DateSpanTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("ScheduleDaily"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).ScheduleDaily = (Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IDailySchedule) content.GetValueForProperty("ScheduleDaily",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).ScheduleDaily, Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.DailyScheduleTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ScheduleWeekly"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).ScheduleWeekly = (Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IWeeklySchedule) content.GetValueForProperty("ScheduleWeekly",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).ScheduleWeekly, Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.WeeklyScheduleTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ScheduleAbsoluteMonthly"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).ScheduleAbsoluteMonthly = (Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAbsoluteMonthlySchedule) content.GetValueForProperty("ScheduleAbsoluteMonthly",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).ScheduleAbsoluteMonthly, Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.AbsoluteMonthlyScheduleTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ScheduleRelativeMonthly"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).ScheduleRelativeMonthly = (Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IRelativeMonthlySchedule) content.GetValueForProperty("ScheduleRelativeMonthly",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).ScheduleRelativeMonthly, Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.RelativeMonthlyScheduleTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("DailyIntervalDay"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).DailyIntervalDay = (int?) content.GetValueForProperty("DailyIntervalDay",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).DailyIntervalDay, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("WeeklyIntervalWeek"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).WeeklyIntervalWeek = (int?) content.GetValueForProperty("WeeklyIntervalWeek",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).WeeklyIntervalWeek, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("WeeklyDayOfWeek"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).WeeklyDayOfWeek = (string) content.GetValueForProperty("WeeklyDayOfWeek",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).WeeklyDayOfWeek, global::System.Convert.ToString);
+            }
+            if (content.Contains("AbsoluteMonthlyIntervalMonth"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).AbsoluteMonthlyIntervalMonth = (int?) content.GetValueForProperty("AbsoluteMonthlyIntervalMonth",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).AbsoluteMonthlyIntervalMonth, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("AbsoluteMonthlyDayOfMonth"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).AbsoluteMonthlyDayOfMonth = (int?) content.GetValueForProperty("AbsoluteMonthlyDayOfMonth",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).AbsoluteMonthlyDayOfMonth, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("RelativeMonthlyIntervalMonth"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).RelativeMonthlyIntervalMonth = (int?) content.GetValueForProperty("RelativeMonthlyIntervalMonth",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).RelativeMonthlyIntervalMonth, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("RelativeMonthlyWeekIndex"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).RelativeMonthlyWeekIndex = (string) content.GetValueForProperty("RelativeMonthlyWeekIndex",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).RelativeMonthlyWeekIndex, global::System.Convert.ToString);
+            }
+            if (content.Contains("RelativeMonthlyDayOfWeek"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).RelativeMonthlyDayOfWeek = (string) content.GetValueForProperty("RelativeMonthlyDayOfWeek",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfigurationPropertiesInternal)this).RelativeMonthlyDayOfWeek, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }
