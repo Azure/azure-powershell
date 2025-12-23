@@ -52,17 +52,18 @@ commit: 492cf91751be945ceae53cfdd53b1ff2fb878703
 # If there are post APIs for some kinds of actions in the RP, you may need to
 # uncomment following line to support viaIdentity for these post APIs
 identity-correction-for-post: true
-
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
+disable-transform-identity-type: true
+flatten-userassignedidentity: false
 
 directive:
   # Following is two common directive which are normally required in all the RPs
   # 1. Remove the unexpanded parameter set
   # 2. For New-* cmdlets, ViaIdentity is not required, so CreateViaIdentityExpanded is removed as well
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+      variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$
+    remove: true
+  - where:
+      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
   # Remove the set-* cmdlet
   - where:
@@ -328,6 +329,10 @@ directive:
     set:
       parameter-name: Name
       alias: CertificateName
+  - where:
+      subject: WebPubSubCustomCertificate
+      verb: Update
+    remove: true
 # Disable Inline on the Baseclass(Model).
   - no-inline:
     - EventListenerEndpoint
