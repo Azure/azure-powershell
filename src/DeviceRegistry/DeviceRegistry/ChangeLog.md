@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.0.1
 * Public preview release of API version 2025-11-01-preview for Az.DeviceRegistry. 
 
 New resources included:
