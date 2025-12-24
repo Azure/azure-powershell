@@ -10,16 +10,4 @@ Name     DomainName                                    ProvisioningState
 mydomain wps.manual-test.dev.signalr.azure.com Succeeded
 ```
 
-Update a custom domain.
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Update a custom domian.
