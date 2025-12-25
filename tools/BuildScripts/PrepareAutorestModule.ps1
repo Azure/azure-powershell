@@ -41,6 +41,14 @@ if (-not (Test-Path $sourceDirectory)) {
     Write-Warning "Cannot find generated directory: $generatedDirectory"
 }
 
+if (-Not (Get-Module -Name "AzDev")) {
+    $AzDevPath = Join-Path $RepoRoot "tools" "AzDev"
+    $AzDevBuildPath = Join-Path $AzDevPath "build.ps1"
+    $AzDevModulePath = Join-Path $RepoRoot "artifacts" "AzDev" "AzDev.psd1"
+    & $AzDevBuildPath
+    Import-Module $AzDevModulePath -Force
+}
+
 $isInvokedByPipeline = $false
 if ($InvokedByPipeline) {
     $isInvokedByPipeline = $true

@@ -503,6 +503,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetAutomaticZonePlacement()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetAutomaticZonePlacement");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineScaleSetHighSpeedInterconnectPlacement()
         {
             TestRunner.RunTestScript("Test-VirtualMachineScaleSetHighSpeedInterconnectPlacement");

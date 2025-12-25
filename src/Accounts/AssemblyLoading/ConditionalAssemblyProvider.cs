@@ -51,7 +51,7 @@ namespace Microsoft.Azure.PowerShell.AssemblyLoading
                 CreateAssembly("net462", "System.Diagnostics.DiagnosticSource", "8.0.0.1").WithWindowsPowerShell(),
                 CreateAssembly("net462", "System.Text.Encodings.Web", "8.0.0.0").WithWindowsPowerShell(),
                 CreateAssembly("net47", "System.Security.Cryptography.Cng", "4.3.0.0").WithWindowsPowerShell(),
-                CreateAssembly("netstandard2.0", "Azure.Core", "1.47.3.0"),
+                CreateAssembly("netstandard2.0", "Azure.Core", "1.50.0.0"),
                 CreateAssembly("netstandard2.0", "Azure.Identity.Broker", "1.1.0.0"),
                 CreateAssembly("netstandard2.0", "Azure.Identity", "1.13.0.0"),
                 CreateAssembly("netstandard2.0", "Microsoft.Bcl.AsyncInterfaces", "8.0.0.0"),
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.PowerShell.AssemblyLoading
                 CreateAssembly("netstandard2.0", "Microsoft.Identity.Client.NativeInterop", "0.16.2.0"),
                 CreateAssembly("netstandard2.0", "Microsoft.IdentityModel.Abstractions", "6.35.0.0"),
                 CreateAssembly("netstandard2.0", "System.Buffers", "4.0.3.0").WithWindowsPowerShell(),
-                CreateAssembly("netstandard2.0", "System.ClientModel", "1.6.1.0"),
+                CreateAssembly("netstandard2.0", "System.ClientModel", "1.8.0.0"),
                 CreateAssembly("netstandard2.0", "System.Memory.Data", "8.0.0.1"),
                 CreateAssembly("netstandard2.0", "System.Memory", "4.0.1.2").WithWindowsPowerShell(),
                 CreateAssembly("netstandard2.0", "System.Net.Http.WinHttpHandler", "4.0.4.0").WithWindowsPowerShell(),
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.PowerShell.AssemblyLoading
                 CreateAssembly("netstandard2.0", "System.Security.Principal.Windows", "4.1.3.0").WithWindowsPowerShell(),
                 CreateAssembly("netstandard2.0", "System.ServiceModel.Primitives", "4.7.0.0").WithWindowsPowerShell(),
                 CreateAssembly("netstandard2.0", "System.Text.Json", "8.0.0.0"),
-                CreateAssembly("netstandard2.0", "System.Threading.Tasks.Extensions", "4.2.0.1").WithWindowsPowerShell(),
+                CreateAssembly("netstandard2.0", "System.Threading.Tasks.Extensions", "4.2.1.0").WithWindowsPowerShell(),
                 #endregion
             };
         }
