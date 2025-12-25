@@ -20,6 +20,9 @@
 
 -->
 ## Upcoming Release
+* Added new parameters `ZonePlacementPolicy`, `IncludeZone`, `ExcludeZone`, `MaxZoneCount`, `EnableMaxInstancePercentPerZone` and `MaxInstancePercentPerZoneValue` to `New-AzVmssConfig` cmdlet.
+* Added new parameters `ZonePlacementPolicy`, `IncludeZone` and `ExcludeZone` to `New-AzVmss` cmdlet.
+* Added new parameters `MaxZoneCount`, `EnableMaxInstancePercentPerZone` and `MaxInstancePercentPerZoneValue` to `Update-AzVmss` cmdlet.
 * Updated Azure.Core from 1.47.3 to 1.50.0
 
 ## Version 11.1.0
