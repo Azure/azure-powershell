@@ -46,6 +46,14 @@ New-AzNetworkCloudMetricsConfiguration -Name <String> -ClusterInputObject <INetw
  [<CommonParameters>]
 ```
 
+### CreateViaIdentityCluster
+```
+New-AzNetworkCloudMetricsConfiguration -Name <String> -ClusterInputObject <INetworkCloudIdentity>
+ [-IfMatch <String>] [-IfNoneMatch <String>] -MetricsConfigurationParameter <IClusterMetricsConfiguration>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Create new or create the existing metrics configuration of the provided cluster.
 
@@ -86,7 +94,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
-Parameter Sets: CreateViaIdentityClusterExpanded
+Parameter Sets: CreateViaIdentityClusterExpanded, CreateViaIdentityCluster
 Aliases:
 
 Required: True
@@ -265,6 +273,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -MetricsConfigurationParameter
+ClusterMetricsConfiguration represents the metrics configuration of an on-premises Network Cloud cluster.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterMetricsConfiguration
+Parameter Sets: CreateViaIdentityCluster
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the metrics configuration for the cluster.
 
@@ -377,6 +400,8 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterMetricsConfiguration
 
 ### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
 

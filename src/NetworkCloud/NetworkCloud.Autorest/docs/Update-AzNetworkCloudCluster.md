@@ -29,10 +29,11 @@ Update-AzNetworkCloudCluster -Name <String> -ResourceGroupName <String> [-Subscr
  [-ClusterLocation <String>] [-ClusterServicePrincipalApplicationId <String>]
  [-ClusterServicePrincipalId <String>] [-ClusterServicePrincipalPassword <SecureString>]
  [-ClusterServicePrincipalTenantId <String>] [-CommandOutputSettingContainerUrl <String>]
- [-ComputeDeploymentThresholdGrouping <String>] [-ComputeDeploymentThresholdType <String>]
- [-ComputeDeploymentThresholdValue <Int64>] [-ComputeRackDefinition <IRackDefinition[]>]
- [-EnableSystemAssignedIdentity <Boolean?>] [-RuntimeProtectionConfigurationEnforcementLevel <String>]
- [-SecretArchiveKeyVaultId <String>] [-SecretArchiveSettingsAssociatedIdentityType <String>]
+ [-CommandOutputSettingOverride <ICommandOutputOverride[]>] [-ComputeDeploymentThresholdGrouping <String>]
+ [-ComputeDeploymentThresholdType <String>] [-ComputeDeploymentThresholdValue <Int64>]
+ [-ComputeRackDefinition <IRackDefinition[]>] [-EnableSystemAssignedIdentity <Boolean?>]
+ [-RuntimeProtectionConfigurationEnforcementLevel <String>] [-SecretArchiveKeyVaultId <String>]
+ [-SecretArchiveSettingsAssociatedIdentityType <String>]
  [-SecretArchiveSettingsAssociatedIdentityUserAssignedIdentityResourceId <String>]
  [-SecretArchiveSettingVaultUri <String>] [-SecretArchiveUseKeyVault <String>] [-Tag <Hashtable>]
  [-UpdateStrategyMaxUnavailable <Int64>] [-UpdateStrategyThresholdType <String>]
@@ -59,10 +60,11 @@ Update-AzNetworkCloudCluster -InputObject <INetworkCloudIdentity> [-IfMatch <Str
  [-ClusterLocation <String>] [-ClusterServicePrincipalApplicationId <String>]
  [-ClusterServicePrincipalId <String>] [-ClusterServicePrincipalPassword <SecureString>]
  [-ClusterServicePrincipalTenantId <String>] [-CommandOutputSettingContainerUrl <String>]
- [-ComputeDeploymentThresholdGrouping <String>] [-ComputeDeploymentThresholdType <String>]
- [-ComputeDeploymentThresholdValue <Int64>] [-ComputeRackDefinition <IRackDefinition[]>]
- [-EnableSystemAssignedIdentity <Boolean?>] [-RuntimeProtectionConfigurationEnforcementLevel <String>]
- [-SecretArchiveKeyVaultId <String>] [-SecretArchiveSettingsAssociatedIdentityType <String>]
+ [-CommandOutputSettingOverride <ICommandOutputOverride[]>] [-ComputeDeploymentThresholdGrouping <String>]
+ [-ComputeDeploymentThresholdType <String>] [-ComputeDeploymentThresholdValue <Int64>]
+ [-ComputeRackDefinition <IRackDefinition[]>] [-EnableSystemAssignedIdentity <Boolean?>]
+ [-RuntimeProtectionConfigurationEnforcementLevel <String>] [-SecretArchiveKeyVaultId <String>]
+ [-SecretArchiveSettingsAssociatedIdentityType <String>]
  [-SecretArchiveSettingsAssociatedIdentityUserAssignedIdentityResourceId <String>]
  [-SecretArchiveSettingVaultUri <String>] [-SecretArchiveUseKeyVault <String>] [-Tag <Hashtable>]
  [-UpdateStrategyMaxUnavailable <Int64>] [-UpdateStrategyThresholdType <String>]
@@ -81,7 +83,7 @@ Update a new cluster or update the properties of the cluster if it exists.
 ```powershell
 $storageapplianceconfigurationdata = @()
 $baremetalmachineconfigurationdata = @()
-$computerackdefinition = @(@{IRackDefinition = "The list of rack definitions for the compute racks in a multi-rack cluster, or an empty list in a single-rack cluster."})
+$computerackdefinition = @(@{IRackDefinition = "The list of rack definitions for the compute racks in a multi-rackcluster, or an empty list in a single-rack cluster."})
 $tagHash = @{
     tag = "tag"
     tagUpdate = "tagUpdate"
@@ -111,10 +113,12 @@ $tagHash = @{
     tagUpdate = "tagUpdate"
 }
 $securePassword = ConvertTo-SecureString "password" -asplaintext -force
+$identityUserAssignedIdentity = @{}
 $userAssignedIdentityResourceId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myManagedIdentity"
+$identityUserAssignedIdentity.Add($userAssignedIdentityResourceId, @{})
 
 
-Update-AzNetworkCloudCluster -ResourceGroupName resourceGroup -Name clusterName -AggregatorOrSingleRackDefinitionNetworkRackId rackId -AggregatorOrSingleRackDefinitionRackSerialNumber sr1234 -AggregatorOrSingleRackDefinitionRackSkuId rackSku -UserAssignedIdentity $userAssignedIdentityResourceId -SubscriptionId subscriptionId -AggregatorOrSingleRackDefinitionAvailabilityZone availabilityZone -AggregatorOrSingleRackDefinitionBareMetalMachineConfiguration $baremetalmachineconfigurationdata -AggregatorOrSingleRackDefinitionRackLocation rackLocation -AggregatorOrSingleRackDefinitionStorageApplianceConfiguration $storageapplianceconfigurationdata -AnalyticsOutputSettingsAssociatedIdentityType identityType -AnalyticsOutputSettingsAssociatedIdentityUserAssignedIdentityResourceId userAssignedIdentityResourceId -AnalyticOutputSettingAnalyticsWorkspaceId analyticsWorkspaceId -CommandOutputSettingContainerUrl containerUrl -AssociatedIdentityType commandOutputSettingsIdentityType -AssociatedIdentityUserAssignedIdentityResourceId commandOutputSettingsUserAssignedIdentityResourceId -ClusterServicePrincipalApplicationId clusterServicePrincipalAppId -ClusterServicePrincipalId ClusterServicePrincipalId -ClusterServicePrincipalPassword $securePassword -ClusterServicePrincipalTenantId tenantId -ComputeRackDefinition $computerackdefinition -SecretArchiveKeyVaultId keyVaultId -SecretArchiveSettingVaultUri keyVaultUri -SecretArchiveSettingsAssociatedIdentityType identityType -SecretArchiveSettingsAssociatedIdentityUserAssignedIdentityResourceId userAssignedIdentityResourceId -SecretArchiveUseKeyVault useKeyVault -UpdateStrategyThresholdType updateStrategyThresholdType -UpdateStrategyThresholdValue updateStrategyThresholdValue -UpdateStrategyType updateStrategyType -UpdateStrategyWaitTimeMinute updateStrategyWaitTimeMinutes -VulnerabilityScanningSettingContainerScan vulnerabilityScanningSettingContainerScan -ComputeDeploymentThresholdGrouping computeDeploymentThresholdGrouping -ComputeDeploymentThresholdType computeDeploymentThresholdType -ComputeDeploymentThresholdValue computeDeploymentThresholdValue -Tag $tagHash
+Update-AzNetworkCloudCluster -ResourceGroupName resourceGroup -Name clusterName -AggregatorOrSingleRackDefinitionNetworkRackId rackId -AggregatorOrSingleRackDefinitionRackSerialNumber sr1234 -AggregatorOrSingleRackDefinitionRackSkuId rackSku -IdentityType identityType -IdentityUserAssignedIdentity $identityUserAssignedIdentity -SubscriptionId subscriptionId -AggregatorOrSingleRackDefinitionAvailabilityZone availabilityZone -AggregatorOrSingleRackDefinitionBareMetalMachineConfiguration $baremetalmachineconfigurationdata -AggregatorOrSingleRackDefinitionRackLocation rackLocation -AggregatorOrSingleRackDefinitionStorageApplianceConfiguration $storageapplianceconfigurationdata -AnalyticsOutputSettingsAssociatedIdentityType identityType -AnalyticsOutputSettingsAssociatedIdentityUserAssignedIdentityResourceId userAssignedIdentityResourceId -AnalyticOutputSettingAnalyticsWorkspaceId analyticsWorkspaceId -CommandOutputSettingContainerUrl containerUrl -AssociatedIdentityType commandOutputSettingsIdentityType -AssociatedIdentityUserAssignedIdentityResourceId commandOutputSettingsUserAssignedIdentityResourceId -ClusterServicePrincipalApplicationId clusterServicePrincipalAppId -ClusterServicePrincipalId ClusterServicePrincipalId -ClusterServicePrincipalPassword $securePassword -ClusterServicePrincipalTenantId tenantId -ComputeRackDefinition $computerackdefinition -SecretArchiveKeyVaultId keyVaultId -SecretArchiveSettingVaultUri keyVaultUri -SecretArchiveSettingsAssociatedIdentityType identityType -SecretArchiveSettingsAssociatedIdentityUserAssignedIdentityResourceId userAssignedIdentityResourceId -SecretArchiveUseKeyVault useKeyVault -UpdateStrategyThresholdType updateStrategyThresholdType -UpdateStrategyThresholdValue updateStrategyThresholdValue -UpdateStrategyType updateStrategyType -UpdateStrategyWaitTimeMinute updateStrategyWaitTimeMinutes -VulnerabilityScanningSettingContainerScan vulnerabilityScanningSettingContainerScan -ComputeDeploymentThresholdGrouping computeDeploymentThresholdGrouping -ComputeDeploymentThresholdType computeDeploymentThresholdType -ComputeDeploymentThresholdValue computeDeploymentThresholdValue -Tag $tagHash
 ```
 
 ```output
@@ -407,6 +411,22 @@ The URL of the storage account container that is to be used by the specified ide
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CommandOutputSettingOverride
+The list of optional overrides allowing for association of storage containers and identities to specific types of command output.
+If a type is not overridden, the default identity and storage container will be utilized.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICommandOutputOverride[]
 Parameter Sets: (All)
 Aliases:
 
@@ -725,7 +745,8 @@ Accept wildcard characters: False
 ```
 
 ### -UpdateStrategyMaxUnavailable
-The maximum number of worker nodes that can be offline within the increment of update, e.g., rack-by-rack.Limited by the maximum number of machines in the increment.
+The maximum number of worker nodes that can be offline within the increment of update, e.g., rack-by-rack.
+Limited by the maximum number of machines in the increment.
 Defaults to the whole increment size.
 
 ```yaml

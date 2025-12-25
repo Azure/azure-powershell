@@ -21,6 +21,14 @@ Update-AzNetworkCloudBareMetalMachineKeySet -ClusterName <String> -Name <String>
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### UpdateViaIdentityCluster
+```
+Update-AzNetworkCloudBareMetalMachineKeySet -ClusterInputObject <INetworkCloudIdentity> -Name <String>
+ -BareMetalMachineKeySetUpdateParameter <IBareMetalMachineKeySetPatchParameters> [-IfMatch <String>]
+ [-IfNoneMatch <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
 ### UpdateViaIdentityClusterExpanded
 ```
 Update-AzNetworkCloudBareMetalMachineKeySet -ClusterInputObject <INetworkCloudIdentity> -Name <String>
@@ -96,12 +104,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -BareMetalMachineKeySetUpdateParameter
+BareMetalMachineKeySetPatchParameters represents the body of the request to patch the bare metal machine key set.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineKeySetPatchParameters
+Parameter Sets: UpdateViaIdentityCluster
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ClusterInputObject
 Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
-Parameter Sets: UpdateViaIdentityClusterExpanded
+Parameter Sets: UpdateViaIdentityCluster, UpdateViaIdentityClusterExpanded
 Aliases:
 
 Required: True
@@ -255,7 +278,7 @@ The name of the bare metal machine key set.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityClusterExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaIdentityCluster, UpdateViaIdentityClusterExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases: BareMetalMachineKeySetName
 
 Required: True
@@ -377,6 +400,8 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineKeySetPatchParameters
 
 ### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
 

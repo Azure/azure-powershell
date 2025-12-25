@@ -15,8 +15,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzNetworkCloudScanClus
 }
 
 Describe 'Invoke-AzNetworkCloudScanClusterRuntime' {
-    It 'ScanExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'ScanExpanded' {
+        {
+            $clusterConfig = $global:config.AzNetworkCloudCluster
+            Invoke-AzNetworkCloudScanClusterRuntime -ClusterName $clusterConfig.scanClusterName -ResourceGroupName $clusterConfig.scanClusterRG -SubscriptionId $clusterConfig.scanClusterSubscriptionId -ScanActivity $clusterConfig.scanActivity
+        } | Should -Not -Throw
     }
 
     It 'Scan' -skip {

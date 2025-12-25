@@ -29,6 +29,13 @@ New-AzNetworkCloudAgentPool -KubernetesClusterName <String> -Name <String> -Reso
  [<CommonParameters>]
 ```
 
+### CreateViaIdentityKubernetesCluster
+```
+New-AzNetworkCloudAgentPool -KubernetesClusterInputObject <INetworkCloudIdentity> -Name <String>
+ -AgentPoolParameter <IAgentPool> [-IfMatch <String>] [-IfNoneMatch <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### CreateViaIdentityKubernetesClusterExpanded
 ```
 New-AzNetworkCloudAgentPool -KubernetesClusterInputObject <INetworkCloudIdentity> -Name <String>
@@ -154,6 +161,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AgentPoolParameter
+AgentPool represents the agent pool of Kubernetes cluster.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IAgentPool
+Parameter Sets: CreateViaIdentityKubernetesCluster
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -362,7 +384,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
-Parameter Sets: CreateViaIdentityKubernetesClusterExpanded
+Parameter Sets: CreateViaIdentityKubernetesCluster, CreateViaIdentityKubernetesClusterExpanded
 Aliases:
 
 Required: True
@@ -636,6 +658,8 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IAgentPool
 
 ### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
 

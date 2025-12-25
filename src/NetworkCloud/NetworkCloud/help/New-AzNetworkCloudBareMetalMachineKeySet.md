@@ -12,12 +12,10 @@ Create a new bare metal machine key set or create the existing one for the provi
 
 ## SYNTAX
 
-### CreateViaIdentityClusterExpanded (Default)
+### CreateViaIdentityCluster (Default)
 ```
 New-AzNetworkCloudBareMetalMachineKeySet -Name <String> -ClusterInputObject <INetworkCloudIdentity>
- [-IfMatch <String>] [-IfNoneMatch <String>] -AzureGroupId <String> -Expiration <DateTime>
- -ExtendedLocationName <String> -ExtendedLocationType <String> -JumpHostsAllowed <String[]> -Location <String>
- -PrivilegeLevel <String> -UserList <IKeySetUser[]> [-OSGroupName <String>] [-Tag <Hashtable>]
+ [-IfMatch <String>] [-IfNoneMatch <String>] -BareMetalMachineKeySetParameter <IBareMetalMachineKeySet>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -44,7 +42,17 @@ New-AzNetworkCloudBareMetalMachineKeySet -Name <String> -ClusterName <String> -R
  [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] -AzureGroupId <String>
  -Expiration <DateTime> -ExtendedLocationName <String> -ExtendedLocationType <String>
  -JumpHostsAllowed <String[]> -Location <String> -PrivilegeLevel <String> -UserList <IKeySetUser[]>
- [-OSGroupName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-OSGroupName <String>] [-PrivilegeLevelName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityClusterExpanded
+```
+New-AzNetworkCloudBareMetalMachineKeySet -Name <String> -ClusterInputObject <INetworkCloudIdentity>
+ [-IfMatch <String>] [-IfNoneMatch <String>] -AzureGroupId <String> -Expiration <DateTime>
+ -ExtendedLocationName <String> -ExtendedLocationType <String> -JumpHostsAllowed <String[]> -Location <String>
+ -PrivilegeLevel <String> -UserList <IKeySetUser[]> [-OSGroupName <String>] [-PrivilegeLevelName <String>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -100,7 +108,7 @@ Users that are not in the group will not have access.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityClusterExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityClusterExpanded
 Aliases:
 
 Required: True
@@ -110,12 +118,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -BareMetalMachineKeySetParameter
+BareMetalMachineKeySet represents the bare metal machine key set.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineKeySet
+Parameter Sets: CreateViaIdentityCluster
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ClusterInputObject
 Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
-Parameter Sets: CreateViaIdentityClusterExpanded
+Parameter Sets: CreateViaIdentityCluster, CreateViaIdentityClusterExpanded
 Aliases:
 
 Required: True
@@ -161,7 +184,7 @@ The date and time after which the users in this key set will be removed from the
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: CreateViaIdentityClusterExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityClusterExpanded
 Aliases:
 
 Required: True
@@ -176,7 +199,7 @@ The resource ID of the extended location on which the resource will be created.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityClusterExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityClusterExpanded
 Aliases:
 
 Required: True
@@ -191,7 +214,7 @@ The extended location type, for example, CustomLocation.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityClusterExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityClusterExpanded
 Aliases:
 
 Required: True
@@ -269,7 +292,7 @@ The list of IP addresses of jump hosts with management network access from which
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateViaIdentityClusterExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityClusterExpanded
 Aliases:
 
 Required: True
@@ -284,7 +307,7 @@ The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityClusterExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityClusterExpanded
 Aliases:
 
 Required: True
@@ -329,7 +352,7 @@ The name of the group that users will be assigned to on the operating system of 
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityClusterExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityClusterExpanded
 Aliases:
 
 Required: False
@@ -344,10 +367,25 @@ The access level allowed for the users in this key set.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityClusterExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityClusterExpanded
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PrivilegeLevelName
+The name of the access level to apply when the privilege level is set to Other.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityClusterExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -391,7 +429,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateViaIdentityClusterExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityClusterExpanded
 Aliases:
 
 Required: False
@@ -406,7 +444,7 @@ The unique list of permitted users.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IKeySetUser[]
-Parameter Sets: CreateViaIdentityClusterExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityClusterExpanded
 Aliases:
 
 Required: True
@@ -451,6 +489,8 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineKeySet
 
 ### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
 

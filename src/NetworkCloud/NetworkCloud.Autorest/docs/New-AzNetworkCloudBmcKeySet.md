@@ -12,12 +12,11 @@ Create a new baseboard management controller key set or create the existing one 
 
 ## SYNTAX
 
-### CreateViaIdentityClusterExpanded (Default)
+### CreateViaIdentityCluster (Default)
 ```
-New-AzNetworkCloudBmcKeySet -ClusterInputObject <INetworkCloudIdentity> -Name <String> -AzureGroupId <String>
- -Expiration <DateTime> -ExtendedLocationName <String> -ExtendedLocationType <String> -Location <String>
- -PrivilegeLevel <String> -UserList <IKeySetUser[]> [-IfMatch <String>] [-IfNoneMatch <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzNetworkCloudBmcKeySet -ClusterInputObject <INetworkCloudIdentity> -Name <String>
+ -BmcKeySetParameter <IBmcKeySet> [-IfMatch <String>] [-IfNoneMatch <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateExpanded
@@ -27,6 +26,14 @@ New-AzNetworkCloudBmcKeySet -ClusterName <String> -Name <String> -ResourceGroupN
  -Location <String> -PrivilegeLevel <String> -UserList <IKeySetUser[]> [-SubscriptionId <String>]
  [-IfMatch <String>] [-IfNoneMatch <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentityClusterExpanded
+```
+New-AzNetworkCloudBmcKeySet -ClusterInputObject <INetworkCloudIdentity> -Name <String> -AzureGroupId <String>
+ -Expiration <DateTime> -ExtendedLocationName <String> -ExtendedLocationType <String> -Location <String>
+ -PrivilegeLevel <String> -UserList <IKeySetUser[]> [-IfMatch <String>] [-IfNoneMatch <String>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -105,12 +112,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -BmcKeySetParameter
+BmcKeySet represents the baseboard management controller key set.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBmcKeySet
+Parameter Sets: CreateViaIdentityCluster
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ClusterInputObject
 Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
-Parameter Sets: CreateViaIdentityClusterExpanded
+Parameter Sets: CreateViaIdentityCluster, CreateViaIdentityClusterExpanded
 Aliases:
 
 Required: True
@@ -416,6 +438,8 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBmcKeySet
 
 ### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
 

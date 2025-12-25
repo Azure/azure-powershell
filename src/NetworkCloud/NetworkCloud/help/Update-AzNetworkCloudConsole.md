@@ -45,6 +45,14 @@ Update-AzNetworkCloudConsole -Name <String> -VirtualMachineInputObject <INetwork
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### UpdateViaIdentityVirtualMachine
+```
+Update-AzNetworkCloudConsole -Name <String> -VirtualMachineInputObject <INetworkCloudIdentity>
+ [-IfMatch <String>] [-IfNoneMatch <String>] -ConsoleUpdateParameter <IConsolePatchParameters>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
 ### UpdateViaIdentityExpanded
 ```
 Update-AzNetworkCloudConsole -InputObject <INetworkCloudIdentity> [-IfMatch <String>] [-IfNoneMatch <String>]
@@ -93,6 +101,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ConsoleUpdateParameter
+ConsolePatchParameters represents the body of the request to patch the virtual machine console.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IConsolePatchParameters
+Parameter Sets: UpdateViaIdentityVirtualMachine
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -225,7 +248,7 @@ The name of the virtual machine console.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateViaIdentityVirtualMachineExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateViaIdentityVirtualMachineExpanded, UpdateViaIdentityVirtualMachine
 Aliases: ConsoleName
 
 Required: True
@@ -317,7 +340,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
-Parameter Sets: UpdateViaIdentityVirtualMachineExpanded
+Parameter Sets: UpdateViaIdentityVirtualMachineExpanded, UpdateViaIdentityVirtualMachine
 Aliases:
 
 Required: True
@@ -377,6 +400,8 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IConsolePatchParameters
 
 ### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
 

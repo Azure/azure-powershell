@@ -46,6 +46,13 @@ New-AzNetworkCloudConsole -Name <String> -VirtualMachineInputObject <INetworkClo
  [<CommonParameters>]
 ```
 
+### CreateViaIdentityVirtualMachine
+```
+New-AzNetworkCloudConsole -Name <String> -VirtualMachineInputObject <INetworkCloudIdentity> [-IfMatch <String>]
+ [-IfNoneMatch <String>] -ConsoleParameter <IConsole> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Create a new virtual machine console or create the properties of the existing virtual machine console.
 
@@ -80,6 +87,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ConsoleParameter
+Console represents the console of an on-premises Network Cloud virtual machine.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IConsole
+Parameter Sets: CreateViaIdentityVirtualMachine
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -334,7 +356,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
-Parameter Sets: CreateViaIdentityVirtualMachineExpanded
+Parameter Sets: CreateViaIdentityVirtualMachineExpanded, CreateViaIdentityVirtualMachine
 Aliases:
 
 Required: True
@@ -394,6 +416,8 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IConsole
 
 ### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
 

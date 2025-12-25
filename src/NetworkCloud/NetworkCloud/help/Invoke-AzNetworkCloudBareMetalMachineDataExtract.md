@@ -55,7 +55,7 @@ $command = @{
     arguments = "commandArguments"
 }
 
-Invoke-AzNetworkCloudBareMetalMachineDataExtract -BareMetalMachineName bmmName -ResourceGroupName resourceGroupName -SubscriptionId subscriptionId -Command $command -LimitTimeSecond limitTimeInSeconds -Debug
+Invoke-AzNetworkCloudBareMetalMachineDataExtract -BareMetalMachineName bmmName -ResourceGroupName resourcceGroupName -SubscriptionId subscriptionId -Command $command -LimitTimeSecond limitTimeInSeconds -Debug
 ```
 
 This command runs a provided data extraction command on a bare metal machine.
@@ -171,7 +171,8 @@ Accept wildcard characters: False
 ```
 
 ### -LimitTimeSecond
-The maximum time the commands are allowed to run.If the execution time exceeds the maximum, the script will be stopped, any output produced until then will be captured, and the exit code matching a timeout will be returned (252).
+The maximum time the commands are allowed to run.
+If the execution time exceeds the maximum, the script will be stopped, any output produced until then will be captured, and the exit code matching a timeout will be returned (252).
 
 ```yaml
 Type: System.Int64

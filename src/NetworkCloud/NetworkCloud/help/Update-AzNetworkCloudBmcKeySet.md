@@ -45,6 +45,13 @@ Update-AzNetworkCloudBmcKeySet -Name <String> -ClusterInputObject <INetworkCloud
  [<CommonParameters>]
 ```
 
+### UpdateViaIdentityCluster
+```
+Update-AzNetworkCloudBmcKeySet -Name <String> -ClusterInputObject <INetworkCloudIdentity> [-IfMatch <String>]
+ [-IfNoneMatch <String>] -BmcKeySetUpdateParameter <IBmcKeySetPatchParameters> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### UpdateViaIdentityExpanded
 ```
 Update-AzNetworkCloudBmcKeySet -InputObject <INetworkCloudIdentity> [-IfMatch <String>] [-IfNoneMatch <String>]
@@ -97,12 +104,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -BmcKeySetUpdateParameter
+BmcKeySetPatchParameters represents the body of the request to patch the baseboard management controller key set.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBmcKeySetPatchParameters
+Parameter Sets: UpdateViaIdentityCluster
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ClusterInputObject
 Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
-Parameter Sets: UpdateViaIdentityClusterExpanded
+Parameter Sets: UpdateViaIdentityClusterExpanded, UpdateViaIdentityCluster
 Aliases:
 
 Required: True
@@ -241,7 +263,7 @@ The name of the baseboard management controller key set.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateViaIdentityClusterExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateViaIdentityClusterExpanded, UpdateViaIdentityCluster
 Aliases: BmcKeySetName
 
 Required: True
@@ -363,6 +385,8 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBmcKeySetPatchParameters
 
 ### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
 
