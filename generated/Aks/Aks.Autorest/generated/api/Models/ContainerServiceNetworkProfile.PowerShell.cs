@@ -76,6 +76,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("AdvancedNetworking"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal)this).AdvancedNetworking = (Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAdvancedNetworking) content.GetValueForProperty("AdvancedNetworking",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal)this).AdvancedNetworking, Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.AdvancedNetworkingTypeConverter.ConvertFrom);
+            }
             if (content.Contains("LoadBalancerProfile"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal)this).LoadBalancerProfile = (Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterLoadBalancerProfile) content.GetValueForProperty("LoadBalancerProfile",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal)this).LoadBalancerProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterLoadBalancerProfileTypeConverter.ConvertFrom);
@@ -83,6 +87,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
             if (content.Contains("NatGatewayProfile"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal)this).NatGatewayProfile = (Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterNatGatewayProfile) content.GetValueForProperty("NatGatewayProfile",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal)this).NatGatewayProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterNatGatewayProfileTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("StaticEgressGatewayProfile"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal)this).StaticEgressGatewayProfile = (Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterStaticEgressGatewayProfile) content.GetValueForProperty("StaticEgressGatewayProfile",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal)this).StaticEgressGatewayProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterStaticEgressGatewayProfileTypeConverter.ConvertFrom);
             }
             if (content.Contains("NetworkPlugin"))
             {
@@ -116,10 +124,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal)this).DnsServiceIP = (string) content.GetValueForProperty("DnsServiceIP",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal)this).DnsServiceIP, global::System.Convert.ToString);
             }
-            if (content.Contains("DockerBridgeCidr"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal)this).DockerBridgeCidr = (string) content.GetValueForProperty("DockerBridgeCidr",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal)this).DockerBridgeCidr, global::System.Convert.ToString);
-            }
             if (content.Contains("OutboundType"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal)this).OutboundType = (string) content.GetValueForProperty("OutboundType",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal)this).OutboundType, global::System.Convert.ToString);
@@ -139,6 +143,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
             if (content.Contains("IPFamily"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal)this).IPFamily = (System.Collections.Generic.List<string>) content.GetValueForProperty("IPFamily",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal)this).IPFamily, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("AdvancedNetworkingObservability"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal)this).AdvancedNetworkingObservability = (Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAdvancedNetworkingObservability) content.GetValueForProperty("AdvancedNetworkingObservability",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal)this).AdvancedNetworkingObservability, Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.AdvancedNetworkingObservabilityTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("AdvancedNetworkingSecurity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal)this).AdvancedNetworkingSecurity = (Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAdvancedNetworkingSecurity) content.GetValueForProperty("AdvancedNetworkingSecurity",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal)this).AdvancedNetworkingSecurity, Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.AdvancedNetworkingSecurityTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("AdvancedNetworkingEnabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal)this).AdvancedNetworkingEnabled = (bool?) content.GetValueForProperty("AdvancedNetworkingEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal)this).AdvancedNetworkingEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             if (content.Contains("LoadBalancerProfileManagedOutboundIP"))
             {
@@ -168,6 +184,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal)this).LoadBalancerProfileEnableMultipleStandardLoadBalancer = (bool?) content.GetValueForProperty("LoadBalancerProfileEnableMultipleStandardLoadBalancer",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal)this).LoadBalancerProfileEnableMultipleStandardLoadBalancer, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
+            if (content.Contains("LoadBalancerProfileBackendPoolType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal)this).LoadBalancerProfileBackendPoolType = (string) content.GetValueForProperty("LoadBalancerProfileBackendPoolType",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal)this).LoadBalancerProfileBackendPoolType, global::System.Convert.ToString);
+            }
             if (content.Contains("NatGatewayProfileManagedOutboundIPProfile"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal)this).NatGatewayProfileManagedOutboundIPProfile = (Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterManagedOutboundIPProfile) content.GetValueForProperty("NatGatewayProfileManagedOutboundIPProfile",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal)this).NatGatewayProfileManagedOutboundIPProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterManagedOutboundIPProfileTypeConverter.ConvertFrom);
@@ -179,6 +199,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
             if (content.Contains("NatGatewayProfileIdleTimeoutInMinute"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal)this).NatGatewayProfileIdleTimeoutInMinute = (int?) content.GetValueForProperty("NatGatewayProfileIdleTimeoutInMinute",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal)this).NatGatewayProfileIdleTimeoutInMinute, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("StaticEgressGatewayProfileEnabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal)this).StaticEgressGatewayProfileEnabled = (bool?) content.GetValueForProperty("StaticEgressGatewayProfileEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal)this).StaticEgressGatewayProfileEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("ObservabilityEnabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal)this).ObservabilityEnabled = (bool?) content.GetValueForProperty("ObservabilityEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal)this).ObservabilityEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("SecurityEnabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal)this).SecurityEnabled = (bool?) content.GetValueForProperty("SecurityEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal)this).SecurityEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("SecurityAdvancedNetworkPolicy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal)this).SecurityAdvancedNetworkPolicy = (string) content.GetValueForProperty("SecurityAdvancedNetworkPolicy",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal)this).SecurityAdvancedNetworkPolicy, global::System.Convert.ToString);
             }
             if (content.Contains("ManagedOutboundIPCount"))
             {
@@ -217,6 +253,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("AdvancedNetworking"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal)this).AdvancedNetworking = (Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAdvancedNetworking) content.GetValueForProperty("AdvancedNetworking",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal)this).AdvancedNetworking, Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.AdvancedNetworkingTypeConverter.ConvertFrom);
+            }
             if (content.Contains("LoadBalancerProfile"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal)this).LoadBalancerProfile = (Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterLoadBalancerProfile) content.GetValueForProperty("LoadBalancerProfile",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal)this).LoadBalancerProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterLoadBalancerProfileTypeConverter.ConvertFrom);
@@ -224,6 +264,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
             if (content.Contains("NatGatewayProfile"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal)this).NatGatewayProfile = (Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterNatGatewayProfile) content.GetValueForProperty("NatGatewayProfile",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal)this).NatGatewayProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterNatGatewayProfileTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("StaticEgressGatewayProfile"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal)this).StaticEgressGatewayProfile = (Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterStaticEgressGatewayProfile) content.GetValueForProperty("StaticEgressGatewayProfile",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal)this).StaticEgressGatewayProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterStaticEgressGatewayProfileTypeConverter.ConvertFrom);
             }
             if (content.Contains("NetworkPlugin"))
             {
@@ -257,10 +301,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal)this).DnsServiceIP = (string) content.GetValueForProperty("DnsServiceIP",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal)this).DnsServiceIP, global::System.Convert.ToString);
             }
-            if (content.Contains("DockerBridgeCidr"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal)this).DockerBridgeCidr = (string) content.GetValueForProperty("DockerBridgeCidr",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal)this).DockerBridgeCidr, global::System.Convert.ToString);
-            }
             if (content.Contains("OutboundType"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal)this).OutboundType = (string) content.GetValueForProperty("OutboundType",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal)this).OutboundType, global::System.Convert.ToString);
@@ -280,6 +320,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
             if (content.Contains("IPFamily"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal)this).IPFamily = (System.Collections.Generic.List<string>) content.GetValueForProperty("IPFamily",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal)this).IPFamily, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("AdvancedNetworkingObservability"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal)this).AdvancedNetworkingObservability = (Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAdvancedNetworkingObservability) content.GetValueForProperty("AdvancedNetworkingObservability",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal)this).AdvancedNetworkingObservability, Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.AdvancedNetworkingObservabilityTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("AdvancedNetworkingSecurity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal)this).AdvancedNetworkingSecurity = (Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAdvancedNetworkingSecurity) content.GetValueForProperty("AdvancedNetworkingSecurity",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal)this).AdvancedNetworkingSecurity, Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.AdvancedNetworkingSecurityTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("AdvancedNetworkingEnabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal)this).AdvancedNetworkingEnabled = (bool?) content.GetValueForProperty("AdvancedNetworkingEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal)this).AdvancedNetworkingEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             if (content.Contains("LoadBalancerProfileManagedOutboundIP"))
             {
@@ -309,6 +361,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal)this).LoadBalancerProfileEnableMultipleStandardLoadBalancer = (bool?) content.GetValueForProperty("LoadBalancerProfileEnableMultipleStandardLoadBalancer",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal)this).LoadBalancerProfileEnableMultipleStandardLoadBalancer, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
+            if (content.Contains("LoadBalancerProfileBackendPoolType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal)this).LoadBalancerProfileBackendPoolType = (string) content.GetValueForProperty("LoadBalancerProfileBackendPoolType",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal)this).LoadBalancerProfileBackendPoolType, global::System.Convert.ToString);
+            }
             if (content.Contains("NatGatewayProfileManagedOutboundIPProfile"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal)this).NatGatewayProfileManagedOutboundIPProfile = (Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterManagedOutboundIPProfile) content.GetValueForProperty("NatGatewayProfileManagedOutboundIPProfile",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal)this).NatGatewayProfileManagedOutboundIPProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterManagedOutboundIPProfileTypeConverter.ConvertFrom);
@@ -320,6 +376,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
             if (content.Contains("NatGatewayProfileIdleTimeoutInMinute"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal)this).NatGatewayProfileIdleTimeoutInMinute = (int?) content.GetValueForProperty("NatGatewayProfileIdleTimeoutInMinute",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal)this).NatGatewayProfileIdleTimeoutInMinute, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("StaticEgressGatewayProfileEnabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal)this).StaticEgressGatewayProfileEnabled = (bool?) content.GetValueForProperty("StaticEgressGatewayProfileEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal)this).StaticEgressGatewayProfileEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("ObservabilityEnabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal)this).ObservabilityEnabled = (bool?) content.GetValueForProperty("ObservabilityEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal)this).ObservabilityEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("SecurityEnabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal)this).SecurityEnabled = (bool?) content.GetValueForProperty("SecurityEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal)this).SecurityEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("SecurityAdvancedNetworkPolicy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal)this).SecurityAdvancedNetworkPolicy = (string) content.GetValueForProperty("SecurityAdvancedNetworkPolicy",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal)this).SecurityAdvancedNetworkPolicy, global::System.Convert.ToString);
             }
             if (content.Contains("ManagedOutboundIPCount"))
             {
