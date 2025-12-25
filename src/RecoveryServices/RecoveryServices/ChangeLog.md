@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Added Cross region restore support for Bleu cloud regions
 
 ## Version 7.10.0
 * Added Cross region restore support for new region - northeastus5.
