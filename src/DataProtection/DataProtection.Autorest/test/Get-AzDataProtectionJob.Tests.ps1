@@ -12,19 +12,20 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-AzDataProtectionJob' -Tag 'LiveOnly' {
-    It 'List' -skip {
-        $jobs = Get-AzDataProtectionJob -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.TestBackupJob.ResourceGroupName -VaultName $env.TestBackupJob.VaultName
+    It 'List' {
+        $jobs = Get-AzDataProtectionJob -SubscriptionId $env.TestBlobHardeningScenario.SubscriptionId -ResourceGroupName $env.TestBlobHardeningScenario.ResourceGroupName -VaultName $env.TestBlobHardeningScenario.VaultName
         $jobs.Length | Should -BeGreaterThan 0
-    }
+        }
 
-    It 'Get' -skip {
-        $jobs = Get-AzDataProtectionJob -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.TestBackupJob.ResourceGroupName -VaultName $env.TestBackupJob.VaultName
+    It 'Get' {
+        $jobs = Get-AzDataProtectionJob -SubscriptionId $env.TestBlobHardeningScenario.SubscriptionId -ResourceGroupName $env.TestBlobHardeningScenario.ResourceGroupName -VaultName $env.TestBlobHardeningScenario.VaultName
         $jobs.Length | Should -BeGreaterThan 0
-        $job = Get-AzDataProtectionJob -Id $jobs[0].Id -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.TestBackupJob.ResourceGroupName -VaultName $env.TestBackupJob.VaultName
+        $job = Get-AzDataProtectionJob -Id $jobs[0].Name -SubscriptionId $env.TestBlobHardeningScenario.SubscriptionId -ResourceGroupName $env.TestBlobHardeningScenario.ResourceGroupName -VaultName $env.TestBlobHardeningScenario.VaultName
         $job.Id | Should be $jobs[0].Id
     }
 
-    It 'ListCRR' {
+    # Redudant test case, covered in 'List' test case, restore will disappear eventually after retention period
+    It 'ListCRR' -skip {
         $resourceGroupName  = $env.TestCrossRegionRestoreScenario.ResourceGroupName
         $vaultName = $env.TestCrossRegionRestoreScenario.VaultName
         $subscriptionId = $env.TestCrossRegionRestoreScenario.SubscriptionId

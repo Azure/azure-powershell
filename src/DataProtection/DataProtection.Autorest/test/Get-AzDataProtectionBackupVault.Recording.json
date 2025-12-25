@@ -1,13 +1,13 @@
 {
-  "Get-AzDataProtectionBackupVault+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault?api-version=2025-02-01+1": {
+  "Get-AzDataProtectionBackupVault+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault?api-version=2025-07-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault?api-version=2025-02-01",
+      "RequestUri": "https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault?api-version=2025-07-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "482" ],
-        "x-ms-client-request-id": [ "df98f60a-8733-4b32-90bc-0e4df7e51fb1" ],
+        "x-ms-unique-id": [ "158" ],
+        "x-ms-client-request-id": [ "e25974cb-5ab1-4a8e-b004-6e7f75c79bca" ],
         "CommandName": [ "Get-AzDataProtectionBackupVault" ],
         "FullCommandName": [ "Get-AzDataProtectionBackupVault_Get2" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -22,15 +22,16 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1099" ],
+        "x-ms-throttling-version": [ "v1" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "0d785eb1-c9dc-4f81-8f7a-7cb074c3df76" ],
-        "x-ms-correlation-request-id": [ "0d785eb1-c9dc-4f81-8f7a-7cb074c3df76" ],
-        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20251026T044421Z:0d785eb1-c9dc-4f81-8f7a-7cb074c3df76" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1099" ],
+        "x-ms-request-id": [ "b4ec057a-0481-4a93-82dc-bceb7c23b8df" ],
+        "x-ms-correlation-request-id": [ "b4ec057a-0481-4a93-82dc-bceb7c23b8df" ],
+        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20251203T042719Z:b4ec057a-0481-4a93-82dc-bceb7c23b8df" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: DA47F4F8A7AB4FF9B4B7F1D0A278E63E Ref B: SN4AA2022301027 Ref C: 2025-10-26T04:44:21Z" ],
-        "Date": [ "Sun, 26 Oct 2025 04:44:21 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 3CCFD5DDD2AF41CEB9608E551CB0BB4C Ref B: SN4AA2022304053 Ref C: 2025-12-03T04:27:19Z" ],
+        "Date": [ "Wed, 03 Dec 2025 04:27:19 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "709" ],
