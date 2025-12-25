@@ -1,78 +1,76 @@
 ---
-external help file: Az.NetworkCloud-help.xml
+external help file:
 Module Name: Az.NetworkCloud
-online version: https://learn.microsoft.com/powershell/module/az.networkcloud/invoke-aznetworkcloudbaremetalmachineruncommand
+online version: https://learn.microsoft.com/powershell/module/az.networkcloud/invoke-aznetworkcloudbaremetalmachinedataextractrestricted
 schema: 2.0.0
 ---
 
-# Invoke-AzNetworkCloudBareMetalMachineRunCommand
+# Invoke-AzNetworkCloudBareMetalMachineDataExtractRestricted
 
 ## SYNOPSIS
-Run the command or the script on the provided bare metal machine.
+Run one or more restricted data extractions on the provided bare metal machine.
 The URL to storage account with the command execution results and the command exit code can be retrieved from the operation status API once available.
 
 ## SYNTAX
 
-### RunExpanded (Default)
+### RunViaIdentityExpanded (Default)
 ```
-Invoke-AzNetworkCloudBareMetalMachineRunCommand -BareMetalMachineName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -LimitTimeSecond <Int64> -Script <String> [-Argument <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Invoke-AzNetworkCloudBareMetalMachineDataExtractRestricted -InputObject <INetworkCloudIdentity>
+ -Command <IBareMetalMachineCommandSpecification[]> -LimitTimeSecond <Int64> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### RunViaJsonString
+### RunExpanded
 ```
-Invoke-AzNetworkCloudBareMetalMachineRunCommand -BareMetalMachineName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Invoke-AzNetworkCloudBareMetalMachineDataExtractRestricted -BareMetalMachineName <String>
+ -ResourceGroupName <String> -Command <IBareMetalMachineCommandSpecification[]> -LimitTimeSecond <Int64>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### RunViaJsonFilePath
 ```
-Invoke-AzNetworkCloudBareMetalMachineRunCommand -BareMetalMachineName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Invoke-AzNetworkCloudBareMetalMachineDataExtractRestricted -BareMetalMachineName <String>
+ -ResourceGroupName <String> -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### RunViaIdentityExpanded
+### RunViaJsonString
 ```
-Invoke-AzNetworkCloudBareMetalMachineRunCommand -InputObject <INetworkCloudIdentity> -LimitTimeSecond <Int64>
- -Script <String> [-Argument <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Invoke-AzNetworkCloudBareMetalMachineDataExtractRestricted -BareMetalMachineName <String>
+ -ResourceGroupName <String> -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Run the command or the script on the provided bare metal machine.
+Run one or more restricted data extractions on the provided bare metal machine.
 The URL to storage account with the command execution results and the command exit code can be retrieved from the operation status API once available.
 
 ## EXAMPLES
 
-### Example 1: Run script on bare metal machine
+### Example 1: {{ Add title here }}
 ```powershell
-Invoke-AzNetworkCloudBareMetalMachineRunCommand -BareMetalMachineName bmmName -ResourceGroupName resourceGroupName -SubscriptionId subscriptionId -LimitTimeSecond limitTimeInSeconds -Script "bHM=" -Argument "-l" -Debug
+{{ Add code here }}
 ```
 
-This command runs the provided script on a bare metal machine.
-Including the -Debug flag ensures successful output of the storage account URL containing the command's results.
-This is necessary to retrieve the results of the command on the bare metal machine.
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
-
-### -Argument
-The list of string arguments that will be passed to the script in order as separate arguments.
-
-```yaml
-Type: System.String[]
-Parameter Sets: RunExpanded, RunViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -AsJob
 Run the command as a job
@@ -94,7 +92,22 @@ The name of the bare metal machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: RunExpanded, RunViaJsonString, RunViaJsonFilePath
+Parameter Sets: RunExpanded, RunViaJsonFilePath, RunViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Command
+The list of curated data extraction commands to be executed directly against the target machine.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineCommandSpecification[]
+Parameter Sets: RunExpanded, RunViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -166,7 +179,7 @@ Accept wildcard characters: False
 ```
 
 ### -LimitTimeSecond
-The maximum time the script is allowed to run.
+The maximum time the commands are allowed to run.
 If the execution time exceeds the maximum, the script will be stopped, any output produced until then will be captured, and the exit code matching a timeout will be returned (252).
 
 ```yaml
@@ -217,22 +230,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: RunExpanded, RunViaJsonString, RunViaJsonFilePath
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Script
-The base64 encoded script to execute on the bare metal machine.
-
-```yaml
-Type: System.String
-Parameter Sets: RunExpanded, RunViaIdentityExpanded
+Parameter Sets: RunExpanded, RunViaJsonFilePath, RunViaJsonString
 Aliases:
 
 Required: True
@@ -248,7 +246,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: RunExpanded, RunViaJsonString, RunViaJsonFilePath
+Parameter Sets: RunExpanded, RunViaJsonFilePath, RunViaJsonString
 Aliases:
 
 Required: False
@@ -303,3 +301,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
