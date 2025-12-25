@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     }
                     else if (this.ApplicableHostEndPoint.Equals("IMDS", StringComparison.OrdinalIgnoreCase))
                     {
-                        galleryInVMAccessControlProfile.Properties.ApplicableHostEndpoint = EndpointTypes.IMDS;
+                        galleryInVMAccessControlProfile.Properties.ApplicableHostEndpoint = EndpointTypes.Imds;
                     }
                     else
                     {
